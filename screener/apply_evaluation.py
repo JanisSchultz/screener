@@ -62,6 +62,7 @@ FIN_KEY_MAP = {
     "peak_eps_est": "peak_eps_est",
     "g_est": "g_est",
     "g_implied": "g_implied",
+    "g_exp": "g_implied",
     "roic_est": "roic_est",
     "fin_note": "fin_note",
 }

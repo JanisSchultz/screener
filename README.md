@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.24 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.26 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,14 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.26: Gate 4 CAP-Linked Growth Engine & Expected Growth Renaming (g_exp):
+- Gate 4 CAP-Linked Growth Persistence (λ): Grounded forward growth persistence in Gate 4 Runway CAP:
+  (1) CAP >= 30 Years (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V): λ = 0.25 (slower autoregressive fade, higher weighting of historical compounding track record).
+  (2) CAP >= 20 Years (Standard Quality Compounders: OTIS, ZTS, CPRT): λ = 0.15 (matches Mauboussin's 75-year market-wide autoregressive baseline).
+  (3) CAP >= 15 Years (Shorter Runway / Higher Transition Risk): λ = 0.10 (faster fade towards the 7.0% base rate).
+  (4) Fallback / Unpopulated: λ = 0.15.
+- Expected Growth (g_exp) & Symmetrical Growth Margin: Renamed 'Forward Implied g' (g_imp) to 'Expected Growth' (g_exp) across UI, specs, and dashboard to eliminate terminology collision with Market-Implied Growth (g_market). Growth Margin of Safety is clearly defined as (g_exp - g_market), paired symmetrically with Moat Runway Margin (Our CAP - Market-Implied CAP).
 
 v6.25: Conditional Calamity Pass Tier (Buffett Temporary Fixable Calamities on Gates 3b, 5 & 6):
 - Added `calamity` ('Y'/blank) and `calamity_note` fields across `inputs.csv`, `screener/gates.py`, `screener/apply_evaluation.py`, and the HTML cockpit (`screener/dashboard.py`).

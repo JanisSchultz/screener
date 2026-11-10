@@ -1,4 +1,4 @@
-"""Framework configuration (v6.18): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.26): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -207,6 +207,10 @@ PARAMETER_GROUPS = [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_g_cap", "Max sustainable forward growth rate (Mauboussin 75-year large-cap ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth at 12.0% based on empirical regression data (Ex. 18/19)."),
         ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.07, "0.0%", NEW + " Empirical baseline large-cap growth rate (7.0%)."),
+        ("par_fade_cap30", "Mauboussin growth persistence for Gate 4 CAP >= 30 years (fortress moats/monopolies)", 0.25, "0.00", NEW + " Slower autoregressive fade for ultra-long runway compounders."),
+        ("par_fade_cap20", "Mauboussin growth persistence for Gate 4 CAP >= 20 years (standard quality compounders)", 0.15, "0.00", NEW + " Empirical 75-year market-wide autoregressive baseline."),
+        ("par_fade_cap15", "Mauboussin growth persistence for Gate 4 CAP >= 15 years (shorter runway / higher transition risk)", 0.10, "0.00", NEW + " Faster autoregressive fade towards baseline."),
+        ("par_fade_default", "Fallback growth persistence when CAP is unpopulated", 0.15, "0.00", NEW + " Default fallback persistence coefficient."),
     ]),
 ]
 
@@ -485,5 +489,14 @@ CHANGELOG = {
         "disruption still reject cleanly. "
         "(3) Surfaced separately in the HTML cockpit ('⚠️ Calamity Watchlist' tab, amber badges, off-by-default Shortlist toggle, "
         "and dossier kill-switch callout).",
+    ],
+    "6.26": [
+        "Gate 4 CAP-Linked Growth Engine & Expected Growth Renaming (g_exp): "
+        "(1) Linked Mauboussin autoregressive growth persistence (lambda) directly to Gate 4 CAP: "
+        "CAP >= 30 (fortress monopolies, e.g. SPGI, MCO, MSFT, V) uses lambda = 0.25 (slower fade, higher weighting of historical compounding); "
+        "CAP >= 20 (standard quality compounders) uses lambda = 0.15 (empirical 75-year autoregressive baseline); "
+        "CAP >= 15 (shorter runway / higher transition risk) uses lambda = 0.10 (faster fade towards 7.0% base rate). "
+        "(2) Renamed 'Forward Implied g' (g_imp) to 'Expected Growth' (g_exp) across documentation, specs, and dashboard UI, "
+        "eliminating terminology collision with Market-Implied Growth (g_market) while maintaining backwards compatibility.",
     ],
 }

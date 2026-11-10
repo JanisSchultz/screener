@@ -113,8 +113,10 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "irr_5y": val.get("irr_5y"),
                 "dy": val.get("dy"),
                 "g_hist": val.get("g"),
+                "g_exp": val.get("g_exp"),
                 "g_imp": val.get("g_imp"),
                 "coupon": val.get("coupon"),
+                "exp_coupon": val.get("exp_coupon"),
                 "imp_coupon": val.get("imp_coupon"),
                 "cap_implied": val.get("cap_implied"),
                 "cap_gap": val.get("cap_gap"),
@@ -1333,7 +1335,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="par_mult-desc">Sort: PAR Mult ↓</option>
         <option value="price-asc">Sort: Share Price ↑</option>
         <option value="price-desc">Sort: Share Price ↓</option>
-        <option value="g_imp-desc">Sort: Our Implied g ↓</option>
+        <option value="g_imp-desc">Sort: Expected g (g_exp) ↓</option>
         <option value="g_market-asc">Sort: Market-Implied g ↑</option>
         <option value="g_gap-desc">Sort: Growth Margin ↓</option>
         <option value="g4_cap-desc">Sort: Our CAP ↓</option>
@@ -1455,13 +1457,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <div class="metric-box" style="margin-bottom: 12px;">
         <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula:</strong>
         <p class="formula-code">
-          PAR Multiple = min(mult_high_5y, (2 * (g_imp * 100) + 5Y Cycle Midpoint Multiple + min(Operating_ROIC * 100, 35.0)) / 3)
+          PAR Multiple = min(mult_high_5y, (2 * (g_exp * 100) + 5Y Cycle Midpoint Multiple + min(Operating_ROIC * 100, 35.0)) / 3)
         </p>
       </div>
       <div class="metric-box">
-        <strong style="color: var(--text-main);">Mauboussin Base-Rate Growth Regression:</strong>
+        <strong style="color: var(--text-main);">Mauboussin CAP-Linked Growth Engine:</strong>
         <p class="formula-code">
-          Forward Implied g = min(12.0%, max(2.0%, 0.15 * (Hist_g - 7.0%) + 7.0%))
+          Expected g (g_exp) = min(12.0%, max(2.0%, &lambda; * (Hist_g - 7.0%) + 7.0%))<br>
+          <span style="font-size: 11px; color: var(--text-dim);">&lambda; linked to Gate 4 CAP: 0.25 (CAP &ge; 30y), 0.15 (CAP &ge; 20y), 0.10 (CAP &ge; 15y)</span>
         </p>
       </div>
     </div>
@@ -1581,7 +1584,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Our Implied g</div>
+            <div class="label">Expected g (g_exp)</div>
             <div class="value" id="dossier-g-imp">-</div>
           </div>
           <div class="metric-box">
@@ -1918,7 +1921,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_mult', label: 'PAR Mult', num: true }},
           {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
           {{ key: 'g4_cap', label: 'Our CAP', num: true }},
@@ -1939,7 +1942,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_val', label: 'PAR Val', num: true }},
           {{ key: 'vs_par', label: 'vs PAR', num: true }},
           {{ key: 'irr_5y', label: '5Y IRR', num: true }},
-          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
           {{ key: 'g4_cap', label: 'Our CAP', num: true }},
@@ -1960,7 +1963,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_mult', label: 'PAR Mult', num: true }},
           {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
           {{ key: 'g4_cap', label: 'Our CAP', num: true }},
@@ -2038,7 +2041,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'price' || col.key === 'par_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
-          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'g_imp') {{
+          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'g_imp' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
             cellContent = fmtPct(val, true);
@@ -2089,7 +2092,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const cColor = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
       return `
         <div class="card-metric-cell">
-          <div class="card-metric-label">Growth (Our / Mkt / Gap)</div>
+          <div class="card-metric-label">Growth (Exp / Mkt / Gap)</div>
           <div class="card-metric-val" style="font-size: 11.5px;">
             ${{gOur}} / ${{gMkt}} <span style="color:${{gColor}};">(${{gGap}})</span>
           </div>

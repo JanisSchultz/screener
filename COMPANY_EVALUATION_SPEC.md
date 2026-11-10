@@ -245,7 +245,7 @@ Provide a comprehensive synthesis including:
 
 ---
 
-## 5. Quantitative Evaluation: Equity Bond Below PAR Model (v6.23)
+## 5. Quantitative Evaluation: Equity Bond Below PAR Model (v6.26)
 
 > **Important**: Quantitative PAR valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates, as well as **`Calamity pass`** candidates (conditional waiver on Gates 3b, 5, and/or 6). Rejected companies are designated `"Not in funnel"` for quantitative valuation. For `Calamity pass` companies, verify whether normalized earning power (`peak_eps_est`) or forward growth (`g_est` / `g_implied`) requires an explicit adjustment.
 
@@ -285,25 +285,30 @@ To prevent accounting distortions from penalizing capital-light compounders that
 
 ---
 
-### 5.3 Forward Implied Growth Engine ($g_{\text{imp}}$)
+### 5.3 Expected Growth Engine ($g_{\text{exp}}$) & Gate 4 CAP-Linked Persistence
 
 Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persistence research (Counterpoint Global):
 1. **Growth Parameters**:
    - `par_g_base = 0.07` (7.0% mature large-cap base rate anchor).
    - `par_g_cap = 0.12` (12.0% empirical ceiling for through-the-cycle large-cap EPS growth).
-2. **Growth Hierarchy**:
-   - If analyst override `g_est` is populated $\rightarrow g_{\text{imp}} = g_{\text{est}}$.
-   - Else if bottom-up estimate `g_implied` is populated $\rightarrow g_{\text{imp}} = \min(\text{par\_g\_cap}, g_{\text{implied}})$.
-   - Else apply the **Mauboussin Autoregressive Fade Formula** to historical cycle CAGR $g$:
-     $$g_{\text{imp}} = \min\left(0.12, \max\left(0.02, 0.15 \times (\max(0, g) - 0.07) + 0.07\right)\right)$$
-   - Fallback: $g_{\text{imp}} = 0.07$ (7.0%).
+2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$)**:
+   - **CAP $\ge$ 30 Years** (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V): $\lambda = 0.25$.
+   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT): $\lambda = 0.15$.
+   - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$.
+   - **Fallback / Unpopulated**: $\lambda = 0.15$.
+3. **Growth Hierarchy**:
+   - If analyst override `g_est` is populated $\rightarrow g_{\text{exp}} = g_{\text{est}}$.
+   - Else if bottom-up estimate `g_implied` (or `g_exp`) is populated $\rightarrow g_{\text{exp}} = \min(\text{par\_g\_cap}, g_{\text{implied}})$.
+   - Else apply the **Mauboussin CAP-Linked Fade Formula** to historical cycle CAGR $g$:
+     $$g_{\text{exp}} = \min\left(0.12, \max\left(0.02, \lambda \times (\max(0, g) - 0.07) + 0.07\right)\right)$$
+   - Fallback: $g_{\text{exp}} = 0.07$ (7.0%).
 
 ---
 
 ### 5.4 3-Pillar Fundamental PAR Multiple & Cycle High Guardrail
 
 The fundamental fair value multiple is governed by three equal pillars:
-1. **Pillar 1: Secular Growth Factor**: $\text{t\_growth} = \min(40.0, 200.0 \times \max(0, g_{\text{imp}}))$. *(Adds $+16$ to $+24$ turns for 8%–12% compounders).*
+1. **Pillar 1: Secular Growth Factor**: $\text{t\_growth} = \min(40.0, 200.0 \times \max(0, g_{\text{exp}}))$. *(Adds $+16$ to $+24$ turns for 8%–12% compounders).*
 2. **Pillar 2: Historical Cycle Midpoint Multiple**: $\text{t\_hist} = 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y})$.
 3. **Pillar 3: Operating ROIC Factor**: $\text{t\_roic} = \min(\text{Active ROIC} \times 100, 35.0)$.
 
