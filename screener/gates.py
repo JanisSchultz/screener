@@ -118,6 +118,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
 
     par_roic_cap = (p or {}).get("par_roic_cap", 35.0)
     par_hist_cap = (p or {}).get("par_hist_cap", 35.0)
+    par_g_prefade_cap = (p or {}).get("par_g_prefade_cap", 0.180)
     par_g_cap_default = (p or {}).get("par_g_cap", 0.120)
     par_g_cap_large = (p or {}).get("par_g_cap_large", 0.100)
     par_g_cap_mega = (p or {}).get("par_g_cap_mega", 0.085)
@@ -200,7 +201,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
         # require near-zero incremental capital to compound organically (only recurring share dilution deducts)
         is_zero_cap_tollbooth = (moat_arch == "Toll booth / Switching costs" and roic_op >= r_cap)
         if is_zero_cap_tollbooth:
-            g_fund = round(max(0.0, par_g_cap_default + min(0.0, bb_eff)), 4)
+            g_fund = round(max(0.0, par_g_prefade_cap + min(0.0, bb_eff)), 4)
         elif retention is not None and (roic is not None or roiic_val is not None):
             if roiic_val is not None and roic_gaap is not None:
                 r_inc = min(r_cap, 0.5 * max(0.0, roiic_val) + 0.5 * min(r_cap, max(0.0, roic_gaap)))
@@ -231,9 +232,9 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
                 hist_demand = 0.5 * top_per_share + 0.5 * max(0.0, g)
             else:
                 hist_demand = top_per_share + 0.005
-            g_demand = round(min(par_g_cap_default, hist_demand), 4)
+            g_demand = round(min(par_g_prefade_cap, hist_demand), 4)
         elif g is not None:
-            g_demand = round(min(par_g_cap_default, g), 4)
+            g_demand = round(min(par_g_prefade_cap, g), 4)
         elif g_imp_in is not None:
             g_demand = round(max(0.02, g_imp_in), 4)
             already_faded = True
@@ -252,11 +253,8 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
             # Asymmetric Fade ('No Free Lunch'): low growers never fade upward
             faded_g = max(0.02, g_raw)
 
-        # Filter 4b & Post-Fade Ceiling: Revenue Size Gravity + post-fade g_implied guardrail (never double-faded)
-        if g_imp_in is not None:
-            g_exp = min(scale_cap, faded_g, max(0.02, g_imp_in))
-        else:
-            g_exp = min(scale_cap, faded_g)
+        # Filter 4b — Revenue Size Gravity:
+        g_exp = min(scale_cap, faded_g)
 
     if not price or not peak_eps or peak_eps <= 0 or not ml or not mh:
         return {"status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None,

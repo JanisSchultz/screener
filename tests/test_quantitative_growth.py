@@ -94,8 +94,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
     def test_filter1_zero_capital_tollbooth_not_penalized_for_high_payout_or_goodwill(self):
         # Pure Tollbooth with >= 35% Operating ROIC (e.g. CME / SPGI):
         # Even with 95% dividend payout (retention = 0.05) or M&A goodwill depressing GAAP ROIC to 11%,
-        # Zero-Capital Pricing grants g_fund = 12.0%, pre-fade g_demand = 12.0% -> faded at CAP 30 = 9.875%,
-        # then bounded post-fade by g_implied = 9.50% (never double-faded!)
+        # Zero-Capital Pricing grants g_fund = 18.0%, pre-fade g_demand = 13.5% (12% sales + 1% bb + 0.5% margin) ->
+        # faded at CAP 30 (w=0.75): 0.75*0.135 + 0.25*0.035 = 11.00% -> bounded by Large-Rev Size Gravity at 10.00%
         fin = sample_fin(
             sales_ttm_m=15300.0,
             retention_rate=0.05,
@@ -110,14 +110,14 @@ class QuantitativeGrowthTests(unittest.TestCase):
             g_implied=0.095,
         )
         val = par_valuation(fin, self.p, cap=30, moat="Toll booth / Switching costs")
-        self.assertEqual(val["g_fund"], 0.120)
-        self.assertEqual(val["g_demand"], 0.120)
-        self.assertAlmostEqual(val["g_exp"], 0.0950, places=4)
+        self.assertEqual(val["g_fund"], 0.180)
+        self.assertEqual(val["g_demand"], 0.135)
+        self.assertAlmostEqual(val["g_exp"], 0.1000, places=4)
 
-    def test_post_fade_g_implied_eliminates_googl_double_haircut(self):
-        # GOOGL archetype: 17.15% 5Y sales CAGR + 1.77% buybacks -> pre-fade g_demand = 12.0%, g_fund = 12.0%.
-        # At CAP 15 (w = 0.45): faded_g = 0.45*0.12 + 0.55*0.035 = 7.325%.
-        # Post-fade g_implied = 7.0% bounds 7.325% cleanly at 7.00% instead of double-fading 7.0% down to 5.08%!
+    def test_prefade_18pct_cap_and_no_g_implied_lock_frees_googl_to_mega_ceiling(self):
+        # GOOGL archetype: 17.15% 5Y sales CAGR + 1.77% buybacks -> pre-fade g_demand = 18.0%, g_fund = 18.0%.
+        # At CAP 15 (w = 0.45): faded_g = 0.45*0.18 + 0.55*0.035 = 10.025%.
+        # Legacy g_implied = 7.0% no longer locks GOOGL; Mega-Rev Size Gravity (8.50%) bounds cleanly!
         fin_googl = sample_fin(
             sales_ttm_m=402836.0,
             retention_rate=1.0,
@@ -132,26 +132,21 @@ class QuantitativeGrowthTests(unittest.TestCase):
             g_implied=0.070,
         )
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
-        self.assertEqual(val["g_fund"], 0.120)
-        self.assertEqual(val["g_demand"], 0.120)
-        self.assertAlmostEqual(val["g_exp"], 0.0700, places=4)
+        self.assertEqual(val["g_fund"], 0.180)
+        self.assertEqual(val["g_demand"], 0.180)
+        self.assertAlmostEqual(val["g_exp"], 0.0850, places=4)
 
-    def test_post_fade_g_implied_clamps_covid_rebound_sales(self):
-        # AENA.ES archetype: 14.5% post-COVID rebound sales -> faded_g = 7.325% at CAP 15,
-        # but post-fade g_implied = 5.0% still clamps g_exp to normalized 5.00%
-        fin_rebound = sample_fin(
+    def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
+        # When both sales_cagr and cagr_oe_eps are missing (e.g. BAM.CA / newly listed holding company),
+        # g_implied serves as already-faded fallback bounded by Size Gravity
+        fin_fallback = sample_fin(
             sales_ttm_m=6000.0,
-            retention_rate=0.50,
-            roic_median=0.165,
-            roic_operating=0.187,
-            sales_cagr=0.145,
-            sales_cagr_yrs=3,
-            p2p_ok="Y",
-            cagr_oe_eps=0.30,
-            g_implied=0.050,
+            cagr_oe_eps=None,
+            sales_cagr=None,
+            g_implied=0.085,
         )
-        val = par_valuation(fin_rebound, self.p, cap=15, moat="Irreplaceable infrastructure")
-        self.assertAlmostEqual(val["g_exp"], 0.0500, places=4)
+        val = par_valuation(fin_fallback, self.p, cap=15)
+        self.assertAlmostEqual(val["g_exp"], 0.0850, places=4)
 
     def test_objective_fade_undercuts_optimistic_staple_g_implied(self):
         # PG archetype: 2.7% 5Y sales + 0.8% buybacks (+0.5% mix = 4.0% pre-fade demand) ->
@@ -224,15 +219,16 @@ class QuantitativeGrowthTests(unittest.TestCase):
 
     def test_filter4b_revenue_size_gravity_frees_high_multiple_mid_revenue_compounder(self):
         # ISRG archetype: Market Cap = $180B USD, but Revenue = $10B USD (< $15B) -> MID/SM tier (12.0% cap)!
-        # Pre-fade g_demand capped at 12.0%; at CAP 20 (w=0.60): 0.60*0.12 + 0.40*0.035 = 0.086 (8.60% > 8.5% Mega cap!)
+        # sales_cagr = 17.0%, cagr_oe_eps = 16.0% < 17.0% -> g_demand = 0.5*17% + 0.5*16% = 16.5%
+        # At CAP 20 (w=0.60): 0.60*0.165 + 0.40*0.035 = 0.113 (11.30% > 8.5% Mega & 10.0% Large caps!)
         fin_isrg = sample_fin(
             market_cap_m=180000.0, sales_ttm_m=10000.0,
-            sales_cagr=0.17, sales_cagr_yrs=5, cagr_oe_eps=0.16, g_implied=0.13,
+            sales_cagr=0.17, sales_cagr_yrs=5, cagr_oe_eps=0.16, roic_est=0.35, g_implied=0.13,
         )
         val = par_valuation(fin_isrg, self.p, cap=20, moat="Toll booth / Switching costs")
         self.assertEqual(val["scale_tier"], "MID/SM")
         self.assertEqual(val["scale_cap"], 0.120)
-        self.assertAlmostEqual(val["g_exp"], 0.0860, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.1130, places=4)
 
     def test_filter4b_mega_and_large_revenue_ceilings(self):
         # Mega-Revenue >= $50B USD -> capped at 8.5%
@@ -242,16 +238,12 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertEqual(val_mega["scale_cap"], 0.085)
         self.assertAlmostEqual(val_mega["g_exp"], 0.085, places=4)
 
-        # Large-Revenue $15B-$50B USD -> capped at 10.0% (e.g. when g_est = 11% override exceeds 10% Large cap;
-        # without override, 12% pre-fade cap + CAP 30 fade naturally peaks at 9.875%)
-        fin_large = sample_fin(sales_ttm_m=30000.0, cagr_oe_eps=0.20)
-        val_large = par_valuation(fin_large, self.p, cap=30)
+        # Large-Revenue $15B-$50B USD -> 18% pre-fade cap + CAP 30 fade = 14.375% -> capped cleanly at 10.0%!
+        fin_large = sample_fin(sales_ttm_m=30000.0, cagr_oe_eps=0.20, roic_est=0.35)
+        val_large = par_valuation(fin_large, self.p, cap=30, moat="Toll booth / Switching costs")
         self.assertEqual(val_large["scale_tier"], "LARGE")
         self.assertEqual(val_large["scale_cap"], 0.100)
-        self.assertAlmostEqual(val_large["g_exp"], 0.09875, places=5)
-
-        fin_large_ovr = sample_fin(sales_ttm_m=30000.0, g_est=0.11)
-        self.assertAlmostEqual(par_valuation(fin_large_ovr, self.p, cap=30)["g_exp"], 0.100, places=4)
+        self.assertAlmostEqual(val_large["g_exp"], 0.100, places=4)
 
     def test_currency_normalization_on_revenue_tiers(self):
         # European enterprise with 50,000M EUR revenue (~$54B USD) -> MEGA tier (8.5% cap)

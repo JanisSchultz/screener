@@ -290,18 +290,19 @@ To prevent accounting distortions from penalizing capital-light compounders that
 Grounded in bottom-up capital reinvestment math, empirical corporate base rates, and McKinsey's Value Driver formula:
 1. **Core Growth & Revenue Size Gravity Parameters**:
    - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
-   - `par_g_cap_mega = 0.085` (`8.5%` ceiling for Mega-Revenue enterprises $\ge \$50\text{B}$ USD equivalent).
-   - `par_g_cap_large = 0.100` (`10.0%` ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
-   - `par_g_cap = 0.120` (`12.0%` ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
+   - `par_g_prefade_cap = 0.180` (`18.0%` near-term Years 1–3 momentum ceiling before Step-Down Fade).
+   - `par_g_cap_mega = 0.085` (`8.5%` 10Y post-fade ceiling for Mega-Revenue enterprises $\ge \$50\text{B}$ USD equivalent).
+   - `par_g_cap_large = 0.100` (`10.0%` 10Y post-fade ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
+   - `par_g_cap = 0.120` (`12.0%` 10Y post-fade ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
 2. **4 Sequential Growth Filters** (bypassed only when explicit manual override `g_est` is populated):
-   - **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**: $(1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$, where pure `Toll booth / Switching costs` businesses with $\ge 35\%$ Operating ROIC receive full Zero-Capital Pricing freedom (deducting only chronic share dilution).
-   - **Filter 2 & 4a — Objective Demand & Margin Ceiling ($g_{\text{demand}}$)**: $\min(12.0\%, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion (and blending downward if historical Owner EPS lagged revenue + buybacks).
+   - **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**: $(1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$, where pure `Toll booth / Switching costs` businesses with $\ge 35\%$ Operating ROIC receive `18.0%` Zero-Capital Pricing freedom (deducting only chronic share dilution).
+   - **Filter 2 & 4a — Objective Demand & Margin Ceiling ($g_{\text{demand}}$)**: $\min(18.0\%, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion (and blending downward if historical Owner EPS lagged revenue + buybacks).
    - **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ GDP** on $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$:
      - **CAP $\ge$ 30 Years**: $w = 0.75$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
      - **CAP $\ge$ 20 Years**: $w = 0.60$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
      - **CAP $\ge$ 15 Years**: $w = 0.45$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
      - For $g_{\text{raw}} \ge 3.5\%$: $g_{\text{faded}} = w \times g_{\text{raw}} + (1 - w) \times 0.035$; for $g_{\text{raw}} < 3.5\%$: $g_{\text{faded}} = \max(0.02, g_{\text{raw}})$ ("No Free Lunch").
-   - **Filter 4b & Post-Fade Guardrail**: $g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}},\, g_{\text{faded}},\, g_{\text{implied}})$ (comparing post-fade to post-fade so `g_implied` is never double-discounted).
+   - **Filter 4b — Revenue Size Gravity**: $g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}},\, g_{\text{faded}})$ (with `g_implied` used strictly as a fallback when statement growth is unavailable).
 3. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$

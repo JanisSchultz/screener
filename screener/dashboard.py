@@ -1786,12 +1786,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <div class="metric-box">
         <strong style="color: var(--text-main);">4-Filter Credible Growth Engine (v6.30):</strong>
         <p class="formula-code">
-          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw), g_implied)<br>
+          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw))<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth exemption for &ge;35% Operating ROIC)<br>
-            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(12.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(unfaded; disallows perpetual margin expansion)<br>
+            <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth 18.0% freedom for &ge;35% Operating ROIC)<br>
+            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(18.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(unfaded Years 1&ndash;3 momentum; disallows perpetual margin expansion)<br>
             <b>3. Step-Down Fade toward 3.5% GDP:</b> g_raw &ge; 3.5%: w * g_raw + (1 - w) * 3.5% &nbsp;(w = 0.75 CAP &ge;30y, 0.60 CAP &ge;20y, 0.45 CAP &ge;15y) | g_raw &lt; 3.5%: max(2.0%, g_raw)<br>
-            <b>4. Revenue Size Gravity &amp; Post-Fade Ceiling:</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0% | bounded post-fade by g_implied
+            <b>4. Revenue Size Gravity (10Y Post-Fade Cap):</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
           </span>
         </p>
       </div>
@@ -2040,7 +2040,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
                 <span>Margin Expansion Cap: <b style="color: var(--text-muted);">Max +0.5%</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(12.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance)</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(18.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance)</div>
             </div>
 
             <!-- Filter 3: Step-Down Fade -->
@@ -2060,13 +2060,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <!-- Filter 4: Revenue Size Gravity -->
             <div class="filter-step-box" id="box-filter-gravity">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Filter 4b: Revenue Size Gravity &amp; Guardrails</strong>
+                <strong style="font-size: 11px; color: var(--text-main);">Filter 4b: Revenue Size Gravity (10Y Scale Cap)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-gravity-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
                 <span>Scale Tier: <b id="audit-scaletier-val" style="color: var(--text-muted);">-</b></span>
                 <span>Revenue Size Ceiling: <b id="audit-scalecap-val" style="color: var(--text-muted);">-</b></span>
-                <span>Consensus Guardrail: <b id="audit-gimplied-val" style="color: var(--text-muted);">-</b></span>
+                <span>Fallback g_implied: <b id="audit-gimplied-val" style="color: var(--text-muted);">-</b></span>
                 <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
               </div>
             </div>
@@ -3007,9 +3007,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }} else {{
           if (c.g_fund !== null && c.g_fund !== undefined) parts.push(`Supply ${{fmtPct(c.g_fund)}}`);
           if (c.g_demand !== null && c.g_demand !== undefined) parts.push(`Demand ${{fmtPct(c.g_demand)}}`);
-          if (c.g_implied !== null && c.g_implied !== undefined && c.g_exp !== null && Math.abs(c.g_exp - c.g_implied) < 0.0002) {{
-            parts.push(`5-10Y Cap ${{fmtPct(c.g_implied)}}`);
-          }}
         }}
         if (c.scale_tier) parts.push(`${{c.scale_tier}} [≤${{fmtPct(c.scale_cap)}}]`);
         scaleEl.textContent = parts.join(' · ');
@@ -3117,10 +3114,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (boxGravity) boxGravity.classList.add('binding');
         badge.textContent = `Binding: Size Gravity (≤${{fmtPct(c.scale_cap)}})`;
         badge.className = 'binding-badge active-constraint';
-      }} else if (c.g_implied !== null && c.g_exp !== null && Math.abs(c.g_exp - c.g_implied) < 0.0002) {{
-        if (boxGravity) boxGravity.classList.add('binding');
-        badge.textContent = `Binding: Consensus Guardrail (${{fmtPct(c.g_implied)}})`;
-        badge.className = 'binding-badge active-constraint';
       }} else if (c.g_fund !== null && c.g_raw !== null && Math.abs(c.g_raw - c.g_fund) < 0.0002 && (c.g_demand === null || c.g_fund <= c.g_demand)) {{
         if (boxSupply) boxSupply.classList.add('binding');
         badge.textContent = `Binding: Capital Supply (${{fmtPct(c.g_fund)}})`;
@@ -3150,13 +3143,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : 20;
       const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : 8.0;
-      const roic = (c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100) : ((c.roic_median || 0.18) * 100);
+      const roic = (c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100) : ((c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100) : ((c.roic_median || 0.18) * 100));
 
       let payout = 30.0;
-      if (c.dividends_ttm_m !== null && c.ni_ttm_m && c.ni_ttm_m > 0) {{
-        payout = Math.max(0, Math.min(100, (c.dividends_ttm_m / c.ni_ttm_m) * 100));
-      }} else if (c.retention_rate !== null && c.retention_rate !== undefined) {{
+      if (c.retention_rate !== null && c.retention_rate !== undefined) {{
         payout = Math.max(0, Math.min(100, (1.0 - c.retention_rate) * 100));
+      }} else if (c.dividends_ttm_m !== null && c.ni_ttm_m && c.ni_ttm_m > 0) {{
+        payout = Math.max(0, Math.min(100, (c.dividends_ttm_m / c.ni_ttm_m) * 100));
       }}
 
       const bb = (c.buyback_yield !== null && c.buyback_yield !== undefined) ? (c.buyback_yield * 100) : 0.0;
@@ -3339,7 +3332,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const is_zero_cap_tollbooth = (c.g3a_moat_archetype === "Toll booth / Switching costs" && roic_op >= r_cap);
 
         if (is_zero_cap_tollbooth) {{
-          g_fund = Math.round(Math.max(0.0, 0.120 + Math.min(0.0, bb_eff)) * 10000) / 10000;
+          g_fund = Math.round(Math.max(0.0, 0.180 + Math.min(0.0, bb_eff)) * 10000) / 10000;
         }} else {{
           let r_inc = roic_op;
           if (roiic_val !== null && roic_gaap !== null) {{
@@ -3354,21 +3347,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           g_fund = Math.round(Math.max(0.0, retention * r_inc + zc_pricing + dilution_adj) * 10000) / 10000;
         }}
 
-        // Filter 2: Demand Ceiling
-        const sales_g = sbCurrent.salescagr / 100.0;
+        // Filter 2: Demand Ceiling (18.0% pre-fade momentum cap)
+        const salesChanged = Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.05;
+        const sales_g = (c.sales_cagr !== null && c.sales_cagr !== undefined || salesChanged) ? (sbCurrent.salescagr / 100.0) : null;
         const sales_yrs = c.sales_cagr_yrs;
         const g_oe = c.cagr_oe_eps;
         let already_faded = false;
 
         if (sales_g !== null && !isNaN(sales_g)) {{
           let top_per_share = Math.max(0.0, sales_g) + bb_eff;
-          if (sales_yrs !== null && sales_yrs < 5 && c.p2p_ok === 'Y' && g_oe !== null && g_oe > top_per_share) {{
+          if (!salesChanged && sales_yrs !== null && sales_yrs < 5 && c.p2p_ok === 'Y' && g_oe !== null && g_oe > top_per_share) {{
             top_per_share = 0.5 * top_per_share + 0.5 * g_oe;
           }}
-          const hist_demand = (g_oe !== null && g_oe < top_per_share) ? (0.5 * top_per_share + 0.5 * Math.max(0.0, g_oe)) : (top_per_share + 0.005);
-          g_demand = Math.round(Math.min(0.120, hist_demand) * 10000) / 10000;
+          const hist_demand = (!salesChanged && g_oe !== null && g_oe < top_per_share) ? (0.5 * top_per_share + 0.5 * Math.max(0.0, g_oe)) : (top_per_share + 0.005);
+          g_demand = Math.round(Math.min(0.180, hist_demand) * 10000) / 10000;
         }} else if (g_oe !== null) {{
-          g_demand = Math.round(Math.min(0.120, g_oe) * 10000) / 10000;
+          g_demand = Math.round(Math.min(0.180, g_oe) * 10000) / 10000;
         }} else if (c.g_implied !== null) {{
           g_demand = Math.round(Math.max(0.02, c.g_implied) * 10000) / 10000;
           already_faded = true;
@@ -3389,12 +3383,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           faded_g = Math.max(0.02, g_raw);
         }}
 
-        // Filter 4: Gravity & post-fade consensus guardrail
-        if (c.g_implied !== null && c.g_implied !== undefined) {{
-          g_exp = Math.min(scale_cap, faded_g, Math.max(0.02, c.g_implied));
-        }} else {{
-          g_exp = Math.min(scale_cap, faded_g);
-        }}
+        // Filter 4b: Revenue Size Gravity
+        g_exp = Math.min(scale_cap, faded_g);
       }}
 
       // Valuation

@@ -220,6 +220,7 @@ PARAMETER_GROUPS = [
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
+        ("par_g_prefade_cap", "Max unfaded near-term (Years 1–3) momentum rate before Step-Down Fade", 0.180, "0.0%", NEW + " Bounds pre-fade g_demand and Zero-Capital Tollbooth g_fund at 18.0% before CAP step-down and Revenue Size Gravity."),
         ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Revenue enterprises (< $15B USD)", 0.120, "0.0%", NEW + " Revenue Size Gravity ceiling (12.0%) for mid/small-revenue enterprises."),
         ("par_g_cap_large", "Max sustainable forward growth rate for Large-Revenue enterprises ($15B - $50B USD)", 0.100, "0.0%", NEW + " Revenue Size Gravity ceiling (10.0%) for large-revenue enterprises."),
         ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Revenue enterprises (>= $50B USD)", 0.085, "0.0%", NEW + " Revenue Size Gravity ceiling (8.5%) for mega-revenue enterprises."),
@@ -555,12 +556,12 @@ CHANGELOG = {
         "4-Filter Credible Growth Engine (Supply vs. Demand, 3.5% Nominal GDP Step-Down & Revenue Size Gravity): "
         "(1) Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math "
         "((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing allowance + Share Dilution deduction), "
-        "catching high-payout asset-heavy businesses (WM, PEP) and M&A-dilutive acquirers (BLK) without starving negative-WC or R&D compounders (COST, ASML.NL). "
+        "catching high-payout asset-heavy businesses (WM, PEP) and M&A-dilutive acquirers (BLK) while granting Zero-Capital Pricing freedom (par_g_prefade_cap = 18.0%) to >= 35% Operating ROIC Tollbooths. "
         "(2) Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors unfaded per-share demand to verified multi-year Revenue CAGR "
-        "plus net buyback yield (capped at 12.0% pre-fade, disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN). "
+        "plus net buyback yield (bounded at par_g_prefade_cap = 18.0% pre-fade, disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN). "
         "(3) Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP: Takes min(g_fund, g_demand) and steps down toward par_g_base = 3.5% "
         "over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), preserving asymmetric 'No Free Lunch' below 3.5%. "
-        "(4) Filter 4b & Post-Fade Guardrail: Applies USD Revenue Size Gravity (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
-        "and cross-checks against post-fade g_implied (min(Scale_Cap, Faded_g, g_implied)), eliminating double-fading on GOOGL while keeping rebound caps (AENA.ES).",
+        "(4) Filter 4b — Revenue Size Gravity: Applies USD Revenue Size Gravity post-fade (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
+        "with legacy g_implied reserved strictly as a fallback when statement growth is unavailable.",
     ],
 }
