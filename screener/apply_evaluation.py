@@ -42,6 +42,9 @@ QUAL_KEY_MAP = {
     "gate_4_runway_cap": "4",
     "gate_5_management_score": "5",
     "gate_6_cash_and_balance_sheet": "6",
+    "calamity_flag": "calamity",
+    "calamity": "calamity",
+    "calamity_note": "calamity_note",
     "note": "note",
     "evidence": "evidence",
     "1": "1",
@@ -110,56 +113,88 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
             target_key = QUAL_KEY_MAP[k]
             qual[target_key] = v
 
-    # Enforce waterfall logic
-    g1 = qual.get("1")
-    g2 = qual.get("2")
-    g3a = qual.get("3a")
-    g3b = qual.get("3b")
-    g4 = qual.get("4")
-    g5 = qual.get("5")
-    g6 = qual.get("6")
+    if qual:
+        # Normalize calamity fields
+        calamity = sanitize_val(qual.get("calamity"))
+        if calamity not in ("", "Y"):
+            warnings.append(f"Invalid calamity_flag '{calamity}' (expected 'Y' or null); cleared.")
+            calamity = ""
+        qual["calamity"] = calamity
+        if calamity != "Y":
+            if sanitize_val(qual.get("calamity_note")):
+                warnings.append("Waterfall: cleared 'calamity_note' because calamity_flag is not 'Y'")
+            qual["calamity_note"] = ""
 
-    # Gate 1 check
-    if g1 == "N":
-        for k in ["2", "2r", "3a", "3b", "3m", "4", "5", "6"]:
-            if qual.get(k):
-                warnings.append(f"Waterfall: scrubbed '{k}' because Gate 1 is 'N'")
-            qual[k] = ""
-    elif g1 == "Y":
-        # Gate 2 check
-        if g2 == "N":
-            for k in ["3a", "3b", "3m", "4", "5", "6"]:
+        def clear_calamity(reason: str):
+            if qual.get("calamity") or sanitize_val(qual.get("calamity_note")):
+                warnings.append(f"Waterfall: cleared 'calamity'/'calamity_note' because {reason} (non-waivable)")
+            qual["calamity"] = ""
+            qual["calamity_note"] = ""
+
+        # Enforce waterfall logic
+        g1 = qual.get("1")
+        g2 = qual.get("2")
+        g3a = qual.get("3a")
+        g3b = qual.get("3b")
+        g4 = qual.get("4")
+        g5 = qual.get("5")
+
+        # Gate 1 check (never waivable)
+        if g1 == "N":
+            for k in ["2", "2r", "3a", "3b", "3m", "4", "5", "6"]:
                 if qual.get(k):
-                    warnings.append(f"Waterfall: scrubbed '{k}' because Gate 2 is 'N'")
+                    warnings.append(f"Waterfall: scrubbed '{k}' because Gate 1 is 'N'")
                 qual[k] = ""
-        elif g2 == "Y":
-            qual["2r"] = ""
-            # Gate 3 check
-            if g3a == "None" or g3b == "N":
-                for k in ["4", "5", "6"]:
+            clear_calamity("Gate 1 is 'N'")
+        elif g1 == "Y":
+            # Gate 2 check (never waivable)
+            if g2 == "N":
+                for k in ["3a", "3b", "3m", "4", "5", "6"]:
                     if qual.get(k):
-                        warnings.append(f"Waterfall: scrubbed '{k}' because Gate 3 failed")
+                        warnings.append(f"Waterfall: scrubbed '{k}' because Gate 2 is 'N'")
                     qual[k] = ""
-            elif g3a in MOAT_TYPES and g3b == "Y":
-                # Gate 4 check
-                if g4 is not None and g4 != "":
-                    try:
-                        g4_num = int(g4)
-                        if g4_num < 15:
-                            for k in ["5", "6"]:
-                                if qual.get(k):
-                                    warnings.append(f"Waterfall: scrubbed '{k}' because Gate 4 (CAP={g4_num}) < 15")
-                                qual[k] = ""
-                        else:
-                            # Gate 5 check
-                            if g5 is not None and g5 != "":
-                                g5_num = int(g5)
-                                if g5_num == 0:
-                                    if qual.get("6"):
-                                        warnings.append("Waterfall: scrubbed Gate 6 because Gate 5 is 0")
-                                    qual["6"] = ""
-                    except ValueError:
-                        pass
+                clear_calamity("Gate 2 is 'N'")
+            elif g2 == "Y":
+                qual["2r"] = ""
+                cal_active = qual.get("calamity") == "Y"
+                # Gate 3 check: 3a=='None' is never waivable; 3b=='N' is waivable only if calamity=='Y'
+                if g3a == "None" or (g3b == "N" and not cal_active):
+                    reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b failed without calamity override"
+                    for k in ["4", "5", "6"]:
+                        if qual.get(k):
+                            warnings.append(f"Waterfall: scrubbed '{k}' because {reason}")
+                        qual[k] = ""
+                    clear_calamity(reason)
+                elif g3a in MOAT_TYPES and g3a != "None" and (g3b == "Y" or (g3b == "N" and cal_active)):
+                    # Gate 4 check (never waivable)
+                    if g4 is not None and g4 != "":
+                        try:
+                            g4_num = int(g4)
+                            if g4_num < 15:
+                                for k in ["5", "6"]:
+                                    if qual.get(k):
+                                        warnings.append(f"Waterfall: scrubbed '{k}' because Gate 4 (CAP={g4_num}) < 15")
+                                    qual[k] = ""
+                                clear_calamity(f"Gate 4 (CAP={g4_num}) < 15")
+                            else:
+                                # Gate 5 check (waivable if calamity=='Y')
+                                if g5 is not None and g5 != "":
+                                    g5_num = int(g5)
+                                    if g5_num == 0 and not cal_active:
+                                        if qual.get("6"):
+                                            warnings.append("Waterfall: scrubbed Gate 6 because Gate 5 is 0 without calamity override")
+                                        qual["6"] = ""
+                        except ValueError:
+                            pass
+
+        if qual.get("calamity") == "Y":
+            has_eligible_fail = (
+                qual.get("3b") == "N"
+                or sanitize_val(qual.get("5")) == "0"
+                or qual.get("6") == "N"
+            )
+            if not has_eligible_fail:
+                warnings.append("Calamity flag 'Y' is set, but no eligible gate (3b, 5, or 6) failed.")
 
     # Normalize financials
     fin_raw = eval_data.get("quantitative_overrides", {})
@@ -213,6 +248,10 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
     qual, fin, warnings = validate_and_waterfall(payload)
     for w in warnings:
         print(f"[{company_id}] {w}")
+
+    if qual.get("calamity") == "Y" and not sanitize_val(qual.get("calamity_note")):
+        print(f"Error: [{company_id}] calamity_flag='Y' requires a non-empty calamity_note.", file=sys.stderr)
+        return False
 
     # Build input diff
     input_diff = {}
@@ -304,8 +343,10 @@ def main():
             payload = json.load(f)
 
     success = apply_evaluation(payload, universe=args.universe, dry_run=args.dry_run)
-    if success and args.rebuild and not args.dry_run:
-        print("\nRebuilding workbooks...")
+    if not success:
+        sys.exit(1)
+    if args.rebuild and not args.dry_run:
+        print("\nRebuilding HTML cockpit...")
         cmd = ["python3", str(ROOT / "build.py")]
         if args.universe:
             cmd.append(args.universe)

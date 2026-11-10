@@ -1,4 +1,4 @@
-"""Source data schema, loading/saving (data/<universe>/) and output versioning."""
+"""Source data schema and CSV/JSON loading/saving (data/<universe>/)."""
 from __future__ import annotations
 
 import csv
@@ -16,7 +16,7 @@ DOCS_DIR = ROOT / "docs"
 # ------------------------------------------------------------------ schema
 BASE_FIELDS = ["id", "ticker", "company", "country", "sector", "sub_industry"]
 QUAL_CODES = [f["code"] for f in FIELDS]
-TAIL_FIELDS = ["note", "evidence"]
+TAIL_FIELDS = ["calamity", "calamity_note", "note", "evidence"]
 PRESCREEN_FIELDS = ["sector", "sub_industry", "g6_default", "note"]
 MARKET_FIELDS = ["country", "in_market"]
 
@@ -117,37 +117,3 @@ def _parse(v):
     if re.fullmatch(r"-?\d*\.\d+(e-?\d+)?|-?\d+e-?\d+", v, re.I):
         return float(v)
     return v
-
-
-# ---------------------------------------------------------------- versioning
-def _versions(stem: str) -> list[tuple[int, int]]:
-    out = []
-    for p in OUTPUT_DIR.glob(f"{glob_escape(stem)} v*.xlsx"):
-        m = re.search(r" v(\d+)\.(\d+)\.xlsx$", p.name)
-        if m:
-            out.append((int(m.group(1)), int(m.group(2))))
-    return sorted(out)
-
-
-def glob_escape(s: str) -> str:
-    return re.sub(r"([\[\]?*])", r"[\1]", s)
-
-
-def next_version(stem: str, major: int | None = None) -> str:
-    """Next free version for a file stem: v3.0, v3.1, ... (or a new major)."""
-    from .config import CHANGELOG
-    existing = _versions(stem)
-    framework_major = max(int(v.split(".")[0]) for v in CHANGELOG)
-    major = major or max([framework_major] + [ma for ma, _ in existing])
-    minors = [mi for ma, mi in existing if ma == major]
-    return f"{major}.{(max(minors) + 1) if minors else 0}"
-
-
-def output_path(stem: str, version: str) -> Path:
-    OUTPUT_DIR.mkdir(exist_ok=True)
-    return OUTPUT_DIR / f"{stem} v{version}.xlsx"
-
-
-def latest_output(stem: str) -> Path | None:
-    v = _versions(stem)
-    return output_path(stem, f"{v[-1][0]}.{v[-1][1]}") if v else None

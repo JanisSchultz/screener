@@ -64,6 +64,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "g4_cap": cap_val,
                 "g5_mgmt": c.get("5"),
                 "g6_cash": c.get("6"),
+                "calamity_flag": c.get("calamity") or "",
+                "calamity_note": c.get("calamity_note") or "",
                 "note": c.get("note"),
                 "evidence": c.get("evidence"),
                 # Gate Waterfall status
@@ -72,6 +74,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "review_at": pres.get("review_at", ""),
                 "gate_status": pres.get("status", {}),
                 "failed_gates": [lbl for _, lbl, _ in pres.get("failed", [])],
+                "waived_gates": [lbl for _, lbl, _ in pres.get("waived", [])],
+                "waived_keys": [k for k, _, _ in pres.get("waived", [])],
                 # Financial inputs
                 "price": fin.get("price"),
                 "quote_currency": fin.get("quote_currency") or universes_meta[u_key]["currency"],
@@ -121,17 +125,21 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
 
     # Global KPI Aggregates
     qpass_count = sum(1 for c in all_companies if c["result"] == C.RES_QPASS)
+    calamity_list = [c for c in all_companies if c["result"] == C.RES_CALAMITY]
+    calamity_below_par = sum(1 for c in calamity_list if c["val_status"] == C.V_BELOW_PAR)
     below_par_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_BELOW_PAR]
     below_par_count = len(below_par_list)
     irrs = [c["irr_5y"] for c in below_par_list if c["irr_5y"] is not None]
     median_irr = sorted(irrs)[len(irrs) // 2] if irrs else 0.0
 
     return {
-        "version": "6.24",
-        "generated_at": "2026-11-09",
+        "version": "6.25",
+        "generated_at": "2026-11-10",
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
+            "calamity_pass": len(calamity_list),
+            "calamity_below_par": calamity_below_par,
             "below_par": below_par_count,
             "median_irr_below_par": median_irr,
         },
@@ -274,6 +282,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
     .kpi-value.green {{ color: var(--green); }}
     .kpi-value.accent {{ color: var(--accent); }}
+    .kpi-value.amber {{ color: var(--amber); }}
 
     /* Header Responsiveness */
     @media (max-width: 1024px) {{
@@ -305,7 +314,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
       .kpi-bar {{
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 5px;
         width: 100%;
         min-width: 0;
@@ -531,6 +540,32 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     .market-btn.active {{
       background: var(--bg-card);
       color: var(--accent);
+    }}
+    .toggle-pill {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0 10px;
+      height: 36px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }}
+    .toggle-pill input {{
+      accent-color: var(--amber);
+      cursor: pointer;
+    }}
+    .toggle-pill:has(input:checked) {{
+      border-color: var(--amber-border);
+      background: var(--amber-bg);
+      color: var(--amber);
     }}
     .view-toggle {{
       display: flex;
@@ -1226,6 +1261,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value accent">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
+        <span class="kpi-label">Calamity</span>
+        <span class="kpi-value amber">{data['summary']['calamity_pass']}</span>
+      </div>
+      <div class="kpi-chip">
         <span class="kpi-label">Below PAR</span>
         <span class="kpi-value green">{data['summary']['below_par']}</span>
       </div>
@@ -1247,6 +1286,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <span class="tab-label-full">🛡️ Quality Pass Funnel</span>
       <span class="tab-label-short">🛡️ Quality</span>
       <span class="pill-count" id="count-qpass">0</span>
+    </button>
+    <button class="tab-btn" data-tab="calamity" onclick="setTab('calamity')">
+      <span class="tab-label-full">⚠️ Calamity Watchlist</span>
+      <span class="tab-label-short">⚠️ Calamity</span>
+      <span class="pill-count" id="count-calamity">0</span>
     </button>
     <button class="tab-btn" data-tab="all" onclick="setTab('all')">
       <span class="tab-label-full">🔍 Full Universe & Waterfall</span>
@@ -1289,7 +1333,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="par_mult-desc">Sort: PAR Mult ↓</option>
         <option value="price-asc">Sort: Share Price ↑</option>
         <option value="price-desc">Sort: Share Price ↓</option>
-        <option value="g4_cap-desc">Sort: Runway CAP ↓</option>
+        <option value="g_imp-desc">Sort: Our Implied g ↓</option>
+        <option value="g_market-asc">Sort: Market-Implied g ↑</option>
+        <option value="g_gap-desc">Sort: Growth Margin ↓</option>
+        <option value="g4_cap-desc">Sort: Our CAP ↓</option>
+        <option value="cap_implied-asc">Sort: Market-Implied CAP ↑</option>
+        <option value="cap_gap-desc">Sort: Runway Margin ↓</option>
         <option value="ticker-asc">Sort: Ticker A–Z</option>
         <option value="company-asc">Sort: Company A–Z</option>
         <option id="sort-custom-opt" style="display:none;"></option>
@@ -1309,6 +1358,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <select id="filter-gate" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
         <option value="Quality pass">Quality Pass Only</option>
+        <option value="Calamity pass">Calamity Pass (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
         <option value="Gate 2">Rejected at Gate 2 (Essential Need)</option>
         <option value="Gate 3">Rejected at Gate 3 (Moat & Proof)</option>
@@ -1316,6 +1366,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="Gate 5">Rejected at Gate 5 (Management)</option>
         <option value="Gate 6">Rejected at Gate 6 (Cash / Balance Sheet)</option>
       </select>
+
+      <!-- Shortlist Calamity Toggle (Visible in Shortlist tab; off by default) -->
+      <label id="toggle-calamities-wrap" class="toggle-pill" style="display:none;" title="Overlay temporary fixable calamities (Gates 3b, 5, 6) trading Below PAR">
+        <input type="checkbox" id="toggle-calamities" onchange="applyFilters()">
+        <span>Include Calamities</span>
+      </label>
     </div>
 
     <!-- Controls Right: View Toggle & Export Button -->
@@ -1387,6 +1443,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <strong style="color: var(--accent);">Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Fortress Balance Sheet</strong>
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Triad: (1) Secular Peak-to-Peak Owner EPS compounding across cycles, (2) Real cash conversion (multi-year FCF &ge; 80% GAAP NI), (3) Peace-of-mind fortress balance sheet (Net Debt &le; 4y Owner Earnings, Interest Coverage &gt; 5x).</p>
         </div>
+        <div class="metric-box" style="border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
+          <strong style="color: var(--amber);">Conditional Calamity Pass (Buffett Temporary Fixable Calamities — Gates 3b, 5, 6 Only)</strong>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Great franchises with an intact moat and runway occasionally breach Gate 3b (trailing ROIC/pricing dip), Gate 5 (outgoing/remediating management), or Gate 6 (temporary M&amp;A bridge debt or capex surge). Flagging <code style="color: var(--amber);">calamity = Y</code> preserves raw failed scores, evaluates all remaining gates, and admits them into Quantitative PAR valuation under a separate <strong style="color: var(--amber);">Calamity pass</strong> tier. Gates 1, 2, 3a (moat != None), and 4 (CAP &ge; 15Y) are never waivable.</p>
+        </div>
       </div>
     </div>
 
@@ -1443,6 +1503,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="label">Moat Runway (CAP)</div>
             <div class="value" style="font-size: 13px;" id="dossier-cap">-</div>
           </div>
+        </div>
+
+        <div id="dossier-calamity-box" class="metric-box" style="margin-bottom: 12px; display: none; border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
+          <div class="label" style="color: var(--amber);">⚠️ Temporary Calamity Rationale &amp; Kill-Switch</div>
+          <div class="prose" style="margin-top: 4px;" id="dossier-calamity-note"></div>
         </div>
 
         <div id="dossier-moat-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
@@ -1514,13 +1579,32 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           </div>
         </div>
 
-        <div class="grid-2">
+        <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Growth Margin (g_imp vs g_mkt)</div>
-            <div class="value" id="dossier-g-margin">-</div>
+            <div class="label">Our Implied g</div>
+            <div class="value" id="dossier-g-imp">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Moat Runway Margin (CAP vs Implied)</div>
+            <div class="label">Market-Implied g</div>
+            <div class="value" id="dossier-g-market">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label">Growth Margin</div>
+            <div class="value" id="dossier-g-margin">-</div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="metric-box">
+            <div class="label">Our CAP (Gate 4)</div>
+            <div class="value" id="dossier-cap-our">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label">Market-Implied CAP</div>
+            <div class="value" id="dossier-cap-implied">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label">Runway Margin</div>
             <div class="value" id="dossier-cap-margin">-</div>
           </div>
         </div>
@@ -1584,11 +1668,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
     }}
 
+    function calamityTag(c) {{
+      if (!c || c.result !== 'Calamity pass') return '';
+      const ks = (c.waived_keys && c.waived_keys.length) ? c.waived_keys.map(k => 'G' + k).join(', ') : 'G3b/5/6';
+      return `CALAMITY · ${{ks}}`;
+    }}
+
     function updateTabCounts() {{
       const qpass = SCREENER_DATA.companies.filter(c => c.result === 'Quality pass');
+      const calamity = SCREENER_DATA.companies.filter(c => c.result === 'Calamity pass');
       const shortlist = qpass.filter(c => c.val_status === 'Below PAR');
       document.getElementById('count-shortlist').textContent = shortlist.length;
       document.getElementById('count-qpass').textContent = qpass.length;
+      document.getElementById('count-calamity').textContent = calamity.length;
       document.getElementById('count-all').textContent = SCREENER_DATA.companies.length;
     }}
 
@@ -1609,11 +1701,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         return;
       }}
 
-      // Show/hide failing gate filter
+      // Show/hide failing gate filter & shortlist calamity toggle
       document.getElementById('filter-gate').style.display = (tab === 'all') ? 'inline-block' : 'none';
+      document.getElementById('toggle-calamities-wrap').style.display = (tab === 'shortlist') ? 'inline-flex' : 'none';
 
       // Default sort columns per tab
-      if (tab === 'shortlist') {{
+      if (tab === 'shortlist' || tab === 'calamity') {{
         sortColumn = 'irr_5y';
         sortAsc = false;
       }} else if (tab === 'qpass') {{
@@ -1668,10 +1761,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const moat = document.getElementById('filter-moat').value;
       const gate = document.getElementById('filter-gate').value;
 
+      const incCal = document.getElementById('toggle-calamities') && document.getElementById('toggle-calamities').checked;
+
       return SCREENER_DATA.companies.filter(c => {{
         // Tab restriction
-        if (currentTab === 'shortlist' && (c.result !== 'Quality pass' || c.val_status !== 'Below PAR')) return false;
+        if (currentTab === 'shortlist') {{
+          const okRes = (c.result === 'Quality pass') || (incCal && c.result === 'Calamity pass');
+          if (!okRes || c.val_status !== 'Below PAR') return false;
+        }}
         if (currentTab === 'qpass' && c.result !== 'Quality pass') return false;
+        if (currentTab === 'calamity' && c.result !== 'Calamity pass') return false;
 
         // Market
         if (currentMarket !== 'all' && c.universe !== currentMarket) return false;
@@ -1685,6 +1784,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         // Gate
         if (currentTab === 'all' && gate !== 'all') {{
           if (gate === 'Quality pass' && c.result !== 'Quality pass') return false;
+          if (gate === 'Calamity pass' && c.result !== 'Calamity pass') return false;
           if (gate.startsWith('Gate') && (!c.rejected_at || !c.rejected_at.startsWith(gate))) return false;
         }}
 
@@ -1818,8 +1918,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_mult', label: 'PAR Mult', num: true }},
           {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g_gap', label: 'Growth Margin', num: true }},
-          {{ key: 'cap_gap', label: 'Moat Runway', num: true }},
+          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_market', label: 'Mkt g', num: true }},
+          {{ key: 'g_gap', label: 'g Gap', num: true }},
+          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
+          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
           {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
         ];
       }} else if (currentTab === 'qpass') {{
@@ -1829,14 +1933,41 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'country', label: 'Country' }},
           {{ key: 'sector', label: 'Sector' }},
           {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
-          {{ key: 'g4_cap', label: 'CAP', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
           {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
           {{ key: 'price', label: 'Price', num: true }},
           {{ key: 'par_val', label: 'PAR Val', num: true }},
           {{ key: 'vs_par', label: 'vs PAR', num: true }},
           {{ key: 'irr_5y', label: '5Y IRR', num: true }},
+          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_market', label: 'Mkt g', num: true }},
+          {{ key: 'g_gap', label: 'g Gap', num: true }},
+          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
+          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
           {{ key: 'val_status', label: 'Valuation' }}
+        ];
+      }} else if (currentTab === 'calamity') {{
+        cols = [
+          {{ key: 'ticker', label: 'Ticker' }},
+          {{ key: 'company', label: 'Company' }},
+          {{ key: 'country', label: 'Country' }},
+          {{ key: 'waived_gates', label: 'Waived Gate(s)' }},
+          {{ key: 'price', label: 'Price', num: true }},
+          {{ key: 'par_val', label: 'PAR Value', num: true }},
+          {{ key: 'vs_par', label: 'vs PAR', num: true }},
+          {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
+          {{ key: 'par_mult', label: 'PAR Mult', num: true }},
+          {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
+          {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+          {{ key: 'g_imp', label: 'Our g', num: true }},
+          {{ key: 'g_market', label: 'Mkt g', num: true }},
+          {{ key: 'g_gap', label: 'g Gap', num: true }},
+          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
+          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
+          {{ key: 'val_status', label: 'Valuation' }},
+          {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
         ];
       }} else {{
         cols = [
@@ -1873,9 +2004,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           let cellContent = '';
 
           if (col.key === 'ticker') {{
-            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>`;
+            const cTag = (c.result === 'Calamity pass' && currentTab !== 'calamity')
+              ? ` <span class="badge badge-amber" style="font-size: 9px; padding: 1px 5px; margin-left: 4px;">${{escHtml(calamityTag(c))}}</span>`
+              : '';
+            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>${{cTag}}`;
           }} else if (col.key === 'company') {{
             cellContent = `<div class="cell-company" title="${{escHtml(val)}}">${{escHtml(val)}}</div>`;
+          }} else if (col.key === 'waived_gates') {{
+            cellContent = `<span class="badge badge-amber">${{escHtml(calamityTag(c))}}</span>`;
           }} else if (col.key === 'vs_par') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -1892,16 +2028,35 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             const bCls = val === 'Below PAR' ? 'badge-green' : (val === 'Above PAR' ? 'badge-amber' : 'badge-gray');
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'result') {{
-            const bCls = val === 'Quality pass' ? 'badge-green' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
+            const bCls = val === 'Quality pass' ? 'badge-green' : (val === 'Calamity pass' ? 'badge-amber' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
+          }} else if (col.key === 'rejected_at') {{
+            if (c.result === 'Calamity pass') {{
+              cellContent = `<span style="color: var(--amber); font-size: 11px;">Waived: ${{escHtml((c.waived_gates || []).join(', '))}}</span>`;
+            }} else {{
+              cellContent = escHtml(val) || '-';
+            }}
           }} else if (col.key === 'price' || col.key === 'par_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
-          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv') {{
+          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'g_imp') {{
             cellContent = fmtPct(val);
-          }} else if (col.key === 'g_gap') {{
+          }} else if (col.key === 'g_market') {{
             cellContent = fmtPct(val, true);
+          }} else if (col.key === 'g_gap') {{
+            if (val === null || val === undefined) cellContent = '-';
+            else {{
+              const bCls = val >= 0 ? 'badge-green' : 'badge-red';
+              cellContent = `<span class="badge ${{bCls}}">${{fmtPct(val, true)}}</span>`;
+            }}
+          }} else if (col.key === 'cap_implied') {{
+            cellContent = (val !== null && val !== undefined) ? `${{fmtNum(val, 1)}}y` : '-';
           }} else if (col.key === 'cap_gap') {{
-            cellContent = (val !== null && val !== undefined) ? (val > 0 ? `+${{val}}y` : `${{val}}y`) : '-';
+            if (val === null || val === undefined) cellContent = '-';
+            else {{
+              const bCls = val >= 0 ? 'badge-green' : 'badge-red';
+              const sign = val > 0 ? '+' : '';
+              cellContent = `<span class="badge ${{bCls}}">${{sign}}${{fmtNum(val, 1)}}y</span>`;
+            }}
           }} else if (col.key === 'g4_cap') {{
             cellContent = val ? `${{val}}y` : '-';
           }} else if (col.num) {{
@@ -1918,6 +2073,36 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = trHtml;
     }}
 
+    function fmtSignedYears(val) {{
+      if (val === null || val === undefined) return '-';
+      return (val > 0 ? '+' : '') + fmtNum(val, 1) + 'y';
+    }}
+
+    function triadCardsHtml(c) {{
+      const gOur = fmtPct(c.g_imp);
+      const gMkt = fmtPct(c.g_market, true);
+      const gGap = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
+      const gColor = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
+      const cOur = c.g4_cap ? `${{c.g4_cap}}y` : '-';
+      const cMkt = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
+      const cGap = fmtSignedYears(c.cap_gap);
+      const cColor = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
+      return `
+        <div class="card-metric-cell">
+          <div class="card-metric-label">Growth (Our / Mkt / Gap)</div>
+          <div class="card-metric-val" style="font-size: 11.5px;">
+            ${{gOur}} / ${{gMkt}} <span style="color:${{gColor}};">(${{gGap}})</span>
+          </div>
+        </div>
+        <div class="card-metric-cell">
+          <div class="card-metric-label">Runway (Our / Mkt / Gap)</div>
+          <div class="card-metric-val" style="font-size: 11.5px;">
+            ${{cOur}} / ${{cMkt}} <span style="color:${{cColor}};">(${{cGap}})</span>
+          </div>
+        </div>
+      `;
+    }}
+
     function renderCards(data) {{
       const cardsGrid = document.getElementById('cards-grid');
       let cardsHtml = '';
@@ -1929,7 +2114,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         if (currentTab === 'shortlist') {{
           const vsParCls = (c.vs_par <= 0) ? 'badge-green' : 'badge-amber';
-          badgeHtml = `<span class="badge ${{vsParCls}}">${{fmtPct(c.vs_par, true)}} vs PAR</span>`;
+          const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
+          badgeHtml = `${{calBadge}}<span class="badge ${{vsParCls}}">${{fmtPct(c.vs_par, true)}} vs PAR</span>`;
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
@@ -1949,7 +2135,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 ${{fmtPct(c.roic_used)}} • ${{escHtml(c.g3a_moat_archetype) || '-'}}
               </div>
             </div>
-          `;
+          ` + triadCardsHtml(c);
         }} else if (currentTab === 'qpass') {{
           const bCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
           badgeHtml = `<span class="badge ${{bCls}}">${{escHtml(c.val_status)}}</span>`;
@@ -1967,20 +2153,47 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="card-metric-val">${{fmtPct(c.roic_used)}} / ${{fmtPct(c.fcf_conv)}}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Moat & Runway</div>
+              <div class="card-metric-label">Moat Archetype</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{escHtml(c.g3a_moat_archetype) || '-'}} (${{c.g4_cap ? c.g4_cap + 'y' : '-'}})
+                ${{escHtml(c.g3a_moat_archetype) || '-'}}
               </div>
             </div>
-          `;
+          ` + triadCardsHtml(c);
+        }} else if (currentTab === 'calamity') {{
+          const vCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
+          badgeHtml = `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span><span class="badge ${{vCls}}">${{escHtml(c.val_status)}}</span>`;
+          metricsHtml = `
+            <div class="card-metric-cell">
+              <div class="card-metric-label">5Y Exp IRR</div>
+              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">vs PAR Margin</div>
+              <div class="card-metric-val">${{c.vs_par !== null ? fmtPct(c.vs_par, true) : '-'}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Price / PAR</div>
+              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Waived Gate(s)</div>
+              <div class="card-metric-val" style="font-size: 11.5px; color: var(--amber); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                ${{escHtml((c.waived_gates || []).join(', ')) || '-'}}
+              </div>
+            </div>
+          ` + triadCardsHtml(c);
         }} else {{
-          const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
+          const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result === 'Calamity pass' ? 'badge-amber' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
           badgeHtml = `<span class="badge ${{bCls}}">${{escHtml(c.result)}}</span>`;
+          const stageColor = c.result === 'Quality pass' ? 'var(--green)' : (c.result === 'Calamity pass' ? 'var(--amber)' : 'var(--red)');
+          const stageText = c.result === 'Calamity pass'
+            ? `⚠ Waived: ${{(c.waived_gates || []).join(', ')}}`
+            : (escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result)));
           metricsHtml = `
             <div class="card-metric-cell" style="grid-column: span 2;">
               <div class="card-metric-label">Gate Stage / Result</div>
-              <div class="card-metric-val" style="font-size: 12px; color: ${{c.result === 'Quality pass' ? 'var(--green)' : 'var(--red)'}};">
-                ${{escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result))}}
+              <div class="card-metric-val" style="font-size: 12px; color: ${{stageColor}};">
+                ${{stageText}}
               </div>
             </div>
             <div class="card-metric-cell">
@@ -2054,6 +2267,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (c.result === 'Quality pass') {{
         valBadge.textContent = c.val_status + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '');
         valBadge.className = `badge ${{c.val_status === 'Below PAR' ? 'badge-green' : 'badge-amber'}}`;
+      }} else if (c.result === 'Calamity pass') {{
+        valBadge.textContent = `${{calamityTag(c)}} • ${{c.val_status}}` + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '');
+        valBadge.className = 'badge badge-amber';
       }} else {{
         valBadge.textContent = c.result;
         valBadge.className = 'badge badge-red';
@@ -2071,16 +2287,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       ];
 
       let stepperHtml = '';
+      const waivedKeys = c.waived_keys || [];
       gates.forEach(g => {{
         const st = (c.gate_status && c.gate_status[g.key]) || 'blank';
         let bg = 'rgba(148, 163, 184, 0.2)';
         let color = '#94a3b8';
         let icon = '○';
+        let label = st.toUpperCase();
 
         if (st === 'pass') {{
           bg = 'rgba(16, 185, 129, 0.25)';
           color = 'var(--green)';
           icon = '✓';
+        }} else if (st === 'fail' && c.result === 'Calamity pass' && waivedKeys.includes(g.key)) {{
+          bg = 'rgba(245, 158, 11, 0.25)';
+          color = 'var(--amber)';
+          icon = '⚠';
+          label = 'WAIVED';
         }} else if (st === 'fail') {{
           bg = 'rgba(244, 63, 94, 0.25)';
           color = 'var(--red)';
@@ -2091,7 +2314,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <div class="waterfall-step">
             <div class="step-badge" style="background:${{bg}}; color:${{color}};">${{icon}}</div>
             <div class="step-title">${{g.name}}</div>
-            <div class="step-result" style="color:${{color}};">${{st.toUpperCase()}}</div>
+            <div class="step-result" style="color:${{color}};">${{label}}</div>
           </div>
         `;
       }});
@@ -2100,6 +2323,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const verdictEl = document.getElementById('dossier-verdict');
       if (c.result === 'Quality pass') {{
         verdictEl.innerHTML = `<span style="color: var(--green);">✓ Cleared All 6 Munger Reject Gates — Enters Quantitative Funnel</span>`;
+      }} else if (c.result === 'Calamity pass') {{
+        const wList = (c.waived_gates || []).join(', ');
+        verdictEl.innerHTML = `<span style="color: var(--amber);">⚠ Conditional Calamity Pass (Waived: ${{escHtml(wList)}}) — Enters Quantitative PAR Funnel</span>`;
       }} else {{
         verdictEl.innerHTML = `<span style="color: var(--red);">✕ ${{c.rejected_at || c.result}}</span>`;
       }}
@@ -2107,6 +2333,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Qualitative Dossier
       document.getElementById('dossier-moat-type').textContent = c.g3a_moat_archetype || 'None';
       document.getElementById('dossier-cap').textContent = c.g4_cap ? `${{c.g4_cap}} Years Runway` : 'Unassigned';
+
+      // Calamity Note
+      const calBox = document.getElementById('dossier-calamity-box');
+      if (c.calamity_note) {{
+        document.getElementById('dossier-calamity-note').textContent = c.calamity_note;
+        calBox.style.display = 'block';
+      }} else {{
+        calBox.style.display = 'none';
+      }}
 
       // Moat Note
       const mnBox = document.getElementById('dossier-moat-note-box');
@@ -2156,8 +2391,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
 
-      document.getElementById('dossier-g-margin').textContent = c.g_gap !== null ? fmtPct(c.g_gap, true) : '-';
-      document.getElementById('dossier-cap-margin').textContent = c.cap_gap !== null ? (c.cap_gap > 0 ? `+${{c.cap_gap}}y` : `${{c.cap_gap}}y`) : '-';
+      document.getElementById('dossier-g-imp').textContent = fmtPct(c.g_imp);
+      document.getElementById('dossier-g-market').textContent = fmtPct(c.g_market, true);
+      const gMarginEl = document.getElementById('dossier-g-margin');
+      gMarginEl.textContent = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
+      gMarginEl.style.color = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-main)';
+
+      document.getElementById('dossier-cap-our').textContent = c.g4_cap ? `${{c.g4_cap}}y` : '-';
+      document.getElementById('dossier-cap-implied').textContent = c.cap_implied !== null && c.cap_implied !== undefined ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
+      const capMarginEl = document.getElementById('dossier-cap-margin');
+      capMarginEl.textContent = fmtSignedYears(c.cap_gap);
+      capMarginEl.style.color = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-main)';
 
       // Fin note
       const fnBox = document.getElementById('dossier-fin-note-box');
@@ -2186,7 +2430,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Moat Archetype', 'CAP', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', 'Our Implied g', 'Market-Implied g', 'Growth Margin', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
@@ -2199,8 +2443,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           `"${{(c.sub_industry || '').replace(/"/g, '""')}}"`,
           `"${{c.result || ''}}"`,
           `"${{(c.rejected_at || '').replace(/"/g, '""')}}"`,
+          `"${{c.calamity_flag || ''}}"`,
+          `"${{((c.waived_gates || []).join('; ')).replace(/"/g, '""')}}"`,
+          `"${{(c.calamity_note || '').replace(/"/g, '""')}}"`,
           `"${{(c.g3a_moat_archetype || '').replace(/"/g, '""')}}"`,
           c.g4_cap !== null && c.g4_cap !== undefined ? c.g4_cap : '',
+          c.cap_implied !== null && c.cap_implied !== undefined ? c.cap_implied : '',
+          c.cap_gap !== null && c.cap_gap !== undefined ? c.cap_gap : '',
+          c.g_imp !== null && c.g_imp !== undefined ? c.g_imp : '',
+          c.g_market !== null && c.g_market !== undefined ? c.g_market : '',
+          c.g_gap !== null && c.g_gap !== undefined ? c.g_gap : '',
           c.price !== null && c.price !== undefined ? c.price : '',
           c.par_val !== null && c.par_val !== undefined ? c.par_val : '',
           c.vs_par !== null && c.vs_par !== undefined ? c.vs_par : '',

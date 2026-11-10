@@ -1,8 +1,4 @@
-"""Python reference implementation of the 6 Munger Quality Gates and the Quantitative PAR maths.
-
-The workbook formulas are the source of truth for users; this module mirrors them so that
-(a) the fetcher can select the Quality-pass funnel without Excel and (b) tests can cross-check formulas.
-"""
+"""Python reference implementation of the 6 Munger Quality Gates and the Quantitative PAR maths."""
 from __future__ import annotations
 
 import math
@@ -39,17 +35,34 @@ def gate_results(company: dict, p: dict, g6_default: str | None = None, in_marke
 
 
 def phase_results(company: dict, p: dict, g6_default: str | None = None, in_market: str = "Y") -> dict:
-    """First gate that is not passed decides: 'fail' -> Rejected at that gate; 'blank' -> To review."""
+    """First non-waived failure or blank decides; calamity='Y' may waive Gates 3b, 5, and/or 6 only."""
     g = gate_results(company, p, g6_default, in_market)
-    failed = [(k, lbl, ph) for k, lbl, ph in C.GATES if g["status"][k] == "fail"]
-    first = next(((k, lbl, ph) for k, lbl, ph in C.GATES if g["status"][k] != "pass"), None)
-    if first is None:
-        res, rej, review = C.RES_QPASS, "", ""
-    elif g["status"][first[0]] == "fail":
-        res, rej, review = C.RES_REJ[first[2]], first[1], ""
-    else:
-        res, rej, review = C.RES_REVIEW, "", first[1]
-    return {**g, "failed": failed, "rejected_at": rej, "review_at": review, "result": res}
+    st = g["status"]
+    calamity = company.get("calamity") == "Y"
+    has_3a = company.get("3a") not in (None, "")
+    no_moat = company.get("3a") == "None"
+    failed = [(k, lbl, ph) for k, lbl, ph in C.GATES if st[k] == "fail"]
+
+    for k, lbl, ph in C.GATES:
+        if k == "3b":
+            if no_moat or (st[k] == "fail" and not calamity):
+                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
+            if not has_3a or company.get("3b") in (None, ""):
+                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
+        elif k in C.CALAMITY_GATES:
+            if st[k] == "fail" and not calamity:
+                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
+            if st[k] == "blank":
+                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
+        else:
+            if st[k] == "fail":
+                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
+            if st[k] == "blank":
+                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
+
+    waived = [(k, lbl, ph) for k, lbl, ph in C.GATES if k in C.CALAMITY_GATES and st[k] == "fail"]
+    res = C.RES_CALAMITY if waived else C.RES_QPASS
+    return {**g, "failed": failed, "waived": waived, "rejected_at": "", "review_at": "", "result": res}
 
 
 def g6_default_lookup(meta: dict) -> dict:
@@ -68,9 +81,10 @@ def results(meta: dict) -> dict:
             for c in meta["companies"]}
 
 
-def funnel_ids(meta: dict) -> list[str]:
+def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
     res = results(meta)
-    return [c["id"] for c in meta["companies"] if res[c["id"]]["result"] == C.RES_QPASS]
+    allowed = C.FUNNEL_RESULTS if include_calamity else (C.RES_QPASS,)
+    return [c["id"] for c in meta["companies"] if res[c["id"]]["result"] in allowed]
 
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)

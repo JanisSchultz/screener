@@ -12,7 +12,7 @@ As an independent qualitative evaluator agent, your mandate is inspired by **Cha
 > *"Tell me where I am going to die, that is, so I don't go there."* — Charlie Munger
 
 1. **Default Stance is Rejection**: Fewer than ~250 companies across the US, European, and Canadian large-cap universes possess the enduring business quality required to compound capital over decades. You do not search for reasons to include a company; you actively hunt for the fatal flaw that eliminates it.
-2. **Strict Sequential Waterfall Invariant**: The qualitative framework consists of **6 sequential reject gates**. Evaluation proceeds strictly in order (Gate 1 $\rightarrow$ Gate 6). **At the first gate a company fails, it is immediately rejected and removed from the quality funnel.** Downstream gate evaluations are immediately terminated, and their corresponding fields are left blank/null to maintain analytical integrity.
+2. **Strict Sequential Waterfall Invariant (with Conditional Calamity Tier on Gates 3b, 5 & 6 Only)**: Evaluation proceeds strictly in order (Gate 1 $\rightarrow$ Gate 6). Normally, at the first gate a company fails, it is immediately rejected and downstream fields are left blank/null. **Exception (Buffett Temporary Fixable Calamities)**: if a company passes all Anchor Gates (`1="Y"`, `2="Y"`, `3a!="None"`, and `4>=15`) and fails **only Gate `3b`, `5`, and/or `6`** due to an identifiable, temporary, fixable calamity, record the raw failing values honestly, set `calamity_flag: "Y"` with a three-part `calamity_note` (broken metric, intact moat proof, fix catalyst/kill-switch), and evaluate all remaining downstream gates so it enters Quantitative valuation under the separate **`Calamity pass`** tier.
 3. **Evidence Over Narrative**: Assertions must be anchored in empirical financial reality: multi-cycle ROIC, free cash flow conversion, pricing power history, competitive dynamics, and balance sheet endurance through crises.
 
 ---
@@ -263,6 +263,8 @@ An independent agent evaluating a company qualitatively must return a strictly v
     "gate_4_runway_cap": 20,
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
     "note": "Indispensable enterprise software and cloud oligopolist. Pricing power demonstrated by repeated price hikes with zero churn. $80B+ net cash balance sheet. [5-10Y g: cloud volume 6.5% + enterprise price 2.0% - AI GPU capex D&A drag 0.5% + net buyback 1.0%]",
     "evidence": "30%+ Operating ROIC over 10 years. FCF conversion >100%. Azure and Office 365 form an indispensable productivity layer for modern enterprise."
   },
@@ -285,10 +287,12 @@ An independent agent evaluating a company qualitatively must return a strictly v
 | `3a` | `gate_3a_moat_archetype` | `"Toll booth / Switching costs"`, `"Scale economies shared"`, `"Irreplaceable infrastructure"`, `"R&D super-thinkers / Intangibles"`, `"None"` | Null if Gate 1 or 2 is `"N"` |
 | `3b` | `gate_3b_pricing_and_proof` | `"Y"`, `"N"` | Null if Gate 1 or 2 is `"N"` |
 | `3m` | `gate_3m_moat_note` | String | Null if Gate 1 or 2 is `"N"` |
-| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `30` | Null if Gate 1, 2, or 3 fails |
-| `5` | `gate_5_management_score` | `0`, `1`, `2` | Null if Gate 1, 2, 3, or 4 fails |
-| `6` | `gate_6_cash_and_balance_sheet` | `"Y"`, `"N"` | Null if Gate 1, 2, 3, 4, or 5 fails |
-| `note` | `note` | String | Mandatory summary text |
+| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `30` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `5` | `gate_5_management_score` | `0`, `1`, `2` | Null if Gate 1, 2, unwaived 3, or 4 fails |
+| `6` | `gate_6_cash_and_balance_sheet` | `"Y"`, `"N"` | Null if Gate 1, 2, unwaived 3, 4, or unwaived 5 fails |
+| `calamity` | `calamity_flag` | `"Y"`, null | Set `"Y"` only when Anchor Gates `1,2,3a,4` pass and failure is solely in `{3b, 5, 6}` |
+| `calamity_note` | `calamity_note` | String, null | Mandatory when `calamity_flag == "Y"` (broken metric, moat proof, catalyst + kill-switch); else null |
+| `note` | `note` | String | Mandatory summary text (include `[5-10Y g: ...]` for both `Quality pass` and `Calamity pass`) |
 | `evidence` | `evidence` | String | Mandatory empirical evidence |
 
 ---

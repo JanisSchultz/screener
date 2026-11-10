@@ -12,7 +12,7 @@ Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett*
 1. **Through-the-Cycle Fundamental Value (PAR Value)**: Market multiples fluctuate between irrational euphoria and panic. Fundamental PAR Multiple represents the intrinsic through-the-cycle multiple governed by three fundamental pillars: (1) secular growth, (2) historical cycle multiple midpoint, and (3) operating capital efficiency.
 2. **The 5-Year Cycle High Guardrail**: Through-the-cycle fair value can **never** exceed the highest multiple the market was willing to pay at the peak of the 5-year cycle (`mult_high_5y`). This prevents balance-sheet financials and cyclical peaks from inflating into fantasy multiples.
 3. **Buying Below PAR**: The highest-probability path to superinvestor returns is purchasing world-class compounders when the current share price trades at a discount to fundamental PAR Value ($\text{Price} \le \text{PAR Value}$), capturing both the ongoing business coupon and the 5-year "Pull-to-PAR" multiple expansion.
-4. **Prerequisite**: In standard screening workflow, quantitative valuation is performed on companies that achieve **Quality Pass** across the 6 qualitative gates.
+4. **Prerequisite**: In standard screening workflow, quantitative valuation is performed on companies that achieve **`Quality pass`** across the 6 qualitative gates or **`Calamity pass`** (conditional override on Gates 3b, 5, and/or 6). For **`Calamity pass`** businesses, explicitly check whether normalized earning power (`peak_eps_est`) or forward growth (`g_est` / `g_implied`) needs a haircut rather than extrapolating pre-calamity peaks unadjusted.
 
 ---
 

@@ -14,8 +14,13 @@ Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 yrs via Mauboussin B
 Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation (5 vectors >= 1)
 Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance Sheet (3 pillars: Peak-to-Peak, FCF >= 80% NI, Debt <= 4y & Interest Cover > 5x)
 
--> Only "Quality pass" companies enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g).
+-> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.25: Conditional Calamity Pass Tier (Buffett Temporary Fixable Calamities on Gates 3b, 5 & 6):
+- Added `calamity` ('Y'/blank) and `calamity_note` fields across `inputs.csv`, `screener/gates.py`, `screener/apply_evaluation.py`, and the HTML cockpit (`screener/dashboard.py`).
+- Preserves raw failed gate scores (`3b="N"`, `5=0`, or `6="N"`) while allowing great franchises facing temporary, fixable issues to enter Quantitative PAR valuation under the separate `Calamity pass` tier when Anchor Gates 1, 2, 3a (not None), and 4 (CAP >= 15Y) all pass and remaining downstream gates are evaluated.
+- Surfaced in the HTML cockpit via amber badges, dedicated `⚠️ Calamity Watchlist` tab, off-by-default Shortlist toggle, and dossier kill-switch callout.
 
 v6.24: Quality Funnel Integrity Audit & Legacy Waterfall Swap Remediation:
 - Quality Funnel Integrity Audit: Removed 5 companies that breached the updated v6.23 methodology from the Quality Pass funnel:
@@ -175,19 +180,18 @@ v4.1 additions:
 
 ```
 screener/config.py        framework: fields (gates, scores, rubrics), gate chain, all parameters, change log
-screener/workbook.py      workbook builder (sheets, formulas, formatting)
-screener/gates.py         Python reference of the gate chain and PAR maths (funnel selection, tests)
+screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
 QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Equity Bond Below PAR v6.23)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
-screener/data.py          file schema, CSV loading, output versioning
+screener/data.py          file schema and CSV/JSON loading/saving
 screener/fetch/           SEC EDGAR + Yahoo Finance sources, audit metrics, settings (SEC contact address)
 data/<universe>/
   universe.json           titles, universe text, extra columns, breakdowns, benchmark symbols,
                           optional "parameters" overriding config defaults for this universe
-  inputs.csv              Phase 1–3 inputs per company (Y/N gates, 0/1/2 scores, CAP years, notes, confidence)
+  inputs.csv              Phase 1–3 inputs per company (Y/N gates, 0/1/2 scores, CAP years, calamity flag/note, notes, evidence)
   prescreen.csv           Gate 6 default by sub-industry (N or blank; your inputs)
   markets.csv             your markets by listing country (Y/N; feeds Gate 2)
   v4_prescore.csv         Claude's pre-scores for the fields new in v4 (merged by migrate_v4.py)
@@ -197,7 +201,7 @@ data/<universe>/
   technicals.csv          weekly price / 30-wk MA / RS inputs (fetched)
   benchmarks.csv          market + sector benchmark trend (fetched)
   holdings.csv            your positions (Phase 5)
-  backups/                v2 / v3 / v4.0 / v4.1 data and automatic backups made by sync_from_excel.py
+  backups/                v2 / v3 / v4.0 / v4.1 historical backups
 data/_cache/              downloaded SEC / Yahoo responses (reused for 7 days; --offline uses them at any age)
 build.py                  compile standalone interactive HTML cockpit -> output/screener.html
 fetch_market_data.py      refresh Quantitative data (screener/fetch/par.py computes the PAR inputs)
@@ -235,17 +239,6 @@ Weekly technicals only (fast):
 python3 fetch_market_data.py us eu --prices-only
 ```
 
-Edit in Excel (gates, scores, Pre-Screen markets and Gate 6 defaults, My Peak EPS / My growth g / implied g,
-parameter log), then keep those edits:
-
-```bash
-python3 sync_from_excel.py eu --dry-run
-```
-
-```bash
-python3 sync_from_excel.py eu
-```
-
 Evaluate a company via an independent agent and ingest the result:
 
 ```bash
@@ -259,9 +252,7 @@ python3 screener/apply_evaluation.py --input quant_result.json
 python3 screener/apply_evaluation.py --input full_result.json
 ```
 
-Versioning: each build takes the next free minor version of the current framework major (v4.0 → v4.1 …);
-`--major 5` starts v5.0; `--version 3.5` sets one explicitly. Existing files are never overwritten. Add a
-`CHANGELOG` entry in `config.py` when you change the framework.
+Add a `CHANGELOG` entry in `screener/config.py` when you change the framework.
 
 ## GitHub Pages Deployment
 
@@ -288,4 +279,4 @@ also need adding to `data/*/inputs.csv`), then rebuild.
 - "Latest FY" figures are the latest annual report, not trailing-twelve-months.
 - Fetched data can contain tagging gaps or errors — check outliers before acting on a verdict.
 - SEC contact address for the User-Agent header: `screener/fetch/settings.py`.
-- Requires Python ≥ 3.9, `openpyxl`; fetcher also `requests`, `yfinance`.
+- Requires Python ≥ 3.9; fetcher also requires `requests`, `yfinance`.

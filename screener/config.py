@@ -152,6 +152,13 @@ GATES = [
     ("5", "G5 Management & Allocation", 5),
     ("6", "G6 Cash & Fortress Balance Sheet", 6),
 ]
+# Gates eligible for a conditional temporary-fixable-calamity exception (Gates 1, 2, 3a, 4 are never waivable).
+CALAMITY_GATES = ("3b", "5", "6")
+CALAMITY_FLAG_DEF = (
+    "Set to 'Y' only if the business fails Gate 3b, Gate 5, and/or Gate 6 due to a temporary, fixable calamity "
+    "(Buffett principle) while Gates 1, 2, 3a (not None), and 4 (CAP >= 15) all pass and remaining downstream gates are evaluated. "
+    "Requires calamity_note with broken metric, moat-intact evidence, and fix catalyst/kill-switch."
+)
 PHASE_NAMES = {
     1: "G1 Understandability",
     2: "G2 Essential Need",
@@ -172,7 +179,7 @@ PHASE_LONG = {
 }
 
 # ---------------------------------------------------------------------------
-# Parameters -> Methodology input cells (Excel defined names). (name, label, default, fmt, note)
+# Parameters -> Methodology thresholds & valuation caps (universe.json can override).
 # ---------------------------------------------------------------------------
 FW = "From the framework text."
 NEW = "Adjust to taste."
@@ -205,17 +212,20 @@ PARAMETER_GROUPS = [
 
 # Results
 RES_QPASS = "Quality pass"
+RES_CALAMITY = "Calamity pass"
+FUNNEL_RESULTS = (RES_QPASS, RES_CALAMITY)
 RES_REJ = {p: f"Rejected – {PHASE_NAMES[p]}" for p in (1, 2, 3, 4, 5, 6)}
 RES_REVIEW = "To review (blank gate)"
-Q_RESULTS = [RES_QPASS, RES_REVIEW] + [RES_REJ[p] for p in (6, 5, 4, 3, 2, 1)]
+Q_RESULTS = [RES_QPASS, RES_CALAMITY, RES_REVIEW] + [RES_REJ[p] for p in (6, 5, 4, 3, 2, 1)]
 
 V_NOTFUNNEL = "Not in funnel"
 V_NODATA = "No data"
 V_BELOW_PAR = "Below PAR"
 V_ABOVE_PAR = "Above PAR"
+V_CALAMITY = "Calamity Watchlist"
 V_RESULTS = [V_BELOW_PAR, V_ABOVE_PAR, V_NODATA, V_NOTFUNNEL]
 
-LIST_CAPACITY = {V_BELOW_PAR: 150, V_ABOVE_PAR: 200}
+LIST_CAPACITY = {V_BELOW_PAR: 150, V_ABOVE_PAR: 200, V_CALAMITY: 100}
 
 CHANGELOG = {
     "6.0": [
@@ -463,5 +473,17 @@ CHANGELOG = {
         "operating multiples. "
         "(4) Added 'Operating ROIC 5Y (Tangible)' and 'My ROIC (override)' to the Quantitative sheet alongside GAAP ROIC, giving "
         "investors full transparency into both the ongoing operating engine and retrospective total capital deployment.",
+    ],
+    "6.25": [
+        "Conditional Calamity Pass Tier (Buffett Temporary Fixable Calamities on Gates 3b, 5 & 6): "
+        "(1) Introduced explicit `calamity` ('Y'/blank) and `calamity_note` fields so temporary, fixable business or balance-sheet "
+        "calamities failing Gate 3b (trailing ROIC/pricing dip with intact 3a moat), Gate 5 (outgoing/remediating management blunder), "
+        "or Gate 6 (temporary M&A bridge debt, capex spike, or one-off cash outflow) can enter Quantitative PAR valuation as "
+        "'Calamity pass' without falsifying raw gate scores or contaminating the pristine 'Quality pass' funnel. "
+        "(2) Anchor Gates 1 (Understandability), 2 (Essential Need), 3a (Moat != None), and 4 (CAP >= 15Y secular runway) remain "
+        "strictly non-waivable; when `calamity = 'Y'`, downstream gates (4, 5, 6) remain active so hidden second flaws or secular "
+        "disruption still reject cleanly. "
+        "(3) Surfaced separately in the HTML cockpit ('⚠️ Calamity Watchlist' tab, amber badges, off-by-default Shortlist toggle, "
+        "and dossier kill-switch callout).",
     ],
 }
