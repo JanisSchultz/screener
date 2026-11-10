@@ -149,7 +149,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#090d16">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Quality & Moat Screener — Global Dashboard (v{data['version']})</title>
   <style>
     /* CSS Reset & Dark Modern Financial Terminal Palette */
@@ -179,12 +182,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       --purple: #a855f7;
       --purple-bg: rgba(168, 85, 247, 0.15);
     }}
-    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: rgba(56, 189, 248, 0.15);
+    }}
     html, body {{
+      width: 100%;
+      max-width: 100vw;
       height: 100%;
+      height: 100dvh;
       margin: 0;
       padding: 0;
       overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }}
     body {{
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -198,7 +211,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     a {{ color: var(--accent); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
 
-    /* Layout */
+    /* Layout & Header */
     .app-header {{
       background: var(--bg-surface);
       border-bottom: 1px solid var(--border);
@@ -208,6 +221,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       align-items: center;
       flex-shrink: 0;
       z-index: 40;
+      gap: 16px;
     }}
     .brand-title {{
       font-size: 16px;
@@ -215,7 +229,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex-shrink: 0;
+    }}
+    .brand-subtitle {{
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: normal;
+      margin-left: 6px;
     }}
     .badge-version {{
       background: rgba(56, 189, 248, 0.15);
@@ -230,6 +251,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       display: flex;
       gap: 20px;
       align-items: center;
+      flex-shrink: 0;
     }}
     .kpi-chip {{
       display: flex;
@@ -242,14 +264,76 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       letter-spacing: 0.05em;
       color: var(--text-dim);
       font-weight: 600;
+      white-space: nowrap;
     }}
     .kpi-value {{
       font-size: 15px;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }}
     .kpi-value.green {{ color: var(--green); }}
     .kpi-value.accent {{ color: var(--accent); }}
+
+    /* Header Responsiveness */
+    @media (max-width: 1024px) {{
+      .app-header {{
+        padding: 10px 16px;
+      }}
+      .brand-subtitle {{
+        display: none;
+      }}
+      .kpi-bar {{
+        gap: 14px;
+      }}
+      .kpi-value {{
+        font-size: 14px;
+      }}
+    }}
+    @media (max-width: 768px) {{
+      .app-header {{
+        padding: 8px 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        min-width: 0;
+        max-width: 100%;
+      }}
+      .brand-title {{
+        font-size: 15px;
+        justify-content: space-between;
+      }}
+      .kpi-bar {{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 5px;
+        width: 100%;
+        min-width: 0;
+      }}
+      .kpi-chip {{
+        align-items: center;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 6px;
+        padding: 5px 4px;
+        text-align: center;
+        min-width: 0;
+        overflow: hidden;
+      }}
+      .kpi-label {{
+        font-size: 9px;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }}
+      .kpi-value {{
+        font-size: 13px;
+        margin-top: 1px;
+        white-space: nowrap;
+      }}
+    }}
 
     /* Navigation Tabs */
     .tab-bar {{
@@ -259,7 +343,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       display: flex;
       gap: 4px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       flex-shrink: 0;
+      scrollbar-width: none;
+    }}
+    .tab-bar::-webkit-scrollbar {{
+      display: none;
     }}
     .tab-btn {{
       padding: 11px 16px;
@@ -275,6 +364,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       gap: 8px;
       transition: all 0.15s ease;
       white-space: nowrap;
+      min-height: 44px;
     }}
     .tab-btn:hover {{
       color: var(--text-main);
@@ -296,15 +386,35 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       background: rgba(56, 189, 248, 0.2);
       color: var(--accent);
     }}
+    .tab-label-short {{
+      display: none;
+    }}
+    @media (max-width: 768px) {{
+      .tab-bar {{
+        padding: 0 10px;
+        gap: 2px;
+      }}
+      .tab-btn {{
+        padding: 10px 10px;
+        font-size: 12px;
+        gap: 6px;
+      }}
+      .tab-label-full {{
+        display: none;
+      }}
+      .tab-label-short {{
+        display: inline;
+      }}
+    }}
 
     /* Controls & Filter Bar */
     .controls-bar {{
-      padding: 12px 24px;
+      padding: 10px 24px;
       background: var(--bg-surface);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
@@ -312,23 +422,30 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     .filters-left {{
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
+      flex: 1;
+    }}
+    .filters-right {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }}
     .search-box {{
       position: relative;
-      width: 260px;
+      width: 250px;
     }}
     .search-input {{
       width: 100%;
       background: var(--bg-base);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 7px 10px 7px 30px;
+      padding: 7px 30px 7px 30px;
       color: var(--text-main);
-      font-size: 12px;
+      font-size: 13px;
       outline: none;
       transition: border-color 0.15s ease;
+      height: 36px;
     }}
     .search-input:focus {{
       border-color: var(--accent);
@@ -336,20 +453,38 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     .search-icon {{
       position: absolute;
       left: 10px;
-      top: 8px;
+      top: 9px;
       color: var(--text-dim);
-      font-size: 12px;
+      font-size: 13px;
       pointer-events: none;
+    }}
+    .search-clear {{
+      position: absolute;
+      right: 8px;
+      top: 7px;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: none;
+      line-height: 1;
+    }}
+    .search-clear:hover {{
+      color: var(--text-main);
     }}
     .select-filter {{
       background: var(--bg-base);
       border: 1px solid var(--border);
       color: var(--text-main);
       border-radius: 6px;
-      padding: 6px 10px;
+      padding: 0 10px;
       font-size: 12px;
       outline: none;
       cursor: pointer;
+      height: 36px;
     }}
     .market-pills {{
       display: flex;
@@ -357,6 +492,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 2px;
+      height: 36px;
+      align-items: center;
     }}
     .market-btn {{
       background: none;
@@ -368,8 +505,41 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
     }}
     .market-btn.active {{
+      background: var(--bg-card);
+      color: var(--accent);
+    }}
+    .view-toggle {{
+      display: flex;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+      height: 36px;
+      align-items: center;
+    }}
+    .view-btn {{
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }}
+    .view-btn.active {{
       background: var(--bg-card);
       color: var(--accent);
     }}
@@ -377,7 +547,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-main);
-      padding: 6px 12px;
+      padding: 0 12px;
       border-radius: 6px;
       font-size: 12px;
       font-weight: 600;
@@ -385,20 +555,81 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       display: flex;
       align-items: center;
       gap: 6px;
+      height: 36px;
       transition: all 0.15s ease;
+      white-space: nowrap;
     }}
     .btn-export:hover {{
       background: var(--bg-card-hover);
       border-color: var(--accent);
     }}
 
-    /* Table Container */
+    @media (max-width: 768px) {{
+      .controls-bar {{
+        padding: 8px 12px;
+        gap: 8px;
+      }}
+      .filters-left {{
+        gap: 6px;
+        width: 100%;
+      }}
+      .filters-right {{
+        width: 100%;
+        justify-content: space-between;
+      }}
+      .search-box {{
+        width: 100%;
+        flex: 1 1 100%;
+      }}
+      .search-input {{
+        font-size: 16px; /* Prevents auto-zoom on iOS */
+      }}
+      .select-filter {{
+        font-size: 13px;
+        flex: 1 1 auto;
+        min-width: 130px;
+      }}
+      .market-pills {{
+        width: 100%;
+        justify-content: space-around;
+      }}
+      .market-btn {{
+        flex: 1;
+        justify-content: center;
+        padding: 4px 6px;
+      }}
+      .btn-export {{
+        flex: 1;
+        justify-content: center;
+      }}
+      .view-toggle {{
+        flex-shrink: 0;
+      }}
+    }}
+
+    /* Table Container & Sticky Elements */
     .table-container {{
       flex: 1;
       width: 100%;
       overflow-y: auto;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       position: relative;
+    }}
+    .mobile-swipe-hint {{
+      display: none;
+      background: rgba(56, 189, 248, 0.08);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 7px 12px;
+      text-align: center;
+    }}
+    @media (max-width: 768px) {{
+      .mobile-swipe-hint {{
+        display: block;
+      }}
     }}
     table {{
       width: 100%;
@@ -430,6 +661,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     thead th.sorted {{
       color: var(--accent);
     }}
+    /* Sticky First Column (Ticker) */
+    thead th:first-child {{
+      position: sticky;
+      left: 0;
+      top: 0;
+      z-index: 30;
+      background: var(--bg-surface);
+      box-shadow: 2px 0 6px -1px rgba(0, 0, 0, 0.45);
+    }}
+    tbody td:first-child {{
+      position: sticky;
+      left: 0;
+      z-index: 10;
+      background: var(--bg-base);
+      box-shadow: 2px 0 6px -1px rgba(0, 0, 0, 0.45);
+    }}
     tbody tr {{
       transition: background-color 0.1s ease;
       cursor: pointer;
@@ -437,10 +684,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     tbody tr:hover td {{
       background-color: var(--bg-card-hover);
     }}
+    tbody tr:hover td:first-child {{
+      background-color: var(--bg-card-hover);
+    }}
     tbody tr.selected td {{
       background-color: rgba(56, 189, 248, 0.12);
     }}
     tbody tr.selected td:first-child {{
+      background-color: rgba(56, 189, 248, 0.18);
       border-left: 3px solid var(--accent);
     }}
     tbody td {{
@@ -448,6 +699,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       font-size: 12.5px;
       font-variant-numeric: tabular-nums;
       border-bottom: 1px solid var(--border-subtle);
+    }}
+    @media (max-width: 768px) {{
+      tbody td {{
+        padding: 10px 10px;
+        font-size: 13px;
+      }}
+      thead th {{
+        padding: 8px 10px;
+      }}
     }}
     .cell-ticker {{
       font-weight: 700;
@@ -478,6 +738,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       font-size: 11px;
       font-weight: 600;
       line-height: 1.2;
+      white-space: nowrap;
     }}
     .badge-green {{
       background: var(--green-bg);
@@ -509,16 +770,127 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       color: var(--text-muted);
       border: 1px solid rgba(148, 163, 184, 0.2);
     }}
-    .gate-dot {{
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 4px;
+
+    /* Cards View Component */
+    .cards-container {{
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 14px 16px;
     }}
-    .dot-pass {{ background: var(--green); }}
-    .dot-fail {{ background: var(--red); }}
-    .dot-blank {{ background: var(--text-dim); }}
+    .cards-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }}
+    @media (max-width: 500px) {{
+      .cards-container {{
+        padding: 10px;
+      }}
+      .cards-grid {{
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }}
+    }}
+    .company-card {{
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 15px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }}
+    .company-card:hover {{
+      background: var(--bg-card);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }}
+    .company-card:active {{
+      transform: scale(0.99);
+    }}
+    .company-card.selected {{
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      box-shadow: 0 0 0 1px var(--accent);
+    }}
+    .card-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }}
+    .card-ticker-group {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+    .card-ticker {{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }}
+    .card-company-name {{
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+    }}
+    .card-meta-line {{
+      font-size: 11px;
+      color: var(--text-dim);
+    }}
+    .card-metrics-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 4px;
+    }}
+    .card-metric-cell {{
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 6px 8px;
+      min-width: 0;
+    }}
+    .card-metric-label {{
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }}
+    .card-metric-val {{
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }}
+    .card-footer {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 4px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 11px;
+      color: var(--text-dim);
+    }}
+    .card-footer-action {{
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }}
 
     /* Slide-Out Dossier Drawer */
     .drawer-overlay {{
@@ -551,21 +923,25 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      padding-bottom: env(safe-area-inset-bottom, 0);
     }}
     .dossier-drawer.open {{
       transform: translateX(0);
     }}
     .drawer-header {{
-      padding: 18px 24px;
+      padding: 16px 24px;
       border-bottom: 1px solid var(--border);
       background: var(--bg-card);
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 12px;
+      flex-shrink: 0;
     }}
     .drawer-body {{
       padding: 24px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -575,15 +951,70 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
       line-height: 1;
-      padding: 4px 8px;
-      border-radius: 4px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }}
     .btn-close:hover {{
       color: var(--text-main);
       background: rgba(255,255,255,0.06);
+    }}
+    @media (max-width: 768px) {{
+      .dossier-drawer {{
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+        border-left: none;
+      }}
+      .drawer-header {{
+        padding: 12px 16px;
+      }}
+      .drawer-body {{
+        padding: 16px 14px;
+        gap: 14px;
+      }}
+      .waterfall-stepper {{
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+      }}
+      .grid-3 {{
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }}
+      .grid-2 {{
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }}
+    }}
+    @media (max-width: 440px) {{
+      .grid-3 {{
+        grid-template-columns: 1fr 1fr !important;
+      }}
+      .waterfall-stepper {{
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+        padding: 8px !important;
+      }}
+      .step-badge {{
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 10px !important;
+      }}
+      .step-title {{
+        font-size: 9px !important;
+      }}
+      .step-result {{
+        font-size: 9px !important;
+      }}
     }}
 
     /* Waterfall Stepper Component */
@@ -657,6 +1088,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
       padding: 10px;
+      min-width: 0;
     }}
     .metric-box .label {{
       font-size: 11px;
@@ -668,12 +1100,27 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       font-weight: 700;
       color: var(--text-main);
       margin-top: 2px;
+      font-variant-numeric: tabular-nums;
     }}
     .prose {{
       font-size: 13px;
       color: #cbd5e1;
       line-height: 1.6;
       white-space: pre-wrap;
+      word-break: break-word;
+    }}
+    .formula-code {{
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px;
+      border-radius: 4px;
+      line-height: 1.5;
     }}
 
     /* Empty state */
@@ -681,6 +1128,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       padding: 60px 20px;
       text-align: center;
       color: var(--text-dim);
+      font-size: 14px;
+    }}
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {{
+      width: 6px;
+      height: 6px;
+    }}
+    ::-webkit-scrollbar-track {{
+      background: var(--bg-base);
+    }}
+    ::-webkit-scrollbar-thumb {{
+      background: var(--border);
+      border-radius: 3px;
+    }}
+    ::-webkit-scrollbar-thumb:hover {{
+      background: var(--text-dim);
     }}
   </style>
 </head>
@@ -689,9 +1153,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <!-- Top Global Header -->
   <header class="app-header">
     <div class="brand-title">
-      <span>Quality & Moat Screener</span>
-      <span class="badge-version">v{data['version']}</span>
-      <span style="color: var(--text-dim); font-size: 12px; font-weight: normal; margin-left: 8px;">Charlie Munger Reject Gates & Equity Bond Valuation</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span>Quality & Moat Screener</span>
+        <span class="badge-version">v{data['version']}</span>
+      </div>
+      <span class="brand-subtitle">Charlie Munger Reject Gates & Equity Bond Valuation</span>
     </div>
     <div class="kpi-bar">
       <div class="kpi-chip">
@@ -703,11 +1169,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value accent">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Below PAR Shortlist</span>
+        <span class="kpi-label">Below PAR</span>
         <span class="kpi-value green">{data['summary']['below_par']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Median 5Y IRR</span>
+        <span class="kpi-label">Median IRR</span>
         <span class="kpi-value green">{f"{data['summary']['median_irr_below_par']*100:.1f}%"}</span>
       </div>
     </div>
@@ -716,19 +1182,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <!-- View Tabs -->
   <nav class="tab-bar">
     <button class="tab-btn active" data-tab="shortlist" onclick="setTab('shortlist')">
-      <span>★ Below PAR Shortlist</span>
+      <span class="tab-label-full">★ Below PAR Shortlist</span>
+      <span class="tab-label-short">★ Shortlist</span>
       <span class="pill-count" id="count-shortlist">0</span>
     </button>
     <button class="tab-btn" data-tab="qpass" onclick="setTab('qpass')">
-      <span>🛡️ Quality Pass Funnel</span>
+      <span class="tab-label-full">🛡️ Quality Pass Funnel</span>
+      <span class="tab-label-short">🛡️ Quality</span>
       <span class="pill-count" id="count-qpass">0</span>
     </button>
     <button class="tab-btn" data-tab="all" onclick="setTab('all')">
-      <span>🔍 Full Universe & Waterfall</span>
+      <span class="tab-label-full">🔍 Full Universe & Waterfall</span>
+      <span class="tab-label-short">🔍 All</span>
       <span class="pill-count" id="count-all">0</span>
     </button>
     <button class="tab-btn" data-tab="methodology" onclick="setTab('methodology')">
-      <span>📖 Framework Rubric</span>
+      <span class="tab-label-full">📖 Framework Rubric</span>
+      <span class="tab-label-short">📖 Rubric</span>
     </button>
   </nav>
 
@@ -738,16 +1208,35 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <!-- Search Input -->
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="filter-search" class="search-input" placeholder="Search ticker, company, sector..." oninput="applyFilters()">
+        <input type="text" id="filter-search" class="search-input" placeholder="Search ticker, company, sector..." oninput="handleSearchInput()">
+        <button id="search-clear" class="search-clear" onclick="clearSearch()" aria-label="Clear search">&times;</button>
       </div>
 
       <!-- Market Universe Pills -->
       <div class="market-pills">
-        <button class="market-btn active" data-market="all" onclick="setMarket('all')">All Markets</button>
+        <button class="market-btn active" data-market="all" onclick="setMarket('all')">All</button>
         <button class="market-btn" data-market="us" onclick="setMarket('us')">🇺🇸 US</button>
-        <button class="market-btn" data-market="eu" onclick="setMarket('eu')">🇪🇺 Europe</button>
-        <button class="market-btn" data-market="ca" onclick="setMarket('ca')">🇨🇦 Canada</button>
+        <button class="market-btn" data-market="eu" onclick="setMarket('eu')">🇪🇺 EU</button>
+        <button class="market-btn" data-market="ca" onclick="setMarket('ca')">🇨🇦 CA</button>
       </div>
+
+      <!-- Sort Filter -->
+      <select id="filter-sort" class="select-filter" onchange="applySortFromSelect(this.value)">
+        <option value="irr_5y-desc">Sort: 5Y Exp IRR ↓</option>
+        <option value="irr_5y-asc">Sort: 5Y Exp IRR ↑</option>
+        <option value="vs_par-asc">Sort: vs PAR (Discount) ↑</option>
+        <option value="vs_par-desc">Sort: vs PAR (Premium) ↓</option>
+        <option value="roic_used-desc">Sort: Op ROIC ↓</option>
+        <option value="cur_mult-asc">Sort: Cur P/E ↑</option>
+        <option value="cur_mult-desc">Sort: Cur P/E ↓</option>
+        <option value="par_mult-desc">Sort: PAR Mult ↓</option>
+        <option value="price-asc">Sort: Share Price ↑</option>
+        <option value="price-desc">Sort: Share Price ↓</option>
+        <option value="g4_cap-desc">Sort: Runway CAP ↓</option>
+        <option value="ticker-asc">Sort: Ticker A–Z</option>
+        <option value="company-asc">Sort: Company A–Z</option>
+        <option id="sort-custom-opt" style="display:none;"></option>
+      </select>
 
       <!-- Sector Filter -->
       <select id="filter-sector" class="select-filter" onchange="applyFilters()">
@@ -772,25 +1261,45 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       </select>
     </div>
 
-    <!-- Export Button -->
-    <button class="btn-export" onclick="exportCurrentView()">
-      <span>📥</span> Export CSV
-    </button>
+    <!-- Controls Right: View Toggle & Export Button -->
+    <div class="filters-right">
+      <div class="view-toggle">
+        <button class="view-btn" id="view-cards-btn" onclick="setViewMode('cards')" title="Card View">
+          <span>⊞</span> Cards
+        </button>
+        <button class="view-btn" id="view-table-btn" onclick="setViewMode('table')" title="Table View">
+          <span>☰</span> Table
+        </button>
+      </div>
+
+      <button class="btn-export" onclick="exportCurrentView()">
+        <span>📥</span> Export
+      </button>
+    </div>
   </section>
 
   <!-- Main Table View -->
   <main class="table-container" id="table-view">
+    <div class="mobile-swipe-hint">👉 Swipe horizontally to view all metrics • Tap any row to open dossier</div>
     <table id="screener-table">
       <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
     </table>
-    <div id="empty-state" class="empty-state" style="display: none;">
-      No companies match the selected search and filter criteria.
-    </div>
   </main>
 
+  <!-- Responsive Cards View -->
+  <main class="cards-container" id="cards-view" style="display: none;">
+    <div class="cards-grid" id="cards-grid"></div>
+  </main>
+
+  <!-- Shared Empty State -->
+  <div id="empty-state" class="empty-state" style="display: none;">
+    <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
+    No companies match the selected search and filter criteria.
+  </div>
+
   <!-- Methodology Tab Content (Hidden by default) -->
-  <main class="table-container" id="methodology-view" style="display:none; padding: 30px; max-width: 1000px; margin: 0 auto;">
+  <main class="table-container" id="methodology-view" style="display:none; padding: 24px 20px; max-width: 1000px; margin: 0 auto; width: 100%;">
     <div class="dossier-section" style="margin-bottom: 24px;">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">The 6 Munger Reject Gates (v{data['version']})</h2>
       <p style="color: var(--text-muted); margin-bottom: 16px;">
@@ -828,13 +1337,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Equity Bond Below PAR</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
         <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula:</strong>
-        <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px; font-family: monospace;">
+        <p class="formula-code">
           PAR Multiple = min(mult_high_5y, (2 * (g_imp * 100) + 5Y Cycle Midpoint Multiple + min(Operating_ROIC * 100, 35.0)) / 3)
         </p>
       </div>
       <div class="metric-box">
         <strong style="color: var(--text-main);">Mauboussin Base-Rate Growth Regression:</strong>
-        <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px; font-family: monospace;">
+        <p class="formula-code">
           Forward Implied g = min(12.0%, max(2.0%, 0.15 * (Hist_g - 7.0%) + 7.0%))
         </p>
       </div>
@@ -845,16 +1354,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
   <aside class="dossier-drawer" id="dossier-drawer">
     <div class="drawer-header">
-      <div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span class="cell-ticker" id="dossier-ticker" style="font-size: 18px;"></span>
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="cell-ticker" id="dossier-ticker" style="font-size: 20px;"></span>
           <span class="badge" id="dossier-market-badge"></span>
           <span class="badge" id="dossier-val-badge"></span>
         </div>
-        <div style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-top: 3px;" id="dossier-company"></div>
-        <div style="font-size: 11px; color: var(--text-dim); margin-top: 1px;" id="dossier-meta"></div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-top: 4px; line-height: 1.3;" id="dossier-company"></div>
+        <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px; word-break: break-word;" id="dossier-meta"></div>
       </div>
-      <button class="btn-close" onclick="closeDrawer()">&times;</button>
+      <button class="btn-close" onclick="closeDrawer()" aria-label="Close drawer">&times;</button>
     </div>
 
     <div class="drawer-body" id="dossier-content">
@@ -980,6 +1489,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let sortColumn = 'irr_5y';
     let sortAsc = false;
     let selectedCompanyId = null;
+    let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
 
     // Initialize Dropdowns & Counts
     function init() {{
@@ -1007,6 +1517,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
 
       updateTabCounts();
+      document.getElementById('view-table-btn').classList.toggle('active', viewMode === 'table');
+      document.getElementById('view-cards-btn').classList.toggle('active', viewMode === 'cards');
       setTab('shortlist');
 
       // Keyboard Esc to close drawer
@@ -1031,8 +1543,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const isMethodology = tab === 'methodology';
       document.getElementById('controls-section').style.display = isMethodology ? 'none' : 'flex';
-      document.getElementById('table-view').style.display = isMethodology ? 'none' : 'block';
       document.getElementById('methodology-view').style.display = isMethodology ? 'block' : 'none';
+
+      if (isMethodology) {{
+        document.getElementById('table-view').style.display = 'none';
+        document.getElementById('cards-view').style.display = 'none';
+        document.getElementById('empty-state').style.display = 'none';
+        return;
+      }}
 
       // Show/hide failing gate filter
       document.getElementById('filter-gate').style.display = (tab === 'all') ? 'inline-block' : 'none';
@@ -1049,7 +1567,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         sortAsc = true;
       }}
 
-      renderTable();
+      syncSortSelect();
+      renderCurrentView();
     }}
 
     function setMarket(m) {{
@@ -1057,11 +1576,33 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.querySelectorAll('.market-btn').forEach(btn => {{
         btn.classList.toggle('active', btn.dataset.market === m);
       }});
-      renderTable();
+      renderCurrentView();
+    }}
+
+    function setViewMode(mode) {{
+      viewMode = mode;
+      document.getElementById('view-table-btn').classList.toggle('active', mode === 'table');
+      document.getElementById('view-cards-btn').classList.toggle('active', mode === 'cards');
+      renderCurrentView();
+    }}
+
+    function handleSearchInput() {{
+      const input = document.getElementById('filter-search');
+      const clearBtn = document.getElementById('search-clear');
+      clearBtn.style.display = input.value ? 'block' : 'none';
+      applyFilters();
+    }}
+
+    function clearSearch() {{
+      const input = document.getElementById('filter-search');
+      input.value = '';
+      document.getElementById('search-clear').style.display = 'none';
+      input.focus();
+      applyFilters();
     }}
 
     function applyFilters() {{
-      renderTable();
+      renderCurrentView();
     }}
 
     function getFilteredData() {{
@@ -1108,6 +1649,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         let vA = a[sortColumn];
         let vB = b[sortColumn];
 
+        if ((vA === null || vA === undefined) && (vB === null || vB === undefined)) return 0;
         if (vA === null || vA === undefined) return 1;
         if (vB === null || vB === undefined) return -1;
 
@@ -1123,9 +1665,44 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         sortAsc = !sortAsc;
       }} else {{
         sortColumn = col;
-        sortAsc = (col === 'ticker' || col === 'company');
+        sortAsc = (col === 'ticker' || col === 'company' || col === 'vs_par' || col === 'cur_mult');
       }}
-      renderTable();
+      syncSortSelect();
+      renderCurrentView();
+    }}
+
+    function applySortFromSelect(val) {{
+      const lastHyphen = val.lastIndexOf('-');
+      if (lastHyphen !== -1) {{
+        sortColumn = val.slice(0, lastHyphen);
+        sortAsc = (val.slice(lastHyphen + 1) === 'asc');
+        renderCurrentView();
+      }}
+    }}
+
+    function syncSortSelect() {{
+      const sortSelect = document.getElementById('filter-sort');
+      if (!sortSelect) return;
+      const targetVal = `${{sortColumn}}-${{sortAsc ? 'asc' : 'desc'}}`;
+      let matched = false;
+      for (let opt of sortSelect.options) {{
+        if (opt.value === targetVal) {{
+          sortSelect.value = targetVal;
+          matched = true;
+          break;
+        }}
+      }}
+      if (!matched) {{
+        let customOpt = document.getElementById('sort-custom-opt');
+        if (!customOpt) {{
+          customOpt = document.createElement('option');
+          customOpt.id = 'sort-custom-opt';
+          sortSelect.appendChild(customOpt);
+        }}
+        customOpt.value = targetVal;
+        customOpt.textContent = `Sort: ${{sortColumn}} (${{sortAsc ? '▲ Asc' : '▼ Desc'}})`;
+        sortSelect.value = targetVal;
+      }}
     }}
 
     function fmtPct(val, plus=false) {{
@@ -1142,13 +1719,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return (ccy ? ccy + ' ' : '') + Number(val).toFixed(2);
     }}
 
-    function renderTable() {{
+    function renderCurrentView() {{
+      if (currentTab === 'methodology') return;
+      const data = sortData(getFilteredData());
+      const empty = document.getElementById('empty-state');
+      const isEmpty = (data.length === 0);
+      empty.style.display = isEmpty ? 'block' : 'none';
+
+      document.getElementById('table-view').style.display = (viewMode === 'table' && !isEmpty) ? 'block' : 'none';
+      document.getElementById('cards-view').style.display = (viewMode === 'cards' && !isEmpty) ? 'block' : 'none';
+
+      renderTable(data);
+      renderCards(data);
+    }}
+
+    function renderTable(data) {{
       const thead = document.getElementById('table-head');
       const tbody = document.getElementById('table-body');
-      const empty = document.getElementById('empty-state');
-
-      const data = sortData(getFilteredData());
-      empty.style.display = data.length === 0 ? 'block' : 'none';
 
       // Define columns per tab
       let cols = [];
@@ -1211,8 +1798,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Build TBODY
       let trHtml = '';
       data.forEach(c => {{
-        const isSelected = c.id === selectedCompanyId;
-        trHtml += `<tr class="${{isSelected ? 'selected' : ''}}" onclick="openDrawer('${{c.id}}')">`;
+        const isSelected = (c.id === selectedCompanyId);
+        trHtml += `<tr class="${{isSelected ? 'selected' : ''}}" data-id="${{c.id}}" onclick="openDrawer('${{c.id}}')">`;
 
         cols.forEach(col => {{
           let val = c[col.key];
@@ -1264,16 +1851,128 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = trHtml;
     }}
 
+    function renderCards(data) {{
+      const cardsGrid = document.getElementById('cards-grid');
+      let cardsHtml = '';
+
+      data.forEach(c => {{
+        const isSelected = (c.id === selectedCompanyId);
+        let badgeHtml = '';
+        let metricsHtml = '';
+
+        if (currentTab === 'shortlist') {{
+          const vsParCls = (c.vs_par <= 0) ? 'badge-green' : 'badge-amber';
+          badgeHtml = `<span class="badge ${{vsParCls}}">${{fmtPct(c.vs_par, true)}} vs PAR</span>`;
+          metricsHtml = `
+            <div class="card-metric-cell">
+              <div class="card-metric-label">5Y Exp IRR</div>
+              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Price / PAR</div>
+              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Cur P/E / PAR Mult</div>
+              <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Op ROIC • Moat</div>
+              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                ${{fmtPct(c.roic_used)}} • ${{c.g3a_moat_archetype || '-'}}
+              </div>
+            </div>
+          `;
+        }} else if (currentTab === 'qpass') {{
+          const bCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
+          badgeHtml = `<span class="badge ${{bCls}}">${{c.val_status}}</span>`;
+          metricsHtml = `
+            <div class="card-metric-cell">
+              <div class="card-metric-label">5Y Exp IRR</div>
+              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">vs PAR Margin</div>
+              <div class="card-metric-val">${{c.vs_par !== null ? fmtPct(c.vs_par, true) : '-'}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Op ROIC / FCF</div>
+              <div class="card-metric-val">${{fmtPct(c.roic_used)}} / ${{fmtPct(c.fcf_conv)}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Moat & Runway</div>
+              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                ${{c.g3a_moat_archetype || '-'}} (${{c.g4_cap ? c.g4_cap + 'y' : '-'}})
+              </div>
+            </div>
+          `;
+        }} else {{
+          const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
+          badgeHtml = `<span class="badge ${{bCls}}">${{c.result}}</span>`;
+          metricsHtml = `
+            <div class="card-metric-cell" style="grid-column: span 2;">
+              <div class="card-metric-label">Gate Stage / Result</div>
+              <div class="card-metric-val" style="font-size: 12px; color: ${{c.result === 'Quality pass' ? 'var(--green)' : 'var(--red)'}};">
+                ${{c.rejected_at || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : c.result)}}
+              </div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Moat Archetype</div>
+              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${{c.g3a_moat_archetype || '-'}}</div>
+            </div>
+            <div class="card-metric-cell">
+              <div class="card-metric-label">Moat Runway (CAP)</div>
+              <div class="card-metric-val">${{c.g4_cap ? c.g4_cap + 'y CAP' : '-'}}</div>
+            </div>
+          `;
+        }}
+
+        cardsHtml += `
+          <div class="company-card ${{isSelected ? 'selected' : ''}}" data-id="${{c.id}}" onclick="openDrawer('${{c.id}}')">
+            <div class="card-header">
+              <div class="card-ticker-group">
+                <span class="card-ticker">${{c.ticker}}</span>
+                <span class="badge badge-gray" style="font-size: 10px; padding: 1px 5px;">${{c.universe.toUpperCase()}}</span>
+              </div>
+              ${{badgeHtml}}
+            </div>
+            <div>
+              <div class="card-company-name">${{c.company}}</div>
+              <div class="card-meta-line">${{c.country}} • ${{c.sector || ''}}</div>
+            </div>
+            <div class="card-metrics-grid">
+              ${{metricsHtml}}
+            </div>
+            <div class="card-footer">
+              <span>${{c.sub_industry || ''}}</span>
+              <span class="card-footer-action">Dossier →</span>
+            </div>
+          </div>
+        `;
+      }});
+
+      cardsGrid.innerHTML = cardsHtml;
+    }}
+
     // Slide-Out Dossier Drawer Logic
     function openDrawer(id) {{
       selectedCompanyId = id;
       const c = SCREENER_DATA.companies.find(item => item.id === id);
       if (!c) return;
 
-      // Update selected row style
+      // Update selected row style in table
       document.querySelectorAll('tbody tr').forEach(tr => {{
         tr.classList.remove('selected');
       }});
+      const selectedRow = document.querySelector(`tbody tr[data-id="${{id}}"]`);
+      if (selectedRow) selectedRow.classList.add('selected');
+
+      // Update selected card style in cards view
+      document.querySelectorAll('.company-card').forEach(card => {{
+        card.classList.remove('selected');
+      }});
+      const selectedCard = document.querySelector(`.company-card[data-id="${{id}}"]`);
+      if (selectedCard) selectedCard.classList.add('selected');
 
       // Populate Header
       document.getElementById('dossier-ticker').textContent = c.ticker;
@@ -1412,6 +2111,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-drawer').classList.remove('open');
       selectedCompanyId = null;
       document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
+      document.querySelectorAll('.company-card').forEach(card => card.classList.remove('selected'));
     }}
 
     // Export Table as CSV
@@ -1447,7 +2147,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         csvRows.push(row.join(','));
       }});
 
-      const blob = new Blob([csvRows.join('\\n')], {{ type: 'text/csv;charset=utf-8;' }});
+      const blob = new Blob([csvRows.join(String.fromCharCode(10))], {{ type: 'text/csv;charset=utf-8;' }});
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.setAttribute('href', url);
@@ -1458,7 +2158,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     // Boot
-    window.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === 'loading') {{
+      document.addEventListener('DOMContentLoaded', init);
+    }} else {{
+      init();
+    }}
   </script>
 </body>
 </html>

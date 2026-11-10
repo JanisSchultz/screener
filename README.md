@@ -222,7 +222,7 @@ python3 fetch_market_data.py us eu ca --offline --all
 python3 build.py
 ```
 
-Build and open the interactive screener dashboard in your browser:
+Build and open the interactive screener dashboard in your browser (fully responsive on desktop, tablet, and mobile with auto-detected Card View and sticky-ticker Table View):
 
 ```bash
 python3 build.py
