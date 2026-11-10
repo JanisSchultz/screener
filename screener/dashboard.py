@@ -406,6 +406,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         display: inline;
       }}
     }}
+    @media (max-width: 440px) {{
+      .tab-bar {{
+        padding: 0 6px;
+        gap: 2px;
+      }}
+      .tab-btn {{
+        padding: 8px 6px;
+        font-size: 11px;
+        gap: 4px;
+        min-height: 40px;
+      }}
+      .pill-count {{
+        padding: 1px 4px;
+        font-size: 10px;
+      }}
+    }}
 
     /* Controls & Filter Bar */
     .controls-bar {{
@@ -433,7 +449,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
     .search-box {{
       position: relative;
-      width: 250px;
+      width: 210px;
     }}
     .search-input {{
       width: 100%;
@@ -485,6 +501,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       outline: none;
       cursor: pointer;
       height: 36px;
+      max-width: 170px;
+      text-overflow: ellipsis;
     }}
     .market-pills {{
       display: flex;
@@ -568,42 +586,62 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       .controls-bar {{
         padding: 8px 12px;
         gap: 8px;
+        min-width: 0;
+        max-width: 100%;
       }}
       .filters-left {{
         gap: 6px;
         width: 100%;
+        min-width: 0;
+        max-width: 100%;
       }}
       .filters-right {{
         width: 100%;
-        justify-content: space-between;
+        min-width: 0;
+        max-width: 100%;
+        display: flex;
+        gap: 8px;
       }}
       .search-box {{
         width: 100%;
         flex: 1 1 100%;
+        min-width: 0;
       }}
       .search-input {{
         font-size: 16px; /* Prevents auto-zoom on iOS */
       }}
       .select-filter {{
-        font-size: 13px;
-        flex: 1 1 auto;
-        min-width: 130px;
+        font-size: 12px;
+        flex: 1 1 calc(50% - 4px);
+        min-width: 0;
+        max-width: calc(50% - 4px);
+        width: 0;
+        text-overflow: ellipsis;
       }}
       .market-pills {{
         width: 100%;
+        min-width: 0;
+        max-width: 100%;
         justify-content: space-around;
       }}
       .market-btn {{
         flex: 1;
         justify-content: center;
         padding: 4px 6px;
+        min-width: 0;
       }}
       .btn-export {{
         flex: 1;
         justify-content: center;
+        min-width: 0;
       }}
       .view-toggle {{
-        flex-shrink: 0;
+        flex: 1;
+        min-width: 0;
+      }}
+      .view-btn {{
+        flex: 1;
+        justify-content: center;
       }}
     }}
 
@@ -730,15 +768,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
     /* Badges & Pills */
     .badge {{
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      display: inline-block;
       padding: 2px 7px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: 600;
-      line-height: 1.2;
+      line-height: 1.3;
       white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
     }}
     .badge-green {{
       background: var(--green-bg);
@@ -775,13 +815,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     .cards-container {{
       flex: 1;
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
       overflow-y: auto;
+      overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       padding: 14px 16px;
     }}
     .cards-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 12px;
       max-width: 1600px;
       margin: 0 auto;
@@ -791,8 +834,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         padding: 10px;
       }}
       .cards-grid {{
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
+      }}
+      .company-card {{
+        padding: 12px;
+      }}
+      .card-metric-val {{
+        font-size: 12px;
       }}
     }}
     .company-card {{
@@ -805,6 +854,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       display: flex;
       flex-direction: column;
       gap: 8px;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
     }}
     .company-card:hover {{
       background: var(--bg-card);
@@ -823,13 +875,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     .card-header {{
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 8px;
+      min-width: 0;
     }}
     .card-ticker-group {{
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-shrink: 0;
     }}
     .card-ticker {{
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -850,7 +904,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
     .card-metrics-grid {{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 6px;
       margin-top: 4px;
     }}
@@ -860,6 +914,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       border-radius: 6px;
       padding: 6px 8px;
       min-width: 0;
+      overflow: hidden;
     }}
     .card-metric-label {{
       font-size: 10px;
@@ -874,6 +929,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       color: var(--text-main);
       margin-top: 2px;
       font-variant-numeric: tabular-nums;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }}
     .card-footer {{
       display: flex;
@@ -1719,6 +1776,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return (ccy ? ccy + ' ' : '') + Number(val).toFixed(2);
     }}
 
+    function escHtml(str) {{
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }}
+
     function renderCurrentView() {{
       if (currentTab === 'methodology') return;
       const data = sortData(getFilteredData());
@@ -1806,9 +1873,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           let cellContent = '';
 
           if (col.key === 'ticker') {{
-            cellContent = `<span class="cell-ticker">${{val}}</span>`;
+            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'company') {{
-            cellContent = `<div class="cell-company" title="${{val}}">${{val}}</div>`;
+            cellContent = `<div class="cell-company" title="${{escHtml(val)}}">${{escHtml(val)}}</div>`;
           }} else if (col.key === 'vs_par') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -1823,10 +1890,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'val_status') {{
             const bCls = val === 'Below PAR' ? 'badge-green' : (val === 'Above PAR' ? 'badge-amber' : 'badge-gray');
-            cellContent = `<span class="badge ${{bCls}}">${{val}}</span>`;
+            cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'result') {{
             const bCls = val === 'Quality pass' ? 'badge-green' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
-            cellContent = `<span class="badge ${{bCls}}">${{val}}</span>`;
+            cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'price' || col.key === 'par_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
           }} else if (col.key === 'roic_used' || col.key === 'fcf_conv') {{
@@ -1840,7 +1907,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           }} else if (col.num) {{
             cellContent = fmtNum(val);
           }} else {{
-            cellContent = val || '-';
+            cellContent = escHtml(val) || '-';
           }}
 
           trHtml += `<td class="${{col.num ? 'num' : ''}}">${{cellContent}}</td>`;
@@ -1879,13 +1946,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="card-metric-cell">
               <div class="card-metric-label">Op ROIC • Moat</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{fmtPct(c.roic_used)}} • ${{c.g3a_moat_archetype || '-'}}
+                ${{fmtPct(c.roic_used)}} • ${{escHtml(c.g3a_moat_archetype) || '-'}}
               </div>
             </div>
           `;
         }} else if (currentTab === 'qpass') {{
           const bCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
-          badgeHtml = `<span class="badge ${{bCls}}">${{c.val_status}}</span>`;
+          badgeHtml = `<span class="badge ${{bCls}}">${{escHtml(c.val_status)}}</span>`;
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
@@ -1902,23 +1969,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="card-metric-cell">
               <div class="card-metric-label">Moat & Runway</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{c.g3a_moat_archetype || '-'}} (${{c.g4_cap ? c.g4_cap + 'y' : '-'}})
+                ${{escHtml(c.g3a_moat_archetype) || '-'}} (${{c.g4_cap ? c.g4_cap + 'y' : '-'}})
               </div>
             </div>
           `;
         }} else {{
           const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
-          badgeHtml = `<span class="badge ${{bCls}}">${{c.result}}</span>`;
+          badgeHtml = `<span class="badge ${{bCls}}">${{escHtml(c.result)}}</span>`;
           metricsHtml = `
             <div class="card-metric-cell" style="grid-column: span 2;">
               <div class="card-metric-label">Gate Stage / Result</div>
               <div class="card-metric-val" style="font-size: 12px; color: ${{c.result === 'Quality pass' ? 'var(--green)' : 'var(--red)'}};">
-                ${{c.rejected_at || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : c.result)}}
+                ${{escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result))}}
               </div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Moat Archetype</div>
-              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${{c.g3a_moat_archetype || '-'}}</div>
+              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${{escHtml(c.g3a_moat_archetype) || '-'}}</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Moat Runway (CAP)</div>
@@ -1931,20 +1998,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <div class="company-card ${{isSelected ? 'selected' : ''}}" data-id="${{c.id}}" onclick="openDrawer('${{c.id}}')">
             <div class="card-header">
               <div class="card-ticker-group">
-                <span class="card-ticker">${{c.ticker}}</span>
-                <span class="badge badge-gray" style="font-size: 10px; padding: 1px 5px;">${{c.universe.toUpperCase()}}</span>
+                <span class="card-ticker">${{escHtml(c.ticker)}}</span>
+                <span class="badge badge-gray" style="font-size: 10px; padding: 1px 5px;">${{escHtml(c.universe.toUpperCase())}}</span>
               </div>
               ${{badgeHtml}}
             </div>
             <div>
-              <div class="card-company-name">${{c.company}}</div>
-              <div class="card-meta-line">${{c.country}} • ${{c.sector || ''}}</div>
+              <div class="card-company-name">${{escHtml(c.company)}}</div>
+              <div class="card-meta-line">${{escHtml(c.country)}} • ${{escHtml(c.sector || '')}}</div>
             </div>
             <div class="card-metrics-grid">
               ${{metricsHtml}}
             </div>
             <div class="card-footer">
-              <span>${{c.sub_industry || ''}}</span>
+              <span>${{escHtml(c.sub_industry || '')}}</span>
               <span class="card-footer-action">Dossier →</span>
             </div>
           </div>
