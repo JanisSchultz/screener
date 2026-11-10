@@ -213,10 +213,11 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
         else:
             g_fund = None
 
-        # Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand):
+        # Filter 2 & 4a — Bottom-Up Objective Demand & Margin Ceiling (g_demand, unfaded):
         sales_g = f("sales_cagr")
         sales_yrs = f("sales_cagr_yrs")
         g_imp_in = f("g_implied")
+        already_faded = False
         if sales_g is not None:
             top_per_share = max(0.0, sales_g) + bb_eff
             # Short 3Y statement window safeguard: when p2p_ok == 'Y', blend 3Y sales with 5Y cycle OE CAGR
@@ -227,23 +228,32 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
                 hist_demand = 0.5 * top_per_share + 0.5 * max(0.0, g)
             else:
                 hist_demand = top_per_share + 0.005
-            g_demand = round(min(hist_demand, g_imp_in) if g_imp_in is not None else hist_demand, 4)
+            g_demand = round(min(par_g_cap_default, hist_demand), 4)
+        elif g is not None:
+            g_demand = round(min(par_g_cap_default, g), 4)
+        elif g_imp_in is not None:
+            g_demand = round(max(0.02, g_imp_in), 4)
+            already_faded = True
         else:
-            fallback_target = g_imp_in if g_imp_in is not None else (g if g is not None else par_g_base)
-            if g is not None and g < par_g_turnaround:
-                fallback_target = min(fallback_target, par_g_base)
-            g_demand = round(fallback_target, 4)
+            g_demand = par_g_base
+            already_faded = True
 
         g_raw = min(g_fund, g_demand) if g_fund is not None else g_demand
 
         # Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP (par_g_base):
-        if g_raw >= par_g_base:
+        if already_faded:
+            faded_g = max(0.02, g_raw)
+        elif g_raw >= par_g_base:
             faded_g = pers * g_raw + (1.0 - pers) * par_g_base
         else:
             # Asymmetric Fade ('No Free Lunch'): low growers never fade upward
             faded_g = max(0.02, g_raw)
 
-        g_exp = min(scale_cap, faded_g)
+        # Filter 4b & Post-Fade Ceiling: Revenue Size Gravity + post-fade g_implied guardrail (never double-faded)
+        if g_imp_in is not None:
+            g_exp = min(scale_cap, faded_g, max(0.02, g_imp_in))
+        else:
+            g_exp = min(scale_cap, faded_g)
 
     if not price or not peak_eps or peak_eps <= 0 or not ml or not mh:
         return {"status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None,

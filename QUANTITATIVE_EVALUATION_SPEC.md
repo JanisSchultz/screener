@@ -120,10 +120,10 @@ Grounded in bottom-up capital reinvestment math, empirical corporate base rates,
    - **Payout-Retention Capital Math**: For all other businesses, sustainable capital-funded growth is bounded by 5-year median earnings retention $(1 - \text{Dividends}/\text{NI})$, blended Incremental/GAAP ROIC ($R_{\text{inc}}$, capturing M&A goodwill and diminishing returns), a modest zero-capital inflation pass-through allowance ($2.5\%$ for Tollbooths / $\ge 30\%$ Operating ROIC, $1.5\%$ otherwise), and recurring share dilution:
      $$g_{\text{fund}} = (1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$$
 
-3. **Filter 2 & Filter 4a — Bottom-Up Demand & Margin Ceiling ($g_{\text{demand}}$)**:
-   - Anchors per-share top-line demand to verified 3–5Y `sales_cagr` plus recurring `buyback_yield` (clamped to $[-3.0\%, +2.5\%]$).
+3. **Filter 2 & Filter 4a — Bottom-Up Objective Demand & Margin Ceiling ($g_{\text{demand}}$)**:
+   - Anchors unfaded per-share top-line demand to verified 3–5Y `sales_cagr` plus recurring `buyback_yield` (clamped to $[-3.0\%, +2.5\%]$).
    - **Short-Window Safeguard**: When statement history is $<5$ years (`sales_cagr_yrs < 5`) and `p2p_ok == "Y"`, blends 50/50 with 5Y cycle `cagr_oe_eps` if higher so 3-year post-COVID destocking troughs do not masquerade as structural stagnation.
-   - **Margin Ceiling**: Disallows perpetual operating-margin expansion (at most $+0.5\%$ mix/leverage above revenue + buybacks; blends 50/50 downward when historical Owner EPS lagged revenue + buybacks), cross-checked via $\min(\text{hist\_demand}, g_{\text{implied}})$.
+   - **Margin Ceiling**: Disallows perpetual operating-margin expansion (at most $+0.5\%$ mix/leverage above revenue + buybacks; blends 50/50 downward when historical Owner EPS lagged revenue + buybacks), capped at `par_g_cap = 12.0%` pre-fade.
 
 4. **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ Nominal GDP**:
    - Takes $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$ (bypassed only when explicit manual override `g_est` is populated) and steps down toward `par_g_base = 3.5%` over the 5–7Y PAR horizon using Gate 4 CAP weights ($w$) alongside CAP-linked growth slopes ($M_{\text{cap}}$):
@@ -135,9 +135,9 @@ Grounded in bottom-up capital reinvestment math, empirical corporate base rates,
      - For $g_{\text{raw}} \ge 0.035$: $g_{\text{faded}} = w \times g_{\text{raw}} + (1 - w) \times 0.035$.
      - For $g_{\text{raw}} < 0.035$ ("No Free Lunch"): $g_{\text{faded}} = \max(0.02, g_{\text{raw}})$.
 
-5. **Filter 4b — Revenue-Anchored Size Gravity**:
-   - Normalizes latest fiscal revenue (`sales_ttm_m`) to USD equivalent (falling back to Market Cap $\ge \$250\text{B} / \$50\text{B}$ only if revenue is absent):
-     $$g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}}, g_{\text{faded}})$$
+5. **Filter 4b & Post-Fade Guardrail — Revenue Size Gravity & `g_implied`**:
+   - Normalizes latest fiscal revenue (`sales_ttm_m`) to USD equivalent (falling back to Market Cap $\ge \$250\text{B} / \$50\text{B}$ only if revenue is absent) and cross-checks post-fade against 5–10Y `g_implied` (so `g_implied` is never faded twice):
+     $$g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}},\, g_{\text{faded}},\, g_{\text{implied}})$$
 
 6. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$) & Growth Multiple Factor**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:

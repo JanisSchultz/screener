@@ -1482,12 +1482,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <div class="metric-box">
         <strong style="color: var(--text-main);">4-Filter Credible Growth Engine (v6.30):</strong>
         <p class="formula-code">
-          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw))<br>
+          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw), g_implied)<br>
           <span style="font-size: 11px; color: var(--text-dim);">
             <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth exemption for &ge;35% Operating ROIC)<br>
-            <b>2. Demand &amp; Margin Ceiling (g_demand):</b> min(g_implied, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(disallows perpetual margin expansion)<br>
+            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(12.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(unfaded; disallows perpetual margin expansion)<br>
             <b>3. Step-Down Fade toward 3.5% GDP:</b> g_raw &ge; 3.5%: w * g_raw + (1 - w) * 3.5% &nbsp;(w = 0.75 CAP &ge;30y, 0.60 CAP &ge;20y, 0.45 CAP &ge;15y) | g_raw &lt; 3.5%: max(2.0%, g_raw)<br>
-            <b>4. Revenue Size Gravity:</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
+            <b>4. Revenue Size Gravity &amp; Post-Fade Ceiling:</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0% | bounded post-fade by g_implied
           </span>
         </p>
       </div>
@@ -2438,6 +2438,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }} else {{
           if (c.g_fund !== null && c.g_fund !== undefined) parts.push(`Supply ${{fmtPct(c.g_fund)}}`);
           if (c.g_demand !== null && c.g_demand !== undefined) parts.push(`Demand ${{fmtPct(c.g_demand)}}`);
+          if (c.g_implied !== null && c.g_implied !== undefined && c.g_exp !== null && Math.abs(c.g_exp - c.g_implied) < 0.0002) {{
+            parts.push(`5-10Y Cap ${{fmtPct(c.g_implied)}}`);
+          }}
         }}
         if (c.scale_tier) parts.push(`${{c.scale_tier}} [≤${{fmtPct(c.scale_cap)}}]`);
         scaleEl.textContent = parts.join(' · ');

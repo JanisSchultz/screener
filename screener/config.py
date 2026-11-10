@@ -556,11 +556,11 @@ CHANGELOG = {
         "(1) Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math "
         "((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing allowance + Share Dilution deduction), "
         "catching high-payout asset-heavy businesses (WM, PEP) and M&A-dilutive acquirers (BLK) without starving negative-WC or R&D compounders (COST, ASML.NL). "
-        "(2) Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors per-share demand to verified multi-year Revenue CAGR "
-        "plus net buyback yield (disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN), cross-checked against g_implied. "
+        "(2) Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors unfaded per-share demand to verified multi-year Revenue CAGR "
+        "plus net buyback yield (capped at 12.0% pre-fade, disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN). "
         "(3) Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP: Takes min(g_fund, g_demand) and steps down toward par_g_base = 3.5% "
         "over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), preserving asymmetric 'No Free Lunch' below 3.5%. "
-        "(4) Filter 4b — Revenue-Anchored Size Gravity: Switched scale tiers from Market Cap to USD Revenue (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, "
-        "< $15B Mid/Sm <= 12.0%), ending the artificial 6.5% Market-Cap cliff on mid-revenue high-multiple compounders (ISRG, IDXX).",
+        "(4) Filter 4b & Post-Fade Guardrail: Applies USD Revenue Size Gravity (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
+        "and cross-checks against post-fade g_implied (min(Scale_Cap, Faded_g, g_implied)), eliminating double-fading on GOOGL while keeping rebound caps (AENA.ES).",
     ],
 }
