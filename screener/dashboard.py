@@ -133,6 +133,18 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "cap_gap": val.get("cap_gap"),
                 "g_market": val.get("g_market"),
                 "g_gap": val.get("g_gap"),
+                "pers": val.get("pers"),
+                "g_mult": val.get("g_mult"),
+                "reinv_eff": val.get("reinv_eff"),
+                "eff_g_mult": val.get("eff_g_mult"),
+                "t_growth": val.get("t_growth"),
+                "t_hist": val.get("t_hist"),
+                "t_roic": val.get("t_roic"),
+                "raw_par": val.get("raw_par"),
+                "retention": val.get("retention"),
+                "r_inc": val.get("r_inc"),
+                "zc_pricing": val.get("zc_pricing"),
+                "bb_eff": val.get("bb_eff"),
             }
             all_companies.append(company_record)
 
@@ -158,6 +170,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
         },
         "universes": universes_meta,
         "companies": all_companies,
+        "fx_rates": C.FX_TO_USD,
         "changelog": C.CHANGELOG,
     }
 
@@ -1017,7 +1030,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       top: 0;
       right: 0;
       bottom: 0;
-      width: 680px;
+      width: 720px;
       max-width: 95vw;
       background: var(--bg-surface);
       border-left: 1px solid var(--border);
@@ -1043,6 +1056,297 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       gap: 12px;
       flex-shrink: 0;
     }}
+    /* Drawer Sub-Navigation Tabs */
+    .drawer-nav {{
+      display: flex;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      padding: 0 16px;
+      gap: 6px;
+      overflow-x: auto;
+    }}
+    .dossier-tab-btn {{
+      padding: 11px 16px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      min-height: 42px;
+    }}
+    .dossier-tab-btn:hover {{
+      color: var(--text-main);
+      background: rgba(255,255,255,0.02);
+    }}
+    .dossier-tab-btn.active {{
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }}
+    .dossier-tab-pane {{
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }}
+    .dossier-tab-pane.active {{
+      display: flex;
+    }}
+
+    /* Audit Breakdown Cards */
+    .audit-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }}
+    .audit-card-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 8px;
+    }}
+    .audit-card-title {{
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+    .binding-badge {{
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      white-space: nowrap;
+    }}
+    .binding-badge.active-constraint {{
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--amber);
+      border-color: rgba(245, 158, 11, 0.4);
+    }}
+    .audit-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+    }}
+    .audit-stat {{
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+    }}
+    .audit-stat .lbl {{
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }}
+    .audit-stat .val {{
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }}
+    .audit-stat .sub {{
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }}
+    .filter-step-box {{
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 10px;
+      background: rgba(255,255,255,0.015);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }}
+    .filter-step-box.binding {{
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.06);
+    }}
+
+    /* Sandbox Panel */
+    .sandbox-panel {{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }}
+    .sandbox-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+    }}
+    .sandbox-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }}
+    @media (max-width: 640px) {{
+      .sandbox-grid {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+    .sandbox-group {{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }}
+    .sandbox-group label {{
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+    .sandbox-group label .sb-val {{
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      font-size: 12px;
+    }}
+    .sandbox-slider {{
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      outline: none;
+      cursor: pointer;
+      margin: 4px 0;
+    }}
+    .sandbox-slider::-webkit-slider-thumb {{
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+      transition: transform 0.1s ease;
+    }}
+    .sandbox-slider::-webkit-slider-thumb:hover {{
+      transform: scale(1.15);
+    }}
+    .sandbox-input-row {{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }}
+    .sandbox-num-input {{
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-main);
+      padding: 5px 8px;
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      width: 100%;
+    }}
+    .sandbox-num-input:focus {{
+      outline: none;
+      border-color: var(--accent);
+    }}
+    .cap-btn-group {{
+      display: flex;
+      gap: 4px;
+      margin-top: 2px;
+    }}
+    .cap-pill-btn {{
+      flex: 1;
+      padding: 5px 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }}
+    .cap-pill-btn:hover {{
+      color: var(--text-main);
+      border-color: var(--accent);
+    }}
+    .cap-pill-btn.active {{
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+    }}
+
+    /* Delta Table */
+    .delta-table-card {{
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }}
+    .delta-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }}
+    .delta-table th, .delta-table td {{
+      padding: 7px 12px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-subtle);
+    }}
+    .delta-table th:first-child, .delta-table td:first-child {{
+      text-align: left;
+    }}
+    .delta-table th {{
+      background: rgba(24, 34, 52, 0.6);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      font-weight: 600;
+    }}
+    .delta-table tr:last-child td {{
+      border-bottom: none;
+    }}
+    .diff-pos {{ color: var(--green); font-weight: 700; }}
+    .diff-neg {{ color: var(--red); font-weight: 700; }}
+    .diff-neutral {{ color: var(--text-muted); }}
+
     .drawer-body {{
       padding: 24px;
       overflow-y: auto;
@@ -1510,8 +1814,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <button class="btn-close" onclick="closeDrawer()" aria-label="Close drawer">&times;</button>
     </div>
 
+    <!-- Drawer Sub-Navigation Tabs -->
+    <div class="drawer-nav">
+      <button type="button" class="dossier-tab-btn active" id="tab-btn-dossier-overview" onclick="setDossierTab('overview')">
+        <span>📋</span> Overview &amp; Dossier
+      </button>
+      <button type="button" class="dossier-tab-btn" id="tab-btn-dossier-valuation" onclick="setDossierTab('valuation')">
+        <span>🧮</span> Valuation Engine &amp; Sandbox
+      </button>
+    </div>
+
     <div class="drawer-body" id="dossier-content">
-      <!-- Waterfall Stepper -->
+      <!-- Tab Pane 1: Overview & Dossier -->
+      <div id="pane-dossier-overview" class="dossier-tab-pane active">
+        <!-- Waterfall Stepper -->
       <div class="dossier-section">
         <div class="section-title">6 Munger Reject Gates Waterfall</div>
         <div class="waterfall-stepper" id="dossier-stepper"></div>
@@ -1640,6 +1956,259 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <div id="dossier-fin-note-box" class="metric-box" style="margin-top: 10px; display: none;">
           <div class="label" style="color: var(--text-dim);">Financial Notes & Overrides</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-fin-note"></div>
+        </div>
+      </div>
+      </div> <!-- End #pane-dossier-overview -->
+
+      <!-- Tab Pane 2: Valuation Engine & Sandbox -->
+      <div id="pane-dossier-valuation" class="dossier-tab-pane">
+        <!-- Part 1: Audit Breakdown -->
+        <div class="dossier-section">
+          <div class="section-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <span>Valuation Input Audit &amp; Credibility Breakdown</span>
+            <span class="binding-badge" id="audit-binding-badge">Binding Rule</span>
+          </div>
+
+          <!-- 1. OUR CAP Audit Card -->
+          <div class="audit-card">
+            <div class="audit-card-header">
+              <span class="audit-card-title"><span>🛡️</span> 1. OUR CAP (Moat Runway) &amp; Fade Persistence</span>
+              <span class="cell-ticker" id="audit-cap-summary" style="font-size: 13px;">-</span>
+            </div>
+            <div class="audit-grid">
+              <div class="audit-stat">
+                <span class="lbl">Assigned Runway (G4)</span>
+                <span class="val" id="audit-cap-years">-</span>
+                <span class="sub" id="audit-cap-tier">-</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Fade Persistence (w)</span>
+                <span class="val" id="audit-cap-pers">-</span>
+                <span class="sub">Weight toward GDP</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Growth Slope (g_mult)</span>
+                <span class="val" id="audit-cap-gmult">-</span>
+                <span class="sub">Points per 1% g</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Market-Implied CAP</span>
+                <span class="val" id="audit-cap-market">-</span>
+                <span class="sub" id="audit-cap-gap">-</span>
+              </div>
+            </div>
+            <div class="filter-step-box">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
+                <span style="color: var(--text-dim);">Moat Archetype (G3a): <b style="color: var(--text-main);" id="audit-moat-arch">-</b></span>
+                <span style="color: var(--text-dim);">Pricing Power (G3b): <b style="color: var(--text-main);" id="audit-moat-pricing">-</b></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. EXP G 4-Filter Engine Card -->
+          <div class="audit-card">
+            <div class="audit-card-header">
+              <span class="audit-card-title"><span>📈</span> 2. Expected Growth (EXP G) — 4-Filter Engine</span>
+              <span class="val" style="color: var(--accent); font-size: 14px;" id="audit-gexp-summary">-</span>
+            </div>
+
+            <!-- Filter 1: Capital Supply Ceiling -->
+            <div class="filter-step-box" id="box-filter-supply">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 11px; color: var(--text-main);">Filter 1: Capital Supply Ceiling (g_fund)</strong>
+                <span class="val" style="font-size: 12px;" id="audit-gfund-val">-</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
+                <span>Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
+                <span>Tangible ROIC: <b id="audit-roic-val" style="color: var(--text-muted);">-</b></span>
+                <span>Incremental ROIC: <b id="audit-rinc-val" style="color: var(--text-muted);">-</b></span>
+                <span>Zero-Cap Pricing: <b id="audit-zc-val" style="color: var(--text-muted);">-</b></span>
+                <span>Buybacks / Dilution: <b id="audit-bb-val" style="color: var(--text-muted);">-</b></span>
+              </div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-supply-desc">Formula: Retention × R_inc + Zero_Cap_Pricing + Dilution_Adj</div>
+            </div>
+
+            <!-- Filter 2: Objective Demand & Margin Ceiling -->
+            <div class="filter-step-box" id="box-filter-demand">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 11px; color: var(--text-main);">Filter 2 &amp; 4a: Objective Demand Ceiling (g_demand)</strong>
+                <span class="val" style="font-size: 12px;" id="audit-gdemand-val">-</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
+                <span>Verified Sales CAGR: <b id="audit-salescagr-val" style="color: var(--text-muted);">-</b></span>
+                <span>Statement Window: <b id="audit-salesyrs-val" style="color: var(--text-muted);">-</b></span>
+                <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
+                <span>Margin Expansion Cap: <b style="color: var(--text-muted);">Max +0.5%</b></span>
+              </div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(12.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance)</div>
+            </div>
+
+            <!-- Filter 3: Step-Down Fade -->
+            <div class="filter-step-box" id="box-filter-fade">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 11px; color: var(--text-main);">Filter 3: CAP Step-Down Fade toward 3.5% Nominal GDP</strong>
+                <span class="val" style="font-size: 12px;" id="audit-fade-val">-</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
+                <span>Raw Unfaded Growth: <b id="audit-graw-val" style="color: var(--text-muted);">-</b></span>
+                <span>Nominal GDP Base: <b style="color: var(--text-muted);">3.5%</b></span>
+                <span>Fade Weight (w): <b id="audit-fadew-val" style="color: var(--text-muted);">-</b></span>
+              </div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-fade-desc">Formula: w × g_raw + (1 - w) × 3.5% (Asymmetric: g &lt; 3.5% never fades up)</div>
+            </div>
+
+            <!-- Filter 4: Revenue Size Gravity -->
+            <div class="filter-step-box" id="box-filter-gravity">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 11px; color: var(--text-main);">Filter 4b: Revenue Size Gravity &amp; Guardrails</strong>
+                <span class="val" style="font-size: 12px;" id="audit-gravity-val">-</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
+                <span>Scale Tier: <b id="audit-scaletier-val" style="color: var(--text-muted);">-</b></span>
+                <span>Revenue Size Ceiling: <b id="audit-scalecap-val" style="color: var(--text-muted);">-</b></span>
+                <span>Consensus Guardrail: <b id="audit-gimplied-val" style="color: var(--text-muted);">-</b></span>
+                <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. PAR MULT Triad Audit Card -->
+          <div class="audit-card">
+            <div class="audit-card-header">
+              <span class="audit-card-title"><span>⚖️</span> 3. PAR Multiple (Ceiling) — 3-Pillar Triad</span>
+              <span class="val" style="color: var(--accent); font-size: 14px;" id="audit-parmult-summary">-</span>
+            </div>
+            <div class="audit-grid">
+              <div class="audit-stat">
+                <span class="lbl">Pillar 1: Growth Mult</span>
+                <span class="val" id="audit-tgrowth-val">-</span>
+                <span class="sub" id="audit-tgrowth-sub">g_m × η_reinv × g_exp</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Pillar 2: Historical Mult</span>
+                <span class="val" id="audit-thist-val">-</span>
+                <span class="sub" id="audit-thist-sub">Mid 5Y Range</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Pillar 3: ROIC Mult</span>
+                <span class="val" id="audit-troic-val">-</span>
+                <span class="sub">min(35, ROIC × 100)</span>
+              </div>
+              <div class="audit-stat">
+                <span class="lbl">Raw Triad Average</span>
+                <span class="val" id="audit-rawpar-val">-</span>
+                <span class="sub">(P1 + P2 + P3) / 3</span>
+              </div>
+            </div>
+            <div class="filter-step-box">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
+                <span>Reinvestment Efficiency (&eta;): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
+                <span>5Y High Multiple (Cap): <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
+                <span>Normalized Peak EPS: <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part 2: Interactive Sensitivity Sandbox -->
+        <div class="dossier-section">
+          <div class="sandbox-panel">
+            <div class="sandbox-header">
+              <div>
+                <div class="section-title" style="margin-bottom: 2px;">Interactive "What-If" Sensitivity Sandbox</div>
+                <div style="font-size: 11px; color: var(--text-dim);">Tweak variables below to dynamically recalculate PAR Multiple, PAR Value, and 5Y IRR in real-time.</div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" onclick="resetSandboxValuation()">↺ Reset</button>
+                <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" id="btn-copy-sandbox" onclick="copySandboxOverrideJson()">📋 Copy JSON</button>
+              </div>
+            </div>
+
+            <div class="sandbox-grid">
+              <!-- Control 1: Moat Runway (CAP) -->
+              <div class="sandbox-group">
+                <label>Moat Runway (Gate 4 CAP): <span class="sb-val" id="sb-val-cap">20y</span></label>
+                <div class="cap-btn-group">
+                  <button type="button" class="cap-pill-btn" data-cap="10" onclick="setSandboxCap(10)">10y</button>
+                  <button type="button" class="cap-pill-btn" data-cap="15" onclick="setSandboxCap(15)">15y</button>
+                  <button type="button" class="cap-pill-btn" data-cap="20" onclick="setSandboxCap(20)">20y</button>
+                  <button type="button" class="cap-pill-btn" data-cap="25" onclick="setSandboxCap(25)">25y</button>
+                  <button type="button" class="cap-pill-btn" data-cap="30" onclick="setSandboxCap(30)">30y</button>
+                </div>
+              </div>
+
+              <!-- Control 2: Top-Line Sales CAGR -->
+              <div class="sandbox-group">
+                <label>Sales CAGR (Top-line): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-salescagr" min="-5" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('salescagr', this.value, '%')">
+              </div>
+
+              <!-- Control 3: Tangible Operating ROIC -->
+              <div class="sandbox-group">
+                <label>Tangible Operating ROIC: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-roic" min="5" max="60" step="0.5" value="20" oninput="onSandboxSliderChange('roic', this.value, '%')">
+              </div>
+
+              <!-- Control 4: Dividend Payout Ratio -->
+              <div class="sandbox-group">
+                <label>Dividend Payout Ratio: <span class="sb-val" id="sb-val-payout">30.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-payout" min="0" max="100" step="1" value="30" oninput="onSandboxSliderChange('payout', this.value, '%')">
+              </div>
+
+              <!-- Control 5: Buyback Yield -->
+              <div class="sandbox-group">
+                <label>Buyback Yield (Dilution if &lt; 0): <span class="sb-val" id="sb-val-bb">1.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-bb" min="-3" max="5" step="0.2" value="1" oninput="onSandboxSliderChange('bb', this.value, '%')">
+              </div>
+
+              <!-- Control 6: Peak EPS Normalization -->
+              <div class="sandbox-group">
+                <label>Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">$4.50</span></label>
+                <input type="number" class="sandbox-num-input" id="sb-input-peakeps" step="0.05" oninput="onSandboxInputChange()">
+              </div>
+
+              <!-- Control 7: 5Y Multiple Low / High -->
+              <div class="sandbox-group">
+                <label>5Y Multiple Low / High:</label>
+                <div class="sandbox-input-row">
+                  <input type="number" class="sandbox-num-input" id="sb-input-ml" placeholder="Low (e.g. 15)" step="0.5" oninput="onSandboxInputChange()">
+                  <span style="color: var(--text-dim);">-</span>
+                  <input type="number" class="sandbox-num-input" id="sb-input-mh" placeholder="High (e.g. 30)" step="0.5" oninput="onSandboxInputChange()">
+                </div>
+              </div>
+
+              <!-- Control 8: Direct Expected Growth Override -->
+              <div class="sandbox-group">
+                <label>Direct EXP G Override: <span class="sb-val" id="sb-val-gest">None</span></label>
+                <div class="sandbox-input-row">
+                  <input type="number" class="sandbox-num-input" id="sb-input-gest" placeholder="e.g. 7.5 (overrides filters)" step="0.1" oninput="onSandboxInputChange()">
+                  <button type="button" class="btn-export" style="padding: 4px 8px; font-size: 11px;" onclick="clearSandboxGest()">Clear</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scenario Impact Delta Table -->
+            <div class="delta-table-card" style="margin-top: 6px;">
+              <table class="delta-table">
+                <thead>
+                  <tr>
+                    <th>Valuation Metric</th>
+                    <th>Recorded Baseline</th>
+                    <th>Tweaked Scenario</th>
+                    <th>Variance (&Delta;)</th>
+                  </tr>
+                </thead>
+                <tbody id="sb-delta-tbody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="sb-status-box" style="padding: 10px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35);">
+              <span id="sb-status-verdict">Scenario Verdict: BELOW PAR</span>
+              <span id="sb-irr-badge" class="badge badge-green" style="font-size: 12px;">5Y IRR: 12.4%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2466,6 +3035,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       // Show drawer
+      populateValuationAudit(c);
+      initValuationSandbox(c);
+      setDossierTab(currentDossierTab);
       document.getElementById('drawer-overlay').classList.add('open');
       document.getElementById('dossier-drawer').classList.add('open');
     }}
@@ -2476,6 +3048,463 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       selectedCompanyId = null;
       document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
       document.querySelectorAll('.company-card').forEach(card => card.classList.remove('selected'));
+    }}
+
+    // --- 2nd Tab: Valuation Engine Audit & Sandbox Logic ---
+    let currentDossierTab = 'overview';
+    let sbBaseline = {{}};
+    let sbCurrent = {{}};
+
+    function setDossierTab(tab) {{
+      currentDossierTab = tab;
+      document.querySelectorAll('.dossier-tab-btn').forEach(btn => {{
+        btn.classList.toggle('active', btn.id === `tab-btn-dossier-${{tab}}`);
+      }});
+      document.querySelectorAll('.dossier-tab-pane').forEach(pane => {{
+        pane.classList.toggle('active', pane.id === `pane-dossier-${{tab}}`);
+      }});
+    }}
+
+    function populateValuationAudit(c) {{
+      // 1. OUR CAP
+      document.getElementById('audit-cap-summary').textContent = c.g4_cap ? `${{c.g4_cap}}y Runway` : 'Unassigned';
+      document.getElementById('audit-cap-years').textContent = c.g4_cap ? `${{c.g4_cap}} Years` : 'None';
+      const capTierText = c.g4_cap >= 30 ? 'Fortress (30y+)' : (c.g4_cap >= 20 ? 'Compounder (20y+)' : (c.g4_cap ? 'Standard (<20y)' : 'Unassigned'));
+      document.getElementById('audit-cap-tier').textContent = capTierText;
+      document.getElementById('audit-cap-pers').textContent = (c.pers !== null && c.pers !== undefined) ? `${{Math.round(c.pers * 100)}}%` : (c.g4_cap >= 30 ? '75%' : (c.g4_cap >= 20 ? '60%' : '45%'));
+      document.getElementById('audit-cap-gmult').textContent = (c.g_mult !== null && c.g_mult !== undefined) ? `${{Math.round(c.g_mult)}}x` : (c.g4_cap >= 30 ? '240x' : (c.g4_cap >= 20 ? '200x' : '170x'));
+      document.getElementById('audit-cap-market').textContent = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
+      document.getElementById('audit-cap-gap').textContent = `${{fmtSignedYears(c.cap_gap)}} runway margin`;
+      document.getElementById('audit-moat-arch').textContent = c.g3a_moat_archetype || 'None';
+      const pricingMap = {{ '2': 'High Pricing Power (Score 2)', '1': 'Moderate Pricing Power (Score 1)', '0': 'No Pricing Power (Score 0)' }};
+      document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
+
+      // 2. EXP G
+      document.getElementById('audit-gexp-summary').textContent = fmtPct(c.g_exp);
+      document.getElementById('audit-gfund-val').textContent = (c.g_fund !== null && c.g_fund !== undefined) ? fmtPct(c.g_fund) : 'N/A';
+      document.getElementById('audit-retention-val').textContent = (c.retention !== null && c.retention !== undefined) ? fmtPct(c.retention) : ((c.retention_rate !== null && c.retention_rate !== undefined) ? fmtPct(c.retention_rate) : '-');
+      document.getElementById('audit-roic-val').textContent = fmtPct(c.roic_operating);
+      document.getElementById('audit-rinc-val').textContent = (c.r_inc !== null && c.r_inc !== undefined) ? fmtPct(c.r_inc) : (c.roiic !== null ? fmtPct(c.roiic) : '-');
+      document.getElementById('audit-zc-val').textContent = (c.zc_pricing !== null && c.zc_pricing !== undefined) ? fmtPct(c.zc_pricing, true) : (c.g3a_moat_archetype === 'Toll booth / Switching costs' ? '+2.5%' : '+1.5%');
+      document.getElementById('audit-bb-val').textContent = fmtPct(c.buyback_yield, true);
+      document.getElementById('audit-gdemand-val').textContent = (c.g_demand !== null && c.g_demand !== undefined) ? fmtPct(c.g_demand) : 'N/A';
+      document.getElementById('audit-salescagr-val').textContent = fmtPct(c.sales_cagr);
+      document.getElementById('audit-salesyrs-val').textContent = c.sales_cagr_yrs ? `${{c.sales_cagr_yrs}} Years` : '5 Years';
+      document.getElementById('audit-oecagr-val').textContent = fmtPct(c.cagr_oe_eps);
+      const fadePers = c.pers || (c.g4_cap >= 30 ? 0.75 : (c.g4_cap >= 20 ? 0.60 : 0.45));
+      const calcFaded = (c.g_raw !== null && c.g_raw !== undefined) ? (c.g_raw >= 0.035 ? (fadePers * c.g_raw + (1.0 - fadePers) * 0.035) : Math.max(0.02, c.g_raw)) : null;
+      document.getElementById('audit-fade-val').textContent = calcFaded !== null ? fmtPct(calcFaded) : '-';
+      document.getElementById('audit-graw-val').textContent = fmtPct(c.g_raw);
+      document.getElementById('audit-fadew-val').textContent = `${{Math.round(fadePers * 100)}}%`;
+      document.getElementById('audit-gravity-val').textContent = fmtPct(c.scale_cap);
+      document.getElementById('audit-scaletier-val').textContent = c.scale_tier || 'MID/SM';
+      document.getElementById('audit-scalecap-val').textContent = fmtPct(c.scale_cap);
+      document.getElementById('audit-gimplied-val').textContent = (c.g_implied !== null && c.g_implied !== undefined) ? fmtPct(c.g_implied) : 'None';
+      document.getElementById('audit-gest-val').textContent = (c.g_est !== null && c.g_est !== undefined) ? fmtPct(c.g_est) : 'None';
+
+      // Binding Constraint
+      const boxSupply = document.getElementById('box-filter-supply');
+      const boxDemand = document.getElementById('box-filter-demand');
+      const boxFade = document.getElementById('box-filter-fade');
+      const boxGravity = document.getElementById('box-filter-gravity');
+      [boxSupply, boxDemand, boxFade, boxGravity].forEach(el => {{ if (el) el.classList.remove('binding'); }});
+
+      const badge = document.getElementById('audit-binding-badge');
+      if (c.g_est !== null && c.g_est !== undefined) {{
+        badge.textContent = `Analyst Override (${{fmtPct(c.g_est)}})`;
+        badge.className = 'binding-badge active-constraint';
+      }} else if (c.g_exp !== null && c.scale_cap !== null && Math.abs(c.g_exp - c.scale_cap) < 0.0002 && (calcFaded || 0) > c.scale_cap) {{
+        if (boxGravity) boxGravity.classList.add('binding');
+        badge.textContent = `Binding: Size Gravity (≤${{fmtPct(c.scale_cap)}})`;
+        badge.className = 'binding-badge active-constraint';
+      }} else if (c.g_implied !== null && c.g_exp !== null && Math.abs(c.g_exp - c.g_implied) < 0.0002) {{
+        if (boxGravity) boxGravity.classList.add('binding');
+        badge.textContent = `Binding: Consensus Guardrail (${{fmtPct(c.g_implied)}})`;
+        badge.className = 'binding-badge active-constraint';
+      }} else if (c.g_fund !== null && c.g_raw !== null && Math.abs(c.g_raw - c.g_fund) < 0.0002 && (c.g_demand === null || c.g_fund <= c.g_demand)) {{
+        if (boxSupply) boxSupply.classList.add('binding');
+        badge.textContent = `Binding: Capital Supply (${{fmtPct(c.g_fund)}})`;
+        badge.className = 'binding-badge active-constraint';
+      }} else if (c.g_demand !== null) {{
+        if (boxDemand) boxDemand.classList.add('binding');
+        badge.textContent = `Binding: Demand Ceiling (${{fmtPct(c.g_demand)}})`;
+        badge.className = 'binding-badge active-constraint';
+      }} else {{
+        badge.textContent = 'Formula Derived';
+        badge.className = 'binding-badge';
+      }}
+
+      // 3. PAR MULT
+      document.getElementById('audit-parmult-summary').textContent = `${{fmtNum(c.par_mult)}}x`;
+      document.getElementById('audit-tgrowth-val').textContent = (c.t_growth !== null && c.t_growth !== undefined) ? `${{fmtNum(c.t_growth)}}x` : '-';
+      document.getElementById('audit-thist-val').textContent = (c.t_hist !== null && c.t_hist !== undefined) ? `${{fmtNum(c.t_hist)}}x` : '-';
+      document.getElementById('audit-troic-val').textContent = (c.t_roic !== null && c.t_roic !== undefined) ? `${{fmtNum(c.t_roic)}}x` : '-';
+      document.getElementById('audit-rawpar-val').textContent = (c.raw_par !== null && c.raw_par !== undefined) ? `${{fmtNum(c.raw_par)}}x` : '-';
+      document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '100%';
+      document.getElementById('audit-mh-val').textContent = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? `${{fmtNum(c.mult_high_5y)}}x` : '-';
+      document.getElementById('audit-peakeps-val').textContent = fmtPrice(c.peak_eps, c.quote_currency);
+    }}
+
+    function initValuationSandbox(c) {{
+      if (!c) return;
+
+      const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : 20;
+      const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : 8.0;
+      const roic = (c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100) : ((c.roic_median || 0.18) * 100);
+
+      let payout = 30.0;
+      if (c.dividends_ttm_m !== null && c.ni_ttm_m && c.ni_ttm_m > 0) {{
+        payout = Math.max(0, Math.min(100, (c.dividends_ttm_m / c.ni_ttm_m) * 100));
+      }} else if (c.retention_rate !== null && c.retention_rate !== undefined) {{
+        payout = Math.max(0, Math.min(100, (1.0 - c.retention_rate) * 100));
+      }}
+
+      const bb = (c.buyback_yield !== null && c.buyback_yield !== undefined) ? (c.buyback_yield * 100) : 0.0;
+      const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined) ? c.peak_eps : (c.price ? c.price / 15 : 1.0);
+      const ml = (c.mult_low_5y !== null && c.mult_low_5y !== undefined) ? c.mult_low_5y : 15.0;
+      const mh = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? c.mult_high_5y : 28.0;
+      const gest = (c.g_est !== null && c.g_est !== undefined) ? (c.g_est * 100) : null;
+
+      sbBaseline = {{ cap, salescagr, roic, payout, bb, peakeps, ml, mh, gest }};
+      sbCurrent = {{ ...sbBaseline }};
+
+      syncSandboxInputs();
+      recalcSandboxValuation();
+    }}
+
+    function syncSandboxInputs() {{
+      // Update CAP Pills
+      document.querySelectorAll('.cap-pill-btn').forEach(btn => {{
+        btn.classList.toggle('active', parseInt(btn.dataset.cap, 10) === sbCurrent.cap);
+      }});
+      const capEl = document.getElementById('sb-val-cap');
+      if (capEl) capEl.textContent = `${{sbCurrent.cap}}y`;
+
+      // Sliders & value displays
+      const sCagr = document.getElementById('sb-slider-salescagr');
+      if (sCagr) {{ sCagr.value = sbCurrent.salescagr; document.getElementById('sb-val-salescagr').textContent = `${{sbCurrent.salescagr.toFixed(1)}}%`; }}
+
+      const sRoic = document.getElementById('sb-slider-roic');
+      if (sRoic) {{ sRoic.value = sbCurrent.roic; document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`; }}
+
+      const sPayout = document.getElementById('sb-slider-payout');
+      if (sPayout) {{ sPayout.value = sbCurrent.payout; document.getElementById('sb-val-payout').textContent = `${{sbCurrent.payout.toFixed(1)}}%`; }}
+
+      const sBb = document.getElementById('sb-slider-bb');
+      if (sBb) {{ sBb.value = sbCurrent.bb; document.getElementById('sb-val-bb').textContent = `${{sbCurrent.bb.toFixed(1)}}%`; }}
+
+      // Numeric inputs
+      const inPeak = document.getElementById('sb-input-peakeps');
+      if (inPeak) inPeak.value = sbCurrent.peakeps !== null ? sbCurrent.peakeps.toFixed(2) : '';
+      const inMl = document.getElementById('sb-input-ml');
+      if (inMl) inMl.value = sbCurrent.ml !== null ? sbCurrent.ml.toFixed(1) : '';
+      const inMh = document.getElementById('sb-input-mh');
+      if (inMh) inMh.value = sbCurrent.mh !== null ? sbCurrent.mh.toFixed(1) : '';
+      const inGest = document.getElementById('sb-input-gest');
+      if (inGest) inGest.value = sbCurrent.gest !== null ? sbCurrent.gest.toFixed(1) : '';
+      const valGestEl = document.getElementById('sb-val-gest');
+      if (valGestEl) valGestEl.textContent = sbCurrent.gest !== null ? `${{sbCurrent.gest.toFixed(1)}}%` : 'None';
+    }}
+
+    function setSandboxCap(cap) {{
+      sbCurrent.cap = cap;
+      document.querySelectorAll('.cap-pill-btn').forEach(btn => {{
+        btn.classList.toggle('active', parseInt(btn.dataset.cap, 10) === cap);
+      }});
+      const capEl = document.getElementById('sb-val-cap');
+      if (capEl) capEl.textContent = `${{cap}}y`;
+      recalcSandboxValuation();
+    }}
+
+    function onSandboxSliderChange(key, val, unit) {{
+      const num = parseFloat(val);
+      sbCurrent[key] = num;
+      const labelEl = document.getElementById(`sb-val-${{key}}`);
+      if (labelEl) labelEl.textContent = num.toFixed(1) + (unit || '');
+      recalcSandboxValuation();
+    }}
+
+    function onSandboxInputChange() {{
+      const pe = parseFloat(document.getElementById('sb-input-peakeps').value);
+      if (!isNaN(pe) && pe > 0) sbCurrent.peakeps = pe;
+
+      const ml = parseFloat(document.getElementById('sb-input-ml').value);
+      if (!isNaN(ml) && ml > 0) sbCurrent.ml = ml;
+
+      const mh = parseFloat(document.getElementById('sb-input-mh').value);
+      if (!isNaN(mh) && mh > 0) sbCurrent.mh = mh;
+
+      const gestVal = document.getElementById('sb-input-gest').value.trim();
+      if (gestVal === '') {{
+        sbCurrent.gest = null;
+        document.getElementById('sb-val-gest').textContent = 'None';
+      }} else {{
+        const parsedG = parseFloat(gestVal);
+        if (!isNaN(parsedG)) {{
+          sbCurrent.gest = parsedG;
+          document.getElementById('sb-val-gest').textContent = `${{parsedG.toFixed(1)}}%`;
+        }}
+      }}
+      recalcSandboxValuation();
+    }}
+
+    function clearSandboxGest() {{
+      const inGest = document.getElementById('sb-input-gest');
+      if (inGest) inGest.value = '';
+      sbCurrent.gest = null;
+      document.getElementById('sb-val-gest').textContent = 'None';
+      recalcSandboxValuation();
+    }}
+
+    function resetSandboxValuation() {{
+      sbCurrent = {{ ...sbBaseline }};
+      syncSandboxInputs();
+      recalcSandboxValuation();
+    }}
+
+    function copySandboxOverrideJson() {{
+      const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId);
+      if (!c) return;
+      const overrideObj = {{
+        ticker: c.ticker,
+        company: c.company,
+        gate_4_cap: sbCurrent.cap,
+        peak_eps_est: Math.round(sbCurrent.peakeps * 100) / 100,
+        g_est: sbCurrent.gest !== null ? Math.round(sbCurrent.gest * 10) / 1000 : null,
+        roic_est: Math.round(sbCurrent.roic * 10) / 1000,
+        sales_cagr_scenario: Math.round(sbCurrent.salescagr * 10) / 1000,
+        fin_note: `Sandbox sensitivity: CAP ${{sbCurrent.cap}}y, g ${{sbCurrent.gest !== null ? sbCurrent.gest : sbCurrent.salescagr}}%, ROIC ${{sbCurrent.roic}}%`
+      }};
+      const jsonStr = JSON.stringify(overrideObj, null, 2);
+      navigator.clipboard.writeText(jsonStr).then(() => {{
+        const btn = document.getElementById('btn-copy-sandbox');
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => {{ btn.textContent = orig; }}, 2000);
+      }}).catch(() => {{
+        prompt('Copy Override JSON:', jsonStr);
+      }});
+    }}
+
+    function recalcSandboxValuation() {{
+      const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId);
+      if (!c) return;
+
+      const price = c.price;
+      const peak_eps = sbCurrent.peakeps;
+      const ml = sbCurrent.ml;
+      const mh = sbCurrent.mh;
+      const mc = c.market_cap_m;
+      const rev = c.sales_ttm_m;
+      const fx_rate = (SCREENER_DATA.fx_rates && SCREENER_DATA.fx_rates[c.quote_currency]) || 1.0;
+
+      const rev_usd_b = (rev !== null && rev > 0) ? (rev * fx_rate) / 1000.0 : null;
+      const mc_usd_b = (mc !== null && mc > 0) ? (mc * fx_rate) / 1000.0 : 0.0;
+
+      let scale_tier = "MID/SM";
+      let scale_cap = 0.120;
+      if (rev_usd_b !== null) {{
+        if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
+        else if (rev_usd_b >= 15.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
+      }} else {{
+        if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
+        else if (mc_usd_b >= 50.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
+      }}
+
+      const fund_cap = sbCurrent.cap;
+      let pers = 0.60;
+      let g_mult = 200.0;
+      if (fund_cap !== null && fund_cap !== undefined) {{
+        if (fund_cap >= 30) {{ pers = 0.75; g_mult = 240.0; }}
+        else if (fund_cap >= 20) {{ pers = 0.60; g_mult = 200.0; }}
+        else {{ pers = 0.45; g_mult = 170.0; }}
+      }}
+
+      const bb_eff = Math.max(-0.03, Math.min(0.025, sbCurrent.bb / 100.0));
+      let g_fund = null;
+      let g_demand = null;
+      let g_raw = null;
+      let g_exp = null;
+
+      if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
+        g_raw = sbCurrent.gest / 100.0;
+        g_exp = Math.min(scale_cap, g_raw);
+      }} else {{
+        // Filter 1: Supply Ceiling
+        const retention = Math.max(0.0, Math.min(1.0, 1.0 - (sbCurrent.payout / 100.0)));
+        const roic_op = sbCurrent.roic / 100.0;
+        const roic_gaap = c.roic_median;
+        const roiic_val = c.roiic;
+        const r_cap = 0.35;
+        const is_zero_cap_tollbooth = (c.g3a_moat_archetype === "Toll booth / Switching costs" && roic_op >= r_cap);
+
+        if (is_zero_cap_tollbooth) {{
+          g_fund = Math.round(Math.max(0.0, 0.120 + Math.min(0.0, bb_eff)) * 10000) / 10000;
+        }} else {{
+          let r_inc = roic_op;
+          if (roiic_val !== null && roic_gaap !== null) {{
+            r_inc = Math.min(r_cap, 0.5 * Math.max(0.0, roiic_val) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_gaap)));
+          }} else if (roiic_val !== null) {{
+            r_inc = Math.min(r_cap, 0.5 * Math.max(0.0, roiic_val) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_op)));
+          }} else if (roic_gaap !== null) {{
+            r_inc = Math.min(r_cap, 0.5 * Math.min(r_cap, Math.max(0.0, roic_gaap)) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_op)));
+          }}
+          const zc_pricing = (c.g3a_moat_archetype === "Toll booth / Switching costs" || roic_op >= 0.30) ? 0.025 : 0.015;
+          const dilution_adj = Math.min(0.0, bb_eff);
+          g_fund = Math.round(Math.max(0.0, retention * r_inc + zc_pricing + dilution_adj) * 10000) / 10000;
+        }}
+
+        // Filter 2: Demand Ceiling
+        const sales_g = sbCurrent.salescagr / 100.0;
+        const sales_yrs = c.sales_cagr_yrs;
+        const g_oe = c.cagr_oe_eps;
+        let already_faded = false;
+
+        if (sales_g !== null && !isNaN(sales_g)) {{
+          let top_per_share = Math.max(0.0, sales_g) + bb_eff;
+          if (sales_yrs !== null && sales_yrs < 5 && c.p2p_ok === 'Y' && g_oe !== null && g_oe > top_per_share) {{
+            top_per_share = 0.5 * top_per_share + 0.5 * g_oe;
+          }}
+          const hist_demand = (g_oe !== null && g_oe < top_per_share) ? (0.5 * top_per_share + 0.5 * Math.max(0.0, g_oe)) : (top_per_share + 0.005);
+          g_demand = Math.round(Math.min(0.120, hist_demand) * 10000) / 10000;
+        }} else if (g_oe !== null) {{
+          g_demand = Math.round(Math.min(0.120, g_oe) * 10000) / 10000;
+        }} else if (c.g_implied !== null) {{
+          g_demand = Math.round(Math.max(0.02, c.g_implied) * 10000) / 10000;
+          already_faded = true;
+        }} else {{
+          g_demand = 0.035;
+          already_faded = true;
+        }}
+
+        g_raw = (g_fund !== null) ? Math.min(g_fund, g_demand) : g_demand;
+
+        // Filter 3: Fade
+        let faded_g = g_raw;
+        if (already_faded) {{
+          faded_g = Math.max(0.02, g_raw);
+        }} else if (g_raw >= 0.035) {{
+          faded_g = pers * g_raw + (1.0 - pers) * 0.035;
+        }} else {{
+          faded_g = Math.max(0.02, g_raw);
+        }}
+
+        // Filter 4: Gravity & post-fade consensus guardrail
+        if (c.g_implied !== null && c.g_implied !== undefined) {{
+          g_exp = Math.min(scale_cap, faded_g, Math.max(0.02, c.g_implied));
+        }} else {{
+          g_exp = Math.min(scale_cap, faded_g);
+        }}
+      }}
+
+      // Valuation
+      if (!price || !peak_eps || peak_eps <= 0 || !ml || !mh) return;
+
+      const cur_mult = price / peak_eps;
+      const g_val = (g_exp !== null && g_exp > 0) ? g_exp : 0.035;
+
+      const roic_bench = 0.35;
+      const roic_op = sbCurrent.roic / 100.0;
+      const roic_eff = Math.min(Math.max(roic_op, 0.05), roic_bench);
+      const g_ref = Math.min(Math.max(g_val, 0.0), scale_cap);
+      const denom = Math.max(0.10, 1.0 - g_ref / roic_bench);
+      const numer = Math.max(0.0, 1.0 - g_ref / Math.max(roic_eff, g_ref + 0.005));
+      const reinv_eff = Math.max(0.25, Math.min(1.0, numer / denom));
+
+      const eff_g_mult = g_mult * reinv_eff;
+      const t_growth = Math.min(40.0, eff_g_mult * Math.max(0.0, g_val));
+      const t_hist = Math.min(35.0, 0.5 * (ml + mh));
+      const t_roic = Math.min(roic_op * 100.0, 35.0);
+      const raw_par = (t_growth + t_hist + t_roic) / 3.0;
+      const par_mult = Math.min(raw_par, mh);
+      const par_val = par_mult * peak_eps;
+      const vs_par = price / par_val - 1.0;
+
+      const dy = (c.dividends_ttm_m || 0.0) / (mc || 1.0);
+      const irr_5y = (price > 0 && par_val > 0 && g_exp !== null) ? ((1.0 + g_exp) * Math.pow(par_val / price, 0.2) + dy - 1.0) : null;
+      const cap_implied = (fund_cap && price > 0 && par_val > 0) ? Math.round(fund_cap * (price / par_val) * 10) / 10 : null;
+      const cap_gap = (fund_cap !== null && cap_implied !== null) ? Math.round((fund_cap - cap_implied) * 10) / 10 : null;
+
+      // Populate Delta Table
+      const diffClass = (val, inv=false) => {{
+        if (val === null || isNaN(val) || Math.abs(val) < 0.0001) return 'diff-neutral';
+        const isPos = inv ? val < 0 : val > 0;
+        return isPos ? 'diff-pos' : 'diff-neg';
+      }};
+
+      const dG = (g_exp !== null && c.g_exp !== null) ? (g_exp - c.g_exp) : null;
+      const dMult = (par_mult !== null && c.par_mult !== null) ? (par_mult - c.par_mult) : null;
+      const dVal = (par_val !== null && c.par_val !== null) ? (par_val - c.par_val) : null;
+      const dVsPar = (vs_par !== null && c.vs_par !== null) ? (vs_par - c.vs_par) : null;
+      const dIrr = (irr_5y !== null && c.irr_5y !== null) ? (irr_5y - c.irr_5y) : null;
+      const dCap = (fund_cap !== null && c.g4_cap !== null) ? (fund_cap - c.g4_cap) : null;
+      const dCapGap = (cap_gap !== null && c.cap_gap !== null) ? (cap_gap - c.cap_gap) : null;
+
+      const deltaRows = [
+        `<tr>
+          <td>Expected Growth (EXP G)</td>
+          <td>${{fmtPct(c.g_exp)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_exp)}}</td>
+          <td class="${{diffClass(dG)}}">${{dG !== null ? fmtPct(dG, true) : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>PAR Multiple (Ceiling)</td>
+          <td>${{c.par_mult !== null ? fmtNum(c.par_mult) + 'x' : '-'}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{par_mult !== null ? fmtNum(par_mult) + 'x' : '-'}}</td>
+          <td class="${{diffClass(dMult)}}">${{dMult !== null ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>Fundamental PAR Value</td>
+          <td>${{fmtPrice(c.par_val, c.quote_currency)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPrice(par_val, c.quote_currency)}}</td>
+          <td class="${{diffClass(dVal)}}">${{dVal !== null ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>Margin vs PAR (Price / PAR - 1)</td>
+          <td>${{fmtPct(c.vs_par, true)}} (${{c.vs_par <= 0 ? 'Below' : 'Above'}})</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(vs_par, true)}} (${{vs_par <= 0 ? 'Below' : 'Above'}})</td>
+          <td class="${{diffClass(dVsPar, true)}}">${{dVsPar !== null ? fmtPct(dVsPar, true) : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>5-Year Expected IRR</td>
+          <td>${{fmtPct(c.irr_5y)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(irr_5y)}}</td>
+          <td class="${{diffClass(dIrr)}}">${{dIrr !== null ? fmtPct(dIrr, true) : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>Our Moat Runway (CAP)</td>
+          <td>${{c.g4_cap ? c.g4_cap + 'y' : '-'}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fund_cap ? fund_cap + 'y' : '-'}}</td>
+          <td class="${{diffClass(dCap)}}">${{dCap !== null ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>Runway Margin of Safety</td>
+          <td>${{fmtSignedYears(c.cap_gap)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtSignedYears(cap_gap)}}</td>
+          <td class="${{diffClass(dCapGap)}}">${{dCapGap !== null ? fmtSignedYears(dCapGap) : '-'}}</td>
+        </tr>`
+      ];
+
+      document.getElementById('sb-delta-tbody').innerHTML = deltaRows.join('');
+
+      // Status Box Verdict
+      const sbBox = document.getElementById('sb-status-box');
+      const sbVerdict = document.getElementById('sb-status-verdict');
+      const sbIrrBadge = document.getElementById('sb-irr-badge');
+
+      if (vs_par <= 0) {{
+        sbBox.style.background = 'rgba(16, 185, 129, 0.15)';
+        sbBox.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+        sbVerdict.innerHTML = `<span style="color: var(--green);">✓ Scenario Verdict: BELOW PAR (${{fmtPct(vs_par, true)}}) — Buyable Quality Funnel</span>`;
+        sbIrrBadge.className = 'badge badge-green';
+        sbIrrBadge.textContent = `5Y IRR: ${{fmtPct(irr_5y)}}`;
+      }} else {{
+        sbBox.style.background = 'rgba(244, 63, 94, 0.15)';
+        sbBox.style.borderColor = 'rgba(244, 63, 94, 0.35)';
+        sbVerdict.innerHTML = `<span style="color: var(--red);">✕ Scenario Verdict: ABOVE PAR (${{fmtPct(vs_par, true)}}) — Fully Valued / Overpriced</span>`;
+        sbIrrBadge.className = 'badge badge-red';
+        sbIrrBadge.textContent = `5Y IRR: ${{fmtPct(irr_5y)}}`;
+      }}
     }}
 
     // Export Table as CSV

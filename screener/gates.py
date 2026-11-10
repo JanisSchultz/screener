@@ -172,6 +172,9 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     # 4-Filter Credible Growth Engine (v6.30):
     bb_raw = f("buyback_yield")
     bb_eff = max(-0.03, min(0.025, bb_raw)) if bb_raw is not None else 0.0
+    retention = None
+    r_inc = None
+    zc_pricing = None
 
     if f("g_est") is not None:
         # Explicit analyst override bypasses automated supply/demand/fade filters, bounded by Size Gravity
@@ -262,7 +265,11 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
                 "g_imp": g_exp, "imp_coupon": (g_exp + dy) if g_exp is not None else None, "irr_5y": None,
                 "cap_implied": None, "cap_gap": None, "g_market": None, "g_gap": None,
                 "scale_tier": scale_tier, "scale_cap": scale_cap,
-                "g_fund": g_fund, "g_demand": g_demand, "g_raw": g_raw}
+                "g_fund": g_fund, "g_demand": g_demand, "g_raw": g_raw,
+                "fund_cap": fund_cap, "pers": pers, "g_mult": g_mult,
+                "reinv_eff": 1.0, "eff_g_mult": g_mult,
+                "t_growth": None, "t_hist": None, "t_roic": None, "raw_par": None,
+                "retention": retention, "r_inc": r_inc, "zc_pricing": zc_pricing, "bb_eff": bb_eff}
     cur_mult = price / peak_eps
     g_val = g_exp if (g_exp is not None and g_exp > 0) else par_g_base
 
@@ -317,4 +324,17 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
         "g_fund": g_fund,
         "g_demand": g_demand,
         "g_raw": g_raw,
+        "fund_cap": fund_cap,
+        "pers": pers,
+        "g_mult": g_mult,
+        "reinv_eff": reinv_eff,
+        "eff_g_mult": eff_g_mult,
+        "t_growth": t_growth,
+        "t_hist": t_hist,
+        "t_roic": t_roic,
+        "raw_par": raw_par,
+        "retention": retention,
+        "r_inc": r_inc,
+        "zc_pricing": zc_pricing,
+        "bb_eff": bb_eff,
     }
