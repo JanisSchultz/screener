@@ -207,7 +207,7 @@ PARAMETER_GROUPS = [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
         ("par_g_cap", "Max sustainable forward growth rate (Mauboussin 75-year large-cap ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth at 12.0% based on empirical regression data (Ex. 18/19)."),
-        ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.07, "0.0%", NEW + " Empirical baseline large-cap growth rate (7.0%)."),
+        ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.06, "0.0%", NEW + " Post-ZIRP normalized baseline large-cap growth rate (6.0%)."),
         ("par_fade_cap30", "Mauboussin growth persistence for Gate 4 CAP >= 30 years (fortress moats/monopolies)", 0.25, "0.00", NEW + " Slower autoregressive fade for ultra-long runway compounders."),
         ("par_fade_cap20", "Mauboussin growth persistence for Gate 4 CAP >= 20 years (standard quality compounders)", 0.15, "0.00", NEW + " Empirical 75-year market-wide autoregressive baseline."),
         ("par_fade_cap15", "Mauboussin growth persistence for Gate 4 CAP >= 15 years (shorter runway / higher transition risk)", 0.10, "0.00", NEW + " Faster autoregressive fade towards baseline."),
@@ -514,5 +514,13 @@ CHANGELOG = {
         "(3) Multiplicative Reinvestment Efficiency (eta_reinv): Scaled Pillar 1 growth credit by free-cash-flow payout capacity "
         "(1 - g_exp / ROIC) relative to the 35% ROIC capital-light standard (clamped to [0.25, 1.00]), preserving full credit for "
         "35%+ ROIC compounders while penalizing capital-heavy growers (ALC.CH, EQT.SE, LUND B.SE) and maintaining exact closed-form g_market inversion.",
+    ],
+    "6.28": [
+        "Asymmetric Mauboussin Growth Engine & 6.0% Post-ZIRP Base Anchor (par_g_base = 0.06): "
+        "(1) Post-ZIRP Base Anchor: Lowered mature large-cap base rate anchor par_g_base from 7.0% to 6.0%, "
+        "reflecting normalized long-term nominal GDP growth (~4.0%-4.5%) plus sustainable share repurchase accretion. "
+        "(2) Asymmetrical Fade ('No Free Lunch' Rule): Stagnant franchises with historical cycle CAGR below 6.0% (g < 0.06) "
+        "are anchored to their actual historical track record (max(2.0%, g)) rather than receiving an artificial upward boost "
+        "towards the base rate. High-growth franchises (g >= 0.06) continue to fade downward based on Gate 4 CAP persistence (lambda).",
     ],
 }

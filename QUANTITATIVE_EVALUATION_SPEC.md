@@ -108,7 +108,7 @@ To prevent accounting distortions from penalizing capital-light compounders:
 
 Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persistence research (*Counterpoint Global, April 2026*) and McKinsey's Value Driver formula:
 1. **Core Growth Parameters**:
-   - `par_g_base = 0.07` (7.0% mature large-cap base rate anchor).
+   - `par_g_base = 0.06` (6.0% mature large-cap post-ZIRP baseline anchor).
    - `par_g_cap = 0.12` (12.0% empirical ceiling for through-the-cycle large-cap EPS growth; even top-quintile $>44\%$ historical growers regress to a 13.3% median within 3 years).
 2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$) & Growth Slope ($M_{\text{cap}}$)**:
    Both the autoregressive persistence coefficient $\lambda$ and the Pillar 1 growth multiple slope $M_{\text{cap}}$ link directly to Gate 4 Runway CAP:
@@ -116,12 +116,15 @@ Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persi
    - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT): $\lambda = 0.15$ (`par_fade_cap20`) and $M_{\text{cap}} = 200.0$ (`par_g_mult_cap20`, $2.0\text{x}$ turns per $1\%$ growth).
    - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$ (`par_fade_cap15`) and $M_{\text{cap}} = 170.0$ (`par_g_mult_cap15`, $1.7\text{x}$ turns per $1\%$ growth).
    - **Fallback / Unpopulated**: $\lambda = 0.15$ (`par_fade_default`) and $M_{\text{cap}} = 200.0$ (`par_g_mult_default`).
-3. **Growth Hierarchy**:
+3. **Growth Hierarchy & Asymmetric Fade ("No Free Lunch" Rule)**:
    - If analyst override `g_est` is populated $\rightarrow g_{\text{exp}} = g_{\text{est}}$.
    - Else if bottom-up estimate `g_implied` (or `g_exp`) is populated $\rightarrow g_{\text{exp}} = \min(\text{par\_g\_cap}, g_{\text{implied}})$.
-   - Else apply the **Mauboussin CAP-Linked Fade Formula** to historical cycle CAGR $g$:
-     $$g_{\text{exp}} = \min\left(0.12, \max\left(0.02, \lambda \times (\max(0, g) - 0.07) + 0.07\right)\right)$$
-   - Fallback: $g_{\text{exp}} = 0.07$ (7.0%).
+   - Else apply the **Mauboussin Asymmetric CAP-Linked Fade Formula** to historical cycle CAGR $g$:
+     - For $g \ge 0.06$ (High Growth): Fades downward towards the 6.0% base rate:
+       $$g_{\text{exp}} = \min\left(0.12, \lambda \times (g - 0.06) + 0.06\right)$$
+     - For $g < 0.06$ (Slow Growth): Anchored to actual historical CAGR (never faded up):
+       $$g_{\text{exp}} = \max(0.02, g)$$
+   - Fallback: $g_{\text{exp}} = 0.06$ (6.0%).
 4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$) & Growth Multiple Factor**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$

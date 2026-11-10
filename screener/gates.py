@@ -114,7 +114,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     par_roic_cap = (p or {}).get("par_roic_cap", 35.0)
     par_hist_cap = (p or {}).get("par_hist_cap", 35.0)
     par_g_cap = (p or {}).get("par_g_cap", 0.12)
-    par_g_base = (p or {}).get("par_g_base", 0.07)
+    par_g_base = (p or {}).get("par_g_base", 0.06)
     par_fade_cap30 = (p or {}).get("par_fade_cap30", 0.25)
     par_fade_cap20 = (p or {}).get("par_fade_cap20", 0.15)
     par_fade_cap15 = (p or {}).get("par_fade_cap15", 0.10)
@@ -148,7 +148,10 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     elif f("g_implied") is not None:
         g_exp = min(par_g_cap, f("g_implied"))
     elif g is not None:
-        g_exp = min(par_g_cap, max(0.02, pers * (max(0.0, g) - par_g_base) + par_g_base))
+        if g >= par_g_base:
+            g_exp = min(par_g_cap, pers * (g - par_g_base) + par_g_base)
+        else:
+            g_exp = max(0.02, g)
     else:
         g_exp = par_g_base
 

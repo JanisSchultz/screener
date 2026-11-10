@@ -1469,9 +1469,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </p>
       </div>
       <div class="metric-box">
-        <strong style="color: var(--text-main);">Mauboussin CAP-Linked Growth Engine:</strong>
+        <strong style="color: var(--text-main);">Mauboussin Asymmetric CAP-Linked Growth Engine:</strong>
         <p class="formula-code">
-          Expected g (g_exp) = min(12.0%, max(2.0%, &lambda; * (Hist_g - 7.0%) + 7.0%))<br>
+          Hist_g &ge; 6.0%: Expected g (g_exp) = min(12.0%, &lambda; * (Hist_g - 6.0%) + 6.0%)<br>
+          Hist_g &lt; 6.0%: Expected g (g_exp) = max(2.0%, Hist_g) &nbsp;<span style="color:var(--text-dim);">(No Free Lunch: low growth never faded up)</span><br>
           <span style="font-size: 11px; color: var(--text-dim);">&lambda; linked to Gate 4 CAP: 0.25 (CAP &ge; 30y), 0.15 (CAP &ge; 20y), 0.10 (CAP &ge; 15y)</span>
         </p>
       </div>

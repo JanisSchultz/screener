@@ -38,31 +38,31 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.p = params({})
 
     def test_cap_30_persistence_lambda_025(self):
-        # g = 15%, base = 7%, lambda = 0.25 -> 0.25 * (0.15 - 0.07) + 0.07 = 0.02 + 0.07 = 0.09 (9.0%)
+        # g = 15%, base = 6%, lambda = 0.25 -> 0.25 * (0.15 - 0.06) + 0.06 = 0.0225 + 0.06 = 0.0825 (8.25%)
         fin = sample_fin(cagr_oe_eps=0.15)
         val = par_valuation(fin, self.p, cap=30)
-        self.assertAlmostEqual(val["g_exp"], 0.09, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0825, places=4)
         self.assertAlmostEqual(val["g_imp"], val["g_exp"])
         self.assertEqual(val["exp_coupon"], val["imp_coupon"])
 
     def test_cap_20_persistence_lambda_015(self):
-        # g = 15%, base = 7%, lambda = 0.15 -> 0.15 * (0.15 - 0.07) + 0.07 = 0.012 + 0.07 = 0.082 (8.2%)
+        # g = 15%, base = 6%, lambda = 0.15 -> 0.15 * (0.15 - 0.06) + 0.06 = 0.0135 + 0.06 = 0.0735 (7.35%)
         fin = sample_fin(cagr_oe_eps=0.15)
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_exp"], 0.082, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0735, places=4)
         self.assertAlmostEqual(val["g_imp"], val["g_exp"])
 
     def test_cap_15_persistence_lambda_010(self):
-        # g = 15%, base = 7%, lambda = 0.10 -> 0.10 * (0.15 - 0.07) + 0.07 = 0.008 + 0.07 = 0.078 (7.8%)
+        # g = 15%, base = 6%, lambda = 0.10 -> 0.10 * (0.15 - 0.06) + 0.06 = 0.009 + 0.06 = 0.069 (6.90%)
         fin = sample_fin(cagr_oe_eps=0.15)
         val = par_valuation(fin, self.p, cap=15)
-        self.assertAlmostEqual(val["g_exp"], 0.078, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0690, places=4)
         self.assertAlmostEqual(val["g_imp"], val["g_exp"])
 
     def test_unpopulated_cap_falls_back_to_default_lambda_015(self):
         fin = sample_fin(cagr_oe_eps=0.15)
         val = par_valuation(fin, self.p, cap=None)
-        self.assertAlmostEqual(val["g_exp"], 0.082, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0735, places=4)
 
     def test_analyst_override_g_est_precedes_cap_formula(self):
         fin = sample_fin(cagr_oe_eps=0.15, g_est=0.11)
@@ -76,20 +76,25 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertEqual(val["g_exp"], 0.095)
         self.assertEqual(val["g_imp"], 0.095)
 
-    def test_negative_cagr_floored_at_zero_inside_regression(self):
-        # g = -0.10 -> max(0, -0.10) = 0.0 -> lambda * (0 - 0.07) + 0.07
-        # For lambda=0.25: 0.25 * (-0.07) + 0.07 = -0.0175 + 0.07 = 0.0525 (5.25%)
-        # For lambda=0.15: 0.15 * (-0.07) + 0.07 = -0.0105 + 0.07 = 0.0595 (5.95%)
-        fin_neg = sample_fin(cagr_oe_eps=-0.10)
-        val30 = par_valuation(fin_neg, self.p, cap=30)
-        self.assertAlmostEqual(val30["g_exp"], 0.0525, places=4)
+    def test_asymmetric_low_growth_not_faded_up(self):
+        # g = 3.5% < 6.0% -> no free lunch! Kept at 3.5%, NOT faded up to 6%
+        fin_low = sample_fin(cagr_oe_eps=0.035)
+        val30 = par_valuation(fin_low, self.p, cap=30)
+        val20 = par_valuation(fin_low, self.p, cap=20)
+        val15 = par_valuation(fin_low, self.p, cap=15)
+        self.assertAlmostEqual(val30["g_exp"], 0.035, places=4)
+        self.assertAlmostEqual(val20["g_exp"], 0.035, places=4)
+        self.assertAlmostEqual(val15["g_exp"], 0.035, places=4)
 
-        val20 = par_valuation(fin_neg, self.p, cap=20)
-        self.assertAlmostEqual(val20["g_exp"], 0.0595, places=4)
+    def test_negative_cagr_floored_at_two_percent(self):
+        # g = -0.10 -> floored at 2.0%
+        fin_neg = sample_fin(cagr_oe_eps=-0.10)
+        val = par_valuation(fin_neg, self.p, cap=30)
+        self.assertAlmostEqual(val["g_exp"], 0.02, places=4)
 
     def test_hypergrowth_capped_at_par_g_cap_12_pct(self):
         # Even with 60% historical CAGR and CAP 30 (lambda 0.25):
-        # 0.25 * (0.60 - 0.07) + 0.07 = 0.1325 + 0.07 = 0.2025 -> capped at 0.12 (12%)
+        # 0.25 * (0.60 - 0.06) + 0.06 = 0.135 + 0.06 = 0.195 -> capped at 0.12 (12%)
         fin = sample_fin(cagr_oe_eps=0.60)
         val = par_valuation(fin, self.p, cap=30)
         self.assertEqual(val["g_exp"], 0.12)

@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.27 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.28 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,10 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.28: Asymmetric Mauboussin Growth Engine & 6.0% Post-ZIRP Base Anchor (par_g_base = 0.06):
+- Post-ZIRP Base Anchor (6.0%): Lowered mature large-cap base rate anchor par_g_base from 7.0% to 6.0%, reflecting normalized long-term nominal GDP growth (~4.0%-4.5%) plus sustainable share repurchase accretion.
+- Asymmetrical Fade ('No Free Lunch' Rule): Stagnant franchises with historical cycle CAGR below 6.0% (g < 0.06) are anchored to their actual historical track record (max(2.0%, g)) rather than receiving an artificial upward boost towards the base rate. High-growth franchises (g >= 0.06) continue to fade downward based on Gate 4 CAP persistence (lambda).
 
 v6.27: By-the-Book PAR Valuation Refinements (Pillar 2 Cap, CAP Growth Slope & Multiplicative Reinvestment Efficiency):
 - Pillar 2 Historical Midpoint Cap (par_hist_cap = 35.0): Capped t_hist = min(35.0, 0.5 * (mult_low_5y + mult_high_5y)) symmetric with par_roic_cap = 35.0, preventing 2021 ZIRP bubble peaks and depressed-denominator years from inflating PAR above fundamental value (CFR.CH, SAF.FR, LUND B.SE) or driving g_market negative.
