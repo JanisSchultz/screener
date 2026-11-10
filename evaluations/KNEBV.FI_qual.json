@@ -1,0 +1,30 @@
+{
+  "id": "KNEBV.FI",
+  "ticker": "KNEBV",
+  "universe": "eu",
+  "company": "KONE Oyj",
+  "country": "Finland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global vertical transit oligopoly with an installed base of 1.8M units. Safety regulations, proprietary elevator controls, and dense technician routes create enormous switching costs, enabling consistent inflation-plus pricing on service annuities.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier global elevator and escalator maintenance monopoly with 1.8M installed units under service, negative working capital, net cash fortress balance sheet, and 38% ROIC. [5-10Y g: maintenance base volume 3.5% + service contract pricing 2.0% + modernization surge 2.5% - China new equipment drag 1.0% + bolt-on M&A 0.5%]",
+    "evidence": "38% 5-year median GAAP ROIC, operating ROIC >100%, and 100%+ multi-year FCF conversion. Maintenance service (+7.6%) and Modernization (+17.4%) drive high-margin recurring growth, offsetting Chinese new equipment slowdown. Long-term controlling ownership by the Herlin family."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

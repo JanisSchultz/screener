@@ -1,0 +1,30 @@
+{
+  "id": "RKLB",
+  "ticker": "RKLB",
+  "universe": "us",
+  "company": "Rocket Lab USA, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability: Reject Standard a). Pre-profit, capital-intensive space launch and satellite systems business model lacking an established economic engine or multi-cycle profitable operating track record. The company remains deeply unprofitable (net losses of -$190.2M in FY2024 and -$198.2M in FY2025) with accelerating negative free cash flow (-$116.0M in FY2024, -$321.8M in FY2025) to fund massive capex and R&D for the unproven Neutron medium-lift rocket program. Long-term commercial unit economics are highly speculative and face severe competitive pressure from SpaceX.",
+    "evidence": "Multi-cycle track record: Completed de-SPAC in August 2021 and has never generated positive GAAP operating profit, net income, or free cash flow in any fiscal year. FY2024 revenue of $436.2M (+78% YoY) resulted in an operating loss of -$181.7M, net loss of -$190.2M, and negative FCF of -$116.0M. FY2025 revenue reached $601.8M (+38% YoY), yet net losses remained heavy at -$198.2M and negative FCF expanded to -$321.8M due to capital expenditure scaling for Neutron launch infrastructure and Archimedes engine development. Segment breakdown: Space Systems represents ~70% of revenue (satellite buses, separation systems, solar power, reaction wheels) and Launch Services represents ~30% (Electron small rocket). Small dedicated launch offers limited pricing power and operating leverage. Capital structure: Persistently reliant on external capital market funding ('kindness of strangers'), including $355M of convertible debt due 2029 and ongoing equity dilution. Consistently negative ROIC and absence of proven cash-generative economic engine trigger immediate Gate 1 rejection."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

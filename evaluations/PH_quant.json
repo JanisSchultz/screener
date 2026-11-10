@@ -1,0 +1,43 @@
+{
+  "id": "PH",
+  "ticker": "PH",
+  "universe": "us",
+  "company": "Parker-Hannifin Corporation",
+  "price": 917.79,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Global motion and control powerhouse transformed by The Win Strategy 3.0 into a high-margin compounder. Operating ROIC normalized to 35.0% cap to reflect tangible capital economics (>100% tangible ROIC) neutralizing $18.1B of Meggitt acquisition goodwill and intangible amortization. FY25 peak Owner EPS of $32.22 represents clean operational cash generation with zero non-cash spikes and 106.3% FCF conversion ($3.73B Owner FCF). Rapid post-acquisition deleveraging has reduced LT debt to $7.47B ($501M cash), yielding net debt/NI of 2.05x and robust 12.64x EBIT interest coverage ($5.07B EBIT vs $401M interest). 5-10Y through-the-cycle EPS growth of 9.0% is anchored by commercial/defense aerospace ramp (4.0%), factory automation and AI data center liquid thermal cooling systems (2.0%), Win Strategy value-based pricing realization (2.0%), and net share buybacks (1.0%). Fundamental 3-Pillar PAR Multiple of 25.54x (well below the 29.66x cycle-high guardrail) establishes a fair PAR Value of $822.82. At current price of $917.79 (28.49x Peak OE), PH trades 11.5% Above PAR, offering a reliable business coupon but a moderate 5Y expected IRR of 7.45% due to pull-to-PAR multiple mean reversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 32.217,
+    "current_multiple": 28.49,
+    "par_multiple": 25.54,
+    "par_value": 822.82,
+    "percent_vs_par": 0.1154,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0081,
+    "expected_irr_5y": 0.0745,
+    "market_implied_cap": 22.3,
+    "moat_runway_margin": -2.3,
+    "market_implied_growth": 0.1342,
+    "growth_margin_of_safety": -0.0442
+  },
+  "health_checks": {
+    "net_debt_years": 2.05,
+    "net_debt_ok": true,
+    "interest_coverage": 12.64,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0629,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

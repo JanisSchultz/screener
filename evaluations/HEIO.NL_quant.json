@@ -1,0 +1,43 @@
+{
+  "id": "HEIO.NL",
+  "ticker": "HEIO",
+  "universe": "eu",
+  "company": "Heineken Holding",
+  "price": 80.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting 50.005% look-through ownership of Heineken N.V. with negligible standalone debt or holding overhead. 5-10Y forward growth of 5.0% mirrors operating company guidance [look-through volume 1.5% + price/mix 2.5% + premium/0.0% mix 1.0% - margin drag 0.5% + holding yield 0.5%]. PAR multiple capped at 5Y cycle high guardrail (15.99x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.6098,
+    "current_multiple": 14.26,
+    "par_multiple": 15.99,
+    "par_value": 89.7,
+    "percent_vs_par": -0.1081,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.024,
+    "expected_irr_5y": 0.0983,
+    "market_implied_cap": 13.4,
+    "moat_runway_margin": 1.6,
+    "market_implied_growth": -0.0287,
+    "growth_margin_of_safety": 0.0787
+  },
+  "health_checks": {
+    "net_debt_years": 13.45,
+    "net_debt_ok": false,
+    "interest_coverage": 5.65,
+    "interest_cov_ok": true,
+    "fcf_conversion": 2.52,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

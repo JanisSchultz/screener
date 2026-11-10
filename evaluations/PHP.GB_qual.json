@@ -1,0 +1,30 @@
+{
+  "id": "PHP.GB",
+  "ticker": "PHP",
+  "universe": "eu",
+  "company": "Primary Health Properties",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Health Care REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Indispensable UK primary healthcare facilities backed by NHS GP tenant reimbursements; unlevered ROIC of 4-5% fails 12% hurdle, and rental growth is strictly tethered to NHS District Valuer budgetary agreements rather than pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 4.5%, REJECT). NHS-backed GP surgery portfolio provides secure rental cash flows but delivers sub-5% unlevered ROIC. Rent growth is constrained by government District Valuer budgets and fails to beat inflation.",
+    "evidence": "Primary Health Properties holds ~500 primary healthcare facilities valued at £2.8B across the UK and Ireland with 99%+ occupancy and ~10-year WAULT. Over 89% of rent roll is funded directly or indirectly by the NHS/HSE. However, portfolio net initial yield is ~5.2%, resulting in GAAP ROIC of 4-5% (well below the 12% hurdle). Net debt/EBITDA is elevated at ~9.3x-9.4x (net debt ~£1.3B, LTV ~48%). Rental growth reviews average 1.5-2.5% p.a., lagging inflation spikes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "SHL.DE",
+  "ticker": "SHL",
+  "universe": "eu",
+  "company": "Siemens Healthineers",
+  "price": 44.66,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to the 35.0% cap neutralizing €23.9B in Varian merger goodwill and acquired intangibles (GAAP ROIC 13.21%). Forward 5-10Y compound growth of 7.5% driven by 4.5% advanced imaging (MRI/CT) and radiation oncology volume, 1.5% photon-counting CT technology premium and service contract price-mix, and 1.5% operational leverage and Varian integration synergies. 97.5% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.2425,
+    "current_multiple": 19.92,
+    "par_multiple": 23.4,
+    "par_value": 52.47,
+    "percent_vs_par": -0.1489,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0224,
+    "expected_irr_5y": 0.1326,
+    "market_implied_cap": 12.8,
+    "moat_runway_margin": 2.2,
+    "market_implied_growth": 0.0228,
+    "growth_margin_of_safety": 0.0522
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 8.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.97,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

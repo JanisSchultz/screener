@@ -1,0 +1,30 @@
+{
+  "id": "SRT3.DE",
+  "ticker": "SRT3",
+  "universe": "eu",
+  "company": "Sartorius",
+  "country": "Germany",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Validated bioprocess consumables (single-use bioreactor bags, sterile filters, chromatography media) embedded into regulatory biologic drug filings create insurmountable customer switching barriers and high cycle-average ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management = 0, REJECT). World-class bioprocess consumable franchise with deep regulatory switching costs, but management committed severe capital allocation errors: debt-financing the €2.4B Polyplus acquisition at top-of-cycle multiples, blowing leverage past 4.5x EBITDA, and diluting shareholders with a €1B emergency equity raise.",
+    "evidence": "Gross margins exceed 50% with high recurring single-use consumable mix. However, management overleveraged the company into the bioprocess downturn via €2.4B Polyplus deal (€3B bond issuance at 4.4-4.9%), driving net debt/EBITDA >4.5x in 2023 and triggering a dilutive €1B equity capital increase in Q1 2024."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "5",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

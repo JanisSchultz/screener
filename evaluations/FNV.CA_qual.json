@@ -1,0 +1,30 @@
+{
+  "id": "FNV.CA",
+  "ticker": "FNV",
+  "universe": "ca",
+  "company": "Franco-Nevada",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Gold",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (gold and precious metals royalties/streams) lacking essential Western utility; vulnerable to partner mine expropriation and commodity spot cycles.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Franco-Nevada operates an asset-light gold and precious metals royalty/streaming model, but its underlying economic exposure is pure price-taking on speculative commodities (gold, silver, oil/gas). Lacks essential Western consumer utility, and cash flows remain vulnerable to partner mine expropriations and political shutdowns in developing jurisdictions (e.g., Cobre Panama $1.17B impairment). Downstream gates bypassed per waterfall.",
+    "evidence": "Franco-Nevada generates >85% of revenue from precious metals (primarily gold and silver). It sells delivered physical ounces into spot bullion markets with zero independent pricing power. The late-2023 shutdown of its premier streaming asset, Cobre Panama, resulting in a $1.17B impairment to zero, demonstrated severe asset-concentration and rule-of-law risks in foreign mining jurisdictions. Historical GAAP ROIC fluctuates with metal price cycles (5Y median ~8-11%), failing the 12% compounder hurdle across full cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

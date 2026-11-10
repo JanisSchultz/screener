@@ -1,0 +1,31 @@
+{
+  "id": "NWSA",
+  "ticker": "NWSA / NWS",
+  "universe": "us",
+  "company": "News Corp",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Publishing",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Crown jewels Dow Jones (WSJ Lindy brand, B2B Risk & Compliance, and OPIS energy/chemical benchmarks with >90% retention) and 61%-owned REA Group (~61% EBITDA margin Australian property portal network effect) generate ~77% of pre-corporate Segment EBITDA ($1,404M of $1,830M in FY2026). However, News Corp fails Gate 3b empirically on both consolidated capital efficiency and group-wide pricing power: (1) 10-year GAAP ROIC ranged from 2.84% to 7.82% (FY2022-FY2026 5Y median 5.90%), reaching only ~7.8%-8.2% in peak FY2026 even after divesting Foxtel (April 2025); (2) continuing EBIT barely moved from $981M (FY2022) to $1,029M (FY2026) despite ~$1.45B spent on OPIS/Base Chemicals (2022) and ~$407M-$426M annual CapEx, showing weak incremental ROIIC; and (3) ~57% of FY2026 revenue ($5,125M across News Media $2,227M, Book Publishing $2,288M, and Move/Realtor.com $610M) lacks pricing power >= inflation without volume/share loss. Primary erosion threats: secular print circulation and ad decay plus AI search disintermediation in News Media; Amazon buyer power in trade books; and intensifying property portal rivalry via CoStar's Aug 2025 A$3.0B Domain acquisition, Homes.com in the US, and REA Group's Sept 2026 ACCC enforceable undertaking eliminating restrictive agent bundle clauses.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). While Dow Jones and 61%-owned REA Group are genuine high-margin digital franchises, they are trapped inside a low-return media conglomerate generating a 5.90% 5Y median GAAP ROIC (2.84%-7.82% over FY2017-FY2026) and lacking consolidated pricing power across ~57% of revenue (News Media 6.2% EBITDA margin, HarperCollins 12.5% EBITDA margin, and #3 US portal Realtor.com). Even post-Foxtel exit, FY2026 GAAP ROIC peaked at ~7.8%-8.2% (<12% hurdle), while Murdoch Family Trust Class B super-voting control (~41% vote on ~14% economic stake, cemented by the 2025 Nevada settlement and Starboard Value defeat) entrenches the conglomerate drag. Ineligible for Calamity Tier because sub-12% ROIC is chronic/structural rather than temporary/fixable, and Anchor Gate 4 would also face AI search disintermediation and CoStar portal disruption headwinds. Downstream gates bypassed per waterfall.",
+    "evidence": "Multi-cycle financials (News Corp FY2022-FY2026 Form 10-K, Q1 FY2027 release Nov 2026, StockRow/StockAnalysis): 10Y GAAP ROIC was 2.86% (FY17), 3.60% (FY18), 3.61% (FY19), 2.84% (FY20), 4.02% (FY21), 5.90% (FY22), 4.18% (FY23), 5.42% (FY24), 6.68% (FY25), and 7.82% (FY26; 8.19% TTM), yielding a 5Y median of 5.90%. In FY2026 (ended June 30, 2026), consolidated continuing revenue rose 7% to $9,028M (FY25: $8,452M) and Total Segment EBITDA reached $1,627M (18.0% margin vs $1,415M / 16.7% in FY25), less D&A of $485M and impairment/restructuring of $113M (FY25: $132M, FY24: $89M, FY23: $119M) for implied EBIT of $1,029M ($1,142M ex-impairment), pre-tax income of $1,046M, tax of $303M (~29.0% ETR), and continuing net income of $743M ($573M attributable to News Corp stockholders after $170M NCI deduction primarily for REA Group's 38.6% minority equity). FY2026 segments: Dow Jones $2,497M rev / $663M EBITDA (26.6% margin; 82%+ digital; Risk & Compliance +11-19% YoY, Energy/OPIS +8-12% YoY); Digital Real Estate Services $2,016M rev / $741M EBITDA (36.8% margin; anchored by REA Group's ~61% operating EBITDA margin alongside Move/Realtor.com $610M rev, +11% YoY); Book Publishing (HarperCollins) $2,288M rev / $287M EBITDA (12.5% margin, down vs FY25 $296M); News Media $2,227M rev / $139M EBITDA (6.2% margin, down from $173M in FY23 and $153M in FY25); Corporate/Other $(203)M. In Q1 FY2027 (ended Sept 30, 2026), revenue rose 6% YoY to $2.28B and Segment EBITDA rose 19% to $403M (Dow Jones $630M/+8%, $160M EBITDA; Digital Real Estate $529M/+10%, $212M EBITDA; Book Publishing $582M/+9%, $75M EBITDA), but News Media slipped 1% to $540M with just $18M EBITDA. Balance sheet at June 30, 2026 showed $2,095M cash, $1,999M borrowings ($10M current, $1,989M non-current), $926M PV operating lease liabilities ($754M ROU assets), $1,398M PP&E, $1,002M investments, $4,542M goodwill, $1,837M net intangibles ($6,379M combined intangibles), and $9,236M total equity ($8,526M stockholders' + $710M NCI), giving $9,140M Invested Capital ex-leases ($10,066M incl. leases) and ~7.3%-8.0% FY26 GAAP NOPAT ROIC (~19.8% FY26 Tangible ROIC incl. leases, flattered by excluding $6.38B real M&A goodwill/intangibles from OPIS $1.15B, Base Chemicals $295M, HMH $349M, and Move $950M, plus consolidating 100% of 61%-owned REA Group). FY2026 FCF was $811M ($1,237M OCF - $426M CapEx) vs $571M in FY2025, supporting $643M buybacks (Q1 FY27 seasonal FCF outflow $(89)M, ~$166M buybacks). Foxtel sale to DAZN closed April 2, 2025 (~A$3.4B EV, A$592M shareholder loan cash repayment, ~6% DAZN stake, A$700M+ debt transferred), eliminating a major drag, yet CoStar closed its A$3.0B Domain acquisition (Aug 2025) and REA signed a Sept 2026 ACCC undertaking removing listing-bundle clauses while News Media relies on cover-price hikes and OpenAI/Meta AI licensing to partially slow print decline."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3b",
+    "evaluated_at": "2026-11-10T09:36:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

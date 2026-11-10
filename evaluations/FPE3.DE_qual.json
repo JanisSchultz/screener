@@ -1,0 +1,30 @@
+{
+  "id": "FPE3.DE",
+  "ticker": "FPE3",
+  "universe": "eu",
+  "company": "FUCHS",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Formulation know-how across >10,000 tailored specialty lubricants where fluid cost is <1-2% of machine operating cost, making customer switching irrational due to catastrophic failure risk. Proven pricing power with >20% price increases passed through in 2022-2023, sustaining GAAP ROIC >17% and tangible ROIC >22%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global independent leader in specialty lubricants and functional fluids. Asymmetric value proposition where fluid cost is negligible compared to catastrophic downtime risk of unlubricated machinery. Fortress net-cash balance sheet and multi-decade family owner-operator discipline. [5-10Y g: specialty/industrial volume net of ICE fade 1.5% + price/mix 2.0% + operating leverage 0.5% + bolt-on M&A and dividends 1.5%]",
+    "evidence": "17.7% GAAP ROIC and 22.5% operating ROIC with ~97% FCF conversion. Pristine debt-free balance sheet with €223M cash and interest coverage >34x. Demonstrated pricing power through >20% cumulative price realization during 2022-2023 raw material inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

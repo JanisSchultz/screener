@@ -1,0 +1,30 @@
+{
+  "id": "TEMN.CH",
+  "ticker": "TEMN",
+  "universe": "eu",
+  "company": "Temenos",
+  "country": "Switzerland",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed core banking software is sticky once deployed, but new win rates have decelerated, bespoke bank RFPs compress margins and pricing power, and aggressive R&D capitalization obscures underlying economic returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). While installed core banking software has high switching costs, new license win rates have stalled, banks exert heavy pricing pressure in bespoke RFPs, and aggressive R&D capitalization masks sub-hurdle true cash returns amidst competition from cloud-native fintech engines.",
+    "evidence": "Loss of market momentum in core banking migrations to cloud-native rivals (Thought Machine, Mambu). Substantial license earnings volatility, governance turnover, and reliance on R&D capitalization to sustain reported operating margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

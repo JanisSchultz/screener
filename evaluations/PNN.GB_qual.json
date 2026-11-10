@@ -1,0 +1,30 @@
+{
+  "id": "PNN.GB",
+  "ticker": "PNN",
+  "universe": "eu",
+  "company": "Pennon",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Water Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory regional water and sewerage monopoly licences for South West Water, Bristol Water, and SES Water covering southwest and southern England. Tariffs and revenue allowances are set by Ofwat under five-year regulatory determinations (PR19, PR24) with explicit CPIH inflation indexation applied to the Regulated Capital Value (RCV), ensuring theoretical tariff pricing power indexed to inflation.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (Competitive Advantage Period CAP = 10, REJECT). Regulated regional water monopoly. While statutory licences possess CPIH inflation indexation, traditional regulated utilities have a low industry persistence anchor (Tier 4, baseline 5-10Y). South West Water faces terminal regulatory and environmental headwinds following chronic sewage discharges, the Brixham cryptosporidium parasite contamination of drinking water, £24M+ in Ofwat redress enforcement, and criminal court fines. Intense societal and political pressure threatens severe regulatory ring-fencing, capping predictable runway to 10 years.",
+    "evidence": "Pennon's median GAAP ROIC is 3.87% across FY2022-2025 (FY22: 3.59%, FY23: 4.15%, FY24: 2.26%, FY25: 5.73%), reflecting Ofwat's allowed real CPIH WACC of ~4.0%. Net debt rose past £3.6B against £91.5M FY25 net income (and net losses in FY23-FY24). Under Ofwat PR24 determinations, Pennon accepted an ambitious £3.2B capex program for AMP8 requiring a £490M rights issue in early 2025 to repair leverage. Severe operational failures—including sewage spill sanctions and the 2024 Brixham boil-water parasite emergency—have permanently degraded political and regulatory tolerance, capping CAP at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

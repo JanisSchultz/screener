@@ -1,0 +1,43 @@
+{
+  "id": "SGSN.CH",
+  "ticker": "SGSN",
+  "universe": "eu",
+  "company": "SGS",
+  "price": 101.95,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing CHF 2.2B acquired goodwill and intangibles; physical TIC network operates with structurally unbounded tangible returns (>100% tangible ROIC, 34.5% GAAP ROIC). FY25 Owner EPS CHF 4.55 confirms repeatable peak earning power supported by 142% FCF conversion. Forward 5-10Y compound growth of 6.0% reflects 3.5% organic volume, 1.5% pricing pass-through, 0.5% margin expansion, and 0.5% bolt-on M&A. 5Y cycle high guardrail active at 22.51x cap (Raw PAR 22.80x), yielding PAR Value of CHF 102.52 vs current price CHF 101.95 (trades 0.6% Below PAR)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.5544,
+    "current_multiple": 22.38,
+    "par_multiple": 22.51,
+    "par_value": 102.52,
+    "percent_vs_par": -0.0056,
+    "status": "Below PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.011,
+    "expected_irr_5y": 0.0722,
+    "market_implied_cap": 14.9,
+    "moat_runway_margin": 0.1,
+    "market_implied_growth": 0.0538,
+    "growth_margin_of_safety": 0.0062
+  },
+  "health_checks": {
+    "net_debt_years": 1.3,
+    "net_debt_ok": true,
+    "interest_coverage": 13.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.42,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

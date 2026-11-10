@@ -1,0 +1,30 @@
+{
+  "id": "BMY",
+  "ticker": "BMY",
+  "universe": "us",
+  "company": "Bristol Myers Squibb",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Patents and regulatory exclusivity on commercial therapies (Eliquis, Opdivo, Pomalyst, Yervoy, Reblozyl, Cobenfy) provide legal monopoly barriers during patent term. However, empirical proof of moat fails: 10-year median GAAP ROIC is 8.2% and 5-year median is sub-10%, depressed by large goodwill and intangible additions from the $74B Celgene and $14B Karuna buyouts. Severe erosion threats include IRA price caps on Eliquis starting in 2026, followed by Eliquis LOE in 2028, Opdivo LOE in 2028, and generic cannibalization of Revlimid.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.2% < 12%, REJECT). 10-year median GAAP ROIC of 8.2% fails the 12% hurdle due to an invested capital base heavily inflated by the $74B Celgene and $14B Karuna acquisitions. BMY lacks enduring pricing power above inflation as its foundational blockbusters face severe patent cliff erosion and statutory price controls: Eliquis faces IRA Medicare price cuts in 2026 and generic entry in 2028, Opdivo loses exclusivity in 2028, and Revlimid suffers generic erosion. Backfilling these cliffs has trapped BMY on a capital-intensive M&A treadmill funded by $47B+ in debt.",
+    "evidence": "10-year median ROIC is 8.2%, below the 12% hurdle. 2024 GAAP net loss of $(8,948)M driven by $13,373M in acquired IPR&D charges from Karuna Therapeutics ($14B), RayzeBio, and Mirati acquisitions. Long-term debt reached $47.6B at FY2024. Core blockbusters Eliquis ($13B+ sales) and Opdivo ($9B+ sales) face imminent patent cliffs (Eliquis 2026-2028 LOE plus 2026 IRA price cuts; Opdivo 2028 LOE), demonstrating the lack of sustainable multi-cycle pricing power and structural reinvestment drag."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

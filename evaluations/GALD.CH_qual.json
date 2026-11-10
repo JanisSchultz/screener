@@ -1,0 +1,30 @@
+{
+  "id": "GALD.CH",
+  "ticker": "GALD",
+  "universe": "eu",
+  "company": "Galderma",
+  "country": "Switzerland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dermatological healthcare portfolio (Cetaphil) and aesthetic injectables (Restylane, Dysport, Sculptra) backed by injector relationships, but capital efficiency is structurally diluted by ~$9.8B in goodwill/intangibles from the 2019 private equity buyout. Historical 5-year median GAAP ROIC is ~5.0% (FY25 ~7.8%), far below the 12% hurdle, while aesthetic injectables face intense cyclicality and price competition from AbbVie/Allergan, Evolus, and emerging biosimilars.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b = N, REJECT). Pure-play dermatology and aesthetic injectables provider structurally burdened by $9.8B in goodwill/intangibles from 2019 buyout. 5-year median GAAP ROIC of 5.0% (FY25 ~7.8%) fails the 12% minimum hurdle, alongside fierce competition in neuromodulators and fillers.",
+    "evidence": "5-year median GAAP ROIC is 5.03% (2022: negative, 2023: 4.7%, 2024: 5.0%, 2025: 7.8%). Balance sheet carries $2.58B long-term debt and $9.77B of goodwill/intangibles against $8.15B book equity. While Nemluvio launch and cash generation improved in 2025 ($967M owner FCF), capital base remains unproven across a full public cycle and returns on capital fail the Munger hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "JYSK.DK",
+  "ticker": "JYSK",
+  "universe": "eu",
+  "company": "Jyske Bank",
+  "country": "Denmark",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Second/third-largest commercial bank and mortgage lender in Denmark with entrenched retail/commercial customer relationships, sticky operational deposits, and scale in covered bond mortgage origination (Jyske Realkredit). Demonstrated double-digit ROE (11.4-14.4% in 2023-2024) and cost-to-income ratio of 42-47% across normalized rate regimes.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Danish universal commercial bank operating in a mature, highly concentrated oligopoly dominated by Danske Bank, Nordea, and Nykredit. Commercial banking is structurally anchored in Mauboussin Tier 4 (baseline CAP 5-10 years) due to rapid competitive return fade. Mortgage administration margins (bidragssatser) are subject to intense consumer and political scrutiny, while core net interest income faces cyclical headwinds as Danmarks Nationalbank cuts rates, truncating predictable moat runway below 15 years.",
+    "evidence": "FY2023 ROE reached 14.4% (ROTE 15.7%) before normalizing to 11.4% in FY2024 and ~10.5-11.5% in FY2025 as interest rate tailwinds subsided. Cost-to-income ratio rose from 42.5% in 2023 to ~48-50% in 2025. Danish mortgage system match-funding model reduces balance sheet duration risk but caps economic spreads on commoditized home loans. Geographic focus is strictly domestic Denmark with minimal secular growth avenues."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

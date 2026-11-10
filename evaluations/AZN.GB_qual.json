@@ -1,0 +1,30 @@
+{
+  "id": "AZN.GB",
+  "ticker": "AZN",
+  "universe": "eu",
+  "company": "AstraZeneca",
+  "country": "United Kingdom",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading oncology and rare disease patent estate, but 5-year median GAAP ROIC is sub-hurdle (~9-10%), and pricing power is severely curtailed by US IRA Medicare price negotiations (Farxiga), European single-payer price caps, and late-decade patent expirations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Pricing Power, REJECT). Premier oncology innovator, but multi-year GAAP ROIC averages ~9-10% (diluted by the $39B Alexion buyout) and pricing power faces severe headwinds from US IRA Medicare price cuts (Farxiga), European healthcare budget freezes, and upcoming patent cliffs.",
+    "evidence": "GAAP ROIC hovered between 4% and 12% from 2022 to 2024, with 5-year median ROIC failing the 12% threshold. Pricing power is actively constrained by legislative price caps (IRA Farxiga price cuts), European cost-containment, and upcoming loss of exclusivity on key franchise blockbusters."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

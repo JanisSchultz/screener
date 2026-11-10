@@ -1,0 +1,30 @@
+{
+  "id": "MS",
+  "ticker": "MS",
+  "universe": "us",
+  "company": "Morgan Stanley",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs in Wealth Management ($9.3T client assets across Wealth and Investment Management, >95% annual client retention). Ad-valorem fee model provides structural pricing power scaling with asset inflation, though institutional trading and underwriting remain competitive and cyclical.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Fortress Balance Sheet & Cash Conversion, REJECT). Morgan Stanley has successfully transformed into a wealth management powerhouse (~54% of revenue from Wealth and Investment Management), but remains a Global Systemically Important Bank (G-SIB) with >$1.3T in assets, substantial institutional securities operations, and massive financial leverage (long-term debt >$250B vs net income of $13B-$17B). The capital structure is inherently dependent on wholesale funding, repo markets, and regulatory support, failing the Munger peace-of-mind fortress balance sheet standard.",
+    "evidence": "FY 2025 net revenue reached $70.65B (Institutional Securities $33.08B / 46.8%, Wealth Management $31.75B / 44.9%, Investment Management $6.53B / 9.2%). Net income was $16.86B ($13.39B in FY 2024), ROTCE was 21.6% (18.8% in FY 2024), and ROE was ~15.6%. Total assets scale past $1.3T, funded by over $250B in long-term debt and hundreds of billions in repo liabilities and deposits. Free cash flow conversion is structurally volatile/unsuited for dealer banks. Fails Gate 6 on systemic financial leverage and debt/net income > 4.0x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

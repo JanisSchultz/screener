@@ -1,0 +1,30 @@
+{
+  "id": "GRF.ES",
+  "ticker": "GRF",
+  "universe": "eu",
+  "company": "Grifols",
+  "country": "Spain",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Rejected \u2013 G1 Understandability). Opaque accounting disclosures, labyrinthine related-party governance structures involving family-controlled vehicle Scranton Enterprises NV, dual-consolidation of plasma assets (Haema, BPC Plasma), and disputed true leverage fail Charlie Munger's circle of competence and external verifiability standards.",
+    "evidence": "Despite holding a strong position in plasma fractionation and plasma-derived therapies, Grifols' reported financials violate the Gate 1 verifiability test. Investigations triggered by Gotham City Research reports and subsequent CNMV regulatory reviews revealed complex related-party financial structures, call-option sale-and-leaseback mechanisms with Scranton Enterprises, and non-transparent adjustments that masked actual leverage (estimated real net debt/EBITDA of 10-13x versus stated ~6x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "PGHN.CH",
+  "ticker": "PGHN",
+  "universe": "eu",
+  "company": "Partners Group",
+  "price": 670.8,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.088,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC of 40.2% (GAAP 38.3%) capped at 35.0% reflecting capital-light private markets asset management. Peak Owner EPS of 50.31 CHF from FY2025. Forward g_implied of 8.8% aligns with qualitative guidance: 7.0% organic AuM volume, 1.5% asset inflation, 0.8% carry reinvestment, and -0.5% fee compression drag."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 50.3121,
+    "current_multiple": 13.33,
+    "par_multiple": 25.14,
+    "par_value": 1264.68,
+    "percent_vs_par": -0.4696,
+    "status": "Below PAR",
+    "g_implied": 0.088,
+    "dividend_yield": 0.0632,
+    "expected_irr_5y": 0.2983,
+    "market_implied_cap": 8.0,
+    "moat_runway_margin": 7.0,
+    "market_implied_growth": -0.0891,
+    "growth_margin_of_safety": 0.1771
+  },
+  "health_checks": {
+    "net_debt_years": 0.8,
+    "net_debt_ok": true,
+    "interest_coverage": 35.2,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.86,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

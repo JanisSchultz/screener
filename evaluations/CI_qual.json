@@ -1,0 +1,30 @@
+{
+  "id": "CI",
+  "ticker": "CI",
+  "universe": "us",
+  "company": "The Cigna Group",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Evernorth (Express Scripts) operates as one of the 'Big Three' PBMs controlling ~80% of US prescription claims alongside CVS Caremark and OptumRx, creating scale and network switching costs for self-insured employers. However, the business fails the empirical capital efficiency hurdle: 5-year median GAAP ROIC is 11.8% (below the 12.0% requirement), diluted by the $67B Express Scripts acquisition goodwill. Crucially, pricing power is impaired as regulatory and antitrust scrutiny (FTC lawsuit and consent decree over rebate inflation) and client demands dismantle opaque spread pricing and enforce 100% rebate pass-through.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Pricing Power Deficit, REJECT). The Cigna Group fails the empirical quality hurdle with a 5-year median GAAP ROIC of 11.8%, below the mandatory 12.0% threshold, reflecting a capital base permanently diluted by the $67B Express Scripts transaction. Furthermore, Evernorth lacks true pricing power above inflation: the traditional PBM profit model (spread pricing and rebate retention) faces structural erosion via bipartisan federal legislation, FTC antitrust consent decrees, and corporate client mandates demanding 100% pass-through pricing. Operating margins remain thin (~3.5%), and Cigna cannot raise prices without driving customer churn or regulatory intervention.",
+    "evidence": "Multi-cycle Financial Performance: Revenues expanded to $247.1B in FY2024 and $274.9B in FY2025. GAAP Net Income was $3.43B in 2024 (depressed by non-cash investment impairment) and $5.96B in 2025, with adjusted operating income steady at $7.7B-$8.0B. 5-year median GAAP ROIC is 11.8% (2020: 8.7%, 2021: 8.4%, 2022: 9.8%, 2023: 12.0%, 2024: 10.3%, 2025: 11.3%), failing the >=12.0% requirement.\n\nSegment Profile: Evernorth Health Services (Express Scripts, specialty pharmacy Accredo, care services) contributes >70% of revenues (~$190B+) but operates at thin ~3.5-4.0% operating margins. Cigna Healthcare (commercial employer coverage) accounts for the rest following the $3.3B divestiture of Medicare Advantage, Medicare Part D, and CareAllies to HCSC.\n\nPricing Power & Regulatory Headwinds: While PBM scale provides transactional switching costs, spread pricing power has collapsed. In September 2024, the FTC filed landmark antitrust litigation against Express Scripts, CVS Caremark, and OptumRx for artificially inflating insulin list prices to maximize rebate skimming. Express Scripts settled via consent decree in 2026, agreeing to tie patient copays to net prices. Commercial plan sponsors increasingly demand transparent pass-through models, while transparent competitors (e.g. Mark Cuban Cost Plus Drugs, Amazon Pharmacy) exert fee pressure.\n\nBalance Sheet & Capital Allocation: Consolidated long-term debt is ~$30-32B against annual operating cash flows of $9.6-$10.4B. Capital allocation has centered on debt reduction and share repurchases, alongside disciplined pruning (divesting capital-intensive Medicare Advantage to HCSC). However, structural capital efficiency remains below the Munger compounder hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

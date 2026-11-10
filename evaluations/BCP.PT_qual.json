@@ -1,0 +1,30 @@
+{
+  "id": "BCP.PT",
+  "ticker": "BCP",
+  "universe": "eu",
+  "company": "Millennium bcp",
+  "country": "Portugal",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading Portuguese commercial and retail banking franchise with sticky low-cost deposit base and ~20% domestic market share. High switching costs in primary banking relationships, but returns are highly sensitive to ECB rate cycles and regulatory interventions.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional Portuguese and Polish commercial bank whose recent earnings recovery is heavily dependent on cyclical ECB interest rate peaks. Spread lending is a commoditized product facing margin compression as policy rates drop, alongside persistent regulatory burdens in Poland (credit holidays, bank tax, CHF litigation).",
+    "evidence": "FY24 net profit reached €906.4M with ROE of 13.8% (FY23 ROE 15.3%), benefiting from high European interest rates. However, Bank Millennium in Poland required €780M in CHF mortgage provisions in 2023 and over €500M in 2024, alongside Polish banking taxes and credit holidays. Spread-lending model lacks 15-year secular advantage durability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

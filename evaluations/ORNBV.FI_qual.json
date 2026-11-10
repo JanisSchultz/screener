@@ -1,0 +1,30 @@
+{
+  "id": "ORNBV.FI",
+  "ticker": "ORNBV",
+  "universe": "eu",
+  "company": "Orion",
+  "country": "Finland",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Orion captures high-margin tiered royalties from Bayer for Nubeqa (darolutamide), its broader business comprises Nordic generics, mature pharmaceuticals, and animal health subject to mandatory reference pricing, tender competition, and ongoing price erosion. Orion lacks systemic pricing power >= inflation across its portfolio, and corporate earnings are overly dependent on a single partnered oncology molecule facing generic challenges and eventual patent expiration.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (N, REJECT). Orion's operating profits are heavily concentrated in Nubeqa royalties licensed to Bayer, while its core base in Nordic generics and mature pharmaceuticals faces persistent price erosion and state reference pricing caps, precluding genuine pricing power >= inflation.",
+    "evidence": "Historical ROCE fluctuated between 25% and 45% boosted by Nubeqa milestones and royalties from Bayer. However, core generic and consumer health divisions suffer continuous price erosion in European markets. Single-asset royalty concentration leaves the company without a self-sustaining, multi-product R&D pricing moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b_pricing_and_proof",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

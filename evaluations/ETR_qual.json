@@ -1,0 +1,30 @@
+{
+  "id": "ETR",
+  "ticker": "ETR",
+  "universe": "us",
+  "company": "Entergy Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "State-granted exclusive retail electric franchise monopolies across Arkansas, Louisiana, Mississippi, and Texas prevent duplicate grid infrastructure. Rate-base formula rate plans (FRPs) pass through fuel and capital costs with authorized ROEs of ~10.5-11.0%. Primary erosion risks stem from regulatory lag, severe Gulf Coast hurricane storm restoration costs, and rising cost of capital.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Inherently capital-intensive regulated electric utility failing Munger cash generation and balance sheet endurance standards: massive debt load of $27.9B against $1.77B net income (15.7x leverage vs <=4.0x threshold), thin interest coverage of 2.40x (threshold >5.0x), negative free cash flow (-$2.53B in 2025 due to $7.68B capex vs $5.15B OCF), and ongoing reliance on debt issuance and structured equity dilution to finance rate base growth.",
+    "evidence": "10-year median GAAP ROIC is 4.98%, structurally capped by state regulatory utility commissions (authorized ROE ~10.5-11.0%). Entergy has accelerated capital expenditures to $7.68B in 2025 (with multi-year plans exceeding $7B/yr for transmission, grid resilience, and load growth from data centers and Gulf Coast industrial facilities), significantly outstripping OCF of $5.15B and resulting in negative free cash flow. Consolidated long-term debt stands at $27.9B against $1.9B cash. EBIT of $3.20B covers interest expense of $1.34B by only 2.40x. While management has prudently de-risked the business by divesting merchant nuclear plants to focus on pure-play regulated utilities, the structural dependence on continuous capital market access violates Gate 6 peace-of-mind solvency criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

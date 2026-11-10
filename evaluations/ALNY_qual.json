@@ -1,0 +1,30 @@
+{
+  "id": "ALNY",
+  "ticker": "ALNY",
+  "universe": "us",
+  "company": "Alnylam Pharmaceuticals",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "RNAi platform pioneer with proprietary GalNAc-siRNA delivery conjugates and dominant global patent estate across rare genetic diseases (hATTR, AHP, PH1) and cardiomyopathy (ATTR-CM). Commercial pricing power is extraordinary ($300k-$500k/patient/yr) with gross margins >85%. FY2025 HELIOS-B expansion validated platform economics as revenues surged 81% to $3.71B and GAAP net income turned positive to $313.7M. Moat erosion threats include patent cliffs in the 2030s (~2035) and competing oral/gene-editing modalities.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Alnylam's RNAi platform achieved commercial profitability in FY2025 following the landmark HELIOS-B ATTR-CM expansion, biotechnology has an empirical base-rate persistence of only 10-15 years (Tier 3). Crucially, the franchise faces an active terminal disruption headwind from one-time curative in vivo CRISPR gene editing (Intellia/Regeneron NTLA-2001 Phase 3 MAGNITUDE trial) which permanently eliminates hepatic TTR production, threatening to render chronic lifelong quarterly RNAi injections obsolete. Compounding patent expirations in ~2035 and oral small-molecule competition (BridgeBio Attruby) cap CAP at 5 years (< 15 hurdle).",
+    "evidence": "Over 2016-2024, Alnylam posted continuous GAAP net losses (peaking at -$1,131M in FY2022 and -$278M in FY2024) with negative 5-year median GAAP ROIC (-65.9% to -100%) due to massive clinical development expenses. In FY2025, commercial uptake of Amvuttra (vutrisiran) following the HELIOS-B Phase 3 trial and FDA approval for ATTR-CM drove an 81% surge in net product revenue to $2.99B and total revenue to $3.71B, delivering its first annual GAAP net income of $313.7M and operating profit (EBIT) of $501.6M. Cash stood at $1,657.2M against ~$1.0B in convertible debt. Extreme orphan drug pricing power ($300k-$500k/patient/year) yields gross margins >85%. However, structural biotechnology runway is tightly constrained: primary composition of matter patents expire around 2035, oral competitors like BridgeBio's acoramidis are expanding, and one-time in vivo CRISPR gene editing therapies (NTLA-2001) threaten to permanently displace chronic quarterly RNAi maintenance therapy."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MA",
+  "ticker": "MA",
+  "universe": "us",
+  "company": "Mastercard",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global two-sided payment network duopoly (with Visa) operating as an ad valorem toll booth on consumer and commercial spending. Enjoys near-insurmountable switching costs and network effects across billions of cardholders, tens of millions of merchants, and thousands of financial institutions. Pricing power proven by 5-year median GAAP ROIC of 89.4%, tangible ROIC >100%, and operating margins expanding to 57.6%. Inflation is captured automatically via basis-point assessments on nominal transaction value. Primary erosion risks stem from regulatory interventions (Credit Card Competition Act, interchange fee caps) and domestic sovereign A2A payment rails, both mitigated by value-added services, tokenization, and cross-border lock-in.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite global payments duopoly operating an inflation-indexed ad valorem toll booth with near-zero capital intensity. Exceptional 5-macrotrend resilience: immune to labor scarcity and energy limits, directly benefits from AI fraud/identity authentication demand, and automatically captures inflation in transaction nominal volume. Balance sheet fortress with net debt repayable in ~0.5 years of FCF and 26x interest coverage. [5-10Y g: global purchase volume 6.0% + cross-border & VAS expansion 3.5% + ad valorem inflation capture 1.5% - regulatory fee drag 1.0% + net share repurchases 1.0%]",
+    "evidence": "10-year track record of superior capital efficiency: FY2025 net revenue $32.8B (+16% YoY), EBIT $18.9B (57.6% operating margin), GAAP ROIC 98.4%, and 5-year median ROIC 89.4%. FCF conversion exceeds 100% (FY2025 Owner FCF of $16.6B vs Net Income of $15.0B; Capex is only $489M or 1.5% of revenue). High-growth Value-Added Services & Solutions grew 23% in FY2025 to $13.3B (over 40% of net revenue), providing massive diversification away from core interchange dispute risks. Balance sheet fortress with $10.6B cash vs $18.3B LT debt (Net Debt/NI 0.51x, EBIT/Interest 26.2x). Capital allocation has retired over 25% of shares outstanding over the last decade while funding disciplined security and analytics acquisitions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

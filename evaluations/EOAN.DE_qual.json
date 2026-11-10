@@ -1,0 +1,30 @@
+{
+  "id": "EOAN.DE",
+  "ticker": "EOAN",
+  "universe": "eu",
+  "company": "E.ON",
+  "country": "Germany",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Europe's largest distribution system operator with 1.6 million kilometers of energy networks across Germany and CEE. Regulated asset base (RAB) creates a physically unreplicable natural monopoly with guaranteed regulatory returns under BNetzA oversight.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Massive debt burden & weak interest coverage, REJECT). Dominant European distribution grid operator, but carries economic net debt of €43.2B (net financial debt €32.5B) against net income of €1.73B (18.7x net financial debt / NI). Interest coverage of 2.36x severely breaches the 5.0x threshold, driven by massive continuous grid capex requiring constant debt refinancing.",
+    "evidence": "FY2025 interest expense of €2.20B on EBIT of €5.21B gives interest coverage of only 2.36x. Economic net debt of €43.24B (including pension obligations and AROs) and financial debt of €37.3B tower over net income of €1.73B. Annual capex of €7.94B exceeded operating cash flow of €7.00B."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

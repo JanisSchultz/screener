@@ -1,0 +1,30 @@
+{
+  "id": "BP..GB",
+  "ticker": "BP.",
+  "universe": "eu",
+  "company": "BP",
+  "country": "United Kingdom",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Integrated oil and gas scale in exploration, refining, and marketing; however, BP is an absolute commodity price-taker whose realizations fluctuate with spot Brent and TTF/Henry Hub prices. 5-year normalized ROIC is sub-hurdle (~5-7% normalized, with negative returns in 2020 and 5.3% in 2024; 2022 windfall was unrepeatable). Lacks pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Upstream and downstream commodity price-taker lacking pricing power, with earnings and capital efficiency dictated by volatile global commodity benchmarks. Multi-cycle ROIC is sub-hurdle (~5-7% normalized, with 2020 at -2.9% and 2024 at 5.3%), failing the 12% requirement.",
+    "evidence": "BP operates across integrated upstream production, refining, and global trading. Capital efficiency is highly cyclical: ROACE was 6.7% (2019), -2.9% (2020), 13.3% (2021), 30.5% (2022 windfall), 18.1% (2023), and 5.3% (2024). Net debt and heavy capex requirements across energy transition dilemmas demonstrate absence of structural economic moat or independent pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

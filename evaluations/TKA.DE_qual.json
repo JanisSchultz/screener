@@ -1,0 +1,30 @@
+{
+  "id": "TKA.DE",
+  "ticker": "TKA",
+  "universe": "eu",
+  "company": "thyssenkrupp",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Steel (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "No durable economic moat exists across the conglomerate. Thyssenkrupp Steel Europe suffers from structural cost disadvantages (high German electricity, carbon, and unionized labor costs) and chronic global overcapacity. Automotive Technology operates in low-margin contract manufacturing facing relentless OEM price-down pressure. Decades of conglomerate restructuring, multi-billion-euro asset impairments, and massive legacy pension burdens (~€2.5B+) confirm the total absence of economic moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype None & ROIC < 12%, REJECT). Chronic value-destroying conglomerate with negative-to-low single-digit 10-year ROIC. Trapped by high German industrial energy costs, legacy pension liabilities, OEM automotive pricing pressure, and multi-billion decarbonization capex requirements for Duisburg steelworks.",
+    "evidence": "10-year ROIC has persistently lagged WACC, frequently turning negative due to repeated hundred-million-euro asset impairments and restructuring charges. Steel Europe has generated chronic operating losses, requiring ongoing carve-out attempts and government subsidies. Net debt and multi-billion-euro pension liabilities constrain capital allocation, eliminating any capacity for compounding per-share intrinsic value."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

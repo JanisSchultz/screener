@@ -1,0 +1,30 @@
+{
+  "id": "T.CA",
+  "ticker": "T",
+  "universe": "ca",
+  "company": "TELUS",
+  "country": "Canada",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Four-player Canadian wireless price war, CRTC wholesale unbundling mandates, and continuous capital intensity keep ROIC depressed around 4-5% (far below the 12% hurdle), leading to mobile ARPU deflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 4-5% vs 12% hurdle; wireless ARPU deflation and ongoing multi-operator discounting strip TELUS of pricing power).",
+    "evidence": "TELUS generates a multi-year ROIC of ~4-5%, failing the 12% hurdle rate. Mobile phone ARPU declined from $60.52 (2024) to $58.67 (2025) under aggressive promotional competition from Rogers, Bell, and Quebecor/Freedom Mobile. Combined with continuous DRIP share dilution, net debt exceeding CAD 27B, and high capex intensity, the economic engine fails to earn economic profits."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

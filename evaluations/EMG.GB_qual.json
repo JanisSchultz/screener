@@ -1,0 +1,30 @@
+{
+  "id": "EMG.GB",
+  "ticker": "EMG",
+  "universe": "eu",
+  "company": "Man Group",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary systematic algorithms (AHL) and quant infrastructure provide an operating edge, but quant alpha decays rapidly under market arbitrage. Open-ended liquid hedge fund structures allow rapid LP redemptions during drawdown periods. Zero pricing power to raise management fees above inflation in an industry facing long-term structural fee compression.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Quantitative hedge fund manager with earnings heavily tied to volatile performance fees and cyclical trend-following alpha. Lacks structural pricing power in liquid alternatives, where institutional fee compression and redemption risks persist.",
+    "evidence": "Man Group manages $227B+ in AUM, but earnings are highly volatile due to performance fee swings ($281M-$310M/yr) and market cycles. Statutory net income swung from $608M in 2022 down to $234M in 2023 and $298M in 2024. Open-ended fund structures lack the multi-year locked-in capital of private markets, leaving fee income exposed to performance drawdowns and institutional fee compression."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

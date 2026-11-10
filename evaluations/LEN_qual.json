@@ -1,0 +1,30 @@
+{
+  "id": "LEN",
+  "ticker": "LEN",
+  "universe": "us",
+  "company": "Lennar",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket cyclical homebuilder; new-home purchases are deferrable when mortgage rates rise or macro conditions soften, forcing heavy price cuts and rate-buydown incentives.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need, REJECT). Lennar passes Gate 1 as a well-established, transparent US homebuilder, but fails Gate 2 because new-home purchases are big-ticket, financing-sensitive, deferrable cyclicals explicitly disqualified under the Munger 'likely to spend' bar. Stubborn ~6.8%-7% mortgage rates across 2025-2026 required 12%-14.1% sales incentives to sustain volume, compressing home sales gross margin from 21.8% (Q1 2024) to 15.2%-15.8% (Q1-Q3 2026) and compressing TTM ROIC to ~4.5%-4.8% (down from 15%-18% at the 2021-2022 peak). Calamity Tier does not apply because Gate 2 fails.",
+    "evidence": "Multi-cycle financial record demonstrates acute cyclicality rather than steady compounding: while Lennar's v1 10-year average ROIC stood at 16.5% (boosted by the 2021-2022 housing boom when ROIC reached 15%-18%), ROIC fell to ~5%-7% in the 2018 slowdown, 7.55% in FY2025 (ROE 8.21%), and ~4.5%-4.8% TTM as of Q3 2026 (period ended Aug 31, 2026). Revenue declined from $35.4B in FY2024 (net income $3.9B; operating cash flow ~$2.4B) to $34.2B in FY2025 (net income $2.1B, including a $156M Millrose exchange-offer loss; operating cash flow $216.8M amid Millrose spin-off inventory/capital realignments). In FY2026, Q3 revenue fell 9.2% YoY to $8.0B on 20,840 deliveries (-3% YoY), new orders declined 9% YoY to 20,879, Q3 net earnings fell to $284M ($1.19 EPS vs. $2.29 prior year), and FY2026 delivery guidance was cut to 80,000-81,000 homes. Home sales gross margin contracted from 21.8% (Q1 2024) to 18.7% (Q1 2025), 17.5% (Q3 2025), 15.2% (Q1 2026), and 15.8% (Q3 2026) as Lennar relied on ~14% sales incentives (late 2025-Q1 2026) and ~12% incentives (Q3 2026) via mortgage-rate buydowns and price cuts to protect its 'Even-Flow' manufacturing cadence (116-122 day cycle times). Strategically, Lennar spun off Millrose Properties in Feb 2025 (1:2 distribution) and retired 8.0M LEN shares in a Nov 2025 Millrose share-exchange offer, reaching ~98% option-controlled homesites. Balance sheet leverage remains conservative: Q3 2026 homebuilding cash was $1.2B ($3.6B total liquidity, $650M drawn on its $3.1B revolver), homebuilding debt was ~$4.3B (~$5.9B-$6.0B consolidated debt), homebuilding debt-to-capital was 16.6% (12.7% net), $400M of 5.25% senior notes were redeemed without revolver draws, and $256M (3M shares) was repurchased in Q3 2026."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

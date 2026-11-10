@@ -1,0 +1,30 @@
+{
+  "id": "ACP.PL",
+  "ticker": "ACP",
+  "universe": "eu",
+  "company": "Asseco Poland",
+  "country": "Poland",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-Western listing jurisdiction (Poland, in_market == 'N'); fails rule-of-law Western market pre-screen filter.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == 'N', REJECT). Primary listing on Warsaw Stock Exchange (Poland) fails the developed Western market rule-of-law pre-screen. Highly exposed to Polish public sector procurement and fragmented CEE IT services.",
+    "evidence": "Pre-screen listing jurisdiction is Poland (in_market == 'N'). While Asseco provides sticky proprietary banking and public sector systems across CEE, low operating margins (~10%) and heavy reliance on competitive public procurement tenders combine with non-Western market pre-screen exclusion to require immediate rejection at Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

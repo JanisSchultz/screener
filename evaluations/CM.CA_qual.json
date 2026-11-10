@@ -1,0 +1,30 @@
+{
+  "id": "CM.CA",
+  "ticker": "CM",
+  "universe": "ca",
+  "company": "Canadian Imperial Bank of Commerce",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Canadian Big Six oligopoly protected by OSFI regulatory charter barriers and sticky low-cost core deposit franchise. High domestic market share in residential mortgages, personal banking, and commercial lending. Primary erosion risks: elevated concentration in Canadian residential real estate mortgages during housing downturns, US commercial real estate credit exposure, fintech payment disintermediation, and macro rate fluctuations.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While CIBC holds an entrenched position within Canada's Big Six banking oligopoly with strong domestic execution and multi-cycle ROE of 13-16%, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~16x asset/equity leverage and heavily exposed to domestic residential mortgages, its balance sheet inherently relies on depositor confidence and central bank/CDIC liquidity backstops ('kindness of strangers').",
+    "evidence": "Canadian Big Six chartered bank with significant market share in Canadian retail banking, wealth management, and residential mortgages. Historical 5-year median GAAP ROIC is 27.1% with multi-cycle ROE around 14-15%. However, Gate 6 structural rejection is absolute for commercial deposit banks: balance sheet carries over C$1.0T in assets against ~C$64B in common equity (>15-16x leverage) and C$140.9B in long-term debt liabilities. The institution relies on short-term demand deposits and wholesale credit facilities to fund long-term mortgages and loans, subjecting equity to asset-liability duration mismatch and credit cycle tail risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

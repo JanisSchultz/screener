@@ -1,0 +1,43 @@
+{
+  "id": "KRX.IE",
+  "ticker": "KRX",
+  "universe": "eu",
+  "company": "Kingspan",
+  "price": 95.15,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing \u20ac3.8B acquired goodwill and intangibles (tangible ROIC 36.7%). Forward 5-10Y compound growth rate set to 8.0% supported by European building decarbonization, QuadCore insulation adoption, and data center thermal envelopes. Raw PAR multiple of 24.30x is constrained by the 5-year cycle high guardrail to 23.55x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.6742,
+    "current_multiple": 25.9,
+    "par_multiple": 23.55,
+    "par_value": 86.53,
+    "percent_vs_par": 0.0997,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0057,
+    "expected_irr_5y": 0.0654,
+    "market_implied_cap": 16.5,
+    "moat_runway_margin": -1.5,
+    "market_implied_growth": 0.104,
+    "growth_margin_of_safety": -0.024
+  },
+  "health_checks": {
+    "net_debt_years": 2.2,
+    "net_debt_ok": true,
+    "interest_coverage": 12.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9573,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

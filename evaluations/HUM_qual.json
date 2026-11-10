@@ -1,0 +1,30 @@
+{
+  "id": "HUM",
+  "ticker": "HUM",
+  "universe": "us",
+  "company": "Humana Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Managed Health Care",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scale economies shared in Medicare Advantage membership and CenterWell senior clinics provide operational efficiency, but fail to produce economic moats. 10-year median GAAP ROIC of 11.2% falls short of the 12% hurdle. Pricing power is structurally absent as rates are dictated by CMS benchmark calculations, statutory 85% MLR floors, and Star Ratings bonus metrics rather than commercial market power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 11.2% < 12%, REJECT). As a concentrated Medicare Advantage insurer, Humana is a price-taker bound by CMS reimbursement rate updates, Star Ratings quality bonuses, and statutory medical loss ratio caps. Unable to independently raise prices to match medical cost inflation, resulting in sub-hurdle multi-cycle ROIC.",
+    "evidence": "10-year median GAAP ROIC is 11.2%, failing the 12% minimum hurdle. Recent annual ROIC has compressed further to 7.8% (2023), 9.0% (2024), and 8.1% (2025). The business is heavily concentrated (>80% of revenue) in Medicare Advantage, exposing it to unilateral CMS rate decisions and star rating recalculations. The drop in 4+ star member coverage from 94% to ~25% in 2025 triggered a $3.0B-$3.5B high-margin bonus revenue headwind, while medical benefit ratios surged to 90-95% due to elevated post-pandemic utilization without price-offset mechanisms."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

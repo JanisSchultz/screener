@@ -1,0 +1,30 @@
+{
+  "id": "MELI",
+  "ticker": "MELI",
+  "universe": "us",
+  "company": "Mercado Libre",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Revenue base (~100% Latin America: ~55% Brazil, ~22% Mexico, plus Argentina and other LatAm) is concentrated outside rule-of-law Western developed markets, exposing earnings to sovereign/macro instability, FX depreciation, capital controls, and regulatory intervention in commerce and consumer credit.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Although Delaware-incorporated and NASDAQ-listed (in_market='Y'), essentially 100% of Mercado Libre's operating revenues and earnings derive from emerging Latin America (~55% Brazil, ~22% Mexico, plus Argentina and other LatAm countries) outside rule-of-law Western developed jurisdictions. Core cash flows face structural FX depreciation, Argentine hyperinflation and capital controls, Brazilian tax/judicial complexity alongside central bank payment-rail (Pix) and rate-cap pressures, and rising regulatory/credit-cycle exposure as Mercado Pago (~44% of FY2025 revenue) aggressively expands an $11B-$18B consumer credit and card book. Even looking beyond Gate 2, heavy logistics reinvestment and credit provisioning compressed Q3 2026 operating margins to ~6.3% and TTM ROIC to ~5.6%-6.5%, well below the 12% Gate 3b hurdle.",
+    "evidence": "Gate 1 passes: founded in 1999 and NASDAQ-listed since 2007, Mercado Libre operates an understandable dual e-commerce/logistics and fintech/credit engine with SEC Form 10-K/10-Q disclosure of country/segment revenues, credit books, doubtful-account provisions, and securitization SPEs. Gate 2 fails on geographic/institutional concentration: consolidated FY2025 revenues and financial income (~$28.9B, +39% YoY) originate predominantly in Brazil (~55%), Mexico (~22%), and Argentina/other LatAm. Fintech (Mercado Pago) revenue scaled from $8,618M in FY2024 (+24.8% YoY) to $12,599M in FY2025 (+46.2% YoY, ~43.6% of total revenue), propelled by credit portfolio expansion from $6.6B at year-end 2024 to ~$11B-$18B by Q3 2026 (~47% credit cards, funded via SPE securitizations and local bank lines, with multi-billion unused card commitments). While the prior dossier noted a historical 10Y average/median ROIC of 17.5%, recent capital efficiency and margins deteriorated under aggressive free-shipping subsidies, fulfillment capex, and credit loss provisions: FY2025 operating income was ~$3.2B (~11.1% margin), dropping to ~6.3% operating margin by Q3 2026 (Q2 2026 net income ~$466M; Q3 2026 ~$448M) with 2025-2026 TTM ROIC around 5.6%-6.5% (below ~9.6% estimated WACC). Reported trailing FCF surged to $10.77B in FY2025 (CFO ~$12.12B vs. CapEx ~$1.34B) and ~$12.41B TTM in 2026, reflecting fintech float/working-capital inflows alongside GAAP net income, while total debt rose from $11.39B at end-2025 to $12.35B by mid-2026 (including ~$2.20B-$2.42B lease liabilities) against ~$6.5B-$7.0B in operating cash and liquid investments (~$4.68B-$5.75B net debt)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

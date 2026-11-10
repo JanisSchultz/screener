@@ -1,0 +1,30 @@
+{
+  "id": "REL.GB",
+  "ticker": "REL",
+  "universe": "eu",
+  "company": "RELX",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Indispensable proprietary datasets (contributory insurance loss databases, copyrighted scientific research archives, primary law citations) embedded directly into daily professional workflows. Proved by 24.3% median GAAP ROIC, >30% operating margins, and consistent 2-4% pricing power with minimal churn.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global professional information and decision analytics powerhouse. Proprietary data assets (LexisNexis contributory insurance records, Elsevier scientific archive) are enhanced rather than displaced by GenAI, powering 7% underlying revenue growth. Net debt 2.7x net income with 11.1x interest coverage. [5-10Y g: Risk/Analytics organic 4.5% + Legal/STM price and AI upsell 1.5% + margin expansion 0.5% + net share buybacks 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 24.3% and operating ROIC >100%. Free cash flow conversion averages 109.9% (FY2025 Owner FCF of £2,248M vs NI of £2,065M). Revenue reached £9,590M in FY25 with operating profit of £3,023M (31.5% margin). Net debt of £5,498M is 2.66x net income, and interest coverage is 11.07x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

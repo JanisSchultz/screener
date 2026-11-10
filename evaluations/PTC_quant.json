@@ -1,0 +1,43 @@
+{
+  "id": "PTC",
+  "ticker": "PTC",
+  "universe": "us",
+  "company": "PTC Inc.",
+  "price": 195.07,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Indispensable CAD (Creo), PLM (Windchill, Arena), and ALM (Codebeamer) engineering software platform embedded in mission-critical customer workflows. Operating ROIC normalized to 35.0% cap to reflect structurally unbounded tangible capital returns (>100% tangible ROIC, FY25 GAAP ROIC expanded to 17.43%), neutralizing $4.32B of accumulated goodwill and intangible amortization from Codebeamer and ServiceMax acquisitions. FY25 peak Owner EPS of $6.83 reflects high-quality recurring subscription cash flows (90.45% FCF conversion; FY21 non-cash tax spike excluded). Fortress balance sheet with $1.17B LT debt against $184M cash (net debt of 1.35x NI; net debt/EBITDA ~1.0x) and strong 12.75x EBIT interest coverage ($982.4M EBIT vs $77.0M interest). 5-10Y through-the-cycle EPS growth of 9.5% is driven by organic CAD/PLM/ALM expansion across smart connected products (5.5%), SaaS cloud migrations and contractual annual price escalators (2.5%), operating leverage (0.5%), and share repurchases (1.0%). Fundamental 3-Pillar PAR Multiple of 33.51x (comfortably inside the 70.24x cycle-high guardrail) establishes a PAR Value of $229.00. At $195.07 (28.54x Peak OE), PTC trades 14.8% Below PAR, generating an attractive 13.07% 5Y expected IRR with a substantial growth margin of safety of +7.45%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.8349,
+    "current_multiple": 28.54,
+    "par_multiple": 33.51,
+    "par_value": 229.0,
+    "percent_vs_par": -0.1482,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.1307,
+    "market_implied_cap": 12.8,
+    "moat_runway_margin": 2.2,
+    "market_implied_growth": 0.0205,
+    "growth_margin_of_safety": 0.0745
+  },
+  "health_checks": {
+    "net_debt_years": 1.6,
+    "net_debt_ok": true,
+    "interest_coverage": 12.76,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9045,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

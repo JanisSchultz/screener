@@ -1,0 +1,30 @@
+{
+  "id": "BGEO.GB",
+  "ticker": "BGEO",
+  "universe": "eu",
+  "company": "Lion Finance (Bank of Georgia)",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Operating revenue and assets are 100% concentrated in non-Western emerging markets (Georgia and Armenia), exposing the business to severe regional geopolitical and institutional risks.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Operating revenue concentrated in non-Western emerging markets). Although listed on the LSE, the group operates exclusively in the South Caucasus (JSC Bank of Georgia in Georgia and Ameriabank in Armenia). Concentrated exposure to Georgia and Armenia entails significant geopolitical, sovereign, and institutional risks that fail the Western market requirement.",
+    "evidence": "Consolidated operations are split between Georgian Financial Services (Bank of Georgia, ~40% domestic banking share) and Armenian Financial Services (Ameriabank, acquired March 2024). Despite high domestic ROAE (~27-29%) and low cost-to-income ratios (~32-35%), 100% of banking assets and deposits reside in Georgia and Armenia, failing Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

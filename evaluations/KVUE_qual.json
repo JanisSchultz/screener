@@ -1,0 +1,30 @@
+{
+  "id": "KVUE",
+  "ticker": "KVUE",
+  "universe": "us",
+  "company": "Kenvue",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "(1) Brand equity, consumer trust, and global retail shelf-space distribution across OTC healthcare (Tylenol, Motrin, Benadryl, Zyrtec), oral care (Listerine), and skincare (Neutrogena, Aveeno, Band-Aid) provide entry barriers against de novo consumer brands. (2) However, historical capital efficiency fails the quality threshold: 5-year median GAAP ROIC is 11.2% (below the 12% hurdle), and post-JNJ spin-off GAAP ROIC sits at sub-10% due to an asset-heavy balance sheet loaded with ~$20B in carved-out intangibles/goodwill and ~$8.5B in debt. (3) Primary erosion threats include pervasive private-label substitution across chemically identical OTC drug monographs (store-brand acetaminophen, ibuprofen, and cetirizine sold at steep discounts by mass retailers), severe market share erosion in Skin Health to clinical dermatological brands (CeraVe, La Roche-Posay), volume contraction whenever list prices are increased, and corporate absorption via acquisition by Kimberly-Clark in November 2026.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 11.2% < 12% hurdle & negative price elasticity, REJECT). While Kenvue possesses iconic, household-name OTC and personal care brands (Tylenol, Listerine, Neutrogena), its underlying economic engine fails the Munger quality hurdle. Spun off from Johnson & Johnson encumbered with ~$8.5B in debt and massive capitalized intangibles, standalone GAAP ROIC has tracked persistently below 12%. When enacting price hikes in 2023–2025 to offset inflation, organic volumes turned negative across Self Care and Skin Health as consumers traded down to chemically identical private-label OTC generics or shifted to dermatologist-recommended skincare alternatives (CeraVe), confirming the absence of true pricing power without volume sacrifice. Acquired by Kimberly-Clark for $48.7B EV (completed November 2026).",
+    "evidence": "Historical 10-year median ROIC is 11.2% (dossier), strictly failing the 12% Gate 3b minimum standard; post-spin standalone GAAP ROIC remained depressed at ~8-10% on ~$20B+ invested capital. Kenvue's operations span Self Care (~40% of revenue; Tylenol, Motrin, Zyrtec), Skin Health & Beauty (~30%; Neutrogena, Aveeno), and Essential Health (~30%; Listerine, Band-Aid, Johnson's). FY2024-2025 sales stagnated around $15.4B-$15.7B as 1-3% price/mix realization was neutralized by -1% to -2% volume declines, reflecting consumer elasticity and share losses to private label and clinical skincare rivals. Balance sheet at year-end 2025 carried $8.5B in debt against $1.1B in cash (net debt ~$7.4B, ~4.4x net income of ~$1.7B). While FCF reached $1.7B in 2025, capital efficiency remained structurally sub-hurdle. Kimberly-Clark acquired Kenvue on November 2, 2026 in a cash-and-stock merger valued at $48.7B EV ($3.50 cash + 0.14625 KMB shares per KVUE share), delisting the equity from public markets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

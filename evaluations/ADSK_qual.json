@@ -1,0 +1,30 @@
+{
+  "id": "ADSK",
+  "ticker": "ADSK",
+  "universe": "us",
+  "company": "Autodesk, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary file formats (.dwg for AutoCAD, .rvt for Revit) establish a de facto global standard across the entire Architecture, Engineering, and Construction (AEC) ecosystem. Multi-party project delivery requires federating BIM models across architects, MEP engineers, structural consultants, and general contractors; switching away breaks cross-firm interoperability and introduces massive legal and construction risk. Immense workflow retraining costs make customer defection irrational. 5-year median GAAP ROIC of 38.96% and tangible operating ROIC >100% prove moat durability. Pricing power is demonstrated by forcing subscription migration, eliminating perpetual licenses, and compounding regular above-inflation price increases despite public pushback from leading architecture firms. Primary erosion risks include openBIM (IFC) open-standard interoperability mandates and AI-native generative design startups.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global standard in CAD and BIM software with an entrenched Toll Booth / Switching Cost moat anchored by proprietary .dwg and .rvt file formats across the AEC ecosystem. Exceptional pricing power demonstrated by multi-cycle subscription migration and regular price hikes. Insulated from AI disruption by proprietary geometry schemas, professional engineering liability stamping, and structural labor shortages in construction. Accounting probe resolved with zero restatements and SEC closure. Fortress balance sheet with near net cash and 19.7x interest coverage. [5-10Y g: organic AEC/BIM volume 4.5% + contract pricing 3.0% + direct model/cloud mix 1.5% - transaction model margin drag 0.5% + net share buybacks 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 38.96% and tangible operating ROIC >100%. Gross margins steady at 90-92% and GAAP operating margins expanding to 22-23% (underlying non-GAAP operating margin ~38%). FY2025 revenue reached $6.07B and FY2026 accelerated to $7.21B with >$2.4B in operating cash flow. 5-year cumulative Owner FCF conversion is 120.5% ($5.38B Owner FCF vs $4.46B Net Income). Net debt is $251M ($2.25B cash vs $2.50B LT debt), repayable in 0.22 years of net income, with interest coverage of 19.7x ($1,578M EBIT / $80M interest). Audit Committee probe concluded in May 2024 with zero financial restatements, SEC formally closed investigation without enforcement action in August 2025, and class action complaint dismissed in January 2026."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

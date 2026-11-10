@@ -1,0 +1,30 @@
+{
+  "id": "ALFA.SE",
+  "ticker": "ALFA",
+  "universe": "eu",
+  "company": "Alfa Laval",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 in plate heat exchangers, centrifugal separators, and hygienic fluid handling with established brand recognition, generating 12-16% EBIT margins and 15-20% ROCE.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Tier 3 Capital Goods baseline (10-15Y) degraded by ~70% OEM exposure to cyclical commercial shipbuilding and petrochemical capex cycles, combined with low-cost Asian competitive encroachment in plate heat exchangers.",
+    "evidence": "While holding leading positions in heat transfer and separation, aftermarket service represents only ~30% of sales, leaving 70% exposed to lumpy, cyclical OEM capex in Marine (shipyard orders) and Energy (refinery/petrochemicals). Gross margins and orders fluctuate with global industrial and shipping cycles, capping competitive advantage period below the 15-year threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ADSK",
+  "ticker": "ADSK",
+  "universe": "us",
+  "company": "Autodesk, Inc.",
+  "price": 261.72,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting structurally unbounded returns on negative tangible capital and de facto CAD/BIM AEC standards (.dwg, .rvt) neutralizing $4.76B goodwill/intangibles. 5-10Y through-the-cycle growth of 10.0% driven by 4.5% organic AEC/BIM volume adoption, 3.0% contract pricing power, 1.5% direct model and cloud mix, offset by 0.5% transaction model margin drag, plus 1.5% net share repurchases. Pristine balance sheet with $2.25B cash vs $2.50B LT debt (net debt $251M, 2.22x NI leverage), 19.7x EBIT interest coverage, and stellar 120.5% Owner FCF conversion. Current price of $261.72 trades at 44.10x peak Owner EPS ($5.9349) vs fundamental PAR Multiple of 33.17x (PAR Value $196.87), placing ADSK Above PAR (+32.9% premium) with a 5Y expected IRR of 3.9%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.9349,
+    "current_multiple": 44.1,
+    "par_multiple": 33.17,
+    "par_value": 196.87,
+    "percent_vs_par": 0.3294,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0391,
+    "market_implied_cap": 19.9,
+    "moat_runway_margin": -4.9,
+    "market_implied_growth": 0.2639,
+    "growth_margin_of_safety": -0.1639
+  },
+  "health_checks": {
+    "net_debt_years": 2.22,
+    "net_debt_ok": true,
+    "interest_coverage": 19.73,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2053,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

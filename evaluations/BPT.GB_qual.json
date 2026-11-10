@@ -1,0 +1,30 @@
+{
+  "id": "BPT.GB",
+  "ticker": "BPT",
+  "universe": "eu",
+  "company": "Bridgepoint",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Contractual fund lockups provide multi-year fee visibility, but mid-market PE is crowded with hundreds of competing sponsors. Lacks pricing power to increase base fee margins above inflation without conceding LP co-investment rights or fee discounts; sub-hurdle statutory ROIC (~4-10%).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Mid-market private equity and credit sponsor lacking differentiated pricing power or an unassailable moat. Highly substitutable by global and regional peers, with statutory ROIC falling short of the 12% cycle hurdle.",
+    "evidence": "Bridgepoint operates mid-market buyout and private credit strategies with €39B-€58B in fee-paying AUM following the ECP acquisition. Statutory ROIC has historically ranged between 3% and 10% (ROCE 4-7%). While long-dated closed-end fund structures provide multi-year fee visibility, mid-market fund management is subject to intense LP fee pushback, co-investment concessions, and cyclical realization/performance fee volatility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "VPK.NL",
+  "ticker": "VPK",
+  "universe": "eu",
+  "company": "Vopak",
+  "price": 53.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": null,
+    "fin_note": "Operating ROIC of 12.3% reflects physical capital intensity of irreplaceable deep-water terminal infrastructure. Peak Owner EPS of €5.22 supported by high occupancy and contract indexation. Forward g_implied of 5.0% aligns with qualitative guidance: 1.5% capacity expansion, 2.0% CPI indexation, 1.0% energy transition mix, and 0.5% buybacks."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.2157,
+    "current_multiple": 10.16,
+    "par_multiple": 10.91,
+    "par_value": 56.89,
+    "percent_vs_par": -0.0683,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0307,
+    "expected_irr_5y": 0.0956,
+    "market_implied_cap": 14.0,
+    "moat_runway_margin": 1.0,
+    "market_implied_growth": 0.0388,
+    "growth_margin_of_safety": 0.0112
+  },
+  "health_checks": {
+    "net_debt_years": 3.2,
+    "net_debt_ok": true,
+    "interest_coverage": 6.6,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.74,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HOC.GB",
+  "ticker": "HOC",
+  "universe": "eu",
+  "company": "Hochschild Mining",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Silver (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (precious metals mining) with operating assets concentrated in Peru, Argentina, and Brazil.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Underground gold and silver miner operating in Peru, Argentina, and Brazil. A pure commodity price-taker exposed to bullion price volatility, recurring community protests/blockades in Peru, and Argentine currency/capital controls that impair cash repatriation.",
+    "evidence": "Core operations at Inmaculada and Pallancata (Peru) and San Jose (Argentina) face periodic operational suspensions, community negotiations, and political scrutiny over environmental permits. Free cash flow and returns on capital are deeply cyclical and governed entirely by global gold and silver prices."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

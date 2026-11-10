@@ -1,0 +1,30 @@
+{
+  "id": "TE.FR",
+  "ticker": "TE",
+  "universe": "eu",
+  "company": "Technip Energies",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Core Project Delivery segment (~75% of revenue) relies on competitive bidding for large-scale lump-sum and reimbursable EPC contracts against global engineering contractors (Bechtel, Fluor, Saipem). While the Technology, Products & Services (TPS) segment possesses proprietary process licenses (~15% EBITDA margin), the consolidated business lacks pricing power, operating at 5-7% Project Delivery margins exposed to project delays, geopolitical disruptions, and inflationary cost overruns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a=None, 3b=N, REJECT). Technip Energies is a specialized energy infrastructure contractor with valuable LNG and decarbonization technologies. However, ~75% of revenue stems from lump-sum/reimbursable EPC contracts won via competitive bidding, resulting in low pricing power, thin segment margins (5-7%), and high vulnerability to cyclical energy capex.",
+    "evidence": "Project Delivery represents approximately 75% of consolidated revenues with recurring EBITDA margins of 5-7%. While net cash is positive due to client project advance billings, earnings are lumpy and project execution risks (e.g. Middle East logistical disruptions) cap pricing power across the energy cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

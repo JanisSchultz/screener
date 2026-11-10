@@ -1,0 +1,30 @@
+{
+  "id": "NEX.FR",
+  "ticker": "NEX",
+  "universe": "eu",
+  "company": "Nexans SA",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-voltage subsea cables enjoy qualification barriers and oligopoly supply dynamics, but standard building wire and distribution cables face commodity competition. Subsea cable installation requires heavy capital expenditure, keeping multi-year GAAP ROIC below the 12% hurdle (~8.6-10.2%) with operating margins around 5-6%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). French cable manufacturer pivoting to pure-play electrification. Despite high-voltage grid interconnector tailwinds, commoditized low-voltage cables and high capex on subsea installation vessels hold multi-year GAAP ROIC to ~8.6-10.2% (below the 12% threshold) with low operating margins (~5-6%).",
+    "evidence": "Multi-year GAAP ROIC has tracked ~8.6% to 10.2% across 2022-2025, falling short of the 12% hurdle. Operating margin (EBIT / sales) hovers at 5-6%. Heavy capital intensity from specialized cable-laying vessels (e.g. Nexans Aurora, Electra) and large turnkey contract execution risks dilute economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

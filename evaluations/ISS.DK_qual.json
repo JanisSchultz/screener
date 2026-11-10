@@ -1,0 +1,30 @@
+{
+  "id": "ISS.DK",
+  "ticker": "ISS",
+  "universe": "eu",
+  "company": "ISS",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global facility management scale provides account reach, but razor-thin 4-5% operating margins, heavy reliance on manual labor, and frequent contract turnover during competitive 3-5 year corporate rebids demonstrate a lack of pricing power and structural moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). ISS operates in commoditized global facility services (cleaning, catering, security) characterized by razor-thin 4-5% operating margins. Multi-year corporate contracts are routinely rebid every 3-5 years with frequent client churn when price increases are sought, demonstrating an absence of pricing power and defensible moat.",
+    "evidence": "ISS is a global facility services provider with ~350,000 employees. Operating margins before other items have historically hovered between 4.3% and 5.0%. Corporate clients face low switching costs and frequently tender contracts to competing providers (Sodexo, Compass, CBRE, JLL) or regional contractors, forcing ISS to accept deliberate contract terminations when seeking inflation pass-through."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

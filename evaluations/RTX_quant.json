@@ -1,0 +1,43 @@
+{
+  "id": "RTX",
+  "ticker": "RTX",
+  "universe": "us",
+  "company": "RTX Corporation",
+  "price": 196.31,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (Gate 6 leverage and Pratt & Whitney GTF powdered metal inspection cash drains). Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (tangible ROIC of 89.8% heavily distorted by $53.3B in UTC/Raytheon merger goodwill, neutralizing accounting dilution across captive commercial aerospace aftermarket toll booths at Collins and Pratt & Whitney). FY2025 Peak Owner EPS of $6.2541 accepted without adjustment, reflecting baseline operational recovery while still absorbing ~$1.0B in customer inspection compensation cash outflows. Forward secular growth conservatively calibrated to 8.0% (incorporating -1.0% GTF inspection compensation drag and supply chain turnaround) alongside 4.0% commercial aftermarket volume, 2.5% defense procurement, 1.5% pricing, and 1.0% net share repurchases. Record $200B+ backlog ($130B+ commercial, $70B+ defense). Gross debt of $34.29B vs $6.73B NI (5.09x leverage) fails Gate 6, but expanding FCF ($7.9B in FY25 to $8.5B+ in FY26) enables rapid organic deleveraging. Trades Above PAR at 31.39x peak EPS vs 25.50x PAR multiple ($159.50 PAR Value)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.2541,
+    "current_multiple": 31.39,
+    "par_multiple": 25.5,
+    "par_value": 159.5,
+    "percent_vs_par": 0.2308,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0135,
+    "expected_irr_5y": 0.0496,
+    "market_implied_cap": 24.6,
+    "moat_runway_margin": -4.6,
+    "market_implied_growth": 0.1683,
+    "growth_margin_of_safety": -0.0883
+  },
+  "health_checks": {
+    "net_debt_years": 5.09,
+    "net_debt_ok": false,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0768,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

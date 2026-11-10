@@ -1,0 +1,30 @@
+{
+  "id": "TYL",
+  "ticker": "TYL",
+  "universe": "us",
+  "company": "Tyler Technologies",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme switching costs and regulatory lock-in protect Tyler's core public-sector systems of record across 13,000+ local, county, and state government entities (over 44,000 installations). Migrating core court docketing, land title recording, 911 dispatch, or property tax appraisal carries immense career risk for elected officials and high disruption costs, yielding ~98% gross client retention. Proof of moat is seen in pricing power: on-premise to SaaS 'cloud flips' generate 1.8x to 2.0x recurring revenue uplift alongside 2-4% contractual annual price escalators, while tangible ROIC exceeds 70%+ (GAAP ROIC ~8.9% depressed solely by goodwill from the $2.3B NIC acquisition). Primary erosion threat is potential budget freezes at the local municipality level, though mission-critical statutory workflows insulate operations from cyclical churn.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant provider of mission-critical ERP, court, public safety, and payment software for US local governments. Moat anchored by near-insurmountable switching costs and 98% gross retention across 13,000+ public sector clients. Insulated from AI disruption as embedded automation assists labor-starved municipal workforces within certified statutory frameworks. Fortress balance sheet with >$1.0B in cash and net cash of ~$415M following full absorption of the NIC acquisition. [5-10Y g: SaaS conversions and new agency wins 6.0% + contractual pricing 2.5% + payment transaction volume 1.5% + operating leverage 1.0% - share dilution 0.5%]",
+    "evidence": "Long-term public operating track record spanning decades. Free cash flow conversion consistently exceeds 100% of GAAP net income (FY2025 FCF conversion of 159.6% with FCF of $620M-$637M on Net Income of $315.6M and Capex under $20M). High recurring revenue base (~88% of total revenue). Tangible ROIC consistently exceeds 70% to 100%+, while GAAP ROIC is expanding from 5.4% (FY2023) to 8.9% (FY2025) as operating leverage scales post-NIC integration. Long-term debt successfully reduced from $1.31B (2021) to $599.7M (FY2025) while cash grew to $1,015.4M, resulting in a net cash position of ~$415.7M and interest coverage exceeding 70x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

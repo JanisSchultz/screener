@@ -1,0 +1,30 @@
+{
+  "id": "PEG",
+  "ticker": "PEG",
+  "universe": "us",
+  "company": "Public Service Enterprise Group",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted regulated T&D utility franchise in New Jersey (PSE&G) combined with merchant nuclear generation protected by federal IRA Section 45U/45Y production tax credit price floors (~$43.75/MWh). Natural monopoly grid with formulaic FERC/NJ BPU cost recovery.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated New Jersey T&D utility and zero-carbon nuclear fleet benefiting from federal PTC price floors and successful divestiture of fossil generation. However, intensive infrastructure capex ($3.27B in FY2025) consumes virtually all operating cash flow ($3.30B), leaving zero organic cash to cover $1.26B in dividends and supporting $21.7B in long-term debt (10.3x net income) with thin 2.97x interest coverage.",
+    "evidence": "FY2025 revenue of $12.17B, EBIT of $2,980M, and net income of $2,111M. 10-year median GAAP ROIC is 6.70%. Balance sheet carries $21.67B in long-term debt against $132M cash, resulting in 10.3x debt/NI (threshold <=4.0x) and 2.97x interest coverage (EBIT $2,980M / Interest $1,005M, threshold >5.0x). Capex of $3,272M consumed entire OCF of $3,298M in FY2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

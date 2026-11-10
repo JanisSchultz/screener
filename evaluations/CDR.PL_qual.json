@@ -1,0 +1,30 @@
+{
+  "id": "CDR.PL",
+  "ticker": "CDR",
+  "universe": "eu",
+  "company": "CD Projekt",
+  "country": "Poland",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Home Entertainment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country outside approved Western developed markets (in_market == N); discretionary hit-driven video game entertainment with multi-year gaps between releases.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == N and discretionary hit-driven entertainment, REJECT). Primary listing in Poland is outside the approved rule-of-law Western developed market tier. Furthermore, AAA video game development (The Witcher, Cyberpunk 2077) is inherently lumpy, hit-driven discretionary entertainment with multi-year dry spells between releases, lacking non-discretionary everyday demand.",
+    "evidence": "Poland is designated in_market == N. Financially, earnings and cash flows are hyper-cyclical, swinging violently depending on AAA game launches (e.g. massive revenue spike upon Cyberpunk 2077 launch followed by multi-year release lulls). Lacks recurring everyday subscription cash flows."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

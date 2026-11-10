@@ -1,0 +1,30 @@
+{
+  "id": "UDR",
+  "ticker": "UDR",
+  "universe": "us",
+  "company": "UDR, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Multi-Family Residential REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Entitlement hurdles and land scarcity in coastal infill submarkets provide localized supply friction, but fail to prevent returns from being arbitraged down by nearby competitive construction and alternative housing. Empirical proof of moat is absent: 10-year median GAAP ROIC is 4.9% (vs. >=12% hurdle), bounded by commercial real estate cap rates (4-6%). Primary erosion threats include merchant-builder apartment delivery waves, zero tenant switching costs, concession wars, and persistent operating cost inflation (property taxes, insurance, labor).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing Power, REJECT). While UDR owns high-quality multifamily apartment communities in supply-constrained infill coastal and suburban markets, residential rental housing lacks a defensible economic moat. 10-year median GAAP ROIC of 4.9% (and 2-4% in 2024-2025) falls far short of the 12% cost-of-capital hurdle. Furthermore, UDR lacks pricing power above inflation; tenants face zero switching costs upon annual lease expiration, and broad merchant-developer apartment completions in 2024-2025 forced lease rate concessions and negative blended lease spreads (-0.6% in late 2024). This sub-hurdle return profile is a permanent, structural feature of real estate cap-rate economics, not a temporary fixable calamity.",
+    "evidence": "Multi-cycle financial reality confirms the absence of an economic moat: 10-year median GAAP ROIC is 4.9%, with recent fiscal years generating ~2.1-4.2% ROIC, well below the 12% threshold. As a multifamily residential REIT, UDR owns ~60,000 apartment homes across coastal and Sunbelt markets. While the company operates a sophisticated proprietary technology operations platform that modestly optimizes operating margins, same-store revenue growth decelerated to 2.3% in 2024 and 2.4% in 2025 amidst heavy new supply completions. Same-store expense growth outpaced revenue in 2024 (+4.3%), and blended lease spreads turned negative (-0.6% in Q4 2024), forcing management to pivot to an occupancy-preservation strategy. Leverage is substantial with total debt of ~$5.8B and Net Debt / EBITDA of 5.7x-6.0x (FFO-to-debt ~13%), typical of capital-intensive real estate. Because low ROIC and lack of pricing power are structural attributes of multifamily real estate rather than a temporary fixable calamity, UDR fails Gate 3."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

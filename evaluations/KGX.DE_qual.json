@@ -1,0 +1,30 @@
+{
+  "id": "KGX.DE",
+  "ticker": "KGX",
+  "universe": "eu",
+  "company": "KION GROUP AG",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Linde and STILL forklift dealer networks offer service switching costs, but group capital returns are permanently diluted by capital-intensive warehouse automation (Dematic) project volatility and rising low-cost Chinese competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% across cycle, REJECT). Long-term ROCE/ROIC consistently hovers in the 7-9% range (7.7% in 2025, 8.7% in 2024), failing the Munger 12% threshold due to Dematic project margin volatility and intensifying low-cost Chinese forklift competition.",
+    "evidence": "KION Group's 10-year average ROCE is ~7-8%, well below the cost of capital. The 2016 debt-financed acquisition of Dematic added goodwill and volatile fixed-price contract risks, while Chinese manufacturers (Hangcha, Heli) pressure new forklift pricing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

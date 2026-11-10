@@ -1,0 +1,30 @@
+{
+  "id": "WSM",
+  "ticker": "WSM",
+  "universe": "us",
+  "company": "Williams-Sonoma, Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homefurnishing Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket furniture, home decor, and specialty kitchenware purchases (Pottery Barn, West Elm, Williams Sonoma) are deferrable in recessions and tied to housing turnover rather than essential daily needs or high-frequency habits.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT – G2 Essential Need). Despite elite retail execution under CEO Laura Alber (18.1% FY25 operating margin, 42.3% GAAP / 51.6% adjusted FY25 ROIC, $1.0B cash with no funded revolver debt), Williams-Sonoma's core banners (Pottery Barn, West Elm, Williams Sonoma) sell discretionary, big-ticket furniture, home decor, and upscale kitchenware that households easily defer during downturns or low housing turnover. Following the >$8.6B FY22 peak, revenue normalized to ~$7.77B-$7.8B across FY24-FY25 (-1.6% FY24 comps), confirming cyclical demand deferrability outside essential daily needs or high-frequency habits.",
+    "evidence": "Multi-cycle & recent financial profile: Revenue scaled from ~$4.9B-$5.1B c. 2015-2016 (net income ~$250M-$300M) to a pandemic peak >$8.6B in FY22 before normalizing to ~$7.77B-$7.8B in FY24 (-1.6% comps) and $7.8B in FY25 (+1.24% YoY, +3.5% comps), with dossier 10Y median ROIC at 22.4%. Operating execution has been exceptionally strong: FY24 operating margin reached 17.9% (~$1.39B EBIT, ~$1.5B FCF on ~$1.7B OCF and ~$221.6M capex, $1.2B cash, zero revolver debt, 54.0% ROIC) and FY25 operating margin expanded to 18.1% ($1.42B EBIT, $1.3B OCF, $1.0B cash, no material funded debt, 42.3% ROIC / 51.6% adjusted ROIC), with >$1B annual net income and >$1.3B TTM FCF. In FY26, management raised full-year guidance assuming zero housing recovery (Q1 +4.8% and Q2 +6.2% comps across Pottery Barn, West Elm, Williams Sonoma, B2B, and emerging banners Rejuvenation/Mark and Graham/GreenRow), while navigating ~230 bps tariff margin drag and ~$200M IEEPA tariff refunds ($47.5M vendor reimbursements, $10M employee 401(k) contributions) alongside multi-country sourcing shifts across China, Vietnam, and India. Gate 1 passes (transparent omni-channel retail/DTC model public for decades), but Gate 2 rejects on core demand nature: furniture, furnishings, and specialty cookware are big-ticket, deferrable discretionary durables exposed to housing cycles rather than essential necessities or entrenched daily rituals."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

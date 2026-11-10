@@ -1,0 +1,30 @@
+{
+  "id": "SHW",
+  "ticker": "SHW",
+  "universe": "us",
+  "company": "Sherwin-Williams",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant North American pro-painter distribution moat backed by 5,000+ company-owned paint stores, proprietary tinting/formulations, jobsite delivery, and dedicated commercial trade credit. Paint represents only ~10-15% of total painting job costs while labor is 85-90%, making contractor switching economically irrational due to high failure risk and application downtime. Pricing power is empirically demonstrated by cumulative >25% price realization across 2021-2023 with gross margins expanding above 48% and 5-year median GAAP ROIC exceeding 22.8% (tangible ROIC >100%). Primary long-term erosion risks are prolonged deep freezes in housing turnover or aggressive commercial encroachment by big-box retailers.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable North American pro-painter distribution network and high-margin coatings franchise. Unrivaled contractor workflow lock-in where paint is only 10-15% of job cost, driving 48%+ gross margins and >22% multi-cycle GAAP ROIC. Fully insulated from AI and labor headwinds. Prudent balance sheet with debt repayable in 3.6 years and interest coverage >8x. [5-10Y g: pro contractor store & volume growth 2.5% + net pricing power 2.0% + industrial coatings/international expansion 1.0% - macro housing cycle drag 0.5% + share repurchases 2.0%]",
+    "evidence": "Sherwin-Williams generates 10-year median GAAP ROIC of 22.8% and tangible operating ROIC >100% on $23.6B in revenues. FCF conversion stands at 94.1% ($2.65B Owner FCF vs $2.57B Net Income in FY2025). The Paint Stores Group (PSG) operates 5,000+ company-owned locations, creating an insurmountable local delivery and trade credit moat that big-box retailers cannot replicate. Successfully proved pricing power by pushing cumulative price hikes >25% in 2021-2023, expanding gross margin from 42% to 48.5%. Balance sheet holds $9.32B long-term debt against $2.57B net income (3.63x) with EBIT interest coverage of 8.18x, maintaining a 47-year consecutive dividend growth streak and active share repurchases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

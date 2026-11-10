@@ -1,0 +1,30 @@
+{
+  "id": "VER.AT",
+  "ticker": "VER",
+  "universe": "eu",
+  "company": "Verbund",
+  "country": "Austria",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Long-dated hydroelectric concessions along the Danube and Austrian Alps with run-of-river and pumped-storage plants operating at the bottom of the European merit order. Strong historical 5-year median GAAP ROIC of 21.0% driven by zero-fuel-cost hydro generation, though earnings are exposed to wholesale merchant power price volatility and statutory windfall profit taxes.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (gate_6 = N, REJECT). Austria's dominant hydroelectric generator possessing irreplaceable dam concessions, but fails Gate 6 Pillar 1 peak-to-peak earnings power compounding. Record FY2023 earnings (€6.52 Owner EPS) represented an unrepeatable energy crisis windfall spike; earnings have collapsed significantly as European wholesale power prices normalized (€4.29 Owner EPS in FY2025). Furthermore, Austria has extended statutory windfall taxes on inframarginal hydro through 2030, capping upside while downside volume risk (droughts) remains unhedged.",
+    "evidence": "While Verbund maintains a low-leverage balance sheet (Net Debt/NI of 1.04x) and strong multi-year GAAP ROIC (21.0% median), its earnings fail Gate 6 Pillar 1. FY2023 net income of €2.27B and EPS of €6.52 were driven by historical European energy crisis gas and power price spikes. As wholesale power prices normalized, net income contracted by 34% to €1.49B (€4.29 EPS) in FY2025. Austrian statutory extension of the Energy Crisis Contribution (windfall tax) through 2030 permanently skims supernormal profits, leaving the company exposed to commodity power swings and weather volatility without secular peak-to-peak compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

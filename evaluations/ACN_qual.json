@@ -1,0 +1,30 @@
+{
+  "id": "ACN",
+  "ticker": "ACN",
+  "universe": "us",
+  "company": "Accenture plc",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep enterprise integration relationships, multi-year managed services contracts, and trusted C-suite advisory status embed Accenture across 90+ of the Fortune Global 100, supporting high asset turnover and multi-decade ROIC > 25%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Macrotrend #1 (Automation & Cognitive Tech / AI Disruption) poses an unhedged terminal headwind to Accenture's billable-hour IT consulting and headcount-intensive systems integration model. Autonomous coding agents, automated migration toolchains, and AI-driven synthetic integration structurally compress the billable hours and personnel required for enterprise digital transformations. Despite short-term GenAI consulting bookings ($5.9B in FY25), productivity deflation in its 750,000+ delivery workforce caps competitive advantage period at 5 years. Downstream gates bypassed per waterfall.",
+    "evidence": "Accenture demonstrates strong historical capital efficiency with a 10-year median ROIC of 26.8% and owner FCF conversion exceeding 100%. In FY24, revenue was $64.9B with adjusted operating margin of 15.5% and FCF of $8.6B. FY25 revenue reached $69.7B with adjusted operating margin of 15.6%, FCF of $10.9B, and total debt of $5.08B offset by $11.48B in cash. While entrenched across 90+ Fortune Global 100 clients, Mauboussin-Callahan empirical persistence research places IT Services in Tier 3 (10-15Y baseline CAP). Under Step 2 inside view, Macrotrend #1 (AI Disruption) imposes a severe haircut: generative AI agents and automated code generation commoditize routine IT implementation, eroding headcount-based billing volume and client willingness to pay standard consulting billing rates over a multi-decade horizon."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

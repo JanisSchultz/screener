@@ -1,0 +1,30 @@
+{
+  "id": "ALSYDB.DK",
+  "ticker": "ALSYDB",
+  "universe": "eu",
+  "company": "AL Sydbank",
+  "country": "Denmark",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Regional retail and SME deposit franchise in Denmark. Switching costs on primary operating accounts provide low-cost funding, though loan products remain largely commoditized with intense competition from national banks.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional Danish bank formed by the merger of Sydbank, Arbejdernes Landsbank, and Vestjysk Bank. Lacks defensible pricing power against larger national peers (Danske Bank, Nordea), faces ongoing digital banking disintermediation, and earnings are highly vulnerable to ECB/Danmarks Nationalbank rate-cutting cycles and credit provisions.",
+    "evidence": "Formed in December 2025 via the three-way combination of Sydbank, Arbejdernes Landsbank, and Vestjysk Bank. While possessing sticky regional retail and corporate deposits, regional commercial banks operate with fractional-reserve leverage (10-15x assets to equity) and commoditized lending spreads. Earnings benefited from the 2023-2024 rate-hike cycle but lack secular compounding runway independent of monetary policy and credit cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

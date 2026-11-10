@@ -1,0 +1,30 @@
+{
+  "id": "LII",
+  "ticker": "LII",
+  "universe": "us",
+  "company": "Lennox International",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Direct-to-dealer (D2D) distribution model bypasses independent two-step wholesalers for ~75% of sales, embedding high switching costs via Lennox Premier Dealer certification, proprietary diagnostic tools, warranty handling, and co-op marketing. 10-year median ROIC is ~28% with operating margins near 17-18%. Primary erosion threat is private equity contractor consolidation demanding multi-brand wholesale sourcing.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Lennox achieves high returns on capital via its proprietary direct-to-dealer network, structural runway is limited. Capital Goods base-rate persistence is Tier 3 (10-15Y). The rapid private equity consolidation of independent residential HVAC contractors directly threatens Lennox's captive dealer moat by shifting procurement to multi-brand wholesale distributors (Watsco, Ferguson). Exiting Europe leaves Lennox >90% dependent on mature North American residential replacement cycles, with high-ticket consumer financing vulnerable to structural interest rates.",
+    "evidence": "10-year median ROIC of 28.5% with operating margins of 17-18% and FCF of $640M-$785M. Revenue splits ~65% Home Comfort Solutions (Residential) and ~35% Building Climate Solutions (Commercial); ~75% replacement / 25% new construction. However, Lennox is pure-play North American without global scale, competing against Daikin, Carrier, and Trane. Private equity rollups of local HVAC dealers aggregate buying power away from proprietary direct-to-dealer networks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

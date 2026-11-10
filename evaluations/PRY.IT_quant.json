@@ -1,0 +1,43 @@
+{
+  "id": "PRY.IT",
+  "ticker": "PRY",
+  "universe": "eu",
+  "company": "Prysmian",
+  "price": 101.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": null,
+    "fin_note": "Operating ROIC of 27.36% reflects tangible capital return on cable manufacturing plants and specialized subsea installation vessels, neutralizing €5.3B acquired goodwill/intangibles that dilute GAAP ROIC to 13.8%. Peak Owner EPS confirmed at €4.30 (FY2025). Forward 5-10Y g_implied anchored at 8.5% driven by transmission grid volume (4.5%), Encore Wire US integration (2.0%), and price indexation (1.5%), net of cyclical timing. Sound balance sheet with net debt repayable in 2.1 years of Owner Earnings and 8.5x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.3,
+    "current_multiple": 23.49,
+    "par_multiple": 23.38,
+    "par_value": 100.55,
+    "percent_vs_par": 0.0045,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0079,
+    "expected_irr_5y": 0.0919,
+    "market_implied_cap": 15.1,
+    "moat_runway_margin": -0.1,
+    "market_implied_growth": 0.0866,
+    "growth_margin_of_safety": -0.0016
+  },
+  "health_checks": {
+    "net_debt_years": 2.1,
+    "net_debt_ok": true,
+    "interest_coverage": 8.5,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.37,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

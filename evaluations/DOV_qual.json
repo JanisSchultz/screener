@@ -1,0 +1,30 @@
+{
+  "id": "DOV",
+  "ticker": "DOV",
+  "universe": "us",
+  "company": "Dover Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Portfolio of specialized niche industrial leaders (Markem-Imaje coding/ink consumables, OPW fueling/clean energy hardware, PSG biopharma & specialty pumps) benefits from installed-base switching costs and consumable replenishment. However, consolidated capital efficiency fails empirical moat hurdles: 5-year median GAAP ROIC is ~10.1% (FY21 11.7%, FY22 11.7%, FY23 9.9%, FY24 9.9%, FY25 10.3%), structurally below the 12.0% threshold due to continuous M&A goodwill dilution (~$4.5B+ goodwill) and cyclical competition in commercial refrigeration and engineered components.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). While Dover operates defensible niche positions with switching costs in marking consumables (Markem-Imaje), retail fueling hardware (OPW), and specialty pumps (PSG), its consolidated 5-year median GAAP ROIC of ~10.1% (2021-2025 range of 9.9% to 11.7%) structurally fails the 12% cycle hurdle. Substantial goodwill from continuous bolt-on M&A and cyclical headwinds in climate/engineered goods dilute returns.",
+    "evidence": "5-year median GAAP ROIC is ~10.1% (FY21 11.7%, FY22 11.7%, FY23 9.9%, FY24 9.9%, FY25 10.3%), consistently below the 12.0% hurdle across economic cycle peaks and normalizations. Consolidated revenue ~$8.1B in FY25 across five segments (Clean Energy & Fueling, Pumps & Process Solutions, Climate & Sustainability, Engineered Products, Imaging & Identification). Operating margins have hovered between 15.6% and 17.0%. FCF generation is healthy (~$1.0B-$1.1B annually, ~13-14% FCF margin), but heavy historical M&A has accumulated over $4.5B in goodwill, preventing capital returns from exceeding cost of capital by an elite compounder margin."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

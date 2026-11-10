@@ -1,0 +1,43 @@
+{
+  "id": "RMV.GB",
+  "ticker": "RMV",
+  "universe": "eu",
+  "company": "Rightmove",
+  "price": 555.4,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting dominant UK portal toll booth with structurally unbounded returns on tangible capital. 5-10Y g of 7.5% underpinned by ARPA pricing power (4.5%), new mortgage/commercial lines (1.0%), tech spend (-0.5%), and 2.5% buyback tailwind."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 27.9958,
+    "current_multiple": 19.8387,
+    "par_multiple": 24.2683,
+    "par_value": 679.4114,
+    "percent_vs_par": -0.1825,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0197,
+    "expected_irr_5y": 0.1389,
+    "market_implied_cap": 12.3,
+    "moat_runway_margin": 2.7,
+    "market_implied_growth": 0.0086,
+    "growth_margin_of_safety": 0.0664
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 2843.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

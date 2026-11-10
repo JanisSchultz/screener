@@ -1,0 +1,30 @@
+{
+  "id": "EXPN.GB",
+  "ticker": "EXPN",
+  "universe": "eu",
+  "company": "Experian",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Contributory credit bureau oligopoly protected by insurmountable data network effects and deep software workflow lock-in (Ascend platform). 5-year median GAAP ROIC is 16.5% with steady 25%+ operating margins and regular 2-3% pricing pass-through plus analytics upselling.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global credit bureau oligopolist anchored by irreplaceable contributory data network effects and deep Ascend analytics workflow integration. AI is an operational tailwind driving data consumption. Net debt 2.8x net income with 9.6x interest coverage. [5-10Y g: organic analytics/volume 5.5% + pricing power 1.5% + margin expansion 0.5% + bolt-on M&A/buybacks 1.0%]",
+    "evidence": "5-year median GAAP ROIC of 16.5% and operating ROIC >100%. Free cash flow conversion averages 97.9% (FY2025 Owner FCF of $1,375M vs NI of $1,502M). Sales expanded from $6,619M (FY22) to $8,445M (FY25) with operating margins expanding to 25.8%. Net debt of $4,242M is 2.82x net income with robust interest coverage of 9.59x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

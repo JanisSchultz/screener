@@ -1,0 +1,30 @@
+{
+  "id": "KEYS",
+  "ticker": "KEYS",
+  "universe": "us",
+  "company": "Keysight Technologies, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep switching costs in engineering workflows driven by proprietary automated test software scripts, calibration science, and standards-body integration. Proven by 63-65% gross margins and 14.2% 10-year median ROIC. Primary erosion threats include rapid technological obsolescence and modular/software-defined instrument alternatives.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Electronic test and measurement hardware faces severe cyclicality tied to telecom capex and semiconductor cycles, coupled with an active terminal headwind on Macrotrend 3 (Geopolitical Realignment & Supply Chain Reshoring). Expanding US export controls curb shipments of advanced test instruments to China (~17% revenue exposure), while Chinese state-mandated domestic substitution (Rigol, Siglent, Ceyear) permanently erodes addressable demand. High ongoing R&D treadmill (~16% of sales) required to counter rapid technological obsolescence caps CAP below the 15-year hurdle.",
+    "evidence": "Spun off from Agilent in 2014 with HP heritage dating to 1939. Generates ~63-65% gross margins with a 10-year median ROIC of 14.2% (5-year average ~15.5%). Highly cyclical end markets: revenue declined from $5.46B in FY22 to $4.98B in FY24 following the post-5G capex contraction before recovering to ~$5.4B in FY25. High customer switching costs in lab automated test environments, but heavily exposed to China (~15-20% of sales) and geopolitical export bans on advanced RF/semiconductor test tools. FCF conversion historically strong (~80-100% of net income) with net debt / EBITDA < 1.0x, but runway longevity is constrained by rapid tech obsolescence and geopolitical fragmentation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

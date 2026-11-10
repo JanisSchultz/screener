@@ -1,0 +1,30 @@
+{
+  "id": "CHRW",
+  "ticker": "CHRW",
+  "universe": "us",
+  "company": "C.H. Robinson Worldwide, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Freight brokerage is a highly fragmented commodity intermediary business with over 15,000 active brokers. Shippers utilize multi-broker routing guides with near-zero switching costs, and carriers multi-home across digital load boards. CHRW possesses no defensible structural moat barriers. Proof of moat fails: gross margins and operating profits are dictated by cyclical spreads between shipper contract rates and spot carrier purchase costs, resulting in extreme cyclicality (operating income dropped 66% from $1.26B in 2022 to $427M in 2023) and zero independent pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing, REJECT). Asset-light third-party freight brokerage operating in a fragmented, highly competitive market with no customer switching costs. Shippers tender loads via automated routing guides to whichever broker or asset carrier offers the lowest rate, while truck drivers multi-home across competing load boards. CHRW is a commodity spread price-taker lacking structural pricing power, evidenced by a 65% net income collapse during the 2022-2023 freight downcycle.",
+    "evidence": "North American Surface Transportation (NAST) generates ~65-70% of gross profits, with Global Forwarding contributing ~20-25%. Financial performance is acutely cyclical: revenues fell from $24.70B in 2022 to $17.60B in 2023, while net income dropped from $940.5M (EPS $7.40) to $325.1M (EPS $2.72) before partially recovering to $465.7M in 2024 and $587.1M in 2025. Total debt was reduced from $1.4B in 2024 to $1.1B in 2025 against $161M cash (net debt ~$939M). While asset-light logistics yields solid optical returns on tangible capital in cycle upswings, CHRW has zero structural pricing power or customer lock-in to protect margins against cyclical freight spot rate movements."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

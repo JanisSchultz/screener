@@ -1,0 +1,30 @@
+{
+  "id": "GIS",
+  "ticker": "GIS",
+  "universe": "us",
+  "company": "General Mills",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lindy brand power and grocery shelf real estate across North America Retail (Cheerios, Pillsbury, Betty Crocker, Nature Valley) and Pet (Blue Buffalo). However, brand equity has steadily commoditized against aggressive private-label store brands, fresh perimeter alternatives, and price-sensitive consumer defection, preventing price realization above inflation without severe volume loss.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). General Mills lacks pricing power >= inflation: price increases during post-pandemic inflation triggered sustained organic pound volume contractions and market share losses to private-label alternatives across cereal, snacks, and refrigerated dough. To defend volume in FY25-FY26, management was forced to step up trade promotions and consumer value investments, causing organic net sales to contract (-2% in FY26) and ROIC to moderate below the 12% threshold (9.3%-11.3% in FY25-FY26).",
+    "evidence": "FY24-FY26 financial results demonstrate structural pricing elasticity constraints: FY24 reported net sales down 1% with negative volume; FY25 organic sales flat to down with heavy promotional discounting; FY26 organic sales down 2% and reported net sales down 5% to $18.4B. ROIC moderated from 11.3%-12.3% in FY24 to 9.3%-11.3% in FY25, failing the sustained >= 12% cycle hurdle. Free cash flow contracted from $2.53B in FY24 to $2.29B in FY25 and $1.63B in FY26. Blue Buffalo pet food segment has slowed from premiumization tailwinds to category normalization, failing to offset center-aisle grocery volume declines."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

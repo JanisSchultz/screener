@@ -1,0 +1,30 @@
+{
+  "id": "FM.CA",
+  "ticker": "FM",
+  "universe": "ca",
+  "company": "First Quantum Minerals",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Copper",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operates large-scale copper mine assets (Kansanshi, Sentinel, Cobre Panama), but functions as a pure commodity price-taker with selling prices determined entirely by global LME spot markets. Zero pricing power above cost inflation. Returns on capital fluctuate wildly with metal prices and fail the through-the-cycle 12% GAAP ROIC hurdle. High jurisdictional and sovereign expropriation risk demonstrated by the complete shutdown of Cobre Panama by the Panamanian Supreme Court.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Upstream copper mining operation is a pure commodity price-taker lacking pricing power above inflation. Multi-cycle ROIC is sub-hurdle (<10%) and volatile. Severe jurisdictional asset-impairment and sovereign contract risk demonstrated by the Cobre Panama shutdown, causing heavy debt distress and dilution.",
+    "evidence": "First Quantum is heavily reliant on volatile global copper prices and high-risk sovereign jurisdictions (Zambia, Panama). The forced shutdown and care-and-maintenance status of Cobre Panama in late 2023 eliminated over 40% of production, resulting in substantial operating losses, covenant amendments, debt restructuring, and severe dilution. Multi-cycle GAAP ROIC fails the 12% hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

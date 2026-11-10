@@ -1,0 +1,30 @@
+{
+  "id": "RS1.GB",
+  "ticker": "RS1",
+  "universe": "eu",
+  "company": "RS Group",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global distribution scale and high catalog availability across 750,000+ MRO and electronic products provide localized inventory convenience; historically delivered 15-20%+ ROCE, though operating margins have compressed from 12.8% to 8.0% as digital catalog competition intensifies.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Broadline catalog distribution of standardized electronic components and MRO supplies faces severe terminal headwinds from supplier digital disintermediation, specialized online distributors (Digi-Key, Mouser), and horizontal platforms (Amazon Business). Compressed operating margins (falling from 12.8% in FY23 to 8.0% in FY25) reflect structural margin fade and limited long-term pricing defense.",
+    "evidence": "Statutory operating margins compressed from 12.8% in FY23 to 10.6% in FY24 and 8.0% in FY25 (adjusted 9.4%). ROCE fell from 29.7% in FY23 to 15.2% in FY25 amid sluggish industrial volumes and increased pricing transparency. Lack of proprietary products or engineer-embedded IP leaves RS Group vulnerable to digital disintermediation and platform aggregation over a 15-year horizon."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TEG.DE",
+  "ticker": "TEG",
+  "universe": "eu",
+  "company": "TAG Immobilien",
+  "country": "Germany",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "German secondary residential rental portfolio faces strict statutory rent controls (Mietpreisbremse and municipal Mietspiegel caps) that restrict pricing power below inflation. Multi-year unlevered ROIC sits structurally at 2-4%, far below the 12% threshold. Local property management clustering provides marginal administrative overhead savings but no structural pricing advantage.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (G3 Moat & Pricing). German secondary residential landlord subject to statutory rent controls (Mietpreisbremse, Mietspiegel) that cap rent increases. Unlevered capital returns (ROIC 2-4%) structurally fall far short of the 12% hurdle rate.",
+    "evidence": "TAG Immobilien manages ~85k residential rental units across northern and eastern Germany alongside Polish residential development/rental operations (ROBYG and Resi4Rent). Multi-year GAAP ROIC hovers around 2-4%, constrained by low gross rental yields and strict statutory rent caps in Germany. High debt leverage (€4.2B+ debt, LTV ~45%) is required to generate single-digit equity returns, failing the Munger standard for an enduring high-return moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

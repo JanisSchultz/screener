@@ -1,0 +1,30 @@
+{
+  "id": "SUNN.CH",
+  "ticker": "SUNN",
+  "universe": "eu",
+  "company": "Sunrise",
+  "country": "Switzerland",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Challenger telecom operator in Switzerland (#2 behind Swisscom); relies heavily on promotional discounts and Yallo discount sub-brand to defend market share; coax broadband base faces steady FTTH migration losses, yielding sub-10% ROIC and zero real pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (gate_3b_pricing_and_proof = 'N', REJECT). Swiss #2 challenger relies on aggressive discounting and its Yallo sub-brand to retain subscribers against Swisscom and Salt, generating sub-10% ROIC and flat-to-declining real ARPU with no pricing power.",
+    "evidence": "Spun off from Liberty Global in late 2024, Sunrise operates mobile and hybrid-fiber-coax (HFC) networks in Switzerland. It carries high leverage (3.5x-4.5x EBITDA, BB- credit rating) while facing continuous customer losses on coax to Swisscom/utility fiber networks. Lack of pricing power and sub-10% ROIC fail Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

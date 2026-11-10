@@ -1,0 +1,30 @@
+{
+  "id": "WKL.NL",
+  "ticker": "WKL",
+  "universe": "eu",
+  "company": "Wolters Kluwer",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deeply embedded workflow software and certified proprietary data across tax, accounting, healthcare, and compliance with 83% recurring revenue. High switching barriers and 4-6% organic pricing power support 30%+ ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable professional information and regulatory workflow provider (83% recurring revenue). Embedded in clinical (UpToDate), tax (CCH), and compliance workflows. Net debt 2.3x net income and 15.1x interest coverage. [5-10Y g: recurring volume 3.5% + pricing power 2.0% + margin expansion 0.5% + net buybacks 1.0%]",
+    "evidence": "GAAP ROIC median of 30.6% and operating ROIC >100%. FCF conversion is 115% with FY2025 Owner FCF of €1,337M vs net income of €1,308M. Revenue grew from €5.45B (2022) to €6.13B (2025) while EBIT margin reached 28.8%. Net debt of €3,063M is covered 2.34x by net income and interest coverage is 15.1x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

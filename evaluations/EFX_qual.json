@@ -1,0 +1,30 @@
+{
+  "id": "EFX",
+  "ticker": "EFX",
+  "universe": "us",
+  "company": "Equifax Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "The Work Number payroll verification monopoly (>650M records) and credit bureau triopoly provide an unassailable toll booth with proven inflation-plus pricing power and tiered bundle upselling.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "Broken metric: Gate 6 failure with LT Debt / NI of 6.14x ($4.06B debt vs $660M NI), Net Debt of $3.87B, interest coverage dipping to 3.87x in 2023 during peak mortgage freeze, and 5Y median GAAP ROIC of 9.33%. Intact moat proof: The Work Number holds 650M+ payroll records directly integrated into employer HR systems with zero customer churn and proven inflation-plus pricing; credit bureau triopoly intact; FY2025 revenue hit record $6.075B and Owner EPS hit a new peak of $7.299 despite trough US mortgage originations. Fix catalyst & kill-switch: Completion of $3B cloud migration unlocks $300M in run-rate cost takeout, dropping capex to $481M and driving FCF to record $1.13B ($1.06B Owner FCF), allowing organic deleveraging with Net Debt repayable from Owner FCF in 3.67 years; mortgage volumes poised to recover from 30-year low. Kill-switch: Net Debt / NI failing to drop below 4.0x within 3 years, or loss of proprietary employer payroll feeds.",
+    "note": "Calamity pass at Gate 6. Crown-jewel payroll database (The Work Number) and credit bureau triopoly. Record $6.075B revenue and $7.299 Owner EPS achieved at mortgage cycle trough. Balance sheet leverage elevated from $3B cloud transformation and breach settlements, but record $1.13B FCF enables rapid organic deleveraging. [5-10Y g: organic TWN/bureau volume 5.0% + price 2.0% + cloud cost takeout margin 1.0% + net buybacks 0.5%]",
+    "evidence": "Multi-cycle track record shows unassailable toll booth in employment/income verification and credit reporting. Despite a >50% drop in US mortgage originations during the 2022-2024 Fed tightening cycle, FY2025 revenue reached a record $6,074.5M (+7% YoY) and Owner EPS reached a new peak of $7.299. Tangible ROIC exceeds 100% due to negative tangible equity (-$3.47B), while GAAP ROIC has been temporarily depressed to a 5-year median of 9.33% by $8.08B in goodwill/intangibles and the amortization of the $3B cloud transformation. Free cash flow surged to $1,055.9M in FY2025 (reported FCF $1.13B, 97.5% conversion) as capital expenditures declined to $481.4M (from $624.5M in FY2022) with the cloud migration reaching 85-90% completion. Long-term debt declined to $4,055.3M ($3,874.5M net debt), which is repayable in 3.67 years from normal Owner Free Cash Flow. Decommissioning legacy data centers delivers $300M in structural run-rate savings, accelerating margin expansion and organic deleveraging."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

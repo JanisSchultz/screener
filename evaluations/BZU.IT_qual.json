@@ -1,0 +1,30 @@
+{
+  "id": "BZU.IT",
+  "ticker": "BZU",
+  "universe": "eu",
+  "company": "Buzzi",
+  "country": "Italy",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Permitted limestone quarries, kilns, and US river distribution terminals create local geographic entry barriers due to high weight-to-value transport economics, but bulk cement is a cyclical, energy-intensive commodity lacking sustained through-cycle pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% across full cycle & lack of steady pricing power, REJECT). Permitted kilns and US river terminals confer strong local scale, but bulk cement remains a cyclical, carbon-intensive commodity with 10-year average ROCE below 10% and heavy EU ETS decarbonisation capex burdens.",
+    "evidence": "Full-cycle ROCE across 2015-2024 averaged ~9.5% (2015-2018 ranged 4.5-9.0%, rising above 12% only during the exceptional 2023-2024 post-COVID inflationary price spike). Free cash flow conversion is depressed at 59.3% due to high ongoing maintenance and environmental capex. The business lacks unilateral through-cycle pricing power against structural energy and carbon costs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

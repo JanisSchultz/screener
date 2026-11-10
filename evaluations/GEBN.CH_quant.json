@@ -1,0 +1,43 @@
+{
+  "id": "GEBN.CH",
+  "ticker": "GEBN",
+  "universe": "eu",
+  "company": "Geberit",
+  "price": 580.0,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Through-cycle peak Owner EPS of 20.41 CHF (FY2022) retained as normalized earning power through European construction trough. Operating ROIC normalized to 35.0% cap neutralizing Sanitec acquisition goodwill (tangible ROIC 89.5%, GAAP 30.7%). 5-10Y forward growth of 5.0% backed by European sanitary renovation cycle recovery (1.5%), concealed cistern / pre-wall penetration (1.5%), pricing power (2.0%), and share repurchases (0.5%). Peak-to-peak check is flagged false pending re-attainment of 2022 peak."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 20.4092,
+    "current_multiple": 28.4186,
+    "par_multiple": 23.775,
+    "par_value": 485.2287,
+    "percent_vs_par": 0.1953,
+    "status": "Above PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0225,
+    "expected_irr_5y": 0.0357,
+    "market_implied_cap": 23.9,
+    "moat_runway_margin": -3.9,
+    "market_implied_growth": 0.1197,
+    "growth_margin_of_safety": -0.0697
+  },
+  "health_checks": {
+    "net_debt_years": 0.85,
+    "net_debt_ok": true,
+    "interest_coverage": 27.33,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.07,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

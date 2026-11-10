@@ -1,0 +1,43 @@
+{
+  "id": "HEIA.NL",
+  "ticker": "HEIA",
+  "universe": "eu",
+  "company": "Heineken",
+  "price": 83.74,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.3436,
+    "fin_note": "Operating ROIC of 34.36% on tangible capital neutralizing \u20ac20.0B goodwill/intangibles. 5-10Y forward growth of 5.0% aligned with qualitative guidance [volume 1.5% + price/mix 2.5% + premium/0.0% mix 1.0% - input margin drag 0.5% + buybacks/dividends 0.5%]. PAR multiple capped at 5Y cycle high guardrail (19.29x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.656,
+    "current_multiple": 17.99,
+    "par_multiple": 19.29,
+    "par_value": 89.81,
+    "percent_vs_par": -0.0676,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0273,
+    "expected_irr_5y": 0.0921,
+    "market_implied_cap": 14.0,
+    "moat_runway_margin": 1.0,
+    "market_implied_growth": 0.0122,
+    "growth_margin_of_safety": 0.0378
+  },
+  "health_checks": {
+    "net_debt_years": 7.33,
+    "net_debt_ok": false,
+    "interest_coverage": 5.65,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.29,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

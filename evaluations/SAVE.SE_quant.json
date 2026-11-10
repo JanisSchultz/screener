@@ -1,0 +1,43 @@
+{
+  "id": "SAVE.SE",
+  "ticker": "SAVE",
+  "universe": "eu",
+  "company": "Nordnet",
+  "price": 334.8,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting Nordnet's capital-light pan-Nordic digital savings and pension infrastructure (tangible ROIC 120.3%, operating margin ~65%, SEK 4.68B cash vs SEK 188M debt). Peak Owner EPS of SEK 11.82 is supported by SEK 1.5T in customer savings capital. Forward compound growth of 8.5% (g_implied) is driven by pan-Nordic savings volume (6.5%), pension fee mix (1.0%), and operating leverage (1.0%), offset by NII normalization (-0.5%) plus capital returns."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.8183,
+    "current_multiple": 28.33,
+    "par_multiple": 25.99,
+    "par_value": 307.18,
+    "percent_vs_par": 0.0899,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0243,
+    "expected_irr_5y": 0.0908,
+    "market_implied_cap": 16.3,
+    "moat_runway_margin": -1.3,
+    "market_implied_growth": 0.1201,
+    "growth_margin_of_safety": -0.0351
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 9.2,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BRBY.GB",
+  "ticker": "BRBY",
+  "universe": "eu",
+  "company": "Burberry",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary aspirational luxury fashion and trench apparel easily forgone or delayed during cyclical economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Discretionary aspirational luxury outerwear and seasonal fashion apparel are easily forgone during economic contractions. The brand suffers from repeated strategic repositionings between upmarket elevation and discounting, lacking pricing power.",
+    "evidence": "Burberry Group plc has suffered severe strategic and financial turbulence. Under successive leadership changes (Marco Gobbetti, Jonathan Akeroyd, Joshua Schulman) and creative directors (Riccardo Tisci, Daniel Lee), the brand attempted to push aggressively upmarket with steep price increases, alienating aspirational buyers without winning ultra-high-net-worth loyalty. FY2025 adjusted operating profit collapsed from £418M (14.1% margin) in FY24 to just £26M (1.0% margin), group ROIC turned negative, and the dividend was suspended. The company executed pro-cyclical share repurchases at valuation peaks before suspending payouts to preserve liquidity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

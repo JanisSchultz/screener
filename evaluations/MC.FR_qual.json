@@ -1,0 +1,30 @@
+{
+  "id": "MC.FR",
+  "ticker": "MC",
+  "universe": "eu",
+  "company": "LVMH",
+  "country": "France",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Portfolio of 75 irreplaceable heritage maisons (Louis Vuitton, Dior, Tiffany, Sephora, Moët Hennessy) backed by centuries of brand equity, prime global flagship real estate, and exclusive viticulture terroir. Scale allows dominant marketing spend and prime retail access that challengers cannot match. Proved by 22-26% recurring operating margins and >20% tangible operating ROIC across cycles. Primary erosion threats include aspirational brand overexposure, Chinese consumer slowdown, and cyclical downturns in cognac/champagne.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global titan of luxury goods with 75 heritage maisons led by Louis Vuitton, Dior, and Sephora. Enduring pricing power, prime global retail real estate, and irreplaceable terroir protect superior returns. Fortress balance sheet with net debt under 0.5x EBITDA. [5-10Y g: luxury volume 3.5% + pricing power 2.5% + retail expansion/mix 1.5% - marketing reinvestment drag 0.5% + share repurchases 0.5%]",
+    "evidence": "FY2025 revenue of €80.8B and recurring operating profit of €17.8B (22.0% margin). 5-year median GAAP ROIC is ~12.5% with tangible operating ROIC >20%. Net financial debt reduced to €6.9B, repayable in under 1 year of net income. Interest coverage exceeds 15x. Arnault family holds ~64% voting control ensuring long-term stewardship."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

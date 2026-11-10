@@ -1,0 +1,30 @@
+{
+  "id": "MAR",
+  "ticker": "MAR",
+  "universe": "us",
+  "company": "Marriott International",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Lodging and resort demand relies heavily on discretionary leisure vacations and deferrable corporate travel rather than an essential functional necessity or high-frequency everyday habit.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need, REJECT). Global hotel, resort, and timeshare/lodging demand depends on discretionary consumer travel and deferrable corporate T&E budgets that contract sharply in downturns (FY2020 revenue fell 50% YoY, EBIT dropped 95% to $84M, and net income turned negative at -$267M). While its asset-light franchise and Bonvoy credit card fee engine is high-margin, underlying customer demand is episodic and cyclical rather than an essential need or entrenched daily habit.",
+    "evidence": "Business & Scale: World's largest hotel franchisor/manager with 9,805 properties and 1,779,936 rooms across 145 countries/territories at YE2025 (pipeline ~4,100 properties / >618k rooms). Asset-light model collects base management, incentive management, franchise, and Chase/Amex co-branded credit card fees tied to Marriott Bonvoy (~271M members driving ~75% of U.S./Canada and ~68% of global room nights); GAAP revenue ($26,186M in FY2025) includes large zero-margin pass-through cost reimbursements. Multi-Cycle Financials & ROIC: Pre-COVID GAAP ROIC ranged 14.8% (2016) to 25.7% (2019), and reported FY2025 ROIC was ~21.4%. Cyclical shock exposed in FY2020 as sales fell from $20,972M (2019) to $10,571M, EBIT fell from $1,800M to $84M, and Owner EPS fell from $3.79 to -$0.25. Recovery peaked at $10.18 Owner EPS in FY2023 ($3,083M NI), followed by FY2025 revenue $26,186M, EBIT $4,141M, NI $2,601M, Owner FCF $2,518M (86.7% multi-year FCF conversion), and 2026 global RevPAR +6.5% YoY (4.5%-5% full-year outlook). Capital Allocation & Balance Sheet: Led by CEO Anthony Capuano and CFO Jen Mason (succeeding Leeny Oberg). 2016 Starwood deal created $19,243M of goodwill/intangibles. Returned >$4.0B via buybacks and dividends in FY2025, driving GAAP book equity negative (-$682M in 2023, -$2,992M in 2024, -$3,771M in 2025). Per FY2025 10-K, actual long-term debt is $14,990M and total debt is ~$16.2B (undercounted at $23M in XBRL financials_csv) vs $358M cash, implying ~5.8x LT debt/NI and 5.1x EBIT/interest coverage ($809M interest) with a BBB S&P rating."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ROST",
+  "ticker": "ROST",
+  "universe": "us",
+  "company": "Ross Stores",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Two-sided off-price flywheel alongside TJX: massive opportunistic buying scale (~$22.8B sales, ~2,377 stores) and bare-bones store operations allow Ross to pass 20-60% savings off department-store MSRPs to shoppers, driving high traffic and inventory turns that make Ross an indispensable, brand-safe liquidation channel for apparel/home vendors unwilling to dump overruns visibly on Amazon. Empirically proven by 83.3% 5Y median GAAP ROIC (~20-23% lease-adjusted) and ~11.3-12.2% post-inflation EBIT margins (vs 13.6-14.6% pre-COVID). Primary erosion threats: store/DC wage inflation, tariff friction on apparel imports, and eventual US store saturation (~2,377 today vs ~3,600 target).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Disciplined off-price value retailer sharing opportunistic closeout buying scale with US shoppers across Ross Dress for Less and dd's DISCOUNTS. Low average ticket and uncatalogued in-store treasure-hunt model insulate it from AI/e-commerce disruption and macro downturns (trade-down beneficiary), though store/DC labor intensity, tariff noise, and a US-only footprint ceiling (~3,600 target stores vs ~2,377 today) cap CAP at 15 years under Munger conservatism. Fortress balance sheet with $4.59B cash vs $1.02B LT debt ($3.58B net cash ex-leases) and >90% 5Y Owner FCF conversion. [5-10Y g: comp traffic/volume 2.0% + AUR price 1.5% + new store units 3.0% - store/DC wage & tariff drag 0.5% + net buybacks 1.5%]",
+    "evidence": "Multi-cycle financial record (FY2016-FY2025): sales compounded from $12,866.8M to $22,750.6M (+41.8% vs FY2019 peak of $16,039.1M), EBIT expanded from $1,804.7M (14.0% margin) and $2,177.4M (FY19, 13.6%) to record $2,707.4M (11.9% margin in FY25), and Owner EPS reached a new all-time high of $6.61 vs $4.60 pre-COVID peak (7.53% screener CAGR; 9.84% 9Y CAGR). 5Y median GAAP ROIC is 83.32% (~20-23% lease-adjusted) with incremental pre-tax ROIIC >100% (FY19-FY25 ΔEBIT +$530M on Δinvested capital +$290M ex-leases). 5Y Owner FCF conversion is 90.56% ($8,462.4M vs $9,344.8M GAAP NI; 106.0% over 10Y) even after funding growth capex ($819.3M CapEx vs $509.4M D&A in FY25). Two organically built US banners: ~1,993 Ross Dress for Less stores (long-term target ~2,900) and ~384 dd's DISCOUNTS stores (target ~700), with ~115 new openings planned in FY26. Pricing power demonstrated by sustaining ~11.3-12.2% EBIT margins through post-2021 wage/freight inflation and tariff noise (H1 FY26 included a $253M tariff refund benefit). Pure organic growth with zero M&A/goodwill ($0 intangibles), ~17.5% diluted share count reduction FY16-FY25, $1.05B FY25 buybacks, a new $2.55B FY26-FY27 buyback authorization, and a 10% quarterly dividend hike to $0.445/sh. Smooth CEO succession in Feb 2025 from Barbara Rentler (retained as merchandising advisor through Mar 2027) to former Boot Barn CEO James Conroy; ~21 months of external-CEO tenure and programmatic buybacks yield a conservative Gate 5 score of 1. Balance sheet holds $4,594.4M cash against $1,017.9M LT debt (COVID-era $2.46B debt more than halved), zero net interest expense, and >100x historical interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IDR.ES",
+  "ticker": "IDR",
+  "universe": "eu",
+  "company": "Indra",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Roughly half of Indra's revenue stems from Minsait, a commoditized IT consulting and software development business facing intense competition, low pricing power, and rising wage inflation. 5-year average ROIC (~11.5%) falls short of the 12% hurdle. High customer concentration in competitive Spanish public sector tenders.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype 'None', ROIC < 12%). Roughly 50% of revenue stems from Minsait, a commoditized IT services and consulting business lacking durable pricing power. 5-year average ROIC (~11.5%) fails the 12% hurdle, compounded by heavy state governance interference from SEPI.",
+    "evidence": "5-year average ROIC of ~11.5% (7.0% in 2021, 9.5% in 2022) falls short of the 12% hurdle. Minsait constitutes ~50% of revenue in low-margin, billable-hour IT consulting vulnerable to wage inflation and margin erosion. Defense contracts are heavily concentrated in Spanish government procurement subject to political intervention by state-owned SEPI (25%+ owner)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

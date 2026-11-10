@@ -1,0 +1,30 @@
+{
+  "id": "DTE",
+  "ticker": "DTE",
+  "universe": "us",
+  "company": "DTE Energy Company",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive franchise territory monopoly in southeast Michigan. High physical and legal barriers prevent grid duplication. Fuel and energy cost pass-through riders protect margins, though regulated allowed ROEs (9.9%) cap ROIC at ~6.2%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated electric and gas monopoly in southeast Michigan with solid operational execution following the 2021 DT Midstream spin-off. However, severe debt burden ($25.3B long-term debt, 17.3x net income, 2.25x interest coverage) and multi-billion annual capex ($4.3B+) require continuous debt issuance and reliance on capital markets, while ROIC is capped at ~6.2%.",
+    "evidence": "10-year median ROIC of 6.2%. FY2025 long-term debt of $25,306M dwarfs net income of $1,462M (17.3x ratio). EBIT of $2,374M against interest expense of $1,056M yields 2.25x interest coverage, failing the > 5.0x requirement. Company regularly issues junior subordinated debentures to defend credit metrics while funding capital expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

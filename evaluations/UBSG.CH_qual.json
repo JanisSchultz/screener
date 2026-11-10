@@ -1,0 +1,30 @@
+{
+  "id": "UBSG.CH",
+  "ticker": "UBSG",
+  "universe": "eu",
+  "company": "UBS",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 wealth manager ($6.1T invested assets) with massive scale economies in global private banking and an entrenched domestic Swiss banking fortress. Pricing power is sustained via ad-valorem AUM advisory fees and high client switching costs. Primary erosion risks include Swiss regulatory capital surcharges (FINMA 'too big to fail' revisions), investment banking volatility, and client attrition during Credit Suisse integration.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Although UBS is the world's undisputed #1 wealth manager following the Credit Suisse acquisition with unmatched scale economies in private banking, it remains a G-SIB fractional-reserve bank with >$1.6T in total assets, $298B in long-term debt, and ~15x asset-to-equity leverage, failing Munger's peace-of-mind balance sheet standard and facing regulatory capital headwinds.",
+    "evidence": "Group invested assets exceed $6.1T with underlying wealth management ROE >15%. However, the bank carries $298B in long-term debt against $90B equity. Cash flows are subject to systemic banking cycle fluctuations, and ongoing Swiss Federal Council/FINMA 'too-big-to-fail' capital tightening creates multi-year capital return uncertainty."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

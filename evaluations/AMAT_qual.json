@@ -1,0 +1,30 @@
+{
+  "id": "AMAT",
+  "ticker": "AMAT",
+  "universe": "us",
+  "company": "Applied Materials",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Co-optimized multi-chamber platforms (Centura, Endura, Producer) and recipe qualification lock-in create insurmountable fab-line switching costs. Massive installed base of >43,000 tools powers Applied Global Services (AGS) recurring annuity, sustaining 47-49% gross margins and 10-year median ROIC of 43.4%. Primary erosion risks are U.S.-China export control tightening and Chinese domestic toolmaker substitution.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in semiconductor wafer fabrication equipment with unassailable process toolkit across deposition, etch, CMP, and metrology. Co-optimized platforms and recipe qualification lock-in create immense switching costs, while >43,000 tool installed base generates an expanding, high-margin service annuity. Reshoring subsidies and AI-driven node transitions (GAA, BSPDN, advanced packaging) provide strong secular demand, offsetting China export curbs. Balance sheet is in a net cash position with >30x interest coverage. [5-10Y g: WFE wafer volume 5.0% + pricing & process complexity 1.5% + AGS service mix 1.0% + net buybacks 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 43.4% and tangible operating ROIC of 58.5%, never falling below 27% even in cyclical down-cycles. FY2025 revenue reached $28.37B with $8.29B EBIT (29.2% operating margin) and $7.00B Net Income. Real cash conversion is pristine: FY2025 OCF was $7.96B and FCF was $6.86B, reflecting multi-year FCF conversion of 94.2% of GAAP Net Income. Fortress balance sheet: $7.24B cash vs $6.46B LT debt (net cash of $786M) and 30.8x interest coverage ($8.29B EBIT vs $269M interest). Peak-to-peak earnings power: Owner EPS compounded from $1.66 in FY2016 to $8.66 in FY2025 (17.2% CAGR), achieving new highs at each cycle peak. Leading-edge node transitions to Gate-All-Around (GAA) nanosheets, Backside Power Delivery Networks (BSPDN), and HBM/hybrid bonding expand AMAT's served available market. A $252.5M civil settlement with BIS in February 2026 resolved legacy 2021-2022 SMIC export license inquiries, with DOJ and SEC closing parallel inquiries without charges."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HSIC",
+  "ticker": "HSIC",
+  "universe": "us",
+  "company": "Henry Schein",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Henry Schein benefits from switching costs in its proprietary practice management software (Dentrix, Dentrix Ascend) and significant scale in dental/medical distribution logistics. However, its economic moat has been structurally eroded by rapid consolidation of dental practices into corporate Dental Support Organizations (DSOs) wielding intense pricing leverage, alongside transparent online e-commerce competition and peer rivalry (Patterson, Benco). Operating margins have collapsed from ~7.2% in FY2019 to ~4.95% in FY2025. 5-year median GAAP ROIC is 9.78%, well below the 12% hurdle, with FY2023-FY2025 hovering at 8.9%-9.8% even after full cyber incident normalization, proving lack of real pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 9.78% < 12%, lack of pricing power >= inflation, REJECT). While Henry Schein maintains established scale in dental distribution and practice software (Dentrix), structural consolidation of solo dentists into corporate Dental Support Organizations (DSOs) has shifted purchasing leverage upstream, compressing GAAP operating margins from ~7.2% (2019) to ~4.95% (2025). The sub-10% GAAP ROIC persists beyond the temporary late-2023 cyberattack, driven by $4B+ of debt-funded M&A that diluted capital returns ($5.2B goodwill/intangibles vs. $3.2B equity, $2.3B debt). Peak-to-peak Owner EPS has stagnated below 2019/2021 levels ($4.68 in FY2025 vs. $5.38 in FY2019), failing the Munger moat and pricing power standard.",
+    "evidence": "Multi-cycle financial track record demonstrates structural capital efficiency erosion: 5-year median GAAP ROIC is 9.78%, failing the 12% threshold (FY2021: 17.14%, FY2022: 13.43%, FY2023: 9.78%, FY2024: 8.86%, FY2025: 9.50%). Operating margins compressed from 7.19% in FY2019 and 6.87% in FY2021 to 4.98% in FY2023, 4.90% in FY2024, and 4.95% in FY2025 on $13.18B revenue. Although the October 2023 BlackCat cyberattack caused operational disruption, operations normalized in 2024-2025 with $20M insurance recovery in Q1 2025, yet normalized ROIC remains under 10%. Balance sheet has deteriorated from serial M&A: LT debt expanded from $822M in 2021 to $2,310M in FY2025 (LT debt / Net Income of 5.8x; interest expense rose from $27M to $150M, lowering interest coverage to 4.35x), with $5,231M in goodwill and intangibles on $3,245M equity. Peak owner EPS has failed to compound ($4.68 in FY2025 vs. $5.38 in FY2019). Activist pressure from Ananym Capital and a $250M white-knight injection from KKR underscore ongoing structural governance and margin challenges under DSO buyer concentration."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

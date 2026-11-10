@@ -1,0 +1,30 @@
+{
+  "id": "RUI.FR",
+  "ticker": "RUI",
+  "universe": "eu",
+  "company": "Rubis",
+  "country": "France",
+  "sector": "Utilities",
+  "sub_industry": "Gas Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Niche LPG and downstream fuel distribution terminals in French overseas territories, Caribbean, and Africa, but lacks pricing power against regulated local fuel caps and commodity price volatility.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). French downstream energy and LPG distributor lacks pricing power and generates sub-12% consolidated ROIC (9-11%) due to local fuel price caps in emerging/island markets, wholesale fuel price exposure, and heavy capital commitments into Photosol solar projects.",
+    "evidence": "Consolidated ROCE/ROIC tracks between 9.0% and 11.5%, failing the 12% GAAP / 15% tangible ROIC threshold. Energy distribution is exposed to retail fuel price controls in developing markets and volatile volume margins. The divestment of Rubis Terminal (2024) reduced infrastructure toll assets while capex shifted into capital-intensive solar PV generation (Photosol)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

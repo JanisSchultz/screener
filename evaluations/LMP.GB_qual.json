@@ -1,0 +1,30 @@
+{
+  "id": "LMP.GB",
+  "ticker": "LMP",
+  "universe": "eu",
+  "company": "LondonMetric",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Post-LXi merger UK triple-net lease and urban logistics portfolio; 5-year median ROIC of 5.1% fails the 12% hurdle, and RPI/CPI escalators are predominantly capped at 3.5-4.0%, lagging inflation shocks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.1%, REJECT). Well-managed UK NNN and urban logistics aggregator fails capital efficiency hurdle with 5-year median ROIC of 5.1%. RPI/CPI escalators capped at 3.5-4.0% lag inflation surges, while high leverage (debt/NI > 9x) exposes cash flow to refinancing headwinds.",
+    "evidence": "LondonMetric holds a £6.2B commercial real estate portfolio post-LXi merger, focusing on urban logistics (40%+), long income convenience retail, and entertainment. 5-year median GAAP ROIC is 5.07% (FY25: 6.49%, FY24: 7.96%, FY23: 3.65%, FY22: -13.08%), failing the 12% hurdle. Net debt stands at ~£2.76B with debt/net income of 9.6x and interest coverage of 3.2x (EBIT £432.1M / Interest £135.0M). Contractual lease escalators are capped at 3.5-4.0%, failing to maintain purchasing power during high-inflation cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

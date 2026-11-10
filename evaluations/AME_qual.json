@@ -1,0 +1,30 @@
+{
+  "id": "AME",
+  "ticker": "AME",
+  "universe": "us",
+  "company": "AMETEK, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs and prohibitive qualification/recertification barriers (FAA, FDA, ISO) across aerospace, medtech, and laboratory testing lock in customers, enabling steady 2-3% pricing power above inflation with zero churn. 10-year median GAAP ROIC of 14.1% and operating margins expanding from 20.6% in 2016 to 25.8% in 2025 confirm moat durability against customer consolidation or industrial cyclicality.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier niche instrumentation and precision electromechanical compounder with unassailable switching costs across aerospace, medtech, and automation. High pricing power demonstrated by consistent 2-3% annual price increases with zero churn. Highly resilient across all 5 macrotrends with negligible capex needs (<2% of sales) and fortress balance sheet (interest coverage >23x, net debt/EBITDA <0.8x). [5-10Y g: organic volume 3.0% + niche pricing power 2.5% + bolt-on M&A reinvestment 2.5% - cost/integration drag 0.5% + share repurchases 1.0%]",
+    "evidence": "10-year median GAAP ROIC of 14.1% and operating ROIC >200% on tangible capital. Unbroken 10-year Owner EPS CAGR of 10.96% ($2.69 in 2016 to $7.67 in 2025) demonstrating pristine peak-to-peak compounding through the 2020 pandemic. FCF conversion averages 107.6% of net income with capex under 1.8% of sales ($130M on $7.4B revenue). Segment revenue split: Electronic Instruments Group (~70% of sales) and Electromechanical Group (~30% of sales). Highly disciplined M&A playbook proven by rapid deleveraging following the $1.9B Paragon Medical acquisition in late 2023, reducing net debt from $2.9B to under $1.7B in 2024 and net debt to 0.42x annual net income by 2025. Interest coverage stands at a fortress 23.5x ($1,910M EBIT vs $81M interest expense)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DGE.GB",
+  "ticker": "DGE",
+  "universe": "eu",
+  "company": "Diageo",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Distillers & Vintners (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant global spirits leader owning irreplaceable aged Scotch maturation inventory and distilleries across Scotland protected by statutory geographical indication, alongside iconic Lindy mega-brands (Johnnie Walker, Guinness, Don Julio). Proof of moat demonstrated by 5-year median GAAP ROIC of 14-16% and operating margins of 28-30%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": "Y",
+    "calamity_note": "Broken metric: Gate 5 score of 0 due to pro-cyclical share repurchases executed at peak valuations (£38-£40), major distributor overstocking in Latin America & Caribbean, and leadership instability culminating in CEO Debra Crew's July 2025 exit. Moat proof: World #1 spirits franchise (#1 Scotch Johnnie Walker, Guinness booming globally) with unreplicable aged inventory; 5-year median GAAP ROIC remains 14-16% through the downturn. Fix catalyst & kill-switch: 2025 leadership reset enforcing real-time POS sell-out tracking, cost productivity targets, and halting buybacks to prioritize debt reduction to <2.5x net debt/EBITDA; kill switch if ROIC falls below 12% or net leverage exceeds 3.5x for more than two consecutive reporting cycles.",
+    "note": "Qualifies for Calamity Tier (Gate 5 management failure waived as temporary fixable calamity; Anchor Gates 1, 2, 3a, 4 and Gate 6 pass). World #1 spirits leader anchored by irreplaceable aged Scotch stocks and Guinness stout. Multi-cycle ROIC remains resilient at 14-16% despite Latin America destocking shock. Strong balance sheet with interest coverage >6.5x. [5-10Y g: spirits volume 1.5% + premiumisation price 2.0% + Guinness expansion 1.0% - promotional margin drag 0.5% + net debt repayment 1.0%]",
+    "evidence": "5-year median GAAP ROIC is ~15.8% (FY20: 16.1%, FY22: 18.4%, FY23: 19.8%, FY24: 15.8%, FY25: 13.7%). Operating margins steady at 28-30%. FCF conversion >85% of net income. Net debt/EBITDA ~2.8x with interest coverage of ~6.8x. Channel inventory in Latin America normalized by late FY25."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

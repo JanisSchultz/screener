@@ -1,0 +1,30 @@
+{
+  "id": "ASML.NL",
+  "ticker": "ASML",
+  "universe": "eu",
+  "company": "ASML",
+  "country": "Netherlands",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global monopoly on extreme ultraviolet (EUV) photolithography protected by proprietary optics (Zeiss exclusive partnership), laser-produced plasma source IP, and thousands of patents. Extraordinary pricing power demonstrated by EUV tool ASPs scaling from €120M to >€350M for High-NA while maintaining >51% gross margins and ~98% median GAAP ROIC. Primary risks: geopolitical export curbs on shipments to China and customer concentration (TSMC, Samsung, Intel).",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Unassailable global commercial monopoly on EUV lithography machines essential for all leading-edge semiconductor manufacturing. Unprecedented pricing power with tool ASPs climbing from €120M to >€350M for High-NA tools and 98%+ median GAAP ROIC. Sovereign semiconductor reshoring and AI computing act as massive secular catalysts. Fortress balance sheet with >€10B net cash. [5-10Y g: litho wafer demand & EUV/High-NA intensity 8.0% + tool ASP/service mix 2.0% + margin 0.5% + buybacks 1.0%]",
+    "evidence": "Multi-year median GAAP ROIC is 98.6% (operating tangible ROIC >150%). Gross margin has consistently maintained 51-53% and EBIT margins ~35%. Revenue expanded from €21.17B in 2022 to €32.67B in 2025, with Owner EPS reaching a record peak of €24.71 in 2025. Owner FCF was €11.43B in 2025 (119% conversion of Net Income; multi-year FCF conversion 110.7%). Balance sheet holds €12.92B in cash against €2.71B in long-term debt (net cash of €10.21B), with interest coverage of ~97x. Monopolistic market share in EUV with multi-year backlog and ~25% high-margin installed base recurring service revenue."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

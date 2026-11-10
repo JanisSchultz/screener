@@ -1,0 +1,43 @@
+{
+  "id": "LOTB.BE",
+  "ticker": "LOTB",
+  "universe": "eu",
+  "company": "Lotus Bakeries",
+  "price": 13740.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.347,
+    "fin_note": "Operating ROIC confirmed at 34.70% reflecting exceptional tangible capital efficiency neutralizing \u20ac370.8M goodwill/intangibles from Natural Foods acquisitions (4Y median GAAP ROIC is 18.52%). Peak Owner EPS of \u20ac211.88 (FY2025) confirmed on pristine 18.56% peak-to-peak compounding and 16.9% EBIT margins. Forward 5-10Y g_implied set to 9.0% aligned with qualitative note (+6.5% Biscoff global volume, +2.0% pricing power, +1.0% Natural Foods mix, -0.5% green capex drag, 0.0% buybacks), normalizing down from the unadjusted 14.0% CSV placeholder. Fortress balance sheet with 0.66y net debt/OE and 69.26x interest coverage. At \u20ac13,740.00 (64.85x), trades +78.84% Above PAR (\u20ac7,682.66 at 36.26x PAR multiple), pricing 51.88% growth (-42.88% growth margin) for an expected 5Y IRR of -2.41%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 211.8769,
+    "current_multiple": 64.85,
+    "par_multiple": 36.26,
+    "par_value": 7682.66,
+    "percent_vs_par": 0.7884,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0055,
+    "expected_irr_5y": -0.0241,
+    "market_implied_cap": 26.8,
+    "moat_runway_margin": -11.8,
+    "market_implied_growth": 0.5188,
+    "growth_margin_of_safety": -0.4288
+  },
+  "health_checks": {
+    "net_debt_years": 0.66,
+    "net_debt_ok": true,
+    "interest_coverage": 69.26,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.92,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

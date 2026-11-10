@@ -1,0 +1,30 @@
+{
+  "id": "PRX.NL",
+  "ticker": "PRX",
+  "universe": "eu",
+  "company": "Prosus",
+  "country": "Netherlands",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Core economic value and look-through earnings reside predominantly in non-Western jurisdictions (China VIE stake in Tencent, India, Brazil) lacking Western rule of law and property rights.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Prosus is an investment holding company whose asset value and look-through earnings are overwhelmingly concentrated in non-Western emerging markets (specifically Tencent in China via offshore VIE structures, Swiggy in India, and iFood in Brazil) lacking rule-of-law Western property rights.",
+    "evidence": "Over 70% of Prosus NAV and equity-accounted earnings stem from Tencent Holdings in China. Consolidated operating FCF conversion is extremely low (~8% of GAAP net income) due to non-cash associate earnings. Capital allocation history outside Tencent includes catastrophic capital destruction (e.g., 100% write-off of $500M+ Byju's investment, $1.8B acquisition of Stack Overflow)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AON",
+  "ticker": "AON",
+  "universe": "us",
+  "company": "Aon plc",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs and toll-booth economics in global commercial risk and reinsurance brokerage. Aon and Marsh McLennan form an entrenched global duopoly capable of handling complex multinational enterprise risks, evidenced by ~95% client retention and 5-year median GAAP ROIC of 20.3% (operating ROIC >100%). Broker commissions scale ad valorem with hardening premium rates and rising asset replacement values, driving operating margin expansion from ~19% in 2016 to >25% in 2025. Primary erosion threats include carrier disintermediation in micro-commercial lines, broker talent lift-outs, and execution/integration friction during large-scale debt-funded acquisitions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global #2 insurance and reinsurance broker operating an entrenched commercial toll booth with ~95% client retention and pricing power scaling with insured exposure. High resilience across all 5 macrotrends with secular demand for risk advisory, climate, cyber, and geopolitical risk mitigation. FCF conversion of ~97% and interest coverage of 5.3x with disciplined post-NFP deleveraging protecting investment-grade balance sheet. [5-10Y g: organic risk volume 3.5% + premium pricing/exposure 2.5% + mid-market mix/NFP synergy 1.0% - integration/interest drag 0.5% + share repurchases 1.5%]",
+    "evidence": "SEC EDGAR historical financials confirm exceptional multi-cycle capital efficiency: 5-year median GAAP ROIC of 20.3%, operating ROIC exceeding 100%, and operating margins expanding to 25.3% in FY2025. Cash generation is stellar with FY2025 operating cash flow of $3,481M and FCF conversion of 96.7% ($2,861M owner FCF vs $3,695M net income). Peak-to-peak owner EPS compounded from $8.56 (FY2020) to $12.51 (FY2023) and reached a new peak of $17.02 in FY2025 (14.7% CAGR). Balance sheet absorbs the $13.4B NFP acquisition with net debt declining to $13,465M in FY2025, debt/net income at 3.97x (repayable in 3.64 years from net income), interest coverage at 5.33x EBIT, and credit ratings affirmed at A- / Baa2 with stable outlook."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

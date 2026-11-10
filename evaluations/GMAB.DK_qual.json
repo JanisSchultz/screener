@@ -1,0 +1,30 @@
+{
+  "id": "GMAB.DK",
+  "ticker": "GMAB",
+  "universe": "eu",
+  "company": "Genmab",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pioneering antibody discovery platform (DuoBody, HexaBody), but Genmab acts primarily as a royalty taker on J&J's Darzalex without independent pricing power, facing an imminent 2029 US patent cliff.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Genmab is an antibody engineering pioneer but operates primarily as a contractual royalty recipient on J&J's Darzalex (accounting for 65-80%+ of revenue). It possesses zero independent pricing power to increase royalty rates above inflation and faces a major unhedged 2029 US patent cliff after losing legal arbitration on Darzalex Faspro.",
+    "evidence": "Genmab's high historical GAAP ROIC (>20%) is heavily distorted by passive royalties on Johnson & Johnson's Darzalex sales. Genmab has no discretion over realized drug pricing, which faces mandatory Medicare IRA price negotiations in the US and statutory cuts in Europe. With core Darzalex US patents expiring in 2029 and EU in 2031, Genmab faces severe revenue and margin compression, forcing costly defensive pipeline M&A (e.g., ProfoundBio for $1.8B) that expands invested capital while high-margin royalty streams evaporate."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FME.DE",
+  "ticker": "FME",
+  "universe": "eu",
+  "company": "Fresenius Medical Care",
+  "country": "Germany",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Single-payer government price-taker. US Medicare ESRD Prospective Payment System dictates fixed reimbursement rates, completely stripping pricing power. Multi-year ROIC of 2.8-5.0% fails the 12% hurdle by a wide margin.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3a/3b (No Moat / Zero Pricing Power, REJECT). Dialysis clinic operations are captive to government reimbursement price caps (Medicare ESRD PPS), eliminating pricing power while nurse wage inflation compresses margins. Multi-year ROIC of 2.8-5.0% fails the 12% hurdle by a wide margin.",
+    "evidence": "Reported ROIC of 2.8% (2023), 3.5% (2024), and 5.0% (2025). Severe margin compression from US clinical labor shortages and fixed statutory Medicare reimbursement schedules. Long-term treatment volumes pressured by GLP-1 kidney disease progression delay."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

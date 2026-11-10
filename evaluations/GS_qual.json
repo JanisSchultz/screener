@@ -1,0 +1,30 @@
+{
+  "id": "GS",
+  "ticker": "GS",
+  "universe": "us",
+  "company": "Goldman Sachs",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Simple to Understand & Verifiable from Outside). Over 50% of net revenues derive from FICC and Equities trading, market-making intermediation, and financing ($31.0B in FY2025). The firm operates a highly leveraged ~$1.68T balance sheet (~13.7x assets-to-equity) with substantial opaque risks, including ~$18B-$20B in Level 3 unobservable fair-value assets (~15-16% of equity), massive complex OTC derivatives portfolios, and principal investments that cannot be verified or independently stress-tested from the outside.",
+    "evidence": "In FY2024 and FY2025, Global Banking & Markets generated $34.94B (65%) and $41.45B (71%) of Goldman Sachs' total net revenues ($53.51B and $58.28B, respectively). FICC and Equities intermediation and financing alone accounted for $26.63B in FY2024 and $31.06B in FY2025 (53% of total revenue). Total assets stood at $1.676T against $122.0B of shareholders' equity at FY2024-end (13.7x gross leverage). Level 3 assets (valued using unobservable inputs) comprised 1.1%-1.2% of total assets ($18B-$20B, equal to ~15-16% of total equity). In addition, Asset & Wealth Management holds significant direct balance-sheet investments in private equity, real estate, and private credit. The true portfolio risk, intraday trading VaR tail risks, counterparty credit exposures, and complex derivatives books are not externally verifiable, directly violating the Gate 1 verifiability standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

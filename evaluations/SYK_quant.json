@@ -1,0 +1,43 @@
+{
+  "id": "SYK",
+  "ticker": "SYK",
+  "universe": "us",
+  "company": "Stryker Corporation",
+  "price": 325.87,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (tangible ROIC exceeds 40%, neutralizing $25B in accumulated acquisition goodwill and intangibles). Peak Owner EPS confirmed at $10.4916 (FY2025; FY18 spike stripped). Forward 5-10Y g_implied of 9.5% is driven by 6.0% procedure volume and Mako robotic ecosystem installation pull-through, 1.5% net positive pricing realization and premium mix, 1.5% tuck-in M&A reinvestment, and 0.5% net share buybacks. Multi-year FCF conversion is superior at 106.6%. Balance sheet is solid with Net Debt/NI of 3.34x (supported by $4.01B cash against $14.86B debt) and EBIT interest coverage of 8.05x. At $325.87, SYK trades +6.51% Above PAR ($305.94 fair value at 29.16x PAR multiple) with a 9.16% expected 5Y IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.4916,
+    "current_multiple": 31.06,
+    "par_multiple": 29.16,
+    "par_value": 305.94,
+    "percent_vs_par": 0.0652,
+    "status": "Above PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0104,
+    "expected_irr_5y": 0.0916,
+    "market_implied_cap": 16.0,
+    "moat_runway_margin": -1.0,
+    "market_implied_growth": 0.1235,
+    "growth_margin_of_safety": -0.0285
+  },
+  "health_checks": {
+    "net_debt_years": 4.58,
+    "net_debt_ok": false,
+    "interest_coverage": 8.05,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.066,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

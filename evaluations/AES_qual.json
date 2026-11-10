@@ -1,0 +1,30 @@
+{
+  "id": "AES",
+  "ticker": "AES",
+  "universe": "us",
+  "company": "AES Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Independent Power Producers & Energy Traders",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Utility generation assets and renewable energy development pipeline backed by long-term power purchase agreements (PPAs). However, renewable project development is a commoditized, highly competitive auction market where capital costs dictate bidding margins. 5-year median ROIC of 4.8% demonstrates lack of structural moat, and fixed PPA contracts lack pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 4.8% < 12% hurdle, REJECT). Renewable power developer and independent power producer competing in commoditized PPA auctions. Multi-cycle ROIC of 4.8% is far below the 12% capital efficiency hurdle, burdened by heavy project leverage, execution risks, and lack of pricing power.",
+    "evidence": "10-year median GAAP ROIC is 4.8%, with 5-year average hovering near 4.1%. Project development model relies on commoditized competitive bidding for long-term PPAs against low-cost institutional capital, squeezing returns on invested capital. High corporate and non-recourse project-level debt further amplifies balance sheet vulnerability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

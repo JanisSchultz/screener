@@ -1,0 +1,30 @@
+{
+  "id": "OKE",
+  "ticker": "OKE",
+  "universe": "us",
+  "company": "Oneok",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive interstate pipeline network, gathering systems, and fractionation plants represent irreplaceable infrastructure with prohibitive replacement costs. However, pricing is constrained by FERC tariff regulation and pipeline competition, resulting in sub-hurdle capital efficiency (10-year median ROIC of 8.5%, never reaching the 12% threshold).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite irreplaceable pipeline and fractionation infrastructure, ONEOK operates with high capital intensity and constrained regulatory/contractual pricing power, generating a multi-cycle median ROIC of only ~8.5% (2020-2025 range 6.3%-10.8%). The structural sub-12% capital efficiency fails the Munger hurdle.",
+    "evidence": "10-year median ROIC is 8.5% (2020: 6.8%, 2021: 9.8%, 2022: 10.8%, 2023: 9.1%, 2024: ~7.9%, 2025: ~8.1%), failing the 12% Gate 3b hurdle across all cycle points. Recent debt-financed mega-acquisitions (Magellan Midstream for $18.8B in 2023, EnLink and Medallion for $3.3B+ in 2024-2025) expanded total debt to ~$32B against FY25 net income of ~$3.46B (Debt/NI > 9x, Net Debt/EBITDA ~4.6x), diluting returns on capital further."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MYCR.SE",
+  "ticker": "MYCR",
+  "universe": "eu",
+  "company": "Mycronic AB",
+  "country": "Sweden",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Undisputed near-monopoly (>90% global market share) in advanced display photomask laser pattern generators (Prexision series), supplemented by semiconductor photomask writers (SLX) and SMT PCB assembly solutions. Extreme optical precision IP, customer workflow lock-in, and lucrative recurring maintenance service contracts drive 34%+ median GAAP ROIC and >50% gross margins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global monopoly in flat-panel display photomask writers with expanding footprint in semiconductor mask writing and SMT electronics assembly. Exceptional capital efficiency (median ROIC 34%), >100% FCF conversion, and net cash fortress balance sheet (SEK 2.3B net cash). [5-10Y g: mask-writer & SMT equipment volume 4.5% + price/mix 1.5% + bolt-on acquisitions 1.0% - tax/capex normalization drag 0.5% + capital return 0.5%]",
+    "evidence": "Mycronic generates SEK 7.9B in revenue with 25% EBIT margins. In display photomask pattern generation, it has essentially zero commercial competition for advanced OLED/AMOLED screens. 4-year financial history shows median GAAP ROIC of 34.4%, operating ROIC >100%, and multi-year FCF/NI conversion of 100.5%. The balance sheet is a fortress with SEK 2.32B cash against SEK 12M long-term debt, providing complete immunity from credit markets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

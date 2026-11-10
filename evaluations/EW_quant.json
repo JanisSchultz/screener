@@ -1,0 +1,43 @@
+{
+  "id": "EW",
+  "ticker": "EW",
+  "universe": "us",
+  "company": "Edwards Lifesciences",
+  "price": 102.14,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting high-margin structural heart franchise (~78% gross margin, ~28% EBIT margin) neutralizing distortion from $2.94B cash hoard post-Critical Care divestiture. 5-10Y through-the-cycle growth of 9.0% supported by 5.5% TAVR procedure volume (EARLY TAVR asymptomatic expansion), 2.5% TMTT growth (Evoque, Pascal), 0.5% RESILIA mix, offset by 0.5% clinical trial R&D drag, plus 1.0% share repurchases. Pristine fortress balance sheet with $2.34B net cash, 62x interest coverage, and normalized FY2025 Owner FCF of $1.28B."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.4382,
+    "current_multiple": 41.89,
+    "par_multiple": 29.72,
+    "par_value": 72.48,
+    "percent_vs_par": 0.4093,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0177,
+    "market_implied_cap": 21.1,
+    "moat_runway_margin": -6.1,
+    "market_implied_growth": 0.2725,
+    "growth_margin_of_safety": -0.1825
+  },
+  "health_checks": {
+    "net_debt_years": 0.56,
+    "net_debt_ok": true,
+    "interest_coverage": 61.97,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.4709,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

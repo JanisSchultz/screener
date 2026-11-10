@@ -1,0 +1,30 @@
+{
+  "id": "WPP.GB",
+  "ticker": "WPP",
+  "universe": "eu",
+  "company": "WPP",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Advertising (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Media-buying scale and legacy agency-of-record relationships have been systematically disintermediated by platform self-serve tools (Google, Meta, Amazon) and client in-housing. Historical GAAP ROIC of 6–8% (dropping to ~3% in 2023) is far below the 12% hurdle, with negative pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & negative pricing power, REJECT). WPP suffers from a multi-decade rollup legacy burdened with goodwill, generating sub-8% multi-year median GAAP ROIC. Media-buying scale advantages have eroded as clients build internal marketing teams, switch to programmatic self-serve platforms, and demand fee reductions.",
+    "evidence": "WPP reported ROIC of 11.4% (2022), 3.4% (2023), and ~8-10% (2024), yielding a 5-year median well below 10%. Operating margins lag top peers at 11–14%. Ongoing marquee account re-pitches, fee deflation, and restructuring charges highlight the lack of economic moat and absence of above-inflation pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

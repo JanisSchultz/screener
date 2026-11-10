@@ -1,0 +1,43 @@
+{
+  "id": "WST",
+  "ticker": "WST",
+  "universe": "us",
+  "company": "West Pharmaceutical Services",
+  "price": 399.81,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the v6.23 Tangible Capital Standard for containment systems leader WST, reflecting unmatched economic pricing power and high tangible capital returns (>29% 10Y median tangible ROIC) for mission-critical injectable stoppers and plungers. Reported FY2021 peak Owner EPS of $8.6737 is retained without override to maintain strict consistency with historical 5-year cycle multiples (mult_low_5y 28.03x, mult_high_5y 40.52x); on normalized post-COVID FY2025 Owner EPS ($6.7909 post-destocking), valuation is even more extended at 58.87x. 5-10Y through-the-cycle growth of 8.5% is driven by biologics and GLP-1 injectable delivery volume (5.0%), proprietary component price indexation (2.0%), High-Value Product (FluroTec/NovaPure) mix shift (1.5%), offset by capacity expansion D&A drag (-0.5%), plus net share repurchases (0.5%). Pristine fortress balance sheet with $588.5M net cash ($791.3M cash vs $202.8M debt), 1,170x interest coverage, and 94.0% FCF conversion. At $399.81, WST trades at 46.09x peak Owner EPS vs fundamental PAR multiple of 28.76x (PAR value $249.44), placing it +60.3% Above PAR with an expected 5Y cycle IRR of -1.1%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.6737,
+    "current_multiple": 46.09,
+    "par_multiple": 28.76,
+    "par_value": 249.44,
+    "percent_vs_par": 0.6028,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0022,
+    "expected_irr_5y": -0.0105,
+    "market_implied_cap": 32.1,
+    "moat_runway_margin": -12.1,
+    "market_implied_growth": 0.345,
+    "growth_margin_of_safety": -0.26
+  },
+  "health_checks": {
+    "net_debt_years": 0.41,
+    "net_debt_ok": true,
+    "interest_coverage": 1169.8,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9403,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "WELL",
+  "ticker": "WELL",
+  "universe": "us",
+  "company": "Welltower Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Health Care REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High physical and emotional switching barriers for senior housing residents once admitted into assisted living and memory care facilities. Welltower leverages an operator platform and proprietary data analytics to optimize pricing and occupancy. Pricing power demonstrated by RevPOR growth of 6-8%+ outstripping inflation and SHO same-store NOI growth exceeding 20% in 2024-2025. Primary erosion threats include recurring local real estate overbuilding cycles, operator execution failures, and healthcare regulatory scrutiny.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Health Care REITs exhibit high mean reversion due to rapid private developer supply responses during cyclical upturns. Welltower faces severe active macrotrend headwinds: (1) Demographic Aging & Labor Scarcity (Macrotrend 2) creates chronic shortages and structural wage inflation for non-automatable manual caregivers and nurses (representing >50% of facility operating costs), and (2) Structural Inflation & Cost of Capital (Macrotrend 5) burdens this capital-intensive REIT with continuous debt refinancing at higher rates and dilutive equity issuances to fund ongoing property capex and acquisitions. Fails 15-year secular resilience bar.",
+    "evidence": "Welltower is the largest healthcare REIT focused primarily on seniors housing operating (SHO) portfolios (~70%+ of NOI), outpatient medical buildings (~15%), and long-term/post-acute care. While same-store SHO NOI rebounded strongly post-COVID with >20% growth in 2024 and 2025 driven by 80+ demographic recovery and RevPOR increases outstripping inflation, the underlying economics remain fundamentally cyclical. Historically, 5-year median GAAP ROIC is compressed at 4.6% (ranging 1.2%–4.6%) reflecting substantial asset depreciation and high capital intensity. Senior living communities require continuous maintenance and renovation capex, while facility operating margins are constrained by labor costs (agency nursing and care staff) accounting for >50% of operating expenses. Balance sheet leverage has been managed via large equity offerings (net debt/EBITDA ~2.4x–4.0x, liquidity ~$11.9B in late 2025), but compounding relies heavily on external capital markets rather than internal cash reinvestment. Over a multi-decade horizon, senior housing lacks a 15-year protected competitive advantage period due to localized supply additions whenever market yields rise."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

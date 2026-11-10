@@ -1,0 +1,30 @@
+{
+  "id": "RNO.FR",
+  "ticker": "RNO",
+  "universe": "eu",
+  "company": "Renault SA",
+  "country": "France",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dacia brand design-to-cost engineering provides a genuine low-cost value proposition in entry-level European passenger cars. However, mass-market volume automotive manufacturing is fundamentally commoditized and capital-intensive. Multi-cycle Group ROIC has averaged ~2-3% (well below the 12% hurdle), with operating margins structurally constrained between 3% and 8%. Primary erosion threats: low-cost Chinese EV imports into Europe, stringent EU fleet emissions penalties, cyclical consumer demand, and execution complexity across its unbundled Horse (ICE) and Ampere (EV) divisions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & pricing power, REJECT). Despite Dacia's low-cost design-to-cost discipline under the 'Renaulution' turnaround, Renault operates in the structurally commoditized European volume auto market. Multi-cycle Group ROIC averages just 2-3% (far below the 12% hurdle), with operating margins capped around 7-8%. Severe price competition from low-cost Chinese EV entrants and heavy powertrain transition capex destroy excess returns.",
+    "evidence": "Consolidated Group ROIC hovered between 0.9% and 3.0% from 2021 to 2024, failing the 12% hurdle across the cycle. Group operating margins stabilized at 7.6% in 2024 (€4.26B operating income on €56.2B revenue), but remain vulnerable to cyclical downshifts. High structural capital expenditures required for the EV transition, cancellation of the Ampere IPO, complex cross-shareholdings with Nissan, and intense pricing pressure from imported Chinese EVs in Europe prevent the generation of durable economic rents."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

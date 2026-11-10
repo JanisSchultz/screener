@@ -1,0 +1,30 @@
+{
+  "id": "TXN",
+  "ticker": "TXN",
+  "universe": "us",
+  "company": "Texas Instruments Incorporated",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme design-in switching costs across 80,000+ catalog analog and embedded processing components sold to 100,000+ industrial and automotive customers. Pennies-per-part chips spec'd into mission-critical circuit boards create 10-15+ year sticky lifecycles where redesign costs dwarf component savings. Empirically demonstrated by 10-year GAAP ROIC averaging >35% (troughing at ~19-20% during cyclical downturns) and consistent ~60%+ through-cycle gross margins, further reinforced by a structural ~40% unpackaged die cost advantage from internal 300mm wafer fabrication.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "1. Broken metric: Actual cash FCF conversion collapsed to ~30-40% of net income in 2023-2025 due to a massive $4.5B-$5.0B/year capex surge for 300mm fab construction (Sherman TX, Lehi UT) during an industrial/auto cyclical destocking, requiring ~$7B of debt issuance to sustain the $5B annual dividend. 2. Intact moat proof: Moat remains impregnable with 80,000+ catalog parts, 60%+ gross margins, and trough GAAP ROIC of ~19-20%; internal 300mm manufacturing widens the cost moat by 40% vs 200mm peers and guarantees US supply chain resilience. 3. Catalyst & kill-switch: Capex peaked in 2024-2025 and steps down to $2.0B-$3.0B in 2026 under dynamic capacity management agreed post-Elliott activist engagement, backed by $1.6B in CHIPS Act direct grants; FCF inflects sharply back to $6B-$8B+, restoring organic dividend coverage and rapid balance sheet deleveraging without dilution. Kill-switch: Capex persisting >$4B beyond 2026 without FCF recovery or net debt exceeding 4.0x net income.",
+    "note": "Calamity pass (temporary Gate 6 capex depression). Dominant catalog analog leader with unassailable design-in switching costs across 80,000+ products and 100,000+ customers. Capex peaked at ~$4.5B-$5.0B/year for 300mm fabs, depressing actual FCF conversion to ~30-40% and temporarily inflating debt to fund the dividend; capex step-down to $2.0B-$3.0B in 2026-2027 and CHIPS Act funding unlock a sharp multi-billion dollar FCF recovery and rapid deleveraging. [5-10Y g: analog/embedded unit volume 4.5% + price 0.5% + 300mm cost/FCF recovery 1.5% + net share repurchases 1.0%]",
+    "evidence": "10-year track record proves exceptional capital efficiency: 10-year median GAAP ROIC of 29.0% (peaking at 55.2% in 2021 and troughing at 18.8% in 2024 and 19.9% in 2025) and tangible ROIC consistently above 22%. Gross margins remained 60-68% through the cyclical downturn. Revenue comprises Analog (~75-80%) and Embedded Processing (~15-20%) across industrial, automotive, and personal electronics, with zero customer concentration (<10%). Operating margins sustained at 35-50%. Capex elevated to $4.55B-$5.07B/yr in 2023-2025 to build 300mm fabs, causing FCF to dip and debt to rise to $13.5B (net debt $10.3B, 2.7x NI, interest coverage >12x). Management constructively engaged with Elliott Management in 2024 to moderate 2026 capex to $2.0B-$3.0B, securing an inflection to $6B+ FCF."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": "Gate 6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

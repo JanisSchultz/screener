@@ -1,0 +1,30 @@
+{
+  "id": "LPP.PL",
+  "ticker": "LPP",
+  "universe": "eu",
+  "company": "LPP",
+  "country": "Poland",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country Poland is outside approved rule-of-law Western markets (in_market == N); fast fashion retail is non-essential, fashion-cycle dependent, and easily forgone in downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Primary listing in Poland is outside approved rule-of-law Western markets (in_market == N). Fast-fashion and value apparel retail (Reserved, Sinsay) is highly discretionary, cyclical, and easily forgone during economic downturns.",
+    "evidence": "LPP S.A. operates over 2,200 stores across 27+ countries with brands including Reserved, Sinsay, Cropp, House, and Mohito. The business is heavily exposed to Central & Eastern European consumer purchasing power and currency volatility (PLN). Fast-fashion apparel faces intense competition from global peers (Inditex/Zara, H&M, Shein) with low customer switching costs. The company faced severe governance scrutiny following short-seller allegations regarding post-2022 Russia asset divestment. Poland is classified as in_market == N in the screener universe."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

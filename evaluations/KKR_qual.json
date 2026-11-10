@@ -1,0 +1,30 @@
+{
+  "id": "KKR",
+  "ticker": "KKR",
+  "universe": "us",
+  "company": "KKR & Co.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (gate_1 = N, REJECT). Following the full acquisition and consolidation of Global Atlantic in 2024, KKR transformed from an asset-light alternative manager into a balance-sheet-heavy financial conglomerate with >$410B in assets, >$379B in liabilities, and >$220B in insurance reserves. A substantial portion of Global Atlantic's asset portfolio is deployed into affiliate-originated private credit, asset-based finance, and illiquid Level 3 instruments marked via internal valuation models. This captive insurance structure creates an opaque related-party credit web where true underwriting risk, asset-liability duration matching, and mark-to-market solvency are not verifiable from the outside.",
+    "evidence": "Consolidated balance sheet expanded to $410.1B in assets and $379.2B in liabilities with ~$54.5B in total debt in FY2025 following the 100% buyout of Global Atlantic. Global Atlantic's $220B+ portfolio is heavily invested in private credit, direct middle-market lending, and asset-backed finance originated by KKR's own deal teams. A significant portion of these holdings are categorized as Level 3 assets under ASC 820 with unobservable inputs and internal pricing discretion. Under the Munger framework, opaque long-tail insurance reserves and affiliate-originated credit portfolios fail Gate 1 due to lack of external verifiability and systemic run/liquidity risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ALV.DE",
+  "ticker": "ALV",
+  "universe": "eu",
+  "company": "Allianz",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Europe's #1 insurer generates unassailable scale economies in P&C underwriting and distribution, complemented by PIMCO's fixed-income asset management scale. Proven pricing power demonstrated by multi-year rate hikes outpacing European claims inflation, with 5Y median GAAP ROIC of 17.2% and combined ratio <94%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peace-of-Mind Balance Sheet, REJECT). Europe's premier insurer boasts undisputed scale and underwriting discipline, but carries over €900B in total liabilities including complex life insurance guarantees and systemic European sovereign credit exposures. Under Munger's strict solvency standard, multi-line life liabilities fail the peace-of-mind test in a severe systemic crisis.",
+    "evidence": "FY2025 EBIT of €16.2B, GAAP ROIC of 18.9% (5Y median 17.2%), and Solvency II ratio of 218%. While P&C underwriting is disciplined (combined ratio ~93%), total balance sheet liabilities exceed €900B with significant legacy life guarantees and European sovereign bond holdings. Common equity remains vulnerable to systemic credit freezes, violating the peace-of-mind balance sheet standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

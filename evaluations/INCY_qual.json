@@ -1,0 +1,30 @@
+{
+  "id": "INCY",
+  "ticker": "INCY",
+  "universe": "us",
+  "company": "Incyte",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary patent estate protecting JAK1/JAK2 inhibitor ruxolitinib (Jakafi, Opzelura). High gross margins (~88%) and 10-year median ROIC of 12.1% (surging to >30% in FY2025 with $1.29B net income) demonstrate established historical pricing power and capital efficiency. Primary erosion threat is the impending late-2028 patent cliff on Jakafi and high pipeline clinical attrition.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Flagship JAK inhibitor Jakafi generates ~70% of total revenues ($3.62B of $5.14B in FY2025) and faces core patent expiration in late 2028. Biotechnology industry base-rate CAP is 10-15 years, and an unhedged patent cliff on the primary cash generator truncates predictable competitive advantage period to 5 years, well below the 15-year hurdle. Fast-growing Opzelura ($678M in FY2025) and early-stage pipeline are insufficient to offset catastrophic post-2028 generic erosion.",
+    "evidence": "Incyte's 10-year median GAAP ROIC is 12.1% with gross margins consistently between 85-89%. In FY2025, total revenue grew 21% to $5.14B with net product sales of $4.35B and net income of $1.29B (recovering sharply from FY2024's $32.6M net income that was depressed by the $750M Escient upfront IPR&D charge). Operating cash flow reached $1.41B in FY2025 with total cash and marketable securities of $3.6B and negligible debt. However, Jakafi generated $3.62B (70.4% of total revenue) and its primary U.S. patents expire in December 2028. Generic filers (e.g. Hikma settlement) will enter upon patent expiry, precipitating severe generic price and volume erosion. Opzelura reached $678M in FY2025, but non-Jakafi revenues are inadequate to bridge the post-2028 cash flow cliff."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

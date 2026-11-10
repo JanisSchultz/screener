@@ -1,0 +1,30 @@
+{
+  "id": "MFC.CA",
+  "ticker": "MFC",
+  "universe": "ca",
+  "company": "Manulife Financial",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive distribution footprint and agency networks in Canada and Asia (Hong Kong, Japan, Singapore) provide customer switching barriers. However, individual life, annuity, and wealth products are spread-based and interest-rate-sensitive commodity contracts where insurers cannot increase premiums on existing books to offset inflation, and new business faces aggressive price competition across broker networks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Leading international life insurer with premier Asian and Canadian distribution franchises. While management has successfully de-risked its legacy US long-term care (LTC) portfolio via multi-billion dollar reinsurance treaties, Manulife's core business model is built on spread-generating life and annuity contracts and wealth management. The business lacks inflation-beating pricing power: existing policy premiums are fixed, investment spreads fluctuate with monetary cycles, and retail asset management faces ongoing passive fee pressure. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Manulife reported FY2025 net income of CAD 5,251M and EBIT of CAD 8,624M on CAD 50,957M equity, with a 5-year median ROIC of 18.07% (2025 GAAP ROIC 19.11%, tangible ROIC 27.43%). Long-term debt stands at CAD 12,934M against CAD 26,703M cash and CAD 1,530M interest expense (5.6x EBIT/interest coverage). Management executed major LTC risk transfers with Global Atlantic, RGA, and Munich Re at modest negative ceding commissions (-4% to -5%), validating reserve prudence and releasing capital for share buybacks. However, life and annuity earnings remain fundamentally spread-dependent and vulnerable to long-tail actuarial assumptions, without the ability to pass through general inflation via unilateral price increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

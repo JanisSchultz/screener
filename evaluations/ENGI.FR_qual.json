@@ -1,0 +1,30 @@
+{
+  "id": "ENGI.FR",
+  "ticker": "ENGI",
+  "universe": "eu",
+  "company": "Engie",
+  "country": "France",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Regulated French natural gas infrastructure (GRDF distribution and GRTgaz transmission) combined with hydro concessions form an irreplaceable toll-booth infrastructure network. Regulated asset base provides inflation indexing, supporting operating tangible ROIC of ~18-22%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance sheet leverage & interest coverage, REJECT). Core French utility with extensive regulated networks, but net debt of €25.5B is 6.9x net income (€3.69B) and total debt is €40.0B (10.9x NI). EBIT interest coverage of 3.45x falls well below the 5.0x fortress threshold, with volatile cash conversion due to working capital and heavy transition capex.",
+    "evidence": "FY2025 net debt stood at €25.5B (€40.0B long-term debt against €14.5B cash) against net income of €3.69B. Interest expense of €2.58B against EBIT of €8.89B leaves interest coverage at 3.45x, failing Gate 6 balance sheet criteria. FY2025 OCF was negative (-€1.48B) due to working capital swings alongside €7.27B capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

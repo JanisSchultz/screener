@@ -1,0 +1,30 @@
+{
+  "id": "GNRC",
+  "ticker": "GNRC",
+  "universe": "us",
+  "company": "Generac Holdings Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Heavy Electrical Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant North American residential standby generator market share (~70-75%) and an authorized dealer network (>8,500 certified installers) provide recognized brand leadership and distribution reach. However, this fails to deliver durable economic returns across the cycle. Standby generators are one-off durable equipment (15-20 year replacement lifecycle) whose sales are lumpy and outage-driven. 5-year median GAAP ROIC is ~10.5% (falling to ~5.7% in 2025), failing the 12% hurdle. When severe weather events subside, dealer inventory destocking strips away pricing power and crushes operating margins. Commercial & Industrial (C&I) backup power faces intense price competition from Cummins, Caterpillar, and Kohler, while clean energy storage (PWRcell) has been plagued by warranty issues and component failures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Dominant brand and dealer network in residential standby generators, but the underlying economic engine is a cyclical, outage-dependent durable equipment manufacturer. 5-year median GAAP ROIC of ~10.5% (and ~5.7% in 2025) fails the non-negotiable 12% hurdle. Lacks consistent pricing power across the cycle as post-storm dealer destocking drives severe margin compression, C&I remains highly competitive against industrial conglomerates, and clean energy storage diversification struggled with warranty liabilities.",
+    "evidence": "Generac experienced peak windfall earnings in 2021 ($550.5M net income, 17.8% ROIC) driven by Winter Storm Uri and pandemic home-spending tailwinds, but normalized profitability deteriorated significantly: net income was $214.6M in 2023 and $159.6M in 2025. GAAP ROIC fell from 17.8% (2021) to 11.0% (2022), 6.9% (2023), 10.5% (2024), and 5.7% (2025), yielding a 5-year median ROIC of ~10.5%, well below the 12% threshold. 2025 net sales of $4.21B were split across Residential Products (~54%), C&I Products (~35%), and Other Products & Services (~11%). Free cash flow is volatile (-$25.6M in 2022, +$604.8M in 2024, +$271.2M in 2025). Long-term debt stands at ~$1.5B against episodic operating cash flows."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ESS",
+  "ticker": "ESS",
+  "universe": "us",
+  "company": "Essex Property Trust, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Multi-Family Residential REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Coastal West Coast supply constraints and severe entitlement barriers provide asset scarcity, but historical capital efficiency is structurally sub-hurdle with a 10-year median GAAP ROIC of 5.1% (FY24 3.59%, FY25 4.52%), far below the 12% hurdle. Pricing power is actively constrained by California AB 1482 statutory rent caps (5% + CPI up to 10%), municipal rent stabilization, and persistent legislative/ballot-measure risks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & rent control caps, REJECT). While Essex possesses an irreplaceable footprint of supply-constrained multifamily apartment communities across coastal California and Seattle, its capital efficiency is structurally sub-hurdle with a 10-year median ROIC of 5.1% (FY24 ~3.6%, FY25 ~4.5%), well below the 12% compounder requirement. In addition, California statutory rent caps (AB 1482) and local rent control ordinances restrict unconstrained pricing power.",
+    "evidence": "Essex Property Trust owns and operates ~250+ apartment communities (~62,000 homes) heavily concentrated in Southern California (44%), Northern California (36%), and Seattle Metro (20%). 10-year median GAAP ROIC is 5.1%, with FY2024 ROIC at 3.59% and FY2025 ROIC at 4.52%, falling far short of the 12% screener hurdle. High capital intensity and prevailing apartment acquisition cap rates of 4.0%-5.5% preclude high-teens returns on capital. Pricing power is limited by California's Tenant Protection Act (AB 1482), local municipal rent stabilization laws, and recurrent ballot measures (Props 10, 21, and 33, requiring over $55M in defensive contributions) that pose structural regulatory friction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

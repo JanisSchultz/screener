@@ -1,0 +1,30 @@
+{
+  "id": "NXT.GB",
+  "ticker": "NXT",
+  "universe": "eu",
+  "company": "Next",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary fashion and homeware apparel retail; non-essential consumer purchases easily deferred or traded down during economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Exceptional capital allocation under Simon Wolfson cannot overcome the fundamental nature of the product: discretionary fashion and homeware apparel, which is inherently deferrable in recessions and lacks customer lock-in.",
+    "evidence": "Next plc is an exceptionally well-managed UK omnichannel apparel retailer with ~£5B+ revenue, strong ROE/ROCE (>25%), and innovative logistics infrastructure via Total Platform. However, over 80% of earnings remain tethered to discretionary apparel, footwear, and home furnishings in the mature UK market. Consumer clothing purchases are non-essential, highly deferrable in inflationary or recessionary environments, and face intense long-term price competition from global fast-fashion players (Inditex, Shein, Primark)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

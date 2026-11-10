@@ -1,0 +1,30 @@
+{
+  "id": "BRO",
+  "ticker": "BRO",
+  "universe": "us",
+  "company": "Brown & Brown",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sticky commercial middle-market broker relationships and specialty MGA/MGU delegated underwriting authority create high switching costs and >90% client retention. Commission and fee structures scale ad valorem with P&C rate inflation, preserving >30% EBIT margins (35.9% adjusted EBITDAC margin). 5-year median GAAP ROIC is 12.01% with tangible ROIC >200%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential commercial insurance broker and specialty MGA operator with >30% EBIT margins, 12.0% median GAAP ROIC, and >100% Owner FCF conversion. Staggered Accession acquisition debt is serviced comfortably with 5.62x interest coverage and rapidly retired from >$1.5B annual cash flow without solvency risk. [5-10Y g: organic volume 3.0% + P&C rate pricing 1.5% + M&A reinvestment net of deleveraging 2.5% + margin operating leverage 0.5% + net buybacks 0.5%]",
+    "evidence": "Empirically verified capital efficiency: 5-year median GAAP ROIC of 12.01% and tangible operating ROIC >200% across multiple cycles. Owner FCF conversion averaged 112.6% of net income over 5 years (FY2025 Owner FCF of $1,302M vs $1,054M GAAP net income), supported by minimal capex (~$68M, 1.1% of revenue). 10-year Owner EPS CAGR of 14.95% demonstrates peak-to-peak earnings compounding. Balance sheet maintains 5.62x interest coverage ($1,668M EBIT / $297M interest). Following the August 2025 $9.825B Accession acquisition, long-term debt increased to $6,894M ($5,815M net debt), which is repayable within ~3.4 years from normalized pro-forma cash flow (~$1.7B+ OCF) with zero underwriting balance-sheet risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

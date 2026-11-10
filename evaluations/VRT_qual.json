@@ -1,0 +1,30 @@
+{
+  "id": "VRT",
+  "ticker": "VRT",
+  "universe": "us",
+  "company": "Vertiv Holdings Co",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs and severe operational risk of data center downtime (critical power and thermal infrastructure integrated into hyperscaler facility blueprints, supported by a 3,500+ technician global service network). Proof of moat: 5-year median ROIC ~14.2%, scaling to >25% in FY2024-FY2025 with adjusted operating margins expanding above 20% and adjusted FCF reaching ~$1.9B. Primary erosion threats: Hyperscaler standard-setting via Open Compute Project (OCP) modular architectures designed to eliminate vendor lock-in, intense competition from integrated electrical conglomerates (Schneider Electric, Eaton) possessing in-house switchgear and circuit breaker supply chains, and rapid hardware transition cycles in direct-to-chip liquid cooling.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Vertiv is a key beneficiary of current hyperscaler AI data center buildouts providing critical thermal and power infrastructure, it is a cyclical capital goods hardware manufacturer (Tier 3 persistence, baseline CAP 10-15 years). The business faces rapid technology cycle risks in liquid cooling architectures, intense competition from full-suite electrical giants (Schneider Electric, Eaton) that possess in-house switchgear/breakers, and commoditization pressure from hyperscale tech giants actively championing Open Compute Project (OCP) standardized modular designs to avoid proprietary lock-in. Hardware sales are transactional capex purchases subject to severe cyclical digestion following AI infrastructure waves, limiting confident moat duration to 5 years.",
+    "evidence": "Vertiv Holdings Co. (NYSE: VRT) specializes in critical digital infrastructure, generating ~80% of revenue from data center power and thermal management. Net sales surged 28% in FY25 to $10.23B with adjusted operating margins expanding to 20.4% and adjusted FCF reaching ~$1.9B, driven by high rack-density AI cooling demand (liquid cooling CDUs, Liebert precision chillers). ROIC rebounded from single digits in FY21-FY22 to ~28% in FY25, and net leverage declined to ~0.5x EBITDA. However, Vertiv's track record reveals pronounced cyclicality and operational vulnerability: in 2021-2022, operating income collapsed due to fixed-price customer contracts and lack of component pricing power amid supply chain disruption. Unlike diversified electrical peers (Schneider Electric, Eaton), Vertiv lacks internal manufacturing of low-voltage electrical switchgear and circuit breakers. Furthermore, customer concentration among a handful of hyperscalers (Microsoft, Meta, Google, AWS) creates long-term structural vulnerability, as hyperscalers leverage Open Compute Project (OCP) standards and Asian ODM partnerships to disintermediate proprietary thermal/power hardware."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

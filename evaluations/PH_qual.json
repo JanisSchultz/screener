@@ -1,0 +1,30 @@
+{
+  "id": "PH",
+  "ticker": "PH",
+  "universe": "us",
+  "company": "Parker-Hannifin Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs derived from mission-critical, custom-engineered motion and control components specified directly into long-cycle aerospace and industrial platforms. Replacement components require OEM or FAA qualification, creating captive aftermarket demand across an unreplicable global distribution network (13,000+ locations). The proprietary Win Strategy systematically drives value-based pricing, consistently exceeding inflation through multiple raw material and supply chain cycles.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global motion and control powerhouse transformed by The Win Strategy into a top-quartile compounder. Spec'd-in aerospace systems and critical industrial components generate high-margin recurring aftermarket toll-booth cash flows. Secular tailwinds across commercial aero ramp, factory automation, and data center thermal cooling. Rapid deleveraging post-Meggitt with net debt < 2.0x NI and 12.6x interest coverage. [5-10Y g: commercial & defense aerospace volume 4.0% + industrial automation & data center thermal 2.0% + Win Strategy value pricing 2.0% + net share repurchases 1.0%]",
+    "evidence": "10-year median GAAP ROIC is 16.6% with tangible operating ROIC > 100%. Free cash flow conversion consistently exceeds net income (FY25 FCF conversion 102%, TTM 106%). Peak-to-peak Owner EPS compounded at 14.6% CAGR from $8.32 in FY16 to $32.22 in FY25 without cyclical impairment. Balance sheet is strong post-Meggitt with long-term debt reduced to $7.47B, net debt/TTM NI at 1.91x, and EBIT/Interest at 12.64x. Operating margins expanded over 800 bps over the decade to 24.5%+ via Win Strategy operational excellence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

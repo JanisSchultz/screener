@@ -1,0 +1,30 @@
+{
+  "id": "PNW",
+  "ticker": "PNW",
+  "universe": "us",
+  "company": "Pinnacle West Capital",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territory and rate-base regulation with monopolistic transmission and distribution grid across Arizona.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Pinnacle West benefits from strong Phoenix population and industrial load growth (semiconductor manufacturing), but operates under a high-leverage regulated capital structure (LT debt/NI of 14.6x) and weak interest coverage of 2.53x (below 5.0x threshold). Massive grid capex ($2.6B vs $632M NI) forces continuous debt issuance and reliance on external capital markets.",
+    "evidence": "10-year GAAP ROIC median of 5.56% (2025: 5.88%, 2024: 6.03%, 2022: 4.79%, 2019: 5.28%). Long-term debt of $9.21B against net income of $631.6M results in 14.6x leverage (far above 4.0x ceiling). EBIT of $1.07B covers interest of $422M at only 2.53x (hurdle >5.0x). Capex of $2.62B exceeds operating cash flow of $1.81B, requiring ongoing debt capital market access to fund rate base expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

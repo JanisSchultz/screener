@@ -1,0 +1,30 @@
+{
+  "id": "BMO.CA",
+  "ticker": "BMO",
+  "universe": "ca",
+  "company": "Bank of Montreal",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Canadian Big 6 banking oligopoly protected by OSFI regulatory barriers, entrenched branch networks, and low-cost core deposit switching costs. Consistently delivers 12-14% return on equity across credit cycles.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (gate_6_cash_and_balance_sheet = N). While BMO enjoys a protected Canadian oligopoly and steady multi-decade returns, its fractional-reserve banking model relies on 12-15x balance sheet leverage, credit cycle exposure, and wholesale deposit funding that inherently fails the Munger peace-of-mind fortress balance sheet standard.",
+    "evidence": "BMO is Canada's 4th largest bank by assets, operating across Canadian P&C, US P&C (BMO Harris / Bank of the West), Wealth Management, and Capital Markets. Despite solid historical ROE (~12-14%) and OSFI CET1 ratio >13%, its commercial banking model operates with CAD $163.6B in long-term debt against CAD $8.3B net income (>19x debt/income) and interest coverage of only 1.27x. Inherent fractional-reserve duration mismatch and credit cycle risk fail Gate 6 by design."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

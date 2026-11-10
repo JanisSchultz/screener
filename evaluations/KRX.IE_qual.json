@@ -1,0 +1,30 @@
+{
+  "id": "KRX.IE",
+  "ticker": "KRX",
+  "universe": "eu",
+  "company": "Kingspan",
+  "country": "Ireland",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Panel manufacturing scale and regulatory product certifications. Dense regional manufacturing network minimizes bulky freight costs. Demonstrated pricing power by passing through massive raw chemical (MDI/polyol/steel) cost inflation in 2021-2023. Multi-year median GAAP ROIC is 14.1% and operating tangible ROIC is 36.7%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in high-performance insulated sandwich panels and advanced building envelopes. Structural moat derived from dense regional manufacturing footprint minimizing bulky transport costs, proprietary QuadCore formulations, and regulatory fire/thermal certifications. Resilient peak-to-peak EPS compounding across European construction cycles backed by EU building decarbonization regulations. Sound balance sheet with net debt of 2.2x NI and 12x interest coverage. [5-10Y g: building efficiency volume 3.5% + QuadCore/data center mix 2.5% + pricing power 2.0% - cyclical/capex drag 0.5% + buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC is 14.1% with operating tangible ROIC of 36.7%. Owner EPS compounded consistently from 3.27 EUR in 2022 to a peak of 3.67 EUR in 2025. Multi-year Owner FCF conversion reached 95.7%. Net debt / NI is 2.23x (1,495.8m EUR net debt vs 671.2m EUR NI) with interest coverage of 11.97x (EBIT 929.1m EUR vs interest 77.6m EUR)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

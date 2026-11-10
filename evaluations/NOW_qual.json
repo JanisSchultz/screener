@@ -1,0 +1,30 @@
+{
+  "id": "NOW",
+  "ticker": "NOW",
+  "universe": "us",
+  "company": "ServiceNow, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical enterprise workflow system of record with 98%+ renewal rates, extreme customer switching costs across IT service management (ITSM) and enterprise operations, and demonstrated pricing power yielding 15%+ median ROIC.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Enterprise workflow SaaS model remains fundamentally monetized via fulfiller seat licenses across ITSM, CSM, and HRSD. Under Macrotrend #1 (Automation & Cognitive Tech / AI Disruption), autonomous agentic AI systems that resolve IT incidents, service requests, and customer queries directly exert severe deflationary pressure on corporate IT support headcount, capping long-term seat expansion. Compute cost inflation from generative AI inferencing adds gross margin headwinds. Downstream gates bypassed per waterfall.",
+    "evidence": "ServiceNow demonstrates exceptional historic financial performance: FY2025 revenue reached $13.28B (+21% YoY) with 98%+ gross renewal rate, GAAP ROIC of 17.05% (5-year median 15.2%), tangible ROIC of 27.22%, and FCF conversion of 137% ($2.75B Owner FCF). However, despite the launch of Now Assist and AI tier restructuring (Foundation, Advanced, Prime), the economic core remains tied to enterprise fulfiller seat licenses. Autonomous agentic AI resolution of corporate helpdesk tickets introduces structural deflation to customer IT/support headcount growth, limiting predictable secular runway below the 15-year hurdle required by Mauboussin persistence standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

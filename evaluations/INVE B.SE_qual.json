@@ -1,0 +1,30 @@
+{
+  "id": "INVE B.SE",
+  "ticker": "INVE B",
+  "universe": "eu",
+  "company": "Investor AB",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Core holdings Atlas Copco, ABB, Epiroc, AstraZeneca, and Mölnlycke operate mission-critical installed-base monopolies with high switching costs, captive aftermarket service flows, and proprietary patent portfolios that generate consistent 20%+ look-through ROIC and pricing power >= inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. World-class industrial and healthcare compounder built over a century by the Wallenberg family. Unassailable look-through moats in industrial vacuum/compressors (Atlas Copco), electrification/robotics (ABB), pharmaceuticals (AstraZeneca), and medical wound care (Mölnlycke). Exceptional capital stewardship and pristine balance sheet with <4% LTV leverage. [5-10Y g: look-through industrial/health volume 4.5% + pricing power 2.0% + automation/electrification mix 1.5% + Patricia bolt-ons & dividend reinvestment 1.5%]",
+    "evidence": "4-year median GAAP ROIC is 15.2% (Operating ROIC 17.2%). Adjusted NAV surpassed SEK 1,087B in 2025. Core holdings Atlas Copco and ABB generate elite operating margins (>18-22%) and ROIC (>25%). Holdco leverage is exceptionally low with interest coverage exceeding 40x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "APA",
+  "ticker": "APA",
+  "universe": "us",
+  "company": "APA Corporation",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity price-taker lacking pricing power; upstream oil and gas exploration and production subject to global commodity cycles and non-Western sovereign exposure in Egypt.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Reject \u2013 G2 Essential Need). Upstream oil and gas exploration and production company operating as a pure commodity price-taker exposed to volatile crude oil and natural gas benchmarks (WTI, Brent, Henry Hub). Lacks pricing power, faces structural commodity cyclicity, and holds significant operational concentration in Egypt (Western Desert) with elevated sovereign and foreign exchange risk. Fails Munger's hurdle for non-deferrable Western essential demand with pricing power.",
+    "evidence": "APA Corporation explores and produces oil and gas across the US Permian Basin, Egypt, UK North Sea, and offshore Suriname. As an upstream price-taker, operating margins and cash flows fluctuate wildly with underlying hydrocarbon benchmarks. Historical 10-year median ROIC is approximately 8.5%, falling far short of the 12% hurdle. The 2024 acquisition of Callon Petroleum for ~$4.5B added substantial debt ($6.0B total debt at end-2024) and dilution without altering the underlying commodity price-taking economics. Capital intensity is high, and upstream assets lack any pricing power or enduring competitive moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

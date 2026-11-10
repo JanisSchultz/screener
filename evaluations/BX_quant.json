@@ -1,0 +1,43 @@
+{
+  "id": "BX",
+  "ticker": "BX",
+  "universe": "us",
+  "company": "Blackstone Inc.",
+  "price": 119.5,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap for alternative asset management toll booth. 5-10Y through-the-cycle growth of 8.5% driven by fee-earning AUM expansion (5.5%), asset appreciation (2.0%), private credit & insurance mix (1.0%), offset by tech/compliance drag (-0.5%) and supported by buybacks (0.5%). High-quality fee-related earnings (FRE) and 114% FCF conversion support pristine capital structure. Gross LT debt of $12.58B reflects fixed-rate senior corporate notes; netting $2.63B cash yields net debt of $9.95B (3.3x Net Income, within 4.0x threshold) with robust 15.1x EBIT interest coverage and A+ corporate credit rating."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.8932,
+    "current_multiple": 30.69,
+    "par_multiple": 29.82,
+    "par_value": 116.1,
+    "percent_vs_par": 0.0293,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0423,
+    "expected_irr_5y": 0.1211,
+    "market_implied_cap": 15.4,
+    "moat_runway_margin": -0.4,
+    "market_implied_growth": 0.0981,
+    "growth_margin_of_safety": -0.0131
+  },
+  "health_checks": {
+    "net_debt_years": 4.17,
+    "net_debt_ok": false,
+    "interest_coverage": 15.11,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1444,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

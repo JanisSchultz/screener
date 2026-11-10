@@ -1,0 +1,43 @@
+{
+  "id": "ICE",
+  "ticker": "ICE",
+  "universe": "us",
+  "company": "Intercontinental Exchange",
+  "price": 172.27,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Unassailable global financial exchange, market data, and mortgage software infrastructure toll booth. Operating ROIC normalized to 35.0% cap under the v6.23 M&A Goodwill Neutralization Principle, correcting for $38B+ accumulated goodwill/intangibles from Black Knight and Ellie Mae mergers that optically depress GAAP ROIC to 7.43% vs >80% tangible capital return. FY2025 Peak Owner EPS of $7.8296 accepted with 122.3% FCF conversion ($4.05B Owner FCF). 5-10Y through-the-cycle growth of 8.5% driven by 3.5% energy derivatives volume (Brent/TTF), 2.5% mortgage digitization and cyclical recovery, 1.5% fixed income data and index pricing, -0.5% technology reinvestment, and 1.0% net share repurchases. Solid balance sheet with net leverage ~2.7x EBITDA and 6.14x interest coverage. Current price of $172.27 trades Below PAR (-12.5% discount to $196.94 PAR Value at 25.15x PAR Multiple), offering an attractive 12.6% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 7.8296,
+    "current_multiple": 22.0,
+    "par_multiple": 25.15,
+    "par_value": 196.94,
+    "percent_vs_par": -0.1253,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0115,
+    "expected_irr_5y": 0.1259,
+    "market_implied_cap": 17.5,
+    "moat_runway_margin": 2.5,
+    "market_implied_growth": 0.0377,
+    "growth_margin_of_safety": 0.0473
+  },
+  "health_checks": {
+    "net_debt_years": 5.61,
+    "net_debt_ok": false,
+    "interest_coverage": 6.14,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2229,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

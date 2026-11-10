@@ -1,0 +1,43 @@
+{
+  "id": "QIA.DE",
+  "ticker": "QIA",
+  "universe": "eu",
+  "company": "QIAGEN",
+  "price": 45.205,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": 1.82,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.3418,
+    "fin_note": "Peak EPS normalized to \u20ac1.82 (FY2025 Owner EPS) stripping the unrepeatable 2022 COVID-19 testing windfall (\u20ac2.83). Operating ROIC normalized to 34.18% neutralizing $3.1B accumulated M&A goodwill/intangibles. 5-10Y g of 7.5% aligned with qualitative guidance (4.5% volume + 1.5% price + 0.5% mix + 1.0% buybacks). Modest net debt ($815M, ~1.9x OE) and strong interest coverage (15.7x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.82,
+    "current_multiple": 24.84,
+    "par_multiple": 23.94,
+    "par_value": 43.58,
+    "percent_vs_par": 0.0374,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0052,
+    "expected_irr_5y": 0.0723,
+    "market_implied_cap": 15.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.0884,
+    "growth_margin_of_safety": -0.0134
+  },
+  "health_checks": {
+    "net_debt_years": 1.9,
+    "net_debt_ok": true,
+    "interest_coverage": 15.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.28,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

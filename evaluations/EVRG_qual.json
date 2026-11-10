@@ -1,0 +1,30 @@
+{
+  "id": "EVRG",
+  "ticker": "EVRG",
+  "universe": "us",
+  "company": "Evergy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "State-granted exclusive geographic franchise monopoly for electric transmission and distribution across Kansas and Missouri (Evergy Metro, Evergy Missouri West, Evergy Kansas Central). Physical grid assets are unpermittable and uneconomic to duplicate, giving complete customer lock-in. Cost-of-service ratemaking provides steady formulaic return on invested rate base, but returns are legally capped by utility commissions (KCC and MPSC) at ~9.5% allowed ROE (resulting in 6-7% ROIC), with periodic regulatory lag on capital recovery.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash & Fortress Balance Sheet, REJECT). Regulated electric utility operating monopoly transmission and distribution networks in Kansas and Missouri under cost-of-service rate-base regulation. While possessing a durable franchise territory, returns on capital are structurally capped at 6-8% (5-year median GAAP ROIC 6.6%). Capital expenditures ($2.8B TTM, $22.5B 5-year plan) continuously exceed operating cash flow ($2.0B TTM), creating negative free cash flow before dividends. Balance sheet leverage is severe with $13.0B long-term debt against $855.6M net income (15.2x Net Debt / NI vs <=4.0x threshold) and interest coverage of 2.49x (vs >5.0x threshold), necessitating continuous reliance on the 'kindness of strangers' via debt issuance and ongoing $700M-$900M annual equity dilution.",
+    "evidence": "Multi-year financial history confirms structural utility capital dilution: GAAP ROIC has averaged 6.3%-6.7% across 2018-2025 (2025: 6.59%, median 6.59%), well below the 12% hurdle for quality compounding. FY2025 operating cash flow of $2,045.2M was overwhelmed by $2,796.9M in capex, generating -$751.7M in free cash flow before paying $613.1M in dividends. Long-term debt increased from $6.6B in 2018 to $13.04B in 2025, driving interest expense to $616.3M against EBIT of $1,532.9M (interest coverage 2.49x vs >5.0x standard). Net Debt / Net Income sits at 15.2x ($13,039.2M debt less $19.8M cash vs $855.6M net income). Planned 2026-2030 capex of $22.5B requires $700M-$900M annually in ATM equity dilution and continuous debt refinancing, failing Buffett's solvency and cash conversion criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

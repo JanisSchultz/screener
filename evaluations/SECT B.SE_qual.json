@@ -1,0 +1,30 @@
+{
+  "id": "SECT B.SE",
+  "ticker": "SECT B",
+  "universe": "eu",
+  "company": "Sectra",
+  "country": "Sweden",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global gold standard in radiology and pathology imaging IT (#1 KLAS for 11+ years); 7-10 year CPI-indexed SaaS contracts and exam-volume pricing produce near-zero churn and >75% median GAAP ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite owner-operated medical imaging IT and digital pathology leader with an unrivaled customer satisfaction record (#1 KLAS for 11+ years). Mission-critical hospital workflow lock-in and CPI-indexed SaaS contracts generate 75%+ ROIC, >120% cash conversion, and a massive net cash fortress. [5-10Y g: cloud SaaS & new hospital wins 7.0% + exam volume & digital pathology 2.5% + CPI price indexation 1.5% + margin expansion 0.5%]",
+    "evidence": "Astronomical GAAP ROIC (median 75.5%, FY2025 >100%) and 122.8% multi-year FCF conversion. SEK 1.75B net cash balance sheet with 98x interest coverage. Flawless execution across hospital enterprise imaging transitions (radiology, cardiology, digital pathology) with industry-leading #1 Best in KLAS rating for 11 consecutive years and near-zero customer defection."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

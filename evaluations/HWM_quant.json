@@ -1,0 +1,43 @@
+{
+  "id": "HWM",
+  "ticker": "HWM",
+  "universe": "us",
+  "company": "Howmet Aerospace Inc.",
+  "price": 205.81,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": null,
+    "fin_note": "Mission-critical aerospace propulsion and structural hardware monopoly with single-crystal casting technology. FY2025 Peak Owner EPS of $3.7143 accepted without adjustment, supported by 91.8% FCF conversion and multi-year commercial aerospace backlog. Physical operating ROIC preserved (capped at 35.0% vs 39.1% tangible operating ROIC and 13.6-22.7% GAAP ROIC). 5-10Y through-the-cycle growth of 9.5% driven by 5.0% commercial aero build rate expansion, 2.5% aftermarket spares pricing power, 1.5% IGT and defense volume, offset by 0.5% raw material pass-through lag, plus 1.0% net share repurchases. Pristine balance sheet with net debt/EBITDA ~1.0x and >9.4x interest coverage. At $205.81 (55.41x peak EPS), HWM trades well Above PAR (+61.8% premium to $127.20 PAR Value at 34.25x PAR Multiple), offering an expected 5Y IRR of -0.1% due to multiple contraction back to through-the-cycle PAR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.7143,
+    "current_multiple": 55.41,
+    "par_multiple": 34.24,
+    "par_value": 127.2,
+    "percent_vs_par": 0.6181,
+    "status": "Above PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0022,
+    "expected_irr_5y": -0.0033,
+    "market_implied_cap": 32.4,
+    "moat_runway_margin": -12.4,
+    "market_implied_growth": 0.4125,
+    "growth_margin_of_safety": -0.3175
+  },
+  "health_checks": {
+    "net_debt_years": 1.9,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9179,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

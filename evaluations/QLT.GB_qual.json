@@ -1,0 +1,30 @@
+{
+  "id": "QLT.GB",
+  "ticker": "QLT",
+  "universe": "eu",
+  "company": "Quilter",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Platform switching friction and financial adviser network provide moderate customer stickiness, but severe structural fee compression from FCA Consumer Duty regulations and digital platforms prevents pricing power. Sub-hurdle returns on capital (ROE ~10%, ROIC <10%) fail the 12% proof-of-moat test.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). UK wealth platform and advice network facing chronic fee compression from FCA Consumer Duty mandates and ongoing advice remediation charges. Structural returns on capital (ROE ~10%, ROIC <10%) fail the 12% hurdle.",
+    "evidence": "FY24-25 Return on Equity stagnates at 10.0-10.8%, falling short of the 12% threshold. Ongoing FCA Consumer Duty scrutiny and advice fee reviews forced a £76M remediation provision and platform fee compression against low-cost competitors."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SNA",
+  "ticker": "SNA",
+  "universe": "us",
+  "company": "Snap-on Incorporated",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled brand equity and technician loyalty supported by over 4,800 franchised mobile vans providing direct-to-bay sales, financing, and lifetime warranty service. Proven by a 10-year median GAAP ROIC of 20.0%, tangible ROIC of 26-28%, and steady 50-51% gross margins across cycles. Primary risks include technician demographic aging, low-cost e-commerce tool competition, and OEM proprietary diagnostic lock-out.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. The premier brand in professional mechanic tools with iconic franchised van distribution, sustained ~20% GAAP ROIC, and net cash balance sheet. Insulated from AI disruption as physical maintenance and complex diagnostics remain indispensable. [5-10Y g: auto repair volume 1.5% + diagnostic software & OEM mix 2.5% + pricing power 2.0% + net buybacks 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 20.0% with operating ROIC exceeding 26%. Multi-year Owner FCF conversion exceeds 95% ($7.6B Owner FCF generated vs $7.5B Net Income over 2016-2025). Fortress balance sheet with $1.62B cash against $1.19B debt (net cash position) and interest coverage above 26x. Peak-to-peak earnings power expanded from $9.39 EPS in 2016 to $19.78 EPS in 2024. Disciplined capital allocation under long-serving CEO Nick Pinchuk with minimal dilution, low capex (~1.5% of revenue), and 15+ years of consecutive dividend growth."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

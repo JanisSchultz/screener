@@ -1,0 +1,30 @@
+{
+  "id": "DRX.GB",
+  "ticker": "DRX",
+  "universe": "eu",
+  "company": "Drax",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Independent Power Producers & Energy Traders",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns Cruachan pumped-storage hydro and large-scale biomass generation units, but lacks pricing power due to wholesale electricity price-taker status and heavy dependence on government biomass subsidies (ROC cliff in 2027).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). UK power generator operates as a wholesale commodity price taker whose margins depend on power/gas/pellet spreads and government subsidy schemes. Lucrative legacy ROC biomass subsidies expire in 2027, transitioning to a lower-margin dispatchable CfD bridge.",
+    "evidence": "Core biomass generation at Drax Power Station is exposed to global wood pellet supply costs, shipping freight, and UK wholesale power prices. Expiration of ROC subsidies in March 2027 marks a sharp reduction in subsidy yields. Operating margins and ROIC fluctuate with merchant spark spreads and government policy rather than autonomous pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

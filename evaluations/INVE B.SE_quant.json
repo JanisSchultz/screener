@@ -1,0 +1,43 @@
+{
+  "id": "INVE B.SE",
+  "ticker": "INVE B",
+  "universe": "eu",
+  "company": "Investor AB",
+  "price": 428.15,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.1716,
+    "fin_note": "Operating ROIC of 17.16% neutralizes SEK 111.7B of Patricia Industries historical goodwill/intangibles, capturing high look-through capital returns across Atlas Copco, ABB, and M\u00f6lnlycke. 5-10Y compound growth of 9.0% is driven by mission-critical industrial installed base expansion (4.5%), aftermarket pricing power (2.0%), automation/electrification secular trends (1.5%), and Patricia bolt-ons/dividend reinvestment (1.0-1.5%). Fortress balance sheet with net debt/earnings of 0.64x and interest coverage of 40.1x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 51.4165,
+    "current_multiple": 8.33,
+    "par_multiple": 8.03,
+    "par_value": 412.87,
+    "percent_vs_par": 0.037,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0121,
+    "expected_irr_5y": 0.0943,
+    "market_implied_cap": 20.7,
+    "moat_runway_margin": -0.7,
+    "market_implied_growth": 0.0012,
+    "growth_margin_of_safety": 0.0888
+  },
+  "health_checks": {
+    "net_debt_years": 0.64,
+    "net_debt_ok": true,
+    "interest_coverage": 40.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DECK",
+  "ticker": "DECK",
+  "universe": "us",
+  "company": "Deckers Brands",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Footwear",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Brand equity and proprietary footwear design IP across UGG ($2.74B FY26 sales) and HOKA ($2.59B FY26 sales), reinforced by strict wholesale allocation and full-price selling discipline. Empirically verified by 28.5% historical median ROIC (30-35%+ in FY25-FY26), 57.9% FY25 gross margin, and 23.1%-23.7% operating margins even amid promotional industry discounting. Primary erosion threats: zero customer switching costs, fashion/silhouette cyclicality, and surging running rivals (On Holding, Salomon, Nike, Adidas).",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While UGG and HOKA generate elite current ROIC (30-35%+) and ~23% operating margins via brand intangibles and full-price discipline, branded footwear has zero switching costs and high Mauboussin fade risk (Tier 3 baseline <=15Y) as HOKA normalizes against On Holding, Salomon, Nike, and Adidas and UGG faces fashion-cycle rotation. Deductive -5Y Macrotrend [3] haircut applies for heavy reliance on outsourced Vietnam/Asian manufacturing hit by ~20%+ U.S. tariffs, which labor-intensive shoe assembly (Macrotrend [2]) cannot economically reshore.",
+    "evidence": "FY25 net sales rose 16.3% to $4.986B (UGG $2.531B +13.1%, HOKA $2.233B +23.6%, Other $221.2M -8.6%) with gross margin expanding to 57.9% (from 55.6% in FY24) and operating income of $1.183B (~23.7% margin). FY26 net sales rose 9.8% to $5.472B (UGG $2.74B +8.2%, HOKA $2.59B +15.9%, non-core labels streamlined including Sanuk divestiture/exit) with operating income of $1.263B (~23.1% margin) and FCF above $1.1B. Historical median ROIC is 28.5% (30-35%+ recently). Management (CEO Stefano Caroti, CFO Steve Fasching) enforces full-price selling to protect brand equity despite U.S. DTC volume friction, operates essentially debt-free with $1.6B-$1.9B cash, repurchased 10.5M shares for $1.075B in FY26, and raised buyback authorization by $3.5B in May 2026 (~$5B total). Fails 15Y Munger runway bar due to zero switching costs, HOKA growth normalization amidst fierce competition, and Vietnam/SE Asia tariff concentration."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "JCI",
+  "ticker": "JCI",
+  "universe": "us",
+  "company": "Johnson Controls International plc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs in proprietary building management systems (Metasys) and installed-base services, alongside York industrial chillers for mission-critical data center cooling; supported by tangible operating ROIC > 20% and demonstrated pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Leading commercial HVAC and building automation provider fails Munger peace-of-mind balance sheet standards due to elevated leverage (long-term debt of $8.6B vs. FY25 net income of $1.7B, yielding LT debt / NI of ~5.1x vs. <=4.0x hurdle), persistent multi-year restructuring and separation expenses, negative tangible equity, and capital allocation prioritizing a $5.0B accelerated share repurchase over debt reduction. [5-10Y g: data center/commercial HVAC 4% + building services 3% + price 1% - restructuring drag -1%]",
+    "evidence": "Following the August 2025 close of the $8.1B sale ($5.0B net cash proceeds) of its Residential & Light Commercial HVAC unit to Bosch, Johnson Controls operates as a pure-play commercial building solutions provider with ~$23B in continuing revenue and solid operating margins (10-14%). However, 10-year GAAP ROIC has averaged 7-10% (median 9.2%) weighed down by $17B+ of goodwill and intangibles dating from the 2016 Tyco merger. Reported cash conversion has been repeatedly depressed by restructuring and separation costs. Balance sheet remains overleveraged with total debt of $9.9B ($8.6B long-term debt) against FY25 net income of $1.7B (LT debt / NI ~5.1x, exceeding the <=4.0x maximum). Management directed the $5.0B net proceeds from the Bosch sale into an accelerated share repurchase rather than deleveraging, failing Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "gate_6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

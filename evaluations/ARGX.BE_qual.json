@@ -1,0 +1,30 @@
+{
+  "id": "ARGX.BE",
+  "ticker": "ARGX",
+  "universe": "eu",
+  "company": "argenx",
+  "country": "Belgium",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Patented FcRn antagonist platform (Vyvgart / efgartigimod) enjoys high clinical switching costs and neurologist brand equity in generalized myasthenia gravis (gMG) and CIDP. High orphan pricing ($225k+/year) and rapid commercial adoption generated >$4B in 2025 product sales, swinging GAAP ROIC to >25%. However, long-term persistence faces direct competing FcRn biologics (J&J nipocalimab, UCB rozanolixizumab) and finite patent runway.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Single-product commercial biotech relying almost entirely on Vyvgart (>95% of revenues). Under the Mauboussin persistence framework, biotech is Tier 3 (10-15Y baseline), and faces sharp haircuts due to near-term FcRn competition from mega-pharma rivals (J&J nipocalimab, UCB Rystiggo) and primary patent expirations in the early 2030s, capping the Competitive Advantage Period at 5 years (well below the 15-year threshold).",
+    "evidence": "While Vyvgart commercial sales scaled rapidly to $2.2B in 2024 and $4.2B in 2025 generating $1.29B in net profit, argenx's 5-year median GAAP ROIC is -6.1% due to clinical-stage cash burn before 2024. More crucially, revenue is overwhelmingly concentrated in a single molecule whose primary composition-of-matter patents expire around 2031-2033. Aggressive competing FcRn entrants (J&J, UCB, Immunovant) and bio-similar threats prevent confidence in a 15+ year durable competitive advantage period."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

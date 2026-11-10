@@ -1,0 +1,30 @@
+{
+  "id": "PUM.DE",
+  "ticker": "PUM",
+  "universe": "eu",
+  "company": "Puma",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary sportswear and footwear; non-essential fashion brand lacking entrenched everyday habit and easily substituted.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Sportswear and athletic sneakers are discretionary fashion items easily deferred or substituted. Puma lacks an entrenched everyday habit, proprietary moat, or pricing power, suffering from brand dilution through promotional off-price wholesale channels and severe margin compression during industry inventory resets.",
+    "evidence": "FY2025 sales declined 8.1% currency-adjusted to €7,296M while reported EBIT plunged to -€357M (adjusted EBIT -€166M) due to promotional wholesale discounting and 1,400 corporate headcount cuts. Puma lacks pricing power against dominant players (Nike, Adidas) and nimble innovators (On, Hoka), leaving it exposed to violent retail wholesale destocking cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

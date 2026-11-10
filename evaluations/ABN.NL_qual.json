@@ -1,0 +1,30 @@
+{
+  "id": "ABN.NL",
+  "ticker": "ABN",
+  "universe": "eu",
+  "company": "ABN AMRO",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Dutch banking oligopoly (ABN AMRO, ING, Rabobank) commanding deep domestic deposit franchises and primary-bank switching barriers. However, mortgages face competition from institutional pension platforms, and compliance/KYC remediation costs have historically eroded operating leverage.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). ABN AMRO operates an entrenched oligopoly retail and commercial franchise in the Netherlands with sticky primary-bank deposits, but is constrained by commercial banking's high structural fade rate (Tier 4 CAP). Cyclical peak net interest income is normalizing downward with ECB rate cuts, while non-bank mortgage platforms and digital challengers continuously pressure lending spreads and payment fees.",
+    "evidence": "ABN AMRO generates ~90% of operating profit domestically in Northwest Europe, holding top-three positions in Dutch mortgages, SME lending, and consumer deposits. 10-year historical ROE has averaged ~8.2%, reflecting severe compression during negative-rate years (ROE was 5.3% in 2021) before rebounding to ~11% in 2023. High compliance overhead and domestic rate sensitivity limit sustainable multi-decade competitive longevity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

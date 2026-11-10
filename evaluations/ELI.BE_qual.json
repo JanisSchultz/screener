@@ -1,0 +1,30 @@
+{
+  "id": "ELI.BE",
+  "ticker": "ELI",
+  "universe": "eu",
+  "company": "Elia",
+  "country": "Belgium",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory high-voltage electricity transmission monopoly in Belgium and 50Hertz in eastern Germany with contractually indexed regulatory tariffs. Unreplicable physical grid infrastructure with zero customer churn. Primary erosion threats include German regulatory allowed ROE caps lagging cost of capital and multi-billion offshore grid execution risks.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). High-voltage electricity transmission monopoly in Belgium and Germany (50Hertz). While an indispensable energy transition backbone with a 20-year CAP, Elia is a perpetual capital sinkhole. Annual capex exceeding €5B produces massive multi-billion negative FCF, ballooning debt to €16.8B (30x Net Income) and forcing dilutive multi-billion equity raises in complete dependence on capital markets.",
+    "evidence": "Median ROIC is capped by regulation at 4.74%. FY25 capex of €5,040.7M against OCF of €2,090.4M yields deeply negative Owner FCF. LT debt stands at €16,841.2M versus FY25 Net Income of €556.6M (debt/NI of 30.3x, vastly exceeding the 4.0x ceiling). EBIT/interest coverage of 4.0x fails the >5.0x baseline. Executed €2.2B in equity rights issues and private placements to fund the €31.6B 2024-2028 capex plan."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "EMA.CA",
+  "ticker": "EMA",
+  "universe": "ca",
+  "company": "Emera",
+  "country": "Canada",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory monopoly franchises across Florida (Tampa Electric, Peoples Gas) and Nova Scotia (Nova Scotia Power) with formulaic cost-of-service allowed ROEs (9.0%-11.5%). Moat is unassailable physical transmission and distribution assets. Erosion threats include adverse regulatory rate decisions, storm restoration liabilities, and extreme capital intensity.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT; g6_default N). Regulated electric and gas utility with capped 6.2% ROIC and extreme capital intensity. LT debt of CAD 18.5B against net income of CAD 1.0B (18.2x leverage) and weak interest coverage of 2.15x violate balance sheet fortress standards, requiring continuous debt issuance and equity dilution to finance rate base capex.",
+    "evidence": "Consolidated rate base of ~CAD 28B generating median ROIC of 6.2% over 4 years (FY22: 6.0%, FY23: 6.7%, FY24: 3.6%, FY25: 6.5%). Capex of CAD 3.5B far outpaces D&A of CAD 1.3B and operating cash flow of CAD 1.8B. LT debt of CAD 18,453M against FY25 net income of CAD 1,014M yields LT debt / NI of 18.2x (vs <= 4.0x threshold), while EBIT of CAD 2,189M against interest expense of CAD 1,018M gives interest coverage of only 2.15x (vs > 5.0x hurdle). Perpetual external capital dependence violates Munger peace-of-mind solvency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

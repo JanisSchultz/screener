@@ -1,0 +1,30 @@
+{
+  "id": "CABK.ES",
+  "ticker": "CABK",
+  "universe": "eu",
+  "company": "CaixaBank",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Spain's #1 retail banking and bancassurance franchise following the Bankia merger, controlling 25-30% national market share in deposits, loans, life insurance (VidaCaixa), and mutual funds (CaixaBank Asset Management). Superior low-cost sticky deposit franchise provides durable funding cost advantages. Proven 4-year median ROIC of 22.0% (FY2022-FY2025) and ROE >13-15%. Primary erosion risks include ECB rate cuts reducing net interest margin, Spanish windfall bank taxes, and digital banking competition.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Commercial Fractional-Reserve Bank Default N, REJECT). Spain's preeminent retail banking and bancassurance franchise with dominant 25-30% market share and demonstrated >15% ROIC. However, fails Gate 6 under the strict banking balance sheet rule: operates on 10-15x balance sheet leverage (€49.5B long-term debt, >€600B total assets on €38.5B equity), structurally negative cash conversion (fcf_conv = -2.48 due to loan/deposit working capital swings), and terminal reliance on depositor confidence and central bank liquidity.",
+    "evidence": "Reported GAAP ROIC of 8.0% (2022), 18.0% (2023), 26.7% (2024), 26.1% (2025), yielding 4-year median ROIC of 22.03% and ROE of 13.3% (2023) and 15.7% (2024). Net income €5.6B in FY2025. Dominant Spanish market share (~25-30%) across retail deposits, asset management, and VidaCaixa insurance. Passes Gates 1-5, but fails Gate 6 due to structural fractional-reserve banking profile: €49.5B long-term debt, highly leveraged balance sheet, volatile operating cash flows (-€79.9B OCF in FY2022, fcf_conv = -2.48), and exposure to credit/deposit duration mismatches."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

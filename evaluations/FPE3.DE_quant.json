@@ -1,0 +1,43 @@
+{
+  "id": "FPE3.DE",
+  "ticker": "FPE3",
+  "universe": "eu",
+  "company": "FUCHS",
+  "price": 42.72,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.2248,
+    "fin_note": "Operating ROIC normalized to 22.5% reflecting specialized formulation capital efficiency. Pristine net-cash balance sheet with \u20ac223M cash, 0 LT debt, 33.9x interest coverage, and ~97% FCF conversion. Forward growth of 5.5% supported by industrial lubricant volume offsetting ICE automotive fade (1.5%), pricing power (2.0%), operating leverage (0.5%), and bolt-on acquisitions (1.5%). At 16.75x peak Owner EPS, stock trades slightly Above PAR (PAR multiple 16.40x, PAR value \u20ac41.83)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.5508,
+    "current_multiple": 16.75,
+    "par_multiple": 16.4,
+    "par_value": 41.83,
+    "percent_vs_par": 0.0213,
+    "status": "Above PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0273,
+    "expected_irr_5y": 0.0779,
+    "market_implied_cap": 15.3,
+    "moat_runway_margin": -0.3,
+    "market_implied_growth": 0.0603,
+    "growth_margin_of_safety": -0.0053
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 33.92,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9704,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

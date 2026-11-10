@@ -1,0 +1,30 @@
+{
+  "id": "BSX",
+  "ticker": "BSX",
+  "universe": "us",
+  "company": "Boston Scientific",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High physician switching barriers and clinical procedural lock-in across catheter labs and operating rooms. Interventional cardiologists and electrophysiologists train extensively on Boston Scientific's proprietary hardware consoles and delivery platforms (Farapulse PFA generator, Watchman TruSpeed/FLX Pro LAAC delivery systems, SpyGlass DS direct visualization endoscopy). Once integrated into hospital workflows, treatment protocols, and inventory supply chains, switching to alternative platforms incurs severe capital re-equipment hurdles, clinical retraining, and staff re-credentialing. Proof of moat is reflected in 28.2% 5-year median operating (tangible) ROIC (reaching 42.1% in FY2025) and stable ~70% gross margins. Primary erosion threats stem from fast-follower PFA launches by Medtronic (PulseSelect/Affera), Abbott (Volt), and J&J (Varipulse), as well as clinical shifts in concomitant procedure scheduling.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global cardiovascular and interventional medtech leader anchored by Farapulse PFA, Watchman LAAC, and single-use endoscopy. Procedural switching costs and clinical training create durable lock-in, driving ~70% gross margins and >28% operating ROIC. Structural beneficiary of demographic aging with resilient 113% FCF conversion and 10.4x interest coverage. [5-10Y g: procedure volume growth 5.5% + premium innovation mix/price 1.5% + Axonics/tuck-in expansion 1.0% - PFA competition/pricing drag 0.5% + operating leverage/buybacks 0.5%]",
+    "evidence": "Multi-cycle track record of durable growth and operating leverage: Net sales expanded from $9,076M in FY2016 to $20,074M in FY2025 (~9.2% CAGR), with FY2025 organic growth reaching ~15.8% powered by Farapulse PFA scaling to over $1B in its first commercial year. GAAP EBIT expanded from $447M in 2016 to $3,613M in 2025, lifting operating margins from ~5% to 18.0% GAAP and operating (tangible) ROIC to 42.1% in FY2025 (5-year median 28.2%). Gross margins remain consistently defended at ~70.5%. Cash generation is exceptional, with Owner FCF conversion averaging well above 100% of GAAP Net Income (FY2025 Owner FCF of $3,359M on $2,892M NI = 116%; TTM conversion 113.2%). Balance sheet remains sound: Net debt of $9.17B against TTM NI of $2.89B equates to 3.17 years of earnings (<= 4.0x threshold), and EBIT/Interest coverage is 10.35x ($3,613M / $349M). S&P affirms A- investment grade rating. Tuck-in capital allocation demonstrated by successful Axonics integration ($3.7B, closed Nov 2024) in sacral neuromodulation. Normalization of growth to 5-6% in 2026 reflects competitive PFA entrants (MDT, ABT) and transient operational disruption from a late-August 2026 cyber incident, but the core procedural lock-in remains structurally intact."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

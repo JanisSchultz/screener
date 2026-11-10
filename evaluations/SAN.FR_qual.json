@@ -1,0 +1,30 @@
+{
+  "id": "SAN.FR",
+  "ticker": "SAN",
+  "universe": "eu",
+  "company": "Sanofi",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Sub-hurdle capital efficiency with 5-year median GAAP ROIC of only 7.45%, well below the 12% hurdle. While Dupixent is a commercial success in immunology, historical legacy acquisitions have bloated the asset base (goodwill and intangibles of €67.6B), and upcoming 2031 Dupixent patent expiration creates severe concentration risk without adequate organic R&D return proof.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (N, REJECT). Sanofi fails the empirical proof-of-moat test with a 5-year median GAAP ROIC of only 7.45% (hurdle >= 12%), burdened by €67.6B in capitalized intangibles/goodwill from dilutive historical M&A and facing severe concentration risk ahead of Dupixent's 2031 patent cliff.",
+    "evidence": "5-year median GAAP ROIC is 7.45% (FY2022: 10.9%, FY2023: 7.4%, FY2024: 7.5%, FY2025: 7.1%), failing the 12% hurdle. Intangibles and goodwill total €67.6B against €71.4B in equity, reflecting massive historical capital deployment that fails to generate super-normal economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b_pricing_and_proof",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

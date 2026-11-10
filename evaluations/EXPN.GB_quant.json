@@ -1,0 +1,43 @@
+{
+  "id": "EXPN.GB",
+  "ticker": "EXPN",
+  "universe": "eu",
+  "company": "Experian",
+  "price": 3064.0,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under negative tangible capital standard neutralizing $10.3B of historical data and software acquisitions; GAAP ROIC is 16.5%. Forward 5-10Y g of 8.5% driven by Ascend analytics adoption and verification volume (5.5%), core bureau pricing power (1.5%), margin expansion (0.5%), and capital return (1.0%). Peak Owner EPS of 102.72 GBp affirmed."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 102.7191,
+    "current_multiple": 29.83,
+    "par_multiple": 28.97,
+    "par_value": 2975.6,
+    "percent_vs_par": 0.0297,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0164,
+    "expected_irr_5y": 0.0951,
+    "market_implied_cap": 20.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.0979,
+    "growth_margin_of_safety": -0.0129
+  },
+  "health_checks": {
+    "net_debt_years": 2.8,
+    "net_debt_ok": true,
+    "interest_coverage": 9.6,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.98,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

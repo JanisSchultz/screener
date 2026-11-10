@@ -1,0 +1,30 @@
+{
+  "id": "MSCI",
+  "ticker": "MSCI",
+  "universe": "us",
+  "company": "MSCI",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "MSCI possesses an unassailable global benchmark index toll booth and mission-critical portfolio analytics ecosystem. Over $15T+ in institutional equity AUM is benchmarked against MSCI indices (MSCI ACWI, World, Emerging Markets, EAFE), creating immense institutional switching costs and regulatory/mandate lock-in. Competitors cannot arbitrage away returns because global asset owners, consultants, and pension boards mandate MSCI benchmarks for cross-border capital allocation. Empirical proof of moat: 5-year median GAAP ROIC of 40.1%, operating ROIC exceeding 100%, gross margins >80%, and client retention consistently at 93-95%+ alongside recurring annual pricing escalators. Primary erosion threats include passive fee pressure on asset managers leading to self-indexing or lower-fee index alternatives (e.g., Solactive, FTSE Russell), ESG regulatory scrutiny and backlash, and cyclical market downturns that depress asset-based fees.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While MSCI operates an elite, asset-light global index toll booth with 40%+ GAAP ROIC and 115%+ FCF conversion, its capital structure has been severely compromised by aggressive financial engineering. Programmatic debt-funded share repurchases executed at elevated multiples (35-50x P/E, including $2.47B repurchased in 2025 alone) have expanded long-term debt to $6.20B ($5.69B net debt) against $1.20B in Net Income. This pushes Net Debt to 4.73x normal Owner Earnings (and Total Debt to 5.16x NI), exceeding the strict 4.0x ceiling. Furthermore, stockholders' equity has plunged to -$2.65B (-$6.41B tangible equity), triggering the automatic Gate 6 disqualifying red flag against debt-funded buybacks resulting in negative tangible equity.",
+    "evidence": "Empirical track record shows elite operational economics: FY2025 revenues grew 9.7% to $3.13B with operating income of $1.71B (54.7% operating margin) and GAAP Net Income of $1.20B. Cash flow conversion is superior: FY2025 OCF of $1,588M and capex of $39.3M yield Owner FCF of $1,438M (120% FCF conversion). 5-year median GAAP ROIC is 40.1% and tangible operating ROIC exceeds 100%. Retention rates remained resilient at 93.4% in Q4 2025 (averaging ~94.5% across 2025). However, capital allocation is dominated by financial engineering: long-term debt increased from $4.51B in FY2024 to $6.20B in FY2025 to finance $2.47B in share repurchases at ~$560/share (~36x trailing earnings). Consequently, stockholders' equity ended FY2025 at -$2,654.5M (tangible book value of -$6,410.4M after deducting $3,755.9M in goodwill and intangibles). Net debt of $5,687.0M is 4.73x FY2025 Net Income of $1,202.3M (Total debt is 5.16x Net Income), breaching the 4.0x net debt-to-earnings threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

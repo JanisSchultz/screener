@@ -1,0 +1,30 @@
+{
+  "id": "MT.FR",
+  "ticker": "MT",
+  "universe": "eu",
+  "company": "ArcelorMittal",
+  "country": "France",
+  "sector": "Materials",
+  "sub_industry": "Steel",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive scale and vertically integrated iron ore mining provide an operational cost buffer, but ArcelorMittal remains an undifferentiated commodity price-taker whose margins fluctuate with global steel spreads, iron ore costs, and Chinese export dumping. 5-year normalized ROIC is sub-hurdle at ~2.5-3.5%, far below the 12% cost-of-capital threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). Capital-intensive commodity steelmaker with normalized ROIC of ~2.5-3.5%, failing the 12% hurdle. Entirely a price-taker on global steel spreads, facing intense Chinese export competition and heavy decarbonization capex requirements in Europe.",
+    "evidence": "Normalized ROIC averaged ~2.5-3.5% across 2024-2025. EBITDA per tonne contracted to $121/t in FY2025 as European steel spreads remained compressed by Chinese imports and elevated energy costs. Net debt rose to $7.9B in FY2025. The business requires billions in ongoing maintenance and decarbonization capex (DRI/EAF transition) while lacking pricing power over finished steel products."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

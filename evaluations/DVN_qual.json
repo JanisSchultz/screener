@@ -1,0 +1,30 @@
+{
+  "id": "DVN",
+  "ticker": "DVN",
+  "universe": "us",
+  "company": "Devon Energy",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity price taker lacking pricing power (upstream oil & gas exploration & production).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Pure-play upstream oil and gas exploration and production company is an undifferentiated commodity price-taker lacking pricing power. Realized cash flows and returns fluctuate entirely with global spot hydrocarbon prices, violating the Munger quality hurdle.",
+    "evidence": "Devon Energy is an independent US onshore exploration and production (E&P) operator with multi-basin assets across the Delaware Basin (Permian, ~65% of production), Williston Basin (Bakken), Eagle Ford, Anadarko, and Powder River Basin, producing ~800,000 boe/d (~50% oil, 25% NGLs, 25% natural gas). The business model is a textbook commodity price-taker selling fungible crude oil and natural gas into wholesale spot markets (WTI, Henry Hub) with zero customer lock-in and zero pricing power. Multi-cycle financial performance is highly volatile and sub-hurdle: 10-year average ROIC is ~9.9% and 10-year median ROIC is ~11.5% (both failing the 12% cycle-neutral hurdle), marked by severe GAAP losses in cyclical downturns (-$1.06B in 2016, -$2.68B in 2020) and windfall profits during energy spikes ($6.02B in 2022, ROIC ~28%), normalizing to $2.89B in 2024 and ~$2.64B in 2025 (ROIC ~11%). In September 2024, Devon closed the $5.0B acquisition of Grayson Mill Energy ($3.25B cash + $1.75B stock) to consolidate Williston Basin inventory, driving total debt up from $6.45B in 2023 to $9.20B at year-end 2024 (moderating to ~$8.58B in 2025 via a $2.5B deleveraging plan). Capital allocation relies on pro-cyclical share buybacks and variable dividends, amplifying cash flow cyclicality rather than shielding per-share compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

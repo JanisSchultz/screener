@@ -1,0 +1,30 @@
+{
+  "id": "ROP.CH",
+  "ticker": "ROP",
+  "universe": "eu",
+  "company": "Roche",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global leader in in-vitro diagnostics and proprietary oncology/neurology biologics. Installed instrument base creates high switching costs and recurring reagent toll booths, while proprietary Genentech antibody platform delivers continuous replacement blockbusters (Vabysmo, Ocrevus, Hemlibra) with resilient global pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global diagnostics and biologic medicine powerhouse with high switching costs in closed-reagent instruments, founder family stewardship, and 28% GAAP ROIC. Balance sheet fortress with 13.6x interest coverage. [5-10Y g: diagnostics reagent volume 3.5% + innovative biologics volume 3.0% - legacy patent cliff erosion -1.5% + dividend yield 2.5% + buybacks 0.5%]",
+    "evidence": "27.6% 5-year median GAAP ROIC (FY2022: 31.8%, FY2023: 28.4%, FY2024: 19.7%, FY2025: 26.8%), Tangible ROIC >50%. FY2025 Owner FCF of CHF 14.6B (113% FCF/NI conversion). FY2025 Owner EPS (CHF 16.04) surpassed prior peak. Net debt / NI is ~1.7x with 13.6x EBIT/interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

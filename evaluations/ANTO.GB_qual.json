@@ -1,0 +1,30 @@
+{
+  "id": "ANTO.GB",
+  "ticker": "ANTO",
+  "universe": "eu",
+  "company": "Antofagasta",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Copper (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Pure-play upstream copper mining company; speculative commodity price-taker whose revenue and earnings are dictated by global spot copper prices, with 100% of mining assets located in Chile.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Speculative commodity price-taker, REJECT). Antofagasta is a pure-play upstream copper miner operating in Chile. As an upstream commodity producer, it is a pure price-taker on global copper spot markets and exposed to Chilean mining royalty and water regulation risks.",
+    "evidence": "100% of mining operations (Los Pelambres, Centinela, Antucoya, Zald\u00edvar) are located in Chile. Revenue and cash flow swing violently with LME copper spot prices and treatment/refining charges. Mining royalties, political revisions to Chilean mining codes, and severe regional water constraints in the Atacama/Coquimbo regions present continuous operating and capital expenditure hurdles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

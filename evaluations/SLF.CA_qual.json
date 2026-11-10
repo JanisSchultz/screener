@@ -1,0 +1,30 @@
+{
+  "id": "SLF.CA",
+  "ticker": "SLF",
+  "universe": "ca",
+  "company": "Sun Life Financial",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High customer switching costs in Canadian group benefits and institutional alternative asset management (SLC Management). However, its flagship asset manager MFS Investment Management suffers from persistent net outflows and structural fee compression in active equities, DentaQuest faces state Medicaid reimbursement rate caps, and traditional life insurance operates on rate-sensitive spread margins.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Premier Canadian life and health insurer with significant wealth and asset management operations. While Sun Life possesses strong group benefit franchises in Canada, its key earnings engines fail the pricing power test: MFS Investment Management faces multi-year active equity outflows and passive fee compression, DentaQuest is constrained by government Medicaid rate caps, and individual life/annuity contracts lack contractual pricing power against inflation. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Sun Life Financial generated FY2025 net income of CAD 3,472M and EBIT of CAD 5,324M on CAD 25,228M equity, with a 5-year median ROIC of 13.85% (2025 GAAP ROIC 13.73%, tangible ROIC 26.29%). Long-term debt stands at CAD 16,034M against CAD 9,685M cash and CAD 526M interest expense (10.1x EBIT/interest coverage). While Canadian group benefits and health franchises show steady retention, MFS has endured multi-billion dollar net institutional and retail outflows due to the relentless industry shift toward low-cost index funds and ETFs. Furthermore, the 2022 acquisition of DentaQuest exposes the business to state Medicaid policy changes and statutory fee freezes, negating company-level pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

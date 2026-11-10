@@ -1,0 +1,30 @@
+{
+  "id": "BESI.NL",
+  "ticker": "BESI",
+  "universe": "eu",
+  "company": "BE Semiconductor",
+  "country": "Netherlands",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Industry-leading ~64-65% gross margins and >35% operating margins demonstrate strong pricing power and engineering lock-in for high-precision die attach and hybrid bonding equipment used in chiplet and HBM packaging.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Compounding Stability & Balance Sheet, REJECT). World-class ~65% gross margins and hybrid-bonding leadership for 2.5D/3D chiplets and HBM, but extreme backend packaging capex cyclicality (>37% net income drop from 2021 peak to 2023-2024) and reliance on convertible note issuances to fund aggressive capital distributions violate Gate 6 fortress peace of mind.",
+    "evidence": "Revenue fell from €749.3M (2021) to €578.9M (2023) before recovering slightly to €607.5M (2024). Net income dropped >37% from €282.4M in 2021 to €177.1M in 2023 and €182.0M in 2024, demonstrating severe backend assembly capex cyclicality. While gross margins are elite at ~64-65% and FCF conversion is high (~€189M FCF in 2024), management aggressively leverages capital returns via convertible debt and senior notes (€350M issued in 2024), causing cash to swing from €671.7M down to €413.5M in 2023 following €435.5M in distributions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

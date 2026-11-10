@@ -1,0 +1,30 @@
+{
+  "id": "CAT",
+  "ticker": "CAT",
+  "universe": "us",
+  "company": "Caterpillar Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled global dealer network (150+ independent dealers, ~2,700 locations) and massive installed base create insurmountable barriers in machine uptime, 24-hour parts distribution, and secondary market resale value. Proven by 5-year median GAAP ROIC of 20.7%, operating ROIC of 24.0%, and sustained positive pricing realization through the 2021-2024 inflationary surge. Primary erosion threats include low-cost Asian competitors expanding in emerging markets and alternative powertrain technology transitions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Dominant global heavy equipment and power systems franchise protected by an irreplicable 100-year dealer distribution and service network. Highly resilient across macrotrends as a key provider of autonomous mining technology, data center backup power generation, and equipment for infrastructure reshoring and mineral extraction. ME&T manufacturing operations operate in a net cash position with consolidated net debt repayable in 2.3 years and 98% multi-year FCF conversion. [5-10Y g: machine volume 2.5% + pricing power 2.0% + services/parts mix 1.5% - cyclical margin normalization 0.5% + net share buybacks 2.5%]",
+    "evidence": "10-year track record demonstrating multi-cycle resilience and O&E execution. 5-year median GAAP ROIC of 20.68% and Operating ROIC of 23.95%. Multi-year Owner FCF conversion of 97.97% ($9.24B FCF on $8.88B net income in FY2025). Peak-to-peak Owner EPS compounded from $13.42 in 2019 to $22.39 in 2024. Industrial ME&T balance sheet holds net cash ($9.98B cash vs ~$8.6B debt), with consolidated debt backed by Cat Financial receivables. Growing aftermarket parts and services revenues ($22B+) provide strong cycle damping."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

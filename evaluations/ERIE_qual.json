@@ -1,0 +1,30 @@
+{
+  "id": "ERIE",
+  "ticker": "ERIE",
+  "universe": "us",
+  "company": "Erie Indemnity",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Contractual monopoly as exclusive Attorney-in-Fact for Erie Insurance Exchange subscribers, taking an ad-valorem management fee of up to 25% (set at 25%) of direct written premiums. Deeply entrenched independent agency network (~13,000 agents) and high policyholder retention (>90%). 10-year median ROIC of 29.2% with zero debt. Premium rate hikes flow mechanically into revenue without underwriting capital outlay. Primary erosion risk is regulatory or Exchange board pressure to lower the 25% fee cap if Exchange underwriting surplus faces severe catastrophe stress.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Asset-light, zero-debt toll booth collecting a 25% top-line management fee on Erie Insurance Exchange premiums without underwriting risk. Automatic pass-through of P&C rate inflation. Fortress balance sheet with zero long-term debt and ~100% FCF conversion. [5-10Y g: policy/exposure growth 2.5% + P&C premium rate inflation 4.0% + operating leverage 0.5% + dividend reinvestment/buyback 0.5%]",
+    "evidence": "10-year GAAP ROIC consistently 21–35% (median 29.2%). Multi-year Owner FCF conversion averages ~99.5%. Long-term debt is $0.0M against $345.9M cash and $717.2M EBIT. Underwriting risk is legally segregated at the Exchange, shielding Indemnity from underwriting losses while allowing it to capture top-line fee growth from rising premium volumes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

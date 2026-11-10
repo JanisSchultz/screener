@@ -1,0 +1,30 @@
+{
+  "id": "AKE.FR",
+  "ticker": "AKE",
+  "universe": "eu",
+  "company": "Arkema",
+  "country": "France",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Adhesive formulation know-how (Bostik) and high-performance polymers (Pebax, Rilsan) face ongoing commoditization from Chinese producers in fluorochemicals and acrylics. 5-year median GAAP ROIC is ~7-8%, failing the 12% threshold (ROCE dropped to 7.8% in 2024).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Despite strategic portfolio transformation toward specialty materials and adhesives (Bostik), Arkema remains exposed to cyclical commodity chemical headwinds, Chinese capacity additions in fluorochemicals/acrylics, and European industrial demand weakness. Multi-year after-tax GAAP ROIC of ~7-8% fails the 12% superinvestor hurdle.",
+    "evidence": "Recurring ROCE dropped from 15.5% at peak 2022 to 8.7% in 2023 and 7.8% in 2024, indicating after-tax GAAP ROIC well below 7%. Specialty operations lack the pricing power to offset severe upstream raw material inflation and Asian competition during cyclical downturns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

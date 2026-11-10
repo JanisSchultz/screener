@@ -1,0 +1,30 @@
+{
+  "id": "MSI",
+  "ticker": "MSI",
+  "universe": "us",
+  "company": "Motorola Solutions",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Near-monopoly in North American P25 mission-critical public safety LMR infrastructure and APX handsets. Insurmountable switching costs stem from life-critical reliability requirements, multi-jurisdiction radio interoperability, and deep integration with 911 dispatch and CAD/RMS software. Empirically demonstrated by 10-year GAAP ROIC averaging >35%, operating margins expanding from 17.4% to 25.6%, and record $15.7B order backlog. Erosion risks include regulatory scrutiny on sole-source government contracts (e.g. UK Airwave price caps) and eventual long-term convergence with broadband/cellular push-to-talk standards.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Entrenched global leader in mission-critical public safety radio, video security, and 911 command center software with high switching barriers and a record $15.7B backlog. Beneficiary of US NDAA exclusions against Chinese competitors and secular demand for automated emergency response. Multi-cycle cash conversion >100% and robust interest coverage (8.3x EBIT/interest) provide financial resilience despite Silvus acquisition debt. [5-10Y g: LMR/video volume 4.0% + contractual pricing 2.0% + software mix 1.5% - UK Airwave regulatory drag 0.5% + share repurchases 1.0%]",
+    "evidence": "10-year median GAAP ROIC of 37.7% and tangible ROIC >50%. FY2025 revenue reached $11.68B (+8% YoY) with EBIT of $2.99B (25.6% margin). Net income of $2.15B converted into $2.28B of Owner FCF (106% conversion). Net debt of $7.25B following the $4.4B Silvus Technologies acquisition is covered in 3.36x normal net earnings, with interest coverage of 8.3x. Order backlog reached an all-time high of $15.7B at year-end 2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

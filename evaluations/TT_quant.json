@@ -1,0 +1,43 @@
+{
+  "id": "TT",
+  "ticker": "TT",
+  "universe": "us",
+  "company": "Trane Technologies plc",
+  "price": 420.56,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.25,
+    "fin_note": "Operating ROIC normalized to 25.0% to reflect TT's physical operating capital efficiency (5-year median GAAP ROIC 25.17%, replacing an unbounded negative tangible equity placeholder) while recognizing strong commercial HVAC returns and direct service network density. Conservative balance sheet with $1.76B cash against $3.92B LT debt (net debt of $2.16B covered in 0.74 years of NI; 1.34x gross debt/NI), robust 17.5x EBIT interest coverage, and 92.6% Owner FCF conversion. Forward 5-10Y through-the-cycle Owner EPS growth of 8.5% driven by 3.5% commercial HVAC and AI data center cooling volume, 2.0% equipment pricing power, 2.0% services and Tracer building automation mix, minus 0.5% refrigerant transition/tariff drag, plus 1.5% net share repurchases. At $420.56 (32.41x peak Owner EPS of $12.9773), TT trades Above PAR (+33.4% vs fundamental PAR Value of $315.15), delivering a 3.4% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 12.9773,
+    "current_multiple": 32.41,
+    "par_multiple": 24.28,
+    "par_value": 315.15,
+    "percent_vs_par": 0.3345,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0091,
+    "expected_irr_5y": 0.0333,
+    "market_implied_cap": 20.0,
+    "moat_runway_margin": -5.0,
+    "market_implied_growth": 0.2068,
+    "growth_margin_of_safety": -0.1218
+  },
+  "health_checks": {
+    "net_debt_years": 1.34,
+    "net_debt_ok": true,
+    "interest_coverage": 17.5,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9264,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

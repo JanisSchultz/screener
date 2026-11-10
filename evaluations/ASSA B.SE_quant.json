@@ -1,0 +1,43 @@
+{
+  "id": "ASSA B.SE",
+  "ticker": "ASSA B",
+  "universe": "eu",
+  "company": "ASSA ABLOY",
+  "price": 394.6,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Peak Owner EPS of 16.85 SEK (FY2024) reflects genuine operational earning power without one-off windfalls. Operating ROIC normalized to 35.0% cap neutralizing 138B SEK of accumulated M&A goodwill/intangibles from serial acquisitions, which artificially depresses GAAP ROIC to 12.5%. 5-10Y forward compound growth rate of 6.0% supported by institutional spec-in replacement demand (2.0%), smart electromechanical access migration (2.0%), and pricing power (2.0%). PAR multiple strictly capped at 5Y cycle high of 22.28."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 16.8549,
+    "current_multiple": 23.4116,
+    "par_multiple": 22.28,
+    "par_value": 375.5272,
+    "percent_vs_par": 0.0508,
+    "status": "Above PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.015,
+    "expected_irr_5y": 0.0645,
+    "market_implied_cap": 21.0,
+    "moat_runway_margin": -1.0,
+    "market_implied_growth": 0.0759,
+    "growth_margin_of_safety": -0.0159
+  },
+  "health_checks": {
+    "net_debt_years": 2.51,
+    "net_debt_ok": true,
+    "interest_coverage": 6.98,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

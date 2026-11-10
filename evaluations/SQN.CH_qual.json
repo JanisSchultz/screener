@@ -1,0 +1,30 @@
+{
+  "id": "SQN.CH",
+  "ticker": "SQN",
+  "universe": "eu",
+  "company": "Swissquote",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential / easily forgone product or service (speculative retail trading, crypto, and leveraged eForex/CFDs).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). High revenue dependence on non-essential, speculative retail activities including cryptocurrency trading/custody, retail eForex/CFD trading, and discretionary market-timing brokerage. Earnings fluctuate with crypto/FX volatility cycles and lack the essential everyday utility of primary banking or compulsory pension compounders.",
+    "evidence": "Swissquote derives a substantial portion of its net revenues from volatile, speculative transaction types: net crypto asset income, net eForex income, and retail trading fees. During crypto and FX bear markets, trading activity contracts sharply. Leveraged eForex and crypto speculation expose the firm to regulatory and market-sentiment overhangs, disqualifying it under the Gate 2 Munger standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

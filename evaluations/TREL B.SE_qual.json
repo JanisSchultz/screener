@@ -1,0 +1,30 @@
+{
+  "id": "TREL B.SE",
+  "ticker": "TREL B",
+  "universe": "eu",
+  "company": "Trelleborg",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Niche specifications, proprietary formulations, and strict qualification testing in precision engineered polymer seals (TSS) where failure costs far exceed component prices.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Specialized engineered polymer seals operate in cyclical industrial and automotive end markets. High dependence on continuous bolt-on M&A to replace fading legacy product lines and exposure to automotive powertrain transition cap competitive advantage persistence at 10 years.",
+    "evidence": "Divestment of Wheel Systems in 2023 improved ROCE to 12-13% (excl. goodwill ~24%) and EBITA margins to 17-18%. However, Mauboussin capital goods base-rate persistence fades rapidly given cyclical end markets and ongoing reliance on serial bolt-on acquisitions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

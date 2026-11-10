@@ -1,0 +1,30 @@
+{
+  "id": "AED.BE",
+  "ticker": "AED",
+  "universe": "eu",
+  "company": "Aedifica",
+  "country": "Belgium",
+  "sector": "Real Estate",
+  "sub_industry": "Health Care REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pan-European elderly care-home portfolio with long triple-net leases; unlevered returns on capital of 3-5% fail the 12% ROIC threshold, and care-home operator solvency fragility limits real rental pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 4.2%, REJECT). Pan-European healthcare REIT fails capital efficiency hurdles with unlevered portfolio yields of 5.3-5.5% and ROIC < 5%. Fragile care-home operator economics and state reimbursement caps prevent real pricing power.",
+    "evidence": "Aedifica manages a €6.0B+ healthcare portfolio of ~600 properties across Belgium, Germany, the UK, the Netherlands, and Nordics. While WAULT exceeds 18 years and inflation indexation is contractually embedded, unlevered portfolio net initial yields hover at 5.3-5.5%, leading to historical GAAP ROIC of 3-5% (sub-12% hurdle). Debt-to-assets sits at ~41% and S&P net debt/EBITDA is ~9.0x. Operator margin pressures from nursing wage inflation and fixed state health budgets introduce persistent tenant credit risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

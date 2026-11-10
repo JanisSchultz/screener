@@ -1,0 +1,30 @@
+{
+  "id": "ZURN.CH",
+  "ticker": "ZURN",
+  "universe": "eu",
+  "company": "Zurich",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global commercial insurance leader with entrenched multinational broker relationships and high switching barriers, alongside the high-margin, asset-light Farmers Management Services fee annuity. Sustained 18%+ GAAP ROIC and sub-94% combined ratios prove strong pricing power exceeding claims inflation. Erosion threats include catastrophic climate tail events and softening commercial lines rate cycles.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Despite world-class underwriting and high capital efficiency (18%+ GAAP ROIC), global multi-line insurance has a Tier 3 Mauboussin persistence baseline (10-15Y) and faces an active terminal headwind from escalating natural catastrophe and extreme weather volatility (Macrotrend 4: climate risk), capping CAP at 10 years under the Rule of Secular Resilience.",
+    "evidence": "Zurich Insurance Group is a top-tier global insurer with 18.8% median ROIC, sub-94% combined ratio, and 234% SST ratio, supported by Farmers Management Services fee annuity. However, extensive P&C underwriting exposes the business to structural climate and natural catastrophe claims volatility (wildfires, convective storms, flooding), precluding the 15+ year CAP secular resilience required for Quality Pass."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

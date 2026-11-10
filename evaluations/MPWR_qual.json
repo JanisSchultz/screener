@@ -1,0 +1,30 @@
+{
+  "id": "MPWR",
+  "ticker": "MPWR",
+  "universe": "us",
+  "company": "Monolithic Power Systems, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary BCD (Bipolar-CMOS-DMOS) process technology integrates power, analog, and digital control on a single monolithic die, delivering superior power density and thermal efficiency. Sticky design-in switching costs in cloud computing, enterprise data, and automotive applications require extensive customer board re-spins and thermal re-qualification to displace. Moat proven by 5-year median ROIC >21% and gross margins >55%. Primary erosion threats include scale analog IDMs (Texas Instruments, Infineon, Renesas, ADI) deploying captive 300mm fabs, alongside aggressive multi-sourcing by tier-1 hyperscalers.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Tier 3 semiconductor baseline (10-15Y) receives haircut due to severe unhedged Macrotrend [3] exposure: 100% fabless wafer fabrication concentrated in Taiwan/Asian foundries, alongside >85% Asia ship-to revenue (>50% mainland China). Furthermore, rapid 2-3 year hardware architectural cycles and hyperscaler multi-sourcing (e.g. Nvidia Blackwell power allocation shifts to Renesas and Infineon) limit competitive advantage longevity well below the 15-year threshold.",
+    "evidence": "Monolithic Power Systems (MPWR) exhibits strong financial metrics with FY2024 revenue of $2.21B (+26% to $2.79B in FY2025) and ROIC consistently between 21% and 34%, with zero long-term debt and >$1B in cash. However, as a fabless power IC vendor, MPWR lacks captive wafer fabrication and relies heavily on external foundries (TSMC and Asian partners). Greater China accounts for 50-55% of ship-to revenues and Asia overall represents >85%. In enterprise data and AI accelerators, hyperscalers aggressively multi-source power delivery (demonstrated by Nvidia allocating Blackwell VRM/PMIC sockets across MPWR, Renesas, and Infineon), exposing MPWR to socket displacement across 2-3 year product cycles and capping CAP at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

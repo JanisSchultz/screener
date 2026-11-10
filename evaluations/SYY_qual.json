@@ -1,0 +1,30 @@
+{
+  "id": "SYY",
+  "ticker": "SYY",
+  "universe": "us",
+  "company": "Sysco",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled North American distribution scale and local route density provide insurmountable per-stop logistics cost advantages over regional competitors. 5-year median GAAP ROIC is 18.2% and gross margin remains steady at ~18.3%. Food inflation is reliably passed through via cost-plus contract mechanisms and dynamic independent pricing. Primary erosion threats include independent restaurant distress and driver wage inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Market leader in foodservice distribution with scale economies shared and high ROIC (18.2% median), but structurally violates Gate 6 balance sheet peace-of-mind. Total debt of $12.3B against $1.76B net income yields lt_debt/NI of 7.0x (net debt/NI of 6.0x), far exceeding the 4.0x ceiling. Interest coverage of ~4.9x falls below the 5.0x minimum, and debt-funded share buybacks have resulted in negative tangible equity of -$3.5B.",
+    "evidence": "FY2025 revenue of $84.6B, operating income (EBIT) of $3,095M, net income of $1,757M, and OCF of $2,638M against capex of $700M (FCF conversion 104%). 5-year median GAAP ROIC is 18.16% and operating tangible ROIC exceeds 34%. However, long-term debt is $12,315M against cash of $1,786M (net debt $10,529M, or 6.0x net income). FY2025 cash interest paid of $629M yields EBIT/interest coverage of 4.92x (below the 5.0x hurdle). Stockholders' equity of $2,666M minus $6,177M goodwill/intangibles leaves negative tangible equity of -$3,511M, reflecting aggressive debt-funded buybacks rather than a fortress balance sheet."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ITRK.GB",
+  "ticker": "ITRK",
+  "universe": "eu",
+  "company": "Intertek",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Accredited regulatory toll booth across consumer goods, assurance, and industrial supply chains. Testing represents <0.5% of product cost but is legally required for distribution. Proved by 20.5% median GAAP ROIC and 30%+ margins in Consumer Products, supporting 2-3% annual pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global Total Quality Assurance (ATIC) provider with high-margin consumer products testing and corporate assurance. Testing fees are an insignificant fraction of product cost but legally mandatory for commerce. Net debt 2.4x net income with 11.1x interest coverage. [5-10Y g: organic volume 3.0% + pricing power 1.5% + margin expansion 0.5% + bolt-on M&A/buybacks 1.0%]",
+    "evidence": "5-year median GAAP ROIC of 20.5% and operating ROIC >100%. Free cash flow conversion averages 127.7% (FY2025 Owner FCF of £367.7M vs NI of £343.5M). Revenue rose to £3,432M in FY25 with operating margin reaching 18.1% (and >30% in Consumer Products). Net debt of £833.2M is covered 2.43x by net income, and interest coverage is 11.11x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

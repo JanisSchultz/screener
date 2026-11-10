@@ -1,0 +1,43 @@
+{
+  "id": "CASY",
+  "ticker": "CASY",
+  "universe": "us",
+  "company": "Casey's",
+  "price": 687.64,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": null,
+    "fin_note": "Retains physical operating ROIC of 15.14% reflecting fee-simple store and logistics ownership (~90%). 5-10Y g of 9.0% driven by rural store additions (3.0%), inside foot traffic (1.5%), prepared food pricing power (2.5%), high-margin mix shift (1.0%), net share repurchases (1.5%), offsetting fuel volume drag (-0.5%). Conservative debt repayable in 2.5-3.3 years with 10.7x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 19.1635,
+    "current_multiple": 35.88,
+    "par_multiple": 21.75,
+    "par_value": 416.74,
+    "percent_vs_par": 0.6501,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0033,
+    "expected_irr_5y": -0.0106,
+    "market_implied_cap": 24.8,
+    "moat_runway_margin": -9.8,
+    "market_implied_growth": 0.302,
+    "growth_margin_of_safety": -0.212
+  },
+  "health_checks": {
+    "net_debt_years": 3.26,
+    "net_debt_ok": true,
+    "interest_coverage": 10.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1667,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

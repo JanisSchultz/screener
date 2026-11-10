@@ -1,0 +1,30 @@
+{
+  "id": "ABDN.GB",
+  "ticker": "ABDN",
+  "universe": "eu",
+  "company": "Aberdeen",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Direct-to-consumer platform interactive investor (ii) possesses switching costs and flat subscription fee mechanics, and adviser platforms create custodial friction. However, the core institutional and wholesale asset management engine suffers from persistent brand erosion, active-to-passive disintermediation, weak fund performance, and acute fee compression.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Gate 3b = N, REJECT). Active asset manager plagued by structural multi-year net outflows, severe fee compression from passive alternatives, and value-destructive merger history (Standard Life Aberdeen). GAAP profitability and ROIC have been negative over the cycle due to massive goodwill impairments and restructuring charges. Interactive investor platform is the sole growing asset but insufficient to offset secular decline across the wider group.",
+    "evidence": "abrdn experienced relentless net outflows across its active funds (£10.3bn in 2022, £17.6bn in 2023, £6.1bn ex-liquidity in 2024). Reported statutory net losses in 2022 (£-615m) and 2023 driven by asset write-downs and restructuring, with multi-year GAAP ROIC falling far below the 12% hurdle. Adjusted operating profit stagnated between £249m and £319m (2020-2024). Active equity and multi-asset fee margins face irreversible downward pressure from low-cost passives (Vanguard, BlackRock), resulting in zero pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

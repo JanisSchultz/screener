@@ -1,0 +1,30 @@
+{
+  "id": "AMP",
+  "ticker": "AMP",
+  "universe": "us",
+  "company": "Ameriprise Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Advisor-client relationships and account transfer friction provide baseline switching costs, but Ameriprise lacks pricing power >= inflation. Structural barriers: Financial planning integration, multi-product distribution (wrap advisory accounts, insurance/annuities), and client inertia/tax transfer friction anchor client assets ($1.69T AUMAA in 2025). Empirical proof: High reported operating ROE (~49-53% ex-AOCI) supported by aggressive share buybacks shrinking equity, but 10-year median ROIC is modest (~14.5%). Primary erosion threats: Persistent passive indexation and fee compression in active asset management (Columbia Threadneedle); intense competition from independent RIAs and discount brokerages capping advisory wrap fees; regulatory scrutiny (SEC Reg BI) and class-action lawsuits on cash-sweep deposit spreads forcing higher client payout yields; and risk of advisor defection with client books.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Ameriprise benefits from switching costs tied to advisor-client relationships and financial planning lock-in, but structurally lacks pricing power >= inflation across market cycles. Columbia Threadneedle faces secular fee compression and chronic organic active outflows due to low-cost passive ETF alternatives. In Advice & Wealth Management, wrap advisory fee schedules face competitive caps against independent RIAs and discount brokers, while high-margin cash-sweep interest spreads face severe regulatory scrutiny (SEC Reg BI) and class-action litigation forcing higher yields paid to clients. Ameriprise cannot unilaterally raise fee schedules without triggering advisor defection and client asset loss.",
+    "evidence": "Ameriprise reported 2024 GAAP net revenue of $17.26B and GAAP net income of $3.40B, and 2025 GAAP net revenue of $18.48B and GAAP net income of $3.56B ($39.29 adjusted diluted EPS). Total AUMAA reached $1.69T at year-end 2025. While adjusted operating ROE ex-AOCI appears high at ~53%, this is largely driven by persistent share repurchases ($2.8B in 2024, $3.4B in 2025) that heavily reduce the equity base, while 10-year median ROIC sits around ~14.5%. Segment dynamics highlight lack of pricing power: Columbia Threadneedle (~20-25% of revenue) struggles with persistent organic outflows in active equities and industry-wide fee compression. Advice & Wealth Management (~60-65% of revenue) relies on high-touch advisor networks that cannot raise advisory basis-point fee schedules, while sweep cash deposit spreads (a critical source of net interest margin) face ongoing class-action litigation and regulatory pressure under Reg BI regarding uninvested cash yields."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

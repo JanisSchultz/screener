@@ -1,0 +1,30 @@
+{
+  "id": "AWK",
+  "ticker": "AWK",
+  "universe": "us",
+  "company": "American Water Works",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Water Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive regulated water and wastewater franchise concessions serving 14M people across 14 states with physically unreplicable underground pipe networks. Statutory rate-making provides authorized ROE (~9.5-10.0%) and capital riders (e.g., DSIC) allowing timely cost pass-through for infrastructure modernization. Erosion risks include regulatory lag in general rate cases, emerging environmental remediation mandates (PFAS filtration capex), and public opposition to municipal system acquisitions.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion). Premier regulated water utility with an exceptional 30-year unreplicable moat and essential biological demand, but disqualified by the structural capital trap of regulated utilities: capped ROIC of 6.0%, perpetual negative free cash flow due to mandatory pipe and PFAS capex ($3.1B capex vs $2.1B OCF in FY2025), high debt load of $12.8B (11.5x net income), and sub-hurdle interest coverage of 3.1x requiring continuous external capital access.",
+    "evidence": "10-year median GAAP ROIC is 6.0% (2016-2025 range 5.6%-8.4%), constrained by state regulatory rate-base mechanics. Capital expenditures have exceeded operating cash flow in every single year over the last decade (FY2025 capex of $3,126M vs OCF of $2,059M, producing -$1,067M in free cash flow). Long-term debt expanded from $6.3B in 2016 to $12.8B in 2025 ($16B+ total debt). TTM interest expense of $615M against EBIT of $1,879M yields interest coverage of 3.06x (below the 5.0x Munger threshold). Despite holding a solid 'A' credit rating from S&P, AWK's heavy infrastructure replacement cycle necessitates constant reliance on debt and equity capital markets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

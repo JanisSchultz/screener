@@ -1,0 +1,30 @@
+{
+  "id": "EDEN.FR",
+  "ticker": "EDEN",
+  "universe": "eu",
+  "company": "Edenred",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Multi-sided meal voucher and employee benefits network connects corporate employers, employees, and merchants with high employer switching costs. However, it structurally lacks pricing power: the business model relies on state tax incentives, provoking merchant revolt and statutory government fee caps (e.g. Italy's 5% merchant commission cap under Law 193/2024 and ongoing French regulatory scrutiny) that permanently compress take rates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Zero pricing power due to statutory fee caps and antitrust intervention). Meal voucher and corporate benefits platform rests on tax privileges rather than unassisted economic value; extreme merchant resentment has triggered statutory commission caps (such as Italy's 5% cap enacted in 2024/2025) and ongoing antitrust investigations in France and Italy, permanently capping take-rate pricing power.",
+    "evidence": "Italy implemented Law 193/2024 capping merchant voucher commissions at 5% (down from historical 15-25%), severely cutting core Italian EBITDA and triggering AGCM antitrust investigations into alleged circumvention fees. The French Competition Authority has historically fined the sector for cartel behavior and continues regulatory reviews. Because voucher take rates are vulnerable to legislative caps and merchant litigation, Edenred cannot pass through inflation-linked fee increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

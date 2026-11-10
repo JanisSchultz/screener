@@ -1,0 +1,30 @@
+{
+  "id": "J",
+  "ticker": "J",
+  "universe": "us",
+  "company": "Jacobs Solutions",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized engineering talent, complex infrastructure consulting, and long-standing client relationships, but lack of pricing power in competitive bidding and human-capital intensity limit returns. Erosion threats include procurement price pressure, commoditization of routine design work by AI/BIM automation, and wage inflation for technical talent.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%). Jacobs Solutions operates as a premier global provider of engineering, design, and consulting services for critical infrastructure and water, but historical 10-year median ROIC of ~10.8% falls short of the 12% hurdle. Engineering consulting suffers from competitive procurement pressures, heavy reliance on billable professional hours, and goodwill from serial M&A (e.g. CH2M Hill, PA Consulting), preventing sustained super-normal returns on capital.",
+    "evidence": "10-year median ROIC of 10.8% (FY2022 ~9.2%, FY2023 ~9.8%, FY2024 ~8.1-10.0%, FY2025 ~11.6%), consistently below the 12% threshold across the cycle. Despite successfully spinning off lower-margin government services (CMS and Cyber & Intelligence merged into Amentum in Sept 2024) to streamline into higher-value infrastructure, consulting margins remain capped by competitive bidding and professional staff costs. Operating margins hover in the 8-11% range, and heavy goodwill from past acquisitions dilutes reported invested capital returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SWK",
+  "ticker": "SWK",
+  "universe": "us",
+  "company": "Stanley Black & Decker, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Power tools, hand tools, and outdoor power equipment (lawnmowers, snow blowers) sold under brands like DEWALT, CRAFTSMAN, and BLACK+DECKER are durable, discretionary goods. Consumers, DIYers, and retail channels readily defer or forgo replacement during housing downturns and inflationary squeezes, failing the essential Western need standard.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Stanley Black & Decker is a cyclical manufacturer of power tools, hand tools, and outdoor equipment heavily exposed to discretionary DIY demand and housing turnover. During downturns, consumer tool purchases and home improvement projects are readily deferred. Furthermore, high retail customer concentration at Home Depot and Lowe's amplifies cyclical inventory destocking swings. Even if Gate 2 were bypassed, SWK would fail Gate 3b (10Y median ROIC of 7.2%, collapsing to 0-3.5% in 2023-2025 due to supply chain inflation and lack of pricing power) and Gate 5 (disastrous capital allocation on the $1.9B MTD outdoor power rollup and Craftsman acquisition, driving net debt to over $6B and requiring emergency multi-year restructuring).",
+    "evidence": "Historical 10-year median ROIC of 7.2% is far below the 12% Munger threshold, collapsing to ~0.0% in 2023, 2.4% in 2024, and 3.3-3.5% in 2025. Gross margins suffered severe compression from 37% to 25-28% during the post-pandemic supply chain and cost inflation shock, exposing a lack of pricing power relative to input inflation. Tools & Outdoor represents ~85% of revenue, heavily tied to DIY home improvement and big-box retail channels (The Home Depot and Lowe's). Aggressive debt-financed M&A (notably acquiring the remaining 80% of MTD Holdings for $1.6B cash in 2021 and Craftsman) expanded net debt to over $6.0B right at the peak of the pandemic demand bubble, forcing a $2B global cost reduction program, plant closures, asset sales (aerospace fastening divestiture), and dividend coverage strain."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

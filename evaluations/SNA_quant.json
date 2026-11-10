@@ -1,0 +1,43 @@
+{
+  "id": "SNA",
+  "ticker": "SNA",
+  "universe": "us",
+  "company": "Snap-on Incorporated",
+  "price": 367.22,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": null,
+    "fin_note": "Passes all 6 gates. Premier brand in professional technician tools with iconic franchised van distribution (4,800+ mobile vans), ~50% gross margins, and high technician switching costs. FY2024 Peak Owner EPS of $19.7832 accepted without adjustment (uninterrupted compounding from $9.39 in 2016; FY2025 Owner EPS of $19.6113 confirms steady high-plateau cash generation). Physical operating ROIC preserved at 27.31% (roic_operating; GAAP median 20.00%). 5-10Y through-the-cycle growth of 7.5% driven by 1.5% auto repair volume, 2.5% intelligent diagnostic software & OEM mix, 2.0% pricing power, and 1.5% net share repurchases. Fortress balance sheet with $1.62B cash vs $1.19B debt (net cash surplus of +$438.1M), 26.29x interest coverage, and 93.9% FCF conversion. Raw PAR multiple of 19.62x is capped by the 5-year cycle high guardrail at 18.76x. Trades Below PAR at 18.56x peak EPS vs 18.76x PAR multiple ($371.13 PAR Value), delivering a 10.2% expected 5Y cycle IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 19.7832,
+    "current_multiple": 18.56,
+    "par_multiple": 18.76,
+    "par_value": 371.13,
+    "percent_vs_par": -0.0105,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0244,
+    "expected_irr_5y": 0.1017,
+    "market_implied_cap": 14.8,
+    "moat_runway_margin": 0.2,
+    "market_implied_growth": 0.0591,
+    "growth_margin_of_safety": 0.0159
+  },
+  "health_checks": {
+    "net_debt_years": 1.17,
+    "net_debt_ok": true,
+    "interest_coverage": 26.29,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9385,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BEN",
+  "ticker": "BEN",
+  "universe": "us",
+  "company": "Franklin Resources",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Legacy distribution networks, institutional consultant relationships, and retirement account switching costs provide only weak retention against secular passive indexing. Empirically fails moat proof: 10-year median GAAP ROIC is 8.5% (with FY2023–FY2025 ROIC compressing to 3–6%), far below the 12% hurdle. Complete absence of pricing power as effective fee rates compress under zero-fee passive ETF competition. Moat severely eroded by structural active-to-passive rotation and devastating client outflows (>$120B–$150B) following the Western Asset trade allocation scandal (Ken Leech DOJ/SEC charges and $100M SEC settlement).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Zero Pricing Power, REJECT). Traditional active asset manager facing secular fee compression, market share loss to low-cost passive ETFs, and chronic institutional net outflows. Capital efficiency is structurally sub-hurdle with a 10-year median ROIC of 8.5% (compressing to 3–6% in FY2023–FY2025 post-Putnam and Legg Mason acquisitions). Severe brand dilution and client redemptions following the Western Asset trade-allocation cherry-picking scandal further impair organic growth.",
+    "evidence": "Multi-cycle financial track record demonstrates structural capital inefficiency and lack of pricing power: 10-year median GAAP ROIC of 8.5% fails the 12% hurdle, with FY2023–FY2025 ROIC falling to 3–6%. GAAP operating margins compressed from historical 30%+ levels to ~17% in FY2023 and 9–10% in FY2024–FY2025, burdened by acquisition amortization and integration costs. Long-term debt stands at ~$2.4B–$2.6B from debt-financed acquisitions (Legg Mason, Putnam, Lexington Partners) intended to mask organic outflows in traditional active equity and fixed income. The firm lacks pricing power: adjusted effective fee rates are under secular pressure (~37–38 bps) from passive alternatives (Vanguard, BlackRock). In 2024–2026, subsidiary Western Asset Management suffered catastrophic outflows of $120B–$150B+ and paid a $100M SEC civil penalty after co-CIO Ken Leech was charged with cherry-picking profitable trades, compressing Western Asset AUM to ~$229B and demonstrating extreme key-person and governance risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ULTA",
+  "ticker": "ULTA",
+  "universe": "us",
+  "company": "Ulta Beauty",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Other Specialty Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential / easily forgone product or service.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Specialty beauty retailer selling cosmetics, fragrances, prestige skincare, and salon services. Products are discretionary and easily forgone, deferred, or substituted during consumer belt-tightening; lacks the non-discretionary deprivation or Lindy pricing power of true staples. Third-party retail distribution faces intense competitive pressure from Sephora (including its Kohl's expansion), Amazon, and brand direct-to-consumer channels.",
+    "evidence": "Ulta operates ~1,400 specialty stores across the US. While historically achieving high ROIC (>20%) driven by store expansion and its 44M+ member Ultamate Rewards loyalty program, its product offering remains discretionary. Operating margins compressed from 15.0% in FY24 to 13.9% in FY25 and ~12.4% in FY26 due to heightened promotional activity and aggressive suburban competition from Sephora at Kohl's and Amazon. Zero consumer switching costs and lack of proprietary brand ownership leave it vulnerable to retail disintermediation and spending cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

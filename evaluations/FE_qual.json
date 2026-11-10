@@ -1,0 +1,30 @@
+{
+  "id": "FE",
+  "ticker": "FE",
+  "universe": "us",
+  "company": "FirstEnergy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territories across Ohio, Pennsylvania, West Virginia, Maryland, and New Jersey. Natural monopoly in electric transmission and distribution with formulaic cost-plus rate-base pricing power, though authorized ROE (~9.5-10%) and returns are strictly capped by state utility commissions.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated electric transmission and distribution monopoly serving 6 million customers across 5 states. While reformed post-HB6 governance stabilizes operations, massive ongoing grid capex ($4.7B vs $3.7B OCF in FY2025) produces negative free cash flow and maintains an overleveraged balance sheet ($25.5B long-term debt vs $1.02B net income, 25.0x leverage) with precarious 1.81x interest coverage, requiring perpetual reliance on debt and equity capital markets.",
+    "evidence": "FY2025 revenue of $15.09B, EBIT of $2,206M, and net income of $1,020M. 10-year median GAAP ROIC is 4.97%, constrained by regulatory rate caps. Balance sheet carries $25.5B long-term debt against only $57M in cash, resulting in 25.0x debt/NI and 1.81x interest coverage (EBIT $2,206M / Interest $1,217M), failing the >5.0x peace-of-mind threshold. FY2025 capex of $4,705M outpaced OCF of $3,700M by $1.0B."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SEB A.SE",
+  "ticker": "SEB A",
+  "universe": "eu",
+  "company": "SEB",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled primary-bank relationships with Nordic multinational corporations and the Wallenberg industrial network; entrenched corporate cash management and custody create high switching costs, driving consistent 14-16% multi-cycle ROE and leading European cost efficiency (cost-to-income ~35-40%).",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While SEB is a premier Nordic corporate bank with strong returns (ROE ~14-16%) anchored in the Wallenberg ecosystem, commercial banking possesses low base-rate competitive advantage persistence (CAP < 15Y). Earnings power remains inherently cyclical, tied to central bank interest rate cycles and vulnerable to private credit disintermediation.",
+    "evidence": "Leading Nordic corporate bank with ~40% primary relationship share among Swedish large caps. Strong track record with 2018-2024 ROE averaging ~14.5% and efficient ~36% cost-to-income ratio. However, commercial banks suffer from low empirical persistence due to macroeconomic credit cycles, interest rate sensitivity (NII normalization as Riksbank/ECB cut rates), and capital market disintermediation, capping CAP at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

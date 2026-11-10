@@ -1,0 +1,30 @@
+{
+  "id": "HEN3.DE",
+  "ticker": "HEN3",
+  "universe": "eu",
+  "company": "Henkel",
+  "country": "Germany",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lacks a structural moat across the consolidated group ('None'). While Adhesive Technologies has industrial application stickiness, Consumer Brands (Persil, Schwarzkopf, Dial) faces persistent private-label erosion and weak volume growth. 5-year median GAAP ROIC is 8.72% (well below the 12% threshold) burdened by heavy historical M&A goodwill, with organic sales growth driven by price increases against flat or negative volumes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a = None, 3b = N, REJECT). German consumer goods and adhesives conglomerate whose 5-year median GAAP ROIC of 8.72% fails the 12% threshold. Consumer Brands unit chronically loses volume when attempting to pass on chemical and energy inflation, while accumulated M&A goodwill permanently depresses consolidated returns.",
+    "evidence": "Reported GAAP ROIC of 6.30% (FY22), 6.99% (FY23), 10.45% (FY24), and 10.72% (FY25) yields a 5-year median of 8.72%. Goodwill and intangibles of EUR 17.3B on EUR 20.5B equity. Organic volume growth was negative in 2023 (-4.2% price vs negative volume) and flat in 2025 (+0.9% organic entirely price-led)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

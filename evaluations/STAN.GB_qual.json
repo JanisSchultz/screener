@@ -1,0 +1,30 @@
+{
+  "id": "STAN.GB",
+  "ticker": "STAN",
+  "universe": "eu",
+  "company": "Standard Chartered",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Operating income and assets are overwhelmingly concentrated in non-Western emerging markets across Asia, Africa, and the Middle East (>75%), exposing earnings to severe geopolitical realignment, currency volatility, and non-Western legal and regulatory risks.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Standard Chartered is a UK-headquartered bank whose business is overwhelmingly concentrated in non-Western emerging markets across Asia, Africa, and the Middle East (>75% of operating profit), failing the Western essential need standard and carrying heavy geopolitical, sanctions-compliance, and EM sovereign credit risk.",
+    "evidence": "Corporate segment reporting confirms Greater China & North Asia, ASEAN & South Asia, and Africa & Middle East generate over three-quarters of operating income and risk-weighted assets. Historic multi-billion-dollar regulatory penalties for sanctions violations (US DOJ/OFAC) and recurring credit loss provisions in China commercial real estate demonstrate the heightened geopolitical and jurisdictional risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CWK.GB",
+  "ticker": "CWK",
+  "universe": "eu",
+  "company": "Cranswick",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Vertically integrated farm-to-fork processing offers cost efficiencies, but selling fresh pork and poultry predominantly as private label to a concentrated UK grocery oligopsony leaves Cranswick with thin 6.5-7.5% operating margins and no independent consumer pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Over 75% of revenue is concentrated in major UK supermarkets (Tesco, Sainsbury's, Marks & Spencer). While highly efficient and vertically integrated, Cranswick produces predominantly private-label fresh protein with thin ~7% operating margins and lacks independent pricing power against concentrated buyers.",
+    "evidence": "Customer concentration is extreme with over 75% of sales to UK supermarket giants. Operating margins remain thin at 6.5%-7.6%, reflecting structural buyer power. While ROCE is healthy at 16-18% due to disciplined plant investments, GAAP ROIC hovers around 11.5%-13.1%, and the business lacks independent consumer brand pricing power or switching costs to pass through structural agricultural cost surges without supermarket pushback."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

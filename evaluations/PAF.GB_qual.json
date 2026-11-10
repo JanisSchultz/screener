@@ -1,0 +1,30 @@
+{
+  "id": "PAF.GB",
+  "ticker": "PAF",
+  "universe": "eu",
+  "company": "Pan African Resources",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Gold (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative gold price-taker with 100% of mining assets and revenue concentrated in South Africa, subject to severe infrastructure (Eskom power), labor unrest, and non-Western sovereign risks.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need). Speculative gold commodity price-taker with entire operating base in South Africa (Barberton, Evander, Elikhulu), exposing cash flows to Eskom load shedding, union labor disputes, and South African jurisdictional risk.",
+    "evidence": "Pan African Resources is a gold producer whose revenues depend entirely on the spot gold price. All physical operations are based in South Africa, where persistent power grid instability (Eskom load-shedding), deep-level mining cost inflation, and violent illicit mining ('zama-zamas') create severe operating hazards outside Western rule-of-law jurisdictions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

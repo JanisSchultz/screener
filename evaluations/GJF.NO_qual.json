@@ -1,0 +1,30 @@
+{
+  "id": "GJF.NO",
+  "ticker": "GJF",
+  "universe": "eu",
+  "company": "Gjensidige Forsikring ASA",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Norwegian P&C insurer with ~26% domestic market share. Moat is anchored by the Gjensidige Foundation's customer dividend model ('kundeutbytte'), returning scale profits to policyholders and achieving unmatched ~90%+ customer retention. Consistently maintains combined ratios in the 80-88% range and reprices premiums above Nordic claims inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant Norwegian P&C market leader (~26% share) with structural scale economies shared moat via customer dividends ('kundeutbytte'). 18.9% median ROIC, combined ratio ~80-88%, post-dividend Solvency II ratio 188%, and net cash balance sheet. [5-10Y g: Nordic premium volume 2.0% + tariff indexation 2.5% + combined ratio optimization 0.5% + capital return 1.5%]",
+    "evidence": "Over 200-year operating history in Norway with expanding positions in Denmark and Sweden. GAAP ROIC has steadily climbed from 14.8% (2022) to 23.6% (2025), with tangible ROIC exceeding 30%. Net income reached NOK 6,415.9M in FY25 (EPS NOK 12.83). Underwriting discipline is proven by combined ratios below 88% through multiple inflation cycles. Balance sheet is pristine with net cash (NOK 4.4B cash vs NOK 4.1B debt), no net interest expense, and post-dividend Solvency II ratio of 188%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

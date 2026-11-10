@@ -1,0 +1,30 @@
+{
+  "id": "CLNX.ES",
+  "ticker": "CLNX",
+  "universe": "eu",
+  "company": "Cellnex",
+  "country": "Spain",
+  "sector": "Real Estate",
+  "sub_industry": "Telecom Tower REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cellnex owns physically irreplaceable mobile tower infrastructure with high local permitting barriers, but captive MNO sale-and-leaseback MSAs feature contractual escalator caps (1-3%) that lagged Eurozone inflation. Crucially, multi-year GAAP ROIC is negative to sub-2% due to an inflated ZIRP acquisition asset base and heavy debt burden, completely failing the 12% capital return hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (G3 Moat & Pricing). European tower infrastructure rollup with structurally depressed returns on capital (multi-year GAAP ROIC negative to sub-2%, unlevered ROIC ~3-4%) far below the 12% hurdle. Long-term MSAs contain capped escalators (1-3%) that failed to protect against inflation.",
+    "evidence": "Cellnex pursued an aggressive debt-fueled pan-European tower acquisition spree, accumulating over €17B in net debt and heavy PPA amortization. As a result, reported GAAP net income has been consistently negative (-€297m in 2022, -€297m in 2023, -€28m in 2024), and unlevered ROIC remains mired at 3-4%. Tenant consolidation among European MNOs further restricts pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

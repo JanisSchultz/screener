@@ -1,0 +1,30 @@
+{
+  "id": "KOG.NO",
+  "ticker": "KOG",
+  "universe": "eu",
+  "company": "Kongsberg",
+  "country": "Norway",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant technological monopolies including JSM (sole internal cruise missile for F-35), NSM anti-ship missile adopted across NATO, and NASAMS air defense. Unsurpassed pricing power confirmed by 32%+ ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Norway's premier defense and maritime technology champion with dominant missile monopolies, 32% ROIC, and massive net cash fortress. [5-10Y g: missile system deliveries 6.0% + NASAMS air defense 3.0% + maritime automation 1.5% + buybacks/dividends 0.5% - cycle normalization 1.0%]",
+    "evidence": "Median ROIC of 32.1% and operating ROIC of 72.6%. Owner EPS compounded from NOK 3.37 in 2022 to NOK 9.04 in 2025 (39% CAGR). Multi-year FCF conversion exceeds 140% with NOK 11.0B Owner FCF in FY2025. Balance sheet holds NOK 20.2B in cash against just NOK 1.0B in debt (net cash NOK 19.2B). Order backlog exceeds NOK 157B driven by sole-source JSM (F-35), NSM, and NASAMS."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

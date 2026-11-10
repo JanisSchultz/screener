@@ -1,0 +1,30 @@
+{
+  "id": "FDS",
+  "ticker": "FDS",
+  "universe": "us",
+  "company": "FactSet",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs rooted in proprietary financial data integration, Excel-linked financial modeling, and the CUSIP securities identification monopoly. Empirically demonstrated by 10-year median ROIC of 28.2% (17.4% GAAP in FY25) and consistent 3.5-5.0% annual price increases with >95% ASV retention. Key erosion risks stem from workstation competition against Bloomberg (chat network) and LSEG Workspace (Microsoft Teams integration).",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While FactSet possesses strong current switching costs and >95% ASV retention, its core workstation business (~40-50% of ASV) faces severe terminal disruption under Macrotrend #1 (Automation & Cognitive Tech). Seat-based financial analyst and junior investment banking workflows are highly vulnerable to autonomous AI agent substitution, leading to inevitable seat rationalization. Without the unassailable chat network of Bloomberg or full platform vertical integration, CAP is capped at 10 years.",
+    "evidence": "FY2025 revenue reached $2.32B (+5.4% YoY) with GAAP net income of $597M and FCF of $617.5M (FCF conversion >100%). Organic ASV grew 5.7% to $2.37B with >95% ASV retention and 91% client retention. Total users reached 237,324 and clients reached 8,996. GAAP ROIC was 17.4% in FY25 (17.0% in FY24; 10Y median 28.2%). Long-term debt stood at $1.24B (net debt / net income ~1.7x). Despite sound current metrics and the defensive CUSIP asset, the business model remains heavily reliant on per-seat workstation licenses vulnerable to AI headcount reduction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

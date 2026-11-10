@@ -1,0 +1,30 @@
+{
+  "id": "REP.ES",
+  "ticker": "REP",
+  "universe": "eu",
+  "company": "Repsol",
+  "country": "Spain",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pure commodity price-taker. Upstream hydrocarbon production is sold at prevailing international market prices, while downstream refining profits are dictated by European crack spreads. Multi-cycle ROIC fails the 12% threshold due to severe cyclicality and non-recoverable impairment cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Spanish integrated energy company with leading Iberian refining and retail distribution. Despite high-complexity refining assets and growing low-carbon power investments, Repsol is a structural commodity price-taker lacking pricing power above inflation. Financial performance is tethered to cyclical global crude benchmarks, Henry Hub gas prices, and volatile refining margins, compounded by Spanish government windfall energy taxes.",
+    "evidence": "Repsol operates across Upstream (crude and gas extraction in North America, Latin America, and North Africa), Industrial (5 refineries in Spain with ~1.0 mbpd capacity, large petrochemical complexes, and trading), and Commercial/Customer (retail marketing, mobility, and low-carbon electricity/gas generation). Multi-cycle ROIC is deeply cyclical and fails the 12% Munger bar across a full 10-year cycle: 10-year average ROIC is ~6-7%, characterized by massive write-downs during cyclical downturns (e.g., €3.8B impairment in 2019 anticipating decarbonization, and deep losses in 2020 with negative net income of -€3.29B). In 2022-2023, while refining margins surged temporarily, profits were heavily dampened by Spain's 1.2% windfall tax on energy revenue. Repsol possesses zero ability to raise fuel or chemical prices independently of spot market dynamics."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

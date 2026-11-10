@@ -1,0 +1,30 @@
+{
+  "id": "VMC",
+  "ticker": "VMC",
+  "universe": "us",
+  "company": "Vulcan Materials Company",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Captive local quarry natural monopolies protected by insurmountable zoning regulations, environmental permitting barriers, and high bulk trucking costs (~25-mile economic radius). Proof of moat verified by steady expansion in cash gross profit per ton ($11.33/ton in 2025, +6.8% YoY) and 17.7% tangible operating ROIC through construction cycles. Primary erosion risks include long-term reserve depletion near core metros, shifts in urban development corridors, and severe rail/transport freight cost inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Premier North American aggregates infrastructure franchise. Irreplaceable local quarry network with exceptional pricing power through the cycle. Beneficiary of US reshoring, data center buildout, and federal infrastructure spending with zero AI displacement risk. Strong balance sheet with leverage at 2.0x EBITDA and 6.8x interest coverage. [5-10Y g: aggregates volume 1.5% + price 4.5% + unit margin expansion 1.0% + buybacks/bolt-ons 1.0%]",
+    "evidence": "Aggregates represent essential civil infrastructure inputs with captive local distribution dynamics. Operating tangible ROIC consistently 17-22% over the past decade (17.7% in FY2025; GAAP ROIC ~10% burdened by acquisition goodwill). Peak-to-peak compounding intact with Owner EPS compounding at 13.2% CAGR from $3.09 (FY2016) to a record $8.65 (FY2025). 5-year FCF conversion averages 89.4% ($1,072M FCF on $1,077M NI in FY2025). Demonstrated uninterrupted pricing power with 2025 cash gross profit per ton up +6.8% to $11.33 and ASP up +4.3% to $21.98. Balance sheet disciplined with net debt of $4.18B (3.88x NI, 2.0x EBITDA), interest coverage of 6.76x, and BBB+ investment grade credit rating."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

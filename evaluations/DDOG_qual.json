@@ -1,0 +1,30 @@
+{
+  "id": "DDOG",
+  "ticker": "DDOG",
+  "universe": "us",
+  "company": "Datadog, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Agent-based full-stack observability platform creates significant developer workflow stickiness and high switching costs across multi-cloud deployments. However, proof of moat fails decisively: 5-year median GAAP ROIC is ~0-1% (well below the 12% hurdle), with GAAP operating margins hovering between -1% and +2% (GAAP operating loss of $(44)M in FY25). Reported FCF ($915M in FY25) is overwhelmingly subsidized by massive stock-based compensation ($751M in FY25, $570M in FY24), leaving negligible real owner earnings. Primary erosion threats include cloud cost optimization scrutiny, open-source standardization (OpenTelemetry, Prometheus, Grafana), and hyperscaler native tools (AWS CloudWatch, Azure Monitor).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Datadog provides a leading cloud observability platform with strong developer adoption, but fails empirical capital efficiency hurdles. 5-year median GAAP ROIC is near zero (~0-1%), with GAAP operating margins hovering around break-even (-1% to 2% over FY23-FY25). Free cash flow is heavily inflated by excessive stock-based compensation ($751M in FY25 against $915M operating FCF), masking the absence of true economic owner earnings. Furthermore, observability is a highly scrutinized enterprise IT line item subject to cloud spend optimization and competition from open-source alternatives (OpenTelemetry) and hyperscalers.",
+    "evidence": "Datadog operates as a SaaS observability platform covering infrastructure, APM, log management, and security. FY23-FY25 revenue expanded from $2.13B to $3.43B with gross margins stable around ~80%. However, GAAP profitability remains near zero: GAAP net income was $46.6M in FY23, $183.7M in FY24, and $107.7M in FY25 (GAAP operating loss of $(44)M in FY25; GAAP operating margin -1%). 5-year median GAAP ROIC is ~0.0% to 1.1%, failing the 12% hurdle. Stock-based compensation was $482M (FY23), $570M (FY24), and $751M (FY25), representing ~22% of revenue and consuming virtually all reported FCF ($632M in FY23, $775M in FY24, $915M in FY25). While cash and marketable securities remain robust (~$3B+) and debt is manageable, the business model has not demonstrated economic returns on capital above cost of capital after accounting for real share dilution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ORCL",
+  "ticker": "ORCL",
+  "universe": "us",
+  "company": "Oracle Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Legacy relational database and ERP workloads feature formidable switching costs, but lack genuine organic pricing power. Oracle relies on adversarial license audits and predatory maintenance fee hikes (22% annual list price) that alienate enterprise clients and accelerate multi-year migrations to open-source alternatives (PostgreSQL) and hyperscaler platforms (AWS Aurora, Azure SQL). OCI Gen 2 cloud infrastructure is a capital-intensive commodity price-taker competing via compute discounting, while the $28.3B Cerner acquisition continues to bleed EHR market share to Epic Systems.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Enterprise database switching costs fail the Munger pricing power standard: price increases trigger customer churn and active migration to PostgreSQL, AWS Aurora, and cloud-native alternatives rather than inelastic customer acceptance. OCI cloud infrastructure is an undifferentiated, capital-intensive GPU rental price-taker, and Cerner continues losing share to Epic Systems. Downstream balance sheet is severely overleveraged with >$120B in debt and negative FY2025 FCF.",
+    "evidence": "Historical GAAP ROIC has hovered around 13-14%, but incremental ROIIC is deteriorating sharply as Oracle accelerates capital expenditures ($15B+ in FY2025 vs $6.9B in FY2024) to build speculative AI data centers, driving FY2025 free cash flow negative (-$394M). Database lock-in is defended via punitive License Management Services audits rather than customer surplus, driving Fortune 500 migrations away from Oracle. In cloud IaaS, OCI holds mid-single-digit market share and acts as a price-taker against AWS, Microsoft Azure, and GCP. Healthcare IT subsidiary Cerner ($28.3B purchase in 2022) has suffered VA contract renegotiation pauses and hospital defections to Epic. Furthermore, long-term debt has surged to $122.3B against $12.4B GAAP Net Income (~9.8x Net Debt / NI) with $3.5B+ annual interest expense, which would also catastrophically fail downstream Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

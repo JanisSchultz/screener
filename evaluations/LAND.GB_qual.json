@@ -1,0 +1,30 @@
+{
+  "id": "LAND.GB",
+  "ticker": "LAND",
+  "universe": "eu",
+  "company": "Landsec",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Diversified REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prime central London commercial developments and dominant regional shopping destinations possess unreplicable physical locations and complex planning approvals. However, commercial real estate asset intensity results in a 10-year average ROIC of only 3.0-4.0%, failing the 12% compounding hurdle. Landsec cannot enforce pricing power above inflation without driving tenant vacancies, lease renegotiations, or retail tenant failures during consumer downturns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Flagship UK commercial property portfolio generates 10-year historical ROIC of only 3.0-4.0%, structurally trailing the 12% hurdle. Real estate rental yields cannot achieve compounding quality standards without excessive debt leverage, while London office demand and shopping center leasing face persistent tenant rationalization.",
+    "evidence": "10-year historical GAAP ROIC averages in the 3.0-3.9% range, heavily affected by multi-billion-pound property revaluation deficits during UK rate-hiking cycles. Retail tenant restructuring (CVAs) and persistent hybrid working adoption across London office occupiers constrain lease renewal pricing power and cap total accounting returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MTX.DE",
+  "ticker": "MTX",
+  "universe": "eu",
+  "company": "MTU Aero Engines",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Toll booth on commercial aviation fleet through long-term Risk and Revenue Sharing Partnerships (RRSPs) and independent MRO network. High switching costs and certified proprietary spare parts deliver pricing power indexed above inflation, proven by multi-cycle ROIC > 16%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier German aircraft engine innovator and commercial MRO toll booth with high switching costs, low leverage, and 17% ROIC. [5-10Y g: commercial MRO shop visits 5.0% + spare parts volume 3.0% + pricing indexation 1.5% + buybacks 0.5% - GTF inspection headwind 1.0%]",
+    "evidence": "Median ROIC of 16.8% and operating ROIC of 27.2%, rebounding to 28.0% in 2025. Record 2025 performance with revenue of €8.76B (+16%), adjusted EBIT of €1.35B (+29%), and Owner EPS of €18.44. Balance sheet remains conservative with net debt under 1.0x EBITDA and interest coverage >12x. High switching costs across commercial engine RRSP programs (GTF, GE9X, CF6) and proprietary MRO network provide long-term inflation-indexed pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

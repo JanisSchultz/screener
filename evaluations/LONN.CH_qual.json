@@ -1,0 +1,30 @@
+{
+  "id": "LONN.CH",
+  "ticker": "LONN",
+  "universe": "eu",
+  "company": "Lonza",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Mission-critical biologics CDMO site validation creates switching barriers, but extreme capex intensity (20-30% of sales) and industry batch lumpy utilization depress median GAAP ROIC to 7.9%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). World-leading biologics CDMO with high regulatory site validation switching barriers, but structural heavy capex intensity (CHF 1.4-1.9B annually) and cyclical capacity utilization trap multi-year GAAP ROIC at 7.9%, well below the 12% threshold.",
+    "evidence": "Lonza's reported GAAP ROIC has averaged 7.86% over the last four years (11.8% in 2022, 6.8% in 2023, 6.3% in 2024, 8.9% in 2025). The CDMO business model requires relentless capital reinvestment (capex representing 20-30% of revenue, including large facility acquisitions like Vacaville), leaving capital efficiency chronically depressed below the cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

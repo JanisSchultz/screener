@@ -1,0 +1,30 @@
+{
+  "id": "TW..GB",
+  "ticker": "TW.",
+  "universe": "eu",
+  "company": "Taylor Wimpey",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; cyclical residential homebuilder exposed to mortgage rates and housing cycle.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Major UK volume residential developer with large land holdings. New home purchasing is a discretionary, deferrable big-ticket commitment subject to severe mortgage-rate sensitivity and housing cycle volatility. Cyclical homebuilders fail Munger's non-deferrable everyday necessity standard.",
+    "evidence": "Taylor Wimpey plc is a UK national housebuilder operating across England, Scotland, and Wales, with a small operation in Spain. Group completions dropped from 14,154 homes in 2022 to 10,848 in 2023 and ~10,400 in 2024 as mortgage borrowing costs surged. Operating profit dropped ~50% from £923M in 2022 to £470M in 2023, with operating margins falling from 20.9% to ~13.4% and ROCE retreating from 25.1% to ~11.8% (and further into single digits in 2024). The company holds a large strategic landbank (~80,000 plots) requiring substantial capital tied up through planning cycles, and faces hundreds of millions in building safety and cladding remediation obligations. It possesses no structural pricing power over mortgage rate swings or planning system delays."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "UBER",
+  "ticker": "UBER",
+  "universe": "us",
+  "company": "Uber Technologies, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Ground Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Two-sided liquidity network effects across Mobility and Delivery. Demonstrated pricing power via take rate expansion (Mobility take rate expanded to ~28-29%) while platform trips reached 13.6B in FY2025. Tangible ROIC expanded to >20% (24.9% in FY2025) and GAAP ROIC reached 16.1%. Primary erosion threats: autonomous vehicle disintermediation and regulatory reclassification of gig drivers.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Uber has achieved scale profitability as a global two-sided mobility toll booth, its long-term competitive advantage period faces severe terminal disruption headwinds from autonomous vehicle (AV) commercialization (Macrotrend 1). Autonomous vehicle developers and fleet operators (e.g. Waymo, Tesla Cybercab) threaten to disintermediate Uber's network or capture the majority of fleet economics. Additionally, persistent regulatory and legislative pressure regarding gig-driver employment classification (Macrotrend 2) creates ongoing structural margin and operating model risks.",
+    "evidence": "FY2025 revenue reached $52.0B (+18% YoY) with Gross Bookings of $193.5B (+19% YoY) across 13.6B trips. Operating income expanded to $5.57B (10.7% operating margin) and free cash flow reached $9.8B (operating cash flow $10.1B). Tangible ROIC reached 24.9% in FY2025 (GAAP ROIC 16.1%). However, 10-year historical GAAP ROIC median is depressed (7.1% over 5 years) due to massive pre-2023 cash burn. Long-term runway is heavily truncated by AV robotaxi networks (Waymo scaling rapidly across US metros, Tesla developing proprietary ride-hailing app) which directly threaten Uber's core driver-rider network effect."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

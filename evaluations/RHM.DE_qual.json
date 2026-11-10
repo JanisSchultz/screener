@@ -1,0 +1,30 @@
+{
+  "id": "RHM.DE",
+  "ticker": "RHM",
+  "universe": "eu",
+  "company": "Rheinmetall",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant European artillery munitions and combat vehicle manufacturer. Command of certified 155mm production lines, propellants (Nitrochemie), and Leopard/Boxer components provides formidable pricing power backed by a €60B+ order backlog.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (6=N, REJECT). Europe's land defense champion with dominant artillery munitions share, but multi-year FCF conversion falls short of the 80% threshold (~70% multi-year) due to heavy working capital expansion, long-cycle project inventories, and major factory capex.",
+    "evidence": "Multi-year FCF conversion 2018-2023 averaged ~69.5% of net income (below the 80% hurdle), impacted by substantial inventory builds and capex for ammunition manufacturing capacity. Net debt reached €1.24B in 2024. High defense backlog (€60B+) requires continuous heavy capital absorption."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

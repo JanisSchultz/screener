@@ -1,0 +1,30 @@
+{
+  "id": "TDY",
+  "ticker": "TDY",
+  "universe": "us",
+  "company": "Teledyne Technologies Incorporated",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched switching costs and mission-critical design-in lock-in across aerospace (Teledyne Controls avionics certified on Boeing/Airbus), defense (ITAR-restricted FLIR thermal imaging and threat detection gimbals), and marine research (Teledyne Marine subsea interconnects and acoustic Doppler profilers). Qualification barriers and high cost of failure relative to component expense protect gross margins (stable at 42.5%-43.6% over 10 years) and generate high tangible operating ROIC (63.9% in FY25). Primary erosion threats stem from Asian low-cost CMOS/thermal sensor commoditization in commercial imaging and technological shifts in defense toward attritable autonomous drone sensors.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Teledyne maintains entrenched switching costs in aerospace flight data and defense electronics, over 50% of revenue is derived from Digital Imaging, which faces terminal commoditization headwinds from low-cost Asian sensor manufacturers, short tech hardware lifecycles, and anemic organic volume growth (0-2% across 2023-2025). The business relies on continuous debt-funded M&A roll-ups ($10.8B goodwill/intangibles load) rather than an organic reinvestment runway. Baseline CAP of 15 years is haircut by -5 years to 10 years, failing the 15-year threshold.",
+    "evidence": "Multi-cycle financial track record: Revenue grew from $2,149.9M in FY16 to $6,115.4M in FY25, but organic growth has stagnated at 0-2% (FY23 reported sales +3.2%, FY24 +0.6%, FY25 +7.9% driven primarily by inorganic contributions from Qioptiq, Micropac, and TransponderTech alongside the 2021 FLIR integration). Capital efficiency: GAAP ROIC has been permanently depressed to sub-9% levels post-FLIR (FY21: 7.19%, FY22: 7.54%, FY23: 8.55%, FY24: 7.60%, FY25: 7.93%; 5-year median 7.60%), reflecting $10,787.7M of goodwill and intangibles on $10,513.9M in equity. Tangible ROIC remains elevated at 63.9% (FY25) due to minimal physical asset intensity. Cash generation & balance sheet: FCF conversion is strong at 104.9% (FY25 FCF of $1,074.0M vs Net Income of $894.8M) with capex of $117.3M (1.9% of sales). Net debt is $1,672.9M ($2,025.3M debt less $352.4M cash), representing 1.87 years of Net Income, and EBIT interest coverage is 19.3x ($1,149.8M EBIT / $59.6M interest). Disruption & competitive failure: Commercial infrared and machine vision sensors face intensifying price deflation and commoditization from Chinese wafer-level packaging manufacturers (e.g. InfiRay, Guide Sensmart, Hikmicro), while military doctrine is shifting toward cheap, attritable drone sensors. Anemic organic volume growth and serial M&A dependency cap the competitive advantage period at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FTS.CA",
+  "ticker": "FTS",
+  "universe": "ca",
+  "company": "Fortis",
+  "country": "Canada",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Physically unreplicable transmission and distribution networks across North America (ITC Holdings, UNS Energy, FortisBC, FortisAlberta). Regulated rate bases provide contractually guaranteed cost-of-service pricing power. Erosion threats include regulatory lag, authorized ROE compressions, and rising cost of capital.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT; g6_default N). Highly respected utility steward with 50+ consecutive years of dividend growth, but burdened by structural utility capital intensity. LT debt of CAD 30.7B against CAD 1.7B net income (17.9x leverage) and interest coverage of 2.59x fail fortress balance sheet hurdles, relying perpetually on debt markets and equity dilution to finance CAD 26B+ 5-year capital plans.",
+    "evidence": "Rate base of ~CAD 42B delivers stable 5.8% median ROIC (FY22: 5.2%, FY23: 5.9%, FY24: 5.8%, FY25: 5.9%). FY25 capex of CAD 6,234M heavily exceeds D&A of CAD 2,057M and operating cash flow of CAD 4,062M, requiring continuous external capital raises (~30% debt, ~11% equity). LT debt of CAD 30,723M vs net income of CAD 1,714M yields LT debt / NI of 17.9x (hurdle <= 4.0x). EBIT of CAD 3,832M over interest expense of CAD 1,478M yields interest coverage of 2.59x (hurdle > 5.0x). Reliance on capital markets violates Munger freedom from the kindness of strangers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

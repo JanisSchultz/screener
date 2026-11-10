@@ -1,0 +1,30 @@
+{
+  "id": "GPN",
+  "ticker": "GPN",
+  "universe": "us",
+  "company": "Global Payments",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Merchant integrations and ISV partnerships provide localized switching costs, but returns on capital are deeply sub-hurdle (GAAP ROIC 3-5%, 10Y median 8.5%) following debt/goodwill-heavy mega-acquisitions (TSYS). Primary erosion threats include severe commoditisation of merchant acquiring, ongoing market-share loss to API-first unified commerce platforms (Adyen, Stripe) and vertical POS systems (Toast, Clover), and lack of pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Legacy merchant acquirer facing severe commoditisation from modern tech platforms (Adyen, Stripe, Toast). Historical capital efficiency fails the Munger hurdle (GAAP ROIC 3-5%, 10-year median 8.5% vs 12% required) burdened by massive goodwill from the $21.5B TSYS mega-merger. Lacks pricing power above inflation as take rates face continuous competitive pressure.",
+    "evidence": "GAAP ROIC has averaged only 3-5% from 2020 to 2025, and 10-year median ROIC is 8.5%, well below the 12% cost of capital hurdle. The $21.5B TSYS acquisition in 2019 saddled the balance sheet with over $25B in goodwill and acquired intangibles, permanently depressing return on invested capital. In core merchant acquiring, Global Payments has suffered continuous market share erosion and pricing pressure from modern unified commerce leaders (Adyen, Stripe) and specialized vertical SaaS providers, eliminating pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

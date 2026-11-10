@@ -1,0 +1,30 @@
+{
+  "id": "MCK",
+  "ticker": "MCK",
+  "universe": "us",
+  "company": "McKesson",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Co-leads the indispensable 90%+ US pharmaceutical distribution oligopoly (~33% share) alongside Cencora and Cardinal Health, augmented by The US Oncology Network (2,600+ providers). Operating model functions as a vital toll booth with fee-for-service contracts and proprietary workflow integration (iKnowMed EHR) creating high switching costs. Empirical proof: Operating ROIC sustainably >50-100% on negative operating working capital, EBIT doubled from $2.49B (FY19) to $6.21B (FY25), and operating margins expanded despite massive throughput. Primary erosion threats: Regulatory scrutiny over oncology practice consolidation, PBM contract disputes, and biosimilar margin compression.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential co-leader of the US drug distribution oligopoly and dominant community oncology platform. Insulated from AI disruption and demographic aging acts as a powerful secular volume tailwind. Exemplary capital allocation under CEO Brian Tyler: pruned lower-margin European operations, settled opioid litigation, and retired ~50% of outstanding shares since FY16. Outstanding cash conversion (FCF/NI >130% 5Y average) and pristine balance sheet with 25x interest coverage and net debt of just 0.54x net income; negative book equity is purely an artifact of FCF-funded share buybacks and non-cash litigation charges. [5-10Y g: US pharma/specialty volume 4.0% + oncology/biopharma mix 2.0% + manufacturer fee price 1.0% - regulatory/biosimilar margin drag 0.5% + net share repurchases 3.0%]",
+    "evidence": "FY16-FY25 revenue expanded from $198.5B to $403.4B with FY25 EBIT reaching $6.21B and Net Income of $4.76B. Exceptional cash generation with FY25 Owner FCF of $5.47B (FCF conversion 115% in FY25, 5Y average >130%) on minimal capex requirements ($436M, ~0.1% of sales). Diluted share count reduced from ~230M in FY16 to ~116M in FY25, propelling Owner EPS from $25.00 (FY16 peak) and $8.04 (FY19) to $40.73 in FY25 (10Y CAGR 10.3%, 5Y CAGR >25%). Balance sheet is exceptionally robust with $3.98B cash against $6.53B total debt, yielding net debt of $2.55B (0.54x Net Income) and EBIT/interest coverage of 25.1x ($6.21B EBIT vs $247M interest expense). Nationwide opioid settlement is fully accrued with structured payout obligations easily absorbed by annual operating cash flows exceeding $6B."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

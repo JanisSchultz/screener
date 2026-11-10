@@ -1,0 +1,30 @@
+{
+  "id": "PFE",
+  "ticker": "PFE",
+  "universe": "us",
+  "company": "Pfizer Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pfizer possesses a formidable proprietary patent estate, extensive global clinical trial infrastructure, and commercial distribution scale. However, it fails empirical proof of moat: 10-year median GAAP ROIC is 6.5%-8.5%, consistently below the 12% hurdle outside the unrepeatable 2021-2022 COVID-19 windfall. Primary erosion threats include an impending $17B+ patent cliff by 2030 across core blockbusters (Eliquis, Vyndaqel, Ibrance), statutory price caps via Medicare IRA negotiations (Eliquis 56% negotiated discount in 2026), and severe balance sheet capital bloat from the $43B Seagen acquisition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Multi-cycle median GAAP ROIC of 6.5%-8.5% falls far short of the 12% hurdle outside the temporary 2021-2022 pandemic windfall. Structural patent expirations through 2030 across Eliquis, Vyndaqel, and Ibrance, combined with Medicare IRA price cuts and a heavily leveraged balance sheet ($64B debt following the $43B Seagen buyout), prevent compounding at world-class returns.",
+    "evidence": "10-year median GAAP ROIC is 6.5%-8.5% (dossier reports 8.5%; normalized pre-COVID 2018-2020 at 4.0%-5.7%, post-COVID 2023 at 0.5%, 2024 at 5.9%, 2025 at 6.5%). Following peak COVID-19 product revenues in 2022 ($100B+), revenues normalized to $63.6B in 2024 and $62.6B in 2025. Total debt increased to ~$64B following the $43B acquisition of Seagen. Annual FCF (~$9.1B-$9.8B in 2024-2025) is nearly fully absorbed by ~$9.2B in annual dividend commitments, severely constraining internal deleveraging and incremental high-ROIIC reinvestment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LOW",
+  "ticker": "LOW",
+  "universe": "us",
+  "company": "Lowe's",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Home Improvement Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "#2 position in the US big-box home improvement duopoly behind Home Depot, backed by $86B-$92B purchasing scale, supply-chain density, private-label depth, and physical store/distribution reach for bulky and urgent building materials. Historical 10Y median ROIC is 28.5% with FY2026 trailing ROIC of ~24.8%-26.8% (though optically elevated by $(9.9B)-$(14.2B) shareholders' deficit from buybacks) and 11.2%-12.5% operating margins. Fails Gate 3b on autonomous pricing power >= inflation and recent incremental returns: #2 price-follower with a DIY-heavy mix facing transparent SKU price competition from Home Depot, Amazon, and regional chains plus commodity pass-through dynamics in lumber/building supplies. In FY2024-2026, inflation-adjusted pricing/volume power stalled (FY2026 comparable sales guided flat after +0.6% Q1 and +0.2% Q2) while GAAP operating margin compressed from 12.5% (FY2024) to 11.8% (FY2025) to 11.2% guidance (FY2026E), and ~$10B of 2025 Pro wholesale/installation M&A (ADG >$1B; FBM $8.8B) diluted margins with flat-to-lower GAAP EBIT ($10.47B FY24 vs ~$10.30B FY26E).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT – G3 Moat & Pricing). Although Lowe's passes Gates 1-2 as an essential US home-maintenance retailer and holds #2 scale economies in the home-improvement duopoly (3a = Scale economies shared), it lacks autonomous pricing power >= inflation and exhibits deteriorating incremental returns. Heavily DIY-skewed and trailing Home Depot in Pro share, Lowe's acts largely as a retail price-follower on cross-shopped tools/appliances and a pass-through merchant on commodity building materials. Amid sticky inflation, comparable sales have stalled (FY2026 guidance cut to flat after +0.6% Q1 and +0.2% Q2) while GAAP operating margins compressed from 12.5% (FY2024) to 11.8% (FY2025) to 11.2% guidance (FY2026E), with ~$10B of debt-funded 2025 Pro acquisitions (ADG and FBM) diluting margins and failing to lift GAAP EBIT above FY2024 levels.",
+    "evidence": "Financial Track Record & Cash Conversion: FY2024 net sales $83,674M, GAAP operating income $10,466M (12.51% margin), net earnings $6,957M, operating cash flow $9,625M less CapEx $1,927M = ~$7,698M FCF (~111% conversion). FY2025 (ended Jan 30, 2026) net sales $86,286M, GAAP operating income $10,153M (11.77% margin), net earnings $6,654M, non-GAAP FCF ~$7.7B (~116% conversion). FY2026 guidance (updated post-Q2 after Q1 +0.6% comps on $23.1B sales and Q2 +0.2% comps on $26.0B sales): ~$92.0B sales (down from $92B-$94B), flat comps (down from flat to +2%), 11.2% GAAP operating margin (11.6% adjusted), ~$1.6B net interest expense, ~$11.75 GAAP EPS ($12.25 adjusted), and up to $2.5B CapEx. Capital Efficiency & Pricing Power: Workbook 10Y median ROIC is 28.5% and 2026 trailing ROIC hovers near ~24.8%-26.8%, though book invested capital is shrunk by shareholders' deficit ($(14,231)M in FY2024; $(9,917)M in FY2025) from prior buybacks. Pricing power is constrained by #2 DIY-heavy positioning behind Home Depot, cross-retailer price transparency, housing turnover lock-in, and commodity pass-through dynamics, yielding flat nominal FY2026 comps and ~130 bps of GAAP margin compression since FY2024. M&A, Capital Allocation & Balance Sheet: Seeking catch-up penetration in the $250B Pro market, Lowe's deployed ~$10B in 2025 on Artisan Design Group (>$1B, mid-2025; builder interior finishes installation) and Foundation Building Materials ($8.8B cash, closed Oct 2025 via $9.0B bridge facility and debt; >370 interior building product branches), diluting operating margins and lifting long-term debt (excl. current) from $32,901M (FY24) to $37,490M (FY25) — 5.63x FY25 net earnings, with FY26E GAAP EBIT/interest coverage tightening to ~6.4x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CDW",
+  "ticker": "CDW",
+  "universe": "us",
+  "company": "CDW Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "CDW leverages scale economies shared across procurement and distribution, aggregating >100,000 SKUs from 1,000+ technology OEMs (Cisco, Apple, Microsoft, Dell, Lenovo) to serve >250,000 enterprise and public sector customers. However, it operates as a pass-through intermediary with thin gross margins (~21.7%-21.9%) and low operating margins (~6.4%-6.8%). It completely lacks independent pricing power >= inflation, as standardized hardware and software licenses are easily price-shopped across rival VARs (TD SYNNEX, Insight, SHI) or procured direct from OEMs and hyperscaler cloud marketplaces.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). CDW operates as an IT solutions provider and value-added reseller (VAR) connecting technology OEMs with corporate and public sector clients. While it achieves scale economies in procurement and efficient working-capital turnover (supporting a 10Y median ROIC of ~16%), it completely lacks independent pricing power >= inflation. Gross margins (~21.8%) and operating margins (~6.5%) reflect pass-through distribution economics dependent on OEM vendor rebates and competitive RFP bidding. Customers can easily switch to rival VARs (TD SYNNEX, Insight, SHI) or procure directly from OEMs and hyperscaler cloud marketplaces, leaving CDW without an enduring economic moat under Munger's criteria.",
+    "evidence": "Multi-cycle financials: Net sales were $23.7B in FY22, $21.4B in FY23, $21.0B in FY24, and $22.4B in FY25. GAAP operating margins remained compressed at 6.8% (FY23), 6.8% (FY24), and 6.4% (FY25), with net income of $1,104M, $1,078M, and $1,067M respectively. Gross margins hover at 21.7%-21.9%. While working-capital velocity supports a 10-year median ROIC of ~16.2%, CDW operates as a price-taking middleman with no structural ability to raise prices above inflation without volume attrition. Disintermediation from direct OEM sales forces (Dell, Apple) and hyperscaler cloud marketplaces (AWS, Azure) poses an ongoing secular headwind. Total debt stood at ~$5.6B at year-end FY25."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

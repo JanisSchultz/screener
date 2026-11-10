@@ -1,0 +1,43 @@
+{
+  "id": "PGR",
+  "ticker": "PGR",
+  "universe": "us",
+  "company": "Progressive Corporation",
+  "price": 227.77,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": null,
+    "fin_note": "Premier US auto insurer operating an unassailable scale-economies-shared engine powered by proprietary telematics data (Snapshot) and dynamic state-level pricing agility. Operating ROIC of 23.32% reflects pristine tangible underwriting capital efficiency (surging to 38-41% in 2024-2025). Fortress balance sheet holds $0 long-term debt, $14.50B EBIT yielding 52.16x interest coverage against $278M minor financing costs, and exceptional 202.3% FCF conversion via insurance float expansion. 5-10Y g of 9.0% conservatively incorporates 5.5% policy-in-force growth, 2.5% rate segmentation, 1.0% commercial auto expansion, -1.5% through-the-cycle combined ratio normalization drag from the current 87.4% to long-term target, and 1.5% capital returns. At $227.77, trades deeply Below PAR at 11.85x peak Owner EPS vs 19.25x PAR Multiple (38.5% discount to $370.13 PAR Value), delivering a compelling 22.3% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 19.228,
+    "current_multiple": 11.85,
+    "par_multiple": 19.25,
+    "par_value": 370.13,
+    "percent_vs_par": -0.3846,
+    "status": "Below PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0218,
+    "expected_irr_5y": 0.2229,
+    "market_implied_cap": 9.2,
+    "moat_runway_margin": 5.8,
+    "market_implied_growth": -0.0211,
+    "growth_margin_of_safety": 0.1111
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 52.16,
+    "interest_cov_ok": true,
+    "fcf_conversion": 2.0228,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

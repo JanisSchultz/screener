@@ -1,0 +1,30 @@
+{
+  "id": "HSY",
+  "ticker": "HSY",
+  "universe": "us",
+  "company": "Hershey Company (The)",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Iconic century-old confectionery brands (Reese's, Hershey's, Kisses, Kit Kat US license) command ~45% US chocolate confectionery market share and entrenched checkout-lane front-end shelf placement that competitors cannot economically displace. Proven pricing power with multi-year high single-digit price realizations absorbing historic cocoa shocks; 5-year median GAAP ROIC of 21.2% well above the 12% hurdle. Primary erosion threats include GLP-1 weight-loss adoption reducing impulse snacking, extreme raw cocoa input volatility, and retailer private-label encroachment in salty snacks.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates into funnel. Dominant US confectionery franchise with ~45% chocolate market share and iconic Lindy brands (Reese's, Hershey's, Kisses). Strong pricing power has consistently countered severe agricultural cost shocks. Balance sheet remains conservative with net debt/EBITDA ~2.0x, interest coverage >7.5x even at cyclical cocoa troughs, and FCF conversion >100%. [5-10Y g: snack volume 1.0% + brand pricing 2.0% + product mix 1.0% - input cost drag 0.5% + share repurchases 1.5%]",
+    "evidence": "10-year average ROIC exceeds 20% (5-year median GAAP ROIC ~21.2%), remaining resilient through economic cycles and troughing near ~10% only during unprecedented 2024-2025 cocoa commodity spikes. Operating cash flow of $1.7B-$1.9B reliably generates FCF conversion >100% of net income ($1.7B-$1.9B FCF vs $1.1B-$1.8B NI). FY2025 operating income of $1.44B covers net interest expense of $190M by 7.6x (17.5x in FY2024), and net debt (~$3.6B) is repayable in ~2.0 years of normal owner earnings. Reese's remains the #1 confection brand in the US, supporting dominant front-end retail checkout placement and category-leading gross margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

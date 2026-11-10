@@ -1,0 +1,43 @@
+{
+  "id": "CHD",
+  "ticker": "CHD",
+  "universe": "us",
+  "company": "Church & Dwight",
+  "price": 111.31,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (tangible ROIC >100% neutralizing accumulated brand acquisition goodwill and negative tangible equity). Peak Owner EPS confirmed at $3.7171 with 127.2% FCF conversion and zero non-cash spikes. Forward 5-10Y g of 6.5% supported by essential household daily consumption (+1.5% volume), regular inflation pricing (+1.5%), premium brand mix & tuck-ins (+2.0%), and disciplined buybacks (+1.5%). Sound balance sheet with net debt of $1.80B serviceable within ~2.4 years of net income and 11.3x interest coverage. Current multiple of 29.95x sits above through-the-cycle PAR multiple of 24.66x (PAR value $91.65, +21.5% premium)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.7171,
+    "current_multiple": 29.95,
+    "par_multiple": 24.66,
+    "par_value": 91.65,
+    "percent_vs_par": 0.2146,
+    "status": "Above PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0109,
+    "expected_irr_5y": 0.0353,
+    "market_implied_cap": 24.3,
+    "moat_runway_margin": -4.3,
+    "market_implied_growth": 0.1444,
+    "growth_margin_of_safety": -0.0794
+  },
+  "health_checks": {
+    "net_debt_years": 2.99,
+    "net_debt_ok": true,
+    "interest_coverage": 11.32,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2718,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DHI",
+  "ticker": "DHI",
+  "universe": "us",
+  "company": "D. R. Horton",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Cyclical merchant homebuilder selling big-ticket, mortgage-rate-sensitive discretionary homes that buyers readily defer during interest rate spikes or economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). While shelter is a basic necessity, purchasing a newly built single-family home from a merchant homebuilder is a big-ticket, mortgage-rate-sensitive, deferrable cyclical purchase rather than a non-deferrable necessity or entrenched everyday habit. Elevated mortgage rates and affordability constraints in FY25–FY26 forced D.R. Horton to rely on sales incentives and rate buydowns, shrinking consolidated revenue from $36.80B (FY24) to $33.0B (FY26), compressing home sales gross margins from 23.5% (FY24) to 19.5% (Q4 FY26), and cutting net income from $4.76B to $2.9B. Fails the Munger 'likely to spend' standard.",
+    "evidence": "Business & Segments: Largest US homebuilder by volume (IPO 1992), operating across core Homebuilding (84,202 homes closed and $30.6B home sales revenue in FY26 ended Sep 30, 2026), Rental operations ($1.2B revenue; 2,073 single-family rental homes and 2,737 multi-family units sold in FY26), majority-owned Forestar lot development (13,545 lots sold in FY26), and Financial Services. Historical & Recent Cycle Performance: Dossier 10Y median ROIC of 18.2% (v1 workbook), yet multi-year results show classic housing cyclicality. Consolidated revenue fell from $36.80B in FY24 to $34.25B in FY25 (-6.9%) and $33.0B in FY26 (-4%), while net income declined from $4.76B ($14.34 diluted EPS) in FY24 to $3.59B in FY25 and $2.9B ($10.11 diluted EPS) in FY26 (FY26 ROE 12.2%, ROA 8.2%). Home sales gross margin compressed from 23.5% in FY24 to 21.5% in FY25, 20.7% in Q3 FY26, and 19.5% in Q4 FY26 (with early FY27 guided to 18.0%–18.5%) amid mortgage rate buydowns, sales incentives, pricing adjustments, and warranty/litigation costs, alongside $91.4M in Q4 FY26 rental inventory impairments. Cash Flow & Capital Structure: Operating cash flow was $2.19B in FY24, $3.42B in FY25 (~$3.28B FCF), and $3.51B in FY26. Ended FY26 with $2.12B cash and restricted cash ($7.2B total liquidity) and 20.8% debt-to-total-capital (subsequently repaying $600M of 1.3% senior notes in Oct 2026; FY25 notes payable $5.97B vs. $2.99B cash), while returning $4.1B in FY26 via $3.6B buybacks (24.0M shares) and $513.3M dividends. Despite conservative leverage and national scale, demand and pricing remain hostage to mortgage affordability and deferrable buyer spending."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

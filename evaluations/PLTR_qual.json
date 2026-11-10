@@ -1,0 +1,30 @@
+{
+  "id": "PLTR",
+  "ticker": "PLTR",
+  "universe": "us",
+  "company": "Palantir Technologies Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deeply embedded defense (Gotham/Maven/TITAN) and commercial ontology (Foundry/AIP) workflows create high switching barriers. Verified by 2023-2025 GAAP ROIC expanding from ~14% to >60%, net dollar retention >115%, and strong pricing power on contract expansions.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While defense clearances (Gotham/Maven) and ontology workflows create high switching costs, Palantir's commercial AI platform operates in Tier 3 enterprise software with high fade rates and fast-evolving competition from hyperscalers (Microsoft, AWS, Google) and data platforms (Databricks, Snowflake), capping structural runway at 10 years. Downstream governance (Class F 49.999999% founder voting lock) and extreme historical SBC dilution further violate Munger partnership standards.",
+    "evidence": "Palantir scaled rapidly following AIP introduction, with FY2024 revenue reaching $2.87B (+29% YoY) and FY2025 revenue hitting $4.48B (+56% YoY). GAAP profitability was achieved in FY2023 ($210M net income), expanding to $468M in FY2024 and $1.63B in FY2025 (36% net margin). Free cash flow reached $1.1B in FY2024 and $2.27B in FY2025 (51% FCF margin). Balance sheet is debt-free with $7.2B in cash, equivalents, and US Treasuries as of FY2025. ROIC expanded from negative in 2020-2022 to ~14% in 2023 and >60% in 2025. Despite these stellar recent financial results, the company fails the 15+ year Competitive Advantage Period (CAP) threshold under the Mauboussin persistence framework (Tier 3 enterprise software base rate persistence p=0.75-0.79, fade f=0.21-0.25). Enterprise software application platforms face rapid obsolescence and technological evolution over a 15-year horizon. Furthermore, Palantir exhibits egregious corporate governance flaws: co-founders Alex Karp, Peter Thiel, and Stephen Cohen maintain permanent ~50% voting control via Class F variable-voting shares regardless of economic share sales, entirely disenfranchising outside public shareholders."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

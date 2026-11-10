@@ -1,0 +1,30 @@
+{
+  "id": "FIX",
+  "ticker": "FIX",
+  "universe": "us",
+  "company": "Comfort Systems USA, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized off-site modular MEP fabrication capacity, proprietary BIM modeling, and scarce skilled trades labor pool provide project execution differentiation in high-density data centers. However, the business is fundamentally a mechanical and electrical subcontractor operating under competitive bid and fixed-price contracts without customer switching costs, locking-in contracts, or pricing power through full construction cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While Comfort Systems USA possesses specialized mission-critical HVAC, piping, and modular prefabrication engineering know-how for hyperscale data centers and advanced manufacturing, contracting is inherently a project-based, competitively bid business. The company generates the majority of revenues from fixed-price contracts and lacks unilateral pricing power across the full business cycle, as demonstrated by operating losses and low single-digit margins (0-3%) during construction downcycles (2010-2014). Recent record margins and ROIC reflect acute cyclical labor scarcity and an AI data center infrastructure boom rather than an unassailable structural economic moat.",
+    "evidence": "Long-term financial history reveals significant cyclicality: operating margins were -3.4% in 2011 and averaged 3-6% from 2012-2019 before surging to 10-12%+ during the post-2022 AI data center hyper-cycle (net income expanded from $323M in FY23 to $522M in FY24 and $1.02B in FY25 on $9.10B revenue, with backlog reaching $11.9B). While 10Y median ROIC stands at 24.2% and balance sheet is conservative ($62M LT debt in 2024), contracting revenues are primarily fixed-price without inflation-linked escalators or structural customer switching lock-in. Customers (hyperscalers, general contractors) face zero disincentive to rebid future phases across competing MEP contractors (EMCOR, Limbach, Cupertino Electric) once cyclical labor scarcity eases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LGEN.GB",
+  "ticker": "LGEN",
+  "universe": "eu",
+  "company": "Legal & General",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Bulk annuity contracts are awarded through competitive price bidding with zero subsequent pricing power on in-force books. Asset management (LGIM) faces structural passive fee compression, while institutional PRT requires massive capital strain and long-duration credit underwriting.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Zero pricing power & PRT bidding commoditization, REJECT). While L&G is a UK pension risk transfer titan, bulk annuities are competitively tendered balance-sheet commitments with zero post-issuance pricing power to absorb inflation or longevity shocks, while LGIM faces relentless passive asset-management fee compression.",
+    "evidence": "PRT transactions require substantial upfront capital strain (matching gilts and long credit). Once contracted, annuity cash flows are legally committed without pricing discretion. LGIM asset management margins are compressed by passive indexation competition. Capital-intensive balance sheet prevents true unassisted compounder status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

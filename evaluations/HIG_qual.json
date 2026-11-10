@@ -1,0 +1,30 @@
+{
+  "id": "HIG",
+  "ticker": "HIG",
+  "universe": "us",
+  "company": "Hartford (The)",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Small-commercial market leadership (#2 in US) anchored by proprietary digital agency integration (ICON platform) embedded into independent agents' workflows, yielding high distribution switching costs. Pricing power demonstrated by consistent renewal rate increases matching or exceeding loss-cost trends while holding underlying combined ratios under 90%. Primary erosion threats include broker platform consolidation, direct digital disintermediation, and escalating catastrophe frequency.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While The Hartford maintains a leading small-commercial P&C franchise and disciplined underwriting with sub-90% underlying combined ratios, the business faces severe, unhedged terminal macrotrend headwinds from accelerating climate catastrophe loss frequency/severity (severe convective storms, unmodeled secondary perils) and persistent social litigation inflation in casualty lines. Cyclical underwriting dynamics and commodity risk-transfer characteristics cap the competitive advantage period at 5 years, failing the 15-year hurdle.",
+    "evidence": "2024 total combined ratio of 89.9% (underlying 87.9%); 2025 total combined ratio of 88.3% (underlying 88.5%). Group Benefits core earnings margin stable at 8.2% in both 2024 and 2025. Company-wide Core ROE of 16.7% (2024) and 19.4% (2025), with net income ROE reaching 19.9% and 22.0%. 10-year median ROIC ~11.5%. Solid balance sheet with senior debt rated A- (S&P) / A3 (Moody's) / a (AM Best), financial strength A+ / Aa3 / AA-, and debt-to-capital around 21%. However, exposure to increasing convective storm losses and social inflation in commercial liability limits multi-decade persistence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

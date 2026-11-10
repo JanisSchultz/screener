@@ -1,0 +1,30 @@
+{
+  "id": "VONN.CH",
+  "ticker": "VONN",
+  "universe": "eu",
+  "company": "Vontobel",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Swiss wealth management brand and structured products platform provide local presence, but lack an insurmountable structural edge. Active institutional asset management suffers persistent net outflows (CHF -2.7B to -2.9B annually) under passive fee pressure, eliminating pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Mid-sized Swiss wealth and active asset manager suffering continuous institutional outflows from passive alternatives. High cost-to-income ratio (~74%) and sub-hurdle returns on capital (ROE ~11-12%) fail the proof-of-moat test.",
+    "evidence": "ROE of 11-12% through the cycle with high cost-to-income ratio of ~74%. Institutional asset management experienced persistent net outflows (CHF -2.9B in 2024 and CHF -2.7B in 2025) reflecting fee compression and loss of market share to passive indexing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

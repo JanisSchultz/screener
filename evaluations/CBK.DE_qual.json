@@ -1,0 +1,30 @@
+{
+  "id": "CBK.DE",
+  "ticker": "CBK",
+  "universe": "eu",
+  "company": "Commerzbank",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Serves approximately one-third of Germany's Mittelstand corporate clients and 11M retail customers. However, operates in Germany's notoriously fragmented, structurally unprofitable banking market dominated by state-subsidized Sparkassen and non-profit cooperative banks (Volksbanken). Multi-cycle ROE has averaged just 2-5% (2018: 3.1%, 2019: 2.0%, 2020: -10.4%, 2021: 1.5%, 2022: 4.8%), completely failing the 12% capital efficiency hurdle. Lacks pricing power in commoditized corporate credit and deposit gathering.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/ROE < 12%, REJECT). Second-largest private German lender heavily focused on corporate Mittelstand lending and retail banking. Structurally trapped in Germany's triple-pillar banking system where non-profit public and cooperative banks depress industry net interest margins. Multi-cycle ROE averaged 2-5% over 2018-2022 (peaking at ~7.8% in 2024), falling far short of the 12% hurdle. Lacks pricing power and faces takeover uncertainty from UniCredit.",
+    "evidence": "Historical ROE track record: 3.1% (2018), 2.0% (2019), -10.4% (2020), 1.5% (2021), 4.8% (2022), 7.0% (2023), 7.8% (2024). 7-year median ROE of ~3.1% is among the lowest of major European banks. Cost-to-income ratio historically exceeded 75-80%, reflecting high German labor/restructuring costs and inability to re-price commoditized corporate lending."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

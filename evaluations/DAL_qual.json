@@ -1,0 +1,30 @@
+{
+  "id": "DAL",
+  "ticker": "DAL",
+  "universe": "us",
+  "company": "Delta Air Lines, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "True discretionary big-ticket or deferrable cyclical; passenger air travel is highly cyclical, discretionary, and deferrable during economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (gate_2: 'N', REJECT). Categorized as a true discretionary big-ticket or deferrable cyclical under the Munger framework. Demand is highly cyclical and deferrable during recessions, ticket prices are aggressively shopped across digital aggregators, and corporate travel remains vulnerable to remote work/video collaboration substitution. Even on downstream metrics, Delta's 10-year median ROIC of ~8.5% falls well short of the 12% compounder hurdle.",
+    "evidence": "Delta Air Lines is a legacy network carrier operating passenger and cargo air transportation across domestic and international routes. Despite top-tier operational execution and high-margin American Express loyalty remuneration (~$7B in 2024), core passenger revenue (~85% of total) remains a capital-intensive, cyclical commodity exposed to severe demand shocks (e.g. 2020 pandemic operating loss of $12.4B), heavy recurring fleet capex ($3B-$5B annually), and volatile jet fuel and union labor expenses. 10-year median ROIC is ~8.5%, trailing the 12% cycle hurdle, with adjusted net debt of ~$14B-$18B."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

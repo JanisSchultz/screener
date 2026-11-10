@@ -1,0 +1,30 @@
+{
+  "id": "AJG",
+  "ticker": "AJG",
+  "universe": "us",
+  "company": "Arthur J. Gallagher & Co.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": ">90% client retention; insurance brokerage commissions scale with P&C premium inflation, providing high switching costs in middle-market commercial accounts.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Relies on continuous debt issuance to fund programmatic broker rollups, violating the peace-of-mind fortress balance sheet standard: $12.1B long-term debt ($10.7B net debt) on $1.49B net income equals 7.2 years Net Debt (>4.0y ceiling), and EBIT/Interest is 3.9x (<5.0x baseline).",
+    "evidence": "Arthur J. Gallagher is a premier middle-market commercial insurance broker with >90% client retention and strong tangible returns, but fails Gate 6 due to structural leverage and serial debt-funded M&A rollups. Net debt of $10.7B ($12.1B debt less $1.4B cash) against $1.49B TTM net income requires 7.2 years of owner earnings to retire, significantly exceeding the 4.0-year ceiling. Interest coverage of 3.9x ($2,510M EBIT / $639M interest expense) breaches the >5.0x threshold. In August 2025, AJG closed the $13.5B+ acquisition of AssuredPartners funded by heavy debt and equity issuance, pushing goodwill and intangibles to $33.3B against $23.3B equity (negative tangible book value of -$10.0B). With management signaling $12B in additional M&A capacity through 2026-2027 and continuing regular bolt-ons (5 acquisitions in Q3 2026 alone), the business permanently relies on debt capital markets to fuel growth, triggering the disqualifying serial rollup red flag under Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

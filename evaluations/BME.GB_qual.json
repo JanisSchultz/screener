@@ -1,0 +1,30 @@
+{
+  "id": "BME.GB",
+  "ticker": "BME",
+  "universe": "eu",
+  "company": "B&M European Value Retail",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "General merchandise discount variety retailer with substantial discretionary, seasonal, and easily deferrable product assortment.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Operates a discount variety retail chain heavily exposed to discretionary general merchandise, seasonal goods, and impulse purchases that are easily forgone during economic downturns. Lacks essential staple demand or entrenched everyday habit lock-in.",
+    "evidence": "Discretionary non-grocery categories (homeware, seasonal, toys, DIY) represent a large portion of B&M's sales and the vast majority of its gross profit. Like-for-like sales volatility and customer spending pullbacks during inflationary periods demonstrate that the assortment is deferrable rather than an essential everyday necessity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

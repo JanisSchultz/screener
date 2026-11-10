@@ -1,0 +1,30 @@
+{
+  "id": "HBAN",
+  "ticker": "HBAN",
+  "universe": "us",
+  "company": "Huntington Bancshares",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Midwest branch network density and core checking account inertia create modest customer switching costs. However, banking products are largely commoditized and rate-sensitive. Return on capital consistently falls short of the 12% hurdle (median ROIC 9.2%, ROE ~10%, ROA ~0.95%). The bank possesses zero independent pricing power over loan yields or deposit funding costs across interest rate cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 9.2% < 12%, lack of pricing power, REJECT). Regional commercial bank operating as a price-taker on both lending spreads and deposit betas. Midwest branch density and Fair Play banking provide customer inertia but fail to generate sustainable returns above the 12% hurdle across economic cycles.",
+    "evidence": "10-year median ROIC of 9.2% fails the 12% capital efficiency threshold. Multi-cycle ROE has averaged 9.5-10.5% with ROA below 1.0% (0.92-0.98% in FY2023-2025). Commercial and consumer loans face aggressive spread competition against money-center peers and private credit. Deposit beta pressures and wholesale funding requirements prevent pricing ahead of inflation. Inherent ~10-12x balance sheet leverage and asset-liability duration mismatch present structural risks typical of fractional-reserve banking."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

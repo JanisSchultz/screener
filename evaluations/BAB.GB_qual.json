@@ -1,0 +1,30 @@
+{
+  "id": "BAB.GB",
+  "ticker": "BAB",
+  "universe": "eu",
+  "company": "Babcock International",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sole-source UK naval dockyard operator (Devonport) with long-term Partnering Agreements supporting continuous nuclear submarine maintenance and refits.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Strategic UK naval dockyard operator, but rejected at Gate 6 due to razor-thin operating margins (4-5%), chronic fixed-price contract disputes/write-downs (>£300M in cumulative losses on Type 31 frigates), and volatile cash conversion.",
+    "evidence": "Devonport dockyard provides critical naval support, but contract execution volatility is chronic: Type 31 frigate program incurred >£300M in cumulative losses and required a formal Dispute Resolution Process with the UK MoD. Statutory operating margins remain compressed at 4-5%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

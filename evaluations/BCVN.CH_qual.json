@@ -1,0 +1,30 @@
+{
+  "id": "BCVN.CH",
+  "ticker": "BCVN",
+  "universe": "eu",
+  "company": "Banque Cantonale Vaudoise",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant regional banking franchise in the Canton of Vaud supported by cantonal majority ownership (67%) and an explicit cantonal guarantee on retail deposits, creating a highly sticky, low-cost deposit base and ~30%+ local market share. Pricing power demonstrated by resilient net interest margins through interest rate cycles and consistent 11.0-12.5% ROE.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Banque Cantonale Vaudoise operates as a regional cantonal bank legally restricted to the Canton of Vaud, capping geographic expansion runway in a mature, saturated economy. In accordance with the Mauboussin persistence framework, commercial fractional-reserve banking sits in Tier 4 with rapid return fade (high fade rate f=0.29-0.30). Furthermore, net interest margins face terminal margin pressure from digital banking alternatives and Swiss National Bank rate cycle compression, limiting competitive advantage longevity below the required 15-year hurdle.",
+    "evidence": "Multi-cycle ROE has averaged 11.0-12.5% (12.5% in 2023, 11.5% in 2024, 11.0% in 2025) with a steady cost-to-income ratio of 53-56%. While BCVN possesses strong local solvency (CET1 >18%) and low historical credit loss provisions, its statutory public mandate binds operations to Canton de Vaud, eliminating external reinvestment runways. Fractional-reserve asset base (>CHF 55B on ~CHF 4B equity) exposes earnings power to central bank rate regimes and commoditized mortgage competition."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

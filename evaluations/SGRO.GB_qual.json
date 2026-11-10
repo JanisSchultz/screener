@@ -1,0 +1,30 @@
+{
+  "id": "SGRO.GB",
+  "ticker": "SGRO",
+  "universe": "eu",
+  "company": "SEGRO",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Captured +30-55% open-market rent uplifts on 5-year UK urban reviews across 2021-25, well ahead of cumulative inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Irreplaceable London urban and Slough data-centre land with real pricing power, but REIT leverage (9x OE) and ~5-7% unlevered returns fail Gate 6. [5-10Y g: urban rent reversion & EU CPI 3.5% + data-centre development spread net of equity dilution 2% - bond refinancing drag 1%]",
+    "evidence": "Unlevered property yields ~4-5%, GAAP ROIC median 1.5%, lt_debt £4,951m vs net income £551m (9.0x debt/OE). High payout ratio structurally limits retained cash flows, requiring constant debt roll-overs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

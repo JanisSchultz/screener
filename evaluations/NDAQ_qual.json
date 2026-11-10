@@ -1,0 +1,30 @@
+{
+  "id": "NDAQ",
+  "ticker": "NDAQ",
+  "universe": "us",
+  "company": "Nasdaq, Inc.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable tollbooth on Nasdaq-100 index licensing (QQQ ad-valorem AUM fees) and proprietary market data (TotalView), combined with extreme switching costs in mission-critical regulatory compliance software (Verafin AML/fraud, Adenza AxiomSL/Calypso) with CPI+ annual escalators and negative tangible invested capital.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "1. Broken metric: Gate 6 balance sheet fails quantitative baseline with LT debt / NI of 4.80x ($8,573M LT debt vs $1,788M NI; net debt $7,969M / NI of 4.46x) and 5Y median GAAP ROIC suppressed at 9.74% due to $20.9B goodwill/intangibles from the $10.5B debt-financed Adenza acquisition in late 2023. 2. Intact moat proof: Irreplaceable tollbooth and high switching cost moat completely intact, demonstrated by Nasdaq-100 (QQQ) index AUM growth, >55% recurring ARR ($2.7B+ across Verafin, Calypso, and AxiomSL), negative tangible capital, and >113% Owner FCF conversion ($1,824M FCF in FY2025). 3. Fix catalyst and kill-switch: Rapid organic deleveraging funded by $1.8B+ annual FCF has already reduced net leverage from 4.7x EBITDA at close to ~3.1x by mid-2025, triggering an S&P rating upgrade to BBB+ and tracking <3.0x into 2026. Kill-switch: Leverage failing to drop below 3.3x EBITDA by end of FY2026 or any new debt-financed mega-M&A before hitting target leverage (<2.5x).",
+    "note": "Calamity pass (Gate 6 balance sheet leverage/ROIC failure post-Adenza). World-class financial market infrastructure and mission-critical regulatory/compliance software tollbooth. Intact pricing power across Nasdaq-100 (QQQ) index licensing, proprietary market data, and Verafin/Adenza workflows. Rapid deleveraging from $1.8B+ Owner FCF with net debt down to ~3.1x EBITDA in 2025 and S&P upgrade to BBB+. [5-10Y g: anti-financial crime software ARR 3.0% + index licensing 2.5% + trading and listing volume 1.0% + net share repurchases 1.0%]",
+    "evidence": "EBIT compounded from $836M (2016) to $2,331M (2025); Net Income from $106M (2016) / $729M (2017) to $1,788M (2025). Owner FCF grew to $1,824M in 2025 with 113.3% FCF conversion and capex <3.5% of sales. Over 55% of revenue is recurring ARR ($2.7B+), driven by anti-financial crime (Verafin) and capital access platforms. Tangible ROIC consistently >100% due to negative tangible invested capital. Following the $10.5B Adenza acquisition in 2023, debt spiked to $10.16B (~4.7x EBITDA), but rapid cash generation reduced debt to $8,573M by FY2025, bringing net leverage to ~3.1x EBITDA and earning an S&P credit rating upgrade to BBB+. Interest coverage is 6.35x ($2,331M EBIT / $367M interest)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PKN.PL",
+  "ticker": "PKN",
+  "universe": "eu",
+  "company": "Orlen",
+  "country": "Poland",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country Poland is outside the approved core developed Western market framework (in_market == 'N'); company is heavily state-controlled (~49.9% Polish State Treasury stake) with history of political intervention, state-mandated fuel price caps, and politically directed M&A.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need / Rule of Law & Governance, REJECT). Headquartered and listed in Poland (in_market == 'N'). While Orlen operates a domestic monopoly across refining, natural gas distribution (via PGNiG), and fuel retail, it is ~49.9% owned by the Polish State Treasury and historically functions as an arm of state industrial and social policy rather than a shareholder compounder. Subject to state-directed mergers, political board turnover, pre-election artificial fuel price freezes (autumn 2023), and heavy regulatory extraction.",
+    "evidence": "Orlen dominates Polish refining (Płock refinery), fuel retailing (3,100+ stations across Poland, Germany, Czechia, Slovakia, Hungary, and Lithuania), natural gas transmission/sales (PGNiG acquisition), and petrochemicals (Olefins III expansion). However, the Polish State Treasury holds a controlling ~49.9% equity stake, which has repeatedly overridden minority shareholder interests. Examples include: (1) political fuel discounting ahead of the October 2023 Polish parliamentary elections, causing nationwide fuel shortages and margin compression; (2) politically directed, dilutive state-sponsored mega-mergers with Grupa Lotos and PGNiG; (3) massive multi-billion-zloty cost overruns and subsequent write-downs on the Olefins III petrochemical complex; and (4) regulatory windfall levies and gas price compensation mechanisms controlled by the Polish government. Capital allocation is subordinated to national geopolitical and electoral objectives."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

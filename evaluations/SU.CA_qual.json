@@ -1,0 +1,30 @@
+{
+  "id": "SU.CA",
+  "ticker": "SU",
+  "universe": "ca",
+  "company": "Suncor Energy",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Suncor controls an integrated mine-to-pump oil sands empire (Millennium, Steepbank, Fort Hills, Syncrude), upgraders, and the nationwide Petro-Canada retail network. Despite physical scale and operational improvements under new leadership, Suncor possesses zero pricing power over benchmark crude oil or refined fuel prices.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). Suncor is a capital-intensive integrated oil producer subject to volatile commodity pricing and operational hazards. Through-cycle 10-year median ROIC falls well short of the 12% moat hurdle, with negative returns during downturns.",
+    "evidence": "ROIC collapsed into negative territory during 2015-2016 and again in 2020 (-2.5% to -5%), forcing a 55% dividend cut in 2020. Even with the 2022 windfall pricing spike, Suncor's 10-year through-cycle median ROIC is ~7-9%, well below the 12% threshold, confirming cyclical commodity price-taker status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

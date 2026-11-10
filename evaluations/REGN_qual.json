@@ -1,0 +1,30 @@
+{
+  "id": "REGN",
+  "ticker": "REGN",
+  "universe": "us",
+  "company": "Regeneron Pharmaceuticals",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary VelocImmune mouse genetics platform provides world-class antibody discovery and sustained high ROIC (10Y median ~18.4%), but commercial portfolio suffers from structural patent cliff vulnerability and lack of durable pricing power. Key blockbuster Eylea faces active biosimilar erosion (US franchise net sales fell from $5.97B in FY24 to $4.4B in FY25 despite Eylea HD conversion), and primary US patent on Dupixent expires in late 2027. Statutory IRA Medicare price negotiations, mandatory inflation rebates, and PBM formulary pressure prevent above-inflation pricing.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing, REJECT). While Regeneron is an elite biotechnology innovator powered by its proprietary VelocImmune engine, cash flows are concentrated in two mega-blockbusters subject to inevitable patent expiration: Eylea is actively suffering biosimilar price and volume erosion (US franchise sales down >25% in FY25), and Dupixent faces primary US composition patent expiration in late 2027. Biopharmaceutical commercialization lacks secular pricing power >= inflation due to irreversible patent cliffs, statutory Medicare price negotiation under the IRA, and PBM rebate pressure.",
+    "evidence": "Multi-cycle capital efficiency has been strong with a 10-year median ROIC of ~18.4% and substantial free cash flow ($3.66B in FY24, ~$4.1B in FY25; ~26% FCF margin). Balance sheet is a fortress with $18.8B+ in cash and marketable securities against $2.71B in total debt. However, FY25 revenue was flat at $14.3B (+1% YoY) as U.S. Eylea franchise sales contracted sharply from $5.97B in FY24 to $4.4B in FY25 due to biosimilar aflibercept launches (Pavblu, Yesafili), despite Eylea HD growth to $1.6B. Dupixent global sales ($17.8B in FY25 via Sanofi partnership) face US composition-of-matter patent expiration in October 2027 and EU expiration in 2029. Patent expiration permanently impairs unit drug economics and eliminates above-inflation pricing power, failing Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

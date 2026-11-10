@@ -1,0 +1,30 @@
+{
+  "id": "COF",
+  "ticker": "COF",
+  "universe": "us",
+  "company": "Capital One",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Consumer Finance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity consumer credit card lending and retail banking lack structural switching costs or defensible barriers. Consumers face near-zero switching friction among cards. Historical 5-year median ROIC of ~11.2% fails the 12% hurdle. Pricing power is absent as loan APRs and interchange fees are constrained by intense competition, funding costs, and regulatory caps (CFPB late fees, interchange scrutiny). Primary erosion threats include credit cycle downturns, elevated net charge-offs in near-prime/subprime books, and rewards competition from mega-banks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a = None, 3b = N, REJECT). Capital One operates in commoditized consumer credit cards, auto lending, and retail deposit banking where consumers face minimal switching friction. Historically generates sub-hurdle capital efficiency (10-year median ROIC ~11.2% < 12%) and possesses zero pricing power over credit card APRs and interchange fees, which are constrained by fierce bank competition and regulatory caps (CFPB late fees). Credit card loan portfolios are exposed to severe cyclical credit losses and subprime/near-prime delinquency shocks.",
+    "evidence": "10-year median ROIC of 11.2% fails the 12% hurdle. Capital One generates the majority of its revenue from Credit Cards (~65%), with remainder from Consumer Banking (auto loans, deposits ~25%) and Commercial Banking (~10%). Despite acquiring Discover Financial Services in May 2025 to gain a proprietary payment network and Durbin-exempt debit routing, the core business remains fundamentally that of a consumer lender exposed to cyclical credit risk and high net charge-offs (often 4-6%+ during downturns). Consumers face negligible switching costs and actively churn cards for rewards and teaser APRs. Pricing power is non-existent, subject to interest rate spread compression and regulatory caps on fees."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

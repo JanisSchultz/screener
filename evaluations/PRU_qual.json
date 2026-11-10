@@ -1,0 +1,30 @@
+{
+  "id": "PRU",
+  "ticker": "PRU",
+  "universe": "us",
+  "company": "Prudential Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Prudential benefits from moderate switching friction in deferred annuities (surrender charges) and institutional retirement recordkeeping, its economic returns are sub-hurdle (10Y median ROIC ~7.8% vs >=12% hurdle). In-force life insurance and annuity contracts offer zero unilateral pricing power to offset inflation, and PGIM faces secular asset management fee compression.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Life insurance and annuity underwriting products are commoditized financial contracts subject to severe price competition and interest rate sensitivity. Historical returns on capital fail the 12% threshold (10-year median ROIC is ~7.8%, with GAAP ROE oscillating between 8% and 12%). PRU lacks pricing power on in-force guaranteed liabilities, and PGIM faces ongoing fee compression.",
+    "evidence": "10-year median ROIC of 7.8% (spanning -3.4% in 2022 to ~10.8% peak) consistently falls short of the 12% compounder hurdle. GAAP ROE averaged 8.3% in 2023, 9.7% in 2024, and ~11.7% in 2025. In-force guaranteed life and annuity liabilities cannot be repriced to match inflation, creating negative real spreads during inflationary shocks. PGIM ($1.4T AUM) is pressured by active-to-passive migration and fee erosion. Capital is locked by statutory solvency requirements."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HER.IT",
+  "ticker": "HER",
+  "universe": "eu",
+  "company": "Hera",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Protected municipal concession monopolies in integrated water management, waste collection/treatment, and gas distribution in Emilia-Romagna and northern Italy. Operating tangible ROIC exceeds 25%, protected by regional municipal shareholding and ARERA regulatory tariffs.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance sheet leverage & interest coverage, REJECT). High-quality Italian multi-utility with excellent municipal management, but net debt of €3.44B represents 7.4x net income (€464M), well above the 4.0x limit. Interest coverage of 4.94x fails the 5.0x fortress requirement, with heavy ongoing capex (€1.03B vs €590M D&A) absorbing operational cash flow.",
+    "evidence": "Net debt of €3.44B (€4.29B debt less €845M cash) against FY2025 net income of €464.3M results in 7.4x leverage. EBIT of €891.3M vs interest expense of €180.5M yields 4.94x interest coverage, below the 5.0x threshold. Regulated returns structurally capped at 6-8%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IP.IT",
+  "ticker": "IP",
+  "universe": "eu",
+  "company": "Interpump Group S.p.A.",
+  "country": "Italy",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global leader in high-pressure plunger pumps and power take-offs with ~50% market shares and 22-24% EBITDA margins.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). World leader in high-pressure plunger pumps, but 75% of sales derive from cyclical hydraulics where commercial vehicle electrification poses a long-term threat to traditional mechanical transmission PTOs.",
+    "evidence": "Interpump maintains strong EBITDA margins (22-24%) and dominant niche positions, but capital intensity in hydraulics and goodwill from 40+ acquisitions depress GAAP ROIC toward 9-11%. Commercial vehicle powertrain transition away from diesel engines creates terminal runway friction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

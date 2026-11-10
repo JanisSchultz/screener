@@ -1,0 +1,30 @@
+{
+  "id": "ING.PL",
+  "ticker": "ING",
+  "universe": "eu",
+  "company": "ING Bank Śląski",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country Poland is outside approved rule-of-law Western developed markets universe (in_market == 'N'), accompanied by recurring sovereign/regulatory intervention in retail banking.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need, REJECT). Primary listing country Poland is outside the approved rule-of-law Western developed market screener universe (in_market == 'N'). The Polish banking market also suffers from recurring unpredictable political interventions (mandated credit holidays, special bank taxes).",
+    "evidence": "Listed on the Warsaw Stock Exchange with primary operations solely in Poland. Despite operational efficiency under ING Groep ownership (75%), Polish retail banking has been repeatedly subjected to government-mandated mortgage credit holidays (wakacje kredytowe), CHF foreign currency mortgage legal liabilities, and an aggressive sector asset levy."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

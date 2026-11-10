@@ -1,0 +1,30 @@
+{
+  "id": "APTV",
+  "ticker": "APTV",
+  "universe": "us",
+  "company": "Aptiv",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Parts & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Barrier: Multi-year OEM program qualifications, functional safety certifications, precision connector tooling, and embedded RTOS (Wind River) create switching friction within an active 5-7 year vehicle platform lifecycle. Empirical failure: 10-year median ROIC is 8.5% (well below the 12% GAAP ROIC hurdle), FY2025 GAAP operating margin compressed to 5.8% ($165M GAAP net income after a $648M goodwill impairment), and Tier-1 OEM master contracts impose annual price-downs rather than inflation-plus pricing power. Erosion threats: Concentrated OEM buyer leverage and dual-sourcing on platform re-bids, OEM vertical insourcing of software-defined vehicle stacks, ADAS silicon disintermediation by Nvidia/Qualcomm/Mobileye, and aggressive Chinese EV OEM/Tier-1 competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Although multi-year OEM program awards, safety electronics, and Engineered Components connectors create narrow intra-program switching costs, concentrated automotive OEM buyers extract recurring annual price-downs and re-tender next-generation platforms, keeping 10-year median ROIC at 8.5% (<12% hurdle) and compressing FY2025 GAAP operating margin to 5.8% alongside a $648M goodwill impairment. The April 2026 spin-off of Electrical Distribution Systems (Versigent) and 2024 Motional JV stake reduction (50% to 15%) trim capital drags, but do not qualify for Calamity Tier because sub-hurdle pricing power in Tier-1 auto supply is structural and remaining ADAS/software-defined vehicle operations face severe unhedged Gate 4 disintermediation from chipmakers and OEM insourcing (CAP <= 10).",
+    "evidence": "10-year median ROIC is 8.5% (roic_median 0.085). Consolidated FY2024 net sales were $19,713M with GAAP operating income of $1,842M (9.3% margin), adjusted operating income of ~$2.4B (12.0% margin), operating cash flow of $2,446M, capex of $830M, FCF of ~$1.62B, and net debt of ~$6.8B following a $3.0B accelerated share repurchase. FY2025 net sales were $20,398M (+3% GAAP), with GAAP operating income declining to $1,184M (5.8% margin) and GAAP net income of $165M (weighed down by a $648M non-cash goodwill impairment and restructuring/separation costs), adjusted operating income of $2,461M (12.0% margin), operating cash flow of $2,185M, FCF of ~$1.5B, year-end cash of ~$1.9B, and total debt of ~$7.6B (with $300M senior notes repurchased in 2025). In 2024, Aptiv restructured Motional AD LLC (reducing equity from 50% to 15% and eliminating future cash funding obligations). On April 1, 2026, Aptiv completed the tax-free spin-off of its Electrical Distribution Systems segment into Versigent PLC (NYSE: VGNT; 1 VGNT share per 3 APTV shares), retaining Advanced Safety & User Experience and Engineered Components Group (~$3.3B quarterly continuing GAAP revenue in Q2 2026, total debt reduced toward ~$5.4B). Despite solid operational FCF conversion, multi-cycle GAAP returns below 12%, goodwill impairment, and structural OEM price-down dynamics confirm the absence of durable pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

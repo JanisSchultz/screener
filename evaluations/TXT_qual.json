@@ -1,0 +1,30 @@
+{
+  "id": "TXT",
+  "ticker": "TXT",
+  "universe": "us",
+  "company": "Textron Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket capital purchases (business jets, specialized vehicles) deferrable in recessions.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Textron is heavily exposed to cyclical and discretionary big-ticket corporate and consumer purchases through its Textron Aviation segment (Cessna Citation business jets, Beechcraft turboprops) and Industrial segment (E-Z-GO golf carts, specialized commercial vehicles). In economic contractions and recessions, corporate jet purchases and fleet expansions are easily deferred or cancelled. Textron lacks the non-discretionary essentiality or entrenched daily habit required of a compounding franchise, as further evidenced by sub-hurdle multi-cycle ROIC of 5-8%.",
+    "evidence": "Textron Inc. operates four primary segments: Textron Aviation (~40% of FY2025 revenue at $5.96B), Bell (~29% at $4.28B), Industrial (~22% at $3.21B), and Textron Systems (~8% at $1.25B). Business jets (Cessna Citation) and specialized vehicles represent classic big-ticket, deferrable cyclical capital purchases rather than essential functional necessities or high-frequency everyday habits. Historical capital efficiency demonstrates persistent vulnerability to cyclicality: GAAP/operating ROIC was 4.4% in 2020, 6.4% in 2021, 6.4% in 2022, 7.6% in 2023, 5.7% in 2024, and 6.4% in 2025 (10-year median ROIC ~9.5%), consistently failing the 12% compounder hurdle across all cycle stages."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

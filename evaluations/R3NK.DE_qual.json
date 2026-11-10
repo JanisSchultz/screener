@@ -1,0 +1,30 @@
+{
+  "id": "R3NK.DE",
+  "ticker": "R3NK",
+  "universe": "eu",
+  "company": "RENK",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Customized mission-critical tank transmissions (e.g. Leopard 2, Puma) create high engineering switching costs, but bargaining power rests with prime system integrators (KNDS, Rheinmetall) and sovereign defense agencies, resulting in a 5-year median GAAP ROIC of 10.44% (sub-12% hurdle).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b=N, REJECT). Specialized defense transmission manufacturer fails the 12% multi-cycle GAAP ROIC hurdle (median 10.44%, 7.1-7.9% in 2022-2023) and lacks pricing power against prime contractors and defense ministries.",
+    "evidence": "4-year median GAAP ROIC is 10.44% (2022: 7.9%, 2023: 7.1%, 2024: 13.0%, 2025: 15.2%). Triton PE carve-out left high net debt (€362M) relative to pre-2024 earnings. Pricing power is bounded by OEM primes (KNDS, Rheinmetall)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

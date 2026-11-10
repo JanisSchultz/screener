@@ -1,0 +1,30 @@
+{
+  "id": "WMT",
+  "ticker": "WMT",
+  "universe": "us",
+  "company": "Walmart",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled scale economies shared: $713B+ top-line volume creates unbeatable purchasing leverage over suppliers, passing cost savings to consumers via Everyday Low Prices (EDLP). High-margin retail media (Walmart Connect, $6.4B run-rate) and marketplace fees increasingly subsidize core retail pricing. Proof: 5-year median GAAP ROIC of 18.9% and operating ROIC of 25.7%. Primary erosion risks include Amazon digital delivery density, deep discounter expansion (Aldi), and distribution center wage inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant omnichannel grocery and general merchandise retailer benefiting from scale economies shared. Secular insulation across all 5 macrotrends driven by supply chain robotics automation, private label resilience, and high-margin retail media growth. Fortress balance sheet with net debt / net income ~1.1x and >12x interest coverage. [5-10Y g: traffic and volume 2.0% + pricing/inflation pass-through 1.5% + retail media and marketplace mix 1.5% - digital supply chain capex drag 0.5% + net share repurchases 1.0%]",
+    "evidence": "Multi-cycle compounding demonstrated by 10-year revenue growth from $486B to $713B and peak owner EPS rising from $1.46 (FY16) to $2.73 (FY25). 5-year median GAAP ROIC is 18.9% (operating ROIC 25.7%), well above the 12% hurdle. Cash generation is robust with FCF conversion of 115.5% (FY25 OCF of $41.6B easily funding $26.6B capex). Balance sheet leverage is modest with $34.6B long-term debt offset by $10.7B cash against $21.9B net income (net debt repayable in ~1.1 years; interest coverage of 12.86x). Prudent capital allocation: disciplined exits of lower-return international units (Asda, Seiyu) while scaling high-growth omnichannel assets (Flipkart, PhonePe, Walmart Connect, Symbotic automation partnership)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

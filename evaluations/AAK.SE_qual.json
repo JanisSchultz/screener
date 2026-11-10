@@ -1,0 +1,30 @@
+{
+  "id": "AAK.SE",
+  "ticker": "AAK",
+  "universe": "eu",
+  "company": "AAK",
+  "country": "Sweden",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Recipe-critical customer co-development of specialty vegetable oils and fats creates high switching costs for packaged food manufacturers; proved by 18.6% median ROIC and steady EBIT/kg expansion.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (N, REJECT). Exemplary Swedish co-development specialty fats leader with 18.6% median ROIC, but structural working-capital absorption restricts multi-year FCF conversion to just 43% (negative FCF in FY22 and FY25), well below the 80% hurdle, alongside post-cocoa-spike margin normalization risk.",
+    "evidence": "4-year cumulative Owner FCF of SEK 5,036M on GAAP Net Income of SEK 11,681M yields 43.1% FCF conversion due to commodity inventory working-capital swings. FY22 and FY25 produced negative FCF (-SEK 891M and -SEK 20M). 2024 peak EPS of SEK 13.57 was boosted by historic cocoa butter replacement windfalls."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

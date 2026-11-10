@@ -1,0 +1,30 @@
+{
+  "id": "CVX",
+  "ticker": "CVX",
+  "universe": "us",
+  "company": "Chevron Corporation",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scale economies in low-cost resource basins (Permian Basin unconventional, Tengizchevroil, Gorgon/Wheatstone LNG, and 30% Stabroek block offshore Guyana via the Hess acquisition) provide upstream cost advantage, but crude oil, natural gas, and refined fuels are global undifferentiated commodities where Chevron possesses zero pricing power and spot margins cannot be protected against commodity downcycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Commodity Price-Taker, REJECT). Premier integrated supermajor with top-tier assets, but sells undifferentiated commodities with zero pricing power above global clearing prices. 10-year median GAAP ROIC of 10.5% fails the >=12% cycle-tested hurdle.",
+    "evidence": "10-year median ROIC is ~10.5%, with returns fluctuating from ~2.7-5.5% in the 2020 oil slump to 17-20% at the 2022 commodity peak, before normalizing to ~5-10% in 2024-2025. Upstream earnings account for ~75-80% of net income, exposing total profitability directly to volatile Brent/WTI prices. Successfully closed the $53B Hess Corporation acquisition in July 2025 after favorable ICC arbitration ruling against ExxonMobil/CNOOC, securing a 30% stake in Guyana's Stabroek block and high-quality Bakken shale assets. While balance sheet is strong with modest net debt and disciplined capital returns, the business remains an unhedged commodity price-taker unable to achieve persistent >=12% returns on invested capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

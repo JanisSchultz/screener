@@ -1,0 +1,30 @@
+{
+  "id": "CAE.CA",
+  "ticker": "CAE",
+  "universe": "ca",
+  "company": "CAE",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Civil aviation simulator installed base and pilot training network provide customer switching costs, but commercial airline procurement bargaining power limits pricing power on equipment sales. Defense and security segment suffers from lumpy fixed-price defense contract execution and write-downs. Multi-cycle GAAP ROIC averages 5-7.5%, well below the 12% Gate 3b hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Capital-intensive flight simulation and training model generates sub-hurdle multi-cycle ROIC (5-7.5% vs 12% hurdle). Airline customer bargaining power on equipment sales and periodic fixed-price defense contract write-downs prevent economic moat compounding.",
+    "evidence": "CAE's multi-cycle GAAP ROIC persistently averages 5-7.5%, failing the minimum 12% Gate 3b hurdle. Heavy capital intensity required for full-flight simulators, cyclical commercial airline capacity cuts, and material write-downs on legacy fixed-price defense contracts demonstrate lack of pricing power and sub-par capital efficiency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

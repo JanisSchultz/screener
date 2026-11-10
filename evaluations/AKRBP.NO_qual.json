@@ -1,0 +1,30 @@
+{
+  "id": "AKRBP.NO",
+  "ticker": "AKRBP",
+  "universe": "eu",
+  "company": "Aker BP",
+  "country": "Norway",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pure commodity price-taker with zero pricing power over globally set Brent crude oil and European natural gas benchmark prices.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Rejected \u2013 G3 Moat & Pricing). Low-cost, highly efficient Norwegian Continental Shelf producer, but a pure commodity price-taker with zero pricing power over Brent crude oil and natural gas benchmarks.",
+    "evidence": "While operational costs are low via the Alliance model, product is a 100% fungible global commodity with volatile realized prices. Capital expenditure remains heavily exposed to offshore development cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

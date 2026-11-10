@@ -1,0 +1,30 @@
+{
+  "id": "CME",
+  "ticker": "CME",
+  "universe": "us",
+  "company": "CME Group Inc.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable liquidity network effect and multi-asset clearing cross-margining create massive capital efficiencies for market participants. Exclusive licenses for S&P 500 and Nasdaq futures, alongside dominant SOFR and Treasury complexes, confer sustained pricing power demonstrated by regular rate-per-contract fee hikes and stable ~65% operating margins. Entrant threats (FMX/LCH) lack the multi-asset open interest depth required to offset CME margin efficiencies.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global exchange hegemon operating the supreme financial toll booth across interest rates, equity indexes, energy, and agricultural derivatives. Irreplaceable liquidity network effects, exclusive benchmark licenses (S&P 500, Nasdaq), and multi-asset clearing cross-margining lock in institutional volume. Structurally insulated from all 5 macrotrends and a direct beneficiary of algorithmic trading, sovereign debt expansion, and market volatility. Pristine balance sheet in a net cash position with 64%+ operating margins and ~100% FCF conversion returned via regular and variable dividends. [5-10Y g: contract volume 4.0% + fee/pricing realization 1.5% + market data & cloud distribution 1.5% + capital return 0.5%]",
+    "evidence": "Multi-cycle financial excellence: FY25 revenue reached $6.52B (+6% YoY) with GAAP operating margin of 64.9% and net income of $4.07B. Operating/tangible ROIC has averaged 25.8% over 5 years (30.1% in FY25), with GAAP ROIC at 13.5%. Free cash flow conversion consistently hovers around ~100% (FY25 OCF $4.28B less capex $83.5M yields $4.10B FCF). Average daily volume set consecutive records (26.5M in FY24, 28.1M in FY25). Capital structure is pristine: $4.42B cash and equivalents against $3.42B long-term debt (net cash ~$1.0B), gross debt <0.85x net income, and interest coverage >30x. Capital allocation is exceptionally disciplined, returning substantially all FCF via quarterly base dividends and an annual variable 'fifth dividend'."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

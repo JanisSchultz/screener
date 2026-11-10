@@ -1,0 +1,30 @@
+{
+  "id": "IVZ",
+  "ticker": "IVZ",
+  "universe": "us",
+  "company": "Invesco",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "QQQ ETF franchise provides a liquidity network effect and brand recognition, but legacy active equity and multi-asset strategies suffer from persistent net outflows and relentless industry fee compression. 10-year median GAAP ROIC is 6.8% (well below the 12% hurdle) and GAAP ROIC plunged negative in 2025 due to a $1.8B intangible impairment. Invesco has zero pricing power to outpace inflation, as passive index competition forces fee yields continually downward.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 6.8% < 12%, zero pricing power, REJECT). While Invesco holds a dominant ETF franchise in the Invesco QQQ Trust with strong liquidity network effects, its broader business is burdened by secular active mutual fund outflows, value-destructive legacy M&A (e.g. OppenheimerFunds write-downs), and relentless industry fee compression. 10-year median GAAP ROIC of 6.8% fails the 12% hurdle, and net management fee yields continue to decline across the cycle.",
+    "evidence": "10-year median GAAP ROIC is ~6.8%, failing the 12% hurdle. In 2025, GAAP operating margin fell to -10.9% and net income was severely negative due to a $1.8B non-cash intangible asset impairment (primarily goodwill/intangibles from the OppenheimerFunds acquisition). While Free Cash Flow was positive ($1.12B in 2024 and $1.44B in 2025), total debt remains substantial at ~$9.78B at year-end 2025. Invesco faces structural secular headwinds from passive fee compression and active fund outflows, negating pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

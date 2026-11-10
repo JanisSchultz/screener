@@ -1,0 +1,30 @@
+{
+  "id": "HLT",
+  "ticker": "HLT",
+  "universe": "us",
+  "company": "Hilton Worldwide",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Lodging demand relies on deferrable discretionary leisure travel and cyclically cuttable corporate travel/conferences (Hotels, Resorts & Cruise Lines) rather than an essential necessity or high-frequency everyday habit; revenue fell 54.4% and EBIT turned negative (-$418M) in FY2020.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Despite an asset-light franchise and management fee model, Hilton sits in Hotels, Resorts & Cruise Lines and remains fundamentally tied to discretionary leisure vacations and cyclical corporate travel budgets that are readily deferred in downturns (FY2020 revenue -54.4% to $4,307M, EBIT -$418M, NI -$715M; FY2025 comparable RevPAR stalled at +0.4%). Lodging is neither a non-deferrable functional necessity nor a high-frequency daily habit under Munger's standard.",
+    "evidence": "Business & Segment Model: Pure-play asset-light global hotel franchisor and manager (>9,150 properties at FY2025 year-end; 240M+ Hilton Honors loyalty members; 2017 spin-offs of Park Hotels & Resorts and Hilton Grand Vacations). Core profits stem from management, franchise, and licensing fees (franchise/licensing fees $815M in Q3 2026; management and franchise fees +9.5% YoY) earned as a percentage of third-party hotel room revenues, alongside pass-through cost reimbursements and minimal owned/leased properties. System expansion remains strong with 6.7% net unit growth in FY2025 (~97,000 gross room openings) and a 6.0%-7.0% NUG target in 2026 backed by a record 543,100-room pipeline as of Q3 2026. Multi-Cycle Demand & Financials (FY2016-2026): Revenue rose from $6,576M (FY2016) to $9,452M (FY2019), collapsed -54.4% to $4,307M in FY2020 (EBIT -$418M, NI -$715M, GAAP ROIC -5.15%), and rebounded to $8,773M (FY2022), $10,235M (FY2023), $11,174M (FY2024), and $12,039M (FY2025, +7.7% YoY; EBIT $2,693M, NI $1,457M). System-wide currency-neutral RevPAR decelerated to +0.4% in FY2025 before accelerating to +5.8% YoY in Q3 2026 (75.8% occupancy, +3.9% ADR; FY2026 RevPAR guidance 4.0%-4.5%; FY2026 Adjusted EBITDA guidance $4,060M-$4,080M). Capital Efficiency & Cash Flow: 5-year median GAAP ROIC is 24.42% (FY2021-FY2025 range: 12.05%-35.32%), with 113.7% multi-year FCF conversion (FY2025 Owner FCF $1,858M on OCF $2,129M, CapEx $101M, SBC $170M; cumulative FY2022-FY2025 Owner FCF $6,709M vs. GAAP NI $5,388M) and 10.26% peak-to-peak Owner EPS CAGR ($3.95 in FY2019 to $6.44 in FY2025; FY2017 $1,084M NI excluded as non-cash spike). Capital Allocation & Leverage: Under CEO Christopher Nassetta, capital returns (~$3.3B in FY2025; ~$3.5B FY2026 outlook, $2.9B YTD Oct 2026) have consistently exceeded Owner FCF via incremental borrowing at elevated valuation multiples (30.86x-57.51x Owner EPS), pushing long-term debt from $7,956M (FY2019) to $12,338M (FY2025, $918M cash, 8.47x LT debt/NI, 4.34x EBIT/interest) and $13,453M total debt ($12,623M net debt) at Q3 2026, while driving book equity to -$5,388M (tangible equity -$10,916M)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

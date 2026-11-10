@@ -1,0 +1,43 @@
+{
+  "id": "STE",
+  "ticker": "STE",
+  "universe": "us",
+  "company": "Steris",
+  "price": 252.3,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.2453,
+    "fin_note": "Operating ROIC of 24.53% (and tangible ROIC >25-32%) reflects the true underlying capital efficiency of STERIS infection-prevention and contract sterilization (AST) toll booths, neutralizing non-cash Cantel Medical PPA amortization. Peak Owner EPS confirmed at $9.1165 (FY2025; clean multi-cycle peak-to-peak CAGR of 13.9%). Forward 5-10Y g_implied of 9.0% is driven by 4.0% hospital procedure and AST sterilization volume, 2.5% contractual pricing power across closed-loop workflows, 1.0% high-margin bioprocessing mix, and 1.5% capital returns and tuck-in M&A, offset by -0.5% EPA regulatory compliance costs. Robust post-HuFriedy balance sheet with Net Debt/FCF of 1.51x and EBIT interest coverage of 18.15x. At $252.30, STE trades +9.50% Above PAR ($230.40 fair value at 25.27x PAR multiple) with an 8.03% expected 5Y IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.1165,
+    "current_multiple": 27.68,
+    "par_multiple": 25.27,
+    "par_value": 230.39,
+    "percent_vs_par": 0.0951,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0099,
+    "expected_irr_5y": 0.0802,
+    "market_implied_cap": 16.4,
+    "moat_runway_margin": -1.4,
+    "market_implied_growth": 0.1261,
+    "growth_margin_of_safety": -0.0361
+  },
+  "health_checks": {
+    "net_debt_years": 2.32,
+    "net_debt_ok": true,
+    "interest_coverage": 18.15,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.3563,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

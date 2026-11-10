@@ -1,0 +1,30 @@
+{
+  "id": "COR",
+  "ticker": "COR",
+  "universe": "us",
+  "company": "Cencora",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Rational 90%+ US drug distribution oligopoly protected by irreplaceable physical cold-chain logistics, regulatory licenses, and deep workflow integration with health systems and community oncology. Fee-for-service contracts and specialty distribution protect real gross profit, sustaining multi-cycle GAAP ROIC well above 50%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable US pharmaceutical distribution oligopolist handling ~one-third of domestic prescription volume with leading oncology and specialty franchises. Formidable moat rooted in physical cold-chain logistics, deep provider integration, and high switching costs. Resilient across all 5 macrotrends with demographic aging as a durable volume tailwind. Exceptional FCF conversion (>150%) and conservative net debt (<2.1x net income). [5-10Y g: rx/specialty volume 4.5% + specialty mix/acquisitions 1.5% - wholesale contract repricing drag 0.5% + share repurchases 2.5%]",
+    "evidence": "FY2025 revenue reached $321.3B with EBIT of $2.63B and Owner FCF of $3.06B, delivering FCF conversion of 167.5% of net income. 5-year median GAAP ROIC is 97.0% (operating ROIC >100%) due to rapid working capital turns and fee-for-service / specialty contracts. Oligopolistic market structure (>90% controlled by Cencora, McKesson, and Cardinal Health) prevents price wars. High-margin specialty leadership reinforced by Retina Consultants of America ($4.4B cash outlay) and OneOncology integration. Balance sheet carries $4.36B cash against $7.54B debt, yielding net debt of $3.19B (~1.0x Owner FCF), with the core Walgreens prime vendor agreement secured through 2029."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

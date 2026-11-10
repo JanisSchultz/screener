@@ -1,0 +1,30 @@
+{
+  "id": "SIGN.CH",
+  "ticker": "SIGN",
+  "universe": "eu",
+  "company": "SIG Group",
+  "country": "Switzerland",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed base of aseptic carton filling machines provides recurring sleeve demand, but #2 position behind dominant Tetra Pak and dilutive debt-funded M&A (Scholle IPN and Evergreen Asia) destroyed economic returns. Reported GAAP ROIC is 1.2% to 7.0% (5-year median 4.3%), well below the 12% hurdle, culminating in €351M non-recurring impairment charges and a net loss in 2025.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Aseptic carton filling system installed base is overshadowed by Tetra Pak scale dominance and value-destructive M&A (Scholle IPN, Evergreen Asia) that loaded balance sheet with goodwill, resulting in 5-year median GAAP ROIC of 4.3% and a €351M impairment in 2025.",
+    "evidence": "5-Year median GAAP ROIC is 4.3% (2.3% in 2022, 7.0% in 2023, 6.2% in 2024, and 1.2% in 2025), failing the 12% hurdle. Booked €350.7M in non-recurring impairments and charges in 2025, swinging to a net loss of -€87M. Long-term debt exceeds €2.0B with 2025 interest expense of €111M vs reported EBIT of €64M."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

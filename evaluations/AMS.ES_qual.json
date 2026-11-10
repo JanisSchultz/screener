@@ -1,0 +1,30 @@
+{
+  "id": "AMS.ES",
+  "ticker": "AMS",
+  "universe": "eu",
+  "company": "Amadeus",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Data Processing & Outsourced Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Commanding pricing power rooted in high customer switching barriers: airlines face catastrophic operational risk replacing Altéa PSS (reservations, inventory, departure control), while global travel agencies are locked into the two-sided GDS distribution duopoly. 5-year median GAAP ROIC is 20.6% and operating ROIC exceeds 200%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier airline IT and global travel distribution toll booth with insurmountable switching costs, fortress balance sheet (1.1x net debt/NI, 22x interest coverage), and 21% GAAP ROIC. [5-10Y g: air passenger boarded volume 4.5% + GDS booking recovery 2.0% + hospitality IT expansion 1.5% - IT capex drag 0.5% + net buyback 0.5%]",
+    "evidence": "5-year median GAAP ROIC of 20.6% and operating ROIC >200%. Multi-year Owner FCF conversion exceeds 100% (114% in FY25). Altéa PSS and Navitaire power mission-critical passenger service systems for top-tier airlines under long-term 10-15 year contracts with near-zero voluntary churn. GDS travel distribution holds >40% global share in a resilient duopoly with Sabre. Balance sheet has €976M cash against €2.45B debt with €1.80B EBIT covering interest 22x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

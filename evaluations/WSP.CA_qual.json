@@ -1,0 +1,30 @@
+{
+  "id": "WSP.CA",
+  "ticker": "WSP",
+  "universe": "ca",
+  "company": "WSP Global",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global engineering consultancy scale provides multidisciplinary breadth and complex RFP advantages, but professional services face competitive bidding, billable-rate limits, and massive M&A goodwill ($11.1B on $9.8B equity) that depresses multi-cycle GAAP ROIC to 8.7%, failing the 12% Gate 3b hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Serial engineering consultancy acquirer generates sub-hurdle multi-cycle GAAP ROIC (8.7% vs 12% requirement) due to heavy acquisition goodwill ($11.1B). Competitive hourly RFP bidding and exposure to professional billing wage inflation prevent true economic moat compounding.",
+    "evidence": "WSP Global's multi-cycle GAAP ROIC averages 8.68% (6.3% in 2022 to 10.2% in 2025), consistently below the 12.0% Gate 3b threshold. The business operates as an acquisitive roll-up in engineering and environmental consulting, accumulating $11.1B in goodwill and intangibles on $9.8B in equity. Professional services contracts are subject to competitive RFP tenders with pricing power limited to cost-plus wage adjustments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

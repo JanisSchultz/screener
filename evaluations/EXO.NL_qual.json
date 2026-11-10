@@ -1,0 +1,30 @@
+{
+  "id": "EXO.NL",
+  "ticker": "EXO",
+  "universe": "eu",
+  "company": "Exor",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Ferrari commands an exceptional luxury brand intangible moat and supreme pricing power, but on a look-through portfolio basis the asset base is heavily weighted toward cyclical automotive and industrial price-takers (Stellantis, CNH Industrial, Iveco, Philips) that suffer margin erosion and fail the 12% multi-cycle ROIC bar.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject). While Ferrari (~35-45% of GAV) is an unassailable ultra-luxury franchise, Exor's look-through economics are heavily exposed to mass automotive manufacturing (Stellantis) and cyclical agricultural/construction machinery (CNH Industrial). These holdings lack pricing power over the full cycle, suffer severe competitive and EV transition headwinds, and fail the 12% ROIC hurdle.",
+    "evidence": "Stellantis faces significant margin compression, inventory gluts, and price cutting amidst structural EV transition pressure. CNH Industrial and Iveco are capital-intensive cyclical machinery manufacturers. Look-through ROIC across the non-Ferrari portfolio remains well below the cost of capital, precluding a Quality pass under the look-through holding company standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

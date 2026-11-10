@@ -1,0 +1,30 @@
+{
+  "id": "SOF.BE",
+  "ticker": "SOF",
+  "universe": "eu",
+  "company": "Sofina",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Rejected – G1 Understandability). Belgian investment holding company heavily concentrated in unlisted venture capital funds (LP stakes) and private growth-stage technology equity (e.g. ByteDance, unlisted startups). Portfolio valuation is based on opaque internal marks and third-party fund valuations that are not verifiable from outside public financial statements.",
+    "evidence": "Sofina's net asset value is largely driven by private venture capital / growth equity commitments (Sofina Direct and Sofina Private Funds backing VC managers like Sequoia). Underlying private assets carry opaque unit economics, illiquid marks, and valuation write-down risks (as demonstrated by Byju's) that cannot be independently audited or verified from reported figures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TSCO",
+  "ticker": "TSCO",
+  "universe": "us",
+  "company": "Tractor Supply",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Other Specialty Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Rural store density and farm-savvy customer service create local convenience switching barriers in secondary/tertiary markets, but TSCO lacks structural pricing power above inflation. Passing on price increases leads directly to unit volume contractions, traffic declines, and customer cross-shopping at Walmart, dollar stores, local farm co-ops, and e-commerce (Chewy/Amazon).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT – G3 Moat & Pricing). Specialty rural lifestyle retailer with strong brand recognition and high ROIC (~14-18%), but lacks genuine pricing power above inflation. Unit volumes and transaction counts stall when prices rise, as seen in flat comparable store sales (+0.1% FY24, +1.2% FY25, -1.0% to 0% FY26 guidance) and stagnant net income plateaued at ~$1.10B across 2022-2025. Operating margins compressed to 8.0-8.3% due to rural wage inflation and SG&A pressures.",
+    "evidence": "FY2024 revenue of $14.88B and net income of $1.10B; FY2025 revenue of $15.52B and net income of $1.10B (zero net income growth across 4 consecutive years). Comp store sales moderated from pandemic highs to +0.1% in FY24, +1.2% in FY25, and guided -1.0% to flat in FY26 (Q3 2026 at +0.4%). Free cash flow conversion remains weak at ~58% in FY24 ($637M FCF / $1,101M NI) and ~68% in FY25 ($741M FCF / $1,096M NI), well below the 80% threshold due to $675M-$700M annual capex. Balance sheet carries $1.83B in long-term debt plus >$3.5B in operating lease liabilities across 2,390+ stores."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

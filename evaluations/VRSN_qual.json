@@ -1,0 +1,30 @@
+{
+  "id": "VRSN",
+  "ticker": "VRSN",
+  "universe": "us",
+  "company": "Verisign",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Verisign holds an exclusive, contractually granted monopoly over the .com and .net authoritative registry databases under agreements with ICANN and the US Department of Commerce (NTIA). Switching costs for businesses with established .com domains are prohibitively high: changing an active domain destroys inbound search/SEO equity, breaks corporate email routing, and introduces severe customer confusion and security risk. Proof of moat is demonstrated by durable operating margins of 60-68%, gross margins exceeding 85%, multi-year FCF conversion consistently >100%, and functionally infinite return on tangible invested capital on negative working capital. Primary long-term erosion risks are regulatory/political renegotiation of price cap provisions at 6-year renewals and secular plateauing of domain registration volume as internet usage shifts to mobile apps and closed platforms.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Ultimate digital toll booth administering the .com and .net authoritative registries under ICANN and NTIA agreements. Inelastic enterprise switching costs and contractual wholesale pricing power support 67%+ operating margins and >100% cash conversion. Negative accounting equity reflects immense organic cash generation deployed into share buybacks, with debt fully supported by $1B+ OCF and 14.5x interest coverage. [5-10Y g: domain volume 0.5% + contractual .com price hikes 4.0% + mix 0.0% - margin drag 0.0% + net buybacks 2.0%]",
+    "evidence": "From FY2016 through FY2025, revenue grew from $1,142M to $1,657M and operating income expanded from $687M to $1,121M, demonstrating persistent operating margin expansion from 60.1% to 67.7%. Annual capital expenditures are negligible at $23M-$53M (<3% of sales), driving Owner FCF from $616M in 2016 to $999M in 2025 with cumulative 10-year FCF conversion exceeding 100% of GAAP net income. Verisign operates with negative tangible working capital and negative book equity due to cumulative buybacks funded by organic cash flow, rather than destructive debt binges: total debt has held steady at ~$1.79B since 2017 while cumulative FCF exceeded $6.5B. Interest coverage is 14.6x ($1,121M EBIT vs $77M interest) and Net Debt / Net Income is 1.79 years, well within fortress limits. In late 2024, the NTIA Cooperative Agreement and ICANN .com Registry Agreement were successfully renewed through November 30, 2030."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

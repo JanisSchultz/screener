@@ -1,0 +1,43 @@
+{
+  "id": "KLAC",
+  "ticker": "KLAC",
+  "universe": "us",
+  "company": "KLA Corporation",
+  "price": 138.49,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Dominant semiconductor process control monopoly (~56-58% market share) with unassailable defect signature libraries and high-margin recurring service contracts (>75% renewal rate). Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC 79.76%, 5Y median GAAP ROIC 54.68%). FY2025 peak Owner EPS of .6829 confirmed clean with 86.0% FCF conversion and zero non-cash windfall spikes. 5-10Y through-the-cycle growth g_implied = 10.5% driven by 7.0% process-control intensity & service volume, 1.5% net pricing/mix, 1.0% advanced packaging/reinvestment, -0.5% China mature node drag, and 1.5% net share repurchases. Fortress balance sheet carries .65B cash vs .89B LT debt (.24B net debt = 0.88x NI), 20.71x EBIT interest coverage, and pristine peak-to-peak compounding (21.3% CAGR). At .49 (37.60x peak Owner EPS), trades Above PAR (+28.0% premium vs .20 PAR Value at 29.38x PAR Multiple), generating a 5.76% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.6829,
+    "current_multiple": 37.6,
+    "par_multiple": 29.38,
+    "par_value": 108.2,
+    "percent_vs_par": 0.2799,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0059,
+    "expected_irr_5y": 0.0576,
+    "market_implied_cap": 25.6,
+    "moat_runway_margin": -5.6,
+    "market_implied_growth": 0.2284,
+    "growth_margin_of_safety": -0.1234
+  },
+  "health_checks": {
+    "net_debt_years": 1.22,
+    "net_debt_ok": true,
+    "interest_coverage": 20.71,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.86,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

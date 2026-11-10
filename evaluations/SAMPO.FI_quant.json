@@ -1,0 +1,43 @@
+{
+  "id": "SAMPO.FI",
+  "ticker": "SAMPO",
+  "universe": "eu",
+  "company": "Sampo",
+  "price": 9.78,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.2507,
+    "fin_note": "Pure-play Nordic P&C leader (If P&C + Topdanmark + Hastings). Operating ROIC of 25.07% neutralizes acquired intangibles. Peak Owner EPS EUR 0.76 reflects normalized underwriting earning power (~81-83% combined ratio). Forward growth of 7.0% aligned with guidance (2.0% volume + 2.5% indexation + 1.5% synergies + 1.0% buybacks). Raw PAR multiple of 17.78x is capped by the 5Y cycle high guardrail at 16.07x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 0.7613,
+    "current_multiple": 12.85,
+    "par_multiple": 16.07,
+    "par_value": 12.23,
+    "percent_vs_par": -0.2006,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0357,
+    "expected_irr_5y": 0.1547,
+    "market_implied_cap": 12.0,
+    "moat_runway_margin": 3.0,
+    "market_implied_growth": -0.0041,
+    "growth_margin_of_safety": 0.0741
+  },
+  "health_checks": {
+    "net_debt_years": 1.25,
+    "net_debt_ok": true,
+    "interest_coverage": 37.36,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.52,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

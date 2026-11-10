@@ -1,0 +1,30 @@
+{
+  "id": "GEV",
+  "ticker": "GEV",
+  "universe": "us",
+  "company": "GE Vernova Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Heavy Electrical Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Gas turbine oligopoly (GE Vernova, Siemens Energy, Mitsubishi Heavy Industries) commanding >60% of the global heavy-duty market. Moat anchored in massive installed base (>7,000 gas turbines) locked into 10-25 year CPI-indexed Contractual Service Agreements (CSAs) with extreme switching costs. High-temperature materials science (single-crystal superalloys, thermal barrier coatings) and regulatory certification create insurmountable barriers to new entrants. Primary erosion risks: long-term decarbonization of the electric grid replacing gas peakers/baseload, rapid wind turbine technology obsolescence, and cyclical customer capex cutbacks.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While GE Vernova enjoys a strong near-term cyclical boom from AI data center power demand and grid electrification, its business model fails the 15+ year predictable runway requirement. Heavy Electrical Equipment is anchored in Tier 3 (10-15Y baseline), and the company faces severe long-term terminal headwinds from Macrotrend 4 (Energy Transition): thermal gas turbines, its core cash cow, face regulatory net-zero phase-outs and long-term substitution by renewables, storage, and nuclear over a 15-30 year horizon. Additionally, its offshore wind division has suffered acute execution and contract inflation volatility, reflecting the capital-intensive cyclicality of heavy industrial equipment.",
+    "evidence": "Spun off from GE in April 2024. Power segment benefits from an installed base of >7,000 gas turbines with multi-decade CSAs, driving 2024 revenue of $34.9B, net income of $1.6B, FCF of $1.7B, and 12.3% ROIC. FY 2025 saw revenue grow to $38.1B, FCF of $3.7B, and ROIC of 25.2% (aided by a $2.9B valuation allowance release), with total backlog expanding to $150B on surging AI data center baseload power and grid equipment demand. However, historical pre-spin 5-10 year median ROIC was ~7.5% due to deep cyclical downturns and massive wind turbine operating losses (-$1B+ annually in 2022-2023). Long-term terminal value remains exposed to the 15-30 year decarbonization horizon for fossil gas generation and severe cyclicality in heavy capital goods orders."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "CTAS",
+  "ticker": "CTAS",
+  "universe": "us",
+  "company": "Cintas Corporation",
+  "price": 222.36,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Exceptional route-based capital structure with $1.43B LT debt easily covered by $2.00B net income (0.71x NI leverage, net debt 0.57x NI) and interest coverage of 24.52x. Operating ROIC of 77.91% (and GAAP ROIC of 26.95%) capped at the 35.0% maximum under the Tangible Capital Standard, reflecting tremendous route density across 11,000 routes and 1M+ business locations. Through-the-cycle growth g of 9.0% driven by new customer route additions (3.5%), contract escalation pricing (2.0%), cross-selling first aid and facility services (2.5%), and share repurchases (1.0%). High Owner FCF conversion of 91.16%. At $222.36, CTAS trades at 42.65x peak Owner EPS vs fundamental 3-pillar PAR multiple of 30.85x (PAR Value $160.84, +38.25% Above PAR), muting 5Y expected IRR to 2.96% despite exceptional business quality."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.2135,
+    "current_multiple": 42.65,
+    "par_multiple": 30.85,
+    "par_value": 160.84,
+    "percent_vs_par": 0.3825,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0079,
+    "expected_irr_5y": 0.0296,
+    "market_implied_cap": 27.7,
+    "moat_runway_margin": -7.7,
+    "market_implied_growth": 0.267,
+    "growth_margin_of_safety": -0.177
+  },
+  "health_checks": {
+    "net_debt_years": 0.71,
+    "net_debt_ok": true,
+    "interest_coverage": 24.52,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9116,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

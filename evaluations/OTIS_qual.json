@@ -1,0 +1,30 @@
+{
+  "id": "OTIS",
+  "ticker": "OTIS",
+  "universe": "us",
+  "company": "Otis Worldwide",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme customer switching costs and safety regulation create an entrenched maintenance toll booth on ~2.5M units. High barriers to entry arise from hyper-dense technician route networks, OEM proprietary components, and IoT predictive monitoring (Otis ONE). Proven by 30%+ operating ROIC, ~94% retention, and consistent contractual price escalations (+3-4%) above labor inflation. Primary erosion risks are prolonged non-residential construction slowdowns and independent service provider encroachment in low-rise commercial segments.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in elevator and escalator manufacturing and maintenance with a premier 2.5M+ unit service portfolio acting as a regulatory-mandated safety toll booth. Switching costs and customer retention (>93%) protect high-30s% operating ROIC and >100% FCF conversion. Highly insulated across all 5 macrotrends, benefiting from urbanization, aging demographics, and IoT predictive diagnostics (Otis ONE). Balance sheet negative equity is an accounting legacy of the 2020 UTC spin-off; underlying cash engine produces >$1.4B FCF and >9.8x interest coverage with no refinancing ruin risk. [5-10Y g: service unit volume 3.0% + contractual pricing 2.5% + modernization mix 1.5% - China new equipment drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "Otis operates the world's largest elevator maintenance portfolio with ~2.5 million units under contract, generating over 80% of operating profit from high-margin recurring services (~24.5% segment operating margin). 5-year operating ROIC exceeds 30-40% and owner FCF conversion averages 102% of net income (FY2025 FCF $1.44B vs $1.38B NI; FY2024 FCF $1.44B vs $1.65B NI). Annual capex is minimal at ~1% of revenue ($152M in 2025). EBIT of $2.13B provides 9.8x interest coverage against $217M interest expense. Modernization backlog grew 30% in 2025, providing visible conversion pipeline as the global installed base ages."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "BSX",
+  "ticker": "BSX",
+  "universe": "us",
+  "company": "Boston Scientific",
+  "price": 42.75,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.2818,
+    "fin_note": "Operating ROIC normalized to 28.18% (5-year median tangible capital return; reaching 42.1% in FY2025) neutralizing $25.3B in accumulated M&A goodwill/intangibles from Guidant, Axonics, and tuck-in acquisitions. 5-10Y through-the-cycle growth of 8.0% driven by 5.5% procedure volume growth, 1.5% premium innovation mix (Farapulse PFA, Watchman LAAC), 1.0% Axonics neuromodulation expansion, offset by 0.5% PFA competitive pressure from MDT/ABT, plus 0.5% operating leverage. Strong balance sheet with $9.17B net debt (3.17x NI), 10.35x EBIT interest coverage, and exceptional 113% Owner FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.2643,
+    "current_multiple": 18.88,
+    "par_multiple": 29.47,
+    "par_value": 66.74,
+    "percent_vs_par": -0.3595,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.1806,
+    "market_implied_cap": 9.6,
+    "moat_runway_margin": 5.4,
+    "market_implied_growth": -0.0789,
+    "growth_margin_of_safety": 0.1589
+  },
+  "health_checks": {
+    "net_debt_years": 3.85,
+    "net_debt_ok": true,
+    "interest_coverage": 10.35,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1324,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

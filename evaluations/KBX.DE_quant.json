@@ -1,0 +1,43 @@
+{
+  "id": "KBX.DE",
+  "ticker": "KBX",
+  "universe": "eu",
+  "company": "Knorr-Bremse",
+  "price": 94.45,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing €1.7B goodwill/intangibles and reflecting structurally negative tangible capital. 5-10Y forward EPS CAGR of 8.5% aligned with qualitative guidance: rail system OE deliveries (3.0%), commercial vehicle braking (2.0%), 30-year aftermarket service annuity (2.0%), value pricing/margin expansion (1.0%), and buybacks (0.5%). Net cash balance sheet with €1.7B+ cash and zero long-term debt. 5-year cycle high guardrail of 21.19x binds against raw PAR multiple of 23.45x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.7953,
+    "current_multiple": 19.7,
+    "par_multiple": 21.19,
+    "par_value": 101.61,
+    "percent_vs_par": -0.0705,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0185,
+    "expected_irr_5y": 0.1195,
+    "market_implied_cap": 13.9,
+    "moat_runway_margin": 1.1,
+    "market_implied_growth": 0.0287,
+    "growth_margin_of_safety": 0.0563
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 7.5,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1136,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

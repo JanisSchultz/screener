@@ -1,0 +1,30 @@
+{
+  "id": "IR",
+  "ticker": "IR",
+  "universe": "us",
+  "company": "Ingersoll Rand Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Barriers: Mission-critical compressed air, vacuum, and fluid handling systems create moderate customer switching costs through proprietary replacement parts, preventive maintenance contracts, and severe downtime risks in industrial processes. Empirical Failure: 5-year median GAAP ROIC is ~6-8% (peaking near 8% in 2023-2024 and dipping to ~5.2% in 2025), failing the 12% threshold across the cycle due to an inflated invested capital base of ~$14B-$15B loaded with >$8.4B in goodwill and acquisition intangibles. Primary Erosion Threats: Direct competition from global category leader Atlas Copco (which compounds at >20% ROIC), disintermediation by third-party aftermarket service providers, and continuous acquisition multiple dilution.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5-8% vs. 12% hurdle, REJECT). While Ingersoll Rand's installed base of industrial compressors and blowers provides stable recurring aftermarket parts and service revenue, GAAP ROIC structurally fails the 12% Munger threshold. Serial M&A (including the 2020 Gardner Denver merger and the $2.3B ILC Dover buyout in 2024, followed by a $230M goodwill impairment in 2025) has accumulated over $8.4B in goodwill against ~$10B in equity, permanently depressing returns on total invested capital relative to best-in-class peer Atlas Copco.",
+    "evidence": "Multi-cycle ROIC track record consistently sub-hurdle: GAAP ROIC averaged 6-8% post-merger (FY23 ~8.2%, FY24 ~6.0-7.9%, FY25 ~5.2-6.4%). Net income of $588.8M in FY25 on stockholders' equity of $10.09B and total debt of $4.85B reflects invested capital of ~$13.5B-$14.5B. Balance sheet carries $8,484M of goodwill as of FY25 (nearly half of $18.3B total assets), exacerbated by a $229.7M goodwill impairment on ILC Dover in FY25. Segment revenue is driven by Industrial Technologies & Services (~80%) and Precision & Science Technologies (~20%). Although FCF conversion is healthy (>80% of net income) and gross margins are stable around 42-44%, structural capital allocation through high-multiple rollups prevents the business from generating hurdle-clearing returns on invested capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PGHN.CH",
+  "ticker": "PGHN",
+  "universe": "eu",
+  "company": "Partners Group",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sticky closed-end fund commitments (10-12 year lock-ups) and evergreen wealth vehicles generate stable ad-valorem management fees (100-150 bps) that automatically scale with underlying asset inflation. Verified by 38%+ median ROIC and 60%+ EBIT margins over the cycle. Primary erosion threats: institutional fee compression, cyclical private equity realization slowdowns, and competition from alternative asset mega-managers.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global private markets leader with sticky long-dated AUM and early-mover advantage in evergreen private wealth structures. Ad-valorem management fees protect against inflation. Fortress balance sheet with net debt under 1x net income and 35x interest coverage. [5-10Y g: organic AuM volume 7.0% + ad-valorem asset inflation 1.5% + carry reinvestment 0.8% - fee compression drag 0.5% + net buybacks 0.0%]",
+    "evidence": "38.3% median GAAP ROIC across 2022-2025. 85.7% multi-year FCF conversion. AuM expanded to $185B in FY2025 with recurring management fees accounting for ~80% of revenues. Low leverage (Net debt CHF 1.0B vs CHF 1.26B NI; EBIT/Interest 35x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

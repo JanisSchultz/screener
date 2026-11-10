@@ -1,0 +1,31 @@
+{
+  "id": "META",
+  "ticker": "META",
+  "universe": "us",
+  "company": "Meta Platforms",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Core Facebook/Instagram engagement engine monetizes algorithmic passive scrolling and addictive short-form video rather than an essential Western necessity, triggering severe 2026 youth-harm jury verdicts, a $9.89B state AG settlement charge (up to $18B), EU DMA privacy fines, and sovereign under-16 bans.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Despite extraordinary Family of Apps ad monetization (3.64B DAP, $200.97B FY25 revenue, 30.75% 5Y median GAAP ROIC), Meta's core Facebook/Instagram Reels and Feed business relies on algorithmic attention extraction and behavioral ad targeting rather than an essential Western household or enterprise necessity, failing Gate 2's low societal and legislative acceptance risk standard. In 2025-2026 this risk crystallized via the California K.G.M. negligence verdict (Mar 2026), $942M New Mexico penalties/nuisance abatement, an August 2026 52-state AG settlement up to $18B ($9.89B Q3 2026 pre-tax charge) mandating teen curfews and algorithmic-feed opt-outs, Australia's under-16 ban (>750k accounts stripped) alongside advancing UK/EU teen bans, and a €200M EU DMA fine forcing less-personalized ads. Gate 2 is a non-waivable Anchor Gate (Calamity Tier ineligible); downstream Gates 3-6 are bypassed per the sequential waterfall, though 2026 Reality Labs losses ($18B-$19B), $135B-$145B AI capex guidance (negative Q3 2026 FCF), and ~$121B+ Oct-Nov 2026 external equity/debt raises would also violate Gate 5/6 discipline.",
+    "evidence": "Business & Segments: FY2025 revenue reached $200,966M (Family of Apps $198.76B / 98.9%, Reality Labs $2.20B / 1.1%), growing to $181,712M in 9M 2026 (+28.8% YoY; Q3 2026 $64,601M, +26% YoY; ad impressions +10%, price/ad +14%; 3.64B Family DAP in Sep 2026). FY2025 geographic mix: US & Canada $78.87B (39.2%), Asia-Pacific $53.82B (26.8%), Europe $46.57B (23.2%), Rest of World $21.71B (10.8%), with >$18B (>10% of revenue) from China-based cross-border advertisers (e.g., Temu, Shein). Multi-Cycle Financial Record & ROIC: Revenue compounded from $27.64B (FY16) to $200.97B (FY25) and GAAP EBIT from $12.43B to $83.28B (41.4% margin). 5Y median GAAP ROIC (FY21-FY25) is 30.75% and Tangible Operating ROIC is 37.06% (every year 2016-2025 >20% GAAP ROIC). Societal & Regulatory Materialization (2025-2026): California jury found Meta negligent in K.G.M. v. Meta (Mar 2026); New Mexico imposed $375M civil penalties plus $567M public-nuisance abatement (Aug 2026); 52 state AGs extracted an Aug 2026 settlement up to $18B over 10 years (~$12.7B guaranteed + $5.3B conditional, driving a $9.89B Q3 2026 charge) mandating teen time limits, curfews, and algorithmic opt-outs; Australia enforced an under-16 ban (Dec 2025, >750k accounts removed) with UK, Spain, Denmark, and Greece advancing similar bans; EU fined Meta €200M under the DMA (Apr 2025), forcing a Jan 2026 less-personalized-ads option; FTC appealed its Nov 2025 antitrust loss (Jan 2026) while TikTok USDS JV preserved U.S. short-form competition (Jan 2026). Cash Conversion, Capex & Balance Sheet Context: Reality Labs lost $19.19B in FY25 ($18B-$19B guided FY26; ~$15B FY27). CapEx (incl. finance leases) surged from $27.05B (FY23) and $37.26B (FY24) to $69.69B (FY25), $85.8B in 9M 2026 ($83.06B PP&E), and $135B-$145B FY26 guidance (S&P projects >$225B in 2027 and $252B in 2028). Reported FCF (OCF minus CapEx/leases) dropped from $46.11B in FY25 (76.3% of $60.46B NI; $25.68B / 42.5% post-$20.43B SBC—masked by automated 112.3% FCF conversion capping capex at $18.62B D&A) to ~$11.05B in 9M 2026 (21.1% of $52.48B 9M NI; negative post-$21.05B SBC) and -$2.12B in Q3 2026. Meta halted buybacks in 9M 2026 ($0 vs $26.26B in FY25) while carrying $82.45B cash/marketable securities against $80.92B LT debt, $28.65B non-current operating leases, and ~$810.25B off-balance-sheet commitments as of Sep 30, 2026 ($355.73B uncommenced leases incl. the $27B Blue Owl/Hyperion SPV with a 16Y residual value guarantee + $454.52B non-cancelable commitments). S&P placed Meta's AA- rating on Negative outlook (Oct 2026; Moody's Aa3 Stable) as Meta raised an upsized $97.5B equity/convertible/ATM package (Oct 2026, introducing non-voting Class C stock via Class B consent to preserve founder control) plus $15B USD (5.85%-7.50%) and €9B Euro senior notes in Nov 2026."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

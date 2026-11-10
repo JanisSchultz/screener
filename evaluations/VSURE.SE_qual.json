@@ -1,0 +1,30 @@
+{
+  "id": "VSURE.SE",
+  "ticker": "VSURE",
+  "universe": "eu",
+  "company": "Verisure",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Security & Alarm Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Europe's leading monitored alarm provider with ~5M residential and small business subscribers generating predictable recurring subscription revenue with low churn (~7%) and contractual price escalation.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Entrenched European monitored residential alarm base with recurring subscription cash flows, but faces long-term disruption from DIY smart-home security ecosystems (Ring, Nest, Arlo) and high customer acquisition costs via door-to-door sales. GAAP ROIC of 1.6% reflects €13B+ in private equity buyout goodwill.",
+    "evidence": "Recurring revenues deliver ~25% adjusted EBIT margins and tangible ROIC >15% on subscriber hardware, but statutory GAAP ROIC is only 1.6% and FY2025 net income was -€256M due to €387M interest expense on €4.8B debt and €13.2B goodwill/intangibles. DIY smart cameras and wireless home automation create structural long-term substitution headwinds, restricting runway to 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

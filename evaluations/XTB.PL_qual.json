@@ -1,0 +1,30 @@
+{
+  "id": "XTB.PL",
+  "ticker": "XTB",
+  "universe": "eu",
+  "company": "XTB",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Fails Western rule-of-law pre-screen (Poland in_market == 'N') and exhibits severe societal and legislative acceptance risk due to heavy dependency on speculative retail CFDs and leveraged spread-betting where the vast majority of retail clients lose capital.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Listed in non-Western pre-screen market (Poland, in_market == 'N') and primary profit engine depends on retail CFD speculation and spread-betting, presenting insurmountable societal acceptance, regulatory intervention, and client churn risks.",
+    "evidence": "XTB relies heavily on retail CFD trading income driven by retail market volatility. Retail CFD brokers face persistent regulatory crackdowns across European and international regulators (leverage limits, marketing bans, negative balance protection) and suffer high client churn as retail traders systematically exhaust trading accounts."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

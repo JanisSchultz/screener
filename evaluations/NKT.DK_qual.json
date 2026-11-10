@@ -1,0 +1,30 @@
+{
+  "id": "NKT.DK",
+  "ticker": "NKT",
+  "universe": "eu",
+  "company": "NKT",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-voltage cable qualification barriers and multi-year order backlogs for European grid interconnectors and offshore wind; however, multi-cycle capital returns fail the 12% hurdle (RoCE was -3% in 2020, 3% in 2021, 7% in 2022; 5Y median ~7%) and capital intensity is high. Primary erosion threats include lump-sum EPC contract execution risks, offshore wind project cancellations or timing delays, and cyclical capacity additions from peers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power). While NKT benefits from multi-year backlogs in high-voltage offshore wind interconnectors, its 5-year median RoCE is ~7% (operating near break-even to low single digits between 2019-2022 before the recent 2023-2024 capacity squeeze). The business has historically lacked through-cycle pricing power above inflation and requires heavy ongoing capital reinvestment for specialized manufacturing and cable-laying vessels.",
+    "evidence": "Multi-cycle profitability: RoCE was -3% (2020), 3% (2021), 7% (2022), 20% (2023), and 35% (2024), resulting in a 5-year median of ~7%, well below the 12% GAAP ROIC hurdle. Revenue is concentrated in high-voltage turnkey solutions, medium-voltage cables, and telecom cables. While the current European grid build-out has created tight capacity and record backlogs, historical operating performance demonstrates high cyclicality, execution risks on turnkey installation contracts, and vulnerability to offshore wind developer financing delays."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

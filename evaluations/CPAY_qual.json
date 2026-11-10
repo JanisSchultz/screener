@@ -1,0 +1,30 @@
+{
+  "id": "CPAY",
+  "ticker": "CPAY",
+  "universe": "us",
+  "company": "Corpay",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Operates proprietary closed/semi-closed loop payment networks across vehicle solutions (over 90% US fuel station acceptance), AP automation workflows, and global cross-border payments routing. High switching costs stem from accounting ERP integration and multi-country foreign exchange clearing. Empirically demonstrated by 10-year median ROIC ~16.8% and operating margins >45%. Moat erosion threats include open-loop corporate card migration, commercial EV fleet depot charging bypassing retail fuel networks, and regulatory scrutiny on hidden fee extraction.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Corpay operates high-margin B2B payment networks with 10-year median ROIC of 16.8%, but its largest segment (Vehicle Payments / Fleet cards, ~45% of revenues) faces an active terminal headwind from Macrotrend 4 (Energy Transition & Resource Limits). The secular shift of commercial vehicle fleets from ICE to electric vehicles moves fleet fueling to depot overnight charging and direct utility power purchase agreements, bypassing traditional retail gas station fuel card networks and eroding interchange and transaction fees. Furthermore, AP automation faces AI-driven fee compression. Downstream management practices (predatory customer fee extraction resulting in a $100M FTC settlement) further reinforce disqualification under Munger standards.",
+    "evidence": "1. Financial & Operating Performance: Corpay (formerly FleetCor Technologies, NYSE: CPAY) generated ~$4.0B revenue in FY2024 and ~$4.5B in FY2025 with adjusted EBITDA of ~$2.1B-$2.4B and operating margins consistently exceeding 45%. 10-year median GAAP ROIC is 16.8%, driven by asset-light digital payment processing and strategic acquisitions (Alpha Group, Paymerang, Cambridge Global Payments).\n2. Segment Composition: Revenue is split across Vehicle Solutions (~45%), Corporate Payments (~35%), and Lodging (~15%). Vehicle Solutions relies on fuel card interchange, transaction fees, and financing charges across commercial fleets.\n3. Gate 4 Terminal Headwind Analysis:\n- Macrotrend 4 (Energy Transition): Fleet electrification represents a structural terminal headwind. Commercial EVs charge primarily at centralized fleet depots overnight on industrial electricity tariffs rather than retail fuel stations, disintermediating closed-loop fuel card networks and eliminating lucrative fuel margin rebates.\n- Macrotrend 1 (AI & Automation): Corporate AP automation and cross-border payments face margin compression as next-generation fintech platforms (Ramp, Brex) and agentic procurement workflows automate payment routing at near-zero incremental cost.\n4. Gate 5 Governance & Regulatory Scrutiny: Federal courts and the FTC found Corpay and CEO Ron Clarke engaged in deceptive marketing, hidden fee assessments, and misleading fuel savings representations for over a decade, culminating in permanent federal injunctive compliance mandates and a $100M FTC settlement in 2024-2026. Such predatory customer fee extraction violates Vector (c) Customer Value-for-Money and Munger compounder integrity standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

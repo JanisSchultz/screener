@@ -1,0 +1,30 @@
+{
+  "id": "BOL.FR",
+  "ticker": "BOL",
+  "universe": "eu",
+  "company": "Bolloré",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Reject). Infamous cascading holding structure with circular cross-holdings (Compagnie de l'Odet, Omnium Bolloré, Sofibol) and complex media carve-outs (Vivendi demerger into Canal+, Havas, Louis Hachette, alongside UMG stakes). The multi-tiered pyramid creates severe divergence between voting control and economic interest, obscuring look-through governance and economic transparency.",
+    "evidence": "Bolloré SE operates through an intricate web of circular holdings and cascade tiers designed to preserve family control with minority economic capital. Following the divestment of its core transport and African logistics assets to MSC and CMA CGM, the company exists primarily as an opaque media holding vehicle whose reporting is obscured by cross-ownership loops."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

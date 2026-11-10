@@ -1,0 +1,43 @@
+{
+  "id": "AI.FR",
+  "ticker": "AI",
+  "universe": "eu",
+  "company": "Air Liquide",
+  "price": 187.78,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.2135,
+    "fin_note": "Operating ROIC of 21.35% reflects economic return on tangible capital neutralizing \u20ac15.4B Airgas goodwill/intangibles. 15-20Y take-or-pay on-site contracts and local pipeline monopolies support 7.0% through-cycle growth (contracted volume 3.5%, pricing 2.0%, margin/reinvestment 1.5%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.53,
+    "current_multiple": 33.97,
+    "par_multiple": 22.18,
+    "par_value": 122.59,
+    "percent_vs_par": 0.5318,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0163,
+    "expected_irr_5y": -0.0012,
+    "market_implied_cap": 30.6,
+    "moat_runway_margin": -10.6,
+    "market_implied_growth": 0.2469,
+    "growth_margin_of_safety": -0.1769
+  },
+  "health_checks": {
+    "net_debt_years": 1.8,
+    "net_debt_ok": true,
+    "interest_coverage": 60.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.18,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

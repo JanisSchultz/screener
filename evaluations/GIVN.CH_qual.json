@@ -1,0 +1,30 @@
+{
+  "id": "GIVN.CH",
+  "ticker": "GIVN",
+  "universe": "eu",
+  "company": "Givaudan",
+  "country": "Switzerland",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global leader in flavors and fragrances where proprietary formulations represent <2% of customer COGS but dictate 100% of sensory identity. Massive switching barriers protect customer relationships. Demonstrated pricing power recovering 100% of input cost spikes, sustaining 14-16% GAAP ROIC and >36% tangible ROIC.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global #1 sensory toll booth owning proprietary flavor and fragrance formulas at <2% of customer COGS. Indispensable taste and scent partner for global CPG giants with proven pricing power and >36% tangible ROIC. [5-10Y g: organic volume/mix 3.0% + local price net of structural CHF FX drag 0.5% + margin expansion/deleveraging 1.0% + bolt-on M&A 0.5%]",
+    "evidence": "GAAP ROIC of ~14.2% and operating/tangible ROIC of ~36.8% with 105.8% FCF conversion. Pristine interest coverage of 12.5x and net debt repayable in 2.9 years. Successfully passed through 100% of raw material inflation through 6-9% pricing adjustments with zero client loss."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

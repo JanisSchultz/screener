@@ -1,0 +1,30 @@
+{
+  "id": "HAG.DE",
+  "ticker": "HAG",
+  "universe": "eu",
+  "company": "Hensoldt",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High pricing power on sole-source radar and sensor components (Eurofighter, TRML-4D, airborne electronic warfare) for Western defense platforms.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Premier German defense sensor, radar, and optronics specialist, but fails Gate 6 due to debt-funded M&A (ESG Group acquisition driving net debt to ~€650M+) and heavy working capital absorption during defense production ramp-ups.",
+    "evidence": "High-spec defense sensor provider with strong Eurofighter and air defense exposure. However, 2024 ESG Group acquisition increased net debt to ~€650M-€700M, and FCF dropped to €112M under intensive working capital requirements, while GAAP ROIC remains constrained around 10-11%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CFG",
+  "ticker": "CFG",
+  "universe": "us",
+  "company": "Citizens Financial Group",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Branch density and core commercial/retail deposit relationships create modest switching friction, but banking products are commoditized. Multi-cycle ROIC of 5-8% (10Y median 7.8%) and ROTCE of 10-11% fail the 12% GAAP / 15% tangible hurdle. Zero pricing power above inflation due to deposit beta pressures, SOFR-linked asset repricing, and fierce competition from money-center banks and fintechs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Regional bank with commoditized retail and commercial banking offerings. Multi-cycle ROIC of ~5-8% (10Y median 7.8%) and ROTCE of 10-11% fall far short of the 12% GAAP / 15% tangible return hurdles. Zero pricing power over inflation against national money-center banks and digital competitors.",
+    "evidence": "Citizens Financial Group (CFG) operates ~$226B in total assets and ~$183B in deposits (FY2025) with net interest margins of 2.87%-3.07%. Profitability remains structurally below compounder thresholds: FY2023-2025 GAAP ROE was 6.2%-7.2%, GAAP ROTCE 9.8%-10.9% (underlying ROTCE 10.5%-13.5%), and ROIC 4.6%-6.1% (10Y median 7.8%), failing the 12% GAAP ROIC / 15% ROTCE proof-of-moat test. Core deposit accounts provide modest switching friction, but pricing is strictly market-dictated by SOFR benchmarks, deposit betas, and competition from national giants (JPMorgan, BofA) and money market funds. Inherent fractional-reserve duration risk reinforces sub-hurdle status (g6_default N)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "NOC",
+  "ticker": "NOC",
+  "universe": "us",
+  "company": "Northrop Grumman",
+  "price": 539.07,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.17,
+    "fin_note": "Calamity pass on Gate 6 due to 2023 pre-tax charges on B-21 low-rate initial production fixed-price contracts and Section 174 amortization drag (5-year FCF conversion 54.9%). FY2025 FCF rebounded strongly to $3.3B+ backed by record $95.7B backlog. Operating ROIC normalized to 17.0% reflecting true physical capital efficiency across classified skunkworks, rocket testing, and aerospace assembly infrastructure (neutralizing an unrepresentative 46.88% mechanical tangible ROIC distorted by $15.5B Orbital ATK acquisition goodwill deductions; GAAP median ROIC is 14.03%). FY2022 peak Owner EPS of $31.4653 accepted as peak cycle earning power (FY2025 Owner EPS at $29.24 confirms post-charge normalization). Conservative through-the-cycle growth calibrated to 6.5% reflecting 3.0% B-21 bomber ramp, 2.5% space/missile defense volume, 1.5% pricing/escalation, with a conservative -1.5% deduction for fixed-price friction and overruns, plus 1.0% share repurchases. Solid balance sheet with net debt of 2.57x NI ($10.76B net debt on $4.18B NI). At $539.07 (17.13x peak Owner EPS), NOC trades slightly Above PAR (+3.1% vs PAR Value of $522.80, PAR Multiple 16.61x) with an expected 5Y IRR of 7.5%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 31.4653,
+    "current_multiple": 17.13,
+    "par_multiple": 16.61,
+    "par_value": 522.8,
+    "percent_vs_par": 0.0311,
+    "status": "Above PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0169,
+    "expected_irr_5y": 0.0754,
+    "market_implied_cap": 20.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.0728,
+    "growth_margin_of_safety": -0.0078
+  },
+  "health_checks": {
+    "net_debt_years": 3.63,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.549,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

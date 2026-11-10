@@ -1,0 +1,30 @@
+{
+  "id": "UPM.FI",
+  "ticker": "UPM",
+  "universe": "eu",
+  "company": "UPM-Kymmene",
+  "country": "Finland",
+  "sector": "Materials",
+  "sub_industry": "Paper Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Low-cost Paso de los Toros eucalyptus pulp mill in Uruguay and Nordic hydropower/forest assets offer scale advantages, but UPM remains an unhedged price-taker in global commodity pulp and declining graphic paper. ROCE dropped to 3.5% in 2023, 4.1% in 2024, and 5.5% in 2025, falling far below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Finnish forestry and pulp group is exposed to secular volume contraction in graphic paper and severe cyclicality in commodity market pulp, with multi-cycle ROCE of 3.5-5.5% over 2023-2025 failing the 12% hurdle.",
+    "evidence": "ROCE fell from 12.8% in 2022 to 3.5% in 2023, 4.1% in 2024, and 5.5% in 2025 (5-year median ~5.0%, far below 12%). Net debt rose to €3.0B following massive capital investment in the Uruguay pulp mill and Leuna biochemical refinery overruns, while graphic paper demand experiences persistent secular decline."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

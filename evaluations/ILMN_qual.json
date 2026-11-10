@@ -1,0 +1,30 @@
+{
+  "id": "ILMN",
+  "ticker": "ILMN",
+  "universe": "us",
+  "company": "Illumina, Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "(1) Moat Barriers: Massive global installed base (>20,000 instruments) across academic, clinical, and commercial biopharma labs; proprietary sequencing-by-synthesis (SBS) chemistry, flow cell architecture, and deep patent estate; regulatory lock-in with FDA-cleared IVD clinical assays and validated clinical trial protocols. (2) Proof Failure: 5-year median GAAP ROIC is sub-hurdle (<12%, with massive GAAP net losses in 2022-2024 from goodwill impairments and operational drag). Pricing power is negative in real and nominal terms: per-gigabase sequencing costs face continuous deflationary price wars, gross margin has contracted from ~70% (2021) to 65-66% (2024-2025), and total revenue has stagnated (~$4.53B in FY21 to ~$4.34B in FY25) despite exponential growth in sequenced base pairs. (3) Erosion Threats: Fierce price and technological competition from Ultima Genomics (UG 100 sub-$100 genome), Element Biosciences (AVITI benchtop avidity chemistry), and Complete Genomics / MGI (DNBSEQ-T20x2/T7); customer budget elasticity shifting toward low-cost alternatives; Chinese domestic substitution and geopolitical trade restrictions eroding China revenues.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & negative real pricing power, REJECT). While Illumina retains an entrenched installed base and FDA-cleared clinical workflows (Gate 3a: R&D super-thinkers / Intangibles), it fails the empirical moat test. 5-year median GAAP ROIC is severely depressed below the 12% hurdle due to multi-billion-dollar goodwill impairments and margin compression. Illumina lacks pricing power >= inflation: aggressive market entry by Ultima Genomics ($80-$100 genome), Element Biosciences, and Complete Genomics/MGI has shattered Illumina's pricing monopoly, forcing persistent per-gigabase price deflation (NovaSeq X) without sufficient volume elasticity, leaving FY21-FY25 revenues stagnant ($4.53B to $4.34B) as gross margins fell from 70% to 66%. Not a temporary calamity as competitive commoditization of short-read NGS is structural.",
+    "evidence": "Multi-Cycle Financial Track Record: Consolidated revenue declined from $4,526M (FY21) and $4,584M (FY22) to $4,372M (FY24) and $4,343M (FY25), representing zero nominal top-line compounding over 5 years during a period of >20% cumulative US inflation. Consolidated gross margins contracted from 69.7% in FY21 to 60.9% in FY23 before stabilizing at 65.4% in FY24 and 66.1% in FY25. Operating income collapsed from $775M in FY21 into heavy operating losses in FY22 ($(3,917M)), FY23 ($(995M)), and FY24 ($(833M)) due to massive goodwill impairments on GRAIL ($1.89B in FY24 alone) and escalating SG&A/legal expenses, before recovering to $807M in FY25. 10-year median ROIC stands at ~8.2%, and 5-year median GAAP ROIC is substantially negative/sub-hurdle, failing the 12% threshold. Competitive & Pricing Dynamics: The commercialization of Ultima Genomics' UG 100 ($80-$100 genome), Complete Genomics' DNBSEQ-T20x2, and Element Biosciences' AVITI has eliminated Illumina's historical pricing umbrella. Illumina's NovaSeq X rollout lowered price-per-genome to ~$200 to defend volume, but customer elasticity has failed to drive net top-line growth. Capital Allocation & Governance: The hostile, regulatory-defying $8B+ GRAIL re-acquisition in 2021 triggered antitrust injunctions from the FTC and European Commission, severe fines, an activist proxy battle, executive turnover, and an eventual tax-free spin-off in June 2024, representing catastrophic capital destruction. Geopolitical exposure in China (~10% historical revenue) has suffered structural share loss to domestic champion MGI Tech amidst export controls."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

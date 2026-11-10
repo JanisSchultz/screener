@@ -1,0 +1,30 @@
+{
+  "id": "SCT.GB",
+  "ticker": "SCT",
+  "universe": "eu",
+  "company": "Softcat",
+  "country": "United Kingdom",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-touch customer service and strong sales culture have driven UK IT reseller market share gains, but near-zero client switching costs and vendor-controlled commission structures prevent independent pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Asset-light UK IT reseller with impressive sales execution and cash generation, but inherently lacks structural pricing power; margins are determined by vendor rebate structures (Microsoft, Cisco) and client procurement tenders with negligible switching barriers.",
+    "evidence": "Operating margins on Gross Invoiced Income remain tight at ~5.4-5.5%. While accounting ROCE appears high due to an asset-light balance sheet and working capital terms, the business model is an intermediary price-taker vulnerable to vendor margin squeezes and direct cloud marketplace purchasing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DKSH.CH",
+  "ticker": "DKSH",
+  "universe": "eu",
+  "company": "DKSH Holding AG",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Over 85-90% of group revenue is generated across developing Asian markets (Thailand, Malaysia, Vietnam, China, Indonesia) outside rule-of-law Western markets, failing the Western revenue standard.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Market expansion services specialist derives 85-90%+ of total group sales from developing and emerging Asian economies, failing the Western market geographic resilience standard. Thin ~3% operating margins leave the business vulnerable to principal insourcing and regional macro volatility.",
+    "evidence": "Core EBIT margins average 3.0-3.2% across ~CHF 11.1B in net sales. Asia Pacific accounts for the vast majority of operations (Healthcare and Consumer Goods units in Thailand, Malaysia, Vietnam, etc.), with Western European exposure confined to a small specialty materials niche."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

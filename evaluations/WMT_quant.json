@@ -1,0 +1,43 @@
+{
+  "id": "WMT",
+  "ticker": "WMT",
+  "universe": "us",
+  "company": "Walmart",
+  "price": 125.52,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.257,
+    "fin_note": "Operating ROIC normalized to 25.7% (roic_operating) reflecting Walmart's tangible operating capital efficiency driven by rapid inventory turns and negative working capital retail dynamics (10Y median GAAP ROIC 18.9%). Peak Owner EPS of $2.7291 in FY2025 is clean and supported by $41.56B OCF and $23.76B Owner FCF (~108% FCF conversion) with zero non-cash earnings spikes. 5-10Y through-the-cycle growth of 5.5% reflects traffic and volume (2.0%), pricing/inflation pass-through (1.5%), high-margin retail media (Walmart Connect, $6.4B run-rate) and marketplace mix (1.5%), offset by digital supply chain robotics capex drag (-0.5%), plus net share repurchases (1.0%). Fortress balance sheet with $10.7B cash against $34.6B long-term debt (net debt / NI of ~1.1x) and strong 12.9x interest coverage. At $125.52, Walmart trades at 45.99x peak Owner EPS, exceeding its 5-year cycle high of 45.26x and standing +90.8% Above PAR value of $65.80 (24.11x PAR multiple), delivering an expected 5Y cycle IRR of -6.5% due to multiple compression headwinds."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.7291,
+    "current_multiple": 45.99,
+    "par_multiple": 24.11,
+    "par_value": 65.8,
+    "percent_vs_par": 0.9076,
+    "status": "Above PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0075,
+    "expected_irr_5y": -0.0653,
+    "market_implied_cap": 38.2,
+    "moat_runway_margin": -18.2,
+    "market_implied_growth": 0.3832,
+    "growth_margin_of_safety": -0.3282
+  },
+  "health_checks": {
+    "net_debt_years": 1.58,
+    "net_debt_ok": true,
+    "interest_coverage": 12.87,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1548,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

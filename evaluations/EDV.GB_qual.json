@@ -1,0 +1,30 @@
+{
+  "id": "EDV.GB",
+  "ticker": "EDV",
+  "universe": "eu",
+  "company": "Endeavour Mining",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Gold (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative gold commodity price-taker with producing mines concentrated in West Africa (Senegal, Côte d'Ivoire, Burkina Faso), exposed to acute geopolitical instability, coups, and Sahel resource nationalism.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need). Speculative gold commodity price-taker whose operating mines and asset base are located in West Africa (Burkina Faso, Côte d'Ivoire, Senegal), presenting severe non-Western jurisdictional, coup, and resource nationalism risks.",
+    "evidence": "Endeavour is an unhedged gold miner whose revenue is 100% determined by spot gold prices. Producing assets (Houndé, Ity, Sabodala-Massawa, Mana) are situated entirely in West Africa, where regional instability, military juntas (Burkina Faso, Mali, Niger), and changing mining codes pose constant sovereign risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

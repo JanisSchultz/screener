@@ -1,0 +1,30 @@
+{
+  "id": "GL",
+  "ticker": "GL",
+  "universe": "us",
+  "company": "Globe Life",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched niche in small-face life and supplemental health insurance for lower-middle income families and union members (via American Income Life and Liberty National captive agencies). Policyholder inertia and steep age-related premium increases create switching costs once policies pass initial years, sustaining ~12.8% median ROIC and 15-16% ROE (ex-AOCI). Primary moat erosion stems from digital direct-to-consumer underwriting disintermediation, severe captive agent recruiting friction/turnover, and product inadequacy against persistent inflation.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Life and health insurance exhibits high baseline fade (Tier 3/4 persistence, 5-10 year baseline). Globe Life faces severe terminal headwinds across Macrotrend 1 (AI automation and automated digital underwriting platforms disintermediating captive agents and direct-mail lead generation), Macrotrend 2 (heavy structural reliance on recruiting high-turnover commissioned captive sales forces under persistent regulatory and whistleblower scrutiny), and Macrotrend 5 (small-face policies suffer real purchasing power erosion during structural inflation). Runway is strictly capped below the 15-year hurdle.",
+    "evidence": "Historical 10Y median ROIC of 12.8% and net operating ROE (ex-AOCI) of 15-16% supported by captive agency networks (American Income Life, Liberty National) and direct-to-consumer marketing. However, sales practices and agent recruiting faced intense scrutiny following the April 2024 Fuzzy Panda short report. While both DOJ and SEC officially closed inquiries without enforcement actions by July 2025, the underlying structural distribution model remains vulnerable to digital InsurTech disintermediation, automated algorithmic underwriting, and adverse demographic/labor trends."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TRI",
+  "ticker": "TRI",
+  "universe": "us",
+  "company": "Thomson Reuters",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical legal and tax workflow software (Westlaw, Practical Law, ONESOURCE, UltraTax) with high switching costs and proprietary citation structures (KeyCite, West Key Number System). Demonstrated pricing power via 3-5% annual contractual escalators and consistent GAAP ROIC of 13-14% (>50% tangible ROIC).",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Thomson Reuters operates seat-based SaaS and professional research platforms (Westlaw, Practical Law, Checkpoint) that face severe terminal headwinds from Macrotrend #1 (Automation & Cognitive Tech). Autonomous AI agents compress law firm associate headcounts and automate routine legal/tax lookup and drafting, capping the competitive advantage period at <=10 years under the Mauboussin persistence framework.",
+    "evidence": "FY2022-2025 revenue grew modestly from $6.63B to $7.48B with GAAP ROIC steady at 13.1-14.3% (median 13.8%) and FCF conversion of ~90% ($2.02B Owner FCF in FY2025). The business is concentrated in the 'Big 3' segments: Legal Professionals ($2.84B / 38%), Corporates ($2.02B / 27%), and Tax, Audit & Accounting ($1.29B / 17%), alongside Reuters News and Global Print ($1.34B). While balance sheet leverage is modest (LT debt of $1.33B vs cash of $371M and EBIT of $2.12B) and Casetext/CoCounsel was acquired to introduce GenAI features, the core economic model is inherently tethered to professional seat counts and billable hours at law firms. As AI agents automate discovery, legal research, and compliance drafting, legal staffing leverage diminishes, creating terminal headwinds against per-seat subscription expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

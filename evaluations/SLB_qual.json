@@ -1,0 +1,30 @@
+{
+  "id": "SLB",
+  "ticker": "SLB",
+  "universe": "us",
+  "company": "Schlumberger",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World-leading proprietary wireline logging, rotary steerable drilling systems, Petrel/DELFI reservoir software, and ChampionX production chemistry create substantial technical barriers against smaller peers. However, returns on invested capital are structurally capped by upstream capex cyclicality: 5-year median GAAP ROIC is 9.4% (10-year median 6.5%), failing the 12% through-cycle hurdle. Primary erosion threats stem from customer power of national and international oil companies who aggressively demand price cuts during crude downturns, eliminating pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While SLB is the undisputed technological leader in international and offshore oilfield services with premier subsurface R&D and digital simulation assets, its financial returns remain tethered to cyclical upstream E&P capex. 5-year median GAAP ROIC of ~9.4% and 10-year median ROIC of ~6.5% fall well short of the 12% hurdle. Pricing power cannot be sustained across cycles as major IOCs and NOCs extract concessions during commodity downturns.",
+    "evidence": "Multi-cycle financial track record: SLB's 10-year ROIC averages ~6.7% (median 6.51%), ranging from cyclical troughs of 1.97% (2016) and 3.89% (2020) to cycle peaks of 12.10% (2023) and 13.00% (2024), moderating to 8.95% in 2025. 5-year median ROIC stands at 9.44%, failing the required 12.0% threshold. Operating margins peaked at ~16% in 2024 before flattening in 2025 ($35.71B revenue, $3.37B GAAP net income). Free cash flow generation has improved post-2020 restructuring ($3.99B FCF in 2024, $4.11B in 2025 with >100% GAAP conversion), but through-cycle capital intensity remains elevated. Segment breakdown: Production Systems (~35% of revenue post-ChampionX), Well Construction (~33%), Reservoir Performance (~18%), and Digital & Integration (~14%). Customer lock-in: Technical leadership in deepwater, HPHT (high-pressure, high-temperature) reservoirs, and international markets provides sticky relationships with NOCs (Saudi Aramco, ADNOC, Petrobras), but pricing is tied to client capital budgets rather than secular pricing power. M&A & Capital allocation: Completed the all-stock acquisition of ChampionX in July 2025 to expand production chemicals and artificial lift; net debt sits at ~$7.42B (1.8x EBITDA / 2.2x NI), maintained conservatively, but heavy past write-downs (Cameron acquisition) underscore cyclical capital misallocation risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

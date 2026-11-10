@@ -1,0 +1,30 @@
+{
+  "id": "BF.B",
+  "ticker": "BF.B",
+  "universe": "us",
+  "company": "Brown–Forman",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Distillers & Vintners",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Centuries-old brand equity of Jack Daniel's (#1 American whiskey globally), Woodford Reserve, and Old Forester protected by proprietary cooperages and multi-year aged whiskey inventory barriers (4-7+ year maturation lead times) that cannot be replicated by capital alone. Multi-cycle proof demonstrated by 10-year median ROIC of ~16.2% and stable gross margins near 60%. Key erosion risks include younger cohort alcohol moderation, GLP-1 appetite suppression headwinds, retaliatory import tariffs, and premium tequila/RTD competitive intensity.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global spirits leader anchored by iconic Jack Daniel's trademark, aged barrel inventory moat, and pricing power offsetting input cost inflation. While spirits face secular volume headwinds from GLP-1 adoption and Gen Z moderation, premiumization, international expansion, and RTD co-branding (Jack & Coke) support steady compounding. Balance sheet is conservative with net debt under 3x net income and interest coverage exceeding 11x. [5-10Y g: global volume 1.0% + price/mix 2.5% + RTD expansion 1.0% - tariff/input margin drag 0.5% + share repurchases 0.5%]",
+    "evidence": "10-year historical GAAP ROIC median of 16.2%, consistently exceeding the 12% hurdle. Gross margins steady between 59% and 62%; operating margins consistently in the 26-33% range. FY2024 operating income was $1.40B and FY2025 operating income was $1.09B, with net interest expense of $97M yielding >11x EBIT/interest coverage. Total debt reduced to ~$2.7B in FY2025 (debt/net income ~3.1x, well below 4.0x threshold) following repayment of $300M senior notes. Multi-year FCF conversion averages 80-100% normalized across barrel inventory aging cycles. Brown family dual-class ownership structure maintains multi-decade stewardship and over 40 consecutive years of dividend increases (Dividend Aristocrat)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

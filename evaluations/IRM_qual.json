@@ -1,0 +1,30 @@
+{
+  "id": "IRM",
+  "ticker": "IRM",
+  "universe": "us",
+  "company": "Iron Mountain Incorporated",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Other Specialized REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme customer switching costs in physical records management; retrieving, auditing, and transferring millions of physical boxes incurs prohibitive egress fees, operational disruption, and compliance risk, securing ~98% retention. Empirical pricing power is demonstrated through steady 4-6% annual storage rental price increases above inflation. However, the core physical records business faces terminal secular erosion from paperless digital conversion, while its capital-intensive data center colocation pivot lacks pricing power against hyperscalers.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While legacy physical records storage possesses high switching costs and CPI+ pricing power, the core business faces an unhedged terminal secular headwind from corporate paperless digitization (Macrotrend 1). Iron Mountain's pivot into data center colocation exposes it to severe power and grid interconnect constraints (Macrotrend 4) and massive capital intensity requiring debt-funded expansion ($16.2B debt, 1.4x EBIT interest coverage) in a higher-rate regime (Macrotrend 5). Aligned with data center peers (EQIX/DLR), CAP is capped at 5 years, failing the 15-year hurdle.",
+    "evidence": "10-year median GAAP ROIC is depressed at 6.47% (6.12% in FY2025), and tangible ROIC has deteriorated from 21.8% in FY2022 to 11.6% in FY2025. Massive data center capex ($2.27B in FY2025 vs $611M in FY2021) completely outstrips operating cash flow ($1.34B in FY2025), generating -$932M in true FCF. Total debt escalated to $16.22B against $159M in cash, driving EBIT/interest coverage down to 1.40x ($1,164M EBIT vs $829M interest expense) and leaving stockholders' equity deeply negative at -$981M. While storage rental retains ~98% volume inertia, the business lacks a 15+ year predictable reinvestment runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

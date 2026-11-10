@@ -1,0 +1,30 @@
+{
+  "id": "SCHW",
+  "ticker": "SCHW",
+  "universe": "us",
+  "company": "Charles Schwab Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Classic scale economies shared pioneer in financial services. Schwab leverages nearly $12T in client assets to operate at an industry-low operating expense of ~12-14 bps of client assets, passing massive cost savings back to retail investors and Registered Investment Advisors (RIAs) via zero equity commissions, low-cost index funds, and institutional custodial tech. This low-cost structure creates an insurmountable barrier for sub-scale competitors and drives continuous net new asset inflows. The moat is empirically proven by a 10-year multi-cycle GAAP ROIC median of 32.6% and tangible ROIC consistently exceeding 100%. Pricing power is structurally protected through ad-valorem AUM/AUA fees that compound automatically with asset inflation, floating-rate margin loan spreads, and massive custodial switching costs for RIAs (repapering, tax friction, operational integration). Primary erosion threats include regulatory/litigation pressure on cash sweep account yield spreads and fintech yield competition, both of which are buffered by advisory fee growth and scale efficiencies.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant retail wealth manager and RIA custodial compounder anchored by scale economies shared over nearly $12T in client assets. 5-year median GAAP ROIC is exceptional at 32.6% with 94.7% multi-year FCF conversion. The 2022-2023 rapid rate hike shock and cash sorting episode proved to be a transient intra-cycle stress test that Schwab navigated without equity dilution or client asset attrition: wholesale FHLB borrowings have been completely extinguished, net interest revenue surged 28% in FY2025, Owner EPS reached a new record peak of $4.89, and the balance sheet holds a $23.8B net cash surplus ($46.0B cash vs $22.2B LT debt). [5-10Y g: client asset volume 5.5% + ad-valorem market appreciation 3.5% + wealth mix & reinvestment 0.5% - cash sweep yield pressure 0.5% + net share repurchases 1.5%]",
+    "evidence": "Multi-cycle 5-year median GAAP ROIC of 32.6% (2016: 31.3%, 2017: 29.4%, 2018: 96.1%, 2020: 24.8%, 2021: 29.9%, 2022: 56.8%, 2023: 50.6%, 2024: 22.7%, 2025: 32.6%) and tangible ROIC exceeding 100%. FY2025 net revenue reached an all-time record of $23.92B (+22% YoY), led by a rebound in Net Interest Revenue to $11.75B (+28% YoY) as higher-cost bank supplemental funding was retired. Asset management and administration fees grew 14% to $6.51B on record client assets approaching $12T. FY2025 Owner EPS achieved a new all-time high of $4.8933, confirming uninterrupted peak-to-peak business cycle compounding (2019: $2.81, 2022: $3.79, 2025: $4.89). FCF conversion is exceptional at 94.7% (FY2025 Owner FCF of $8.48B on Net Income of $8.85B with minimal capex of $548M). Balance sheet is a fortress with $46.0B in cash and short-term liquidity against $22.2B in long-term debt (net cash position of +$23.8B). All emergency wholesale FHLB advances taken during 2023 peak cash sorting have been fully repaid. The TD Ameritrade integration was completed smoothly, expanding scale, trading capabilities (thinkorswim), and operational synergies."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,33 @@
+sector,sub_industry,g6_default,note
+Communication Services,Integrated Telecommunication Services,,
+Communication Services,Wireless Telecommunication Services,,
+Consumer Discretionary,"Apparel, Accessories & Luxury Goods",,
+Consumer Discretionary,Automotive Parts & Equipment,,
+Consumer Discretionary,Broadline Retail,,
+Consumer Discretionary,Restaurants,,
+Consumer Staples,Food Retail,,
+Consumer Staples,Packaged Foods & Meats,,
+Energy,Coal & Consumable Fuels,,
+Energy,Integrated Oil & Gas,,
+Energy,Oil & Gas Exploration & Production,,
+Energy,Oil & Gas Storage & Transportation,,
+Financials,Asset Management & Custody Banks,,v6.11: default removed — asset managers and custody banks scored per company (custody banks: Gate 6 N)
+Financials,Diversified Banks,N,"Gate 6 default N (v6.11, moved from Gate 2): leverage 10-15x, credit & deposit duration risk"
+Financials,Financial Exchanges & Data,,
+Financials,Life & Health Insurance,,
+Financials,Multi-Sector Holdings,,
+Financials,Property & Casualty Insurance,,
+Industrials,Aerospace & Defense,,
+Industrials,Construction & Engineering,,
+Industrials,Environmental & Facilities Services,,
+Industrials,Rail Transportation,,
+Information Technology,Application Software,,
+Information Technology,IT Consulting & Other Services,,
+Materials,Copper,,
+Materials,Diversified Metals & Mining,,
+Materials,Fertilizers & Agricultural Chemicals,,
+Materials,Gold,,
+Materials,"Metal, Glass & Plastic Containers",,
+Materials,Precious Metals & Minerals,,
+Utilities,Electric Utilities,N,"Gate 6 default N (v6.11, moved from Gate 2): capped 6-8% regulated ROIC, perpetual capex dilution"
+Utilities,Multi-Utilities,N,"Gate 6 default N (v6.11, moved from Gate 2): capped 6-8% regulated ROIC, perpetual capex dilution"

@@ -1,0 +1,30 @@
+{
+  "id": "PSN.GB",
+  "ticker": "PSN",
+  "universe": "eu",
+  "company": "Persimmon",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; cyclical residential homebuilder exposed to mortgage rates and housing cycle.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). UK volume housebuilder focused on entry-level and first-time buyer housing. Home purchases are discretionary, highly deferrable big-ticket commitments that dried up following the withdrawal of Help-to-Buy and mortgage rate surges. Fails Munger's non-deferrable essential need standard.",
+    "evidence": "Persimmon plc is one of the largest UK volume housebuilders, operating through Persimmon Homes, Charles Church, and Westbury Partnerships. Operating profits collapsed by ~65% from £1.01B in 2022 to £355M in 2023 and remained subdued in 2024 as new home completions plummeted from 14,868 to 9,922 following the expiration of government Help-to-Buy subsidies and rising mortgage rates. Underlying ROCE collapsed from peak levels above 30% down to ~8-10%. Persimmon has historically suffered from build-quality controversies and customer service scandals, alongside multi-hundred-million cladding remediation liabilities. It represents an archetypal interest-rate-sensitive cyclical homebuilder lacking an unassailable economic moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

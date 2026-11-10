@@ -1,0 +1,30 @@
+{
+  "id": "INDU C.SE",
+  "ticker": "INDU C",
+  "universe": "eu",
+  "company": "Industrivärden",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Core holdings Sandvik (precision machining tools and underground mining machinery) and AB Volvo (commercial heavy trucks) command dominant global market shares, proprietary engineering IP, and dense aftermarket service networks that lock in customers and provide pricing power >= inflation across cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. High-quality Nordic industrial holding company anchored by AB Volvo, Sandvik, Handelsbanken, and Essity. Strong look-through pricing power, >13% median ROIC, conservative Lundberg sphere capital stewardship, and near-zero net leverage (LTV 3%). [5-10Y g: Nordic industrial volume 2.5% + tooling/truck pricing power 2.0% + electrification/mining mix 1.5% + dividend reinvestment 2.0%]",
+    "evidence": "4-year median GAAP ROIC is 13.3% (reaching 19.6% in 2025). Look-through holdings AB Volvo and Sandvik maintain superior operating margins (>15-18%) and fortress balance sheets. Industrivärden's holdco net debt is SEK 5.9B against a portfolio market value of SEK 197.5B (LTV 3%, interest coverage 217x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

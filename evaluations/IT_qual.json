@@ -1,0 +1,30 @@
+{
+  "id": "IT",
+  "ticker": "IT",
+  "universe": "us",
+  "company": "Gartner",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global authority in syndicated enterprise IT research, proprietary Magic Quadrant and Hype Cycle methodologies, and 2,000+ analyst bench. Empirically demonstrated by 10-year median ROIC of 19.2% (24% in FY 2025) and resilient 74%-77% gross contribution margins in core Insights. Key erosion threats include AI-driven synthesis and crowdsourced vendor review platforms.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Syndicated research subscription model relies heavily on seat-based licensing and routine IT vendor data lookup/synthesis, facing severe terminal headwinds from generative AI and autonomous cognitive agents (Macrotrend 1). Contract Value (CV) growth decelerated sharply to ~1% FX-neutral in FY 2025 as enterprise clients reduced seat counts and wallet retention softened. Despite excellent historical capital efficiency (19.2% median ROIC), competitive advantage runway is structurally capped at 10 years, below the 15-year hurdle.",
+    "evidence": "10-year median ROIC of 19.2% (FY25 ROIC at 24%). Insights segment delivered $5.1B revenue in FY25 with high gross contribution margins of 77%. Cash generation remains stellar with $1.41B FCF in FY24 and $1.20B in FY25, converting at >100% of GAAP net income. Long-term debt of ~$2.46B at 4.97% weighted average interest rate is manageable (~2.0x EBITDA) with senior note maturities spaced between 2028 and 2030, while $2.0B was deployed for share repurchases in FY25. However, Contract Value growth decelerated from 8% in FY24 to 1% in FY25 as corporate wallet retention weakened and public sector/macro headwinds bit. Under Macrotrend 1 (Automation & Cognitive Tech), seat-based IT research and data synthesis face existential disintermediation from enterprise LLM workflows, capping CAP at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

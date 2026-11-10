@@ -1,0 +1,30 @@
+{
+  "id": "VIE.FR",
+  "ticker": "VIE",
+  "universe": "eu",
+  "company": "Veolia",
+  "country": "France",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global leader in water, waste, and energy services with over 70% of revenue protected by long-term municipal concessions (10-30 years) and industrial contracts containing contractual inflation indexation formulas (CPI/labor/energy). High switching barriers in specialized hazardous waste treatment and municipal water treatment plants. Successfully integrated Suez, expanding GAAP ROIC from 7.37% in 2022 to 12.07% in 2025 as cumulative post-merger synergies exceeded €500M.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peace-of-Mind Balance Sheet & Leverage, REJECT). Global ecological services champion with defensible water and waste concessions and contractual inflation indexation. However, capital-intensive utility structure carries €16.5B in long-term debt and €9.1B in net debt against €1.2B in TTM net income (Net Debt / NI = 7.5x, well above the 4.0x ceiling), with interest coverage of only 3.65x failing the > 5.0x cycle threshold (consistent with sub-industry g6_default=N).",
+    "evidence": "FY2025 revenue reached €44.4B with EBITDA of €6.8B and EBIT of €3.2B. Post-Suez integration drove GAAP ROIC up to 12.07% in FY25 (4-year median 10.25%, ROCE after-tax 9.4%). While Owner FCF conversion is robust (>100% of NI), balance sheet leverage remains structurally elevated post-Suez with long-term debt of €16,541M and net debt of €9,101M against net income of €1,217M (debt repayment time > 7 years). FY25 interest expense of €876M yields EBIT interest coverage of 3.65x, violating the Gate 6 fortress baseline (> 5.0x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

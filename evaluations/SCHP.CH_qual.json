@@ -1,0 +1,30 @@
+{
+  "id": "SCHP.CH",
+  "ticker": "SCHP",
+  "universe": "eu",
+  "company": "Schindler",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global oligopoly in elevators and escalators with over 1.5 million units in maintenance portfolio. High switching costs and regulatory safety mandates drive recurring maintenance and modernization (>60% of revenue). Unrivaled capital efficiency evidenced by >40% GAAP ROIC and near-100% tangible ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global elevator and escalator oligopolist with over 1.5 million units in its maintenance portfolio. Negative working capital, >CHF 2.2B net cash, 41%+ GAAP ROIC, and 130% FCF conversion insulate the business from construction cyclicality. [5-10Y g: maintenance portfolio units 4.0% + service price escalation 2.0% + modernization 1.5% - new installation slowdown 0.5%]",
+    "evidence": "FY2025 revenue of CHF 10.95B and EBIT of CHF 1.40B (12.8% operating margin). 4-year median GAAP ROIC is 41.5% (tangible operating ROIC ~98%). Owner FCF conversion is 130.7% (FY2025 FCF CHF 1.35B vs NI CHF 1.02B). Balance sheet holds CHF 2.30B in cash against CHF 110M in debt (CHF 2.2B net cash), with interest coverage over 32x. High-margin recurring maintenance and modernizations buffer the business against China new installation headwinds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

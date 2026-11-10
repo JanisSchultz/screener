@@ -1,0 +1,30 @@
+{
+  "id": "TDG",
+  "ticker": "TDG",
+  "universe": "us",
+  "company": "TransDigm Group Incorporated",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme regulatory switching costs and sole-source toll booth moat. Approximately 90% of revenue is derived from proprietary products, with ~80% from sole-source positions engineered onto FAA/military aircraft type certificates. Recertification via FAA Parts Manufacturer Approval (PMA) is economically irrational for competitors given low component dollar value relative to certification costs and safety liabilities. Demonstrates legendary pricing power with consistent 5-8%+ annual price increases across cycles with negligible customer volume churn, supporting a 5-year median GAAP ROIC of 16.6% (FY2025: 23.0%) and operating ROIC >100%. Key erosion risks include airline PMA consortia and heightened DoD procurement scrutiny.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT – G6 Cash & Fortress Balance Sheet). Outstanding proprietary aerospace aftermarket toll-booth monopoly with ~90% proprietary parts and >80% FCF conversion, but fundamentally rejected under Munger's peace-of-mind fortress balance sheet standard. Total debt of $29.3B ($26.5B net debt) against FY2025 net income of $2,074M results in a net debt to owner earnings ratio of 12.8x (far exceeding the <=4.0x ceiling) and Net Debt/EBITDA of ~6.0x. FY2025 interest coverage of 2.65x (EBIT $4,165M / Net Interest $1,572M) is well below the >5.0x hurdle. Intentional PE-style financial engineering (debt-funded special dividends) has driven stockholders' equity to -$9.7B, leaving the business permanently dependent on the continuous 'kindness of strangers' in debt capital markets. [5-10Y g: commercial flight hours 4.0% + proprietary aftermarket pricing 4.0% + bolt-on M&A 2.5% - interest drag 0.5%]",
+    "evidence": "Multi-decade operating history establishing sole-source positions on commercial (Boeing, Airbus) and defense platforms. FY2025 revenue reached $8,831M with EBIT of $4,165M (47.2% EBIT margin). GAAP ROIC has averaged 16.6% over 5 years (FY2025: 23.0%), with tangible operating ROIC >100%. Free cash flow conversion is consistently high (FY2024: $1,692M FCF / $1,714M NI = 98.7%; FY2025: $1,664M FCF / $2,074M NI = 80.2%). However, balance sheet leverage is structurally excessive: FY2025 long-term debt of $29,291M against cash of $2,808M (net debt $26,483M). Net interest expense of $1,572M results in EBIT interest coverage of only 2.65x (spec threshold >5.0x). Net debt to net income is 12.8x (threshold <=4.0x) and net debt to EBITDA is ~6.0x. Stockholders' equity is -$9,686M due to repeated debt-financed special cash dividends."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

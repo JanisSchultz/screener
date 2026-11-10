@@ -1,0 +1,30 @@
+{
+  "id": "ICG.GB",
+  "ticker": "ICG",
+  "universe": "eu",
+  "company": "ICG",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong presence in European private debt, direct lending, and structured capital with sticky multi-year fund capital. However, private debt is heavily commoditizing under aggressive competition from global mega-managers (Ares, Blackstone, Blue Owl, Oaktree). Hybrid FMC/IC balance-sheet model depresses corporate ROIC (10-11%, sub-12% hurdle) and exposes corporate capital to credit cycle default risks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Alternative credit and structured capital manager operating a hybrid model with a £2.5B+ balance sheet investment portfolio. Lacks pricing power in private debt amid intense institutional direct lending competition; multi-year ROIC of 10-11% fails the 12% cycle hurdle.",
+    "evidence": "ICG manages $126B in total AUM ($87B fee-earning AUM) across private debt, structured equity, and credit strategies. Corporate ROIC averages 10% to 11% due to the capital-heavy £2.57B balance-sheet investment portfolio. Direct lending fee rates (60-100 bps) face intense downward pressure from global mega-platforms, precluding inflation-plus pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ASM.NL",
+  "ticker": "ASM",
+  "universe": "eu",
+  "company": "ASM International",
+  "country": "Netherlands",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Process-of-record qualification 3-5 years ahead of fab ramp creates insurmountable switching costs for foundries (TSMC, Intel, Samsung). Gross margin expanded from 47% to 51% over the cycle, with GAAP ROIC consistently 25-30% and tangible ROIC >40%. Primary risks: customer concentration among top 3 foundries and US/EU export restrictions on shipments to China.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Dominant global leader in single-wafer ALD and advanced epitaxy benefiting from the structural secular transition to 3D GAA nanosheet transistors. Irreplaceable fab recipe lock-in with >50% market share and 25%+ GAAP ROIC. Net cash fortress exceeding €1B with zero long-term debt. [5-10Y g: wafer fab & GAA/ALD intensity 8.5% + price/mix 1.5% + margin 0.5% + buybacks 0.5%]",
+    "evidence": "Multi-year GAAP ROIC averaged 25.0% (operating tangible ROIC 42.5%). Gross margin expanded from 47% to 51% over the cycle. Revenue grew from €2,410.9M in 2022 to €3,173.2M in 2025, while EBIT grew from €506.5M to €925.8M. Cash conversion is outstanding with Owner FCF of €762.2M in 2025 on Net Income of €723.7M (105% conversion; multi-year FCF conversion 91.3%). Balance sheet is a fortress with €1,026.8M in cash and €0 long-term debt (interest coverage >1000x). ASM is the Process-of-Record (POR) ALD supplier for TSMC, Intel, and Samsung on Gate-All-Around (GAA) logic nodes, creating massive technological switching barriers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

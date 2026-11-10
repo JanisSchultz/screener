@@ -1,0 +1,30 @@
+{
+  "id": "EL",
+  "ticker": "EL",
+  "universe": "us",
+  "company": "Estée Lauder Companies (The)",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global prestige beauty leader with entrenched brand intangibles (Estée Lauder, Clinique, La Mer, MAC, Tom Ford, Le Labo) and prime department store and travel retail counter real estate. Gross margin expanded 230 bps to 74.0% during the sales downturn, confirming underlying pricing power, but multi-year ROIC fell below the 12% hurdle due to the Asia travel retail destocking crisis and $911M in brand impairment write-downs.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "Identifiable, temporary, fixable calamity across gates {3b, 5, 6}. Broken metrics: 5-year median GAAP ROIC compressed to ~7.9% (trough ~5.5% in FY2025 with -$1.13B net loss) following the China/Asia travel retail inventory glut and $911M non-cash impairments (Tom Ford, Too Faced); peak-to-peak EPS broken; net debt escalated to $9.5B (Debt/EBITDA > 4.5x) forcing a dividend cut; and capital allocation scored 0 due to former CEO Freda's peak-cycle M&A and daigou channel stuffing. Intact moat proof: Gross margin expanded 230 bps to 74.0% in FY2025, demonstrating resilient pricing power; core prestige brands maintained leading positions; and FY2026 results verified recovery with Mainland China organic sales up +9% and global net sales up +5% (+3% organic) to $15B as channel destocking concluded. Fix catalyst & kill-switch: New CEO Stéphane de La Faverie (effective Jan 2025) executing 'Beauty Reimagined' and PRGP structural cost savings to restore operating margins to mid-teens and deleverage debt. Kill-switch: Exit if organic sales contract past FY2027, gross margin falls below 70%, or Net Debt / EBITDA fails to decline below 3.0x by FY2028.",
+    "note": "Calamity pass tier. Enduring prestige beauty intangibles with 74% gross margin and zero terminal macrotrend headwinds, recovering from an acute Asia travel retail inventory shock. While depressed ROIC, balance sheet leverage, and prior capital allocation missteps trigger failures at Gates 3b, 5, and 6, FY2026 operational turnaround under CEO Stéphane de La Faverie confirms the calamity is temporary and fixable. [5-10Y g: prestige volume 3.0% + price 2.0% + luxury mix 1.0% - restructuring & marketing drag 0.5% + net buybacks 0.5%]",
+    "evidence": "FY2021/2022 peak net sales of $17.7B and operating income of $3.17B (ROIC 16.6%) collapsed during the post-COVID Asia travel retail destocking to FY2024 ($15.61B) and FY2025 ($14.33B, -$1.13B net loss from $911M non-cash impairments on Tom Ford and Too Faced). Despite volume contraction, gross margin expanded to 74.0% in FY2025. FY2026 results confirmed stabilization and recovery: net sales rose 5% to $15.0B (3% organic) with Mainland China organic sales up 9%. Total debt stands at ~$9.5B (Debt/EBITDA > 4.5x), prompting a dividend cut to conserve cash. Portfolio spans Skin Care (~50%), Makeup (~30%), Fragrance (~16%), Hair Care (~4%) across Lindy prestige brands (La Mer, Clinique, Estée Lauder, MAC, Le Labo)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

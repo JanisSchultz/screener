@@ -1,0 +1,30 @@
+{
+  "id": "BNP.FR",
+  "ticker": "BNP",
+  "universe": "eu",
+  "company": "BNP Paribas",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive balance sheet scale across Eurozone retail banking, Corporate & Institutional Banking (CIB), and insurance (Cardif, AXA IM). However, universal banking scale fails to translate into economic moat or pricing power: multi-cycle ROE has persistently hovered between 6.3% and 9.1% across 2018-2024, consistently failing the 12% capital efficiency hurdle. Subject to intense cross-border banking competition, strict Basel III/IV capital drag, and French regulated savings rate (Livret A) rigidities.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/ROE < 12%, REJECT). Continental Europe's largest universal bank with vast scale across retail, CIB, and asset management. However, structural banking capital constraints, commoditized lending, and intense competition cap multi-cycle ROE at 6-9%, failing the 12% capital hurdle across every year from 2018 to 2024. Operates as a regulated utility-like price taker with no basis to compound per-share intrinsic value above cost of equity.",
+    "evidence": "Historical ROE persistently sub-hurdle: 7.4% (2018), 7.6% (2019), 6.3% (2020), 8.0% (2021), 8.1% (2022), 8.9% (2023), and 9.1% (2024). 7-year median ROE of ~8.0% fails the 12% threshold. Substantial exposure to French political risk, Livret A interest rate ceilings, and large CIB market-making balance sheet (>€2.5T total assets) requiring heavy regulatory capital buffers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

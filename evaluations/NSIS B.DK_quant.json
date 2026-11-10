@@ -1,0 +1,43 @@
+{
+  "id": "NSIS B.DK",
+  "ticker": "NSIS B",
+  "universe": "eu",
+  "company": "Novonesis",
+  "price": 460.0,
+  "quote_currency": "DKK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.291,
+    "fin_note": "Operating ROIC normalized to 29.1% neutralizing \u20ac11.1B in Chr. Hansen merger goodwill and intangibles which deflated GAAP ROIC to 5.5%. Debt-free balance sheet with 11.9x interest coverage and 113.9% FCF conversion. Forward growth of 7.5% backed by 4.5% organic biosolutions volume, 1.5% pricing, 1.0% merger synergies and operating leverage, and 0.5% bolt-on M&A. At 34.77x peak Owner EPS (13.23 DKK), stock trades Above PAR (+44.1% premium vs PAR value of 319.25 DKK; peak-to-peak test pending full merger EPS accretion)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 13.2308,
+    "current_multiple": 34.77,
+    "par_multiple": 24.13,
+    "par_value": 319.25,
+    "percent_vs_par": 0.4409,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.014,
+    "expected_irr_5y": 0.0133,
+    "market_implied_cap": 28.8,
+    "moat_runway_margin": -8.8,
+    "market_implied_growth": 0.2346,
+    "growth_margin_of_safety": -0.1596
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 11.88,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1389,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "STMMI.FR",
+  "ticker": "STMMI",
+  "universe": "eu",
+  "company": "STMicroelectronics",
+  "country": "France",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive STM32 microcontroller developer ecosystem and long automotive qualification cycles create design-in switching costs, but heavy internal fab capital intensity and cyclical ASP erosion prevent sustained >12% ROIC across the cycle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Capital-intensive integrated device manufacturer (IDM) exposed to severe automotive and industrial chip downcycles, aggressive Chinese silicon carbide (SiC) capacity expansion, and customer concentration (Apple, Tesla), keeping multi-cycle ROIC below the 12% hurdle.",
+    "evidence": "Multi-cycle ROIC falls to low single digits (~3-5%) during downcycles, failing the 12% cycle-average hurdle. Massive annual fab capex ($2.5B-$4B) creates high operating leverage, and the lack of secular pricing power against Tier-1 automotive and consumer OEMs leads to periodic margin compression."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

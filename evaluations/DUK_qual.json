@@ -1,0 +1,30 @@
+{
+  "id": "DUK",
+  "ticker": "DUK",
+  "universe": "us",
+  "company": "Duke Energy Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise monopoly over transmission and distribution grids across the Carolinas, Florida, and Midwest. The physical grid infrastructure is legally and economically impossible to replicate, providing complete territory lock-in with regulated cost-of-service rate-setting and fuel pass-through mechanisms.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (g6_default N, REJECT). Regulated electric utility operating under state-capped returns on equity (5.4% 5-year median GAAP ROIC). Continuous multi-billion capital expenditure plan ($14.0B capex in FY2025, $103B 5-year plan) exceeds operating cash flow, resulting in negative organic free cash flow and persistent equity dilution. Balance sheet is heavily levered with $80.1B in long-term debt against $4.97B net income (16.1x debt-to-earnings), and interest coverage is weak at 2.37x (far below the >5.0x fortress threshold). Structurally reliant on continuous capital market debt and equity issuances to fund ongoing operations.",
+    "evidence": "Duke Energy Corporation operates regulated electric and natural gas utilities across 6 states (Carolinas, Florida, Indiana, Ohio, Kentucky) serving 8.4M electric and 1.7M gas customers. Multi-year financial track record demonstrates the structural limits of regulated utilities: 5-year median GAAP ROIC is 5.44% (FY2025: 5.94%, FY2024: 5.68%, FY2023: 5.44%, FY2022: 4.97%), with tangible ROIC averaging 6.0-7.0%. FY2025 reported revenue of $31,741M, EBIT of $8,626M, interest expense of $3,634M, and net income of $4,968M. Interest coverage (EBIT/Interest) is 2.37x, well below the 5.0x peace-of-mind hurdle. Long-term debt stood at $80,108M at year-end 2025 ($87.2B total debt including current maturities, plus $2.6B commercial paper), against total cash of $245M. Long-term debt to net income is 16.1x. Operating cash flow of $12,330M was outpaced by $14,024M in capex, creating negative free cash flow before financing, with management budgeting an expanded $103B 5-year capital plan requiring continual external debt and equity financing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

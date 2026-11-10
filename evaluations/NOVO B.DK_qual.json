@@ -1,0 +1,30 @@
+{
+  "id": "NOVO B.DK",
+  "ticker": "NOVO B",
+  "universe": "eu",
+  "company": "Novo Nordisk",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World-class protein engineering and sterile manufacturing scale, but US net realized prices are eroding under heavy PBM rebate escalation with Eli Lilly, compounding pharmacy copycats, and mandatory Medicare IRA price negotiations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Despite elite ROIC, net realized GLP-1 pricing is under structural erosion from fierce PBM rebate concessions against Eli Lilly, compounding pharmacy substitution, mandatory Medicare IRA price negotiations, and a 35-50% US list price cut.",
+    "evidence": "Novo Nordisk exhibits exceptional ROIC (62% median) and cash flow, but net realized pricing per patient in its core US market is eroding due to gross-to-net PBM rebate pressures and intense competition with Eli Lilly's tirzepatide. The company announced 35-50% cuts to US list prices for Wegovy and Ozempic effective 2027, alongside mandatory CMS price caps under the Inflation Reduction Act, disqualifying it from passing Gate 3b pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

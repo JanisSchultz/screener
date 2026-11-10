@@ -1,0 +1,30 @@
+{
+  "id": "FER",
+  "ticker": "FER",
+  "universe": "us",
+  "company": "Ferrovial",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Operates premier, unreplicable toll road concessions over scarce rights of way (Toronto 407 ETR, Texas Managed Lanes LBJ/NTE/I-66/I-77) that provide real-time dynamic congestion pricing and contractual toll escalation outpacing inflation. Competitors cannot replicate these urban transit corridors due to land scarcity, environmental permitting, and massive capital barriers. Primary erosion threats include finite concession duration, political/regulatory pushback on dynamic toll rates, and execution cost overruns in construction.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Ferrovial controls world-class irreplaceable infrastructure concessions (Toronto 407 ETR, Texas Managed Lanes LBJ/NTE/I-66/I-77) with proven dynamic congestion pricing, its competitive advantage period is fundamentally truncated. As a hybrid civil engineering and concession group with ~80% of revenue derived from construction contracting, its Mauboussin persistence base rate is Tier 4 (CAP 5–10 years). Severe secular headwinds on Macrotrend 2 (manual civil construction labor scarcity and wage inflation) and Macrotrend 5 (cost of capital and refinancing friction on €9.4B of debt), combined with contractually finite concession lifespans and political risk around dynamic toll caps, prevent a 15+ year runway.",
+    "evidence": "FY2025 revenue reached €9,627M (+8.6% LfL), with Construction generating €7,653M (79.5% of total) at a thin 3.9% adjusted EBIT margin. Toll Roads (Cintra) drove group profitability with adjusted EBITDA of ~€1,000M+ supported by strong traffic on Texas Managed Lanes (NTE, LBJ) and distributions from 407 ETR (equity accounted). Balance sheet carries €9,356M in long-term debt (€5,114M net debt) against €1,508M EBIT, resulting in €438M annual interest expense. 5-year median GAAP ROIC is 9.86% (tangible ROIC ~10.6-11.2%), distorted by heavy capital expenditure, project-level financing, and lower-margin civil contracting. Concession portfolios carry finite contract horizons (LBJ/NTE to 2061, I-77 to 2069, JFK NTO to 2060)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

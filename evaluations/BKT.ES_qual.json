@@ -1,0 +1,30 @@
+{
+  "id": "BKT.ES",
+  "ticker": "BKT",
+  "universe": "eu",
+  "company": "Bankinter",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Consistently the most efficient and credit-disciplined mid-size Spanish bank (cost-to-income ~37%, industry-low NPLs). Sticky wealth management franchise and successful organic expansion in Portugal and Ireland (Avant Money), but lending spreads remain commodity credit.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Spain's premier mid-size banking franchise, combining disciplined underwriting (lowest NPLs in Spain) and wealth management with organic growth in Portugal and Ireland. However, commercial banking is an interest-rate-dependent spread business facing cyclical margin contraction as ECB rates fall, limiting CAP to 10 years.",
+    "evidence": "FY25 net income reached €1,048.6M with Owner EPS of 1.17, up from €544.9M in FY22, propelled by ECB rate hikes. Balance sheet maintains €18.0B cash and disciplined asset quality. Despite best-in-class Spanish banking execution, spread-lending does not meet the 15-year secular moat persistence threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

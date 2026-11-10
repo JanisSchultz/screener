@@ -1,0 +1,30 @@
+{
+  "id": "TROW",
+  "ticker": "TROW",
+  "universe": "us",
+  "company": "T. Rowe Price",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High switching costs and participant inertia in employer-sponsored defined contribution / 401(k) retirement plans and target-date fund suites provide a sticky asset base. However, this moat is actively eroding due to structural disintermediation and counter-positioning from low-cost passive index giants (Vanguard, BlackRock iShares) and fee compression across the active equity industry. Operating ROIC remains historically healthy (~18-20%), but pricing power is non-existent as effective fee rates have declined to 38.8 bps alongside persistent annual net asset outflows.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While T. Rowe Price maintains high switching costs in corporate 401(k) retirement plan administration and target-date fund franchises, it possesses zero pricing power above inflation. The firm faces relentless secular migration from active equity management to passive low-cost index funds and ETFs, driving cumulative net outflows ($43.2B in 2024, $56.9B in 2025) and continuous effective fee rate compression from 41.9 bps in 2023 to 41.0 bps in 2024 and 38.8 bps in 2025. Any attempt to raise fee rates accelerates client redemption.",
+    "evidence": "Empirical track record shows sustained ROIC (~18.5% 10-year median) and an unblemished fortress balance sheet with zero core long-term debt and >$3B in cash and discretionary seed investments. However, organic growth has turned permanently negative in core active equities: net client outflows reached $81.8B in 2022, ~$80B in 2023, $43.2B in 2024, and $56.9B in 2025 despite market tailwinds expanding total AUM to $1.78T. Average effective fee rate compressed from 41.9 bps in 2023 to 41.0 bps in 2024 and 38.8 bps in 2025. FCF conversion remains high (~$1.3B-$2.0B annually), but inability to raise fees or stem active equity outflows demonstrates the complete absence of pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "SHW",
+  "ticker": "SHW",
+  "universe": "us",
+  "company": "Sherwin-Williams",
+  "price": 344.1,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Passes all 6 gates. Unassailable North American pro-painter distribution monopoly with 5,000+ company-owned stores and unmatched contractor lock-in (paint is 10-15% of job cost vs 85-90% labor). FY2024 Peak Owner EPS of $10.5525 accepted without adjustment (FY2025 Owner EPS of $10.2576 confirms resilient earnings power through a generational housing turnover freeze). Operating ROIC normalized to 35.0% cap under negative tangible capital standard (tangible ROIC >100% neutralizing $12.0B Valspar acquisition goodwill/intangibles; GAAP median 22.84%). 5-10Y through-the-cycle growth of 7.0% driven by 2.5% pro contractor store & volume growth, 2.0% pricing power, 1.0% industrial coatings/international expansion, -0.5% macro housing cycle drag, and 2.0% net share repurchases. Prudent balance sheet with net debt repayable in 3.63 years of NI, 8.18x interest coverage ($3.80B EBIT vs $465M interest), and 94.1% FCF conversion. Trades Above PAR at 32.61x peak EPS vs 27.62x PAR multiple ($291.43 PAR Value)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.5525,
+    "current_multiple": 32.61,
+    "par_multiple": 27.62,
+    "par_value": 291.42,
+    "percent_vs_par": 0.1808,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0095,
+    "expected_irr_5y": 0.0445,
+    "market_implied_cap": 23.6,
+    "moat_runway_margin": -3.6,
+    "market_implied_growth": 0.1449,
+    "growth_margin_of_safety": -0.0749
+  },
+  "health_checks": {
+    "net_debt_years": 3.63,
+    "net_debt_ok": true,
+    "interest_coverage": 8.18,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9407,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

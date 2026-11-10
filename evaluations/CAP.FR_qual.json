@@ -1,0 +1,30 @@
+{
+  "id": "CAP.FR",
+  "ticker": "CAP",
+  "universe": "eu",
+  "company": "Capgemini",
+  "country": "France",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Longstanding enterprise relationships and systems integration scale, but structurally lacks pricing power as clients demand productivity pass-throughs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & no pricing power, REJECT). Billable-hour IT consulting and services model faces persistent margin pressure from client cost-takeout mandates and generative AI delivery deflation, with sub-12% multi-cycle GAAP ROIC following large goodwill acquisitions (Altran, WNS).",
+    "evidence": "5-year GAAP ROIC remains structurally sub-hurdle (~9-11%) due to €10B+ in goodwill and intangibles from serial M&A (Altran, WNS, Cloud4C). Operating margins are capped at ~13%. Labour-intensive consulting and IT services lack pricing power above inflation as enterprise clients routinely enforce productivity clawbacks, a headwind accelerating under AI automation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

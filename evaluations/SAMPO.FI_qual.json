@@ -1,0 +1,30 @@
+{
+  "id": "SAMPO.FI",
+  "ticker": "SAMPO",
+  "universe": "eu",
+  "company": "Sampo Oyj",
+  "country": "Finland",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Undisputed Nordic P&C market champion anchored by If P&C (~20% Nordic market share). Enjoys significant scale economies in claims handling, direct digital distribution, and IT, yielding an extraordinary ~81-83% combined ratio. Consistently indexes insurance tariffs above Nordic vehicle repair and bodily injury inflation while sustaining ~90% customer retention.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Nordic P&C underwriting champion (anchored by If P&C with ~81-83% combined ratio and Topdanmark integration). 15.5% median ROIC, post-dividend Solvency II ratio 174%, 1.3x Debt/NI, and 37x interest coverage. [5-10Y g: Nordic P&C volume 2.0% + tariff indexation 2.5% + Topdanmark synergies & UK Hastings 1.5% + net share buybacks 1.0%]",
+    "evidence": "Following the complete divestment of Nordea Bank and life insurance assets, Sampo is a pure-play P&C champion comprising If P&C, Topdanmark (fully acquired in 2024), and Hastings (UK). 5-year median GAAP ROIC is 15.5% (operating ROIC 25.1%). In FY25, net income was €1,998M with EBIT of €2,503M and owner EPS of €0.76. Combined ratio at If P&C remains steady at ~81-83%, demonstrating supreme underwriting discipline. Balance sheet is conservative with Debt/NI of 1.3x, interest coverage of 37x, and post-dividend Solvency II ratio of 174%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

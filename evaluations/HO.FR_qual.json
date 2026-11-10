@@ -1,0 +1,30 @@
+{
+  "id": "HO.FR",
+  "ticker": "HO",
+  "universe": "eu",
+  "company": "Thales",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sovereign defense electronics (AESA radars, sonar arrays, C4ISR) and certified civil avionics/ATM protected by national security clearances and high switching costs. Defense procurement contracts feature contractual inflation indexation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash conversion and structural space division drag). While defense electronics and avionics possess defensible moats, chronic restructuring losses in commercial space satellites (Thales Alenia Space) and lumpy multi-year contract working capital fail the Munger cash compounding and predictability bar.",
+    "evidence": "Thales Alenia Space faces ongoing structural disruption from low-Earth orbit satellite constellations, resulting in restructuring charges and margin dilution. Large sovereign defense contracts generate volatile milestone working capital swings across reporting periods, impairing steady cash flow predictability despite solid top-line defense demand."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

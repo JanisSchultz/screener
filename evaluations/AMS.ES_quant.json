@@ -1,0 +1,43 @@
+{
+  "id": "AMS.ES",
+  "ticker": "AMS",
+  "universe": "eu",
+  "company": "Amadeus",
+  "price": 60.52,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under negative tangible capital standard for travel IT software and GDS toll booth (GAAP ROIC 20.6%). Forward 5-10Y compound growth rate modeled at 8.5% driven by air passenger boarding growth, GDS duopoly recovery, and hospitality IT expansion. Fundamental PAR multiple of 26.74x sits comfortably within 5Y cycle bounds (18.18x - 38.25x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.0104,
+    "current_multiple": 20.1,
+    "par_multiple": 26.74,
+    "par_value": 80.49,
+    "percent_vs_par": -0.2481,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0242,
+    "expected_irr_5y": 0.1729,
+    "market_implied_cap": 15.0,
+    "moat_runway_margin": 5.0,
+    "market_implied_growth": -0.0145,
+    "growth_margin_of_safety": 0.0995
+  },
+  "health_checks": {
+    "net_debt_years": 1.1,
+    "net_debt_ok": true,
+    "interest_coverage": 22.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1395,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

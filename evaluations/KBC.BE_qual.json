@@ -1,0 +1,30 @@
+{
+  "id": "KBC.BE",
+  "ticker": "KBC",
+  "universe": "eu",
+  "company": "KBC Group",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Integrated bank-insurance model yields sticky primary-bank relationships, cross-selling advantages, and low-cost deposit funding in concentrated Belgian and Czech duopolies; low cost-to-income (~45%) and sustained 14-16% ROE prove structural moat.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet, REJECT). Integrated Belgian bank-insurance leader with outstanding cost efficiency (cost-to-income ~45%), leading digital distribution (Kate), and disciplined capital returns (14-15% ROE). However, as a commercial fractional-reserve bank operating with 10-15x leverage on tangible equity, credit risk, and deposit duration mismatch, it fails the Munger peace-of-mind balance sheet standard.",
+    "evidence": "FY2024-2025 ROE reached 14-15% with Net Profit of €3.4B-€3.6B and CET1 ratio of 14.9% (Basel IV). Solvency II ratio for insurance operations stands at 227%. However, total balance sheet leverage exceeds 12x assets-to-equity (€27.3B long-term debt, €34.0B cash, €350B+ total assets), exposing equity to systemic credit cycles, deposit run dynamics, and regulatory liquidity mandates. Fails Gate 6 commercial bank standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

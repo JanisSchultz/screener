@@ -1,0 +1,30 @@
+{
+  "id": "CCH.GB",
+  "ticker": "CCH",
+  "universe": "eu",
+  "company": "Coca-Cola HBC",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Substantial revenue base concentrated in non-Western, emerging, and pariah jurisdictions (including ongoing Russian operations and high exposure to Nigeria and Egypt) lacking rule of law and stable property rights.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Generates nearly half of volume and substantial earnings from non-Western emerging and frontier markets, including ongoing operations in Russia (Multon Partners / Dobry Cola) subject to sanctions and expropriation risk, and high exposure to volatile developing markets (Nigeria, Egypt) lacking rule of law and stable property rights.",
+    "evidence": "Coca-Cola Hellenic Bottling Company operates across 29 countries where the Emerging segment accounts for ~45-47% of net sales revenue. Key profit contributors include Russia (retained local bottling and juice operations post-2022) and Nigeria, where severe currency devaluations, capital controls, and geopolitical instability introduce severe sovereign and rule-of-law risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

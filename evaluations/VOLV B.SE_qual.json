@@ -1,0 +1,30 @@
+{
+  "id": "VOLV B.SE",
+  "ticker": "VOLV B",
+  "universe": "eu",
+  "company": "Volvo Group",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive global dealer and service network across commercial trucking and heavy equipment with strong total-cost-of-ownership (TCO) brand reputation, but cyclical truck replacement cycles and aggressive price discounting during freight downturns constrain pricing power, keeping consolidated GAAP ROIC in the 8-11% range.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Premier global commercial truck and heavy equipment OEM, but consolidated multi-cycle GAAP ROIC (including financial services) hovers at 8-11%, below the 12% threshold. Extreme cyclicality in freight fleets and fleet capex deferrals during downturns preclude sustained pricing power above inflation.",
+    "evidence": "Consolidated multi-cycle ROIC averages 8-11% across full cycles due to financial services leverage and cyclical troughs (e.g. 2020 ROCE dipped to 10.4%). While Industrial Operations delivers strong peak-cycle margins (11-14%), truck deliveries are subject to 20-30% cyclical contractions and multi-billion-euro dual powertrain (diesel and zero-emission) transition capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

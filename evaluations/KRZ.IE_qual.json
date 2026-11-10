@@ -1,0 +1,30 @@
+{
+  "id": "KRZ.IE",
+  "ticker": "KRZ",
+  "universe": "eu",
+  "company": "Kerry Group",
+  "country": "Ireland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Flavour and taste systems represent <2-4% of customer COGS but define product taste profiles and brand integrity, creating high switching costs. Demonstrated pricing power across the 2021-2023 inflationary spike while expanding margins; operating tangible ROIC exceeds 34%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peak-to-Peak Compounding, REJECT). Sticky B2B taste and nutrition formulation moat with solid FCF conversion (~89%), but decades of continuous bolt-on M&A have saddled the balance sheet with €5.4B of goodwill, permanently depressing reported GAAP ROIC to 9.6% (median) and capping 4-year Owner EPS CAGR at 3.75%.",
+    "evidence": "Tangible operating ROIC is excellent at 34%-39%, but multi-decade acquisition rollups have accumulated €5.4B of goodwill and intangibles on €5.9B of equity, driving reported GAAP ROIC to 8.7%-9.8% (median 9.65%). 4-year Owner EPS CAGR is sluggish at 3.75% (Owner EPS was €3.88 in 2022 and €4.28 in 2025, dipping from €4.33 in 2024). Net debt of €2.14B is manageable (3.2x net income, interest coverage 9.6x), but chronic sub-10% GAAP ROIC and weak EPS compounding fail Pillar 1 of Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

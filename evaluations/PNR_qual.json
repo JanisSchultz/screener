@@ -1,0 +1,30 @@
+{
+  "id": "PNR",
+  "ticker": "PNR",
+  "universe": "us",
+  "company": "Pentair plc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Moat mechanisms include contractor installed-base lock-in and digital automation ecosystems (IntelliCenter) in Pool, alongside proprietary replacement filtration cartridges (Everpure, Manitowoc Ice) in Water Solutions. However, GAAP ROIC has hovered around 10-12% over multi-year cycles (FY20 ~9.8%, FY21 ~14.7%, FY22 ~9.4%, FY23 ~12.1%, FY24 ~12.1%, FY25 ~12.0%) burdened by ~$3.4B in goodwill/intangibles from serial acquisitions. Incremental ROIIC across the cycle is weak (~5%) following the $1.6B Manitowoc acquisition. Pricing power is constrained by heavy reliance on two-step wholesale distribution (PoolCorp) and triopoly equipment competition against Hayward and Fluidra.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Pentair operates solid franchises in residential pool equipment and commercial water filtration, but fails the strict Munger compounder hurdle. 5-year median GAAP ROIC sits at ~12.0% and incremental ROIIC across the cycle is sub-par (~5%) following the debt-financed $1.6B Manitowoc Ice acquisition. Pentair lacks independent pricing power to overcome volume cyclicality, evidenced by double-digit volume drops during housing/renovation downturns and heavy reliance on wholesale distributor intermediaries (PoolCorp) facing triopoly competition against Hayward and Fluidra.",
+    "evidence": "Financial track record: Net sales reached $4,083M in FY2024 and $4,176M in FY2025. GAAP Net Income: $553M (FY21), $481M (FY22), $623M (FY23), $625M (FY24), and $654M (FY25). While free cash flow conversion is strong ($693M in FY24, ~$747M in FY25, FCF/NI >100%), the balance sheet carries $1.6B in net debt and $3.4B of goodwill and intangibles. 5-year GAAP ROIC (FY20: 9.8%, FY21: 14.7%, FY22: 9.4%, FY23: 12.1%, FY24: 12.1%, FY25: 12.0%) has a median of ~12.0%, but post-2021 incremental capital deployed returned only ~5% due to the $1.6B Manitowoc Ice acquisition. Segments: Flow (~$1.6B sales; pumps, fluid treatment), Pool (~$1.4B sales; pumps, filters, automation), and Water Solutions (~$1.1B sales; commercial/residential filtration, ice machines). Customer lock-in & pricing power: Contractor loyalty and proprietary automation provide sticky aftermarket replacement (~80% of pool revenue), but pricing power is curtailed by distributor concentration (PoolCorp) and triopoly rivalry with Hayward and Fluidra. Pool volumes fell double-digits during the 2022-2024 channel destocking and interest rate spike."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

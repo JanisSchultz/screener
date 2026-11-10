@@ -1,0 +1,30 @@
+{
+  "id": "FTV",
+  "ticker": "FTV",
+  "universe": "us",
+  "company": "Fortive",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Fluke holds an entrenched global brand and distribution standard in electrical test and measurement tools, with high technician switching barriers and safety certification lock-in (CAT III/IV); ASP holds a sticky installed base of STERRAD low-temperature hydrogen peroxide sterilization systems with proprietary consumable cassettes in hospitals. Gross margins expanded from 57.3% in 2021 to 59.5% in 2024, demonstrating consistent pricing power above inflation and tangible ROIC well above 25%, despite GAAP ROIC being diluted by goodwill. Primary erosion risks stem from digital commoditization of hardware and disruption of acquired facility/workflow SaaS assets.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Capital Goods and Enterprise Software anchor at Tier 3 (10-15Y baseline). Fortive's portfolio pivot toward mid-market facility and healthcare workflow software (Accruent, Gordian, ServiceChannel, Provation) faces acute terminal headwinds from Macrotrend [1] (Automation & Cognitive Tech / Agentic AI), which reduces seat counts and automates routine contractor dispatch and documentation workflows. Combined with serial corporate restructuring and repeated spinoffs (Vontier in 2020, Ralliant/Tektronix in 2025), predictable competitive advantage runway is capped at 5 years (< 15Y hurdle).",
+    "evidence": "Historical GAAP ROIC has remained subdued at 3.5%-5.5% (median ~5-9.5%) due to an accumulated goodwill burden exceeding $10.1B in FY2024 ($7.3B post-Ralliant spin in FY2025) on total assets of $11.7B-$17.0B, although tangible operating ROIC exceeds 25% and gross margins are stable-to-expanding at 57%-60%. In June 2025, Fortive completed the tax-free spin-off of its Precision Technologies segment (Tektronix, Qualitrol, Gems) as Ralliant Corporation (NYSE: RAL), leaving Fortive focused on Intelligent Operating Solutions (IOS: Fluke, ServiceChannel, Accruent, Gordian) and Advanced Healthcare Solutions (AHS: ASP, Censis, Provation), generating ~$720M in continuing operating income. While Fluke multimeters and ASP sterilizers exhibit high brand trust and pricing power, Fortive's heavy capital deployment into expensive workflow SaaS acquisitions has created an asset base vulnerable to AI agent disruption and portfolio churn, failing the 15-year CAP persistence threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

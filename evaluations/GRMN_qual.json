@@ -1,0 +1,30 @@
+{
+  "id": "GRMN",
+  "ticker": "GRMN",
+  "universe": "us",
+  "company": "Garmin",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Consumer Electronics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary low-power GPS hardware, Firstbeat physiological algorithms, FAA/EASA-certified cockpit avionics, and vertical manufacturing create high technical barriers and Garmin Connect/avionics ecosystem switching costs. Empirically proved by 23.94% 5Y median GAAP ROIC (26.88% tangible ROIC), ~25.5% 5Y incremental ROIIC on net operating capital, 58.7% FY2025 gross margin, and 25.9% EBIT margin despite flagship ASP tiering and tariff pressures. Primary erosion threats are Apple/Samsung/Coros smartwatch encroachment in consumer wearables and Taiwan manufacturing concentration.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Garmin is a transparent, high-ROIC engineering franchise across GPS wearables, certified avionics, and marine electronics, its ~61.5% Fitness/Outdoor consumer electronics and ~9.2% Auto OEM mix anchors an Outside View baseline CAP of 15 years, which receives a -5 year Macrotrend [3] haircut (capping CAP at 10 years) due to severe single-country manufacturing concentration in Taiwan for its principal consumer hardware products alongside cross-strait shipping/airspace risk and tariff exposure—failing the Munger 15+ year Secular Resilience bar.",
+    "evidence": "Multi-cycle financial record (FY2016-FY2025, SEC EDGAR): Sales grew from $3,018.7M to $7,245.5M (+15% YoY in FY2025), EBIT expanded from $632.9M (21.0% margin) to $1,876.1M (25.9% margin), Net Income rose from $517.7M to $1,663.9M, and Owner EPS compounded from $2.73 to $8.59 (10.7% 5Y CAGR), with only a -2.5% sales dip in FY2022. Capital efficiency stayed consistently above hurdle: GAAP ROIC ranged 16.85%-27.12% (5Y median 23.94%), tangible ROIC 19.03%-30.62% (5Y median 26.88%), and 5Y incremental ROIIC (FY2020-FY2025 delta NI / delta equity ex-cash) was ~25.5%. FY2025 gross margin held at 58.7% despite tariffs; 5Y Owner FCF conversion was 75.72% ($4,861.6M / $6,420.7M, dragged by 2021-2022 inventory/capex build and $166.0M FY2025 SBC; 10Y Owner FCF conversion 80.17%). Balance sheet holds $0.0M LT debt and $2,278.6M cash. FY2025 segment revenue: Fitness $2.36B (~32.5%), Outdoor $2.10B (~29%), Marine $1.20B (~16.5%), Aviation $987M (~13.6%), Auto OEM $665M (~9.2%). Governance & M&A: Co-founder Executive Chairman Dr. Min Kao (~0.86%-1% stake) and CEO Cliff Pemble (1989 employee #6, CEO since 2013) favor organic R&D and disciplined bolt-ons (goodwill/intangibles $760.2M vs $8,972.6M equity) plus $663.9M dividends. Gate 4 failure driver: FY2025 Form 10-K confirms principal consumer manufacturing facilities (including fēnix/Enduro lines in Tainan Tree Valley) are concentrated in Taiwan, creating direct Macrotrend [3] vulnerability to cross-strait conflict, regional airspace/shipping disruption, and high tariff regimes, compounded by ongoing consumer smartwatch platform competition."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

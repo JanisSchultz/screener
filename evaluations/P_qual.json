@@ -1,0 +1,30 @@
+{
+  "id": "P",
+  "ticker": "P",
+  "universe": "us",
+  "company": "Everpure",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Direct-to-Flash modules (DFM) and proprietary Purity operating environment create switching costs and high enterprise customer retention via the Evergreen subscription model. However, enterprise storage is structurally exposed to competitive RFP commoditization from giants (Dell, NetApp, HPE), persistent NAND flash cost deflation, and hyperscaler custom architectures, preventing sustained pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Lack of Above-Inflation Pricing Power, REJECT). Enterprise flash storage vendor benefits from switching costs via its proprietary Purity OS and Evergreen subscription upgrade model. However, structural industry economics prevent compounding at scale: 5-year median GAAP ROIC hovers around 3-6% (well below the 12% hurdle), burdened by heavy R&D requirements and massive stock-based compensation ($421M in FY25 vs $107M GAAP net income). Enterprise storage remains subject to fierce RFP discounting against Dell, NetApp, and HPE, preventing independent above-inflation pricing power.",
+    "evidence": "Pure Storage (PSTG / Everpure) FY25 revenue reached $3.17B with GAAP operating income of $85.3M (2.7% margin) and GAAP net income of $106.7M. Reported free cash flow of $526M is heavily distorted by $421.3M in stock-based compensation expense (diluting owner cash generation). 5-year median GAAP ROIC is ~3-6% (v1 workbook estimate 8.5%), failing the 12% minimum hurdle. While gross margins remain solid at ~70-72% and net cash stands over $1.8B, high competitive intensity in enterprise storage hardware and structural SBC drag prevent superior multi-cycle capital compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

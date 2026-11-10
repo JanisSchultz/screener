@@ -1,0 +1,30 @@
+{
+  "id": "PCAR",
+  "ticker": "PCAR",
+  "universe": "us",
+  "company": "PACCAR Inc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Barriers to Entry: PACCAR's premium Kenworth, Peterbilt, and DAF nameplates command industry-leading residual values, driver preference, and dealer loyalty, backed by an extensive network of 2,200+ global dealer locations and global distribution scale in PACCAR Parts. Proof of Moat: 86 consecutive years of net profitability through severe economic and freight recessions; 10-year median ROIC of ~18.5%, with cycle peaks reaching 18.8% in 2023 and 15.7% in 2024. Primary Erosion Threats: The whole-truck manufacturing segment (~70% of revenue) is inherently tied to cyclical freight carrier capex; in downcycles, carriers defer fleet renewal and OEMs must discount build slots or offer subsidized financing. Long-term capital demands are further elevated by decarbonization mandates (BEV/hydrogen powertrains and battery joint ventures like Amplify Cell Technologies), risking powertrain commoditization.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). While PACCAR is an exceptionally managed commercial vehicle manufacturer with premier brands (Kenworth, Peterbilt, DAF) and 86 consecutive years of net profitability, its core whole-truck operations (~70% of revenue) sell into a deeply cyclical freight transport market. PACCAR lacks unconstrained pricing power >= inflation across the full cycle; during freight recessions (as evidenced in 2024-2025 where truck revenues fell 22% and ROIC compressed to ~9.1-9.5%), OEMs must grant price concessions and incentives to maintain build schedules, failing the Munger standard for cycle-resilient pricing power.",
+    "evidence": "Multi-Cycle Track Record: 86 consecutive years of net profitability. 10-year median ROIC is ~18.5%, but fluctuates with freight cycles (ROIC ~11-12% in 2020, 18.8% in 2023, 15.7% in 2024, and ~9.1-9.5% in 2025). Consolidated revenues were $33.66B in 2024 and $28.44B in 2025 (-15.5%), with Truck net sales declining 22% from $24.84B to $19.37B on 144,200 deliveries. Segment Breakdown: Truck (~68% of 2025 revenues); PACCAR Parts (~24% of revenues, growing from $6.67B in 2024 to $6.87B in 2025 as a high-margin aftermarket stabilizer); PACCAR Financial Services (~8% of revenues, $2.21B in 2025 with $15.64B in portfolio debt). Capital Allocation: Zero manufacturing debt, fortress manufacturing balance sheet, consistent ~50% net income dividend payout via regular and special dividends, and $1.17B in 2025 R&D/capex. Despite operational excellence, cyclical truck discounting during freight downturns precludes structural pricing power >= inflation across the cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

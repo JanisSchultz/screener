@@ -1,0 +1,30 @@
+{
+  "id": "ATO",
+  "ticker": "ATO",
+  "universe": "us",
+  "company": "Atmos Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Gas Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted local gas distribution franchise network across Texas and 7 other states. Underground natural gas distribution pipes and Atmos Pipeline-Texas are physically unreplicable. Annual rate review mechanisms (Texas GRIP) provide formulaic pricing power to pass through capital costs and inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance sheet debt/NI = 7.4x > 4.0x, perpetual capex dilution, REJECT). Premier regulated natural gas LDC with excellent regulatory execution in Texas, but structurally bound by capped 6.0% ROIC, massive safety capex (4.8x D&A), and $8.9B debt requiring constant capital market issuance.",
+    "evidence": "10-year median GAAP ROIC is 6.04% (tangible ROIC 6.3%), capped by regulatory cost-of-service ratemaking. TTM LT debt of $8.91B against net income of $1.20B yields 7.43x debt-to-earnings leverage, well above the 4.0x threshold. TTM capex of $3.56B dwarfs D&A ($735M) by 4.8x, generating structural cash deficits after growth/replacement capex that necessitate perpetual debt and equity market financing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "gate_6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

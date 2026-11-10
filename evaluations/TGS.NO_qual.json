@@ -1,0 +1,30 @@
+{
+  "id": "TGS.NO",
+  "ticker": "TGS",
+  "universe": "eu",
+  "company": "TGS",
+  "country": "Norway",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Upstream seismic exploration and multi-client data licensing are highly discretionary and easily deferrable by E&P operators during downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Seismic exploration data licensing and speculative multi-client surveys are highly discretionary, deferrable capital expenditures that oil and gas operators cut drastically during industry downcycles.",
+    "evidence": "TGS operates multi-client seismic data libraries and acquisition vessels (following the PGS merger). Exploration spending is non-essential and volatile, subject to immediate cancellation or postponement during commodity price troughs, violating Gate 2 essential western need / entrenched habit standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "COST",
+  "ticker": "COST",
+  "universe": "us",
+  "company": "Costco",
+  "price": 1053.5601,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Fortress capital structure with $20.2B cash vs $3.9B LT debt ($16.3B net cash) and 80.6x EBIT interest coverage. Operating ROIC of 41.0% (and GAAP ROIC of 38.8%) reflects structurally negative working capital and rapid inventory turns (>12x), receiving the maximum 35.0% ROIC pillar cap under the Tangible Capital Standard. Through-the-cycle 5-10Y g of 8.5% anchored by 4.0% comp store sales, 2.5% club expansion, and regular membership fee increases (raised Sep 2024 to $65/$130 with 92.3% renewal rate). FCF conversion is pristine at 118.2%. At $1,053.56, COST trades at 50.75x peak Owner EPS vs fundamental 3-pillar PAR multiple of 34.31x (PAR Value $712.29, +47.9% Above PAR), resulting in a modest 5Y expected IRR of 0.86% due to multiple compression drag."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 20.7593,
+    "current_multiple": 50.75,
+    "par_multiple": 34.31,
+    "par_value": 712.29,
+    "percent_vs_par": 0.4791,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0053,
+    "expected_irr_5y": 0.0086,
+    "market_implied_cap": 29.6,
+    "moat_runway_margin": -9.6,
+    "market_implied_growth": 0.3316,
+    "growth_margin_of_safety": -0.2466
+  },
+  "health_checks": {
+    "net_debt_years": 0.42,
+    "net_debt_ok": true,
+    "interest_coverage": 80.59,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1822,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

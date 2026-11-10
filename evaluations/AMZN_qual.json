@@ -1,0 +1,30 @@
+{
+  "id": "AMZN",
+  "ticker": "AMZN",
+  "universe": "us",
+  "company": "Amazon",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dual scale-economies-shared flywheel in North American/global fulfillment logistics and AWS hyperscale cloud prevents competitors from matching unit delivery cost, fulfillment speed, and compute price-performance (Trainium/Graviton). Empirically verified by 5Y median GAAP ROIC of 18.6% (19.8% FY25), 5Y median tangible ROIC of 22.0%, cross-cycle pre-tax incremental ROIIC of ~19-20% (2016-2025), consolidated EBIT margin expansion from 2.4% (FY22) to 11.2% (FY25) and 13.9% (Q3 2026), and pricing power proven via Prime fee hikes, 3P/ad monetization (~$68B FY25 ad revenue), and 35% AWS operating margins. Primary erosion threats: hyperscaler AI capex wars compressing incremental compute ROIC, low-cost cross-border challengers (Temu/Shein), and FTC/EU marketplace antitrust remedies.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Despite wide-moat retail/AWS scale economies and accelerating cloud growth, Amazon fails Munger's cash conversion and self-funding balance sheet standard: 5Y Owner FCF conversion is just 46.5% (2021-2025 GAAP FCF/NI only 20.8%), FY25 GAAP FCF fell to $7.7B on $131.8B capex, and 2026 capex escalated to ~$220B (with 2027 guided meaningfully higher), driving trailing FCF deeply negative (~-$34B to -$42B) and pushing long-term debt from $65.6B (YE25) to $173.1B (Q3 2026, ~$58.9B net debt vs $114.2B cash). Not a temporary fixable Calamity given 6+ years of sub-80% cash conversion, rapid 4-6Y AI hardware depreciation lag, and open-ended debt-funded capex escalation.",
+    "evidence": "Ten-year SEC EDGAR history (2016-2025) shows revenue compounding from $136.0B to $716.9B (+12% YoY in FY25) and GAAP EBIT rising from $4.2B (3.1%) to $80.0B (11.2% in FY25), reaching 13.9% operating margin in Q3 2026 ($202B revenue; Q2 2026 $200.6B revenue, $27.5B EBIT; Q4 2026 EBIT guided $28.5B-$33.5B). Segment mix is anchored by AWS ($128.7B FY25 revenue, +20% YoY; Q4 2025 $12.5B EBIT / ~35% margin; Q3 2026 growth accelerating to 39% YoY with $578B backlog) and high-margin advertising (~$68B FY25, >20% YoY growth). GAAP ROIC cleared 16% in 9 of 10 years (5Y median 18.6%, FY25 19.8%; 5Y median tangible ROIC 22.0%), dipping only in the FY22 post-COVID overbuild (6.2%). Gate 4 receives a -5Y haircut from a 20Y base rate to 15Y for Macrotrends [3] geopolitical/tariff 3P sourcing & Taiwan AI silicon foundry concentration and [4] data-center grid power bottlenecks, while remaining a full-stack AI beneficiary. Gate 5 earns 1 (clean GAAP reporting, SBC down from $24.0B FY23 to $19.5B FY25, planned abandonment of side bets, but no buybacks and aggressive $220B/yr AI spend). Gate 6 fails Pillar 2 & Pillar 3 capital-market independence: 2021-2025 cumulative Owner FCF ($92.0B, deducting min(CapEx,D&A) and $97.9B SBC) converted only 46.45% of GAAP NI ($198.0B); traditional FCF (OCF minus CapEx) totaled $41.2B (20.8% of NI), dropping to $7.7B in FY25 ($139.5B OCF - $131.8B CapEx) and roughly -$34B to -$42B trailing in 2026 ($75.9B CapEx in Q3 2026 alone; $220B FY26 guide; 2027 guided higher). While EBIT/Interest remains high (>13x in 2026 vs 35.2x in FY25) and Q2 2026 GAAP NI ($62.6B) included a $53.4B non-operating Anthropic valuation gain, LT debt jumped from $65.6B (YE25) to $173.1B (Q3 2026, including a $25B July 2026 bond offering) against $114.2B cash, flipping $21.2B net cash into ~$58.9B net debt."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

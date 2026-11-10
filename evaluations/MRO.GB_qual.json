@@ -1,0 +1,30 @@
+{
+  "id": "MRO.GB",
+  "ticker": "MRO",
+  "universe": "eu",
+  "company": "Melrose",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Contractually locked aftermarket Risk and Revenue Sharing Partnerships (RRSPs) on commercial aircraft engines (GTF, GEnx, Trent) provide long-term high-margin aftermarket toll booth revenues with pricing power indexed above inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (FCF conversion < 80% and negative multi-year statutory earnings). GKN Aerospace engine RRSP toll booth has strong sole-source positions, but negative multi-year statutory earnings (£-1.02B in 2023, £-49M in 2024) and cash outflows from GTF powdered metal fleet inspections fail the Munger cash compounding and balance sheet peace-of-mind test.",
+    "evidence": "Statutory net income was negative across 2022 (-£308M), 2023 (-£1,020M), and 2024 (-£49M) before recovering to £370M in 2025. Free cash flow was negative in 2023 and 2024 (-£74M) before turning positive to £125M in 2025, failing the multi-year 80% FCF conversion requirement. Significant cash outflows required for Pratt & Whitney GTF engine fleet inspections and airline compensation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BGN.IT",
+  "ticker": "BGN",
+  "universe": "eu",
+  "company": "Banca Generali",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading Italian private banking network (~2,300 financial advisors) catering to high-net-worth individuals, backed by parent Assicurazioni Generali brand. Strong advisor retention and customer loyalty generate high ROE, but revenues are tied to asset market values and distribution commissions vulnerable to EU regulatory caps on inducements.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Gate 3b = N, REJECT). Banca Generali runs a high-return private banking network in Italy but lacks pricing power above inflation. Its ad-valorem asset management fee structure is exposed to market drawdowns, and high Italian distribution commissions face persistent regulatory pressure under ESMA value-for-money guidelines. Cannot raise fee schedules without risking client attrition or regulatory sanction.",
+    "evidence": "Banca Generali reached €103.8bn in total client assets in 2024 with net inflows of €6.6bn and net profit of €431.2m, yielding an impressive ~32% ROE and 22.0% CET1 ratio. However, net recurring fees (€476.1m in 2024) are pegged strictly to AUM levels and asset performance, offering zero independent ability to raise fee percentages above inflation. Product fees face structural headwinds from lower-cost fintech platforms and European Commission retail investment directives."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

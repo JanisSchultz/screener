@@ -1,0 +1,43 @@
+{
+  "id": "ENX.FR",
+  "ticker": "ENX",
+  "universe": "eu",
+  "company": "Euronext",
+  "price": 170.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing \u20ac6.8B of M&A goodwill/intangibles from the Borsa Italiana acquisition, reflecting structurally negative tangible invested capital. Peak Owner EPS of \u20ac6.92 reflects successful Euronext Clearing internalization and synergy realization. Forward compound growth of 7.5% (g_implied) is supported by trading/clearing volume (2.5%), data/SaaS analytics (3.0%), tariff adjustments (1.0%), and deleveraging/share repurchases (1.0%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.9184,
+    "current_multiple": 24.57,
+    "par_multiple": 21.39,
+    "par_value": 147.98,
+    "percent_vs_par": 0.1488,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0173,
+    "expected_irr_5y": 0.0629,
+    "market_implied_cap": 17.2,
+    "moat_runway_margin": -2.2,
+    "market_implied_growth": 0.1044,
+    "growth_margin_of_safety": -0.0294
+  },
+  "health_checks": {
+    "net_debt_years": 1.9,
+    "net_debt_ok": true,
+    "interest_coverage": 22.6,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.14,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

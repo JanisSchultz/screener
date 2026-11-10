@@ -1,0 +1,30 @@
+{
+  "id": "MAA",
+  "ticker": "MAA",
+  "universe": "us",
+  "company": "Mid-America Apartment Communities",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Multi-Family Residential REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Infill locations across high-growth Sunbelt metros (Atlanta, Dallas, Charlotte, Tampa, Orlando, Nashville) offer local clustering scale, but low municipal entitlement and zoning barriers allow merchant builders to introduce massive competing multi-family supply waves during expansion cycles. Empirically, 5-year and 10-year median GAAP ROIC is ~5.0%–5.2%, far below the 12% threshold. One-year leases and negligible tenant switching costs leave MAA as a price-taker during supply delivery peaks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.2% vs. 12% hurdle; price-taker in Sunbelt supply waves, REJECT). While rental housing serves a basic human need and MAA maintains an investment-grade balance sheet, residential real estate is inherently capital-intensive with unlevered returns structurally capped at 4%–6% cap rates. Short one-year tenant leases and persistent new multifamily supply across Sunbelt submarkets prevent sustained above-inflation pricing power.",
+    "evidence": "5-year and 10-year median GAAP ROIC hovers around 5.0%–5.2% (FY24 ~5.9%, FY25 ~5.5%, FY26 ~5.1%), far below the 12% hurdle. Diluted FFO per share declined from $8.77 in FY24 to $8.32 in FY25, with FY26 guidance of $8.41–$8.65 reflecting persistent multi-family supply deliveries across core Sunbelt markets. Although leverage is prudent (~4.0x Net Debt/EBITDAre) and AFFO safely covers the dividend, returns on capital are structurally below the quality compounder threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

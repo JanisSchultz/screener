@@ -1,0 +1,30 @@
+{
+  "id": "TSN",
+  "ticker": "TSN",
+  "universe": "us",
+  "company": "Tyson Foods",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity protein processor lacking structural barriers to entry or customer switching costs. Operating margins and returns are dictated by cyclical livestock availability (US cattle herd liquidation cycle) and feed costs rather than proprietary pricing power. 10-year historical ROIC (~7.2%) and recent ROIC (2-4%) consistently fail the 12% hurdle. High buyer power from concentrated grocery retailers (Walmart ~18% of revenue) limits pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Gate 3a Moat Archetype: None; Gate 3b ROIC < 12% and zero pricing power). Tyson Foods is a commodity protein processor (beef, chicken, pork) operating as a price-taker subject to volatile livestock cycles, feed grain costs, and concentrated retail buyer power (Walmart ~18%). 10-year historical average ROIC of ~7.2% and recent ROIC of 2-4% fall far short of the 12% hurdle.",
+    "evidence": "10-year historical average ROIC is ~7.2% (FY2023-FY2025 ROIC depressed at 2.4%-4.2%), failing the 12% multi-cycle hurdle. FY2023 FCF was -$187M, recovering to $1.46B in FY2024 and $1.18B in FY2025. Beef segment (~50% of sales) is burdened by multi-decade low US cattle herd inventories and severe margin compression. Massive retail customer bargaining power (Walmart represents ~18% of revenue) and undifferentiated commodity protein prevent sustained pricing power above cost inflation. Past antitrust settlements regarding broiler chicken price-fixing further illustrate lack of organic pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

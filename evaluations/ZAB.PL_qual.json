@@ -1,0 +1,30 @@
+{
+  "id": "ZAB.PL",
+  "ticker": "ZAB",
+  "universe": "eu",
+  "company": "Żabka",
+  "country": "Poland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country (Poland) is pre-screened outside approved Western rule-of-law developed markets (in_market == 'N'); revenue base is geographically concentrated in Poland/CEE convenience retail heavily reliant on impulse, tobacco, and alcohol categories.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (N, REJECT). Poland is pre-screened outside approved Western rule-of-law developed markets (in_market == 'N'). While Żabka operates an impressive dense network of over 12,000 franchise convenience stores across Poland, its revenue base is geographically concentrated and heavily exposed to impulse, alcohol, and tobacco categories with significant local tax and regulatory risk.",
+    "evidence": "Dominant Polish convenience store operator with over 12,000 stores operating on a capital-light franchise model. Completed Warsaw IPO in October 2024. Delivers healthy ROIC (~17-20%) and double-digit revenue growth (TTM PLN ~30B), but listing jurisdiction (Poland) fails the strict Western market rule-of-law screen (in_market == 'N')."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

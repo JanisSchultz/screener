@@ -1,0 +1,43 @@
+{
+  "id": "MSFT",
+  "ticker": "MSFT",
+  "universe": "us",
+  "company": "Microsoft Corporation",
+  "price": 530.61,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Indispensable software hegemon and cloud infrastructure leader with operating ROIC of 59.26% normalized to the 35.0% cap. Pristine AAA-rated fortress balance sheet with $31.07B LT debt against $20.94B cash (net debt of 0.08x NI) and 50.88x EBIT interest coverage. 5-10Y secular Owner EPS compounding anchored at 10.5% (8.0% enterprise cloud/AI volume + 2.5% seat price/mix - 0.5% GPU capex depreciation drag + 0.5% share buybacks). 3-Pillar fundamental PAR multiple of 29.24x establishes a PAR value of $524.73. At $530.61 (29.57x peak Owner EPS), MSFT trades virtually at fair value (+1.1% Above PAR), supported by strong secular tailwinds to deliver a solid 10.9% 5-year expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 17.9457,
+    "current_multiple": 29.57,
+    "par_multiple": 29.24,
+    "par_value": 524.73,
+    "percent_vs_par": 0.0112,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0067,
+    "expected_irr_5y": 0.1093,
+    "market_implied_cap": 20.2,
+    "moat_runway_margin": -0.2,
+    "market_implied_growth": 0.1099,
+    "growth_margin_of_safety": -0.0049
+  },
+  "health_checks": {
+    "net_debt_years": 0.23,
+    "net_debt_ok": true,
+    "interest_coverage": 50.88,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9533,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FAST",
+  "ticker": "FAST",
+  "universe": "us",
+  "company": "Fastenal",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Scale economies shared coupled with high switching costs from deep shop-floor integration. Fastenal's dense local hub-and-spoke distribution, captive trucking fleet, ~1,800+ Onsite locations, and >110,000 FMI (Fastenal Managed Inventory) vending devices lower customer total procurement and inventory carrying costs by 20-30% while generating industry-leading ~20-21% EBIT margins. 10-year GAAP ROIC has consistently remained between 24% and 35% (median 34.2%). Demonstrated pricing power by consistently passing through raw material (steel) and tariff inflation without gross margin degradation. Primary erosion threat is digital disintermediation (e.g., Amazon Business), but pure-play e-commerce lacks captive last-mile delivery, custom bin-stocking, and emergency factory-floor replenishment.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier North American industrial distributor with insurmountable shop-floor moats (Onsite embedded branches and FMI automated vending). High capital efficiency (10Y median ROIC ~34%) and fortress net-cash balance sheet. Resilient to all 5 macrotrends and an active beneficiary of manufacturing automation and reshoring. [5-10Y g: Onsite and FMI volume share gains 5.5% + pricing power 1.5% + mix and digital leverage 0.5% + net share repurchases 0.5%]",
+    "evidence": "10-year financial compounding: Net sales grew from $3,962.0M (2016) to $8,200.5M (2025); EBIT expanded from $795.8M to $1,655.7M with stable operating margins of 20-21%. GAAP ROIC consistently ranged between 24.1% and 35.1% (median 34.2%), with identical tangible ROIC reflecting organic growth and negligible goodwill. Free cash flow conversion over 5 years is ~85% ($1,108.3M Owner FCF on $1,258.4M net income in 2025). Long-term debt is negligible at $100.0M against $276.8M cash and $1,655.7M EBIT, generating an interest coverage ratio exceeding 250x. Installed FMI device footprint exceeds 110,000 units and Onsite locations exceed 1,800, creating deeply entrenched customer retention."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

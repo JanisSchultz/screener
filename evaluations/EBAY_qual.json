@@ -1,0 +1,30 @@
+{
+  "id": "EBAY",
+  "ticker": "EBAY",
+  "universe": "us",
+  "company": "eBay Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "(1) Two-sided marketplace liquidity across 136M organic (147M total including Depop/Tise) active buyers, non-standard recommerce/collectibles/auto-parts inventory, and Authenticity Guarantee trust infrastructure prevents easy replication by generic retailers. (2) Empirically proven by ~18.2% historical median ROIC (2023: ~15.6-23.7%, 2024: ~14.8-21.7%, 2025: ~15.7-16.9%), 20.5% GAAP / 27.8% non-GAAP FY25 operating margins, and an ~13.9% ad-valorem GMV take rate (bolstered by $575M Q3 2026 Promoted Listings advertising) that scales with nominal price inflation. (3) Primary erosion threats are low seller/buyer switching costs and multi-homing against zero-fee C2C venues (Facebook Marketplace, Vinted), Amazon, Temu/Shein, and vertical specialists (Whatnot, StockX, Chrono24), capping base transaction fee expansion.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Although eBay maintains a profitable two-sided recommerce and focus-category marketplace (72% of non-Depop GMV in Q3 2026) with ~18.2% median ROIC, broadline online retail carries Tier 3 base-rate persistence (10-15Y) and suffers a -5Y macrotrend/structural haircut. Core organic active buyers stagnated near 134-136M, forcing serial defensive vertical M&A (Goldin, Tise, and the $1.2B Depop acquisition) to buy younger demographics and GMV acceleration, while third-party agentic AI shopping discovery poses a long-term threat to eBay's high-margin Promoted Listings sponsored-search monetization alongside multi-front competition from Amazon, Temu/Shein, Facebook Marketplace, Vinted, and Whatnot.",
+    "evidence": "FY 2025 revenue reached $11.1B (+8% YoY as-reported, +7% FXN) on $79.6B GMV (+7% YoY, +6% FXN), with >40% of GMV in recommerce, 20.5% GAAP operating margin (27.8% non-GAAP, 730 bps SBC/adjustment spread), $2.03B GAAP net income, and ~$1.43-1.50B FCF (~70-74% GAAP NI conversion in FY25 vs ~99% in FY24 on $1.96B FCF / $1.98B NI and ~71% in FY23 on $1.97B FCF / $2.77B NI). Momentum accelerated in 2026 (Q1 rev $3.09B, Q2 rev $3.13B / GMV $22.4B, Q3 rev $3.21B +14% YoY / GMV $23.2B +15% YoY) aided by Focus Categories/recommerce/C2C (>20% YoY growth), Promoted Listings ($575M in Q3 2026), eBay Live, and the $1.2B acquisition of Depop plus Tise, which lifted total active buyers from ~134-136M organic to 147M. Historical ROIC stands at ~18.2% median (~15.7-16.9% in 2025). Year-end 2025 cash and fixed-income investments of $4.8B (plus >$900M equity stakes) against $6.7B gross debt (~$1.9B net debt) keep leverage modest alongside ~$2B/yr share buyback targets, following earlier divestitures of PayPal, StubHub, and Classifieds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

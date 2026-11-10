@@ -1,0 +1,30 @@
+{
+  "id": "TGT",
+  "ticker": "TGT",
+  "universe": "us",
+  "company": "Target Corporation",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary-heavy general merchandise mix (~50% apparel, home furnishings, hardlines); consumer shopping trips are deferrable and easily forgone during economic downturns, lacking staple grocery indispensability.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Discretionary-heavy general merchandise retailer (~50% sales in apparel, home furnishings, and hardlines) whose curated 'cheap chic' shopping trips are deferrable during inflationary pressures. Lacks essential grocery staple indispensability and exhibits zero customer deprivation if vanished, with traffic consistently lost to Walmart and Amazon.",
+    "evidence": "FY2024–FY2025 performance underscored structural vulnerability: comparable sales contracted -2.6% in FY2025 due to consumer discretionary pullback. Operating margin compressed to ~4.9% (vs 8.4% peak in FY2021). While Food & Beverage ($24.1B) and Household Essentials ($18.0B) drive frequency, discretionary categories (Apparel ~$15.8B, Home Furnishings $15.6B, Hardlines $15.8B) drive higher-margin profitability but suffer severe deferral when consumer budgets tighten. Long-term debt stands at ~$16.5B against ~$11.8B net debt."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

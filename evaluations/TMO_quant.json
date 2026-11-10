@@ -1,0 +1,43 @@
+{
+  "id": "TMO",
+  "ticker": "TMO",
+  "universe": "us",
+  "company": "Thermo Fisher Scientific Inc.",
+  "price": 682.65,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the v6.23 M&A Goodwill Neutralization Principle, correcting for $65.2B in accumulated goodwill and intangibles from serial life sciences acquisitions (Life Tech, Patheon, PPD, Olink), which optically depresses GAAP ROIC to 9.15% vs 55.06% tangible operating ROIC. Solid balance sheet backed by $9.85B cash against $39.17B LT debt, with 5.46x EBIT interest coverage and exceptional 97.2% Owner FCF conversion ($7.8B+ annual operating cash flow ensuring full self-funding capability). Forward 5-10Y through-the-cycle Owner EPS growth of 8.0% driven by 4.0% biopharma analytical instrument/consumable volume, 1.5% spec-in pricing power, 1.0% high-margin service mix and reinvestment, 0.5% margin expansion, and 1.0% net share repurchases. At $682.65 (32.42x peak Owner EPS of $21.0556), TMO trades Above PAR (+26.2% vs fundamental PAR Value of $541.06), offering a 3.4% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 21.0556,
+    "current_multiple": 32.42,
+    "par_multiple": 25.7,
+    "par_value": 541.06,
+    "percent_vs_par": 0.2617,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0025,
+    "expected_irr_5y": 0.0335,
+    "market_implied_cap": 18.9,
+    "moat_runway_margin": -3.9,
+    "market_implied_growth": 0.1809,
+    "growth_margin_of_safety": -0.1009
+  },
+  "health_checks": {
+    "net_debt_years": 5.84,
+    "net_debt_ok": false,
+    "interest_coverage": 5.46,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9715,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

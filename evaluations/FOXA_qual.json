@@ -1,0 +1,31 @@
+{
+  "id": "FOXA",
+  "ticker": "FOXA / FOX",
+  "universe": "us",
+  "company": "Fox Corporation",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Broadcasting",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Fox possesses genuine brand and spectrum intangibles (Fox News Media's #1 US cable news franchise generating 42% Cable Network EBITDA margins, 29 FCC-licensed O&O local TV stations, Tubi's 110M+ MAU FAST platform, and Roku's ~100M-household North American CTV OS acquired Nov 6, 2026). However, it fails Gate 3b on both pricing power and incremental capital returns: (1) per-subscriber affiliate/retrans fee hikes (~+9-10% distribution revenue growth) cannot preserve volume in a shrinking traditional pay-TV bundle (~35% US penetration, eroding ~6-8% annually); (2) Fox rents rather than owns marquee live sports rights (~$33B in contractual commitments, ~$2.25B/yr NFL contract with 2029/2030 opt-out), allowing leagues to extract most broadcast surplus (Television EBITDA margin only 10-15%) and compressing standalone consolidated EBIT margins from 21-23% (FY16-18) to 14-16% in non-election/non-Super-Bowl years; (3) Tubi/Roku CTV ads face brutal auction pricing against YouTube, Amazon, Meta, and Netflix; and (4) the ~$22B EV Roku acquisition (~25x+ forward EBITDA, ~$10.4B new debt, ~26% Class A equity dilution) yields only ~3.5-4.5% estimated Year-1/Year-2 incremental ROIIC even with $400M planned synergies, diluting pro-forma GAAP ROIC from 14.8% down to ~8-9% (<12% hurdle).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Fox News and live broadcast sports confer narrow legacy bundle leverage, but the business lacks inflation-beating pricing power without customer attrition and surrenders economic rents to monopolistic sports leagues ($33B contractual commitments) while digital CTV/AVOD ads (Tubi, Roku) remain auction-priced. Critically, the Nov 6, 2026 close of the ~$22B EV Roku acquisition deploys ~140% of prior invested capital at ~3.5-4.5% post-synergy incremental ROIIC, pulling pro-forma GAAP ROIC down to ~8-9% (below the 12% proof-of-moat bar) while adding $10.4B of acquisition debt ($8.4B 364-day bridge + $2.0B term loan) and ~26% equity dilution. Calamity Tier does not apply because Anchor Gate 4 would independently fail (CAP <= 10 due to Macrotrend #1 linear TV cord-cutting/Big Tech sports bidding/CTV OS rivalry and Macrotrend #2 aging ~69-70 median Fox News audience). Downstream gates bypassed per waterfall.",
+    "evidence": "Standalone historical financials (SEC EDGAR / FY2025-FY2026 Form 10-K, fiscal year ended June 30): FY2026 revenue reached $17,126M (+5.1% YoY vs $16,300M in FY2025), with Cable Network Programming generating $7,348M revenue ($4,662M distribution, $1,687M ads, $999M content/other) and $3,099M Segment EBITDA (42.2% margin), while Television (FOX broadcast, 29 O&O stations, Tubi) generated $9,666M revenue and $1,438M Segment EBITDA (14.9% margin; vs $945M / 10.1% in FY2025). Standalone 5Y median GAAP ROIC (14.79%, range 11.69%-19.80%) and Tangible ROIC (28.77%) passed standalone hurdles with 105.9% 5Y Owner FCF conversion ($1,428M Owner FCF / $1,468M OCF-less-capex in FY2026; $2,858M Owner FCF in FY2025), and Q1 FY2027 (ended Sept 30, 2026) posted $4,571M revenue (+22% YoY on World Cup/political ads) and +9% distribution revenue ($2.08B) aided by Fox One. However, consolidated EBIT margins compressed ~600 bps over the decade from 21.3%-22.8% (FY16-18) to 14.0%-15.6% in normal non-election/non-Super-Bowl years (FY21, FY22, FY26) under ~$33B-$35B sports rights obligations. On Nov 6, 2026, Fox closed the ~$22B EV acquisition of Roku ($95.30 cash + 0.9799 FOXA Class A shares per Roku share; legacy Fox holders ~74%, Roku ~26%; Murdoch LGC Holdco retains ~36.2% Class B voting control post-Sept 2025 trust settlement). Roku reported $4,737M revenue, $88.4M GAAP NI, $420.5M Adj EBITDA in FY2025 and $164.1M operating income ($795.7M TTM FCF) in Q3 2026; even with $400M planned Year-2 synergies, ~$675M-$830M estimated post-synergy NOPAT on ~$19.3B net EV (~$22B less Roku's $2.72B cash) equals ~3.5%-4.3% incremental ROIIC and drags pro-forma GAAP ROIC to ~8-9%. Pro-forma gross debt jumps from $6.61B (Sept 30, 2026) to ~$17.0B (including $8.4B 364-day bridge loan + $2.0B term loan), pushing S&P adjusted leverage to ~3.3x (BBB Stable) alongside unresolved $2.7B Smartmatic defamation litigation following the $787.5M Dominion settlement."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ABI.BE",
+  "ticker": "ABI",
+  "universe": "eu",
+  "company": "AB InBev",
+  "country": "Belgium",
+  "sector": "Consumer Staples",
+  "sub_industry": "Brewers (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled global brewing scale and dominant #1 volume share in key profit pools (Latin America, US, Africa). Pricing power demonstrated through consistent positive price/mix, though challenged by brand erosion in US Bud Light.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management Score = 0, REJECT). Disastrous capital allocation legacy from the $103B debt-fueled SABMiller acquisition in 2016 which impaired shareholder returns for a decade, forced multiple dividend cuts, and left an unwieldy debt burden ($67B+ net debt). Further exacerbated by the 2023 Bud Light marketing misstep that permanently forfeited #1 US market share.",
+    "evidence": "Net debt of $67.6B (~2.9x EBITDA, >12x net income) remains elevated 8+ years post-SABMiller. 5-year GAAP ROIC depressed at 7-9%. In 2023, Bud Light lost over 25% of its sales volume in the US following marketing backlash, ceding the #1 US beer title to Constellation's Modelo Especial. Non-GAAP normalized adjustments routinely mask underlying equity stagnation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "5",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

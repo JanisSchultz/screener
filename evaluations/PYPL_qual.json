@@ -1,0 +1,30 @@
+{
+  "id": "PYPL",
+  "ticker": "PYPL",
+  "universe": "us",
+  "company": "PayPal",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Two-sided network of 400M+ active consumer accounts and ~35M merchants established early checkout ubiquity. However, structural pricing power and moat defensibility have eroded severely. Apple Pay has captured dominant mobile e-commerce share via frictionless native iOS biometric authentication (Face ID), causing PayPal's high-margin branded checkout volume growth to decelerate to 2-4%, trailing e-commerce. Total volume expansion has been driven by unbranded processing (Braintree), a commodity gateway subject to fierce price competition against Adyen and Stripe. As a result, blended take rate has steadily compressed from >2.5% to ~1.67%, and consolidated transaction margins collapsed from >55% to ~45%. PayPal cannot raise prices across the cycle without accelerating customer defection or volume loss to competing digital wallets and acquirers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). High-margin branded checkout button suffers ongoing market share loss to Apple Pay (native iOS biometric integration) and Shop Pay, decelerating branded volume growth to 2-4% (lagging broader e-commerce). Blended take rate has persistently compressed from >2.5% to ~1.67%, and transaction margin percentage fell from >55% to ~45% due to mix shift into commodity unbranded processing (Braintree). Lacks demonstrable pricing power >= inflation across the cycle without customer defection.",
+    "evidence": "Historical 10-year median ROIC of 14.2% reflects legacy network scale, but economic moat and pricing power have decayed structurally over 2021-2025. Total payment volume (~$1.7-1.8T) has been driven disproportionately by unbranded processing (Braintree), where take rates and margins are thin under price competition with Stripe and Adyen. Core branded checkout (the main profit engine) slowed to 2-4% growth in 2024-2025, ceding share to Apple Pay in mobile commerce (representing ~50% of transactions). Consolidated transaction margin collapsed by ~1,000 bps from peak (>55% to ~45%), and blended take rate fell to ~1.67%. Inability to raise prices without volume defection fails Gate 3b pricing power criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

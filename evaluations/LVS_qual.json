@@ -1,0 +1,30 @@
+{
+  "id": "LVS",
+  "ticker": "LVS",
+  "universe": "us",
+  "company": "Las Vegas Sands",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "100% Asian operating revenue concentrated in Macao (~44% of FY2025 Adjusted Property EBITDA under PRC jurisdiction and a revocable 2032 gaming concession) and Singapore (~56%), paired with an addictive casino gaming model exposed to high regulatory/taxation risk and discretionary travel cyclicality.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT – Essential Western Need & Entrenched Habits). Passes Gate 1 as an established, transparently reported integrated resort operator, but fails the Gate 2 non-Western jurisdiction and societal/regulatory tests. Following the Las Vegas divestiture (final seller notes repaid in Q2 2026), LVS generates 100% of operating profits in Asia—roughly 44% of FY2025 Adjusted Property EBITDA in Macao (subject to PRC regulatory oversight, VIP junket bans, and 2032 concession renewal) and 56% at Marina Bay Sands in Singapore—while relying on addictive destination casino gambling and discretionary tourism rather than an essential Western customer need. Anchor Gate 2 failure makes LVS ineligible for the Calamity Tier.",
+    "evidence": "Geographic & Regulatory Exposure: Post-Las Vegas divestiture ($1.26B seller-financing notes repaid in Q2 2026), LVS operates exclusively in Macao (~75.56%-owned Sands China Ltd., ~44% of FY2025 Adjusted Property EBITDA, ~$17B cumulative investment, concession expiring 2032) and Singapore (Marina Bay Sands, record $2.92B Adjusted Property EBITDA or ~56% of total $5.23B in FY2025). Financial History & Volatility: Pre-evaluation workbook records 10Y median ROIC of 8.5%. Post-pandemic recovery drove net revenue from $10.37B (FY2023) to $11.30B (FY2024) and $13.02B (FY2025), with FY2025 Net Income of $1.63B, Operating Cash Flow of $3.02B (after an $848M MBS additional gaming area payment), and CapEx of $1.17B (plus ~$75M Singapore license renewal fee). In 2026, revenue/earnings remained volatile across hold and macro shifts: Q1 2026 net revenue $3.59B ($0.85 EPS), Q2 2026 $3.15B ($0.53 EPS), and Q3 2026 $3.22B (-3.5% YoY) with Adjusted Property EBITDA down 16.7% YoY to $1.12B and Net Income $352M ($0.48 EPS), hurt by ~$161M unfavorable non-rolling chip win-rate at MBS. Balance Sheet & Commitments: As of Sep 30, 2026, total debt stood at $15.30B against $2.86B unrestricted cash, backed by $4.27B revolving facilities and a $4.57B delayed-draw term loan earmarked for the multi-billion MBS 2.0 expansion (targeted 2030-2031). Q3 2026 buybacks totaled $950M alongside a 20% CY2027 dividend raise to $1.44/share."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

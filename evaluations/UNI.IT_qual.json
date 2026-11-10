@@ -1,0 +1,30 @@
+{
+  "id": "UNI.IT",
+  "ticker": "UNI",
+  "universe": "eu",
+  "company": "Unipol",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Italian motor/P&C franchise (#1 in Italy) supported by unmatched telematics data (millions of installed vehicle black boxes), tied agents, and bancassurance distribution through BPER Banca. Sustained sub-95% combined ratios demonstrate pricing discipline. Primary erosion threats include autonomous driving / ADAS safety shifts reducing motor claims, Italian sovereign debt volatility, and direct/online aggregator price transparency.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Heavily concentrated in Italian domestic motor insurance, which faces severe secular headwinds from ADAS and vehicle automation reducing policy volume (Macrotrend 1), Italy's severe demographic population decline (Macrotrend 2), and recurring Italian flood/storm catastrophes (Macrotrend 4), compounded by substantial Italian sovereign/banking risk.",
+    "evidence": "Unipol dominates Italian motor insurance with extensive telematics and bancassurance via BPER. While combined ratios are healthy at ~93% and solvency is strong at 230%, long-term runway is capped by Italy's demographic contraction, ADAS vehicle safety technology eroding motor claims pools, and balance sheet exposure to Italian domestic debt."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

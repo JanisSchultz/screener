@@ -1,0 +1,30 @@
+{
+  "id": "ERIC B.SE",
+  "ticker": "ERIC B",
+  "universe": "eu",
+  "company": "Ericsson",
+  "country": "Sweden",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading 5G RAN market share and essential cellular SEP patent portfolio, but structural customer concentration gives wireless telcos immense purchasing leverage, depressing pricing power and multi-cycle returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). Operates in a structurally difficult telecom equipment oligopoly facing concentrated, price-sensitive telco buyers with high purchasing power. Multi-cycle ROIC falls well short of the 12% hurdle, burdened by cyclical operator capex declines and destructive M&A write-downs (SEK 43B+ Vonage impairment).",
+    "evidence": "Sub-12% multi-cycle GAAP ROIC, lack of pricing power against major wireless carriers, and massive capital destruction from the $6.2B Vonage acquisition resulting in over SEK 43B in goodwill impairments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

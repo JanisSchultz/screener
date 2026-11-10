@@ -1,0 +1,30 @@
+{
+  "id": "III.GB",
+  "ticker": "III",
+  "universe": "eu",
+  "company": "3i Group",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Action operates an unbeatable scale-economies-shared discount model: purchasing massive volumes across ~6,000 SKUs and passing 30-50% price savings vs traditional grocers to European consumers, sustaining ~15% EBITDA margins, rapid inventory turnover, and >50% new store-level ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier European compounder dominated by discount retail juggernaut Action (~75-80% of NAV). Action's scale-economies-shared engine delivers 14-16% sales growth, 15% EBITDA margins, and rapid payback on new stores. Simon Borrows has provided exceptional capital allocation and discipline with holdco net debt under 0.1x EBIT. [5-10Y g: Action store rollout 6.5% + LFL volume 3.0% + operating leverage 0.5% - PE portfolio drag 0.5% + dividend yield 2.5%]",
+    "evidence": "3i Group 4-year median GAAP ROIC is 21.3%. In 2025, Action expanded sales 16% to €16.0B and operating EBITDA 14% to €2.37B across 3,300+ stores. Holdco debt of £1,261M is easily covered by £635M cash and £5,363M EBIT (interest coverage 76.6x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

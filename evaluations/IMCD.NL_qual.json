@@ -1,0 +1,30 @@
+{
+  "id": "IMCD.NL",
+  "ticker": "IMCD",
+  "universe": "eu",
+  "company": "IMCD N.V.",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialty chemical and ingredient distributor lacks proprietary product IP, as chemical principals own the formulations and can terminate or insource mandates. Margin compression and organic EBITA erosion in 2024-2025 post-shortage normalization drove GAAP ROIC down to 8.9%, failing the 12% proof of moat hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Specialty chemical distributor lacks structural pricing power; product IP is owned by chemical manufacturers who can bypass distributors on high-volume lines. Normalization after post-COVID supply shortage windfalls resulted in organic EBITA declines and drove GAAP ROIC to 8.9% in 2025, below the 12% threshold.",
+    "evidence": "GAAP ROIC deteriorated from 14.5% in 2022 to 12.3% in 2024 and 8.88% in 2025. Operating EBIT fell from €463.5M in 2022 to €360.9M in 2025. Operating EBITA dropped 6% reported in 2025 amid soft industrial chemical demand, while balance sheet debt expanded to €1.29B (net debt ~€1.05B) to fund roll-up M&A."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BIIB",
+  "ticker": "BIIB",
+  "universe": "us",
+  "company": "Biogen",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary biologic manufacturing and patent estate in neurology/neurodegenerative diseases fail to protect economic rents once exclusivity lapses. 5-year median GAAP ROIC compressed to ~7.4% (well below the 12% hurdle). The devastating loss of US patent exclusivity on blockbuster Tecfidera (dimethyl fumarate) caused sales to collapse from $4.4B peak to <$1B due to generic entry. Spinraza faces intense competing therapies (Evrysdi, Zolgensma), and Tysabri faces biosimilars. Inability to maintain pricing and margins across patent cycles proves absence of pricing power and structural moat durability.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Biogen's 5-year median GAAP ROIC has collapsed to ~7.4% (FY23 4.9%, FY24 7.4%, FY25 5.6%), trailing far below the 12% hurdle. Peak revenue collapsed from $14.4B in 2019 to ~$9.9B in 2025, and net income dropped >70% from $5.9B to ~$1.3B-$1.6B due to severe generic erosion of Tecfidera and MS franchise pressures. Patent cliffs represent the permanent structural treadmill of biopharma rather than a temporary fixable calamity, and new launches (Leqembi, Skyclarys) carry high co-commercialization and acquisition costs without restoring economic returns.",
+    "evidence": "Historical Financials & Moat Erosion:\n- Capital Efficiency: 10-year average ROIC is 11.2%, and 5-year median GAAP ROIC has degraded to ~7.4% (FY21: 13.2%, FY22: 14.7%, FY23: 4.9%, FY24: 7.4%, FY25: 5.6%), failing the 12% threshold.\n- Top-line & Profit Contraction: Total revenue peaked at $14.4B in 2019 and declined by ~31% to $9.68B in 2024 and $9.9B in 2025. GAAP net income fell from $5.9B in 2019 to $1.6B in 2024 and $1.3B in 2025.\n- Franchise Patent Cliffs: Tecfidera, which once generated $4.4B (~30% of sales), suffered patent invalidation in 2020 leading to generic competition that decimated sales. Core MS revenue continues secular decline.\n- Pipeline & Capital Misallocation: The Aduhelm Alzheimer's saga resulted in commercial failure, regulatory backlash, CMS non-coverage, and full discontinuation/write-downs in 2024. Leqembi (partnered with Eisai) faces complex diagnostic/infusion hurdles and 50/50 profit splits. The $7.3B acquisition of Reata in 2023 for Skyclarys added debt without restoring enterprise ROIC above hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

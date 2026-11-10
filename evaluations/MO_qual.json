@@ -1,0 +1,30 @@
+{
+  "id": "MO",
+  "ticker": "MO",
+  "universe": "us",
+  "company": "Altria",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Tobacco",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Addictive and socially destructive combustible tobacco model facing severe secular volume decline (-8% to -10% annually), existential regulatory risk (FDA menthol ban, nicotine reduction caps), and terminal societal acceptance headwinds.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT \u2013 G2 Essential Need). Addictive and socially destructive combustible tobacco model facing severe secular volume declines (-8% to -10% per annum in the US domestic market), existential regulatory/legislative intervention risks (FDA potential menthol bans and nicotine reduction mandates), and terminal societal rejection. While Marlboro possesses historical brand pricing power to offset volume declines in the near term, the core economic engine lacks enduring societal acceptance and does not satisfy the Munger/Buffett standard of an essential Western need or socially sustainable everyday ritual.",
+    "evidence": "Altria is exclusively focused on the US domestic market post-2008 PMI spinoff. Core combustible cigarette shipments (Marlboro, etc.) suffer persistent 8-10% annual volume erosion. While net revenues net of excise taxes reached ~$20.14B in FY2025 (down 1.5% YoY) with adjusted diluted EPS of $5.42 driven by aggressive list-price hikes, the long-term unit-volume trajectory is terminally negative. Capital allocation track record outside combustible cigarettes has been disastrous ($12.8B JUUL acquisition in 2018 written down almost entirely; $1.8B Cronos cannabis investment severely impaired; ongoing struggle with illicit disposable e-vapor competition undermining NJOY expansion). Carries approximately $25.7B in long-term debt. Under the strict v6.25 framework, tobacco businesses are explicitly disqualified at Gate 2 due to addictive, predatory dynamics and legislative/societal ruin risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

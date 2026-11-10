@@ -1,0 +1,43 @@
+{
+  "id": "ODFL",
+  "ticker": "ODFL",
+  "universe": "us",
+  "company": "Old Dominion Freight Line, Inc.",
+  "price": 164.92,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": null,
+    "fin_note": "Retains physical operating ROIC of 32.69% (identical to GAAP ROIC due to absence of goodwill), reflecting unmatched capital efficiency across an unreplicable 250+ terminal network and company-owned rolling stock. FY2022 peak Owner EPS of $6.0894 confirmed as genuine cycle peak (123% OCF conversion, zero non-cash spikes) sustained through the 2023-2025 freight recession via low-70s operating ratio and Yellow market share absorption. 5-10Y through-the-cycle growth refined to 8.0% driven by 3.0% LTL tonnage market share gains, 3.5% revenue per cwt pricing above inflation, 1.0% terminal density reinvestment, offset by 0.5% cyclical/cost drag, plus 1.0% net share repurchases (Mauboussin regression on 15.28% historical CAGR yields 8.24%). Fortress balance sheet with net cash ($120.1M cash vs $20.0M LT debt, 0.02x debt/NI) and 100.1% Owner FCF conversion. Current price of $164.92 trades at 27.08x peak Owner EPS vs fundamental PAR multiple of 26.05x (PAR Value $158.62), placing ODFL slightly Above PAR (+4.0% premium) with a 5Y expected IRR of 7.9%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.0894,
+    "current_multiple": 27.08,
+    "par_multiple": 26.05,
+    "par_value": 158.62,
+    "percent_vs_par": 0.0397,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0069,
+    "expected_irr_5y": 0.0786,
+    "market_implied_cap": 20.8,
+    "moat_runway_margin": -0.8,
+    "market_implied_growth": 0.0955,
+    "growth_margin_of_safety": -0.0155
+  },
+  "health_checks": {
+    "net_debt_years": 0.02,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.001,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

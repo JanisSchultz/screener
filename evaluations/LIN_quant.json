@@ -1,0 +1,43 @@
+{
+  "id": "LIN",
+  "ticker": "LIN",
+  "universe": "us",
+  "company": "Linde plc",
+  "price": 515.25,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": null,
+    "fin_note": "Global industrial gas toll booth with dense local route monopolies and 15-20 year take-or-pay on-site pipeline contracts featuring contractual energy and inflation pass-through. Preserves physical operating ROIC profile: reported tangible operating ROIC of 54.57% reflects post-Praxair merger efficiency capped at 35.0% under v6.23 standard, while physical capital ROC is 15-16% on gross PP&E (5Y median GAAP ROIC 13.02%). FY2025 peak Owner EPS of .6084 confirmed clean with 106.3% FCF conversion (.35B OCF vs .90B NI) and zero windfall spikes. 5-10Y through-the-cycle growth g_implied = 8.0% supported by 3.0% backlog/project volume (semiconductor fab reshoring, clean hydrogen), 2.0% pricing, 1.5% operational productivity, -0.5% energy cost friction, and 2.0% disciplined net buybacks. Fortress balance sheet carries .06B cash vs .68B LT debt (.63B net debt = 2.27x NI) and 34.99x EBIT interest coverage. At .25 (35.27x peak Owner EPS), trades Above PAR (+24.86% premium vs .66 PAR Value at 28.25x PAR Multiple), generating a 4.50% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 14.6084,
+    "current_multiple": 35.27,
+    "par_multiple": 28.25,
+    "par_value": 412.66,
+    "percent_vs_par": 0.2486,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0119,
+    "expected_irr_5y": 0.045,
+    "market_implied_cap": 25.0,
+    "moat_runway_margin": -5.0,
+    "market_implied_growth": 0.1853,
+    "growth_margin_of_safety": -0.1053
+  },
+  "health_checks": {
+    "net_debt_years": 3.0,
+    "net_debt_ok": true,
+    "interest_coverage": 34.99,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0631,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

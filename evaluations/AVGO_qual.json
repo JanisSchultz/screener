@@ -1,0 +1,30 @@
+{
+  "id": "AVGO",
+  "ticker": "AVGO",
+  "universe": "us",
+  "company": "Broadcom Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme switching costs and toll-booth positioning across custom AI accelerators (XPUs/ASICs co-designed with hyperscalers like Google and Meta), data center Ethernet switching silicon (dominant Tomahawk and Jericho families with >70% merchant share), and mission-critical enterprise private cloud infrastructure (VMware Cloud Foundation). Switching costs proven by successful transition of VMware to full-stack subscription bundles with effective 2-5x price increases while maintaining core enterprise retention, and non-GAAP gross margins exceeding 75% with consolidated adjusted EBITDA margins >60%. 5-year median GAAP ROIC is 16.0% (depressed temporarily in FY24 by the $86B VMware transaction, rebounding to 16.0% in FY25) alongside astronomical tangible operating ROIC (>100%) due to fabless asset-light production. Primary erosion threats include hyperscaler in-sourcing of custom silicon design, open-source Ethernet consortium shifts, customer resistance/attrition from aggressive VMware pricing, and TSMC foundry concentration.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier hybrid infrastructure titan combining an unassailable custom AI ASIC/accelerator and Ethernet networking franchise with high-cash-flow VMware private cloud software. Demonstrates immense pricing power through VMware subscription bundling and standard-setting networking silicon margins. Fabless capital-light profile produces >$26B in annual FCF with leverage rapidly deleveraging (net debt / FCF < 1.7x; interest coverage ~8x). [5-10Y g: custom AI ASIC & networking volume 6.0% + VMware enterprise software 2.5% + pricing/mix 1.5% - customer concentration drag 0.5% + net debt paydown & share repurchases 1.5%]",
+    "evidence": "Broadcom delivers exceptional capital efficiency and cash generation. FY2025 revenue reached $63.9B (+24% YoY), driven by $20B in AI semiconductor revenue (+65% YoY across Google TPU/Meta custom XPUs and Tomahawk 5/6 networking) and $27.0B in Infrastructure Software (+26% YoY). 5-year median GAAP ROIC stands at 16.0%, while tangible operating ROIC exceeds 100% due to Broadcom's fabless manufacturing model (FY25 capex of just $623M on $63.9B revenue). Multi-year Owner FCF conversion is 122% of GAAP Net Income ($26.9B FCF vs. $23.1B NI in FY25). Balance sheet health is robust post-VMware: Long-Term Debt was reduced to $62.0B against $16.2B cash (Net Debt $45.8B, repayable in ~1.7 years of FCF; LT debt / NI is 2.68x, well below the 4.0x ceiling). FY25 EBIT of $25.5B covers interest expense of $3.21B by 7.94x. Owner EPS set a new all-time peak of $6.42 in FY2025, up from $4.07 in FY2023 and $2.74 in FY2022 (27.1% OE EPS CAGR), confirming peak-to-peak compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

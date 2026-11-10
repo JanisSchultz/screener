@@ -1,0 +1,30 @@
+{
+  "id": "BALL",
+  "ticker": "BALL",
+  "universe": "us",
+  "company": "Ball Corporation",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Metal, Glass & Plastic Containers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regional can plant network co-located near beverage filling plants provides local transportation advantage and switching barriers, but intense bargaining power from concentrated beverage customers (Coca-Cola, PepsiCo, AB InBev) caps conversion margins. 10-year median ROIC of 9.2% (FY23 5.5%, FY24 4.5%, FY25 8.0%) fails the 12% hurdle. Primary erosion threats: customer insourcing, price renegotiation by mega-packagers, and triopoly competition from Crown Holdings and Ardagh.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Ball Corporation operates an essential beverage can manufacturing oligopoly with switching cost advantages from co-located plants. However, structural capital intensity and extreme customer concentration (Coca-Cola, PepsiCo, AB InBev) cap conversion margins, preventing returns from reaching the 12% ROIC threshold across the cycle (10-year median ROIC is 9.2%).",
+    "evidence": "Multi-cycle ROIC track record: 10-year median ROIC is 9.2%, with recent figures of 5.5% (FY23), 4.5% (FY24), and ~8.0% (FY25), consistently below the 12% hurdle. Operating margins range between 9% and 11%. Following the 2024 divestiture of Ball Aerospace to BAE Systems for $5.6B, Ball is a pure-play beverage packaging provider across North/Central America, EMEA, and South America. While contractual raw material cost pass-throughs (aluminum LME + Midwest premium) insulate against metal price fluctuations, conversion margins lack pricing power above inflation due to massive customer bargaining power from beverage conglomerates. Capital allocation historically featured heavy debt-funded M&A (e.g. Rexam for $6.1B in 2016) and continuous high capex ($600M-$1B+ annually) for can line expansion, which structurally suppresses return on invested capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

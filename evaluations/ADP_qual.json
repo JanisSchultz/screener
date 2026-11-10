@@ -1,0 +1,30 @@
+{
+  "id": "ADP",
+  "ticker": "ADP",
+  "universe": "us",
+  "company": "Automatic Data Processing",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Human Resource & Employment Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Formidable enterprise switching costs and toll-booth dynamics rooted in mission-critical payroll execution and tax compliance for 1.1M+ clients, yielding ~92% client retention. Empirical proof: 5-year median GAAP ROIC of 77.4%, operating margins consistently expanding from 21% to ~28%, and steady 2-4% annual price indexation with negligible churn. Primary erosion threats include cloud-native HCM competitors (Workday, Paychex, Rippling) and client transition execution between legacy platforms and Next Gen HCM.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable global payroll and HCM toll booth processing wages for 1 in 6 US workers across 1.1M+ clients with ~92% retention. Structurally insulated across all 5 macrotrends: unmatched proprietary employment dataset defends against AI disintermediation, demographic complexity accelerates HR outsourcing, and client fund float ($35B+) provides structural interest rate tailwinds. Fortress AA- balance sheet with 0.17x net debt/NI and 13.5x interest coverage. [5-10Y g: employment payroll volume 2.5% + HR software cross-selling 2.5% + price indexation 2.0% + client float income 1.0% + net share repurchases 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 77.4% and tangible operating ROIC >100%. Free cash flow conversion averages 106% of net income with capex under 1.5% of revenue. 10-year Owner EPS CAGR of 11.7% with zero cyclical down years, demonstrating continuous peak-to-peak compounding through the 2020 recession and post-pandemic inflation. Segment revenue is split between Employer Services (~67%) and PEO Services (~33%), securing massive customer lock-in via mission-critical regulatory compliance. AA- rated balance sheet ($4.2B cash vs $5.0B LT debt) with 50 consecutive years of dividend increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

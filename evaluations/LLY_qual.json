@@ -1,0 +1,30 @@
+{
+  "id": "LLY",
+  "ticker": "LLY",
+  "universe": "us",
+  "company": "Lilly (Eli)",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary R&D patent thicket on dual GIP/GLP-1 receptor agonist tirzepatide (core US composition-of-matter patents to 2036, secondary delivery and formulation patents into late 2030s) and next-generation candidates (orforglipron oral small molecule to 2037+, retatrutide triple agonist to 2038+). Insurmountable high-barrier sterile fill-finish and peptide synthesis manufacturing infrastructure backed by >$20B in capital outlays. Pricing power demonstrated by sustained gross margins >80% and strong cash-pay adoption for Zepbound with near-zero demand elasticity despite out-of-pocket costs. Primary erosion threats: generic entry post-2036, compounding pharmacy regulatory enforcement, and Medicare drug price negotiations under the IRA.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global biopharmaceutical leader in metabolic disease, diabetes, and oncology. Deep patent protection on tirzepatide (Mounjaro/Zepbound) through 2036+ and next-gen pipeline (retatrutide, orforglipron) anchored by massive capital investment in proprietary sterile injectable and peptide synthesis manufacturing. Structurally insulated from AI disruption, benefiting from demographic aging, with high pricing power across commercial insurance and cash-pay markets. Fortress balance sheet with 29.8x interest coverage and net debt <1.7x earnings. [5-10Y g: incretin volume expansion 11.0% + oncology/neuroscience volume 2.0% - price realization/IRA headwind -3.5% + pipeline mix reinvestment 1.0% + net buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC of 30.1% and 2025 operating ROIC of 56.7%, driven by explosive commercial adoption of Mounjaro ($23.0B in FY2025) and Zepbound ($13.5B in FY2025), lifting total revenue to $65.2B (+44% YoY) and net income to $20.6B. 10-year cumulative OCF of $72.1B exceeds cumulative Net Income of $68.6B (105.2% OCF conversion); 5-year FCF conversion of 70.6% reflects aggressive growth capex ($7.8B in 2025) to build out worldwide manufacturing capacity rather than structural capex sinkholes. Balance sheet remains a fortress: total debt of $40.9B against $7.3B cash (net debt of $33.6B, or 1.63x TTM Net Income) and EBIT of $26.6B providing 29.75x interest coverage against $895M annual interest expense. Disciplined management led by David Ricks continues exceptional per-share capital allocation into high-return internal R&D (>20% incremental ROIC) and strategic bolt-on acquisitions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

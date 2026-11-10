@@ -1,0 +1,30 @@
+{
+  "id": "GSK.GB",
+  "ticker": "GSK",
+  "universe": "eu",
+  "company": "GSK",
+  "country": "United Kingdom",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Vaccine pricing power is constrained by public health tender procurement and advisory recommendations (e.g. CDC ACIP), while the flagship dolutegravir HIV franchise faces an impending patent cliff in 2028-2029.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Multi-cycle GAAP ROIC averages 9-11%, failing the 12% hurdle across the cycle. Vaccine pricing is heavily constrained by institutional tender bodies and CDC ACIP guidelines, while the core dolutegravir HIV franchise faces patent expiration and generic erosion in 2028-2029.",
+    "evidence": "Historical GAAP ROIC over 10 years has hovered around 9-11% across the cycle (2021: ~9.5%, 2024: ~9.6%), failing the 12% threshold. Dolutegravir-based regimens (Tivicay, Triumeq, Dovato) generate ~20% of group revenue (£6B+) and face loss of exclusivity in the US in 2028 and Europe in 2029. Vaccine revenues face institutional price caps and advisory narrowing (e.g. ACIP RSV recommendation adjustments), preventing sustained pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

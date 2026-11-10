@@ -1,0 +1,30 @@
+{
+  "id": "F",
+  "ticker": "F",
+  "universe": "us",
+  "company": "Ford Motor Company",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "No durable consolidated moat (3a = None) and empirical ROIC failure (3b = N). (1) Competition & Arbitrage: Mass-market auto manufacturing is fragmented and capital-intensive against GM, Stellantis, Toyota, Honda, Hyundai/Kia, Tesla, and Chinese EV entrants; commercial fleet customers regularly dual-source and retail buyers switch across brands on financing APRs and incentives. While Ford Pro commands strong commercial truck/van scale and dealer/upfitter ties, legacy UAW labor costs and multi-platform complexity prevent consolidated shared-scale cost dominance, and F-Series/Mustang heritage lacks luxury-monopoly pricing power. (2) Empirical Proof Failure: 10Y median ROIC is 4.5% (financials_csv), declining to ~2.7%-2.9% Adjusted ROIC in FY23, ~1.95%-2.1% in FY24, and ~0% to -3.6% in FY25 on a $(8.2)B GAAP net loss; FY25 Adjusted EBIT margin was just 3.6% ($6.8B on $187.3B revenue) as Model e lost $(4.81)B (-72.1% EBIT margin) following a $(5.11)B loss in FY24, with ~$(4.0)B still projected for FY26. (3) Erosion Threats: Severe EV price competition and overcapacity, multi-billion-dollar battery/platform impairments, chronic recall/warranty expense drags, union wage rigidity, and tariff/supply-chain friction.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a = None, 3b = N, REJECT). While Ford serves essential Western personal mobility and commercial fleet needs via Ford Pro ($66.3B FY25 revenue, $6.84B EBIT; ~$7.0B FY26E EBIT) with transparent Automotive/Ford Credit reporting (passing Gates 1-2), it lacks a durable structural moat and chronically destroys capital relative to Munger's >=12% ROIC hurdle (4.5% 10Y median ROIC; ~2.0% FY24; ~0% to -3.6% FY25 on $(8.2)B GAAP net loss). Persistent Model e EV losses ($(4.81)B in FY25; ~$(4.0)B FY26E), brutal global OEM competition, UAW cost rigidity, and industry-leading recall/warranty drags reflect structural industry economics rather than a temporary fixable calamity.",
+    "evidence": "Multi-cycle financial record shows chronic sub-hurdle capital efficiency: 10Y median ROIC is 4.5% (financials_csv), with Adjusted ROIC at ~2.7%-2.9% (FY23), ~1.95%-2.1% (FY24), and ~0% to -3.6% (FY25). Full-year 2025 revenue reached $187.3B (+1% YoY from $185.0B in FY24), but GAAP net loss was $(8.2)B due to battery JV impairments and restructuring charges; Adjusted EBIT was $6.8B (3.6% margin), Operating Cash Flow $21.3B, and Adjusted FCF $3.5B. Through Q3 2026, management raised FY26 Adjusted EBIT guidance to $10.5B-$11.0B (~5.5%-5.8% implied margin) and targeted $6.0B-$7.0B Adjusted FCF. Segment breakdown (FY25 actual / FY26E): Ford Pro $66.3B rev, $6.843B EBIT (10.3% margin) / ~$7.0B EBIT; Ford Blue $101.0B rev, $3.024B EBIT (3.0% margin) / ~$5.5B EBIT; Ford Model e $6.7B rev (178k wholesales), $(4.806)B EBIT (-72.1% margin, vs $(5.105)B in FY24) / ~$(4.0)B EBIT loss; Ford Credit guided ~$2.8B EBT in FY26. Quality and pricing metrics: Ford has repeatedly topped US recall campaigns following NHTSA scrutiny, keeping warranty expenses elevated despite early 2026 sequential run-rate and J.D. Power initial quality improvements; post-pandemic pricing power reverted into EV price deflation and incentives. Balance sheet: Ford maintains solid automotive liquidity (~$28B standalone automotive cash/marketable securities and ~$20B-$21B automotive debt at FY25; >$46B total liquidity, ~$25.3B cash/marketable securities, and ~$2.9B net automotive cash in Q3 2026) alongside ~$150B-$165B consolidated debt including non-recourse Ford Credit receivables financing. Calamity Tier is inapplicable because 3a=None and sub-hurdle ROIC is structural across cycles rather than temporary; Gates 4-6 are null per strict sequential waterfall."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

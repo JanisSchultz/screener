@@ -1,0 +1,30 @@
+{
+  "id": "DTG.DE",
+  "ticker": "DTG",
+  "universe": "eu",
+  "company": "Daimler Truck",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Daimler Truck commands leading market positions (Freightliner ~40% share in North America Class 8) backed by extensive dealer and service networks. However, commercial truck manufacturing is fundamentally cyclical, tied to freight demand cycles where sophisticated fleet operators aggressively squeeze pricing. Group GAAP ROIC across full cycles fails to sustain >= 12%, while heavy capital requirements for zero-emission powertrains and cyclical margin compression limit economic profits.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b=N, REJECT). Global commercial vehicle leader possesses strong brand equity and dealer networks, but operates in a deeply cyclical industry with price-sensitive fleet buyers who eliminate pricing power during freight downturns. Through-cycle returns on capital fail the 12% Munger threshold amidst heavy zero-emission transition capex.",
+    "evidence": "Industrial Business Adjusted ROS fluctuates from 9.9% in peak 2023 to 8.9% in 2024, with net income declining 23% (€3.07B in 2024 vs €3.97B in 2023) due to European volume weakness. Consolidated Group GAAP ROIC across full cycles falls short of the 12% requirement given high asset intensity and financing liabilities."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "EUROB.GR",
+  "ticker": "EUROB",
+  "universe": "eu",
+  "company": "Eurobank",
+  "country": "Greece",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Primary listing country (Greece) is outside approved Western developed markets (in_market == 'N').",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need / Pre-Screen Geographic Rule). Primary listing is in Greece, which is classified outside approved Western developed markets (in_market == 'N').",
+    "evidence": "Eurobank is listed on the Athens Exchange in Greece (in_market == 'N'). Although it has expanded into Cyprus and Bulgaria with improving profitability, Greek banking assets fail the pre-screen Western developed market geographic standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

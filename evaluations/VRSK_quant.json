@@ -1,0 +1,43 @@
+{
+  "id": "VRSK",
+  "ticker": "VRSK",
+  "universe": "us",
+  "company": "Verisk Analytics",
+  "price": 204.59,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Near-monopoly US P&C insurance regulatory data and claims analytics toll booth (ISO, Xactimate). Operating ROIC normalized to the 35.0% cap under the v6.23 Negative Tangible Capital Standard (tangible equity is negative post-divestiture of Wood Mackenzie, with tangible ROIC >100% and reported operating ROIC of 43.87%). FY2024 peak Owner EPS of $6.776 accepted without adjustment as representative of normalized pure-play earning power. Forward 5-10Y Owner EPS compounding calibrated at 9.0% (4.0% organic volume/upsell + 3.0% annual pricing power + 0.5% margin expansion + 1.5% net share repurchases). Gross debt of $4.77B was temporarily elevated at FY25 year-end by escrowed senior notes for the AccuLynx transaction, which were fully redeemed upon deal termination in January 2026, leaving normalized net debt at $2.60B (2.86x net debt/NI), with robust 7.86x EBIT interest coverage and 109.9% multi-year FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.776,
+    "current_multiple": 30.19,
+    "par_multiple": 29.79,
+    "par_value": 201.85,
+    "percent_vs_par": 0.0136,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0096,
+    "expected_irr_5y": 0.0966,
+    "market_implied_cap": 20.3,
+    "moat_runway_margin": -0.3,
+    "market_implied_growth": 0.0961,
+    "growth_margin_of_safety": -0.0061
+  },
+  "health_checks": {
+    "net_debt_years": 5.26,
+    "net_debt_ok": false,
+    "interest_coverage": 7.86,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0993,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BKG.GB",
+  "ticker": "BKG",
+  "universe": "eu",
+  "company": "Berkeley Group",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; cyclical residential homebuilder exposed to mortgage rates and housing cycle.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Residential home purchases are discretionary, big-ticket, deferrable capital commitments that exhibit extreme cyclicality tied to mortgage borrowing costs, macro real estate cycles, and consumer confidence. Despite Berkeley's differentiated urban brownfield regeneration focus in London and the South East and disciplined long-term capital returns, cyclical homebuilders are explicitly excluded under Munger's non-deferrable everyday necessity standard.",
+    "evidence": "Berkeley Group operates primarily in London, Birmingham, and the South of England, specializing in complex, multi-year brownfield regeneration projects. While historically generating superior returns on capital relative to volume peers (ROCE historically 15-20% in cycle peaks), operating performance contracted sharply during the 2022-2024 mortgage rate spike, with reservation rates dropping over 30% and pre-tax profits declining from £604M in FY23 to £557M in FY24 and guided lower into FY25. The business faces structural planning constraints, multi-hundred-million-pound building safety / cladding remediation levies, and prolonged capital cycles where capital is tied up in multi-year landbanks. Under the Munger framework, private homebuilding represents a deferrable, highly cyclical big-ticket capital commitment rather than an entrenched daily habit or non-deferrable functional necessity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

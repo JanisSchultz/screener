@@ -1,0 +1,30 @@
+{
+  "id": "ROK",
+  "ticker": "ROK",
+  "universe": "us",
+  "company": "Rockwell Automation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant North American factory automation franchise (~40-50% domestic PLC share) powered by Allen-Bradley/ControlLogix installed base and deep engineering switching costs; plant engineers are trained on Studio 5000 and factory rewiring incurs catastrophic downtime risk. Empirical proof: 10-year median ROIC ~16% and ~40% gross margins. Primary erosion threats: open industrial automation standards (OPAF, IEC 61499), software-defined virtual PLCs running on commodity IPCs, and Siemens' global scale advantage.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Rockwell holds an entrenched installed base in North American factory automation via Allen-Bradley ControlLogix, its terminal runway is capped by structural shifts toward Software-Defined Automation (SDA), virtualized PLCs (vPLCs), and Open Process Automation (OPAF) standards that decouple control software from proprietary hardware backplanes. Combined with high cyclicality in discrete manufacturing capex (FY24 sales down 9%, net income down 37% from FY23 peak) and fierce global competition from Siemens outside North America, ROK fails the 15-year secular resilience threshold.",
+    "evidence": "Rockwell Automation generates ~$8.3B in revenue across Intelligent Devices (~45%), Software & Control (~30%), and Lifecycle Services (~25%). Historical ROIC is solid (FY24 GAAP ROIC 15.2%, FY25 14.6%, 10-year median 16.2%), supported by high switching costs in operational technology (OT) control layers and an exclusive North American distributor network (Wesco, etc.). However, earnings power is deeply cyclical: GAAP net income dropped from $1,387M in FY23 to $953M in FY24 (-31%) and $869M in FY25 (-37% from peak) due to customer inventory destocking and slower capex in automotive, semiconductor, and battery markets. More critically, the long-term durability of its proprietary hardware architecture faces structural headwinds from IT/OT convergence, software-defined control (vPLCs), open standards (OPAF), and PC-based automation (Beckhoff, Siemens). Long-term debt of $2.6B and total debt of $3.2B against cash of ~$0.5B; interest coverage remains healthy (>8x), but the business model fails the 15-year unhedged disruption runway standard of Gate 4."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

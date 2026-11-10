@@ -1,0 +1,30 @@
+{
+  "id": "BNR.DE",
+  "ticker": "BNR",
+  "universe": "eu",
+  "company": "Brenntag SE",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World's largest chemicals and ingredients distributor, but operating EBIT margins of 4.5-5.5% and multi-cycle GAAP ROIC of ~9% fail the 12% hurdle. Bulk industrial chemicals (Brenntag Essentials, ~65% of gross profit) face low customer switching costs and commodity pricing pressure, while chemical principals can bypass or re-tender distributor mandates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). World's largest chemical distributor operates primarily in commoditized bulk chemicals with low customer switching barriers and high principal substitution risk. Historical GAAP ROIC (~9%) and operating margins (4.5-5.5%) fail the Munger quality hurdle.",
+    "evidence": "Multi-cycle GAAP ROIC averages 8.5-9.5%, failing the >=12% hurdle. Operating EBIT margins remain thin at ~4.5-5.5%. Bulk industrial chemical volumes are cyclical and vulnerable to European industrial weakness and chemical price deflation. Net debt stands at ~€2.5-3.0B (leverage ~2.0-2.3x EBITDA)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

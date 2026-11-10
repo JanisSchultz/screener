@@ -1,0 +1,30 @@
+{
+  "id": "ADM",
+  "ticker": "ADM",
+  "universe": "us",
+  "company": "Archer Daniels Midland",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Agricultural Products & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive global origination, crushing, and logistics network provides operational scale, but products are fungible commodities traded on global exchanges. ADM is a price-taker on commodity crush margins (soybean crush, corn wet milling, ethanol) and cannot raise prices independently of global market supply and demand. 5-year median ROIC (~5-7%) and 10-year median ROIC (9.5%) consistently fail the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Agribusiness processor and commodity price-taker whose operating margins (1.8-4.3%) and returns on capital fluctuate with cyclical global crush margins. 5-year median ROIC of ~5.4% and 10-year median ROIC of 9.5% fail the 12% compounding hurdle. Structurally lacks pricing power above inflation.",
+    "evidence": "Historical ROIC: 2020: 3.9%, 2021: 5.4%, 2022: 7.2%, 2023: 7.3%, 2024: 3.7%, 2025: ~2.8%; 10-year median ROIC is 9.5%, consistently failing the 12% hurdle. Operating margins range from 1.8% to 4.3% across the cycle. While ADM generates substantial revenue ($85B-$100B+) and operates an essential global agricultural logistics network, profits are fundamentally tied to spot crush margins and grain supply dynamics rather than proprietary pricing power. FCF is highly volatile due to massive working capital swings tied to commodity price cycles ($1.2B in 2024 vs $4.2B in 2025). Furthermore, internal control material weaknesses and SEC/DOJ investigations over intersegment profit shifting to mask Nutrition segment underperformance resulted in a $40M SEC settlement in January 2026."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

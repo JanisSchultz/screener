@@ -1,0 +1,30 @@
+{
+  "id": "BE",
+  "ticker": "BE",
+  "universe": "us",
+  "company": "Bloom Energy Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary solid oxide fuel cell (SOFC) stack intellectual property (400+ patents) and long-term on-site service/maintenance contracts create switching costs, but economic returns are structurally depressed by high stack refurbishment/replacement expenses and competitive displacement risks from gas turbines, reciprocating engines, and grid interconnections.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). While Bloom Energy captures strong 'speed-to-power' tailwinds from AI data centres and C&I customers facing multi-year grid interconnect queues, it fails to demonstrate empirical moat proof or economic profitability. 5-year median GAAP ROIC is ~2.1% (far below the 12% hurdle), burdened by cumulative net losses since inception (accumulated deficit of ~$3.99B through FY2025), high periodic stack replacement costs, and chronic reliance on convertible debt offerings and equity dilution.",
+    "evidence": "10-year and 5-year median GAAP ROIC is ~2.1%, failing the 12% capital efficiency hurdle. Despite top-line revenue scaling from $1.20B (FY22) to $1.33B (FY23), $1.47B (FY24), and $2.02B (FY25), Bloom continues to generate GAAP net losses (-$88.4M in FY25), with GAAP operating margins remaining in low single digits (1.5% in FY24, 3.6% in FY25). Accumulated deficit stood at $3.99B at the end of FY25. Capital structure features heavy use of convertible senior notes (e.g., 2.5% Green Notes due 2025, 3.0% Green Notes due 2029) and repeated debt-for-equity exchanges to manage debt maturities and liquidity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

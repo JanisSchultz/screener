@@ -1,0 +1,43 @@
+{
+  "id": "MYCR.SE",
+  "ticker": "MYCR",
+  "universe": "eu",
+  "company": "Mycronic",
+  "price": 278.8,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap (median GAAP ROIC 34.4%, operating ROIC >100%). Display photomask monopoly and expanding semiconductor mask writer (SLX) volume drive 7.5% forward compounding net of capex/tax normalization. SEK 2.3B net cash."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.83,
+    "current_multiple": 31.56,
+    "par_multiple": 26.82,
+    "par_value": 236.96,
+    "percent_vs_par": 0.1766,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0135,
+    "expected_irr_5y": 0.0541,
+    "market_implied_cap": 17.6,
+    "moat_runway_margin": -2.6,
+    "market_implied_growth": 0.1461,
+    "growth_margin_of_safety": -0.0711
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 116.9,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

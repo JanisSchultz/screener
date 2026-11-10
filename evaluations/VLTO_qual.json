@@ -1,0 +1,30 @@
+{
+  "id": "VLTO",
+  "ticker": "VLTO",
+  "universe": "us",
+  "company": "Veralto Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Environmental & Facilities Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs driven by installed base of testing instruments requiring proprietary chemical reagents and testing kits. Testing represents <1% of customer operating budget but is legally mandated for municipal water compliance and product traceability, granting sustained 2-3% annual pricing power over inflation. Proven by 27% median GAAP ROIC and ~60% gross margins.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential water quality analytics and packaging coding oligopoly with 60%+ recurring revenue from proprietary consumables. Moat protected by extreme switching costs, regulatory mandates (EPA/Clean Water Act), and Danaher Business System operational DNA (VES). Pristine balance sheet with net cash position and >95% FCF conversion. [5-10Y g: water & packaging volume 3.5% + proprietary consumable price 2.0% + bolt-on M&A reinvestment 1.5% + net share buybacks 1.0% - tariff/tax drags 0.5%]",
+    "evidence": "Multi-cycle capital efficiency demonstrated by 27.1% 5-year median GAAP ROIC, tangible operating ROIC >100%, and consistent 58-60% gross margins. Water Quality (~60% of revenue; Hach, Trojan, ChemTreat) provides essential water testing instruments and proprietary reagents for municipal and industrial compliance; Product Quality & Innovation (~40% of revenue; Videojet, Linx, Esko, Pantone) provides mission-critical date coding, marking, and packaging workflow solutions. Over 60% of total revenue is recurring consumables and services. Razor-and-blade model creates massive switching costs: testing consumables are a negligible fraction of plant operating costs (<1%) but non-compliance triggers legal shutdown or heavy fines. Owner FCF conversion averages >96% of net income with minimal capex (~1.1% of revenue). Balance sheet is a net cash fortress ($2.03B cash vs $1.97B debt at FY2025; interest coverage 13.3x), allowing disciplined self-funded bolt-on acquisitions and opportunistic share repurchases under the Veralto Enterprise System (VES)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

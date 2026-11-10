@@ -1,0 +1,30 @@
+{
+  "id": "STLAM.IT",
+  "ticker": "STLAM",
+  "universe": "eu",
+  "company": "Stellantis N.V.",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Merger scale across 14 legacy brands (PSA and FCA) provided temporary platform synergies and cost rationalization. However, Stellantis lacks structural pricing power: excessive post-pandemic price hikes alienated US dealers and customers, resulting in massive market share losses, a costly inventory glut, and a collapse in Adjusted Operating Income margin to 5.5% with -€6.0B industrial FCF in 2024. Primary erosion threats: severe brand fragmentation, Chinese EV competition in Europe, union labor conflicts in the US (UAW) and Europe, and leadership vacuum following the departure of CEO Carlos Tavares.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & pricing power, REJECT). Stellantis proved that its post-merger margins were cyclical windfall rather than structural pricing power. In 2024, AOI margin collapsed from 12.8% to 5.5%, industrial FCF plummeted to -€6.0B, and ROIC sank to 4.6%. Aggressive price hikes alienated dealers and consumers, triggering severe market share losses and an inventory crisis in North America that forced heavy discounting.",
+    "evidence": "In 2024, net revenues declined 17% to €156.9B, Adjusted Operating Income plunged 64% to €8.64B (5.5% margin vs 12.8% in 2023), and industrial free cash flow swung to negative €6.0B from +€12.9B in 2023. ROIC crashed from ~18% to ~4.6%. Aggressive pricing on Jeep and Ram trucks triggered a massive inventory buildup and dealer backlash in the US, forcing painful production cutbacks and price discounting. CEO Carlos Tavares resigned amidst operational turmoil, illustrating the lack of a durable competitive moat across 14 fragmented brands."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AI.FR",
+  "ticker": "AI",
+  "universe": "eu",
+  "company": "Air Liquide",
+  "country": "France",
+  "sector": "Materials",
+  "sub_industry": "Industrial Gases (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Long-term (15-20Y) take-or-pay on-site pipeline contracts with formulaic energy and inflation pass-through, local pipeline networks forming geographic natural monopolies, and high merchant route density generate insurmountable switching costs. Operating margins expanded +360 bps to >20% under the ADVANCE program, with tangible ROIC sustaining ~22% and recurring ROCE reaching 11.2% in FY2025.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Indispensable global industrial gas oligopolist with 15-20 year take-or-pay on-site contracts, local pipeline natural monopolies, and demonstrated secular pricing power. Operating margin expanded +360 bps to >20% under ADVANCE with resilient ~22% tangible ROIC and interest coverage ~60x. [5-10Y g: contracted volume 3.5% + merchant pricing 2.0% + margin expansion / efficiencies 1.0% + net buyback / reinvestment 1.0%]",
+    "evidence": "Tangible ROIC consistently 19-22% (2022-2025) and recurring ROCE reached 11.2% in FY2025. Operating margin expanded >360 bps over 4 years to >20% under the ADVANCE program, outperforming upwardly revised targets. Multi-year Owner FCF conversion exceeds 115%. Balance sheet fortress with net debt / NI of 1.8x and interest coverage of ~60x (EBIT €4.97B vs interest €82.7M)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

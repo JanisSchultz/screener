@@ -1,0 +1,30 @@
+{
+  "id": "GEN",
+  "ticker": "GEN",
+  "universe": "us",
+  "company": "Gen Digital Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential and easily forgone consumer software; native OS security (Microsoft Defender, Apple XProtect) and statutory free credit freezes render third-party consumer security and identity suites non-essential.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Consumer cyber safety and identity protection products (Norton, Avast, LifeLock, AVG) are discretionary, non-essential, and easily forgone. Modern operating systems provide robust native protection (Microsoft Defender, Apple XProtect) at zero incremental cost, rendering third-party antivirus obsolete for mainstream consumers. Customer retention is heavily reliant on auto-renewal inertia and dark-pattern billing rather than essential utility.",
+    "evidence": "Gen Digital generated FY2025 revenue of $3.94B and GAAP net income of $643M across Consumer Security (~65%) and Identity & Information Protection (~35%). While operating cash flow reaches ~$1.2B, customer acquisition relies heavily on OEM trial bundles and auto-renewal inertia subject to FTC and global regulatory scrutiny over negative-option billing. Built-in OS security solutions (Windows Defender, Apple security) provide free, highly effective protection, making third-party suites discretionary and easily forgone. Furthermore, the company carries $8.35B in debt following the debt-funded Avast merger (net debt/net income ~12.5x), resulting in negative tangible equity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

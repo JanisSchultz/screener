@@ -1,0 +1,30 @@
+{
+  "id": "SAN.ES",
+  "ticker": "SAN",
+  "universe": "eu",
+  "company": "Santander",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Approximately 40-50% of underlying group earnings are generated in Latin America and emerging markets (principally Brazil, Mexico, Chile, Argentina), exposing capital to severe currency depreciation, political volatility, and emerging-market credit cycles.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (emerging-market earnings concentration, REJECT). Banco Santander derives roughly 40-50% of its net profit from Latin American emerging markets (principally Brazil, Mexico, Chile, and Argentina). This structural exposure subjects euro-based compounding to ongoing currency debasement, heightened sovereign/political risk, and volatile credit cycles.",
+    "evidence": "Globally diversified retail and commercial banking giant. Attributable net profit in 2023 of €11.1B and 2024 of €12.6B heavily reliant on South America and Mexico (~40-50% of underlying earnings). Brazil alone has historically contributed 20-30% of group profit. Returns in euro terms are continually eroded by Latin American currency devaluation (BRL, ARS) and credit risk provisions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

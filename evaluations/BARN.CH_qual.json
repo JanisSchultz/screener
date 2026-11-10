@@ -1,0 +1,30 @@
+{
+  "id": "BARN.CH",
+  "ticker": "BARN",
+  "universe": "eu",
+  "company": "Barry Callebaut",
+  "country": "Switzerland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Long-term B2B chocolate outsourcing contracts feature cost-plus pricing mechanisms, but fail to absorb working capital financing shocks during commodity cycles; reported GAAP ROIC is chronically sub-12% (10-12% historically, plunging below 8% during cocoa surges).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Cost-plus chocolate outsourcing model cannot insulate against working-capital financing spikes when cocoa prices surge. Ballooning inventory drove Net Debt/EBITDA to 6.5x and forced volume contraction (-6.8% in FY25), keeping full-cycle ROIC well below the 12% threshold.",
+    "evidence": "Historically, reported GAAP ROIC hovered around 10.3%-13.1% (median ~11.5%), falling below the 12% hurdle. During the 2024-2025 cocoa price spike, working capital absorbed billions, sending H1 free cash flow to -CHF 2.1B and Net Debt/EBITDA to 6.5x. Recurring net profit dropped 36% due to surge in financing costs and volume fell 6.8%, proving lack of true pricing power across the business cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

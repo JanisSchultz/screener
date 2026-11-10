@@ -1,0 +1,30 @@
+{
+  "id": "ULVR.GB",
+  "ticker": "ULVR",
+  "universe": "eu",
+  "company": "Unilever",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Colossal global scale economies across 190+ countries reaching 3.4 billion daily consumers. Portfolio of 30 power brands (Dove, Rexona, Knorr, Hellmann's, Domestos, Omo) generates 70%+ of group revenue with superior retail distribution shelf-space lock-in. Demonstrated pricing power by passing double-digit inflation through to pricing in 2021-2023, subsequently restoring positive volume growth and 18-24% GAAP ROIC. Primary risks include private-label competition in home care/dressings and emerging market currency volatility.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global consumer staple powerhouse with ~20% GAAP ROIC and 96% FCF conversion. Management's Growth Action Plan is sharpening focus on 30 power brands while carving out Ice Cream and cutting bureaucratic bloat. Balance sheet is well-supported with 9x interest coverage and net debt repayable in <2.5 years of FCF. [5-10Y g: organic volume 2.0% + price/mix 2.0% + margin expansion / buybacks 1.5%]",
+    "evidence": "5-year median GAAP ROIC is 19.7% (2022: 24.4%, 2023: 20.2%, 2024: 18.3%, 2025: 19.2%). Multi-year FCF conversion averages 95.7% (€6.7B-€8.1B annual owner FCF). Strong pricing power confirmed by passing severe 2022-2023 commodity inflation via 11-13% price hikes before pivoting back to positive volume in 2024-2025. Prudent capital allocation with tea (ekaterra) sold and ice cream demerger underway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

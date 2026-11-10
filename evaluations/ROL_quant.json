@@ -1,0 +1,43 @@
+{
+  "id": "ROL",
+  "ticker": "ROL",
+  "universe": "us",
+  "company": "Rollins, Inc.",
+  "price": 37.95,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Global leader in route-based pest and termite control (Orkin, Fox, HomeTeam) operating a highly resilient subscription engine with 80%+ recurring contract revenue. Operating ROIC normalized to 35.0% cap to reflect immense local route density, asset-light operations (capex ~0.7% of sales), and structurally unbounded tangible capital returns (>100% tangible ROIC; 35.34% 5Y median GAAP ROIC). FY25 peak Owner EPS of $1.29 reflects 24 consecutive years of uninterrupted revenue growth (13.7% 9Y CAGR) backed by exceptional 111.72% FCF conversion ($623.4M Owner FCF). Pristine balance sheet with LT debt of $486.1M against $100.0M cash (net debt of 0.73x NI, easily repayable from FCF in <8 months) and stellar 25.42x EBIT interest coverage ($726.1M EBIT vs $28.6M interest). 5-10Y through-the-cycle EPS growth of 9.5% is driven by organic residential/commercial customer expansion (4.0%), recession-proof pricing power (3.5%), self-funded tuck-in M&A (2.0%), technician wage/marketing friction (-0.5%), and share buybacks (0.5%). Fundamental 3-Pillar PAR Multiple of 31.80x (well below the 50.38x cycle-high guardrail) yields a PAR Value of $40.95. At $37.95 (29.47x Peak OE), ROL trades 7.3% Below PAR, offering an attractive 12.97% 5Y expected IRR backed by a 1.80% dividend yield."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.2877,
+    "current_multiple": 29.47,
+    "par_multiple": 31.8,
+    "par_value": 40.95,
+    "percent_vs_par": -0.0732,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.018,
+    "expected_irr_5y": 0.1297,
+    "market_implied_cap": 18.5,
+    "moat_runway_margin": 1.5,
+    "market_implied_growth": 0.0601,
+    "growth_margin_of_safety": 0.0349
+  },
+  "health_checks": {
+    "net_debt_years": 0.92,
+    "net_debt_ok": true,
+    "interest_coverage": 25.42,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1172,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TKCC.DE",
+  "ticker": "TKCC",
+  "universe": "eu",
+  "company": "tk accelis",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "European scale in steel and materials distribution provides logistics reach, but zero pricing power; operating margins are razor-thin (~2-2.8% EBITDA, ~1% EBIT) and multi-cycle returns on capital fall far short of the 12% ROIC threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (N, REJECT). Spun off from thyssenkrupp in October 2026, tk accelis is a commodity materials distributor and steel service center operating with razor-thin ~2-2.8% adjusted EBITDA margins (~1% EBIT). Lacks structural pricing power as a pure price-taker in cyclical steel and industrial metals, generating sub-hurdle multi-cycle returns on capital well below the 12% ROIC requirement. Downstream gates bypassed per waterfall.",
+    "evidence": "FY2024/25 sales of €11.4B generated an adjusted EBITDA margin of approximately 2%, rising modestly to 2.8% in the first 9 months of FY25/26 (€256M EBITDA on €9.1B revenue). Structural EBIT margins hover near 1%, and ROCE/ROIC is in the low-to-mid single digits, failing the 12% hurdle. High working capital intensity and commodity inventory price risk prevent sustainable excess economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

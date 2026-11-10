@@ -1,0 +1,30 @@
+{
+  "id": "MNG.GB",
+  "ticker": "MNG",
+  "universe": "eu",
+  "company": "M&G",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Sticky heritage with-profits and annuity back books provide legacy cash generation, but the open asset management franchise suffers from active fund fee compression and intense competition from low-cost passive indexers. Zero pricing power to raise management fees; high operating cost-to-income ratio (~75%) and sub-hurdle multi-cycle ROIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). UK savings and investment manager burdened by a capital-intensive legacy with-profits book and an active mutual fund business facing structural fee compression from passive vehicles. Lacks an enduring economic moat or pricing power.",
+    "evidence": "M&G manages £376B in AUMA across asset management and life/with-profits funds. Active asset management operating profits remain constrained (£280M) with a ~75% cost-to-income ratio. Open-ended mutual funds face relentless price competition and substitution from low-cost ETFs and passive solutions, precluding inflation-protected pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DTE.DE",
+  "ticker": "DTE",
+  "universe": "eu",
+  "company": "Deutsche Telekom",
+  "country": "Germany",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Despite T-Mobile US's 5G mid-band spectrum leadership and German fixed broadband dominance, 4-year median GAAP ROIC is 11.57% (failing 12%). T-Mobile's foundational 'Price-Lock' guarantee and German regulatory wholesale price caps prevent pricing power >= inflation across full business cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & lacks above-inflation pricing power, REJECT). Deutsche Telekom is an exceptional transatlantic telecom operator driven by T-Mobile US, but 4-year median GAAP ROIC of 11.57% falls short of the 12% hurdle. T-Mobile's Price-Lock marketing guarantee and German regulatory rate constraints prevent above-inflation pricing, while €96B in debt violates fortress standards.",
+    "evidence": "Reported GAAP ROIC averaged 11.57% across 2022–2025 (10.05% in 2022, 9.54% in 2023, 15.51% in 2024, 13.08% in 2025). LT Debt of €96.0B creates 9.2x Net Debt / NI leverage and interest coverage of 3.98x (EBIT €26.0B vs Interest €6.55B), below the 5.0x fortress threshold. Annual capex exceeds €19B."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BX",
+  "ticker": "BX",
+  "universe": "us",
+  "company": "Blackstone Inc.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global scale leader in alternative asset management ($1.27T total AUM, $922B fee-earning AUM) with unreplicable 40-year performance track record. High switching costs driven by 10+ year closed-end fund lockups, perpetual capital vehicles ($524B AUM), and 85%+ institutional LP re-up rates. Pricing power demonstrated by maintaining premium ~100-150 bps management fees and 15-20% carry across market cycles with zero fee compression. High returns on capital proved by 10-year median GAAP ROIC of 35%+ (never below 17% in a decade). Primary erosion risks include key-man transition risks, retail redemption runs in semi-liquid structures, and growing competition in private credit.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "World's premier alternative asset manager with unassailable brand, $920B+ fee-earning AUM, and sticky perpetual/long-dated capital. High pricing power verified by stable fee rates and 35%+ median ROIC. Active beneficiary of AI infrastructure boom (QTS data centers), private credit expansion, and institutional yield demand. Fortress balance sheet with 15x interest coverage and A+ Fitch/S&P rating. [5-10Y g: fee-earning AUM volume 5.5% + asset price appreciation 2.0% + private credit & insurance mix 1.0% - tech & compliance drag 0.5% + buybacks 0.5%]",
+    "evidence": "Total AUM reached $1.27T in FY2025 with $921.7B fee-earning AUM and $523.6B perpetual capital. FY2025 Fee-Related Earnings (FRE) grew to $5.7B ($4.67/share). 10-year median GAAP ROIC is 35.04% and operating ROIC is 40.05%, with FY2025 GAAP ROIC of 35.66%. Free cash flow conversion is exceptional at 114.4% (FY2025 FCF of $4.55B on $3.02B net income). Peak-to-peak earnings compounding confirmed as 2025 Owner EPS ($3.89) eclipsed prior 2019/2022 peaks. Corporate balance sheet maintains an A+ rating with $2.63B in cash, $7.68B in EBIT, and 15.1x interest coverage against $12.58B in long-term fixed-rate senior notes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

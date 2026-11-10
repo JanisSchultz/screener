@@ -1,0 +1,43 @@
+{
+  "id": "BEAN.CH",
+  "ticker": "BEAN",
+  "universe": "eu",
+  "company": "Belimo",
+  "price": 727.0,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.3417,
+    "fin_note": "Peak Owner EPS of 14.77 CHF in FY2025 reflects secular demand for HVAC damper actuators and control valves across commercial buildings and AI data centers without non-cash windfalls. Exceptional operating ROIC of 34.17% (GAAP 32.41%) on pristine zero-debt balance sheet. 5-10Y forward growth of 8.5% driven by global building decarbonization retrofits (5.0%), data center liquid cooling applications (2.0%), and mission-critical pricing power (2.0%), partially offset by ongoing R&D and footprint investments."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 14.7664,
+    "current_multiple": 49.2334,
+    "par_multiple": 35.36,
+    "par_value": 522.1397,
+    "percent_vs_par": 0.3923,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0131,
+    "expected_irr_5y": 0.0286,
+    "market_implied_cap": 27.8,
+    "moat_runway_margin": -7.8,
+    "market_implied_growth": 0.2931,
+    "growth_margin_of_safety": -0.2081
+  },
+  "health_checks": {
+    "net_debt_years": -0.55,
+    "net_debt_ok": true,
+    "interest_coverage": 274.52,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.83,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

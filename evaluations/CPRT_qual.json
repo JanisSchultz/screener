@@ -1,0 +1,30 @@
+{
+  "id": "CPRT",
+  "ticker": "CPRT",
+  "universe": "us",
+  "company": "Copart, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable physical footprint of 200+ grandfathered, EPA/NIMBY-permitted salvage storage yards (>10,000 owned acres) combined with a dominant global two-sided auction network (VB3) connecting to buyers in 170+ countries. 10-year median GAAP ROIC of 22.6% and operating margins >35% prove unassailable pricing power, as global buyer liquidity delivers superior net salvage recovery for insurance carriers. High switching costs for carriers tied through deep API integration.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable salvage auction duopoly leader with irreplaceable permitted yard infrastructure (>10,000 owned acres) and global digital buyer liquidity in 170+ countries. Exceptional pricing power and 22%+ ROIC driven by increasing vehicle complexity and total loss frequency. Pristine zero-debt balance sheet with $1.9B+ net cash. [5-10Y g: salvage vehicle volume growth 3.5% + vehicle complexity and total loss frequency 2.5% + international buyer expansion 2.0% + auction fee pricing 1.5% + opportunistic share repurchases 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 22.6% and operating ROIC of 25.0%. Owner FCF conversion averages 93.4% ($1.3B-$1.5B+ annual owner FCF). Revenue compounded from $1.45B in FY2017 to $4.65B in FY2025, with Net Income expanding from $394M to $1.55B. Balance sheet is an unassailable fortress with $0 funded debt and $1.9B+ in cash. Global buyer network in 170+ countries yields unmatched auction liquidity, ensuring durable insurer relationships despite duopoly competition from RB Global/IAA."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

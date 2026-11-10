@@ -1,0 +1,30 @@
+{
+  "id": "TECH",
+  "ticker": "TECH",
+  "universe": "us",
+  "company": "Bio-Techne Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Citation-locked research reagent catalog (antibodies, recombinant proteins, ELISA kits, RNAscope spatial biology) with extreme switching costs; researchers cannot swap reagents mid-protocol or in FDA regulatory filings without risking failed experiments and assay invalidation. Supports 2-4% annual catalog price increases and ~67-72% gross margins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peak-to-Peak Compounding & Capital Allocation, REJECT). Citation-locked research reagent franchise with strong gross margins (~67-72%) and net cash balance sheet ($65M net cash, 26x interest coverage). However, fails Gate 6 due to an unrepeatable pandemic windfall peak in FY2022 ($2.19 Owner EPS) followed by a 56% peak-to-trough collapse to $0.96 in FY2024. Despite FY2025 rebound to $1.60, earnings remain well below peak. Multi-cycle GAAP ROIC is stuck at an inferior 8.7% 10-year median (9.2% 5-year median) due to $1.3B+ in accumulated serial M&A goodwill and write-downs/divestitures (Exosome Diagnostics), proving long-term capital allocation dilution. Pending $73/share cash buyout by Merck KGaA caps independent compounding runway. [5-10Y g: organic reagent/instrument volume 5.0% + catalog pricing 2.0% + gross margin mix 0.5% - M&A integration drag 0.5% + net buybacks 0.5%]",
+    "evidence": "10-year financial history shows structural tension between high tangible capital efficiency and serial M&A dilution. Tangible ROIC averaged 45-50%+ (FY2025: 25.0%), but 10-year median GAAP ROIC is only 8.7% (5-year median 9.18%) due to $1,279M in goodwill and intangibles against $2,108M equity. Owner EPS compounded from $0.81 (FY2016) to a peak of $2.19 (FY2022) during the COVID biopharma boom, but plunged 56% to $0.96 in FY2024 amidst customer inventory destocking and biopharma funding contraction before recovering to $1.60 in FY2025. Free cash flow conversion is pristine (FY2025 FCF $222M on $182M Net Income, 122% conversion; TTM 107%). Balance sheet is conservative with $265M cash vs $200M debt ($65M net cash) and 26.2x interest coverage. Management executed multiple tuck-in acquisitions (ProteinSimple, ACD, Asuragen, Lunaphore), but Exosome Diagnostics required divestiture at a loss in FY2025. In June 2026, Bio-Techne agreed to be acquired by Merck KGaA for $73 per share in cash ($11.3B enterprise value)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

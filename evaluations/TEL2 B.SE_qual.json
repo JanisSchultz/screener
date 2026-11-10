@@ -1,0 +1,30 @@
+{
+  "id": "TEL2 B.SE",
+  "ticker": "TEL2 B",
+  "universe": "eu",
+  "company": "Tele2",
+  "country": "Sweden",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong cash generation in the Baltic mobile oligopoly is diluted by the larger Swedish market, where intense competition against Telia, Telenor, and 3 constrains pricing power below inflation and keeps multi-year ROIC (~8-10%) below the 12% cost-of-capital threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC ~8-10% < 12%, pricing power below inflation, REJECT). While Tele2 operates a lean telecom challenger model with strong Baltic cash generation and Iliad backing, Swedish mobile and broadband competition restricts real pricing power and keeps multi-cycle capital returns below the 12% hurdle.",
+    "evidence": "Reported ROCE was 8% in 2021, 11% in 2022 (inflated by Netherlands divestment gain), 10% in 2023, and 11% in 2024, with multi-year GAAP ROIC running at 8-10%, failing Gate 3b. Net debt to EBITDA remains ~2.3-2.5x with substantial ongoing 5G network capex required to maintain competitive parity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "KOG.NO",
+  "ticker": "KOG",
+  "universe": "eu",
+  "company": "Kongsberg",
+  "price": 335.4,
+  "quote_currency": "NOK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap (tangible ROIC 72.6% reflects missile defense monopolies JSM/NSM and NASAMS). 5-10Y g of 10.0% aligned with qualitative guidance (6.0% missile deliveries + 3.0% NASAMS + 1.5% maritime - 1.0% normalization + 0.5% buybacks/dividends). FY2025 peak Owner EPS NOK 9.04 supported by record NOK 157B order backlog. Fortress balance sheet with NOK 19.2B net cash."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.042,
+    "current_multiple": 37.09,
+    "par_multiple": 32.18,
+    "par_value": 290.94,
+    "percent_vs_par": 0.1528,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0066,
+    "expected_irr_5y": 0.0757,
+    "market_implied_cap": 17.3,
+    "moat_runway_margin": -2.3,
+    "market_implied_growth": 0.1738,
+    "growth_margin_of_safety": -0.0738
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 8.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.41,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

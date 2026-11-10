@@ -1,0 +1,30 @@
+{
+  "id": "SCYR.ES",
+  "ticker": "SCYR",
+  "universe": "eu",
+  "company": "Sacyr",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Infrastructure concession portfolio (>90% of EBITDA) spanning toll highways, hospitals, and water assets, largely underpinned by availability payments or CPI-indexed tariffs with minimal direct demand risk across Spain, Italy, and Latin America.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5 < 15, REJECT). Spanish infrastructure concessions group pivoting from contracting to P3 concessions (>90% of EBITDA). Heavy project debt load (~€8.8B total debt vs €113M net profit), emerging market exposure in Latin America, and finite concession lifespans requiring continuous competitive re-tendering cap predictable runway.",
+    "evidence": "While concessions generate >90% of EBITDA (€1.35B in 2024) with solid cash conversion, total net debt remains elevated at ~€8.8B against net income of €110-150M. High refinancing sensitivity in an elevated rate environment (Macrotrend 5) combined with Latin American sovereign risk and finite concession durations caps CAP at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

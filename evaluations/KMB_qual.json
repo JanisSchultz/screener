@@ -1,0 +1,30 @@
+{
+  "id": "KMB",
+  "ticker": "KMB",
+  "universe": "us",
+  "company": "Kimberly-Clark",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "No structural moat archetype. Kimberly-Clark operates in commoditized consumer tissue and personal care categories with zero customer switching costs and high private-label retailer penetration. The company cannot sustain price hikes above raw material (wood pulp, polymer resins) inflation without volume erosion and market share loss to store brands, exemplified by its complete exit from the Canadian consumer Kleenex business in 2023. Top-line 10-year revenue CAGR of under 1% significantly lags cumulative inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing). Kimberly-Clark lacks a defensible moat archetype ('None') and fails pricing power ('N'). In commoditized tissue and personal care categories with zero switching barriers, price increases to recover volatile raw material (pulp, resin) costs trigger volume losses to lower-priced private label and store brands. 10-year sales CAGR (<1%) severely trails inflation, and margins remain cyclical to input cost spikes.",
+    "evidence": "10-year net sales hovered between $18B and $20B (CAGR <1% from 2015 to 2025), failing to keep pace with >30% cumulative inflation and reflecting chronic real volume stagnation. Gross margins are volatile and exposed to commodity cycles, falling from ~37% in 2020 to ~30.5% in 2021-2022 during input cost inflation. Complete exit from the Canadian consumer facial tissue market (discontinuing Kleenex) in 2023 demonstrated inability to pass through costs against private label. Infant care (Huggies) faces long-term demographic volume headwinds from declining birth rates alongside fierce competition from Procter & Gamble and retailer store brands."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

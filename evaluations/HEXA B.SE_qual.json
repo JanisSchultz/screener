@@ -1,0 +1,30 @@
+{
+  "id": "HEXA B.SE",
+  "ticker": "HEXA B",
+  "universe": "eu",
+  "company": "Hexagon",
+  "country": "Sweden",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High gross margins (~66%) and proprietary Leica calibration/metrology software workflows create substantial switching costs, enabling above-inflation pricing across cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (ROIC 8.2% & flat EPS compounding, REJECT). Strong Leica Geosystems and industrial metrology franchises, but decades of debt/equity-funded M&A rollups have bloated invested capital with >€12B of goodwill, driving sub-hurdle GAAP ROIC (8.2%) and sluggish peak-to-peak Owner EPS compounding (0.5% CAGR).",
+    "evidence": "Reported GAAP ROIC median of 8.21% (2022: 8.4%, 2023: 8.0%, 2024: 9.0%, 2025: 5.8%). Goodwill and intangibles of €12.1B exceed total equity of €10.2B, leaving negative tangible equity. Net income fell from €1,023M in 2024 to €617M in 2025. 4-year Owner EPS CAGR is only 0.53% (peak 0.378 in 2024 falling to 0.293 in 2025). High gross margins (66%) and healthy FCF conversion (95.6%) are insufficient to overcome structurally dilutive acquisition accounting and industrial cyclicality."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

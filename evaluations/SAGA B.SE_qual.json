@@ -1,0 +1,30 @@
+{
+  "id": "SAGA B.SE",
+  "ticker": "SAGA B",
+  "universe": "eu",
+  "company": "Sagax",
+  "country": "Sweden",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Uncapped 100% annual CPI lease indexation in Nordic and continental European markets successfully passed through 2022-2024 inflation spikes at 95-96% occupancy; exceptional 18.6% 20-year per-share compounding under founder David Mindus.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Debt/OE = 8.3x, REJECT). Europe's best-run industrial property compounder under founder David Mindus boasts uncapped CPI indexation and 18% 20Y per-share CAGR, but 8.3x debt/OE and structural reliance on bond market refinancing fail Buffett peace-of-mind solvency. [5-10Y g: uncapped CPI indexation 2.0% + retained cash flow reinvestment at 7% yield 4.5% - bond refinancing drag 0.5%]",
+    "evidence": "AB Sagax is an exceptional Nordic/continental light industrial property company owning >1,000 properties across Sweden, Finland, France, Netherlands, Spain, and Germany. Under founder-CEO David Mindus, profit from property management per share has compounded at an 18.6% CAGR since 2013 with 14-15% ROE and uncapped 100% CPI lease escalators maintaining 95-96% occupancy. However, Gate 6 fails decisively on balance sheet solvency: total debt is SEK 31.5B against net income of SEK 3.8B (8.3x debt/OE vs <=4.0x limit), with SEK 1.0B annual interest expense. In FY23, rate hikes compressed EBIT/interest coverage to 1.2x (EBIT SEK 883M vs SEK 724M interest). Continued growth and solvency fundamentally depend on continuous refinancing in European bond markets, violating the Buffett 'no kindness of strangers' mandate."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

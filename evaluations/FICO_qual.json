@@ -1,0 +1,30 @@
+{
+  "id": "FICO",
+  "ticker": "FICO",
+  "universe": "us",
+  "company": "Fair Isaac",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deeply entrenched B2B credit scoring standard with high switching costs across banking and mortgage underwriting. Empirically demonstrated by 5-year median GAAP ROIC of 54.0% (FY25 ROIC 80.9%) and EBIT margins expanding to 46%+. However, moat faces active erosion as FHFA and GSEs approved competitor VantageScore 4.0, directly dismantling FICO's statutory monopoly in residential mortgage originations.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Classic cautionary tale of an over-milked toll booth. After exploiting its monopoly by hiking mortgage scoring prices by >400%, FICO triggered regulatory backlash: the Federal Housing Finance Agency (FHFA) mandated the adoption of rival VantageScore 4.0 for Fannie Mae and Freddie Mac loan deliveries, ending FICO's decades-long sole-source monopoly. In 2025–2026, FHFA expanded VantageScore 4.0 to all GSE lenders with aligned pricing grids, while major lenders (e.g. Rocket Mortgage) began active deployment. Concurrently, aggressive pricing provoked DOJ/FTC antitrust scrutiny and congressional probes. These terminal competitive and regulatory headwinds reduce persistence well below 15 years, capping CAP at 10. Downstream gates bypassed per strict waterfall.",
+    "evidence": "FY2025 revenue reached $1.99B with EBIT of $924.9M and Net Income of $651.9M. 5-year median GAAP ROIC is 54.0% (FY2025: 80.9%), and FCF conversion is 89.9% ($613.2M FCF). Despite historic capital efficiency, FICO faces severe structural terminal headwinds. The FHFA credit score modernization framework broke FICO's sole-source GSE mortgage standard by authorizing VantageScore 4.0 (jointly developed by credit bureaus Equifax, Experian, and TransUnion), with GSEs rolling out unified pricing grids and all-lender availability through 2025-2026. Lenders like Rocket Mortgage are actively moving volume to VantageScore. Furthermore, rapid price hikes to $10/score sparked congressional antitrust investigations and requests for FTC/DOJ action, forcing FICO to defensively freeze pricing for its Preferred Program. Capital allocation also exhibits severe financial engineering: aggressive share repurchases executed at peak valuations (>50-80x P/E) pushed long-term debt to $2.66B against only $134M cash ($2.52B net debt, ~3.9x Net Income), resulting in -$1.75B in negative stockholders' equity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

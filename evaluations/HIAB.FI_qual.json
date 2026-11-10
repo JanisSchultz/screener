@@ -1,0 +1,30 @@
+{
+  "id": "HIAB.FI",
+  "ticker": "HIAB",
+  "universe": "eu",
+  "company": "Hiab",
+  "country": "Finland",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong brand recognition in loader cranes (HIAB) and truck-mounted forklifts (MOFFETT) backed by service networks, but high exposure to cyclical construction and trucking capex, along with duopolistic rivalry with Palfinger, limits pricing power and leaves multi-cycle standalone GAAP ROIC unproven above 12% across full recessions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Spun out as the core remnant of Cargotec following the Kalmar demerger and MacGregor sale, Hiab owns premium niche brands (HIAB, MOFFETT), but heavy exposure to cyclical construction and trucking fleet capex limits sustained pricing power above inflation, and historical multi-cycle group GAAP ROIC across full downturns fails the 12% hurdle.",
+    "evidence": "Hiab division generates €1.55B sales with ~13% comparable EBIT margins and high operative ROCE on localized assembly capital, but historical Cargotec group GAAP ROIC averaged 7-10% across prior cycles. The business faces steep order-intake contractions during commercial vehicle downturns (e.g. 2023-2024 orders dipped >15%) and competes aggressively against global market share leader Palfinger (25-35% share) where switching costs for fleet operators are limited at replacement cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

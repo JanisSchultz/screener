@@ -1,0 +1,30 @@
+{
+  "id": "WFC",
+  "ticker": "WFC",
+  "universe": "us",
+  "company": "Wells Fargo",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Core deposit franchise scale (~$1.4T deposits across ~4,000 branches) creates low-cost funding advantages and high account switching costs. Proof: 5-year median GAAP ROIC of 13.64% and ROTCE of 14.6%-16.3%. Primary erosion threats stem from fintech digital payment rails, neobank deposit competition, and regulatory compliance burdens.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Fortress Balance Sheet, REJECT). While CEO Charlie Scharf has successfully overhauled compliance and governance—leading to the Federal Reserve lifting the $1.95T asset cap in June 2025 and terminating remaining consent orders—Wells Fargo remains a fractional-reserve commercial deposit bank with ~11.5x asset leverage ($2.1T+ in assets on ~$181B in equity). Its balance sheet inherently depends on short-term deposits and wholesale liquidity subject to duration mismatch and credit cycles (the 'kindness of strangers'), structurally failing the Munger fortress balance sheet standard (g6_default: N).",
+    "evidence": "Wells Fargo is a 'Big Four' US diversified bank with ~$1.4T in deposits and ~4,000 branches. 5-year median GAAP ROIC is 13.64% with ROTCE expanding to 16.3% by 2026. The Federal Reserve officially lifted the $1.95T asset cap on June 3, 2025 following extensive risk management overhaul. However, under Gate 6 criteria, commercial fractional-reserve deposit banks are disqualified by default: balance sheet leverage is ~11.5x ($2.1T+ assets vs. $181B equity), multi-year free cash flow conversion is distorted/negative (-2.3%) due to deposit and loan flows, and solvency relies on regulatory lender-of-last-resort mechanisms rather than an unleveraged, independent fortress balance sheet."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

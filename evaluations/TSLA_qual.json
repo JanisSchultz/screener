@@ -1,0 +1,30 @@
+{
+  "id": "TSLA",
+  "ticker": "TSLA",
+  "universe": "us",
+  "company": "Tesla, Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Tesla possesses genuine EV/battery engineering IP, NACS Supercharger standardization across North America, Megapack utility energy storage (33% Q3 2026 gross margin), and 1.74M active paid FSD subscribers, these intangibles fail Gate 3b's empirical proof-of-moat and pricing-power standards. Core automotive (~73.3% of FY2025 revenue) faced intense competition from BYD/Chinese EVs and legacy OEMs, forcing repeated 2023-2025 vehicle price cuts and 2026 promotional FSD free-trial incentives to sustain factory utilization. Empirical GAAP ROIC fell far below the 12% hurdle—from ~11.8%-15.7% in 2023 to ~7.9%-9.3% in 2024, ~3.9%-4.9% in 2025, and ~3.3% TTM in 2026 (10Y median 11.2% in financials.csv)—while GAAP operating margin compressed from 9.19% (2023) to 7.24% (2024), 4.59% (2025), and ~3.35%-4.1% TTM in 2026 (1.4% in Q2 2026). Primary erosion threats: global EV price wars, battery/powertrain commoditization, and heavy AI/Cybercab capital intensity generating negative incremental ROIIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Core automobile manufacturing (~73.3% of FY2025 revenue) fails the Munger moat and pricing-power standard due to relentless global EV competition (especially Chinese OEMs), repeated 2023-2025 vehicle price cuts, and promotional incentives that compressed GAAP operating margins to 4.59% in FY2025 and ~3.35%-4.1% TTM in 2026 (1.4% in Q2 2026). Historical 10Y median ROIC of 11.2% and FY2025-2026 TTM ROIC of ~3.3%-4.9% sit sharply below the 12% hurdle as AI and manufacturing capex surges ($10.7B+ in FY2025; $5.79B in Q2 2026 alone). Calamity Tier is ineligible: Anchor Gate 4 would independently fail (CAP <= 10) given cyclical auto base-rate persistence, unhedged China/geopolitical supply-chain and competitive exposure, and heavy capital-intensity headwinds, alongside structural rather than temporary margin erosion.",
+    "evidence": "FY2025 Form 10-K: Revenue $94.827B (Automotive $69.526B / 73.3%, Energy Generation & Storage $12.771B / 13.5%, Services & Other ~$12.53B / 13.2%); GAAP Operating Income $4.400B (4.59% margin); GAAP Net Income $3.794B (Non-GAAP ~$5.9B); Operating Cash Flow $14.7B; Capex >$10.7B; Free Cash Flow ~$3.99B (~105% of depressed GAAP NI). Balance sheet: ~$36.5B cash and investments vs. <$10B corporate debt (excluding non-recourse vehicle/asset-backed financing). Multi-year margin and ROIC trajectory: Gross margin 18.25% (2023) -> 17.86% (2024) -> 18.03% (2025) -> ~19.3%-19.6% TTM 2026 (Q1 21.1%, Q2 auto ex-credits 16.3%, Q3 total 19.6% / auto ex-credits 18.1%); Operating margin 9.19% (2023) -> 7.24% (2024) -> 4.59% (2025) -> ~3.35%-4.1% TTM 2026 (Q2 1.4%); GAAP ROIC ~11.8%-15.7% (2023) -> ~7.9%-9.3% (2024) -> ~3.9%-4.9% (2025) -> ~3.3% TTM 2026 (10Y median 11.2% per financials.csv). 2026 operational YTD (Q1-Q3): Vehicle deliveries 358,023 (Q1), 480,126 (Q2, +25% YoY), 486,532 (Q3); Energy storage deployments 8.8 GWh (Q1), 13.5 GWh (Q2, 20.4% GM), 13.7 GWh (Q3, ~33% GM); FSD paid subscribers reached ~1.74M in Q3 (>75% NA attach catalyzed by free-trial promotions) with ~2M cumulative unsupervised Robotaxi miles across TX/FL and Cybercab volume production starting at Giga Texas; Q2 2026 capex jumped 142% YoY to $5.79B (FCF -$1.09B) before Q3 2026 FCF recovered to +$1.53B on $6.3B CFO. Capital allocation: zero dividends or buybacks; cash flow heavily reinvested into capital-intensive AI compute clusters, factory retooling, and capacity with declining incremental returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

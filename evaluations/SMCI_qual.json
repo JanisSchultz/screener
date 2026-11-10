@@ -1,0 +1,30 @@
+{
+  "id": "SMCI",
+  "ticker": "SMCI",
+  "universe": "us",
+  "company": "Super Micro Computer, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Reject Standard b: Not Verifiable from Outside). External verifiability of financial statements is fatally compromised by opaque accounting practices, recurring reporting crises, and extensive circular related-party transactions with brother-owned suppliers (Ablecom and Compuware). Auditor Ernst & Young abruptly resigned in October 2024 stating it was unwilling to be associated with management's financial statements and could no longer rely on management's representations. Although replacement auditor BDO filed delayed FY24 reports in early 2025, it maintained an adverse opinion on internal controls over financial reporting amid ongoing DOJ and SEC inquiries. Recidivist governance issues (following a 2018 Nasdaq delisting and 2020 SEC settlement) place SMCI squarely outside the circle of competence for an enduring compounder.",
+    "evidence": "Super Micro Computer (SMCI) designs and manufactures high-performance server and storage solutions, benefiting from the generative AI hardware buildout. Despite rapid top-line growth ($7.1B in FY23 to $14.99B in FY24 and ~$22.0B in FY25), capital efficiency and cash generation are erratic. Gross margin fell sharply from 18.0% in FY23 to 13.8% in FY24 and 11.1% in FY25 due to fierce pricing competition against Dell, HPE, and Taiwanese ODMs (Foxconn, Quanta, Wiwynn). Operating margin dropped to ~5.7% in FY25. Working capital swings and inventory build for AI servers produced negative Free Cash Flow of -$2.6B in FY24 on ~$1.2B reported Net Income. Crucially, external financial verifiability failed in October 2024 when auditor Ernst & Young resigned over integrity, governance, and internal control concerns. While BDO issued a clean opinion on belated FY24 statements in February 2025, it issued an adverse opinion on internal controls over financial reporting. Substantial related-party dealings with family entities (Ablecom and Compuware) and active DOJ/SEC investigations confirm persistent accounting opacity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

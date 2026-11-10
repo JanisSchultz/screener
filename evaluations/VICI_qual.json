@@ -1,0 +1,30 @@
+{
+  "id": "VICI",
+  "ticker": "VICI",
+  "universe": "us",
+  "company": "Vici Properties Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Hotel & Resort REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary leisure destination and casino gaming deferrable in recessions; societal and regulatory acceptance risk from addictive gambling models.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). VICI is an experiential and gaming REIT whose revenues derive overwhelmingly (74% tenant concentration across Caesars and MGM) from casino gaming, destination hospitality, and entertainment resorts. Destination casino gambling is a discretionary, episodic leisure expense easily deferred in economic downturns, failing Munger's 'likely to spend' standard, while carrying inherent societal and regulatory acceptance risk as an addictive vice industry.",
+    "evidence": "VICI Properties Inc. owns 93 experiential assets including iconic Las Vegas Strip properties (Caesars Palace, MGM Grand, The Venetian) and regional casinos, operating under long-term triple-net master leases. While leases have 30+ year terms with CPI escalators, tenant concentration is extreme: Caesars Entertainment (~$1.3B) and MGM Resorts (~$1.1B) accounted for ~74% of FY2024 ($3.85B) and FY2025 ($4.01B) total revenues. Underlying tenant cash flows depend on discretionary consumer gaming volumes and resort travel. Furthermore, 10-year median ROIC of 7.2% reflects capital-intensive real estate asset accumulation, and total debt of ~$17.1B represents a high 6.1x multiple against FY2025 net income of $2.80B (net debt/EBITDA ~4.4x–5.0x), precluding compounder status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

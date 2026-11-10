@@ -1,0 +1,30 @@
+{
+  "id": "NESTE.FI",
+  "ticker": "NESTE",
+  "universe": "eu",
+  "company": "Neste",
+  "country": "Finland",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Refining & Marketing (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary NEXBTL technology and extensive waste feedstock supply chain provide operational scale, but renewable products are commodity price-takers whose margins depend on volatile regulatory credit values and face competitor capacity oversupply.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Global renewable diesel and SAF leader, but operates as a price-taker subject to regulatory subsidy swings (RINs, LCFS) and massive competitor capacity additions, causing severe margin volatility and sub-hurdle downcycle ROIC.",
+    "evidence": "Renewable product sales margins collapsed from >$800/ton to $377/ton in 2024 as global capacity surged, driving free cash flow negative (-EUR 341M). Margins reflect regulatory mandate arbitrage rather than structural pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MMM",
+  "ticker": "MMM",
+  "universe": "us",
+  "company": "3M Company",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs from specialized materials science specifications (OEM automotive bonding, aerospace sealants, electronics films) where re-qualification is costly and disruptive, reinforced by proprietary patent estates and Lindy consumer brand power (Scotch, Post-it, Command). 10-year median ROIC ~14.8%. Primary erosion threats: R&D productivity decay, generic chemical substitution, and severe environmental/product liability overhang.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Industrial Conglomerate base rate (Tier 3: 10-15 years) suffers a severe -10 year haircut under Macrotrend [4] (Energy Transition & Resource Limits / Environmental Regulation). 3M faces existential, multi-decade regulatory and litigation overhang from PFAS ('forever chemicals'), forcing the complete phase-out and abandonment of all PFAS manufacturing by end of 2025 (~$1.3B high-margin revenue elimination), alongside massive settlements ($10.3B-$12.5B public water systems, $7.35B AFFF, $6.0B earplugs) and ongoing global cleanup liabilities. Under the Rule of Secular Resilience, active terminal regulatory and environmental headwinds cap CAP at <= 10 years, failing the 15-year hurdle.",
+    "evidence": "10-year historical median ROIC of 14.8%, but GAAP profitability heavily impaired in 2023-2024 by >$15B in pre-tax litigation charges. Organic sales growth stagnated near 0% for a decade prior to the April 2024 Solventum healthcare spinoff. Post-spin 2024-2025 net sales stand at ~$24.6B-$24.9B with adjusted operating margins recovering to 21-23% and normalized FCF around $4.4B-$4.9B. However, gross balance sheet obligations remain elevated with net debt of ~$6.7B plus multi-billion dollar scheduled settlement cash outflows extending into the 2030s. The compounding runway is structurally impaired by the forced exit of fluorinated chemistry and enduring international environmental liability exposure."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

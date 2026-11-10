@@ -1,0 +1,30 @@
+{
+  "id": "ACA.FR",
+  "ticker": "ACA",
+  "universe": "eu",
+  "company": "Crédit Agricole SA",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "French retail banking structure prevents independent pricing power: fixed-rate mortgages lag rate cycles while regulated savings accounts (Livret A) mandate funding floors. Standalone loan and mortgage underwriting operates as a commodity, resulting in sub-hurdle multi-cycle ROE (8-9%) failing the 12% requirement.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Crédit Agricole possesses immense domestic scale and strong bancassurance fee engines (Amundi, Predica), but French retail banking lacks structural pricing power due to long-term fixed-rate mortgage contracts, statutory usury rate caps (taux d'usure), and state-mandated savings rates (Livret A). 10-year average ROE of ~8.5% fails the 12% GAAP hurdle across the cycle.",
+    "evidence": "Crédit Agricole S.A. (CASA) anchors France's leading retail banking network and Europe's largest asset manager (Amundi). While recent ROTE has reached ~13.5-14% supported by bancassurance fees and CIB, its 10-year average ROE sits at 8.2%-9.2% (dropping to 4.5% in 2020 and 6-7% in 2016-2017). The French retail network experienced severe margin compression when ECB rates rose due to fixed-rate loan portfolios and mandated pass-through deposit costs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

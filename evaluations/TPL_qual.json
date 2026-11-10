@@ -1,0 +1,30 @@
+{
+  "id": "TPL",
+  "ticker": "TPL",
+  "universe": "us",
+  "company": "Texas Pacific Land Corporation",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Monopolistic surface ownership of ~873,000 contiguous and checkerboard acres across the core Delaware and Midland Basins, coupled with >200,000 Net Royalty Acres. Receives perpetual ad valorem gross production royalties and high-margin water sourcing/produced water disposal fees without bearing any drilling capital or operating expenditure. Proof of moat is demonstrated by 10-year median ROIC of ~38.5% (FY24 ~49.7%, FY25 ~33%) and sustained 80-90% operating margins. Primary erosion risks are long-term basin resource depletion and severe commodity price collapses.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Remarkable ~85-90% operating margin Permian land and royalty business with zero drilling capex, but Upstream Energy baseline persistence is Tier 4 (5-10Y baseline CAP). Faces active unhedged terminal headwinds under Macrotrend [4] (Energy Transition & Resource Limits) from secular peak hydrocarbon demand, electrification, and finite Permian Tier 1 well inventory depletion over a 15-30 year horizon.",
+    "evidence": "Texas Pacific Land Corporation (TPL) holds ~873,000 surface acres and over 200,000 Net Royalty Acres in the Permian Basin (Delaware and Midland Basins). Revenues derive from oil & gas royalties (~55-60%), Water Services and Operations (~35-40%), and surface easements/materials (~5%). Financial efficiency is exceptional: 10-year median GAAP ROIC is 38.5% (FY24 ROIC ~49.7%, FY25 ROIC ~33%), operating margins exceed 80-85%, FCF conversion is ~95-100%, and the balance sheet carries minimal long-term debt with positive net cash/equivalents ($145M-$370M). However, under the Mauboussin industry persistence framework, Upstream Energy is anchored at Tier 4 (p=0.70-0.71, baseline CAP 5-10 years), and the business model is inherently tied to finite fossil fuel extraction and regional Permian drilling activity, failing Gate 4's 15-year secular resilience requirement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

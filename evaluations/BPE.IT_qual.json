@@ -1,0 +1,30 @@
+{
+  "id": "BPE.IT",
+  "ticker": "BPE",
+  "universe": "eu",
+  "company": "BPER Banca",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regional branch density across Northern and Central Italy expanded via M&A (Carige, UBI branches), anchored by Unipol. However, commoditized regional lending and lack of pricing power over deposit and lending spreads result in sub-hurdle multi-cycle returns. Prior to the 2023-2024 ECB rate cycle, ROE averaged 6-9% (2.4% in 2020, 7.9% in 2021, 7.9% in 2022), failing the 12% hurdle. Profitability is cyclical and rate-dependent rather than moat-driven.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/ROE < 12%, REJECT). Mid-tier Italian commercial bank built through rapid acquisition integration (Carige, ex-UBI network). Lacks pricing power in commoditized SME and retail lending. Multi-cycle ROE averaged ~7-8% prior to the 2023 rate spike, failing the 12% capital efficiency hurdle. Vulnerable to Italian sovereign spreads, SME credit cycles, and post-merger integration risks.",
+    "evidence": "Multi-cycle ROE history: 9.1% (2018), 8.7% (2019), 2.4% (2020), 7.9% (2021), 7.9% (2022), rebounding cyclically to 18.8% (2023) and 15.8% (2024) purely on ECB net interest margin expansion. 5-year median pre-rate-spike ROE of ~7.9% fails the 12% hurdle. Growth has been driven by asset acquisitions rather than organic compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

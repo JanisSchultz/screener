@@ -1,0 +1,43 @@
+{
+  "id": "UNP",
+  "ticker": "UNP",
+  "universe": "us",
+  "company": "Union Pacific Corporation",
+  "price": 290.16,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": null,
+    "fin_note": "Asset-heavy rail infrastructure: Operating ROIC of 15.96% preserved representing physical rail network capital (tracks, locomotives, classification yards) with zero goodwill distortion. Peak Owner EPS of $11.98 in FY2025 is clean operational earning power under PSR execution. 5-10Y through-the-cycle growth of 7.0% driven by 1.5% carload volume, 2.5% core pricing above inflation, 1.0% PSR productivity, and 2.5% buybacks, offset by 0.5% capex/regulatory friction. Balance sheet carries $31.81B LT debt (4.46x NI) supported by irreplaceable corridor assets, 7.52x EBIT interest coverage, and 98.3% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.9785,
+    "current_multiple": 24.22,
+    "par_multiple": 17.09,
+    "par_value": 204.68,
+    "percent_vs_par": 0.4176,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0188,
+    "expected_irr_5y": 0.0166,
+    "market_implied_cap": 28.4,
+    "moat_runway_margin": -8.4,
+    "market_implied_growth": 0.177,
+    "growth_margin_of_safety": -0.107
+  },
+  "health_checks": {
+    "net_debt_years": 4.46,
+    "net_debt_ok": false,
+    "interest_coverage": 7.52,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9833,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

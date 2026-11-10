@@ -1,0 +1,30 @@
+{
+  "id": "ADP.FR",
+  "ticker": "ADP",
+  "universe": "eu",
+  "company": "Aéroports de Paris",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Airport Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Groupe ADP operates an unreplicable infrastructure monopoly across the Greater Paris air basin (Paris-CDG, Paris-Orly, and Le Bourget). Physical runway slot scarcity and environmental restrictions prevent competing hub development. Under its dual-till regulatory model, non-aeronautical retail (Extime Paris luxury duty-free JV with Lagardère) exercises exceptional unregulated pricing power over high-spending intercontinental travelers, while aeronautical charges adjust via economic regulation agreements.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 5 (Management & Capital Allocation, Score = 0). Paris CDG and Orly are irreplaceable national infrastructure assets, but Groupe ADP is 50.6% owned by the French State and suffers from acute capital allocation and governance pathologies: recurring regulatory conflict with ART over allowed aeronautical charges, bureaucratic inertia, and value-destructive international M&A (GMR Airports in India, TAV in Turkey) that loaded the balance sheet with €8.57B in net debt (>13x net income) and caused large impairment charges (€330M in 2024).",
+    "evidence": "State-dominated corporate governance has directed massive capital into speculative overseas airport stakes (GMR in India, TAV in Turkey) instead of disciplined per-share compounding. Net financial debt reached €8.57B at year-end 2024 against normalized net income of €638M (and reported net income of €342M, hit by a €330M merger charge on Indian assets), depressing consolidated ROIC to ~5-7%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "5",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

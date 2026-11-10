@@ -1,0 +1,30 @@
+{
+  "id": "WRT1V.FI",
+  "ticker": "WRT1V",
+  "universe": "eu",
+  "company": "Wärtsilä",
+  "country": "Finland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global marine service and OEM parts footprint across 200+ ports; pricing power demonstrated in long-term marine lifecycle service agreements and dual-fuel engine systems, though energy storage faces fierce price competition.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peak-to-Peak Compounding, REJECT). While marine lifecycle service agreements and OEM spare parts generate strong cash conversion and a net cash balance sheet, long-term earnings power is hostage to violent global shipbuilding and shipyard order cycles, alongside structural price competition and margin drag in grid battery energy storage.",
+    "evidence": "Marine and Energy operating results have historically swung with shipyard newbuild cycles (e.g. multi-year post-2008 depression in ship orders). Energy storage division operates at thin/volatile margins under heavy competition from Chinese battery integrators, undermining repeatable peak-to-peak business cycle compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

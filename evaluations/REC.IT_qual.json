@@ -1,0 +1,30 @@
+{
+  "id": "REC.IT",
+  "ticker": "REC",
+  "universe": "eu",
+  "company": "Recordati",
+  "country": "Italy",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Price controls across Southern European national health systems restrict pricing power on mature primary care portfolio. Despite expanding into rare diseases (Enjaymo, Signifor), single-payer statutory reimbursement caps and mandatory price cuts prevent pricing power >= inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (N, REJECT). Specialty pharmaceutical group operating under European national healthcare price controls. Statutory price cuts across its primary care base prevent passing through inflation, while growth relies on debt-funded orphan drug roll-up acquisitions.",
+    "evidence": "GAAP ROIC averages ~14% supported by specialty pharma acquisitions (EUSA, Enjaymo), but tangible equity is negative (-€1.27B against €3.19B of intangibles/goodwill) with long-term debt of €2.13B. European single-payer pricing dynamics restrict organic pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b_pricing_and_proof",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

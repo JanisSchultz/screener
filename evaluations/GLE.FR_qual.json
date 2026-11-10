@@ -1,0 +1,30 @@
+{
+  "id": "GLE.FR",
+  "ticker": "GLE",
+  "universe": "eu",
+  "company": "Société Générale",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability, REJECT). Universal bank heavily reliant on Global Banking & Investor Solutions (GBIS), featuring large-scale structured equity derivatives and trading operations. Such opaque financial instruments and multitrillion-euro derivative notionals cannot be verified from the outside, violating the Munger transparency standard.",
+    "evidence": "Société Générale holds extensive Level 2 and Level 3 assets and derivative notionals exceeding €1.5T. It has suffered historical trading shocks including the €4.9B Kerviel rogue-trading scandal in 2008 and €500M+ structured product dividend markdowns during 2020. 10-year ROTE has averaged 6-8%, chronically below its cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ITW",
+  "ticker": "ITW",
+  "universe": "us",
+  "company": "Illinois Tool Works Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable operational and engineering moat driven by Customer-Back Innovation (~19,000 granted/pending patents), iconic Lindy benchmark brands (Hobart, Miller Electric, Paslode, Instron), and asymmetric customer switching costs where components/fasteners/equipment represent a tiny fraction of end-product or project cost but are mission-critical to avoid catastrophic line halts. Proof of moat is seen in a 5-year median GAAP ROIC of 36.8% (tangible ROIC ~100%), operating margins expanding from 20% to 26.3%+, and consistent positive price/cost spread across inflation cycles. Primary erosion risks are general automotive volume cyclicality and customer platform transitions.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier multi-industrial compounder anchored by the proprietary ITW Business Model (80/20 Front-to-Back, Customer-Back Innovation, and radical decentralization). High pricing power across 7 diversified segments with mission-critical products representing a trivial fraction of customer cost. Fortress balance sheet with 14.4x interest coverage, net debt under 2x net income, and >85% free cash flow conversion. [5-10Y g: organic volume 2.0% + pricing power 1.5% + 80/20 mix & operating leverage 1.5% + net share buybacks 2.0%]",
+    "evidence": "Multi-cycle GAAP ROIC sustained between 26% and 40% over the last decade (5-year median 36.8%, operating ROIC 98.5%-112.7%). Operating margins steadily expanded from ~20% in 2012 to 26.3% in 2025 (guided 26.5%-27.5% in 2026). FCF conversion averaged 95.3% over 10 years ($24.9B Owner FCF vs $26.2B GAAP Net Income). Revenue is well-diversified across 7 autonomous segments: Automotive OEM (19%), Food Equipment (16%), Test & Measurement and Electronics (17%), Welding (13%), Polymers & Fluids (12%), Construction Products (12%), and Specialty Products (11%). Exceptional capital allocation: Dividend King with 50+ consecutive years of dividend hikes, disciplined organic reinvestment, and regular share buybacks retiring ~1.5-2.0% of float annually with zero dilutive mega-M&A. Balance sheet carries $6.7B LT debt against $4.2B EBIT (14.4x interest coverage) and $851M cash, repayable from Owner Earnings in 1.9 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

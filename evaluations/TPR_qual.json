@@ -1,0 +1,30 @@
+{
+  "id": "TPR",
+  "ticker": "TPR",
+  "universe": "us",
+  "company": "Tapestry, Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Accessible-luxury fashion handbags and leather accessories are deferrable discretionary purchases exposed to fashion-trend cyclicality and middle-class spending pullbacks, not essential needs, everyday staple rituals, or ultra-affluent Lindy scarcity luxury.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need, REJECT). While Coach is enjoying a strong FY25-FY26 brand resurgence (77.8% consolidated gross margin, $8.00B FY26 revenue), Tapestry's accessible-luxury handbags and accessories remain non-essential, easily deferred discretionary fashion goods rather than functional necessities, daily habits, or Lindy ultra-luxury scarcity franchises like Hermes or Ferrari. Multi-cycle cyclicality and brand-trend fragility are evidenced by TPR's -22.8% FY20 revenue drop, six-year FY18-FY24 top-line stagnation ($5.98B to $6.77B), the August 2025 divestiture of Stuart Weitzman, and Kate Spade's ongoing ~10% revenue contraction and operating losses. Also note empire-building M&A risk demonstrated by the attempted $8.5B Capri deal (halted only by FTC antitrust injunction in Nov 2024).",
+    "evidence": "Multi-cycle track record shows fashion-cycle sensitivity masked by Coach's recent surge: revenue moved from ~$5.98B (FY18) to ~$4.64B (FY20, -22.8%, gross margin ~65.3%) and stalled between $6.51B and $6.77B over FY21-FY24 before reaching $7.01B in FY25 ($1.39B GAAP operating income, ~$1.1B FCF, 75.4% gross margin) and $8.00B in FY26 (+14.2% YoY, $1.86B GAAP operating income, ~$1.8B-$1.9B FCF, 77.8% gross margin). 10-year historical ROIC averaged 15.2% (baseline financials) before rising above 36% in FY26 alongside buybacks. Brand mix is heavily skewed: Coach (~88% of revenue) grew 24% in FY26 at ~35.5% operating margins via Gen-Z traction and lower promotions, whereas Kate Spade declined ~10% with operating losses during a multi-year reset, and Stuart Weitzman was divested in August 2025. Capital allocation shifted to a $2B+ buyback program and ~1.1x gross debt/adjusted EBITDA ($1.1B+ cash) only after a federal court blocked Tapestry's debt-funded $8.5B Capri Holdings acquisition in late 2024."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

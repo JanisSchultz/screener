@@ -1,0 +1,30 @@
+{
+  "id": "STE",
+  "ticker": "STE",
+  "universe": "us",
+  "company": "Steris",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High regulatory switching costs on FDA-validated device contract sterilization (AST) and closed-loop hospital sterile processing consumables enable consistent 2-3%+ annual price increases across cycles. Tangible ROIC >25-32% proves moat despite non-cash goodwill/PPA amortization.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global infection-prevention and contract device sterilization duopoly/toll booth with ~80% recurring revenue across hospital consumables, AST contract processing, and service agreements. High regulatory switching costs (FDA-validated sterilization protocols) and closed-loop hospital SPD workflows protect durable pricing power (2-3% annual price increases). Tangible ROIC >25-32% demonstrates true underlying capital efficiency masked at GAAP level by Cantel PPA amortization. Balance sheet de-levered to 1.5x Net Debt/Owner FCF and 18x interest coverage post-HuFriedy dental divestiture. [5-10Y g: surgical & AST procedural volume 4.0% + pricing power 2.5% + high-margin AST/bioprocessing mix 1.0% - EPA regulatory/labor cost drag 0.5% + capital return & bolt-ons 1.5%]",
+    "evidence": "10-year tangible ROIC averaged 25-45% (FY2025 tangible ROIC 32.1%, operating ROIC 24.5%; GAAP ROIC of 7-10% suppressed by Cantel Medical non-cash PPA amortization). Multi-year Owner FCF conversion exceeds 135% (FY2025 Owner FCF $910.7M vs GAAP NI $782.3M, OCF $1,341.4M). Core segments: Healthcare (infection prevention capital equipment, SPD chemistries, endoscopy maintenance), Applied Sterilization Technologies (AST contract radiation/EO sterilization toll booth, >$1B revenue, >$500M operating profit), and Life Sciences (biopharma contamination control). Successfully completed $787.5M divestiture of non-core dental segment (HuFriedyGroup) to Peak Rock Capital in 2024, deploying proceeds to de-lever balance sheet from $3.1B to $1.8B LT debt. Net Debt/Owner FCF stands at 1.51x and EBIT interest coverage is 18.2x ($1,101.8M EBIT vs $60.7M interest). Peak Owner EPS compounded at 13.9% CAGR from $1.45 (FY2016) to $9.12 (FY2025)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

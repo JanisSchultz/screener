@@ -1,0 +1,30 @@
+{
+  "id": "H.CA",
+  "ticker": "H",
+  "universe": "ca",
+  "company": "Hydro One",
+  "country": "Canada",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Natural transmission and distribution monopoly owning ~99% of Ontario's high-voltage transmission grid and 1.5M distribution customers. OEB-regulated custom incentive rate-making guarantees 9.36% allowed ROE on deemed 60/40 debt/equity structure. Primary risks are provincial political interference and major grid capex cost overruns.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT; g6_default N). Exceptional pure-play electricity transmission monopoly with stable operations, but constrained by regulatory capital structure. LT debt of CAD 18.1B against CAD 1.3B net income (13.5x leverage) and interest coverage of 3.33x fail fortress balance sheet standards, requiring perpetual debt issuances to fund multi-billion transmission rate base expansion.",
+    "evidence": "Monopoly transmission and distribution rate base of ~CAD 25B earning median GAAP ROIC of 6.3% (FY22: 6.0%, FY23: 6.3%, FY24: 6.3%, FY25: 6.7%). FY25 capex of CAD 3,050M far exceeds D&A of CAD 963M, consuming all operating cash flow (CAD 2,695M). LT debt of CAD 18,092M against FY25 net income of CAD 1,339M results in LT debt / NI of 13.5x (hurdle <= 4.0x). EBIT of CAD 2,241M against interest expense of CAD 673M yields interest coverage of 3.33x (hurdle > 5.0x). Structural dependence on debt markets violates Gate 6 peace-of-mind solvency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

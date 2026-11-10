@@ -1,0 +1,30 @@
+{
+  "id": "DSFIR.NL",
+  "ticker": "DSFIR",
+  "universe": "eu",
+  "company": "dsm-firmenich",
+  "country": "Netherlands",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary flavour and fragrance formulation IP, captive aroma molecule palettes, and deep customer co-development create high switching barriers and pricing power in core fragrance and taste ingredients, though legacy animal nutrition assets severely depressed combined financial returns.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Firmenich brings world-class flavour and fragrance formulation IP, the combined entity remains constrained by the specialty chemicals cycle and legacy DSM vitamin exposure. The complex €18B merger, multi-billion write-downs, discounted ANH carve-out, and fragrance antitrust class-action settlements introduce severe structural uncertainty, capping CAP at 5 years (ROIC 2.4%).",
+    "evidence": "TTM GAAP ROIC is 2.4% (median 2.4%), with TTM net income of -€1,107m. Balance sheet carries over €15B in goodwill and intangibles post-merger. Animal Nutrition separation and global antitrust investigations illustrate deep restructuring headwinds that impair long-term compounding predictability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PODD",
+  "ticker": "PODD",
+  "universe": "us",
+  "company": "Insulet Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Consumable 72-hour tubeless insulin pod model distributed via retail pharmacy channels; patients lock into automated algorithms and continuous CGM integration. Moat proved by 5-year median GAAP ROIC of 16.55% (rising to 21.0% in 2025) and stable gross margins near 68%. Primary erosion threats include patent expirations, commoditization of patch hardware (CAFC overturned EOFlow trade secret injunction in 2026), and low switching costs compared to durable medical equipment.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Insulet's Omnipod 5 currently dominates the tubeless insulin pump segment and expanded into Type 2 diabetes in late 2024, the business faces severe 10-15+ year runway constraints. Over a 15-year horizon, mechanical insulin delivery faces existential technological substitution from biological cures (e.g. Vertex VX-880/VX-264 stem cell-derived islet therapies achieving insulin independence) and incretin/GLP-1 multi-agonists reducing insulin dependency in T2D. Furthermore, patch pump hardware faces accelerating commoditization following core patent expirations, the 2026 CAFC reversal of Insulet's trade secret injunction against EOFlow, and competing offerings from Tandem (Mobi/Sigi) and Medtronic. Because Omnipod is dispensed on a 30-day pharmacy model without 4-year DME lock-in, patient switching friction is low.",
+    "evidence": "Historical financials show long gestation before profitability: GAAP ROIC was negative to sub-5% from 2016 to 2022, only expanding to 16.56% (2023), 16.55% (2024), and 21.00% (2025) as Omnipod 5 scaled. 5-year median GAAP ROIC is 16.55% and tangible ROIC median is 18.43%. Free cash flow conversion is structurally constrained (5-year fcf_conv = 0.6447, below 80%) due to heavy continuous capex required for automated pod assembly lines ($191.6M TTM capex, $200M Malaysia plant opened in 2024) to produce disposable 3-day pods. Balance sheet carries $930.8M LT debt vs $716.1M cash (net debt $214.7M) with interest coverage of ~8.0x. Single-product concentration (>95% Omnipod) leaves the company highly exposed to long-term MedTech/biologic substitution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

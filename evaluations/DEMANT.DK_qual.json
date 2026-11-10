@@ -1,0 +1,30 @@
+{
+  "id": "DEMANT.DK",
+  "ticker": "DEMANT",
+  "universe": "eu",
+  "company": "Demant",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Oligopoly hearing aid R&D scale and owned retail clinic network, but severe channel pricing power headwinds (VA, NHS, Costco), consumer electronics substitution (Apple AirPods), and capital-destroying M&A write-downs (SteelSeries, Oticon Medical exit) prevent sustainable >12% ROIC and real pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Hearing aid oligopoly faces persistent channel pricing pressure from institutional payers (VA, NHS) and big-box retail (Costco), along with rising consumer tech substitution (Apple AirPods Pro OTC hearing features). Multi-cycle ROIC fails the consistent >=12% Munger bar following dilutive acquisitions and restructuring.",
+    "evidence": "Multi-cycle GAAP ROIC hovers around 8%–13% with volatile trough periods (5.3% in 2020, 8.6% in 2022). Capital allocation track record marred by the ill-fated acquisition of gaming headset maker SteelSeries and the costly exit and divestment of Oticon Medical. Retail hearing care expansion and prescription hardware face continuous pricing erosion from institutional procurement tenders and direct-to-consumer alternatives."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

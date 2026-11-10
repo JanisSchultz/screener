@@ -1,0 +1,30 @@
+{
+  "id": "CRDA.GB",
+  "ticker": "CRDA",
+  "universe": "eu",
+  "company": "Croda International",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Formulation co-development and regulatory lock-in with consumer care and pharmaceutical customers. Ingredients represent a tiny fraction of end-product cost but dictate efficacy and regulatory compliance, creating high switching costs; 5-year median ROIC is 14.2%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Croda possesses proprietary formulation lock-in in beauty and pharma ingredients (median ROIC 14.2%), specialty chemicals has a Tier 3 industry persistence baseline (10-15Y). Prolonged customer destocking, normalization of post-COVID mRNA vaccine lipid demand, and rising competition from Asian bio-based synthesizers impose terminal headwinds on margin durability, capping CAP at 5 years.",
+    "evidence": "Post-tax ROIC fell sharply from 14.4% in 2022 to 8.3% in 2023 and 7.7% in 2024. Operating margins contracted from ~25% to 17.2% during destocking. Discontinuation of COVID lipid contract windfalls and integration of the lower-margin Iberchem acquisition highlight cyclical vulnerability in specialty chemicals."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

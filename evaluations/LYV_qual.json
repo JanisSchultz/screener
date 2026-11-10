@@ -1,0 +1,31 @@
+{
+  "id": "LYV",
+  "ticker": "LYV",
+  "universe": "us",
+  "company": "Live Nation Entertainment",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary out-of-home live entertainment easily deferred in recessions or halted in public-health shocks, combined with acute societal, legislative, and antitrust hostility targeting its core Ticketing profit engine (April 2026 federal jury monopolization verdict with 33 states seeking Ticketmaster divestiture, plus ongoing FTC junk-fee/BOTS Act litigation).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Concert promotion and festival attendance are episodic, big-ticket discretionary outlays—not an essential Western necessity or high-frequency everyday habit—and face extreme societal, legislative, and antitrust ruin risk against the Ticketmaster fee engine (~48% of consolidated AOI). Following the DOJ's March 2026 behavioral settlement (15% primary fee cap, open marketplace, 13 amphitheater booking divestitures), 33 state AGs plus D.C. won an April 15, 2026 federal jury verdict finding illegal monopolization on all counts ($1.72/ticket overcharge) and are pursuing a forced structural breakup of Ticketmaster before Judge Arun Subramanian, alongside an FTC deceptive-fee/BOTS Act lawsuit that survived dismissal in September 2026. Calamity Tier is ineligible because Anchor Gate 2 fails non-waivably, and even downstream Gates 3b, 4, 5, and 6 exhibit chronic structural flaws (~8.5%-10% multi-cycle GAAP ROIC, breakup runway risk, $60M/yr CEO pay amid consumer backlash, 3.96x FY25 EBIT interest coverage, $9.75B total debt at Q3 2026, and $550.8M FY25 redeemable NCI accretion leaving negative -$0.24 diluted EPS available to common). Downstream gates bypassed per waterfall.",
+    "evidence": "Business & Segment Economics (FY2024-FY2025 10-K & Q3 2026 10-Q): FY2025 consolidated revenue reached $25.20B (+8.8% YoY from $23.16B in FY24 and $22.73B in FY23, vs $11.55B in FY19 and pandemic trough $6.27B in FY21). Segment mix shows a capital-heavy, razor-thin promotion funnel supporting fee extraction: Concerts generated $20.86B revenue (82.8% of total) but only $687M AOI (3.3% margin), whereas Ticketing ($3.08B revenue, ~$1.14B AOI) and Sponsorship & Advertising ($1.33B revenue, $845M AOI) supplied ~84% of consolidated AOI ($2.37B). Q3 2026 revenue grew 19% YoY to $10.11B with Q3 operating income of $892.0M. Capital Efficiency & Earnings Quality: Reported 10Y avg ROIC in LYV.json is 8.5% (2021-2025 GAAP ROIC medians ~7.3%-10.3%). On FY2025 GAAP EBIT of $1,251.2M ($824.5M in FY24 after $454.9M Astroworld contingencies; $1,084.9M in FY23), after-tax NOPAT (~$839M-$938M) over net invested capital excluding third-party client cash ($1.6B FY25; $2.67B Q3 2026) and unearned event-related deferred revenue ($3.98B FY25; $3.82B Q3 2026) yields ~8%-9% GAAP ROIC; third-party screens claiming >35% ROIC treat fan ticket prepayments as excess corporate cash. Consolidated net income was $690.7M in FY25 ($1,131.1M in FY24 aided by a $601.2M tax valuation allowance release), with $496.0M attributable to Live Nation; however, accretion of redeemable noncontrolling interests ($550.8M in FY25 vs $258.1M in FY24 and $247.4M in FY23) turned FY25 net income available to common stockholders negative at $(54.8)M ($(0.24) diluted EPS vs $2.74 in FY24). Cash Flow, Balance Sheet & Governance: FY25 OCF of $1,395.3M minus $1,061.7M CapEx (up from $646.6M FY24 and $438.6M FY23; $1.1B-$1.2B guided for FY26) and $251.0M NCI distributions left just $82.6M in common FCF, despite management highlighting $1,298.2M Adjusted FCF. Total debt climbed from $8.20B at YE25 to $9.75B at Q3 2026 ($1.86B current + $7.89B LT) plus $2.20B PV of operating lease liabilities and $924.5M redeemable NCI (YE25), against $8.26B total cash ($2.67B client cash; $3.82B event deferred revenue, leaving ~$1.77B unencumbered corporate cash) and $456.8M Live Nation stockholders' equity (negative tangible equity given $2.89B goodwill and $1.45B intangibles at YE25). EBIT interest coverage was 3.96x in FY25 ($1,251.2M / $316.0M), 2.53x in FY24, and 3.10x in FY23. Liberty Media spun off its ~29.7% stake into Liberty Live Holdings in Dec 2025; CEO Michael Rapino earned ~$32.6M in FY25 and signed a 2026 extension through 2031 at a $60M/yr target package plus $20M upfront RSUs. Legal/Regulatory: March 2026 DOJ settlement ($280M fund, 15% primary fee cap, open ticketing marketplace, 13 amphitheater booking divestitures under Tunney Act review); April 15, 2026 jury liability verdict in favor of 33 states + D.C. pursuing forced Ticketmaster breakup; September 2026 denial of LYV's motion to dismiss the FTC/7-state BOTS Act and hidden junk-fee (up to 44%) lawsuit."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MTLN.GR",
+  "ticker": "MTLN",
+  "universe": "eu",
+  "company": "Metlen",
+  "country": "Greece",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country (Greece) is excluded from approved Western developed markets (in_market == 'N'); cyclical commodity exposure in aluminium smelting, alumina refining, and merchant power/EPC contracting.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market=N, REJECT). Listing country (Greece) fails rule-of-law Western developed market pre-screen (in_market == 'N'). Metlen is an industrial conglomerate heavily exposed to cyclical commodity price-taking in aluminium smelting, alumina refining, and merchant power/EPC contracting.",
+    "evidence": "Primary listing on Athens Exchange (in_market='N'). Metallurgy and Energy operations are price-takers on global aluminium spot prices (LME) and European power/gas spark spreads, alongside lumpy capital-intensive EPC renewable energy contracting."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

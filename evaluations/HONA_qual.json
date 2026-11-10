@@ -1,0 +1,30 @@
+{
+  "id": "HONA",
+  "ticker": "HONA",
+  "universe": "us",
+  "company": "Honeywell Aerospace",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary FAA/EASA-certified line-fit positions across commercial, business, and military aviation platforms (e.g. A320, B737, B777, F-35) create insurmountable switching barriers over 30-40 year airframe lifecycles, enabling decades of captive, high-margin aftermarket parts and MRO services. Proof of moat: 31.4% 5-year median GAAP ROIC, >70% tangible ROIC, and resilient 18-26% operating margins with proven 5-7%+ annual pricing escalation on captive replacement parts. Primary erosion threats: commercial airline fleet retirement accelerations, OEM insourcing pressures, and FAA-approved PMA parts penetration.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "1. Broken metric: Interest coverage is 3.88x ($3,174M EBIT / $818M interest, below 5.0x threshold), Net Debt / FCF is ~4.9x, and Owner EPS fell to $5.62 (vs $9.11 peak) due to Honeywell saddling Aerospace with a $16B debt-funded cash dividend ahead of the June 29, 2026 spin-off. 2. Intact moat proof: World-class aerospace franchise with $17.4B revenue, 31.35% median GAAP ROIC, 72.4% tangible ROIC, and $3.21B Owner FCF in FY2025 (106% conversion). Insurmountable FAA-certified OEM line-fit positions across tens of thousands of active airframes with captive 30-40 year aftermarket toll booth. 3. Fix catalyst & kill-switch: Rapid organic deleveraging funded by $3.2B+ annual Owner FCF under Fitch 'A-' investment grade mandate targeting <2.5x EBITDA leverage and >6x interest coverage within 24-36 months. Kill-switch: Net debt reduction under $2.0B per year or failure to achieve interest coverage >5.0x by FY2028.",
+    "note": "Calamity pass (Gate 6 temporary balance sheet waiver). Premier global tier-1 aerospace supplier with unassailable installed base lock-in across commercial and defense platforms. Captive aftermarket parts and service toll booth delivers 31.4% median GAAP ROIC, >70% tangible ROIC, and $3.21B Owner FCF. Gate 6 failure is temporary, caused by parent Honeywell extracting a $16B senior notes dividend at the June 2026 spin-off (3.88x interest coverage), which will be rapidly repaired via organic cash flow and Fitch 'A-' deleveraging mandate. [5-10Y g: commercial flight hour & defense volume 3.5% + aftermarket pricing 3.0% + technology mix 1.0% - standalone corporate/R&D drag 0.5% + net buybacks 0.5%]",
+    "evidence": "Honeywell Aerospace generated $17.40B in FY2025 sales (+26% vs FY2023 $13.79B) and $3.17B EBIT (18.2% operating margin, following 22.7% in FY2024 and 25.8% in FY2023). 5-year median GAAP ROIC is 31.35%, and tangible ROIC reached 72.4% in FY2025 and 84.0% in FY2024. Cash generation is pristine: FY2025 OCF was $3.71B and Owner FCF reached $3.21B against $1.78B net income (106% multi-year FCF conversion; maintenance capex $504M vs D&A $412M). Installed base encompasses tens of thousands of active commercial airliners (Airbus A320/A350, Boeing 737/777) and defense platforms (F-35, military helicopters, auxiliary power units), securing 30-40 year captive aftermarket cash flows with proven 5-7%+ annual pricing escalation. Ahead of its June 29, 2026 spin-off into an independent Nasdaq-listed company (ticker: HONA), Aerospace priced $16B in senior notes in March 2026 to fund a separation dividend to parent Honeywell, resulting in $818M annual interest expense (3.88x interest coverage) and temporary Owner EPS decline from $9.11 to $5.62. Fitch assigned an 'A-' rating citing robust $3.2B+ organic FCF supporting rapid deleveraging below 2.5x EBITDA within 2-3 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

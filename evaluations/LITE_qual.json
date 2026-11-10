@@ -1,0 +1,30 @@
+{
+  "id": "LITE",
+  "ticker": "LITE",
+  "universe": "us",
+  "company": "Lumentum Holdings Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Indium phosphide laser and optical transceiver process engineering and design wins provide component qualification switching costs, but monopsonistic hyperscalers and networking OEMs (Apple, Cisco, Ciena) exert severe pricing pressure with ongoing ASP deflation. 10-year median GAAP ROIC of 8.2% and multi-year GAAP operating losses (FY24 -$361M, FY25 -$192M) fail the 12% capital efficiency hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.2% < 12%, negative pricing power, REJECT). Optical components supplier subject to brutal telecom/datacom boom-bust cycles and customer monopsony. Top hyperscaler and networking OEM customers capture the economic surplus while Lumentum absorbs ongoing ASP deflation and heavy capex/R&D burdens.",
+    "evidence": "10-year median GAAP ROIC is 8.2%, below the 12% threshold. GAAP operating income collapsed to -$361M in FY2024 and -$192M in FY2025 during telecom inventory destocking, with negative free cash flow (-$108M in FY24, -$105M in FY25). Optical transceivers and lasers experience persistent 10-15%+ annual ASP erosion, demonstrating lack of pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

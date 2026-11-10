@@ -1,0 +1,30 @@
+{
+  "id": "AAF.GB",
+  "ticker": "AAF",
+  "universe": "eu",
+  "company": "Airtel Africa",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "100% of operations and revenues are concentrated in Sub-Saharan Africa (14 African nations) outside Western developed rule-of-law markets, exposed to severe currency devaluations and sovereign regulatory extraction.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need). While providing essential telecom and mobile money services across 14 Sub-Saharan African countries, 100% of operations and revenue originate outside Western developed markets, suffering severe structural currency devaluations (e.g. Nigerian Naira) and high sovereign/regulatory risks.",
+    "evidence": "Airtel Africa operates across Nigeria, East Africa, and Francophone Africa. Severe FX devaluations (e.g. Nigerian Naira collapse in FY24) have repeatedly crushed USD/GBP reported profits and cash conversion despite local currency growth. Revenue base concentrated entirely in non-Western emerging markets violates Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LLOY.GB",
+  "ticker": "LLOY",
+  "universe": "eu",
+  "company": "Lloyds Banking Group",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive UK retail deposit franchise (~£450B) and dominant mortgage share (~19%) confer low-cost funding scale; however, pricing power is constrained by domestic mortgage price wars and regulatory conduct caps.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). UK's largest retail deposit and mortgage franchise (Halifax, Lloyds) is saturated domestically with low secular growth. Squeezed by fintech challenger disintermediation, structural interest rate margin pressure, and persistent regulatory conduct redress (multi-billion pound motor finance commission liabilities following PPI legacy).",
+    "evidence": "Lloyds Banking Group holds ~19% UK mortgage stock and £450B+ retail deposits. While FY2023-2025 net income reached £4.2B-£4.9B with RoTE ~14%, domestic UK concentration leaves it exposed to macro stagnation, fintech payment disintermediation, and escalating regulatory redress: over £1.95B in motor finance commission provisions taken under FCA scrutiny and court rulings, capping CAP at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

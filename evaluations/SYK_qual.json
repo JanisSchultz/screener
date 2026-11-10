@@ -1,0 +1,30 @@
+{
+  "id": "SYK",
+  "ticker": "SYK",
+  "universe": "us",
+  "company": "Stryker Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Closed-loop Mako robotic surgery ecosystem ($1M+ capital install) creates insurmountable switching costs for orthopedic surgeons and hospitals, locking in exclusive pull-through of Stryker joint implants with >95% retention. In MedSurg, proprietary razor-and-blade consumables (Neptune fluid waste cartridges, Sage hygiene, 1788 camera systems) provide recurring high-margin cash flows. Strong pricing power demonstrated by +1.0-1.5% positive net price realization across inflationary cycles. Erosion threats include competing robotic platforms (Zimmer ROSA, J&J Velys) and potential hospital capital spending deceleration.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Best-in-class medtech compounder dominating orthopedic robotics and specialized hospital equipment. High switching costs anchored by the closed-loop Mako robotic ecosystem (>1.5M procedures, >95% pull-through implant retention) and indispensable MedSurg consumable franchises (Neptune, Sage, 1788 visualization). Multi-decade tailwinds from demographic aging and hospital automation insulate against macro risks. Robust balance sheet with net debt amortizable in <3.5 years of Owner Earnings and 8.0x interest coverage. [5-10Y g: procedure & robotic volume 6.0% + pricing & premium mix 1.5% + tuck-in reinvestment 1.5% + net buybacks 0.5%]",
+    "evidence": "10-year financial operating history demonstrates exceptional compounding: revenue expanded from $11.3B in FY2016 to $25.1B in FY2025 (11.2% CAGR), driven by organic growth >10% and high-synergy tuck-in acquisitions (Wright Medical, Vocera, Inari Medical). Tangible/Operating ROIC consistently exceeds 35-50% (FY2025: 40.8%), while reported GAAP ROIC is 11.3% due to $25B in accumulated acquisition goodwill and intangibles. Free cash flow conversion is superior at 106.6% of GAAP Net Income over 5 years (FY2025 Owner FCF of $4.04B vs NI of $3.25B), reflecting light capex requirements (~3% of sales). Positive pricing realization (+1.0-1.5%) achieved counter to industry deflationary trends due to differentiated robotic clinical outcomes and proprietary consumables. Solid balance sheet: Net Debt of $10.85B is 2.68x Owner FCF and 3.34x Net Income, supported by $4.01B cash and strong EBIT interest coverage of 8.05x ($4.89B EBIT vs $607M interest)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

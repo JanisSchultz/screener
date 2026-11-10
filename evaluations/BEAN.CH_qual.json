@@ -1,0 +1,30 @@
+{
+  "id": "BEAN.CH",
+  "ticker": "BEAN",
+  "universe": "eu",
+  "company": "Belimo",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Decades of actuator precision engineering and distributor/OEM spec-in. Actuators are a minuscule cost component of building systems but carry catastrophic failure costs, cementing extreme customer loyalty and price insensitivity. Demonstrated multi-year median GAAP ROIC >32% and tangible ROIC >34%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global undisputed hegemon in HVAC damper actuators and control valves. Unbeatable consumer surplus and installer trust: devices represent <2% of building HVAC capex but prevent millions in system downtime, resulting in supreme pricing power. Massive secular tailwinds from data-center liquid cooling and building decarbonization mandates. Pristine debt-free net cash balance sheet with >32% median ROIC. [5-10Y g: volume 5.0% + price 2.0% + data center cooling mix 2.0% - R&D/capex drag 0.5% + buybacks/dividends 0.0%]",
+    "evidence": "Multi-cycle GAAP ROIC consistently exceeds 27-36% (median 32.4%), with operating tangible ROIC of 34.2%. Owner EPS grew at a 13.9% CAGR from 2022 to 2025 (reaching 14.77 CHF peak in 2025). Long-term debt is 0.0 CHF against 100.6m CHF in cash, with EBIT / Interest coverage >270x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

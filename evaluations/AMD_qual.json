@@ -1,0 +1,30 @@
+{
+  "id": "AMD",
+  "ticker": "AMD",
+  "universe": "us",
+  "company": "Advanced Micro Devices",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "x86 duopoly cross-license with Intel and proprietary chiplet/FPGA IP prevent commodity entry. However, 5-year median GAAP ROIC (~3.2%-5.4%) is severely sub-hurdle (<12%) due to $49B Xilinx acquisition dilution/amortization, and AMD operates as a price-taking challenger to Intel in CPUs and Nvidia in GPUs without autonomous pricing power over inflation. Primary erosion threats include Nvidia's CUDA software lock-in, hyperscaler custom in-house ASICs, and ARM architecture expansion in client/server.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). 5-year median GAAP ROIC of ~3.2%-5.4% is severely sub-hurdle (<12.0%) following the $49B Xilinx acquisition asset base inflation and non-cash intangible amortization. As a fabless challenger to Intel in CPUs and Nvidia in GPUs, AMD lacks cycle-wide pricing power over inflation, relying on discounting and price/performance trade-offs rather than autonomous price-setting power. Calamity Tier is inapplicable as Anchor Gate 4 fails (CAP <= 10 due to 100% single-source leading-edge foundry reliance on TSMC in Taiwan and rising ARM/hyperscaler custom ASIC substitution).",
+    "evidence": "Fabless semiconductor designer with four core reporting segments: Data Center (EPYC server CPUs, Instinct AI accelerators, Pensando DPUs), Client (Ryzen PC processors), Gaming (Radeon GPUs, semi-custom console SoCs), and Embedded (Xilinx FPGAs/adaptive SoCs). While Lisa Su engineered an impressive turnaround from 2015-2016 operating losses via Zen microarchitecture execution, AMD's financial compounding record fails the Munger standard. The $49B all-stock acquisition of Xilinx in February 2022 added ~$49B in goodwill and acquired intangibles, expanding the invested capital base and triggering billions in annual non-cash intangible amortization. As a result, GAAP ROIC collapsed from >40% in FY2021 to 1.5% in FY2022, 0.6% in FY2023, 2.4% in FY2024, and ~4.8% in FY2025, yielding a 5-year median GAAP ROIC of ~3.2%-5.4%, well below the 12% hurdle. 10-year median ROIC sits at ~11.5%. Competitive dynamics further confirm lack of autonomous pricing power: AMD is a price-taking challenger to Intel in CPUs (historically relying on discounting to capture server share) and a distant challenger in AI/datacenter GPUs where Nvidia maintains >85% market share and ~75% gross margins protected by the CUDA proprietary software ecosystem. Instinct accelerators must be discounted against Nvidia Hopper/Blackwell to incentivize adoption. Furthermore, hyperscalers (Google TPU, Amazon Trainium, Microsoft Maia, Meta MTIA) are actively developing proprietary internal silicon, capping merchant pricing power. Structurally, AMD is 100% reliant on TSMC in Taiwan for leading-edge foundry fabrication (N5/N4/N3), presenting an unhedged geopolitical single-point-of-failure headwind under Macrotrend 3 (CAP <= 10). Balance sheet is conservatively financed with net cash (~$6.8B cash vs ~$2.5B debt), but sub-hurdle capital efficiency and challenger pricing dynamics eliminate AMD from compounder status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

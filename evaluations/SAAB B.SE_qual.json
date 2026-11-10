@@ -1,0 +1,30 @@
+{
+  "id": "SAAB B.SE",
+  "ticker": "SAAB B",
+  "universe": "eu",
+  "company": "Saab",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary high-end defense electronics, radar systems, and tactical ground combat weapons (Carl-Gustaf, NLAW, AT4) with global NATO adoption. High barriers to entry and strong pricing power on proprietary munitions and Gripen life-cycle support.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (6=N, REJECT). Leading Nordic defense and tactical weapons champion, but multi-year FCF conversion structurally fails the 80% hurdle (~40-60%) due to heavy working capital absorption, milestone payment timing, and major capacity capex across Gripen and missile programs.",
+    "evidence": "Cumulative cash conversion targeted at only ~60% of EBIT by management. Historical FCF conversion to net income was ~68% in 2022, ~45% in 2023, and <30% in 2024. Long-cycle defense production (Gripen E, Kockums submarines, GlobalEye) absorbs significant working capital and capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

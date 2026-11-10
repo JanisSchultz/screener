@@ -1,0 +1,30 @@
+{
+  "id": "SNDK",
+  "ticker": "SNDK",
+  "universe": "us",
+  "company": "Sandisk",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "NAND flash memory operates as a highly cyclical commodity market subject to severe boom-and-bust supply/demand imbalances. While SanDisk shares fab scale with Kioxia in the Flash Ventures JV and possesses proprietary BiCS technology and enterprise SSD qualification relationships, it possesses zero structural pricing power across the cycle. Through-cycle capital efficiency fails the Munger hurdle (historical median ROIC of 8.5% vs. 12% threshold; FY2025 operating margin was -18.7%). Primary erosion threats include global memory oversupply, aggressive capacity additions from Samsung, SK Hynix, and Micron, technological obsolescence from rapid layer-stacking transitions, and state-subsidized competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.5% < 12%, REJECT). Pure-play NAND flash memory producer lacks structural pricing power across the business cycle. Despite short-term AI-driven cyclical margin surges in FY2026, SanDisk is a price-taker subject to recurring boom-bust memory downcycles (exemplified by -18.7% operating margins in FY2025). Long-term median ROIC of 8.5% fails the 12% hurdle rate, and continuous multi-billion dollar fab capex is required merely to maintain market share against Samsung, SK Hynix, and Micron.",
+    "evidence": "Spun off from Western Digital in February 2025 as an independent NAND flash memory company (NASDAQ: SNDK) sharing manufacturing JVs with Kioxia. Financial track record exhibits extreme cyclicality: FY2025 operating margins collapsed to -18.7% amid an industry-wide NAND downturn before rebounding to 61.2% in FY2026 on tight supply and AI enterprise SSD demand. 10-year median ROIC is 8.5%, substantially below the 12% hurdle. Flash memory prices experience long-term secular bit price deflation, meaning high-margin periods represent unrepeatable cyclical peak profits rather than structural economic moats. Massive capital reinvestment and wafer fab equipment spending required to scale BiCS 3D NAND layers prevent consistent economic value creation over full cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

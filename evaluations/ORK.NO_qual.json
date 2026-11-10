@@ -1,0 +1,30 @@
+{
+  "id": "ORK.NO",
+  "ticker": "ORK",
+  "universe": "eu",
+  "company": "Orkla",
+  "country": "Norway",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local Nordic brand portfolio (Grandiosa, Toro, Jordan, Nidar) and grocery shelf relationships lack structural pricing power. Constrained by powerful Nordic supermarket oligopolies and private label substitution, resulting in sub-hurdle multi-cycle ROIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Structural returns on capital hover at 7.0-9.5%, far below the 12% GAAP ROIC hurdle. Nordic branded consumer goods portfolio faces severe margin compression from concentrated supermarket retail oligopolies (NorgesGruppen, Coop, ICA) and rapid private label encroachment.",
+    "evidence": "Multi-cycle group ROIC consistently hovers between 7.0% and 9.5% across 2019-2025, failing the minimum 12% GAAP ROIC gate. Despite market-leading domestic shelf positions across Norway, Sweden, and the Baltics, operating margins (10-12%) reflect lack of pricing power above inflation against concentrated Nordic supermarket duopolies, necessitating ongoing portfolio restructuring into an industrial holding structure."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

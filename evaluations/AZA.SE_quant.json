@@ -1,0 +1,43 @@
+{
+  "id": "AZA.SE",
+  "ticker": "AZA",
+  "universe": "eu",
+  "company": "Avanza",
+  "price": 357.5,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting Avanza's ultra-capital-light digital banking model (capex < 3% of earnings, SEK 13.1B cash/central bank deposits vs SEK 356M debt, and ROE 35-50%). Peak Owner EPS of SEK 16.81 is driven by record platform savings capital. Forward compound growth of 8.5% (g_implied) is driven by net savings inflows (7.0%), occupational pension share gains (1.5%), and operating leverage (0.5%), offset by rate normalization (-0.5%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 16.8126,
+    "current_multiple": 21.26,
+    "par_multiple": 24.26,
+    "par_value": 407.87,
+    "percent_vs_par": -0.1235,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0327,
+    "expected_irr_5y": 0.1467,
+    "market_implied_cap": 13.1,
+    "moat_runway_margin": 1.9,
+    "market_implied_growth": 0.0351,
+    "growth_margin_of_safety": 0.0499
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 4.9,
+    "interest_cov_ok": false,
+    "fcf_conversion": 6.05,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SOON.CH",
+  "ticker": "SOON",
+  "universe": "eu",
+  "company": "Sonova",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Loss of Costco Kirkland contract, US managed-care/Medicare Advantage intermediary ASP squeeze, and entry-level commoditization from OTC hearing aids and Apple AirPods Pro compress real pricing power and margins.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power, REJECT). While Sonova maintains strong DSP audiology engineering, pricing power is structurally compromised by FDA OTC hearing-aid deregulation, Apple AirPods Pro encroaching at 1/10th the cost ($250 vs $3k+), and managed-care/Costco wholesale channel pricing pressure.",
+    "evidence": "Operating margins under multi-year pressure from channel shifting toward discount/managed care and loss of the Costco Kirkland contract. Regulatory OTC deregulation and Big Tech consumer audio integration permanently cap entry-level hearing aid ASPs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

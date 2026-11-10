@@ -1,0 +1,30 @@
+{
+  "id": "REY.IT",
+  "ticker": "REY",
+  "universe": "eu",
+  "company": "Reply",
+  "country": "Italy",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Network of specialized digital consultancies with high talent retention, but lacks proprietary software IP or locked-in toll booths. Margins are capped at ~14% EBIT and day rates face intense procurement competition and AI coding automation deflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Italian IT consulting network with solid organic execution, but operates as a talent-dependent service provider selling billable hours without proprietary software lock-in or pricing power above wage inflation. Highly vulnerable to corporate procurement pressure and AI software development deflation.",
+    "evidence": "Revenue grew from €1,250.2M (2020) to €2,300.5M (2024), with EBIT margins stable between 13.6% and 15.1% (€330.4M EBIT in 2024). Net cash position reached €349.1M at year-end 2024. While reported ROIC appears high at ~20-24% due to an asset-light consulting balance sheet, Reply lacks structural switching costs or pricing power: clients regularly tender IT integration projects via competitive corporate RFPs. The service model faces structural margin compression as AI coding agents commoditize routine digital services."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

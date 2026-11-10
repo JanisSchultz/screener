@@ -1,0 +1,30 @@
+{
+  "id": "KMI",
+  "ticker": "KMI",
+  "universe": "us",
+  "company": "Kinder Morgan",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Kinder Morgan operates North America's largest natural gas transmission network (~83,000 miles of pipelines and ~140 terminals transporting ~40% of US natural gas), with immense right-of-way, regulatory, and capital barriers preventing direct physical replication. However, midstream pipeline economics fail empirical proof of moat: 10-year GAAP ROIC has averaged 4.6% and median ROIC is 5.7% (well below the 12% hurdle), while tangible ROIC peaks under 10% (below 15%). Regulated FERC cost-of-service tariffs and negotiated long-term take-or-pay contracts provide stable fee-based cash flows but strictly cap economic returns on invested capital. Primary erosion risks include long-term energy transition decarbonization, regulatory pipeline opposition, and heavy continuous sustaining capital requirements.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 5.7% < 12%, REJECT). Irreplaceable interstate pipeline infrastructure, but structurally unable to clear economic return hurdles due to high capital intensity and rate-regulated midstream returns. 10-year GAAP ROIC has consistently hovered between 1.9% and 6.1%, failing the 12% Munger moat proof standard.",
+    "evidence": "Kinder Morgan's 10-year operating history demonstrates persistent sub-hurdle returns on capital: 2016-2025 GAAP ROIC ranged between 1.93% and 6.12% with a 5-year median of 5.67%, and tangible ROIC averaged ~7.5% (peaking at 9.52% in 2025), failing both the GAAP 12% and tangible 15% thresholds. Total invested capital exceeds $61B ($30.8B long-term debt and $31.2B equity as of FY2025) against EBIT of $4.72B and net income of $3.06B. While ~95% of cash flows are fee-based or take-or-pay and FCF conversion is high (1.5x on net income), the asset-heavy nature and FERC tariff regulations cap per-share economic rent generation below compounder standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

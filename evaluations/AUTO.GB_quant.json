@@ -1,0 +1,43 @@
+{
+  "id": "AUTO.GB",
+  "ticker": "AUTO",
+  "universe": "eu",
+  "company": "Auto Trader",
+  "price": 555.4,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting asset-light automotive marketplace toll booth with negative tangible capital. 5-10Y g of 8.0% supported by forecourt stock (0.5%), core ARPA price tiering (4.5%), Deal Builder mix (1.0%), tech reinvestment (-0.5%), and 2.5% ongoing share repurchases."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 29.6514,
+    "current_multiple": 18.731,
+    "par_multiple": 24.4433,
+    "par_value": 724.7791,
+    "percent_vs_par": -0.2337,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0223,
+    "expected_irr_5y": 0.1613,
+    "market_implied_cap": 11.5,
+    "moat_runway_margin": 3.5,
+    "market_implied_growth": -0.0057,
+    "growth_margin_of_safety": 0.0857
+  },
+  "health_checks": {
+    "net_debt_years": 0.5,
+    "net_debt_ok": true,
+    "interest_coverage": 82.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.04,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

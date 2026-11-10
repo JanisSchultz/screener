@@ -1,0 +1,30 @@
+{
+  "id": "SOBI.SE",
+  "ticker": "SOBI",
+  "universe": "eu",
+  "company": "Sobi",
+  "country": "Sweden",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Rare disease portfolio (hematology/immunology) built largely via debt-fueled in-licensing and acquisitions rather than proprietary discovery, resulting in bloated intangibles and severe product write-downs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Sobi lacks an enduring organic R&D moat, relying on debt- and equity-fueled acquisitions to mask structural patent expirations in core hemophilia assets. Capital allocation missteps—epitomized by the SEK 17.1B acquisition of CTI BioPharma followed by a massive SEK 6.6B impairment on Vonjo in 2025—depress multi-cycle GAAP ROIC well below the 12% hurdle.",
+    "evidence": "Sobi's rare disease commercialization model has suffered heavy capital misallocation: the acquisition of CTI BioPharma underperformed commercially, forcing a SEK 6,612M pre-tax write-down in 2025 that crushed operating profit to SEK 867M and net income to SEK 478M. On an invested capital base bloated by goodwill and intangible rights (>SEK 35B), GAAP ROIC fell to low single digits in 2025, pulling 5-year median GAAP ROIC below the 12% requirement. Flagship hemophilia drugs (Elocta, Alprolix) face ongoing technological substitution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "PEP",
+  "ticker": "PEP",
+  "universe": "us",
+  "company": "PepsiCo",
+  "price": 141.88,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Global snack and beverage hegemon anchored by Frito-Lay's unmatched DSD route density (~60% US salty snack share) and retail shelf dominance. Operating ROIC normalized to 35.0% cap (reflecting 34.4% operating tangible capital return and Lindy brand pricing power). Capital structure carries $42.32B LT debt vs $9.16B cash (5.14x debt/NI), but qualitative Gate 6 passes comfortably given Lindy consumer cash flows, $11.50B EBIT delivering 10.26x interest coverage ($1.12B interest), and 100.8% Owner FCF conversion ($8.2B FCF). 5-10Y g of 5.0% models 1.0% volume, 2.0% pricing/mix, 1.5% international expansion, -0.5% promotional/input cost drag, and 1.0% net share buybacks. At $141.88, trades Below PAR at 20.41x peak Owner EPS vs 23.69x PAR Multiple (13.8% discount to $164.63 PAR Value) with a 3.95% dividend yield, generating a 12.1% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.9507,
+    "current_multiple": 20.41,
+    "par_multiple": 23.69,
+    "par_value": 164.63,
+    "percent_vs_par": -0.1382,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0395,
+    "expected_irr_5y": 0.1212,
+    "market_implied_cap": 12.9,
+    "moat_runway_margin": 2.1,
+    "market_implied_growth": 0.0009,
+    "growth_margin_of_safety": 0.0491
+  },
+  "health_checks": {
+    "net_debt_years": 5.14,
+    "net_debt_ok": false,
+    "interest_coverage": 10.26,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0078,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

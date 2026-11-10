@@ -1,0 +1,30 @@
+{
+  "id": "POW.CA",
+  "ticker": "POW",
+  "universe": "ca",
+  "company": "Power Corporation of Canada",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Holdco controlling Great-West Lifeco and IGM Financial benefits from captive financial advisory networks and institutional group benefits. However, on a look-through basis, operating subsidiaries lack inflation pricing power: IGM Financial (IG Wealth, Mackenzie) faces relentless fee compression from low-cost passive ETFs, while Great-West Lifeco's Empower faces margin compression in 401(k) recordkeeping.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Holding company controlling Great-West Lifeco (GWO, ~66%) and IGM Financial (IGM, ~62%). Under the look-through holding company rubric, Power Corporation fails Gate 3b because its underlying earnings engines face structural fee headwinds: IGM Financial's retail mutual fund business suffers from active-to-passive asset migration and advisory fee compression, while Empower's US retirement administration faces commoditization. Neither underlying subsidiary possesses structural pricing power to pass through inflation. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Power Corporation generated FY2025 net income of CAD 2,572M and EBIT of CAD 6,080M on CAD 24,432M equity, with a 5-year median ROIC of 15.50% (2025 GAAP ROIC 16.50%, tangible ROIC 56.01%). Consolidated long-term debt stands at CAD 20,276M with CAD 13,497M cash and CAD 804M interest expense (7.6x EBIT/interest coverage). Look-through operating earnings are dominated by Great-West Lifeco (Empower, Canada Life) and IGM Financial. Both key operating subsidiaries operate in sectors experiencing severe secular fee compression: retail mutual funds experiencing passive ETF substitution and retirement plan recordkeeping subject to intense sponsor fee sensitivity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

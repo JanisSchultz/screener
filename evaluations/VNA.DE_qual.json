@@ -1,0 +1,30 @@
+{
+  "id": "VNA.DE",
+  "ticker": "VNA",
+  "universe": "eu",
+  "company": "Vonovia",
+  "country": "Germany",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive residential scale (~540k units) provides in-house maintenance and procurement efficiencies, but pricing power is legally restricted by German statutory caps (Kappungsgrenze) and municipal rent tables (Mietspiegel). Multi-year unlevered ROIC is structurally locked at 2-3%, failing the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (G3 Moat & Pricing). Germany's largest residential landlord (~540k units) has multi-year ROIC structurally locked at 2-4%, failing the 12% hurdle. Top-line rent growth is legally constrained by municipal Mietspiegel and federal rent caps, preventing pricing power >= inflation.",
+    "evidence": "Vonovia's historical GAAP ROIC is 2-3% (turning negative in 2022-2023 due to property revaluation impairments). Organic like-for-like rental growth of 3.5-4.0% is capped by the statutory Kappungsgrenze and municipal rent tables. High debt burden (€40B+ net debt, net debt/EBITDA 15-17x) reflects heavy leverage required to compensate for low unlevered asset returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RAA.DE",
+  "ticker": "RAA",
+  "universe": "eu",
+  "company": "Rational AG",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominates commercial combi-steamers with 50% global market share and 25%+ EBIT margins. Proprietary cooking algorithms and high energy/labor savings give customers massive ROI, supporting premium pricing without volume attrition.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Undisputed 50% global market share monopoly in commercial combi-steamer cooking appliances with zero debt, 38% ROIC, and massive customer surplus. [5-10Y g: commercial kitchen combi-steamer unit growth 4.0% + iVario/iHexagon penetration 2.5% + value-pricing power 1.5% - macro capex friction 0.5%]",
+    "evidence": "38% 5-year median GAAP ROIC, 25%+ EBIT margins, and >90% FCF conversion over multiple decades. Zero structural debt with €170M+ net cash. Meister family retains controlling ownership (~55-63%). Rational appliances save kitchens up to 70% energy and 50% labor."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "VTRS",
+  "ticker": "VTRS",
+  "universe": "us",
+  "company": "Viatris Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Putative distribution scale and broad ANDA regulatory approval portfolio fail to confer pricing power or excess economic returns. Generics face intense structural price erosion (3-5%+ annually) from consolidated wholesale buying consortia (McKesson, Cencora, Cardinal Health) and low-cost global manufacturers. 10-year median ROIC of 6.5% tracks below cost of capital, deteriorating to flat/negative in FY24-25.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 6.5% < 12% hurdle, negative pricing power, REJECT). Generic and off-patent pharmaceutical manufacturing is a structural commodity price-taker business facing persistent 3-5%+ annual price erosion driven by consolidated wholesale buying consortia (McKesson, Cencora, Cardinal Health). 10-year median ROIC of 6.5% fails the 12% hurdle and tracks below WACC, with 2024-2025 ROIC depressed to flat/negative. Capital allocation has focused on divestitures (biosimilars, OTC, API) to service legacy Mylan/Upjohn debt rather than compounding per-share intrinsic value.",
+    "evidence": "10-year median ROIC of 6.5% (v1 financial data; FY24 ROIC ~0.02%, FY25 ROIC negative at -5.58% amid restructuring charges and facility remediations, TTM ROIC ~2.7-4.4% vs WACC of ~6.6-7.3%). Annual generic pricing erosion of 3-5% acts as a permanent top-line drag on base business. Formed from November 2020 merger of Mylan and Pfizer's Upjohn division with ~$25B in initial debt; subsequent divestitures (biosimilars to Biocon for $3.3B, OTC/API prunings) generated cash for debt reduction (lowering debt toward ~$16-17B with ~$2B annual FCF), but organic revenue growth remains constrained by commodity tender pricing and generic commoditization."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AGS.BE",
+  "ticker": "AGS",
+  "universe": "eu",
+  "company": "Ageas",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Distribution advantage via exclusive bancassurance agreement with BNP Paribas Fortis in Belgium, but lacks pricing power: UK personal lines are aggregator-driven price-taking operations, and Asian growth relies on non-controlled minority joint ventures. Multi-cycle GAAP ROIC fails the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Pricing Power & Proof of Moat, REJECT). Belgian bancassurance leader depends heavily on third-party banking partner BNP Paribas Fortis for distribution, while Asian operations are minority JVs and UK general insurance is an aggregator-driven price-taker. Lacks structural pricing power above claims inflation, with multi-cycle GAAP ROIC falling short of the 12% hurdle.",
+    "evidence": "AG Insurance holds ~30% Belgian life and ~20% non-life share via BNP Paribas Fortis branches, but contract renewal risk and partner dependence limit economic rent extraction. In the UK, personal motor lines face brutal aggregator competition. Multi-cycle GAAP ROIC fails the 12% hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

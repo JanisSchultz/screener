@@ -1,0 +1,30 @@
+{
+  "id": "JBL",
+  "ticker": "JBL",
+  "universe": "us",
+  "company": "Jabil Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Manufacturing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operational qualification and switching costs provide stickiness during active program runs, but Jabil lacks independent pricing power >= inflation. Contract electronics manufacturing operates on thin cost-plus markup structures with persistent 4-6% operating margins, constrained by extreme OEM buyer power and fierce global competition from Flex, Foxconn, and Celestica.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Electronic Manufacturing Services (EMS) is a structurally low-margin, cost-plus contract assembly business. Despite operational execution and post-divestiture portfolio reshaping toward intelligent infrastructure and regulated industries, Jabil possesses no independent pricing power >= inflation, earning thin 4.0-5.5% operating margins under substantial OEM buyer power and competitive bidding.",
+    "evidence": "Multi-cycle GAAP operating margins average ~4-5% (FY24 GAAP 6.9% boosted by $2.2B BYD mobility divestiture gain, normalizing to 4.0% GAAP and 5.4% Core in FY25 on $29.8B revenue). While reported ROIC appears elevated post-divestiture due to equity shrink and capital structure adjustments, economic value-add is constrained by commoditized contract manufacturing dynamics. Customers (OEMs in cloud, industrial, and regulated markets) negotiate aggressive pass-through and volume-tiered contracts, leaving Jabil with negligible pricing power across cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

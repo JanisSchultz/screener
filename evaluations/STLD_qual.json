@@ -1,0 +1,30 @@
+{
+  "id": "STLD",
+  "ticker": "STLD",
+  "universe": "us",
+  "company": "Steel Dynamics, Inc.",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Steel",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cost advantage via highly efficient electric arc furnace (EAF) mini-mills, non-union performance-incentive compensation culture, circular upstream scrap recycling integration (OmniSource), and downstream fabrication integration (New Millennium). However, steel is an undifferentiated industrial commodity; STLD is fundamentally a price-taker whose margins contract severely when spot hot-rolled coil (HRC) prices and metal spreads decline, lacking independent pricing power >= inflation across the full business cycle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While STLD is an exceptionally well-managed, low-cost EAF steel producer with strong scale and recycling integration, it operates as a cyclical commodity price-taker whose realized selling prices and operating margins are dictated by volatile benchmark HRC spot prices and scrap spreads. Operating income compressed from $5.2B in 2022 to $1.9B in 2024 and $1.5B in 2025 as metal spreads normalized, demonstrating an inability to raise prices independently above inflation in down-cycles.",
+    "evidence": "Multi-cycle track record reflects extreme cyclical volatility: Revenue went from $10.5B (2019) to $22.3B (2022 peak windfall) down to $17.5B (2024) and $18.2B (2025). Net income plunged from peak $3.9B (2022) to $2.5B (2023), $1.54B (2024), and $1.19B (2025). Operating margins collapsed from 23.3% (2022) to 11.1% (2024) and 8.2% (2025) as HRC prices retreated from >$1,500/ton toward historical ranges. Segment breakdown: Steel Operations (~60-65% of sales), Metals Recycling (OmniSource, ~20-25%), and Steel Fabrication (New Millennium, ~10-15%). While 3-year after-tax ROIC remains respectable (~14% in 2025, buoyed by the tail of the super-cycle), STLD has zero independent pricing power against global and domestic commodity supply/demand swings. Balance sheet remains well-capitalized ($2.2B liquidity, investment-grade debt), but capital allocation risk has increased with the $2.7B+ greenfield flat-rolled aluminum rolling mill in Mississippi entering commissioning."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

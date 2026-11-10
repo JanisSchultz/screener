@@ -1,0 +1,30 @@
+{
+  "id": "AIR.FR",
+  "ticker": "AIR",
+  "universe": "eu",
+  "company": "Airbus",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched commercial narrowbody backlog (A320neo family) with over 8,500 aircraft on order provides commanding commercial aircraft pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Global commercial aircraft duopolist with decade-long backlog, but fails peak-to-peak business cycle compounding (2024 EPS of €5.36 remains below 2018 peak of €5.80+) alongside chronic supply-chain working capital volatility and recurring defense/space contract write-downs.",
+    "evidence": "Commercial backlog exceeds 8,500 aircraft, but 2018 peak EPS of €5.80 remains unexceeded in 2024 (€5.36). Defence & Space charges (€1.3B in 2024) and inventory gliders from CFM/Spirit supplier bottlenecks impair through-cycle cash conversion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

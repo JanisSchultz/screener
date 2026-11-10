@@ -1,0 +1,30 @@
+{
+  "id": "PNC",
+  "ticker": "PNC",
+  "universe": "us",
+  "company": "PNC Financial Services",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Super-regional scale with dense branch networks across the Mid-Atlantic, Midwest, and Sunbelt, complemented by deep middle-market commercial relationships. Enterprise treasury management (PINACLE platform) creates high customer switching costs via direct ERP integration (cash concentration, automated disbursements, payroll). Low-beta core deposits provide stable funding through rate cycles, though pricing power is ultimately constrained by benchmark rate competition and fintech payment disintermediation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (g6_default N, REJECT). Leading US super-regional bank with sticky middle-market treasury management lock-in and disciplined underwriting under William Demchak. However, commercial fractional-reserve banks fail Gate 6 by definition: operating with ~11x financial leverage ($560B+ assets on ~$50B equity) and structural asset-liability duration mismatch, the business fundamentally depends on depositor confidence and central bank lender-of-last-resort facilities ('the kindness of strangers'), violating the Munger peace-of-mind fortress balance sheet standard.",
+    "evidence": "PNC is the 6th largest US commercial bank ($560B+ assets, $5.95B net income in 2024, $7.0B in 2025; diluted EPS $16.59; ROTCE 14-18%; ROE ~11%). CEO William Demchak demonstrated disciplined capital allocation by divesting PNC's 22% BlackRock stake near peak valuation in May 2020 for ~$14B, funding the counter-cyclical acquisition of BBVA USA in 2021. Despite superior underwriting discipline and passing annual CCAR stress tests, commercial fractional-reserve banking inherently carries 10-15x leverage and duration/run risk, failing Gate 6 Pillar 3."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

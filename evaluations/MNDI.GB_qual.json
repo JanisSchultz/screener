@@ -1,0 +1,30 @@
+{
+  "id": "MNDI.GB",
+  "ticker": "MNDI",
+  "universe": "eu",
+  "company": "Mondi",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cost-advantaged integrated pulp and paper mills provide low-cost position in virgin containerboard, but lack pricing power over cyclical swings. Industry capacity additions in Europe led to severe containerboard price cuts, causing ROCE to collapse from 23.7% in 2022 to 12.8% in 2023, 9.6% in 2024, and 6.7% in 2025.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Integrated paper and packaging producer is a cyclical price-taker in containerboard and market pulp; chronic European industry capacity additions and weak demand depressed ROCE to 9.6% in 2024 and 6.7% in 2025.",
+    "evidence": "ROCE dropped from 23.7% in 2022 to 12.8% in 2023, 9.6% in 2024, and 6.7% in 2025 as the post-pandemic packaging boom normalized and massive industry capacity entered the market. Net debt increased to €2.6B (2.6x EBITDA) following the €609M Schumacher acquisition and heavy organic mill capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

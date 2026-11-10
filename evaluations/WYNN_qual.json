@@ -1,0 +1,30 @@
+{
+  "id": "WYNN",
+  "ticker": "WYNN",
+  "universe": "us",
+  "company": "Wynn Resorts",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-Western jurisdiction concentration (>54% revenue in Macau/PRC plus $1.12B+ equity committed to UAE), addictive casino gambling societal/regulatory risk (fixed-term 10-year concessions, heavy gaming taxes, Beijing oversight), and deferrable discretionary cyclical resort spend.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need & Entrenched Everyday Habits, REJECT). Wynn Resorts fails the Munger 'likely to spend' Western staple and societal acceptance standard on three independent triggers: (1) Non-Western sovereign and concession concentration, with Macau (PRC SAR) generating >54% of consolidated revenue ($919.2M of $1.69B in Q3 2026; >$1.0B of $1.86B in Q2 2026) under 10-year fixed-term government concessions subject to Beijing gaming/capital controls, alongside $1.12B+ cumulative equity committed through Q3 2026 to a 40% UAE resort JV (Wynn Al Marjan Island, targeted September 2027 opening); (2) Addictive/vice business model (casinos & gaming) carrying high gaming taxation, AML compliance burdens, and legislative/licensing tail risk; and (3) Discretionary, cyclically sensitive luxury destination hospitality that is deferrable in downturns rather than an essential Western habit. Secondary quantitative indicators also lag Munger thresholds (historical median ROIC 5.8%; FY2025 ROIC ~9.32% below 12%, ~$10.55B-$12.16B debt vs. ~$1.46B-$1.79B liquidity, ~1.8x EBIT interest coverage, negative equity).",
+    "evidence": "Business & Geographic Mix (FY2025-Q3 2026): Wynn Resorts operates luxury integrated casino resorts in Macau (Wynn Palace, Wynn Macau), Las Vegas (Wynn Las Vegas, Encore, Retail JV), and Massachusetts (Encore Boston Harbor), plus a 40% equity stake in Island 3 AMI FZ-LLC developing Wynn Al Marjan Island in Ras Al Khaimah, UAE (cumulative cash contributions of $914.2M at YE 2025 rising to $1.12B by Q3 2026 after a ~$600M mid-2026 budget adjustment; scheduled September 2027 opening). FY2025 total operating revenues were ~$7.14B, with Macau consistently driving >50%-55%+ of consolidated top-line (Q2 2026: Wynn Palace $653.4M + Wynn Macau $351.1M of $1.86B consolidated revenue; Q3 2026: $919.2M of $1.69B consolidated revenue, or ~54.4%, with $255.3M Adjusted Property EBITDA). Multi-Cycle Financial Track Record: Historical dossier median ROIC is 5.8% (0.058), depressed by pandemic disruptions and capital-intensive mega-resort builds; post-pandemic recovery brought ROIC to ~11.15% in FY2024 and ~9.32% in FY2025 (~9.3%-9.7% in early 2026), remaining below the 12% Munger hurdle. Operating income was ~$1.143B in FY2024 (interest expense ~$625.6M) and ~$1.12B-$1.14B in FY2025 (interest expense ~$617.9M, ~1.8x EBIT interest coverage; GAAP net income ~$327M). Quarterly earnings remain sensitive to table hold, macro demand, and labor disruptions: Q2 2026 revenue $1.86B / net income $140.1M / Adjusted Property EBITDAR $568.3M fell in Q3 2026 to $1.69B revenue / $17.3M net income / $464.2M Adjusted Property EBITDAR due to ~$24M unfavorable Las Vegas table hold, soft September Macau trends, and an Encore Boston Harbor labor strike. Cash Flow & Balance Sheet: FY2025 FCF was ~$693.3M-$801.5M, dipping into intermittent negative FCF in H1 2026 (Q1 2026 ~-$25.6M) due to heavy capex and UAE JV contributions. Total current and long-term debt stood at $10.55B at Dec 31, 2025 ($5.79B Macau-related debt including $1.0B 6.75% Senior Notes due 2034 issued Aug 2025; $3.28B Wynn Resorts Finance; $876.6M Wynn Las Vegas; $598.4M Retail JV) and ~$10.72B-$12.16B gross debt by mid-2026, against $1.46B cash & equivalents (excluding $601.8M Macau short-term investments) at YE 2025 and ~$1.46B-$1.79B cash/short-term investments in mid-2026, leaving negative stockholders' equity (~-$942M) alongside $1.23B WRF and $1.36B WM Cayman II revolver capacity. Moat & Allocation Context: Physical gaming licenses in Las Vegas, Macau (10-year concession), and Boston confer localized supply constraints and luxury hospitality appeal, but gaming revenue lacks structural customer lock-in and capital allocation has centered on debt-funded resort development."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

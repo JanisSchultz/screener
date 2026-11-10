@@ -1,0 +1,30 @@
+{
+  "id": "EBS.AT",
+  "ticker": "EBS",
+  "universe": "eu",
+  "company": "Erste Group",
+  "country": "Austria",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading retail and SME banking franchise in Austria and Central & Eastern Europe with sticky customer deposit bases and high local market shares. Demonstrated high ROTE (16-17%). Primary erosion risks include sovereign regulatory interventions (bank asset levies and windfall taxes across CEE) and fintech payment disintermediation.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional retail banking franchise across Central and Eastern Europe faces persistent terminal headwinds from arbitrary sovereign bank taxes (Hungary, Romania, Slovakia), geopolitical exposure on the EU eastern flank, and digital fintech disintermediation.",
+    "evidence": "Erste Group generates strong profitability (ROTE 16-17% in 2023-2025) across Austria and CEE, but its runway is capped by frequent government interventions (windfall taxes, interest rate caps, currency volatility) in its eastern markets and digital banking disruption, reducing CAP below the 15-year hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

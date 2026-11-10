@@ -1,0 +1,30 @@
+{
+  "id": "ZAL.DE",
+  "ticker": "ZAL",
+  "universe": "eu",
+  "company": "Zalando",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary fashion and footwear e-commerce; non-essential consumer purchases easily deferred during economic downturns amid intense competitive discounting.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Online fashion and footwear retail is non-essential, discretionary, and deferrable. Structural industry headwinds include high return rates (up to 50%), brand disintermediation via direct-to-consumer channels, and fierce competition from ultra-fast-fashion platforms.",
+    "evidence": "Zalando generates >€10B in GMV across European online fashion, but operates with razor-thin operating margins (2-4%) and sub-hurdle multi-year ROIC (<8%). Apparel e-commerce is highly discretionary and sensitive to consumer sentiment. In addition, structural platform economics are impaired by high logistics/return costs and intense competition from low-cost Chinese platforms (Shein, Temu) and direct-to-consumer brand distribution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

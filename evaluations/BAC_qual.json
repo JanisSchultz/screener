@@ -1,0 +1,30 @@
+{
+  "id": "BAC",
+  "ticker": "BAC",
+  "universe": "us",
+  "company": "Bank of America",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive retail and commercial deposit franchise (~$2.0T in deposits, >69M consumer and small business relationships, extensive nationwide physical branch/ATM network and leading digital platform) creates scale economies shared and high customer switching costs for primary operating accounts. Immense low-cost deposit base provides a structural funding advantage over smaller regional lenders and funds multi-billion-dollar annual technology reinvestment. Primary moat threats stem from fintech payment disintermediation, regulatory capital increases, and deposit margin compression.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). As a fractional-reserve commercial deposit bank with >$3.2T in assets on ~$303B in common equity (~10.5x leverage), BAC structurally violates the peace-of-mind fortress balance sheet standard (g6_default = N). Long-term debt of $317.8B is ~10.4x FY2025 net income ($30.5B), far above the <=4.0x threshold. Furthermore, BAC carries an estimated $80B-$109B of gross unrealized losses in its Held-to-Maturity (HTM) securities portfolio from low-rate era bond purchases, constraining balance sheet flexibility and leaving the institution structurally reliant on depositor confidence and central bank liquidity backstops.",
+    "evidence": "FY2025 revenue reached $113.1B with net income of $30.5B (up 13% YoY) and a preliminary CET1 ratio of 11.4%. 5-year median ROIC sits at 17.43%. However, the capital structure reflects classic fractional-reserve banking leverage (~10.5x assets/equity, $317.8B long-term debt vs $30.5B net income). Operating cash flows fluctuate dramatically with deposit flows and loan book cycles (FCF conversion 6.2% in FY2025). The bank holds significant duration exposure with $80B-$109B in unrealized HTM bond losses. While management under Brian Moynihan has prudently adhered to 'Responsible Growth' since 2010, the inherent structural leverage and reliance on external liquidity disqualify BAC under Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

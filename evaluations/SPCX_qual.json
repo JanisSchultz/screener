@@ -1,0 +1,31 @@
+{
+  "id": "SPCX",
+  "ticker": "SPCX",
+  "universe": "us",
+  "company": "SpaceX",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Alternative Carriers (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (REJECT). Fails both Gate 1(a) (Not Established) and Gate 1(b) (Not Verifiable from Outside). Listed only on June 12, 2026 (<5 months public history, zero full public fiscal years), SpaceX is an unseasoned, capital-consuming conglomerate whose consolidated economics remain deeply pre-profit on a multi-year basis (-0.12% 5Y median GAAP ROIC, -$4.94B FY2025 GAAP net loss, -$34.97B 9M 2026 free cash flow on $48.07B capex) and actively morphing via the Feb 2026 common-control xAI/X merger and Aug 2026 Cursor acquisition. Over half of Q3 2026 revenue ($7.56B of $14.58B) now comes from the nascent Super Intelligence AI-compute/model division while long-term ~$1.85T valuation hinges on unproven Starship commercial reusability and untested orbital AI data-center satellites. Further obscured by ASC 805-50 common-control recasts, active Oct 2026 board special-committee talks to merge with Tesla, ~85.1% single-person voting control (~42% equity), Nasdaq controlled-company exemptions, Texas derivative-suit barriers, and mandatory binding arbitration. Downstream gates bypassed per waterfall (Gate 1 is non-waivable; Calamity Tier ineligible).",
+    "evidence": "Public Track Record & Restructuring: SpaceX filed Form S-1 on May 20, 2026 and completed its Nasdaq IPO (SPCX) on June 12, 2026 at $135/share (~$75B gross / ~$85.7B net proceeds; market cap ~$1.85T as of Nov 2026), providing <5 months of public trading history and only two Form 10-Q reports (Q2 and Q3 2026). Effective Feb 2, 2026, SpaceX absorbed X.AI Holdings Corp. (which had acquired X Holdings / Twitter on Mar 28, 2025) under common-control accounting (ASC 805-50), retrospectively recasting FY2023-FY2025 statements, and subsequently closed the acquisition of Cursor on Aug 14, 2026. Multi-Year Financial Track Record: Consolidated FY2023 revenue $10,387M (EBIT -$3,298M, Net Income -$4,628M, OCF $4,520M, CapEx $4,415M, Owner FCF $1,206M); FY2024 revenue $14,015M (EBIT $1,822M, Net Income $21M, OCF $5,776M, CapEx $11,163M, Owner FCF $1,168M, GAAP ROIC 5.17%, Tangible ROIC 11.29%); FY2025 revenue $18,674M (EBIT -$2,274M, Net Income -$4,937M, OCF $6,785M, CapEx $20,906M, Owner FCF -$1,863M, GAAP ROIC -5.41%, Tangible ROIC -9.90%; 5Y median GAAP ROIC -0.12%). In Q2 2026, revenue reached $7.8B with -$541M GAAP net loss and $18.37B capex ($15.83B AI infra). In Q3 2026, revenue surged to $14,575M with $2,791M operating income and $4,404M GAAP net income (aided by ~$1.0B net other/investment income and tax benefits), but CapEx hit $19,593M ($16.44B AI infra), leaving 9M 2026 OCF of ~$13.10B against $48.07B CapEx (-$34.97B 9M FCF). Post-IPO cash/marketable securities stand near ~$89.9B-$100B vs ~$38.8B-$39.4B total debt and finance leases (up from FY2025 pre-IPO $24.75B cash / $21.97B debt). Rapidly Shifting Segment Mix & Unproven Bets: FY2025 revenue split was Connectivity/Starlink $11.39B (61%, $4.42B operating profit), Space/Launch $4.09B (22%, -$0.66B operating loss), and AI/xAI+X $3.20B (17%, -$6.36B operating loss). By Q3 2026, Super Intelligence (SI) jumped ~830% YoY to $7.56B (~51.9% of total revenue, including $608M post-close from Cursor and 1.7 GW Colossus compute scaling), overtaking Connectivity/Starlink ($5.25B, 13.6M consumer subscribers, $2.4B operating profit) and Space/Launch ($1.80B, -$7M operating loss). Growth assumptions depend heavily on uncommercialized Starship full reusability and orbital refueling plus an FCC filing for up to 1M orbital AI data-center satellites that the S-1 acknowledges have never been operated or tested in space. Governance & Related-Party Opacity: Elon Musk holds ~85.1% voting power via 10-vote Class B shares alongside ~42% equity; SpaceX uses Nasdaq's controlled-company exemption (no independent board majority), Texas incorporation (3% ownership bar for derivative suits), mandatory binding arbitration waiving investor class actions, and confirmed Oct 2026 independent-committee talks regarding a potential ~$3.5T Tesla-SpaceX merger."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "Gate 1",
+    "evaluated_at": "2026-11-10T09:33:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

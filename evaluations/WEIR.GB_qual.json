@@ -1,0 +1,30 @@
+{
+  "id": "WEIR.GB",
+  "ticker": "WEIR",
+  "universe": "eu",
+  "company": "Weir Group",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global market leadership in severe-abrasion slurry pumps (Warman) and ground-engaging tools (ESCO) where proprietary metallurgy and mission-critical mine-site installed base drive ~70% recurring aftermarket revenue with exceptional pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peace-of-Mind Balance Sheet). World-class mining slurry pump and wear-parts franchise (Warman, ESCO) with 70%+ recurring aftermarket revenue and 120%+ FCF conversion, but the £657m debt-funded acquisition of Micromine in 2025 pushed LT debt to 6.18x NI and net debt to 4.12x NI, breaching the <= 4.0x balance sheet threshold.",
+    "evidence": "While 4-year median GAAP ROIC is 12.9% and cumulative Owner FCF conversion is outstanding at 122.6% (£1,226m FCF on £1,000m NI), gross debt surged from £934.5m in 2024 to £1,526.5m in 2025 following the debt-funded Micromine transaction. LT debt / NI stands at 6.18x and net debt / NI is 4.12x, while interest coverage compressed to 5.68x, violating the <=4.0x balance sheet hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

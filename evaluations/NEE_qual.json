@@ -1,0 +1,30 @@
+{
+  "id": "NEE",
+  "ticker": "NEE",
+  "universe": "us",
+  "company": "NextEra Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Decades-built renewable development pipeline and procurement scale combined with Florida Power & Light's low-bill, high-reliability regulated monopoly service territory.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). NextEra is a premier clean energy utility combining FPL's constructive Florida regulatory compact with NEER's renewable scale (CAP 20). However, funding this continuous capital expansion requires immense balance sheet leverage ($89.6B LT debt vs $6.8B net income, 13.1x ratio) and interest coverage is compressed (~2.0x-2.4x), failing the peace-of-mind balance sheet test and relying perpetually on external capital markets.",
+    "evidence": "10-year GAAP ROIC median of 4.99% (2025: 4.99%, 2024: 6.21%, 2022: 3.83%, 2021: 3.15%). LT debt of $89.56B against net income of $6.84B yields 13.1x leverage (far above 4.0x ceiling). FY2025 interest coverage is ~2.0x-2.4x (below 5.0x hurdle). Multi-billion annual capital expenditure program relies on continuous access to debt, equity, and tax-equity markets (kindness of strangers)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

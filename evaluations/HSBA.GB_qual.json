@@ -1,0 +1,30 @@
+{
+  "id": "HSBA.GB",
+  "ticker": "HSBA",
+  "universe": "eu",
+  "company": "HSBC",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Earnings base overwhelmingly concentrated in Hong Kong and Asia/China, exposing cash flows to non-Western autocratic jurisdiction and acute US-China geopolitical/regulatory crossfire.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need, REJECT). While headquartered in the UK, HSBC generates 50-70%+ of its pre-tax profits in Hong Kong and greater China/Asia. Cash flows are directly exposed to Beijing's regulatory control and severe US-China geopolitical crossfire, violating the Western rule-of-law standard.",
+    "evidence": "Pre-tax profits are heavily skewed to Hong Kong and the Asia-Pacific region. Operating under the Hong Kong National Security Law and Chinese legal jurisdiction creates structural vulnerability to Western sanctions vs. Chinese counter-sanctions, highlighted by activist pressure from Ping An to split the group."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

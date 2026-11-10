@@ -1,0 +1,31 @@
+{
+  "id": "OMC",
+  "ticker": "OMC",
+  "universe": "us",
+  "company": "Omnicom Group",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Advertising",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "No durable structural moat or pricing power. Global media-buying scale, Omni/Acxiom data workflows, and multi-year MSAs create only modest administrative switching friction; clients re-pitch accounts every 3-5 years across Publicis, WPP, and boutiques, while Meta/Google/Amazon own the true ad-tech toll booths. Pre-IPG 12-14% GAAP ROIC (14.2% historical median) relied on negative media-payable working capital rather than pricing power—standalone revenue stagnated from $15.13B (FY15) to $15.69B (FY24, +0.4% nominal CAGR), far below inflation—before FY25 GAAP ROIC collapsed to ~1.9% (~9% mid-2026) post-IPG merger. Primary erosion threats: AI creative/media disintermediation, walled-garden self-serve ad suites, client in-housing, and chronic procurement fee deflation masked by principal media arbitrage.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Advertising holding company model lacks a defensible structural moat (3a = None) and fails Gate 3b on pricing power >= inflation and incremental return on capital. Standalone revenue was stagnant over a decade ($15.13B in FY15 to $15.69B in FY24, ~0.4% nominal CAGR), while client procurement fee pressure and generative AI execution deflation forced OMC into a defensive $13.5B all-stock IPG merger (targeting $1.5B cost cuts) and opaque principal media markups. Post-IPG GAAP ROIC fell to ~1.9% in FY25 (~9% in mid-2026) on $23.35B of goodwill/intangibles. Calamity Tier is inapplicable as both 3a fails and agency workflows face terminal Macrotrend #1 AI disintermediation. Downstream gates bypassed per waterfall.",
+    "evidence": "Multi-cycle financial record: Pre-merger standalone revenue grew only 3.7% cumulative over nine years from $15,134.4M in FY15 (operating income $2,003.5M, 13.2% margin; diluted EPS $4.41) to $14,954.1M in FY19 ($2,126.8M EBIT; $5.86 EPS) and $15,689.1M in FY24 ($2,274.6M EBIT, 14.5% margin; $1,480.6M net income; $7.46 EPS; 5.2% organic growth), after dipping -11.9% organically in FY20. Pre-IPG 10Y median ROIC of 14.2% (12.5-13.3% in FY23-24) reflected asset-light human capital and media-payable float, while real pricing power lagged inflation as walled gardens (Google, Meta, Amazon) captured global digital ad growth. Following the Nov 26, 2025 all-stock acquisition of IPG (~$13B-$13.5B equity value plus ~$2.95B assumed senior notes), FY25 reported revenue rose to $17,271.9M (including ~1 month of IPG), but ~$1.8B-$2.1B of restructuring/severance/transaction charges and $547.1M disposition losses reduced GAAP operating income to $444.7M (2.57% margin), generating a GAAP net loss of $(54.5)M ($(0.27) EPS) and compressing FY25 ROIC to ~1.86% (Non-GAAP adj. net income ~$1.8B, $8.65 adj. EPS; OCF $2,938.2M, capex $149.8M, FCF ~$2.79B). In Q3 2026, consolidated revenue reached $6,422.8M ($6,010.7M Core Operations at +7.2% organic growth plus $412.1M dispositions/held for sale; mix: Integrated Media 53.0%, Advertising 15.6% / $935.4M, PR 11.3% / $678.3M, Health 9.4% / $566.6M, Experiential & Other 10.7% / $644.3M) with $991.7M GAAP EBIT (15.4% margin), $656.0M GAAP net income ($2.38 GAAP EPS; $2.73 Non-GAAP), and $2.35B 9M 2026 FCF (TTM ~$2.86B). Capital allocation and balance sheet: OMC deployed capital into bolt-ons (Flywheel Digital in 2024) and the transformational IPG merger while executing $3.21B in 9M 2026 share buybacks and $703.3M dividends; as of Sept 30, 2026, balance sheet carried $18,608.8M goodwill and $4,743.2M net intangibles ($23.35B total vs $9,950.8M equity, -$13.4B tangible equity), $9,389.5M long-term debt vs $3,796.4M cash, and $375.0M 9M 2026 interest expense (up from $182.1M in 9M25), with trailing ROIC recovering only toward ~9%."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:33:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

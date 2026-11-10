@@ -1,0 +1,43 @@
+{
+  "id": "MSI",
+  "ticker": "MSI",
+  "universe": "us",
+  "company": "Motorola Solutions",
+  "price": 514.51,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Public safety communications and video security monopoly with operating ROIC normalized to the 35.0% cap. Balance sheet carries $8.41B in LT debt following the $4.4B Silvus Technologies acquisition, yielding LT debt / NI of 3.91x (net debt / NI of 3.36x) and robust 8.30x EBIT interest coverage, supported by an all-time record $15.7B backlog and >100% cash conversion. 5-10Y secular Owner EPS compounding anchored at 8.0% (4.0% LMR/video volume + 2.0% contractual pricing + 1.5% software mix - 0.5% UK Airwave drag + 1.0% share repurchases). 3-Pillar fundamental PAR multiple of 28.89x results in a PAR value of $395.62. At $514.51, MSI trades at 37.58x peak Owner EPS (+30.1% Above PAR), near its 5-year cycle high (41.64x), offering a modest 5-year expected IRR of 3.3%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 13.6923,
+    "current_multiple": 37.58,
+    "par_multiple": 28.89,
+    "par_value": 395.62,
+    "percent_vs_par": 0.3005,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0086,
+    "expected_irr_5y": 0.0333,
+    "market_implied_cap": 26.0,
+    "moat_runway_margin": -6.0,
+    "market_implied_growth": 0.2102,
+    "growth_margin_of_safety": -0.1302
+  },
+  "health_checks": {
+    "net_debt_years": 3.91,
+    "net_debt_ok": true,
+    "interest_coverage": 8.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0697,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

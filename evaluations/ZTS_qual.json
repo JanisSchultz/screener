@@ -1,0 +1,30 @@
+{
+  "id": "ZTS",
+  "ticker": "ZTS",
+  "universe": "us",
+  "company": "Zoetis Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive proprietary R&D scale, global veterinary direct sales distribution network, deep patent estates for novel biologics (monoclonal antibodies like Librela/Solensia, JAK inhibitors like Apoquel/Cytopoint), and entrenched veterinary trust prevent competitive arbitrage. Empirical proof: sustained 30%+ GAAP ROIC (median 30.5%), ~70% gross margins, and consistent 2-4% annual price realization. Primary erosion threats: adverse event regulatory warnings and pet owner caution on novel biologics, emerging competition from Elanco/Boehringer Ingelheim, and generic erosion in mature livestock anti-infectives.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in animal health medicines and vaccines. Moat anchored by deep veterinary distribution, high-margin proprietary biologics, and cash-pay pet economics insulated from government reimbursement cliffs. Strong cash conversion (82.5% FCF conversion) and comfortable balance sheet (3.38x debt/NI, 16.1x interest coverage). [5-10Y g: companion animal volume 3.5% + veterinary pricing power 2.5% + international expansion 1.5% - adverse event / regulatory conservatism drag 0.5% + net share buybacks 1.5%]",
+    "evidence": "10-year GAAP ROIC consistently between 19.4% and 31.6% (5-year median 30.5%), with operating tangible ROIC exceeding 54%. Multi-year Owner FCF conversion of 82.5% (FY2025 Owner FCF of $2,334M on $2,673M Net Income). Revenue grew from $4,888M in FY2016 to $9,467M in FY2025 with operating income rising from $1,394M to $3,582M. Unbroken peak-to-peak Owner EPS compounding ($1.70 in 2016 to $6.02 in 2025, CAGR 12.0%). Long-term debt of $9,042M against $2,312M cash (net debt $6,730M) yields net debt / NI of 2.52x and interest coverage of 16.1x, providing durable balance sheet resilience through industry cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

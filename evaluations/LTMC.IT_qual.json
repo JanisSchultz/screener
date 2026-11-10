@@ -1,0 +1,30 @@
+{
+  "id": "LTMC.IT",
+  "ticker": "LTMC",
+  "universe": "eu",
+  "company": "Lottomatica",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal / legislative acceptance risk (addictive or predatory model).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Lottomatica operates Italian online gaming, sports betting, and retail gaming machines (VLT/AWP). As an addictive and socially sensitive gambling business, it fails the Munger essential need standard and carries acute legislative, regulatory taxation, and concession renewal risks.",
+    "evidence": "Market leader in Italian online gaming (~31-32% share) and retail franchise networks under state concessions issued by the ADM. Generated >€2.25B in revenue with ~€2.1B net debt (~2.4x Net Debt/EBITDA). Operating under state licenses exposes the business to regulatory tax hikes, advertising bans, and tender renewal uncertainties, creating severe societal and legislative ruin risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

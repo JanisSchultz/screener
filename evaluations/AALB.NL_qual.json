@@ -1,0 +1,30 @@
+{
+  "id": "AALB.NL",
+  "ticker": "AALB",
+  "universe": "eu",
+  "company": "Aalberts",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Aalberts benefits from installer specification and niche positioning in hydronic flow control, piping systems, and surface treatments, historical GAAP ROIC (~5-8%) fails the 12% hurdle across cycles, diluted by capital-heavy acquisitions and cyclical exposure to European building construction.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Multi-cycle GAAP ROIC (~5-8%) fails the 12% Munger hurdle; returns and operating margins (<10% in downturns) diluted by European construction cyclicality and serial M&A goodwill.",
+    "evidence": "ROIC persistently between 4.8% and 8.0%, well below the 12% threshold. Operating margins compress below 10% during building downturns. Capital allocation reliant on debt-funded bolt-on acquisitions without generating superior per-share compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

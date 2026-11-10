@@ -1,0 +1,30 @@
+{
+  "id": "FLEX",
+  "ticker": "FLEX",
+  "universe": "us",
+  "company": "Flex Ltd.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Manufacturing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Switching costs exist in high-reliability segments (medical, automotive, data center infrastructure) via tooling, certifications, and product redesign barriers. However, Flex lacks pricing power above inflation; contracts are predominantly cost-plus pass-through arrangements where OEM customers command procurement leverage, keeping gross margins at 7-9% and GAAP operating margins at 4-5%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Contract electronics manufacturing services (EMS) provider operating in a structurally thin-margin, commoditized industry. While specialized engineering and certifications create modest switching costs, Flex lacks autonomous pricing power above inflation; GAAP operating margins remain thin at ~4.5%, and pricing is constrained by aggressive OEM procurement and global EMS competitors.",
+    "evidence": "FY24-FY25 revenue of $25.8B-$26.4B with GAAP operating margins of 4.4%-4.5% and gross margins of 7.6%-8.6%. While 10-year median ROIC (~12.8%-15%) is buoyed by high asset turns and working capital velocity, contract manufacturing dynamics prevent independent markup expansion. Contracts operate on cost-plus/pass-through terms where OEMs retain the economic surplus, dual-source programs, and impose periodic price-down pressures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

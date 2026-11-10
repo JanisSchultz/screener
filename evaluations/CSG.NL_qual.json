@@ -1,0 +1,30 @@
+{
+  "id": "CSG.NL",
+  "ticker": "CSG",
+  "universe": "eu",
+  "company": "CSG",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Rejected – G1 Understandability). Newly listed on Euronext Amsterdam in January 2026 with no public multi-cycle operating history; complex holding structure built via rapid debt-funded defense rollups across Central Europe and the US, with key operational risks—including undisclosed NATO procurement suspensions at its Spanish subsidiary and ongoing state contract corruption probes—invisible from reported financials.",
+    "evidence": "Czechoslovak Group (CSG N.V.) debuted on Euronext Amsterdam in January 2026, lacking any public multi-cycle operating record. Employs an aggressive acquisition rollup strategy (The Kinetic Group, Fiocchi). Faces severe transparency and governance concerns: NATO NSPA quietly suspended subsidiary Fábrica de Municiones de Granada (FMG) in July 2025 (undisclosed at IPO), and state consulting payments to Slovakia's defense minister triggered public anti-corruption inquiries."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

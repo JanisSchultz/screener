@@ -1,0 +1,30 @@
+{
+  "id": "SDLF.GB",
+  "ticker": "SDLF",
+  "universe": "eu",
+  "company": "Standard Life (ex-Phoenix)",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Closed-book life and pension consolidator with locked-in long-duration regulatory books, but statutory IFRS returns fail the 12% ROIC/ROE threshold and bulk purchase annuity deals are competitive spread-based auctions lacking pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). UK closed-book life and pension consolidator with bulk purchase annuity operations. Capital is locked in regulatory matching assets with volatile statutory returns failing the 12% hurdle and zero pricing power above inflation.",
+    "evidence": "Multi-year statutory IFRS earnings are volatile and frequently negative (-£1.08B statutory loss in FY24, net loss in FY22) due to interest-rate hedging variances and asset-liability discounting. While operating cash generation is steady, BPA deals are price-competitive auctions against Legal & General and Rothesay, and run-off closed books lack secular organic growth or pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

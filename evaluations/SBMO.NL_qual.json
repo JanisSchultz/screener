@@ -1,0 +1,30 @@
+{
+  "id": "SBMO.NL",
+  "ticker": "SBMO",
+  "universe": "eu",
+  "company": "SBM Offshore",
+  "country": "Netherlands",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World leader in leased FPSO vessels with proprietary Fast4Ward hull designs, but structurally fails the capital efficiency hurdle with through-cycle ROCE of only 6-9% due to heavy capital intensity ($1B-$2B+ per vessel) and customer concentration (Petrobras, ExxonMobil).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Leased FPSO model is highly capital-intensive ($1B-$2B per vessel) with through-cycle ROCE of only 6-9%, below the 12% hurdle. High customer bargaining power from concentrated oil majors (Petrobras, ExxonMobil) limits pricing power.",
+    "evidence": "Directional ROCE historically hovers in the mid-single digits (6% to 9%), reflecting heavy project debt and asset-heavy balance sheet requirements. Concentrated customer base in deepwater basins (Guyana, Brazil) negotiates large-ticket terms, preventing economic rents."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

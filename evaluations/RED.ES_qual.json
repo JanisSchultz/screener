@@ -1,0 +1,30 @@
+{
+  "id": "RED.ES",
+  "ticker": "RED",
+  "universe": "eu",
+  "company": "Redeia",
+  "country": "Spain",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory monopoly as the sole electricity transmission system operator (TSO) in Spain, operating under concession licenses. Regulated remuneration framework set by CNMC provides inflation-indexed returns on regulatory asset base, though returns on capital are legally capped at ~5.58% to 7.0%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (gate_6 = N, REJECT). Statutory monopoly as Spain's sole electricity transmission grid operator (TSO), but structurally fails the self-funding cash conversion and fortress balance sheet criteria. FY2025 capex of €1.41B exceeds operating cash flow (€1.01B), producing negative free cash flow after capex (-€394M). Net debt of €4.84B is 9.6x net income (€505.6M), far exceeding the 4.0x ceiling, while the company pays €461M in dividends funded by debt.",
+    "evidence": "Regulated 5-year median GAAP ROIC is 7.35%, governed by CNMC statutory remuneration caps (~5.58%). Free cash flow after total capex is negative (-€394M in FY2025), yet Redeia distributed €461M in dividends funded entirely through debt. Debt/NI of 10.7x (gross debt €5.39B / net income €505.6M) and net debt/NI of 9.6x vastly exceed the 4.0x limit, creating perpetual dependence on external debt refinancing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

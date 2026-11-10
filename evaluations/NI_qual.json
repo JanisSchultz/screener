@@ -1,0 +1,30 @@
+{
+  "id": "NI",
+  "ticker": "NI",
+  "universe": "us",
+  "company": "NiSource",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territories and rate-base regulation for gas distribution and electric utilities across Indiana and Mid-Atlantic states.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). NiSource holds fully regulated gas and electric distribution franchises across 6 states. However, it operates with severe debt leverage (LT debt/NI of 16.6x) and weak interest coverage of 2.87x (below 5.0x requirement). Its heavy capital modernization program ($2.8B capex vs $930M net income) requires perpetual debt financing and asset stake sales, relying on the kindness of strangers.",
+    "evidence": "10-year GAAP ROIC median of 6.35% (2025: 6.63%, 2024: 6.40%, 2020: 3.05%, 2018: 0.80%). LT debt of $15.46B against net income of $929.5M represents 16.6x debt-to-earnings leverage (exceeds 4.0x ceiling). FY2025 EBIT of $1.84B covers $639M interest at 2.87x (below 5.0x threshold). Negative owner cash flow after capex requires perpetual debt issuances and minority equity sales."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

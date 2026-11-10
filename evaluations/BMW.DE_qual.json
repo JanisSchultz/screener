@@ -1,0 +1,30 @@
+{
+  "id": "BMW.DE",
+  "ticker": "BMW",
+  "universe": "eu",
+  "company": "Bayerische Motoren Werke AG",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Premium brand equity ('Ultimate Driving Machine') and flexible multi-powertrain manufacturing across BMW, Mini, and Rolls-Royce provide moderate brand loyalty. However, capital efficiency is structurally cyclical and sub-hurdle, with Automotive RoCE falling to 6.6% in 2024 and Group ROIC averaging 7-9% across the cycle (well below the 12% hurdle). Primary erosion threats include aggressive Chinese EV competition (especially in China, ~30% of volume), regulatory fleet emissions mandates, software-defined vehicle execution risks, and customer cross-shopping price elasticity.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & pricing power, REJECT). Premium automotive manufacturing is structurally capital-intensive and cyclical, with Automotive RoCE dropping from a 24% peak in 2021 to 6.6% in 2024 (multi-cycle Group ROIC 7-9% vs 12% hurdle). Faces aggressive Chinese EV price competition, heavy Neue Klasse capex/R&D burdens, and customer cross-shopping elasticity.",
+    "evidence": "Automotive segment RoCE dropped from 24.0% in 2021 and 18.1% in 2022 to 11.3% in 2023 and 6.6% in 2024. Group ROIC over full business cycles hovers around 7-9%, failing the 12% hurdle. Massive ongoing R&D and capex for Neue Klasse electric architecture and software platforms depress returns on incremental capital. China sales (~30% of deliveries) suffer from intense local EV price wars, and vehicle recall disruptions (such as the Continental integrated braking system in 2024) illustrate vulnerability in outsourced critical component supply chains."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

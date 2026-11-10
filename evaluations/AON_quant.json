@@ -1,0 +1,43 @@
+{
+  "id": "AON",
+  "ticker": "AON",
+  "universe": "us",
+  "company": "Aon plc",
+  "price": 334.81,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing $21.5B of accumulated goodwill/intangibles from the strategic NFP acquisition, reflecting the extreme capital-light nature of global commercial risk and reinsurance brokerage with ~95% retention. 5-10Y through-the-cycle growth of 8.0% driven by 3.5% organic commercial risk and reinsurance volume, 2.5% premium rate indexation and exposure growth, 1.0% mid-market penetration and NFP revenue synergies, offset by 0.5% integration and debt servicing drag, plus 1.5% net share buybacks. Prudent capital structure absorbing NFP with net debt reduced to $13.47B ($1.19B cash vs $14.66B LT debt, 3.97x NI leverage, repayable in 3.64 years from net income), solid 5.33x EBIT interest coverage, and high 96.7% Owner FCF conversion. Current price of $334.81 trades at an attractive 19.67x peak Owner EPS ($17.0198) vs fundamental PAR Multiple of 25.79x (PAR Value $439.00), placing AON Below PAR (-23.7% discount). Offers a compelling 5Y expected IRR of 14.9% and a positive growth margin of safety of +9.2%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 17.0198,
+    "current_multiple": 19.67,
+    "par_multiple": 25.79,
+    "par_value": 439.0,
+    "percent_vs_par": -0.2373,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0089,
+    "expected_irr_5y": 0.149,
+    "market_implied_cap": 15.3,
+    "moat_runway_margin": 4.7,
+    "market_implied_growth": -0.0118,
+    "growth_margin_of_safety": 0.0918
+  },
+  "health_checks": {
+    "net_debt_years": 3.97,
+    "net_debt_ok": true,
+    "interest_coverage": 5.33,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.967,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

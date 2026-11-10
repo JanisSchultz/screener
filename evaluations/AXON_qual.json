@@ -1,0 +1,30 @@
+{
+  "id": "AXON",
+  "ticker": "AXON",
+  "universe": "us",
+  "company": "Axon Enterprise, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High customer switching costs via integrated public-safety ecosystem (TASER conducted energy devices + Axon body-worn and fleet cameras + Axon Evidence / Evidence.com cloud workflow and court-sharing infrastructure). However, empirical proof of moat fails the capital efficiency bar: 5-year median GAAP ROIC is only 3.24% (FY2025: -1.74%) and tangible ROIC is ~4.5%, severely eroded by chronic stock-based compensation ($634M in FY25; ~23% of revenue) and serial acquisition goodwill ($1.57B). Primary erosion threats include municipal budget scrutiny, competitor incursions (Motorola Solutions), customer fatigue over aggressive subscription tiering, and ongoing equity dilution.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & ROIC < 12%, REJECT). While Axon possesses an entrenched switching-cost ecosystem across law enforcement body cameras and TASER weapons, its multi-cycle capital efficiency fails the Munger hurdle: 5-year median GAAP ROIC is 3.24% (FY2025: -1.74%) and tangible ROIC is ~4.5%, well below the mandatory 12% GAAP / 15% tangible ROIC threshold. GAAP operating profit collapsed to -$62.1M in FY2025 due to massive stock-based compensation ($634M; ~23% of sales), driving Owner FCF to -$509.7M. Under strict waterfall rules, operating companies failing both tangible ROIC >= 15% and GAAP ROIC >= 12% are automatically rejected at Gate 3b.",
+    "evidence": "10-year operating history demonstrates robust top-line revenue compounding ($268M in FY16 to $2,780M in FY25, ~30% CAGR) driven by rapid adoption of body-worn cameras and Axon Cloud SaaS subscriptions. However, GAAP profitability and returns on capital have steadily deteriorated: GAAP EBIT moved from +$31.9M (FY16) to -$62.1M (FY25), with GAAP ROIC registering -17.5% (FY21), 8.6% (FY22), 9.5% (FY23), 3.2% (FY24), and -1.7% (FY25), yielding a 5-year median of 3.24%. Tangible ROIC median is ~4.5% (FY25: -3.12%). The primary driver of value destruction for common equity is excessive stock-based compensation: $133.6M (FY20), $303.3M (FY21), $106.2M (FY22), $131.4M (FY23), $382.6M (FY24), and $634.2M (FY25). Cumulative SBC over 2021-2025 exceeds $1.55B, dwarfing cumulative GAAP net income and turning Owner FCF deeply negative (-$509.7M in FY25, -$31.1M in FY24, -$197.5M in FY21; 5-year Owner FCF conversion of -79.6%). Capital allocation has grown aggressive with acquisitions of Dedrone ($391M incremental consideration in 2024) and Fusus, pushing goodwill and intangibles to $1,567M. Long-term convertible debt expanded to $1,730M by FY25 ($94.2M interest expense), resulting in negative operating earnings coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

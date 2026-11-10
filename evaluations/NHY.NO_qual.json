@@ -1,0 +1,30 @@
+{
+  "id": "NHY.NO",
+  "ticker": "NHY",
+  "universe": "eu",
+  "company": "Norsk Hydro",
+  "country": "Norway",
+  "sector": "Materials",
+  "sub_industry": "Aluminum (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Captive Norwegian hydroelectric power provides a low-carbon smelting energy cost advantage and downstream extrusions add customized value, but LME commodity pricing dominates. The business cannot escape global aluminum supply-demand cycles and lacks unilateral pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & commodity price-taker, REJECT). Norsk Hydro's captive renewable hydro power provides a low-carbon smelting advantage, but the company remains fundamentally a cyclical price-taker tied to LME aluminium prices, with multi-cycle median ROIC well below the 12% hurdle.",
+    "evidence": "Multi-cycle ROIC/ARoaCE averages ~7.5-8.5% over the 2019-2024 cycle (2019: 3.7%, 2020: 5.5%, 2021: 22.2%, 2022: 25.9%, 2023: 7.1%, 2024: 8.5%), falling well short of the 12% hurdle outside of peak commodity windfalls. Consolidated earnings are heavily dictated by LME spot prices and energy volatility. Downstream extrusions and recycling fail to insulate overall capital returns from upstream cyclicality."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MBG.DE",
+  "ticker": "MBG",
+  "universe": "eu",
+  "company": "Mercedes-Benz Group AG",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Three-pointed star brand equity, premier engineering heritage, and commercial van dominance (Sprinter) provide brand premium over volume OEMs. However, pricing power has proven cyclical rather than structural, as top-end luxury EV push (EQS/EQE) met customer resistance and Chinese luxury buyers rotated to domestic tech-forward EV offerings. Group ROCE declined to 6.8% in 2024 (multi-cycle average 8-10%, failing the 12% hurdle). Key threats: China volume/pricing collapse, EV transition friction, and unionized manufacturing cost structures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & pricing power, REJECT). Mercedes-Benz's 'top-end luxury' strategy failed to establish durable pricing power beyond the post-pandemic supply constraint windfall. Group ROCE declined to 6.8% in 2024 (multi-cycle ROCE 8-10% vs 12% hurdle), with cars division RoS compressing to 8-10%. High German manufacturing cost structure, heavy EV capex, and severe market share losses to Chinese luxury EVs in Asia erode economic returns.",
+    "evidence": "Group ROCE contracted from 10.1% in 2022 to 10.0% in 2023 and 6.8% in 2024. Adjusted Return on Sales (RoS) for Mercedes-Benz Cars dropped from 14.6% in 2022 to ~8-10% in 2024. Multi-cycle ROIC averages below 9%, failing the 12% hurdle. In China, which accounted for over a third of high-margin S-Class and Maybach sales, local EV competition and macroeconomic softening triggered deep discounting. Heavy dual capex/R&D spending across internal combustion, hybrid, and battery-electric architectures restricts incremental capital returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

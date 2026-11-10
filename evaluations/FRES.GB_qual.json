@@ -1,0 +1,30 @@
+{
+  "id": "FRES.GB",
+  "ticker": "FRES",
+  "universe": "eu",
+  "company": "Fresnillo",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Silver (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (silver/gold mining) with 100% of mining operations in Mexico subject to regulatory and security risks.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). World's largest primary silver producer, but an unhedged commodity price-taker with 100% of mining operations located in Mexico. Faces substantial Mexican mining-law reform risks, water permitting hurdles, and cartel security issues, with majority ownership (~75%) held by Industrias Peñoles.",
+    "evidence": "Fresnillo produces silver and gold across Mexican underground and open-pit mines. Operating profits fluctuate directly with COMEX/LBMA bullion spot prices, with no independent pricing power. Mining operations in Zacatecas and Sonora face operational disruption risks and escalating regulatory burdens in Mexico."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

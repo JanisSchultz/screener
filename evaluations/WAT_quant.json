@@ -1,0 +1,43 @@
+{
+  "id": "WAT",
+  "ticker": "WAT",
+  "universe": "us",
+  "company": "Waters Corporation",
+  "price": 457.6,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Premier life sciences analytical instruments and software toll booth (Empower CDS lock-in controlling >50% of regulated pharma chromatography). Operating ROIC normalized to the 35.0% cap under the v6.23 Tangible Capital Standard (tangible ROIC of 90.08% and 10-year median GAAP ROIC of 30.95%). Peak Owner EPS maintained at $13.8859 (FY2022 standalone cycle peak), noting the February 2026 completion of the Reverse Morris Trust merger with BD Biosciences expands diluted share count from ~59.7M to ~98.2M while adding ~$1B+ in annual cash flow and flow cytometry leadership. Forward 5-10Y Owner EPS compounding calibrated at 7.0% (4.5% organic QA/QC & diagnostics volume + 1.5% pricing power + 1.0% BD biotherapeutics mix - 0.5% integration/interest drag + 0.5% post-deleveraging share buybacks). Balance sheet carries $947M pre-merger LT debt (0.56x net debt/NI, 11.54x interest coverage), with management committed to deleveraging below 2.5x net debt within 12-24 months."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 13.8859,
+    "current_multiple": 32.95,
+    "par_multiple": 24.23,
+    "par_value": 336.48,
+    "percent_vs_par": 0.36,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0062,
+    "market_implied_cap": 27.2,
+    "moat_runway_margin": -7.2,
+    "market_implied_growth": 0.2008,
+    "growth_margin_of_safety": -0.1308
+  },
+  "health_checks": {
+    "net_debt_years": 1.47,
+    "net_debt_ok": true,
+    "interest_coverage": 11.54,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7495,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

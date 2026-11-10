@@ -1,0 +1,30 @@
+{
+  "id": "LHA.DE",
+  "ticker": "LHA",
+  "universe": "eu",
+  "company": "Lufthansa",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Frankfurt and Munich hub infrastructure and Lufthansa Technik provide operational scale, but legacy cost disadvantages and unyielding union power permanently depress capital returns. 10-year average ROIC is ~2.2% (drastically failing the 12% hurdle), with constant vulnerability to pilot/ground strikes, fuel spikes, and low-cost carrier encroachment.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject – G3 Moat & Pricing). German flag carrier network group (Lufthansa, SWISS, Austrian, Brussels Airlines). While Frankfurt and Munich hub slots provide geographic density, the business is crippled by structural legacy costs and union strife. 10-year average ROIC is just ~2.2% (failing the 12% hurdle by a wide margin), with chronic labor disruption and no durable pricing power.",
+    "evidence": "Lufthansa's 10-year average ROIC stands at ~2.2% (15-year average 3.15%), peaking at only 7.4% in 2023 before receding to 4.2-4.4% in 2024-2025, while dipping to -7.1% during the pandemic which required a German government bailout. Operating margins are regularly wiped out by pilot, cabin crew, and ground staff strikes, soaring airport and environmental fees in Germany, and commoditized passenger fare competition."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

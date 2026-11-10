@@ -1,0 +1,30 @@
+{
+  "id": "SPSN.CH",
+  "ticker": "SPSN",
+  "universe": "eu",
+  "company": "Swiss Prime Site",
+  "country": "Switzerland",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Swiss commercial office and retail portfolio possesses prime locations, but operates in a competitive asset management and leasing landscape without structural pricing power to overcome low single-digit unlevered property yields.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing: ROIC 3.2-4.3% vs 12% hurdle; archetype 'None', REJECT). Largest Swiss listed commercial real estate owner; despite prime properties and inflation-linked leases, capital efficiency is structurally capped at 3-4% ROIC, failing the Munger quality hurdle.",
+    "evidence": "Reported group ROIC is 3.2-4.3% (and 3.2-3.8% excluding revaluation effects). Net initial property yields of 3.2-4.2% structurally limit unlevered capital returns, far below the 12% hurdle across all business cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

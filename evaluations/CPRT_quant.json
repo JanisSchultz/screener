@@ -1,0 +1,43 @@
+{
+  "id": "CPRT",
+  "ticker": "CPRT",
+  "universe": "us",
+  "company": "Copart, Inc.",
+  "price": 31.95,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Zero-debt balance sheet with $1.91B in cash and equivalents ($0 funded debt) and 93.4% Owner FCF conversion ($1.5B+ annual FCF). Operating ROIC normalized to 35.0% cap under the Tangible Capital Standard, reflecting that core salvage auction operations deliver >35-40% returns on tangible capital (historical tangible ROIC of 36-42% in 2017-2022) before dilution from a $2.8B equity/cash hoard and grandfathered low-basis land assets. Long-term through-the-cycle growth g of 11.0% driven by salvage volume (3.5%), vehicle electronics complexity and rising total loss rates (2.5%), international digital buyer expansion (2.0%), auction fee pricing (1.5%), and share repurchases (1.5%). At $31.95 (20.12x peak Owner EPS), CPRT trades solidly Below PAR (-31.8% vs PAR Value of $46.85, PAR multiple 29.50x), offering an attractive 5Y expected IRR of 19.83% with an unassailable margin of safety."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.5881,
+    "current_multiple": 20.12,
+    "par_multiple": 29.5,
+    "par_value": 46.85,
+    "percent_vs_par": -0.318,
+    "status": "Below PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.1983,
+    "market_implied_cap": 13.6,
+    "moat_runway_margin": 6.4,
+    "market_implied_growth": -0.0307,
+    "growth_margin_of_safety": 0.1407
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9338,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

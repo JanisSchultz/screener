@@ -1,0 +1,30 @@
+{
+  "id": "MCO",
+  "ticker": "MCO",
+  "universe": "us",
+  "company": "Moody's Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched global rating duopoly alongside S&P holding ~80%+ market share. Institutional investment mandates and NRSRO regulations legally and practically require ratings for bond issuance. Empirical proof: multi-cycle GAAP ROIC exceeding 25-35%, tangible operating ROIC >100%, and operating margins of 40-44%. Pricing power is demonstrated by basis-point fees on issuance and steady 3-5% price/complexity realization with virtually zero customer attrition. Primary erosion risks (issuance cyclicality, private credit expansion, regulatory scrutiny) are mitigated by Moody's Analytics diversification and expansion into private market credit data.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier global credit rating and risk analytics duopoly with an entrenched regulatory toll booth (NRSRO). Moody's Investors Service (MIS) captures pricing power on global debt issuance while Moody's Analytics (MA) delivers resilient, high-retention recurring ARR (>60% of segment revenue). High secular resilience across all 5 macrotrends, with proprietary data and Moody's CoPilot insulating against AI commoditization. Pristine balance sheet with ~1.9x Net Debt/NI, >14x interest coverage, and >90% Owner FCF conversion. [5-10Y g: debt issuance volume 3.5% + rating price/complexity 2.0% + MA analytics expansion 2.5% + net share repurchases 1.0%]",
+    "evidence": "Exceptional multi-decade financial performance: FY2025 revenue reached $7,718M (MIS $4,119M, MA $3,599M) with EBIT of $3,351M (43.4% margin) and Net Income of $2,459M. 5-year median GAAP ROIC is 27.3% (FY25 ROIC 31.9%, operating ROIC >100%). Free cash flow conversion is outstanding, with Owner FCF of $2,343M in FY25 (95.3% conversion of Net Income; 10-year median >90%) and asset-light capex at 4.2% of sales. Peak-to-peak Owner EPS compounded from $1.42 in 2016 through prior peak $12.41 in 2021, absorbing the 2022 interest-rate issuance contraction ($7.70), to reach a new all-time high of $14.52 in FY2025. Balance sheet is conservative: Net Debt of $4,610M ($6,994M LT debt less $2,384M cash) is covered by 1.87 years of Net Income, and EBIT/interest coverage exceeds 14x. Strategic capital allocation has combined disciplined share repurchases and growing dividends ($701M) with high-ROI software/data acquisitions (Bureau van Dijk, RMS) that built Moody's Analytics into an indispensable $3.6B recurring enterprise workflow platform."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

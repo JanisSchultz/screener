@@ -1,0 +1,31 @@
+{
+  "id": "NFLX",
+  "ticker": "NFLX",
+  "universe": "us",
+  "company": "Netflix",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 paid SVOD scale (325M+ paying households at end-2025, ~$51.1B FY2026E revenue) amortizes ~$17-20B/yr in cash content spend across roughly 3-5x more paying subscribers than pure-play SVOD peers, delivering low cost-per-hour-watched to consumers while generating ~29.5-31.5% operating margins. Empirical proof of moat: 5Y median GAAP ROIC ~16-17% (FY2021-FY2025, troughing at ~12.1-13.7% in FY2022 and expanding to ~25.7-26.9% in FY2025 and ~28-30.6% TTM in 2026) with zero goodwill and >50% incremental ROIIC; US Standard ad-free pricing stepped up from $9.99 (2015) to $19.99/mo (Mar 2026) with ~2% or lower churn. Primary erosion threats: zero contractual switching costs (1-click cancel), attention substitution toward free/UGC video (YouTube/TikTok), generative AI lowering video creation barriers, live sports rights cost inflation, and Paramount-Skydance-WBD consolidation.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Netflix is the undisputed SVOD scale leader today (325M+ households, ~26-30% ROIC, $19.99/mo pricing power, fortress net debt <0.7x earnings), it fails the 15+ year Munger runway bar under the Tier 3 Media/Entertainment base rate (10-15Y CAP) combined with a -5Y haircut on Macrotrend #1 (Automation & Cognitive Tech / AI Disruption). Unlike full-stack AI hegemons (Alphabet/YouTube) or physical-world monopolies, Netflix has zero contractual switching costs and relies on a ~$20B/yr depreciating content treadmill. Generative AI video (Veo, Sora) compresses studio production barriers for creator platforms—where YouTube already commands ~15.8% of US TV viewing vs. Netflix's ~7.7-8%—while 2026 saw flattening watch-time growth, a cut in 2026 ad-revenue guidance ($3.0B to $2.7B), ~1,000 layoffs (6% of staff) with top content leadership exits, escalating live sports rights commitments, a newly consolidated $111B Paramount-Skydance-WBD rival, and Netflix's own Dec 2025 $82.7B defensive bid for Warner Bros. (before walking away in Feb 2026). Not eligible for Calamity Pass because Gate 4 is non-waivable. Downstream Gates 5-6 bypassed per waterfall.",
+    "evidence": "Multi-cycle financial record (FY2016-FY2025 & 9M 2026): Revenue scaled from $20.16B (FY19) to $39.00B (FY24), $45.18B (FY25, +15.9% YoY), and $51.1B guided for FY26 (+13% YoY; Q1 $12.25B, Q2 $12.56B, Q3 $12.87B). Operating margin expanded from 4.3% (FY16) and 17.8% (FY22) to 26.7% (FY24), 29.5% (FY25, $13.33B EBIT), and 31.5% FY26 guidance (9M 2026 EBIT $12.61B; Q3 2026 34.6% margin, Q4 guided 26.0% incl. ~120 bps layoff/severance drag). GAAP Net Income rose from $187M (FY16) and $4.49B (FY22) to $8.71B (FY24), $10.98B (FY25), and $12.35B in 9M 2026 (incl. $2.8B pre-tax WBD breakup fee). After negative FCF during the 2016-2019 buildout (-$1.66B to -$3.14B) and -$0.13B in FY21, post-inflection FCF reached $6.93B (FY23), $6.92B (FY24), and $9.46B (FY25; cumulative FY23-25 FCF conversion 92.9% of GAAP NI), with FY26 FCF guided to ~$12.0B (~$9.2B organic ex-$2.8B WBD fee) after $14.93B in 9M 2026 cash content additions (~$20B/yr pace). ROIC improved from ~7.5% (FY16) and ~12.1-13.7% (FY22) to ~22.6% (FY24), ~26.9% (FY25), and ~28-30.6% TTM (2026), with $0 goodwill. Footprint & pricing: 325M+ paid memberships (UCAN ~40-43% of revenue, EMEA largest sub base, LATAM double-digit growth, APAC volume engine); US Standard rose from $9.99 (2015-17) to $19.99/mo (Mar 2026), Ad-tier $8.99/mo (~47% of new sign-ups in key markets), Premium $26.99/mo, with churn ~2% or under. M&A & balance sheet context: Dec 2025 agreed to buy Warner Bros. studios/HBO Max for ~$82.7B EV (amended to ~$83B all-cash Jan 2026) before walking away Feb 26, 2026 when Paramount Skydance bid $111B, collecting a $2.8B termination fee (and incurring ~$85M financing termination amortization); resumed aggressive buybacks ($10.7B in 9M 2026, $4.8B in Q3 2026; SBC only $134M in Q3). Q3 2026 balance sheet holds $8.22B cash/ST investments vs. $15.13B gross debt ($6.91B net debt, <0.7x FY25 NI), $26.62B equity, 17.2x FY25 / 20.3x 9M26 EBIT interest coverage, and A2/A credit ratings. Gate 4 disruption basis: Nielsen The Gauge shows YouTube at ~15.8% US TV share (~2x Netflix's ~7.7-8%); generative AI video (Veo, Sora) fuels creator ecosystems while Netflix's 2026 total viewing-hour growth flattened, FY26 ad-revenue guidance fell from $3.0B to $2.7B, ~1,000 staff (6%) were laid off alongside CCO/Film chief departures, live sports rights outlays (WWE $500M/yr, NFL, FIFA) rose, and Paramount-Skydance-WBD consolidated."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-10T09:34:37Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "EIX",
+  "ticker": "EIX",
+  "universe": "us",
+  "company": "Edison International",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territory and CPUC rate-base regulation grant Southern California Edison a statutory monopoly over regional power transmission and distribution.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Traditional regulated electric utility is anchored to Tier 4 baseline persistence (CAP 5-10Y). California inverse condemnation doctrine and escalating catastrophic wildfire liabilities (e.g., 2025 Eaton Fire losses, AB 1054 fund depletion risk) combined with massive grid-hardening capex requirements prevent secular compounding.",
+    "evidence": "10-year median GAAP ROIC of 5.6% reflects capped regulatory returns on invested capital. Realized earnings remain severely volatile due to multi-billion-dollar wildfire liabilities (2017-2018 Thomas/Woolsey fires and 2025 Eaton Fire). Long-term debt exceeds $36B against $17.6B equity, requiring continuous debt issuance to fund $6.5B+ annual capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

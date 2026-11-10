@@ -1,0 +1,30 @@
+{
+  "id": "CFR.CH",
+  "ticker": "CFR",
+  "universe": "eu",
+  "company": "Richemont",
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled branded jewellery duopoly (Cartier and Van Cleef & Arpels) supported by centuries of Lindy heritage and protected designs (Love, Trinity, Alhambra). Pricing power proven by 4-8% regular annual price hikes with zero volume churn, generating 17-21% multi-cycle ROIC.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier hard luxury and branded jewellery duopoly (Cartier, Van Cleef & Arpels) possessing centuries-old Lindy heritage and unmatched pricing power. YNAP divestment cleanly prunes the e-commerce drag, refocusing capital on high-ROIC Jewellery Maisons. Balance sheet fortress with over €8.2B in net cash. [5-10Y g: branded jewellery volume 3.5% + luxury pricing power 3.5% + retail expansion mix 1.0% - watch cycle drag 0.5% + dividends/buybacks 1.0%]",
+    "evidence": "Compagnie Financière Richemont SA generates ~€20B+ in revenue, with Jewellery Maisons (Cartier, Van Cleef & Arpels, Buccellati) accounting for ~70% of sales and ~85% of operating profit at 30%+ operating margins. Operating ROIC has averaged 17-21% over the past four years (FY22: 15.4%, FY23: 21.1%, FY24: 19.4%, FY25: 17.7%). Net cash stood at €8.26B at FY2025 year-end with zero net debt. Branded fine jewellery benefits from a secular mix shift away from unbranded items, with Cartier and VCA wielding pricing power to raise prices 4-8% annually above inflation without sacrificing volume."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

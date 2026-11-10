@@ -1,0 +1,30 @@
+{
+  "id": "CVNA",
+  "ticker": "CVNA",
+  "universe": "us",
+  "company": "Carvana",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Big-ticket, credit-financed deferrable cyclical durable purchase lacking everyday habit lock-in, paired with outsized profit dependence on high-APR subprime auto loan originations (~40-44% non-prime/subprime) and ABS gain-on-sale carrying elevated regulatory and credit-cycle risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Despite strong 2024-2026 operational scale-up, online used-car retail is an infrequent, interest-rate-sensitive, deferrable cyclical transaction with no repeat habit lock-in, and Carvana's economics depend heavily on high-APR subprime auto financing (~40-44% non-prime/subprime originations) and ABS/forward-flow loan gain-on-sale alongside contested fee/servicing scrutiny. Additionally fails Munger compounding hurdles on multi-cycle returns (6.8% historical median ROIC; 2022-2023 near-bankruptcy debt restructuring), cash conversion (~47% FCF/GAAP NI in FY2025 due to $621M non-cash tax/TRA gains), ~$6.1B debt load, and DriveTime/Bridgecrest related-party governance complexity.",
+    "evidence": "Multi-cycle financial track record: Public since 2017; suffered severe downturn losses and executed a 2023 distressed debt restructuring (PIK-toggle Senior Secured Notes due 2028/2030/2031), yielding a 6.8% historical median ROIC in financials_csv. Rebounded sharply in 2024-2026: FY2024 revenue $13.658B (vs ~$10.78B in FY2023), GAAP NI $404M (including ~$115M unrealized Root warrant gain), OCF $918M, capex $91M (~$827M FCF), net interest $651M; FY2025 retail units 596,641 (+43% YoY), revenue $20.322B (+49% YoY), GAAP NI $1.895B (boosted by $621M net non-cash deferred tax/TRA benefits), Adjusted EBITDA $2.237B (11.0% margin), OCF $1.036B, capex $147M (~$889M FCF, ~47% of GAAP NI; $230M total investing outflow including $160M franchise dealer acquisitions), net interest $505M. Momentum continued in 2026: Q1 2026 187,393 units (+40% YoY, $6.432B rev, $672M Adj EBITDA) and Q3 2026 217,385 units (+39% YoY, $8.04B rev, $800M Adj EBITDA, 10.0% margin), guiding FY2026 Adj EBITDA toward the high end of $2.7B-$3.0B. Segment & financing dependence: ~80% of retail customers use Carvana-arranged financing, with independent research estimating ~40-44% non-prime/deep subprime originations (APRs extending >25%) and ABS/forward-flow loan gain-on-sale plus ancillary products driving a disproportionate share of GPU ($2,500-$3,000+ levels). Lock-in & pricing power: Infrequent (~5-7 year) big-ticket consumer purchase across a fragmented used-car market with transparent cross-shopping vs CarMax and dealers; price-taker on wholesale acquisition and ABS credit spreads. Balance sheet & governance: ~$6.1B total debt at YE 2024 and YE 2025 vs $1.760B (2024) and $2.429B (2025) cash & restricted cash; Up-C/TRA structure and extensive related-party ties to DriveTime and loan servicer Bridgecrest (controlled by Ernest Garcia II), plus insider block sales and short-seller scrutiny over delinquency/extension servicing and intercompany transactions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

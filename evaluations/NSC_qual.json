@@ -1,0 +1,30 @@
+{
+  "id": "NSC",
+  "ticker": "NSC",
+  "universe": "us",
+  "company": "Norfolk Southern Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Rail Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Eastern freight rail duopoly with CSX provides irreplaceable physical right-of-way infrastructure and pricing power consistently at or above inflation (+2-4% pricing spread). High barriers prevent arbitrage, but intermodal faces modal competition from long-haul trucking and coal faces secular volume decline.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (N, REJECT). Irreplaceable Eastern freight rail infrastructure network with duopoly pricing power, but fails Munger quality standards due to structural capital intensity (8-year FCF conversion 74% vs. >=80% threshold), 10.5% 10-year median ROIC, and an overleveraged balance sheet ($16.5B LT debt vs. $2.87B NI, 5.74x leverage vs. <=4.0x hurdle). [5-10Y g: volume 1.0% + price 2.5% + operating ratio recovery 1.0% + share repurchases 2.0%]",
+    "evidence": "Norfolk Southern operates ~19,300 route miles across 22 Eastern states, forming an essential freight rail duopoly with CSX. Pre-disaster ROIC was 12.5-13.5% (2021-2022), but 10-year median ROIC is 10.5%, reflecting the heavy capital requirements of rail maintenance. In 2025, operating revenue was ~$12.2B, EBIT was $4,356M, interest expense was $792M (5.5x coverage, down from pre-2023 levels and dipping to 3.95x in 2023), and GAAP net income was $2,873M (still below the 2022 peak of $3,270M). Free cash flow was $2,157M in 2025, $1,671M in 2024, and $852M in 2023, against net income of $2,873M, $2,622M, and $1,827M respectively (3-year FCF conversion 63.9%; 8-year conversion 74.1%), falling short of the >=80% FCF conversion requirement due to $2.2B-$2.4B annual capex additions. Balance sheet carries $16,480M long-term debt and $607M current debt against $1,530M cash, yielding 5.74x LT debt to net income, breaching the <=4.0x peace-of-mind threshold. Calamity tier is denied because the leverage and low cash conversion are multi-cycle structural characteristics of the business model rather than temporary artifacts of the 2023 East Palestine derailment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

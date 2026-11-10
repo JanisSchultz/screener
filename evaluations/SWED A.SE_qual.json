@@ -1,0 +1,30 @@
+{
+  "id": "SWED A.SE",
+  "ticker": "SWED A",
+  "universe": "eu",
+  "company": "Swedbank",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant retail banking franchise with leading market share in Sweden (~4M customers) and the Baltic states (~40-50% share), driving low-cost sticky deposit funding and economies of scale in loan origination. Primary erosion risks stem from mortgage margin compression, fintech disintermediation, and long-tail regulatory scrutiny.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Swedbank possesses dominant scale economies and sticky retail deposits in Sweden and the Baltics, its heavy structural profit concentration in the Baltic nations (Estonia, Latvia, Lithuania bordering Russia) creates acute, unhedged geopolitical realignment risk, while protracted US/international AML compliance investigations cap competitive advantage period at 10 years.",
+    "evidence": "Baltic operations contribute ~25-30% of group net profit, exposing earnings to high geopolitical front-line risks. Past AML lapses involving Russian non-resident money laundering through Estonia resulted in a SEK 4B Swedish FSA fine, executive turnover, and ongoing US DOJ/SEC reviews. Swedbank's fractional-reserve balance sheet (SEK 914B debt/borrowings) also carries structural funding duration risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

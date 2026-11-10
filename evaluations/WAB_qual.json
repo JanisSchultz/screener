@@ -1,0 +1,30 @@
+{
+  "id": "WAB",
+  "ticker": "WAB",
+  "universe": "us",
+  "company": "Westinghouse Air Brake Technologies Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed base of ~23,000 locomotives provides captive aftermarket parts and services. However, returns on invested capital are structurally sub-hurdle (5-year median GAAP ROIC of 7.23%, with every year since the 2019 GE Transportation merger below 10%) due to $14B of merger goodwill/intangibles and immense countervailing buyer power from consolidated Class I freight railroads operating under Precision Scheduled Railroading.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 7.2% < 12%, REJECT). While Wabtec holds an entrenched North American locomotive installed base supporting recurring aftermarket service, its GAAP ROIC is structurally depressed (5-year median 7.23%, failing the 12% hurdle every year over the past 9 years). Concentrated Class I freight railroad buyers exert strong procurement leverage and maintain long asset lifecycles, constraining autonomous pricing power and returns on capital.",
+    "evidence": "Multi-cycle financial track record reflects 5-year median GAAP ROIC of 7.23% (2021: 4.96%, 2022: 5.60%, 2023: 7.23%, 2024: 9.36%, 2025: 9.69%), failing the 12% hurdle. The 2019 GE Transportation acquisition brought $14.05B of goodwill and intangibles onto the balance sheet against $11.14B in equity. While FY2025 revenue grew to $11.17B and owner FCF reached $1.42B (conversion 1.35x), freight railroad customer concentration (Class I railroads generate the vast majority of freight sales, which are ~72% of total revenue) limits pricing power above inflation over the replacement cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

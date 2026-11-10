@@ -1,0 +1,30 @@
+{
+  "id": "DOC",
+  "ticker": "DOC",
+  "universe": "us",
+  "company": "Healthpeak Properties, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Health Care REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While specialized clinical build-outs in outpatient medical buildings and lab installations create modest tenant switching costs, DOC fails proof of moat. 10-year historical GAAP ROIC is structurally ~4.5% (<12% hurdle), and pricing power is severely constrained by contractual 2.5-3.0% rent escalators alongside significant life-science lab space oversupply in core biotech clusters.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 4.5% < 12%, REJECT). Healthpeak operates capital-intensive healthcare real estate (outpatient medical clinics and life-science labs) with structural returns on capital well below the 12% Munger threshold. Modest contractual rent escalators (2.5-3%) lag long-term inflation and higher cost of capital, while post-pandemic lab oversupply in key hubs suppresses organic pricing power.",
+    "evidence": "Multi-cycle ROIC median sits at ~4.5% (with recent 2024-2025 trailing ROIC between 1.5% and 3.5%), structurally constrained by capital-intensive property acquisition and development costs against 5.5-7.0% nominal cap rates. The all-stock merger of equals with Physicians Realty Trust in 2024 expanded outpatient medical building exposure to ~50% of the portfolio alongside lab space (~45%), but does not alter low un-levered capital efficiency. Outpatient medical leases feature fixed 2.5-3% annual escalators unable to outpace cost-of-capital inflation, while life science lab assets face ongoing vacancy and concession headwinds in South San Francisco, Boston, and San Diego."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

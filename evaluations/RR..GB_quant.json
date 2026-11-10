@@ -1,0 +1,43 @@
+{
+  "id": "RR..GB",
+  "ticker": "RR.",
+  "universe": "eu",
+  "company": "Rolls-Royce",
+  "price": 1261.2,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": 43.04,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "FY2025 peak Owner EPS normalized to 43.04p underlying earnings (stripping non-cash deferred tax asset releases and mark-to-market currency hedge credits). Operating ROIC capped at 35.0% tangible capital ceiling reflecting negative working capital customer advance structure. 5-10Y forward growth of 10.5% driven by widebody engine flying-hour expansion (4.5%), TotalCare LTSA contract resets & spare parts pricing (2.5%), defense and power systems demand (2.0%), and net buybacks (1.0%). Pristine net cash sheet (£4.3B net cash)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 43.04,
+    "current_multiple": 29.303,
+    "par_multiple": 26.9533,
+    "par_value": 1160.0715,
+    "percent_vs_par": 0.0872,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0086,
+    "expected_irr_5y": 0.0952,
+    "market_implied_cap": 21.7,
+    "moat_runway_margin": -1.7,
+    "market_implied_growth": 0.1402,
+    "growth_margin_of_safety": -0.0352
+  },
+  "health_checks": {
+    "net_debt_years": -0.73,
+    "net_debt_ok": true,
+    "interest_coverage": 23.96,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.94,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

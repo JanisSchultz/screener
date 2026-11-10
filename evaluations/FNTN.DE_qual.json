@@ -1,0 +1,30 @@
+{
+  "id": "FNTN.DE",
+  "ticker": "FNTN",
+  "universe": "eu",
+  "company": "freenet",
+  "country": "Germany",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operates as a network-independent reseller (MVNO) dependent on wholesale access contracts from Deutsche Telekom, Vodafone, and Telefónica Deutschland, alongside an IPTV service (waipu.tv). Lacks pricing power in commoditized mobile plans, resulting in 5-year median GAAP ROIC below the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing Power). Operates as a mobile reseller (MVNO) without own network infrastructure and IPTV provider (waipu.tv). Sub-hurdle historical capital efficiency (5-year median GAAP ROIC ~8-10% vs 12% threshold) and negligible pricing power amid aggressive discount mobile competition.",
+    "evidence": "freenet acts as a service provider dependent on network operator wholesale agreements. Multi-year GAAP ROIC hovers around 8-10%, failing the 12% hurdle. German mobile tariff competition severely limits standalone price hikes, forcing reliance on SG&A discipline and high dividend payouts rather than economic moat expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

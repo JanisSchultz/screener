@@ -1,0 +1,30 @@
+{
+  "id": "HOLN.CH",
+  "ticker": "HOLN",
+  "universe": "eu",
+  "company": "Holcim",
+  "country": "Switzerland",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Permitted quarry and kiln network creates strong local logistics moats, but bulk cement cyclicality, capital intensity, and lack of real pricing power limit returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Permitted quarry and kiln networks provide local logistics protection, but bulk cement cyclicality and heavy capital intensity hold 10-year ROIC to 5-11% (median 8.6%), failing the 12% hurdle.",
+    "evidence": "10-year reported ROIC across 2015-2024 ranged between 5.2% and 11.1%, with a 10-year median of ~7.4% (and 4-year median of 8.59%), consistently below the 12% hurdle. Bulk cement economics lack through-cycle pricing power above energy and structural carbon costs. The spin-off of high-margin North American assets (Amrize) leaves the remaining entity heavily exposed to European ETS decarbonization capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

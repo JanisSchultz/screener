@@ -1,0 +1,43 @@
+{
+  "id": "A",
+  "ticker": "A",
+  "universe": "us",
+  "company": "Agilent Technologies",
+  "price": 174.76,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": null,
+    "fin_note": "Pristine life-sciences capital structure with $1.79B cash vs $3.05B LT debt (0.97x net debt/NI) and 13.2x interest coverage. Operating ROIC of 52.5% capped at 35.0% under v6.23 standard. Forward 5-10Y g of 7.5% supported by CrossLab recurring consumables/services expansion and share repurchases. Trades Above PAR (+43.5% vs PAR Value of $121.83) reflecting cyclical instrument recovery optimism."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.5719,
+    "current_multiple": 38.22,
+    "par_multiple": 26.65,
+    "par_value": 121.83,
+    "percent_vs_par": 0.4345,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0057,
+    "expected_irr_5y": 0.0059,
+    "market_implied_cap": 21.5,
+    "moat_runway_margin": -6.5,
+    "market_implied_growth": 0.2487,
+    "growth_margin_of_safety": -0.1737
+  },
+  "health_checks": {
+    "net_debt_years": 2.34,
+    "net_debt_ok": true,
+    "interest_coverage": 13.21,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.95,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

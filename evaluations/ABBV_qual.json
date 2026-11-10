@@ -1,0 +1,30 @@
+{
+  "id": "ABBV",
+  "ticker": "ABBV",
+  "universe": "us",
+  "company": "AbbVie",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Moat source: Deep proprietary biologic patent portfolios, advanced manufacturing know-how, and commercial sales infrastructure in immunology (Skyrizi, Rinvoq) and oncology (Venclexta, Elahere). Proof & Breakdown: 5-year median GAAP ROIC is 16.04%, but historical compounding was fundamentally driven by 10-15% annual price hikes on Humira behind 130+ defensive patent thickets. When US exclusivity expired in 2023, pricing power dissolved; Humira revenues collapsed ~50% in 2024 and another 49.5% in 2025 (to $4.54B) under interchangeable biosimilar competition with 50-80% price discounts. Primary erosion threats: Inability to take real price increases above inflation due to mandatory Inflation Reduction Act (IRA) inflation rebates, statutory Medicare price negotiation (Imbruvica selected with a 38% price cut effective 2026), aggressive PBM gross-to-net rebate concessions, and upcoming patent expirations (Venclexta ~2030, Skyrizi/Rinvoq ~2033-2035).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Historical compounding was an artifact of aggressive 10-15% annual price increases on Humira protected by a 130+ patent thicket. The loss of US exclusivity in 2023 caused Humira revenue to collapse ~50% in 2024 and 49.5% in 2025 (to $4.54B) as interchangeable biosimilars took market share at 50-80% discounts. While next-generation immunology assets Skyrizi ($17.56B in 2025) and Rinvoq ($8.30B) have scaled rapidly to offset Humira, AbbVie possesses no structural pricing power >= inflation across the cycle: the Inflation Reduction Act imposes mandatory 100% government rebates on price hikes exceeding CPI-U, Medicare price negotiations imposed a 38% cut on Imbruvica for 2026, and PBM rebate walls force flat-to-declining net realized prices. Furthermore, the business is burdened by $64.5B in long-term debt (15.3x Net Income) from defensive M&A (Allergan, ImmunoGen, Cerevel), negative stockholders' equity (-$3.27B), and finite patent runways on Skyrizi/Rinvoq expiring in 2033-2035.",
+    "evidence": "Financial & Operating Track Record: Total revenue reached $61.16B in FY2025 (+8.6% YoY) as Skyrizi ($17.56B, +50%) and Rinvoq ($8.30B, +39%) offset the collapse of Humira ($4.54B, -49.5%). 5-year median GAAP ROIC is 16.04% (FY21: 18.6%, FY22: 20.8%, FY23: 15.5%, FY24: 11.9%, FY25: 16.0%), but tangible ROIC is distorted by -$3.27B in stockholders' equity and $88.3B in goodwill and intangibles. Pricing Power & Patent Vulnerability: Humira demonstrated that AbbVie's pricing power is strictly an artifact of statutory patent exclusivity rather than an enduring economic moat. The IRA legally caps Medicare price hikes at CPI-U and forced a 38% price reduction on Imbruvica taking effect in 2026. Balance Sheet & Capital Allocation: Long-term debt stands at $64.5B against $5.2B cash (Net Debt ~$59.3B). Net Debt to TTM Net Income ($4.23B) is 15.3x, violating the <=4.0x fortress threshold. Negative book equity (-$3.27B) reflects $63B debt-funded Allergan acquisition. Subsequent M&A highlights reinvestment treadmill risk: $8.7B Cerevel acquisition suffered a major Phase 2 clinical failure on lead schizophrenia drug emraclidine in November 2024, resulting in a $3.5B impairment charge in early 2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ENG.ES",
+  "ticker": "ENG",
+  "universe": "eu",
+  "company": "Enagás",
+  "country": "Spain",
+  "sector": "Utilities",
+  "sub_industry": "Gas Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory network monopoly over ~11,000 km of high-pressure gas transport pipelines and 4 LNG regasification terminals in Spain. Insurmountable physical and concession barriers to entry, with inflation-indexed regulated asset base returns set by CNMC.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Spanish gas TSO and LNG terminal operator faces Tier 4 regulated utility baseline (5-10Y) and severe Macrotrend 4 (Energy Transition) terminal headwinds from EU natural gas phase-out, declining domestic gas demand, and unproven hydrogen backbone returns.",
+    "evidence": "Spanish CNMC caps allowed financial return on RAB at 5.44% (2021-2026) and 6.46% (2027-2032), capping historical 4-year median GAAP ROIC at 8.15%. FY24 net loss of -€299.3M due to Tallgrass Energy impairment, recovering to €339.1M in FY25. With long-term gas volume decline under EU decarbonization targets, competitive advantage period is capped at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AUTO.GB",
+  "ticker": "AUTO",
+  "universe": "eu",
+  "company": "Auto Trader",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable UK automotive marketplace toll booth with overwhelming two-sided network effects (>75% UK consumer automotive engagement time). UK car dealers cannot operate without listing inventory on Auto Trader. Proven pricing power with consistent mid-single-digit ARPA expansion exceeding inflation and ~65-70% operating margins. Low threat of erosion from horizontal classifieds or US entrants.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant UK automotive marketplace toll booth with overwhelming two-sided network effects and indispensable dealer forecourt integration. Proven pricing power with consistent ARPA expansion and ~65-70% operating margins. Balance sheet fortress with net debt repayable in six months. [5-10Y g: dealer forecourt stock 0.5% + core ARPA price tiering 4.5% + Deal Builder product mix 1.0% - cloud/tech reinvestment 0.5% + net share repurchases 2.5%]",
+    "evidence": "5-year median GAAP ROIC of 48.4% with operating ROIC >100%. Free cash flow conversion exceeds 100% of Net Income (£290.2M Owner FCF in FY25). Operating profit margin consistently ~63-70%. Interest coverage exceeds 80x with net debt/EBITDA <0.4x. Steady share buybacks reducing share count."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "TYL",
+  "ticker": "TYL",
+  "universe": "us",
+  "company": "Tyler Technologies",
+  "price": 420.56,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the v6.23 M&A Goodwill Neutralization Principle and negative tangible capital standard, correcting for $2.3B in NIC acquisition goodwill that optically depresses GAAP ROIC to 6.07% vs underlying tangible ROIC >70% in mission-critical public sector software. Fortress balance sheet with $1,015.4M cash vs $599.7M LT debt ($415.7M net cash), stellar 71.6x EBIT interest coverage, and exceptional 159.6% Owner FCF conversion ($620M+ FCF on $16M capex). Forward 5-10Y through-the-cycle Owner EPS growth of 10.5% anchored by 6.0% on-premise to SaaS cloud flips (generating 1.8x-2.0x ARR uplift) and new agency wins across 13,000+ local governments (98% gross retention), 2.5% contractual annual price escalators, 1.5% payment transaction processing volume, and 1.0% operating leverage, minus 0.5% equity dilution. At $420.56 (42.07x peak Owner EPS of $9.9960), TYL trades Above PAR (+12.3% vs fundamental PAR Value of $374.38), providing an 8.0% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.996,
+    "current_multiple": 42.07,
+    "par_multiple": 37.45,
+    "par_value": 374.38,
+    "percent_vs_par": 0.1233,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0796,
+    "market_implied_cap": 22.5,
+    "moat_runway_margin": -2.5,
+    "market_implied_growth": 0.1743,
+    "growth_margin_of_safety": -0.0693
+  },
+  "health_checks": {
+    "net_debt_years": 1.9,
+    "net_debt_ok": true,
+    "interest_coverage": 71.61,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.5961,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

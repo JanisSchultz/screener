@@ -1,0 +1,30 @@
+{
+  "id": "BAX",
+  "ticker": "BAX",
+  "universe": "us",
+  "company": "Baxter International",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Infusion pump installed bases (Spectrum, Novum IQ) provide modest switching costs via proprietary tubing sets and drug libraries, but the moat is structurally weak. Large-volume IV solutions, basic hospital consumables, and generic injectables are commoditized price-taker categories sold under multi-year fixed-price GPO contracts (Vizient, Premier). 10-year median GAAP ROIC is ~6.5%, well below the 12% hurdle. Massive value destruction from the $12.4B debt-financed Hillrom acquisition ($3B+ goodwill impairment) and persistent FDA recalls confirm lack of pricing power and moat erosion against Becton Dickinson and ICU Medical.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & No Pricing Power, REJECT). 10-year median GAAP ROIC of ~6.5% falls far short of the 12% hurdle. Infusion pump switching costs are overwhelmed by commoditized IV solutions and hospital consumables sold under fixed-price GPO contracts that lack inflation pass-through power. Value-destructive capital allocation in the $12.4B debt-funded Hillrom acquisition and subsequent $3B+ impairment cement sub-hurdle returns.",
+    "evidence": "10-year median GAAP ROIC is 6.5%. ROIC collapsed across 2020-2025 (2020: 9.0%, 2021: 3.5%, 2022: -8.5%, 2023: 2.3%, 2024: ~0.0%, 2025: -1.4%) driven by persistent margin compression from plastic/resin/freight inflation, FDA infusion pump recalls (Spectrum/Novum IQ), and a $3.1B goodwill impairment on Hillrom. Management acquired Hillrom in late 2021 for $12.4B enterprise value funded with >$11B of debt at cyclical peak, triggering severe leverage that forced the divestiture of its Kidney Care unit (Vantive) to Carlyle in January 2025 for $3.8B ($3.3B net cash) to pay down debt. Fragile supply chain highlighted by Hurricane Helene flooding its Marion, NC plant in late 2024, halting 60% of US IV fluid production."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

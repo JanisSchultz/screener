@@ -1,0 +1,30 @@
+{
+  "id": "MOWI.NO",
+  "ticker": "MOWI",
+  "universe": "eu",
+  "company": "Mowi",
+  "country": "Norway",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity price taker lacking pricing power; cyclical spot salmon prices, biological shocks, and Norwegian resource-rent taxation.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need, REJECT). World's largest salmon farmer is a structural commodity price-taker whose margins swing violently with global spot salmon prices, ocean biological shocks (sea lice, algae, water temperature), and severe Norwegian resource-rent tax levies (~47% marginal rate).",
+    "evidence": "Harvested record 559,000 tonnes in 2025 with revenue of €5.73B, yet Operational EBIT dropped from €829M (2024) to €727M (2025) purely due to falling global spot salmon prices (-12% industry volume surge). Upstream operations are subject to biological volatility and Norway's 25% resource-rent aquaculture tax (layered on top of 22% corporate tax), permanently compressing net returns on capital across the cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

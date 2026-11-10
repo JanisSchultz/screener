@@ -1,0 +1,30 @@
+{
+  "id": "TTE.FR",
+  "ticker": "TTE",
+  "universe": "eu",
+  "company": "TotalEnergies",
+  "country": "France",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lowest-cost upstream portfolio among Western supermajors and tier-1 global LNG trading scale, but fundamentally a commodity price-taker. Returns on capital fluctuate with Brent crude, natural gas, and refining margins; lacks independent pricing power to raise prices above inflation during industry downcycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Recognized as the most disciplined and lowest-cost operator among the European energy supermajors (upstream production costs <$5/boe, industry-leading peer ROACE of ~12.6% in 2025). However, TotalEnergies remains an unhedged commodity price-taker across crude oil, natural gas, and refining crack spreads. Long-term returns are dictated by global commodity swings, falling to low single digits during energy slumps (2020 ROIC <3%), with zero ability to raise prices independently of world benchmark prices.",
+    "evidence": "TotalEnergies operates across Exploration & Production (advantaged low-cost assets in the Middle East, West Africa, and Americas), Integrated LNG (world #3 LNG portfolio with major projects in Qatar, US, and Mozambique), Integrated Power (expanding solar, wind, and flexible gas generation), and Refining & Chemicals. Under CEO Patrick Pouyanné, capital allocation has been superior to peers, maintaining a low cash breakeven (<$25/boe). However, its economic returns remain tied to volatile commodity markets: 10-year average ROIC/ROACE hovers around 11-12%, experiencing severe cyclical valleys (2016 ROIC ~5-7%, 2020 GAAP net loss of -$7.2B with ROIC collapsing to ~2.5%) counterbalanced by 2022 windfall spikes (~19-24% ROIC). TotalEnergies sells standardized commodity units into open global auctions and cannot raise prices above inflation when market balances shift into oversupply."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

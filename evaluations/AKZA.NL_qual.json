@@ -1,0 +1,30 @@
+{
+  "id": "AKZA.NL",
+  "ticker": "AKZA",
+  "universe": "eu",
+  "company": "Akzo Nobel",
+  "country": "Netherlands",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong consumer paint brands (Dulux) and industrial coatings formulations, but compromised by lack of captive store distribution. Distribution through independent DIY big-box retailers exposes Akzo to channel bargaining power and raw material inflation (TiO2), resulting in a 5-year median GAAP ROIC of 10.95% (< 12%).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Akzo Nobel possesses recognizable decorative paint brands (Dulux, Sikkens), but lacks the captive direct-to-pro store network that underpins Sherwin-Williams' pricing power. Sells primarily through third-party DIY retailers and wholesale merchants, leaving margins exposed to raw material cycles (titanium dioxide) and resulting in a sub-hurdle 5-year median GAAP ROIC of 10.95%.",
+    "evidence": "5-year median GAAP ROIC of 10.95% (2022: 7.6%, 2023: 10.3%, 2024: 11.6%, 2025: 12.3%) fails the 12% hurdle. Exposure to European retail channels and fierce competition from PPG and Axalta limits immediate pricing pass-through during input cost surges."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

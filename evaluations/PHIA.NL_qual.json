@@ -1,0 +1,30 @@
+{
+  "id": "PHIA.NL",
+  "ticker": "PHIA",
+  "universe": "eu",
+  "company": "Philips",
+  "country": "Netherlands",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed imaging base and patient monitoring contracts, but catastrophic Respironics foam recall, FDA/DOJ consent decree halting US sleep device production, massive multi-billion-dollar legal liabilities, and market share losses to ResMed, Siemens, and GE have shattered pricing power and depressed ROIC below hurdles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). The catastrophic Respironics recall and 2024 DOJ/FDA consent decree eliminated US sleep device sales, inflicted over $2.5B in legal settlements, and permanently ceded market share to ResMed. Multi-cycle GAAP ROIC is deeply sub-hurdle (<6%) amid fierce imaging competition from Siemens and GE.",
+    "evidence": "Multi-year GAAP ROIC severely depressed by multi-billion-dollar recall provisions, litigation payouts ($1.08B personal injury, $500M economic loss, €288M DOJ settlement), and goodwill write-downs. High-margin sleep and respiratory revenue was largely halted in the US under federal court order, while medical imaging equipment faces fierce tender discounting against Siemens Healthineers and GE HealthCare."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

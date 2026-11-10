@@ -1,0 +1,30 @@
+{
+  "id": "CLX",
+  "ticker": "CLX",
+  "universe": "us",
+  "company": "The Clorox Company",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Category leadership and Lindy brand recognition across core staples (Clorox bleach, Pine-Sol, Glad, Kingsford, Hidden Valley). Multi-cycle median ROIC of 18.2% and gross margin recovery back to ~44.5% demonstrate brand pricing power, but commoditized chemical formulations face persistent private-label substitution pressure (Great Value, Kirkland).",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Mature, heavily US-centric household staples portfolio with flat-to-negative multi-year organic volume growth and severe private-label substitutability across core categories (bleach, trash bags, cat litter). Under Macrotrend 5 (Structural Inflation & Cost of Capital), persistent commodity input cost volatility (resin, chlor-alkali) and elevated refinancing costs on ~$4.0B of debt collide with private-label price ceilings, capping the competitive advantage period below the 15-year hurdle.",
+    "evidence": "10-year median ROIC ~18.2%. Revenue has compounded at <2% CAGR over FY15-FY25, with organic volume frequently flat to negative. Gross margin collapsed from 45% to ~36% during the 2021-2023 inflationary shock, requiring aggressive pricing actions to recover to 44.5%, which triggered volume elasticity and trade-downs to store brands. Over 80% of sales remain concentrated in the saturated domestic US market, leaving limited runway for value-accretive capital deployment. Failed M&A diversification in vitamins/supplements (RenewLife/VMS) resulted in major goodwill write-downs and subsequent divestment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

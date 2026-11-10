@@ -1,0 +1,30 @@
+{
+  "id": "ATRL.CA",
+  "ticker": "ATRL",
+  "universe": "ca",
+  "company": "AtkinsRealis Group",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Professional engineering services and infrastructure consulting operate in highly fragmented, competitive bidding markets with limited pricing power over wage inflation. Multi-cycle ROIC has historically ranged from 1% to 8%, falling far short of the 12% Gate 3b hurdle despite proprietary CANDU nuclear reactor servicing.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Professional engineering consulting and infrastructure services operate in competitive bidding environments with sub-hurdle multi-cycle ROIC (<8% vs 12% requirement) and limited pricing power over consultant wage inflation.",
+    "evidence": "AtkinsRealis (formerly SNC-Lavalin) has historical multi-cycle ROIC well below 12% (1-8% range) due to legacy lump-sum turnkey project write-downs and competitive bidding on engineering consulting contracts. Even with the pivot to higher-margin nuclear and consulting services, capital returns fail the Munger moat standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

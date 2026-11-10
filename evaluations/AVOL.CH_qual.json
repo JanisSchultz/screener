@@ -1,0 +1,30 @@
+{
+  "id": "AVOL.CH",
+  "ticker": "AVOL",
+  "universe": "eu",
+  "company": "Avolta",
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary travel-retail and airport luxury concessions easily forgone by travelers; captive airport landlords extract economic rents through concession fees.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Discretionary Travel Retail, REJECT). Airport duty-free shopping and concessions represent discretionary, non-essential impulse purchases that travelers readily forgo during economic slumps. Airport authorities act as monopoly landlords capturing surplus via concession tenders.",
+    "evidence": "Avolta (Dufry + Autogrill) relies on international airline passenger footfall. Concession agreements feature high minimum guaranteed fees (MAGs) paid to airport operators, while sales mix is heavily tilted toward deferrable duty-free luxury, cosmetics, alcohol, and tobacco."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

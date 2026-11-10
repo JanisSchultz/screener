@@ -1,0 +1,43 @@
+{
+  "id": "LATO B.SE",
+  "ticker": "LATO B",
+  "universe": "eu",
+  "company": "Latour",
+  "price": 234.6,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.1831,
+    "fin_note": "Operating ROIC normalized to 18.31% neutralizing SEK 19.2B in goodwill and acquired intangibles from serial bolt-on acquisitions. Forward 5-10Y compound growth of 9.0% is driven by organic volume in mission-critical niche components (4.0%), pricing power across high-switching-cost industrial fasteners/HVAC (2.5%), and disciplined M&A execution (2.5%). Current price trades at a 13.7% premium above PAR value due to historical 5Y multiple expansion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.9196,
+    "current_multiple": 23.65,
+    "par_multiple": 20.8,
+    "par_value": 206.3,
+    "percent_vs_par": 0.1372,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0196,
+    "expected_irr_5y": 0.0819,
+    "market_implied_cap": 17.1,
+    "moat_runway_margin": -2.1,
+    "market_implied_growth": 0.1328,
+    "growth_margin_of_safety": -0.0428
+  },
+  "health_checks": {
+    "net_debt_years": 1.93,
+    "net_debt_ok": true,
+    "interest_coverage": 11.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.54,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

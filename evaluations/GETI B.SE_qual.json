@@ -1,0 +1,30 @@
+{
+  "id": "GETI B.SE",
+  "ticker": "GETI B",
+  "universe": "eu",
+  "company": "Getinge",
+  "country": "Sweden",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Severe hospital GPO tender price competition and chronic manufacturing quality failures (decade-long FDA consent decree, 2024 FDA transition advisory, CE mark suspensions) have crushed pricing power, driven customer defection, and impaired returns on capital.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Chronic quality management failures—including a decade-long FDA consent decree, repeated Class I recalls, a 2024 FDA advisory urging hospitals to replace Getinge cardiac/ECMO devices, and CE mark suspensions—demonstrate severe structural moat erosion and inability to sustain economic pricing power.",
+    "evidence": "Sub-hurdle multi-cycle ROIC and continuous remediation charges. Over 3,000 Medical Device Reports tied to Cardiosave IABP prompted an unprecedented FDA letter advising clinicians to migrate to alternative suppliers, eroding Getinge's market share in cardiopulmonary and acute care hardware and culminating in the planned 2025 wind-down of its traditional heart-lung machine line."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

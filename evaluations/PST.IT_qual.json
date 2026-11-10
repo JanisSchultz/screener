@@ -1,0 +1,30 @@
+{
+  "id": "PST.IT",
+  "ticker": "PST",
+  "universe": "eu",
+  "company": "Poste Italiane",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Diversified Financial Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable nationwide physical distribution network (~12,800 post offices) and universal postal mandate, combined with high switching costs for BancoPosta savings and Poste Vita insurance. Erosion risks include secular decline in letter mail volumes and digital financial disintermediation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Multi-year Owner FCF conversion averages just 47% due to heavy logistics capex and working capital volatility. More critically, BancoPosta and Poste Vita balance sheets have extreme asset concentration in Italian sovereign debt (BTPs), exposing equity to sovereign spread volatility.",
+    "evidence": "4-year median GAAP ROIC is 21.3%, but Owner FCF conversion is weak at 47.1% (FY22 FCF was negative -\u20ac630M; FY25 capex of \u20ac1.18B against \u20ac2.21B NI). BancoPosta holds over \u20ac500B of customer financial assets heavily invested in Italian government bonds, creating high sovereign duration and spread risk incompatible with Gate 6 peace-of-mind balance sheet standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

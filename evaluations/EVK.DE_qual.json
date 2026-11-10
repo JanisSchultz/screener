@@ -1,0 +1,30 @@
+{
+  "id": "EVK.DE",
+  "ticker": "EVK",
+  "universe": "eu",
+  "company": "Evonik",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialty additives and process know-how face commoditization and volatile cyclical demand. 5-year average ROIC of ~5.0% and operating margins of 3-7% fail to demonstrate structural moat or economic pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Evonik's 5-year average ROIC of ~5.0% and operating margins of 3-7% demonstrate a severe lack of pricing power and structural moat. The portfolio suffers from commodity cyclicality in animal nutrition (methionine) and high European energy costs.",
+    "evidence": "Evonik reports a 5-year average ROIC of ~5.0% and operating margins fluctuating between -2.3% and 7.3%, failing the 12% GAAP ROIC threshold. Inability to consistently pass through raw material and energy cost inflation highlights commodity price-taker dynamics in major product lines."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

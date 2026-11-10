@@ -1,0 +1,30 @@
+{
+  "id": "SYENS.BE",
+  "ticker": "SYENS",
+  "universe": "eu",
+  "company": "Syensqo",
+  "country": "Belgium",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialty polymer formulation know-how and aerospace composite qualifications provide customer stickiness, but the business fails the empirical proof-of-moat test: ROCE is sub-hurdle at 8.1-8.8%, organic EBITDA fell 12% in FY2025, and fluoropolymers face persistent, multi-billion-dollar PFAS regulatory bans and environmental litigation liabilities.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). Capital efficiency fails hurdle with ROCE of 8.1-8.8% and EBITDA contracting 12% in FY2025. Fluoropolymer portfolio carries material terminal PFAS regulatory liabilities and environmental remediation costs.",
+    "evidence": "Spun off from Solvay in Dec 2023, Syensqo generated ROCE of only 8.1-8.8% in 2024-2025, well below the 12% ROIC requirement. FY2025 net sales fell 3% to €6.14B and underlying EBITDA dropped 12% organically to €1.21B due to volume declines across Specialty Polymers and Technology Solutions. Ongoing PFAS environmental liabilities include a €167M NJDEP settlement and severe EU regulatory phase-out risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

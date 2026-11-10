@@ -1,0 +1,30 @@
+{
+  "id": "WDAY",
+  "ticker": "WDAY",
+  "universe": "us",
+  "company": "Workday, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Core cloud HCM and Financial Management suite acts as enterprise system of record with substantial multi-year switching costs, but chronic stock-based compensation (~17-20% of revenue) severely depresses GAAP operating profit and economic returns, failing the 12% GAAP ROIC proof-of-moat hurdle (5-year median is 1.84%, tangible ROIC 2.88%). Seat-based pricing power is constrained as enterprise buyers resist per-seat expansion.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Proof of moat fails: persistent heavy stock-based compensation ($1.63B in FY2025, ~17% of sales) absorbs the vast majority of operating cash flow, keeping 5-year median GAAP ROIC deeply sub-hurdle at 1.84% (tangible ROIC 2.88%), far below the 12% threshold. Furthermore, Workday's per-seat pricing model faces structural headwinds from AI agentic automation reducing enterprise corporate headcounts (Macrotrend #1). Downstream gates bypassed per strict waterfall.",
+    "evidence": "5-year median GAAP ROIC is 1.84% (FY2021: -2.95%, FY2022: -3.41%, FY2023: 1.84%, FY2024: 3.50%, FY2025: 5.01%), failing the 12% hurdle; tangible ROIC (FY2025 peak 8.96%) also fails the 15% operating hurdle. While non-GAAP operating margin is promoted at ~26-30%, GAAP operating margin is only 7.5% due to $1,626M in SBC on $9,552M revenue. Enterprise switching costs in core payroll/HCM provide high customer retention, but economic value is captured by employees rather than shareholders, and per-seat licensing limits secular pricing leverage against AI workforce contraction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

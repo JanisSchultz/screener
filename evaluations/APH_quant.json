@@ -1,0 +1,43 @@
+{
+  "id": "APH",
+  "ticker": "APH",
+  "universe": "us",
+  "company": "Amphenol Corporation",
+  "price": 74.59,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": null,
+    "fin_note": "Premier decentralized interconnect compounder capitalizing on generative AI compute architectures, hyperscaler server density, automotive electrification, and defense modernization. Peak Owner EPS of $1.6714 (FY2025) is genuine and verified by 93.3% FCF conversion ($4.32B Owner FCF on $4.27B Net Income). Tangible Operating ROIC of 71.82% reflects asset-light assembly, hitting the 35.0% maximum PAR ROIC cap. 5-10Y secular growth g_implied is set to 10.5% (5.5% organic volume/AI content + 1.0% pricing + 3.5% bolt-on M&A + 0.5% net share buybacks), supported by successful integration of CommScope CCS and historical 27.2% Owner EPS CAGR. Balance sheet is conservative with $11.1B cash vs $14.6B debt (net debt $3.4B, ~1.8x EBITDA) and 15.96x interest coverage. Current multiple of 44.63x trades Above PAR (+37.9% premium vs $54.10 PAR value), yielding a 5Y expected IRR of 4.1%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.6714,
+    "current_multiple": 44.63,
+    "par_multiple": 32.37,
+    "par_value": 54.1,
+    "percent_vs_par": 0.3788,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0044,
+    "expected_irr_5y": 0.0406,
+    "market_implied_cap": 27.6,
+    "moat_runway_margin": -7.6,
+    "market_implied_growth": 0.2889,
+    "growth_margin_of_safety": -0.1839
+  },
+  "health_checks": {
+    "net_debt_years": 3.41,
+    "net_debt_ok": true,
+    "interest_coverage": 15.96,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9331,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

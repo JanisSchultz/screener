@@ -1,0 +1,30 @@
+{
+  "id": "PKG",
+  "ticker": "PKG",
+  "universe": "us",
+  "company": "Packaging Corporation of America",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Best-in-class operator in North American containerboard with ~90% vertical integration, but containerboard and corrugated packaging are semi-commodity industrial products. Pricing follows published industry benchmark indices (RISI) and capacity cycles rather than unilateral economic pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype = None, 3b = N, REJECT). Best-in-class operational execution and high integration in containerboard cannot overcome the cyclical, semi-commodity reality of corrugated packaging. Realized box prices track industry benchmark indices and capacity cycles rather than unilateral pricing power.",
+    "evidence": "10-year median ROIC is ~12.8%, with FY2025 ROIC temporarily dipping to 10.5-11.5% post-Greif containerboard acquisition ($1.8B cash). Operating margins average 12-14%, but net income exhibits cyclical swings ($738M in 2018 -> $461M in 2020 -> $1,022M in 2022 peak -> $765M in 2023 -> $805M in 2024). Packaging accounts for >90% of revenue. High capital intensity and industry capacity waves prevent enduring pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

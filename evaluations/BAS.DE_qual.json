@@ -1,0 +1,30 @@
+{
+  "id": "BAS.DE",
+  "ticker": "BAS",
+  "universe": "eu",
+  "company": "BASF",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Diversified Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive Verbund site integration yields internal energy and byproduct efficiency, but basic and intermediate chemicals face intense global commodity competition from low-cost US shale gas and severe Chinese overcapacity, leaving BASF without pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & commodity price-taker, REJECT). BASF's Verbund manufacturing integration cannot overcome structural commodity cyclicality, European energy cost disadvantages, and Chinese petrochemical overcapacity. Multi-cycle ROCE/ROIC averages 5-7%, well below the 12% hurdle.",
+    "evidence": "5-year ROCE ranged from 1.7% to 13.7%, with 2023 at 4.5% and 2024 at 5.1% (median ~5.1%). Upstream petrochemicals and intermediates are price-takers facing structural margin compression from low-cost Middle Eastern/US feedstocks and domestic Chinese self-sufficiency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

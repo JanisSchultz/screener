@@ -1,0 +1,30 @@
+{
+  "id": "AM.FR",
+  "ticker": "AM",
+  "universe": "eu",
+  "company": "Dassault Aviation",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sovereign defense aircraft design know-how (Rafale fighter architecture) and long-term fleet maintenance create monopolistic pricing power on French defense contracts.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Premier French combat aircraft manufacturer with world-class engineering, but rejected at Gate 6 due to violent working capital volatility (+€4.9B in 2022 to -€1.2B in 2023) driven by lumpy sovereign export downpayments and cyclical Falcon business jet exposure.",
+    "evidence": "Exceptional engineering culture and fortress net cash (€8.4B available cash in 2024), but free cash flow fluctuates wildly (+€4.9B in FY22 vs -€1.2B in FY23) due to milestone advances on export Rafale contracts and discretionary Falcon business jet delivery cycles, failing steady cash conversion standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

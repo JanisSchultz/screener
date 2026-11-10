@@ -1,0 +1,30 @@
+{
+  "id": "ACKB.BE",
+  "ticker": "ACKB",
+  "universe": "eu",
+  "company": "Ackermans & van Haaren",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Delen Private Bank (~50% of holding earnings) charges recurring % AUM fees that compound with financial wealth with near-zero client churn. DEME holds an entrenched global oligopoly in specialized marine dredging and offshore wind turbine installation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash Conversion & Fortress Balance Sheet, REJECT). While Delen Private Bank is an elite wealth compounder, AvH fails Gate 6 due to structural portfolio exposure to capital-intensive cyclical marine contracting (DEME), commercial fractional-reserve banking (Bank Van Breda), and real estate, resulting in heavy fleet capex and consolidated LT debt/OE exceeding 4.0x.",
+    "evidence": "Consolidated LT debt of €2.80B against €592.5M TTM net income results in LT debt / NI of 4.7x. DEME requires heavy recurring vessel capex (€469M capex in FY25, €514M in FY22), and Bank Van Breda operates as a fractional-reserve commercial lender. Although the parent company is net cash and Delen generates exceptional cash conversion, the consolidated look-through capital structure fails Munger's fortress balance sheet standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

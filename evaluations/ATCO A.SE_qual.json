@@ -1,0 +1,30 @@
+{
+  "id": "ATCO A.SE",
+  "ticker": "ATCO A",
+  "universe": "eu",
+  "company": "Atlas Copco",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical 'fourth utility' (compressed air) and indispensable vacuum tech for semiconductor fabs. Equipment costs <2% of plant capex but failure halts production. Vast proprietary installed base drives annuity-like service revenue with demonstrated pricing power >= inflation and 25%+ ROIC.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Sweden's premier industrial compounder: dominant global compressor and semiconductor vacuum toll booth with ~27% ROIC and fortress balance sheet. [5-10Y g: compressor volume 3.5% + semiconductor vacuum systems 3.5% + aftermarket service annuity 2.0% + pricing/mix 1.0% + net buyback 0.5%]",
+    "evidence": "Multi-year median GAAP ROIC of 26.8% and tangible ROIC >70%. Multi-year Owner FCF conversion of 89%+. Edwards vacuum systems hold an indispensable duopoly position in semiconductor EUV lithography, while Compressor Technique commands global leadership. Net debt is less than 0.3x Net Income with 39x interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

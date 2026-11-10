@@ -1,0 +1,30 @@
+{
+  "id": "EN.FR",
+  "ticker": "EN",
+  "universe": "eu",
+  "company": "Bouygues",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Diversified French conglomerate spanning civil engineering/roadbuilding (Colas), energy services (Equans), mobile/fixed telecom (Bouygues Telecom), and linear media (TF1). Structural consolidated ROIC of 3-5% and operating margins of ~4% fail the >=12% hurdle across cycles due to competitive public bidding in construction and telecom quad-play price competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Proof of Moat & Pricing Power, ROIC 3-5% << 12% hurdle, REJECT). French conglomerate combining thin-margin competitive contracting, capital-heavy telecom, and legacy linear television. Operating margins of 3.5-4.5% reflect competitive tender dynamics lacking durable pricing power.",
+    "evidence": "Consolidated ROIC has averaged 3.0%-5.0% between 2020 and 2024, far below the 12% cost-of-capital threshold. Operating margins remain modest at 3.5%-4.5%. Acquisition of Equans in 2022 added €6.5B+ to invested capital in low-margin multi-technical installation without establishing pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

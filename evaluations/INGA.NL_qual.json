@@ -1,0 +1,30 @@
+{
+  "id": "INGA.NL",
+  "ticker": "INGA",
+  "universe": "eu",
+  "company": "ING Groep",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Digital-first pan-European banking scale enables a superior cost-to-income ratio compared to traditional branch networks, but core products remain commoditized and rate-cyclical.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Branchless digital banking cost advantage is eroding as incumbent peers close branches and neo-banks (Revolut, N26, Bunq) commoditize digital deposits. Group earnings are over 75% dependent on rate-sensitive Net Interest Income (NII), failing the 15-year secular resilience test.",
+    "evidence": "ING Groep serves ~38M retail and wholesale customers across the Benelux and Germany. However, revenue is structurally dominated by net interest margins which collapsed during the ECB's negative interest rate era (2014-2022). With zero-cost digital deposit switching and aggressive neo-bank competition, competitive advantage persistence cannot be underwritten for 15+ years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "NOD.NO",
+  "ticker": "NOD",
+  "universe": "eu",
+  "company": "Nordic Semiconductor",
+  "country": "Norway",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched developer mindshare and proprietary nRF Connect SDK create software switching costs in Bluetooth Low Energy (BLE), but component pricing power against Tier-1 OEMs is limited.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Global leader in ultra-low power Bluetooth Low Energy (BLE) chips with sticky developer ecosystem, but short customer product cycles, intense price competition from Chinese fabless rivals (Espressif, Telink), and high exposure to cyclical consumer IoT gadget demand cap the competitive advantage runway at 5 years.",
+    "evidence": "Revenues contracted from $777M in 2022 to $511M in 2024 with operating losses (-$44M in 2024) highlighting violent consumer IoT inventory destocking cycles. While historical median ROIC exceeded 15% during the 2021-2022 boom, long-term capital persistence is curtailed by continuous silicon commoditization and foundry cost inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

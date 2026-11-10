@@ -1,0 +1,30 @@
+{
+  "id": "BAMNB.NL",
+  "ticker": "BAMNB",
+  "universe": "eu",
+  "company": "BAM",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "General construction contracting with no defensible structural moat. Competitive tendering, low switching costs, and fixed-price contract risks keep operating margins paper-thin (2-3%) and multi-cycle returns on capital volatile.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype 'None' & ROIC < 12%, REJECT). Dutch civil and commercial construction contractor operates on razor-thin operating margins (2-3%) in commoditized competitive bidding with fixed-price project overruns.",
+    "evidence": "Adjusted EBITDA margins of ~5% translate to GAAP operating margins of 2-3%. Historical earnings have suffered periodic severe contract write-downs and restructuring losses, with multi-cycle ROIC far below the 12% threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "INVH",
+  "ticker": "INVH",
+  "universe": "us",
+  "company": "Invitation Homes",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Single-Family Residential REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operating density across dispersed homes provides localized maintenance efficiencies, but fails to generate economic returns above capital cost. 5-year median ROIC of ~4.5-4.8% is far below the 12% hurdle. Extreme competition from millions of mom-and-pop landlords and apartments caps pricing power, while the FTC's 2024 $48M deceptive junk-fee settlement highlights regulatory resistance to fee-based extraction.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 4.8%, REJECT). Single-family rental REIT model is asset-heavy with structural ROIC of ~4.5-4.8%, far below the 12% threshold. Local market operating density cannot overcome high tenant substitution from fragmented mom-and-pop rentals, while the 2024 FTC deceptive pricing/junk-fee settlement underscores severe regulatory friction on institutional landlord fee practices.",
+    "evidence": "5-year median ROIC is 4.8% (4.2%-4.7% in FY2024-2025), well below the 12% hurdle. Total debt stands at ~$8.0-8.5B with Debt/EBITDA of ~5.8-6.1x. In September 2024, the FTC finalized a $48M settlement against Invitation Homes for deceptive undisclosed junk fees (mandatory smart home/utility fees) and unfair eviction/deposit withholding practices, demonstrating that pricing power is constrained and subject to intense federal and local regulatory backlash."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

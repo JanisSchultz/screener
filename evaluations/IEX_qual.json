@@ -1,0 +1,30 @@
+{
+  "id": "IEX",
+  "ticker": "IEX",
+  "universe": "us",
+  "company": "IDEX Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Engineered niche positive displacement pumps, flow meters, and precision fluidics designed into OEM platforms with high switching costs and regulatory re-qualification barriers, delivering stable 44-45% gross margins and 20%+ operating margins.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Tier 3 Capital Goods baseline of 10-15 years haircut due to cyclical industrial machinery end-market exposure and reliance on serial debt-funded M&A rollups facing higher cost of capital headwinds (Macrotrend 5). Lacks the 15+ year predictable competitive runway across its 40+ disparate decentralized operating units.",
+    "evidence": "10-year average GAAP ROIC of 12.4%, with gross margins stable at 44-45% and operating margins at 20-22%. Free cash flow conversion consistently exceeds 100% ($603M in FY2024, $617M in FY2025). Operates in three segments: Health & Science Technologies, Fluid & Metering Technologies, and Fire & Safety/Diversified Products. While individual niche components have high switching costs, the serial acquisition roll-up strategy (e.g. Mott Corp for ~$1B) has expanded goodwill/intangibles to over 50% of assets and total debt to ~$1.8B, compressing recent ROIC to ~8.2-8.3% and failing the 15-year secular persistence threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

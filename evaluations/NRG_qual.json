@@ -1,0 +1,30 @@
+{
+  "id": "NRG",
+  "ticker": "NRG",
+  "universe": "us",
+  "company": "NRG Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Independent Power Producers & Energy Traders",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Integrated retail electricity supplier (Reliant, Direct Energy) coupled with Vivint smart home services and generation fleet. Retail electricity is an undifferentiated commodity subject to intense price competition and high customer churn across deregulated retail markets. 5-year median ROIC of 8.5% fails the 12% capital efficiency hurdle, and aggressive M&A has strained return on capital.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.5% < 12% hurdle, REJECT). Retail electricity and smart home provider operating in highly competitive, low-switching-barrier deregulated markets. 5-year median ROIC of 8.5% falls short of the 12% hurdle, and capital allocation has been burdened by the debt-financed $5.2B Vivint acquisition.",
+    "evidence": "10-year median GAAP ROIC is 8.5% (5-year average ~7.4%), below the 12% quality threshold. Retail power customers in Texas and deregulated Northeast markets face zero friction to switch providers via online aggregator portals. Debt-funded $5.2B acquisition of Vivint in 2023 increased balance sheet leverage without delivering structural pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

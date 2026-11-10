@@ -1,0 +1,30 @@
+{
+  "id": "TELIA.SE",
+  "ticker": "TELIA",
+  "universe": "eu",
+  "company": "Telia",
+  "country": "Sweden",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Incumbent Nordic network infrastructure and spectrum holdings are unreplicable, but wholesale open-access obligations and intense retail competition prevent earning excess returns, resulting in chronic 4-6% ROIC and real pricing erosion.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 4-6% << 12%, negative real pricing power, REJECT). Swedish telecom incumbent suffers from chronic sub-hurdle capital returns, value-destructive media acquisitions (Bonnier Broadcasting/TV4), and inability to price above inflation amidst heavy 5G/fiber capital expenditure.",
+    "evidence": "Reported ROCE has languished between 4.8% and 6.9% across 2021-2024, with GAAP ROIC averaging ~4-6%, well below the 12% hurdle. High leverage with net debt/EBITDA >2.4x and repeated restructuring charges. Free cash flow generation is heavily absorbed by dividend commitments and infrastructure reinvestment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

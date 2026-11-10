@@ -1,0 +1,30 @@
+{
+  "id": "GIL.CA",
+  "ticker": "GIL",
+  "universe": "ca",
+  "company": "Gildan Activewear",
+  "country": "Canada",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Wholesale printwear blanks and promotional apparel are discretionary corporate marketing and event purchases easily deferred during economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (promotional apparel and wholesale printwear blanks are discretionary, deferrable corporate marketing and event expenses lacking Lindy consumer pricing power).",
+    "evidence": "Gildan derives the vast majority of its revenue from wholesale undecorated blanks sold into the screenprint, promotional merchandise, and corporate event channel. These purchases represent discretionary marketing and event expenditures that are rapidly curtailed during economic slowdowns. The business lacks consumer pricing power, is exposed to commodity cotton volatility, and recently suffered major governance instability ($76.8M proxy fight in 2024 resulting in complete board replacement)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

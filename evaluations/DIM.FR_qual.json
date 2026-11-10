@@ -1,0 +1,30 @@
+{
+  "id": "DIM.FR",
+  "ticker": "DIM",
+  "universe": "eu",
+  "company": "Sartorius Stedim Biotech",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Regulatory CMC spec-in lock-in across ~75%+ recurring consumables supports pricing power and ~28-30% normalized EBITDA margins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management & Capital Allocation = 0, REJECT). Strong FDA/EMA-validated single-use bioprocessing moat ruined by top-of-cycle debt-funded M&A (€2.4B Polyplus) and subsequent dilutive €1.2B equity raise to pay down debt, reflecting poor capital allocation discipline by parent-controlled management.",
+    "evidence": "Sartorius Stedim Biotech holds an enviable competitive moat in single-use bioprocessing consumables with high regulatory switching costs. However, management severely destroyed shareholder value in 2023 by acquiring Polyplus for €2.4B near the peak of the cell-therapy bubble, pushing leverage to ~4.5x EBITDA. In February 2024, management was forced to execute a dilutive €1.2B capital increase at depressed share prices to pay down parent-company debt, demonstrating egregious capital allocation and disregard for per-share compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "gate_5",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

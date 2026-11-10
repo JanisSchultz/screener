@@ -1,0 +1,43 @@
+{
+  "id": "LAGR B.SE",
+  "ticker": "LAGR B",
+  "universe": "eu",
+  "company": "Lagercrantz",
+  "price": 226.2,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing SEK 7,075M acquired goodwill/intangibles (tangible ROIC ~185%). Peak Owner EPS confirmed at SEK 7.6251 (FY2025) with continuous peak-to-peak compounding. Forward 5-10Y g_implied anchored at 10.0% per qualitative drivers (3.0% organic volume + 2.0% niche pricing + 4.5% bolt-on M&A + 0.5% buybacks), below historical 17.2% CAGR to reflect large-cap fade. Strong balance sheet with net debt repayable in 2.0 years of Owner Earnings and 9.8x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 7.6251,
+    "current_multiple": 29.67,
+    "par_multiple": 28.43,
+    "par_value": 216.81,
+    "percent_vs_par": 0.0433,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0097,
+    "expected_irr_5y": 0.1004,
+    "market_implied_cap": 15.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.1185,
+    "growth_margin_of_safety": -0.0185
+  },
+  "health_checks": {
+    "net_debt_years": 2.0,
+    "net_debt_ok": true,
+    "interest_coverage": 9.8,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.18,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "XYZ",
+  "ticker": "XYZ",
+  "universe": "us",
+  "company": "Block, Inc.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Square merchant lock-in via integrated POS hardware, payroll, and inventory software, alongside Cash App's 56M+ active P2P network, provides switching barriers and two-sided transaction tolls. However, empirical proof of moat fails decisively: 5-year median GAAP ROIC is ~3.5% and 10-year median ROIC is 5.2%, far below the 12% threshold. Primary erosion threats include intense competition from vertical POS specialists (Toast, Clover), bank-backed P2P networks (Zelle), payment commoditization by Apple/Google, credit risk in Afterpay BNPL and Cash App Borrow, and past capital misallocation into speculative non-core ventures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & contested pricing power, REJECT). Block's dual ecosystems (Square and Cash App) exhibit structural switching costs and network effects, but fail empirical proof of moat. 10-year historical median ROIC is 5.2% and 5-year median GAAP ROIC is ~3.5%, severely depressed by the dilutive $29B Afterpay acquisition, chronic share-based compensation, and fierce pricing competition in merchant acquiring (Toast, Clover, Shopify) and consumer fintech (Zelle, PayPal, Apple Pay).",
+    "evidence": "Historical Capital Efficiency: Block's 10-year median ROIC stands at 5.2%, with 5-year median GAAP ROIC between 2.0% and 4.4% (2020: ~2.5%, 2021: ~1.5%, 2022: -0.2%, 2023: 1.4%, 2024: 4.4%, 2025: ~7.4%), consistently failing the 12% hurdle. Invested capital ballooned permanently following the $29B all-stock acquisition of Afterpay in 2022, creating massive goodwill and intangible amortization drag. Segment Breakdown: Consolidated FY2024 revenue reached $24.1B ($8.96B gross profit), expanding to $24.2B ($10.4B gross profit) in FY2025. Bitcoin trading represents >40% of top-line revenue but delivers <5% of gross profit due to passthrough economics. Cash App generates ~$5.5B+ gross profit (interchange, instant deposit, Cash App Borrow), while Square delivers ~$4.5B+ gross profit (POS processing, SaaS subscriptions). Pricing Power & Competitive Dynamics: Square take rates face persistent compression as volume shifts to larger SMBs, with aggressive price competition from Clover, Toast, and Shopify. Cash App's monetization relies on instant deposit tolls and subprime consumer lending, constrained by zero-cost bank rails (Zelle, FedNow) and regulatory scrutiny. Balance Sheet & Capital Allocation: Cash and marketable securities of ~$8.5B against long-term debt of ~$5.5B provide adequate liquidity, but shareholder compounding has been heavily diluted by historical SBC exceeding $1.0B annually, speculative ventures (Tidal for $300M, Bitcoin ASIC hardware Proto, Bitkey), and the cyclical credit risks embedded in Afterpay."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

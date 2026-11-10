@@ -1,0 +1,30 @@
+{
+  "id": "CRL",
+  "ticker": "CRL",
+  "universe": "us",
+  "company": "Charles River Laboratories International, Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High customer switching costs in Discovery and Safety Assessment (DSA) rooted in regulatory GLP compliance and historical laboratory animal model (RMS) colonies. However, proof of moat fails decisively: 10-year median GAAP ROIC is ~9.8% (<12% hurdle) and 5-year average ROIC has compressed to 6-8%. Capital efficiency is further impaired by large non-cash goodwill and intangible impairments ($215M in 2024, $376M in 2025 in Biologics Solutions) reflecting overpayment on acquisitions. Primary secular erosion threats include the legislative and technological shift away from animal models under the FDA Modernization Act 2.0 (in silico and organ-on-a-chip alternatives) and severe chronic NHP supply chain and regulatory vulnerability.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & ROIC < 12%, REJECT). Charles River Laboratories generates a 10-year median GAAP ROIC of only ~9.8% (and 5-year average ROIC of 6–8%), falling well short of the 12% hurdle. Operating returns have been further dragged down by consecutive goodwill and intangible impairments ($215M in 2024, $376M in 2025 in Biologics and Cell Solutions) demonstrating poor M&A capital discipline. The business faces structural terminal friction from the FDA Modernization Act 2.0 promoting non-animal testing alternatives and chronic NHP supply chain headwinds.",
+    "evidence": "10-year median GAAP ROIC is ~9.8% against the 12% threshold; recent 5-year average ROIC compressed to 5.7%–8.5%. In FY2024 and FY2025, CRL recognized massive non-cash goodwill and intangible asset impairment charges totaling over $590M in its Manufacturing Solutions / Biologics Solutions and Cell Solutions reporting units. While free cash flow remains positive ($501.6M in 2024, $518.5M in 2025), net leverage expanded to nearly 3.0x EBITDA before moderating to ~2.3x by late 2026. Preclinical demand exhibits high cyclicality tied to early-stage biopharma venture funding cycles, limiting pricing power during downturns. Long-term moats in research animal models face legal and regulatory scrutiny (DOJ/USFWS investigation into Cambodian NHP imports) and legislative substitution pressure from the FDA Modernization Act 2.0 authorizing alternative non-animal testing methods."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

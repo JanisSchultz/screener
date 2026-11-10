@@ -1,0 +1,30 @@
+{
+  "id": "GBF.DE",
+  "ticker": "GBF",
+  "universe": "eu",
+  "company": "Bilfinger",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Industrial plant maintenance, modifications, and engineering services for process industries (chemicals, pharma, energy). Despite sticky on-site plant presence, maintenance services are subject to periodic competitive re-tendering by industrial clients. Operating EBITA margins of 3-5% and multi-year ROIC history below the 12% threshold reflect absence of a structural moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype 'None' & Proof of Moat, REJECT). German industrial maintenance provider operating on thin 3-5% EBITA margins with multi-year historical returns on capital below the 12% hurdle. Contracts face ongoing competitive re-bidding from industrial service peers.",
+    "evidence": "Multi-year EBITA margins have ranged from 2.4% (2022) to 5.1% (2024). 5-year median ROIC sits well below the 12% hurdle (ROCE was 3.2% in 2022 and only briefly touched 12.1% in 2023 following restructuring and tax asset recognitions). Lacks structural pricing power or an insurmountable competitive barrier."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ALC.CH",
+  "ticker": "ALC",
+  "universe": "eu",
+  "company": "Alcon",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Installed base of ophthalmic surgical consoles mandates high-margin closed-system consumables per surgery with steep surgeon switching costs, complemented by annual 3-5% price hikes and premium mix in contact lenses.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global eye care titan leading ophthalmic surgical equipment/consumables and contact lenses. Moat anchored in massive installed console base driving recurring single-use consumable sales and surgeon workflow lock-in. 16%+ operating ROIC and >100% FCF conversion overcome legacy Novartis spin-off intangibles. [5-10Y g: cataract/contact lens volume 4.5% + AT-IOL/SiHy price-mix 2.0% + operating leverage 1.5% + share buybacks 0.5%]",
+    "evidence": "Global #1 in ophthalmic surgical equipment and #2 in vision care. Operating ROIC of 16-18% comfortably clears hurdles (GAAP ROIC depressed by ~$18B legacy Novartis spin-off PPA intangibles). Multi-year Owner FCF conversion exceeds 100% ($1.45B Owner FCF vs $980M net income in 2025). Net debt of $2.6B is 2.7x net income, and interest coverage is 6.7x EBIT. Demographically insulated from all 5 macrotrends with aging populations driving cataract surgery volumes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

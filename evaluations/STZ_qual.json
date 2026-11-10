@@ -1,0 +1,30 @@
+{
+  "id": "STZ",
+  "ticker": "STZ",
+  "universe": "us",
+  "company": "Constellation Brands",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Distillers & Vintners",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Exclusive perpetual US commercial rights to Modelo Especial, Corona Extra, and Pacifico coupled with massive brewery scale in Mexico (Nava, Obregón, Veracruz) and deep US distributor lock-in. Beer segment yields ~38% operating margins. However, consolidated 10-year median GAAP ROIC is 10.5% (failing the 12% threshold) due to heavy brewery capex, $13B+ acquired intangibles, and catastrophic capital allocation (>$4B Canopy Growth write-off and $1.5B–$2.5B FY25 wine impairment). Primary threats include 100% Mexican brewing single-source exposure to US-Mexico tariffs, category volume maturation, and demographic/immigration headwinds.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite possessing a strong consumer brand intangible moat in imported Mexican beers (Modelo Especial, Corona Extra, Pacifico), Constellation fails the empirical proof-of-moat hurdle with a 10-year median GAAP ROIC of ~10.5%, persistently below the 12% threshold. Capital efficiency is structurally diluted by high capital intensity in Mexican brewery buildouts, massive acquired intangibles, and catastrophic capital misallocation (including the >$4B Canopy Growth write-off and $1.5B–$2.5B FY25 wine goodwill impairment). Downstream, the business also faces severe single-source foreign manufacturing exposure with 100% of beer brewed in Mexico subject to cross-border tariff risks.",
+    "evidence": "10-year median GAAP ROIC is 10.5%, failing the Gate 3b hurdle (>= 12%). While Constellation's beer division generates robust operating margins (~38%) and owns the #1 dollar-share US beer brand (Modelo Especial), consolidated returns on capital have been chronically dragged down by non-beer operations and value-destructive capital allocation. The company invested over $4B into Canopy Growth which resulted in near-total write-downs, followed by a $1.5B–$2.5B goodwill impairment on Wine & Spirits in FY25. Free cash flow conversion has historically been constrained by continuous multi-hundred-million-dollar Mexican brewery capital expenditures ($800M–$1B+/year). Long-term debt remains around $11B–$12B with leverage near 3.0x EBITDA. With 100% of beer production located in Mexico, the core earnings engine is directly vulnerable to US-Mexico trade policy, tariffs, and border friction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

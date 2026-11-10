@@ -1,0 +1,30 @@
+{
+  "id": "EQIX",
+  "ticker": "EQIX",
+  "universe": "us",
+  "company": "Equinix, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Data Center REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Interconnection-dense metro colocation facilities (260+ IBX data centers across 70+ metros) with over 460,000 cross-connects peering 10,000+ customers, cloud providers, and telecom networks. High switching costs and local physical clustering create strong barriers to replication. However, proof of moat fails: historical capital efficiency shows a 5-year median GAAP ROIC of 4.69% (10-year range 4.08%-6.03%) and operating tangible ROIC of 6.22%-10.66%, failing both the 12% GAAP ROIC and 15% tangible ROIC hurdles. Primary erosion threats include hyperscaler self-builds, severe utility grid interconnection and power rationing bottlenecks, soaring multi-megawatt facility development costs, and continuous debt refinancing at higher rates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC Hurdle & Proof of Moat, REJECT). While Equinix possesses irreplaceable carrier-neutral colocation infrastructure with demonstrated cross-connect pricing power, its extreme capital intensity results in sub-hurdle capital efficiency. 5-year median GAAP ROIC is 4.69% and tangible ROIC is 6.22%-10.66%, failing both the 12% GAAP and 15% tangible ROIC hurdles. Massive capital expenditures ($4.31B in FY2025) exceed operating cash flow ($3.91B), necessitating persistent debt issuance ($16.91B total debt) and equity dilution that permanently depresses per-share compounding.",
+    "evidence": "Equinix 10-year GAAP ROIC has consistently remained between 4.08% and 6.03% (5-year median 4.69%; FY2025 at 5.99%), while tangible ROIC has ranged from 6.22% to 10.66%, well below the required 12% GAAP and 15% tangible hurdles. In FY2025, revenue reached $9,217M (+5.4% YoY) with $8,739M in recurring revenue and an EBIT margin of 20.1% ($1,848M EBIT). However, total capital expenditure reached $4,311M (2.1x D&A of $2,066M), exceeding operating cash flow of $3,911M and resulting in negative free cash flow before financing. The company maintains $16,910M in long-term debt (including over $9.5B in green bonds) against $1,727M in cash, representing 9.1x net debt to net income ($1,350M). Despite strong cross-connect network density and regular 3-5% price increases, the asset-heavy REIT structure and relentless capital requirements fundamentally constrain economic returns on capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

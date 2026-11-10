@@ -1,0 +1,30 @@
+{
+  "id": "ED",
+  "ticker": "ED",
+  "universe": "us",
+  "company": "Consolidated Edison",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territory with unreplicable underground transmission and distribution network across New York City and Westchester County, operating under rate-base regulation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While ConEd possesses an unreplicable T&D network monopoly across New York City and Westchester County, its regulated capital structure is structurally leveraged (LT debt/NI of 12.6x, interest coverage 2.38x) with 5-year median ROIC capped at ~5.2%. Perpetual capex requirements make it structurally dependent on external debt capital markets (kindness of strangers).",
+    "evidence": "10-year GAAP ROIC median of 5.21% (2025: 4.89%, 2024: 5.21%, 2022: 4.79%). Long-term debt of $25.55B against TTM net income of $2.02B yields 12.6x debt-to-earnings leverage, far above the 4.0x maximum. EBIT of $2.94B covers interest of $1.23B at only 2.38x (below 5.0x threshold). Regulated rate-base ROE capped at 6-8% with continuous multi-billion capex requiring debt market access."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

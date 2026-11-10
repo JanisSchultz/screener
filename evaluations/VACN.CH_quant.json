@@ -1,0 +1,43 @@
+{
+  "id": "VACN.CH",
+  "ticker": "VACN",
+  "universe": "eu",
+  "company": "VAT Group",
+  "price": 516.6,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC (72.5%) normalized to 35.0% cap. Dominant 71% vacuum valve market share with mission-critical spec-in lock-in across semicap OEMs. 9.0% through-cycle growth supported by vacuum process step multiplication and AI fab buildouts. Pristine net cash."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.22,
+    "current_multiple": 50.54,
+    "par_multiple": 32.47,
+    "par_value": 331.89,
+    "percent_vs_par": 0.5565,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0121,
+    "expected_irr_5y": 0.0098,
+    "market_implied_cap": 31.1,
+    "moat_runway_margin": -11.1,
+    "market_implied_growth": 0.361,
+    "growth_margin_of_safety": -0.271
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 73.8,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.99,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

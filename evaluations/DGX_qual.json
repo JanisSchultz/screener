@@ -1,0 +1,30 @@
+{
+  "id": "DGX",
+  "ticker": "DGX",
+  "universe": "us",
+  "company": "Quest Diagnostics",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "National clinical laboratory duopoly with Labcorp. Moat protected by 2,200+ patient service centers, 6,000+ phlebotomists in physician offices, extensive route logistics density, and deep EHR/EMR workflow lock-in. However, pricing power is bifurcated: modest pricing power in proprietary esoteric/genomic diagnostics, but zero pricing power on routine testing facing statutory Medicare fee schedules (PAMA) and aggressive commercial payer fee compression.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Clinical laboratory duopolist with Labcorp faces structural, multi-decade reimbursement headwinds under Medicare PAMA statutory fee cuts and commercial payer reimbursement compression. Substantial exposure to wage inflation across phlebotomists, courier drivers, and lab technicians cannot be passed through into fee schedules (Macrotrends 2 and 5), capping competitive advantage period at 5 years.",
+    "evidence": "10-year median GAAP ROIC is 11.5% (normalized 7.8%-9.5% excluding 2020-2021 COVID testing windfall). While tangible ROIC exceeds 15% due to asset-light route density once mega-labs are established, total invested capital includes substantial goodwill from serial hospital lab acquisitions (e.g. LifeLabs, OhioHealth, Allina Health). Revenue reached ~$11.0B in 2025 with GAAP operating margins of ~14.5% and operating cash flow of ~$1.9B. Long-term debt sits at ~$4.5B-5.0B with net debt/EBITDA ~2.2x. The business model faces ongoing structural headwinds from CMS Clinical Laboratory Fee Schedule (CLFS) cuts under PAMA (~$120M annual drag when delays expire) and severe commercial payer resistance to price hikes, preventing the company from passing through persistent healthcare labor wage inflation (Macrotrends 2 and 5)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

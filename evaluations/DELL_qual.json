@@ -1,0 +1,30 @@
+{
+  "id": "DELL",
+  "ticker": "DELL",
+  "universe": "us",
+  "company": "Dell Technologies Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dell benefits from global supply chain scale, enterprise sales distribution, and fleet financing (DFS), but lacks a defensible economic moat. Operating margins are structurally low (5.6-6.1% in CSG; 11.7-12.8% in ISG; ~6.5-7.2% overall). Gross margins have compressed from ~24% to 20-22% with AI server expansion, demonstrating that Dell acts as an OEM system integrator unable to capture pricing power above inflation or markup high-cost Nvidia GPUs against competitors like Lenovo, HPE, Supermicro, and ODMs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing Power, REJECT). Dell operates as an x86 hardware assembler and OEM system integrator across commoditized PCs (CSG) and enterprise servers (ISG). While direct enterprise sales relationships and fleet deployment tools provide modest customer retention, Dell possesses zero pricing power above inflation. Consolidated operating margins remain thin at 6.5–7.2%, and booming AI server volumes dilute gross margins toward 20–22% because upstream semiconductor hegemons (Nvidia) extract the economic surplus while downstream enterprise clients face low switching costs to competing hardware vendors.",
+    "evidence": "FY25 revenue was $95.6B with GAAP operating income of $6.24B (6.5% margin), comprising CSG at $48.4B (6.1% operating margin) and ISG at $43.6B (12.8% operating margin, including $9.29B AI servers). FY26 revenue reached $113.5B (+19% YoY) with GAAP operating income of $8.15B (7.2% margin), driven by ISG surging 40% to $60.8B (11.7% operating margin; $24.7B AI servers shipped, $43B+ backlog) while CSG delivered $51.0B (5.6% operating margin). Despite surging AI server demand, corporate gross margins compressed to ~20-22% due to high-cost GPU pass-throughs. Total debt stood at ~$31.5B in FY26 against ~$11.5B in cash/investments (with significant non-recourse DFS financing debt). Negative tangible equity and thin mid-single-digit operating margins reflect a commoditized hardware assembler lacking pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

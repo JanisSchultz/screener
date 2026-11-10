@@ -1,0 +1,30 @@
+{
+  "id": "COV.FR",
+  "ticker": "COV",
+  "universe": "eu",
+  "company": "Covivio",
+  "country": "France",
+  "sector": "Real Estate",
+  "sub_industry": "Diversified REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-density urban assets in Paris, Milan, and major German cities have prime location value and planning constraints. However, consolidated capital efficiency is structurally constrained by commercial real estate cap rates, generating a 10-year ROIC of just 3.0-4.0% vs the 12% hurdle. Pricing power is actively suppressed by German residential rent regulations, post-COVID office space consolidation, and cyclical hospitality demand.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Diversified European REIT with 10-year historical ROIC of 3-4%, structurally incapable of meeting the 12% capital compounding hurdle. Lacks genuine pricing power: German residential units face statutory rent caps, while European offices face hybrid working occupancy pressures and higher debt refinancing rates.",
+    "evidence": "10-year historical ROIC hovers between 3.1% and 3.7%, constrained by asset-heavy real estate balance sheets and conservative net rental yields. German residential portfolio (~30% of assets) is subject to stringent German tenant protections and rent caps, capping rental escalation. European office portfolio faces tenant footprint compression, leading to portfolio revaluation write-downs in rising rate environments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

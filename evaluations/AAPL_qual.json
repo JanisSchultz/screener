@@ -1,0 +1,30 @@
+{
+  "id": "AAPL",
+  "ticker": "AAPL",
+  "universe": "us",
+  "company": "Apple Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive iOS ecosystem lock-in (iCloud, iMessage, cross-device continuity, Apple Watch, and Apple Pay) creates insurmountable consumer switching costs proved by >90% iPhone retention and multi-decade median ROIC of 76.9%. Pricing power proven by higher ASPs via Pro/Pro Max mix shift and recurring Services expansion (26%+ of total revenue at ~74% gross margins). Primary erosion risks include antitrust scrutiny on App Store take-rates (EU DMA) and potential renegotiation or capping of Google search revenue-share (TAC).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global consumer hardware and services ecosystem hegemon with >2.2B active installed devices and >90% iPhone customer retention. Pricing power demonstrated by Pro-tier mix escalation and high-margin Services growth (>$109B). Pristine balance sheet with LT debt / NI of 0.70x and >$100B in annual operating cash flow. Disruption runway set at CAP 15Y after a -5Y haircut for TSMC Taiwan foundry concentration and China assembly exposure, actively mitigated by diversification into India and TSMC Arizona. [5-10Y g: device & services volume 3.5% + ASP & pricing 1.0% + services mix 1.5% - regulatory TAC/DMA margin drag 0.5% + net share repurchases 2.5%]",
+    "evidence": "10-year GAAP ROIC median of 76.9% (reaching 98.1% in FY2025). Peak-to-peak Owner EPS compounded from $2.08 in FY2016 to $7.47 in FY2025 (16.4% CAGR). FCF conversion exceeds 92% across cycles. Gross margins expanded from 38% to >46% as high-margin Services reached $109.2B in FY2025. Long-term debt of $78.3B against EBIT of $133.1B and Net Income of $112.0B (debt/NI = 0.70x). More than $700B returned through disciplined share repurchases over the last decade, reducing share count by over 35%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

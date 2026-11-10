@@ -1,0 +1,30 @@
+{
+  "id": "PKO.PL",
+  "ticker": "PKO",
+  "universe": "eu",
+  "company": "PKO Bank Polski",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing/HQ country Poland is outside rule-of-law Western developed markets scope (in_market == 'N'); bank has ~29% Polish State Treasury ownership and is subject to state interference, statutory mortgage moratoria, and special bank asset taxes.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == 'N', REJECT). PKO Bank Polski is Poland's largest financial institution with dominant domestic retail share, but its listing country is outside approved Western developed markets (in_market == 'N'). The bank is ~29% state-owned and subject to repeated political interference, statutory mortgage payment holidays, and bank asset taxes.",
+    "evidence": "Poland's largest bank with ~18% share of loans and deposits and over 11 million customers. Direct Polish State Treasury stake of 29.43%. Impacted by government-mandated mortgage payment holidays ('wakacje kredytowe'), heavy banking taxes on assets, and multi-billion PLN provisions for foreign currency (CHF) mortgage legal risks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

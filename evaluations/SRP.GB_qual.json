@@ -1,0 +1,30 @@
+{
+  "id": "SRP.GB",
+  "ticker": "SRP",
+  "universe": "eu",
+  "company": "Serco Group plc",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Government outsourcing operations face sovereign monopsony buyers and competitive procurement tenders. Regular contract re-bidding and capped margins erode returns, keeping multi-year GAAP ROIC below the 12% hurdle (~9.5-10.2%) with operating margins constrained to ~5-6% and minimal pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). International public services outsourcing contractor facing sovereign monopsony buyers, periodic competitive re-tenders, razor-thin operating margins (~5.1-5.7%), and sub-hurdle multi-cycle GAAP ROIC (~9.5-10.2%) lacking structural pricing power.",
+    "evidence": "Serco's underlying operating margin hovers between 5.1% and 5.7% (FY2023-2025). 5-year median GAAP ROIC is ~9.5-10.2%, persistently below the 12% quality threshold. B2G contracts across defense, justice, and citizen services are subject to competitive rebidding, political scrutiny, and capped margin structures that prevent excess economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

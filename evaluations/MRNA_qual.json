@@ -1,0 +1,30 @@
+{
+  "id": "MRNA",
+  "ticker": "MRNA",
+  "universe": "us",
+  "company": "Moderna",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Reject \u2013 G1 Understandability). Outside the one-off COVID-19 pandemic windfall (2021\u20132022), Moderna lacks an established, multi-cycle profitable commercial economic engine. Revenue collapsed by ~90% from a $19.3B peak in FY22 to $1.94B in FY25, generating cumulative net losses exceeding $11B across FY23\u2013FY25 alongside continuous multi-billion cash burn. Its ongoing intrinsic valuation hinges on speculative, binary clinical trial readouts and regulatory clearances across an unproven developmental pipeline, placing it outside the Munger circle of competence.",
+    "evidence": "Multi-cycle financial collapse following the pandemic demand cliff: Revenues plummeted from $18.47B (FY21) and $19.26B (FY22) to $6.85B (FY23), $3.20B (FY24), and $1.94B (FY25). GAAP net losses totaled $(4.71B) in FY23, $(3.56B) in FY24, and $(2.82B) in FY25, with free cash flow of $(4.06B) in FY24 and $(2.07B) in FY25. Despite a seasonal Q3 2026 profit of $162M, full-year operations remain heavily loss-making. To support ongoing R&D cash burn, Moderna issued $2.6B in convertible debt in late 2026. Commercial products are currently limited to Spikevax and mRESVIA in saturated respiratory vaccine markets. The platform has not demonstrated self-sustaining commercial profitability outside government emergency pandemic procurement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

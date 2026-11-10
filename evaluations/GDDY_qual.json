@@ -1,0 +1,30 @@
+{
+  "id": "GDDY",
+  "ticker": "GDDY",
+  "universe": "us",
+  "company": "GoDaddy Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "GoDaddy holds the world's largest domain portfolio (~84M domains under management) protected by migration inertia, DNS friction, and SMB bundled presence tools. However, true pricing power is absent: price increases rely on low promotional intro teasers followed by steep 300%+ renewal rate spikes ($23+ vs $10 wholesale), which actively drive customer churn and volume contraction. Cloudflare Registrar's at-cost wholesale model and transparent alternatives like Namecheap create an unhedged terminal ceiling on domain markup economics.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat). While GoDaddy generates high reported accounting returns (5Y median GAAP ROIC of 18.3%), it fails the core Munger test of pricing power without customer volume or market share loss. Growth has been forced via aggressive renewal price hikes and bundled add-ons while paid customer volume contracted from 21.23M in 2021 to 20.42M in 2025, with market share in net new domain additions falling to ~13%. Cloudflare's at-cost wholesale registration disintermediates GoDaddy's retail markup model.",
+    "evidence": "FY2025 revenue reached $4,951.1M (+8.3% YoY) with EBIT of $1,127.3M (22.8% operating margin), GAAP Net Income of $875.0M, and Owner FCF of $1,257.7M (FCF conversion 1.10x). 5-year median GAAP ROIC is 18.32% (2021: 14.6%, 2022: 18.3%, 2023: 14.2%, 2024: 20.8%, 2025: 30.8%). Despite financial expansion, total paid customer count has persistently declined from 21.23M in 2021 to 20.70M in 2022, 21.03M in 2023, 20.51M in 2024, and 20.42M in 2025. ARPU rose from ~$170 to $240+ via aggressive renewal markups ($23+ for .com vs VeriSign wholesale ~$10.26) and commerce cross-selling. Cloudflare Registrar's zero-markup at-cost offering and Namecheap have captured developers and price-conscious SMBs, eroding GoDaddy's net new domain share. Long-term debt stands at $3,765.2M against cash of $1,080.9M (Net Debt $2,684.3M), with EBIT/interest coverage of 7.47x; stockholders' equity ($215.1M) was severely depleted by historical debt-funded buybacks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

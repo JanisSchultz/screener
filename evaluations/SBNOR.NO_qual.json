@@ -1,0 +1,30 @@
+{
+  "id": "SBNOR.NO",
+  "ticker": "SBNOR",
+  "universe": "eu",
+  "company": "Sparebanken Norge",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Created from the May 2025 merger of Sparebanken Vest and Sparebanken S\u00f8r to become Norway's largest independent savings bank. Entrenched deposit franchises across Western and Southern Norway with deep community roots, customer ownership certificate loyalty, and digital distribution via Bulder Bank. Normalized ROE / ROTE sustained between 12.7% and 16.0%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Commercial retail/SME banking exhibits high fade rates under the Mauboussin persistence framework (Tier 4, baseline CAP 5-10 years). While the merger of Sparebanken Vest and Sparebanken S\u00f8r creates significant regional scale in Western and Southern Norway, earnings remain cyclical, commoditized, and rate-sensitive. Integration of core banking systems, branch rationalization, and fierce competition from DNB and regional rivals limit competitive advantage longevity to 5 years.",
+    "evidence": "Reported headline ROE was 14.0% in Q2 2026 (16.0% adjusted for merger costs) and 12.7% in Q3 2026 (14.5% ROTE). Combined loan book spans retail residential mortgages (~75%) and regional SME/commercial lending (~25%). Digital challenger brand Bulder Bank drives retail customer acquisition but offers price-led commoditized mortgages with lower net interest margins. Geographic focus is confined to Norway with no international expansion potential."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ELE.ES",
+  "ticker": "ELE",
+  "universe": "eu",
+  "company": "Endesa",
+  "country": "Spain",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Statutory electricity distribution network concessions across Spain alongside a domestic nuclear and renewable fleet. Primary erosion threats include aggressive Spanish political and regulatory intervention (1.2% non-deductible turnover levy, retail gas caps, nuclear production tax hikes), capping returns well below cost of capital.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Spanish integrated utility controlled by Enel (70.1%). While electricity distribution networks are essential, historical ROIC is capped at 6-8%, and Endesa possesses zero pricing power against Spanish state intervention, evidenced by non-deductible 1.2% turnover windfall taxes, inframarginal power caps, and escalating nuclear fuel taxes.",
+    "evidence": "Consolidated ROIC remains range-bound at 6-8%. In 2023-2024, Spanish government levies on top-line revenue (1.2% turnover tax) directly suppressed operating cash flow and NOPAT regardless of profitability. Net debt stands at ~€9.5B. Generation mix faces structural nuclear phase-out costs by 2035 and high regulatory uncertainty in domestic tariff frameworks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

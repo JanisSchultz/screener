@@ -1,0 +1,30 @@
+{
+  "id": "BBY",
+  "ticker": "BBY",
+  "universe": "us",
+  "company": "Best Buy",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Computer & Electronics Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket consumer electronics and major appliances with lumpy, multi-year replacement cycles that consumers readily defer during tighter budgets, rather than essential daily staples or entrenched everyday habits.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected - G2 Essential Need). Best Buy's core categories—computing, home theater/TVs, gaming, mobile hardware, and appliances—are big-ticket consumer discretionary durables with highly deferrable replacement cycles, not non-deferrable necessities or high-frequency everyday habits. Post-pandemic normalization drove revenue down ~20% from its ~$52B FY22 peak to $41.5B in FY25 (-2.3% comps) before modest stabilization to $41.7B (+0.5% comps) in FY26 and +1.9%-3.0% FY27 comp guidance. Even beyond Gate 2, reselling commoditized third-party OEM hardware at ~4.2% GAAP operating margins against Amazon, Walmart, Costco, and OEM D2C channels fails the Munger quality bar.",
+    "evidence": "Gate 1 passes on transparent US big-box and omni-channel retail operations (bestbuy.com, Geek Squad, Best Buy Ads, Marketplace) with clear Form 10-K reporting. Gate 2 fails: over the past decade revenue fluctuated in a $39B-$51.8B band—peaking near $52B during pandemic stimulus before sliding to $41,528M in FY25 (ended Feb 1, 2025; enterprise comps -2.3%, Domestic -2.5%, International -0.5%; GAAP operating income $1,262M including Best Buy Health goodwill impairment, adj. ~$1,736M; GAAP net income $927M). In FY26 (ended Jan 31, 2026), revenue stabilized at $41,691M (+0.5% comps; Q4 FY26 comps -0.8% and 20.9% enterprise gross margin), with GAAP operating income ~$1,753M-$1,771M (~4.2% margin) and GAAP net income $1,069M; Domestic gross margin held roughly flat YoY only as services, Best Buy Ads, and Marketplace offset lower product margins. H1 FY27 showed cyclical replacement recovery (Q1 rev $8.94B, +2.0% comps; Q2 rev $9.78B, +4.1% comps, aided by ~$34M IEEPA tariff refund; FY27 guidance raised to $42.3B-$42.8B revenue, +1.9%-3.0% comps, $6.70-$6.90 adj. diluted EPS, ~$750M capex). Balance sheet is net cash (~$1.5B-$1.6B cash vs ~$1,176M total debt at FY26-end) and trailing ROIC sits ~24%-26% (10Y avg ROIC 14.2% in dossier), while management transitions from Corie Barry to Jason Bonfig amid tariff uncertainty and memory component cost inflation ('memory storm')."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "RI.FR",
+  "ticker": "RI",
+  "universe": "eu",
+  "company": "Pernod Ricard",
+  "price": 71.9,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap (tangible Operating ROIC 37.02%) neutralizing \u20ac18.0B of historical M&A goodwill/intangibles from Allied Domecq and Absolut which artificially depress 4Y median GAAP ROIC to 8.10%. Peak Owner EPS of \u20ac6.4521 (FY2024) confirmed as repeatable through-cycle earning power; FY2022 windfall spike was appropriately excluded. Forward 5-10Y g_implied set to 5.0% aligned with qualitative note (+1.0% global volume, +2.0% premium price, +1.5% aged mix, -0.5% China tariff drag, +1.0% buybacks/deleveraging). Balance sheet reflects \u20ac9.74B net debt (7.95y LT net debt/OE, 4.48x EBIT/interest), offset by pristine 81.1% FCF conversion. At \u20ac71.90 (11.14x), trades -45.07% Below PAR (\u20ac130.90 at 20.29x PAR multiple), pricing -8.72% growth (+13.72% growth margin) for an expected 5Y IRR of 25.14%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.4521,
+    "current_multiple": 11.14,
+    "par_multiple": 20.29,
+    "par_value": 130.9,
+    "percent_vs_par": -0.4507,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0677,
+    "expected_irr_5y": 0.2514,
+    "market_implied_cap": 8.2,
+    "moat_runway_margin": 6.8,
+    "market_implied_growth": -0.0872,
+    "growth_margin_of_safety": 0.1372
+  },
+  "health_checks": {
+    "net_debt_years": 7.95,
+    "net_debt_ok": false,
+    "interest_coverage": 4.48,
+    "interest_cov_ok": false,
+    "fcf_conversion": 0.81,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

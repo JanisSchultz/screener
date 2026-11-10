@@ -1,0 +1,30 @@
+{
+  "id": "RJF",
+  "ticker": "RJF",
+  "universe": "us",
+  "company": "Raymond James Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High advisor and client switching costs protect the wealth management franchise (retention >98%). AUM-based advisory wrap fees scale with asset appreciation and inflation. 5-year median ROIC is 13.8% and ROE has averaged 17-19% across market cycles. Primary erosion risk is regulatory scrutiny on cash-sweep deposit spreads and competition from independent RIA aggregators.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). High-quality wealth management platform with sticky advisor relationships and AUM-based toll fees, but fails Gate 6 because Raymond James Bank and TriState Capital Bank maintain $58.9B in deposits and $51.3B in commercial and residential loans on $12.5B of equity (7.0x balance sheet leverage). Reliance on fractional-reserve bank leverage, deposit retention, and cash-sweep net interest income violates the Munger peace-of-mind fortress balance sheet standard. [5-10Y g: advisor recruiting/AUM growth 5.0% + fee mix 1.0% + net share repurchases 1.5%]",
+    "evidence": "Founded in 1962 and public since 1983, Raymond James Financial generated ~$12.8B in consolidated net revenues in FY2025, driven by the Private Client Group (~$10.2B) and Bank segment (~$1.78B net revenues, $1.715B NII). ROE has been consistently high (17.7% in FY2025, 18.9% in FY2024, 17.7% in FY2023, 17.0% in FY2022, 18.4% in FY2021) with a 5-year median ROIC of 13.8%. The wealth management franchise benefits from ~8,800 financial advisors and >$1.4T in client assets with high retention. However, total assets stand at $88.2B supported by $58.9B in bank deposits and $51.3B in loans against $12.5B in equity (~7.0x leverage). Fractional-reserve banking operations and cash-sweep net interest income tie earnings to interest-rate spreads and credit/deposit risks, failing Gate 6 under the Munger criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MOS",
+  "ticker": "MOS",
+  "universe": "us",
+  "company": "Mosaic Company (The)",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Fertilizers & Agricultural Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Mosaic controls irreplaceable, capital-intensive upstream assets including low-cost Saskatchewan potash mining reserves (Esterhazy K3) and integrated Florida phosphate rock deposits and processing infrastructure, which carry immense regulatory and capital barriers to replicate. However, Mosaic is an undifferentiated commodity price-taker lacking pricing power over global fertilizer benchmarks (DAP/MAP and MOP). Empirically, 10-year average ROIC hovers around 5.5%–8.5% (failing the 12% hurdle), with severe margin volatility (gross margins swinging from 7% to 30%+) and negative FCF during troughs (-$455M in FY2025). The business faces ongoing erosion threats from global capacity expansions (Nutrien, BHP's Jansen project, Russian/Belarusian supply, OCP), input cost volatility (ammonia, sulfur), and zero customer switching costs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b ROIC & Pricing Power, REJECT). The Mosaic Company operates irreplaceable Saskatchewan potash mines and Florida phosphate reserves, but produces undifferentiated commodity crop nutrients with zero pricing power against global benchmark prices. Multi-cycle capital efficiency fails the Munger hurdle rate, with a 10-year average ROIC of ~5.5%–8.5% (well below the 12% threshold) and negative free cash flow during downcycles (-$455M in FY2025).",
+    "evidence": "1. Multi-Cycle Financial Track Record: Mosaic displays acute cyclicality tied to global commodity fertilizer pricing. 10-year average ROIC hovers around 5.5%–8.5%, falling to low single digits during down-cycles despite brief post-pandemic commodity spikes (which exceeded 30% in 2022). Gross margins fluctuate widely between 7% and 30%+ (rebounding to ~15.8% in FY2025 before softening back toward 7%–11%). Free cash flow is highly volatile and capital-intensive, swinging to negative -$455.6M in FY2025 due to sustaining and expansionary capex requirements during an earnings trough.\n2. Segment Breakdown: Consolidated FY2025 net revenue of ~$12.05B ($11.12B in FY2024) comprises Mosaic Fertilizantes (~$4.85B / 40%), Phosphates (~$3.88B / 32%), Potash (~$2.66B / 22%), and Corporate/Other (~$0.67B / 6%).\n3. Pricing Power & Lock-in: Zero pricing power and zero customer switching barriers. Farmers and agricultural distributors treat DAP, MAP, and MOP as interchangeable bulk commodities priced off global spot indices. Mosaic cannot pass through cost inflation or sustain excess returns when global capacity expands.\n4. Capital Allocation & Balance Sheet: Long-term debt stands between $3.4B and $4.8B (supported by an undrawn $2.5B revolving credit facility and extended maturities past 2028). While the balance sheet is managed to survive cyclical troughs, heavy reinvestment requirements and cyclical share buybacks fail to drive durable per-share intrinsic compounding across full cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

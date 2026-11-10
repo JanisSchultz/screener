@@ -1,0 +1,43 @@
+{
+  "id": "DGE.GB",
+  "ticker": "DGE",
+  "universe": "eu",
+  "company": "Diageo",
+  "price": 1897.0,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.3226,
+    "fin_note": "Calamity Tier evaluation. Operating ROIC maintained at 32.26% tangible return neutralizing $13.4B goodwill/intangibles. Peak Owner EPS (145.74p) retained as through-cycle earning capacity of aged maturation stocks following Latin America channel inventory normalization. Forward growth haircut to 5.0% reflecting post-calamity capital discipline, debt reduction focus (<2.5x net debt/EBITDA), and halting of buybacks."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 145.7377,
+    "current_multiple": 13.02,
+    "par_multiple": 19.67,
+    "par_value": 2866.17,
+    "percent_vs_par": -0.3381,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0325,
+    "expected_irr_5y": 0.1729,
+    "market_implied_cap": 9.9,
+    "moat_runway_margin": 5.1,
+    "market_implied_growth": -0.0498,
+    "growth_margin_of_safety": 0.0998
+  },
+  "health_checks": {
+    "net_debt_years": 6.31,
+    "net_debt_ok": false,
+    "interest_coverage": 3.39,
+    "interest_cov_ok": false,
+    "fcf_conversion": 0.95,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

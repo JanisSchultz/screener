@@ -1,0 +1,30 @@
+{
+  "id": "ENX.FR",
+  "ticker": "ENX",
+  "universe": "eu",
+  "company": "Euronext",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Pan-European exchange federation spanning 7 national markets (Paris, Amsterdam, Milan, Brussels, Lisbon, Dublin, Oslo) with unassailable domestic listing monopolies and deep single-order-book liquidity network effects. Expanded into internal clearing (Euronext Clearing) capturing post-trade tolls. Erosion risks include alternative multilateral trading venues and EU regulatory fee pressures.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Pan-European market infrastructure champion spanning 7 national bourses with single-order-book liquidity network effects. Flawless execution on Euronext Clearing internalization and Borsa Italiana integration. Low-capex toll booth with 114% FCF conversion and 22.5x interest coverage. [5-10Y g: trading/clearing volume 2.5% + proprietary data/SaaS 3.0% + tariff increases 1.0% + net share repurchases/deleveraging 1.0%]",
+    "evidence": "GAAP ROIC recovered from 8.1% post-Borsa Italiana acquisition to 13.2% in FY25 (tangible ROIC >100%). Owner FCF conversion averages 114%. Strong balance sheet with Net Debt / NI of ~2.1x and exceptional interest coverage of 22.5x (EBIT \u20ac985M vs \u20ac44M interest)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

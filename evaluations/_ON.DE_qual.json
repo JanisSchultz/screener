@@ -1,0 +1,30 @@
+{
+  "id": "CON.DE",
+  "ticker": "CON",
+  "universe": "eu",
+  "company": "Continental",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Parts & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While the Tires division earns healthy ROCE (>20%), the consolidated Automotive and ContiTech divisions suffer from severe OEM buyer power and low profitability. 5-year median group GAAP ROIC/ROCE is ~7-8%, well below the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Consolidated group returns fail the 12% hurdle (5-year median ROCE ~7-8%) due to the low-margin Automotive supplier division (ROCE near breakeven) facing relentless pricing pressure from automotive OEMs, despite the high-quality Tires division.",
+    "evidence": "Group ROCE was 8.9% in 2021, 3.7% in 2022, 8.9% in 2023, and 11.4% in 2024. Automotive division ROCE languished at -0.6% in 2023 and 2.6% in 2024. Intense OEM buyer power and annual price-down mandates eliminate pricing power at or above inflation for the automotive segment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "CRH",
+  "ticker": "CRH",
+  "universe": "us",
+  "company": "CRH plc",
+  "price": 94.81,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": null,
+    "fin_note": "Physical heavy-building capital structure maintained with $4.10B cash against $16.48B LT debt ($12.38B net debt; Net Debt / NI of 3.30x, Net Debt / EBITDA ~1.6x) and solid 6.72x interest coverage. Physical operating ROIC retained at 22.87% (roic_operating) per standard for heavy materials, reflecting high tangible asset intensity tempered by local aggregate quarry monopolies. Long-term through-the-cycle growth g of 7.0% supported by organic aggregate volume (1.5%), pricing above cost inflation (2.5%), high-margin infrastructure solutions and bolt-on acquisitions (2.0%), partially offset by energy/reinvestment drag (-0.5%), plus net share buybacks (1.5%). Multi-year Owner FCF conversion is healthy at 83.6%. At $94.81 (17.10x peak Owner EPS), CRH trades slightly Below PAR (-2.2% vs PAR Value of $96.92, PAR multiple 17.48x), generating a steady 9.05% 5Y expected IRR (including 1.58% dividend yield)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.5436,
+    "current_multiple": 17.1,
+    "par_multiple": 17.48,
+    "par_value": 96.92,
+    "percent_vs_par": -0.0218,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0158,
+    "expected_irr_5y": 0.0905,
+    "market_implied_cap": 14.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": 0.0643,
+    "growth_margin_of_safety": 0.0057
+  },
+  "health_checks": {
+    "net_debt_years": 4.39,
+    "net_debt_ok": false,
+    "interest_coverage": 6.72,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8364,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

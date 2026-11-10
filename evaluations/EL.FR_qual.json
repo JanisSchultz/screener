@@ -1,0 +1,30 @@
+{
+  "id": "EL.FR",
+  "ticker": "EL",
+  "universe": "eu",
+  "company": "EssilorLuxottica",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched end-to-end vertical integration from proprietary corrective lens technology (Varilux, Stellest) to iconic frame brands (Ray-Ban, Oakley) and 18,000+ retail stores sustains ~63% gross margins and immense consumer pricing power.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Colossus of the global optical industry with unrivaled vertical integration across corrective lenses (Varilux, Stellest), iconic frames (Ray-Ban, Oakley), and global retail. High pricing power sustains ~63% gross margins and 140%+ FCF conversion. [5-10Y g: vision-care & myopia volume 3.5% + progressive lens/smart-glasses price-mix 2.5% + margin expansion 1.0%]",
+    "evidence": "Tangible operating ROIC exceeds 85% (GAAP ROIC ~6% reflects €41B+ merger intangibles). Exceptional multi-year Owner FCF conversion of 140.8% (€3.49B FCF on €2.32B Net Income in 2025). Monopolistic vertical integration spanning 18,000 retail doors (LensCrafters, GrandVision), proprietary lens technology, and Ray-Ban Meta AI smart glasses. Net debt repayable in <2 years with 11.2x interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

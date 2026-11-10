@@ -1,0 +1,30 @@
+{
+  "id": "VTR",
+  "ticker": "VTR",
+  "universe": "us",
+  "company": "Ventas, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Health Care REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "On-campus medical office buildings possess localized tenant stickiness and health system integration, and senior housing clusters have local operating presence. However, empirical proof of moat fails decisively: 15-year GAAP ROIC has structurally fluctuated between 1.1% and 3.0% (far below the 12% threshold). Capital intensity, high recurring property maintenance capex, operator dependence, and local supply competition prevent economic rent extraction.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Proof of Moat, REJECT). Ventas is a major healthcare REIT with senior housing operating portfolio (SHOP), outpatient medical buildings, and life science properties. While demographic aging provides volume demand, the business model is highly capital-intensive and subject to operator risk and local market oversupply. 15-year historical GAAP ROIC has structurally ranged between 1.1% and 3.0%, falling far short of the 12% Munger moat threshold. This is a structural feature of capital-intensive real estate, not a temporary fixable calamity.",
+    "evidence": "15-year historical ROIC peaked at ~3.0% in 2016-2018 and compressed to 1.10%-1.82% in 2021-2024 (2.16% in 2025), consistently and dramatically below the 12% ROIC requirement for Gate 3b. Real estate assets require heavy ongoing capex and debt financing (Net Debt/EBITDA ~5.2x-6.0x, interest coverage ~1.0x-1.3x in 2024-2025). The asset class structurally lacks excess economic return compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AMUN.FR",
+  "ticker": "AMUN",
+  "universe": "eu",
+  "company": "Amundi",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Europe's largest asset manager (€2.24T AUM) with captive branch distribution agreements (Crédit Agricole, Société Générale) delivering massive distribution scale and a leading cost-to-income ratio (~52.5%). However, management fee margins are structurally low and face relentless substitution from passive ETFs, while institutional mandates negotiate fees downward.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Gate 3b = N, REJECT). Amundi is Europe's largest asset manager with low unit operating costs and captive bank distribution, but asset management products lack contractual pricing power. Average management fees on AUM are flat-to-eroding at ~17.7 bps under structural pressure from low-cost passive ETF providers (BlackRock, Vanguard). Cannot raise basis-point fees without triggering customer outflows, failing the Munger pricing power bar.",
+    "evidence": "Amundi manages €2,240bn AUM (2024) with net inflows of +€55bn and adjusted net income of €1.4bn, generating strong ROTE (>25%) on €4.5bn tangible equity. However, net management fee margins remained flat at 17.7 bps in 2023-2024, down from historical levels, as growth is heavily concentrated in low-margin passive/ETF products and treasury solutions. The business has zero ability to hike fee percentages above inflation to counteract cost pressures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

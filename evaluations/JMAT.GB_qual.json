@@ -1,0 +1,30 @@
+{
+  "id": "JMAT.GB",
+  "ticker": "JMAT",
+  "universe": "eu",
+  "company": "Johnson Matthey",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "PGM catalyst chemistry and refining know-how face cyclical automotive exposure and lack pricing power against major OEMs. Multi-year ROCE and ROIC languish at 6-8%, falling far short of the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Multi-year ROCE and GAAP ROIC of 6-8% fall well short of the 12% hurdle. The core Clean Air autocatalyst business faces structural terminal headwinds from vehicle electrification, compounded by past value-destructive capital allocation missteps in battery materials.",
+    "evidence": "5-year average ROCE and GAAP ROIC languish at 6-8%, failing the 12% threshold. Core operating profit remains heavily reliant on ICE emission catalysts undergoing secular decline, while historical abortive attempts to pivot into battery materials resulted in £300M+ in asset write-downs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

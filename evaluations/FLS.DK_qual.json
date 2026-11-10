@@ -1,0 +1,30 @@
+{
+  "id": "FLS.DK",
+  "ticker": "FLS",
+  "universe": "eu",
+  "company": "FLSmidth",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed base of minerals processing flowsheet equipment creates an aftermarket service anchor, but returns have been diluted by cyclical original equipment pricing, lumpiness, and historical EPC project execution, keeping multi-cycle GAAP ROIC well below 12%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). FLSmidth has successfully transformed into a pure-play mining flowsheet and aftermarket provider by divesting its cement division, but multi-cycle GAAP ROIC has averaged just 3-6% over the last five years, failing the 12% hurdle. Returns are not suppressed by a temporary calamity but by structural capital intensity, acquisition goodwill, and cyclical mining capex exposure.",
+    "evidence": "Consolidated GAAP ROIC ranged between 2.3% and 5.6% from 2022 to 2024, rising toward ~9% in 2025 on continuing operations post-cement carveout. Group EBIT margins averaged 5-9% prior to 2025. While mining service revenues account for over 60% of continuing sales, large past acquisitions (TK Mining for €325m) and competitive pressure in capital equipment have kept multi-cycle returns well below cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PG",
+  "ticker": "PG",
+  "universe": "us",
+  "company": "Procter & Gamble",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled scale economies across global distribution, $8B+ annual advertising, and retail shelf space dominance combined with Lindy brand equity across 20+ billion-dollar brands (Tide, Pampers, Gillette, Crest, Dawn). Proved pricing power through recent inflation cycles with cumulative price increases defending 23%+ ROIC and 23% operating margins. Primary threat is private-label trade-down during severe economic contractions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Archetypal global consumer staples fortress with 23% median ROIC, 97% Owner FCF conversion, and an AA-rated balance sheet with 1.4x debt/OE and 22.5x interest coverage. Structurally insulated across all 5 macrotrends with local-for-local manufacturing and essential daily use habits. Primary risk is private-label trade-down in severe economic recessions. [5-10Y g: organic volume 2.0% + price/mix 2.0% + margin expansion 0.5% + net share repurchases 1.5%]",
+    "evidence": "Procter & Gamble demonstrates multi-decade compounding excellence across 5 core segments: Fabric & Home Care (~35% of sales, Tide/Ariel/Dawn/Bounty), Baby, Feminine & Family Care (~25%, Pampers/Always/Charmin), Beauty (~18%, Head & Shoulders/Pantene/Olay), Health Care (~14%, Crest/Oral-B/Vicks), and Grooming (~8%, Gillette/Venus).\n1. Capital Efficiency: 10-year GAAP ROIC median of 23.2% (excluding non-cash 2018 Gillette impairment, ROIC has stayed between 22% and 26% every year since FY2019). Tangible operating ROIC exceeds 100%. Operating margin expanded from ~20% in 2016 to ~23% in 2025.\n2. Pricing Power: Demonstrated sustained pricing power through the 2021-2024 inflationary surge, achieving mid-single-digit price realization annually with minimal volume elasticity and defending gross margins above 50%.\n3. Cash Flow Conversion: FCF conversion over 10 years averages 95-100% of GAAP Net Income (FY2025 Owner FCF of $15.9B on $16.0B Net Income). Capex remains low and disciplined at 4-5% of net sales.\n4. Capital Allocation & Balance Sheet: Total debt of $22.8B against $9.9B cash (net debt of $12.9B is <0.8x Net Income). Interest coverage of 22.5x ($19.7B EBIT / $877M interest). 68-year track record of consecutive annual dividend increases with steady counter-cyclical share repurchases shrinking share count ~1-2% annually. Following the 2015-2016 Coty divestitures and restructuring into 6 focused business units, management has maintained exceptional capital discipline under Jon Moeller and successor Shailesh Jejurikar."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ACGL",
+  "ticker": "ACGL",
+  "universe": "us",
+  "company": "Arch Capital Group",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Arch possesses specialized underwriting discipline across Insurance, Reinsurance, and Mortgage pillars, supported by proprietary data, alternative capital platforms (ILS/Bellemeade), and an agile cycle-management culture that shrinks volume when pricing is inadequate. Empirical proof includes a 10Y median ROIC of ~13.2%, operating ROE >15-20%, and multi-decade combined ratios averaging ~85-88% (consistently outperforming the P&C industry by ~1000 bps). However, customer switching costs are modest as policies renew annually through commercial brokers, and long-term moat durability is challenged by commoditized capital influx and severe catastrophe volatility.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Arch is an elite cycle-managing specialty underwriter and reinsurer with superior combined ratios (~82-85% in FY24-25), the business model is inherently bound to the 3-5 year P&C underwriting cycle where high returns attract alternative reinsurance capital and soften pricing. Under the 5-Macrotrend framework, Arch faces structural, unhedged terminal exposure to increasing natural catastrophe severity/frequency from climate volatility (Macrotrend 4) and persistent casualty social inflation/litigation costs (Macrotrend 5). In accordance with the Rule of Secular Resilience, unhedged macro headwinds cap CAP at 5 years, far below the 15-year threshold required for multi-decade compounding.",
+    "evidence": "Arch Capital Group (ACGL) generated record results in FY24-25, reporting a combined ratio of 82.5% in 2024 and ~80.6% in Q4 2025, with after-tax operating income of $3.7B in 2025 and operating ROE >20%. Book value per share reached $65.11 at year-end 2025 (+22.6% YoY) after distributing a $1.9B ($5.00/share) special dividend in December 2024. Long-term median ROIC is 13.2% with investment float generating $1.6B in net investment income in 2025. Despite outstanding underwriting execution and disciplined capital rotation among its three segments (Insurance, Reinsurance, Mortgage), reinsurance capacity is fungible and cyclical softening follows hard-market peaks. Unhedged tail-risk from severe climate catastrophes and casualty social inflation prevents underwriting persistence beyond a 3-5 year horizon."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "NOKIA.FI",
+  "ticker": "NOKIA",
+  "universe": "eu",
+  "company": "Nokia",
+  "country": "Finland",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong cellular standard essential patent portfolio and optical network tech, but core Mobile Networks faces commoditized pricing, customer concentration, and intense competition from Ericsson.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). While Nokia possesses high-quality patent licensing and optical transport assets, its core Mobile Networks division suffers from chronic sub-12% multi-cycle ROIC, commoditized pricing pressure, and customer vulnerability as evidenced by losing AT&T's multi-billion dollar RAN contract to Ericsson.",
+    "evidence": "Multi-cycle GAAP ROIC consistently below the 12% threshold (hovering in mid-single digits). Continuous restructuring charges, price deflation in mobile RAN hardware, and customer concentration risk (loss of AT&T footprint)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "O",
+  "ticker": "O",
+  "universe": "us",
+  "company": "Realty Income Corporation",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Realty Income commands massive physical scale (>15,400 commercial properties) and an investment-grade balance sheet (A3/A-) that lowers borrowing costs relative to smaller net-lease competitors. However, empirical capital efficiency fails the Munger hurdle: 10-year median ROIC is 5.2%, and 2023-2025 ROIC hovered between 3.0% and 3.5%, far below the 12% standard. Contractual net-lease escalators (1.0-2.0% annual bumps or capped CPI) fail to provide real pricing power above inflation during inflationary spikes. Primary erosion threats include higher cost of capital compressing acquisition spreads, tenant credit distress in retail/pharmacy, and reliance on continuous external capital issuance.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While Realty Income possesses a massive, diversified net-lease portfolio (>15,400 properties) with high occupancy (98%+), it fails the empirical hurdle of capital compounding. 5-year median GAAP ROIC is 5.2% (recent 2023-2025 ROIC averaging 3.0-3.5%), far below the 12% Munger standard. Triple-net commercial leases feature fixed 1-2% annual rent escalators or capped CPI bumps that provide insufficient pricing power against high inflation. Growth is structurally dependent on continuous external debt and equity financing to acquire properties at thin spreads (150-170 bps over cost of capital), rather than internal compounding.",
+    "evidence": "10-year median ROIC of 5.2%; 2023 ROIC 3.1%, 2024 ROIC 3.3%, 2025 ROIC ~3.4-3.5%. Portfolio comprises 15,400+ commercial properties primarily leased to defensive retailers (grocery, convenience, dollar stores, quick-service dining). While occupancy remains high (~98.6%) and tenant diversification is robust, net lease economics inherently generate low single-digit returns on total invested capital. Initial acquisition cash yields of ~7.3% in FY2025 against debt-to-EBITDA of ~5.4x leave thin economic profit margins. Contractual escalators lag inflationary surges, failing Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

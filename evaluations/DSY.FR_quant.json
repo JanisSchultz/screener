@@ -1,0 +1,43 @@
+{
+  "id": "DSY.FR",
+  "ticker": "DSY",
+  "universe": "eu",
+  "company": "Dassault Systèmes",
+  "price": 25.95,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing €6.87B of acquired goodwill from Medidata and past software acquisitions (tangible operating return >100% vs GAAP ROIC 17.2%). Fortress balance sheet with €2.98B in net cash balances and 35.6x interest coverage. 5-10Y forward growth of 7.0% supported by core industrial 3DEXPERIENCE cloud subscription expansion (4.0%), mission-critical CAD pricing power (2.0%), and share repurchases (0.5%), offset by European automotive cyclical headwinds (-0.5%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.20,
+    "current_multiple": 21.71,
+    "par_multiple": 25.25,
+    "par_value": 30.19,
+    "percent_vs_par": -0.1405,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.01,
+    "expected_irr_5y": 0.1129,
+    "market_implied_cap": 12.9,
+    "moat_runway_margin": 2.1,
+    "market_implied_growth": 0.0168,
+    "growth_margin_of_safety": 0.0532
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 35.64,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.15,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

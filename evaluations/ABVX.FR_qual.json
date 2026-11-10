@@ -1,0 +1,30 @@
+{
+  "id": "ABVX.FR",
+  "ticker": "ABVX",
+  "universe": "eu",
+  "company": "Abivax",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Pre-commercial clinical biotech). Zero product revenue; enterprise value hinges entirely on binary clinical and regulatory trial outcomes for single lead drug candidate obefazimod in ulcerative colitis.",
+    "evidence": "Pre-revenue clinical-stage biotechnology company with net losses expanding from €182M in 2024 to €336M in 2025 as Phase 3 trials progress. Generates no commercial product sales, lacking an established economic engine or multi-cycle operating track record."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "FTNT",
+  "ticker": "FTNT",
+  "universe": "us",
+  "company": "Fortinet",
+  "price": 118.84,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.115,
+    "roic_est": 0.35,
+    "fin_note": "FY2025 Peak Owner EPS of $2.424 accepted without adjustment (33% historical peak-to-peak CAGR). Operating ROIC normalized to 35.0% cap under v6.23 Negative Tangible Capital Standard (unbounded return on negative working capital from upfront deferred service billings). 5-10Y through-the-cycle growth of 11.5% reflects 8.0% secure networking/Unified SASE volume, 1.5% subscription pricing power, 1.0% mix expansion, -0.5% capex/D&A drag, and 1.5% net share repurchases. Pristine balance sheet with $2.0B net cash ($2.50B cash vs $497M debt) and 132% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.424,
+    "current_multiple": 49.03,
+    "par_multiple": 39.95,
+    "par_value": 96.85,
+    "percent_vs_par": 0.227,
+    "status": "Above PAR",
+    "g_implied": 0.115,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0703,
+    "market_implied_cap": 18.4,
+    "moat_runway_margin": -3.4,
+    "market_implied_growth": 0.2511,
+    "growth_margin_of_safety": -0.1361
+  },
+  "health_checks": {
+    "net_debt_years": 0.27,
+    "net_debt_ok": true,
+    "interest_coverage": 103.72,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.3245,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

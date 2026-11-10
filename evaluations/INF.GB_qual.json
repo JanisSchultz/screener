@@ -1,0 +1,30 @@
+{
+  "id": "INF.GB",
+  "ticker": "INF",
+  "universe": "eu",
+  "company": "Informa",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Publishing (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Must-attend B2B exhibitions (World of Concrete, Arab Health) and high-impact academic journal subscriptions (Taylor & Francis) demonstrate steady 3-5% annual pricing power above inflation; tangible ROIC >15%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Informa's aggressive serial M&A rollup strategy (UBM, Ascential) has loaded the balance sheet with £2.7B+ in long-term debt and £10.4B in goodwill/intangibles, depressing FY25 interest coverage to an unsafe 0.6x (EBIT £94.6M vs interest £158.9M) and failing the peace-of-mind solvency standard.",
+    "evidence": "While Informa owns premier event franchises and Taylor & Francis journals, multi-year GAAP ROIC has been depressed to a 4.3% median by serial M&A. In FY25, reported net income plummeted to £11M and EBIT dropped to £94.6M against £158.9M in interest expense (0.6x coverage). Long-term debt of £2,727.6M exceeds 4x normalized net income, failing Gate 6 balance sheet criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

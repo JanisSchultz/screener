@@ -1,0 +1,30 @@
+{
+  "id": "HOT.DE",
+  "ticker": "HOT",
+  "universe": "eu",
+  "company": "Hochtief",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global construction management and engineering holding company controlling US general builder Turner and Australia's CIMIC, plus an economic interest in Abertis toll motorways. While Turner holds premier relationships in complex data centers, general construction contracting operates on thin 2.5-3.5% operating margins and ~2% net margins, lacking pricing power or multi-cycle ROIC >= 12%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Proof of Moat & Pricing Power, REJECT). International construction and engineering holding company dominated by low-margin general contracting (Turner, CIMIC). Consolidated net margins of ~2% and competitive project procurement prevent structural pricing power or multi-cycle ROIC >= 12%.",
+    "evidence": "On €33.3B of revenue in FY2024, operational net profit reached €625M (a 1.9% net margin). While Turner benefits from US data center and battery fab demand, general building and civil contracting operate under competitive tender dynamics that structurally limit returns on capital across economic cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

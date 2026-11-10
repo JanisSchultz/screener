@@ -1,0 +1,30 @@
+{
+  "id": "ANET",
+  "ticker": "ANET",
+  "universe": "us",
+  "company": "Arista Networks, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Arista's moat rests on its Extensible Operating System (EOS), a single modular Linux-based software image with a central state database (NetDB/SysDB) that delivers industry-leading network reliability, telemetry, and automated zero-downtime upgrades across cloud data centers. However, the moat faces severe structural limitations: (1) Extreme customer concentration with Cloud Titans (Microsoft at 26% and Meta at 16% of FY2025 revenue; combined 42%) grants buyers immense countervailing bargaining power. (2) Both Microsoft and Meta have developed proprietary disaggregated network operating software (Microsoft SONiC, Meta FBOSS under OCP) designed specifically to commoditize hardware and decouple from proprietary NOS lock-in. (3) Arista does not own the underlying merchant switching silicon, relying predominantly on Broadcom (Tomahawk/Jericho), leaving Arista sandwiched between a monopoly merchant chip supplier upstream and monopsonistic hyperscalers downstream.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). While Arista delivers exceptional engineering execution and high historical returns on capital (5-year median ROIC ~28%, gross margin ~64%), it fundamentally fails Charlie Munger's independent pricing power standard. Microsoft and Meta alone account for 42% of total revenue (26% and 16% respectively in FY2025). These hyperscale titans possess overwhelming countervailing monopsony power, actively sponsor open-source disaggregated network operating systems (Microsoft SONiC, Meta FBOSS/OCP) to commoditize switch hardware, and can divert multi-billion-dollar procurement volumes to whitebox ODMs. Arista cannot unilaterally raise prices at or above inflation across the cycle without risking catastrophic volume defection. Customer concentration is a permanent structural reality rather than a temporary fixable calamity, mandating an immediate Gate 3b reject under the sequential waterfall invariant.",
+    "evidence": "FY2025 revenue reached $9.01B (+28.6% YoY) with GAAP gross margin of 64.1% and operating margin of 42.8%. Free cash flow conversion is outstanding ($4.25B FCF in FY2025; 100%+ conversion of net income) with $10.74B in total cash and marketable securities against $0 long-term debt. 5-year median GAAP ROIC is ~28.4%. However, customer concentration in Cloud Titans is acute: Microsoft represented 26% of FY2025 revenue (up from 20% in FY2024), and Meta represented 16% (up from 15% in FY2024), totaling 42% of revenue in just two accounts. Both top customers have deployed open-source NOS alternatives (SONiC and FBOSS) and whitebox hardware (Celestica, Accton) in production, capping Arista's pricing leverage. Arista relies primarily on Broadcom for merchant ASICs (Tomahawk 5, Jericho 3-AI), preventing proprietary silicon defensibility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

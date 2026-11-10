@@ -1,0 +1,30 @@
+{
+  "id": "SW",
+  "ticker": "SW",
+  "universe": "us",
+  "company": "Smurfit Westrock",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Putative archetype is manufacturing and converting scale economies across Europe and the Americas (500+ converting plants, ~63 mills post-combination). However, scale does not confer economic pricing power or protect against capital return erosion: containerboard and corrugated packaging are capital-intensive, standardized commodities where pricing is tied to cyclical industry benchmark indices (Fastmarkets RISI). Multi-cycle ROIC is sub-hurdle (10-year median 6.8%, post-merger ROIC 3.4-4.1% vs 12% hurdle), and large CPG/retail customers routinely multi-source with negligible switching barriers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Price-Taker, REJECT). While Smurfit Westrock is the world's largest paper and packaging company following the July 2024 merger of Smurfit Kappa and WestRock, containerboard packaging is a cyclical, capital-intensive commodity business. Historical 10-year median ROIC is 6.8% and post-merger ROIC is ~3.5%, failing the 12% hurdle. The company operates as a price-taker subject to industry supply/demand cycles and benchmark index pricing, lacking pricing power above inflation.",
+    "evidence": "Smurfit Westrock plc was created in July 2024 through the $31B+ combination of Smurfit Kappa and WestRock. Multi-cycle capital efficiency fails the screener's threshold: 10-year median GAAP ROIC is 6.8% (legacy WestRock averaged 5-7%, legacy Smurfit Kappa averaged low-to-mid teens during peak cycles but dipped in downcycles). Post-merger FY2024-FY2025 consolidated GAAP ROIC is depressed at 3.4%-4.1%, falling below its estimated WACC of ~7.3%. FY2025 adjusted EBITDA was ~$4.94B with adjusted FCF of ~$1.50B, but total net debt stands at ~$12.7B-$13.3B (~2.7x-2.9x EBITDA). Standardized containerboard and box packaging offer negligible customer switching costs, as major CPG, e-commerce, and industrial customers multi-source and renegotiate contracts based on published RISI index rates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

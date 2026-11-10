@@ -1,0 +1,30 @@
+{
+  "id": "GALE.CH",
+  "ticker": "GALE",
+  "universe": "eu",
+  "company": "Galenica",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant Swiss pharmacy network and wholesale distribution infrastructure (Galexis/Alloga), but sub-hurdle 10% ROIC and triennial statutory FOPH/BAG drug price cuts prevent raising prices above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Dominant Swiss pharmacy network and healthcare distributor with resilient volumes, but 5-year median ROIC of 10.0% falls strictly below the 12% hurdle. Furthermore, triennial statutory drug price cuts and regulated dispensing margins mandated by the Swiss Federal Office of Public Health (FOPH/BAG) permanently cap pricing power below inflation.",
+    "evidence": "Galenica generates consistent but structurally sub-hurdle returns on capital across 2021-2025: reported ROIC has ranged tightly between 9.2% and 10.1% (5-year median 10.0%, failing the >=12% test). Core prescription medicine revenue is subject to statutory price reviews by the Swiss FOPH (BAG) that enforce structural price cuts across reimbursable medicines, limiting top-line pricing power despite retail service expansion and generic substitution buffers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "AVGO",
+  "ticker": "AVGO",
+  "universe": "us",
+  "company": "Broadcom Inc.",
+  "price": 293.69,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Premier hybrid infrastructure titan dominating custom hyperscaler AI XPUs/ASICs and Tomahawk networking silicon, paired with mission-critical VMware private cloud software. Peak Owner EPS of $6.42 (FY2025) is genuine with 122.1% FCF conversion ($26.9B Owner FCF on $23.1B Net Income). GAAP ROIC of 16.0% is depressed by $86B in VMware M&A accounting goodwill; Operating ROIC is normalized to the 35.0% maximum cap reflecting fabless capital-light production. 5-10Y secular growth g_implied is set to 11.0% (custom AI ASIC and networking volume 6.0% + VMware enterprise software 2.5% + pricing/mix 1.5% - customer concentration drag 0.5% + net debt paydown & share repurchases 1.5%). Strong deleveraging: net debt of $45.8B is <1.7x FCF with 7.94x interest coverage. Current multiple of 45.77x trades Above PAR (+29.2% premium vs $227.32 PAR value), yielding a 5Y expected IRR of 6.3%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.4164,
+    "current_multiple": 45.77,
+    "par_multiple": 35.43,
+    "par_value": 227.32,
+    "percent_vs_par": 0.292,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0079,
+    "expected_irr_5y": 0.0625,
+    "market_implied_cap": 19.4,
+    "moat_runway_margin": -4.4,
+    "market_implied_growth": 0.2652,
+    "growth_margin_of_safety": -0.1552
+  },
+  "health_checks": {
+    "net_debt_years": 2.68,
+    "net_debt_ok": true,
+    "interest_coverage": 7.94,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2208,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

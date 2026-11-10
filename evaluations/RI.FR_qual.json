@@ -1,0 +1,30 @@
+{
+  "id": "RI.FR",
+  "ticker": "RI",
+  "universe": "eu",
+  "company": "Pernod Ricard",
+  "country": "France",
+  "sector": "Consumer Staples",
+  "sub_industry": "Distillers & Vintners (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unreplicable aged cognac (Martell), Scotch whisky (Chivas Regal, The Glenlivet), and Irish whiskey (Jameson) maturation inventories tied to statutory protected regions and centuries-old distillation terroir. Tangible operating ROIC exceeds 20% on physical operating capital, with demonstrated pricing power through positive price/mix realization across the business cycle.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. World #2 premium spirits group anchored by protected-origin aged cognac, Scotch, and Irish whiskey inventories. Tangible operating ROIC >20% on physical capital with multi-cycle pricing power. Net debt/EBITDA ~3.1x and interest coverage >6.5x provide peace-of-mind solvency through industry downturns. [5-10Y g: global volume 1.0% + premium price 2.0% + aged mix 1.5% - China tariff drag 0.5% + net buyback/deleveraging 1.0%]",
+    "evidence": "Tangible ROIC >20% (Recurring operating profit ~€3.3B on ~€13B PPE and operating working capital, though GAAP ROIC is 6-8% due to €18B accounting goodwill from Allied Domecq/Absolut). Multi-year FCF conversion ~80%. Net debt of €6.34B represents ~3.1x EBITDA with EBIT/interest coverage of 6.7x. Divestment of lower-margin wine brands refocuses capital on high-margin spirits."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

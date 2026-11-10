@@ -1,0 +1,30 @@
+{
+  "id": "HOOD",
+  "ticker": "HOOD",
+  "universe": "us",
+  "company": "Robinhood Markets",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Highly discretionary retail trading and crypto speculation platform with severe societal acceptance and regulatory risk (PFOF scrutiny, gamified options, cyclical retail churn).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (gate_2 = 'N', REJECT). Robinhood operates a retail-focused brokerage and trading platform heavily dependent on speculative and volatile retail activity (options trading, cryptocurrency trading, meme stocks, and event contracts) and payment for order flow (PFOF). Retail day-trading and speculative crypto betting are easily forgone discretionary activities that suffer severe volume collapses during market downturns (as seen in 2022 when active users plummeted >40% and net losses exceeded $1.0B). Furthermore, the business model carries substantial societal acceptance and regulatory intervention risk, including perennial scrutiny and international bans on PFOF (banned across the EU by 2026, the UK, and Canada) and regulatory penalties regarding gamification and retail options trading harms.",
+    "evidence": "Multi-year financial history demonstrates severe cyclicality and negative cumulative multi-cycle returns: GAAP Net Income was -$3.69B in FY21, -$1.03B in FY22, -$541M in FY23, before rebounding to +$1.41B in FY24 and ~$1.88B in FY25 during a retail bull market and crypto rally. Five-year median ROIC is sub-hurdle (~7.5% or negative depending on capitalization of pre-2024 operating losses). Free cash flow has been highly volatile (-$968M in FY21, -$909M in FY22, +$1.16B in FY23, -$207M in FY24, +$1.58B in FY25). Revenue remains heavily reliant on transactional volume from speculative products (options, crypto, and equities PFOF/rebates) and net interest on customer margin and sweep balances. Retail switching costs are minimal as competitors (Schwab, Fidelity, Webull) offer commission-free trading and reimburse ACATS transfer fees."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "L",
+  "ticker": "L",
+  "universe": "us",
+  "company": "Loews Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Boardwalk Pipelines operates critical fee-based interstate natural gas pipelines with long-term reservation contracts, and CNA Financial operates specialized commercial P&C underwriting lines with established broker distribution. However, consolidated 10-year median ROIC is only 7.2% and consolidated ROE is ~8-9% (CNA ROE ~8-10%), structurally failing the 12% GAAP ROIC / ROIIC threshold. CNA is subject to competitive underwriting cycles, catastrophe loss volatility, and bond yield dependency without enduring pricing power above inflation; Boardwalk is capital-intensive and FERC rate-regulated; and Loews Hotels faces cyclical hospitality dynamics.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of unassailable pricing power, REJECT). Conglomerate holding company consisting of CNA Financial (~92% owned commercial P&C insurer), Boardwalk Pipelines (100% owned natural gas pipeline infrastructure), and Loews Hotels. While management (Tisch family) exercises disciplined capital allocation via buybacks at discounts to NAV, the underlying businesses are capital-intensive, cyclical, or regulated. 10-year median ROIC is 7.2% and consolidated ROE is ~8-9%, structurally falling short of the 12% compounding hurdle.",
+    "evidence": "Multi-decade conglomerate operating record. Primary economic driver is CNA Financial Corporation (~92% stake, contributing >70% of consolidated revenue), which operates in commercial P&C lines (specialty, commercial, international) where combined ratios fluctuate with catastrophe losses and pricing cycles, delivering cyclical ROEs around 8-10%. Boardwalk Pipelines provides fee-based gas transmission across ~14,000 miles of pipeline, but as capital-heavy infrastructure earns regulated mid-single to low double-digit returns on invested capital. Loews Hotels is a capital-intensive lodging business subject to economic cycles. Consolidated 10-year median ROIC is 7.2% (FY24-25 ROE 8.2-8.9%), failing the Gate 3b hurdle of >= 12% GAAP ROIC. No single engine possesses an unassailable pricing moat above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

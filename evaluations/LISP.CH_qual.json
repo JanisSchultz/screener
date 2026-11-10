@@ -1,0 +1,30 @@
+{
+  "id": "LISP.CH",
+  "ticker": "LISP",
+  "universe": "eu",
+  "company": "Lindt & Sprüngli",
+  "country": "Switzerland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global premium confectionery brand equity, proprietary conching technology, and vertical integration including 500+ proprietary retail boutiques. High pricing power proved by pushing +19% price increases in 2025 with expanding EBIT margins (16.4%) despite historic cocoa commodity spikes.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled Lindy premium confectionery brand with global pricing power and expanding retail network. Raised prices 19% in 2025 to fully offset historic cocoa inflation while growing EBIT 9.8% to CHF 971M. Fortress balance sheet with net debt under 0.8x net income and 18.7x interest coverage. [5-10Y g: volume/mix 2.0% + pricing power 3.5% + retail expansion 1.5% - cocoa cost volatility 0.5% + share repurchases 1.0%]",
+    "evidence": "5-year median GAAP ROIC is 14.6%, and operating ROIC is 19.5%. Multi-year Owner FCF conversion is 80.6%. In FY25, organic sales grew 12.4% driven by +19.0% pricing power with volume down only -6.6%, while EBIT margins expanded to 16.4%. Owner EPS compounded at 7.37% CAGR peak-to-peak (CHF 253.4 in 2022 to CHF 313.7 in 2025). Net debt of CHF 562.8M is fully covered by CHF 727.2M net income (0.77x ratio) with interest coverage of 18.7x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

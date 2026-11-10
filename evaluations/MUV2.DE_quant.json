@@ -1,0 +1,43 @@
+{
+  "id": "MUV2.DE",
+  "ticker": "MUV2",
+  "universe": "eu",
+  "company": "Munich Re",
+  "price": 569.2,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": 48.27,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.2425,
+    "fin_note": "Peak Owner EPS normalized to EUR 48.27 (FY2025 all-time record net income of EUR 6,118M) to strip out FY2022 Yahoo D&A accounting distortion (EUR 56.23). Operating ROIC of 24.25% reflects superior capital efficiency and float advantages. Forward growth of 7.0% aligned with guidance (3.0% volume + 2.0% pricing + 1.0% ERGO + 1.0% buybacks). Raw PAR multiple of 15.88x is capped by the 5Y cycle high guardrail at 11.37x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 48.27,
+    "current_multiple": 11.79,
+    "par_multiple": 11.37,
+    "par_value": 548.83,
+    "percent_vs_par": 0.0371,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0365,
+    "expected_irr_5y": 0.0987,
+    "market_implied_cap": 15.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.0087,
+    "growth_margin_of_safety": 0.0613
+  },
+  "health_checks": {
+    "net_debt_years": 1.2,
+    "net_debt_ok": true,
+    "interest_coverage": 24.38,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.61,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

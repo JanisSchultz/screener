@@ -1,0 +1,30 @@
+{
+  "id": "ORA.FR",
+  "ticker": "ORA",
+  "universe": "eu",
+  "company": "Orange",
+  "country": "France",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Nationwide fiber and mobile physical infrastructure across France, but chronic 4-player price competition (Free/Iliad, SFR, Bouygues) and Spanish low-cost pressure compress 5-year ROIC to ~4% (far below 12% hurdle) and eliminate pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (gate_3b_pricing_and_proof = 'N', REJECT). Sub-hurdle historical returns on capital (5-year ROIC of 3.6-5.2%, well below the 12% threshold) and chronic four-carrier price wars in France (Free, SFR, Bouygues) and Spain eliminate pricing power >= inflation.",
+    "evidence": "Orange operates extensive telecom infrastructure in France, Europe, and MEA. However, capital intensity is massive and 5-year average ROIC is ~4.3% (trailing WACC). French low-cost competition and Spanish promotional pressure prevent real pricing power and sub-hurdle capital returns violate Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

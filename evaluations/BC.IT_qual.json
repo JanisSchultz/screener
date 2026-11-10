@@ -1,0 +1,30 @@
+{
+  "id": "BC.IT",
+  "ticker": "BC",
+  "universe": "eu",
+  "company": "Brunello Cucinelli",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "High-end luxury apparel and ready-to-wear cashmere are discretionary, cyclical fashion purchases easily forgone during economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Ultra-luxury ready-to-wear cashmere and designer apparel represent discretionary, fashion-sensitive purchases easily forgone in economic downturns. Does not possess the multi-generational Lindy permanence of hard luxury or iconic leather goods.",
+    "evidence": "Brunello Cucinelli SpA produces ultra-luxury apparel and lifestyle goods rooted in Solomeo, Italy. While the company maintains disciplined full-price retail distribution and gross margins above 65%, its revenue is predominantly concentrated in ready-to-wear seasonal apparel. Multi-year GAAP ROIC has ranged between 7% and 12%, failing to consistently clear the 12% hurdle. The company faced scrutiny in 2025 regarding Russian market sales. Discretionary high-ticket clothing lacks the non-deferrable utility or Lindy moat required under Munger screening criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

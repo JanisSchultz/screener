@@ -1,0 +1,30 @@
+{
+  "id": "UCB.BE",
+  "ticker": "UCB",
+  "universe": "eu",
+  "company": "UCB",
+  "country": "Belgium",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Sub-hurdle multi-cycle capital efficiency with a 5-year median GAAP ROIC of only 7.67% (failing the 12% hurdle). Although the recent launch of Bimzelx (bimekizumab) in immunology boosted FY2025 earnings, historical acquisitions (such as Zogenix) and ongoing generic erosion across legacy epilepsy drugs (Vimpat) keep full-cycle capital returns below the Munger quality threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (N, REJECT). Multi-cycle capital efficiency fails the Munger bar with a 5-year median GAAP ROIC of only 7.67% (hurdle >= 12%). While Bimzelx provides recent growth, single-product concentration and generic erosion of legacy CNS franchises dilute full-cycle returns.",
+    "evidence": "5-year median GAAP ROIC is 7.67% (FY2022: 4.47%, FY2023: 4.19%, FY2024: 10.87%, FY2025: 15.19%), failing the 12% hurdle. Intangibles and goodwill of €8.54B constitute the vast majority of €10.87B in equity, reflecting high acquisition capital intensity that suppresses multi-cycle returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b_pricing_and_proof",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

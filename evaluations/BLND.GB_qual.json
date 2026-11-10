@@ -1,0 +1,30 @@
+{
+  "id": "BLND.GB",
+  "ticker": "BLND",
+  "universe": "eu",
+  "company": "British Land",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Diversified REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns prime central London office campuses (Broadgate, Regent's Place) and retail parks with significant planning barriers to entry. However, commercial real estate yields are structurally low (4-6%), producing a 10-year average ROIC of only 2.5-5.0%, far below the 12% hurdle. Commercial lease rents are negotiated tenant expenses, highly vulnerable to hybrid work office downsizing, corporate tenant restructurings, and cyclical interest rate shocks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Prime London office campuses and retail parks face structural cap-rate realities, generating multi-year ROIC of only 2.5-5.0% against a 12% hurdle. Commercial rents lack true inflation pricing power, as tenants downsize office footprints amid hybrid working and higher borrowing costs depress property asset values.",
+    "evidence": "10-year historical GAAP ROIC averages 2.5-5.0%, heavily depressed by periodic commercial property revaluation write-downs during UK interest rate increases. Total Accounting Return (TAR) targets of 8-10% rely on asset leverage rather than superior unlevered operational returns. Office portfolio faces persistent structural occupancy and lease renewal headwinds from corporate remote/hybrid working models."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

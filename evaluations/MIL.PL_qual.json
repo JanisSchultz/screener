@@ -1,0 +1,30 @@
+{
+  "id": "MIL.PL",
+  "ticker": "MIL",
+  "universe": "eu",
+  "company": "Bank Millennium",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Outside approved rule-of-law Western developed markets (in_market == N); severe state intervention risk and acute legacy CHF mortgage litigation costs.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == N, REJECT). Operating in Poland outside approved Western developed markets. Acute vulnerability to Polish regulatory interventions, bank taxes, and massive Swiss-franc mortgage legal provisions that previously wiped out earnings and triggered a capital recovery plan.",
+    "evidence": "Bank Millennium S.A. is a Polish commercial bank (majority-owned by BCP). Operates in Poland (in_market == N). Heavy exposure to foreign-currency (CHF) mortgage portfolio led to multi-year net losses, capital erosion, and execution of a recovery plan under Polish financial supervision, exacerbated by government-mandated borrower holidays."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

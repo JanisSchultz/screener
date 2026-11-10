@@ -1,0 +1,30 @@
+{
+  "id": "DIE.BE",
+  "ticker": "DIE",
+  "universe": "eu",
+  "company": "D'Ieteren",
+  "country": "Belgium",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Belron's insurer integrations and global scale drive consistent price and mix gains above inflation, particularly from rising ADAS camera/sensor recalibration attach rates on replacement windshields.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (N, REJECT). While Belron (Carglass/Safelite) and TVH are exceptional, high-return operating assets, D'Ieteren fails Gate 6 due to massive leverage: late-2024 dividend recapitalizations saddled Belron with ~€9B in debt (rated BB-) to fund a €4B extraordinary dividend, driving D'Ieteren consolidated equity negative (-€457M in 2024) and look-through debt/Owner Earnings to ~8-10x.",
+    "evidence": "Consolidated balance sheet showed negative equity (-€456.9M) in FY2024 and thin equity (€14.3M) in FY2025 following the €74/share special dividend. Equity-accounted Belron incurred €3.8B in incremental debt, bringing net debt to ~€9B. Look-through debt/Owner Earnings exceeds the <=4.0x threshold by more than double."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

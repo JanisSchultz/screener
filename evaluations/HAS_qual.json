@@ -1,0 +1,30 @@
+{
+  "id": "HAS",
+  "ticker": "HAS",
+  "universe": "us",
+  "company": "Hasbro",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Leisure Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential discretionary leisure products (>50% traditional Consumer Products toys and ~46.5% Wizards hobbyist trading cards/digital gaming) easily deferred or displaced by digital screens rather than serving an essential need or broad everyday household habit, evidenced by -12% (FY24) and -4% (FY25) Consumer Products revenue declines and a ~$1.02B Q2 2025 goodwill impairment.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need & Entrenched Habits, REJECT). Over half of Hasbro's revenue remains seasonal, hit-driven physical toys (Nerf, Transformers, licensed action figures, board games) that families readily defer or replace with digital screen entertainment, as shown by -12% (2024) and -4% (2025) Consumer Products revenue drops and a ~$1.02B goodwill impairment in 2025. While Wizards of the Coast ($2.19B in FY25, 46% operating margin) is a powerful niche hobbyist IP engine via Magic: The Gathering and digital licensing, collectible trading cards and casual gaming are discretionary leisure spending rather than an essential Western necessity or universal everyday staple under Munger's bar.",
+    "evidence": "Multi-cycle capital returns remain sub-hurdle (10Y median ROIC 9.5% in financials_csv; FY15-25 consolidated sales roughly flat from ~$4.5B to $4.71B). FY2024 revenue was $4.14B (-17% reported, -7% ex-eOne), GAAP operating profit $690M (16.7% margin; $839M / 20.3% adjusted), GAAP net earnings $394.4M ($386M attributable), OCF $847.4M, and FCF ~$649.9M (after ~$197.5M PPE & software CapEx). In FY2025, total revenue rose 13.7% to $4.71B, led by Wizards of the Coast & Digital Gaming surging 44.7% to $2.19B (~46.5% of sales) and $1,006.8M operating profit (46.0% margin) on +59% Magic: The Gathering growth (including Universes Beyond crossovers like Avatar: The Last Airbender) and $168M from Monopoly Go! licensing. However, Consumer Products (>50% of revenue) fell 4% YoY (after -12% in FY24, though rebounding +7% in Q4 2025) and incurred a ~$1.02B Q2 2025 non-cash goodwill impairment from macro and tariff pressures, dragging consolidated FY25 GAAP operating profit to $11.1M (0.2% margin; $1,140M / 24.2% adjusted) and GAAP net income to $(318.2)M ($5.54 adjusted EPS), despite OCF of $893.2M and FCF of ~$694.9M (expanding toward ~$1.1B TTM in mid-2026). Consumer Products faces high customer concentration with mass retailers (Walmart, Target, Amazon) and weak toy pricing power, contrasting with WotC's strong collector pricing power. Capital allocation bears scars from the ~$4B eOne acquisition and subsequent loss-making divestiture of core film/TV operations to Lionsgate, though management shifted to asset-light IP licensing, paid down $225M of debt in FY25 to reduce long-term debt from $3,380.8M (FY24) to $2,767.9M (FY25, vs. $695M year-end 2024 cash), guided FY26 revenue +3-5% constant currency and $1.40B-$1.45B adjusted EBITDA, and authorized a $1.0B buyback program."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

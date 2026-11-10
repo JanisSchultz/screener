@@ -1,0 +1,30 @@
+{
+  "id": "HAL",
+  "ticker": "HAL",
+  "universe": "us",
+  "company": "Halliburton",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Halliburton possesses significant North American basin logistics density, specialized completion chemistry, and high operational switching costs during active drilling and completion campaigns. However, it fails empirical proof of moat: 10-year median ROIC is ~8.6-9.1%, far below the 12% hurdle, with severe negative returns during downcycles (-23.7% in 2016, -1.7% in 2019, -12.4% in 2020). Primary erosion threats include rapid consolidation among E&P operators (Exxon/Pioneer, Chevron/Hess, Diamondback/Endeavor) creating monopsony buyer power, commoditization of pressure pumping equipment, and cyclical E&P capex cuts.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Cyclical oilfield services provider with 10-year median ROIC of ~8.6-9.1%, well below the 12% hurdle. Lacks cycle-durable pricing power as consolidated E&P operators hold strong monopsony bargaining power, driving severe margin and ROIC collapses during energy downturns.",
+    "evidence": "10-year historical ROIC (2016-2025) demonstrates heavy cyclicality: -23.7% (2016), 5.1% (2017), 8.6% (2018), -1.7% (2019), -12.4% (2020), 8.6% (2021), 12.3% (2022), 17.2% (2023), 15.4% (2024), and ~9.1% (2025), yielding a 10-year median ROIC of ~8.6-9.1% (fails >=12% hurdle). Net income exhibits multi-billion dollar losses during downcycles (-$5.8B in 2016, -$1.1B in 2019, -$2.9B in 2020). Revenue split between Completion & Production (~55-60%) and Drilling & Evaluation (~40-45%) leaves the business highly exposed to North American fracturing capex cycles and buyer pricing pressure from consolidated mega-independents."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

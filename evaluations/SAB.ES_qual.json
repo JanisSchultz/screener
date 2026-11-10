@@ -1,0 +1,30 @@
+{
+  "id": "SAB.ES",
+  "ticker": "SAB",
+  "universe": "eu",
+  "company": "Sabadell",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Mid-tier Spanish commercial and SME bank lacking dominant scale; 5-year median ROE of ~6.8% is far below the 12% cycle hurdle, with profitability heavily dependent on ECB interest rate peaks and vulnerable to price competition from larger rivals (CaixaBank, BBVA, Santander).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b='N', REJECT). Banco Sabadell is a mid-tier Spanish SME and retail bank lacking a defensible moat against larger domestic competitors. 5-year median ROE of ~6.8% falls well short of the 12% cycle hurdle, with returns only briefly reaching double digits during peak ECB interest rates.",
+    "evidence": "Spain's 4th largest bank with ~7% domestic loan market share, plus UK subsidiary TSB. Historical ROE track record: 2019 (6.0%), 2020 (0.0%), 2021 (4.1%), 2022 (6.8%), 2023 (9.6%), and 2024 (12.2%), yielding a 5-year median ROE well below 12%. Sub-scale in retail and digital banking compared to CaixaBank, Santander, and BBVA, making it the target of an unsolicited hostile takeover bid by BBVA."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

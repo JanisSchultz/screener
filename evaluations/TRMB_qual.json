@@ -1,0 +1,30 @@
+{
+  "id": "TRMB",
+  "ticker": "TRMB",
+  "universe": "us",
+  "company": "Trimble Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs and workflow lock-in across civil engineering, BIM structural design (Tekla), and construction project management. Tangible ROIC exceeds 80%, though aggressive serial M&A keeps 10-year median GAAP ROIC suppressed at ~7.4%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Enterprise software and capital goods baseline (Tier 3, 10-15Y) receives substantial haircuts due to cyclicality in construction and freight transportation end-markets, ongoing terminal disruption risks from generative AI and CAD automation on seat-based modeling tools, and an aggressive serial M&A roll-up strategy that dilutes capital efficiency (10Y median GAAP ROIC 7.4%, FCF conversion 55.7%) and led to substantial goodwill accumulation and subsequent impairments.",
+    "evidence": "Trimble exhibits a multi-decade public operating history connecting physical and digital workflows across AECO (Architecture, Engineering, Construction, and Owners), Geospatial, and Transportation & Logistics. While tangible ROIC is high due to low physical asset intensity, GAAP ROIC has persistently tracked below hurdles at a 5-year median of 7.37% (ranging from 5.1% to 10.1% across 2016-2025) and multi-year Owner FCF conversion is weak at 55.7%, weighed down by continuous M&A integration costs and capitalized intangibles ($6.16B goodwill and intangibles vs $5.84B equity in FY2025). The $2.1B debt-financed acquisition of Transporeon in 2023 pushed leverage above 3.5x and subsequently faced severe freight market headwinds leading to a $562M segment goodwill impairment. Furthermore, generative AI tools and spatial computing automation threaten seat-based engineering, CAD drafting (Tekla, SketchUp), and estimation workflows, preventing the business from achieving secular resilience required for a 15+ year competitive advantage period."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

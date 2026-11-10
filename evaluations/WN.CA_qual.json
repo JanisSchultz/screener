@@ -1,0 +1,30 @@
+{
+  "id": "WN.CA",
+  "ticker": "WN",
+  "universe": "ca",
+  "company": "George Weston",
+  "country": "Canada",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Holding company controlling Loblaw Companies (~52%) and Choice Properties REIT (~62%). George Weston has no independent operational moat or pricing power of its own; its cash flows are entirely dependent on Loblaw retail dividends and Choice Properties rental distributions. Because its core underlying operating engine (Loblaw retail grocery) lacks unconstrained pricing power above inflation and faces intense political and competitive margin pressure, Weston fails look-through Gate 3b.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Holding company controlling Loblaw Companies and Choice Properties REIT lacks independent operational pricing power and fails the look-through moat standard. Underlying grocery retail operations at Loblaw are subject to intense political scrutiny, consumer boycotts, and price competition from Walmart and Costco that constrain pricing power above inflation. (Furthermore, consolidated leverage of >10x Net Debt/NI and sub-5x interest coverage would also fail Gate 6). Downstream gates nullified per strict waterfall.",
+    "evidence": "Holding company with primary assets consisting of a 52.6% controlling interest in Loblaw Companies Limited and a 61.7% controlling interest in Choice Properties REIT. Consolidated FY2025 revenue of $64.5B CAD, EBIT of $4.75B CAD, and Net Income of $1.10B CAD. Peak Owner EPS has collapsed from $5.33 CAD in FY2022 to $2.84 CAD in FY2025. Consolidated balance sheet carries $12.7B CAD in debt against $1.45B CAD in cash, yielding Net Debt to Net Income of 10.2x and EBIT interest coverage of only 4.15x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MICC.NL",
+  "ticker": "MICC",
+  "universe": "eu",
+  "company": "Magnum Ice Cream Company",
+  "country": "Netherlands",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Highly discretionary, weather-dependent seasonal indulgence easily forgone; lacks daily habitual necessity or non-discretionary consumer staple loyalty.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need, REJECT). Operates as a seasonal, weather-dependent indulgence (Magnum, Ben & Jerry's, Cornetto, Wall's) that is easily forgone or substituted during economic downturns, lacking the essential daily ritual or inelastic habit of coffee or core grocery staples.",
+    "evidence": "Spun off from Unilever in December 2025 as a standalone ice cream business. While holding iconic consumer indulgence brands (Magnum, Ben & Jerry's, Wall's/Algida) with prominent freezer-cabinet placement, revenue and cash flows remain intensely weather-dependent and seasonal. The category suffers from high cold-chain capital intensity, retailer price sensitivity, and high consumer elasticity during periods of disposable income pressure."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

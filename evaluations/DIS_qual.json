@@ -1,0 +1,31 @@
+{
+  "id": "DIS",
+  "ticker": "DIS",
+  "universe": "us",
+  "company": "Walt Disney Company (The)",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "57% of segment operating income ($10.0B of $17.55B in FY25; 54% in Q3 FY26) derives from Experiences—heavily weighted to big-ticket destination theme park vacations, resorts, and Disney Cruise Line voyages ($7.82B Parks/Cruises OI; $60B 10-year capex commitment)—which Gate 2 explicitly rejects as deferrable, discretionary leisure cyclicals rather than essential needs or everyday habits.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). While Disney owns iconic multi-generational family IP and a profitable streaming bundle (Disney+/Hulu DTC generated $1.33B FY25 OI, 7.6% of total segment profit), its dominant economic engine and capital sink is discretionary destination leisure: Experiences accounts for 57.0% of FY25 segment operating income ($9.995B of $17.551B; 54.3% in Q3 FY26) and absorbs the bulk of a ~$60B 10-year park and cruise-ship expansion plan. Big-ticket family park vacations and cruise voyages are deferrable discretionary outlays (Parks & Resorts OI fell 30.5% peak-to-trough during FY09-FY10, and 2025-2026 middle-class pricing fatigue forced renewed ticket/resort discounting). Anchor Gate 2 is non-waivable under Calamity Tier (and structurally DIS also fails Gate 3b on sub-hurdle 3.8% 5Y median GAAP ROIC / 10.7% tangible ROIC and Gate 4 on linear cord-cutting, sports-rights inflation, and UGC/AI attention fragmentation). Downstream gates bypassed per waterfall.",
+    "evidence": "FY2025 10-K segment mix ($94,425M consolidated revenue; $17,551M total segment OI; $13,013M GAAP EBIT): Experiences $36,156M rev / $9,995M OI (Domestic Parks & Experiences $25,191M rev / $6,375M OI; International $6,520M rev / $1,442M OI; Consumer Products $4,445M rev / $2,178M OI); Entertainment $42,466M rev / $4,674M OI (Linear Networks $9,364M rev / $2,955M OI, down 14% YoY after falling 21% in FY23 and 16% in FY24; DTC $24,614M rev / $1,327M OI; Content Sales/Licensing $8,488M rev / $392M OI); Sports $17,672M rev / $2,882M OI. Q3 FY2026 (ended June 27, 2026): revenue $25.25B (+7% YoY), segment OI $5.56B (+21% YoY), with Experiences at $9.97B rev / $3.02B OI (54.3% of segment OI), Entertainment $11.35B rev / $1.68B OI (SVOD $5.53B rev / $712M OI, 12.9% margin), and Sports $858M OI (-17% YoY). Cyclicality proof: during the Great Recession, Parks & Resorts OI fell 25% in FY09 ($1,897M to $1,418M) and 7% in FY10 ($1,318M) amid attendance and rate discounting; in 2025-2026, consumer wallet fatigue and Universal Epic Universe competition prompted expanded promotional park/resort deals. Multi-cycle capital efficiency & cash flow: following the $71.3B 21st Century Fox acquisition (FY19) and ~$11B cumulative DTC streaming losses (FY19-FY24), FY21-FY25 GAAP ROIC (at 21% statutory tax on GAAP EBIT) ran 1.8%, 3.8%, 3.0%, 4.5%, and 6.8% (5Y median 3.8%; third-party TTM mid-2026 ~7.6%-7.8%; 10Y ref 7.2%), while Tangible Operating ROIC (excluding $73.29B goodwill and $9.27B net intangibles in FY25) ran 6.5%, 12.0%, 8.7%, 10.7%, and 15.0% (5Y median 10.7%). OCF / CapEx / FCF progressed from $5.57B / $3.58B / $1.99B (FY21) and $6.00B / $4.94B / $1.06B (FY22) to $13.97B / $5.41B / $8.56B (FY24) and $18.10B / $8.02B / $10.08B (FY25); 9M FY26 OCF was $12.52B with ~$6.8B CapEx and $5.74B FCF. FY25 GAAP Net Income ($12.40B vs FY18 peak $12.60B) included a one-time $3,277M non-cash Hulu tax benefit (~$9.13B underlying). Strategic & balance sheet commitments: ~$60B 10-year Experiences/cruise CapEx plan, NBA ($2.6B-$2.8B/yr, 2025-2036) and NFL ($2.7B/yr plus 10% ESPN equity traded for NFL Network/RedZone) rights inflation, ~$9B total Hulu 33% buyout (closed June 2025), Star India / Reliance JioStar JV (37% stake, $1.5B+ FY24 impairments), Fubo / Hulu+Live TV 70% merger (Oct 2025), and $1.5B Epic Games stake. Q3 FY26 borrowings stood at $46.04B ($8.63B current, $37.41B long-term) against $5.19B cash ($40.86B net debt; FY21-FY25 EBIT/net interest covered 2.1x, 4.7x, 4.2x, 6.6x, 10.0x) while targeting >=$9B FY26 buybacks ($7.2B completed in 9M26) and paying $0.75/sh semi-annual dividends. Governance: Experiences Chairman Josh D'Amaro succeeded Bob Iger as CEO on March 18, 2026 (Dana Walden appointed President & CCO; Iger senior advisor through Dec 2026)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

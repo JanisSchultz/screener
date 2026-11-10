@@ -1,0 +1,30 @@
+{
+  "id": "WRB",
+  "ticker": "WRB",
+  "universe": "us",
+  "company": "W. R. Berkley Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Decentralized specialty underwriting model across 60+ operating units with deep niche domain expertise and broker relationships. Proof of moat shown by 10-year median ROIC of ~13.8%, 20%+ ROEs, and disciplined combined ratios consistently 90-94% producing sustained underwriting profits across market cycles. Primary erosion threat is cyclical casualty softening or industry-wide overcapacity.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier decentralized specialty property and casualty insurer with 50+ year compounding track record. Unassailable underwriting culture across 60+ autonomous niche units producing consistent combined ratios in the low-90s. Extreme insider alignment (40%+ family ownership). Net beneficiary of higher rates via $25B+ float. A+ fortress balance sheet. [5-10Y g: specialty volume 4.0% + rate increases 3.5% + float yield reinvestment 1.5% - social inflation / cat drag 1.0% + net buybacks 1.0%]",
+    "evidence": "10-year median ROIC of 13.8%, with 2024-2025 operating ROE of 20-22% and ROIC of 15-16%. Combined ratio consistently 90-94% over decades (90.7% in recent years). Over $15B in gross written premiums split across Specialty Insurance (~88%) and Reinsurance (~12%). Over $25B investment portfolio (duration ~2.4 years) yielding over $1.2B net investment income. AM Best A+ (Superior) rated with 'Strongest' BCAR capital adequacy. Debt leverage ~21-22% and debt/NI ~2.3x with interest coverage >10x. 40%+ insider equity ownership."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

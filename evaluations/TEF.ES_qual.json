@@ -1,0 +1,30 @@
+{
+  "id": "TEF.ES",
+  "ticker": "TEF",
+  "universe": "eu",
+  "company": "Telef\u00f3nica",
+  "country": "Spain",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Incumbent telecom networks and spectrum across Spain, Brazil, and Germany, but hyper-competition from low-cost challengers (e.g. Digi in Spain) and heavy spectrum/fiber capex keep 5-year ROIC depressed at 3-4% (well below the 12% hurdle) with zero real pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (gate_3b_pricing_and_proof = 'N', REJECT). Chronic 5-year ROIC of 3-4% falls far short of the 12% threshold. Intense low-cost competition in Spain (Digi, MasOrange) eliminates pricing power >= inflation, while \u20ac25B+ net debt burden reflects decades of value-dilutive empire building.",
+    "evidence": "Telef\u00f3nica is the Spanish incumbent telecom operator with major operations in Spain, Brazil, and Germany. Heavy ongoing capital intensity and relentless price competition have depressed 5-year ROIC to ~3.5-4.0%. Massive net debt (\u20ac25.3B financial debt, ~\u20ac33B including leases) and repeated dividend cuts fail Gate 3b proof of moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

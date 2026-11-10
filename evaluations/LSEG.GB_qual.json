@@ -1,0 +1,30 @@
+{
+  "id": "LSEG.GB",
+  "ticker": "LSEG",
+  "universe": "eu",
+  "company": "London Stock Exchange Group",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant global interest rate swap clearing (LCH SwapClear clears >90% of cleared OTC interest rate swaps) and benchmark index licensing (FTSE Russell) provide unassailable pricing power. Erosion threats include desktop terminal seat compression (Refinitiv Workspace) and EU regulatory pressure to repatriate euro swap clearing.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Debt-laden balance sheet post-Refinitiv acquisition with LT Debt of \u00a37.89B (6.3x Net Income) and 4.0% multi-year GAAP ROIC. Furthermore, fails peak-to-peak compounding as Owner EPS dropped from \u00a33.98 in FY22 to \u00a33.00 in FY25.",
+    "evidence": "4-year median GAAP ROIC is only 4.0% following the $27B Refinitiv acquisition. Balance sheet carries \u00a37.89B in LT debt and \u00a35.13B in net debt against \u00a31.25B TTM Net Income (Net Debt / NI = 4.1x, LT Debt / NI = 6.3x, exceeding the 4.0x limit). Owner EPS failed peak-to-peak compounding, declining ~25% from 2022 to 2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

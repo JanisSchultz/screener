@@ -1,0 +1,30 @@
+{
+  "id": "CRWV",
+  "ticker": "CRWV",
+  "universe": "us",
+  "company": "CoreWeave",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Established Track Record, REJECT). Debt-funded neocloud GPU compute lessor lacking a multi-cycle public operating track record following its March 2025 IPO. Unproven, GAAP loss-making economic engine encumbered by extreme financial leverage ($35B+ debt, >$50B in total obligations) and acute customer concentration (Microsoft historically ~67% of revenues). Extreme vulnerability to rapid semiconductor hardware obsolescence and hyperscaler in-house silicon displacement violates Munger's circle of competence standard.",
+    "evidence": "1. Multi-Cycle Financial Track Record: Founded in 2017 as Atlantic Crypto (Ethereum mining) and pivoted to GPU cloud infrastructure in 2019-2020. Completed its IPO on Nasdaq (CRWV) in March 2025 at $40/share (~$1.5B raised at ~$19B-$23B valuation). The company lacks a multi-cycle public operating history. While top-line revenue has expanded rapidly on contracted GPU demand, the economic model is currently unprofitable on a GAAP net basis due to enormous depreciation schedules and soaring debt financing costs. Estimated 10-year historical ROIC (~8.5%) falls well below the 12% hurdle.\n2. Business Model & Customer Concentration: Operates as an AI neocloud providing high-density GPU infrastructure (primarily NVIDIA clusters) under multi-year take-or-pay capacity reservations. Customer concentration is acute: Microsoft has historically accounted for ~67% of revenue, with a small handful of AI labs (OpenAI, Meta) representing the remainder of the backlog. Hyperscalers view third-party neoclouds as temporary swing capacity while expanding their own data centers and custom ASIC silicon (Microsoft Maia, Google TPU, AWS Trainium), exposing CoreWeave to severe contract renewal and pricing cliff risk.\n3. Moat & Pricing Power: Lacks proprietary defensibility or switching costs. CoreWeave rents standardized compute capacity that is fundamentally commoditized across rival clouds. It does not own proprietary chip IP or sticky enterprise application software workflows. Rapid 3-4 year hardware replacement cycles create severe terminal value and asset write-down risks.\n4. Balance Sheet & Capital Allocation: Extreme debt dependency violating the 'kindness of strangers' principle. Funded aggressive GPU purchases via massive debt facilities, with principal debt exceeding $35B and total financial obligations (including long-term data center leases) surpassing $50B. Quarterly interest expense has surged into the hundreds of millions ($900M+ run rate), consuming operating cash flow. Secondary bond yields on 2032 notes have traded at stressed levels (>16%), signaling substantial capital market refinancing risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

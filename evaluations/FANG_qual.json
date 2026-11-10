@@ -1,0 +1,30 @@
+{
+  "id": "FANG",
+  "ticker": "FANG",
+  "universe": "us",
+  "company": "Diamondback Energy",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity price taker lacking pricing power; pure-play upstream oil and gas exploration and production (E&P) selling undifferentiated hydrocarbons into volatile global spot commodity markets.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Pure-play Permian Basin upstream oil and gas exploration and production (E&P) operator. Diamondback is an unhedged commodity price-taker selling undifferentiated crude oil, natural gas, and NGLs into global and regional spot markets (WTI Midland, Brent, Henry Hub, Waha) with zero structural pricing power. Upstream E&P lacks customer lock-in, switching costs, or an entrenched everyday consumer habit/ritual, remaining completely beholden to volatile, cyclical global commodity market clearing prices. Even after the transformational $26B Endeavor Energy Resources merger in September 2024 scaling production to ~920k+ BOE/d, capital returns fluctuate heavily across commodity cycles (GAAP ROIC swinging from negative in 2020 to ~6% in 2024-2025).",
+    "evidence": "Multi-cycle track record is heavily cyclical: GAAP Net Income swung from $(4.67)B in 2020 to $4.39B in 2022, $3.34B in 2024, and $1.66B in 2025. GAAP ROIC fell from ~21-23% at the 2022 commodity price peak to ~5.9-6.2% in 2024-2025 following the Endeavor asset base step-up. Operations are 100% upstream exploration and production in the Permian Basin (Midland and Delaware Basins), generating $11.07B in FY24 revenue and $15.03B in FY25 revenue with net production exceeding 920,000 BOE/d. Customers are midstream gatherers and refiners with zero switching costs; products are entirely fungible commodities priced off spot benchmarks (WTI Midland, Brent, Waha hub). In September 2024, Diamondback closed the $26B acquisition of Endeavor Energy Resources ($8B cash + 117.3M shares + net debt assumption), increasing total debt to $12.46B-$14.6B against $91M-$106M in cash, requiring 50% FCF allocation toward debt reduction to defend its BBB investment-grade rating."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

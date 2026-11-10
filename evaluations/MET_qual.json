@@ -1,0 +1,30 @@
+{
+  "id": "MET",
+  "ticker": "MET",
+  "universe": "us",
+  "company": "MetLife",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "MetLife maintains an entrenched position in U.S. Group Benefits (serving ~90+ of the Fortune 100) where administrative payroll and HR system integrations generate moderate switching costs. However, this fails to translate into superior economic returns: 10-year median GAAP ROIC is 8.2%, falling far short of the 12% hurdle. Large institutional spread blocks (Retirement & Income Solutions / PRT) and group protection lines face commoditized pricing, heavy regulatory capital demands, and rising competition from alternative asset-backed insurers (Apollo/Athene, KKR/Global Atlantic).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While MetLife is an entrenched leader in U.S. Group Benefits with deep corporate HR integration, its capital efficiency is structurally sub-hurdle with a 10-year median GAAP ROIC of 8.2% versus the 12% minimum threshold. Large institutional spread businesses (PRT, structured settlements) and group underwriting lack durable pricing power above inflation and face intense competition from PE-backed balance sheets, bounding long-term compounding below Munger quality standards.",
+    "evidence": "10-year median GAAP ROIC is 8.2%, consistently below the 12.0% hurdle (FY23 ROIC 4.65%, FY24 ROIC 13.1%, FY25 ROIC 11.2%; 10-year average ROE ~9-11%). Segment profile: Group Benefits generates steady underwriting fees, but Retirement & Income Solutions (RIS), International, and MetLife Holdings are heavily tied to spread income, alternative variable investment income (VII), and interest rate duration matching. Exposure to commercial real estate (CRE) loans and corporate credit in its ~$500B+ general account introduces macro cyclicality. Fierce pricing competition from alternative asset managers (Apollo/Athene, KKR/Global Atlantic) and peer life insurers caps spread margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

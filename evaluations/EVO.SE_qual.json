@@ -1,0 +1,30 @@
+{
+  "id": "EVO.SE",
+  "ticker": "EVO",
+  "universe": "eu",
+  "company": "Evolution",
+  "country": "Sweden",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal and legislative acceptance risk; addictive online casino gambling infrastructure with ~60% of revenues derived from unregulated/gray jurisdictions (predominantly Asia) subject to sudden regulatory crackdowns and enforcement actions.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). B2B live online casino software and studio provider is exposed to severe societal and regulatory acceptance risks. Approximately 60% of revenues are derived from unregulated/gray markets (led by Asia at ~39%), creating extreme vulnerability to regulatory bans, payment blocking, and enforcement crackdowns.",
+    "evidence": "Evolution AB is the global market leader in B2B live dealer casino streaming with industry-leading EBITDA margins (>60%) and high ROIC. However, casino gambling is inherently addictive, and Evolution derives roughly 60% of total revenue from unregulated markets (predominantly Asia at ~€800M+). This exposes the company to existential regulatory and jurisdictional risks, including payment gateway restrictions, cyber-attacks, and sudden governmental prohibitions on online gambling."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "VEEV",
+  "ticker": "VEEV",
+  "universe": "us",
+  "company": "Veeva Systems",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Technology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep GxP validation switching costs across 19 of top 20 pharmas drive >110% net retention, contractual inflation escalators, and ~29% GAAP operating margins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant GxP-validated cloud architecture and system of record for global life sciences (Vault R&D, Clinical, Quality, Safety). Insurmountable regulatory switching costs across 19 of top 20 biopharmas protect ~73% gross margins and >110% net retention. Insulated from AI disruption as expanding clinical trial data and regulatory mandates reinforce Vault as the auditable record of truth. Founder-led PBC with pristine debt-free balance sheet and >$1.4B net cash. [5-10Y g: Vault R&D/Quality module expansion 9.0% + contractual pricing 2.0% - commercial CRM seat migration drag 1.0% + operating leverage 2.0% - SBC dilution drag 1.0%]",
+    "evidence": "10-year consecutive Owner EPS compounding from $0.57 in FY2016 to $5.67 in FY2025 (17.3% CAGR). Multi-year median GAAP ROIC of 13.3% (tangible ROIC 15-46%) and FCF conversion of 94.8% ($904.5M Owner FCF on $908.9M GAAP Net Income). Revenue split: ~45% R&D/Quality Solutions, ~39% Commercial Solutions, ~16% Services; ~84% recurring subscription. Life sciences regulatory compliance (FDA 21 CFR Part 11) creates severe enterprise switching costs. Pristine fortress balance sheet with $0 debt and $1.42B+ cash/ST investments. Exceptional founder-operator leadership under Peter Gassner."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

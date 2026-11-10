@@ -1,0 +1,30 @@
+{
+  "id": "IDXX",
+  "ticker": "IDXX",
+  "universe": "us",
+  "company": "Idexx Laboratories",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Closed-loop proprietary consumables, clinic workflow integration, and integrated reference lab software create 97%+ customer retention. 10-year GAAP ROIC consistently 53-97% (5-yr median 61.2%) with EBIT margins >31%. Consistent 4-5% net annual price increases executed with negligible churn in a cash-pay market. Key risk is corporate vet clinic consolidation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Dominant global veterinary diagnostics leader with a captive installed base of point-of-care analyzers generating ~80% recurring consumable and reference lab revenues. Unassailable switching costs backed by 97%+ customer retention and consistent 4-5% net annual price realization in a cash-pay animal health market free from reimbursement caps. Structurally insulated across all 5 macrotrends with labor-saving clinical automation. Fortress balance sheet with net debt under 0.2x Net Income and 35x interest coverage. [5-10Y g: vet diagnostic testing volume 4.5% + net pricing 3.5% + menu innovation/inVue mix 1.5% - margin drags 0.0% + share repurchases 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 61.2% and operating ROIC of 89.1%. Revenue grew from $1.78B (2016) to $4.30B (2025) with EBIT margins expanding from 19.7% to 31.6%. Free cash flow conversion consistently exceeds 82% of net income ($997M Owner FCF in FY2025 vs $125M capex). Global installed base of premium chemistry and hematology instruments drives recurring diagnostic consumables, rapid assays, and cloud software (VetConnect PLUS) with >97% customer retention. Pricing power proven by 4-5% annual price increases with near-zero churn. Net debt of $195M is repayable in ~2 months of Owner FCF, with EBIT interest coverage of 35x. Diluted share count systematically reduced via disciplined FCF buybacks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

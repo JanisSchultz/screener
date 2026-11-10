@@ -1,0 +1,30 @@
+{
+  "id": "VMRK",
+  "ticker": "VMRK",
+  "universe": "us",
+  "company": "Vivmark Residential",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Multi-Family Residential REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Entitlement hurdles and high land costs in infill coastal gateway markets limit supply; large-scale platform provides minor operational efficiencies across ~184,000 units. However, empirical ROIC is structurally bounded at ~4-6% (well below the 12% hurdle) due to property capital intensity. Primary erosion threats include cyclical apartment supply deliveries, low tenant switching costs on 1-year leases, and municipal rent-control/tenant protection regulations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.0% < 12%, REJECT). Multi-family residential rental platform lacks empirical proof of moat, with 5-year median GAAP ROIC structurally anchored at ~5% due to property cap rates and capital intensity. Annual lease turnover and tenant substitute shopping prevent pricing power above market clearing rates, compounded by coastal rent-stabilization caps.",
+    "evidence": "Historical median GAAP ROIC of ~5.0% (AvalonBay ~4.8%, Equity Residential ~5.2%), falling far short of the 12.0% hurdle across all business cycles. Portfolio of ~184,000 apartment units concentrated in coastal gateway markets (Boston, NY/NJ, Washington D.C., California, Pacific Northwest). While balance sheet is investment-grade ('A' rated, debt/EBITDA ~5.5x), the underlying real estate asset class cannot achieve the required double-digit ROIC without excessive financial leverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

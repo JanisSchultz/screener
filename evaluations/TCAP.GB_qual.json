@@ -1,0 +1,30 @@
+{
+  "id": "TCAP.GB",
+  "ticker": "TCAP",
+  "universe": "eu",
+  "company": "TP ICAP",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant liquidity network effects in OTC rates, FX, and energy markets alongside Parameta Solutions' proprietary OTC benchmark pricing data. However, returns are heavily constrained by voice-broker compensation pools and structural commission compression.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). TP ICAP is the world's leading interdealer broker, but its core voice and hybrid broking franchises face severe secular terminal headwinds from financial market electronification, algorithmic cross-matching, and automated swap execution platforms.",
+    "evidence": "Adjusted EBIT margins in traditional Global Broking are thin (high single digits to mid teens) due to broker compensation structures. While Parameta Solutions provides high-margin (35-42%) OTC pricing data, over 70% of group revenue remains exposed to structurally declining voice/hybrid broking and cyclical trading volatility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

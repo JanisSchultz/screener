@@ -1,0 +1,30 @@
+{
+  "id": "SPGI",
+  "ticker": "SPGI",
+  "universe": "us",
+  "company": "S&P Global",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable regulatory and reputational duopoly in credit ratings with Moody's, where regulatory mandates (NRSRO) and institutional investment guidelines require dual ratings to issue debt. S&P Dow Jones Indices owns the preeminent equity benchmark (S&P 500) with unmatched liquidity network effects. Proprietary commodity benchmarks (Platts) and Market Intelligence create high workflow switching costs. Empirical proof: Operating ROIC >100% across the cycle (negligible tangible capital required), operating margins ~45-50%, and continuous contractual 3-5% price hikes with near-zero churn. Primary erosion threats: periodic cyclical debt issuance freezes (e.g. 2022-2023 rate shocks), regulatory scrutiny of rating agency fees, and rapid expansion of private credit bypassing traditional public ratings.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable global toll booth spanning credit ratings, benchmark equity indices, and mission-critical financial data. Operating ROIC exceeds 100% on tangible capital, free cash flow conversion averages 114%, and interest coverage is pristine at >22x with net debt repayable in ~2.4 years of net income. Structurally insulated across all 5 macrotrends due to regulatory mandates, nominal debt growth matching inflation, and proprietary workflow data. [5-10Y g: debt issuance & ETF volume 3.5% + subscription & rating price 2.5% + private markets & data mix 1.5% - tech/AI reinvestment drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "S&P Global commands an entrenched global credit rating duopoly alongside Moody's, rating the vast majority of global corporate and sovereign debt. S&P Dow Jones Indices licenses the S&P 500 benchmark, capturing basis points on trillions in passive ETF AUM and trading volume. Operating ROIC has maintained >100% across the decade, with GAAP ROIC normalizing to 11.85% in FY2025 as post-IHS Markit intangible assets amortize. Multi-year FCF conversion is exceptional at 114.25% (FY2025 OCF $5,651M vs Capex $195M, generating $5,220M in Owner FCF on $4,471M Net Income). Balance sheet is conservative with $12.37B LT debt against $1.75B cash (Net Debt / NI = 2.38x) and EBIT interest coverage of 22.57x ($6,478M EBIT vs $287M interest). Management has executed a disciplined capital allocation strategy under CEO Martina Cheung, returning over 85% of FCF via 50+ years of uninterrupted dividend growth and counter-cyclical buybacks, while proactively pruning non-core assets (e.g. spin-off of Mobility Global and divestment of OSTTRA)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

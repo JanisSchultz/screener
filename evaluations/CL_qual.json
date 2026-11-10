@@ -1,0 +1,30 @@
+{
+  "id": "CL",
+  "ticker": "CL",
+  "universe": "us",
+  "company": "Colgate-Palmolive",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Colgate commands a dominant ~41.4% global value share in toothpaste and ~32.4% in manual toothbrushes across 200+ countries, reinforced by massive Lindy brand awareness, ubiquitous shelf-space distribution, and strong dental professional endorsements. Hill's Pet Nutrition adds a high-margin science-based moat driven by veterinarian recommendations and therapeutic formulas. Demonstrated pricing power through repeated mid-single digit price increases passing through commodity inflation while maintaining or expanding market share. Empirical moat proof: 10-year median GAAP ROIC of 35.6%, operating ROIC exceeding 100%, and gross margins near 60%. Primary erosion risks include private label encroachment in basic tiers and retail channel consolidation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled global oral care franchise commanding >41% worldwide toothpaste market share alongside Hill's high-margin science-based pet nutrition. Demonstrated pricing power across multiple inflationary cycles with multi-year GAAP ROIC averaging >35%. Fully insulated from 5 macrotrends with local supply chains and non-discretionary daily consumable habits. Robust balance sheet with 12x+ interest coverage and Net Debt repayable in <1.6 years of Owner FCF. [5-10Y g: volume 1.5% + price 2.0% + mix/reinvestment 1.5% - input cost drag 0.5% + buybacks 1.0%]",
+    "evidence": "10-year financial history demonstrates extraordinary capital efficiency: 5-year median GAAP ROIC is 35.6% (operating ROIC >100%), gross margins consistently 59-60%, and Owner FCF conversion averages >120% of GAAP Net Income ($3.48B Owner FCF vs $2.13B GAAP NI in 2025). As of Q3 2026, organic sales grew 3.6% (+1.7% volume, +2.0% price) with Hill's organic sales up 5.7% and toothpaste global value share steady at 41.4%. Balance sheet carries $6.87B long-term debt against $1.29B cash (net debt $5.58B), generating $3.31B EBIT with $267M interest expense for 12.4x interest coverage, well above safety thresholds. 62 consecutive years of dividend increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

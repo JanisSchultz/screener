@@ -1,0 +1,30 @@
+{
+  "id": "ASML",
+  "ticker": "ASML",
+  "universe": "us",
+  "company": "ASML Holding",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Absolute global monopoly on EUV lithography protected by decades of proprietary R&D, thousands of patents, exclusive partnership with Carl Zeiss for optics, and Cymer light source technology. Fabs have zero technical alternatives for sub-7nm nodes. Pricing power proven by tool ASP escalation from ~EUR 120M to >EUR 180M (Low-NA) and >EUR 350M (High-NA) with gross margins >51% and GAAP ROIC near 100%. Primary erosion risks are pacing of High-NA adoption curves and geopolitical export controls.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Indispensable global monopoly on EUV and High-NA lithography, forming the physical gatekeeper of advanced semiconductor manufacturing. Unassailable technological moat backed by Carl Zeiss optics partnership and proprietary patent estate. Prime beneficiary of generative AI compute demand and global fab reshoring. Pristine balance sheet with over EUR 10B net cash. [5-10Y g: EUV and advanced packaging volume 7.0% + tool ASP pricing power 2.0% + installed base service mix 2.0% - margin drags 0.0% + net share buybacks 1.0%]",
+    "evidence": "FY2025 net sales reached EUR 32.67B with net income of EUR 9.61B and FCF of EUR 11.03B (115% conversion). 4-year cumulative FCF of EUR 33.9B on EUR 30.6B net income yields 110.6% multi-year cash conversion. 5-year median GAAP ROIC is 98.6% with operating ROIC >100%. Gross margins expanded above 51% (guided to 54-56% for FY2026). Cash and equivalents of EUR 12.92B against EUR 2.71B long-term debt yields a fortress net cash position of EUR 10.21B with EBIT interest coverage of 97.4x. Peak-to-peak earnings power expanded from EUR 14.13 in FY2022 to EUR 24.71 in FY2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

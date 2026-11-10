@@ -1,0 +1,30 @@
+{
+  "id": "DPLM.GB",
+  "ticker": "DPLM",
+  "universe": "eu",
+  "company": "Diploma PLC",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical, low-cost/high-consequence parts (specialized hydraulic seals, aerospace wiring harnesses, clinical diagnostics) sold via high-touch technical kitting command 20-22.5% operating margins and proven pricing power through industrial cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Elite decentralized value-add distributor generating ~21-22.5% operating margins with outstanding capital allocation. Mission-critical components with negligible customer cost share ensure continuous pricing power, while disciplined bolt-ons at ~6-7x EBIT drive double-digit compounding. [5-10Y g: organic volume 3.5% + price 1.5% + self-funded bolt-on M&A 5.0%]",
+    "evidence": "Adjusted operating margin reached 20.9% in FY24 and 22.5% in FY25. ROATCE is 19.1-20.9% (GAAP ROIC 12-16% burdened by acquisition goodwill; Tangible ROIC >80%). FCF conversion consistently exceeds 100% (101% FY24, 105% FY25). Leverage is ultra-conservative at 0.8x net debt/EBITDA, with interest coverage >10.6x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

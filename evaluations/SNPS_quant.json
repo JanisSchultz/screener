@@ -1,0 +1,43 @@
+{
+  "id": "SNPS",
+  "ticker": "SNPS",
+  "universe": "us",
+  "company": "Synopsys, Inc.",
+  "price": 466.08,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Negative Tangible Capital Standard (neutralizing $39.58B FY25 Ansys goodwill and intangibles; tangible capital is negative -$677M). Peak Owner EPS confirmed at $11.0059 (FY2025, with FY24 $821.7M SIG divestiture spike stripped). Forward 5-10Y g_implied of 10.5% reflects 5.5% EDA/simulation secular volume, 2.5% pricing/AI up-tiering (Synopsys.ai), 2.5% Ansys run-rate cost synergies ($400M) and deleveraging, offset by -0.5% China export/SBC drag and +0.5% post-deleveraging net buybacks. Calamity pass: FY25 leverage flags (7.94x Net Debt/GAAP NI, 2.05x EBIT/interest, 63.6% SBC-adjusted FCF conversion) reflect non-cash Ansys amortization (~$1.6B/yr) and deal close; by Q3 FY26 the entire $4.3B term loan was repaid ahead of schedule, reducing net debt to $6.43B on track to achieve <4.0x normalized Owner Earnings by FY2028."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.0059,
+    "current_multiple": 42.35,
+    "par_multiple": 36.97,
+    "par_value": 406.87,
+    "percent_vs_par": 0.1455,
+    "status": "Above PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0754,
+    "market_implied_cap": 22.9,
+    "moat_runway_margin": -2.9,
+    "market_implied_growth": 0.1857,
+    "growth_margin_of_safety": -0.0807
+  },
+  "health_checks": {
+    "net_debt_years": 10.11,
+    "net_debt_ok": false,
+    "interest_coverage": 2.05,
+    "interest_cov_ok": false,
+    "fcf_conversion": 0.6362,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

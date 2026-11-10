@@ -1,0 +1,43 @@
+{
+  "id": "ADM.GB",
+  "ticker": "ADM",
+  "universe": "eu",
+  "company": "Admiral",
+  "price": 3934.0,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.2811,
+    "fin_note": "Operating ROIC normalized to 28.11% (reaching 31.98% in FY25) reflecting high capital efficiency from direct distribution, superior underwriting algorithms, and float dynamics. Forward 5-10Y compound growth of 7.5% is supported by private motor policy volume growth (2.0%), inflation tariff indexation (3.0%), household/travel/loan diversification (1.5%), and capital return/special dividends (1.0%). Strong Solvency II coverage (~193%) and >40x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 243.2695,
+    "current_multiple": 16.17,
+    "par_multiple": 20.43,
+    "par_value": 4970.48,
+    "percent_vs_par": -0.2085,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0607,
+    "expected_irr_5y": 0.1871,
+    "market_implied_cap": 11.9,
+    "moat_runway_margin": 3.1,
+    "market_implied_growth": 0.0111,
+    "growth_margin_of_safety": 0.0639
+  },
+  "health_checks": {
+    "net_debt_years": 2.12,
+    "net_debt_ok": true,
+    "interest_coverage": 40.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.51,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

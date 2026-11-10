@@ -1,0 +1,43 @@
+{
+  "id": "RSG",
+  "ticker": "RSG",
+  "universe": "us",
+  "company": "Republic Services",
+  "price": 245.97,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": null,
+    "fin_note": "Passes all 6 gates under essential infrastructure concession standard. FY2025 Peak Owner EPS of $6.8529 accepted without adjustment (uninterrupted 10.6% 10-year compounding from $2.19 in 2016). Physical operating ROIC preserved at 32.45% (roic_operating), neutralizing $17.4B in accumulated M&A goodwill/intangibles (Allied Waste, US Ecology) that distorts reported GAAP ROIC (9.83%). 5-10Y through-the-cycle growth of 8.5% driven by 1.5% municipal/industrial volume, 4.5% core pricing power, 2.0% environmental solutions & tuck-in M&A, -0.5% RNG/automation capex drag, and 1.0% net share repurchases. Essential infrastructure balance sheet with 5.75x interest coverage ($3.30B EBIT vs $574M interest) and pristine 115.5% FCF conversion ($2.48B Owner FCF). Trades Above PAR at 35.89x peak EPS vs 27.88x PAR multiple ($191.07 PAR Value)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.8529,
+    "current_multiple": 35.89,
+    "par_multiple": 27.88,
+    "par_value": 191.07,
+    "percent_vs_par": 0.2873,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0098,
+    "expected_irr_5y": 0.0414,
+    "market_implied_cap": 25.7,
+    "moat_runway_margin": -5.7,
+    "market_implied_growth": 0.2052,
+    "growth_margin_of_safety": -0.1202
+  },
+  "health_checks": {
+    "net_debt_years": 6.41,
+    "net_debt_ok": false,
+    "interest_coverage": 5.75,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1546,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

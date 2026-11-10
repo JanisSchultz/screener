@@ -1,0 +1,30 @@
+{
+  "id": "NBIS",
+  "ticker": "NBIS",
+  "universe": "us",
+  "company": "Nebius Group",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Novel Unproven Business Model, REJECT). Nebius Group is a 2024 carveout and complete pivot of the former Yandex N.V. following the divestment of its Russian operating businesses. The remaining entity is a capital-hungry neocloud AI compute provider lacking any multi-cycle operating track record. The business operates specialized GPU data centers funded by multi-billion dollar debt facilities ($3.5B+ credit facility) and remains pre-GAAP net profit with negative free cash flow, severe customer concentration, and acute exposure to rapid GPU technological obsolescence cycles.",
+    "evidence": "Track Record & Corporate History: Following the July 2024 sale of its Russian search, ride-hailing, and e-commerce assets for ~$5.4B, Amsterdam-based Yandex N.V. rebranded as Nebius Group (NASDAQ: NBIS) under CEO Arkady Volozh, pivoting to wholesale AI cloud infrastructure alongside minor legacy ventures (Avride autonomous driving, TripleTen edtech).\nFinancials & Profitability: Despite hyper-growth in revenue (scaling from $105.1M in Q2 2025 to $582.3M in Q2 2026, 454% YoY), the company remains deeply GAAP unprofitable from continuing operations (-$190.4M net loss in Q2 2026) due to heavy depreciation and immense infrastructure scaling costs. Historical 10-year median ROIC is sub-hurdle at ~6.2% (reflecting legacy conglomerate operations), and the new AI infrastructure entity has zero multi-cycle capital return record.\nCapital Intensity & Balance Sheet: Nebius operates an extremely capital-intensive business model requiring massive ongoing CapEx for NVIDIA Blackwell clusters, data center power, and land. Expansion is funded via large credit lines including a $3.5B debt facility with Citi, resulting in deeply negative free cash flow and continuous reliance on capital markets.\nCompetitive Moat & Customer Concentration: Backlog is heavily concentrated in a few hyperscale enterprise contracts (e.g. Microsoft, Meta). GPU compute leasing operates as a commoditized infrastructure layer without high customer switching costs or ad-valorem pricing power, vulnerable to rapid hardware obsolescence cycles (1-2 year GPU generations)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": 1,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PZU.PL",
+  "ticker": "PZU",
+  "universe": "eu",
+  "company": "PZU",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country (Poland) is outside approved Western developed markets (in_market=N); state control introduces political capital allocation risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Pre-Screen Geographic Condition: in_market = N, REJECT). Listing country (Poland) is classified as an emerging/non-Western market under screening criteria. Furthermore, dominant Polish state ownership (~34%) subjects capital allocation to political agendas (e.g. state-directed acquisitions of Bank Pekao and Alior Bank) rather than pure per-share compounding.",
+    "evidence": "PZU is Poland's dominant insurer but operates under Polish State Treasury control. Pre-screen in_market flag is 'N'. State influence has historically driven financial conglomerate expansion into banking (Bank Pekao, Alior) rather than focused capital return, violating Western market and governance standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

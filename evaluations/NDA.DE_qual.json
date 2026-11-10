@@ -1,0 +1,30 @@
+{
+  "id": "NDA.DE",
+  "ticker": "NDA",
+  "universe": "eu",
+  "company": "Aurubis",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Copper (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Complex multimetal smelting and recycling infrastructure provides technological processing scale, but treatment charges (TC/RCs) and metal premia are dictated by global benchmark negotiations and Chinese smelting capacity, leaving Aurubis as a margin taker without pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & price-taker economics, REJECT). Aurubis operates Europe's largest copper smelting and recycling network, but earnings are fundamentally constrained by global treatment and refining charges (TC/RCs), scrap spreads, and volatile energy costs. Multi-cycle GAAP ROIC hovers around 8-10%, failing the 12% hurdle.",
+    "evidence": "Historical ROCE/ROIC averages 8-10% across the cycle. Thin net margins (3-5%) fluctuate with global TC/RC benchmarks, byproduct acid prices, and energy costs. Inability to set prices independently of global commodity and smelting dynamics demonstrates lack of pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

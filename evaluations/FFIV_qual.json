@@ -1,0 +1,30 @@
+{
+  "id": "FFIV",
+  "ticker": "FFIV",
+  "universe": "us",
+  "company": "F5, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Deep installed base lock-in via proprietary iRules scripting, custom enterprise traffic management configurations, and mission-critical SSL/TLS orchestration supports 80%+ gross margins and ~16.5% median ROIC. However, F5 lacks pricing power above inflation as cloud migration enables enterprise customers to substitute legacy BIG-IP appliances with native hyperscaler load balancers (AWS ALB/NLB, Azure Application Gateway) and modern edge/WAF providers (Cloudflare), capping top-line growth (0.1% YoY in FY24) and inducing customer churn upon aggressive price hikes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While F5 maintains high switching costs in its legacy on-premises BIG-IP installed base, it lacks the ability to raise prices at or above inflation without losing customer volume or driving migration to cloud-native alternatives. Long-term organic revenue CAGR (~4% over FY15–FY24, flat 0.1% in FY24) demonstrates that hyperscaler load-balancing primitives (AWS ELB/ALB) and edge platforms (Cloudflare) severely constrain pricing power.",
+    "evidence": "FY24 revenue was $2.82B (flat 0.1% YoY vs $2.81B in FY23; 10-year sales CAGR FY15–FY24 was ~4.3%); FY25 revenue reached $3.09B (+9.7%) on hybrid multicloud refresh cycles. GAAP gross margin remains 80–81% (non-GAAP ~84%) and operating margin is ~24–25%, supporting 5-year median ROIC of 16.5%. Cash conversion is strong with FCF of $762M in FY24 and $906M in FY25 (>100% of net income) on minimal capex ($30–$43M). Pristine balance sheet with zero funded debt and $1.36B in cash/investments as of FY25. However, switching costs are defensive rather than offensive: proprietary iRules and Layer 4–7 configurations create migration friction, but attempts to push aggressive pricing accelerate migration to hyperscaler native load balancers (AWS ELB/ALB, Azure App Gateway) and modern edge/API security (Cloudflare). M&A history includes NGINX ($670M in 2019), Shape Security ($1B in 2020), and Volterra ($500M in 2021) to build F5 Distributed Cloud, yet these face intense competition and fail to restore unassailable pricing leverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

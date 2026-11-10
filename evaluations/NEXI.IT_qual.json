@@ -1,0 +1,30 @@
+{
+  "id": "NEXI.IT",
+  "ticker": "NEXI",
+  "universe": "eu",
+  "company": "Nexi",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Merchant acquiring and card issuing network benefits from bank-partner distribution and Italian domestic scale, but lacks pricing power against modern platforms (Adyen, Stripe) and fails on sub-8% GAAP ROIC resulting from massive debt-funded goodwill (Nets and SIA mergers).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power). Legacy European payment processor created via debt-funded rollups (Nets, SIA); suffers from sub-hurdle GAAP ROIC (~5-7%), billions in goodwill, high financial leverage (~€5.2B net debt), and persistent take-rate pressure from modern competitors like Adyen.",
+    "evidence": "GAAP ROIC averages ~5-7%, severely depressed by ~€18B-19B in invested capital following the Nets and SIA mergers. Statutory results saw heavy impairments and low net income (€171M in 2024 vs large net loss in 2023). High net debt of €5.2B (2.7x EBITDA) limits financial flexibility while merchant acquiring faces secular fee compression from tech-native payment platforms."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

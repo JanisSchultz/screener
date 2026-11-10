@@ -1,0 +1,30 @@
+{
+  "id": "SLHN.CH",
+  "ticker": "SLHN",
+  "universe": "eu",
+  "company": "Swiss Life",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant franchise in Swiss occupational pensions (BVG Pillar 2) and proprietary IFA distribution networks in Germany/France, supplemented by Swiss Life Asset Managers (leading European real estate asset manager). Sticky multi-year corporate client relationships and disciplined underwriting deliver 12-16% ROE.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Long-term runway is constrained by European demographic aging, regulatory caps on Swiss pension conversion rates (BVG), and commercial real estate exposure in its asset management division, preventing a 15+ year durable competitive advantage period.",
+    "evidence": "Solid 12-16% ROE and strong fee generation from Swiss Life Asset Managers (CHF 875M fee result in FY24). However, as a life and pension insurer, it faces acute secular demographic headwinds (aging European population, Pillar 2 statutory conversion rate reductions) and cyclical sensitivity in real estate fund management, capping CAP well below the 15-year hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

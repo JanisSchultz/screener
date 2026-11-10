@@ -1,0 +1,30 @@
+{
+  "id": "FDXF",
+  "ticker": "FDXF",
+  "universe": "us",
+  "company": "FedEx Freight",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Cargo Ground Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "North American LTL network density across ~370 service centers and linehaul lanes creates scale economies shared. Proof of moat shown by 3-year median GAAP ROIC of 45.8% (FY23: 69.9%, FY24: 45.8%, FY25: 12.9%) and annual 4.9-5.9% General Rate Increases (GRIs). Primary erosion threats include low-cost non-union competitors (ODFL, Saia), shipper TMS spot-bidding, and cyclical freight downturns.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). North American LTL network density (~370 terminals) provides operational scale economies shared and historical median GAAP ROIC of 45.8%. However, the business faces active, unhedged terminal headwinds across three macrotrends: chronic commercial driver shortages and labor cost inflation (Macrotrend 2), capital-intensive diesel fleet decarbonization and zero-emission mandates (Macrotrend 4), and high capital intensity compounded by $4.26B in carveout debt (Macrotrend 5). Capped at CAP = 10 by the Rule of Secular Resilience, failing the 15-year hurdle.",
+    "evidence": "FedEx Freight (NYSE: FDXF) was spun off from FedEx Corp in June 2026 as an independent publicly traded company. Operates North America's largest LTL network with $8.8B-$9.4B in annual revenue across ~370 service centers. 3-year median GAAP ROIC of 45.8% (FY23: 69.9%, FY24: 45.8%, FY25: 12.9%) and tangible ROIC median >60% demonstrate historical network moat, maintained through disciplined 4.9-5.9% annual General Rate Increases (GRIs). However, FY25 EBIT declined 62% to $540M and OCF fell to $167M (Owner FCF -$225M) amidst freight cyclicality. The business faces structural terminal labor constraints (truck driver scarcity), mandatory diesel fleet transition capex under EPA/CARB rules, and a heavy post-spin debt burden ($4.26B LT debt vs $655M TTM net income, with -$497M negative equity resulting from a pre-spin debt dividend to parent FedEx). Under the 5-Macrotrend framework, persistent labor and energy transition headwinds cap CAP at 10 years, failing Gate 4."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

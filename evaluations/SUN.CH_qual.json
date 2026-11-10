@@ -1,0 +1,30 @@
+{
+  "id": "SUN.CH",
+  "ticker": "SUN",
+  "universe": "eu",
+  "company": "Sulzer",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed base across industrial pumps, rotating equipment services, and Chemtech separation systems, but commoditized competition in flow equipment limits pricing power and leaves multi-cycle GAAP ROIC below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Industrial pumps and flow equipment face commoditized competition from global pump manufacturers; full-cycle GAAP ROIC sits below the 12% hurdle (ROCE was 5.4% in 2022 and 9.0% in 2021) and cyclical competitive tenders restrict pricing power.",
+    "evidence": "Historical ROCE fluctuated between 5.4% (2022) and 9.0% (2021) before recent cyclical recovery. Competitive bidding in municipal water, oil & gas, and process industries prevents sustained pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

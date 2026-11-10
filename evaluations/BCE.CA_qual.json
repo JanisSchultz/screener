@@ -1,0 +1,30 @@
+{
+  "id": "BCE.CA",
+  "ticker": "BCE",
+  "universe": "ca",
+  "company": "BCE",
+  "country": "Canada",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "CRTC mandated wholesale fiber unbundling, 4-carrier wireless price war (Quebecor/Freedom Mobile), and high capital intensity keep ROIC depressed at 4-6% (well below the 12% hurdle), eliminating pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 4-6% vs 12% hurdle; CRTC mandated wholesale access and aggressive 4th-carrier mobile competition erode pricing power).",
+    "evidence": "BCE's 5-year median GAAP ROIC is ~4-6%, well below the 12% threshold, with recent write-downs pushing GAAP metrics negative. The Canadian telecom regulatory environment (CRTC mandated wholesale fiber access) and intense 4-player price competition (Quebecor/Freedom Mobile) have produced chronic wireless ARPU deflation. Elevated debt load (>CAD 40B net debt, ~4.5x net debt/EBITDA) and heavy FTTH capex led to a dividend reset in 2025, confirming structural capital allocation and pricing power failure."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

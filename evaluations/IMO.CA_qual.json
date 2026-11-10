@@ -1,0 +1,30 @@
+{
+  "id": "IMO.CA",
+  "ticker": "IMO",
+  "universe": "ca",
+  "company": "Imperial Oil",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Imperial Oil benefits from massive, long-life oil sands production (Kearl, Cold Lake, Syncrude) coupled with Canada's premier downstream refining and Esso retail distribution network. While operating scale and ExxonMobil sponsorship provide elite execution, the underlying economic profits remain tethered to world crude prices and refining margins.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). Despite exceptional capital allocation, ExxonMobil backing, and strong downstream integration, Imperial Oil is a commodity price-taker. Through-cycle 10-year median ROIC is ~8-10%, failing the 12% Munger moat hurdle during cyclical troughs.",
+    "evidence": "While post-2021 earnings reached cyclical highs, historical ROIC plunged to 3-5% in 2016 and ~2% in 2020 during demand contractions. 10-year median ROIC of ~8.5% fails the 12% threshold across the full business cycle, reflecting inherent capital intensity and spot commodity price dependence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

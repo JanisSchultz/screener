@@ -1,0 +1,30 @@
+{
+  "id": "JPM",
+  "ticker": "JPM",
+  "universe": "us",
+  "company": "JPMorgan Chase",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "JPMorgan Chase commands an unassailable scale advantage ('Scale economies shared') as the largest US universal bank (~$4.2T+ assets, ~$2.4T+ deposits). Annual technology budget of $17B+ exceeds total revenues of most regional competitors, funding superior digital banking, cybersecurity, and real-time payments that drive low-cost deposit gathering and industry-leading operating leverage. Massive switching costs in corporate cash management/treasury services and Chase retail primary banking relationships yield high deposit stickiness. Proof of moat is demonstrated by 17-22% ROTCE (2021-2025) and resilient net interest income through aggressive Fed rate cycles. Moat erosion risks include fintech disintermediation in retail payments, private credit disintermediation in corporate lending, and escalating Basel III endgame capital surcharges.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash & Fortress Balance Sheet, REJECT). Best-in-class universal bank with dominant scale across consumer banking, corporate treasury, cards, and investment banking, led by exemplary management under Jamie Dimon (Management score = 2). However, as a G-SIB commercial fractional-reserve bank, JPM inherently operates with ~11-12x asset-to-equity leverage, substantial duration mismatch between assets and deposits, and negative/unreliable corporate free cash flow conversion (-0.19 5Y FCF conversion). By framework specification, commercial fractional-reserve banks fail Gate 6 as their solvency relies structurally on central bank backstops, deposit insurance, and continuous depositor confidence ('kindness of strangers').",
+    "evidence": "Empirical track record confirms best-in-class banking execution with multi-cycle ROTCE consistently between 17% and 22% (2021: 23%, 2022: 18%, 2023: 21%, 2024: 22%, 2025: 20%) and ROE of 17-18%, well exceeding the 10% cost of equity hurdle. Tangible book value per share compounded at >10% CAGR over the past decade. During the 2023 regional banking crisis, JPM served as the system's private stabilizer, acquiring First Republic Bank and gaining $200B+ in assets and sticky high-net-worth deposits. Total deposits stand at ~$2.4T with CET1 ratio of ~15.3% (well above regulatory minimums) and cash/marketable reserves of ~$343B+. However, GAAP net income of $57.0B (FY2025) cannot convert cleanly into standalone Owner FCF due to balance sheet loan creation and volatile deposit flows (-$147.8B OCF in FY2025). The structural ~11.7x leverage ($4.2T assets on $362B equity) fails the Munger non-financial fortress balance sheet standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

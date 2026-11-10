@@ -1,0 +1,30 @@
+{
+  "id": "GLW",
+  "ticker": "GLW",
+  "universe": "us",
+  "company": "Corning Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World-class materials science know-how and proprietary fusion-draw glass process provide specialized technological barriers and long-term co-innovation partnerships with Apple and telcos. However, empirical proof of moat fails decisively: 5-year median GAAP ROIC is 6.49% (10-year peak of only 11.48% in 2025), well below the 12% hurdle. The economic engine suffers from structural capital intensity (annual capex of $1.0B-$2.2B), persistent multi-year price deflation in display glass substrates, and pronounced cyclicality in telco optical network spending.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 6.49% median vs 12% hurdle, REJECT). While Corning possesses formidable proprietary fusion-draw glass manufacturing and optical fiber innovation, its business model is structurally burdened by heavy capital expenditure cycles, multi-year display glass price deflation, and carrier capex cyclicality that consistently depress returns on capital below economic hurdle rates.",
+    "evidence": "Multi-cycle financial track record demonstrates structural capital dilution: 10-year GAAP ROIC averaged ~6.6% (FY2016: 6.5%, FY2017: 7.9%, FY2018: 6.7%, FY2019: 5.8%, FY2020: 2.3%, FY2021: 9.5%, FY2022: 6.5%, FY2023: 4.2%, FY2024: 5.0%, FY2025: 11.5%), with a 5-year median of 6.49%, failing the 12% gate requirement. Tangible ROIC 5-year median of ~8.2% also fails the 15% operating hurdle. High ongoing capital intensity ($1.3B-$2.2B capex annually for glass tank maintenance and fiber capacity against $1.3B-$1.5B D&A) limits free cash flow conversion. Segment exposure reveals severe customer concentration and pricing headwind: Display Technologies historically faced structural annual price erosion from Asian panel makers (BOE, CSOT), while Optical Communications remains vulnerable to carrier inventory digestion cycles despite recent GenAI data center tailwinds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

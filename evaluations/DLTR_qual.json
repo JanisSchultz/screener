@@ -1,0 +1,30 @@
+{
+  "id": "DLTR",
+  "ticker": "DLTR",
+  "universe": "us",
+  "company": "Dollar Tree",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dollar Tree attempts a scale economies shared model in small-box discount retail, but lacks an insurmountable cost advantage against Walmart (over 30x larger scale) and cross-border ultra-discount platforms (Temu, Shein). Proof of moat fails: 5-year median GAAP ROIC is 8.5% (against the 12% hurdle). The company lacks pricing power >= inflation: breaking its $1.00 price point to $1.25 triggered traffic drag, while multi-price tiering ($3-$7) directly exposes it to fierce competition from Walmart everyday low prices with zero defensible barriers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.5% < 12%, REJECT). Discount variety retailer lacks structural pricing power and fails empirical proof of moat. 5-year median GAAP ROIC of 8.5% falls well short of the 12% threshold. Moving away from its signature $1.00 fixed-price format to $1.25 alienated core budget shoppers, while the multi-price expansion ($3, $5, $7) directly collides with retail behemoths (Walmart) and cross-border ultra-discount platforms (Temu, Shein) without an insurmountable cost advantage.",
+    "evidence": "Financial Track Record: 10-year / 5-year median GAAP ROIC is 8.5%, consistently failing the 12% hurdle. Operating margins historically hovered around 5-8%, expanding slightly to ~8.3-8.5% on continuing operations post-Family Dollar separation. FCF generation historically fluctuated ($1.1B in FY2025 on continuing operations) but burdened by continuous store renovation, multi-price format conversions (Dollar Tree 3.0), and lease obligations. Segments & Business Model: Following the July 2025 sale of Family Dollar to Brigade Capital and Macellum Capital for $1.007B in cash (a staggering loss on the $8.5B paid in 2015), the company operates primarily the Dollar Tree banner (>8,000 stores). Assortment is roughly 45-50% consumables (food, snacks, health and beauty, cleaning supplies) and 50-55% variety/seasonal merchandise. Pricing Power & Moat Dynamics: Dollar Tree possesses zero switching costs and no pricing power above inflation. The breaking of the $1.00 price point to $1.25 in 2021-2022 generated customer resistance and foot traffic declines. The multi-price expansion ($3-$7) strips away the format's simplicity and brings Dollar Tree into direct competition with Walmart, Dollar General, and factory-direct cross-border e-commerce (Temu, Shein). M&A & Capital Allocation: The 2015 debt-funded acquisition of Family Dollar for $8.5B destroyed billions of dollars in shareholder value through massive goodwill impairments, operational dysfunction, and eventual fire-sale divestiture in 2025 for $1.007B. Even on standalone operations, capital reinvestment yields sub-hurdle returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

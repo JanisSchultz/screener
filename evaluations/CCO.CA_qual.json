@@ -1,0 +1,30 @@
+{
+  "id": "CCO.CA",
+  "ticker": "CCO",
+  "universe": "ca",
+  "company": "Cameco",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Coal & Consumable Fuels",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cameco owns world-class, highest-grade uranium deposits (McArthur River, Cigar Lake) and downstream nuclear services (including a 49% stake in Westinghouse). However, its economic returns are fundamentally dictated by the global supply/demand balance of uranium. During prolonged downcycles, the business is forced into care-and-maintenance and loses pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). Cameco is a premier nuclear fuel franchise, but remains a cyclical commodity producer. Operating earnings and capital returns collapsed into prolonged deficits during 2017-2021, and its 10-year median ROIC is near 0%, failing the 12% through-cycle hurdle.",
+    "evidence": "ROIC was negative to near zero from 2017 through 2021 (-2.3% to 0.3%) as low uranium spot prices forced mine curtailments. Even during the current nuclear contracting upcycle and after acquiring Westinghouse, ROIC recovered only to ~3.9%-4.8% in 2024, far short of the required 12% through-cycle return threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

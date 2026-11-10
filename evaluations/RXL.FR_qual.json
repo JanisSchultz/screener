@@ -1,0 +1,30 @@
+{
+  "id": "RXL.FR",
+  "ticker": "RXL",
+  "universe": "eu",
+  "company": "Rexel",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive branch network and logistics scale across North America and Europe provide distributor availability, but lack structural pricing power; margins are thin (~5.9-6.8% EBITA) and heavily exposed to copper cable pricing cycles, while multi-cycle GAAP ROIC (~5-8%) falls well below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (N, REJECT). Global electrical wholesale distributor benefiting from electrification trends, but lacks structural pricing power and fails Gate 3b. Operating profitability is constrained by thin ~6% EBITA margins, heavy sensitivity to copper commodity cycles and manufacturer rebates (Schneider, ABB, Legrand), and sub-hurdle multi-cycle GAAP ROIC of 5-8% (well below the 12% threshold). Downstream gates bypassed per waterfall.",
+    "evidence": "Reported adjusted EBITA margins of 6.8% (2023), 5.9% (2024), and 6.0% (2025). Multi-cycle GAAP ROIC historically tracks between 4.5% and 8.0%, failing the 12% quality hurdle. Gross margins are structurally exposed to copper raw material pass-through timing differences and supplier volume rebates rather than independent customer pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

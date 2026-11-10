@@ -1,0 +1,30 @@
+{
+  "id": "AVY",
+  "ticker": "AVY",
+  "universe": "us",
+  "company": "Avery Dennison",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global scale in pressure-sensitive materials coating and market leadership in RAIN RFID inlays. Moat protected by converter switching costs, specialized adhesive formulation chemistry, and qualification hurdles where tiny label material cost (<1-2% of packaged goods) contrasts with severe operational risk of line stoppage on high-speed bottling and packaging lines. Formulaic raw material pass-through pricing historically preserves gross margins across cycles. Primary erosion risks stem from converter dual-sourcing (UPM Raflatac), ongoing ASP erosion in RFID inlay assembly, and emerging linerless label technology.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Paper and plastic packaging materials operate in Mauboussin Tier 4 (high fade rate, persistence p~0.70, baseline CAP 5-10 years). Faces structural headwinds under Macrotrend 4 (Resource Limits & Energy Transition) from tightening global packaging waste regulations (EU PPWR, EPR legislation) targeting single-use plastics and non-recyclable silicone release-liner landfill waste, alongside linerless label substitution. Furthermore, Solutions Group (~30% of sales) is exposed to volatile, cyclical global apparel supply chains, while RFID inlays experience persistent unit price deflation.",
+    "evidence": "Avery Dennison operates through Materials Group (~70% of FY2025 net sales of $8.86B) and Solutions Group (~30%). Historical capital efficiency is solid with 5-year median GAAP ROIC of 14.2% and operating ROIC ~14-16%, recovering from the 2023 apparel/retail destocking trough (when net sales fell -10% and FCF dropped). Free cash flow converted at >80% in FY2025 (~$712M adjusted FCF), supported by capex discipline. Total debt stood at ~$3.67B against $2.24B stockholders' equity with manageable interest coverage (>5x). However, packaging materials rollstocks exhibit limited technological defensibility against commoditization, release-liner waste faces intensifying environmental regulatory scrutiny, and apparel brand identification is highly cyclical, preventing the business from achieving the required 15-year secular competitive advantage period."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

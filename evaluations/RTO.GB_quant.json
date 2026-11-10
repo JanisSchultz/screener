@@ -1,0 +1,43 @@
+{
+  "id": "RTO.GB",
+  "ticker": "RTO",
+  "universe": "eu",
+  "company": "Rentokil Initial",
+  "price": 356.9,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (Gate 5/6 waived under turnaround catalyst). Peak Owner EPS confirmed at 23.689 GBp (FY2023); retained peak_eps_est=null to preserve cycle multiple consistency (15.94x-31.24x). Operating ROIC normalized to 35.0% cap (roic_est=0.35) neutralizing $8.92B Terminix M&A goodwill/intangibles that depress GAAP ROIC to 6.90% (tangible ROIC >100%). Forward 5-10Y g_implied anchored at 5.5% per Stage-1 drivers (2.0% volume + 2.5% price + 1.0% NA recovery - 0.5% termite drag + 0.5% deleveraging), conservatively below 7.0% base rate. Automated LT net debt/OE is 2.40y (company Net Debt/Adj EBITDA 2.4x in H1 2026); interest coverage of 2.56x reflects statutory charges vs >4.3x adjusted."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 23.689,
+    "current_multiple": 15.07,
+    "par_multiple": 23.2,
+    "par_value": 549.51,
+    "percent_vs_par": -0.3505,
+    "status": "Below PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0252,
+    "expected_irr_5y": 0.1753,
+    "market_implied_cap": 9.7,
+    "moat_runway_margin": 5.3,
+    "market_implied_growth": -0.067,
+    "growth_margin_of_safety": 0.122
+  },
+  "health_checks": {
+    "net_debt_years": 2.4,
+    "net_debt_ok": true,
+    "interest_coverage": 2.6,
+    "interest_cov_ok": false,
+    "fcf_conversion": 1.51,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

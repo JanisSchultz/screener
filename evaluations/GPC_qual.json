@@ -1,0 +1,30 @@
+{
+  "id": "GPC",
+  "ticker": "GPC",
+  "universe": "us",
+  "company": "Genuine Parts Company",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "(1) Moat barriers: Dense ~9,800-store global NAPA hub-and-spoke auto parts network enabling <45-min commercial DIFM lift-bay delivery and 16,000+ NAPA AutoCare affiliations, paired with Motion Industries' #1 North American industrial bearings/power-transmission MRO scale and technical inventory support. (2) Empirical proof fails: While 2021-2025 median GAAP ROIC is 19.1% (aided by the 2021-2023 post-COVID boom), GAAP ROIC fell to 13.5% in 2024 and 2.3% in 2025; more critically, Incremental ROIIC across 2016-2024 was just ~1.1% pre-tax (~5.3% after-tax) as Net Invested Capital more than doubled (+$4.10B) for only +$43.5M incremental EBIT, and operating margins eroded from 8.0-8.5% (2016-2018) and 7.8% (2023) to 5.4% (2024) and ~5% adj. / 0.9% GAAP (2025) vs. 18-20% at AutoZone/O'Reilly. (3) Erosion threats: Superior commercial execution, store density, and private-label margin capture by ORLY/AZO; two-step wholesale margin squeeze when parts inflation cools while SG&A/wage costs rise; $5.04B M&A goodwill exceeding equity (-$621.5M tangible equity); Q1 2027 spin-off divesting higher-margin Motion Industries; and long-term BEV powertrain wear-part shrinkage.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECTED – G3 Moat & Pricing). While GPC serves essential automotive aftermarket and industrial MRO needs with real distribution scale, empirical moat proof and pricing power fail Munger's bar: 2016-2024 Incremental ROIIC was ~1.1% pre-tax (~5.3% after-tax; negative over 2018-2024) despite +$4.1B of incremental invested capital, and operating margins compressed from 7.8-8.5% to 5.4% in 2024 and ~5% adj. (0.9% GAAP) in 2025—far below AZO/ORLY's 18-20%—with adjusted EPS falling two consecutive years ($9.33 in 2023 -> $8.16 in 2024 -> $7.37 in 2025). Calamity Tier does not apply because the margin compression and sub-hurdle ROIIC predate 2025's $741.9M pension settlement charge, goodwill ($5.04B) exceeds equity ($4.42B), and the activist-driven Q1 2027 spin-off separates higher-margin Motion Industries while leaving GPC with the weaker, BEV-exposed global automotive distribution unit.",
+    "evidence": "Multi-cycle financial history (SEC EDGAR FY2016-FY2025): Revenue grew from $15,339.7M (2016) to $23,090.6M (2023), $23,486.6M (2024), and $24,300.1M (2025), but GAAP EBIT barely moved from $1,229.3M (8.01% margin in 2016; $1,430.5M / 8.50% in 2018) to $1,272.8M (5.42% in 2024) and collapsed to $215.7M (0.89%) in 2025 on a ~$741.9M US pension settlement charge plus restructuring/credit charges. Even on an adjusted basis, 2025 net income fell to ~$1.0B ($7.37 EPS vs. $8.16 in 2024 and $9.33 peak Owner EPS in 2023) despite $175M of realized restructuring savings. GAAP ROIC averaged ~19-21% in 2021-2023 (5Y median 19.07%; 10Y median 17.95%) before compressing to 13.54% (2024) and 2.27% (2025), while 2016-2024 Net Invested Capital rose from $3,500.8M to $7,600.0M (+$4,099.2M) for +$43.5M EBIT (1.1% pre-tax ROIIC) and +$216.9M Net Income (5.3% ROIIC). Segments & 2025-2026 separation: Global Automotive (NAPA/AAG/Repco, >$15B sales, ~75-80% DIFM commercial, ~8-9% EBITDA margins) lags pure-play retail/commercial peers AZO and ORLY (~50-53% gross, 18-20% EBIT margins), whereas Motion Industries (~$9B sales, ~12-13% EBITDA margins, +6%+ YoY 2026 growth) is being carved out into an independent public company in Q1 2027 following Elliott Management's >$1B activist stake. Capital allocation & balance sheet: Serial M&A inflated Goodwill & Intangibles from $1,574.7M (2016) to $5,044.5M (2025) against $4,423.0M equity (negative tangible equity of -$621.5M) and expanded debt from $550.0M (2016) to $3,498.4M (2025; net debt $3,021.2M), pushing interest expense from $64.5M (2023) to $163.5M (2025; 1.32x GAAP EBIT coverage). Cumulative 2021-2025 Owner FCF conversion was 97.5% ($4,258.5M vs. $4,368.0M NI), but FY2025 Owner FCF ($372.1M) fell short of Dividend King payouts ($563.8M)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

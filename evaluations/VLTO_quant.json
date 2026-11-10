@@ -1,0 +1,43 @@
+{
+  "id": "VLTO",
+  "ticker": "VLTO",
+  "universe": "us",
+  "company": "Veralto Corporation",
+  "price": 117.09,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Mission-critical water quality analytics and packaging coding franchise spun off from Danaher. Operating ROIC normalized to 35.0% cap, reflecting razor-and-blade consumable dynamics and neutralizing $3.36B in accumulated spin-off goodwill. FY2025 peak Owner EPS of $3.82 represents clean standalone earning power free of spin-off distortion. 5-10Y through-the-cycle growth of 8.5% driven by 3.5% water/packaging volume, 2.0% proprietary consumable pricing, 1.5% bolt-on M&A, and 1.5% buybacks, net of 0.5% tariff/friction drag. Balance sheet is in net cash position ($2.03B cash vs $1.97B debt) with 13.30x EBIT interest coverage and 96.2% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.8154,
+    "current_multiple": 30.69,
+    "par_multiple": 25.99,
+    "par_value": 99.17,
+    "percent_vs_par": 0.1806,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0038,
+    "expected_irr_5y": 0.0534,
+    "market_implied_cap": 23.6,
+    "moat_runway_margin": -3.6,
+    "market_implied_growth": 0.1554,
+    "growth_margin_of_safety": -0.0704
+  },
+  "health_checks": {
+    "net_debt_years": 2.1,
+    "net_debt_ok": true,
+    "interest_coverage": 13.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9616,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

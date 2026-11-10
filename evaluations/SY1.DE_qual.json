@@ -1,0 +1,30 @@
+{
+  "id": "SY1.DE",
+  "ticker": "SY1",
+  "universe": "eu",
+  "company": "Symrise",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs via co-developed flavor and fragrance formulations and proprietary pet food palatants (Diana Division). Ingredient costs represent <2% of finished consumer goods price, supporting tangible ROIC >15% and gross margin stability.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Long-term runway is impaired by global antitrust investigations into flavor/fragrance cartel pricing, decelerating volume growth, and aggressive M&A rollups (Swedencare, ADF/IDF) that diluted multi-year GAAP ROIC to 7-9%.",
+    "evidence": "Multi-year GAAP ROIC averaged 7.0-9.0% between 2021 and 2025, heavily diluted by €2.7B in goodwill and intangibles. The company faced cross-border antitrust probes into alleged fragrance price-fixing and forced regulatory remedies on pet food assets. Decelerating organic volume growth and FMCG customer consolidation curtail economic moat visibility below the 15-year hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

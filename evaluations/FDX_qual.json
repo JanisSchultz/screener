@@ -1,0 +1,30 @@
+{
+  "id": "FDX",
+  "ticker": "FDX",
+  "universe": "us",
+  "company": "FedEx Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global express hub-and-spoke air network (Memphis World Hub, 680+ aircraft) and sorting infrastructure are virtually impossible to replicate from scratch, but fails empirical proof of moat. 5-year median GAAP ROIC is ~7.5% (10-year avg ~9.5%), persistently below the 12% quality hurdle across all cycle stages. Pricing power is constrained by UPS, Amazon logistics insourcing/expansion, regional parcel carriers, and belly-cargo substitution; lost the major USPS air cargo contract to UPS in 2024.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). While FedEx operates an irreplaceable global air express and ground logistics network, heavy capital intensity ($4B-$6B+ annual capex for aircraft, hubs, and vehicle fleet) and competitive pressure from UPS and Amazon keep operating margins at 5.5-7.0% and multi-cycle ROIC at 7-8%, well below the 12% threshold.",
+    "evidence": "5-year median GAAP ROIC is 7.5% (FY20 4.3%, FY21 10.2%, FY22 8.5%, FY23 7.4%, FY24 7.5%, FY25 ~7.0%), consistently failing the 12% hurdle even during peak pandemic package volume surges. Operating margins oscillate between 5.5% and 7.0%. Ongoing capital intensity ($4.1B capex in FY25, $5.2B in FY24) dampens returns on capital. Pricing power is limited against UPS and Amazon, underscored by the loss of the foundational USPS domestic air cargo contract in 2024."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

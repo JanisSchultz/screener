@@ -1,0 +1,30 @@
+{
+  "id": "NIBE B.SE",
+  "ticker": "NIBE B",
+  "universe": "eu",
+  "company": "NIBE",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Fails Gate 3b. Heat pump technology has commoditized rapidly, facing severe price competition from Asian HVAC giants (Daikin, Panasonic, Midea) and diversified European heating conglomerates (Bosch, Vaillant). Historical margins and returns were inflated by a temporary, unsustainable European energy subsidy spike (2021-2023). Multi-cycle GAAP ROIC has collapsed to 6-8%, falling far short of the 12% Munger hurdle. Lack of structural pricing power demonstrated by severe margin compression (EBIT margin halved from 15% to 8% in 2024) and inventory write-downs when subsidies waned.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, lack of pricing power). European heat pump demand proved heavily subsidy-dependent, collapsing as gas prices normalized and governments rolled back incentives. NIBE lacks structural pricing power against global Asian scale leaders (Daikin, Panasonic) and diversified European majors (Bosch, Vaillant). Multi-cycle GAAP ROIC compressed to 6-8%, failing the 12% Munger moat proof standard. Waterfall terminates at Gate 3.",
+    "evidence": "Operating margin collapsed from 14.9% in 2023 to 8.0% in 2024, with organic sales dropping -13%. Return on capital employed (ROCE) dropped to 6.8%-8.5% in 2024 and consensus multi-year ROIC tracking at 5.7%-6.2% when accounting for acquisition goodwill. Unable to maintain price or volume in the absence of government subsidies."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

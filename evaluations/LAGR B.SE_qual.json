@@ -1,0 +1,30 @@
+{
+  "id": "LAGR B.SE",
+  "ticker": "LAGR B",
+  "universe": "eu",
+  "company": "Lagercrantz Group AB",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Subsidiaries dominate tight B2B technical niches where mission-critical components represent a negligible fraction of customer spend but carry high switching penalties. Pricing power is demonstrated by gross margin stability (>35%) and sustained ~19% GAAP ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier Swedish decentralized serial acquirer of niche B2B market leaders. Exceptional capital allocation under CEO Jörgen Wigh with self-funded bolt-on M&A, ~19% GAAP ROIC, >100% FCF conversion, and net debt easily repayable in ~2.5 years of Owner FCF. [5-10Y g: organic volume 3.0% + niche pricing power 2.0% + bolt-on acquisitions 4.5% + buybacks 0.5%]",
+    "evidence": "4-year median GAAP ROIC is 19.17% with tangible ROIC approaching 200%. FY2025 Owner FCF reached SEK 1,288M on Net Income of SEK 1,200M (FCF conversion 117.7%). Net debt of SEK 3,173M is ~2.64x net income, supported by SEK 1,696M EBIT and 9.8x interest coverage. M&A is fully self-financed via internal operating cash flow."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

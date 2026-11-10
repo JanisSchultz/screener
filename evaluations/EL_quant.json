@@ -1,0 +1,43 @@
+{
+  "id": "EL",
+  "ticker": "EL",
+  "universe": "us",
+  "company": "Est\u00e9e Lauder Companies (The)",
+  "price": 113.16,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": 5.0,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (China travel retail destocking and debt leverage). Pre-calamity FY2021 peak Owner EPS ($6.599) subjected to a 24.2% conservative haircut to $5.00 to strip out unsustainable daigou channel-stuffing and post-COVID travel retail bubble volumes, calibrating to a sustainable post-turnaround mid-teens EBIT margin on $15.5B sales. Operating ROIC normalized to 35.0% cap reflecting high gross margins (74%) and capital-light prestige beauty intangibles. 5-10Y through-the-cycle growth calibrated to 6.0% (3.0% volume + 2.0% price + 1.0% luxury mix - 0.5% restructuring/marketing drag + 0.5% buybacks). Balance sheet carries elevated net debt ($3.31B, 2.34x interest coverage) requiring ongoing PRGP cost reduction and dividend moderation to deleverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.0,
+    "current_multiple": 22.63,
+    "par_multiple": 22.9,
+    "par_value": 114.49,
+    "percent_vs_par": -0.0116,
+    "status": "Below PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.0124,
+    "expected_irr_5y": 0.0749,
+    "market_implied_cap": 19.8,
+    "moat_runway_margin": 0.2,
+    "market_implied_growth": 0.056,
+    "growth_margin_of_safety": 0.004
+  },
+  "health_checks": {
+    "net_debt_years": 37.38,
+    "net_debt_ok": false,
+    "interest_coverage": 2.34,
+    "interest_cov_ok": false,
+    "fcf_conversion": 1.8373,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

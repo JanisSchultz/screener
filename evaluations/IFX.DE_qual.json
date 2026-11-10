@@ -1,0 +1,30 @@
+{
+  "id": "IFX.DE",
+  "ticker": "IFX",
+  "universe": "eu",
+  "company": "Infineon Technologies AG",
+  "country": "Germany",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global market leader in automotive microcontrollers (AURIX) and power semiconductors (IGBTs, SiC, GaN) with high switching barriers due to automotive safety qualifications (ISO 26262). However, structural pricing power above inflation is absent due to institutionalized automotive OEM annual contractual cost-down demands, heavy front-end fab capital intensity (Dresden and Kulim expansions), and aggressive Chinese state-backed capacity additions in power discretes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/pricing power, REJECT). Leading automotive and industrial power semiconductor IDM suffers from extreme capital intensity (multi-billion euro fab commitments), relentless OEM contractual price-down demands, and surging Chinese state-backed capacity in power discretes, causing RoCE to fall to 4.9% in FY25 and FCF to turn negative.",
+    "evidence": "Infineon's Group RoCE collapsed from 16.6% in FY23 to 8.5% in FY24 and 4.9% in FY25, well below the 12% compounder hurdle. Automotive Segment Result Margin dropped from ~29% in FY22 to ~16% in FY24. Free cash flow was €23M in FY24 and negative -€1,051M in FY25 under heavy fab capex outflows, while net debt expanded to ~€3.0B. Tier-1 automotive customer purchasing power and Chinese domestic substitution prevent pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

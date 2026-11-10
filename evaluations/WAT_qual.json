@@ -1,0 +1,30 @@
+{
+  "id": "WAT",
+  "ticker": "WAT",
+  "universe": "us",
+  "company": "Waters Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Empower CDS software controls >50% of global pharmaceutical chromatography data, creating extreme switching costs due to FDA 21 CFR Part 11 validation and sNDA regulatory filing hurdles. Over 80% of pharma sales sit in mission-critical QA/QC batch release where testing costs represent <1% of drug manufacturing value. 10Y median GAAP ROIC is ~31% (tangible ROIC >60%) with steady 2-3% annual price increases across recurring consumables and service contracts.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Waters operates an entrenched toll booth in pharmaceutical QA/QC and analytical testing, anchored by its proprietary Empower CDS software which controls >50% of the regulated pharma chromatography market. Over 80% of pharma sales sit in mandatory QA/QC drug release where switching costs are prohibitive due to regulatory re-validation. Structurally insulated across all 5 macrotrends with demographic tailwinds in biologics. The BD Biosciences & Diagnostic Solutions combination doubles scale and adds flow cytometry leadership while management deleverages the balance sheet rapidly toward <2.5x. [5-10Y g: organic QA/QC & diagnostics volume 4.5% + price 1.5% + BD synergy/biotherapeutics mix 1.0% - integration/interest drag 0.5% + post-deleveraging buybacks 0.5%]",
+    "evidence": "10-year median GAAP ROIC of 31.0% and Tangible Operating ROIC >60% demonstrate extraordinary capital efficiency. Free cash flow conversion averages >85% of net income over the cycle with capex historically only 3-5% of sales. Waters generates ~50-55% of revenue from recurring consumables (chemistry columns, MaxPeak Premier) and service contracts, with instruments providing the remaining ~45-50%. Over 80% of pharmaceutical revenues are tied to commercial manufacturing and QA/QC batch release testing, where tests are mandated by global pharmacopeias (USP, EP) and FDA 21 CFR Part 11 regulations. Empower software is deeply embedded in pharmaceutical SOPs; switching vendors requires extensive regulatory refilings (sNDA) and method re-validation, granting Waters consistent 2-3% net pricing power. Balanced capital allocation: successful acquisition and integration of Wyatt Technology ($1.36B in 2023) and the February 2026 completion of the Reverse Morris Trust merger with BD Biosciences ($18.8B transaction value, adding flow cytometry and diagnostics). Combined entity leverage is well-structured with investment-grade BBB profile and commitment to deleveraging below 2.5x net debt within 12-24 months backed by >$1B annual operating cash flow."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

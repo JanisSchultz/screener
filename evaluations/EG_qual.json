@@ -1,0 +1,30 @@
+{
+  "id": "EG",
+  "ticker": "EG",
+  "universe": "us",
+  "company": "Everest Group",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Reinsurance",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability, REJECT). Global reinsurance and specialty insurance business model relies heavily on long-tail casualty reserving (general liability, excess casualty, commercial auto) which is inherently opaque and un-verifiable from the outside. Structural vulnerability to social inflation and latent liability emergence has triggered multi-billion dollar adverse reserve developments ($1.7B strengthening in early 2025, followed by further $478M in Q3 2025 and ongoing 2026 casualty adjustments). True underwriting profitability is obscured by multi-year development lags, violating Munger's circle of competence and external verifiability standard.",
+    "evidence": "Everest Group operates across Reinsurance (treaty/facultative property and casualty) and Insurance (specialty commercial liability). Long-tail casualty lines dominate liabilities and exhibit extreme reserving opacity. In January 2025, Everest announced a massive $1.7 billion pre-tax net adverse reserve strengthening for prior years, driven by deteriorating loss trends in U.S. casualty. This was followed by an additional $478 million reserve charge in Q3 2025, continuing into 2026 ($253 million net adverse development in Q3 2026). To protect capital, the company entered an Adverse Development Cover for up to $1.2 billion and exited global retail commercial insurance. Historical 10-year median ROIC is 10.2%, below the 12% hurdle. Reinsurance capacity is commoditized, intermediated by global brokers, and subject to violent underwriting and pricing cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

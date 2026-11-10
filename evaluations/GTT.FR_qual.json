@@ -1,0 +1,30 @@
+{
+  "id": "GTT.FR",
+  "ticker": "GTT",
+  "universe": "eu",
+  "company": "GTT (Gaztransport & Technigaz)",
+  "country": "France",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominates global LNG carrier membrane containment with 90-100% market share. Royalty toll of ~3-4% of vessel capex ($250M+) is low relative to catastrophic cryogenic failure risk (-163°C), creating insurmountable customer switching costs. Empirically proven by >50-70% ROIC and ~65% operating margin. Primary erosion threat is yard-backed proprietary designs (e.g. South Korea's KC-1/KC-2) which have repeatedly failed in commercial operation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Exceptional asset-light engineering monopoly on LNG carrier membrane containment (>90% market share). Passes Gate 6 with >50% ROIC, net cash balance sheet, and ~98% FCF conversion backed by a multi-year shipyard order backlog. [5-10Y g: LNG carrier fleet deliveries 4.5% + royalty pricing indexation 1.5% + LNG as bunker fuel adoption 1.5% - cyclical order normalization 1.0% + dividends/buybacks 1.5%]",
+    "evidence": "4-year track record shows EBIT expanding from €152.9M (FY2022) to €521.3M (FY2025). Net income of €413.6M with OCF of €423.2M and capex of €40.3M (FCF conversion 98.3%). Cash and equivalents €346.9M against LT debt of €70.0M (net cash €276.9M). Royalty model captures ~3-4% of vessel capex on $250M+ LNG carriers under multi-year contracts with major Asian shipyards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

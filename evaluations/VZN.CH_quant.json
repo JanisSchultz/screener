@@ -1,0 +1,43 @@
+{
+  "id": "VZN.CH",
+  "ticker": "VZN",
+  "universe": "eu",
+  "company": "VZ Holding",
+  "price": 166.8,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the negative/minimal tangible capital standard for asset-light wealth and retirement advisory platforms (CHF 1.66B cash vs CHF 592M debt; ROE 20-23%). Peak Owner EPS of CHF 6.07 reflects organic client asset inflows. Forward compound growth (g_implied) of 11.0% aligns with qualitative guidance: net new money (6.0%), market appreciation (3.5%), fee pricing (1.0%), and German expansion (1.5%), partially offset by SNB rate normalization (-1.0%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.0677,
+    "current_multiple": 27.49,
+    "par_multiple": 27.98,
+    "par_value": 169.75,
+    "percent_vs_par": -0.0174,
+    "status": "Below PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0165,
+    "expected_irr_5y": 0.1304,
+    "market_implied_cap": 14.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": 0.1027,
+    "growth_margin_of_safety": 0.0073
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 25.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.29,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

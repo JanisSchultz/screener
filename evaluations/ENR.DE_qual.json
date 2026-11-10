@@ -1,0 +1,30 @@
+{
+  "id": "ENR.DE",
+  "ticker": "ENR",
+  "universe": "eu",
+  "company": "Siemens Energy",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Heavy Electrical Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Gas turbine installed base under long-term service agreements and proprietary high-voltage grid transmission technology provide sticky switching barriers; however, the business has been severely burdened by quality defect liabilities in Siemens Gamesa wind turbines, fixed-price project exposure, and government guarantee dependencies.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Long-cycle wind turbine and heavy energy equipment purchase trap. Severe quality defects and component failures in Siemens Gamesa onshore wind turbines resulted in multi-billion-euro warranty provisions, an operational collapse in FY2023 (-EUR 4.5B net loss), and reliance on a EUR 15B German federal government rescue guarantee package. Structural execution risks and long-cycle fixed-price project liabilities cap the competitive advantage period far below the 15-year hurdle.",
+    "evidence": "Operating history reflects extreme cyclicality and execution volatility: FY2022 EBIT of -EUR 456M and NI of -EUR 467M; FY2023 EBIT of -EUR 3,098M and NI of -EUR 4,532M driven by massive Siemens Gamesa quality defects and warranty provisions. While FY2024 and FY2025 staged a strong recovery (FY25 EBIT EUR 2,506M, NI EUR 1,414M) driven by booming Grid Technologies and Gas Services, the business required a EUR 15B state-backed guarantee backstop in late 2023. Long-cycle fixed-price contract risks, heavy warranty liabilities, and intense global turbine competition cap CAP at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

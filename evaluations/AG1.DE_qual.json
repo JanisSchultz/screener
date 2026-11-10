@@ -1,0 +1,30 @@
+{
+  "id": "AG1.DE",
+  "ticker": "AG1",
+  "universe": "eu",
+  "company": "AUTO1 Group",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity digital used-car merchant with no pricing power over market bid-ask spreads. Gross profit per unit is thin (~€1,000-€1,500), and historical 5-year GAAP ROIC has been negative due to continuous operating losses post-IPO.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype None & ROIC < 12%, REJECT). Commodity used-car trading platform operating in a fragmented, highly competitive market with razor-thin gross profit margins per unit, working-capital and inventory financing intensity, and negative multi-year historical ROIC.",
+    "evidence": "Reported cumulative net losses from 2021 through 2023 (-€418M in 2021, -€275M in 2022, -€130M in 2023), reaching marginal net income (~€21M) only in 2024. 5-year median GAAP ROIC is negative. High inventory holding risk and reliance on asset-backed debt facilities."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CTEC.GB",
+  "ticker": "CTEC",
+  "universe": "eu",
+  "company": "ConvaTec",
+  "country": "United Kingdom",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "#2-#3 positions in ostomy and advanced wound care face intense hospital GPO tenders and single-payer reimbursement ceilings, holding GAAP ROIC to 7-9%, far below leader Coloplast.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While ConvaTec provides essential chronic-care supplies (ostomy, infusion sets, advanced wound care), it holds #2-#3 market positions behind Coloplast and Hollister. Sub-12% GAAP ROIC (~7-9%) and vulnerability to hospital GPO tenders and Medicare reimbursement pressure demonstrate inadequate pricing power.",
+    "evidence": "ConvaTec generated reported operating margins of 12.3% in 2023 and 14.2% in 2024 (adjusted margins ~20-21%), with historical GAAP ROIC hovering in the 7-9% range, well below the 12% threshold. Its ostomy and wound care segments face persistent reimbursement caps from European single-payers and US Medicare/GPO contract cycles, lacking the brand premium and margin insulation of market leader Coloplast."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

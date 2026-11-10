@@ -1,0 +1,30 @@
+{
+  "id": "INTU",
+  "ticker": "INTU",
+  "universe": "us",
+  "company": "Intuit Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "QuickBooks accountant ecosystem and ledger lock-in create extreme switching costs across 7M+ US SMBs, reinforced by CPA ProAdvisor workflow integration. Demonstrated consistent above-inflation subscription price hikes (8-15% across tiers) with minimal customer churn. Gross margins consistently exceed 80%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management = 0, REJECT). While QuickBooks remains an indispensable US SMB general ledger with high switching costs and pricing power, management fails the Munger integrity and capital allocation bar. Intuit paid a $141M multistate settlement for deceptive TurboTax dark patterns that steered low-income taxpayers away from free filing. Management also executed the value-destructive peak-bubble $12B Mailchimp acquisition (which has since stagnated) and dilutes shareholders with over $2.0B annually in stock-based compensation (~45% of GAAP Net Income), masked behind promotional non-GAAP metrics.",
+    "evidence": "FY2026 revenue of $21.45B, EBIT of $5.88B, and GAAP Net Income of $4.57B. QuickBooks Online Accounting grew 23% in FY2026 with Global Business Solutions reaching $12.9B. 5-year median GAAP ROIC is 14.81% (FY2026: 20.53%) and FCF conversion is 120%. However, management's $12B Mailchimp acquisition in 2021 saddled the balance sheet with over $18.6B of goodwill/intangibles and organic growth has stagnated. Stock-based compensation reached $2,056M in FY2026 (45% of GAAP Net Income). Persistent history of regulatory enforcement regarding predatory TurboTax consumer dark patterns ($141M 50-state settlement). Free cash flow and balance sheet remain robust ($6.4B debt vs $4.7B cash, interest coverage >22x), but Gate 5 culture and capital allocation red flags disqualify the company."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "5",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

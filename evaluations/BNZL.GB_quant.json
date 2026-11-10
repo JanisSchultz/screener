@@ -1,0 +1,43 @@
+{
+  "id": "BNZL.GB",
+  "ticker": "BNZL",
+  "universe": "eu",
+  "company": "Bunzl",
+  "price": 2862.0,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing \u00a33.6B acquired goodwill and intangibles; consolidated route density and outsourced category management sustain structurally unbounded tangible returns (>100% tangible ROIC, 20.6% GAAP ROIC). FY24 peak Owner EPS 246.69p reflects robust earning power (FY25 at 243.07p) with 173% FCF conversion. Forward 5-10Y compound growth of 6.0% reflects 1.5% organic volume/price, 3.5% bolt-on acquisitions, and 1.0% share repurchases. 5Y cycle high guardrail binds at 13.99x cap (Raw PAR 19.58x), establishing PAR Value of 3451.14p vs current price 2862.0p (trades 17.1% Below PAR with 12.8% expected 5Y IRR)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 246.69,
+    "current_multiple": 11.6,
+    "par_multiple": 13.99,
+    "par_value": 3451.14,
+    "percent_vs_par": -0.1707,
+    "status": "Below PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.0271,
+    "expected_irr_5y": 0.1276,
+    "market_implied_cap": 12.4,
+    "moat_runway_margin": 2.6,
+    "market_implied_growth": -0.0597,
+    "growth_margin_of_safety": 0.1197
+  },
+  "health_checks": {
+    "net_debt_years": 1.5,
+    "net_debt_ok": true,
+    "interest_coverage": 4.5,
+    "interest_cov_ok": false,
+    "fcf_conversion": 1.73,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

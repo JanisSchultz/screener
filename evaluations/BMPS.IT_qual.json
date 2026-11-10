@@ -1,0 +1,30 @@
+{
+  "id": "BMPS.IT",
+  "ticker": "BMPS",
+  "universe": "eu",
+  "company": "Monte dei Paschi",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lacks a structural moat or pricing power. Historical multi-cycle ROE has been deeply negative or sub-par (-29.2% in 2020, -12.5% in 2019, -2.3% in 2022), failing the 12% hurdle. While regional retail branches in Tuscany provide sticky deposits, the bank is a price-taker on loans and deposits, historically destroyed capital through non-performing loans, and required repeated state bailouts and emergency rights issues to remain solvent. Recent earnings were flattered by windfall ECB rate increases and deferred tax assets rather than an enduring competitive advantage.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/ROE < 12%, REJECT). Historic Italian commercial lender repeatedly bailed out by the Italian government following massive non-performing loan crises. Multi-cycle capital efficiency fails the 12% hurdle by a wide margin (negative median ROE over the cycle). Recent profitability surge is cyclical and windfall rate-driven, with no structural pricing power over commoditized corporate and retail banking products.",
+    "evidence": "Multi-cycle ROE of -12.5% (2019), -29.2% (2020), 5.0% (2021), and -2.3% (2022). Required €5.4B state recapitalization in 2017 and a €2.5B emergency capital increase in late 2022. Even with 2023-2024 ECB rate-hiking windfall bringing temporary double-digit ROE (~17-20%), the 7-year median ROE remains near zero. Operates as a price-taking commercial bank with legacy credit vulnerability and political interference."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

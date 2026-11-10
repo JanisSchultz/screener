@@ -1,0 +1,30 @@
+{
+  "id": "WEC",
+  "ticker": "WEC",
+  "universe": "us",
+  "company": "WEC Energy Group",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise monopoly across Wisconsin, Illinois, Michigan, and Minnesota. Physical electric wires and natural gas pipelines are legally and economically impossible to duplicate. Formulaic rate-base pricing power allows pass-through of fuel and operating costs with allowed return on equity (~9.8%).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance sheet debt/NI = 11.9x > 4.0x, EBIT/interest = 2.5x < 5.0x, REJECT). Exemplary regulated utility franchise with premier management, but structurally burdened by massive capital intensity (capex 3x D&A), legally capped ROIC (6.3%), and $18.5B debt requiring perpetual access to debt capital markets.",
+    "evidence": "10-year median GAAP ROIC is 6.34% (tangible ROIC 7.4%). TTM LT debt of $18.50B against net income of $1.56B yields 11.9x debt-to-earnings leverage, far above the 4.0x threshold. TTM EBIT of $2.24B covers interest of $895M at just 2.51x (below 5.0x minimum). TTM capex of $4.40B exceeds D&A ($1.48B) by nearly 3x, creating persistent negative free cash flow after total capex funded by ongoing debt issuances."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "gate_6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

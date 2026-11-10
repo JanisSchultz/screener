@@ -1,0 +1,30 @@
+{
+  "id": "PUIG.ES",
+  "ticker": "PUIG",
+  "universe": "eu",
+  "company": "Puig",
+  "country": "Spain",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prestige fragrance and makeup house (Carolina Herrera, Rabanne, Jean Paul Gaultier, Charlotte Tilbury, Byredo). While gross margins are ~74%, the business model relies heavily on fashion-driven fragrance trends, third-party fashion house licenses vulnerable to non-renewal or poaching by larger conglomerates (e.g. historical loss of Prada and Valentino to L'Oréal), and trend-sensitive celebrity makeup (Charlotte Tilbury). Lacks a multi-cycle public track record of pricing power through deep recessions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b = N, REJECT). Prestige fragrance and makeup portfolio heavily exposed to fashion novelty cycles, influencer makeup volatility (Charlotte Tilbury), and licensing fragility where major luxury houses can defect or bring beauty in-house (as demonstrated by past losses of Prada and Valentino to L'Oréal). Lacks proven multi-cycle pricing power as a standalone public company.",
+    "evidence": "May 2024 IPO with dual-class family voting control. Revenues grew to €4.79B in 2024 with 20.2% EBITDA margins, but ROIC compressed from 22% in 2023 to ~16% in 2024 following M&A step-ups (Dr. Barbara Sturm, Charlotte Tilbury stake increase to 78.5%). Substantial non-renewal and renegotiation risks on licensed brands vs owner-monopolists like Hermès or L'Oréal."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "COST",
+  "ticker": "COST",
+  "universe": "us",
+  "company": "Costco",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled scale economies shared flywheel: low SKU count (~4,000) generates immense purchasing power and supplier volume discounts, capped markups (14-15%) pass savings to members, driving negative working capital and rapid inventory turns (>12x). Proven by 38-44% GAAP ROIC and consistent 92%+ renewal rates with regular membership fee increases (raised to $65/$130 in Sep 2024 with zero churn). Erosion risks from warehouse club competitors or digital delivery are mitigated by bulk physical handling advantages and Kirkland Signature value.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "A quintessential Munger masterpiece and global archetype of scale economies shared. Unbroken peak-to-peak EPS compounding over 10+ years, 92%+ membership renewal across 84M+ members, and a fortress balance sheet with >$16B in net cash and 80x+ interest coverage. Structurally insulated across all 5 macrotrends. [5-10Y g: comp store volume 4.0% + pricing/fee increases 1.5% + warehouse expansion 2.5% + digital/Kirkland mix 0.5% - wage/capex reinvestment drag 0.5% + net share repurchases 0.5%]",
+    "evidence": "10-year track record of peak-to-peak EPS compounding from $6.08 in FY17 to $20.76 in FY26 (13% CAGR). Median GAAP ROIC of 38.8% (tangible/operating ROIC >41%). FCF conversion consistently >100% (FY26 Owner FCF $12.2B vs NI $9.2B, fcf_conv 1.18x) aided by negative working capital cycle. Total cash and ST investments of $20.2B vastly exceed LT debt of $3.9B ($16.3B net cash). EBIT/Interest coverage of 80.6x. Membership fee revenue grew to $5.91B in FY26 following the Sep 2024 fee hike to $65/$130, with US/Canada renewal rates holding at 92.3%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

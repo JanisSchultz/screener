@@ -1,0 +1,30 @@
+{
+  "id": "EOG",
+  "ticker": "EOG",
+  "universe": "us",
+  "company": "EOG Resources",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity price taker lacking pricing power (upstream oil & gas exploration & production).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need / Price-Taker, REJECT). EOG Resources is an upstream crude oil, natural gas, and NGL exploration and production company operating as a pure price-taker in cyclical commodity markets with zero structural pricing power or customer lock-in.",
+    "evidence": "EOG Resources is an independent exploration and production company with low-cost premium drilling operations across the Delaware Basin (Permian), Eagle Ford, Utica, and Powder River Basin. Operating revenues and profitability are strictly tied to global and regional hydrocarbon spot prices rather than an enduring competitive moat: revenues dipped ~4.5% from $23.7B in 2024 to $22.6B in 2025 on lower realized crude and natural gas prices; net income contracted from $6.4B to $5.0B; and free cash flow fell from ~$5.4B to $3.5B–$4.7B. While EOG is among the most disciplined and lowest-cost US shale operators with a 10-year median ROIC of 13.9% and conservative leverage (~0.4x net debt/EBITDA), it remains fundamentally a commodity price-taker vulnerable to global supply/demand cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

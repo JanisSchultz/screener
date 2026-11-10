@@ -1,0 +1,30 @@
+{
+  "id": "EQNR.NO",
+  "ticker": "EQNR",
+  "universe": "eu",
+  "company": "Equinor",
+  "country": "Norway",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Low-cost Norwegian continental shelf fields (Johan Sverdrup, Troll) and irreplaceable subsea gas export pipelines to Europe, but earnings are purely determined by market commodity prices (Brent and European TTF gas). Complete price-taker lacking independent pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Absolute commodity price-taker whose realizations are governed by spot Brent oil and European TTF gas benchmarks. Despite low extraction costs on the Norwegian Continental Shelf, Equinor possesses zero independent pricing power.",
+    "evidence": "Equinor operates world-class assets in the North Sea with ultra-low lifting costs (~$2-3/boe) and subsea pipeline access to Europe. However, its earnings and ROACE fluctuate wildly with commodity price cycles: 9.0% (2019), 1.8% (2020), 22.7% (2021), 55.1% (2022 energy crisis), 24.9% (2023), and 21.0% (2024). It has no ability to protect margins in a depressed commodity tape."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

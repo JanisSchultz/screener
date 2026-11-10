@@ -1,0 +1,30 @@
+{
+  "id": "KDP",
+  "ticker": "KDP",
+  "universe": "us",
+  "company": "Keurig Dr Pepper",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Moat anchored in massive Direct-Store-Delivery (DSD) bottling/distribution network reaching ~90% of US retail doors, combined with the Keurig single-serve brewer installed base in ~40M households and iconic brand equity (Dr Pepper, Canada Dry, Snapple). Competitors cannot easily replicate the national direct store distribution footprint, enabling KDP to distribute third-party partner brands (Evian, C4, Ghost, Polar) with high route density. Proof of moat: Tangible ROIC >50% on low physical capital base ($2.5B PP&E) and stable gross margins of 54-56%, with Dr Pepper taking volume share to reach #2 CSD status while realizing mid-single-digit price hikes. Erosion threats: Post-patent pod commoditization, proliferation of compatible third-party and private-label K-cups, plateauing brewer household penetration, and raw coffee commodity volatility.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Dr Pepper and refreshment beverages possess strong brand equity and DSD scale, the at-home coffee platform (Keurig) faces structural maturation, pod volume stagnation, and post-patent private label competition. Unhedged agricultural exposure to volatile green coffee prices (Macrotrend 4) and severe capital structure strain from the €15.7B debt-funded JDE Peet's acquisition in a higher-rate regime (Macrotrend 5) truncate competitive advantage longevity below the 15-year threshold. Downstream Gates 5 and 6 left null under strict waterfall.",
+    "evidence": "Financials: 5Y median GAAP ROIC is 5-6% (suppressed by ~$44B in merger goodwill/intangibles), though tangible ROIC exceeds 50% on $2.5B PP&E. Gross margins have held steady at ~54-56%, with operating margins of ~21-23%. Pricing power demonstrated in US Refreshment Beverages where Dr Pepper achieved #2 CSD market share while realizing 6-10% price/mix. However, US Coffee segment has struggled with flat-to-declining pod volumes and brewer shipment declines post-COVID as US household penetration plateaued at ~38-40M homes. Balance sheet carries $13.0B in long-term debt against $2.1B GAAP net income (Net Debt/NI ~6x), which balloons significantly with the €15.7B ($17.4B) acquisition of JDE Peet's in 2025/2026, violating conservative debt-to-earnings thresholds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

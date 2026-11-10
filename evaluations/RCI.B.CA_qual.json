@@ -1,0 +1,30 @@
+{
+  "id": "RCI.B.CA",
+  "ticker": "RCI.B",
+  "universe": "ca",
+  "company": "Rogers Communications",
+  "country": "Canada",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Historical ROIC of 5-8% falls well short of the 12% hurdle. Massive post-Shaw debt load (>CAD 44B) and ongoing 4-carrier wireless price pressure prevent pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (historical ROIC 5-8% vs 12% hurdle; heavy Shaw debt and competitive wireless discounting undermine pricing power).",
+    "evidence": "Rogers' 5-year median ROIC is ~6-7% (2020: 7.9%, 2021: 7.1%, 2022: 5.5%, 2023: 6.6%, 2024: 7.3%), consistently below the 12% hurdle. The $26B Shaw acquisition elevated net debt above CAD 44B (leverage peaked at >5x EBITDA), while competitive pricing pressures from Quebecor/Freedom Mobile and CRTC regulatory access mandates restrict organic ARPU growth below inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

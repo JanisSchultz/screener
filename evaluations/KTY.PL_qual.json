@@ -1,0 +1,30 @@
+{
+  "id": "KTY.PL",
+  "ticker": "KTY",
+  "universe": "eu",
+  "company": "Grupa Kęty",
+  "country": "Poland",
+  "sector": "Materials",
+  "sub_industry": "Aluminum (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Pre-screen geographic condition: listing country Poland is designated outside approved core Western developed markets (in_market == 'N'); furthermore, aluminum extrusions and architectural systems are cyclical commodity-linked industrial inputs.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Geographic Market Pre-Screen & Cyclical Commodity Need, REJECT). Listing country (Poland) is designated in_market == 'N'. In addition, aluminum extrusions and architectural systems are cyclical capital-goods and construction inputs vulnerable to building-cycle downturns and raw metal price fluctuations.",
+    "evidence": "Grupa Kęty is listed on the Warsaw Stock Exchange in Poland (in_market == 'N'). While it maintains solid regional operational execution in aluminum conversion and flexible packaging, its core end-markets are tied to cyclical European construction, building systems, and automotive demand without non-discretionary Western lock-in."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

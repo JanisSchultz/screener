@@ -1,0 +1,30 @@
+{
+  "id": "PPL.CA",
+  "ticker": "PPL",
+  "universe": "ca",
+  "company": "Pembina Pipeline",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Entrenched Western Canadian gathering and pipeline infrastructure with high proportion of fee-based contracts, but multi-year median GAAP ROIC of 8.0% falls short of the 12% hurdle due to heavy midstream asset capitalization.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (gate_3b = N). Pembina operates essential midstream infrastructure across Western Canada, but its 5-year median GAAP ROIC of 8.0% fails the 12% capital efficiency hurdle. Returns are structurally constrained by heavy capital intensity and negotiated tariff structures.",
+    "evidence": "Pembina provides vital transportation and fractionation services for WCSB hydrocarbons (~3M boe/d capacity). Despite ~85%+ fee-based EBITDA and steady cash generation, capital returns are diluted by heavy fixed asset requirements. GAAP ROIC was 13.3% in FY22 (energy spike), then normalized to 8.4% in FY23, 6.8% in FY24, and 7.6% in FY25, yielding an 8.0% 5-year median."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

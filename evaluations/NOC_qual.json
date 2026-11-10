@@ -1,0 +1,30 @@
+{
+  "id": "NOC",
+  "ticker": "NOC",
+  "universe": "us",
+  "company": "Northrop Grumman",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable classified defense infrastructure (Air Force Plant 42, solid rocket motor test ranges) and sole-source stealth/nuclear triad franchises (B-21 Raider, Sentinel ICBM). Demonstrates contractual cost-plus recovery on mature programs with historical ROIC averaging ~11-14%, though fixed-price development contracts exposed the company to temporary inflationary margin compression.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "Broken metric: Gate 6 fails on multi-year Owner FCF conversion (~56-65% 5-year average vs >=80% hurdle) and peak-to-peak earnings power due to a $1.56B pre-tax charge on B-21 Raider Low-Rate Initial Production (LRIP) fixed-price lots and Section 174 mandatory R&D tax amortization drag. Moat proof: Indispensable, sole-source prime contractor anchoring the US nuclear triad (B-21 stealth bomber, Sentinel ICBM) with record $95.7B backlog (1.10 book-to-bill); 2025 FCF rebounded +26% to $3.3B as cash conversion recovered toward 80%. Fix catalyst: B-21 transition from loss-making LRIP to profitable full-rate production, DoD policy pivot away from fixed-price development bids, and Section 174 tax normalization; Kill-switch: Additional multi-billion-dollar fixed-price overrun charges on B-21 production lots or Sentinel program cancellation / re-competition following Nunn-McCurdy restructuring.",
+    "note": "Strategic aerospace and defense prime contractor anchoring the US nuclear triad with irreplaceable classified manufacturing infrastructure and sovereign sole-source franchises. Temporary fixed-price B-21 contract losses and Section 174 tax drag depressed 5-year FCF conversion to ~60%, but 2025 FCF rebounded to $3.3B with record $95.7B backlog. Balance sheet is secure with net debt/NI at ~2.5x and 7.3x interest coverage. [5-10Y g: B-21 stealth bomber ramp 3.0% + space/missile defense volume 2.5% + pricing/escalation 1.5% - fixed-price drag/overruns 1.0% + share repurchases 1.0%]",
+    "evidence": "Northrop Grumman is the prime contractor for two of the three legs of the modernized US nuclear triad: the B-21 Raider strategic stealth bomber and the LGM-35A Sentinel ICBM. 2025 sales reached $42.0B with a record $95.7B backlog (book-to-bill 1.10). In 2023, management absorbed a $1.56B pre-tax charge on the fixed-price B-21 Low-Rate Initial Production (LRIP) phase due to post-pandemic inflation. In 2024, Sentinel triggered a Nunn-McCurdy breach due to complex ground infrastructure scope changes, but was certified by the DoD as vital to national security. Operating performance rebounded in 2024-2025, with Net Income reaching $4.18B and Free Cash Flow surging to $3.30B in 2025 (+26% YoY). Long-term debt is managed at ~$14.5B against $4.4B in cash (net debt/NI ~2.5x), with EBIT interest coverage exceeding 7x. Management under Kathy Warden has established strict bidding discipline, refusing fixed-price development contracts to protect return on capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "IDXX",
+  "ticker": "IDXX",
+  "universe": "us",
+  "company": "Idexx Laboratories",
+  "price": 676.04,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC 89.1%, 10Y median GAAP ROIC 61.2%), reflecting pristine capital efficiency in veterinary recurring consumables and reference lab toll booth. 5-10Y through-the-cycle growth of 11.0% derived from clinical diagnostic testing volume (4.5%), cash-pay pricing realization (3.5%), inVue Dx menu expansion (1.5%), and share buybacks (1.5%). Fortress balance sheet with net debt under 0.2x Net Income ($194.8M net debt vs $1.06B NI) and 35.0x EBIT interest coverage. Trades Above PAR (+43.1% vs PAR Value of $472.29) at 50.7x peak Owner EPS vs PAR multiple of 35.4x, yielding an expected 5Y IRR of 3.3% as strong 11.0% growth coupon is offset by pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 13.3289,
+    "current_multiple": 50.72,
+    "par_multiple": 35.43,
+    "par_value": 472.29,
+    "percent_vs_par": 0.4314,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0332,
+    "market_implied_cap": 28.6,
+    "moat_runway_margin": -8.6,
+    "market_implied_growth": 0.3393,
+    "growth_margin_of_safety": -0.2293
+  },
+  "health_checks": {
+    "net_debt_years": 0.35,
+    "net_debt_ok": true,
+    "interest_coverage": 35.01,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8233,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

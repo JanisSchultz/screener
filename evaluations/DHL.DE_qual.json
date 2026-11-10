@@ -1,0 +1,30 @@
+{
+  "id": "DHL.DE",
+  "ticker": "DHL",
+  "universe": "eu",
+  "company": "DHL Group",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "DHL Express possesses an elite global air hub-and-spoke network with significant scale economies shared and high TDI margins. However, consolidated group pricing power is severely impaired by Post & Parcel Germany, which is subject to statutory price caps by the German Federal Network Agency (BNetzA) and inflexible unionized labor costs, alongside the commoditized price-taker nature of Global Forwarding.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3b (Pricing & Proof of Moat). While DHL Express is a world-class global air express oligopolist with FedEx and UPS, the consolidated group remains burdened by Post & Parcel Germany, where statutory postal price caps from BNetzA and heavy collective bargaining wage settlements prevent inflation pass-through, while Global Forwarding operates as a cyclical freight rate price-taker.",
+    "evidence": "Group multi-year ROIC averages ~11-14%, dragged down by Post & Parcel Germany (ROIC ~9%) where BNetzA strictly limits stamp price increases despite ~11-12% union wage inflation and secular ~2-3% annual letter volume attrition. Global Forwarding gross profit swings violently with ocean/air spot freight rates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

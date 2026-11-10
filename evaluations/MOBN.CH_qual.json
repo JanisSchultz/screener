@@ -1,0 +1,30 @@
+{
+  "id": "MOBN.CH",
+  "ticker": "MOBN",
+  "universe": "eu",
+  "company": "Mobimo",
+  "country": "Switzerland",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Swiss commercial and residential property development and leasing operate in competitive metropolitan markets. While land in Swiss urban centers is scarce, property development and rental assets provide commodity space without an insurmountable economic moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing: ROIC 2.5-4.0% vs 12% hurdle; archetype 'None', REJECT). Swiss property investor and developer operating in supply-constrained Swiss cities, but earning structural real estate net yields of 3.5% that fail the 12% ROIC hurdle.",
+    "evidence": "Normalized GAAP ROIC tracks between 2.4% and 4.1%, reflecting prime Swiss property yields (EPRA net yield ~3.5%). While Swiss financing costs are exceptionally low, absolute returns on invested capital do not meet the 12% threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

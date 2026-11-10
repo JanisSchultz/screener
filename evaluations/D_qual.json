@@ -1,0 +1,30 @@
+{
+  "id": "D",
+  "ticker": "D",
+  "universe": "us",
+  "company": "Dominion Energy, Inc.",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "State-granted regulated utility monopoly covering critical Virginia and Carolinas territories. Grid connection to the Northern Virginia data center hub is irreplaceable. However, regulated rate base formulas cap historical ROIC at ~5.0%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management Score = 0, REJECT). Despite an irreplaceable electric utility franchise feeding Northern Virginia data centers, management has a track record of value-destructive capital allocation: billions written off in the canceled Atlantic Coast Pipeline, a 33% dividend cut in 2020, and repeated strategic resets and asset divestitures (Cove Point, gas transmission) to plug balance sheet holes.",
+    "evidence": "Management presided over the disastrous Atlantic Coast Pipeline project, resulting in multi-billion dollar pre-tax charges and project abandonment. Slashed dividend by 33% in late 2020 after years of promotional guidance. Multiple strategic resets and asset sales (Berkshire gas deal, Cove Point) required to repair balance sheet leverage. 10-year average ROIC is ~5.0%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": 5,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

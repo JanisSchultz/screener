@@ -1,0 +1,30 @@
+{
+  "id": "AKER.NO",
+  "ticker": "AKER",
+  "universe": "eu",
+  "company": "Aker ASA",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Aker ASA is heavily concentrated in upstream oil and gas exploration & production (Aker BP represents ~45-50% of GAV), which operates as a pure commodity price taker with zero structural pricing power above spot energy prices. Non-oil holdings (Aker Horizons renewables, offshore engineering) face cyclicality and substantial write-downs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Industrial holding company dominated by upstream oil and gas producer Aker BP (~45-50% of gross asset value) alongside cyclical offshore services. Pure commodity price-takers lacking structural pricing power >= inflation across the business cycle.",
+    "evidence": "Look-through earnings and NAV are overwhelmingly tied to Aker BP (21.2% stake, ~NOK 30B GAV), whose financial returns fluctuate with global Brent crude and European natural gas prices. Green transition bets under Aker Horizons have suffered steep asset write-downs, and upstream E&P assets lack pricing power or defensible non-commodity economic moats."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

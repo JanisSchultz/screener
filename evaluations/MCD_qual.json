@@ -1,0 +1,30 @@
+{
+  "id": "MCD",
+  "ticker": "MCD",
+  "universe": "us",
+  "company": "McDonald's",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Supply chain and global marketing purchasing power create insurmountable scale economies shared with franchisees, enabling unmatched value menu pricing (e.g. $5 Meal Deal, McValue) while extracting 15%+ percentage rent and royalty tollbooths on top-line sales. Competitors cannot replicate McDonald's prime corner-lot physical real-estate footprint or supply contracts. Empirical proof: 10-year median ROIC of 30.3% and consistent >45% operating margins across cycles. Primary erosion risk: low-income consumer traffic sensitivity to cumulative post-COVID menu inflation and QSR value price wars.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Irreplaceable global QSR real-estate and franchise royalty tollbooth operating 40,000+ locations across 100+ countries. Massive supply chain scale economies shared with franchisees enable unmatched value pricing while collecting contractually formula-indexed percentage rents and royalties (>45% operating margin). Insulated from macrotrends via localized sourcing, kiosk/mobile automation (210M+ digital loyalty users), and inflation-indexed rent streams. Balance sheet structured for peace of mind: $40B debt is supported by 7.8x interest coverage and non-displaceable commercial real-estate cash flows; negative book equity is an artifact of cumulative historical buybacks that is steadily normalizing. [5-10Y g: net unit growth 2.0% + comparable sales/price 2.5% + mix/digital 1.0% - franchisee support margin drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 30.3% and operating ROIC of 33.7%, consistently exceeding 23% in all years since 2016 (peaking at 34.1% in 2021). Multi-year FCF conversion of 90.6% (2025 Owner FCF of $8.19B vs Net Income of $8.56B). Peak-to-peak Owner EPS compounded at 8.7% CAGR from $5.44 in 2016 to a record $11.95 in 2025. Systemwide sales exceed $139B across 40,000+ restaurants (approx. 95% franchised). High-margin franchise royalties and property rental income generate operating margins >45% ($12.39B EBIT in 2025). Long-term debt of $39.97B is supported by 7.83x interest coverage (EBIT $12.39B / Interest $1.58B) and contractual real-estate rental agreements. Negative accounting equity (-$1.79B in 2025) is an artifact of historical treasury share repurchases and has narrowed from -$8.21B in 2019 without external solvency risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

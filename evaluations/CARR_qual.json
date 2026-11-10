@@ -1,0 +1,30 @@
+{
+  "id": "CARR",
+  "ticker": "CARR",
+  "universe": "us",
+  "company": "Carrier Global Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Carrier possesses brand recognition, a vast installed base, and entrenched dealer/distributor relationships in residential and commercial HVAC. However, it fails Gate 3b proof of moat: 5-year median GAAP ROIC has languished in the 6-8% range (2021: ~11%, 2022: ~8%, 2023: ~8%, 2024: ~6%, 2025: ~6-7%), well below the 12% hurdle. Carrier lacks the direct sales/service lock-in of Trane Technologies, relying heavily on two-step wholesale distribution where independent contractors face low barriers to switching between Carrier, Lennox, Trane, and Daikin. The €12B acquisition of Viessmann Climate Solutions at the peak of European heat pump subsidies in 2024 permanently diluted capital efficiency with >$10B of goodwill and intangibles, followed by severe residential volume contractions in Europe and North America.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Inadequate Pricing Power, REJECT). While Carrier has a leading global footprint in HVAC equipment, its multi-cycle capital efficiency fails the Munger quality hurdle with a 5-year median GAAP ROIC of ~7% (peaking around 11% in 2021 and dipping to 5.6-7.1% in 2024-2025). The business relies on two-step wholesale distribution in residential HVAC, exposing it to distributor destocking, cyclical construction downturns, and direct competition from Daikin, Trane, and Lennox. Capital allocation was severely set back by the €12B peak-multiple acquisition of Viessmann in 2024, burdening the balance sheet and diluting returns right before a sharp European heat pump downturn.",
+    "evidence": "Multi-cycle financial track record shows GAAP ROIC consistently below hurdle: 2021 ~10.8-11.2%, 2022 ~8.3%, 2023 ~7.9%, 2024 ~5.6-6.8%, and 2025 ~5.8-7.1%, yielding a 5-year median of ~7.5% vs. the 12% requirement. GAAP operating margins have hovered around 8-11% (2021: 11.6%, 2023: 10.6%, 2024: 10.1%, 2025: ~8.3-10.0%), trailing direct peer Trane Technologies (17-19% operating margins, 20-25% ROIC). Carrier underwent a massive portfolio overhaul, divesting Fire & Security and Commercial Refrigeration to fund the €12B ($14.2B) acquisition of Viessmann Climate Solutions in early 2024. Despite applying ~$6B of divestiture proceeds to debt reduction, gross debt remains ~$12.3B with post-deal leverage near 2.8x-3.0x EBITDA. Viessmann suffered from post-acquisition residential volume contractions (-30% to -40% in European heat pumps in 2024-2025 following German subsidy revisions and gas price normalizations). Carrier lacks the direct sales branch model and high-margin recurring service attach rates of Trane, relying instead on two-step distribution through independent distributors (e.g., Watsco) and dealers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

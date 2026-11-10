@@ -1,0 +1,30 @@
+{
+  "id": "SAVE.SE",
+  "ticker": "SAVE",
+  "universe": "eu",
+  "company": "Nordnet",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Pan-Nordic scale economies shared across SEK 1.5T savings capital and wholly-owned pension wrappers generate ~65% operating margins and >80% ROIC. High switching costs from integrated tax-advantaged pension accounts (ISK, Livrente) and sticky customer assets protect the franchise; primary threat is Swedish banking tax or price competition from Avanza in Sweden.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant pan-Nordic digital savings and pension platform managing SEK 1.5T across Sweden, Norway, Denmark, and Finland. Scale economies shared across 2.6M savers generate ~65% operating margin and >80% GAAP ROIC with minimal credit risk and ~18-20% CET1 ratio. [5-10Y g: Nordic savings/AUM volume 6.5% + pension fee/interest mix 1.0% + operating leverage 1.0% - NII normalization drag 0.5% + net buyback/yield 1.5%]",
+    "evidence": "4-year track record of peak-to-peak earnings growth: Net income rose from SEK 1,587M (2022) to SEK 2,955M (2025). Median GAAP ROIC is 82.8% (Operating ROIC 120.3%). FCF conversion averages 119.7%. Balance sheet fortress features SEK 4.68B in cash against SEK 188M long-term debt, a CET1 ratio near 19%, and low-risk collateralized margin lending."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

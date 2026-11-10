@@ -1,0 +1,30 @@
+{
+  "id": "LYB",
+  "ticker": "LYB",
+  "universe": "us",
+  "company": "LyondellBasell",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary polyolefin process licensing (Spheripol, Spherizone, Hostalen) and integrated US Gulf Coast ethane crackers provide regional feedstock advantages, but fail to insulate against global commodity price cycles. Empirical returns fail the moat test: 5-year median GAAP ROIC is 8.2% and 10-year median ROIC is 9.5%, falling well short of the 12% hurdle (plunging to -1.3% in 2025). Margins for polyethylene and polypropylene are dictated by global commodity spot prices and supply/demand balances rather than proprietary pricing power. Key erosion threats include massive petrochemical capacity expansions in China and the Middle East, persistent European energy cost disadvantages leading to asset write-downs, and regulatory/secular headwinds facing single-use plastics.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Commodity petrochemical and polyolefins producer lacking sustainable pricing power above inflation. 5-year median GAAP ROIC of 8.2% and 10-year median ROIC of 9.5% fail the 12% threshold, with returns collapsing to -1.3% in 2025 amid global ethylene and polyethylene oversupply. As an undifferentiated bulk chemical manufacturer, margins are dictated by global commodity spot prices and feedstock spreads rather than proprietary moat barriers.",
+    "evidence": "Multi-cycle financial track record demonstrates commodity price-taker dynamics. 5-year median GAAP ROIC is 8.2% (2021: 19.2%, 2022: 14.6%, 2023: 8.2%, 2024: 5.9%, 2025: -1.34%), below the 12% hurdle; 10-year median ROIC is 9.5%. Revenue fell ~10% in FY2025 to ~$30.2B driven by severe pricing erosion across Olefins & Polyolefins (O&P-Americas and O&P-EAI). European and Asian operating rates dropped below 65%, driving multi-billion-dollar non-cash asset impairments and planned divestitures of European assets alongside the closure of the Houston refinery. While US Gulf Coast assets benefit from cheap ethane feedstock, integrated margins remain vulnerable to global supply waves from China and the Middle East, with zero pricing power to offset cyclical cost inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

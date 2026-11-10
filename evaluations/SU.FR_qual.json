@@ -1,0 +1,30 @@
+{
+  "id": "SU.FR",
+  "ticker": "SU",
+  "universe": "eu",
+  "company": "Schneider Electric",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant energy management and automation ecosystem embedded in global data centers, commercial buildings, and industrial plants. High switching costs from proprietary hardware/software architectures (EcoStruxure, AVEVA) and deep contractor/specifier lock-in. 5-year median GAAP ROIC is 14.6% with FCF conversion >100%. Primary erosion threats include cyclical downturns in European construction and potential supply chain bottlenecks in specialized power semiconductor components.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global champion in energy management, data center power systems, and industrial automation. High switching costs from EcoStruxure architecture and AVEVA software deliver 14.6% median ROIC and >100% FCF conversion. Balance sheet is strong with 12.4x interest coverage and net debt repayable in 2.5 years. [5-10Y g: data center and AI power demand 5.0% + industrial automation software 2.5% + net pricing power 1.5% - European construction cyclical drag 0.5% + net share repurchases 0.5%]",
+    "evidence": "Sales reached EUR 40.15B in FY2025 with EBIT of EUR 6.72B and Net Income of EUR 4.16B. GAAP ROIC has consistently exceeded the hurdle rate: 12.6% (FY22), 14.3% (FY23), 14.8% (FY24), and 14.9% (FY25), averaging 14.6% with tangible ROIC near 188%. Multi-year Owner FCF conversion is 104% (EUR 4.59B FCF in FY25 on EUR 1.54B capex). Balance sheet features EUR 4.63B in cash against EUR 15.02B in LT debt, yielding Net Debt / NI of 2.5x and interest coverage of 12.4x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

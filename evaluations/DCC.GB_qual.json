@@ -1,0 +1,30 @@
+{
+  "id": "DCC.GB",
+  "ticker": "DCC",
+  "universe": "eu",
+  "company": "DCC",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local depot density and route logistics provide modest distribution scale, but post-tax GAAP ROIC is sub-hurdle at ~8-10% (well below the 12% Munger threshold) with razor-thin operating margins (~3-4%). As a bulk fuel/LPG distributor, pricing power is limited to a thin delivery markup over volatile commodity costs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Rejected – G3 Moat & Pricing). While heating fuel and LPG delivery fulfill an essential physical need, DCC operates as a high-volume, low-margin distributor with thin ~3-4% operating margins and a multi-year post-tax ROIC below the 12% hurdle (~8-10%). It lacks independent pricing power against commodity swings and faces long-term structural volume headwinds from European building decarbonization and the energy transition.",
+    "evidence": "International energy distribution and services group with over £14B continuing revenue (transitioning to pure-play DCC Energy after divesting Healthcare and Technology). Historical ROCE/ROIC hovers around 8-11% post-tax. Although cash conversion is consistently high (>90-100%), the business is constrained by commodity price pass-through dynamics and thin ~3.5% adjusted operating margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

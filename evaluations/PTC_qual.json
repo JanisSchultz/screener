@@ -1,0 +1,30 @@
+{
+  "id": "PTC",
+  "ticker": "PTC",
+  "universe": "us",
+  "company": "PTC Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme switching costs in CAD (Creo) and PLM (Windchill, Arena) systems of record. Migrating decades of parametric CAD data, assemblies, and multi-tier BOM workflows incurs prohibitive operational friction and regulatory re-validation costs. Low churn (<5%), multi-year contracts with contractual annual price escalators, and 1.5x-2.5x ARR SaaS migration uplifts demonstrate durable pricing power. Tangible ROIC >100% and FY2025 GAAP ROIC of 17.4% confirm moat strength. Primary erosion threats include cloud-native CAD/PLM disruption and competitive encroachment by Dassault Systèmes and Siemens.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable CAD (Creo), PLM (Windchill/Arena), and ALM (Codebeamer) systems of record embedded in industrial and medical-device engineering workflows. Extreme switching costs generate high customer retention (<5% churn) and pricing power via contractual escalators and SaaS migration uplifts. Structurally insulated across 5 macrotrends as the digital foundation for industrial automation and AI. Fortress balance sheet with net debt under 1.2x EBITDA and 12.8x interest coverage. [5-10Y g: organic PLM/ALM/CAD volume 5.5% + price/SaaS uplift 2.5% + margin expansion 0.5% + net share repurchases 1.0%]",
+    "evidence": "FY2025 revenue reached $2,739M (+19% YoY), EBIT reached $982M (35.9% margin), and GAAP net income reached $734M. Operating ROIC (tangible) exceeds 100% and FY2025 GAAP ROIC expanded to 17.4% (5Y median 11.3%, weighed down by historical M&A intangibles from Codebeamer/ServiceMax). Free cash flow conversion is outstanding at 90.5% (FY2025 FCF $857M vs Net Income $734M; FY2026 FCF $873M). Balance sheet is conservative with $1,172M LT debt against $184M cash (net debt $988M, repayable from Owner Earnings in 1.35 years; net debt/EBITDA ~1.0x), and EBIT/interest coverage of 12.8x. Annual ARR growth of 8.5-9.25% in constant currency backed by <5% gross churn, annual price escalators (3-5%), and 1.5-2.5x ARR uplifts from on-premise to SaaS (Windchill+, Creo+) transitions. In October 2026, Schneider Electric agreed to acquire PTC for $205/share ($23.7B EV), further reflecting the indispensable strategic value of PTC's digital engineering thread."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

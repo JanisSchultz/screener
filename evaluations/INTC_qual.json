@@ -1,0 +1,30 @@
+{
+  "id": "INTC",
+  "ticker": "INTC",
+  "universe": "us",
+  "company": "Intel",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Historically defended by massive leading-edge semiconductor fab capital requirements and ubiquitous x86 software ecosystem lock-in. However, empirical proof of moat has completely unraveled: 5-year median GAAP ROIC is 4.8% (against the 12% threshold) and GAAP net margins/ROIC turned severely negative in FY2024-2025. Gross margins dropped from >60% to the 35-40% range. Primary erosion threats include permanent manufacturing process leadership loss to TSMC, persistent market share losses in data center CPUs to AMD, secular shift of hyperscaler capex toward Nvidia GPUs and custom AI ASICs, and growing customer adoption of ARM-based architectures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power). 5-year median GAAP ROIC of 4.8% fails the 12% hurdle by a wide margin, with catastrophic net losses in FY2024 (-$18.8B) and FY2025 (-$0.3B). Historical pricing power and gross margins have eroded due to AMD's competitive surge in server/PC CPUs, Nvidia's dominance of data center AI compute spend, and staggering operating losses in Intel Foundry (~$13B in 2024). Moat is structurally broken rather than facing a temporary fixable calamity.",
+    "evidence": "Multi-cycle ROIC has collapsed to a 5-year median of 4.8%, with FY2024 GAAP net loss of $(18.8)B (operating loss of $(11.7)B) and FY2025 net loss of $(267)M (operating loss of $(2.2)B). Intel Foundry incurred ~$13B in operating losses in 2024 and remained heavily unprofitable in 2025 due to low external customer adoption and high EUV depreciation. Free cash flow was deeply negative (~-$10B+ across 2023-2025), forcing complete dividend suspension, major layoffs, asset divestitures (Altera stake sale), and government/external capital injections. Gross margins fell from historical 60%+ levels to ~35-40% under sustained pricing pressure from AMD and product substitution toward Nvidia accelerators."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

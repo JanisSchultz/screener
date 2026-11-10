@@ -1,0 +1,30 @@
+{
+  "id": "XEL",
+  "ticker": "XEL",
+  "universe": "us",
+  "company": "Xcel Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive regulated service territories across 8 Western and Midwestern states (Minnesota, Colorado, Wisconsin, etc.) with non-replicable transmission and distribution assets. Rate-base cost-of-service model provides authorized ROE (~9.3-10.0%) and fuel-clause riders passing generation and operating expenses to captive rate-payers. Primary erosion threats stem from extreme-weather wildfire liabilities in Colorado and Texas, rising ratepayer resistance to clean-energy capital expenditure rate hikes, and regulatory lag.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion). Regulated electric and gas monopoly across 8 states with an unreplicable transmission network, but disqualified by structural utility economics: 10-year median ROIC of 4.8%, deeply negative free cash flow after capex ($10.9B capex vs $4.1B OCF in FY2025), heavy debt load of $31.8B (15.8x net income), and thin interest coverage of 1.76x requiring perpetual debt issuance.",
+    "evidence": "10-year median GAAP ROIC is 4.8% (2016-2025 range 4.0%-6.6%). TTM operating cash flow of $4,083M is overwhelmed by $10,908M in capital expenditures, producing -$6.8B in annual free cash drain. Long-term debt has grown from $14.2B in 2016 to $31.8B in 2025. With TTM EBIT of $2,583M and interest expense of $1,468M, interest coverage is just 1.76x. Despite resolving the 2021 Marshall Fire ($640M settlement) and stabilizing S&P/Fitch credit ratings at BBB+ (outlook Stable), continuous external debt and hybrid issuance is mandatory to support the $45B+ capital plan."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "COTN.CH",
+  "ticker": "COTN",
+  "universe": "eu",
+  "company": "Comet Holding AG",
+  "country": "Switzerland",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized RF plasma control impedance matching and microfocus X-ray inspection modules embedded in semiconductor fab equipment. While switching costs exist during a tool design cycle, extreme customer concentration (monopsonistic semicap OEMs like Lam Research and Applied Materials) strips Comet of structural pricing power, subjecting returns to severe downcycle margin compression.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/pricing power, REJECT). Specialized supplier of RF plasma control modules and X-ray systems to semiconductor equipment OEMs. Severe customer concentration (Lam Research, AMAT) and intense semicap capex cyclicality strip Comet of independent pricing power, causing ROCE to collapse from 26% in 2021-2022 to 6.6% in 2023.",
+    "evidence": "Comet Holding AG supplies RF power delivery systems and X-ray inspection modules. Operating profitability is acutely exposed to the wafer fab equipment (WFE) capex cycle. Consolidated OEM buyers hold superior negotiating leverage. ROCE dropped sharply from 26.8% (2021) and 26.3% (2022) to 6.6% (2023) and 10.4% (2024), demonstrating sub-hurdle trough returns and absence of cycle-neutral pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

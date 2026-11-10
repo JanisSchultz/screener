@@ -1,0 +1,30 @@
+{
+  "id": "CPG.GB",
+  "ticker": "CPG",
+  "universe": "eu",
+  "company": "Compass Group",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Foodbuy procurement scale delivers food and supplies at costs unobtainable by regional competitors, passing savings to clients while contract escalators protected margins during 2022-2024 inflation with >96% retention.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global market leader in contract foodservice leveraging Foodbuy procurement scale to drive first-time outsourcing wins across healthcare, education, and corporate dining. Contractual escalators passed through high inflation with >96% retention. Sound balance sheet with net debt ~2.0x NI and >7.8x interest coverage. [5-10Y g: net new outsourcing wins 3.5% + like-for-like volume/price 3.0% + margin expansion 0.5% + net share buybacks 1.0%]",
+    "evidence": "Consistently achieves 18-22% GAAP ROIC over multi-year cycles (median 19.1%). Owner FCF conversion exceeds 120% of net income ($2.43B FCF vs $1.87B NI in FY25). Foodbuy purchasing power aggregates massive volume, establishing an insurmountable cost advantage over regional peers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

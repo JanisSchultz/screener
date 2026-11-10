@@ -1,0 +1,30 @@
+{
+  "id": "DVA",
+  "ticker": "DVA",
+  "universe": "us",
+  "company": "DaVita",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "DaVita maintains an entrenched US outpatient dialysis duopoly alongside Fresenius, protected by dense local clinic networks, medical director joint ventures with nephrologists, and state Certificate of Need (CON) laws. However, structural pricing power is critically absent: ~85-90% of patient volume is government-reimbursed under statutory CMS ESRD Prospective Payment System rates that consistently lag healthcare labor and supply cost inflation. The remaining 10-15% commercial payer cohort—which cross-subsidizes the operation and generates nearly 100% of operating profits—faces constant legal (e.g., Supreme Court Marietta ruling), legislative, and private insurer pushback.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While DaVita and Fresenius form an entrenched US dialysis duopoly providing life-sustaining care, DaVita lacks independent pricing power across ~85-90% of its volume, which is subject to administratively fixed Medicare/Medicaid ESRD PPS reimbursement rates that fail to keep pace with clinical wage and supply inflation. Nearly all operating profit is derived from cross-subsidization by a narrow 10-15% commercial payer base that is under structural regulatory, judicial, and payer network erosion.",
+    "evidence": "Multi-cycle financial track record demonstrates the vulnerability of DaVita's reimbursement model. In FY2023-FY2025, revenue was $12.1B-$13.6B with operating income of $1.6B-$2.0B (operating margin 13.2%-16.3%) and net income attributable to DVA of $722M-$936M. While reported ROIC appears around 13-17%, the invested capital base is heavily distorted by extreme financial engineering: long-term debt stands at $12.87B against net income of $722M (a debt-to-net-income ratio exceeding 15x), resulting in negative shareholders' equity (-$651M in FY2025) after aggressive debt-funded share repurchases. Approximately 85-90% of US dialysis treatments are reimbursed by Medicare/Medicaid at statutory rates near or below the full cost of delivery, leaving DaVita entirely dependent on the remaining 10-15% of commercial patients who pay 3-5x higher rates to generate company-wide profits. This commercial margin spread faces persistent erosion threats, highlighted by the 2022 US Supreme Court Marietta decision permitting employer plans to limit outpatient dialysis coverage without violating the Medicare Secondary Payer Act. In addition, nephroprotective GLP-1 receptor agonists (proven by Novo Nordisk's FLOW trial to reduce CKD progression and kidney failure events by 24%) and SGLT2 inhibitors introduce a secular multi-decade headwind to incident ESRD patient volume growth, while severe clinical nursing shortages and wage inflation continue to compress treatment margins against statutory CMS rate updates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

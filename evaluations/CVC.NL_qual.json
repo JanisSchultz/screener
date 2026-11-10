@@ -1,0 +1,30 @@
+{
+  "id": "CVC.NL",
+  "ticker": "CVC",
+  "universe": "eu",
+  "company": "CVC Capital Partners",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global alternative asset management powerhouse with €239B AUM (€176.6B fee-paying AUM). Over 80% of capital is locked up in 10-year closed-end fund structures with zero early LP redemption rights, creating an exceptional contractual toll booth. Pricing power demonstrated by raising €26B Fund IX (largest PE fund globally) at standard 1.5-2.0% fee terms and high re-up rates (~90%). Empirical proof: FY25 GAAP ROIC of 45.8%, tangible ROIC >100%, and operating margins >50%. Primary erosion threats: macro liquidity slowdowns delaying portfolio realizations and compressing performance fees.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier European alternative asset manager with €239B AUM (€176.6B fee-paying) underpinned by long-dated closed-end fund lockups. Exceptional capital efficiency with 45.8% GAAP ROIC and 95.5% FCF conversion. Balance sheet fortress with net debt <0.7x net income and >24x interest coverage. [5-10Y g: FPAUM volume growth 6.0% + fee realization mix 1.0% + credit/secondaries expansion 2.0% - exit/carry cyclical drag 1.0% + net dividends/buybacks 2.0%]",
+    "evidence": "FY25 GAAP ROIC of 45.8% and operating ROIC >100%. Free cash flow conversion of 95.5% on €605M Owner FCF. FPAUM reached €176.6B in Q3 2026 (+24% YoY), with Credit, Secondaries, and Infrastructure expanding to 60% of total FPAUM. Net debt of €809M is fully covered by less than 1 year of net income (€1,183M), with EBIT/interest coverage of 24.3x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

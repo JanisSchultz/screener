@@ -1,0 +1,30 @@
+{
+  "id": "JKHY",
+  "ticker": "JKHY",
+  "universe": "us",
+  "company": "Jack Henry & Associates",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Near-insurmountable switching costs in core banking software (SilverLake, CIF 20/20, Symitar/Episys) serving as the operational central nervous system for ~1,650+ US community banks and credit unions. Core replacements entail 18-24 month operational upheaval and high regulatory risk, producing 98-99% annual client retention with zero voluntary churn. Pricing power demonstrated by multi-year contracts with CPI escalation clauses and high-margin digital module upsells. 10-year GAAP ROIC has consistently ranged between 20% and 26% (median 22.7%), with tangible operating ROIC near 40%. Primary erosion risks are secular community bank M&A consolidation and long-term cloud-native core entrants, offset by expanding account volumes and new credit union core wins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Quintessential core banking and payment processing toll booth for US regional banks and credit unions with 98-99% retention. Insulated across all 5 macrotrends: charges per transaction/account rather than vulnerable SaaS seats, 100% US domestic focus, asset-light, and virtually debt-free ($40M debt vs $635M EBIT). FCF conversion exceeds 120% of net income with a pristine balance sheet. [5-10Y g: transaction volume 2.5% + digital cross-sell 2.5% + price indexation 1.5% - bank consolidation attrition drag 1.0% + net buybacks 0.5%]",
+    "evidence": "10-year track record of rock-solid compounding: sales grew from $1.43B (FY16) to $2.54B (FY25), EBIT expanded from $341.7M to $635.0M, and Owner EPS compounded at 7.8% from $3.03 to $6.98 (peak FY25). 10-year GAAP ROIC never fell below 20% (median 22.72%, tangible operating ROIC 39.5%). Owner FCF conversion averaged 121% of GAAP net income over multiple cycles with low capex ($67M capex vs $762M OCF in FY25). Minimal debt ($40M long-term debt vs $503M net income and $12M cash), zero reliance on capital markets, conservative accounting with low SBC (<1.5% of revenue), and disciplined stewardship under David Foss and Greg Adelson."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

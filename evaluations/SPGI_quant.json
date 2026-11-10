@@ -1,0 +1,43 @@
+{
+  "id": "SPGI",
+  "ticker": "SPGI",
+  "universe": "us",
+  "company": "S&P Global",
+  "price": 467.8,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard, neutralizing $52.8B of accounting goodwill and intangibles from the 2022 IHS Markit merger (economic operating ROIC exceeds 100% on tangible capital). Peak Owner EPS confirmed at $17.8794 (FY2025; non-cash spikes in FY13 and FY16 stripped). Forward 5-10Y g_implied of 9.5% reflects 3.5% debt issuance and ETF basis-point volume expansion, 2.5% contractual ratings and subscription pricing power, 1.5% private market benchmarks and workflow analytics mix, and 1.5% net share buybacks, offset by -0.5% AI/tech reinvestment drag. Pristine balance sheet with Net Debt/NI of 2.38x, EBIT interest coverage of 22.57x, and 114.3% multi-year FCF conversion. At $467.80, SPGI trades -5.39% Below PAR ($494.43 fair value at 27.65x PAR multiple), providing a 1.6-year moat runway margin and an attractive 11.58% expected 5Y IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 17.8794,
+    "current_multiple": 26.16,
+    "par_multiple": 27.65,
+    "par_value": 494.43,
+    "percent_vs_par": -0.0539,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0086,
+    "expected_irr_5y": 0.1158,
+    "market_implied_cap": 28.4,
+    "moat_runway_margin": 1.6,
+    "market_implied_growth": 0.0727,
+    "growth_margin_of_safety": 0.0223
+  },
+  "health_checks": {
+    "net_debt_years": 2.77,
+    "net_debt_ok": true,
+    "interest_coverage": 22.57,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1425,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

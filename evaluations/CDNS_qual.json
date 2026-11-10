@@ -1,0 +1,30 @@
+{
+  "id": "CDNS",
+  "ticker": "CDNS",
+  "universe": "us",
+  "company": "Cadence Design Systems",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Cadence forms an indispensable duopoly with Synopsys controlling >75% of the electronic design automation (EDA) market. Moat barriers are practically insurmountable due to: (1) deep process design kit (PDK) integration with TSMC, Intel, and Samsung foundries; (2) decades of electrical engineering muscle memory; and (3) catastrophic tape-out failure risk (a botched $100M+ mask set prevents customers from ever switching for minor price concessions). Proof of moat: 5-year median GAAP ROIC of 47.7%, gross margins of ~89-90%, operating margins >30%, ~85% recurring subscription revenue, and 10-year Owner EPS CAGR of 13.8%. Primary erosion threats: tightening US-China export controls restricting tool access for Chinese fabless firms (~10-12% of revenue), hyperscaler customer consolidation, and antitrust scrutiny.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable mission-critical EDA duopolist serving as an essential toll booth on global semiconductor R&D and AI silicon design. Moat backed by deep foundry PDK certifications and extreme switching costs. Highly recurring software model (~85% ratable/subscription) with robust pricing power and net cash balance sheet ($3.0B cash vs $2.48B debt). [5-10Y g: semiconductor design & AI complexity volume 7.0% + EDA pricing/up-tiering 2.0% + multiphysics expansion 1.5% - R&D/cloud compute drag 0.5% + net share buybacks 1.0%]",
+    "evidence": "10-year operating history demonstrates elite compounding: FY2016-FY2025 revenue grew from $1.82B to $5.30B (12.6% CAGR), operating income expanded from $245M to $1.49B (22.2% CAGR), and Owner EPS rose from $0.92 to $4.37 (13.8% CAGR). GAAP ROIC consistently exceeds 40% (5-year median 47.7%; FY2025 48.3%), with operating tangible ROIC >100%. Free cash flow conversion is outstanding at 93.8% multi-year median (FY2025 OCF $1.73B vs capex $142M; reported FCF $1.59B exceeds GAAP net income of $1.11B by 143%). Net cash position of $521M ($3.00B cash & equivalents vs $2.48B long-term debt). Interest coverage is pristine at 12.8x EBIT/Interest. EDA software is insulated from agentic AI disruption, acting instead as a primary beneficiary as complex multi-die chiplet, 3D packaging, and custom AI accelerator design demand surge."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

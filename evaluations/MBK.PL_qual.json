@@ -1,0 +1,30 @@
+{
+  "id": "MBK.PL",
+  "ticker": "MBK",
+  "universe": "eu",
+  "company": "mBank",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Outside approved rule-of-law Western developed markets (in_market == N); heightened state intervention risk (Polish bank asset taxes, statutory credit holidays) and systemic Swiss-franc (CHF) mortgage litigation.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == N, REJECT). Operating in Poland outside approved Western developed markets. Exposes equity to systemic Polish political intervention (mandated mortgage credit moratoria, sector asset taxes) and catastrophic foreign-currency (CHF) mortgage legal redress.",
+    "evidence": "mBank S.A. is a major Polish retail and corporate bank (majority-owned by Commerzbank). Despite digital innovation, operations are concentrated in Poland (in_market == N). Substantial earnings impairment and multi-billion PLN provisions from CHF mortgage litigation under CJEU rulings and Polish regulatory interventions (statutory loan repayment holidays)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

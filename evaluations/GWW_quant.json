@@ -1,0 +1,43 @@
+{
+  "id": "GWW",
+  "ticker": "GWW",
+  "universe": "us",
+  "company": "W. W. Grainger",
+  "price": 1440.7,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Premier North American MRO distribution network: Tangible operating ROIC of 46.45% (median GAAP 39.67%) normalized to standard 35.0% cap. FY2024 peak Owner EPS of $38.96 is clean and unencumbered by one-offs. 5-10Y secular growth anchored at 9.5% via high-touch MRO volume (+3.5%), endless assortment Zoro/MonotaRO (+3.0%), contractual indexation (+2.0%), industrial cycle drag (-0.5%), and share repurchases (+1.5%). Balance sheet is pristine (net debt 1.04x NI, 30.8x interest coverage, 54 years of dividend hikes). After a massive re-rating to 36.98x peak EPS, GWW trades Above PAR (+34.3% premium to $1,072.42 PAR Value at 27.53x PAR multiple), offering a 3.9% 5Y expected cycle IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 38.9592,
+    "current_multiple": 36.98,
+    "par_multiple": 27.53,
+    "par_value": 1072.42,
+    "percent_vs_par": 0.3434,
+    "status": "Above PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0069,
+    "expected_irr_5y": 0.0391,
+    "market_implied_cap": 26.9,
+    "moat_runway_margin": -6.9,
+    "market_implied_growth": 0.2368,
+    "growth_margin_of_safety": -0.1418
+  },
+  "health_checks": {
+    "net_debt_years": 1.38,
+    "net_debt_ok": true,
+    "interest_coverage": 30.8,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8511,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

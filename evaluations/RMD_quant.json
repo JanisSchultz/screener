@@ -1,0 +1,43 @@
+{
+  "id": "RMD",
+  "ticker": "RMD",
+  "universe": "us",
+  "company": "ResMed",
+  "price": 232.94,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Undisputed global sleep-disordered breathing toll booth (~70% global share, >90% US share post-Philips recall) protected by AirView ecosystem (>28M cloud-connected devices) and high-margin razor-and-blade consumable resupply. Operating ROIC normalized to 35.0% cap to reflect exceptional tangible capital returns (50-74% tangible ROIC, FY25 GAAP ROIC expanded to 27.39%). FY25 peak Owner EPS of $10.74 demonstrates uninterrupted compounding (18.1% 9Y CAGR) backed by 88.77% FCF conversion ($1.57B Owner FCF). Fortress balance sheet with $1.47B cash against $399M LT debt ($1.07B net cash) and zero net interest expense. 5-10Y through-the-cycle EPS growth of 8.0% incorporates expanding OSA diagnosis and device/mask volume (5.5%), premium pricing and mask mix (1.5%), and software/reinvestment (0.5%), offset by competitive/freight friction (-0.5%), plus net share repurchases (1.0%); real-world clinical data (>2.5M patients) confirms GLP-1 therapy acts as a diagnostic funnel (+11% CPAP initiation) rather than an obsolescence risk. Fundamental 3-Pillar PAR Multiple of 27.33x (well below the 40.56x cycle-high guardrail) establishes a PAR Value of $293.46. At $232.94 (21.69x Peak OE), RMD trades 20.6% Below PAR, offering a superior 5Y expected IRR of 14.17% with an 8.45% growth margin of safety."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.7382,
+    "current_multiple": 21.69,
+    "par_multiple": 27.33,
+    "par_value": 293.46,
+    "percent_vs_par": -0.2062,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0107,
+    "expected_irr_5y": 0.1417,
+    "market_implied_cap": 11.9,
+    "moat_runway_margin": 3.1,
+    "market_implied_growth": -0.0045,
+    "growth_margin_of_safety": 0.0845
+  },
+  "health_checks": {
+    "net_debt_years": 0.26,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8877,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

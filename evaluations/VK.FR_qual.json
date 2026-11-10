@@ -1,0 +1,30 @@
+{
+  "id": "VK.FR",
+  "ticker": "VK",
+  "universe": "eu",
+  "company": "Vallourec",
+  "country": "France",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary VAM premium threaded connections qualified with global oil majors, but sub-hurdle multi-cycle ROIC (<12%) and cyclical price-taker status behind market leader Tenaris demonstrate lack of structural pricing power across cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Post-restructuring manufacturer of seamless OCTG tubes; lacks structural pricing power across the energy cycle and trails market leader Tenaris, resulting in sub-hurdle multi-cycle ROIC.",
+    "evidence": "Multi-cycle ROIC consistently below 12% requirement, marred by repeated equity-diluting restructurings and mill closures. Earnings fluctuate violently with global drilling rig counts and OCTG spot pricing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

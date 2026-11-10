@@ -1,0 +1,30 @@
+{
+  "id": "COLO B.DK",
+  "ticker": "COLO B",
+  "universe": "eu",
+  "company": "Coloplast",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 in ostomy (~38-40% share) and continence care (~40% share). Enormous switching costs driven by stoma nurse training and intimate patient loyalty against leakage/infection. Sustained 19%+ GAAP ROIC and 27-30% EBIT margins via recurring consumable replacement and premium innovation tiers (SenSura Mio, Luja).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global market leader in ostomy (~40%) and continence (~40%) consumables. Unmatched switching costs rooted in nurse recommendations and patient dependence on leak-free intimate care. Excellent ~19% GAAP ROIC, ~87% FCF conversion, and manageable 2.4x EBITDA leverage. [5-10Y g: organic volume 5.5% + price/mix 1.5% + margin recovery 0.5%]",
+    "evidence": "Median GAAP ROIC 19.2% (tangible >50%), FCF conversion ~87%. Global market share leader in ostomy and continence care. Daily disposable consumable replacement model provides rock-solid recession resilience. 6.85x EBIT interest coverage with Net Debt/EBITDA at 2.4x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "JBHT",
+  "ticker": "JBHT",
+  "universe": "us",
+  "company": "J.B. Hunt Transport Services, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Cargo Ground Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scale economies shared in North American domestic intermodal (>100k containers) and private fleet replacement (DCS). However, JBHT lacks independent pricing power; intermodal must maintain a discount to highway trucking, making JBHT a price-taker during freight downturns when overcapacity triggers aggressive spot discounting.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). North American intermodal and dedicated transportation leader with scale economies shared, but lacks invariant pricing power across the cycle. Intermodal rates must price at a discount to over-the-road trucking; during freight recessions and capacity gluts, JBHT becomes a cyclical price-taker, causing severe margin compression (operating margin fell from 9.4% in 2022 to 6.9% in 2024) and dragging trough ROIC below the 12% hurdle (11.2% in 2024).",
+    "evidence": "10-year median ROIC is ~13.8%, but cyclical: 21.6% in 2022 (freight peak), 14.6% in 2023, 11.2% in 2024 (below 12% hurdle), and 12.4% in 2025. Operating margins compressed from 9.4% in 2022 to 6.9% in 2024. Intermodal (JBI, ~47% of revenue) and Dedicated (DCS, ~32% of revenue) provide operating scale and multi-year contract stability, but brokerage (ICS) and truckload (JBT) are exposed to brutal spot rate competition. CapEx cycles for container and tractor fleet replacement create lumpy FCF (-$118M in 2023, +$618M in 2024, +$948M in 2025). Net debt of ~$1.0B is manageable (EBIT interest coverage >10x), but structural inability to price above inflation in freight downcycles fails Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

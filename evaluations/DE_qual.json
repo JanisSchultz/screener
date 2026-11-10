@@ -1,0 +1,30 @@
+{
+  "id": "DE",
+  "ticker": "DE",
+  "universe": "us",
+  "company": "Deere & Company",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Agricultural & Farm Machinery",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant dealer network density (over 2,000 North American locations providing mission-critical 2-hour parts and maintenance dispatch during narrow harvest windows) paired with proprietary John Deere Operations Center precision ag telemetry and connected machinery ecosystem creates massive farmer switching costs. Empirically demonstrated by 10-year median ROIC of ~17% and sustained 3-5% annual pricing realization over equipment cost inflation. Primary erosion threats include right-to-repair legislative mandates, prolonged crop price slumps squeezing farm capex, and competitive entry in autonomy/electrification.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Despite Deere's unrivaled agricultural moat, mission-critical precision ag technology, and strong operational ROIC (~17%), its capital structure is heavily leveraged by its captive finance subsidiary, John Deere Capital Corporation. Total consolidated enterprise debt stands at ~$63.9B ($43.5B long-term, $13.8B short-term) against cash of $8.3B, yielding net debt of ~$55.6B. Net debt to FY25 net income ($5.03B) is 11.1x (and 5.5x even against peak FY23 net income of $10.17B), far exceeding the 4.0-year limit. Crucially, the captive finance model's structural reliance on rolling over billions in short-term commercial paper to fund dealer wholesale floorplans and customer retail notes violates Munger's peace-of-mind balance sheet standard (freedom from the 'kindness of strangers').",
+    "evidence": "Deere & Company generates strong multi-cycle operating returns with 10-year median ROIC of 16.8% and operating margins remaining in the mid-to-high teens across cycles (FY23 revenue $61.3B, net income $10.17B; FY24 revenue $51.7B, net income $7.10B; FY25 revenue $45.7B, net income $5.03B). Revenue is split across Production & Precision Ag (~$17.3B in FY25), Small Ag & Turf (~$10.2B), Construction & Forestry (~$11.4B), and Financial Services. High switching barriers stem from its exclusive dealer network (>2,000 North American locations) and digital ecosystem (300M+ engaged acres on Operations Center). However, consolidated debt is ~$63.9B ($43.5B long-term, $13.8B short-term borrowings including commercial paper), while stockholders' equity is $26.0B and cash is $8.3B. Equipment Operations alone carries $8.8B long-term debt against $6.3B cash, but parent equity fully underpins John Deere Capital Corporation ($34.8B long-term debt). Consolidated Net Debt / Net Income of ~11.1x in FY25 (5.5x at FY23 peak) and ongoing reliance on commercial paper funding fail Gate 6 Pillar 3."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

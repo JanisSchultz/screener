@@ -1,0 +1,30 @@
+{
+  "id": "BG",
+  "ticker": "BG",
+  "universe": "us",
+  "company": "Bunge Global",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Agricultural Products & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global oilseed processing and grain origination network provides physical scale and logistics presence, but offers no structural pricing power. Operates as a pure commodity price-taker whose operating margins (2-3%) and ROIC (10Y avg ~7%, FY24 7.1%, FY25 3.6%) are governed by volatile, cyclical soybean and softseed crush spreads rather than proprietary economic rents. Return on capital consistently falls below the 12% hurdle across the cycle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Global agricultural processor and merchandiser operating as a commodity price-taker. Despite vast origination and crushing scale enhanced by the Viterra acquisition, Bunge lacks pricing power over fungible agricultural commodities. Operating margins average 2-3% and multi-cycle ROIC (~7% 10-year average, falling to ~3.6% in 2025) fails the 12% hurdle. Margins remain hostage to industry crush spreads and volatile working-capital swings.",
+    "evidence": "Multi-cycle financial track record shows 10-year average ROIC of ~6.95% (5-year median ~10.2%, dropping to ~7.09% in FY2024 and ~3.62% in FY2025), failing the 12% hurdle. Gross margins are paper-thin at 4.5%-6.5% and operating margins average 2%-3%, occasionally turning negative during agricultural down-cycles (e.g. 2019). July 2025 acquisition of Viterra ($10.6B total consideration including $5.34B stock and $3.55B debt absorption) expands scale in grain handling and origination but increases capital intensity and leverage while leaving the core price-taking commodity economics unchanged. Bunge cannot unilaterally raise prices above global market-clearing levels without immediate customer defection."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

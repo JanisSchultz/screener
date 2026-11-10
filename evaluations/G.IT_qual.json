@@ -1,0 +1,30 @@
+{
+  "id": "G.IT",
+  "ticker": "G",
+  "universe": "eu",
+  "company": "Generali",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strong domestic distribution and market share in Italian P&C and life, but returns on capital are structurally weak. 5-year median GAAP ROIC is 7.82% and tangible ROIC is <11%, failing Gate 3b return hurdles. Massive exposure to Italian sovereign debt (BTPs) creates systemic balance sheet correlation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Pricing Power & Proof of Moat, REJECT). Italian insurance leader severely fails the capital efficiency hurdle with a 5-year median GAAP ROIC of 7.82% and tangible ROIC of 9.3% in FY2025, well below the 12% GAAP and 15% tangible ROIC thresholds. Returns are diluted by legacy life guarantees and high sovereign debt concentration.",
+    "evidence": "FY2022-FY2025 GAAP ROIC remained stagnant between 5.28% and 8.55% (median 7.82%), with tangible ROIC failing to reach 11%. LT debt of €39.6B against net income of €4.2B yields net debt / NI of 7.73x, while extensive BTP holdings link capital solvency to Italian sovereign spreads."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

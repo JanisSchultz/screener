@@ -1,0 +1,30 @@
+{
+  "id": "MRK",
+  "ticker": "MRK",
+  "universe": "us",
+  "company": "Merck & Co., Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Merck's economic moat is grounded in proprietary patent estates, regulatory exclusivity, and biologic manufacturing know-how, centered on its blockbuster oncology PD-1 therapy Keytruda (pembrolizumab, $31.64B revenue in FY25), HPV vaccine Gardasil, and newer launches Winrevair and Capvaxive. While these high-margin assets deliver 74-76% gross margins and high historical returns on capital (5-year median GAAP ROIC of ~18-21%), Merck structurally lacks demonstrated pricing power >= inflation across the full drug cycle. Branded prescription drugs face pervasive state price caps and statutory payor restrictions: under the US Inflation Reduction Act (IRA), price increases exceeding CPI-U trigger mandatory 100% inflation rebate penalties, and Keytruda is scheduled for direct Medicare price negotiation starting in 2028. European and global single-payer systems mandate regular price cuts, while Gardasil demonstrated severe volume vulnerability in China (-39% sales drop in FY25 to $5.23B). Furthermore, the primary US composition-of-matter patent protecting IV Keytruda expires in December 2028, leading to inevitable 80-90% biosimilar price erosion rather than enduring pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While Merck maintains high current returns on capital via patent-protected blockbuster Keytruda ($31.64B in FY25, ~48% of total revenue) and Gardasil, the business model lacks demonstrated pricing power >= inflation across the cycle. Branded prescription drugs operate under statutory price caps and regulatory constraints: the US Inflation Reduction Act legally penalizes price hikes above CPI via mandatory rebates and mandates direct Medicare price negotiations starting in 2028 for Keytruda. International markets impose statutory price cuts, and Gardasil sales in China dropped 39% in FY25 under competitive/procurement pressure. With Keytruda's primary US patent expiring in December 2028, pricing power is strictly temporary rather than enduring, leading to unavoidable biosimilar price deflation.",
+    "evidence": "FY24 revenue reached $64.17B (+7% YoY) with FCF of $18.10B and Net Income of $17.12B (FCF conversion >100%). FY25 revenue was ~$65.5B (+2% YoY) with ~$12.36B FCF and Net Income of $18.25B (FCF conversion ~68%). 10-year historical average ROIC is 14.2%, and 5-year median GAAP ROIC is ~18-21%, with gross margins stable at 74-76%. However, revenue concentration is extreme: Keytruda alone accounted for $29.48B in FY24 (46% of revenue) and $31.64B in FY25 (48% of revenue). Keytruda faces US loss of exclusivity (LOE) in December 2028, compounded by IRA Medicare price negotiations taking effect the same year. Attempted lifecycle extension via subcutaneous pembrolizumab (Keytruda Qlex) targets only 30-40% patient conversion. Gardasil revenue declined 39% in FY25 from $8.58B to $5.23B due to sharp contraction in China. Aggressive pipeline M&A (Prometheus for $10.8B in 2023, Acceleron for $11.5B, Harpoon, EyeBio) expanded total debt to $49.34B at FY25 against $18.17B cash ($31.17B net debt), elevating financial leverage to bridge the looming patent cliff. The structural inability to pass through real price inflation and exposure to statutory price caps fail Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CVS",
+  "ticker": "CVS",
+  "universe": "us",
+  "company": "CVS Health",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Caremark PBM network scale and employer pharmacy benefit switching costs provide distribution presence, but the business fails all capital efficiency and pricing power hurdles. 10-year median GAAP ROIC is ~6.2% (FY2024: 4.1-4.5%, FY2025: 2.3-2.7%, FY2026 TTM: ~4.5-5.0%), well below the 12% threshold. Capital base is severely bloated by debt-funded mega-acquisitions ($69B Aetna, $10.6B Oak Street Health, $8B Signify Health) resulting in multi-billion dollar goodwill impairments. Pricing power is non-existent when facing medical cost surges (Aetna MLR exceeded 95% in 2024 and 87-91% in 2025-2026). Moat is actively eroding from the July 2026 FTC consent settlement requiring fee delinking and rebate pass-through, alongside secular contraction in retail pharmacy driving >1,170 store closures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power). 10-year median ROIC of 6.2% fails the 12% hurdle across all multi-year cycles. Invested capital is weighed down by $87B+ of debt-funded acquisitions with heavy goodwill write-downs. Underwriting and pricing power failed during Medicare Advantage medical utilization surges (Aetna MLR >95%), while CVS Caremark faces structural fee delinking and rebate pass-through under the 2026 FTC settlement, and retail pharmacy faces secular decline.",
+    "evidence": "10-year average ROIC sits at 6.21% (FY24: 4.53%, FY25: ~2.5%, FY26 TTM: ~4.5%). Operating margins remain compressed at 2.5-4.0%. Balance sheet is leveraged with ~$57B-$59B in long-term debt and ~$3.1B annual interest expense. Health Care Benefits (Aetna) experienced acute margin collapse from Medicare Advantage utilization spikes, pushing Medical Loss Ratios over 95% in 2024 and 87-91% in 2025-2026. Pharmacy Services (Caremark) faces regulatory restructuring under the July 2026 FTC consent decree prohibiting fee linkage to list prices and requiring rebate pass-through. Retail pharmacy segment has closed >1,170 stores since 2021 due to low reimbursement and retail shrink, culminating in a planned corporate split of retail operations by 2028."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

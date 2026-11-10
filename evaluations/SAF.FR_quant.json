@@ -1,0 +1,43 @@
+{
+  "id": "SAF.FR",
+  "ticker": "SAF",
+  "universe": "eu",
+  "company": "Safran",
+  "price": 295.5,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": 8.88,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Peak Owner EPS normalized to €8.88 adjusted recurring EPS to neutralize extreme non-cash IFRS currency hedge mark-to-market swings (€7.18B IFRS net income vs negative hedge marks in 2022/2024). Operating ROIC capped at 35.0% tangible ceiling neutralizing serial aerospace acquisition intangibles and negative working capital structure. 5-10Y forward compound growth rate of 9.5% supported by LEAP narrowbody fleet flight-hour expansion (4.5%), high-margin aftermarket spare parts pricing (3.5%), defense and aircraft equipment (1.5%), and net buybacks (0.5%), offset by minor supply chain frictions (-0.5%). Pristine balance sheet with €4.7B net cash."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.88,
+    "current_multiple": 33.277,
+    "par_multiple": 33.83,
+    "par_value": 300.4104,
+    "percent_vs_par": -0.0163,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0099,
+    "expected_irr_5y": 0.1086,
+    "market_implied_cap": 19.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": 0.0867,
+    "growth_margin_of_safety": 0.0083
+  },
+  "health_checks": {
+    "net_debt_years": -0.66,
+    "net_debt_ok": true,
+    "interest_coverage": 77.07,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.72,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

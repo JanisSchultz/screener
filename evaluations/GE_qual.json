@@ -1,0 +1,30 @@
+{
+  "id": "GE",
+  "ticker": "GE",
+  "universe": "us",
+  "company": "GE Aerospace",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Certified installed base of over 44,000 commercial engines powering 3 out of every 4 global flight departures (CFM56, LEAP, GE90, GEnx, GE9X). Aircraft engine development requires multi-billion dollar R&D and decade-long FAA/EASA airworthiness certification. Once certified and mounted on an airframe, engines cannot be substituted without exorbitant recertification costs. OEM-controlled blueprints, PMA defense, and long-term flight-hour service agreements (CSAs) grant GE an unassailable toll booth on global flight hours, enabling 3-5%+ annual real spare parts price increases. Primary erosion threats: aerospace supply chain casting/forging constraints, hot-section durability overhauls, and airline bargaining pressure during downturns.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier commercial jet propulsion duopolist with an installed base of 44,000+ commercial engines generating an indispensable, high-margin aftermarket annuity (70%+ of segment profits). Exceptional pricing power demonstrated by above-inflation parts price realization and inflation-indexed long-term service contracts. Elite operational turnaround and planned abandonment executed by Larry Culp (FLIGHT DECK lean culture). Fortress balance sheet with net debt under 1.0x Owner Earnings and >100% FCF conversion. [5-10Y g: shop visit & engine delivery volume 5.0% + spare parts & service pricing 3.5% + commercial aftermarket mix 1.5% - supply chain & R&D drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "Post-conglomerate breakup (spinoffs of GE HealthCare in 2023 and GE Vernova in 2024), GE Aerospace is a focused pure-play aerospace engine leader. FY2024 revenue reached $38.7B with operating profit of $7.3B and $6.1B FCF. FY2025 revenue expanded to $45.9B with $10.0B EBIT, $8.7B net income, and $7.7B FCF (multi-year FCF conversion 117%). Tangible ROIC exceeds 60% and GAAP ROIC is 23-33% (5-year median GAAP ROIC 22.9%). Total order backlog stands at ~$190B. The CFM LEAP engine reached manufacturing breakeven in 2025, initiating a 20+ year high-margin aftermarket cash-generation phase. Balance sheet holds $12.4B cash against $20.5B debt (net debt $8.1B, repayable in 0.93 years of net income); interest coverage >15x; credit ratings upgraded to Moody's A2 / S&P A-."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

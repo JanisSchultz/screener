@@ -1,0 +1,30 @@
+{
+  "id": "DPZ",
+  "ticker": "DPZ",
+  "universe": "us",
+  "company": "Domino's",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Domino's operates an entrenched scale economies shared moat: high store density ('fortressing') cuts delivery radiuses and transit times, while vertically integrated regional supply chain dough/ingredient centers pass procurement efficiencies to franchisees. National scale funds an advertising powerhouse (6% royalty/ad contribution) and digital dominance (37M+ active loyalty members). Empirical proof: historical ROIC consistently 30-50%+ and ability to lift core promotional pricing ($5.99 to $6.99) while maintaining positive order counts. Primary erosion threats: third-party delivery aggregators (DoorDash, Uber Eats) disintermediating customer relationships and fast-food discounting wars.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While Domino's franchise economic engine is highly cash generative (FY2025 FCF of ~$672M, >110% GAAP net income conversion) and interest coverage is 5.27x, it fails Munger's peace-of-mind fortress balance sheet test. Decades of debt-funded share repurchases and whole-business securitizations have driven book equity into a -$3.90B deficit (negative tangible equity, triggering an automatic Gate 6 red flag) with $4.81B in long-term debt against FY2025 net income of $601.7M (8.0x net debt / net income, double the <= 4.0x ceiling). The capital structure relies continuously on the kindness of debt markets to roll over securitized tranches, leaving equity vulnerable to credit freezes.",
+    "evidence": "FY2025 operating results demonstrate strong underlying unit economics: Total revenues of $4,940.0M (+5.0% YoY), operating income of $954.0M (+8.5% YoY), and GAAP net income of $601.7M (+3.0% YoY). Free cash flow converted cleanly at ~$671.5M-$680.1M (Operating cash flow $792.1M less capex of $120.6M, representing ~112% of net income). Historical ROIC exceeds 35-40% across cycles driven by asset-light franchising (over 20,000 stores globally, ~98% franchised) and cost-plus supply chain centers. However, capital structure violates Gate 6 balance sheet standards: Long-term debt stood at $4,810.7M at FY2025 year-end (up from $3,825.7M in FY2024), resulting in Net Debt / Net Income of ~8.0x (far above the <= 4.0x ceiling). Total liabilities exceed total assets by $3.90B, leaving stockholders' deficit at -$3.90B due to cumulative leveraged share repurchases. Annual interest expense of $181.1M yields interest coverage of 5.27x, offering minimal safety margin during economic or credit downturns. Because this high-leverage recapitalized structure is permanent management policy rather than a temporary shock, Calamity Tier is inapplicable."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

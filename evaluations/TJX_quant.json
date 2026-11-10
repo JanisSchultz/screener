@@ -1,0 +1,43 @@
+{
+  "id": "TJX",
+  "ticker": "TJX",
+  "universe": "us",
+  "company": "TJX Companies",
+  "price": 135.3,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 negative working capital standard (reported GAAP ROIC 103.7%, operating ROIC 106.7%, driven by 21,000 vendor buying scale and negative cash conversion cycle). Pristine balance sheet with $6.23B cash vs $1.87B LT debt ($4.36B net cash), 93.4x EBIT interest coverage, and dependable 93.7% Owner FCF conversion. Forward 5-10Y through-the-cycle Owner EPS growth of 7.5% supported by 3.5% consolidated comps (1.5% traffic volume + 2.0% pricing/ticket), 3.0% net store expansion toward 7,500 units, minus 0.5% store wage/tariff drag, plus 1.5% net share repurchases. At $135.30 (27.78x peak Owner EPS of $4.8706), TJX trades Above PAR (+7.2% vs PAR Value of $126.25), yielding a 7.2% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.8706,
+    "current_multiple": 27.78,
+    "par_multiple": 25.92,
+    "par_value": 126.25,
+    "percent_vs_par": 0.0717,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0123,
+    "expected_irr_5y": 0.0725,
+    "market_implied_cap": 21.4,
+    "moat_runway_margin": -1.4,
+    "market_implied_growth": 0.1029,
+    "growth_margin_of_safety": -0.0279
+  },
+  "health_checks": {
+    "net_debt_years": 0.34,
+    "net_debt_ok": true,
+    "interest_coverage": 93.39,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9369,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

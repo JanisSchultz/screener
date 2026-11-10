@@ -1,0 +1,30 @@
+{
+  "id": "CS.FR",
+  "ticker": "CS",
+  "universe": "eu",
+  "company": "AXA",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global scale in commercial and retail insurance, but capital efficiency is structurally impaired by catastrophe volatility at AXA XL and low-margin legacy life books. 5-year median GAAP ROIC of 9.03% and tangible ROIC of ~12% both fail the Gate 3b hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Pricing Power & Proof of Moat, REJECT). Global multi-line insurer fails the capital efficiency hurdle with a 5-year median GAAP ROIC of 9.03% and tangible ROIC peaking at 12.5%, failing both the 12% GAAP and 15% tangible ROIC thresholds. AXA XL catastrophe exposure and competitive commercial casualty lines dilute returns on capital.",
+    "evidence": "FY2022-FY2025 GAAP ROIC ranged between 7.01% and 9.11% (median 9.03%), while tangible ROIC remained compressed between 9.67% and 12.50%. LT debt of €60.5B and catastrophe volatility at AXA XL impede superior economic return generation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "V",
+  "ticker": "V",
+  "universe": "us",
+  "company": "Visa Inc.",
+  "price": 422.65,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Global payments toll booth monopoly with negative tangible equity; operating ROIC normalized to the 35.0% cap. Peak Owner EPS of $9.73 (FY2024) reflects genuine through-the-cycle earning power with zero non-operational windfall. 5-10Y through-the-cycle growth of 10.0% anchored by 5.5% nominal payments volume, 1.5% cross-border travel, 2.5% value-added services, and 1.5% share buybacks, less 1.0% regulatory/interchange litigation drag. Fortress balance sheet with $17.16B cash offsetting $19.60B debt (net debt 0.12x NI), 40.74x EBIT interest coverage, and 106.0% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.73,
+    "current_multiple": 43.44,
+    "par_multiple": 30.0,
+    "par_value": 291.95,
+    "percent_vs_par": 0.4477,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0059,
+    "expected_irr_5y": 0.0274,
+    "market_implied_cap": 29.0,
+    "moat_runway_margin": -9.0,
+    "market_implied_growth": 0.3015,
+    "growth_margin_of_safety": -0.2015
+  },
+  "health_checks": {
+    "net_debt_years": 0.98,
+    "net_debt_ok": true,
+    "interest_coverage": 40.74,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0602,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

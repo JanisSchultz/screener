@@ -1,0 +1,30 @@
+{
+  "id": "QIA.DE",
+  "ticker": "QIA",
+  "universe": "eu",
+  "company": "QIAGEN",
+  "country": "Germany",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant #1 global share in sample preparation (>60%) and standard-of-care QuantiFERON-TB testing lock in lab workflows, supporting ~66% gross margins, >34% tangible ROIC, and steady annual price realization.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable global leader in molecular sample preparation and QuantiFERON latent-TB diagnostics, generating >85% recurring consumable revenues. Tangible ROIC >34% and multi-year FCF conversion >100%. COVID windfall normalized with core non-COVID business compounding peak-to-peak. Modest leverage (net debt <2x earnings) and >15x interest coverage. [5-10Y g: sample-prep/QuantiFERON volume 4.5% + price 1.5% + portfolio mix 0.5% + net share buybacks 1.0%]",
+    "evidence": "QIAGEN holds a ~60-70% global market share in biological sample preparation (DNA/RNA extraction) and gold-standard status with QuantiFERON-TB. Tangible ROIC has consistently exceeded 30% (median 34.2%), and FCF conversion averaged 128% over the last four years. Post-pandemic normalization of COVID testing windfalls is complete, with 2025 sales ($2.09B) and net income ($425M) well above pre-COVID 2019 levels ($1.53B and $338M). Balance sheet is sound with $815M net debt repayable in <2 years and interest coverage of 15.7x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

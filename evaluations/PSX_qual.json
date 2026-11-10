@@ -1,0 +1,30 @@
+{
+  "id": "PSX",
+  "ticker": "PSX",
+  "universe": "us",
+  "company": "Phillips 66",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Refining & Marketing",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Refining and integrated midstream infrastructure benefit from high replacement costs, unreplicable coastal permits, and complex feedstock integration. However, the economic moat is structurally impaired: products (gasoline, diesel, ethylene) are fungible commodities with zero independent pricing power. Competitors cannot easily build new refineries in the US, but global refining capacity additions, fluctuating crack spreads, and crude slate differentials drive boom-and-bust profitability. Long-term structural erosion stems from transport decarbonization and regulatory costs, exemplified by the accelerated depreciation and closure of the Los Angeles refinery.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Phillips 66 is a cyclical commodity price-taker across its refining and CPChem petrochemical operations, where margins fluctuate with volatile market crack spreads and chemical supply/demand cycles. The company possesses zero ability to unilaterally price above commodity benchmarks. Full-cycle capital efficiency fails the Munger hurdle, with 10-year average GAAP ROIC hovering around ~5-6% (collapsing to negative during downcycles like 2020), despite temporary windfall spikes in 2022. Activist restructuring by Elliott Management highlights chronic underperformance relative to pure-play peers and heavy capital reinvestment requirements.",
+    "evidence": "10-year historical GAAP ROIC averages ~5.0%-6.5%, well below the 12% hurdle. Net income swung from -$3.98B in FY2020 to +$11.0B in FY2022 windfall peak, normalizing to $2.12B in FY2024 and $4.40B in FY2025 (heavily boosted by $2.9B in pre-tax asset sale gains and offset by $964M accelerated depreciation on the Los Angeles refinery). Operating cash flow was $4.2B in 2024 and $5.0B in 2025 against high annual capital expenditures ($2.2B-$2.5B). Total debt of ~$19B-$20B against volatile cyclical earnings. Zero pricing power over commodity crack spreads and petrochemical margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

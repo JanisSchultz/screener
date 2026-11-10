@@ -1,0 +1,30 @@
+{
+  "id": "SOI.FR",
+  "ticker": "SOI",
+  "universe": "eu",
+  "company": "Soitec SA",
+  "country": "France",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Patented Smart Cut wafer splitting technology provides engineering differentiation in RF-SOI and FD-SOI engineered substrates. However, customer concentration among a few foundries and fabless RF designers, combined with heavy fab capex requirements and rapid Chinese substrate overcapacity (notably in SiC), prevents structural pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC/pricing power, REJECT). Proprietary Smart Cut substrate IP is compromised by heavy capital expenditure intensity (€230M annual capex vs €91M FY25 net income), pronounced inventory cyclicality in smartphone RF chips, and rapid price erosion in Silicon Carbide substrates from expanding Chinese domestic capacity.",
+    "evidence": "Soitec's financial track record exhibits severe cyclicality and poor cash conversion. Net income dropped by 60% from €231.9M in FY23 to €91.2M in FY25, while annual capex absorbed €230M, leaving negligible free cash flow. Monopsonistic foundry customers (TSMC, GlobalFoundries) and aggressive price deflation in power electronics wide-bandgap substrates limit cycle-neutral pricing power and compress multi-cycle ROIC."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

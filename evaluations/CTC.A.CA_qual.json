@@ -1,0 +1,30 @@
+{
+  "id": "CTC.A.CA",
+  "ticker": "CTC.A",
+  "universe": "ca",
+  "company": "Canadian Tire Corporation",
+  "country": "Canada",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Broadline general retail (sporting goods, seasonal merchandise, housewares) and consumer credit card financing are cyclical, deferrable discretionary spending categories.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (general merchandise, sporting goods, and consumer credit card operations represent cyclical, deferrable discretionary spending rather than essential Western needs or Lindy consumer staples).",
+    "evidence": "Canadian Tire's primary retail banners (Canadian Tire, SportChek, Mark's, Party City) focus on discretionary merchandise categories such as sporting equipment, seasonal patio/outdoor items, and home decor, which are deferrable during economic downturns. Furthermore, its Financial Services division (Triangle Mastercard) introduces cyclical unsecured consumer credit risk. The company lacks secular pricing power against national and global retail competitors (Walmart, Amazon, Costco)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

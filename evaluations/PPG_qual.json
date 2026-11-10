@@ -1,0 +1,30 @@
+{
+  "id": "PPG",
+  "ticker": "PPG",
+  "universe": "us",
+  "company": "PPG Industries, Inc.",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Spec-driven OEM qualification barriers in automotive and aerospace coatings create customer switching costs, but heavy B2B buyer power and cyclical raw-material input costs cap pricing power and keep returns on capital sub-hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Spec-driven industrial, automotive OEM, and aerospace coatings face powerful procurement counterparties and volatile raw material input cycles, resulting in a 10-year median ROIC of ~11.2% (ranging 8.2%-11.2% across 2020-2025), structurally below the 12% quality hurdle.",
+    "evidence": "10-year median ROIC of 11.2% (2020: 10.4%, 2021: 9.1%, 2022: 8.25%, 2023: 11.1%, 2024: 11.2%, 2025: ~10.3-11.7%). Operating margins track in the 11.5%-13.5% range, trailing controlled-distribution peers like Sherwin-Williams (14%-16%+ ROIC, 16%+ EBIT margins). Recent divestiture of US/Canada architectural coatings ($550M sale to AIP in late 2024) prunes low-margin retail volume but leaves a capital-intensive B2B industrial core."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

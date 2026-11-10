@@ -1,0 +1,43 @@
+{
+  "id": "GOOGL",
+  "ticker": "GOOGL",
+  "universe": "us",
+  "company": "Alphabet Inc.",
+  "price": 280.03,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (Gate 6 temporary FCF pressure during peak FY2026 AI infrastructure buildout): Operating ROIC normalized to 35.0% cap reflecting structural advertising toll booth and negative tangible working capital. FY2025 peak Owner EPS of $10.81 is fully confirmed by $164.7B operating cash flow. Forward secular growth conservatively calibrated at 7.0% (down from 34.5% historical CAGR) to reflect DOJ behavioral remedies, AI Mode monetization transition, and hyperscale CapEx D&A drag: Cloud/TPU & Search volume (+6.5%), ad auction pricing (+1.5%), Cloud margin mix (+1.0%), AI CapEx D&A drag (-1.5%), and dilution (-0.5%). At 25.91x peak Owner EPS, Alphabet trades Below PAR (-9.2% discount to $308.57 PAR Value at 28.55x PAR multiple), delivering a 9.4% expected 5Y cycle IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.807,
+    "current_multiple": 25.91,
+    "par_multiple": 28.55,
+    "par_value": 308.58,
+    "percent_vs_par": -0.0925,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0029,
+    "expected_irr_5y": 0.0939,
+    "market_implied_cap": 13.6,
+    "moat_runway_margin": 1.4,
+    "market_implied_growth": 0.0304,
+    "growth_margin_of_safety": 0.0396
+  },
+  "health_checks": {
+    "net_debt_years": 0.35,
+    "net_debt_ok": true,
+    "interest_coverage": 175.32,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8999,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

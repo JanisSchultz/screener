@@ -1,0 +1,30 @@
+{
+  "id": "SDF.DE",
+  "ticker": "SDF",
+  "universe": "eu",
+  "company": "K+S",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Fertilizers & Agricultural Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-cost potash and salt miner lacking defensible cost leadership or pricing power. Global fertilizer price-taker subject to volatile commodity swings; multi-cycle ROCE averages ~3% (far below 12% hurdle), spiking only during temporary supply shocks (2022). Constrained by environmental brine disposal limits in German operations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing). German potash and salt producer with structurally high production costs and significant environmental brine disposal constraints. Commodity price-taker whose margins follow volatile spot potash prices, resulting in multi-cycle median ROIC well below the 12% hurdle.",
+    "evidence": "Historical ROCE is structurally depressed: 1.9% in 2019, 0.0% in 2020, 3.2% in 2021, cyclically spiking to 25.7% in 2022 before fading to 11.2% in 2023 and ~3.2% in 2024. 5-year median ROIC is far below the 12% threshold. High fixed-cost underground mines in Germany face severe regulatory constraints over Werra river brine discharge."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

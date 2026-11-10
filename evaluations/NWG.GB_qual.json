@@ -1,0 +1,30 @@
+{
+  "id": "NWG.GB",
+  "ticker": "NWG",
+  "universe": "eu",
+  "company": "NatWest",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sticky UK commercial/SME deposit relationships (1 in 5 SMEs) and retail current accounts (~16.5% share) provide substantial low-cost funding and pricing power; demonstrated by resilient RoTE of 15-16%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Domestically concentrated UK retail and commercial bank (~16.5% current accounts, 1 in 5 SMEs). Lacks secular reinvestment runway outside mature UK economy, with structural profitability highly sensitive to BoE interest rate cuts, mortgage price competition, and fintech disintermediation.",
+    "evidence": "NatWest Group generates strong returns in peak-rate environments (RoTE 15-16% in 2024-2025 supported by structural hedges), holding £730B+ in group assets and 12.5% of UK mortgages. However, complete domestic UK concentration leaves earnings power exposed to UK economic cyclicality, rate cycle downturns, and challenger bank fee erosion, limiting predictable runway to 5 years (CAP = 5)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

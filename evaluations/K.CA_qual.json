@@ -1,0 +1,30 @@
+{
+  "id": "K.CA",
+  "ticker": "K",
+  "universe": "ca",
+  "company": "Kinross Gold",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Gold",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (gold mining) lacking essential Western utility; exposed to global spot price cycles and geopolitical risk across emerging market mining operations.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Upstream gold mining company acting as a pure price-taker on global bullion markets. Sells an unconsumable speculative commodity with zero pricing power. Exposed to significant geopolitical and operational risks in emerging jurisdictions (historical forced fire-sale of Russian assets; Mauritania operations). Downstream gates bypassed per waterfall.",
+    "evidence": "Kinross is an upstream gold and silver producer with operations at Tasiast (Mauritania), Paracatu (Brazil), Fort Knox (USA), and Round Mountain (USA). Realized gold prices are dictated entirely by spot markets. The company has a history of high capital intensity, reserve depletion, and write-downs (forced divestment of Kupol in 2022 due to Russian sanctions). 5-year average ROIC remains well below the 12% compounder hurdle across the full metal cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

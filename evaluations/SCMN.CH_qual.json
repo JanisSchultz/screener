@@ -1,0 +1,30 @@
+{
+  "id": "SCMN.CH",
+  "ticker": "SCMN",
+  "universe": "eu",
+  "company": "Swisscom",
+  "country": "Switzerland",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant Swiss telecom infrastructure generates steady domestic cash flow, but Swiss revenue is stagnant/deflationary and the debt-funded \u20ac8B acquisition of Vodafone Italia dilutes ROIC to ~10.9% with sub-8% incremental ROIIC in a competitive Italian telecom market.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (gate_3b_pricing_and_proof = 'N', REJECT). Core Swiss telecom revenue has been stagnant-to-deflationary for years, and the \u20ac8B debt-financed acquisition of Vodafone Italia dilutes ROIC to ~10.9% with incremental ROIIC well below the 12% hurdle in a brutally competitive Italian market.",
+    "evidence": "Swisscom maintains dominant market shares in Switzerland with 13% median historical ROIC. However, domestic revenue grew 0% over 2022-2024. The 100% debt-funded acquisition of Vodafone Italia (\u20ac8B) increases net debt-to-EBITDA to ~2.7x and generates sub-8% incremental ROIIC, diluting 2025 GAAP ROIC to 10.94% and failing Gate 3b proof of moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

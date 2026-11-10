@@ -1,0 +1,30 @@
+{
+  "id": "URI",
+  "ticker": "URI",
+  "universe": "us",
+  "company": "United Rentals, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "United Rentals maintains scale advantages via North America's largest equipment rental network (~1,500 branches, ~15% market share), yielding OEM procurement discounts, broad branch density, and digital fleet tracking (Total Control). However, returns cannot be insulated from competitive arbitrage because the underlying assets (aerial lifts, excavators, skid steers) are standard OEM machinery identical to those owned by Sunbelt (Ashtead), Herc, and regional rental yards. General contractors face zero switching barriers. When construction slows, idle fleet carrying costs force industry-wide rate discounting, eroding pricing power and suppressing cycle-average ROIC below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While United Rentals is the North American market leader with scale economies in fleet purchasing and branch density, rental assets are standardized OEM machines (Caterpillar, Genie, JLG) with zero customer switching costs. Rental rates and utilization face severe cyclical degradation whenever construction activity cools, preventing pricing power >= inflation across the cycle. Multi-cycle GAAP ROIC averages ~10.5-11.0% (sub-hurdle for 7 of the past 11 years), exceeding 12% only during peak fiscal mega-project booms. Incurring massive ongoing fleet replacement capex and servicing ~$15.5B in debt without true pricing power fails the Munger quality hurdle.",
+    "evidence": "Multi-cycle financial performance reveals cyclical capital efficiency below compounder standards: 10-year median GAAP ROIC is ~10.5-11.0% (2015: 8.5%, 2016: 7.8%, 2017: 8.8%, 2018: 11.0%, 2019: 10.4%, 2020: 10.0%, 2021: 11.0%, 2022: 12.7%, 2023: 14.9%, 2024: 12.0%, 2025: ~11.2%). The brief surge above 12% in 2022-2023 reflected non-repeatable convergence of Federal mega-project stimulus (CHIPS, IRA, IIJA) and industry-wide equipment shortages. Equipment rental is capital-intensive: gross rental fleet capex runs $3.5B-$4.5B annually against operating cash flow of ~$6.5B, leaving ~$2.1B-$2.2B FCF. Net debt stands at ~$15.4B (~1.8x EBITDA, ~5.5-6x Net Income). Because fleets consist of commoditized OEM equipment with zero customer switching costs, URI is a cyclical price-taker with negative pricing power during construction downturns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

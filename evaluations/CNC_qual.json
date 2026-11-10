@@ -1,0 +1,30 @@
+{
+  "id": "CNC",
+  "ticker": "CNC",
+  "universe": "us",
+  "company": "Centene Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Managed Health Care",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive scale in Medicaid and ACA marketplace administration (~28M members, ~$195B revenue) provides provider network contracting advantages, but returns are structurally bounded by government-mandated reimbursement rates, statutory minimum medical loss ratio floors (85%), and acute exposure to medical cost trend shocks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & zero autonomous pricing power, REJECT). Centene operates as a massive scale government-sponsored managed care contractor, but structural returns on capital hover at 3-8% (10Y median 8.5%), failing the 12% hurdle. Premiums are set administratively by state Medicaid agencies and CMS, leaving margins vulnerable to medical inflation, utilization spikes, and post-redetermination acuity mismatches.",
+    "evidence": "Centene generates ~$195B in top-line revenue but operates at razor-thin margins (~1.9% operating margin in 2023-2024, swinging into operating losses in 2025 due to utilization spikes and goodwill impairments). 10-year median ROIC of 8.5% fails the 12% hurdle. Total debt stands at ~$17.4B with cash/investments held primarily at regulated insurance subsidiaries. Centene lacks autonomous pricing power: state Medicaid budgets dictate premium rates with significant actuarial lag relative to medical trend spikes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

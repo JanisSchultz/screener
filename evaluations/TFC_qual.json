@@ -1,0 +1,30 @@
+{
+  "id": "TFC",
+  "ticker": "TFC",
+  "universe": "us",
+  "company": "Truist Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Southeast US regional branch density and core retail/commercial deposit relationships create modest switching barriers. However, empirical capital efficiency fails the Munger hurdle: 10-year median ROIC is ~4.6-8.2% (FY25 ROIC ~6.4%, ROE ~8.2%), well below the 12% threshold. Commoditized loan pricing, rising deposit beta competition from money-center banks and fintechs, and the divestiture of its high-margin insurance brokerage (TIH) leave an undifferentiated spread-lending business lacking pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Truist operates a regional commercial banking franchise with sticky Southeast deposit density, but exhibits sub-hurdle capital efficiency with 10-year median ROIC of ~4.6-8.2% and ROE ~8%, far below the 12% compounder threshold. Prolonged integration friction following the BB&T/SunTrust merger and the subsequent divestiture of Truist Insurance Holdings (TIH) leave a commoditized spread-lending institution lacking structural pricing power against national money-center banks and private credit.",
+    "evidence": "10-year median ROIC is 4.6-8.2% (FY21: 7.2%, FY22: 6.3%, FY23: -0.78%, FY24: -0.73%, FY25: 6.42%), consistently failing the 12% hurdle across full credit cycles. Return on Equity (ROE) hovers around 7.6-8.4% with ROA at 0.90-1.00% on ~$540B in total assets. The 2019 merger of BB&T and SunTrust produced multi-year IT integration headwinds, elevated efficiency ratios, and customer friction. In 2024, Truist divested its highest-return, capital-light subsidiary (Truist Insurance Holdings) to Stone Point and CD&R to bolster regulatory capital and fund share buybacks. As a fractional-reserve commercial deposit bank, it faces high deposit betas, commoditized asset yields, and inherent credit and duration risks (g6_default: N)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

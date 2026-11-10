@@ -1,0 +1,43 @@
+{
+  "id": "HSY",
+  "ticker": "HSY",
+  "universe": "us",
+  "company": "Hershey Company (The)",
+  "price": 173.48,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Confectionery leader with ~45% US chocolate share. Operating ROIC normalized to 35.0% cap under the v6.23 standard, reflecting high tangible asset turns, negative working capital, and Lindy brand equity. Peak EPS override is kept null to preserve consistency with cycle multiples (mult_low_5y 45.63x, mult_high_5y 60.52x) derived from reported peak series; on normalized pre-cocoa-shock owner earnings of ~$9.50, the equivalent PAR multiple is ~13.0x, yielding identical PAR value ($123.14). 5-10Y through-the-cycle growth g_implied of 5.0% reflects 1.0% snack volume + 2.0% brand pricing + 1.0% product mix - 0.5% input cost drag + 1.5% share repurchases. Solid balance sheet with net debt/EBITDA ~2.0x and 6.4x interest coverage, but current price ($173.48) trades Above PAR (+40.9% premium), offering 1.2% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.7668,
+    "current_multiple": 46.06,
+    "par_multiple": 32.69,
+    "par_value": 123.14,
+    "percent_vs_par": 0.4088,
+    "status": "Above PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0311,
+    "expected_irr_5y": 0.0116,
+    "market_implied_cap": 21.1,
+    "moat_runway_margin": -6.1,
+    "market_implied_growth": 0.2505,
+    "growth_margin_of_safety": -0.2005
+  },
+  "health_checks": {
+    "net_debt_years": 5.3,
+    "net_debt_ok": false,
+    "interest_coverage": 6.41,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1369,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

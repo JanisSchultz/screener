@@ -1,0 +1,43 @@
+{
+  "id": "ISRG",
+  "ticker": "ISRG",
+  "universe": "us",
+  "company": "Intuitive Surgical",
+  "price": 452.8,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.13,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 standard (reported GAAP ROIC of 16.5% heavily diluted by >$8B in idle treasury cash and short/long-term investments), restoring economic reality for the da Vinci robotic surgery monopoly. Forward 5-10Y through-the-cycle growth of 13.0% (capped at 12.0% Mauboussin ceiling) driven by double-digit procedure growth (10.5%), da Vinci 5 / Force Feedback ASP uplifts (1.5%), Ion/SP expansion (1.0%), and buybacks (0.5%). Pristine debt-free balance sheet ($0 debt, $3.37B cash, >$8B total liquid investments). Trades Above PAR (+30.1% vs PAR Value of $347.99) at 56.1x peak Owner EPS vs PAR multiple of 43.1x, providing a 5Y expected IRR of 6.3%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.0766,
+    "current_multiple": 56.06,
+    "par_multiple": 43.09,
+    "par_value": 347.99,
+    "percent_vs_par": 0.3012,
+    "status": "Above PAR",
+    "g_implied": 0.12,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0626,
+    "market_implied_cap": 26.0,
+    "moat_runway_margin": -6.0,
+    "market_implied_growth": 0.3146,
+    "growth_margin_of_safety": -0.1946
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.5758,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

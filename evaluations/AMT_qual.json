@@ -1,0 +1,30 @@
+{
+  "id": "AMT",
+  "ticker": "AMT",
+  "universe": "us",
+  "company": "American Tower",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Telecom Tower REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Contractually locked ~3% fixed annual rent escalators in the US, local CPI-linked pricing internationally, and +6-10% rental renewal spreads at CoreSite data centers protect real pricing power against inflation. High tenant switching costs and strict zoning/siting barriers prevent tower replication, driving multi-tenant colocation tangible ROIC consistently between 20% and 48%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT – Cash & Fortress Balance Sheet). Premier US and international communications tower portfolio and CoreSite interconnection hubs backed by long-term non-cancellable tenant leases. However, the business model carries $33.8B of long-term debt (12.9x net debt/net income) and an interest coverage ratio of only 3.56x EBIT/Interest, failing the >5.0x infrastructure threshold. Distributing $3.18B in dividends annually (>100% of GAAP Net Income), AMT structurally relies on uninterrupted access to debt capital markets to refinance regular multi-billion dollar debt maturities, failing Munger's peace-of-mind fortress balance sheet standard.",
+    "evidence": "FY2025 revenue reached $10.64B with EBIT of $4.85B and GAAP Net Income of $2.63B. Free cash flow conversion is strong at 140.5% (Owner FCF of $3.61B vs $2.63B NI), supported by low maintenance capex and high operating cash flow ($5.46B). Tangible ROIC has consistently remained between 20% and 48% (48.7% in FY2025), confirming strong pricing power and colocation operating leverage on established tower assets. Following the strategic divestiture of the distressed India operations to Brookfield in 2024, management has focused on developed markets (US and Europe) and CoreSite data center expansions (underwriting at mid-teens stabilized yields). However, the balance sheet carries $33.83B in long-term debt against $1.47B in cash. Interest expense of $1.36B results in an EBIT interest coverage of only 3.56x, well below the >5.0x minimum required for essential infrastructure, while Net Debt / Net Income sits at 12.3x (and LT Debt / Net Income at 12.9x), far exceeding the 4.0x ceiling. Because REIT tax qualification mandates paying out >=90% of taxable income (TTM dividends of $3.18B exceed GAAP Net Income), AMT cannot organically deleverage from retained earnings and remains permanently dependent on debt capital market refinancing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

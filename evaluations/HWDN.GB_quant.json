@@ -1,0 +1,43 @@
+{
+  "id": "HWDN.GB",
+  "ticker": "HWDN",
+  "universe": "eu",
+  "company": "Howden Joinery",
+  "price": 847.0,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": null,
+    "fin_note": "Operating ROIC of 21.9% and median GAAP ROIC of 21.1% reflect an organically scaled trade-only kitchen model with minimal goodwill (£62.6M). The 5-year cycle high guardrail of 13.38x caps raw PAR multiple (15.74x). Forward through-cycle growth of 6.5% is underpinned by UK volume/market share gains (2.0%), confidential builder pricing power (2.0%), depot format expansions into France (1.0%), and ongoing share buybacks (1.5%). Reported debt consists of IFRS 16 depot leases with zero financial bank debt and £344.5M cash balances."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 65.57,
+    "current_multiple": 12.92,
+    "par_multiple": 13.38,
+    "par_value": 877.31,
+    "percent_vs_par": -0.0345,
+    "status": "Below PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0254,
+    "expected_irr_5y": 0.0979,
+    "market_implied_cap": 14.5,
+    "moat_runway_margin": 0.5,
+    "market_implied_growth": 0.0227,
+    "growth_margin_of_safety": 0.0423
+  },
+  "health_checks": {
+    "net_debt_years": 0.93,
+    "net_debt_ok": true,
+    "interest_coverage": 15.74,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.96,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

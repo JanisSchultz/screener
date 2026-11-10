@@ -1,0 +1,30 @@
+{
+  "id": "AENA.ES",
+  "ticker": "AENA",
+  "universe": "eu",
+  "company": "Aena",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Airport Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Aena holds an unreplicable national spatial monopoly over 46 Spanish airports handling >99% of Spanish commercial air passenger traffic. High entry barriers (land acquisition, airspace constraints, environmental permitting) make competitive entry impossible. Pricing power is anchored by DORA regulatory inflation indexation on aeronautical tariffs and multi-year retail concession contracts with CPI-indexed Minimum Annual Guarantees (MAG). 5-year median ROIC of 16.5% proves moat durability. Main erosion risks stem from 5-year DORA regulatory resets and airline lobbying against tariff increases.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates (Quality pass). Unreplicable statutory monopoly operating the entire Spanish commercial airport network, benefiting from Spain's structural status as the world's #2 tourist destination. Aeronautical tariffs protected by DORA inflation indexation, while commercial retail concessions (duty-free, F&B) deliver high-margin non-aero profit with minimum annual guarantees. 16.5% median ROIC, 98% FCF conversion, and strong balance sheet (Net Debt/NI 2.1x, interest coverage 12.3x). [5-10Y g: passenger volume 2.8% + tariff/commercial price 1.8% + commercial mix 0.8% - capex/D&A drag 0.4% + buybacks 0.0%]",
+    "evidence": "Multi-year GAAP ROIC expanded from 8.1% (2022) to 15.1% (2023), 17.9% (2024), and 18.3% (2025), averaging 16.5% median. 2025 Owner EPS of €1.4245 surpassed pre-pandemic peaks. FCF conversion stands at 97.7%. Net debt of €4.41B is 2.06x 2025 net income (€2.14B) with 12.3x EBIT interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

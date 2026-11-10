@@ -1,0 +1,30 @@
+{
+  "id": "CSX",
+  "ticker": "CSX",
+  "universe": "us",
+  "company": "CSX Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Rail Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Eastern US rail duopoly with Norfolk Southern provides core pricing power consistently 2-3% above rail cost inflation across ~20,000 route miles of physically unreplicable contiguous rights-of-way connecting major population centers and deep-water ports.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Irreplaceable eastern US rail duopoly (CAP = 15), but fails Gate 6 due to an overleveraged balance sheet (LT debt of $17.9B vs $3.47B Net Income = 5.15x, exceeding 4.0x ceiling), ongoing track maintenance capex ($2.5B) consistently exceeding depreciation ($1.65B) by 40-50%, past debt-funded buybacks, and macro-cyclical freight exposure with secular domestic coal runoff. [5-10Y g: volume 1.0% (net of coal decline) + price 2.5% + margin 0.5% + buybacks 2.5%]",
+    "evidence": "CSX operates ~20,000 route miles of irreplaceable rail infrastructure across 23 eastern US states and 2 Canadian provinces, forming an entrenched duopoly with Norfolk Southern. 2024 revenue of $14.0B spans Merchandise ($8.7B / 62%), Coal ($2.2B / 16%), Intermodal ($2.1B / 15%), and Trucking/Other ($1.0B / 7%). Operating margins averaged 37-41% over 2021-2024 (2024 Operating Income $5.25B, 37.5% margin; 2023 $5.50B, 37.5%; 2022 $5.95B, 40.1%). 5-year average GAAP ROIC has tracked 11.8-14.3% (2021: 15.1%, 2022: 15.3%, 2023: 14.3%, 2024: 13.5%), with persistent real core pricing power of 2-3% above rail cost inflation. FCF conversion is respectable (3-year average 82.6%; 2024 FCF $2.72B / NI $3.47B = 78.3%), but capital expenditures of $2.53B in 2024 and $2.26B in 2023 heavily exceed depreciation (~$1.65B), reflecting constant capital intensity to maintain right-of-way safety. Balance sheet leverage fails Gate 6: Long-term debt was $17.90B at year-end 2024 (total debt $18.50B) against $3.47B Net Income, resulting in LT Debt / Net Income of 5.15x (Net Debt / Net Income of 4.92x with $1.40B cash), far above the 4.0x ceiling, driven by past debt-funded share buybacks. Interest coverage remains solid at 6.3x (EBIT $5.25B / Interest $832M), but debt load, ongoing capex drain, and cyclical freight volumes fail the Munger peace-of-mind test."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

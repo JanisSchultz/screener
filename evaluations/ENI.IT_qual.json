@@ -1,0 +1,30 @@
+{
+  "id": "ENI.IT",
+  "ticker": "ENI",
+  "universe": "eu",
+  "company": "Eni",
+  "country": "Italy",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Integrated energy producer with strong exploration capabilities and satellite model (Plenitude, Enilive); however, Eni is fundamentally a commodity price-taker subject to volatile global hydrocarbon benchmarks. 5-year normalized ROIC is sub-hurdle (~8% normalized, dropping to 7.6% in 2024 and negative in 2020). Lacks pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Commodity price-taker with normalized ROIC (~8%) well below the 12% cycle hurdle. Realized earnings fluctuate with global crude and European gas prices, subject to Italian state influence and windfall taxes.",
+    "evidence": "Eni is an integrated oil and gas major controlled ~30% by the Italian state. Financial track record shows volatile, sub-hurdle returns on capital: adjusted ROACE of 8.4% (2019), -0.6% (2020), 12.3% (2021), 22.0% (2022 windfall), 12.3% (2023), and 7.6% (2024). Pricing is dictated entirely by spot markets, and heavy capital intensity prevents sustained value creation above the cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

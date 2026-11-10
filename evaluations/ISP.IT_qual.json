@@ -1,0 +1,30 @@
+{
+  "id": "ISP.IT",
+  "ticker": "ISP",
+  "universe": "eu",
+  "company": "Intesa Sanpaolo",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Italian banking franchise whose vast branch network feeds captive wealth management (Eurizon, Fideuram) and insurance divisions, generating high fee income and sticky low-cost retail deposits.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Outstanding domestic banking and wealth management franchise led by top-tier management (Carlo Messina), but operates as a commercial fractional-reserve bank with >15x leverage on tangible equity and structural exposure to credit cycles and Italian sovereign debt (BTP) spreads.",
+    "evidence": "Intesa Sanpaolo generates superior returns on tangible equity (ROTE 15-18%) powered by captive wealth management (Eurizon, Fideuram). However, with total assets exceeding €900B against ~€55B in tangible equity, it relies fundamentally on fractional-reserve leverage, deposit duration transformation, and ECB liquidity backstops. Commercial deposit banks fail Gate 6 by design under the Munger peace-of-mind balance sheet standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

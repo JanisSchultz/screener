@@ -1,0 +1,30 @@
+{
+  "id": "PANW",
+  "ticker": "PANW",
+  "universe": "us",
+  "company": "Palo Alto Networks, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High enterprise switching costs across Strata (network firewalls), Prisma (cloud security), Cortex (SOC), and Idira (CyberArk identity). Ripping out architectural security plumbing entails high operational and downtime risk. Gross margins sustained at ~74-75%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Systems software baseline in Tier 3 (10-15Y) subject to severe terminal obsolescence haircuts. Cybersecurity is an unrelenting Red Queen's race characterized by rapid 3-5 year technology shifts and displacement risk. Defending its platform requires continuous, highly dilutive mega-M&A (e.g. $25B CyberArk acquisition in 2026, $3B Chronosphere) rather than self-sustaining organic expansion. Faces intense competition from Microsoft Security's native $30B+ ecosystem and AI-native disruption.",
+    "evidence": "Revenue expanded from $1.76B in FY2017 to $11.48B in FY2026. GAAP operating profitability was negative through FY2022 due to heavy stock-based compensation ($1.08B in FY2024, $1.30B in FY2025, $1.77B in FY2026). 5-year median GAAP ROIC is 13.8%, but GAAP ROIC fell to 3.6% in FY2026 after the $25B CyberArk acquisition expanded invested capital to $27.5B. While enterprise switching costs are real, high competitive fade rates, hyperscaler bundling (Microsoft E5), and dependence on serial M&A limit predictable moat longevity below the 15-year threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

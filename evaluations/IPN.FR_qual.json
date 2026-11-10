@@ -1,0 +1,30 @@
+{
+  "id": "IPN.FR",
+  "ticker": "IPN",
+  "universe": "eu",
+  "company": "Ipsen",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Orphan drug exclusivities in oncology and neuroscience provide niche defensibility, but flagship blockbuster Somatuline faces ongoing generic lanreotide erosion while European health authorities enforce statutory price controls.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Specialty pharmaceutical model is heavily reliant on Somatuline, which faces accelerating generic competition in the US and Europe, while European single-payer price controls prevent sustained pricing power >= inflation.",
+    "evidence": "Somatuline historically accounted for over 35% of group revenue and the core of operating earnings, but its primary patents have expired and generic lanreotide alternatives have entered key markets. While Core Operating Margin remains ~32% and ROIC ~15%, the lack of volume-insulated pricing power against generic substitution and heavy reliance on external M&A (e.g. Albireo, Epizyme) fail the Munger moat durability standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

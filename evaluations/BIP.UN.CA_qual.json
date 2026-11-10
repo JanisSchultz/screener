@@ -1,0 +1,30 @@
+{
+  "id": "BIP.UN.CA",
+  "ticker": "BIP.UN",
+  "universe": "ca",
+  "company": "Brookfield Infrastructure Partners",
+  "country": "Canada",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (REJECT). Bermuda exempted limited partnership externally managed by Brookfield Corporation (BN) with complex Master Services Agreement fees, Incentive Distribution Rights (IDRs), intricate webs of unconsolidated affiliate project SPVs, heavy non-recourse debt, asset revaluation marks, and capital recycling, obscuring true corporate-level owner earnings and leverage from external verification.",
+    "evidence": "BIP is an externally managed infrastructure partnership vehicle whose operating assets (utilities, transport, midstream, data) are held across a multitude of subsidiary entities and joint ventures globally. Cash flow is heavily intermediated by Brookfield's external management fee structure (base fee + IDR escalators). Financial statements under IFRS rely extensively on fair-value accounting marks and asset divestiture proceeds (capital recycling) to cover distributions. High multi-tiered structural leverage and complex affiliate webs violate Gate 1 standard of transparent, externally verifiable reported accounts."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

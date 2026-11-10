@@ -1,0 +1,30 @@
+{
+  "id": "SOLV",
+  "ticker": "SOLV",
+  "universe": "us",
+  "company": "Solventum Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Technology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Solventum holds legacy brand equity in wound care (V.A.C. therapy, Tegaderm) and workflow switching costs in hospital health information systems (HIS 3M 360 Encompass), empirical proof of moat fails. 10-year historical median ROIC under 3M sits at ~8.5% (FY2024 standalone ~6.3%), well below the 12% hurdle. Hospital GPO procurement power exerts severe pricing resistance on commoditized MedSurg consumables and dental restoratives, resulting in flat-to-negative real pricing and share losses to low-cost alternatives. In addition, its highest-margin HIS software business faces structural headwinds from autonomous AI medical coding.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b ROIC & Pricing Power, REJECT). 3M healthcare spin-off with 10-year historical median ROIC of 8.5%, failing the 12% capital efficiency threshold. Chronic underinvestment under 3M left MedSurg consumables and Dental exposed to intense hospital GPO procurement pressure and volume erosion unable to outpace healthcare inflation, while its high-margin HIS medical-coding software unit faces acute AI autonomous coding disruption risk.",
+    "evidence": "Spun off from 3M in April 2024 with ~$7.8B in debt distributed back to 3M. FY2024 revenue was $8.25B with GAAP operating income of $1.04B and free cash flow of $805M. 10-year historical median ROIC under 3M was ~8.5%, and FY2024 standalone ROIC was ~6.3%, failing the Gate 3b 12% capital efficiency hurdle. Organic revenue growth has stagnated at 1-2%, reflecting volume erosion across legacy dental restoratives and surgical consumables. Operating margins face ongoing headwinds from standalone dis-synergies, ERP migration costs, and GPO contract renegotiations. The highest-margin segment, Health Information Systems (~18% of revenue, >35% operating margins), faces long-term structural disruption from autonomous AI clinical documentation and revenue cycle management solutions, prompting management to pursue strategic separation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

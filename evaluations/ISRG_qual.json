@@ -1,0 +1,30 @@
+{
+  "id": "ISRG",
+  "ticker": "ISRG",
+  "universe": "us",
+  "company": "Intuitive Surgical",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Insurmountable surgeon cognitive training lock-in originating in medical residencies and fellowships, reinforced by 4,000+ patents and tens of millions of historical procedures. High-margin razor-and-blade toll booth extracts ~$1,860+ in proprietary instruments per procedure with 83-85% recurring revenue. 10Y median ROIC of 16.5% and 68% gross margin confirm strong pricing power. Primary erosion risks (Medtronic Hugo, J&J Ottava, hospital capex budgets) are mitigated by unmatched clinical data, switching friction, and the da Vinci 5 technology leap.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global robotic-assisted surgery monopoly with an insurmountable ecosystem moat built on residency surgeon training, 4,000+ patents, and an 83-85% recurring revenue razor-and-blade model (~$1,860+ per procedure in proprietary instruments). Multi-year da Vinci 5 supercycle driving system placements, utilization, and Force Feedback adoption. Pristine balance sheet with zero debt and >$8B in total cash and investments. [5-10Y g: procedure volume 10.5% + da Vinci 5/Force Feedback price 1.5% + Ion/SP mix 1.0% - international expansion SG&A drag 0.5% + net share repurchases 0.5%]",
+    "evidence": "10-year GAAP ROIC median of 16.5% (Operating ROIC 17.1%) maintained consistently above 12% across economic cycles and pandemic elective surgery disruptions. Gross margins steady at 66-70% and GAAP operating margins >28%. 10-year cumulative operating cash flow of $17.3B converts to $12.5B in free cash flow (83.7% multi-year FCF/Net Income conversion), with 2022-2024 capex bubble ($1.1B/yr) normalizing to $540M in 2025 as major Sunnyvale/Mexicali DV5 manufacturing facilities reached completion. Razor-and-blade model generates >83% recurring revenue from single-use EndoWrist/Force Feedback instruments and annual service contracts. Gary Guthart's engineering-focused stewardship has compounded Owner EPS at 16.0% CAGR (2016-2025: $2.19 to $8.08) while maintaining zero long-term debt and accumulating >$8B in cash and investments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "BVI.FR",
+  "ticker": "BVI",
+  "universe": "eu",
+  "company": "Bureau Veritas",
+  "price": 29.95,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under negative tangible capital standard neutralizing €2.67B of M&A goodwill/intangibles; GAAP ROIC is 23.7%. Raw PAR multiple of 22.25 is constrained by the 5-year cycle high guardrail of 20.42x. Forward 5-10Y g of 6.5% supported by TIC organic testing volume (3.5%), regulatory inflation pass-through (1.5%), margin expansion (0.5%), and bolt-on acquisitions (1.0%). Peak Owner EPS of €1.56 affirmed."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.5581,
+    "current_multiple": 19.22,
+    "par_multiple": 20.42,
+    "par_value": 31.82,
+    "percent_vs_par": -0.0587,
+    "status": "Below PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0325,
+    "expected_irr_5y": 0.1104,
+    "market_implied_cap": 14.1,
+    "moat_runway_margin": 0.9,
+    "market_implied_growth": 0.0195,
+    "growth_margin_of_safety": 0.0455
+  },
+  "health_checks": {
+    "net_debt_years": 1.7,
+    "net_debt_ok": true,
+    "interest_coverage": 10.2,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.45,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

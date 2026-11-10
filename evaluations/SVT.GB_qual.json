@@ -1,0 +1,30 @@
+{
+  "id": "SVT.GB",
+  "ticker": "SVT",
+  "universe": "eu",
+  "company": "Severn Trent",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Water Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory regional water and wastewater monopoly licence in the English Midlands. Regulated capital value (RCV) formulaically indexed to CPIH inflation with zero customer churn. Primary erosion threats: regulatory price reviews (Ofwat PR24/AMP8), tightening environmental compliance standards, and political pressure over sewage overflows.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While Severn Trent operates an essential regional water monopoly with best-in-class Ofwat operational delivery, the regulated utility business model caps ROIC at ~5-6% and requires perpetual heavy capital expenditure (£14.9B totex for AMP8) that far exceeds depreciation. Balance sheet carries £9.1B of debt (39x net income) with interest coverage of only 1.84x, requiring continuous debt market access and periodic equity dilution, failing Munger's peace-of-mind balance sheet standard.",
+    "evidence": "Regulated water and sewerage monopoly serving 4.8 million customers across the English Midlands. FY2024 revenue of £2,426.7M and operating profit of £702.5M. 4-year median GAAP ROIC is 5.8% (5.0%-6.3%), reflecting Ofwat allowed WACC. Net debt of £8,077.5M against TTM Net Income of £229.4M results in Net Debt / NI of ~35x, with LT Debt / NI of 39.5x. EBIT / Interest coverage of 1.84x (£702.5M / £382.4M) fails the >5.0x infrastructure threshold. Heavy capex burden (£1,592.8M vs £454.4M D&A) for AMP8 water quality and storm overflow remediation ensures persistent negative free cash flow after growth capex, violating Gate 6 peace-of-mind solvency requirements."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

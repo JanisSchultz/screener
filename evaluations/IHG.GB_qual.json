@@ -1,0 +1,30 @@
+{
+  "id": "IHG.GB",
+  "ticker": "IHG",
+  "universe": "eu",
+  "company": "IHG Hotels",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary leisure and corporate travel is non-essential and deferrable in economic downturns; hotel lodging does not meet the essential Western need or high-frequency everyday habit standard.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). While IHG operates an asset-light franchise fee model, hotel lodging is fundamentally discretionary leisure and corporate travel that is deferrable during economic recessions, failing the essential Western need standard.",
+    "evidence": "IHG operates ~920k rooms across 19 brands with >70% of operating profit from franchise royalties. However, end-market demand is driven by cyclical travel, resulting in severe RevPAR collapses during downturns (-52% in 2020). Historical debt-funded share repurchases also led to negative book equity and elevated leverage (~5.5x Net Debt/NI)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IAG.ES",
+  "ticker": "IAG",
+  "universe": "eu",
+  "company": "IAG",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant slot holdings at Heathrow and Madrid provide hub-and-spoke feed advantages, but airline passenger capacity is shopped on price aggregators. Multi-cycle ROIC averages only 5-8% (failing the 12% hurdle), with volatile cash flows vulnerable to jet fuel price spikes, pilot union wage pressures, and cyclical economic downturns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject – G3 Moat & Pricing). Anglo-Spanish airline group controlling British Airways and Iberia. Despite dominant slot positions at London Heathrow and Madrid-Barajas, IAG operates in a capital-intensive, cyclical industry. 10-year average ROIC lands in the 5-8% range (below the 12% hurdle), burdened by heavy fleet capex, aggressive labor unions, volatile jet fuel costs, and zero durable pricing power across full cycles.",
+    "evidence": "Over a full 10-year cycle, IAG's ROIC averages 5-8%, dragged down by massive pandemic-era equity dilution/losses and severe cyclical troughs, despite strong post-pandemic recovery years (17-18% in 2024-2025). The business remains a price-taker on core economy cabins, facing intense competition from low-cost carriers on short-haul and US legacy carriers on transatlantic routes, alongside high fixed aircraft lease and fuel obligations."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

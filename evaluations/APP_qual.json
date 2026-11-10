@@ -1,0 +1,31 @@
+{
+  "id": "APP",
+  "ticker": "APP",
+  "universe": "us",
+  "company": "AppLovin Corporation",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Advertising",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "MAX in-app bidding mediation commands ~70-80% share in mobile gaming, imposing high SDK migration friction and A/B revenue-loss risk on publishers, while coupling MAX auction clearing-price visibility with the AXON ML recommendation engine creates a potent two-sided data network effect. Empirical proof: 5Y median GAAP ROIC exceeds 12% (~14-18%; financials baseline 18.5%), surging from ~3.3% (FY21) and -0.8% (FY22) to ~12.5-14.9% (FY23), ~31-42% (FY24), and ~82-95% (FY25) with >100% tangible operating ROIC and operating margins expanding to 75.8% (FY25) and ~76-78% (2026). Performance auctions capture nominal ad-spend inflation ad valorem. Primary erosion threats: unilateral Apple iOS / Google Android OS privacy and attribution policy changes, EU GDPR litigation, and rival ML ad-bidding convergence from vertically integrated walled gardens (Meta, Alphabet, Amazon) and Unity LevelPlay.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While AppLovin possesses an elite near-term mediation switching-cost and ML auction flywheel (MAX + AXON) with extraordinary 2024-2026 economics, it fails the 15-year Mauboussin predictability and Munger disruption bar. Starting from a Tier 3 software/ad-tech baseline (CAP 10-15Y), Step 2 deducts 5 years under Macrotrend #1 (Automation & Cognitive Tech) and structural platform dependency: unlike vertically integrated AI hegemons owning consumer surfaces and OS infrastructure (Alphabet, Meta, Apple), AppLovin owns neither the mobile OS, app store, nor first-party consumer apps (having divested its Apps unit in June 2025). Its ~76-78% GAAP operating margins rely on third-party cross-app behavioral modeling inside Apple/Google walled gardens (which previously triggered the FY22 ATT margin collapse and ongoing EU GDPR class-action scrutiny) and face long-term AI bidding replication and agentic-commerce shifts away from mobile-game interstitials. With its pure-play AXON 2.0/e-commerce profit regime barely ~3 years old, 15+ year margin persistence is unassured. Ineligible for Calamity Tier because Anchor Gate 4 fails. Downstream gates bypassed per waterfall.",
+    "evidence": "Multi-cycle financial record (SEC 10-K/10-Q; April 2021 IPO; FY23 continuing ops restated for Apps divestiture): FY21 rev $2,793.1M, op inc $150.0M, NI $35.3M, FCF ~$359.3M (GAAP ROIC ~3.3%); FY22 post-ATT slump rev $2,817.1M, op loss $(47.8)M, NI $(192.9)M, FCF ~$388.4M (ROIC ~-0.8%); FY23 continuing ops rev $1,842.0M (vs $3.28B pre-restatement), op inc $772.4M (41.9% margin), NI $356.7M, FCF $1,037.1M (ROIC ~12.5-14.9%); FY24 rev $3,224.1M, op inc $1,911.0M (59.3% margin), NI $1,580.0M, FCF $2,073.4M (ROIC ~31-42%); FY25 rev $5,480.7M (+70% YoY; 51.6% US / 48.4% RoW), op inc $4,151.9M (75.8% margin), NI $3,333.8M ($3,433M cont. ops), FCF $3,951.9M (118.5% FCF/NI conversion; ROIC ~82-95%). 9M 2026 momentum continued with rev $5,951M (+56% YoY; Q3 2026 >$2.18B) and NI $3,911M (~66% net margin). Portfolio & M&A history: Acquired Machine Zone (2020, ~$329-500M), Adjust (2021, ~$968M), MoPub (Jan 2022, $1.05B cash), and Wurl (Apr 2022, ~$430M); failed $17.5B unsolicited Unity bid (2022). On June 30, 2025, divested its low-margin mobile Apps studio unit to Tripledot Studios ($400M cash + ~20% equity), becoming a pure-play ad-tech platform, and launched self-serve Axon Ads Manager broadly to global e-commerce advertisers in June 2026. Balance sheet & capital allocation: Q3 2026 cash $3,173.7M vs LT debt $3,516.1M (senior notes due 2029-2054 at 5.125-5.950%; 9M26 interest $153.4M, >20x coverage), goodwill $1,516.4M; CEO Adam Foroughi holds ~11% beneficial stake and buyback authorization reached $3.6B cumulative by late 2026 (net shrinking share count despite $210.4M FY25 / ~$84M Q3 2026 SBC). Regulatory & platform risk: While the SEC closed its Oct 2025 probe on Aug 5, 2026 with no enforcement action and CapitalWatch retracted money-laundering claims with an apology in Feb 2026, AppLovin remains exposed to EU GDPR class-action litigation (The Privacy Collective / Amnesty International Netherlands), state privacy laws, and unilateral iOS/Android OS identifier/attribution rules."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

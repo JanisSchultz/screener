@@ -1,0 +1,30 @@
+{
+  "id": "PPL",
+  "ticker": "PPL",
+  "universe": "us",
+  "company": "PPL Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted regulated electric and gas transmission/distribution franchise territories across Pennsylvania, Kentucky, and Rhode Island. Natural monopoly grid infrastructure with formulaic cost-plus rate base recovery and authorized ROE of ~9.5-10.0%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Pure-play regulated electric and gas utility holding company across Pennsylvania, Kentucky, and Rhode Island following successful portfolio repositioning. However, heavy grid modernization capex ($4.03B capex vs $2.63B OCF in FY2025) creates a $1.4B free cash flow deficit and elevates long-term debt to $18.0B (15.2x net income) with thin 2.63x interest coverage, requiring continuous external capital market financing.",
+    "evidence": "FY2025 revenue of $9.04B, EBIT of $2,129M, and net income of $1,181M. 10-year median GAAP ROIC is 4.78%. Balance sheet carries $17.99B in long-term debt against $1,071M cash, resulting in 15.2x debt/NI (threshold <=4.0x) and 2.63x interest coverage (EBIT $2,129M / Interest $808M, threshold >5.0x). Capex of $4,030M outpaced OCF of $2,629M by $1.4B in FY2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

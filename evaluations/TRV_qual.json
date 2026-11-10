@@ -1,0 +1,30 @@
+{
+  "id": "TRV",
+  "ticker": "TRV",
+  "universe": "us",
+  "company": "Travelers Companies (The)",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary 170-year actuarial claims database, extensive middle-market independent broker distribution relationships, and specialized underwriting programs yield high customer retention (~86-88%). Proof of moat is demonstrated by sub-100% combined ratio discipline across cycles (92.5% in 2024, 89.9% in 2025; underlying 83.9%) and 10-year average Core ROE of 13-15%+ (reaching 19.4% in 2025). Primary erosion threats include soft market competitive pricing wars, unmodeled secondary catastrophe perils, and casualty litigation/social inflation.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Travelers is an exceptionally disciplined commercial P&C underwriter with strong independent agency distribution and sub-100% combined ratio discipline, the business faces severe, unhedged secular headwinds across two core macrotrends: escalating climate-driven catastrophe losses/secondary perils (Macrotrend 4) and chronic social inflation/nuclear jury verdicts in commercial casualty lines (Macrotrend 5). P&C insurance underwriting cyclicality and capital-fade dynamics limit competitive advantage persistence to <15 years.",
+    "evidence": "Travelers has demonstrated exceptional underwriting execution, achieving a consolidated combined ratio of 92.5% in 2024 and 89.9% in 2025 (underlying combined ratio of 83.9%), with Core ROE expanding to 17.2% in 2024 and 19.4% in 2025. Net investment income has grown robustly with higher fixed-income yields. However, multi-cycle earnings remain vulnerable to severe weather events (combined ratio exceeded 105% in 2022 due to elevated catastrophe losses) and persistent tort/social inflation in general liability and commercial auto lines. Underwriting cycle volatility and secular catastrophe risk cap the competitive advantage period at 5 years, well below the 15-year hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

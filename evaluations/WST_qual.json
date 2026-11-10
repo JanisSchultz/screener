@@ -1,0 +1,30 @@
+{
+  "id": "WST",
+  "ticker": "WST",
+  "universe": "us",
+  "company": "West Pharmaceutical Services",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant ~70% global market share in elastomeric stoppers, plungers, and seals for injectable pharmaceuticals, biologics, and GLP-1 auto-injectors. Moat is protected by immense regulatory switching costs: West's proprietary elastomer formulations (e.g. FluroTec barrier film, NovaPure) are embedded directly into drug sponsors' FDA Drug Master Files (DMF 1546), NDAs, and BLAs. Switching suppliers requires multi-year stability testing, extractable/leachable verification, and regulatory supplements for a component that costs pennies per dose (<1% of drug cost) but carries fatal contamination and recall risk. Pricing power is evidenced by 2-3% annual price increases and a continuous mix shift toward premium High-Value Products (HVP). 10-year median GAAP ROIC of 27.2% and tangible ROIC of 29.0% confirm an unassailable economic moat. Erosion threats include competitor capacity additions (Datwyler, Aptar) and alternative non-injectable delivery formats, though complex biologics and viscous peptides overwhelmingly require injectable primary containment.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled regulatory toll booth controlling ~70% of global elastomeric injectable packaging (stoppers, plungers, seals). High-consequence, low-cost components embedded in FDA Drug Master Files (DMF) create immense switching costs. Secular expansion driven by complex biologics and GLP-1 self-injection devices. Structurally insulated across all 5 macrotrends (CAP = 20 years). Fortress balance sheet with +$588M net cash and interest coverage >1,000x. [5-10Y g: biologics/GLP-1 injectable volume 5.0% + component pricing 2.0% + HVP mix shift 1.5% - capacity D&A drag 0.5% + net buybacks 0.5%]",
+    "evidence": "10-year median GAAP ROIC of 27.2% and operating tangible ROIC of 29.0% (FY2025 GAAP ROIC 18.7%, tangible ROIC 19.6% at the trough of destocking, recovering from pandemic surge peak of 39.4% in FY2021). Multi-year Owner FCF conversion of 94.0% (FY2025 OCF $754.8M, capex $285.9M, Owner FCF $559.6M vs GAAP NI $493.7M). Revenue grew from $1.51B in FY2016 to $3.07B in FY2025 (13.7% Owner EPS CAGR from $1.91 to $6.79). Segments: Proprietary Products (~80% of sales, including High-Value Products like FluroTec, NovaPure, and Daikyo CZ) and Contract-Manufactured Products (~20%). Pristine fortress balance sheet with $791.3M cash & equivalents against $202.8M long-term debt (net cash of $588.5M); LT debt repayable in 0.41 years of net income; EBIT interest coverage exceeds 1,000x ($584.9M EBIT vs $0.5M interest expense). Dominant position in GLP-1 auto-injector and biologic cartridge components, backed by reference in ~95% of FDA BLA/NDA filings and customer regulatory lock-in."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

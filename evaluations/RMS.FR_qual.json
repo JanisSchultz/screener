@@ -1,0 +1,30 @@
+{
+  "id": "RMS.FR",
+  "ticker": "RMS",
+  "universe": "eu",
+  "company": "Hermès",
+  "country": "France",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Artisan capacity bottlenecks, multi-year waitlists for iconic Birkin and Kelly bags, and multi-generational French leathercrafting heritage create an unreplicable luxury moat. Returns protected by refusing volume growth beyond artisan training capacity (~7% annual volume cap). Proved by 70%+ GAAP ROIC and >40% recurring operating margins through all macro cycles. Primary erosion risks are counterfeit proliferation and potential over-commercialization of non-leather categories.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Quintessential ultra-luxury scarcity maison with unmatched brand prestige and pricing power. Birkin and Kelly waitlists and artisan capacity limits preserve scarcity and >40% EBIT margins. Fortress balance sheet with >€12B net cash. [5-10Y g: artisan volume 6.0% + pricing power 3.5% + product mix 1.0% - tax/capex drag 0.5% + share repurchases 0.0%]",
+    "evidence": "FY2025 revenue reached €16,002M (+9% cFX) with recurring operating margin of 41.0% (€6,569M). 5-year GAAP ROIC exceeds 70% (median 96%). Balance sheet holds €12,239M in cash against only €34M long-term debt, yielding over €12B in net cash. Owner FCF conversion exceeds 90% (€4.3B FCF in FY25). Family-controlled ownership structure ensures multi-generational discipline."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

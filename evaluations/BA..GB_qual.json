@@ -1,0 +1,30 @@
+{
+  "id": "BA..GB",
+  "ticker": "BA.",
+  "universe": "eu",
+  "company": "BAE Systems",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sole-source UK nuclear submarine shipyard (Barrow-in-Furness) and sovereign defense contracts with inflation escalation and cost-recovery mechanisms provide durable pricing power.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Indispensable UK defense prime with sovereign submarine monopoly, but rejected at Gate 6 as net debt surged to £4.95B following the debt-funded $5.5B Ball Aerospace acquisition alongside legacy pension obligations and through-cycle ROIC below 9%.",
+    "evidence": "Multi-decade defense backlogs and AUKUS submarine program, but net debt expanded from £1.0B in FY23 to £4.95B in FY24 due to debt-financed acquisition of Ball Aerospace. Multi-cycle GAAP ROIC averages 7.5%-8.5%, falling short of self-funded compounding requirements without leverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

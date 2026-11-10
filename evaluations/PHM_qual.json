@@ -1,0 +1,30 @@
+{
+  "id": "PHM",
+  "ticker": "PHM",
+  "universe": "us",
+  "company": "PulteGroup",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket cyclical homebuilder; new-home purchases are deferrable during elevated mortgage rates and economic downturns, driving cyclical swings in volume, incentives, and margins.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need, REJECT). Cyclical US production homebuilder (Pulte, Centex, Del Webb, DiVosta, John Wieland) whose big-ticket residential sales are highly deferrable and interest-rate sensitive. While management maintains solid land-option discipline (~55% optioned lots) and low net leverage (~3% net debt-to-capital in Q3 2026), softening affordability and ~7.5% mortgage rates drove FY2025 net income down ~30% YoY ($2.17B vs. $3.08B in FY2024), compressed home sale gross margins from ~27.5% (FY2024) to ~24.7% (FY2025) and 24.8% (Q3 2026), and lifted incentives to 10.4% of home sale revenue in Q3 2026 (up from 8.9% a year earlier). Fails Munger's non-deferrable everyday-need standard.",
+    "evidence": "Business Model & Segments: US S&P 500 homebuilder generating >96% of revenue from single-family attached/detached home sales across first-time, move-up, and active-adult segments (FY2024 total revenue $17.9B / home sales $17.3B; FY2025 total revenue $17.3B / home sales $16.7B on 29,572 closings), supplemented by ancillary mortgage/title financial services. Multi-Cycle Financial Track Record: Prior dossier data reports a 17.8% 10-year median ROIC, with FY2024 ROE of 27.5% and peak GAAP net income of $3.083B ($14.69/diluted share) at a ~27.5% home sale gross margin. As mortgage rates remained elevated into 2025-2026, FY2025 net income fell ~30% to ~$2.17B (~$10.49/share) and gross margin compressed to ~24.7% (including ~80 bps of land impairment charges). In Q3 2026, home sale revenues fell 9% YoY to $3.9B, net income declined 19% YoY to $476M ($2.53/share vs. $2.96/share), community foot traffic fell 14% YoY, gross margin slid to 24.8% (vs. 26.2% YoY, including $26M / ~70 bps land impairments), and backlog stood at 10,298 homes ($6.4B, +3% YoY) with a ~10% cancellation rate. Cash Flow & Capital Allocation: FY2024 operating cash flow was $1.681B (FCF ~$1.56B after ~$118.5M CapEx) and FY2025 operating cash flow was $1.871B (FCF ~$1.75B after ~$122.7M CapEx), supporting $1.2B of FY2025 share repurchases ($350M in Q3 2026) and $5.2B of FY2025 land investment (~$4B YTD through Q3 2026). Balance Sheet & Pricing Dynamics: Conservative balance sheet with $1.6B senior notes principal in FY2024-2025 (zero revolver borrowings) and ~$1.4B cash, 12.1% debt-to-capital, and ~3% net debt-to-capital as of Q3 2026. Of ~224,000 lots under control in Q3 2026, ~55% were optioned (PHM walked away from ~8,000 option lots in Q3 2026). Despite improved asset-light discipline, transactional pricing power relies on rate buydowns and concessions—sales incentives reached 10.4% of home sale revenue in Q3 2026 (up 150 bps YoY)—underscoring cyclical deferrability rather than recurring customer lock-in."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

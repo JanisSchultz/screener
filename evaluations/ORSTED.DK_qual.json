@@ -1,0 +1,30 @@
+{
+  "id": "ORSTED.DK",
+  "ticker": "ORSTED",
+  "universe": "eu",
+  "company": "Ørsted",
+  "country": "Denmark",
+  "sector": "Utilities",
+  "sub_industry": "Renewable Electricity (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global pioneer in offshore wind development. The economic engine was devastated by severe cost inflation, installation vessel bottlenecks, turbine supply delays, and soaring interest rates that struck fixed-bid auction power contracts lacking inflation indexation. The inability to pass through cost increases resulted in over DKK 40B in cumulative impairments and project cancellations (notably Ocean Wind 1 in the US), forcing dividend suspensions and asset disposals. Reported multi-cycle ROCE collapsed to -14.2% in 2023 and only recovered to 4.5%-5.4% in 2024-2025, completely failing the 12% ROIC and pricing power >= inflation hurdles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Proof of Moat & Pricing Power, REJECT). Offshore wind pioneer exposed to catastrophic project delivery risks. Fixed-price power purchase and auction contracts demonstrated zero pricing power when turbine, vessel, and capital costs spiked, resulting in DKK 26.8B+ in write-downs in 2023, US project abandonments, and dividend cancellation. Multi-cycle ROCE (-14% in 2023, ~5% in 2024-2025) fails the 12% threshold.",
+    "evidence": "In FY2023, Ørsted posted an impairment charge of DKK 26.8B primarily from stopping development on US Ocean Wind 1, driving reported ROCE to -14.2%. Even adjusted ROCE fell from 12.9% in 2023 to 10.1% in 2024 and 8.4% in 2025, while reported ROCE was 4.5% (2024) and 5.4% (2025). Net interest-bearing debt expanded to DKK 58B in 2024 before asset sales and rights issue restructuring reduced it in 2025. The core business lacks pricing power against construction and financing inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

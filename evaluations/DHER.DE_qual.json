@@ -1,0 +1,30 @@
+{
+  "id": "DHER.DE",
+  "ticker": "DHER",
+  "universe": "eu",
+  "company": "Delivery Hero",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Specialized Consumer Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local food delivery marketplace density does not generate durable pricing power or switching barriers; consumer and merchant multi-homing is rampant, and 5-year median GAAP ROIC is deeply negative amidst heavy promotional subsidies.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Proof of Moat). Long history of GAAP operating losses and deeply negative 5-year median ROIC. Lacks structural pricing power due to low customer loyalty, merchant multi-homing, high marketing subsidies, and escalating regulatory pressure on gig-economy courier models.",
+    "evidence": "Multi-year GAAP net income has been consistently negative with cumulative net losses exceeding several billion euros over the last 5 years. Only achieved positive group FCF (~€100M) in FY24 after aggressive cost cuts and capital restructuring. Relies on subsidiary divestments and listings (e.g. Talabat in UAE) rather than organic self-funding economic moats."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

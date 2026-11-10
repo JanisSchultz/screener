@@ -1,0 +1,30 @@
+{
+  "id": "GWO.CA",
+  "ticker": "GWO",
+  "universe": "ca",
+  "company": "Great-West Lifeco",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Significant corporate switching costs in employer-sponsored 401(k) retirement recordkeeping (Empower) and Canadian group benefits. However, defined-contribution recordkeeping suffers from structural, secular basis-point fee compression driven by DOL fiduciary scrutiny and litigation. In addition, traditional life, annuity, and reinsurance segments are rate-sensitive spread businesses lacking contractual inflation-indexed pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Scaled Canadian life insurer and US 401(k) recordkeeper (Empower). While Empower possesses substantial platform scale and high corporate switching costs, its core defined contribution administration business faces chronic, secular basis-point fee compression driven by regulatory fee-disclosure mandates and competitive commoditization, preventing inflation-plus pricing power. Furthermore, the life, annuity, and reinsurance lines are rate-sensitive spread businesses lacking pricing autonomy. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Great-West Lifeco generated FY2025 net income of CAD 3,960M and EBIT of CAD 5,062M on CAD 29,857M equity, with a 5-year median ROIC of 13.56% (2025 GAAP ROIC 13.36%, tangible ROIC 25.93%). Long-term debt stands at CAD 12,423M with interest expense of CAD 367M (13.8x interest coverage). While Empower has built massive scale as the #2 US retirement recordkeeper through the integration of MassMutual and Prudential retirement blocks, basic recordkeeping revenues face persistent fee erosion from institutional fee benchmarking, forcing the company to rely on ancillary wealth management cross-selling to preserve economics. Core individual and group life insurance operations rely on spread margins that fluctuate with macroeconomic credit cycles rather than structural pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

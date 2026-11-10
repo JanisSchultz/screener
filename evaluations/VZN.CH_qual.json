@@ -1,0 +1,30 @@
+{
+  "id": "VZN.CH",
+  "ticker": "VZN",
+  "universe": "eu",
+  "company": "VZ Holding",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Independent fee-only advice counter-positions traditional Swiss universal banks that rely on opaque kickbacks and product sales. Comprehensive retirement and pension planning creates extreme switching costs (>98% client retention). Proven by 20-23% ROE and >45% EBIT margins. Primary erosion threats: competition from digital robo-advisers, succession risk in advisor talent, and execution risk in German market expansion.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier Swiss independent retirement, pension, and wealth advisory platform counter-positioned against product-pushing universal banks. High switching costs with >98% retention. Prime beneficiary of demographic aging. Pristine net cash balance sheet with >CHF 1B net liquidity and 25x+ interest coverage. [5-10Y g: net new money volume 6.0% + AuM market appreciation 3.5% + advisory pricing 1.0% + German expansion mix 1.5% - SNB rate normalization drag 1.0% + net buybacks 0.0%]",
+    "evidence": "20-23% Return on Equity and >45% EBIT margins. Pristine peak-to-peak compounding (Owner EPS grew from CHF 3.85 in 2022 to CHF 6.07 in 2025, 16.4% CAGR). Fortress balance sheet with CHF 1.66B cash vs CHF 592M debt and CET1 ratio >25%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

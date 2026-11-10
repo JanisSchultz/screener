@@ -1,0 +1,30 @@
+{
+  "id": "AZA.SE",
+  "ticker": "AZA",
+  "universe": "eu",
+  "company": "Avanza",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Swedish digital savings and pension platform with insurmountable scale economies shared (operating costs ~10 bps of customer capital vs 40+ bps for traditional Nordic banks). Customer love (16 straight years of #1 customer satisfaction) drives >20% of Swedish net savings inflows. Erosion threats include Nordnet competition and potential regulatory changes to fund distribution kickbacks.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Customer-beloved Swedish digital wealth and pension compounder with 35-50% ROE and ~60% operating margins. Balance sheet structured for peace of mind: holds a banking charter but carries zero commercial credit risk (lending is strictly low-LTV mortgages and margin loans), maintaining massive liquidity buffers and high organic cash generation. [5-10Y g: net savings inflows 7.0% + occupational pension share gains 1.5% + operating leverage 0.5% - rate normalization drag 0.5% + dividend yield 3.5%]",
+    "evidence": "ROE consistently 35-50% with ~60% operating margins. Capital-light engine (FY25 capex of 74M SEK on 2,631M SEK NI, capex < 3% of earnings). Carries zero commercial credit risk with collateralized lending (mortgages and margin loans). Balance sheet holds 13.1B SEK in cash/central bank deposits against only 356M SEK in debt."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

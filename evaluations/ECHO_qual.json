@@ -1,0 +1,31 @@
+{
+  "id": "ECHO",
+  "ticker": "ECHO",
+  "universe": "us",
+  "company": "EchoStar",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (REJECT). EchoStar fails both Gate 1 standards—(a) Not Established and (b) Not Verifiable from Outside—after abandoning its standalone 5G network strategy, selling core spectrum to AT&T and SpaceX, and putting its DISH DBS/Wireless and Hughes subsidiaries into Chapter 11 bankruptcy in mid-2026. Reported financials are severely distorted by Chapter 11 deconsolidations, prospective fair-value reconsolidation of DISH DBS, and an unconsolidated variable-interest Spectrum Trust (ASC 610-20), while its ~$28B market valuation hinges on a pending Nov 2027 SpaceX spectrum-for-equity closing and unallocated EchoStar Capital cash deployment rather than an established, transparent operating engine. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Historical operating performance prior to the 2026 restructuring failed compounder standards: following the Dec 31, 2023 all-stock merger with DISH Network, consolidated revenue contracted sequentially from ~$18.63B (FY22) and ~$17.02B (FY23) to ~$15.8B (FY24) and $15.00B (FY25), while operating losses persisted (~-$304M in FY24; -$91.1M operating loss, -$17.6B non-cash impairments, and -$14.50B GAAP net loss in FY25), FY25 FCF was -$1.07B, and historical median ROIC sat at 2.5% (TTM ~0.7%-2.8%, well below WACC). In 2026, EchoStar (ticker changed from SATS to ECHO in June 2026) dismantled its vertically integrated 5G MNO thesis: (1) closed the sale of 3.45 GHz and 600 MHz spectrum to AT&T on July 28, 2026 for $20.25B cash (+$2.4B creditor trust, $3.11B gain); (2) entered an amended ~$20B spectrum sale to SpaceX (AWS-4, H-block, AWS-3) including up to $11B in SpaceX Class A equity, placing assets into an unconsolidated VIE trust ($8.67B carrying value under ASC 610-20) with final closing targeted for Nov 30, 2027; and (3) placed DISH DBS/DISH Wireless (June 30, 2026) and Hughes Satellite Systems (Aug 2, 2026, amid Starlink GEO broadband losses and a $1.5B maturity) into Chapter 11. Deconsolidation caused Q3 2026 revenue to fall 68.8% YoY to $1.127B while GAAP net income spiked to $2.782B ($7.97/sh) on the $3.107B AT&T gain and $439.2M deconsolidation gain, with DISH DBS emerging Oct 1, 2026 for prospective fair-value reconsolidation. As of Sept 30, 2026, cash stood at $13.44B against ~$9.67B debt (down from ~$31.01B at YE25 via redemptions), while residual Boost Mobile (~7.2M subs, -182k net losses in Q3 2026, $855M wireless service revenue) operates as an unproven Hybrid MNO reliant on AT&T/T-Mobile access and EchoStar Capital holds unallocated cash."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "Gate 1",
+    "evaluated_at": "2026-11-10T09:33:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

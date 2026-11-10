@@ -1,0 +1,30 @@
+{
+  "id": "ARM",
+  "ticker": "ARM",
+  "universe": "us",
+  "company": "Arm Holdings plc",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme ecosystem switching costs across billions of devices with 30+ years of software optimization. 5-year median GAAP ROIC is 16.16% and gross margins exceed 95%. Pricing power demonstrated by migration to Armv9 and Compute Subsystems (CSS) doubling per-chip royalties, though customer friction (Qualcomm litigation) and RISC-V consortiums represent emerging long-term erosion risks.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash & Fortress Balance Sheet: fcf_conv = 18.6% vs 80% hurdle). Ubiquitous CPU architecture toll booth with dominant mobile/edge compute share and pristine zero-debt balance sheet, but chronic post-IPO stock-based compensation (~$1B/year against ~$900M Net Income) severely impairs free cash flow conversion to owners. [5-10Y g: chip unit volume 3.0% + v9/CSS royalty rate & licensing mix 8.0% + margin 2.0% - SBC dilution 2.0%]",
+    "evidence": "Arm holds an unassailable toll booth on global computing architectures, powering >99% of smartphones and rapidly gaining share in cloud hyperscalers (AWS Graviton, Google Axion, Microsoft Cobalt) due to superior performance-per-watt. Gross margins consistently exceed 95%, and 5-year median GAAP ROIC is 16.16% (tangible ROIC >20%). Armv9 and Compute Subsystems (CSS) transition roughly doubles royalty rates per chip. The balance sheet is a pristine fortress with zero long-term debt and $2,751M in cash. However, Gate 6 fails decisively on Pillar 2 (Free Cash Flow Conversion): reported 5-year Owner FCF conversion is only 18.6% (fcf_conv = 0.186 vs. >= 0.80 hurdle). Over FY23-FY25, stock-based compensation totaled $2,909M ($1,037M in FY23, $820M in FY24, $1,052M in FY25), averaging nearly $1B annually and exceeding total GAAP net income ($3,075M 5-year cumulative NI vs. $572M Owner FCF). Because this massive equity dilution is an ongoing structural compensation model rather than an isolated temporary calamity, Arm fails Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

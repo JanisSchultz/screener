@@ -1,0 +1,43 @@
+{
+  "id": "ROP.CH",
+  "ticker": "ROP",
+  "universe": "eu",
+  "company": "Roche",
+  "price": 390.3,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap (tangible ROIC 52.5% reflects closed-system diagnostics instruments and Genentech biologics franchise). Raw PAR multiple of 22.74 is strictly capped by the 5-year cycle high guardrail at 22.00. 5-10Y g of 7.0% aligned with qualitative guidance and mature large-cap base rate. Net debt is manageable at 1.7x OE with 13.6x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 16.0399,
+    "current_multiple": 24.33,
+    "par_multiple": 22.0,
+    "par_value": 352.88,
+    "percent_vs_par": 0.106,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0249,
+    "expected_irr_5y": 0.0735,
+    "market_implied_cap": 16.6,
+    "moat_runway_margin": -1.6,
+    "market_implied_growth": 0.0939,
+    "growth_margin_of_safety": -0.0239
+  },
+  "health_checks": {
+    "net_debt_years": 1.7,
+    "net_debt_ok": true,
+    "interest_coverage": 13.6,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.23,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

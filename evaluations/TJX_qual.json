@@ -1,0 +1,30 @@
+{
+  "id": "TJX",
+  "ticker": "TJX",
+  "universe": "us",
+  "company": "TJX Companies",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched $60.4B+ off-price buying scale across ~21,000 global vendors enables rapid cash inventory clearance without return privileges, passing 20-60% retail discounts back to shoppers via a physical treasure-hunt model insulated from e-commerce unit economics. Empirical proof: 103.7% 5Y median GAAP ROIC (~36% ex-cash lease-adjusted including $10.62B operating leases), EBIT margin expanding from 10.7% (FY19) to 12.2% (FY25/FY26), and 3-5% traffic-led comps with selective ticket increases. Primary erosion threats: structural tightening of vendor excess supply, ultra-fast-fashion price competition, or unhedged store wage and tariff inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Global off-price leader compounding via Nick Sleep scale economies shared, habitual treasure-hunt traffic, and an expanded 7,500-store runway (from 5,214 stores). Insulated across all 5 macrotrends: non-replenishable low-ASP treasure drops defeat AI/e-commerce shipping economics, agile 21,000-vendor sourcing absorbs tariff/supply disruptions, and $4.36B net cash ($6.23B cash vs $1.87B debt, 93.4x interest coverage) removes rate stress. [5-10Y g: comp volume 1.5% + price 2.0% + new store reinvestment 3.0% - wage & peak-margin drag 0.5% + net buybacks 1.5%]",
+    "evidence": "Multi-cycle financial record (SEC EDGAR FY16-FY25, where FY25 reflects TJX FY26 ended Jan 31, 2026): Sales grew from $33,183.7M (FY16) to $60,372.0M (FY25, +7% YoY, +5% consolidated comps); EBIT rose from $4,257.8M (12.8%) to $7,378.0M (12.2%); Net Income increased from $2,298.2M to $5,494.0M; Owner EPS compounded at 12.79% CAGR ($1.73 to $4.87), staying profitable even through COVID FY20 ($90.0M NI, $4,562.0M OCF) and hitting consecutive peak-to-peak highs. 5Y median GAAP ROIC is 103.7% (106.7% tangible); even capitalizing $10,620M operating lease liabilities ($1,726M current, $8,894M non-current), lease-adjusted ROIC exceeds 35% ex-cash (~26% gross). 5Y Owner FCF conversion is 93.7% (107.7% over 10Y; >80% even deducting full growth capex and $214M FY25 SBC). Momentum continued into Q2 FY27 (+4% comps, $15.2B sales, 11.9% adj pretax margin), with FY27 guidance raised to $63.4B-$63.8B sales, 12.0%-12.1% adj pretax margin, and $5.15-$5.20 adj EPS. Segment footprint (5,214 stores at FY26-end across North America, Europe, and Australia): Marmaxx U.S. (TJ Maxx 1,348 stores, Marshalls, Sierra), HomeGoods U.S. (HomeGoods 963, Homesense 79), TJX Canada (Winners, HomeSense, Marshalls), and TJX International (TK Maxx, Homesense, entering Spain), targeting 7,500 stores long-term at ~4% annual unit growth from FY28. Management and balance sheet: Long-tenured merchant CEO Ernie Herrman and CFO John Klinger maintain conservative guidance, clean accounting, negligible goodwill ($96M), 29 dividend increases in 30 years (+13% in 2026 to $0.48/qtr), and FCF-funded buybacks ($2.75B-$3.0B FY27 target). Post-COVID debt was paid down from $5,332.9M (FY20) to $1,870.0M vs $6,230.0M cash ($4,360M net cash; 93.4x EBIT/interest; only 1.14x lease-adjusted net debt/NI)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AMCR",
+  "ticker": "AMCR",
+  "universe": "us",
+  "company": "Amcor plc",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Amcor benefits from packaging converting scale and customer qualification switching costs on high-speed filling lines, but lacks economic pricing power over inflation. Contractual resin pass-through mechanisms pass raw material costs with a multi-month lag without expanding conversion margins. 10-year median GAAP ROIC is ~8.5%, consistently failing the 12% threshold across the business cycle. Mega-acquisitions (Bemis in 2019, Berry Global in 2025) dilute returns on capital rather than deepening an economic moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.5% < 12%, REJECT). Amcor operates as a high-volume packaging converter structurally squeezed between petrochemical resin oligopolies and concentrated consumer staples brand owners. 10-year median GAAP ROIC of ~8.5% sits well below the 12% hurdle across the cycle. Dilutive mega-mergers (Bemis, Berry Global) create asset bloat without demonstrating economic pricing power above inflation.",
+    "evidence": "10-year median GAAP ROIC of ~8.5% (FY20: 7.6%, FY21: 10.1%, FY22: 8.8%, FY23: 10.5%, FY24: 9.1%, FY25: 5.7%). Amcor is a price-taking converter between resin producers (Dow, ExxonMobil, LyondellBasell) and multinational FMCG customers (Nestlé, PepsiCo, P&G, Coca-Cola). Contractual resin pass-through clauses protect nominal dollars with a lag but fail to deliver real conversion margin pricing power. The April 2025 Berry Global merger substantially expands balance sheet debt and goodwill without lifting structural returns on capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

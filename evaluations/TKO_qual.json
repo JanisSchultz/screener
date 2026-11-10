@@ -1,0 +1,31 @@
+{
+  "id": "TKO",
+  "ticker": "TKO",
+  "universe": "us",
+  "company": "TKO Group Holdings",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary combat sports, scripted wrestling, and big-ticket VIP event hospitality (IMG/On Location ~29% of FY25 revenue) rather than an essential Western need or universal daily habit; compounded by antitrust litigation (UFC $375M settlement & active Johnson v. Zuffa spoliation hearings), Saudi sovereign site-fee/JV concentration, and sports-betting/regulatory exposure.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Despite strong UFC and WWE broadcast rights step-ups (Paramount+, Netflix, ESPN), TKO monetizes discretionary spectator entertainment and cyclical big-ticket VIP corporate hospitality/agency services (IMG/On Location, ~29% of FY25 revenue, which posted $(48)M Adj. EBITDA in FY24) rather than an essential Western need or low-risk daily consumer staple. Further disqualified on societal, antitrust, and geopolitical risk by UFC fighter-pay monopsony litigation ($375M Le v. Zuffa settlement; active Johnson v. Zuffa with Oct 2026 spoliation hearings), Muhammad Ali Act reform lobbying for Zuffa Boxing, growing revenue reliance on Saudi sovereign payouts (GEA/Sela), and legacy WWE misconduct litigation. Downstream gates bypassed per waterfall (would also face sub-12% GAAP ROIC, 5-macrotrend/antitrust runway pressure, Up-C/related-party governance red flags from the $3.25B Endeavor IMG/On Location/PBR drop-down, and Nov 2026 debt-funded share buybacks pushing gross debt toward $5.65B).",
+    "evidence": "Model & Segment Breakdown: TKO combines UFC, WWE, and (via the Feb 28, 2025 $3.25B all-stock common-control acquisition from parent Endeavor) IMG, On Location, and PBR. FY25 consolidated revenue was $4,735.2M (vs ~$4,884.2M FY24): WWE $1,709.4M ($896.5M Adj. EBITDA, 52.4% margin), UFC $1,502.2M ($851.0M Adj. EBITDA, 56.7% margin), and IMG/On Location $1,367.3M (28.9% of revenue; $160.0M Adj. EBITDA in FY25 vs $(48.0)M loss in FY24 due to Paris Olympics hospitality losses). Multi-year rights include WWE Raw on Netflix (10-yr), WWE PLEs on ESPN DTC ($1.6B/5-yr starting 2026), and UFC US rights on Paramount+/CBS ($7.7B/7-yr starting 2026, ending traditional PPV). Capital Efficiency & Earnings: Consolidated GAAP Operating Income was $376-$447M (FY23), $30.9M (FY24, restated), $835.0M (FY25), and $1,145.8M (9M 2026); GAAP ROIC was ~3.4% (FY23), ~0.2% (FY24), and ~5.7% (FY25) against $11,773M combined goodwill ($8,445M) and other intangibles ($3,328M) and $9,215.7M total equity/NCI (v1 median ROIC 11.5%). FY25 Consolidated Net Income was $546.2M ($195.4M attributable to TKO Class A; FY24 $(246.0)M loss); 9M 2026 Net Income was ~$831.6M ($289.6M Class A). Cash Flow & Leverage: FY25 OCF $1,285.7M and FCF $1,159.0M; 9M 2026 OCF $1,540.6M and FCF $1,474.0M (boosted by ~$604.0M net On Location FIFA World Cup 2026 escrow prepayments; CapEx $66.6M). Gross debt expanded from $3,724.1M (YE25; $831.1M cash; 4.1x FY25 EBIT/interest) to $4,647M (Sept 30, 2026; $630.9M unrestricted cash; 5.7x 9M26 coverage), followed by pricing $1.0B of 6.500% Senior Secured Notes due 2031 in Nov 2026 to fund share repurchases (>$1.6B returned YTD Q3 2026). Governance & Legal Risks: Up-C structure controlled (~59%) by private Endeavor/Silver Lake; CEO Ari Emanuel ($67M+ reported pay, ~71% 2024 Say-on-Pay support); $375M Le v. Zuffa antitrust settlement (approved Feb 2025); active Johnson v. Zuffa class action (Oct 2026 spoliation sanction hearings); Zuffa Boxing JV with Saudi PIF-backed Sela; and legacy Vince McMahon/Janel Grant litigation (transitioned to arbitration mid-2026)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

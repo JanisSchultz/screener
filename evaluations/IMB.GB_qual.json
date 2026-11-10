@@ -1,0 +1,30 @@
+{
+  "id": "IMB.GB",
+  "ticker": "IMB",
+  "universe": "eu",
+  "company": "Imperial Brands",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Tobacco (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Addictive, socially destructive tobacco business model facing structural combustible volume declines, aggressive excise taxation, and legislative phase-out/ruin risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Combustible tobacco manufacturer explicitly disqualified under Gate 2 due to addictive, socially destructive products subject to existential regulatory, legislative, and societal phase-out risks across core European and US markets.",
+    "evidence": "Focused combustible tobacco player (Davidoff, Gauloises, JPS, Winston) with limited next-generation product hedge compared to peers. Structural secular volume contraction in Western markets (typically -5% to -8% annually) cannot be perpetually mitigated by price increases without customer elasticity breaking, compounded by generational smoking bans and punitive excise duties."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

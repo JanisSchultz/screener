@@ -1,0 +1,30 @@
+{
+  "id": "AIZ",
+  "ticker": "AIZ",
+  "universe": "us",
+  "company": "Assurant",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep B2B2C integration into telecom carrier billing systems (e.g. T-Mobile), auto dealer networks, and mortgage servicer tracking platforms creates substantial partner switching costs. 5-year median GAAP ROIC of 24.8% demonstrates strong fee-based capital efficiency and pricing power to offset repair and replacement cost inflation.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Assurant possesses a verified switching-cost moat in B2B2C specialty warranty administration and mortgage tracking with a 5-year median GAAP ROIC of 24.8%, its competitive runway fails the 15-year persistence standard. Connected Living (over 50% of revenue) suffers from acute client concentration with T-Mobile, exposing the business to contract re-bidding, fee-split compression, or OEM disintermediation (AppleCare+ direct expansion). In addition, Global Housing property underwriting faces structural climate headwinds and rising catastrophe reinsurance costs that periodically disrupt earnings. Under Munger default-reject, a contract-dependent warranty administrator cannot support a 15+ year CAP.",
+    "evidence": "FY2025 revenue reached $12.8B ($10.55B US, $2.27B international) and EBIT reached $1,197M with GAAP ROIC of 26.2% and 5-year median GAAP ROIC of 24.8%. Free cash flow conversion is strong at 1.10x. However, historical earnings show significant volatility driven by catastrophe losses and underwriting cycles (net income dropped to $251M in FY2018 and $277M in FY2022 with GAAP ROIC dipping to 6.4% and 11.9%). Global Lifestyle accounts for the majority of revenue, heavily concentrated in Connected Living mobile device protection tied to carrier partnerships (primarily T-Mobile), leaving the economic engine vulnerable to partner contract renegotiation and direct OEM warranty competition over a multi-decade horizon."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

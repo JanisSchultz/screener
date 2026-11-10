@@ -1,0 +1,30 @@
+{
+  "id": "ADBE",
+  "ticker": "ADBE",
+  "universe": "us",
+  "company": "Adobe Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary file formats (.psd, .ai, .indd, PDF) and deep creative workflow lock-in support ~88% gross margins and 40%+ median ROIC; primary erosion threats stem from generative AI diffusion models and browser-native collaborative tools (Canva, Figma).",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Enterprise creative and document SaaS leader facing severe terminal disruption under Macrotrend #1 (Automation & Cognitive Tech / AI Disruption). Generative AI diffusion models (Midjourney, Flux, Stable Diffusion) and browser-native tools (Canva, Figma) commoditize routine asset creation, compress agency/enterprise seat counts, and pressure pricing power. Downstream gates halted by strict waterfall, though management would also trigger Gate 5 red flags (FTC lawsuit over deceptive dark cancellation patterns settled for $150M and $1B cash breakup fee burned on aborted $20B Figma panic bid).",
+    "evidence": "10-year median ROIC of 40.1% (FY2025 GAAP ROIC of 61.7%) and pristine ~88% gross margins reflect historic creative workflow dominance. FY2025 revenue reached $23.77B with $8.71B EBIT and $10.03B OCF ($7.91B Owner FCF, 111.7% conversion). However, the core seat-based model faces severe structural headwinds: (1) Generative AI models automate routine digital asset generation, threatening seat expansion at enterprise customers; (2) Browser-native design leader Figma out-innovated Adobe XD in UI/UX, leading to an aborted $20B acquisition that cost $1B in cash breakup fees; (3) The FTC/DOJ sued Adobe for deceptive dark patterns and hidden early termination fees on subscriptions, settled in March 2026 for $150M ($75M penalty + $75M relief), violating customer value-for-money; (4) Balance sheet remains sound ($5.4B cash vs $6.2B long-term debt), but terminal advantage period is compressed to 5 years (CAP < 15 threshold), triggering immediate rejection at Gate 4."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ECL",
+  "ticker": "ECL",
+  "universe": "us",
+  "company": "Ecolab Inc.",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Route-based service density (>25,000 field sales and service specialists) and closed-loop proprietary dispensing equipment (warewashing, 3D TRASAR digital controllers) create insurmountable customer switching barriers. Chemical inputs represent <1-2% of client operating expenses but protect against catastrophic foodborne contamination, hospital HAIs, or industrial cooling/boiler downtime. Pricing power proved by converting 2022-2023 energy surcharges into permanent 6-10% list-price increases while maintaining positive volume growth (+2%) and expanding GAAP operating margins toward 17-20%. Primary erosion risks include expensive M&A integration and localized generic chemical price competition at low-end institutional accounts.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in mission-critical water treatment, commercial hygiene, and infection prevention. High customer switching costs backed by proprietary equipment and 25,000+ field service technicians creating an indispensable operational toll booth. Excellent 5-macrotrend resilience with direct secular tailwinds from industrial water scarcity, reshoring, and AI data center liquid cooling. Pristine cash conversion (~95%) and conservative balance sheet (net debt/earnings ~3.2x, 8.9x interest coverage). [5-10Y g: water/hygiene/pest volume 3.5% + net price 2.5% + margin expansion 0.5% + buybacks and bolt-on M&A 1.0%]",
+    "evidence": "Multi-cycle financial performance demonstrates enduring quality: Tangible operating ROIC consistently exceeds 50% (52.2% in FY2025; 10-year range 27-94%), while GAAP ROIC has rebounded to 14.5-16.0% following post-pandemic normalization. FCF conversion averages >95% of GAAP net income ($1.84B Owner FCF in FY2025). Revenue is diversified across Global Industrial (Water/Nalco ~47%), Global Institutional & Specialty (~35%), Pest Elimination (~11%), and Healthcare/Life Sciences (~7%). Pricing power demonstrated across cycles: successfully passed through 6-10% cumulative price hikes during 2022-2023 inflation with zero customer churn, sustaining positive organic growth (+7% organic in 2026). Prudent capital allocation reflected in divesting non-core upstream oil & gas (ChampionX) and reinvesting in high-growth liquid cooling for AI data centers and microelectronics (Ovivo, CoolIT). Balance sheet remains sound with Net Debt / NI at 3.24x ($6.72B net debt vs $2.08B NI) and EBIT interest coverage at 8.94x, well within fortress investment-grade safety limits."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

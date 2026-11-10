@@ -1,0 +1,30 @@
+{
+  "id": "ASSA B.SE",
+  "ticker": "ASSA B",
+  "universe": "eu",
+  "company": "ASSA ABLOY",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Spec-in key systems installed base and decentralized acquisition machine. Unrivaled global scale in mechanical and digital access solutions (HID, Yale, effeff). Proven pricing power covering raw metal and wage inflation across multiple cycles. 5-year median GAAP ROIC is 12.5% and operating tangible ROIC exceeds 100% due to serial acquisition intangibles.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in physical and electromechanical access solutions with an unassailable installed base in master key systems, architectural spec-in, and HID electronic credentials. Over two-thirds of revenue driven by resilient aftermarket maintenance and replacement. Proven pricing power across multiple inflationary cycles with multi-year FCF conversion >100%. [5-10Y g: aftermarket volume 2.0% + smart access mix 2.0% + pricing power 2.0% + bolt-on M&A 2.0% - restructuring drag 0.5% + buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC of 12.5% with tangible operating ROIC >100% due to capital-light assembly and large acquisition intangibles. Owner FCF conversion averaged 119.6% from 2022 to 2025 (FY2025 FCF of 18.6B SEK on 14.7B SEK net income). Net debt / NI sits at 3.07x with 6.98x interest coverage (EBIT 23.1B SEK vs 3.3B SEK interest), easily meeting the <4.0x leverage and >5.0x coverage thresholds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

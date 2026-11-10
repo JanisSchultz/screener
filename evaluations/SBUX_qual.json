@@ -1,0 +1,30 @@
+{
+  "id": "SBUX",
+  "ticker": "SBUX",
+  "universe": "us",
+  "company": "Starbucks",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global store density, proprietary ethical coffee sourcing/roasting infrastructure, and the Starbucks Rewards digital ecosystem (~34M+ active US members with substantial prepaid stored-value float) create high customer repeat frequency and scale advantages over independent cafes. Empirical proof includes a 10-year median ROIC of 22.8% and gross margins near 68-70%. Primary erosion threats include value-conscious customer pushback on premium pricing, beverage preparation complexity eroding throughput, rapid low-cost automated rivals in international markets (e.g. Luckin in China), and store-level labor friction.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Starbucks commands an iconic global beverage brand and habitual daily ritual, it faces severe structural headwinds under the 5-Macrotrend filter. Demographic aging and labor scarcity (Pillar 2) create persistent operational bottlenecks and wage inflation across its ~400,000 store workers that cannot be automated without degrading the handcrafted coffeehouse proposition. Furthermore, geopolitical and low-cost competitive displacement in China (Pillar 3) broke its primary international growth vector, forcing a retreat to a licensed JV model. Combined with balance sheet fragility (-$8.1B shareholders' deficit from historic debt-funded buybacks and ~$15B in long-term debt), Starbucks fails the Munger durability bar for a 15+ year predictable compounding runway.",
+    "evidence": "FY2025 revenue was $37.2B with operating income compressing to $2.9B (7.9% operating margin) before recovering toward $2.5B+ net income in FY2026 under Brian Niccol's 'Back to Starbucks' turnaround. 10-year median ROIC is 22.8%, proving historical brand power and returns on capital. However, traffic declines in 2024-2025 demonstrated pricing elasticity limits for $7+ handcrafted drinks. In China, relentless low-cost competition from Luckin Coffee forced a structural conversion of retail operations into a licensed JV in 2026. The balance sheet carries ~$14.6B-$15.0B in long-term debt against net income of $1.86B-$2.53B (debt/net income ~5.8x-7.8x) and a total stockholders' deficit of $(8.1B) resulting from aggressive debt-funded share repurchases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

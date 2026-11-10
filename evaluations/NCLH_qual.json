@@ -1,0 +1,30 @@
+{
+  "id": "NCLH",
+  "ticker": "NCLH",
+  "universe": "us",
+  "company": "Norwegian Cruise Line Holdings",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket leisure travel easily deferred in recessions or external shocks; cruise lines are explicitly excluded from essential Western needs and everyday staple habits.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Cruise vacations are big-ticket, deferrable discretionary leisure purchases rather than an essential Western necessity or entrenched everyday habit, exposing demand to severe cyclical and shock-driven contractions (as demonstrated by pandemic shutdowns and >2x share dilution since FY2019). Even structurally, the business operates with sub-hurdle capital returns (5.5% 10Y median ROIC; ~5.9%–9.8% in FY2025 and ~9.1%–9.2% in 2026 TTM), negative FY2025 GAAP FCF (~-$1.2B amid $3.26B shipbuild capex), and heavy leverage ($14.83B net debt, 5.5x Adjusted EBITDA as of Q3 2026), failing the Munger compounding bar.",
+    "evidence": "Business Model & Demand Profile: Norwegian Cruise Line Holdings operates cruise lines (including Norwegian Cruise Line and Oceania Cruises) selling discretionary leisure vacations—an explicit Gate 2 non-essential, deferrable cyclical category. Historical Capital Efficiency & Earnings: 10Y median workbook ROIC is 5.5%, with FY2025 ROIC reported between 5.87% and 9.83% and 2026 TTM tracking ~9.1%–9.2% (below the 12% hurdle). FY2024 revenue of $9.45B produced $1,560.9M operating income and $910.3M GAAP net income; FY2025 revenue grew ~3.7% to $9.8B with $1,592.3M operating income, while GAAP net income fell to $423.2M ($1.045B adjusted) weighed down by $953.5M net interest expense (including $272.5M debt extinguishment/modification costs). Q3 2026 revenue flattened YoY at $2.95B with $491.5M quarterly net income (vs. $419.3M in Q3 2025). Cash Flow, Capex & Balance Sheet: Capital intensity from newbuild ship deliveries (including Norwegian Aqua and Oceania's Allura) drove capex (additions to property and equipment, net) to $2,750.4M in FY2023, $1,211.0M in FY2024, and $3,259.6M in FY2025, resulting in roughly -$1.2B GAAP FCF in FY2025. As of September 30, 2026 (Q3 2026), total debt stood at $15.09B against $256.5M cash ($14.83B net debt; 5.5x net leverage vs. ~$2.55B FY2026 Adjusted EBITDA guidance), alongside ongoing refinancings including $950M senior unsecured notes due 2031 issued in October 2026. Share Dilution: Sustaining liquidity through the COVID-19 shock required heavy equity and convertible issuances, expanding basic weighted-average shares from 213.9M in FY2019 to 448.5M in FY2025 and 458.3M in 9M 2026 (diluted weighted-average shares rose from 216.5M in FY2019 to 463.7M in 9M 2026)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

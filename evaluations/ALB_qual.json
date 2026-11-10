@@ -1,0 +1,30 @@
+{
+  "id": "ALB",
+  "ticker": "ALB",
+  "universe": "us",
+  "company": "Albemarle Corporation",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Albemarle holds premier physical asset stakes (Salar de Atacama brine concession in Chile and a 49% interest in the Greenbushes hard-rock mine in Australia), qualifying as irreplaceable natural resource infrastructure. However, it lacks economic pricing power; prices are set by global commodity spot and index benchmarks. Cyclical supply surges from China and alternative geographies severely depressed realized prices by >80% from 2022 peaks, driving GAAP ROIC negative (-8.9% to -13.7% in 2024, -2.0% in 2025) and failing the 12% multi-cycle threshold (10-year median ROIC ~7.5%). Primary erosion threats include global supply volatility, substitution risks, and Chilean state-majority resource control.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Albemarle controls premier tier-one lithium assets (Atacama brine, Greenbushes JV), but operates as a structural commodity price-taker lacking pricing power >= inflation across the cycle. Multi-cycle capital efficiency fails the Munger hurdle (10-year median GAAP ROIC ~7.5%, plunging to negative returns in 2024-2025 during the cyclical trough). Extreme earnings volatility, multi-billion-dollar asset write-downs, and emerging Chilean resource nationalism negate sustainable economic rent protection.",
+    "evidence": "10-year median GAAP ROIC is ~7.5%, well below the 12% hurdle. After an unrepeatable peak during the 2022-2023 lithium spike ($70k+/ton), realized lithium prices collapsed to ~$10-$12/kg, resulting in a FY2024 GAAP net loss of $(1.2B) and deeply negative ROIC (-8.9% to -13.7%). CapEx had to be slashed from >$2B to ~$600M in 2025 alongside significant asset impairments, restructuring charges, and bank covenant amendments through mid-2026. While operational cash flow and FCF rebounded in late 2025/2026 as lithium pricing stabilized near $20/kg, Albemarle remains fully exposed to commodity price cycles without durable pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

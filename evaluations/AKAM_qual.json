@@ -1,0 +1,30 @@
+{
+  "id": "AKAM",
+  "ticker": "AKAM",
+  "universe": "us",
+  "company": "Akamai Technologies, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Moat source rests on an extensive globally distributed edge architecture spanning 4,000+ points of presence with carrier co-locations, creating high switching costs in enterprise security (Guardicore microsegmentation, Prolexic DDoS, API security). However, empirical proof fails the Munger hurdle: 5-year median GAAP ROIC has deteriorated to ~4.5-5.1% (10Y historical median 11.2%), well below the 12% threshold, with GAAP operating margins compressing from historical ~25-28% down to ~13.5%. Primary erosion threats: relentless secular commoditization and downward renewal pricing in traditional CDN delivery (-5% YoY in FY25), multi-CDN enterprise procurement, and intense competition across cloud edge and security from Cloudflare, hyperscalers (AWS, Azure, GCP), and specialized cybersecurity vendors.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & CDN Pricing Pressure, REJECT). While enterprise security and cloud infrastructure exhibit sticky switching costs, Akamai's legacy CDN delivery segment (~30% of revenue) suffers structural price deflation on renewals. 5-year median GAAP ROIC has fallen to ~4.5-5.1% (10Y median 11.2%), failing the 12% moat proof hurdle, while GAAP operating margins have compressed to ~13.5% under heavy capital expenditures for cloud compute.",
+    "evidence": "Financial Track Record: Revenue grew from $3.81B (FY23) to $3.99B (FY24) and $4.21B (FY25, +5% YoY). However, GAAP operating income contracted from historical levels to $567M in FY25, representing a GAAP operating margin of 13.5% (down from 16.7% in FY23 and historical ~25%+). FCF was $890M in FY23, $1.13B in FY24, and $1.01B in FY25. Capital Efficiency: GAAP ROIC has remained persistently sub-hurdle at ~5.1% (FY23), ~4.9% (FY24), and ~4.5% (FY25), with a 10-year historical median of 11.2%, failing the >=12% threshold. Segment Dynamics (FY25): Security generated $2.24B (53% of revenue, +10% YoY, driven by Guardicore microsegmentation and API protection); Delivery fell to $1.26B (30% of revenue, -5% YoY, reflecting continuous downward contract pricing pressure per gigabyte delivered); Compute grew to $314M (8% of revenue, +36% YoY, driven by Linode/CIS expansions and AI inference contracts). Pricing Power & Moat Degradation: Delivery traffic continues to face commoditization and DIY disintermediation by major hyperscalers and content owners. Capital allocation into M&A (Linode $900M, Guardicore $600M) and compute infrastructure capex has expanded invested capital without restoring double-digit ROIC."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

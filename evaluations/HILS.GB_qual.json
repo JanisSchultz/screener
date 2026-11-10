@@ -1,0 +1,30 @@
+{
+  "id": "HILS.GB",
+  "ticker": "HILS",
+  "universe": "eu",
+  "company": "Hill & Smith",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local galvanizing route density and DOT crash certifications provide niche advantages, but galvanizing and road barriers face contractor price competition, bidding against rival suppliers (e.g. Valmont, Lindsay) with limited structural pricing power across cyclic government infrastructure budgets.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Provider of highway crash barriers, galvanizing services, and engineered supports. While local galvanizing plants have route density, galvanizing is a commoditized industrial service and road safety barriers face competitive contractor bidding, lacking structural pricing power >= inflation across the full cycle.",
+    "evidence": "Multi-cycle statutory operating margins have fluctuated between 8% and 14% across economic cycles before the recent post-COVID US infrastructure stimulus. Products are sold through competitive bidding to civil engineering contractors and DOT projects with price sensitivity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

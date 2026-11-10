@@ -1,0 +1,30 @@
+{
+  "id": "ATS.AT",
+  "ticker": "ATS",
+  "universe": "eu",
+  "company": "AT&S",
+  "country": "Austria",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Manufacturing Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Process know-how and qualification in high-end IC substrates and PCBs, but structurally lacks pricing power against dominant semi customers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Highly capital-intensive PCB and IC substrate manufacturer suffering from severe customer concentration (AMD/Intel), weak pricing power, and depressed multi-cycle returns on capital exacerbated by heavy debt-financed capex in Malaysia.",
+    "evidence": "Depressed multi-cycle GAAP ROIC (<6% median) and extreme margin volatility. Capex-heavy manufacturing model with massive debt-funded capacity expansions in Kulim, Malaysia and Leoben, Austria. Customer power is overwhelmingly concentrated among a few dominant semi giants (AMD, Intel, Apple), leaving AT&S as a price-taker unable to earn its cost of capital across the cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

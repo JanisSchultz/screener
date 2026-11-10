@@ -1,0 +1,30 @@
+{
+  "id": "HIK.GB",
+  "ticker": "HIK",
+  "universe": "eu",
+  "company": "Hikma",
+  "country": "United Kingdom",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Generic injectable and oral solid markets are characterized by multi-source commodity competition and chronic price deflation imposed by consolidated hospital GPOs and wholesalers, leaving Hikma without proprietary pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3a (Moat Archetype: None) and Gate 3b (Pricing & Proof of Moat, REJECT). Generic hospital injectables and oral formulations face chronic price deflation from consolidated US hospital purchasing consortia (GPOs) and wholesalers, preventing sustained pricing power above inflation.",
+    "evidence": "Hikma generates the majority of operating profits from US generic injectables and oral solid generics, where absence of patent exclusivity exposes products to competitive generic bidding and structural price deflation. While core ROIC has historically been ~16-17% through manufacturing scale, the business model lacks a structural moat archetype (3a=None) and cannot unilaterally raise prices at or above inflation without losing volume."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

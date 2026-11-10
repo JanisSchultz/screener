@@ -1,0 +1,43 @@
+{
+  "id": "MCK",
+  "ticker": "MCK",
+  "universe": "us",
+  "company": "McKesson",
+  "price": 1060.84,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "US pharmaceutical distribution and oncology platform duopoly operating on negative working capital with structural tangible ROIC capped at 35.0%. Pristine capital structure with net debt of $2.55B (0.54x NI) and 25.1x interest coverage; negative book equity (-$2.2B) reflects massive cumulative share repurchases (share count halved since FY16) and fully accrued opioid litigation. FY2025 peak Owner EPS of $40.73 is fully backed by $5.47B Owner FCF (115% conversion). 5-10Y through-the-cycle growth of 9.5% reflects 4.0% specialty pharma volume, 2.0% oncology mix, 1.0% manufacturer fee pricing, -0.5% biosimilar drag, and 3.0% annual share repurchases."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 40.7333,
+    "current_multiple": 26.04,
+    "par_multiple": 26.57,
+    "par_value": 1082.28,
+    "percent_vs_par": -0.0198,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0031,
+    "expected_irr_5y": 0.1025,
+    "market_implied_cap": 19.6,
+    "moat_runway_margin": 0.4,
+    "market_implied_growth": 0.0871,
+    "growth_margin_of_safety": 0.0079
+  },
+  "health_checks": {
+    "net_debt_years": 1.37,
+    "net_debt_ok": true,
+    "interest_coverage": 25.15,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.4611,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "JNJ",
+  "ticker": "JNJ",
+  "universe": "us",
+  "company": "Johnson & Johnson",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extensive patent portfolios, FDA regulatory approvals, and specialized physician training create high clinical switching costs across MedTech (electrophysiology, cardiovascular, orthopaedics) and Innovative Medicine (oncology, immunology). Proven by 10-year median GAAP ROIC of 19.5% (reaching 30.8% in FY2025) and stable ~68% gross margins. Primary erosion threats are patent expirations / biosimilar competition on key biologics (e.g. Stelara) and Medicare drug price negotiations.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite AAA-rated healthcare titan with dual moats across Innovative Medicine (oncology/immunology) and MedTech (cardiovascular/electrophysiology/orthopaedics). High switching costs and patent estates protect gross margins of ~68% and GAAP ROIC of ~20%. Pristine balance sheet with <0.8x net debt/earnings and 34x interest coverage. [5-10Y g: MedTech volume 3.0% + oncology volume 3.0% + price/mix 1.0% - Stelara biosimilar/IRA drag 1.5% + share repurchases 1.5%]",
+    "evidence": "GAAP ROIC has averaged 20%+ over the past decade (median 19.5%, reaching 30.8% in FY2025). 10-year cumulative Owner FCF conversion exceeds 110% of GAAP net income, generating ~$18B+ in annual owner free cash flow. Balance sheet holds S&P prime 'AAA' credit rating with $19.7B cash against $39.4B long-term debt (net debt/earnings <0.8x) and 34.6x interest coverage ($33.6B EBIT vs $971M interest). High-margin MedTech platforms (Biosense Webster, Abiomed, Shockwave) and premier oncology franchise (Darzalex, Carvykti) deliver durable pricing power and organic growth insulated from economic cycles, easily absorbing biosimilar erosion from legacy biologics."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

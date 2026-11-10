@@ -1,0 +1,30 @@
+{
+  "id": "FISV",
+  "ticker": "FISV",
+  "universe": "us",
+  "company": "Fiserv",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High customer switching costs in core banking ledgers (DNA, Premier) where community banks face high operational risk to migrate, combined with an installed merchant POS base via Clover. However, empirical moat proof is lacking: 5-year median GAAP ROIC is ~7.2%, failing the 12% hurdle due to the massive capital dilution from the 2019 First Data merger ($22B all-stock plus debt). Pricing power is constrained: bank clients face consolidation and tolerate rather than love legacy platforms, while merchant acquiring faces aggressive competition from modern cloud-native POS and payment facilitators (Toast, Block/Square, Adyen, Stripe).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While Fiserv benefits from high switching costs in bank core processing and an entrenched merchant acquiring footprint via Clover, it structurally fails the empirical capital efficiency hurdle: 5-year median GAAP ROIC is ~7.2% (ranging 3.4% to 8.8%), well below the 12.0% threshold. The 2019 First Data acquisition burdened the balance sheet with $29B+ in debt and over $40B in goodwill/intangibles, permanently diluting return on invested capital. Core banking customers face consolidation and exhibit resistance to price hikes, while merchant acquiring faces intense disintermediation pressure from modern agile platforms like Toast, Block, and Adyen.",
+    "evidence": "5-year GAAP ROIC (2021-2025) has hovered between 3.4% and 8.8% with a median of ~7.2%, consistently falling short of the required 12.0% hurdle. The 2019 First Data merger left Fiserv with $29.1B in total debt against only ~$800M in cash and ~$3.0B-$3.5B in GAAP net income, creating a debt/net income ratio of ~8.5-9.7x (far exceeding the 4.0x peace-of-mind ceiling). Substantial goodwill and intangibles (> $40B) reflect heavy post-merger invested capital that depresses economic profit spreads near or below WACC (~7.5%). Although Clover generates strong merchant volume and FCF conversion is respectable (~$4B-$5B FCF), persistent low ROIC and competitive pricing headwinds in both merchant solutions and core processing preclude a pass under Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

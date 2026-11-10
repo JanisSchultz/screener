@@ -1,0 +1,30 @@
+{
+  "id": "DSY.FR",
+  "ticker": "DSY",
+  "universe": "eu",
+  "company": "Dassault Systèmes",
+  "country": "France",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep CAD/PLM standard lock-in across global aerospace, defense, and automotive engineering lifecycles (CATIA, SOLIDWORKS, ENOVIA) creates multi-decade customer switching barriers; demonstrated by 17.2% median GAAP ROIC, >32% operating margins, and pricing power exceeding inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global industrial standard in 3D CAD/PLM software (CATIA, SOLIDWORKS, 3DEXPERIENCE) with unassailable switching barriers in aerospace and automotive engineering, generating >114% FCF conversion and backed by a €2.98B net cash balance sheet fortress. [5-10Y g: organic cloud/PLM volume 4.0% + price 2.0% + mix/reinvestment 0.5% - auto cyclical drag 0.5% + net buyback 0.5%]",
+    "evidence": "Reported 4-year median GAAP ROIC of 17.16% (tangible ROIC >100%). Cumulative 4-year Owner FCF of €5,032M on Net Income of €4,379M delivers 114.9% cash conversion. Balance sheet holds €4,125M in cash against €1,146M in long-term debt (€2,979.6M net cash) with 35.6x interest coverage. While Life Sciences (Medidata) faced transitional headwinds in FY25 (4% revenue growth), core industrial engineering software retains high renewal rates and expanding subscription ARR."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

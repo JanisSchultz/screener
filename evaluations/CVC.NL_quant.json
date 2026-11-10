@@ -1,0 +1,43 @@
+{
+  "id": "CVC.NL",
+  "ticker": "CVC",
+  "universe": "eu",
+  "company": "CVC Capital Partners",
+  "price": 14.46,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing €1.66B intangibles/goodwill; asset-light alternative asset manager with >80% FAUM locked in 10Y closed-end funds. Peak Owner EPS reflects FY2024 (0.348 EUR) stripping FY2025 mark-to-market investment spikes. Forward g_implied of 10.0% aligns with qualitative guidance: 6.0% FPAUM growth, 1.0% fee mix, 2.0% credit/secondaries expansion, -1.0% realization drag, and 2.0% shareholder yield."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 0.3477,
+    "current_multiple": 41.59,
+    "par_multiple": 35.34,
+    "par_value": 12.29,
+    "percent_vs_par": 0.1768,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0302,
+    "expected_irr_5y": 0.0949,
+    "market_implied_cap": 17.7,
+    "moat_runway_margin": -2.7,
+    "market_implied_growth": 0.1937,
+    "growth_margin_of_safety": -0.0937
+  },
+  "health_checks": {
+    "net_debt_years": 0.6,
+    "net_debt_ok": true,
+    "interest_coverage": 24.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.95,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

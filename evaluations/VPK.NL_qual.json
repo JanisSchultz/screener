@@ -1,0 +1,30 @@
+{
+  "id": "VPK.NL",
+  "ticker": "VPK",
+  "universe": "eu",
+  "company": "Vopak",
+  "country": "Netherlands",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable deep-water port terminal concessions with take-or-pay contracts (~70% >3Y duration); mandatory contractual inflation indexation and utility cost pass-through preserve real returns.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Irreplaceable global deep-water port tank storage infrastructure with long-term land concessions. Structural pricing power anchored by take-or-pay contracts (~70% >3Y) with explicit CPI indexation and utility pass-throughs. Insulated from AI disruption; resilient against energy transition via expansion into LNG, industrial chemicals, and green ammonia. Solid balance sheet with 3.36x Net Debt/NI and 6.6x interest coverage. [5-10Y g: capacity expansion 1.5% + CPI contract indexation 2.0% + energy transition mix 1.0% + net buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC of 12.01% and operating ROIC of 12.28%. Outstanding cash generation with FCF conversion of 173.5%. Debt service well-covered with 6.6x interest coverage on critical logistics assets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PUB.FR",
+  "ticker": "PUB",
+  "universe": "eu",
+  "company": "Publicis",
+  "country": "France",
+  "sector": "Communication Services",
+  "sub_industry": "Advertising (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Publicis leads peers via proprietary Epsilon identity data and Sapient digital transformation, 5-year median GAAP ROIC hovers around 8.5–9.1%, well below the 12% hurdle due to past acquisition goodwill. Agency fee models face continuous procurement scrutiny and client in-housing threats, lacking pricing power >= inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & lacks above-inflation pricing power, REJECT). Publicis is the best-performing global advertising holdco, but historical GAAP ROIC of 8.5–9.1% fails the 12% Munger bar due to acquisition intangibles (€4.4B Epsilon, €3.7B Sapient). Agency contracts face constant procurement re-tendering and in-housing, precluding durable pricing power above inflation.",
+    "evidence": "Publicis Groupe reported operating margins of 18.0–18.2% and annual FCF before working capital of €1.7B–€2.0B across 2022–2025. However, GAAP ROIC remains depressed at ~8.5–9.1% against a WACC of ~9.3%, burdened by €10B+ in goodwill and intangibles. Client marketing budgets are cyclical, and holding company media buying faces disintermediation from direct tech platforms and generative AI creative tools."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

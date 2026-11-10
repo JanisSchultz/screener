@@ -1,0 +1,30 @@
+{
+  "id": "MUV2.DE",
+  "ticker": "MUV2",
+  "universe": "eu",
+  "company": "Munich Re",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Reinsurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unrivaled balance sheet scale and proprietary actuarial data enable underwriting of complex mega-risks; scale economies and ERGO integration create superior risk absorption and hard market pricing leverage.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "The world's leading reinsurance powerhouse. Passes Gate 6: genuine cash generation, multi-decade unbroken dividend, 20%+ median ROIC, and fortress balance sheet with ~298% Solvency II ratio and massive negative-cost float. [5-10Y g: reinsurance volume 3.0% + price indexation 2.0% + ERGO direct growth 1.0% + buybacks 1.0%]",
+    "evidence": "5-year median ROIC of 20.5%, Net Income compounding to record €6,118M in FY2025, interest coverage >24x, and Solvency II ratio of 287%-298% (far exceeding the 200% threshold). Reserving prudence placed in the top decile of global peers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LH",
+  "ticker": "LH",
+  "universe": "us",
+  "company": "Labcorp",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "National scale duopoly with Quest Diagnostics; extensive hub-and-spoke logistics network, thousands of patient service centers, and proprietary EMR/managed care integrations create substantial network density and switching costs. However, pricing power is constrained on routine testing by commercial insurer fee schedules and Medicare Clinical Laboratory Fee Schedule mandates.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Labcorp and Quest form a national diagnostic testing duopoly with embedded EMR workflows, the business faces an active, unhedged terminal headwind under Macrotrend 5 (Structural Inflation & Cost of Capital). Statutory Medicare fee cuts under PAMA (up to 15% statutory cuts on high-volume routine lab tests) and aggressive commercial payer fee negotiations prevent Labcorp from passing through ongoing wage inflation for phlebotomists, couriers, and laboratory technicians, capping the competitive advantage runway well below the 15-year hurdle.",
+    "evidence": "Completed tax-free spin-off of clinical development CRO business (Fortrea, FTRE) in mid-2023 to refocus on core Diagnostics and Biopharma Laboratory Services (revenue $12.2B in 2023, $13.0B in 2024, ~$13.95B in 2025). Following transient pandemic PCR testing windfalls in 2020-2021, operating margins and ROIC normalized to ~10-12% (10Y median ROIC ~10.2%). Routine lab testing experiences negative statutory price realization via PAMA (~$125M estimated revenue reduction on upcoming fee schedule updates), forcing Labcorp to continuously acquire regional hospital outreach laboratories to manufacture volume growth. Post-spin debt is manageable (~$5.5B with interest coverage ~7-9x), but inability to pass through real cost inflation limits secular runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PSPN.CH",
+  "ticker": "PSPN",
+  "universe": "eu",
+  "company": "PSP Swiss Property",
+  "country": "Switzerland",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prime central business district office and retail locations in Zurich and Geneva provide asset scarcity, but commercial landlord leasing lacks structural switching costs, network effects, or super-normal returns on capital.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing: ROIC 2.5-3.5% vs 12% hurdle; archetype 'None', REJECT). High-quality Swiss commercial property portfolio in prime Zurich and Geneva locations; conservatively managed, but prime property yields of 3.0-3.5% structurally fail the 12% ROIC threshold.",
+    "evidence": "Normalized GAAP ROIC tracks at 2.5-3.5%, constrained by prime Swiss commercial property capitalization rates (3.0-3.5% net yields). Conservative balance sheet with LTV ~30% protects capital, but does not overcome sub-hurdle capital efficiency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

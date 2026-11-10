@@ -1,0 +1,30 @@
+{
+  "id": "HNR1.DE",
+  "ticker": "HNR1",
+  "universe": "eu",
+  "company": "Hannover Re",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Reinsurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "World's #3 reinsurer with the lowest admin cost ratio (~1.5%) in the global industry; passes cost efficiencies to ceding clients to secure preferred treaty access while maintaining disciplined risk-adjusted underwriting.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Top-tier global reinsurer with industry-leading low-cost operations. Passes Gate 6: real cash conversion, 16%+ median ROIC, float-funded business model, and pristine Solvency II capital buffer above 250%. [5-10Y g: P&C reinsurance volume 3.5% + treaty rate hardening 2.0% + investment float yield 1.0% + capital return 0.5%]",
+    "evidence": "5-year median ROIC of 16.0%, EBIT growing from €1,525M (2022) to €3,546M (2025), and Solvency II ratio of 256%-261% well above the 200% threshold. Operating cost advantage and conservative reserve redundancy provide multi-cycle underwriting resilience."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

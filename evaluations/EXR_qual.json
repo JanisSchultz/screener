@@ -1,0 +1,30 @@
+{
+  "id": "EXR",
+  "ticker": "EXR",
+  "universe": "us",
+  "company": "Extra Space Storage",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Self-Storage REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential / easily forgone product or service. Self-storage is an optional convenience used during moves or clutter accumulation rather than an essential necessity or everyday habit.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need & Entrenched Habits, REJECT). Self-storage is an optional, deferrable service tied to moving activity and clutter storage rather than an essential functional need or daily habit. Easily forgone or vacated during economic tightening.",
+    "evidence": "Extra Space Storage operates >3,700 locations following the $14B Life Storage merger. Self-storage demand is discretionary and non-essential, subject to housing turnover cycles and high customer churn. Capital efficiency is structurally sub-hurdle (5Y median GAAP ROIC of 5-7% vs 12% requirement), and debt load is heavy ($11B+ debt vs ~$800M net income)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

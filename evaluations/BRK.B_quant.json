@@ -1,0 +1,43 @@
+{
+  "id": "BRK.B",
+  "ticker": "BRK.B",
+  "universe": "us",
+  "company": "Berkshire Hathaway",
+  "price": 556.11,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": 31.29,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.1964,
+    "fin_note": "Normalized to Class B basis: statement Class A EPS divided by 1500 and stripped of ASU 2016-01 mark-to-market investment swings; peak operating earning power of $31.29/sh. Operating ROIC of 19.64% reflects tangible capital efficiency across insurance, freight rail (BNSF), energy (BHE), and industrial manufacturing. 5-10Y through-the-cycle growth of 7.5% driven by 3.5% operating volume, 2.0% pricing/tariffs, and 1.5% float/T-bill yields, offset by 0.5% capex excess over D&A, plus 1.0% opportunistic buybacks. Unrivaled fortress balance sheet holding >$350B in cash and US Treasuries with zero net debt at holding parent."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 31.29,
+    "current_multiple": 17.77,
+    "par_multiple": 15.88,
+    "par_value": 496.94,
+    "percent_vs_par": 0.1191,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0511,
+    "market_implied_cap": 22.4,
+    "moat_runway_margin": -2.4,
+    "market_implied_growth": 0.1034,
+    "growth_margin_of_safety": -0.0284
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 17.27,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.4449,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RBREW.DK",
+  "ticker": "RBREW",
+  "universe": "eu",
+  "company": "Royal Unibrew",
+  "country": "Denmark",
+  "sector": "Consumer Staples",
+  "sub_industry": "Brewers (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Strong regional market share and local route-to-market distribution in the Nordics, Baltics, and Italy across beer, malt beverages, and soft drinks. Moderate pricing power in home territories.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Regional multi-niche beverage model lacks global brand scale and faces saturated, zero-growth domestic markets in the Nordics and Baltics. Organic runway is structurally constrained, forcing reliance on debt-funded cross-border bolt-on acquisitions in mature markets to sustain growth.",
+    "evidence": "Royal Unibrew holds solid regional positions in Denmark, Finland, and the Baltics, but organic volume growth is near zero due to demographic maturity. Growth has been heavily reliant on acquisitions (e.g., Vrumona in the Netherlands, Norkhald, San Giorgio), increasing leverage and execution risk without establishing durable global moat barriers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

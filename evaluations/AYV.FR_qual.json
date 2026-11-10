@@ -1,0 +1,30 @@
+{
+  "id": "AYV.FR",
+  "ticker": "AYV",
+  "universe": "eu",
+  "company": "Ayvens (ALD+LeasePlan)",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Procurement scale and fleet purchasing power fail to provide pricing power; corporate leasing contracts are competitively bid with severe residual-value exposure on second-hand vehicle dispositions (exacerbated by EV depreciation volatility), holding ROIC well below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Ayvens (formed from ALD Automotive and LeasePlan) is a capital-heavy vehicle fleet lessor with bank-like economics and low single-digit GAAP ROIC, well below the 12% hurdle. Corporate fleet tenders are fiercely competitive and margins are highly exposed to second-hand vehicle residual value depreciation, especially amidst volatile EV resale pricing.",
+    "evidence": "Ayvens operates as a specialized vehicle financing and fleet management lessor backed by Société Générale. The business model requires massive debt funding of vehicle assets, generating structural single-digit ROIC on invested capital. Second-hand car market normalization and sharp EV depreciation compress remarketing margins and expose residual value risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

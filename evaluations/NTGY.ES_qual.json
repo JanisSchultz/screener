@@ -1,0 +1,30 @@
+{
+  "id": "NTGY.ES",
+  "ticker": "NTGY",
+  "universe": "eu",
+  "company": "Naturgy",
+  "country": "Spain",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regulated natural gas and electricity distribution concessions hold local natural monopoly positions in Spain and Latin America, but allowed returns are politically capped by the CNMC (financial remuneration rate ~5.58% for electricity distribution and ~5.44% for gas distribution). The merchant generation and energy supply divisions are price-takers in volatile wholesale electricity and LNG markets, exposed to state clawbacks (topes al gas) and windfall taxes. 5-year median GAAP ROIC is ~8% (ranging from 6.5% to 11.1%), failing the 12% hurdle, with no autonomous pricing power >= inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Proof of Moat & Pricing Power, REJECT). Spanish multi-utility with regulated gas and power networks and merchant generation. Regulated asset base remuneration is capped at ~5.5-6.5% by the CNMC, while merchant power and gas commercialization face wholesale price volatility, regulatory clawback interventions, and windfall taxes. Multi-cycle GAAP ROIC is sub-hurdle (~8%), lacking genuine pricing power >= inflation.",
+    "evidence": "Consolidated EBITDA hovered around €5.3B-€5.5B across 2023-2025 with net debt at €12.3B (~2.3x EBITDA). Historical reported ROIC stood at 6.5% in 2018 and averaged ~8-9% over the 2018-2024 strategic plan, only briefly reaching 11.1% in 2024 and 11.3% in 2025 during elevated European gas/power sparks, well short of the 12% cycle-neutral hurdle. Shifting shareholder dynamics (CriteriaCaixa, CVC, GIP, IFM) and aborted split plans (Project Gemini) reflect ongoing strategic and regulatory frictions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

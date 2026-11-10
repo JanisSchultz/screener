@@ -1,0 +1,30 @@
+{
+  "id": "SYF",
+  "ticker": "SYF",
+  "universe": "us",
+  "company": "Synchrony Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Consumer Finance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential private-label store credit cards and promotional financing with high APRs, late fee dependency, and regulatory/CFPB risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected \u2013 G2 Essential Need). Synchrony Financial operates private-label store credit card programs and point-of-sale promotional financing for retail partners and elective healthcare (CareCredit). Store credit cards are an easily forgone, non-essential financing tool for discretionary consumer purchases, carrying high APRs (often 30%+), deferred-interest penalties, and vulnerability to CFPB late fee caps and consumer credit degradation.",
+    "evidence": "Synchrony's loan portfolio is concentrated in private-label credit cards with major retailers (Amazon, Lowe's) and CareCredit. The business model depends on high APRs (averaging ~21-23%+ net interest margin), late fees, and promotional deferred interest, exposing it to severe regulatory scrutiny (CFPB $8 late fee rule) and cyclical credit loss shocks (FY24 net charge-off rate spiked to 6.31%). Retail partners hold strong bargaining power through Retailer Share Arrangements (RSAs) and can switch providers (as Walmart and Gap did)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TRP.CA",
+  "ticker": "TRP",
+  "universe": "ca",
+  "company": "TC Energy",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant North American natural gas transmission grid, but 5-year median GAAP ROIC of 6.5% falls far short of the 12% threshold due to rate-base regulation, massive asset intensity, and multi-billion-dollar project cost overruns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (gate_3b = N). TC Energy owns an irreplaceable transcontinental natural gas pipeline network, but its 5-year median GAAP ROIC of 6.5% fails the 12% hurdle. Returns are structurally suppressed by rate-base regulation, heavy capital intensity, and historical mega-project overruns.",
+    "evidence": "TC Energy operates a 93,000+ km natural gas pipeline network delivering >25% of continental gas demand, alongside Bruce Power. Despite regulated and take-or-pay revenues, capital efficiency is low: GAAP ROIC was 2.5% in FY22, 5.2% in FY23, 8.4% in FY24, and 7.8% in FY25 (median 6.5%). Long-term debt stands at CAD $57.5B against CAD $3.4B net income."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

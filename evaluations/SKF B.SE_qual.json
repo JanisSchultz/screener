@@ -1,0 +1,30 @@
+{
+  "id": "SKF B.SE",
+  "ticker": "SKF B",
+  "universe": "eu",
+  "company": "SKF",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global market leader in rolling bearings and condition monitoring with extensive industrial distribution networks and OEM engineering integration. Sustains ~14-15% ROCE in core industrial operations.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While SKF holds a global leading market share in rolling bearings with an established industrial distributor network, rolling bearings are increasingly standardized and face intense structural price pressure from low-cost Asian manufacturers. Furthermore, vehicle electrification reduces rotating bearing counts by 30-40%, capping its competitive advantage period well below the 15-year hurdle.",
+    "evidence": "FY2024 sales MSEK 98,722 with 10.5% reported operating margin; FY2025 sales MSEK 91,583 with 8.5% reported margin and net profit dropping to MSEK 4,249. Automotive separation (SKF Vertevo) highlights poor structural automotive returns (2.6-4.5% margins). Net debt MSEK 12,052. Standardized product profile and commoditization risks limit compounding runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "XOM",
+  "ticker": "XOM",
+  "universe": "us",
+  "company": "ExxonMobil",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World-class upstream scale in deepwater Guyana (<$35/bbl breakeven) and Permian Basin (strengthened by $63B Pioneer acquisition), integrated with massive refining and petrochemical capacity. However, petroleum products are fungible global commodities with zero independent pricing power; financial returns are dictated by volatile global commodity cycles, yielding a 10-year median ROIC of ~11.2% (with 2024-2025 ROIC moderating to 7-9%), below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). While ExxonMobil is an exceptionally managed integrated energy supermajor with low-cost upstream assets in Guyana and the Permian Basin, it remains an inescapable commodity price-taker lacking pricing power >= inflation. Across the full commodity cycle, its 10-year median ROIC is ~11.2% (falling to 7.4-9.0% in 2024-2025), failing the 12% hurdle. Upstream energy also faces structural decarbonization and energy transition headwinds, precluding any qualification for the Calamity Tier.",
+    "evidence": "10-year financial performance illustrates inherent commodity cyclicality: GAAP ROIC fluctuated from -8.7% in 2020 to a windfall peak of 22.8% in 2022, before normalizing to 11.5% in 2023, 8.4-9.0% in 2024, and 7.4-8.9% in 2025, producing a multi-cycle median of ~11.2% (below the 12% hurdle). Free cash flow reflects identical cyclical swings: -$2.6B in 2020, $58.4B in 2022, $30.7B in 2024, and $26.1B in 2025. The May 2024 all-stock acquisition of Pioneer Natural Resources ($63B equity value, $5B debt assumed) bolstered Midland Permian acreage and brought Permian output above 1.6M BOE/d (total upstream ~4.74M BOE/d) while maintaining low balance-sheet leverage (~0.7x Debt/EBITDA), but cannot insulate the business from global spot commodity price swings."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

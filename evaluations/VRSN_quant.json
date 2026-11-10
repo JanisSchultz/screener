@@ -1,0 +1,43 @@
+{
+  "id": "VRSN",
+  "ticker": "VRSN",
+  "universe": "us",
+  "company": "Verisign",
+  "price": 308.67,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Exclusive authoritative registry toll booth for .com and .net domains under ICANN/NTIA agreements. Operating ROIC normalized to the 35.0% cap under the v6.23 Negative Tangible Capital Standard (operates with negative tangible working capital and -$2.15B negative book equity due to organic share repurchases funded by >$6.5B cumulative FCF, yielding functionally unbounded tangible capital returns). FY2025 peak Owner EPS of $8.8923 accepted without adjustment. Forward 5-10Y Owner EPS compounding calibrated at 6.5% (0.5% domain registration volume + 4.0% contractual wholesale price hikes in 4 of 6 renewal years + 2.0% net share repurchases). Conservative balance sheet with $1.79B LT debt vs $308M cash (net debt of 1.79x NI), 14.56x EBIT interest coverage, and 103.2% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.8923,
+    "current_multiple": 34.71,
+    "par_multiple": 25.39,
+    "par_value": 225.81,
+    "percent_vs_par": 0.367,
+    "status": "Above PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0078,
+    "expected_irr_5y": 0.0082,
+    "market_implied_cap": 20.5,
+    "moat_runway_margin": -5.5,
+    "market_implied_growth": 0.2048,
+    "growth_margin_of_safety": -0.1398
+  },
+  "health_checks": {
+    "net_debt_years": 2.17,
+    "net_debt_ok": true,
+    "interest_coverage": 14.56,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0323,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

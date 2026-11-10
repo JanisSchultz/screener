@@ -1,0 +1,43 @@
+{
+  "id": "ADI",
+  "ticker": "ADI",
+  "universe": "us",
+  "company": "Analog Devices",
+  "price": 363.56,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "High-performance analog duopoly with mission-critical spec-in lock-in. Operating ROIC normalized to 35.0% cap under v6.23 M&A Goodwill Neutralization Principle, correcting for $35.0B in accumulated goodwill and intangibles from Linear Technology and Maxim Integrated mergers (which optically depresses GAAP ROIC to 6.2% vs 62.7% tangible ROIC). Solid balance sheet with net debt of $5.65B covered by 1.43 years of Owner FCF ($3.96B FCF) and 9.2x interest coverage. Forward 5-10Y g of 7.5% driven by industrial automation, automotive BMS, and AI datacenter power management. Trades Above PAR (+50.3% vs PAR Value of $241.87) at 42.3x peak Owner EPS."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.5901,
+    "current_multiple": 42.32,
+    "par_multiple": 28.16,
+    "par_value": 241.87,
+    "percent_vs_par": 0.5031,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0109,
+    "expected_irr_5y": 0.0018,
+    "market_implied_cap": 30.1,
+    "moat_runway_margin": -10.1,
+    "market_implied_growth": 0.2875,
+    "growth_margin_of_safety": -0.2125
+  },
+  "health_checks": {
+    "net_debt_years": 3.59,
+    "net_debt_ok": true,
+    "interest_coverage": 9.23,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.3801,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

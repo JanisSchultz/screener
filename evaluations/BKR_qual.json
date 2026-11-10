@@ -1,0 +1,30 @@
+{
+  "id": "BKR",
+  "ticker": "BKR",
+  "universe": "us",
+  "company": "Baker Hughes",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Baker Hughes possesses a defensible installed base of turbomachinery (gas turbines and compressors) in its Industrial & Energy Technology (IET) segment with captive OEM aftermarket service agreements, particularly in global LNG liquefaction infrastructure. However, its Oilfield Services & Equipment (OFSE) segment operates in a cyclical, competitive market alongside SLB and Halliburton where pricing power is tethered to volatile customer capex budgets. Consolidated 5-year median GAAP ROIC of ~7.5% and peak-cycle 2024-2025 ROIC of ~10.4-10.6% fail the required 12% cycle-neutral hurdle. Long-term moat erosion threats include the secular energy transition away from upstream hydrocarbons, cyclical E&P capex cuts, and alternative electrification technologies.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite leadership in LNG turbomachinery and a large installed base driving aftermarket service annuities, Baker Hughes fails the empirical moat proof with a 5-year median GAAP ROIC of ~7.5% and peak-cycle ROIC of ~10.4-10.6% (below the 12% threshold). Heavy exposure to cyclical oilfield services (OFSE) dilutes returns and pricing power across full commodity cycles.",
+    "evidence": "Formed in its modern structure via the 2017 GE Oil & Gas combination and subsequent separation, Baker Hughes operates two core segments: Industrial & Energy Technology (IET) and Oilfield Services & Equipment (OFSE). While IET delivers strong order backlogs and higher operating margins (~17-18%) driven by global LNG liquefaction projects and turbomachinery service annuities, OFSE remains cyclical and price-sensitive. 10-year average ROIC is low single digits due to historical write-downs; 5-year median GAAP ROIC is ~7.5%. Despite strong recent FCF generation ($2.3B in 2024, $2.7B in 2025) and trailing ROIC reaching 10.4%-10.6%, returns fail to cross the 12% multi-cycle hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

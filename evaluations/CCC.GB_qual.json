@@ -1,0 +1,30 @@
+{
+  "id": "CCC.GB",
+  "ticker": "CCC",
+  "universe": "eu",
+  "company": "Computacenter",
+  "country": "United Kingdom",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Volume procurement partnerships with Tier-1 OEMs (Apple, Microsoft, Cisco) and large enterprise relationships provide distribution scale, but wafer-thin operating margins (~2.5%) and commodity bidding dynamics demonstrate a lack of genuine pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). IT infrastructure and hardware reseller operating on razor-thin operating margins (~2-3%) without pricing power, subject to competitive public/corporate procurement tenders and long-term disintermediation by direct OEM sales and cloud hyperscaler marketplaces.",
+    "evidence": "Operating margins consistently track between 2.1% and 2.8%, reflecting commoditized pass-through technology sourcing. While capital employed is low due to customer financing terms, the underlying business is a middleman price-taker unable to increase prices above inflation without risking enterprise client defections."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "KBCA.BE",
+  "ticker": "KBCA",
+  "universe": "eu",
+  "company": "KBC Ancora",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While KBC Group possesses strong retail deposit and bancassurance switching costs in Belgium and Czechia, commercial banks are spread businesses whose earnings are governed by ECB rate cycles, lacking pricing power >= inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Monoline holding vehicle whose primary asset is an ~18.6% stake in KBC Group. Look-through commercial banking operations lack autonomous pricing power >= inflation, as net interest margins fluctuate with central bank rate cycles and competitive deposit betas rather than structural pricing power.",
+    "evidence": "KBC Ancora holds ~77.5M shares of KBC Group funded with holding-level debt. Commercial fractional-reserve banking economics are tied to interest rate cycles and credit provisioning; banks are price-takers on benchmark interest rates rather than possessors of inflation-protected pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

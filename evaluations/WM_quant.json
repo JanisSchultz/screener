@@ -1,0 +1,43 @@
+{
+  "id": "WM",
+  "ticker": "WM",
+  "universe": "us",
+  "company": "Waste Management, Inc.",
+  "price": 237.71,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": null,
+    "fin_note": "North America premier solid waste and landfill infrastructure monopoly protected by irreplaceable permitted landfill acreage (>250 active sites), extreme NIMBY zoning barriers, and commanding CPI+ pricing power. Physical operating ROIC preserved at 24.96% (12.24% 5-year median GAAP ROIC). FY2024 peak Owner EPS of $6.8071 accepted without adjustment, reflecting consistent 8.85% peak-to-peak compounding from $2.65 in 2016. Forward 5-10Y Owner EPS compounding calibrated at 8.0% (1.5% solid waste volume + 4.5% core pricing yield + 1.5% RNG/recycling reinvestment + 1.0% Stericycle synergies - 0.5% deleveraging buyback pause drag). Balance sheet carries elevated Stericycle acquisition debt ($22.2B LT debt, 8.12x net debt/NI), but meets peace-of-mind essential infrastructure standards supported by non-discretionary municipal cash flows ($6.04B OCF in FY25), investment-grade 6.6x EBIT interest coverage, and paused buybacks for organic deleveraging."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.8071,
+    "current_multiple": 34.92,
+    "par_multiple": 25.08,
+    "par_value": 170.75,
+    "percent_vs_par": 0.3921,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0141,
+    "expected_irr_5y": 0.025,
+    "market_implied_cap": 27.8,
+    "moat_runway_margin": -7.8,
+    "market_implied_growth": 0.2275,
+    "growth_margin_of_safety": -0.1475
+  },
+  "health_checks": {
+    "net_debt_years": 8.2,
+    "net_debt_ok": false,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1189,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "CL",
+  "ticker": "CL",
+  "universe": "us",
+  "company": "Colgate-Palmolive",
+  "price": 96.56,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (tangible ROIC >100% and 5-year median GAAP ROIC of 35.6% driven by global oral care dominance and Hill's pet nutrition). Peak Owner EPS confirmed at $3.5629 (FY2024) with 128.3% multi-year FCF conversion and zero non-cash spikes. Forward 5-10Y g of 5.5% grounded in emerging market volume penetration (+1.5%), global pricing power (+2.0%), Hill's therapeutic mix (+1.5%), offset by commodity inflation (-0.5%), plus net share buybacks (+1.0%). Conservative leverage with net debt of $5.58B repayable in <1.6 years of Owner FCF, backed by 12.4x interest coverage and 62 years of continuous dividend growth. Current price of $96.56 trades at 27.10x peak Owner EPS, representing a +13.5% premium to fundamental PAR value of $85.06 (23.87x PAR multiple)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.5629,
+    "current_multiple": 27.1,
+    "par_multiple": 23.87,
+    "par_value": 85.06,
+    "percent_vs_par": 0.1352,
+    "status": "Above PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0238,
+    "expected_irr_5y": 0.0523,
+    "market_implied_cap": 22.7,
+    "moat_runway_margin": -2.7,
+    "market_implied_growth": 0.1034,
+    "growth_margin_of_safety": -0.0484
+  },
+  "health_checks": {
+    "net_debt_years": 3.22,
+    "net_debt_ok": true,
+    "interest_coverage": 12.38,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2834,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

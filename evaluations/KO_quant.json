@@ -1,0 +1,43 @@
+{
+  "id": "KO",
+  "ticker": "KO",
+  "universe": "us",
+  "company": "Coca-Cola Company (The)",
+  "price": 95.67,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Asset-light concentrate toll booth on global non-alcoholic beverage consumption with entrenched brand pricing power and massive scale economies shared across ~200 bottling partners. Operating ROIC normalized to 35.0% cap under v6.23 standard (reflecting pure concentrate economics, Lindy brand equity, and refranchised asset-light distribution, neutralizing legacy bottling equity holdings). FY2025 peak Owner EPS of .039 confirmed clean operational peak. 5-10Y through-the-cycle growth g_implied = 6.0% driven by 1.5% organic volume, 3.5% incidence-based price/mix, 0.5% product reinvestment, -0.5% foreign exchange drag, and 1.0% net share repurchases. Prudent balance sheet carries .27B cash vs .12B LT debt (.85B net debt = 2.43x NI), 8.32x EBIT interest coverage, and 78.2% FCF conversion with manageable IRS transfer-pricing appeal risks. At .67 (31.48x peak Owner EPS), trades Above PAR (+26.4% premium vs .72 PAR Value at 24.92x PAR Multiple) with a 2.13% dividend yield, generating a 3.29% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.039,
+    "current_multiple": 31.48,
+    "par_multiple": 24.92,
+    "par_value": 75.72,
+    "percent_vs_par": 0.2635,
+    "status": "Above PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.0213,
+    "expected_irr_5y": 0.0329,
+    "market_implied_cap": 25.3,
+    "moat_runway_margin": -5.3,
+    "market_implied_growth": 0.1585,
+    "growth_margin_of_safety": -0.0985
+  },
+  "health_checks": {
+    "net_debt_years": 3.21,
+    "net_debt_ok": true,
+    "interest_coverage": 8.32,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7823,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

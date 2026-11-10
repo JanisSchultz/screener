@@ -1,0 +1,30 @@
+{
+  "id": "BBVA.ES",
+  "ticker": "BBVA",
+  "universe": "eu",
+  "company": "BBVA",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Earnings concentrated outside Western developed markets (over 50% of net attributable profit is generated in Mexico, alongside volatile exposure to Turkey and South America).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Earnings concentrated outside Western developed markets). Over 50-65% of group net attributable profit is generated in Mexico (€5.45B in FY24, €5.34B in FY23), with additional volatile exposure to Turkey (Garanti BBVA) under hyperinflation accounting and South America. High emerging market currency and geopolitical risk disqualifies it under the Western need standard.",
+    "evidence": "BBVA reported FY24 net attributable profit of €10.05B, with Mexico contributing €5.45B (~54%), Spain €3.78B (~38%), and Turkey €611M (~6%). In FY23, Mexico contributed €5.34B of €8.02B (66.6%). Capital allocation has also been complicated by hostile/unsolicited takeover attempts for Banco Sabadell and heavy Turkish Lira FX headwinds."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

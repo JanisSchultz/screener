@@ -1,0 +1,30 @@
+{
+  "id": "PWR",
+  "ticker": "PWR",
+  "universe": "us",
+  "company": "Quanta Services, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Largest specialized lineman and craft labor workforce in North America with proprietary Northwest Lineman College training pipeline, but returns are constrained by competitive bidding, low-margin project execution (GAAP operating margin ~4.5-5.5%), and utility rate-case cost discipline. Primary erosion risks include labor wage inflation, fixed-price project cost overruns, and utility customer insourcing.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Specialty utility infrastructure contractor operating at thin GAAP operating margins (4.5–5.5%) with a 5-year median GAAP ROIC of ~7.5–8.5%, falling well short of the mandatory 12% capital efficiency threshold. Despite secular tailwinds from grid modernization and renewable/data center interconnections, Quanta remains a project contractor lacking the pricing power and structural economic moat required to generate excess economic rents across the cycle.",
+    "evidence": "Quanta Services operates as a specialty engineering and construction contractor for electric power, renewables, and underground infrastructure. While revenue has compounded strongly due to electric grid hardening, energy transition, and large acquisitions (Blattner in 2021 for $2.7B, Cupertino Electric in 2024 for $2.7B), profitability is structurally constrained by the economics of construction contracting. Over 2020-2024, GAAP operating margins ranged from 4.1% to 5.2% and GAAP ROIC averaged ~7.5%–8.5% (2020: ~7.0%, 2021: ~6.4%, 2022: ~6.9%, 2023: ~8.3%, 2024: ~8.8%), never approaching the 12% hurdle. Serial large-scale M&A has bloated invested capital with substantial goodwill and intangible assets ($5B+), keeping ROIC low even during peak utility capex cycles. Regulated utility clients enforce rigorous cost oversight and competitive bidding, preventing Quanta from exercising genuine inflation-plus pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

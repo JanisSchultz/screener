@@ -1,0 +1,30 @@
+{
+  "id": "TT",
+  "ticker": "TT",
+  "universe": "us",
+  "company": "Trane Technologies plc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive proprietary installed base in commercial HVAC, mission-critical Tracer building automation controls, and company-owned direct technician service network create high customer switching costs. Empirically proven by 5-year median ROIC of ~18.5% (ROIC >20% in 2024-2025), robust gross margins, and consistent positive pricing realization (+3-5% annually) driving operating margins from 14% to >18%. Primary erosion threats include low-end residential HVAC commoditization and competition from Asian OEMs in ductless split systems.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in commercial HVAC and climate solutions with powerful switching costs anchored by installed base and direct service network. Active beneficiary of AI data center thermal cooling demand and secular building decarbonization/energy efficiency. Clean balance sheet with net debt/NI ~1.2x and interest coverage ~17.5x. [5-10Y g: commercial & data center volume 3.5% + equipment pricing 2.0% + services & controls mix 2.0% - regulatory refrigerant/tariff drag 0.5% + share repurchases 1.5%]",
+    "evidence": "10-year median ROIC ~18.5% with 2024-2025 ROIC >20%. FY2024 revenue $19.8B (+12%), FCF $2.8B (109% conversion); FY2025 revenue $21.3B (+7.5%), operating income $3.97B, net income $2.94B, FCF conversion 98%. Total debt of $4.6B (net debt ~$3.5B) against $2.94B net income yields net debt/NI of 1.19x and interest coverage of 17.5x. Pure-play climate leader benefiting from mission-critical commercial HVAC, data center cooling, and transport refrigeration (Thermo King)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

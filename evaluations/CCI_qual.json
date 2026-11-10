@@ -1,0 +1,30 @@
+{
+  "id": "CCI",
+  "ticker": "CCI",
+  "universe": "us",
+  "company": "Crown Castle Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Telecom Tower REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "US macro tower network embeds non-cancellable 5-15 year master leases with ~3% annual contractual escalators and ~90% incremental colocation margins. However, overall corporate capital efficiency was diluted to sub-6% ROIC by a disastrous $19B+ fiber and small-cell rollup.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Score = 0, REJECT). While pure-play US macro towers are irreplaceable physical infrastructure with contractual ~3% escalators, executive leadership pursued a decade-long value-destructive M&A rollup in fiber/small cells ($19B+ spent at sub-hurdle returns). This empire-building resulted in ballooning debt (~$22B+), severe shareholder dilution, an activist proxy battle, three CEO changes in two years, an $8.5B fiber asset fire-sale at a steep realized loss, and a ~32% dividend cut. Flunks Munger/Thorndike capital allocation standard.",
+    "evidence": "Historical 10-year GAAP ROIC averaged just 5.9%, far below the 12% hurdle, driven by capital-intensive fiber rollups. Total debt peaked above $22B with interest coverage of ~2.5x-3.0x, far below the 5.0x fortress threshold. Following intense activist pressure from Elliott Management, former CEO Jay Brown departed in Jan 2024; Crown Castle agreed in 2024-2025 to sell its fiber and small cell business for $8.5B to Zayo/EQT to pay down >$7B of debt, and slashed the dividend by ~32% from $6.26 to $4.25 per share."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": 5,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

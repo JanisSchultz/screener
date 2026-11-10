@@ -1,0 +1,43 @@
+{
+  "id": "HUBB",
+  "ticker": "HUBB",
+  "universe": "us",
+  "company": "Hubbell Incorporated",
+  "price": 441.57,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": null,
+    "fin_note": "Essential physical electrical infrastructure manufacturer serving electric utilities (63% sales) and industrial/data center facilities (37%). FY2025 Peak Owner EPS of $17.5346 accepted without adjustment, confirmed by 95.6% FCF conversion and grid electrification demand. Preserves physical operating ROIC under the v6.23 standard (capped at 35.0% vs 96.6% tangible operating return; 10Y median GAAP ROIC 17.2-18.8%). 5-10Y through-the-cycle growth of 7.0% driven by 3.5% grid/data center volume, 2.0% utility spec pricing, 1.5% tuck-in M&A, -0.5% margin normalization drag, and 0.5% net buybacks. Pristine balance sheet with net debt/EBITDA at 1.3x and 18.9x interest coverage. Current price of $441.57 trades Below PAR (-0.8% discount to $445.26 PAR Value at 25.39x PAR Multiple), delivering a 7.2% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 17.5346,
+    "current_multiple": 25.18,
+    "par_multiple": 25.39,
+    "par_value": 445.26,
+    "percent_vs_par": -0.0083,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0718,
+    "market_implied_cap": 14.9,
+    "moat_runway_margin": 0.1,
+    "market_implied_growth": 0.0668,
+    "growth_margin_of_safety": 0.0032
+  },
+  "health_checks": {
+    "net_debt_years": 2.3,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.956,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

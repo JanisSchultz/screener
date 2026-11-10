@@ -1,0 +1,30 @@
+{
+  "id": "BRK.B",
+  "ticker": "BRK.B",
+  "universe": "us",
+  "company": "Berkshire Hathaway",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "GEICO shares low-cost direct distribution scale with drivers, BNSF operates an irreplaceable transcontinental rail duopoly, and Berkshire Hathaway Reinsurance exploits an unreplicable balance sheet fortress to price hard-market risks. 5-year median GAAP ROIC of 16.7% and operating ROIC of 19.6% confirm durable competitive advantage despite ASU 2016-01 mark-to-market net income volatility.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled conglomerate engine anchored by negative-cost insurance float ($170B+), scale economies shared at GEICO, an irreplaceable transcontinental freight rail duopoly at BNSF, and essential regulated utility infrastructure at BHE. Structurally insulated from AI disruption, highly resilient to inflation, and a major beneficiary of US industrial supply-chain reshoring. Unassailable fortress balance sheet holding >$350B in liquid sovereign Treasury bills providing unmatched dry powder and resilience. Seamless succession to CEO Greg Abel and insurance head Ajit Jain preserves cultural and capital allocation excellence. [5-10Y g: operating earnings volume 3.5% + tariff/underwriting price 2.0% + float deployment & T-bill yield 1.5% - capex excess over D&A 0.5% + opportunistic share repurchases 1.0%]",
+    "evidence": "Reported 10-year financials demonstrate exceptional operating compounding: 5-year median GAAP ROIC of 16.69% and Operating ROIC of 19.64%. FY2025 operating earnings were $44.5B (following $47.4B in FY2024), driven by robust insurance underwriting recovery and steady utility/rail volumes. Segment profile spans critical infrastructure and non-discretionary Western commerce: Insurance (GEICO, Berkshire Hathaway Reinsurance Group, General Re) holding >$170B of zero/negative-cost float; Freight Rail (BNSF, 32,500 route miles transporting essential freight); Energy (BHE, 5.3M customers and massive renewable/transmission asset base); and industrial manufacturing (Precision Castparts, Marmon, Lubrizol, McLane). OCF was $45.97B in FY2025 and $49.20B in FY2023; the lower screening FCF conversion (0.44) is entirely an accounting distortion of ASU 2016-01 unrealized mark-to-market gains in GAAP net income rather than cash flow leakage. Balance sheet holds >$350B in cash and short-term US Treasury bills with zero net debt at the holding parent (subsidiary debt at BHE/BNSF is non-recourse). Capital allocation history is the global gold standard under Warren Buffett, now successfully transitioned to CEO Greg Abel and non-executive Chairman Howard Buffett."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

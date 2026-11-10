@@ -1,0 +1,43 @@
+{
+  "id": "NESN.CH",
+  "ticker": "NESN",
+  "universe": "eu",
+  "company": "Nestl\u00e9",
+  "price": 84.64,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.045,
+    "roic_est": 0.3487,
+    "fin_note": "Operating ROIC normalized to 34.87% (roic_est=0.3487; roic_operating currently null in EU CSV), matching Yahoo 4Y (FY22-FY25) median Tangible Operating ROIC (33.5%, 40.3%, 36.3%, 30.1%) and neutralizing CHF 44.31B FY25 goodwill & intangibles (CHF 27.64B goodwill + CHF 16.67B intangibles) that depress 4Y median GAAP ROIC to 13.14% (CHF 74.78B FY25 GAAP IC vs CHF 30.47B tangible IC). Peak Owner EPS confirmed at 4.233 CHF (FY2023: CHF 11,209M NI / 2,648M diluted shares; CapEx CHF 6,203M > D&A CHF 3,458M; 1:1 SIX share basis matching 2,572.2M quote / 2,576M FY25 diluted shares). Kept peak_eps_est=null because FY23 had no non-cash windfall (included -CHF 1,608M special charges; Normalized Income CHF 12.52B; OCF CHF 15.94B = 1.42x NI; corroborated by FY19 4.30 CHF and FY24 4.188 CHF), planned divestments (Peranel 50:50 Waters JV ~2% UTOP + mainstream VMS $1.0B) carry negligible net EPS drag after ~CHF 3.7B+ debt-paydown interest savings and impairment elimination, and keeping null preserves 1:1 alignment with cycle multiples (18.61x-31.09x over 44 months). Forward 5-10Y g_implied set to 4.5% per Stage-1 Calamity bridge (+2.0% RIG volume/mix + 1.5% price + 1.5% Fuel-for-Growth CHF 3B savings/deleveraging - 0.5% CHF FX/divestment drag + 0.0% paused net buybacks), applying a -2.55pp haircut vs 7.05% Mauboussin fade on 7.35% historical CAGR (flattered by FY22-24 debt-funded buybacks). Dividend yield 3.61% (CHF 7,849M / CHF 217,713M market cap). Calamity health flags show 4.65y LT net debt/OE (CHF 41.97B / CHF 9.03B; ~5.69x-5.75x incl. CHF 11.61B ST debt) and failed peak-to-peak (4.233 < 4.30 FY19; FY25 3.507 -17.2%), partially offset by 6.90x EBIT/interest and 113.1% 4Y FCF conversion. At 84.64 CHF (20.00x), NESN.CH trades -12.71% Below PAR (96.96 CHF at 22.91x PAR multiple), pricing 0.13% growth (+4.37% growth margin; 13.1y implied CAP vs 15y) for a 10.99% expected 5Y IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.233,
+    "current_multiple": 20.0,
+    "par_multiple": 22.91,
+    "par_value": 96.96,
+    "percent_vs_par": -0.1271,
+    "status": "Below PAR",
+    "g_implied": 0.045,
+    "dividend_yield": 0.0361,
+    "expected_irr_5y": 0.1099,
+    "market_implied_cap": 13.1,
+    "moat_runway_margin": 1.9,
+    "market_implied_growth": 0.0013,
+    "growth_margin_of_safety": 0.0437
+  },
+  "health_checks": {
+    "net_debt_years": 4.65,
+    "net_debt_ok": false,
+    "interest_coverage": 6.9,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.13,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

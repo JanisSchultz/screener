@@ -1,0 +1,43 @@
+{
+  "id": "ROST",
+  "ticker": "ROST",
+  "universe": "us",
+  "company": "Ross Stores",
+  "price": 231.09,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Disciplined off-price retail flywheel operating Ross Dress for Less and dd's DISCOUNTS (~2,377 stores) sharing opportunistic closeout scale with budget-conscious US consumers. Operating ROIC normalized to 35.0% cap (reported GAAP ROIC of 83.32% reflects capital-light lease structure with zero goodwill; ~20-23% lease-adjusted ROIC). FY25 peak Owner EPS of $6.61 represents an all-time record on record sales of $22.75B with 90.56% 5Y FCF conversion. Fortress balance sheet with $4.59B cash against $1.02B LT debt ($3.58B net cash ex-leases) and zero net interest expense. 5-10Y through-the-cycle EPS growth of 7.5% is driven by comp store customer traffic (2.0%), average unit retail pricing (1.5%), new store openings toward ~3,600 target (3.0%), wage and tariff friction (-0.5%), and programmatic share buybacks (1.5% via new $2.55B authorization). Fundamental 3-Pillar PAR Multiple of 25.70x establishes a PAR Value of $169.92. At current share price of $231.09 (34.95x Peak OE), ROST trades at the extreme upper band of historical valuation (exceeding its 5Y cycle high of 34.53x), standing 36.0% Above PAR. Pull-to-PAR multiple mean reversion compresses 5Y expected IRR to 1.80% despite exceptional business franchise quality."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.612,
+    "current_multiple": 34.95,
+    "par_multiple": 25.7,
+    "par_value": 169.92,
+    "percent_vs_par": 0.36,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0072,
+    "expected_irr_5y": 0.018,
+    "market_implied_cap": 20.4,
+    "moat_runway_margin": -5.4,
+    "market_implied_growth": 0.2138,
+    "growth_margin_of_safety": -0.1388
+  },
+  "health_checks": {
+    "net_debt_years": 0.47,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9056,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

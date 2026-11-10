@@ -1,0 +1,30 @@
+{
+  "id": "SPM.IT",
+  "ticker": "SPM",
+  "universe": "eu",
+  "company": "Saipem",
+  "country": "Italy",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized offshore vessel fleet and engineering know-how, but completely lacks pricing power. Fixed-price turnkey EPC contracting model repeatedly exposes company to severe cost overruns, inflation shocks, and contract write-downs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Turnkey EPC contractor business model relies on competitive fixed-price bidding with unhedged cost inflation and execution risk, resulting in repeated multi-billion euro contract losses and massive dilutive recapitalizations (2016 €3.5B, 2022 €2.0B).",
+    "evidence": "Through-cycle ROIC is negative/sub-hurdle due to chronic project write-downs on legacy lump-sum turnkey projects. Chronic execution blowouts required massive dilutive rights issues in 2016 and 2022 to prevent insolvency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

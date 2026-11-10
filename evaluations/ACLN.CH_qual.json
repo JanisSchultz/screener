@@ -1,0 +1,30 @@
+{
+  "id": "ACLN.CH",
+  "ticker": "ACLN",
+  "universe": "eu",
+  "company": "Accelleron",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant global heavy-duty turbocharger monopoly (>40% total market share, >70% in large marine engines) with unassailable switching barriers: turbocharger components operate under extreme heat (up to 1,000\u00b0C) and pressure where uncertified non-OEM parts void vessel insurance and engine warranties. Recurring aftermarket service contracts represent two-thirds of revenue, yielding 33%+ GAAP ROIC and 100%+ FCF conversion.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global heavy marine turbocharger monopoly with 66-75% recurring aftermarket service revenue, unreplicable warranty lock-in, and 33%+ GAAP ROIC. Net debt < 1x NI and >100% FCF conversion. [5-10Y g: marine trade volume 3.5% + pricing power 2.0% + green dual-fuel upgrade mix 2.5% - supply chain capex drag 0.5% + dividend/buyback reinvestment 1.5%]",
+    "evidence": "Spun off from ABB with stellar capital allocation. FY2022-2025 track record: median GAAP ROIC is 33.4%, operating ROIC >37%, and Owner FCF conversion 102%. FY2025 net debt is $186M ($542M debt vs $356M cash) against $233M net income, repayable in under 1 year. Minimal interest expense ($0.3M). Primary beneficiary of IMO maritime decarbonization (retrofits for methanol/ammonia/LNG) and stationary power for data centers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

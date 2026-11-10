@@ -1,0 +1,30 @@
+{
+  "id": "ABBN.CH",
+  "ticker": "ABBN",
+  "universe": "eu",
+  "company": "ABB Ltd",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs and mission-critical reliability in electrical power distribution, motion, and industrial automation. Low product cost relative to total plant or data center downtime risk secures robust pricing power, demonstrated by 24-28% GAAP ROIC and tangible ROIC exceeding 60%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global electrification and automation champion structurally benefiting from data center power infrastructure, factory automation, and grid decarbonization. Radical decentralization via the ABB Way operating model supports 25%+ ROIC, >80% FCF conversion, and conservative <0.7x net debt/NI. [5-10Y g: electrification volume 4.5% + motion/robotics 2.0% + price/mix 1.5% + buybacks 0.5%]",
+    "evidence": "4-year median GAAP ROIC is 25.1% with tangible ROIC >60%. FY2025 net income reached $4,734M with Owner FCF of $4,656M (conversion 84.7%). Net debt of $3,189M is comfortably covered by annual Owner FCF in under 9 months, and interest coverage is ~73x. Indispensable equipment supplier for modern AI compute and electrical grid infrastructure."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

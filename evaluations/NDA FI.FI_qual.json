@@ -1,0 +1,30 @@
+{
+  "id": "NDA FI.FI",
+  "ticker": "NDA FI",
+  "universe": "eu",
+  "company": "Nordea",
+  "country": "Finland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Pan-Nordic oligopoly scale and sector-leading cost efficiency (cost-to-income ~45%) provide low-cost funding and pricing power; proven by sustained 15-17% ROE and strong capital generation across Nordic markets.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet, REJECT). Premier pan-Nordic banking oligopolist with best-in-class cost efficiency (cost-to-income ~45%), strong capital generation (15-17% ROE), and disciplined buybacks. However, as a commercial fractional-reserve bank operating with ~17x balance sheet leverage on tangible equity and massive wholesale debt funding (€200B+), it fails the Munger peace-of-mind balance sheet standard.",
+    "evidence": "Nordea delivered €4.8B-€5.0B in net income across FY2024-2025 with an elite European banking ROE of 15.5%-16.7% and a CET1 ratio of 15.7%. However, its balance sheet carries €206.6B in long-term debt and over €550B in total liabilities against €32.4B in equity (17x leverage). Inherent reliance on covered bond wholesale markets and fractional-reserve deposit duration mismatch disqualifies it under Gate 6 commercial bank rules."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

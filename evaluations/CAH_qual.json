@@ -1,0 +1,30 @@
+{
+  "id": "CAH",
+  "ticker": "CAH",
+  "universe": "us",
+  "company": "Cardinal Health",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Oligopolistic distribution scale alongside McKesson and Cencora, handling ~25% of US pharmaceutical volume. However, CAH is a pure pass-through logistics intermediary with razor-thin operating margins (~1.0%) and zero unconstrained pricing power over either upstream branded drug manufacturers (who set WAC prices) or consolidated downstream PBMs/health systems. Demonstrated by the 2024 loss of the OptumRx contract (16% of sales, ~$33B) during competitive RFP rebidding. Multi-cycle GAAP ROIC is sub-hurdle and severely impaired by $6B+ in opioid litigation liabilities, with persistent negative book equity (-$2.9B in FY2025).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Thin-margin (~1% operating margin) wholesale drug distributor operating as a pass-through intermediary between pharma manufacturers and consolidated PBMs/retailers. Possesses zero unconstrained pricing power; demonstrated by customer churn when OptumRx (16% of sales) defected to McKesson in 2024. Multi-cycle GAAP ROIC is severely impaired by $6B+ opioid litigation liabilities and negative book equity (-$2.9B in FY2025), failing the Munger capital-efficiency standard.",
+    "evidence": "CAH operates in a tight oligopoly alongside McKesson and Cencora (controlling 90%+ of US prescription drug distribution) with FY2025 revenue of $254.2B, but operating margins remain microscopic at 1.03% ($2,613M EBIT) and gross margins are ~3.2%. Upstream branded drug prices are fixed by manufacturers, while downstream PBMs and retail pharmacy chains exert severe pricing pressure; in FY2024, CAH lost its contract with OptumRx (~$33B / 16% of revenue) to McKesson during renewal bidding. Historical GAAP ROIC has been deeply negative in crisis years (FY2019: -46.8%, FY2021: -31.4%) driven by $6B+ in opioid litigation liabilities, and book equity remains negative (-$2,883M in FY2025) with negative tangible equity of -$16.5B against $7.0B in long-term debt. Even with OptiFreight logistics and specialty distribution growth, CAH is structurally a low-margin commodity logistics provider lacking pricing power >= inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LOTB.BE",
+  "ticker": "LOTB",
+  "universe": "eu",
+  "company": "Lotus Bakeries",
+  "country": "Belgium",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unreplicable Biscoff taste profile and patented caramelisation baking process backed by cult global brand equity and expanding Natural Foods pillar. Pricing power demonstrated by uninterrupted organic volume growth (+10-16%) across coffee shops, supermarkets, and airlines through record input inflation, generating 18.5% 4Y median GAAP ROIC and 34.7% Tangible Operating ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global packaged food compounder driven by the unreplicable Biscoff caramelized taste profile and entrenched coffee companion ritual. Phenomenal capital efficiency (18.5% GAAP ROIC, 34.7% Tangible ROIC) and disciplined multi-generational family leadership (Boone family). Fortress balance sheet with net debt <0.7x earnings and 69x interest coverage. [5-10Y g: Biscoff global volume 6.5% + pricing power 2.0% + Natural Foods mix 1.0% - green capex drag 0.5% + buybacks 0.0%]",
+    "evidence": "Multi-cycle financials (2022-2025): Revenue expanded from €877.5M (FY22) to €1,063.0M (FY23), €1,231.9M (FY24), and €1,355.1M (FY25), driven by double-digit organic volume expansion across North America, Europe, and Asia. Operating profit (EBIT) grew from €137.1M to €228.5M with operating margins expanding from 15.6% to 16.9%. 4Y median GAAP ROIC is 18.52% (15.6%, 18.1%, 19.0%, 19.1%) and Tangible Operating ROIC is 34.7% (32.3%-36.7%). Multi-year Owner FCF conversion is 92.3% (FY25 FCF €163.5M vs NI €172.3M). Peak-to-peak compounding is pristine: Owner EPS compounded at 18.6% CAGR from €127.13 (2022) to €159.12 (2023), €187.65 (2024), and €211.88 (2025). Balance sheet is pristine: FY25 Total Debt €236.0M, Cash €121.9M, Net Debt €114.1M (0.66x NI), EBIT/Interest 69.3x (€228.5M / €3.3M)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

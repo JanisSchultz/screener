@@ -1,0 +1,30 @@
+{
+  "id": "ON",
+  "ticker": "ON",
+  "universe": "us",
+  "company": "ON Semiconductor",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Automotive and industrial qualification cycles (AEC-Q100, functional safety) create meaningful design-in switching costs across multi-year vehicle platforms. However, power semiconductors lack pricing power >= inflation, facing mandatory annual OEM price-downs and aggressive price deflation in Silicon Carbide (SiC) from surging Chinese capacity. Primary erosion threats: state-subsidized Chinese SiC wafer/module competition, cyclical auto/industrial demand swings, and commoditization of power discretes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While onsemi benefits from sticky automotive design-in qualification cycles, it lacks pricing power >= inflation across the cycle. Auto and industrial OEMs continuously extract annual price-downs, and aggressive capacity expansion by Chinese SiC competitors has led to sharp wafer/device price deflation, forcing onsemi to curtail capex and fab expansions. Multi-cycle returns on capital remain volatile with GAAP operating margins plunging to ~1.4% in the 2025 cyclical trough.",
+    "evidence": "Fiscal 2025 revenue fell 15.3% YoY to $6.0B (from $7.08B in 2024 and $8.25B in 2023 peak) due to broad automotive and industrial inventory destocking. GAAP operating margin compressed from ~25% in 2024 to 1.4% in 2025 ($84M operating income) under fab underutilization and manufacturing realignment charges. Trailing ROIC dropped to single digits (~8.9%). Despite solid FCF ($1.4B in 2025 via capex pacing and working capital release) and conservative balance sheet management, power discretes and SiC suffer structural price deflation and commoditization risks from low-cost Chinese competitors, failing the Munger standard for pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

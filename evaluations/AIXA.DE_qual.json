@@ -1,0 +1,30 @@
+{
+  "id": "AIXA.DE",
+  "ticker": "AIXA",
+  "universe": "eu",
+  "company": "Aixtron",
+  "country": "Germany",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized MOCVD process know-how for GaN and SiC deposition, but lacks through-cycle economic moat proof: highly cyclical lumpy tool orders, volatile ROIC dropping to 11.5% in 2024 (and negative in 2015-2016), heavy customer concentration in Asia, and high export regulation risk.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Niche MOCVD equipment maker subject to violent boom-bust cycles in compound semiconductor (GaN/SiC) capex. Severe order volatility, ROIC dropping to ~11.5% in 2024 (and multi-year operating losses in past downturns), and concentrated Chinese customer exposure demonstrate lack of through-cycle pricing power.",
+    "evidence": "Revenue rose from €429M (2021) to €633M (2024), but historical track record reveals severe earnings volatility: EBIT was -€26.7M in 2015, -€21.4M in 2016, and +€4.9M in 2017. While ROIC peaked at ~25.7% during the 2021-2022 EV/SiC capex boom, it fell to ~11.5% in 2024 as power semi fab capacity saturated. Tools are lumpy one-off capital purchases that customers easily defer in downturns, with heavy revenue concentration in Asian foundries subject to geopolitical export licensing barriers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

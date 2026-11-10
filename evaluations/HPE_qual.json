@@ -1,0 +1,30 @@
+{
+  "id": "HPE",
+  "ticker": "HPE",
+  "universe": "us",
+  "company": "Hewlett Packard Enterprise",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Enterprise switching costs in installed base, mission-critical infrastructure integration, GreenLake hybrid cloud contracts, and Aruba/Juniper networking portfolios provide customer retention, but fail to generate economic rents. 10-year median GAAP ROIC is 7.5%, and FY24–FY26 ROIC remains depressed at ~0–8%, far below the 12% hurdle. Severe commoditization in x86 servers and storage, intense pricing pressure from Dell, Lenovo, and white-box ODMs, public cloud disintermediation, and inability to pass through component price swings prevent pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & zero pricing power above inflation, REJECT). While HPE maintains entrenched enterprise relationships and switching costs in networking (Aruba, Juniper) and hybrid cloud (GreenLake), its core compute and storage businesses are commoditized enterprise IT hardware. 10-year median GAAP ROIC of 7.5% and FY24–FY26 ROIC of ~0–8% consistently trail the 12% cost-of-capital hurdle. Intense competition from Dell, Lenovo, and white-box ODMs prevents real pricing power above component inflation.",
+    "evidence": "10-year median GAAP ROIC is 7.5% (well below the 12% minimum threshold). FY24 GAAP operating margin of ~6.8% and ROIC ~5.0%; FY25 GAAP ROIC fell to ~0–3% amidst Juniper integration and compute margin pressure; FY26 estimates project ROIC recovering only to ~4–8%. Free cash flow conversion is volatile ($1.5B FCF in FY24, ~$1.0B GAAP FCF in FY25 on $30B–$34B revenue), burdened by heavy capex, capitalized software, and working capital cycles. Total debt expanded significantly to >$18B following the $14B Juniper Networks acquisition. In core server/compute and storage segments, HPE is an architectural price-taker against Dell, Lenovo, and hyperscale ODMs, lacking the pricing power and structural capital efficiency required of a world-class compounder."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

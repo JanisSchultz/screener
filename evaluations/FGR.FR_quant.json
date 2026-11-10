@@ -1,0 +1,43 @@
+{
+  "id": "FGR.FR",
+  "ticker": "FGR",
+  "universe": "eu",
+  "company": "Eiffage",
+  "price": 106.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap for negative tangible capital concession model (GAAP ROIC 13.4%). Peak Owner EPS of \u20ac16.60 (FY2024) sustained by APRR/AREA toll road cash flows and non-recourse project debt (interest coverage 6.36x). Forward 5-10Y compound growth anchored at 5.0% based on CPI escalation and energy systems. Strict 5-year cycle high guardrail of 7.92x governs valuation."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 16.5997,
+    "current_multiple": 6.39,
+    "par_multiple": 7.92,
+    "par_value": 131.47,
+    "percent_vs_par": -0.1937,
+    "status": "Below PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0453,
+    "expected_irr_5y": 0.1415,
+    "market_implied_cap": 12.1,
+    "moat_runway_margin": 2.9,
+    "market_implied_growth": -0.1133,
+    "growth_margin_of_safety": 0.1633
+  },
+  "health_checks": {
+    "net_debt_years": 3.9,
+    "net_debt_ok": true,
+    "interest_coverage": 6.4,
+    "interest_cov_ok": true,
+    "fcf_conversion": 2.3834,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

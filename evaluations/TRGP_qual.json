@@ -1,0 +1,30 @@
+{
+  "id": "TRGP",
+  "ticker": "TRGP",
+  "universe": "us",
+  "company": "Targa Resources",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Targa Resources operates critical gathering and processing assets in the Permian Basin, long-haul NGL pipelines (Grand Prix), and major fractionation/export capacity at Mont Belvieu. While physical rights-of-way and integrated downstream logistics provide substantial barriers to entry, TRGP lacks monopolistic pricing power against major upstream E&P counterparties. Multi-cycle GAAP ROIC averages ~9.1% (2020: -5.9%, 2021: 4.0%, 2022: 11.5%, 2023: 13.8%, 2024: 9.1%, 2025: 10.2%), failing the 12% threshold across the cycle. High ongoing capital intensity and volume sensitivity to upstream drilling activity prevent compounding at super-hurdle rates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & lacks monopolistic pricing power, REJECT). Targa operates valuable Permian midstream and NGL infrastructure, but its 10-year median ROIC of 9.1% falls well short of the 12% hurdle rate. Heavy ongoing capital expenditure ($2.4B-$3.3B annually), substantial debt load ($16.4B in 2025), and structural dependence on upstream drilling volumes prevent high-return capital compounding.",
+    "evidence": "10-year median GAAP ROIC is 9.1% (2020: -5.94%, 2021: ~4%, 2022: ~11.5%, 2023: ~13.8%, 2024: 9.14%, 2025: ~10.2%), failing the 12% cycle hurdle. Operating cash flow grew from $2.3B in 2021 to $3.9B in 2025, but heavy growth capex ramped from $0.5B to $3.3B, compressing GAAP Free Cash Flow to ~$584M by 2025. Long-term debt expanded from $12.1B in 2023 to $16.4B in 2025 (LT debt / net income ~8.5x). Despite ~90% fee-based contracts, volumes and margins remain exposed to upstream E&P drilling cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

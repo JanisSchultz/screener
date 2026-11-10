@@ -1,0 +1,30 @@
+{
+  "id": "BMED.IT",
+  "ticker": "BMED",
+  "universe": "eu",
+  "company": "Banca Mediolanum",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Vertically integrated multichannel banking and asset management model with an exclusive tied 'Family Banker' network across Italy and Spain. High customer loyalty and strong net inflows support high ROE, but exceptionally high recurring fee loads (~212 bps) face severe medium-term regulatory risk, while commercial banking operations rely heavily on cyclical net interest income.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Gate 3b = N, REJECT). Banca Mediolanum operates a highly profitable Family Banker advisory network and retail bank, but lacks pricing power above inflation. Its average recurring fee on managed assets is already elevated at ~212 bps, rendering further price hikes impossible amidst EU retail investment value-for-money directives and passive competition. Operating earnings are also cyclically dependent on net interest income and volatile performance fees.",
+    "evidence": "Banca Mediolanum generated €1,119.6m in net profit in 2024 (up from €821.9m in 2023) with ROE of ~28-30% and net inflows of €10.4bn. However, revenue is heavily cyclical, including €811.1m in net interest income and €376.7m in performance fees in 2024. Average recurring management fees stand at 212 bps (2024), leaving zero headroom to hike fee percentages above inflation without triggering regulatory intervention or client disintermediation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

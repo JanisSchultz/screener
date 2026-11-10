@@ -1,0 +1,30 @@
+{
+  "id": "MONC.IT",
+  "ticker": "MONC",
+  "universe": "eu",
+  "company": "Moncler",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High-end brand prestige, alpine heritage, and controlled direct-to-consumer store network (~80%+ DTC) protect >29% operating margins and ROIC >20%. Strong pricing power in technical down jackets. Primary erosion threats include fashion fatigue, warming winter climates, narrow category concentration, and heavy dependence on Chinese consumer spending.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Premium luxury outerwear brand with outstanding margins (~29% EBIT) and pristine net cash (>€1.4B), but structurally constrained by single-category seasonal product concentration (down jackets). Lacks the multi-category Lindy durability of century-old luxury houses and faces long-term headwinds from fashion cycle shifts and warming winter climates.",
+    "evidence": "FY2025 revenue of €3,132M and EBIT of €913M (29.2% margin) with net cash of €1.46B. Despite exceptional current profitability and >20% ROIC, Moncler brand generates >85% of group revenue, heavily skewed toward winter outerwear and Chinese luxury consumers (~50% Asia revenue). Narrow product category and fashion-trend sensitivity restrict 15+ year competitive advantage runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

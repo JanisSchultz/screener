@@ -1,0 +1,30 @@
+{
+  "id": "RIO.GB",
+  "ticker": "RIO",
+  "universe": "eu",
+  "company": "Rio Tinto",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Diversified Metals & Mining (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "First-quartile low-cost Pilbara iron ore deposits and integrated automated heavy-haul rail and port terminals provide world-class cost leadership, but Rio Tinto is a pure commodity price-taker on global seaborne iron ore, copper, and aluminum benchmarks without pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (commodity price-taker lacking pricing power, REJECT). Despite world-class low-cost Pilbara iron ore assets and multi-cycle ROIC > 12%, Rio Tinto is an unhedged commodity price-taker. Realized earnings and cash flows fluctuate directly with global Platts iron ore and LME metal spot prices, offering zero pricing power >= inflation.",
+    "evidence": "Pilbara iron ore fines and lump sales are benchmarked to Platts 62% Fe index. Operating earnings swung from $30B+ in 2021 to ~$15B in 2023-2024 as iron ore prices normalized. Because iron ore is a bulk commodity, Rio Tinto cannot set prices above market clearing rates without forfeiting volumes."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

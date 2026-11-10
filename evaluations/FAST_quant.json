@@ -1,0 +1,43 @@
+{
+  "id": "FAST",
+  "ticker": "FAST",
+  "universe": "us",
+  "company": "Fastenal",
+  "price": 52.99,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.3417,
+    "fin_note": "FY2025 Peak Owner EPS of $1.0939 accepted without adjustment (steady organic compounding). Operating ROIC of 34.2% reflects outstanding tangible capital efficiency across captive distribution hubs and FMI vending machines with negligible goodwill. 5-10Y forward growth of 8.0% supported by 5.5% Onsite/FMI footprint expansion, 1.5% pricing pass-through, 0.5% digital/mix efficiency, and 0.5% net share repurchases. Fortress balance sheet with net cash ($276.8M cash vs $100.0M debt) and 267x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.0939,
+    "current_multiple": 48.44,
+    "par_multiple": 29.41,
+    "par_value": 32.17,
+    "percent_vs_par": 0.6474,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0165,
+    "expected_irr_5y": -0.0061,
+    "market_implied_cap": 32.9,
+    "moat_runway_margin": -12.9,
+    "market_implied_growth": 0.3655,
+    "growth_margin_of_safety": -0.2855
+  },
+  "health_checks": {
+    "net_debt_years": 0.08,
+    "net_debt_ok": true,
+    "interest_coverage": 267.05,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8463,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

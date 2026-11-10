@@ -1,0 +1,30 @@
+{
+  "id": "UNH",
+  "ticker": "UNH",
+  "universe": "us",
+  "company": "UnitedHealth Group",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Managed Health Care",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "UnitedHealth Group commands unmatched operational scale across health benefits (UnitedHealthcare) and integrated care/PBM services (Optum), negotiating deep provider discounts and prescription rebates. However, it fails the empirical moat test on pricing power and returns on capital. Crucially, pricing power is constrained by CMS statutory payment rates in Medicare Advantage (effective net rate cuts in 2024-2026 under the v28 risk adjustment model) amidst elevated medical cost inflation and utilization surges, pushing the medical care ratio (MCR) to 88.9% in 2025. When management re-architected plan benefits and raised premiums to recover margins, it suffered severe customer churn, shedding over 1.0 million Medicare Advantage members. Furthermore, strict NOPAT ROIC collapsed to 9.5% in 2024 and 7.9% in 2025 (failing the >=12.0% hurdle), while OptumRx faces bipartisan legislative and FTC scrutiny threatening historical PBM spread pricing.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). UnitedHealth Group lacks pricing power above inflation due to statutory CMS Medicare Advantage payment caps, elevated post-pandemic healthcare utilization (medical care ratio expanded to 88.9% in 2025), and customer churn (>1M MA members shed upon benefit adjustments). Strict GAAP NOPAT ROIC collapsed to 7.9% in 2025, falling well below the 12% hurdle. Expanding DOJ antitrust scrutiny targeting UnitedHealthcare/Optum vertical ties, forced Amedisys divestitures, and legislative PBM spread-pricing reform compound terminal headwinds. [5-10Y g: Optum health services 4.0% + commercial risk 1.5% + price 1.0% - PBM margin compression 0.5% + net buybacks 1.0%]",
+    "evidence": "Multi-cycle Financial Performance: Revenues expanded from $257.1B in FY2020 to $400.3B in FY2024 and $447.6B in FY2025. GAAP Net Income was $14.41B in 2024 and $12.06B in 2025, down from a peak of $22.38B in 2023. Diluted EPS fell from $23.83 in 2023 to $15.51 in 2024 and $13.23 in 2025. Strict GAAP NOPAT ROIC dropped to 9.54% in 2024 and 7.90% in 2025, falling below the mandatory >=12.0% capital efficiency threshold as invested capital expanded ($197.6B in 2025) following acquisitions while operating earnings compressed.\n\nSegment Profile & Medical Cost Pressures: UnitedHealthcare contributes ~55% of operating earnings, serving commercial, Medicare Advantage, and Medicaid members. Optum (OptumHealth, OptumInsight, OptumRx) delivers care, analytics, and PBM services. In 2024-2025, the Medical Care Ratio (MCR) escalated from 82.8% (2022) to 85.5% (2024) and 88.9% in 2025, driven by elevated outpatient procedure utilization, higher acuity, and pharmacy costs.\n\nPricing Power Deficit & Attrition: In government programs (Medicare Advantage, ~35-40% of revenue), rates are set by CMS statutory formulas. When CMS implemented negative net rate adjustments and the v28 risk adjustment model phase-in during 2024-2026, UNH could not pass on 6-8%+ medical inflation to the government. When management attempted to restore margins by curtailing supplemental benefits and raising premiums in 2025/2026, the company suffered substantial member churn, intentionally forfeiting over 1.0 million MA enrollees, directly violating the Gate 3b standard of raising prices without losing customer volume.\n\nRegulatory & Antitrust Scrutiny: In February 2024, the DOJ opened a comprehensive antitrust investigation into the relationship and vertical integration between UnitedHealthcare and Optum doctor groups/clinics. In late 2025, the DOJ forced UNH to divest over 160 home health and hospice locations across 19 states to settle its challenge to the $3.3B Amedisys acquisition. In addition, UNH faces ongoing DOJ civil/criminal investigations into Medicare Advantage risk-adjustment coding practices, and OptumRx faces FTC enforcement actions and bipartisan legislation banning PBM spread pricing.\n\nBalance Sheet & Capital Allocation: Long-term debt stands at ~$65B against cash and short-term investments of ~$30B. Cash flow from operations was $19.7B in 2025 ($24.2B in 2024) with FCF of ~$16.2B ($20.5B in 2024). Operational fallout from the February 2024 Change Healthcare cyberattack incurred >$2.5B in direct response costs and provider loans. Capital allocation has maintained dividends and buybacks, but structural capital efficiency and pricing power fail the Munger hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

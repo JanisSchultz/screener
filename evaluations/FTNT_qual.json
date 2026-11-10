@@ -1,0 +1,30 @@
+{
+  "id": "FTNT",
+  "ticker": "FTNT",
+  "universe": "us",
+  "company": "Fortinet",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs across 700k+ enterprise firewall/SD-WAN installations running FortiOS, combined with proprietary FortiASIC silicon delivering 5-10x price-performance and power efficiency advantages over x86 peers. Gross margins consistently 79-81% (services >85%) and multi-year ROIC well above 40%. Primary erosion threats are cloud-native SASE substitution and recurring zero-day vulnerability disclosures.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Founder-led network security and Unified SASE market leader with proprietary FortiASIC cost advantages and >$1.9B net cash. High enterprise switching costs across branch/cloud firewalls support >80% gross margins and pricing power. [5-10Y g: secure networking & SASE volume 8.0% + subscription pricing 1.5% + mix expansion 1.0% - D&A/capex drag 0.5% + net share buybacks 1.5%]",
+    "evidence": "Fortinet has demonstrated elite compounding over 15+ public operating years, scaling revenue from $1.28B (2016) to $6.80B (2025) with operating margins expanding to 30.7%. Proprietary custom ASIC silicon provides enduring price/performance moat and 55% global firewall unit share. Structural negative working capital and upfront deferred revenue billings yield multi-year Owner FCF conversion of 115-132% ($2.16B FCF vs $1.85B NI in FY2025). Founder Ken Xie holds substantial insider equity (~16%); fortress balance sheet holds $2.50B cash against $497M debt ($2.0B net cash, interest coverage >100x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

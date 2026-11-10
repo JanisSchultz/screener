@@ -1,0 +1,43 @@
+{
+  "id": "MCD",
+  "ticker": "MCD",
+  "universe": "us",
+  "company": "McDonald's",
+  "price": 263.04,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Irreplaceable franchise royalty and prime commercial real-estate toll booth with ~95% franchised system. Negative book equity (-$1.8B) is a benign artifact of cumulative share repurchases; long-term debt ($40.0B) is comfortably serviced by 7.8x interest coverage and non-displaceable rental cash flows. Operating ROIC normalized to 35.0% cap given asset-light franchised structure. Clean peak Owner EPS of $11.95 in FY2025 with ~91% FCF conversion. 5-10Y bottom-up growth of 6.5% reflects 2.0% net restaurant additions, 2.5% comp sales/pricing, 1.0% digital/loyalty mix, -0.5% franchisee margin relief, and 1.5% ongoing share repurchases."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.95,
+    "current_multiple": 22.01,
+    "par_multiple": 24.45,
+    "par_value": 292.16,
+    "percent_vs_par": -0.0997,
+    "status": "Below PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0275,
+    "expected_irr_5y": 0.1151,
+    "market_implied_cap": 18.0,
+    "moat_runway_margin": 2.0,
+    "market_implied_growth": 0.0285,
+    "growth_margin_of_safety": 0.0365
+  },
+  "health_checks": {
+    "net_debt_years": 4.67,
+    "net_debt_ok": false,
+    "interest_coverage": 7.83,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9058,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

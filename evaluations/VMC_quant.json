@@ -1,0 +1,43 @@
+{
+  "id": "VMC",
+  "ticker": "VMC",
+  "universe": "us",
+  "company": "Vulcan Materials Company",
+  "price": 282.72,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": null,
+    "fin_note": "Premier North American aggregates infrastructure franchise protected by captive local quarry monopolies and ~25-mile trucking radius barriers. Physical operating ROIC of 17.73% preserved (tangible capital return, neutralizing $5.27B acquisition goodwill). Peak Owner EPS of $8.65 in FY2025 reflects uninterrupted cash gross profit per ton compounding ($11.33/ton, +6.8% YoY) with zero cyclical windfall. 5-10Y secular growth of 8.0% anchored by 1.5% aggregates volume, 4.5% pricing power, 1.0% unit margin expansion, and 1.0% buybacks/bolt-ons. Disciplined balance sheet with net debt of $4.18B (3.88x NI, 2.0x EBITDA), 6.76x EBIT interest coverage, and 89.4% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.6473,
+    "current_multiple": 32.69,
+    "par_multiple": 23.24,
+    "par_value": 200.96,
+    "percent_vs_par": 0.4068,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0072,
+    "expected_irr_5y": 0.0159,
+    "market_implied_cap": 28.1,
+    "moat_runway_margin": -8.1,
+    "market_implied_growth": 0.2218,
+    "growth_margin_of_safety": -0.1418
+  },
+  "health_checks": {
+    "net_debt_years": 4.05,
+    "net_debt_ok": false,
+    "interest_coverage": 6.76,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8942,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

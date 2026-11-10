@@ -1,0 +1,43 @@
+{
+  "id": "RMS.FR",
+  "ticker": "RMS",
+  "universe": "eu",
+  "company": "Herm\u00e8s",
+  "price": 1320.5,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap (tangible capital return >100% on fortress balance sheet with >\u20ac12B net cash). 5-10Y forward compound growth rate of 10.0% aligned with qualitative guidance [artisan volume 6.0% + pricing power 3.5% + product mix 1.0% - tax/capex drag 0.5% + share repurchases 0.0%]."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 43.8668,
+    "current_multiple": 30.1,
+    "par_multiple": 33.71,
+    "par_value": 1478.75,
+    "percent_vs_par": -0.107,
+    "status": "Below PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0202,
+    "expected_irr_5y": 0.1454,
+    "market_implied_cap": 26.8,
+    "moat_runway_margin": 3.2,
+    "market_implied_growth": 0.0459,
+    "growth_margin_of_safety": 0.0541
+  },
+  "health_checks": {
+    "net_debt_years": 0.01,
+    "net_debt_ok": true,
+    "interest_coverage": 124.18,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.92,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

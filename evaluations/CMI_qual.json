@@ -1,0 +1,30 @@
+{
+  "id": "CMI",
+  "ticker": "CMI",
+  "universe": "us",
+  "company": "Cummins",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive global distribution and service network provides replacement parts and maintenance lock-in, but captive truck OEMs (Daimler Truck, PACCAR, Volvo) have developed their own proprietary powertrains (Detroit Diesel, PACCAR MX, Volvo D13) and actively limit Cummins' pricing power. Historical ROIC is cyclical (5.2% in FY2023 post-$2.04B emissions settlement; FY2024 boosted by Atmus divestiture), while operating margins remain modest at 8-11%. Terminal decarbonization headwinds threaten the diesel core, while Accelera clean tech remains deeply unprofitable with $458M in 2025 impairments.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Truck OEMs (Daimler, PACCAR, Volvo) have vertically integrated captive engines, stripping Cummins of independent pricing power. Modest operating margins (8-11%) and severe Clean Air Act emissions penalties ($2.04B in 2023) demonstrate lack of an unassailable moat. Secular decarbonization creates terminal risk for the diesel core, while Accelera remains loss-making with $458M in 2025 write-downs.",
+    "evidence": "10-year median ROIC is ~15.2%, but multi-cycle returns are volatile. FY2023 GAAP ROIC plunged to 5.2% due to a $2.04B pre-tax regulatory settlement for emissions defeat devices ($1.675B cash civil penalty paid in FY2024, crashing FCF to $279M on $3.95B net income). Operating margins average 8-11% with gross margins at 24-25%, reflecting intense OEM bargaining power and cyclical capital goods dynamics. Accelera clean tech revenue of $460M (~1.4% of total sales) recorded $458M of impairment/restructuring charges in FY2025. Total debt stood at $7.55B as of year-end 2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

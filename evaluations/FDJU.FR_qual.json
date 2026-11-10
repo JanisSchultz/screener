@@ -1,0 +1,30 @@
+{
+  "id": "FDJU.FR",
+  "ticker": "FDJU",
+  "universe": "eu",
+  "company": "FDJ United",
+  "country": "France",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal and legislative acceptance risk; gambling, lottery, and sports-betting operations facing recurring state sin taxes, regulatory interventions, and public health scrutiny.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Commercial gambling and lottery operations face chronic societal and legislative acceptance risk, including recurring tax increases ('sin taxes') and stringent regulatory restrictions. The €2.45B Kindred acquisition expands exposure to competitive and heavily regulated European online gaming.",
+    "evidence": "FDJ holds an exclusive 25-year French monopoly on retail lotteries and sports betting (until 2044), which is highly cash-generative. However, gambling is an addictive, socially sensitive activity subject to heavy state taxation (over 50% of gross gaming revenue collected by the French government in levies) and strict player-protection limits. Furthermore, the acquisition of Kindred Group (Unibet) significantly increases group exposure to competitive, highly regulated online sports betting and casino markets across Europe."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

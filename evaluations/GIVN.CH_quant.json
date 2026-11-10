@@ -1,0 +1,43 @@
+{
+  "id": "GIVN.CH",
+  "ticker": "GIVN",
+  "universe": "eu",
+  "company": "Givaudan",
+  "price": 4054.0,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing CHF 4.7B accounting goodwill from serial flavor/fragrance acquisitions (tangible ROIC ~36.8%). Net debt repayable in 2.7 years with 12.5x interest coverage and 105.8% FCF conversion. Forward growth of 5.5% driven by 3.0% organic volume/mix, 0.5% net pricing after CHF FX drag, 1.0% margin expansion/deleveraging, and 0.5% bolt-on M&A. At 32.50x peak Owner EPS, shares trade Above PAR (+23.8% premium vs PAR value of CHF 3,274.47)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 124.7497,
+    "current_multiple": 32.5,
+    "par_multiple": 26.25,
+    "par_value": 3274.47,
+    "percent_vs_par": 0.2381,
+    "status": "Above PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0172,
+    "expected_irr_5y": 0.0281,
+    "market_implied_cap": 24.8,
+    "moat_runway_margin": -4.8,
+    "market_implied_growth": 0.1487,
+    "growth_margin_of_safety": -0.0937
+  },
+  "health_checks": {
+    "net_debt_years": 2.73,
+    "net_debt_ok": true,
+    "interest_coverage": 12.55,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0581,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

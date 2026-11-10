@@ -1,0 +1,30 @@
+{
+  "id": "MAERSK B.DK",
+  "ticker": "MAERSK B",
+  "universe": "eu",
+  "company": "A.P. Moller-Maersk",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Marine Transportation (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global scale in ocean container shipping and APM Terminals provides network density, but newbuild vessel supply across global carrier alliances repeatedly dilutes returns. 10-year average ROIC sits in the 7-9% range (well below the 12% hurdle), with extreme earnings volatility and zero durable pricing power over shippers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject – G3 Moat & Pricing). Global container logistics and ocean liner giant. While operating scale and terminal infrastructure are substantial, ocean shipping is structurally commoditized and plagued by multi-year overcapacity cycles. Multi-cycle normalized ROIC of 7-9% is far below the 12% hurdle, with violent freight rate swings and lack of structural pricing power.",
+    "evidence": "Maersk's 10-year historical ROIC averages 7-9% (median ~7.7%), with pre-COVID 2016-2020 ROIC fluctuating around 0-4% and post-pandemic 2023-2025 ROIC cooling to 3.5-4.2% despite Red Sea re-routing. Operating earnings depend heavily on global container freight rate indices (SCFI/CCFI) and uncoordinated newbuild vessel orders across alliances, preventing consistent economic value creation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

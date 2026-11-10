@@ -1,0 +1,30 @@
+{
+  "id": "COO",
+  "ticker": "COO",
+  "universe": "us",
+  "company": "Cooper Companies (The)",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Doctor-written prescription lock-in and patient inertia in the 4-player global contact lens oligopoly (Alcon, J&J, CooperVision, B+L), supported by secular shift to daily silicone-hydrogel lenses (MyDay, Clariti) and MiSight myopia management, delivering consistent 2-4% annual price realization with stable ~66% gross margins.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Attractive contact-lens oligopolist with entrenched prescription switching costs, but fails Gate 6 due to 6.55x LT debt/NI ($2,455.7M debt vs $374.9M net income), chronic manufacturing capex absorbing >50-60% of operating cash flow (38.2% multi-year FCF conversion), and sub-hurdle 4.6% 5-year median GAAP ROIC following debt-funded fertility M&A (Generate Life Sciences).",
+    "evidence": "Cooper Companies operates two main segments: CooperVision (~67% of FY2025 revenue of $4,092M) and CooperSurgical (~33% of revenue). While CooperVision enjoys structural prescription switching barriers and robust ~66% gross margins in contact lenses, the business model fails Gate 6 across multiple criteria: (1) Balance sheet leverage is excessive, with long-term debt of $2,455.7M against cash of $110.6M and TTM net income of $374.9M, producing an LT debt / net income ratio of 6.55x (violating the <= 4.0x threshold); (2) Multi-year FCF conversion is only 38.17% due to relentless high capex ($362.4M in FY2025, $421.2M in FY2024, $392.5M in FY2023) required for continuous high-speed automated packaging and molding lines for daily disposables; (3) 5-year median GAAP ROIC is 4.64% (and tangible ROIC is 9-10%), severely diluted by $5,439.7M in goodwill and intangibles (66% of equity) accumulated through debt-financed M&A rollups such as the $1.6B Generate Life Sciences acquisition in Dec 2021; (4) Owner EPS peaked in FY2022 at $2.46 and has stagnated around $1.95 in FY2024-FY2025 due to elevated interest expense ($100M-$114M) and capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

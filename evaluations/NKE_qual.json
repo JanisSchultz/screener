@@ -1,0 +1,30 @@
+{
+  "id": "NKE",
+  "ticker": "NKE",
+  "universe": "us",
+  "company": "Nike, Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Iconic global intangible equity (Swoosh, Jordan Brand), Air/ZoomX footwear IP, unmatched pro-league and athlete endorsement scale ($46.4B revenue), and demand-creation budget prevent direct arbitrage by generic makers. Empirical proof across the cycle holds via 21.5% 10Y median ROIC (moderating to ~15% in FY25 and ~11.8%-18.7% in FY26 trough) and ~42.7%-42.9% trough gross margins, with selective FY26 tariff-offset price increases lifting gross margin +20 bps. Primary erosion threats are severe: global footwear share contracted from high-20s% toward low-20s% as On (>60% GM), Hoka, and Adidas captured running and lifestyle demand, while retro franchise over-supply and wholesale reset depressed FY25-FY26 net income ~45% below prior peaks.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Nike passes Gates 1-3 on transparent asset-light economics, entrenched everyday footwear/sportswear habits in Western markets, and multi-cycle intangible brand ROIC (21.5% historical median), it fails the 15-year CAP and 5-Macrotrend Secular Resilience bar. Outside View: branded athletic footwear is Consumer Discretionary with 3-7 year style and running-innovation cycles and shared Asian contract factories, allowing agile insurgents (On, Hoka) and resurgent peers (Adidas, Anta/Li-Ning) to erode share rapidly—stalling FY26 revenue at $46.40B (+0.2%) and shrinking Net Income further to $3.11B (-3.4%) nearly two years into CEO Elliott Hill's turnaround. Inside View: active, unhedged Macrotrend [3] (Geopolitical Realignment & Supply Chain Reshoring) headwind—FY26 10-K shows 95% of NIKE Brand footwear is manufactured in Vietnam (52%), Indonesia (27%), and China (16%), leaving margins directly exposed to U.S. tariffs and US-China friction alongside persistent Greater China demand weakness.",
+    "evidence": "Multi-cycle financial record: Historical 10Y median ROIC is 21.5%. In FY25 (ended May 31, 2025), revenue dropped ~10% YoY (-9% currency-neutral) to $46,309M, gross profit fell 14% to $19,790M (~42.7% GM), Net Income fell ~44% to $3,219M, OCF was $3,698M (~$2.4B FCF), and ROIC moderated to ~15%. In FY26 (ended May 31, 2026), turnaround stabilization remained elusive: revenue was flat at $46,398M (+0.2% YoY), Net Income declined another ~3.4% to $3,108M, FCF slipped to ~$2.1B-$2.2B, and ROIC ranged ~11.8%-18.7% depending on capital adjustments, though gross margin edged up +20 bps to ~42.9% via selective pricing and inventory cleanup. Channel & regional mix: NIKE Direct fell from $18.8B (FY25) to $17.7B (FY26) as CEO Elliott Hill's 'Win Now' and 'Pace' plans re-engaged wholesale partners (Foot Locker, Dick's, JD Sports, specialty running), lifting North America wholesale at the cost of structurally lower wholesale unit gross margins while Greater China and EMEA remained soft. Supply chain & geopolitical concentration (FY25/FY26 10-Ks): 100% independent contract manufacturing; NIKE Brand footwear concentrated ~52% in Vietnam (51% FY25), ~27% in Indonesia (28% FY25), and ~16% in China (17% FY25), with 4 vendors representing ~59%-60% of footwear volume; apparel spanned 34 countries across 321 factories (303 in FY25). Balance sheet remained healthy at FY26 end ($9,030M cash & short-term investments vs $7,941M total debt), but structural fashion-cycle fade, specialty running share loss to On/Hoka, and unhedged Asian tariff/supply-chain exposure cap CAP at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

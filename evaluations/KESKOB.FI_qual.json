@@ -1,0 +1,30 @@
+{
+  "id": "KESKOB.FI",
+  "ticker": "KESKOB",
+  "universe": "eu",
+  "company": "Kesko",
+  "country": "Finland",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Kesko possesses strong Finnish retail density via its retailer-entrepreneur K-store model and Kespro foodservice division. However, grocery retailing operates in a domestic duopoly with cooperative S-Group alongside Lidl, limiting grocery pricing power. Furthermore, the conglomerate is weighed down by cyclical Building & Technical Trade (B&TT), resulting in multi-year after-tax GAAP ROIC of ~7.1-7.9%, falling short of the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 7-8% vs 12% hurdle, REJECT). Finnish retailer-entrepreneur grocery model is defensive, but group returns are dragged down by cyclical building/technical trade and cooperative S-Group competition; after-tax GAAP ROIC is chronically below 12%.",
+    "evidence": "5-year median GAAP ROIC is ~7.1-7.9%. Comparable operating margins contracted from 6.9% in 2021-2022 to 5.5% in 2024 as the European residential construction slump severely impacted Building & Technical Trade (B&TT). Grocery margins are defended but lack independent pricing leverage against S-Group."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

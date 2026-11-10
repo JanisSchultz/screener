@@ -1,0 +1,30 @@
+{
+  "id": "RCL",
+  "ticker": "RCL",
+  "universe": "us",
+  "company": "Royal Caribbean Group",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket vacation purchase deferrable in recessions; cruise lines are non-essential leisure spending rather than an everyday Western habit or functional necessity.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need, REJECT). Royal Caribbean Group operates capital-intensive cruise lines, an explicitly discretionary, big-ticket, and deferrable leisure category rather than an essential Western necessity or entrenched everyday habit. Although post-pandemic cyclical demand is strong, cruise spending collapses severely in downturns or travel disruptions (generating over $13B in cumulative GAAP net losses across 2020-2022), failing the Munger 'likely to spend' durability standard. Because Gate 2 is an Anchor Gate, Calamity Tier does not apply.",
+    "evidence": "Royal Caribbean Group operates global cruise vacations across Royal Caribbean International, Celebrity Cruises, Silversea Cruises, private destinations, and joint venture interests (including TUI Cruises), deriving revenue from passenger tickets and onboard spending. Multi-cycle financials underscore severe demand cyclicality and capital intensity: the dossier records a 10-year median ROIC of 8.2% (below the 12% hurdle), and from 2020 to 2025 annual revenue swung from $2.21B (2020) and $1.53B (2021) to $8.84B (2022), $13.90B (2023), $16.48B (2024), and $17.94B (2025). GAAP net income swung from losses of $(5.80)B in 2020, $(5.26)B in 2021, and $(2.16)B in 2022 to profits of $1.70B (2023), $2.88B (2024), and $4.27B (2025; $15.61 diluted EPS). Standard ROIC recovered from -11.80% (2020), -10.30% (2021), and -1.97% (2022) to 6.96% (2023), 9.36% (2024), and 9.98% (2025), while company-reported ROIC reached 18.0% in FY2025. Strong cyclical momentum continued across Q1-Q3 2026 (Q1 revenue ~$4.5B, adj. EPS $3.60, ~$1.1B returned via buybacks and dividends; Q2 revenue $4.83B, net income $1.13B, 110.2% load factor; Q3 revenue $5.59B, net income $1.73B, 112.4% load factor; FY2026 adj. EPS guidance raised to $17.85-$17.95). Despite cyclical strength and 2026 deleveraging below 3x with ~$6.9B liquidity, FY2025 operating cash flow of ~$6.47B required ~$5.23B of capex (leaving ~$1.24B FCF, ~29% of GAAP net income) and year-end 2025 total debt remained $21.3B ($17.61B mid-2025 long-term debt) after peaking at $23.4B in 2022, confirming high discretionary cyclicality and heavy capital demands."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

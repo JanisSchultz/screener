@@ -1,0 +1,30 @@
+{
+  "id": "SDZ.CH",
+  "ticker": "SDZ",
+  "universe": "eu",
+  "company": "Sandoz",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity off-patent generics and biosimilars manufacturer facing continuous annual low-to-mid single digit price deflation, tender bidding, and government reference price cuts. Sandoz possesses zero pricing power >= inflation across its core volume base.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (N, REJECT). Pure-play generic and biosimilar drug manufacturer subject to structural price deflation and competitive tender bidding. Lacks pricing power >= inflation across its commodity pharmaceuticals portfolio.",
+    "evidence": "Spun off from Novartis in late 2023. Core generics portfolio suffers persistent low-to-mid single-digit annual price erosion from competitive tenders and payer price cuts. While biosimilar volume grows, structural commodity price dynamics in off-patent drugs preclude real pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b_pricing_and_proof",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

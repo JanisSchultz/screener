@@ -1,0 +1,30 @@
+{
+  "id": "BDX",
+  "ticker": "BDX",
+  "universe": "us",
+  "company": "Becton Dickinson",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "BDX possesses extensive manufacturing scale in high-volume clinical consumables (syringes, needles, vacutainers, IV catheters) and installed infusion pump hardware. However, it fails proof of moat: 5-year median GAAP ROIC is 5.45% (10-year range 2.0%-7.7%), well below the 12% hurdle. Dilutive mega-acquisitions (CareFusion $12.2B, C.R. Bard $24B, and Edwards Lifesciences Critical Care $4.2B) loaded the balance sheet with $36.0B in goodwill and intangibles on $25.4B of equity (negative tangible equity of -$10.6B). Pricing power is heavily constrained by hospital Group Purchasing Organizations (GPOs like Vizient, Premier) running competitive tenders on commoditized consumables. Moreover, chronic Alaris pump quality issues (2020-2023 FDA shipping hold, 2025 legacy bezel recall, 2026 Class I infusion set recall) have triggered pricing concessions and customer friction.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.45%, REJECT). Serial debt-funded mega-acquisitions (CareFusion, Bard, Edwards Critical Care) permanently burdened the capital base with $36B of goodwill and intangibles, suppressing GAAP ROIC to 2.0%-5.6% for eight consecutive years. Hospital GPO tender procurement caps pricing power on basic consumables, while multi-year Alaris infusion system Class I recalls erode commercial contracting leverage.",
+    "evidence": "10-year financial history demonstrates chronic sub-hurdle returns on capital: GAAP ROIC was 7.71% in 2016, 7.06% in 2017, 4.24% in 2018, 3.59% in 2019, 2.02% in 2020, 5.56% in 2021, 5.46% in 2022, 5.03% in 2023, 5.02% in 2024, and 5.45% in 2025 (5-year median 5.45%, never exceeding 6% post-2017). As of FY2025, Goodwill and Intangibles stand at $36,001M against Total Equity of $25,390M, resulting in negative tangible equity of -$10,611M. Long-term debt of $17,621M represents 10.5x net income ($1,678M), exacerbated by $3.2B of new debt taken in 2024 to fund the $4.2B Edwards Lifesciences Critical Care acquisition. While FCF conversion is healthy (133% in FY2025) and operating cash flow reached $3,430M, the capital-diluted balance sheet and hospital GPO tender resistance prevent compounding at attractive economic rates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

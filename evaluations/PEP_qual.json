@@ -1,0 +1,30 @@
+{
+  "id": "PEP",
+  "ticker": "PEP",
+  "universe": "us",
+  "company": "PepsiCo",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Direct-Store-Delivery (DSD) route density and retail shelf dominance across Frito-Lay salty snacks (~60% US market share) and beverages create an insurmountable distribution moat. 10Y median ROIC of 16.8% and gross margins stable at 53-55% prove moat durability. Primary erosion threats include GLP-1 adoption, health/wellness shifts away from ultra-processed snacks, and consumer resistance to cumulative price increases.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Global snack and beverage powerhouse anchored by Frito-Lay's dominant DSD distribution network. Demonstrates durable pricing power and Lindy snack brand loyalty. High cash conversion (>85% FCF/NI) and steady balance sheet with >10x net interest coverage comfortably support capital returns. [5-10Y g: snack/beverage volume 1.0% + price 2.0% + international mix 1.5% - promotional/input cost drag 0.5% + net buybacks 1.0%]",
+    "evidence": "10-year median ROIC of 16.8% and FY24/FY25 operating margins ~12-14%. Net revenue grew to $93.9B in FY25 with operating cash flow of $12.5B and FCF of $8.2B (99% FCF conversion). Net interest coverage remains strong at ~10x. Frito-Lay generates outsized operating profit share (~45-50% of corporate profit) providing high-margin stability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

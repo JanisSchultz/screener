@@ -1,0 +1,30 @@
+{
+  "id": "CVE.CA",
+  "ticker": "CVE",
+  "universe": "ca",
+  "company": "Cenovus Energy",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cenovus holds multi-decade, low-decline steam-assisted gravity drainage (SAGD) oil sands reservoirs (Christina Lake, Foster Creek) and integrated refining capacity from the Husky acquisition. However, the business is a pure price-taker exposed to global crude benchmarks (WTI, Brent), Western Canadian Select (WCS) heavy oil discounts, and refining crack spreads, with zero unilateral pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). Cenovus is an integrated oil sands operator whose cash flows and returns are dictated by global oil benchmark prices and heavy crude differentials. Through-cycle ROIC fails the 12% moat hurdle, dropping near 0% during downturns.",
+    "evidence": "ROIC swung wildly across the cycle: dropping to near 0% in 2020 during the oil collapse, surging during the 2022 energy price spike, and moderating back to mid-single digits by 2024. Multi-cycle 10-year median ROIC sits well below 10%, confirming pure commodity price-taker status without sustainable economic rent."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

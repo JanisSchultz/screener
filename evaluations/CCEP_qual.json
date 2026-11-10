@@ -1,0 +1,30 @@
+{
+  "id": "CCEP",
+  "ticker": "CCEP",
+  "universe": "us",
+  "company": "Coca-Cola Europacific Partners",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Insurmountable local route density, exclusive territorial bottling agreements with The Coca-Cola Company across 31 countries, and ubiquitous cold-drink placement provide substantial scale advantages; demonstrated strong pricing power (+8% price/mix in 2022-2023, +2-3% in 2024-2025) passing through inflationary input costs. Primary moat risk is that brand equity and concentrate pricing power belong to The Coca-Cola Company (KO), which can adjust concentrate prices over time.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Pillar 3 Balance Sheet, REJECT). Well-run territorial Coca-Cola bottler with unmatched route density and pack-price execution across Europe and Australasia, but unlike asset-light KO it bears heavy plant/fleet capex, a thin 10.7% 5-year median GAAP ROIC, and 4.99x LT debt/Net Income (€9.69B LT debt vs €1.94B Net Income) from debt-funded bottler acquisitions (Amatil, CCBPI), exceeding the 4.0x fortress balance sheet ceiling.",
+    "evidence": "CCEP is the world's largest independent Coca-Cola bottler by revenue (€20.9B in FY2025, operating across 31 countries). 5-year median GAAP ROIC is 10.68% (2022: 10.23%, 2023: 11.13%, 2024: 10.02%, 2025: 10.9% reported / 13.3% normalized), diluted by €17.0B in franchise intangibles and goodwill. FCF conversion is healthy at >100% of Net Income (€1.8B–€2.0B Owner FCF). However, balance sheet leverage is structurally elevated: LT debt of €9,692M vs cash of €918M and TTM Net Income of €1,942M yields LT Debt / Net Income of 4.99x (and Net Debt / EBITDA of 2.7x), failing Gate 6's <= 4.0x threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

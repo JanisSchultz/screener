@@ -1,0 +1,43 @@
+{
+  "id": "FBK.IT",
+  "ticker": "FBK",
+  "universe": "eu",
+  "company": "FinecoBank",
+  "price": 21.26,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting FinecoBank's high-efficiency digital wealth platform and proprietary PFA network (tangible ROIC 98.5%, \u20ac2.20B cash vs \u20ac873M debt, CET1 > 24%). Peak Owner EPS of \u20ac1.08 from FY24 confirmed sustainable in FY25 (\u20ac1.08). Forward compound growth of 8.0% (g_implied) is driven by investing/FAM fee volume (6.5%), advisory pricing (1.0%), and operating leverage (1.0%), offset by NII margin normalization (-1.0%) with buybacks/yield support."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.0794,
+    "current_multiple": 19.7,
+    "par_multiple": 19.7,
+    "par_value": 21.26,
+    "percent_vs_par": -0.0002,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0376,
+    "expected_irr_5y": 0.1176,
+    "market_implied_cap": 15.0,
+    "moat_runway_margin": 0.0,
+    "market_implied_growth": 0.0332,
+    "growth_margin_of_safety": 0.0468
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 12.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.83,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

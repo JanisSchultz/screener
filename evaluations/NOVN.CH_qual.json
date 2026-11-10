@@ -1,0 +1,30 @@
+{
+  "id": "NOVN.CH",
+  "ticker": "NOVN",
+  "universe": "eu",
+  "company": "Novartis",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Innovative patent estate in radioligands and biologics, but core revenue generator Entresto lost US patent exclusivity in mid-2025 triggering immediate multi-generic competition, alongside mandatory US Medicare IRA price negotiations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Blockbuster Entresto lost US patent exclusivity in mid-2025 leading to immediate multi-source generic launches, while mandatory Medicare IRA price cuts and European single-payer price controls eliminate pricing power above inflation.",
+    "evidence": "While post-Sandoz ROIC expanded to ~24-25%, top-selling blockbuster Entresto (~$6B+ sales, ~15% of revenue) suffered US patent litigation losses clearing immediate generic market entry in mid-2025, triggering double-digit revenue erosion. With key products subject to mandatory CMS Maximum Fair Price caps under the IRA and European statutory price cuts, Novartis cannot unilaterally raise prices at or above inflation without volume loss."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

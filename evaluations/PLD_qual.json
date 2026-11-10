@@ -1,0 +1,30 @@
+{
+  "id": "PLD",
+  "ticker": "PLD",
+  "universe": "us",
+  "company": "Prologis, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prime infill logistics locations adjacent to major metropolitan consumption centers benefit from strict zoning and land scarcity barriers. However, PLD fails quantitative proof of moat: 5-year median GAAP ROIC is only 5.13% (2025: 4.83%, 10-year peak: 7.67%) and incremental ROIIC is ~4.9%, structurally below the 12% hurdle. Furthermore, global logistics rents fell -3.7% and US rents fell -4.5% in 2025, demonstrating cyclical pricing vulnerability following post-pandemic warehouse oversupply.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). World's premier industrial REIT with irreplaceable infill logistics real estate, but fails the Munger capital efficiency hurdle: 5-year median GAAP ROIC is 5.13% (2025: 4.83%) and incremental ROIIC is ~4.9%, far below the 12% minimum threshold. Additionally, global net effective rents declined -3.7% and US rents fell -4.5% in 2025 amid post-pandemic supply overhang, demonstrating cyclical rent vulnerability rather than uninterrupted pricing power.",
+    "evidence": "5-year median GAAP ROIC is 5.13% (2021: 7.47%, 2022: 6.08%, 2023: 4.39%, 2024: 5.13%, 2025: 4.83%); tangible ROIC median is 5.23%. Invested capital expanded from $33.4B in 2018 to $88.2B in 2025 (+$54.8B) while EBIT rose from $1.69B to $4.36B (+$2.67B), generating an incremental ROIIC of ~4.9%. Free cash flow conversion over 5 years is ~63% (FCF/NI 0.63) due to heavy annual development capex ($2.78B in 2025, $3.21B in 2024). Peak-to-peak owner earnings failed to advance (peak owner EPS was $4.15 in 2022 vs. $3.48 in 2025; 10-year Owner EPS CAGR is -1.11%). Balance sheet carries $35.0B in long-term debt against $1.15B cash (net debt / net income of 10.2x), with interest expense rising from $266M in 2021 to $1,002M in 2025, compressing interest coverage to 4.35x. While infill locations have high physical entry barriers, 2024-2025 logistics rent corrections (-4.5% US rent growth in 2025) confirm pricing power is cyclical rather than inflation-proof across all periods."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

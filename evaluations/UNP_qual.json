@@ -1,0 +1,30 @@
+{
+  "id": "UNP",
+  "ticker": "UNP",
+  "universe": "us",
+  "company": "Union Pacific Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Rail Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable transcontinental infrastructure moat: 32,000-route-mile contiguous rail network across 23 western US states forming an entrenched duopoly with BNSF. Right-of-ways, classification yards, bridges, and port/border connections are physically and economically impossible to duplicate. Empirical proof: 10-year median GAAP ROIC of 16.0% (ranging consistently between 13.5% and 17.5% from 2016 to 2025), operating margins sustained around ~40% (operating ratio ~60%), and multi-year FCF conversion >95%. Pricing power demonstrated through contractually indexed escalators (RCAF) and fuel surcharges yielding 100-200 bps above rail inflation across cycles, supported by captive shippers lacking viable transportation alternatives. Primary erosion threats: regulatory intervention by the Surface Transportation Board (STB) on reciprocal switching or rate caps, secular decline in thermal coal carloads, and long-term highway freight automation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Transcontinental rail duopoly with BNSF across 23 western US states. Irreplaceable 32,000-route-mile physical infrastructure asset with insurmountable right-of-way barriers. Resilient across all 5 macrotrends with zero unhedged headwinds: physically insulated from AI disruption, major beneficiary of USMCA reshoring and Mexico cross-border trade via 6 gateways and Ferromex, 3-4x fuel efficiency advantage over trucking, and formula-indexed RCAF contract pricing power covering inflation (Gate 4 CAP: 20Y). Disciplined Precision Scheduled Railroading (PSR) execution under CEO Jim Vena delivers ~40% operating margins and 16.0% ROIC (Gate 5 score: 1). Passes Gate 6 under essential infrastructure standard: 7.52x EBIT interest coverage, 98.3% FCF conversion, and investment-grade A3/A- balance sheet. [5-10Y g: carload volume 1.5% + core pricing above inflation 2.5% + PSR network productivity 1.0% - regulatory/capex drag 0.5% + share repurchases 2.5%]",
+    "evidence": "Multi-cycle financial track record: 10-year GAAP ROIC has consistently exceeded the 12% hurdle, sustaining 13.5% to 17.5% across 2016-2025 with a median of 15.96%. Operating margins have averaged 38-41% (operating ratio 59-62%). Peak-to-peak compounding is intact: Owner EPS compounded at 7.4% CAGR from $5.07 in 2016 to a new peak of $11.98 in FY2025 ($7,138M Net Income, $9,846M EBIT). Cash conversion is exceptional: 10-year Owner FCF conversion median exceeds 95% (98.3% TTM; $6,683M Owner FCF in FY2025). Revenue diversification: Freight revenues split across Industrial (chemicals, energy, construction ~35%), Premium/Intermodal (intermodal containers, finished autos ~35%), and Bulk (grain, fertilizer, coal ~30%). Lock-in & Pricing: Serves as the exclusive rail connection to all 6 major US-Mexico border crossings (holding a 26% ownership stake in Ferromex) and key West Coast / Gulf Coast deepwater ports. Captive shippers have zero economic alternative for bulk and heavy goods as rail is 3-4x more fuel efficient than long-haul trucking. Contract escalators (RCAF) reliably protect real margins. Capital allocation: Self-funds all network reinvestment ($3.79B capex in 2025 against $9.29B OCF), returning excess capital via $3.24B dividends and counter-cyclical share repurchases. Balance sheet: Investment-grade rating (Moody's A3 stable, S&P A-). Total debt/EBITDA of ~2.3x-2.5x, Net Debt of $30.55B ($31.81B LT debt less $1.27B cash), positive tangible equity of $18.47B, and EBIT interest coverage of 7.52x ($9,846M EBIT / $1,309M interest), comfortably clearing the >5.0x essential infrastructure standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

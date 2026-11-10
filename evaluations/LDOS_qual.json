@@ -1,0 +1,30 @@
+{
+  "id": "LDOS",
+  "ticker": "LDOS",
+  "universe": "us",
+  "company": "Leidos Holdings, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Government IT services and systems integration lack a structural economic moat. While security clearances and customer intimacy offer mild incumbency advantages, federal procurement rules (FAR, CAS), DCAA audits, and mandatory contract recompetes every 3 to 7 years invite intense price-based bidding from capable peers (General Dynamics IT, Booz Allen, CACI, SAIC). Multi-cycle median GAAP ROIC (~8-11%) falls short of the 12% threshold, and pricing power above wage inflation is structurally constrained by government cost-plus fee caps and LPTA/best-value competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a = None, 3b = N, REJECT). Defense and civil government IT contractor operates in a competitive procurement framework governed by the Federal Acquisition Regulation (FAR). Mandatory periodic recompetes, statutory fee caps on cost-plus work, and wage inflation exposure on fixed-price contracts preclude durable pricing power above inflation. Multi-cycle median GAAP ROIC historically sits around 8-11%, failing the 12% capital efficiency hurdle.",
+    "evidence": "10-year historical GAAP ROIC has averaged ~8-11% (FY16 4.3%, FY17 5.7%, FY18 7.7%, FY19 9.9%, FY20 7.7%, FY21 8.3%, FY22 7.8%, FY23 3.5%, recovering to ~13.8% in FY24 and ~15.5% in FY25), with 5-year median ROIC below 12%. Substantially all revenues derive from US government prime and subcontracts (DoD, Intelligence Community, FAA, VA, DHS) subject to budgetary sequestration, continuing resolutions, and open competition mandates under the Competition in Contracting Act."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CNQ.CA",
+  "ticker": "CNQ",
+  "universe": "ca",
+  "company": "Canadian Natural Resources",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "CNQ is the lowest-cost operator in the Western Canadian Sedimentary Basin with a vast portfolio of zero-decline oil sands mining assets (Horizon, AOSP) and long-life thermal assets. However, as an upstream producer of crude oil and natural gas, it has zero pricing power and sells into global and regional commodity benchmark prices.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). CNQ represents world-class low-cost oil sands operational management and capital allocation, but remains structurally a commodity price-taker. Full-cycle 10-year median ROIC of ~6-8% fails the 12% Munger moat hurdle.",
+    "evidence": "ROIC was negative in 2015, 2016, and 2020 (-0.6% to -3.0%), and subdued at 3.5%-7.5% in 2018-2019. Despite peaking at ~18% in 2022 during the post-pandemic commodity surge, 10-year median ROIC is ~7.0%, well below the 12% through-cycle hurdle, demonstrating that structural returns are capped by commodity market cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

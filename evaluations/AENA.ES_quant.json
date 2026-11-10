@@ -1,0 +1,43 @@
+{
+  "id": "AENA.ES",
+  "ticker": "AENA",
+  "universe": "eu",
+  "company": "Aena",
+  "price": 28.28,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.05,
+    "roic_est": 0.1873,
+    "fin_note": "Peak Owner EPS of €1.4245 reflects post-COVID passenger normalization and commercial retail contract renewals across 46 Spanish airports without non-cash windfalls. Operating ROIC of 18.73% accurately captures regulated airport asset tangible returns (GAAP 16.49%). 5-10Y forward growth anchored at 5.0% reflecting Spanish tourist passenger volume (2.8%), DORA CPI-indexed aeronautical tariffs and retail concession spend (2.6%), partially offset by ongoing airport maintenance CapEx. Sound balance sheet with Net Debt / NI at 2.07x and interest coverage at 12.25x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.4245,
+    "current_multiple": 19.8526,
+    "par_multiple": 16.3667,
+    "par_value": 23.3144,
+    "percent_vs_par": 0.213,
+    "status": "Above PAR",
+    "g_implied": 0.05,
+    "dividend_yield": 0.0353,
+    "expected_irr_5y": 0.0455,
+    "market_implied_cap": 18.2,
+    "moat_runway_margin": -3.2,
+    "market_implied_growth": 0.1023,
+    "growth_margin_of_safety": -0.0523
+  },
+  "health_checks": {
+    "net_debt_years": 2.07,
+    "net_debt_ok": true,
+    "interest_coverage": 12.25,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.98,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MRL.ES",
+  "ticker": "MRL",
+  "universe": "eu",
+  "company": "Merlin Properties",
+  "country": "Spain",
+  "sector": "Real Estate",
+  "sub_industry": "Diversified REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Iberian commercial office, logistics, and shopping centre portfolio with prime Madrid/Barcelona locations; sub-3% ROIC fails the 12% hurdle, and high-capex pivot to data centres requires heavy equity dilution and execution risk.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 2.7%, REJECT). Spain's largest REIT fails capital efficiency hurdles with unlevered portfolio yields of 4.5-5.5% and historical ROIC under 3%. High-capex data centre pivot brings substantial equity dilution and execution risk.",
+    "evidence": "Merlin Properties is Spain's largest SOCIMI with ~€11.5B GAV across Madrid/Barcelona offices (50%+), logistics (25%+), and shopping centres. 5-year average ROIC sits between 2.5% and 3.0%, well below the 12% hurdle. Net debt stands at €3.35B (~28% LTV, ~8.8x net debt/EBITDA). A €1B equity capital increase was executed in mid-2024 to fund data centre development across Madrid, Barcelona, and the Basque Country, illustrating high capital intensity and external financing dependence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

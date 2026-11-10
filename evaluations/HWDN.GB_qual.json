@@ -1,0 +1,30 @@
+{
+  "id": "HWDN.GB",
+  "ticker": "HWDN",
+  "universe": "eu",
+  "company": "Howden Joinery Group Plc",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Trade-only counter-positioning, ~900 high-density local depots with in-stock availability, vertically integrated UK cabinet manufacturing, and confidential builder credit protect an extraordinary 61-63% gross margin and ~15-18% operating margin.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Dominant UK trade-only kitchen compounder with unassailable builder relationships, >62% gross margins, and a net-cash balance sheet. Resilient through UK housing and RMI cycles due to vertically integrated manufacturing and local depot convenience. [5-10Y g: UK volume/share gains 2.0% + price 2.0% + depot revamps/France 1.0% + buybacks 1.5%]",
+    "evidence": "Gross margin expanded to 61.6% in 2024 and 62.7% in 2025 despite UK construction headwinds. Multi-cycle GAAP ROIC is 20-34% (median 21.1%). Free cash flow conversion consistently 95-100%+ (FY25 Owner FCF £318.8M vs NI £267.7M). Zero financial bank debt (£344.5M cash balances outweigh financial debt, with reported debt comprising IFRS 16 depot leases); interest coverage >15x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

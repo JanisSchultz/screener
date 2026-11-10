@@ -1,0 +1,30 @@
+{
+  "id": "BXP",
+  "ticker": "BXP",
+  "universe": "us",
+  "company": "BXP, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Office REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Premier Class-A and trophy workplace assets in supply-constrained gateway CBDs (Boston, NYC, SF, DC) provide localized physical presence, but fail empirical proof of moat. 10-year median GAAP ROIC of ~4.2% (FY24 ~2.75%, FY25 ~2.74%) falls far below the 12% hurdle. Secular hybrid/remote work adoption and corporate office consolidation have structurally eroded landlord pricing power, forcing elevated tenant improvement (TI) allowances and lease concessions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). While BXP controls premier trophy office assets in gateway US markets, structural post-pandemic hybrid work dynamics and tenant footprint contractions severely compress effective rent growth and require heavy ongoing leasing capex (TIs/LCs). 10-year median GAAP ROIC of 4.2% is far below the 12% compounder hurdle.",
+    "evidence": "BXP's historical GAAP ROIC has consistently ranged between 2.5% and 5.0% over the past decade (10-year median 4.2%, ~2.74% in FY25), failing the 12% threshold. Total debt stands at ~$16.3B against an office portfolio facing industry-wide vacancy pressures and rising tenant concession requirements. Office REIT economics require heavy recurring capital expenditures for tenant improvements and leasing commissions to maintain occupancy, eroding cash returns and precluding pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

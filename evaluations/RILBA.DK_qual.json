@@ -1,0 +1,30 @@
+{
+  "id": "RILBA.DK",
+  "ticker": "RILBA",
+  "universe": "eu",
+  "company": "Ringkj\u00f8bing Landbobank",
+  "country": "Denmark",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exceptional, decades-evolved lean credit culture and decentralized operational efficiency producing an elite cost-to-income ratio of ~25-26%, unmatched among European banks. Empirically proven by 5-year median ROIC of 18.6% and ROE >20% (21.0% in 2024, 22.4% in 2025), with virtually zero structural credit loss impairments across multi-decade business cycles.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Ringkj\u00f8bing Landbobank is an extraordinarily well-managed niche bank, but under the Mauboussin outside-view persistence framework, commercial deposit banking possesses a structural baseline CAP of 5-10 years due to commoditized capital and credit cycle mean reversion. As a DKK 41B market cap Danish regional lender, its addressable runway is bounded by the Danish economy; expanding beyond its core regional footprint risks diluting its unique credit discipline and sub-26% cost culture. Capped at 10 years, failing the 15-year hurdle.",
+    "evidence": "Historical GAAP ROIC was 12.2% in 2022, 19.7% in 2023, 21.6% in 2024, and 17.5% in 2025 (5-year median 18.6%). Net income compounded from DKK 1,495M (2022) to DKK 2,313M (2025) with Owner EPS growing from 53.4 to 92.86 DKK (20.3% CAGR). Cost/income ratio remained world-class at 25.7% (2024) and 26.4% (2025). However, total loan assets are concentrated in Jutland/Copenhagen niche private banking and renewable energy/wind financing, leaving long-term reinvestment runway constrained by domestic Danish credit demand."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

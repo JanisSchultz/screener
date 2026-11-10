@@ -1,0 +1,30 @@
+{
+  "id": "TWLO",
+  "ticker": "TWLO",
+  "universe": "us",
+  "company": "Twilio Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Twilio benefits from developer habituation, rich API documentation, and pre-built global telecom carrier integrations. However, core CPaaS (SMS and voice) is a commoditized pass-through utility subject to carrier A2P 10DLC surcharges that compress gross margins (~50-52%). Low switching costs for large enterprise accounts, multi-vendor routing by customers, and lack of pricing power above inflation prevent economic rents. 5-year median GAAP ROIC is ~5.2%, failing the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Developer-friendly CPaaS API layer lacks pricing power above inflation and faces structural commoditization in core SMS messaging. 5-year median GAAP ROIC (~5.2%) fails the 12% capital efficiency hurdle. Downstream gates strictly nulled under waterfall.",
+    "evidence": "Twilio generated $4.46B in revenue in 2024 with a GAAP operating loss of $(54)M (-1.2% GAAP operating margin) and GAAP net loss of $(109.4)M. FY2025 revenue reached $5.07B with modest GAAP operating income of $157.8M (~3.1% margin). 5-year median GAAP ROIC is ~5.2% (and historically negative), well below the 12% hurdle. Gross margins remain capped in the 50-54% range due to network carrier pass-through fees. While FCF improved via cost cuts and SBC moderation, Twilio operates as an aggregator of commoditized carrier messaging where enterprises multi-home, negating pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

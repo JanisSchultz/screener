@@ -1,0 +1,30 @@
+{
+  "id": "V",
+  "ticker": "V",
+  "universe": "us",
+  "company": "Visa Inc.",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Insurmountable two-sided network effect spanning 4.5B+ cards and 150M+ merchant endpoints via VisaNet. Ad valorem fee structure captures nominal inflation automatically with near-zero marginal processing cost. Empirical proof: 5-year median GAAP ROIC of 41.6%, tangible ROIC >100%, and operating margins stable at 65-67%. Primary erosion risks include the DOJ civil antitrust debit lawsuit targeting merchant routing agreements and potential US routing legislation (CCCA).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Quintessential global payments toll booth duopoly with unmatched scale, 66-67% operating margins, and zero credit risk. Ad valorem basis-point fee model provides built-in inflation protection. Fortress balance sheet with $17.2B cash vs $19.6B debt and >40x interest coverage. [5-10Y g: nominal payments volume 5.5% + cross-border travel 1.5% + value-added services (cyber/fraud/advisory) 2.5% + net share buybacks 1.5% - regulatory/interchange litigation drag 1.0%]",
+    "evidence": "Multi-cycle compounding track record: Net revenue expanded from $15.1B in FY2016 to $40.0B in FY2025 (~11.4% CAGR), with operating income rising from $7.9B to $24.0B+ and GAAP net income reaching $20.1B. Five-year median GAAP ROIC is 41.6% (FY25 at 45.0%) and operating ROIC exceeds 100%. Free cash flow conversion is exceptional at 106% of net income (FY25 OCF of $23.1B less $1.5B capex equals $20.9B Owner FCF). Segment drivers: Core consumer payments volume continues steady high-single-digit expansion, cross-border travel volume remains elevated, and Value-Added Services (VAS) grew 24% YoY in FY25 to $10.9B (27% of net revenue), providing high-margin revenue diversification. Balance sheet & capital allocation: Outstanding long-term debt of $19.6B is offset by $17.2B cash and short-term investments (net debt of $2.4B is under 0.15x annual net income); EBIT/interest coverage exceeds 40x. Routine share repurchases ($10B-$15B annually) have retired ~25% of shares since IPO, while dividends have compounded at double digits for 16 consecutive years. Regulatory scrutiny (DOJ civil antitrust debit suit filed 2024, in discovery through 2026-2027; proposed CCCA routing mandates) poses manageable routing/fee concessions but does not impair the core terminal compounding moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

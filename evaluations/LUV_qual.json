@@ -1,0 +1,30 @@
+{
+  "id": "LUV",
+  "ticker": "LUV",
+  "universe": "us",
+  "company": "Southwest Airlines Co.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "(1) Historical barrier was Herb Kelleher's classic scale economies shared model—point-to-point network, single 737 fleet type, 10-minute gate turns, high asset utilization, and unbundled-free perks (Bags Fly Free, open seating) passing operational efficiencies to flyers to build scale. (2) Empirical proof of moat has completely failed: 10-year median ROIC of 7.2% is far below the 12% hurdle, with operating margins collapsing post-pandemic and negative FCF in FY2024 (-$1.6B) and FY2025 (-$831M). The company possesses zero pricing power above inflation, functioning as a price-taker against network peers and low-cost carriers. (3) Primary erosion threats: complete convergence of pilot and crew labor costs with legacy network carriers under post-pandemic collective bargaining agreements, single-aircraft supply risk from Boeing 737 MAX delivery delays, and activist Elliott Management forcing abandonment of open seating and introduction of bag fees, dismantling core brand differentiation without conferring pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). While Southwest historically pioneered the 'Scale economies shared' archetype in domestic aviation, its structural cost advantage has permanently eroded due to union labor cost convergence, Boeing fleet concentration bottlenecks, and aggressive industry capacity. 10-year median ROIC of 7.2% falls far short of the 12% hurdle, and free cash flow remained negative through FY2024 (-$1.6B) and FY2025 (-$831M). Severe commoditization and absence of pricing power above inflation forced management, under activist pressure from Elliott Investment Management, to abandon brand hallmarks (open seating, Bags Fly Free) in 2024-2025 in an attempt to stem margin decline, confirming price-taker economics.",
+    "evidence": "Empirical financial reality confirms structural lack of moat: 10-year median GAAP ROIC is 7.2%, consistently below the 12% cost-of-capital hurdle across the full business cycle. Free cash flow conversion is severely impaired by heavy recurring aircraft reinvestment capex ($2B+ annually), resulting in negative FCF of approximately -$1.6B in FY2024 and -$831M in FY2025. Operating margins compressed to low-single digits post-pandemic as new pilot and flight attendant collective bargaining agreements established labor cost parity with legacy network carriers (Delta, United, American). In mid-2024, activist hedge fund Elliott Investment Management accumulated an ~11% economic stake, citing lagging ROIC and operational obsolescence, leading to an October 2024 settlement that forced board refreshment (retirement of Executive Chairman Gary Kelly) and sweeping commercial pivots: terminating open seating in favor of assigned/extra-legroom seating and scrapping 'Bags Fly Free' for standard tickets in 2025. These measures confirm that Southwest cannot command pricing power or earn supra-normal returns without mimicking legacy peer fee structures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

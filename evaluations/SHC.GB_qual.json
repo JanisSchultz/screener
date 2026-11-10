@@ -1,0 +1,30 @@
+{
+  "id": "SHC.GB",
+  "ticker": "SHC",
+  "universe": "eu",
+  "company": "Shaftesbury Capital",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary leisure, tourism, and boutique retail landlord in London's West End; tenant revenues depend on non-essential, deferrable consumer and tourist spending.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (G2 Essential Need). Central London West End estate landlord (Covent Garden, Carnaby, Soho). The portfolio is primarily dedicated to discretionary food, beverage, entertainment, tourism, and boutique fashion retail, all of which are cyclical and easily forgone.",
+    "evidence": "Shaftesbury Capital's ~670 buildings in London's West End generate revenue from retail, hospitality, leisure, and offices. The customer base relies heavily on discretionary domestic and international tourist footfall. Unlevered capital returns in prime London property are low single-digit (2-4%), and tenant sales face severe sensitivity to consumer leisure spending cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

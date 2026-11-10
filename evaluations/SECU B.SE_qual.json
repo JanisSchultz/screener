@@ -1,0 +1,30 @@
+{
+  "id": "SECU B.SE",
+  "ticker": "SECU B",
+  "universe": "eu",
+  "company": "Securitas",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Security & Alarm Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High contract density in guarding and electronic security solutions provides scale, but commoditized manned guarding and competitive procurement bidding suppress operating margins (6-8%) and multi-cycle ROIC below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Securitas possesses leading scale in security services, but core guarding is a commoditized, labor-intensive service with low switching costs. Historical ROIC (7-10%) consistently misses the 12% threshold.",
+    "evidence": "Normalized ROIC sits at 7.1% to 9.8% across data platforms (roic.ai 9.8%, GuruFocus 7.2-9.2%), missing the 12% requirement. Operating margins remain modest at 6.9% to 7.7% despite the acquisition of Stanley Security. Heavy reliance on manual guarding labor limits pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

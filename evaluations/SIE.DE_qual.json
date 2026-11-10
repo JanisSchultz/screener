@@ -1,0 +1,30 @@
+{
+  "id": "SIE.DE",
+  "ticker": "SIE",
+  "universe": "eu",
+  "company": "Siemens",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant enterprise lock-in in industrial automation hardware (Simatic PLCs) and mission-critical software (Siemens EDA/Mentor, NX CAD/PLM, TIA Portal) generates high customer switching costs and >25% operating/tangible ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (LT Debt / NI > 4.0x, REJECT). Industrial automation and software titan fails Munger fortress balance sheet hurdle due to \u20ac42.3B debt (4.4x NI), captive finance company (Siemens Financial Services) debt, and short-cycle industrial automation destocking.",
+    "evidence": "FY2025 net income of \u20ac9,620M vs LT debt of \u20ac42,342M (4.4x ratio, exceeding the 4.0x ceiling). EBIT/interest coverage of 7.6x is below fortress thresholds. While Digital Industries software achieves high returns, captive financing operations and complex conglomerate debt obligations require ongoing market refinancing."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CNP",
+  "ticker": "CNP",
+  "universe": "us",
+  "company": "CenterPoint Energy, Inc.",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive transmission and distribution franchise monopoly in the Greater Houston metro area. Regulated rate-base model with approved cost-recovery riders (TCRF, DCRF) and storm securitization bonds, though regulated returns limit ROIC to ~5.7%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated electric T&D monopoly in Greater Houston and gas LDC network. However, immense capital intensity ($4.87B capex vs $2.49B OCF) drives negative free cash flow (-$2.38B), extreme debt load ($20.6B long-term debt, 19.6x net income, 2.34x interest coverage), and continuous reliance on capital markets and securitization debt.",
+    "evidence": "10-year median ROIC is 5.7%. FY2025 capex of $4,870M far exceeds operating cash flow of $2,486M, producing -$2.38B in negative FCF. Long-term debt reached $20,566M against net income of $1,052M (19.6x). EBIT of $2,110M vs interest of $903M yields 2.34x coverage, failing the 5.0x peace-of-mind test."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "VACN.CH",
+  "ticker": "VACN",
+  "universe": "eu",
+  "company": "VAT Group AG",
+  "country": "Switzerland",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable ~71% global market share in semiconductor vacuum valves. Valves represent <1% of wafer fabrication equipment cost but are mission-critical (valve failure destroys entire wafer runs), creating extreme spec-in switching costs for semicap OEMs (ASML, Applied Materials, Lam Research). Consistently defends 30-35% EBITDA margins and >26% GAAP ROIC across semiconductor cycles despite Swiss franc strength.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global monopoly (~71% share) in mission-critical vacuum valves for semiconductor manufacturing. Beneficiary of AI-driven node transitions (increasing vacuum process steps) and global fab reshoring. Pristine net cash balance sheet, >99% multi-year FCF conversion, and industry-leading returns on capital. [5-10Y g: semicap vacuum valve & service volume 6.5% + price/spec-in mix 1.5% + margin expansion 0.5% + capital return 0.5%]",
+    "evidence": "VAT Group commands ~71% global market share in semiconductor vacuum valves with over 3x the share of its nearest competitor. 4-year financial data confirms median GAAP ROIC of 27.8%, operating ROIC >70%, and multi-year Owner FCF conversion of 99.2%. Intra-cycle EPS moderation in 2023-2025 reflects normal WFE digestion rather than moat erosion. Balance sheet is in a net cash position (CHF 141M cash vs CHF 45M LT debt) with interest coverage >70x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

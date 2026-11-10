@@ -1,0 +1,30 @@
+{
+  "id": "SHELL.GB",
+  "ticker": "SHELL",
+  "universe": "eu",
+  "company": "Shell",
+  "country": "United Kingdom",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Unmatched global LNG portfolio and trading scale, but fundamentally a commodity price-taker across crude oil, natural gas, refining crack spreads, and commodity chemicals. Lacks pricing power to independently raise prices above inflation; 10-year average ROIC of ~5.7% fails the 12% Munger hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Global integrated energy giant with market-leading positions in LNG liquefaction and global energy trading. Despite improved capital discipline under CEO Wael Sawan (focusing on high-margin upstream, divesting sub-hurdle European/Asian refining and retail assets), Shell is a structural commodity price-taker. Long-term returns on capital fall drastically short of the Munger standard, with a 10-year average ROIC of ~5.7% and a 5-year median of ~9.0% (<12% hurdle), governed by uncontrollable macro commodity price cycles.",
+    "evidence": "Shell operates across Integrated Gas (LNG, gas-to-liquids, and global trading), Upstream (deepwater and conventional oil/gas extraction), Marketing (mobility, lubricants, commercial fuels), and Chemicals & Products (refining and petrochemicals). Over a full 10-to-20-year economic cycle, Shell's capital efficiency fails the Munger hurdle: 10-year average ROIC is ~5.68%, 15-year average is ~5.65%, and 20-year average is ~6.61%. While ROIC spiked to ~16.9% in 2022 on the back of historic European gas and crude price spikes following the Ukraine invasion, it rapidly normalized to ~9.0% in 2023-2024 and ~8.3% in 2025. In down-cycles (such as 2015-2016 and 2020), returns collapsed toward zero (2020 GAAP net loss of -$21.7B due to $22B+ in post-tax impairments and dividend cut of 66%). Upstream oil, gas, and chemicals products have zero customer lock-in or pricing power above spot clearing rates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

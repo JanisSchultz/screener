@@ -1,0 +1,30 @@
+{
+  "id": "KLAC",
+  "ticker": "KLAC",
+  "universe": "us",
+  "company": "KLA Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominates global semiconductor process control with ~56-58% market share; decades of proprietary defect signature databases, optical/e-beam algorithms, and deeply integrated fab recipes create insurmountable switching barriers. Moat proof: 10-year GAAP ROIC consistently 30-58% (5-year median 54.7%), gross margins stably 61-63%, and EBIT margins ~40% across semiconductor cycles. Primary erosion risks are US-China export restrictions, customer concentration among top tier foundries/memory makers, and potential long-term R&D pushes in e-beam metrology by semicap peers.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Dominant semiconductor process control toll booth (~56-58% market share) with unassailable defect libraries and high-margin recurring service contracts (>75% renewal). Insulated from AI disruption as leading-edge nodes (GAA, EUV, advanced packaging) drive rising inspection intensity. Fortress balance sheet with net debt under 0.9x net income and >20x interest coverage. [5-10Y g: process-control intensity & service volume 7.0% + pricing/mix 2.0% + packaging/reinvestment 1.0% - China mature node drag 0.5% + share repurchases 1.5%]",
+    "evidence": "10-year track record of superior capital efficiency: GAAP ROIC sustained between 30% and 58% (median 54.7%) and Tangible ROIC 70-135%. FY2025 revenue reached $13.58B with EBIT of $5.89B and Net Income of $4.83B. High-margin recurring service revenues account for ~23-25% of total sales with >75% subscription renewal rates. Free cash flow conversion averages 86% over multi-year cycles with capex <3% of sales. Long-standing Outsider-style stewardship under CEO Rick Wallace with 17 consecutive years of dividend increases and aggressive counter-cyclical share repurchases ($5B in 2025, $7B in 2026). Fortress balance sheet: Net Debt of $4.24B is repayable in 0.88 years of net income, and EBIT interest coverage exceeds 20.7x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

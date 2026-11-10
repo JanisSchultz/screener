@@ -1,0 +1,43 @@
+{
+  "id": "ABBN.CH",
+  "ticker": "ABBN",
+  "universe": "eu",
+  "company": "ABB",
+  "price": 66.98,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing accumulated goodwill/intangibles (tangible ROIC >60%, GAAP ROIC 25.1%). Peak Owner EPS of 2.12 CHF (FY2025) reflects operational transformation under the decentralized ABB Way. Forward 5-10Y compound growth modeled at 8.5% driven by structural AI data center power demand, grid electrification, and industrial automation. PAR multiple sits at 28.54x, below 5Y peak of 37.42x."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.1224,
+    "current_multiple": 31.56,
+    "par_multiple": 28.54,
+    "par_value": 60.57,
+    "percent_vs_par": 0.1058,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0129,
+    "expected_irr_5y": 0.0763,
+    "market_implied_cap": 22.1,
+    "moat_runway_margin": -2.1,
+    "market_implied_growth": 0.1303,
+    "growth_margin_of_safety": -0.0453
+  },
+  "health_checks": {
+    "net_debt_years": 0.7,
+    "net_debt_ok": true,
+    "interest_coverage": 73.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8473,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

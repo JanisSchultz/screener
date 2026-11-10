@@ -1,0 +1,43 @@
+{
+  "id": "DG.FR",
+  "ticker": "DG",
+  "universe": "eu",
+  "company": "Vinci",
+  "price": 111.6,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under negative tangible capital standard for concession assets (GAAP ROIC 14.8%). Forward 5-10Y compound growth anchored at 5.5% reflecting contractual French motorway inflation indexing, international airport passenger recovery, and energy transition contracting, offset by concession tax headwinds. PAR multiple capped at 5Y cycle high of 13.88x (raw PAR 19.63x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.2393,
+    "current_multiple": 12.08,
+    "par_multiple": 13.88,
+    "par_value": 128.24,
+    "percent_vs_par": -0.1298,
+    "status": "Below PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0434,
+    "expected_irr_5y": 0.1281,
+    "market_implied_cap": 17.4,
+    "moat_runway_margin": 2.6,
+    "market_implied_growth": -0.0582,
+    "growth_margin_of_safety": 0.1132
+  },
+  "health_checks": {
+    "net_debt_years": 2.4,
+    "net_debt_ok": true,
+    "interest_coverage": 6.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.4942,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

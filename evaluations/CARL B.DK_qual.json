@@ -1,0 +1,30 @@
+{
+  "id": "CARL B.DK",
+  "ticker": "CARL B",
+  "universe": "eu",
+  "company": "Carlsberg",
+  "country": "Denmark",
+  "sector": "Consumer Staples",
+  "sub_industry": "Brewers (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dense regional brewery footprint and dominant route-to-market distribution in the Nordics, Western Europe, and high-growth Asian markets (China #1 in Western provinces, Vietnam, India). Demonstrated pricing power via premiumization and non-alcoholic portfolio.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Leading international brewer with dominant Nordic and Western European route-to-market scale and rapid Asian expansion (China, Vietnam, India). Strong pricing power with ROIC of 14.5% (37.6% tangible). Britvic acquisition expands non-alcoholic platform. Balance sheet leverage manageable with swift deleveraging track record. [5-10Y g: volume 1.0% + price/mix 2.5% + Asia/Britvic expansion 1.5% - margin drag 0.5% + buybacks 1.0%]",
+    "evidence": "2024 ROIC reported at 14.5% (ex-goodwill 37.6%). NIBD/EBITDA stood at 1.65x in 2024 before the £3.3B Britvic transaction, with management targeting <2.5x leverage post-close. FCF conversion routinely exceeds 85%. Carlsberg Foundation ownership ensures long-term stewardship and prevents value-destroying mega-M&A."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

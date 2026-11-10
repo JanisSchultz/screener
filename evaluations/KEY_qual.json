@@ -1,0 +1,30 @@
+{
+  "id": "KEY",
+  "ticker": "KEY",
+  "universe": "us",
+  "company": "KeyCorp",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Core commercial and retail deposit franchise provides nominal switching costs across its regional footprint, but KeyCorp operates in a highly commoditized, fragmented banking market. Lacks pricing power over deposits (deposit beta pressure) and loans (commodity spread lending). Multi-cycle capital efficiency fails the Munger hurdle with a 10-year median ROIC of 8.1% (< 12% threshold). Unhedged duration mismatch in its available-for-sale securities portfolio crystallized multi-billion dollar losses during rate hikes, requiring a dilutive 14.9% equity capital infusion from Scotiabank ($2.8B) in late 2024.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 8.1% < 12%, REJECT). Regional bank holding company operates in commoditized, fragmented lending and deposit markets without structural pricing power over inflation. Multi-cycle capital efficiency fails the Munger hurdle with a 10-year median ROIC of 8.1%. Severe duration mismatch in its available-for-sale securities portfolio crystallized massive losses in 2023–2024, forcing a dilutive 14.9% minority equity infusion from Scotiabank ($2.8B) to restore regulatory capital.",
+    "evidence": "KeyCorp (KEY) is a regional bank holding company based in Cleveland, Ohio, with ~$185B-$190B in total assets. Historical financial performance demonstrates structural inability to meet compounder quality hurdles: 10-year median ROIC is 8.1% (far below the 12% Munger threshold). ROTCE has fluctuated cyclically (16.2% in 2018, 13.5% in 2019, 9.5% in 2020, 19.4% in 2021, 18.3% in 2022, 9.6% in 2023, and depressed/negative in 2024 after AFS securities repositioning charges). In August–December 2024, KeyCorp required a $2.8B capital infusion from Scotiabank (Bank of Nova Scotia) selling a ~14.9% equity stake at $17.17/share to absorb upfront accounting losses from dumping low-yielding securities. The business model relies on 10-15x leverage and is fundamentally a commodity spread lender lacking pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

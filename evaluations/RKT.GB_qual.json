@@ -1,0 +1,30 @@
+{
+  "id": "RKT.GB",
+  "ticker": "RKT",
+  "universe": "eu",
+  "company": "Reckitt",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Consolidated 5-year median GAAP ROIC is depressed to 7-10% (failing the mandatory 12% hurdle) due to the $16.6B Mead Johnson acquisition goodwill, subsequent multi-billion pound write-downs, and severe infant formula litigation liabilities. Outside of core OTC health, price increases in home hygiene triggered volume declines and market share losses to private label.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b = N, REJECT). Global consumer health and hygiene portfolio carries brand intangibles, but consolidated 5-year GAAP ROIC of 7-10% fails the 12% threshold, permanently scarred by the disastrous $16.6B Mead Johnson acquisition and subsequent write-downs. Price hikes in non-health categories resulted in negative volumes, demonstrating limited pricing power.",
+    "evidence": "Acquisition of Mead Johnson in 2017 for $16.6B bloated balance sheet with goodwill and intangibles, triggering successive multi-billion pound impairments and depressing consolidated ROIC below 10% for nearly a decade. Core OTC brands (Nurofen, Strepsils, Gaviscon) have strong margins, but volume elasticity across Essential Home and infant nutrition litigation overhang led to multi-year underperformance and CEO turnover."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

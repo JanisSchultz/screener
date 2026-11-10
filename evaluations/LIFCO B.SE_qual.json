@@ -1,0 +1,30 @@
+{
+  "id": "LIFCO B.SE",
+  "ticker": "LIFCO B",
+  "universe": "eu",
+  "company": "Lifco",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Niche B2B market leadership across Dental consumables, Brokk demolition robots (~70% global share), and specialized engineering systems. High customer switching costs and mission-critical applications enable continuous pricing ahead of inflation. 5-year median GAAP ROIC of 21.4% (including accumulated goodwill) provides robust empirical proof of moat.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite Swedish serial acquirer with a disciplined decentralized model, acquiring niche B2B market leaders at modest multiples. Outstanding capital efficiency with a 21.4% 5-year median GAAP ROIC, >100% FCF conversion, and net debt under 0.7x earnings. [5-10Y g: organic volume 2.5% + niche pricing power 2.5% + disciplined bolt-on acquisitions 5.0% + net buybacks/deleveraging 0.5%]",
+    "evidence": "Exceptional multi-cycle financial performance: 5-year median GAAP ROIC 21.42% (FY2022 21.7%, FY2023 24.8%, FY2024 21.2%, FY2025 19.4%). Owner FCF conversion averages 118% (FY2025 Owner FCF SEK 4,582M vs Net Income SEK 3,633M). Fortress balance sheet with net debt / NI <0.7x and EBIT interest coverage of 12.6x. Continuous peak-to-peak Owner EPS compounding (SEK 7.90 in 2022 to SEK 10.89 in 2025)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

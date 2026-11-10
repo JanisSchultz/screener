@@ -1,0 +1,30 @@
+{
+  "id": "PLUS.GB",
+  "ticker": "PLUS",
+  "universe": "eu",
+  "company": "Plus500",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal / legislative acceptance risk (addictive or predatory model).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Proprietary B2C CFD market-making platform profiting from retail speculative losses. Explicitly rejected under Gate 2 as a predatory/addictive business model carrying severe regulatory intervention and societal ruin risk.",
+    "evidence": "Plus500 operates an automated market-making CFD platform where the vast majority of retail accounts (>75%) incur net financial losses. The business model faces continuous regulatory crackdowns across Western jurisdictions, including ESMA leverage caps, retail distribution bans in various countries, and stringent marketing restrictions. Diversification into US retail futures does not alter the predatory nature of the core CFD revenue base."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

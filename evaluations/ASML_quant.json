@@ -1,0 +1,43 @@
+{
+  "id": "ASML",
+  "ticker": "ASML",
+  "universe": "us",
+  "company": "ASML Holding",
+  "price": 1424.75,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.12,
+    "roic_est": null,
+    "fin_note": "Indispensable global monopoly on EUV and High-NA lithography, forming the physical gatekeeper of advanced semiconductor manufacturing. Peak Owner EPS of $27.73 (FY2025, quote currency equivalent of EUR 24.71) is supported by clean cash earnings with 110.7% FCF conversion (EUR 11.03B FCF on EUR 9.61B Net Income). Tangible Operating ROIC is >100%, automatically capped at the 35.0% maximum PAR factor. 5-10Y secular growth g_implied is set to the 12.0% empirical cap (EUV and advanced packaging volume 7.0% + tool ASP pricing power 2.0% + installed base service mix 2.0% + net share buybacks 1.0%), driven by generative AI accelerator logic and global fab redundancy. Fortress balance sheet features EUR 10.2B net cash (EUR 12.9B cash vs EUR 2.7B debt) and 97.4x interest coverage. Current multiple of 51.38x trades Above PAR (+46.7% premium vs $971.11 PAR value), yielding a 5Y expected IRR of 4.3%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 27.7289,
+    "current_multiple": 51.38,
+    "par_multiple": 35.02,
+    "par_value": 971.11,
+    "percent_vs_par": 0.4671,
+    "status": "Above PAR",
+    "g_implied": 0.12,
+    "dividend_yield": 0.0052,
+    "expected_irr_5y": 0.0426,
+    "market_implied_cap": 29.3,
+    "moat_runway_margin": -9.3,
+    "market_implied_growth": 0.3654,
+    "growth_margin_of_safety": -0.2454
+  },
+  "health_checks": {
+    "net_debt_years": 0.28,
+    "net_debt_ok": true,
+    "interest_coverage": 97.42,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1065,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

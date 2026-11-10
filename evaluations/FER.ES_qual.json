@@ -1,0 +1,30 @@
+{
+  "id": "FER.ES",
+  "ticker": "FER",
+  "universe": "eu",
+  "company": "Ferrovial",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Highways & Railtracks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Irreplaceable toll road concessions (407 ETR in Toronto through 2098 and US Express Managed Lanes) possess unreplicable physical rights-of-way and dynamic toll-pricing power. However, consolidated capital efficiency is diluted by heavy capital expenditure, high debt leverage, and low-margin construction operations, resulting in a multi-year median GAAP ROIC of 9.9% (tangible ROIC 10.5%), failing the 12% proof-of-moat hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & ROIC, REJECT). Irreplaceable toll road infrastructure assets (407 ETR in Ontario to 2098, US managed lanes with dynamic pricing) exhibit strong toll-pricing dynamics, but consolidated capital efficiency fails the Munger hurdle with a 5-year median GAAP ROIC of 9.9% (tangible ROIC 10.5%), diluted by high capital intensity and cyclical construction activities.",
+    "evidence": "Multi-cycle capital efficiency fails the 12% GAAP / 15% tangible ROIC hurdle: FY2022 GAAP ROIC 5.7% (tangible 6.0%), FY2023 9.1% (tangible 9.7%), FY2024 37.8% (non-operational asset divestment gain from Heathrow), FY2025 10.65% (tangible 11.23%), yielding a 4-year median GAAP ROIC of 9.86%. Net debt stands at €5.1B (€9.4B LT debt vs €4.2B cash). Under the v6.23 specification, sub-12% consolidated ROIC triggers rejection at Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

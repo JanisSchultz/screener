@@ -1,0 +1,30 @@
+{
+  "id": "SFZN.CH",
+  "ticker": "SFZN",
+  "universe": "eu",
+  "company": "Siegfried",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regulatory cGMP switching barriers and tech-transfer stickiness exist, but heavy plant capex and competitive small-molecule CDMO market keep 5-year median ROIC ~8-9%, well below the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Reliable Swiss CDMO with regulatory switching barriers in API synthesis and sterile fill-finish, but high plant capex and competitive small-molecule pricing keep 5-year median ROIC below 9%, failing the 12% hurdle.",
+    "evidence": "Reported Core EBITDA margins run ~21-23% and Core EBIT margins ~15-16%, but multi-year post-tax GAAP ROIC averages only ~8-9% due to heavy tangible capital bases (plants in Minden, Hameln, Pennsville) and working capital intensity. Fails 12% ROIC requirement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

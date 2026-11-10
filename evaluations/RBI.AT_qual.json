@@ -1,0 +1,30 @@
+{
+  "id": "RBI.AT",
+  "ticker": "RBI",
+  "universe": "eu",
+  "company": "Raiffeisen Bank International",
+  "country": "Austria",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Substantial earnings and capital concentration in Russia and non-Western CEE jurisdictions, with trapped capital under Russian capital controls, regulatory de-risking demands from the ECB, and acute US OFAC sanctions tail risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (pariah jurisdiction & geopolitical ruin risk, REJECT). Raiffeisen Bank International derived a major share of consolidated earnings from its Russian subsidiary, where billions in capital remain trapped under Russian restrictions. The bank faces immense regulatory de-risking pressure from the ECB and severe sanctions scrutiny from the US Treasury / OFAC.",
+    "evidence": "Austrian banking group with extensive operations across Central and Eastern Europe. Russia historically contributed over 40-50% of group net profit. Following the Ukraine invasion, Russian earnings and equity cannot be repatriated. Under formal ECB pressure to accelerate Russian balance sheet wind-down and under US OFAC sanctions investigation, creating unacceptable existential geopolitical and regulatory tail risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

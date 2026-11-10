@@ -1,0 +1,43 @@
+{
+  "id": "MCO",
+  "ticker": "MCO",
+  "universe": "us",
+  "company": "Moody's Corporation",
+  "price": 505.67,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Entrenched credit rating duopoly and enterprise financial risk analytics platform with an unassailable 30-year regulatory toll booth (NRSRO). Tangible ROIC normalized to 35.0% cap neutralizing accumulated acquisition goodwill from Bureau van Dijk and RMS. Net debt of $4.6B is 1.87x NI with >14x interest coverage, supported by recurring ARR (>60% of Moody's Analytics) and asset-light FCF conversion (95%). Peak Owner EPS of $14.52 in FY2025 represents a clean new cycle high following the 2022-2023 rate hiking shock. 5-10Y through-the-cycle growth of 9.0% is driven by 3.5% debt issuance refinancing volumes, 2.0% rating price/complexity capture, 2.5% analytics workflow expansion, and 1.0% net share repurchases."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 14.5247,
+    "current_multiple": 34.81,
+    "par_multiple": 28.34,
+    "par_value": 411.68,
+    "percent_vs_par": 0.2283,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.008,
+    "expected_irr_5y": 0.0541,
+    "market_implied_cap": 36.8,
+    "moat_runway_margin": -6.8,
+    "market_implied_growth": 0.1871,
+    "growth_margin_of_safety": -0.0971
+  },
+  "health_checks": {
+    "net_debt_years": 2.84,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9312,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "GM",
+  "ticker": "GM",
+  "universe": "us",
+  "company": "General Motors",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Big-ticket, credit-financed, highly deferrable cyclical durable goods (Consumer Discretionary); households and businesses routinely defer new vehicle replacements during recessions and high-interest-rate regimes (analogous to cyclical homebuilders), unlike non-deferrable everyday habits, recurring maintenance, or critical freight logistics.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). While GM passes Gate 1 with transparent 10-K disclosures separating GMNA, GMI, and GM Financial, new mass-market automobiles and pickup trucks are big-ticket, 60-to-84-month debt-financed durable purchases whose replacement timing is heavily deferrable across economic and interest-rate cycles (parallel to cyclical homebuilders). Under Munger's default-reject standard, GM also exhibits no durable moat or cycle-wide returns above cost of capital (5Y ROIC ~3.8%-5.1%, 10Y median ~6.2%), heavy capital intensity ($9.2B FY25 capex), and recurring restructuring shocks (~$7.9B FY25 EV charges, >$5B FY24 China/Cruise charges).",
+    "evidence": "Multi-cycle financial record & ROIC: 10Y median ROIC in financials.csv is 6.2%, while 2021-2025 ROIC averaged ~3.8%-5.1% (peaking ~5.6% in 2021; TTM basic ROIC ~1.8%-4.3%), consistently below WACC and far below the 12% moat hurdle. Gross margins average ~11.4%-14.9% (6%-14% under strict auto cost-of-sales definitions) and operating margins range from ~1.5%-3% in restructuring/downturn years to ~7%-7.5% at 2021 supply-constrained cycle highs (TTM ~2.3%-6.8%). Recent 2024-2026 operating results: FY2024 revenue ~$187.4B, GAAP net income $6.0B (hit by >$5B Q4 special charges for China JV impairments and Cruise restructuring), automotive OCF $23.9B, adjusted automotive FCF $14.0B. FY2025 revenue ~$185.0B, EBIT-adjusted $12.7B, GAAP net income $2.7B (-55% YoY due to ~$7.9B in EV capacity/regulatory restructuring charges), automotive OCF $18.7B, capex $9.2B, adjusted automotive FCF $10.6B. FY2026 guidance (initial $13.0B-$15.0B EBIT-adjusted and $9.0B-$11.0B adjusted auto FCF, tightened/raised in 2026 to $14.5B-$15.5B EBIT-adjusted and $11.5B-$12.5B FCF) faces $3.0B-$4.0B gross tariff headwinds (partially cushioned by ~$500M expected IEEPA tariff refunds) while targeting $1.0B-$1.5B EV loss reduction. Segment & competitive profile: Profit is heavily concentrated in GM North America (Chevrolet, GMC, Cadillac, Buick full-size pickups/SUVs) and captive finance subsidiary GM Financial (retail net charge-offs ~1.2%-1.5%), while GM International (notably China JVs) has structurally eroded against Chinese EV competitors and Cruise autonomous operations were exited/restructured. Balance sheet & capital allocation: Consolidated total debt is ~$120B-$130B (Debt/Equity ~1.7x-2.1x), predominantly housed at GM Financial to fund retail/dealer floorplan loans, while automotive operations hold $20B+ in cash/marketables alongside targeted automotive debt and multi-billion-dollar share repurchases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

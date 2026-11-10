@@ -1,0 +1,30 @@
+{
+  "id": "DASH",
+  "ticker": "DASH",
+  "universe": "us",
+  "company": "DoorDash",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Specialized Consumer Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant US on-demand local delivery network (~67% market share) demonstrating clear pricing power via take-rate expansion from 11% to over 13.5% through DashPass subscription scale (18M+ members) and high-margin merchant advertising without losing customer volume.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash & Fortress Balance Sheet, REJECT). While DoorDash possesses a dominant US food delivery network effect (~67% market share) and pricing power via take-rate expansion, reported cash flows are an accounting mirage heavily distorted by massive stock-based compensation ($1.10B in FY24, $1.05B in FY25, exceeding cumulative GAAP net income). The company lacks a multi-cycle peak-to-peak earnings track record (GAAP profitable only since FY24) and has taken on $3.3B in debt to fund aggressive cross-border and software acquisitions (Deliveroo, SevenRooms), failing Munger's real cash conversion and balance sheet standards.",
+    "evidence": "FY24 revenue $10.72B (+24%), operating loss $(38)M, GAAP net income $123M, FCF ~$1.8B, SBC $1.10B. FY25 revenue $13.72B (+28%), operating income $723M, GAAP net income $935M, FCF ~$1.8B, SBC $1.05B. Multi-year GAAP net income totals $1.06B against $2.15B in stock-based compensation, meaning real Owner FCF after dilutive employee compensation is negative to negligible. 5-year median GAAP ROIC is ~8.2% (FY25 ROIC ~6.5%), below the 12% hurdle. Balance sheet holds $5.98B in cash and short-term investments against $3.30B in total debt following the $1.2B SevenRooms acquisition and £2.9B ($3.9B) Deliveroo acquisition."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

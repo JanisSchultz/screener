@@ -1,0 +1,43 @@
+{
+  "id": "MTX.DE",
+  "ticker": "MTX",
+  "universe": "eu",
+  "company": "MTU Aero Engines",
+  "price": 346.7,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.2716,
+    "fin_note": "Operating ROIC of 27.16% reflects high-margin commercial aftermarket MRO and proprietary spare parts toll booth. 5-10Y g of 9.0% aligned with qualitative guidance (5.0% MRO shop visits + 3.0% spare parts + 1.5% pricing - 1.0% GTF inspection headwind + 0.5% buybacks). FY2025 peak Owner EPS \u20ac18.44 marks complete post-GTF operational rebound. Currently trades Below PAR at 18.8x vs PAR Multiple of 25.26x (25.6% discount), offering a 16.3% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 18.4369,
+    "current_multiple": 18.8,
+    "par_multiple": 25.26,
+    "par_value": 465.78,
+    "percent_vs_par": -0.2557,
+    "status": "Below PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.007,
+    "expected_irr_5y": 0.1633,
+    "market_implied_cap": 14.9,
+    "moat_runway_margin": 5.1,
+    "market_implied_growth": -0.0069,
+    "growth_margin_of_safety": 0.0969
+  },
+  "health_checks": {
+    "net_debt_years": 0.4,
+    "net_debt_ok": true,
+    "interest_coverage": 13.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.79,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

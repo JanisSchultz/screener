@@ -1,0 +1,30 @@
+{
+  "id": "PRU.GB",
+  "ticker": "PRU",
+  "universe": "eu",
+  "company": "Prudential plc",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prudential operates a large tied-agency force and bancassurance distribution across Asia, but life and health policies lack pricing power over inflation and face intense competition from AIA, Manulife, HSBC, and domestic insurers. Multi-cycle GAAP returns on capital/equity are volatile and average well below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Pan-Asian life and health insurer operating in commoditized protection and savings markets with no pricing power over inflation. Multi-cycle GAAP returns on capital/equity average well below the 12% hurdle.",
+    "evidence": "5-year median GAAP ROE is sub-10% (negative in 2021 and 2022). Following the demergers of UK (M&G) and US (Jackson) operations, the business is concentrated in Greater China and Southeast Asia where policies are sold via price-sensitive agency and bancassurance channels without pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "NUE",
+  "ticker": "NUE",
+  "universe": "us",
+  "company": "Nucor Corporation",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Steel",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity price-taker. While Nucor is North America's premier low-cost electric arc furnace (EAF) mini-mill operator with an enviable decentralized culture, steel products (hot-rolled coil, plate, rebar) remain undifferentiated commodities. Pricing is set by global marginal cost dynamics, trade policy/tariffs, and raw material scrap spreads rather than proprietary pricing power. Competitors like Steel Dynamics and modern imports limit durable pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Commodity price-taker lacking pricing power above inflation across the full business cycle. Downstream gates bypassed per waterfall.",
+    "evidence": "Operating margins oscillate violently with the steel cycle: surging to 25.1-25.4% during the 2021-2022 post-pandemic shortage, then plunging back to 9.7% in 2024 and mid-single digits in 2025 and 2020 (4.96%). Normalized through-the-cycle GAAP ROIC hovers around 8-11%, failing the sustainable 12% hurdle outside windfall peak years. FCF also turned slightly negative in 2025 (-$188M) due to normalized spreads and high capex on structural mill expansions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

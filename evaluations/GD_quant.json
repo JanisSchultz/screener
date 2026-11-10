@@ -1,0 +1,43 @@
+{
+  "id": "GD",
+  "ticker": "GD",
+  "universe": "us",
+  "company": "General Dynamics Corporation",
+  "price": 362.07,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.18,
+    "fin_note": "FY2025 Peak Owner EPS of $15.4538 accepted without adjustment (record $93B+ defense backlog and Gulfstream G700 delivery ramp). Operating ROIC normalized to 18.0% reflecting true industrial operating efficiency across nuclear submarine shipyards and aerospace plants (neutralizing an unrepresentative 69.8% mechanical tangible ROIC distorted by acquisition goodwill debt deductions). 5-10Y through-the-cycle growth of 7.5% reflects 3.5% Columbia-class submarine/naval expansion, 2.5% Gulfstream G700/G800 ramp, 1.0% defense IT pricing/mix, -0.5% working capital drag, and 1.0% net share repurchases. Solid balance sheet with net debt of 1.35x Net Income ($5.68B net debt on $4.21B NI), 17.1x interest coverage, and 97.5% FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 15.4538,
+    "current_multiple": 23.43,
+    "par_multiple": 18.14,
+    "par_value": 280.33,
+    "percent_vs_par": 0.2916,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0163,
+    "expected_irr_5y": 0.0377,
+    "market_implied_cap": 25.8,
+    "moat_runway_margin": -5.8,
+    "market_implied_growth": 0.1543,
+    "growth_margin_of_safety": -0.0793
+  },
+  "health_checks": {
+    "net_debt_years": 1.66,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9745,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "CHD",
+  "ticker": "CHD",
+  "universe": "us",
+  "company": "Church & Dwight",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched niche brand leadership across consumer staple categories (Arm & Hammer, Trojan, First Response, Batiste, Waterpik, TheraBreath) where #1/#2 market shares and retail shelf space deter direct competition from conglomerates. Demonstrated pricing power through raw material inflation cycles with gross margins sustained around 44-45% and 10-year median ROIC ~16.8% (FY24-FY25 GAAP ROIC ~13.5-14.0%). Key erosion risks include private-label penetration in value laundry and retail customer concentration.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Resilient consumer staples portfolio of focused #1/#2 brands anchored by Arm & Hammer. Pricing power demonstrated across inflationary cycles with gross margins at 44-45%. Structurally insulated across all 5 macrotrends with FCF conversion >100% and conservative ~2.7x net debt to net income. [5-10Y g: volume 1.5% + price 1.5% + mix/reinvestment 2.0% - margin drags 0.0% + buybacks 1.5%]",
+    "evidence": "10-year median ROIC of 16.8% (FY24 ~14.0%, FY25 ~13.8%). FY25 net sales reached $6.20B with operating income of $1.17B (18.9% margin) and FCF of ~$1.1B on net income of $741.5M (>140% FCF conversion). Net debt of ~$2.0B easily serviceable via ~2.7 years of net income with interest coverage at ~12.3x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

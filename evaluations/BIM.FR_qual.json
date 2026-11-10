@@ -1,0 +1,30 @@
+{
+  "id": "BIM.FR",
+  "ticker": "BIM",
+  "universe": "eu",
+  "company": "bioMérieux",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "~85% proprietary recurring reagents and high-value multiplex panels (BioFire, VITEK) enable inflation pass-through while sustaining >55% gross margins with near-zero hospital lab churn.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global in vitro diagnostics leader in clinical microbiology and syndromic PCR (BioFire) with ~85% recurring reagent revenues. High switching costs in hospital labs sustain >55% gross margins and >16% operating ROIC. Balance sheet is an unleveraged net cash fortress. [5-10Y g: installed-base & panel volume 5.0% + reagent price/mix 1.5% + operating leverage 1.0%]",
+    "evidence": "Operating ROIC consistently 15.3%–24.1% (median 16.4%). 2025 Owner FCF of €454.8M on €397.5M Net Income (114% conversion; 4-year cumulative €1,177M FCF on €1,640M NI following post-COVID capex normalization). Closed-system instrument footprint (VITEK, BACT/ALERT, FilmArray) locks in ~85% recurring reagent sales across hospital laboratories globally. Balance sheet holds €358M net cash with 34x interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

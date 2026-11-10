@@ -1,0 +1,30 @@
+{
+  "id": "ARES",
+  "ticker": "ARES",
+  "universe": "us",
+  "company": "Ares Management",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Direct-lending origination scale, established sponsor relationships, and long-term locked capital create a structural toll booth on deployed private credit assets. However, empirical moat proof fails with sub-hurdle GAAP ROIC (2-5% vs. 12% hurdle). Moat faces long-term erosion threats from aggressive direct lending expansion by commercial and investment banks, alternative manager copycats compressing spreads, and institutional LP pressure for fee concessions and co-investments.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Despite leading scale in private credit and locked-up fund capital, Ares fails the empirical proof of moat standard with 5-year median GAAP ROIC tracking well below the 12% hurdle (~2-5% across 2021-2025). Furthermore, Ares lacks pricing power >= inflation: asset management fee rates in private debt are subject to institutional fee compression, volume-tier breaks, and zero-fee co-investment demands from large LPs, while underlying par-value debt assets do not appreciate with inflation. Escalating competition from alternative peers and commercial banks partnering in direct lending further erodes loan spreads and fee terms.",
+    "evidence": "Ares Management has scaled AUM from $306B in 2021 to over $622B in 2025, driven by dominant U.S. and European direct lending origination, real estate expansion (GCP International acquisition in 2025), and secondary solutions. Fee-Related Earnings (FRE) grew to $1.77B in 2025. However, reported GAAP ROIC consistently fails the 12% hurdle, averaging ~2-5% over 2021-2025 (2021: ~1.5%, 2022: ~1.0%, 2023: ~2.8%, 2024: ~4.2%, 2025: ~4.5%) due to heavy balance sheet liabilities from consolidated CLOs/funds ($13B-$15B total debt) and significant goodwill/intangibles from acquisitions. Management fee rates in private credit (typically 1.0-1.5% on invested/committed capital) lack upward inflation pass-through, as institutional LPs demand fee breaks and zero-fee co-investment rights on mega-funds. Direct lending spreads have faced compression from bank partnerships and rival mega-funds (Blackstone, Apollo, Blue Owl)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

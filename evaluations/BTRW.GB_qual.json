@@ -1,0 +1,30 @@
+{
+  "id": "BTRW.GB",
+  "ticker": "BTRW",
+  "universe": "eu",
+  "company": "Barratt Redrow",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; cyclical residential homebuilder exposed to mortgage rates and housing cycle.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). UK's largest volume housebuilder following the 2024 Barratt-Redrow merger. New home purchases are discretionary, big-ticket commitments that buyers defer during interest rate spikes and recessions. As a cyclical volume homebuilder exposed to UK mortgage rates, consumer affordability, and planning bottlenecks, it fails Munger's non-deferrable essential need standard.",
+    "evidence": "Barratt Redrow (formed via the £2.5B acquisition of Redrow by Barratt Developments in 2024) delivers ~14,000 homes annually across the UK. During the 2022-2024 rate shock, completions fell over 20% (Barratt standalone completions dropped from 17,206 in FY23 to 14,004 in FY24), operating margins collapsed from ~16-18% peak down to ~7-9%, and ROCE plummeted from ~25-30% in peak Help-to-Buy years to single digits (<8% in FY24). In addition, building safety and cladding remediation provisions exceed £600M cumulative. The merger adds integration execution risk and overheads to an already capital-intensive, cyclical volume builder model with no pricing power over mortgage rate swings."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

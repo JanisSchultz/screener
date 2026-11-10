@@ -1,0 +1,30 @@
+{
+  "id": "SKA B.SE",
+  "ticker": "SKA B",
+  "universe": "eu",
+  "company": "Skanska",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "General construction contracting is an inherently commoditized, tender-driven service business characterized by low operating margins (~3.5%) and fixed-price contract overrun risks. Commercial property development is capital-intensive and highly cyclical, suffering sharp writedowns during real estate downturns. The company lacks structural pricing power and fails to achieve a 12% multi-cycle GAAP ROIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a=None, 3b=N, REJECT). Skanska operates as a general construction contractor and commercial property developer in the Nordics, Europe, and the US. Construction contracting is a tender-driven commodity business with thin operating margins (~3.5%), while commercial property development is cyclical with periodic portfolio impairments, failing the 12% multi-cycle ROIC moat threshold.",
+    "evidence": "Construction operating margins consistently hovered around ~3.3-3.5% between 2020 and 2024. Commercial Property Development ROCE collapsed to 2.6% in 2024 and was negative in 2023 due to commercial real estate devaluations in the US and Europe. Consolidated through-cycle ROIC falls well short of the 12% hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

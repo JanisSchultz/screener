@@ -1,0 +1,30 @@
+{
+  "id": "FSLR",
+  "ticker": "FSLR",
+  "universe": "us",
+  "company": "First Solar, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "First Solar's proprietary thin-film Cadmium Telluride (CdTe) semiconductor technology and US domestic manufacturing presence provide specialized IP and domestic content bonus eligibility under the IRA. However, empirical proof of moat is absent: 10-year median GAAP ROIC is 8.2% (sub-hurdle < 12%), and cumulative multi-year free cash flow has been negative due to ongoing heavy fab capex ($1.39B in 2023, $1.53B in 2024). Recent operating income ($1.39B in 2024) is heavily subsidized by $857M of Section 45X advanced manufacturing production tax credits. Primary erosion threats include severe global crystalline silicon (c-Si) manufacturing overcapacity in China and Southeast Asia, continuous module price deflation, policy risk regarding IRA subsidies and import tariffs, and zero customer switching costs among utility developers shopping on levelized $/W.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.2% median < 12%, REJECT). Thin-film CdTe technology provides differentiated US manufacturing IP, but solar modules remain a commoditized hardware product where utility buyers procure strictly on levelized cost of energy ($/W). 10-year median ROIC of 8.2% fails the 12% hurdle rate. Recent profitability is heavily dependent on US policy subsidies (monetizing $857M of Section 45X tax credits in 2024 against $1.39B operating income). Lacks pricing power >= inflation against fierce global crystalline silicon overcapacity.",
+    "evidence": "10-year median ROIC is 8.2% (well below the 12% hurdle rate). Historical returns across cycles: 2020 ROIC 4.9% (gross margin 25.1%), 2021 ROIC 8.4% (net income $468.7M, OCF $237.6M, capex $540.3M -> FCF -$302.7M), 2022 ROIC -0.5% (net loss -$44.2M, gross margin 2.7%), 2023 ROIC 10.4% (net income $830.8M, OCF $602.3M, capex $1,386.8M -> FCF -$784.5M), 2024 ROIC 12.8% (net income $1,292.0M, OCF $1,218.0M, capex $1,526.1M -> FCF -$308.1M). Recent earnings are artificially supported by IRA Section 45X Advanced Manufacturing Production Tax Credits ($857M generated/sold in 2024, providing ~$819M in cash proceeds and driving over 60% of $1.394B operating income). Capital intensity is high with continuous multi-billion dollar fab expansions (Ohio, Alabama, Louisiana) absorbing cash flow, resulting in negative cumulative FCF over 2021-2024. Solar module pricing is dictated by global c-Si supply-demand dynamics and Chinese overcapacity, eliminating pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

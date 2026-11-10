@@ -1,0 +1,43 @@
+{
+  "id": "MTD",
+  "ticker": "MTD",
+  "universe": "us",
+  "company": "Mettler-Toledo International Inc.",
+  "price": 1722.15,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Precision weighing and analytical instrument compounder with exceptional capital efficiency (operating ROIC >100%, 10Y median GAAP ROIC 51.44%) normalized to the 35.0% cap. Disciplined Outsider capital allocation with 100% of FCF returned via buybacks, maintaining safe leverage of 2.40x LT debt / NI and 16.31x EBIT interest coverage. 5-10Y secular Owner EPS compounding anchored at 8.5% (3.0% organic volume + 2.0% SternDrive pricing + 0.5% automation mix + 0.5% margin expansion + 2.5% share repurchases). 3-Pillar fundamental PAR multiple of 29.27x establishes a PAR value of $1,230.87. At $1,722.15 (40.96x peak Owner EPS), MTD trades at a stretched valuation (+39.9% Above PAR) above its 5-year cycle high (40.20x), yielding a low 5-year expected IRR of 1.4%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 42.0475,
+    "current_multiple": 40.96,
+    "par_multiple": 29.27,
+    "par_value": 1230.87,
+    "percent_vs_par": 0.3991,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0145,
+    "market_implied_cap": 28.0,
+    "moat_runway_margin": -8.0,
+    "market_implied_growth": 0.2603,
+    "growth_margin_of_safety": -0.1753
+  },
+  "health_checks": {
+    "net_debt_years": 2.4,
+    "net_debt_ok": true,
+    "interest_coverage": 16.31,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0051,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

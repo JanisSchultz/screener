@@ -1,0 +1,30 @@
+{
+  "id": "WM",
+  "ticker": "WM",
+  "universe": "us",
+  "company": "Waste Management, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Environmental & Facilities Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "North America's largest network of permitted solid waste landfills (>250 active landfills) creates an insurmountable physical moat protected by extreme NIMBYism, stringent EPA environmental permitting, and prohibitive transport economics. WM controls ~25-30% of US landfill capacity. Demonstrated pricing power: core yield increases of 5-7% annually across commercial, industrial, and residential contracts consistently exceed CPI. Tangible ROIC averages ~25% and 5-year median GAAP ROIC is 12.24%. Primary erosion threat is municipal zero-waste mandates or landfill diversion regulations, which WM actively hedges via North America's largest recycling and renewable natural gas (RNG) capture network.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates under the essential infrastructure standard. North America's premier solid waste and landfill infrastructure monopoly protected by irreplaceable permitted landfill acreage, NIMBY zoning barriers, CPI+ pricing power, 12.2% median GAAP ROIC (25% tangible ROIC), and 112% FCF conversion. Balance sheet meets peace-of-mind standards for essential concessions: elevated Stericycle acquisition debt is backed by non-discretionary municipal cash flows, interest coverage of 6.6x-6.8x (>5x hurdle), and organic deleveraging with buybacks paused. [5-10Y g: solid waste volume 1.5% + core pricing 4.5% + RNG and recycling reinvestment 1.5% + Stericycle synergies 1.0% - deleveraging buyback pause drag 0.5%]",
+    "evidence": "FY2016-FY2025 financial history shows extraordinary operational resilience and cash generation: Sales grew from $13.6B (2016) to $25.2B (2025), EBIT expanded from $2.3B to $4.3B, and Operating Cash Flow doubled from $3.0B to $6.04B. 5-year median GAAP ROIC is 12.24% with operating/tangible ROIC steady at 24.96%. FCF conversion averaged 111.9% of net income over the cycle. Owner EPS compounded at 8.85% CAGR from $2.65 in 2016 to peak $6.81 in 2024. Stericycle acquisition in Nov 2024 added high-barrier medical waste and compliance services; post-acquisition net debt of ~$22.0B is actively being reduced via strong organic Owner FCF ($3.0B+ annually) and suspended share buybacks, maintaining investment-grade interest coverage >6.5x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

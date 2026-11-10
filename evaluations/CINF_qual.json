@@ -1,0 +1,30 @@
+{
+  "id": "CINF",
+  "ticker": "CINF",
+  "universe": "us",
+  "company": "Cincinnati Financial",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Cincinnati Financial differentiates through its select independent agency network (~1,900 premier agencies) and local field claims presence. However, insurance policies are largely commoditized annual contracts where independent agents represent multiple competing carriers and policyholders readily shop on price. Empirically, 10-year median GAAP ROIC is 8.5% (well below the 12% hurdle), and ROE averages 10-12% across the cycle with severe volatility (-3.9% ROIC in 2022 to 18.2% in 2021) driven by convective storm catastrophes and equity market swings. Primary erosion threats include climate-driven catastrophe severity, direct-to-consumer digital distribution, and cyclical soft-market price competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power independent of industry underwriting cycles, REJECT). While Cincinnati Financial has an entrenched independent agency relationship model and a strong dividend history, P&C insurance is a commoditized, cyclical product. 10-year median GAAP ROIC of 8.5% falls well short of the 12% compounding threshold, and earnings remain vulnerable to Midwest weather catastrophe losses and mark-to-market equity portfolio volatility.",
+    "evidence": "Multi-cycle capital efficiency fails the quality threshold: 10-year median GAAP ROIC is ~8.5%, with annual ROIC swinging from -3.9% (2022) to 18.2% (2021) and averaging 11-13% in recent hard-market years (2023-2025: ROIC 12.1%, 13.2%, 12.3%; ROE ~16-17%). P&C combined ratios have historically outperformed industry peers (2020: 93.3%, 2021: 88.0%, 2022: 97.8%, 2023: 94.9%, 2024: 97.0%, 2025: 94.9%), but underwriting profits are regularly compressed by severe convective storms and catastrophe losses. Approximately 40% of the investment portfolio is allocated to common equities, amplifying net income and book value volatility under mark-to-market accounting. Business model relies on ~1,900 independent agencies across commercial lines, personal lines, and excess & surplus lines; however, independent agencies represent multiple carriers and lack structural switching costs. Long-term debt (~$900M) is conservative with debt-to-capital <10%, and the company is a 64+ year dividend aristocrat, but sub-hurdle multi-cycle ROIC and commodity price-taking dynamics preclude qualification as an elite compounder."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

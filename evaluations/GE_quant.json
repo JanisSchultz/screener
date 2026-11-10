@@ -1,0 +1,43 @@
+{
+  "id": "GE",
+  "ticker": "GE",
+  "universe": "us",
+  "company": "GE Aerospace",
+  "price": 320.67,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Standalone GE Aerospace post-Vernova/Healthcare spinoffs: FY2025 peak Owner EPS of $8.15 accurately reflects clean standalone continuing operations (44,000+ installed engine base aftermarket annuity), while historical CAGR of -2.4% is an artifact of pre-spin conglomerate earnings in FY2020 ($9.22). Operating ROIC normalized to 35.0% cap (tangible ROIC of 66.97% on $13.5B tangible capital). 5-10Y g of 11.0% driven by shop visit/engine volume (+5.0%), spare parts/services pricing power (+3.5%), aftermarket mix (+1.5%), supply chain drag (-0.5%), and buybacks (+1.5%). Balance sheet is fortress-quality (net debt 0.93x NI, 117.4% FCF conversion). Trades Above PAR at 39.35x peak EPS vs 26.27x PAR multiple ($214.06 PAR Value)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.1498,
+    "current_multiple": 39.35,
+    "par_multiple": 26.27,
+    "par_value": 214.05,
+    "percent_vs_par": 0.4981,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0044,
+    "expected_irr_5y": 0.0282,
+    "market_implied_cap": 30.0,
+    "moat_runway_margin": -10.0,
+    "market_implied_growth": 0.3062,
+    "growth_margin_of_safety": -0.1962
+  },
+  "health_checks": {
+    "net_debt_years": 2.35,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1735,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "COHR",
+  "ticker": "COHR",
+  "universe": "us",
+  "company": "Coherent Corp.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Vertically integrated compound semiconductor (InP, GaAs, SiC) and photonics know-how provides technical differentiation, but fails empirical proof of moat. 10-year median ROIC is ~6.5% (well below the 12% hurdle). Optical transceivers face structural 10-15%+ annual ASP price erosion from hyperscaler procurement, precluding pricing power >= inflation. Long-term erosion threat from Silicon Photonics and Co-Packaged Optics (CPO).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Vertically integrated photonics and laser manufacturing engine is structurally capital-intensive with a 10-year median ROIC of ~6.5%, well below the 12% hurdle. Datacom transceivers suffer relentless 10-15%+ annual ASP erosion demanded by hyperscaler customers. High debt load from the 2022 Coherent acquisition and negative cash flows compound cyclicality.",
+    "evidence": "10-year median ROIC of ~6.5% (FY24: 1.55%, FY25: 6.90%, FY26E: 6.7-7.7%), failing the >=12% cycle hurdle. Operating results show extreme cyclicality: FY22 revenue $3.32B (GAAP Net Income $234.8M), FY23 revenue $5.16B (Net Loss -$259.5M), FY24 revenue $4.71B (Net Loss -$156.2M), and FY25 revenue $5.81B (Net Income $49.4M, net margin <1%). Free cash flow turned negative (~-$1.0B in FY26) due to heavy capex for optical capacity expansion. Balance sheet remains encumbered with ~$3.5B+ in long-term debt from II-VI's debt-financed $7B acquisition of Coherent Inc. Intense competition in high-speed optical transceivers (800G/1.6T) from InnoLight, Eoptolink, and Lumentum, combined with hyperscaler bargaining power, ensures persistent price deflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ADYEN.NL",
+  "ticker": "ADYEN",
+  "universe": "eu",
+  "company": "Adyen",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Single-stack proprietary tech eliminates intermediary fees and maximizes authorization rates; tiered volume pricing (scale economies shared) cements enterprise lock-in with negligible churn.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. The world's most advanced single-stack global payments platform with pristine owner-operator leadership, >€10B net cash fortress, and compounding owner earnings. [5-10Y g: processed volume 14.0% - tiered volume take-rate step-down 4.0% + unified commerce and platforms expansion 2.0%]",
+    "evidence": "Capital-light single stack generating 25%+ ROE, operating ROIC >200%, Owner EPS compounding from €18.17 in 2022 to €33.93 in 2025, >€10B cash balance with minimal debt, and industry-leading authorization rate outperformance."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

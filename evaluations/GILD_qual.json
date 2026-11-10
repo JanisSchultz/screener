@@ -1,0 +1,30 @@
+{
+  "id": "GILD",
+  "ticker": "GILD",
+  "universe": "us",
+  "company": "Gilead Sciences",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Protected by proprietary antiviral patent estates (bictegravir, tenofovir alafenamide, lenacapavir) and high clinical switching friction in HIV treatment. However, fails Gate 3b: 5-year median GAAP ROIC (~11.1–11.4%) fails the 12% hurdle due to multi-billion dollar M&A write-downs ($8B+ acquired IPR&D and impairments in 2024 from CymaBay and Immunomedics/Trodelvy). Pricing power is structurally capped by statutory Medicaid/340B rebate formulas and mandatory Medicare IRA price negotiations on high-expenditure drugs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Despite virology market leadership and robust gross margins (~77–80%), Gilead fails the 12% 5-year median GAAP ROIC hurdle (~11.1–11.4%) due to persistent capital misallocation and acquired IPR&D impairments in oncology M&A ($21B Immunomedics, $4.3B CymaBay). Over 70% of US HIV volume is exposed to government healthcare programs (Medicaid, 340B, Medicare Part D) where statutory price caps and IRA price negotiations eliminate real pricing power above inflation. Extreme concentration in Biktarvy (~$14.3B / ~49% of 2025 revenue) faces generic entry by April 2036.",
+    "evidence": "1. Financial Track Record: Total revenue of $28.8B in 2024 and $29.4B in 2025. GAAP Net Income was $480M in 2024 (severely depressed by $8B+ in acquired IPR&D and impairments) and rebounded to $8.51B in 2025. GAAP ROIC was 11.2% (2019), 5.9% (2020), 14.7% (2021), 11.1% (2022), 11.4% (2023), 2.9% (2024), and 15.7% (2025). The 5-year median GAAP ROIC is ~11.1–11.4%, strictly below the 12% threshold. 2. Segment Breakdown: HIV franchise generated ~$19.6B in 2025, driven by Biktarvy ($14.3B, up 7% YoY), Descovy (~$2.3B), and Genvoya (~$1.7B). Oncology delivered ~$3.3B (Trodelvy ~$1.3B, Yescarta/Tecartus cell therapies ~$2.0B). Liver diseases generated ~$2.8B. 3. Pricing Power & Regulatory Environment: Over 70% of US HIV volume is subject to statutory Medicaid 23.1% rebates, 340B mandatory ceiling prices, and ADAP discounts. The Inflation Reduction Act (IRA) imposes inflation penalty rebates and introduces mandatory Medicare Part D price negotiations for top-selling single-source drugs, preventing above-inflation net price realization. 4. M&A & Capital Allocation: Over $30B spent on external oncology acquisitions to replace lost HCV revenues and diversify away from HIV (Immunomedics $21B in 2020, Forty Seven $4.9B in 2020, CymaBay $4.3B in 2024) has resulted in severe clinical trial setbacks (Trodelvy ASCENT-07 endpoint miss), massive goodwill/IPR&D impairments ($8B+ in 2024), and persistent return on capital dilution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

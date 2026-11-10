@@ -1,0 +1,43 @@
+{
+  "id": "APD",
+  "ticker": "APD",
+  "universe": "us",
+  "company": "Air Products",
+  "price": 311.08,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": 12.43,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": null,
+    "fin_note": "Calamity pass calibration: Reported peak Owner EPS of $17.18 in FY2024 included an unrepeatable pre-tax windfall gain of $1.576B from the divestiture of the LNG equipment business to Honeywell. Normalized peak Owner EPS is calibrated to $12.43, matching FY24 adjusted diluted EPS from continuing operations. Operating ROIC of 13.66% is preserved without artificial inflation, accurately reflecting physical capital intensity in air separation units and pipeline infrastructure. 5-10Y secular growth g_implied is set to 6.0% (3.5% core volume + 2.0% pricing + 1.0% cost turnaround - 0.5% project/debt drag) as activist CEO Eduardo Menezes curtails speculative hydrogen megaproject capex to restore FCF. Balance sheet carries $1.86B cash vs zero reported debt in financials.csv (net debt years 0.0, FCF conversion 92.1%). Current multiple of 25.03x trades Above PAR (+55.3% premium vs $200.37 PAR value), offering a 5Y expected IRR of -0.6%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 12.43,
+    "current_multiple": 25.03,
+    "par_multiple": 16.12,
+    "par_value": 200.37,
+    "percent_vs_par": 0.5525,
+    "status": "Above PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.0229,
+    "expected_irr_5y": -0.0064,
+    "market_implied_cap": 23.3,
+    "moat_runway_margin": -8.3,
+    "market_implied_growth": 0.1936,
+    "growth_margin_of_safety": -0.1336
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": -4.1,
+    "interest_cov_ok": false,
+    "fcf_conversion": 0.9209,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

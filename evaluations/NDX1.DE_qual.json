@@ -1,0 +1,30 @@
+{
+  "id": "NDX1.DE",
+  "ticker": "NDX1",
+  "universe": "eu",
+  "company": "Nordex",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Heavy Electrical Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Turbine certification and installed base service contracts offer modest continuity, but wind turbine manufacturing is a commoditized, capital-intensive business subject to fierce auction bidding, cost inflation, and aggressive Chinese OEM competition. 5-year median ROIC is negative with cumulative net losses exceeding EUR 1.1B between 2020-2023.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power). Nordex is a commoditized wind turbine manufacturer lacking economic moat or through-cycle pricing power. The company suffered heavy net losses in four of the last five years (cumulative losses exceeding EUR 1.1B between 2020-2023, with barely EUR 8.8M net income in 2024). Multi-cycle ROIC is negative, gross margins are razor-thin, and the business remains vulnerable to aggressive OEM competition and subsidy auction pricing pressure.",
+    "evidence": "Financial performance across the 2020-2024 cycle shows negative returns on capital and persistent operating losses: Net Loss of EUR -129.7M (2020), EUR -230.2M (2021), EUR -497.8M (2022), EUR -302.8M (2023), and a marginal Net Income of EUR 8.8M in 2024. The company does not achieve the 12% ROIC hurdle. Wind turbine manufacturing is characterized by fixed-price project exposure, component cost inflation, and fierce price competition from Western peers (Vestas, GE Vernova) and low-cost Chinese manufacturers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

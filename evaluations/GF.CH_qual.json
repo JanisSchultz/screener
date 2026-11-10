@@ -1,0 +1,30 @@
+{
+  "id": "GF.CH",
+  "ticker": "GF",
+  "universe": "eu",
+  "company": "Georg Fischer",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Polymer piping systems know-how and installer spec-in, but multi-year GAAP ROIC fails the 12% hurdle due to heavy goodwill from the Uponor takeover and cyclical exposure to building construction, with limited structural pricing power against plumbing distributors.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Piping and building flow solutions provider. Major Uponor acquisition created heavy goodwill and integration burden, while exposure to cyclical residential/commercial construction and distributor buyer power caps full-cycle GAAP ROIC below the 12% hurdle.",
+    "evidence": "Following the Uponor acquisition, consolidated GAAP ROIC fell to ~3-10% (well below the 12% hurdle and below WACC). Operating margins hover in the 8-10% range. Plumbing and building flow systems face pricing resistance from consolidated wholesale distributors (Ferguson, Saint-Gobain)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

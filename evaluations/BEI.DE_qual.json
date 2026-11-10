@@ -1,0 +1,30 @@
+{
+  "id": "BEI.DE",
+  "ticker": "BEI",
+  "universe": "eu",
+  "company": "Beiersdorf",
+  "country": "Germany",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Iconic Nivea brand trust built over a century combined with dermatological clinical heritage in Eucerin and Aquaphor, complemented by tesa industrial adhesive engineering. Group EBIT Return on Net Operating Capital is consistently ~30-33%, with proven pricing power passing through cost inflation via mid-single digit price increases with resilient volumes. Primary erosion risks stem from indie digital skincare competitors and mass-market private label.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Century-old skincare trust (Nivea) paired with high-margin dermatological compounders (Eucerin, Aquaphor) and tesa specialty adhesives. Operating ROCE is >30% and balance sheet is an unassailable fortress with >€4.5B net cash cushion. [5-10Y g: Nivea/Derma volume 3.0% + pricing 2.0% + premiumization mix 1.0% + tesa 0.5% + buybacks/cash yield 0.5%]",
+    "evidence": "Consolidated Group sales reached €9.85B in 2024. Group EBIT Return on Net Operating Capital reached 33.2% in 2024 (29.4% in 2023), with Consumer segment at 34.5% and tesa at 28.9%. Net liquidity of €4.57B provides rock-solid fortress resilience. FCF conversion consistently exceeds 80% of net income. Maxingvest (Herz family) anchors long-term conservative capital stewardship."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

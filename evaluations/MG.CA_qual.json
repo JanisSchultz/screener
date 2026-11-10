@@ -1,0 +1,30 @@
+{
+  "id": "MG.CA",
+  "ticker": "MG",
+  "universe": "ca",
+  "company": "Magna International",
+  "country": "Canada",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Parts & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Historical ROIC of ~8% falls below the 12% hurdle; thin operating margins (3-4% GAAP) and aggressive OEM buyer power eliminate structural pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC ~8% vs 12% hurdle; razor-thin margins of 3-4% and intense OEM buyer power leave Magna with zero structural pricing power).",
+    "evidence": "Magna's multi-year ROIC averages ~8%, persistently trailing its cost of capital and failing the 12% hurdle. Operating margins remain compressed at 3-4% GAAP (5-6% adjusted EBIT). Automotive OEMs possess immense countervailing power and enforce mandatory annual contractual cost downs, requiring Magna to negotiate commercial recoveries rather than exercising genuine independent pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HEI.DE",
+  "ticker": "HEI",
+  "universe": "eu",
+  "company": "Heidelberg Materials",
+  "country": "Germany",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Permitted quarries, cement kilns, and aggregate deposits provide local transport-radius advantages, but heavy capital intensity and regional commodity cement pricing dynamics keep multi-cycle returns depressed.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Permitted quarry and kiln transport radii create local logistics barriers, but heavy capital intensity and cyclical commodity pricing hold 10-year ROIC to 6-10% (median 10.7%), falling well short of the 12% compounder hurdle.",
+    "evidence": "Reported ROIC over the 2015-2024 decade ranged between 6.3% and 10.3%, failing to achieve the 12% threshold in any single year (5-year median 10.67%). Heavy capital intensity combined with cyclical pricing in bulk cement prevents through-cycle economic profits. The company faces multi-billion-euro decarbonization capex requirements under EU ETS rules."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

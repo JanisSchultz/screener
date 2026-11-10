@@ -1,0 +1,30 @@
+{
+  "id": "EXPD",
+  "ticker": "EXPD",
+  "universe": "us",
+  "company": "Expeditors International of Washington, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global toll booth and high switching costs in cross-border air/ocean freight forwarding and customs brokerage. Intermediates cargo capacity between shippers and carriers across 100+ countries, maintaining net revenue margins across freight cycles. Customs clearance involves deep enterprise ERP integrations and regulatory compliance with near-zero customer churn. High ROIC (>60-70% 10-year median) proves strong moat; primary risks are carrier disintermediation and geopolitical trade contractions.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier non-asset-based global freight forwarder and customs broker with an entrenched toll-booth moat, zero debt, >70% operating ROIC, and legendary decentralized profit-sharing culture. Insulated from energy transition and benefits from supply chain complexity. [5-10Y g: global trade volume 2.5% + customs brokerage share 1.5% + net revenue yield management 1.0% + net share repurchases 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 79.1% and operating ROIC of 79.7%, driven by an asset-light model with capex under 0.5% of revenues. FCF conversion averages 101.6% of Net Income. Balance sheet carries zero long-term debt and $1.31B in cash. Normalized Owner EPS has compounded from $3.51 in 2018 to $5.97 in 2025, demonstrating secular peak-to-peak earnings growth through freight cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

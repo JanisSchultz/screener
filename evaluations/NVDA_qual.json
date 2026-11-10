@@ -1,0 +1,30 @@
+{
+  "id": "NVDA",
+  "ticker": "NVDA",
+  "universe": "us",
+  "company": "NVIDIA Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Full-stack proprietary CUDA developer ecosystem (4.5M+ developers, 18+ years of code library lock-in) coupled with NVLink high-bandwidth interconnects and system-level architectures (DGX, NVL72) create an unassailable switching-cost moat on accelerated computing. Empirical proof: 5-year median GAAP ROIC of 80.0% and gross margins reaching ~75% across successive GPU generations (A100 to H100 to Blackwell). Primary erosion threats: Hyperscaler in-house ASIC deployments (Google TPU, AWS Trainium, Meta MTIA) for mature inference workloads, open-source software layer maturation (PyTorch 2.0 / Triton decoupling from CUDA), and extreme customer concentration.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash & Fortress Balance Sheet, REJECT). While NVIDIA possesses an extraordinary founder-led accelerated computing franchise with an unassailable CUDA moat (Gate 3b Y, Gate 4 CAP 15, Gate 5 score 2), it fails Gate 6 due to: (1) Multi-year Owner FCF conversion of 76.8% (fcf_conv = 0.768 < 0.80 standard) driven by massive working-capital absorption during exponential hardware ramps, and (2) Severe cyclicality and extreme customer concentration (four hyperscalers generate 61% of FY2026 revenue) at peak ~60% operating margins; merchant GPU earnings historically fell 65% during the 2022 inventory digestion cycle, failing the repeatable non-windfall earnings power standard. [5-10Y g: AI compute/networking volume 9.0% + software/platform mix 2.0% - margin normalization 1.0% - SBC dilution 0.5% + net buyback 2.5%]",
+    "evidence": "Multi-cycle financial track record shows exceptional peak returns but high cyclical amplitude: GAAP ROIC collapsed to 10.4% in FY2022 before surging to 80.0% (FY2023), 114.5% (FY2024), and 94.9% (FY2025). Revenue grew from $27.0B (FY2022) to $215.9B (FY2026) with EBIT margins reaching ~60.4% ($130.4B EBIT). However, cumulative 5-year Owner FCF of $181.9B on Net Income of $236.8B yields a multi-year FCF conversion of 76.8% (below the 80% hurdle), weighed down by working capital and supply chain commitments. In FY2026, top 4 hyperscaler customers accounted for 61% of total revenue (22%, 15%, 13%, and 11%), exposing earnings to violent contraction upon any moderation in cloud AI infrastructure capex. Balance sheet itself is sound ($10.6B cash vs $7.5B debt; interest coverage >500x), but earnings repeatability fails Pillar 1 and cash conversion fails Pillar 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

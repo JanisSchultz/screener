@@ -1,0 +1,30 @@
+{
+  "id": "VWS.DK",
+  "ticker": "VWS",
+  "universe": "eu",
+  "company": "Vestas",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Heavy Electrical Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Service division boasts high customer switching costs and sticky multi-year O&M agreements across an installed base exceeding 150 GW. However, equipment manufacturing (Power Solutions) lacks pricing power against utility developers and faces severe margin erosion from supply chain inflation, warranty provisions, and Chinese OEM price competition. 5-year median GAAP ROIC is ~2-3%, far below the 12% proof-of-moat hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Global wind turbine scale leader with a substantial service backlog, but capital efficiency is structurally sub-hurdle with a 5-year median GAAP ROIC under 3% (troughing at -12.6% in 2022). Power Solutions equipment manufacturing lacks pricing power against utility developers and faces persistent margin compression from inflation and low-cost Chinese competition.",
+    "evidence": "Multi-cycle returns fail the 12% GAAP ROIC standard: FY2020 ~10.3%, FY2021 ~1.9%, FY2022 -12.6%, FY2023 ~0.2%, FY2024 ~5.0% (5-year median ~2.5%). Turbine manufacturing suffers from fixed-price contract losses, warranty provisions, and high capital intensity. While Service generates resilient double-digit EBIT margins across 150+ GW of installed capacity, consolidated performance remains deeply cyclical and sub-hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

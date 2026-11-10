@@ -1,0 +1,31 @@
+{
+  "id": "CMCSA",
+  "ticker": "CMCSA",
+  "universe": "us",
+  "company": "Comcast",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Cable & Satellite",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Comcast's local HFC/fiber plant passing 63M+ US premises, converged Xfinity Mobile bundle (10.6M lines at Q3 2026), and Universal Studios/theme park IP create regional scale barriers, but the business fails both empirical Gate 3b hurdles. GAAP ROIC has remained consistently below the 12% threshold across the cycle (7.7% in 2021, 5.3%-6.3% in 2022, 7.4%-9.4% in 2023, 8.4%-10.8% in 2024, 6.7%-8.4% in 2025, and 6.3%-6.8% TTM Q3 2026; 10Y median 8.5%), and incremental ROIIC is negligible: ~$66B of cumulative CapEx over 2020-2025 yielded lower FY2025 Operating Income ($20.67B) than FY2019 ($21.13B), with 9M 2026 EBIT falling 15% YoY to $14.62B. While stripping all $143.3B of YE 2025 goodwill, franchise rights, and intangibles mathematically lowers tangible capital to ~$43.3B, franchise rights ($59.4B) reflect paid-for network access and ex-goodwill invested capital (~$125B) still earns only ~12.6% with zero incremental EBIT compounding. Crucially, pricing power >= inflation has broken down: broadband price hikes triggered accelerating churn (-411k total domestic broadband subs in 2024; -711k in 2025) to FTTH fiber overbuilders and 5G Fixed Wireless Access, forcing a 2025-2026 pivot to lower everyday pricing, multi-year price locks, and free wireless lines that turned residential broadband ARPU negative (-3.1% Q1 2026, -3.8% Q2 2026, -2.9% Q3 2026) while still losing subscribers (-376k residential broadband subs across Q1-Q3 2026).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Comcast's core broadband profit engine (~83% of FY2025 segment Adjusted EBITDA) lacks inflation-plus pricing power and fails the 12% ROIC/ROIIC hurdle as dual-front FTTH fiber overbuilding and 5G FWA competition force negative ARPU (-2.9% to -3.8% YoY in Q1-Q3 2026) alongside persistent subscriber losses and ~$11B-$12B/yr defensive CapEx just to sustain flat-to-declining EBIT. Not Calamity-eligible: broadband commoditization and decade-long sub-12% GAAP ROIC are structural rather than temporary, and Anchor Gate 4 would independently reject at CAP <= 10 (Tier 4 Telecom Carrier base rate + Macrotrend #5 cost-of-capital/refinancing headwind on $87.4B-$98.9B debt, compounded by ongoing portfolio breakups via the Jan 2026 Versant spin-off and planned mid-2027 NBCUniversal/Sky separation). Downstream gates bypassed per waterfall.",
+    "evidence": "Consolidated revenue plateaued from $121.43B (2022) to $121.57B (2023), $123.73B (2024), and $123.71B (2025), before declining 6.1% YoY reported in Q3 2026 to $29.30B (+0.5% pro forma; 9M 2026 revenue $90.70B) following the January 2026 spin-off of cable networks into Versant (VSNT). FY2025 segment mix was dominated by Connectivity & Platforms ($81.31B revenue, ~$31.9B Adjusted EBITDA) vs Content & Experiences ($45.56B revenue, $6.47B Adjusted EBITDA, incl. Epic Universe opened May 2025; Comcast plans to spin off remaining NBCUniversal/Sky assets by mid-2027 while retaining <=19.9%). Operating income ran $21.13B (2019), $17.49B (2020), $20.82B (2021), $14.04B (2022, hit by $8.6B Sky goodwill impairment), $23.31B (2023), $23.30B (2024), and $20.67B (2025), dropping 15% YoY in 9M 2026 to $14.62B (vs $17.18B in 9M 2025) with >$1B restructuring charges guided for Q4 2026. FY2025 GAAP Net Income attributable to Comcast rose to $20.00B (vs $16.19B in 2024 and $15.39B in 2023) solely due to a $9.4B pre-tax (~$7.1B after-tax) gain on selling Comcast's Hulu stake; 9M 2026 Net Income was $9.15B. Cumulative CapEx totaled ~$66B across 2020-2025 ($9.18B/$9.17B/$10.96B/$12.38B/$12.30B/$11.75B-$11.76B), plus $8.31B CapEx and $1.86B capitalized software/intangibles in 9M 2026; reported FCF was $12.31B (2022), $13.00B (2023), $12.45B (2024), $19.20B reported ($21.89B OCF less CapEx) in 2025, and $12.72B in 9M 2026. Domestic broadband total subscribers fell from ~32.25M (YE23) to 31.84M (YE24, -411k) and 31.26M (YE25, -711k), with residential broadband declining to ~28.34M by Q3 2026 (-65k Q1, -167k Q2, -144k Q3 2026) and ARPU reversing to -3.1%, -3.8%, and -2.9% YoY despite Xfinity Mobile reaching 10.6M lines. YE2025 balance sheet carried $98.94B total debt, $9.48B cash, $96.90B Comcast equity ($97.15B total), $65.68B net PP&E, $61.50B goodwill, $59.37B franchise rights, $22.47B other intangibles, and $27.79B deferred tax liabilities; by Q3 2026 total debt declined to ~$87.37B ($76.6B net debt), interest expense ran $4.41B in FY2025 and $3.11B in 9M 2026 (~4.7x EBIT/interest), share buybacks were suspended starting Q3 2026, and Brian Roberts retains nondilutable 33.3% Class B voting control on ~1% economic equity."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:34:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

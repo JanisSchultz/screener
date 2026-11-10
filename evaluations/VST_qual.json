@@ -1,0 +1,30 @@
+{
+  "id": "VST",
+  "ticker": "VST",
+  "universe": "us",
+  "company": "Vistra Corp.",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Merchant generator with nuclear, gas, and coal fleet hedged by integrated retail customer accounts (TXU Energy). Operates primarily in deregulated wholesale electricity markets (ERCOT, PJM) where spot clearing prices are set by marginal fuel costs, leaving margins exposed to volatile power price cycles. 5-year median ROIC of 8.2% fails the 12% capital efficiency hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 8.2% < 12% hurdle, REJECT). Merchant generator and retail electric provider subject to wholesale electricity price cyclicality and commodity price swings. 5-year median ROIC of 8.2% falls well short of the 12% capital efficiency threshold, and power is a fungible commodity lacking structural pricing power above inflation.",
+    "evidence": "Multi-cycle GAAP ROIC median of 8.2% (with 5-year average hovering near 3.2% reflecting severe cyclical swings including negative earnings during Winter Storm Uri). Generation fleet sells into competitive wholesale markets (ERCOT, PJM) where pricing is tied to marginal natural gas generation costs. Retail power hedge (TXU Energy) faces low customer switching barriers and high churn in competitive deregulated retail markets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

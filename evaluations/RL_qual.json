@@ -1,0 +1,30 @@
+{
+  "id": "RL",
+  "ticker": "RL",
+  "universe": "us",
+  "company": "Ralph Lauren Corporation",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary aspirational apparel and lifestyle goods easily deferred or traded down during downturns; lacks the essential necessity, daily habit, or supply-constrained ultra-luxury scarcity (Hermès, LVMH, Ferrari) required under Munger's 'likely to spend' standard.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). While brand elevation under CEO Patrice Louvet drove FY2025-FY2026 margin expansion (69.9% gross margin, ~14.5% GAAP operating margin) and mid-teens AUR growth, Ralph Lauren remains a discretionary fashion and accessible-luxury apparel brand with wholesale/outlet exposure and zero switching costs. Consumers can readily defer wardrobe upgrades or trade down with minimal deprivation, as reflected in the multi-year revenue contraction from ~$7.62B (FY2015) to ~$6.16B (FY2020) and ~$6.63B (FY2024) before surpassing its FY2015 sales level in FY2026 ($8.11B).",
+    "evidence": "Multi-cycle trajectory: Net revenue moved from ~$7.62B (FY2015) to ~$6.16B (FY2020) and ~$6.63B (FY2024) before accelerating to ~$7.08B in FY2025 (+7% YoY) and ~$8.11B in FY2026 (+14.6% YoY reported, +12% constant currency). Historical 10Y median/avg ROIC in dossier is 14.2%, with ROE exceeding 30% in FY2025-FY2026 alongside gross margin expansion to 68.6% (FY2025) and 69.9% (FY2026) and GAAP operating income reaching $953.4M (~13.5% margin) in FY2025 and ~$1.18B (~14.5% margin; ~$1.29B adjusted) in FY2026. Cash generation & balance sheet: FY2025 FCF reached ~$1.02B (on ~$1.24B OCF) and FY2026 OCF remained ~$1.2B; cash and short-term investments exceeded $2.0B against ~$1.1B-$1.2B total debt (net cash position, Net Debt/EBITDA < 1.0x). Channel & geographic mix: Growth led by Asia (~20% YoY pace with ~19%-27% regional margins) and global Direct-to-Consumer comps (+10% FY2025, +13% FY2026) supported by high-single/low-double-digit AUR growth in FY2025 and mid-teens AUR growth in FY2026, while North America (~low-to-mid single-digit growth) and Europe (~mid-to-high single-digit growth) balanced DTC strength against intentional pruning of lower-tier/off-price wholesale doors. Governance & capital allocation: Dual-class voting structure (Class B 10 votes/share held largely by the Lauren family; Executive Chairman Ralph Lauren and CEO Patrice Louvet since 2017 executing Next Great Chapter) with consistent dividends and Class A share buybacks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

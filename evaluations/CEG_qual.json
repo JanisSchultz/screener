@@ -1,0 +1,30 @@
+{
+  "id": "CEG",
+  "ticker": "CEG",
+  "universe": "us",
+  "company": "Constellation Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Largest US commercial nuclear fleet (~21 GW across 21 reactors) representing physically unreplicable generation assets due to extreme construction capital costs ($30B+) and decadal NRC licensing lead times. Protected by IRA Section 45U Nuclear PTC inflation-indexed floor ($43.75/MWh) and demonstrated pricing power via long-term hyperscaler PPAs (20-year Microsoft PPA for Crane Clean Energy Center). Key erosion threats include FERC transmission/colocation tariff disputes, wholesale power market design changes, and post-2032 PTC policy expiration risk.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Cash Conversion & Balance Sheet, REJECT). Constellation operates the nation's premier carbon-free nuclear fleet with unreplicable baseload generation assets benefiting from structural AI data center power demand and the IRA Section 45U PTC floor. However, it fails Munger's cash conversion and fortress balance sheet test: multi-year Owner FCF is deeply negative (-$20B+ cumulative over 2020-2025, fcf_conv = -258%) due to heavy nuclear maintenance/refueling capex ($2.95B in 2025) and collateral margin volatility. Furthermore, the $26.6B EV acquisition of Calpine re-introduces substantial debt leverage and commodity gas exposure, failing the peace-of-mind solvency standard.",
+    "evidence": "5-year median GAAP ROIC is 6.31% (2020: 1.2%, 2021: -1.8%, 2022: 2.6%, 2023: 6.3%, 2024: 20.3%, 2025: 11.5%). Owner FCF conversion is severely negative (-258% multi-year), with negative FCF in 5 of 6 years (-$1.19B in 2020, -$2.71B in 2021, -$4.16B in 2022, -$7.90B in 2023, -$5.36B in 2024, +$1.25B in 2025 against $2.32B Net Income). Generates ~21 GW of carbon-free nuclear power at >94% capacity factors. Secured 20-year PPA with Microsoft for 835 MW Crane restart. Capital structure burdened by $16.4B equity / $26.6B EV acquisition of Calpine closed in early 2026."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ENT.GB",
+  "ticker": "ENT",
+  "universe": "eu",
+  "company": "Entain",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal and legislative acceptance risk; addictive gambling and sports betting business model facing recurring regulatory tightening, taxation increases, and severe compliance penalties.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Addictive commercial gambling and sports betting model faces existential societal, legislative, and taxation risks. Ongoing regulatory tightening in the UK and Europe, compounded by past compliance scandals and massive penalty settlements.",
+    "evidence": "Entain operates global B2C sportsbooks and casinos (Ladbrokes, Coral, bwin, 50% BetMGM). Commercial gambling is inherently predatory and addictive, subjecting the company to severe regulatory crackdowns (UK stake caps, affordability checks, advertising restrictions) and taxation hikes. Historically, Entain has engaged in aggressive debt-funded M&A, suffered a massive £585M HMRC settlement in 2023 over historical Turkish operations, and faced substantial goodwill impairments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

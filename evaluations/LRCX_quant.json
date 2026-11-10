@@ -1,0 +1,43 @@
+{
+  "id": "LRCX",
+  "ticker": "LRCX",
+  "universe": "us",
+  "company": "Lam Research Corporation",
+  "price": 200.44,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Global leader in dry etch and deposition semiconductor equipment. Indispensable process-of-record (POR) chamber lock-in across 100,000+ installed chamber base drives a high-margin recurring Customer Support Business Group (CSBG) spares and service annuity (~35% of revenue). Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC 86.39%, 5Y median GAAP ROIC 66.80%). FY2025 peak Owner EPS of .7611 confirmed clean with 84.2% FCF conversion and zero non-cash windfall spikes. 5-10Y through-the-cycle growth g_implied = 10.0% driven by 6.5% 3D etch/deposition & CSBG upgrade volume (AI compute, GAA logic transitions, 3D NAND scaling), 1.5% pricing/mix, 0.5% operating margin expansion, and 1.5% net share repurchases. Pristine fortress balance sheet carries .58B cash vs .72B LT debt (.86B net cash, 0.0x debt/NI), 52.27x EBIT interest coverage, and 16.46% peak-to-peak CAGR. At .44 (34.79x peak Owner EPS), trades Above PAR (+18.17% premium vs .62 PAR Value at 29.44x PAR Multiple), generating a 6.89% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.7611,
+    "current_multiple": 34.79,
+    "par_multiple": 29.44,
+    "par_value": 169.62,
+    "percent_vs_par": 0.1817,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0051,
+    "expected_irr_5y": 0.0689,
+    "market_implied_cap": 17.7,
+    "moat_runway_margin": -2.7,
+    "market_implied_growth": 0.1803,
+    "growth_margin_of_safety": -0.0803
+  },
+  "health_checks": {
+    "net_debt_years": 0.51,
+    "net_debt_ok": true,
+    "interest_coverage": 52.27,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8421,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

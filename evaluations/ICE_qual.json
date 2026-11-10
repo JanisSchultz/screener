@@ -1,0 +1,30 @@
+{
+  "id": "ICE",
+  "ticker": "ICE",
+  "universe": "us",
+  "company": "Intercontinental Exchange",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global network effects in energy derivatives (Brent crude, TTF natural gas benchmarks) and regulatory exchange licenses (NYSE) create unassailable liquidity pools with entrenched pricing power. In Mortgage Technology (Encompass, MSP) and Fixed Income Data, immense workflow integration and mission-critical switching costs lock in recurring revenues. Empirical proof: tangible ROIC consistently >80-200%, operating margins ~45-50%, and FCF conversion >110%. Primary erosion threats: regulatory scrutiny on exchange market data/connectivity fees and prolonged cyclical weakness in US residential mortgage origination.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable global financial exchange, market data, and mortgage software infrastructure toll booth. Operates non-replicable liquidity networks (Brent crude, TTF gas, NYSE) and sticky recurring data workflows with >45% operating margins and >110% cash conversion. Insulated from or beneficiary of all 5 macrotrends, particularly energy transition hedging and automation. Disciplined founder-led management rapidly deleverages post-acquisition balance sheet (net debt/EBITDA ~2.7x, interest coverage 6.1x). [5-10Y g: derivatives & exchange volume 3.5% + mortgage digitization & cyclical recovery 2.5% + market data & index pricing 1.5% - technology reinvestment drag 0.5% + net share repurchases 1.0%]",
+    "evidence": "20 consecutive years of record net revenues ($9.9B net, $12.6B gross in FY2025). Peak Owner EPS reached $7.83 in FY2025 with 10-year Owner EPS CAGR of 10.4%. Multi-year tangible ROIC >80-200% and FY2025 Owner FCF of $4,051M on Net Income of $3,315M (FCF conversion 122%). Revenue is well-diversified across Exchanges ($5.4B), Fixed Income & Data Services ($2.4B, ~90% recurring subscriptions), and Mortgage Technology ($2.1B, servicing ~50% of US residential mortgages). Balance sheet is conservatively managed under founder Jeffrey Sprecher: following the $11.9B Black Knight acquisition, strong operating cash flows reduced debt from $20.7B to $18.6B, bringing interest coverage to 6.14x and net leverage to ~2.7x EBITDA, allowing the resumption of share buybacks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

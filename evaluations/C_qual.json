@@ -1,0 +1,30 @@
+{
+  "id": "C",
+  "ticker": "C",
+  "universe": "us",
+  "company": "Citigroup",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global Treasury and Trade Solutions (TTS) network connects corporate clients across 90+ countries with deep operational lock-in and clearing infrastructure, alongside a top-tier global credit card issuance franchise. However, structural return dilution across capital markets, wealth, and legacy international branches, coupled with continuous regulatory compliance friction and commoditized credit spreads, prevents the firm from converting transactional stickiness into sustained economic rents.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). While Citigroup maintains an entrenched global cash management and transactional toll booth in Treasury and Trade Solutions (TTS), its capital efficiency is chronically sub-hurdle, generating a 10-year median ROIC of only ~6.5% and multi-year RoTCE of 4-8%, well below the 12% Munger threshold. As a diversified commercial and investment bank, it lacks pricing power over inflation and remains subject to fierce competition in spread lending and market making.",
+    "evidence": "Historical capital efficiency falls well short of compounder quality: 10-year median ROIC is 6.5%, and RoTCE has averaged ~6-7% over the last five years (2021: 9.5%, 2022: 7.2%, 2023: 3.8%, 2024: 7.0%, 2025: 7.7% reported / 8.8% ex-notables). Across its five core divisions—Services (TTS & Securities Services), Markets, Banking, Wealth, and US Personal Banking—only Services consistently earns high returns on equity. The firm has undergone repeated restructuring programs (most recently Project Bora Bora under CEO Jane Fraser to exit 14 international consumer markets including Banamex, de-layer management, and remediate longstanding OCC/Fed consent orders), but returns remain constrained by high overhead, legacy IT debt, and heavy regulatory capital requirements (CET1 ratio ~13.7%). Fractional-reserve commercial banking balance sheet with $2.4T+ in assets and 10-15x leverage also defaults to Gate 6 N."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

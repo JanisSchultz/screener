@@ -1,0 +1,30 @@
+{
+  "id": "WDC",
+  "ticker": "WDC",
+  "universe": "us",
+  "company": "Western Digital",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary areal-density engineering (ePMR, UltraSMR) establishes a global duopoly with Seagate in nearline HDDs, but chronic $/TB price deflation, severe cyclical demand whip-saws, and hyperscaler procurement power preclude through-cycle pricing power and suppress historical returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). Pure-play HDD manufacturer post-SanDisk spin. Despite nearline HDD duopoly with Seagate, 10-year median ROIC of ~6.8% is far below the 12% hurdle. Relentless $/TB price deflation and deep cyclical downturns (negative ROIC of -2.1% and -$1.2B FCF in FY23) demonstrate lack of through-cycle pricing power.",
+    "evidence": "10-year median ROIC of 5.7%-6.8% severely trails the 12% threshold, oscillating between cyclical peaks (>20% in FY25-FY26 AI storage buildout) and severe troughs (-2.1% in FY23). Free cash flow exhibits extreme volatility (-$1.2B in FY23). Spin-off of SanDisk flash business completed in February 2025 leaves WDC focused on HDDs. Concentrated hyperscaler customer base (cloud titans) commands intense bargaining power, capturing technological productivity gains via continuous $/TB deflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

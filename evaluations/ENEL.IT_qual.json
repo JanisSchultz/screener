@@ -1,0 +1,30 @@
+{
+  "id": "ENEL.IT",
+  "ticker": "ENEL",
+  "universe": "eu",
+  "company": "Enel",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant statutory electricity distribution grid networks serving >70M end-users across Italy and Spain, complemented by low-cost legacy hydro assets. Primary erosion threats include regulatory remuneration resets, emerging-market currency volatility in Latin American operations, and political windfall taxes in Iberia.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Europe's largest electricity distribution network operator alongside extensive hydro and renewable generation. While network assets are irreplaceable and CEO Flavio Cattaneo is prudently rationalizing capital allocation, the balance sheet carries €54.5B in debt (13.8x Net Income) with sub-hurdle 3.95x interest coverage, failing Gate 6.",
+    "evidence": "Median ROIC is 9.93% (FY25 ROIC 9.14%). While ordinary cash flow conversion improved to 109% of net income, long-term debt of €54,464.0M vastly exceeds normal owner earnings (debt/NI of 13.76x vs. 4.0x ceiling). FY25 interest expense of €2,846.0M yields EBIT/interest coverage of 3.95x, failing the >5.0x peace-of-mind balance sheet threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

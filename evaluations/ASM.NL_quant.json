@@ -1,0 +1,43 @@
+{
+  "id": "ASM.NL",
+  "ticker": "ASM",
+  "universe": "eu",
+  "company": "ASM International",
+  "price": 651.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Tangible ROIC (42.5%) normalized to 35.0% cap. Process-of-record lock-in across Gate-All-Around (GAA) logic transitions drives 11.0% forward growth (wafer fab ALD intensity 8.5%, price/mix 1.5%, margin/buybacks 1.0%). Fortress net cash (>\u20ac1B)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 15.18,
+    "current_multiple": 42.9,
+    "par_multiple": 33.24,
+    "par_value": 504.42,
+    "percent_vs_par": 0.2906,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0046,
+    "expected_irr_5y": 0.0594,
+    "market_implied_cap": 25.8,
+    "moat_runway_margin": -5.8,
+    "market_implied_growth": 0.2549,
+    "growth_margin_of_safety": -0.1449
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 1028.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.91,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

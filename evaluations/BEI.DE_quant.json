@@ -1,0 +1,43 @@
+{
+  "id": "BEI.DE",
+  "ticker": "BEI",
+  "universe": "eu",
+  "company": "Beiersdorf",
+  "price": 85.52,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.1455,
+    "fin_note": "Operating ROIC confirmed at 14.55% (4Y median GAAP ROIC 12.51%), reflecting conservative balance-sheet structure where >\u20ac4.5B in net liquidity and financial reserves are retained under Maxingvest stewardship (company-reported Consumer segment ROCE reaches 34.5% on physical operating capital). Peak Owner EPS of \u20ac4.2483 (FY2025) confirmed on pristine 8.47% peak-to-peak compounding. Forward 5-10Y g_implied set to 7.0% aligned with qualitative guidance (+3.0% Nivea/Derma volume, +2.0% pricing, +1.0% premiumization mix, +0.5% tesa, +0.5% buybacks/cash yield). Balance sheet is an unassailable fortress with zero long-term debt (net cash) and 40.65x interest coverage. At \u20ac85.52 (20.13x), trades +3.75% Above PAR (\u20ac82.43 at 19.40x PAR multiple), pricing 8.09% growth (-1.09% growth margin) for an expected 5Y IRR of 6.29%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.2483,
+    "current_multiple": 20.13,
+    "par_multiple": 19.4,
+    "par_value": 82.43,
+    "percent_vs_par": 0.0375,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0007,
+    "expected_irr_5y": 0.0629,
+    "market_implied_cap": 20.7,
+    "moat_runway_margin": -0.7,
+    "market_implied_growth": 0.0809,
+    "growth_margin_of_safety": -0.0109
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 40.65,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

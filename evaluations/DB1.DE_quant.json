@@ -1,0 +1,43 @@
+{
+  "id": "DB1.DE",
+  "ticker": "DB1",
+  "universe": "eu",
+  "company": "Deutsche B\u00f6rse",
+  "price": 320.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing \u20ac12.3B of accumulated goodwill and acquired intangibles (including the \u20ac3.9B SimCorp acquisition), restoring economic tangible capital returns (>90%). Peak Owner EPS of \u20ac11.53 reflects organic volume and SaaS integration without windfall spikes. Forward 5-10Y growth of 8.0% (g_implied) is anchored by Eurex derivatives volume (3.0%), Clearstream/SimCorp recurring SaaS (3.5%), pricing power (1.0%), and net buybacks (0.5%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.5344,
+    "current_multiple": 27.74,
+    "par_multiple": 22.97,
+    "par_value": 264.95,
+    "percent_vs_par": 0.2078,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0129,
+    "expected_irr_5y": 0.0529,
+    "market_implied_cap": 24.2,
+    "moat_runway_margin": -4.2,
+    "market_implied_growth": 0.1327,
+    "growth_margin_of_safety": -0.0527
+  },
+  "health_checks": {
+    "net_debt_years": 1.4,
+    "net_debt_ok": true,
+    "interest_coverage": 15.9,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.23,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

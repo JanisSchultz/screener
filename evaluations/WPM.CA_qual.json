@@ -1,0 +1,30 @@
+{
+  "id": "WPM.CA",
+  "ticker": "WPM",
+  "universe": "ca",
+  "company": "Wheaton Precious Metals",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Precious Metals & Minerals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (precious metals streaming) lacking essential Western utility; exposed to global bullion spot price cycles and partner mine operational/jurisdictional risks.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Wheaton Precious Metals operates a capital-light streaming model, but its underlying business is selling speculative commodities (gold, silver, palladium) as a pure price-taker into global bullion spot markets. Lacks essential Western consumer utility and pricing power over its underlying products. Stream volumes remain exposed to operational, strike, and sovereign risks at partner mines. Downstream gates bypassed per waterfall.",
+    "evidence": "Wheaton generates virtually all revenue from precious metals streaming contracts (predominantly gold and silver from mines like Salobo, Antamina, and Peñasquito). It sells delivered physical ounces directly at open market spot prices with zero pricing power. Cash flow is highly cyclical and dependent on bullion market sentiment. While the streaming model eliminates direct operational cost inflation, multi-cycle GAAP ROIC averages ~6-9%, falling short of the 12% compounder hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

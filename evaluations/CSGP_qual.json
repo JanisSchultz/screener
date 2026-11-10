@@ -1,0 +1,30 @@
+{
+  "id": "CSGP",
+  "ticker": "CSGP",
+  "universe": "us",
+  "company": "CoStar Group",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "CoStar Suite and Apartments.com operate as an entrenched subscription toll booth and mission-critical system of record for commercial real estate data and multifamily leasing. Deep network effects and prohibitive data replication barriers prevent competitors from arbitraging returns: CoStar has spent 35+ years amassing proprietary, verified building-level leases, tenant rosters, off-market transaction comps, and aerial imagery via dedicated field research that cannot be crawled or scraped by generic AI. Pricing power is empirically demonstrated by consistent 5-8%+ annual contract price increases with >90% renewal rates and core commercial operating margins exceeding 40%. Primary erosion threats include broker antitrust litigation/boycotts over monopolistic pricing, and potential disintermediation if open CRE data consortiums gain traction.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management Score = 0, REJECT). While CoStar maintains an unassailable commercial real estate data toll booth (CoStar Suite) and rental marketplace (Apartments.com), founder-CEO Andy Florance fails the Munger management and capital-allocation standard across multiple vectors. Management has engaged in value-destructive empire-building by diverting hundreds of millions of dollars of core commercial cash flow into an unproven, aggressive residential portal war (Homes.com) against entrenched duopolists (Zillow, Realtor.com). This massive marketing blitz and M&A spree (Matterport, Domain) caused corporate GAAP net income to collapse from $375M in 2023 to $7M in 2025, turned 2024 FCF negative (-$245M), and depleted cash reserves from $4.7B to $500M by Q3 2026. Furthermore, aggressive litigiousness, promotional non-GAAP focus, and predatory pricing have fostered widespread broker resentment and customer ill-will, violating the consumer surplus and rational capital-allocation principles required of elite compounders.",
+    "evidence": "Financial & Capital Efficiency Track Record: CoStar grew revenue from $1.66B (2020) to $3.25B (2025, +19% YoY), driven by double-digit subscription growth in CoStar Suite and Apartments.com. However, consolidated profitability severely deteriorated due to residential expansion: GAAP net income dropped from $384M (2022) and $375M (2023) to $139M (2024) and $7M (2025). Consolidated GAAP ROIC declined from ~9.7% in 2022 to 5.7% in 2023, 0.1% in 2024, and -0.6% in 2025 (10-year median ~11.2%), though tangible ROIC on core CRE assets remains >40%. Cash Flow & Balance Sheet: FCF collapsed from +$493M (2022) to -$245M (2024) due to peak residential marketing burn, before rebounding slightly to +$41M in 2025 and recovering to ~$357M TTM by Q3 2026 as spend shifted toward lower-funnel acquisition. Balance sheet cash and equivalents fell from $4.70B (FY2024) to $1.63B (FY2025) and $500M (Q3 2026), against $994M in long-term senior notes. Segment Performance & Allocation: The residential segment generated adjusted EBITDA losses of -$361M in 2024 and -$230M in 2025 despite crossing 100M monthly unique visitors, demonstrating high customer acquisition costs and unproven monetization economics. Management's capital allocation has favored aggressive M&A rollups (Matterport for $1.6B) and exorbitant promotional ad campaigns over disciplined per-share compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": 5,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "KR",
+  "ticker": "KR",
+  "universe": "us",
+  "company": "Kroger",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Conventional grocery retail model lacks pricing power and defensible economic barriers against Walmart, Costco, and Aldi. 10-year median GAAP ROIC is ~9.2% against a 12% minimum hurdle, and GAAP operating margins remain compressed at 2.0–2.6%. The company cannot raise prices above food inflation without immediately forfeiting market share to non-union discounters, and its attempt to achieve defensive scale via the $24.6B Albertsons merger was blocked by federal and state antitrust injunctions in late 2024 and terminated.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Traditional supermarket chain structurally unable to clear capital efficiency hurdles, with a 10-year median GAAP ROIC of ~9.2% (below 12% hurdle) and thin 2.0–2.6% operating margins. Lacks independent pricing power against non-union retail giants (Walmart, Costco) and hard discounters (Aldi). The attempted $24.6B merger with Albertsons was permanently blocked by federal and state antitrust courts in December 2024 and terminated.",
+    "evidence": "10-year historical GAAP ROIC averages 8–9% (median ~9.2%), consistently below the 12% threshold. Operating margins remain thin at 2.06% in FY24 ($3.1B EBIT on $148B sales) and 2.62% in FY25 ($3.85B EBIT on $147B sales). Cash generation is absorbed by heavy ongoing store remodel capex and digital fulfillment investments. Balance sheet is burdened by $17.6B in long-term debt and finance leases ($25B+ total obligations) along with multi-employer pension commitments. In December 2024, federal and state courts granted injunctions blocking the $24.6B Albertsons merger, which was subsequently abandoned and triggered multi-billion dollar breach-of-contract litigation from Albertsons. Kroger remains a structural price-taker relative to Walmart (>20% US grocery share) and Costco."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AGN.NL",
+  "ticker": "AGN",
+  "universe": "eu",
+  "company": "Aegon",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Transamerica operates in highly competitive US life and retirement markets where products are commoditized, distribution is intermediated, and in-force life/annuity contracts have zero ability to raise prices above inflation. Multi-cycle ROE and ROIC remain far below 12%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & zero pricing power, REJECT). Capital-intensive US life and retirement insurer (Transamerica) with an extensive multi-decade history of sub-hurdle returns on capital, legacy liability de-risking, and zero pricing power over in-force policies.",
+    "evidence": "Aegon divested its domestic Dutch insurance operations to aSR and re-centered on US Transamerica. 10-year average ROE tracks in the mid-single digits (4-8%), failing the 12% hurdle. Life insurance liabilities cannot reprice to inflation, leaving earnings vulnerable to spread compression, reserve adjustments, and equity market fluctuations."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

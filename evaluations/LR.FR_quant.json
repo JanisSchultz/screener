@@ -1,0 +1,43 @@
+{
+  "id": "LR.FR",
+  "ticker": "LR",
+  "universe": "eu",
+  "company": "Legrand",
+  "price": 129.65,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing €10.2B accumulated M&A goodwill/intangibles (tangible ROIC >100%). Peak Owner EPS confirmed at €5.2733 (FY2025). Forward 5-10Y g_implied anchored at 7.5% per qualitative drivers (3.5% data center/white space + 1.5% renovation + 1.5% pricing + 1.0% bolt-on M&A). Strong balance sheet with net debt repayable in 2.4 years of Owner Earnings and 11.1x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.2733,
+    "current_multiple": 24.59,
+    "par_multiple": 24.5,
+    "par_value": 129.2,
+    "percent_vs_par": 0.0035,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0169,
+    "expected_irr_5y": 0.0912,
+    "market_implied_cap": 20.1,
+    "moat_runway_margin": -0.1,
+    "market_implied_growth": 0.0763,
+    "growth_margin_of_safety": -0.0013
+  },
+  "health_checks": {
+    "net_debt_years": 2.4,
+    "net_debt_ok": true,
+    "interest_coverage": 11.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.15,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

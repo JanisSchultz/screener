@@ -1,0 +1,30 @@
+{
+  "id": "ORLY",
+  "ticker": "ORLY",
+  "universe": "us",
+  "company": "O'Reilly Automotive",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Local scale density across ~7,000 North American stores (~6,500 U.S.), hub stores, and regional distribution centers (including the new Stafford, VA DC) enables rapid DIFM commercial part delivery and deep SKU availability that independent jobbers cannot match, while purchasing scale and supplier-finance working capital reinvest into availability and service. Empirical proof: 33 consecutive years of positive comps (FY25 +4.7%, FY26E +5.5%-6.5%), 51.6%-52.1% gross margins, 19.5%-20.0% EBIT margins, 67.3% median GAAP ROIC (76.8% tangible ROIC in FY25), and ~64%-80%+ after-tax incremental ROIIC. Erosion threats: multi-decade BEV penetration reducing ICE wear parts, peer competition (AutoZone/GPC/AAP), e-commerce in DIY commodities, and potential tightening of supplier-finance AP terms.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Essential break-fix automotive aftermarket oligopolist with a dense hub-and-spoke scale flywheel, 33 straight years of positive comps, and 67.3% median GAAP ROIC. Insulated over a 15-year CAP (conservative -5Y EV transition haircut from a 20Y Tier-2 baseline) as an aging car park and dual-system hybrid complexity (~15% of new vehicle sales) offset low current BEV car-park share. Generates 111.9% multi-year Owner FCF conversion with 14.7x EBIT/interest coverage and 2.37x debt/NI, making negative GAAP equity a buyback accounting artifact rather than distress. [5-10Y g: DIFM/volume share 2.5% + price/complexity 2.0% + net new stores 2.5% - DC/wage/EV mix drag 0.5% + net buybacks 2.5%]",
+    "evidence": "Gate 1 (Y): Transparent dual-market (DIY retail + DIFM commercial) aftermarket auto parts distributor with 33+ years of public operating history and clean GAAP financials (FY25 SBC $35.1M, ~1.0% of $3,460.6M EBIT). Gate 2 (Y): U.S.-anchored (expanding into Mexico >120 stores and Canada via Vast-Auto) essential break-fix vehicle replacement parts need; repairs are largely non-discretionary and benefit counter-cyclically as vehicle age rises. Gate 3 (Scale economies shared / Y): Revenue grew from $8,593.1M (2016) to $17,782.0M (2025) and EBIT from $1,699.2M (19.8% margin) to $3,460.6M (19.5% margin; FY26 guidance $19.0B-$19.3B revenue, 51.6%-52.1% gross margin, 19.5%-20.0% operating margin). FY16-FY25 GAAP ROIC ranged 32.6%-73.7% (median 67.31%, FY25 59.71%; tangible ROIC 42.7%-102.1%, FY25 76.78%). Gate 4 (CAP = 15): Tier-2 essential distribution baseline (20Y) receives a conservative -5Y haircut for long-term BEV powertrain fade; 15Y runway remains insulated across all 5 macrotrends (physical part delivery insulated from AI; aging car park and dual ICE+electric hybrids [~15% of new sales] sustain parts complexity while pure BEVs remain a small active car-park share; tariff dynamics passed through at 51.6%-52.1% gross margins; moderate inflation aids nominal comps). Gate 5 (1): Promote-from-within CEO Brad Beckham maintains decentralized store/DC execution, minimal SBC, and disciplined store/DC expansion (207 net new stores in FY25, 225-235 in FY26, 265-275 planned for FY27; Stafford, VA DC; disciplined Mexico/Vast-Auto expansion); scored 1 rather than 2 because programmatic buybacks ($2.10B in FY25) continued near ~30x P/E using incremental debt rather than strictly counter-cyclical value timing. Gate 6 (Y): Monotonic 10Y Owner EPS compounding ($0.7153 to $2.9655, 13.58% CAGR; FY26E $3.25-$3.35). 10Y cumulative Owner FCF ($20,777.9M) is 113.9% of Net Income ($18,248.2M; fcf_conv 1.119) and 10Y GAAP FCF ($17,653.4M after $6,734.9M CapEx) is 96.7%. While cumulative buybacks and $6,016.9M debt (plus commercial paper liquidity bridging and supplier-finance AP programs) create -$763.4M book equity (-$1,783.3M tangible equity), equity improved by ~$976M from -$1,739.3M (2023), debt/NI is 2.37x (net debt/NI 2.29x vs <=4.0x limit), Adj. Debt/EBITDAR is ~2.03x-2.17x, and EBIT/interest is 14.7x (>10x ideal). Self-funded operations ($2.8B-$3.6B OCF vs $1.2B-$1.4B CapEx) allow full net-debt repayment in ~2.3 years by pausing discretionary buybacks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

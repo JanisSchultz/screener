@@ -1,0 +1,43 @@
+{
+  "id": "IBKR",
+  "ticker": "IBKR",
+  "universe": "us",
+  "company": "Interactive Brokers",
+  "price": 75.82,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Dominant automated electronic brokerage compounder operating a scale economies shared model. Operating ROIC normalized to 35.0% cap under the v6.23 standard for capital-light financial toll booths. FY2025 Peak Owner EPS of $2.2511 accepted; elevated short-term benchmark rate interest margin peak is properly normalized through the -2.0% forward growth deduction rather than an arbitrary EPS cut. 5-10Y through-the-cycle growth of 11.0% driven by 11.0% client account and asset volume (>30% YoY account growth), 1.5% software operating leverage, -2.0% normalized short-rate NII compression, and 0.5% dividend/reinvestment. Pristine fortress balance sheet with zero long-term debt and $4.96B cash buffer. Current price of $75.82 trades Above PAR (+16.8% premium to $64.92 PAR Value at 28.84x PAR Multiple), offering an 8.0% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.2511,
+    "current_multiple": 33.68,
+    "par_multiple": 28.84,
+    "par_value": 64.92,
+    "percent_vs_par": 0.1679,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0039,
+    "expected_irr_5y": 0.08,
+    "market_implied_cap": 23.4,
+    "moat_runway_margin": -3.4,
+    "market_implied_growth": 0.1826,
+    "growth_margin_of_safety": -0.0726
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 2.7138,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

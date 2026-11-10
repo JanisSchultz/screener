@@ -1,0 +1,30 @@
+{
+  "id": "ESSITY B.SE",
+  "ticker": "ESSITY B",
+  "universe": "eu",
+  "company": "Essity",
+  "country": "Sweden",
+  "sector": "Consumer Staples",
+  "sub_industry": "Household Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lacks a structural moat archetype ('None'). Consumer tissue and basic hygiene products face intense private-label competition from European grocers. Multi-year GAAP ROIC sits chronically below the 12% hurdle (~6.5-8.5%), and price increases persistently lag volatile pulp and energy feedstock cost spikes, causing periodic operating margin compression.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3a = None, 3b = N, REJECT). European hygiene and tissue manufacturer lacking structural moat defenses against supermarket private-label penetration. 10-year average GAAP ROIC hovers around 6.5-8.5% (failing the 12% hurdle), and margins experience extreme volatility during pulp and energy cost inflation cycles.",
+    "evidence": "Spun off from SCA in 2017. Segments include Health & Medical (TENA, Leukoplast), Consumer Goods (Lotus, Tempo, Zewa, Cushelle), and Professional Hygiene (Tork). Operating margin compressed to 5.5% in 2022 during pulp/energy spike before recovering to 12.4% in 2025. Long-term GAAP ROIC averages 6.5-8.0%, failing the Munger moat capital efficiency test."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

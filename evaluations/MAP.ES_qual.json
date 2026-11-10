@@ -1,0 +1,30 @@
+{
+  "id": "MAP.ES",
+  "ticker": "MAP",
+  "universe": "eu",
+  "company": "Mapfre",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dense proprietary agent network across Spain and leading market share in Brazil/LATAM bancassurance. However, full-cycle capital efficiency fails the 12% ROIC/ROE hurdle (historical 5-year median ROE <10%), as severe LatAm currency depreciation and recurring natural catastrophe losses continuously erode underwriting profits. Retail motor insurance in Iberia faces high price sensitivity and competitive churn.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Multi-cycle ROE and ROIC consistently fall below the 12% threshold (5-year median ROE ~8-10%) driven by structural emerging-market currency devaluation across Latin America (especially Brazil) and elevated claims inflation in Spanish retail auto. Moat lacks empirical proof of pricing power exceeding real cost/FX inflation across full cycles.",
+    "evidence": "Mapfre's consolidated multi-year ROE has averaged below 10% across the 2018-2023 cycle, only briefly touching 12.4% during the 2024-2025 hard insurance pricing market. High geographic exposure to Latin America exposes earnings to chronic FX translation drag and catastrophe volatility, while Spanish motor lines remain intensely competitive."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

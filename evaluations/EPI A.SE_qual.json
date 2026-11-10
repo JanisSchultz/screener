@@ -1,0 +1,30 @@
+{
+  "id": "EPI A.SE",
+  "ticker": "EPI A",
+  "universe": "eu",
+  "company": "Epiroc",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant underground rock excavation installed base (>50% share in key underground drilling niches) with ~68% recurring aftermarket revenue (drilling consumables, spare parts, on-site service). High customer switching costs driven by extreme cost of mine downtime ($50k+/hr), proprietary telemetry/automation (Mobilaris, RCS), and specialized underground service technician networks. Sustained GAAP ROIC >20% (tangible ROIC ~35-45%) and ~20% operating margins confirm strong pricing power. Primary erosion risks: mining capex deferral cycles and commoditization of low-end surface consumables.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in underground mining equipment and rock drilling solutions with ~68% recurring aftermarket revenue (consumables, spare parts, services). Inherits Atlas Copco decentralized culture and Wallenberg governance. Insulated across all 5 macrotrends as miners automate and electrify to combat labor shortages and critical mineral demand. Fortress balance sheet with net debt/NI <0.6x and 14.8x interest coverage. [5-10Y g: critical minerals mining volume 2.5% + aftermarket CPI-plus pricing 2.0% + automation/electrification mix 2.5% - cyclical timing drag 0.5% + net repurchases 0.5%]",
+    "evidence": "5-year median GAAP ROIC of 23.3% and tangible operating ROIC of 35-45%. Operating margins consistently ~19-22%. Free cash flow conversion normalized to 98-101% in 2024-2025. Aftermarket represents ~68% of sales, insulating cash generation from mining capex cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

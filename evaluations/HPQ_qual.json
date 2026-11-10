@@ -1,0 +1,30 @@
+{
+  "id": "HPQ",
+  "ticker": "HPQ",
+  "universe": "us",
+  "company": "HP Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Printer installed base and cartridge DRM firmware controls historically operated as a razor-and-blade toll booth, while Personal Systems (~68% of sales) is a commoditized hardware assembler. The moat is severely eroding: secular decline in printed pages (-3% to -5% p.a.) driven by paperless workflows eliminates consumable volume, while PC margins remain structurally capped at 5-7% with zero pricing power against Lenovo and Dell. Repeated firmware lockouts have accelerated customer churn to refillable tank systems.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). HP operates a commoditized PC assembly business (~68% of revenue) with thin operating margins (5.7-7.1%) and zero pricing power against Lenovo and Dell, paired with a mature printing segment (~32% of revenue) in irreversible secular decline due to paperless digital workflows. HP lacks the ability to raise prices at or above inflation without accelerating customer volume attrition; attempts to protect printer supplies margins via aggressive firmware DRM lockouts have sparked regulatory fines, consumer backlash, and defection to third-party tank systems. Stagnant multi-year top line and low operating margins fail the Munger compounder hurdle.",
+    "evidence": "FY2024 revenue of $53.6B and FY2025 revenue of $55.3B remain below FY2018 ($58.8B) and the pandemic peak FY2022 ($63.0B), reflecting stagnant-to-negative real revenue over the cycle. Operating margins compressed from 9.1% in FY2021 to 7.1% in FY2024 and 5.7% in FY2025 due to component cost inflation and persistent decline in high-margin printing supplies (Q4 FY2025 print revenue down 4% y/y). FCF of $2.9B-$3.3B is largely consumed by dividends and share buybacks that previously pushed stockholders' equity into negative territory (-$1.32B in FY2024, -$346M in FY2025) with ~$6.0B-$6.5B net debt. Dynamic Security DRM firmware updates sparked litigation and consumer defection to continuous tank alternatives, disproving enduring pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

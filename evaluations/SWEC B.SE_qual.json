@@ -1,0 +1,30 @@
+{
+  "id": "SWEC B.SE",
+  "ticker": "SWEC B",
+  "universe": "eu",
+  "company": "Sweco",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Project tenders are competitively bid on hourly rates across engineering consultancies; margins (~10%) depend on consultant utilization and wage pass-through rather than structural pricing power. No proprietary IP, network effects, or customer switching lock-in.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype None, REJECT). Leading European engineering and architectural consultancy, but operates a billable-hour professional services model characterized by competitive project bidding, low customer switching costs, and cyclical reliance on construction and public infrastructure procurement. Also faces long-term headwind from AI-assisted CAD/BIM design tools compressing billable engineering hours.",
+    "evidence": "Sweco generates SEK 31.6B in net sales with EBITA margins capped at ~10-10.5% (SEK 3,332M in FY25) and billing ratio of 74.4%. Contracts are project-based and competitively tendered against peers like AFRY, WSP, and Arcadis without customer lock-in or proprietary data barriers. Pricing reflects labor rate inflation pass-through rather than structural economic rent extraction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

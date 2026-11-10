@@ -1,0 +1,43 @@
+{
+  "id": "OTIS",
+  "ticker": "OTIS",
+  "universe": "us",
+  "company": "Otis Worldwide",
+  "price": 76.82,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "World's largest elevator and escalator maintenance toll booth (~2.5M units under contract). Negative accounting equity (-$5.39B) is a mechanical legacy of the 2020 UTC spin-off capitalization rather than insolvency; operating ROIC is normalized to the 35.0% cap to reflect structurally unbounded returns on tangible capital. Balance sheet is secure with $1.10B cash and $6.90B LT debt (4.99x net debt/NI), with exceptional $1.44B recurring Owner FCF (101.8% conversion) and 9.8x EBIT interest coverage ($2.13B EBIT vs $217M interest) eliminating refinancing risk. 5-10Y g of 8.0% reflects 3.0% service portfolio growth, 2.5% contractual inflation-plus pricing, 1.5% modernization mix, -0.5% China new equipment headwind, and 1.5% net share repurchases. At $76.82, trades Below PAR at 18.26x peak Owner EPS vs 24.67x PAR Multiple (26.0% discount to $103.77 PAR Value), offering an attractive 16.9% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.2062,
+    "current_multiple": 18.26,
+    "par_multiple": 24.67,
+    "par_value": 103.77,
+    "percent_vs_par": -0.2597,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0221,
+    "expected_irr_5y": 0.1691,
+    "market_implied_cap": 14.8,
+    "moat_runway_margin": 5.2,
+    "market_implied_growth": -0.0161,
+    "growth_margin_of_safety": 0.0961
+  },
+  "health_checks": {
+    "net_debt_years": 4.99,
+    "net_debt_ok": false,
+    "interest_coverage": 9.83,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0182,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

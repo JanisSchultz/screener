@@ -1,0 +1,30 @@
+{
+  "id": "CTAS",
+  "ticker": "CTAS",
+  "universe": "us",
+  "company": "Cintas Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched route density across ~11,000 routes serving over 1 million business customer locations creates an insurmountable per-stop cost advantage over regional peers. Multi-year service agreements with automatic price escalation clauses and customized garment branding/RFID tracking generate substantial customer switching friction. Moat proven by 27% 5-year median GAAP ROIC, ~78% operating tangible ROIC, and steady gross margin expansion past 50%. Primary erosion risks include sharp cyclical employment drawdowns reducing client headcount and potential antitrust headwinds on large-scale M&A.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant North American uniform and facility services route monopoly with unmatched route density, pricing power, and elite owner-operator execution. Insulated from AI disruption and a direct beneficiary of North American industrial reshoring. Fortress balance sheet with net debt payable in <0.8 years of net income and interest coverage >24x. [5-10Y g: new business volume 3.5% + contract price escalation 2.0% + cross-selling facility/safety services 2.5% - margin drags 0.0% + net share buybacks 1.0%]",
+    "evidence": "10-year GAAP ROIC expanded from 13.5% in FY2016 to 31.7% in FY2025 (median 27.0%); operating tangible ROIC exceeds 75%. Continuous peak-to-peak EPS compounding through COVID disruptions (Owner EPS compounded from $1.12 in FY2016 to $5.21 in FY2025 at ~16% CAGR). FCF conversion averages ~91% ($1.75B+ Owner FCF in FY2025). Total long-term debt of $1.43B easily covered by $2.0B net income (0.71x net income); EBIT/interest coverage of 24.5x. Proven pricing power with gross margin expanding from ~44% to >50%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

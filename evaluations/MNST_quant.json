@@ -1,0 +1,43 @@
+{
+  "id": "MNST",
+  "ticker": "MNST",
+  "universe": "us",
+  "company": "Monster Beverage",
+  "price": 45.64,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Asset-light copacking and concentrate model yields superior capital efficiency with operating ROIC of 56.99% normalized to the 35.0% cap. Pristine fortress balance sheet with zero long-term debt and $2.09B in cash and short-term liquid investments. 5-10Y secular Owner EPS compounding anchored at 7.5% through-the-cycle (4.5% international and category volume + 1.5% pricing + 0.5% product innovation - 0.5% distribution/cost drag + 1.5% net share repurchases). 3-Pillar fundamental PAR multiple of 30.17x yields a PAR value of $29.20. At $45.64, MNST trades at 47.16x peak Owner EPS (+56.3% Above PAR), near its 5-year cycle high (47.45x), offering a compressed 5-year expected IRR of -1.7%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 0.9678,
+    "current_multiple": 47.16,
+    "par_multiple": 30.17,
+    "par_value": 29.2,
+    "percent_vs_par": 0.5632,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": -0.0169,
+    "market_implied_cap": 31.3,
+    "moat_runway_margin": -11.3,
+    "market_implied_growth": 0.3299,
+    "growth_margin_of_safety": -0.2549
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9191,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

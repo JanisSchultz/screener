@@ -1,0 +1,30 @@
+{
+  "id": "CPR.IT",
+  "ticker": "CPR",
+  "universe": "eu",
+  "company": "Campari",
+  "country": "Italy",
+  "sector": "Consumer Staples",
+  "sub_industry": "Distillers & Vintners (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns iconic Italian aperitif brands (Aperol, Campari) with proprietary recipes and cultural Lindy cachet. However, fails Gate 3b proof of moat: 5-year and 10-year median GAAP ROIC has structurally hovered at 7-8%, well below the 12% hurdle, diluted by goodwill-heavy acquisitions (Grand Marnier, €1.2B Courvoisier buyout) and high A&P spend required to maintain Aperol spritz momentum against cocktail fashion shifts.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). While Aperol and Campari possess strong cultural brand cachet, Campari fails Gate 3b with 5-year and 10-year median GAAP ROIC of 7-8%, failing the 12% hurdle. Returns diluted by expensive debt-funded M&A (Courvoisier) and high marketing reinvestment. Does not qualify for Calamity Tier as sub-12% ROIC is structural across the multi-year cycle.",
+    "evidence": "5-year median GAAP ROIC is ~7.8%, with recent ROIC compressing toward ~5.4-6.1%. Net debt rose to €2.28B post the €1.2B Courvoisier acquisition, pushing net leverage to ~3.5x-3.9x EBITDA. Consecutive CEO transitions in 2024 (Bob Kunze-Concewitz stepping down, followed by Matteo Fantacchiotti abruptly exiting after 5 months) further eroded capital allocation consistency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

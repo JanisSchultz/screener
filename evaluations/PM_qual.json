@@ -1,0 +1,30 @@
+{
+  "id": "PM",
+  "ticker": "PM",
+  "universe": "us",
+  "company": "Philip Morris International",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Tobacco",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Societal and legislative acceptance risk: chemically addictive nicotine delivery model (combustibles, heated tobacco, oral pouches) facing severe regulatory, excise, and litigation ruin risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Addictive nicotine business model (58.5% combustible cigarettes alongside IQOS and ZYN) carries severe societal, legislative, and regulatory ruin risk (punitive excise taxation, flavor bans, marketing restrictions, generational prohibition), failing the Munger standard for essential Western needs.",
+    "evidence": "Philip Morris International reached $40.6B in net revenue in 2025. While smoke-free products (IQOS heat-not-burn and ZYN oral pouches) expanded to 41.5% of net revenues ($16.85B) with strong momentum (ZYN holding ~66% US value share and total oral volumes up 18.5%), traditional combustible cigarettes still represent 58.5% of revenues. The entire economic engine relies on biological nicotine addiction, exposing it to perpetual regulatory scrutiny, escalating excise taxes (such as European heated-tobacco tax harmonization), flavor/menthol bans, and generational smoking restrictions. Although 10Y median ROIC is ~32% with strong cash generation, the addictive model with high legislative and societal ruin risk constitutes a permanent Gate 2 disqualification under the Munger framework."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

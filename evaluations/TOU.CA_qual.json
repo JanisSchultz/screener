@@ -1,0 +1,30 @@
+{
+  "id": "TOU.CA",
+  "ticker": "TOU",
+  "universe": "ca",
+  "company": "Tourmaline Oil",
+  "country": "Canada",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pure commodity price-taker. Despite low-cost acreage in the Western Canadian Sedimentary Basin (Montney and Deep Basin), Tourmaline has zero control over benchmark gas prices (AECO, NYMEX/Henry Hub, JKM). Operating margins and cash flows fluctuate directly with volatile spot commodity markets rather than contractual pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (gate_3b = N). Tourmaline is Canada's premier low-cost natural gas and liquids producer with disciplined management, but it is structurally a commodity price-taker. Earnings and cash flows are governed by volatile AECO and Henry Hub spot benchmarks, lacking independent pricing power.",
+    "evidence": "Tourmaline is the largest natural gas producer in Canada (~550,000+ boe/d across the Montney, Deep Basin, and Charlie Lake). While maintaining top-tier operational efficiency and low EP cash costs (<$5/boe), natural gas is an undifferentiated global commodity. Tourmaline cannot price above market clearing rates, and returns on capital fluctuate directly with cyclical energy prices, failing the durable moat pricing hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

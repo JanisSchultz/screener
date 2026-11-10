@@ -1,0 +1,30 @@
+{
+  "id": "LMT",
+  "ticker": "LMT",
+  "universe": "us",
+  "company": "Lockheed Martin Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable sovereign defense industrial infrastructure. Sole-source provider of the 5th-generation stealth fighter (F-35) with 3,000+ planned lifetime airframes across 19 partner nations, PAC-3 missile defense, THAAD, HIMARS, and Aegis naval combat systems. High barriers created by classified security clearances, specialized tooling, and FAR cost-plus/statutory procurement frameworks. Moat proven by 10-year median ROIC of 18.2% and gross margin stability around 12–13%. Primary erosion risks stem from Pentagon fixed-price developmental contract write-downs and customer monopsony margin caps.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). World's premier defense prime contractor passes Gates 1–5 on sovereign defense necessity and an unassailable $160B+ backlog, but fails Gate 6 on balance sheet quality and earnings durability. Negative tangible equity (-$6.8B) resulting from decades of debt-funded share buybacks, elevated total debt ($21.7B) exceeding 4.0x normalized earnings, recurring multi-hundred-million fixed-price developmental contract write-downs, and working-capital delivery freezes (e.g. F-35 TR-3 milestone withholdings) violate Munger's peace-of-mind and peak-to-peak compounding standards. [5-10Y g: missiles/fire control volume 4.0% + F-35 sustainment 2.0% + contract indexation 1.0% + buyback 1.0% - fixed-price developmental drag 1.5%]",
+    "evidence": "Lockheed Martin is the world's largest defense contractor ($75.0B FY25 revenue, 72% US Government / DoD). Segment breakdown: Aeronautics ~$28.5B (F-35, C-130), Missiles and Fire Control ~$12.5B (PAC-3, HIMARS, Javelin), Rotary & Mission Systems ~$17.5B (Sikorsky, Aegis), Space ~$13.0B. 10-year median ROIC is 18.2% with multi-year FCF conversion averaging >100% ($6.9B FCF vs $5.0B Net Income in FY25; $18.4B 3-year cumulative FCF vs $17.3B Net Income). However, capital structure displays severe financial engineering: $21.7B in total debt against $6.7B in stockholders' equity, yielding -$6.8B in negative tangible equity due to aggressive debt-funded share repurchases. Total debt to FY25 net income stands at 4.33x (exceeding the 4.0x peace-of-mind threshold). Earnings power has degraded from a 2023 peak EPS of $27.55 to $22.31 in 2024 and $21.49 in 2025 due to classified fixed-price development program losses and F-35 TR-3 software delivery pauses, failing Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

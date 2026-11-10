@@ -1,0 +1,30 @@
+{
+  "id": "MCHP",
+  "ticker": "MCHP",
+  "universe": "us",
+  "company": "Microchip Technology Incorporated",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Embedded microcontroller (PIC, AVR) and analog/mixed-signal sockets historically created switching costs via customer firmware lock-in and development ecosystems (MPLAB). However, Microchip fails empirical proof of moat: 10-year GAAP ROIC fell below 12% in 6 of the last 10 fiscal years (FY2018 6.3%, FY2019 3.7%, FY2020 5.9%, FY2024 2.0%, FY2025 3.5%), and incremental ROIIC since the 2018 Microsemi acquisition is negative as EBIT fell from $714M in FY2018 to $490M in FY2025 on expanded capital. Furthermore, pricing power failed the cycle test: aggressive price hikes and coercive non-cancellable Preferred Supply Program (PSP) contracts during the 2021-2022 chip shortage caused severe customer backlash, inventory digestion, and a ~45% top-line collapse ($8.44B to $4.40B). Primary erosion threats include customer migration toward standard ARM Cortex-M cores and open RISC-V architectures, along with aggressive Chinese domestic MCU substitution.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While Microchip benefits from embedded switching costs in microcontroller sockets (Gate 3a: Toll booth / Switching costs), it fails empirical proof of moat and through-the-cycle pricing power. GAAP ROIC fell below 12% in 6 of the past 10 fiscal years (2.0% in FY2024, 3.5% in FY2025), and post-Microsemi incremental ROIIC is negative. Microchip's aggressive COVID-era Preferred Supply Program (PSP)—forcing 12-18 month non-cancellable orders and steep price increases—alienated customers, drove socket redesigns toward ARM/RISC-V alternatives, and led to a catastrophic 48% revenue crash ($8.44B to $4.40B) and factory underutilization. Further burdened by $5.5B in debt (6.6x normal owner earnings, interest coverage only 2.2x), MCHP fails the Munger standard of enduring, cycle-tested capital compounding.",
+    "evidence": "Multi-cycle capital efficiency: GAAP ROIC collapsed from cycle peak of 19.5% in FY2022 to 2.0% in FY2024 and 3.5% in FY2025. Over the full 10-year period (FY2016-FY2025), GAAP ROIC breached 12% in only 4 years (FY2017: 15.7%, FY2021: 12.4%, FY2022: 19.5%, FY2023: 18.3%), with sub-hurdle returns throughout FY2018-FY2020 (3.7%-6.3%). Revenue & earnings volatility: Revenues peaked at $8,438.7M in FY2022 before collapsing to $4,401.6M in FY2024 and $4,713.1M in FY2025. Operating income (EBIT) plummeted from $3,116.0M in FY2022 to $296.3M in FY2024 and $490.1M in FY2025. Pricing power & customer lock-in: Microchip historically relied on proprietary architectures (PIC, AVR) and development tools (MPLAB). However, its coercive Preferred Supply Program (PSP) during the pandemic supply crunch locked clients into rigid non-cancellable terms. Once shortages eased, customers aggressively drew down stockpiles, cancelled follow-on orders, and accelerated second-sourcing to standard ARM-based MCUs (STM32, NXP) and RISC-V, demonstrating lack of durable pricing power independent of shortage windfalls. Debt & Balance sheet: In 2018, Microchip acquired Microsemi for $10.1B, expanding long-term debt to nearly $9B. Long-term debt remains excessive at $5,496.4M against cash of $240.3M (net debt ~$5,256M). With TTM EBIT of $490.1M and interest expense of $221.3M, interest coverage stands at a precarious 2.21x (well below the >5.0x safety threshold). TTM dividend payments of $984.0M vastly exceeded GAAP net income ($230M) and free cash flow ($615.6M), consuming liquidity while leverage remains high (Net debt / TTM NI > 22x, Net debt / normal OE ~6.6x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

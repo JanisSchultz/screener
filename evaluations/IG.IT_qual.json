@@ -1,0 +1,30 @@
+{
+  "id": "IG.IT",
+  "ticker": "IG",
+  "universe": "eu",
+  "company": "Italgas",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Gas Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory municipal gas distribution concession monopoly across Italy (>50% market share following 2i Rete Gas acquisition). Returns protected by ARERA inflation-indexed RAB framework.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Regulated Italian gas distributor carries extreme leverage (€10.4B debt vs €672M net income, >15x debt/NI) and sub-hurdle 7.2% ROIC due to ARERA-capped returns and continuous debt-funded capex dilution for 2i Rete Gas and network digitisation.",
+    "evidence": "ARERA regulates tariffs yielding a 4-year median GAAP ROIC of 7.17% (FY22: 5.9%, FY23: 6.8%, FY24: 7.5%, FY25: 8.0%). Following the €5.3B acquisition of 2i Rete Gas, net debt reached ~€9.9B to €11B against FY25 net income of €672.3M (14.7x net debt/NI), with interest coverage of 5.19x. Capex of €1.09B exceeds D&A of €712M, requiring perpetual debt refinancing and equity rights issues."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

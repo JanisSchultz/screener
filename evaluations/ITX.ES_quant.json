@@ -1,0 +1,43 @@
+{
+  "id": "ITX.ES",
+  "ticker": "ITX",
+  "universe": "eu",
+  "company": "Inditex (Zara)",
+  "price": 60.32,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC of 53.2% normalized to 35.0% cap reflecting proprietary proximity sourcing and negative working capital model. 5-10Y g of 7.0% supported by omni-channel volume (3.5%), price/mix (2.0%), floor space productivity (1.0%), logistics wage drag (-0.5%), and cash returns (1.0%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.1326,
+    "current_multiple": 28.2847,
+    "par_multiple": 24.0567,
+    "par_value": 51.3032,
+    "percent_vs_par": 0.1758,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0199,
+    "expected_irr_5y": 0.0558,
+    "market_implied_cap": 17.6,
+    "moat_runway_margin": -2.6,
+    "market_implied_growth": 0.1334,
+    "growth_margin_of_safety": -0.0634
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 22.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.17,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

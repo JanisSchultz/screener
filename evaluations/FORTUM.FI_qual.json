@@ -1,0 +1,30 @@
+{
+  "id": "FORTUM.FI",
+  "ticker": "FORTUM",
+  "universe": "eu",
+  "company": "Fortum",
+  "country": "Finland",
+  "sector": "Utilities",
+  "sub_industry": "Independent Power Producers & Energy Traders",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Low-cost Nordic hydro and nuclear generation assets are physically irreplaceable, but Fortum is a pure wholesale commodity price taker on Nord Pool with zero pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Nordic clean power generator operates as a wholesale price taker on Nord Pool. Returns on capital and cash flows fluctuate violently with volatile Nordic spot power prices, hydrological reservoir levels, and carbon allowance prices.",
+    "evidence": "Over 80% of comparable EBITDA stems from wholesale power generation (hydro and nuclear in Finland and Sweden). Because electricity is a commoditized product dispatched via merit order, Fortum has no ability to raise prices independently. Capital efficiency and ROIC swing cyclically with wholesale power prices and weather patterns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

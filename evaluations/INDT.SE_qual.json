@@ -1,0 +1,30 @@
+{
+  "id": "INDT.SE",
+  "ticker": "INDT",
+  "universe": "eu",
+  "company": "Indutrade",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Over 200 decentralized niche engineering subsidiaries holding proprietary designs, high customer switching barriers, and mission-critical technical know-how; delivers consistent 14-15% EBITA margins and 16% median GAAP ROIC across industrial cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier Swedish decentralized serial acquirer with >200 niche industrial subsidiaries, disciplined capital allocation under Bo Annvik, and conservative ~1.5x Net Debt/EBITDA leverage. [5-10Y g: organic volume 2.0% + price 1.5% + self-funded bolt-on M&A 5.5% - cyclical drag 0.5% + net buyback 0.0%]",
+    "evidence": "Reported 4-year median GAAP ROIC of 16.0% (tangible ROIC ~46-55%). 4-year cumulative Owner FCF of SEK 12,815M on GAAP Net Income of SEK 10,856M generates 118% FCF conversion. Balance sheet maintains conservative net debt / NI of 1.58x and interest coverage of 8.3x (BBB- investment grade). Completed 13 disciplined bolt-on acquisitions in FY2025, accelerating into 2026 with Q3 EBITA margins expanding to 15.3%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

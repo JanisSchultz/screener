@@ -1,0 +1,30 @@
+{
+  "id": "ALL",
+  "ticker": "ALL",
+  "universe": "us",
+  "company": "Allstate",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Brand awareness and bundled auto-home inertia provide mild customer stickiness, but personal lines insurance remains a heavily shopped, price-sensitive commodity without an insurmountable economic barrier. 10-year median ROIC of 10.5% fails the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While Allstate benefits from customer inertia and brand recognition in personal lines, personal auto and homeowners insurance are highly shopped, price-sensitive products subject to stringent state Department of Insurance rate regulation. 10-year median ROIC of 10.5% falls short of the 12% hurdle. Massive underwriting losses in 2022-2023 (combined ratios of 106.6% and 104.5%) and persistent multi-billion dollar catastrophe losses ($4.96B-$5.63B annually) highlight cyclical vulnerability. Aggressive rate hikes to restore underwriting margins triggered policyholder attrition and market share losses to Progressive.",
+    "evidence": "Empirical financial record confirms sub-hurdle capital efficiency and lack of unconstrained pricing power: (1) Multi-Cycle Returns: 10-year median ROIC is 10.5% (below the 12.0% requirement). While 2024-2025 staged a sharp cyclical recovery (ROE >25-35%, combined ratio 94.3 in 2024 and 85.2 in 2025), full-cycle profitability remains constrained by severe underwriting swings. (2) Underwriting Volatility: Suffered consecutive annual net losses in 2022 (-$1.42B) and 2023 (-$316M) driven by rapid auto parts/medical inflation and extreme weather events. Catastrophe losses totaled $3.11B (2022), $5.63B (2023), $4.96B (2024), and $4.96B (2025). (3) Pricing Power & Regulatory Friction: P&C rate increases require prior state regulatory approval (e.g., CA, NY, NJ), creating substantial margin lag during inflationary spikes. (4) Competitive Disadvantage: Captive/independent agency distribution carries structural cost headwinds relative to direct-to-consumer peers. Countrywide market share sits at ~5.3-5.5%, ceding volume to Progressive (~7.5-8.0%) during rate catch-up cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

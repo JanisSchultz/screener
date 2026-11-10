@@ -1,0 +1,30 @@
+{
+  "id": "AZO",
+  "ticker": "AZO",
+  "universe": "us",
+  "company": "AutoZone",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Scale advantage in supplier financing (accounts payable > inventory) and dense multi-tier Mega-Hub inventory (172 Mega Hubs carrying 80k-110k+ SKUs supporting 7,700+ stores) is shared into immediate <45-min local availability that e-commerce and independents cannot match. Empirically proved by 43.9%-111.7% GAAP ROIC (5Y median 86.1%), 18.3%-20.5% EBIT margins, and stable ~52%-53% gross margins through inflation/tariff cycles. Primary erosion threats are long-term ICE-to-EV powertrain transition, ADAS repair complexity shifting work to OEM dealers, and commercial DIFM share competition from O'Reilly.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peace-of-Mind Balance Sheet, Automatic N Disqualifying Red Flag). While AutoZone possesses an elite aftermarket moat, 86.1% 5Y median GAAP ROIC, and 15Y ICE/hybrid fleet runway (after a -5Y EV transition haircut), management's permanent 2.5x EBITDAR leverage policy drove debt from $5.27B (FY21) to $9.08B (FY26) to fund share buybacks at peak-cycle multiples (21-25x; $2.0B repurchased at avg $3,496/sh in FY26 exceeding $1.82B raw FCF). This financial engineering produced negative GAAP equity (-$2.50B, bottoming at -$4.75B in FY24) and negative tangible equity (-$2.81B), more than doubled interest expense from $199M (FY22) to $490M (FY26) (cutting EBIT/Interest from 16.4x to 7.6x), and left just $326M cash against $1.625B of 1-year scheduled debt maturities and $1.0B of commercial paper—violating Munger's no-'kindness of strangers' fortress standard. Not eligible for Calamity Tier because leveraged buybacks into negative tangible equity are a permanent capital policy, not a temporary fixable shock.",
+    "evidence": "Multi-cycle financial record (FY2017-FY2026 SEC EDGAR / FY2026 10-K): Revenue doubled from $10,889M (FY17) to $20,339M (FY26, +7.4% YoY). EBIT grew from $2,080M (19.1% margin) to a FY24 peak of $3,789M (20.5% margin) before easing to $3,610M (19.1% FY25) and $3,723M (18.3% FY26) amid Mega-Hub/store investments and wage inflation; Net Income was $2,573M in FY26 (vs $2,662M FY24 peak), while Owner EPS compounded 9.9% CAGR from $44.07 (FY17) to $152.55 (FY26) via share count shrinkage. GAAP ROIC ranged 43.9%-111.7% (51.9% FY26; Tangible ROIC 54.8% FY26, 5Y median GAAP ROIC 86.1%). Cumulative 10Y raw FCF (OCF $27.54B - CapEx $7.95B = $19.59B) equaled 94.0% of cumulative Net Income ($20.83B), and screener Owner FCF conversion is 96.2%, though FY24-FY26 raw FCF/NI dipped to 70.6%-72.5% as CapEx jumped from $672M (FY22) to $1,434M (FY26). Segments & footprint: 7,700+ stores across the US, Mexico, and Brazil (with Brazil expansion recently moderated to prioritize US/Mexico returns); ~2/3 DIY retail and ~1/3 Commercial DIFM (up from ~15% in 2012, holding ~5-6% of a ~$100B professional market), supported by 172 Mega Hubs (+39 opened in FY26 toward a ~300 target) whose linked commercial programs generate ~16% higher annual sales. Pricing power & lock-in: Inelastic failure-part demand, Duralast private-label scale, and diversified US/Mexico/Eastern Europe sourcing allowed clean inflation and tariff pass-through. M&A & capital allocation: Virtually zero M&A (goodwill/intangibles flat at $302.6M since FY21); clean GAAP accounting with modest SBC ($136.8M, 5.3% of NI); disciplined Mega-Hub organic reinvestment under CEO Phil Daniele (since Jan 2024) and CFO Jamere Jackson. However, deliberate 2.5x EBITDAR targeting added $3.81B debt since FY21 ($5.27B -> $9.08B) to execute valuation-insensitive buybacks ($2.0B in FY26, $1.6B authorization remaining), driving GAAP equity negative across all 10 years (-$1.43B FY17, -$4.75B FY24, -$2.50B FY26), tangible equity to -$2.81B, interest coverage down from 16.4x (FY22) to 7.6x (FY26), Net Debt/NI to 3.40x, and leaving $326.1M cash against $1.0B commercial paper and $1.625B of debt due within one year."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

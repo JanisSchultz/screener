@@ -1,0 +1,30 @@
+{
+  "id": "LDO.IT",
+  "ticker": "LDO",
+  "universe": "eu",
+  "company": "Leonardo",
+  "country": "Italy",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Pricing power in military helicopters (AgustaWestland AW139, AW101) and defense electronics, though dragged down by commercial aerostructures subcontracts.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Aerostructures cash burn and volatile defense working capital). While military helicopters and defense electronics hold strong market positions, chronic aerostructures cash drains and lumpy defense project working capital fail the Munger cash compounding and balance sheet peace-of-mind test.",
+    "evidence": "Aerostructures division has been a chronic drag on margins and cash generation due to low-margin subcontracts (e.g. Boeing 787 fuselage). Multi-cycle ROIC has historically lingered below cost of capital (3-7%), while defense contract working capital lumpiness generates volatile operating cash flows."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

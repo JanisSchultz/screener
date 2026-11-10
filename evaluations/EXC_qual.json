@@ -1,0 +1,30 @@
+{
+  "id": "EXC",
+  "ticker": "EXC",
+  "universe": "us",
+  "company": "Exelon Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territories across six major metropolitan regions (ComEd, PECO, BGE, Pepco, Delmarva, ACE) provide an insurmountable regulatory and physical monopoly over electric and gas transmission and distribution. Pricing power is formulaic via rate-base cost-of-service regulation with approved allowed ROEs (9.5-10%), though subject to regulatory lag and state political friction (e.g., Illinois ICC and Maryland PSC rate order pushbacks).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While Exelon possesses an unreplicable transmission and distribution monopoly with formulaic rate-base pricing power, it structurally fails the cash conversion and fortress balance sheet criteria. Heavy perpetual capex ($8.5B in 2025 vs $6.3B OCF) generates negative free cash flow, requiring constant debt issuance and reliance on capital markets. Massive debt burden of $49.4B against $2.8B net income (17.8x leverage) and capped ~5.5-6% ROIC result in chronic shareholder dilution.",
+    "evidence": "Exelon is the largest pure-play US regulated transmission and distribution utility, serving ~10.5M customers across ComEd, PECO, BGE, Pepco, Delmarva, and ACE. 10-year median GAAP ROIC is 5.49% (FY2025 at 5.82%), structurally capped by utility commission rate-of-return regulation. Free cash flow is chronically negative due to ongoing grid modernization and rate base capex: FY2025 OCF of $6,254M vs CapEx of $8,529M (FCF -$2,275M); FY2024 OCF of $5,569M vs CapEx of $7,097M (FCF -$1,528M). Long-term debt reached $49,428M against FY2025 net income of $2,768M (17.85x leverage), far breaching the <=4.0x ceiling. The business model requires continuous reliance on debt capital markets to fund capital expenditures and dividends ($1,617M), violating Gate 6 fortress balance sheet standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

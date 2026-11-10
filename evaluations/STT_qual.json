@@ -1,0 +1,30 @@
+{
+  "id": "STT",
+  "ticker": "STT",
+  "universe": "us",
+  "company": "State Street Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme switching costs in institutional custody and fund administration protect an entrenched oligopoly (State Street, BNY Mellon, JPMorgan). Re-platforming custody, accounting systems, and tax reporting entails massive operational risk, keeping client retention above 98%. Anchored by proprietary platforms like Charles River Development (Alpha front-to-back), State Street offsets core custody basis-point fee compression via higher-margin ancillary services (FX trading, securities lending, private market servicing). However, secular fee compression from asset managers remains a persistent margin drag.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While State Street possesses an enduring institutional moat in custody, fund administration, and ETF management ($53.8T in AUC/A) with high switching costs and sticky client relationships, it operates as a fractional-reserve bank holding company with >13x balance sheet leverage ($366B in assets on $27B equity) funded primarily by ~$245B of institutional deposits. Exposure to interest rate duration mismatch, deposit flight risk, and structural reliance on wholesale liquidity and central bank backstops violate Munger's peace-of-mind fortress balance sheet standard.",
+    "evidence": "State Street Corporation is the second-largest global custody bank with $53.8T in Assets Under Custody/Administration (AUC/A) and $4.7T in Assets Under Management (AUM) through State Street Global Advisors (SSGA) as of year-end 2025. Over the 2016–2025 business cycle, State Street generated stable Return on Equity (ROE) averaging ~10.5%–11.5% (FY24: 11.1%, FY25: 11.5%), with fee revenue comprising ~80% of total revenue and Net Interest Income (NII) providing the remainder. Core custody operations face low-single-digit basis-point fee compression from cost-conscious asset managers, offset by scale, securities lending, FX services, and the Charles River Alpha front-to-back platform. However, the balance sheet carries $366B in assets against $27B in common equity (>13x leverage) and $245B in deposits, creating permanent duration and liquidity risks that disqualify it under Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

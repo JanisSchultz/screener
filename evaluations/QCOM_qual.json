@@ -1,0 +1,30 @@
+{
+  "id": "QCOM",
+  "ticker": "QCOM",
+  "universe": "us",
+  "company": "QUALCOMM Incorporated",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Qualcomm maintains an extraordinary wireless R&D patent estate (3G/4G/5G SEPs) and leading Snapdragon mobile SoC/modem-RF design capabilities. However, pricing power is structurally constrained: QTL patent licensing royalties are legally capped per handset under global antitrust settlements (China NDRC, Korea KFTC, Apple settlements) and FRAND commitments, preventing pricing expansion with inflation. Concurrently, QCT (~85% of revenue) faces structural customer disintermediation as its top modem customer, Apple, deploys in-house 5G modem silicon starting 2025-2026, while Android OEMs continuously dual-source with MediaTek to cap chip ASPs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While Qualcomm possesses an elite wireless R&D patent portfolio and market-leading Snapdragon mobile processors, it lacks unconstrained pricing power >= inflation. Licensing royalties (QTL) are legally capped on a per-handset basis following global antitrust settlements and FRAND commitments, precluding inflation-linked royalty expansion. In chipsets (QCT), Qualcomm faces structural disintermediation as Apple transitions to proprietary in-house modems, while Android smartphone OEMs exert aggressive pricing resistance and dual-source with MediaTek.",
+    "evidence": "Financial Track Record: FY2024 revenue of $38.96B (up 9% YoY) and GAAP net income of $10.14B; FY2025 revenue reached $44.28B with non-GAAP net income of $13.30B (GAAP net income $5.54B affected by tax/legal charges) and FCF of ~$12.82B (~29% FCF margin). 5-year median GAAP ROIC is ~26.5%, demonstrating superior historical capital efficiency.\nSegment Breakdown: QCT generates ~85% of total revenue across Handsets, Automotive, and IoT; QTL generates ~15% of revenue but a disproportionate share of operating profits with >70% operating margins.\nPricing Power & Customer Concentration: Apple historically contributed 10-15%+ of revenue; Apple began deploying its own in-house 5G cellular modem in 2025-2026, permanently phasing out external modem purchases from Qualcomm. Licensing royalties are legally constrained: China NDRC settlement caps royalty base at 65% of device price with absolute per-handset caps ($400 wholesale ceiling); similar FRAND commitments constrain European and US royalties. In mobile silicon, MediaTek provides an aggressive competitive alternative in sub-flagship tiers, capping QCT ASP expansion.\nGeopolitical & Supply Chain Exposure: Over 45% of total revenues are billed to Chinese smartphone OEMs (Xiaomi, Oppo, Vivo, Honor) or devices assembled in China, and Qualcomm is 100% fabless, relying critically on TSMC (Taiwan) and Samsung for cutting-edge wafer fabrication.\nCapital Allocation & Balance Sheet: Healthy net leverage with cash and marketable securities exceeding $13B against ~$15B long-term debt; consistent share repurchases and growing dividends, but unable to escape structural customer disintermediation and antitrust royalty ceilings."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

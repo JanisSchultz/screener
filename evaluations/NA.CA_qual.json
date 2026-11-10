@@ -1,0 +1,30 @@
+{
+  "id": "NA.CA",
+  "ticker": "NA",
+  "universe": "ca",
+  "company": "National Bank of Canada",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant regional retail and commercial banking oligopoly in Quebec (~25%+ market share) combined with high-return specialty financial markets and wealth management franchises. Strengthened national commercial footprint through the CWB acquisition. Generates industry-leading ROE (16-18%) and exceptional efficiency ratio. Primary erosion risks: execution and credit integration risk from CWB loan book in Western Canada, housing cycle slowdown, fintech disintermediation, and macro interest rate margin compression.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While National Bank of Canada is the highest-returning Canadian bank with an elite ~17% multi-cycle ROE, exceptional management stewardship under Laurent Ferreira, and regional dominance in Quebec bolstered by the CWB acquisition, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~13-14x asset/equity leverage and funded by demand deposits, its solvency inherently relies on depositor confidence and central bank/CDIC backstops ('kindness of strangers').",
+    "evidence": "Canada's sixth-largest chartered bank and dominant Quebec financial institution, generating industry-leading ROE consistently between 16-18% (5-year median GAAP ROIC >40%). Elite capital allocation demonstrated by sector-best efficiency ratios and disciplined expansion via the 2025 CWB acquisition. However, Gate 6 structural rejection is absolute for commercial fractional-reserve deposit banks: total balance sheet assets exceed C$450B supported by C$33.8B in common equity (~13-14x leverage) and C$43.6B in long-term debt liabilities. The business model relies on short-term deposits and wholesale liquidity to fund commercial and mortgage loans, creating structural duration mismatch and credit cycle tail risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

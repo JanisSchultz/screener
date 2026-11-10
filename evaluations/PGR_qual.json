@@ -1,0 +1,30 @@
+{
+  "id": "PGR",
+  "ticker": "PGR",
+  "universe": "us",
+  "company": "Progressive Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Pioneering telematics data advantage (Snapshot) and unmatched actuarial segmentation allow Progressive to price risk more granularly than peers, creating a self-reinforcing scale-economies-shared flywheel. Competitors cannot easily match its proprietary telematics loss ratio advantage (10-15% lower loss ratios) or rapid automated rate filings across 50 states. Primary erosion threats include gradual adoption of OEM embedded telematics, broader commoditization of telematics software, and long-term reduction in collision frequency from advanced autonomous driving systems (ADAS).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier US personal and commercial auto insurer operating on a scale-economies-shared engine, utilizing industry-leading Snapshot telematics algorithms to segment risk and consistently deliver a sub-96 combined ratio (87.4% in 2025). Superior pricing agility enabled rapid rate repricing ahead of post-COVID inflation, taking massive market share while peers retrenched. Resilient across all 5 macrotrends with rising investment income from higher yields and insulated US domestic profile. Exceptional fortress balance sheet with >50x interest coverage and generous variable dividend distributions. [5-10Y g: policy-in-force volume 5.5% + rate segmentation/price 2.5% + commercial lines expansion 1.0% - combined ratio normalization drag 1.5% + capital return 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 23.0% and tangible ROIC of 23.3%, with 2024-2025 ROIC surging above 38-41%. Total policies in force expanded 18% in 2024 to 34.95M and another 10% in 2025 to 38.62M. Underwriting excellence demonstrated by calendar 2024 combined ratio of 88.2% and 2025 combined ratio of 87.4%, dramatically beating the company's 96.0% target. Peak Owner EPS reached $19.23 in 2025, eclipsing the prior 2020 peak of $9.89. FCF conversion exceeds 150% (2025 Owner FCF of $17.1B vs Net Income of $11.3B). Balance sheet carries >50x interest coverage ($14.5B EBIT vs $278M interest expense) and zero net debt burden, supporting large variable dividend distributions ($13.50/share for 2024 performance)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

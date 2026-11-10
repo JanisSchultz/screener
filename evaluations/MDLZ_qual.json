@@ -1,0 +1,30 @@
+{
+  "id": "MDLZ",
+  "ticker": "MDLZ",
+  "universe": "us",
+  "company": "Mondelez International",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global Lindy snack brand portfolio (Oreo, Cadbury, Milka, Ritz, LU, Toblerone) backed by massive direct-store delivery and global retail distribution networks. However, proof of moat fails empirical hurdles: 5-year median GAAP ROIC is ~7-10.8% (consistently below the 12.0% hurdle) due to a heavy invested capital base burdened by $24.0B+ of goodwill and $16.0B+ of acquired intangibles. Furthermore, steep cocoa and packaging cost inflation highlighted clear pricing power boundaries, as aggressive price increases induced volume/mix contraction (-1.0% in FY24 with sustained volume elasticity in FY25) and retail pushback.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Proof of Moat fails empirical hurdle: 5-year median GAAP ROIC is 10.8% in workbook data and ~6-9% on reported GAAP figures across 2020-2025, consistently missing the mandatory 12.0% threshold. Heavy goodwill and intangibles from historical acquisitions (Kraft spin-off, Cadbury, Clif Bar, Chipita) dilute returns on capital. Furthermore, pricing actions to pass through 50-year-high cocoa costs led to negative volume elasticity (-1.0% volume/mix in FY24 and persistent volume pressure in FY25), proving pricing power cannot outpace severe input cost spikes without customer volume loss. Downstream gates bypassed per strict waterfall.",
+    "evidence": "Mondelez International generates over $36B in net revenue from iconic snack food brands (Oreo, Cadbury, Milka, Ritz, belVita, Philadelphia). Despite strong brand recognition, historical GAAP ROIC has consistently trended between 5% and 11% (2020: ~6.5%, 2021: ~7.3%, 2022: ~5.2%, 2023: ~8.9%, 2024: ~9.2%, 2025: ~5.4%), yielding a 5-year median of 10.8% (or lower on reported GAAP), failing the mandatory 12.0% hurdle. Invested capital (~$45B) is heavily weighted by $24.0B of goodwill and over $16B of other intangibles. In FY24 and FY25, organic revenue growth (+4.3%) was driven entirely by pricing, while volume/mix turned negative (-1.0% in FY24 with continued elasticity in FY25). FY25 reported operating income dropped ~44% to $3,548M and net income declined to $2,451M under peak cocoa cost pressures. Total debt stands at $21.2B ($19.1B net debt), representing ~7.8x FY25 net earnings."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "JMT.PT",
+  "ticker": "JMT",
+  "universe": "eu",
+  "company": "Jerónimo Martins",
+  "country": "Portugal",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Jerónimo Martins operates the leading Polish discount chain (Biedronka, ~70% of group sales) and Portuguese supermarkets (Pingo Doce). However, Biedronka operates an everyday low price model locked in intense price competition with Schwarz Gruppe (Lidl) and Dino Polska. It lacks independent pricing power >= inflation, evidenced by absorbing the 2024 Polish VAT hike and minimum wage increases, which caused basket deflation, negative like-for-like sales (-0.3%), and compressed EBITDA margins (from 9.2% in 2021 to 7.7% in 2024).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Lacks pricing power >= inflation, REJECT). Core Polish retail engine (Biedronka, ~70% of sales) is locked in structural price war with Lidl and Dino; absorbed 2024 food VAT reintroduction and wage inflation, resulting in negative LfL and compressed operating margins.",
+    "evidence": "While pre-tax ROIC has historically been high (20-27%), JMT operates at thin group EBIT margins (3.2-3.9%). Biedronka EBITDA margins compressed from 9.2% in 2021 to 7.7% in 2024 due to aggressive promotional price-cutting against Lidl, court-mandated ad injunctions, and inability to pass through labor cost inflation without volume sacrifice."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

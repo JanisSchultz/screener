@@ -1,0 +1,30 @@
+{
+  "id": "NSIS B.DK",
+  "ticker": "NSIS B",
+  "universe": "eu",
+  "company": "Novonesis",
+  "country": "Denmark",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global undisputed leader in industrial enzymes and microbial cultures, with unmatched strain libraries and fermentation scale. Enzymes cost 1-3% of customer COGS but deliver critical performance, locking in CPG clients. Proven pricing power (4-7% annual pricing) with multi-cycle operating ROIC >25%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global powerhouse in industrial enzymes and biosolutions following the Novozymes/Chr. Hansen merger, anchored by Novo Holdings stewardship. Irreplaceable biological catalysts at 1-3% of customer COGS, benefiting secularly from decarbonization and green chemistry. [5-10Y g: organic biosolutions volume 4.5% + price/mix 1.5% + merger revenue synergies & operating leverage 1.0% + bolt-on M&A 0.5%]",
+    "evidence": "Operating ROIC of ~29% with 113.9% FCF conversion (€730M FCF in FY2025). Robust balance sheet with 11.9x interest coverage and long-term ownership backing by Novo Holdings. Successfully pushed 4-7% annual pricing through inflationary cycles while maintaining ~36% EBITDA margins."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

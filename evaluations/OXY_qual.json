@@ -1,0 +1,30 @@
+{
+  "id": "OXY",
+  "ticker": "OXY",
+  "universe": "us",
+  "company": "Occidental Petroleum",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Permian Basin acreage density (augmented by Anadarko and CrownRock) and CO2 enhanced oil recovery (EOR) infrastructure provide low extraction costs, but oil, NGLs, and natural gas are homogenous commodities sold at spot prices. Multi-cycle ROIC of ~7.8% fails the 12% hurdle, and the company has zero pricing power over global commodity benchmarks. Primary erosion risks stem from commodity price collapses, natural reservoir decline rates requiring continuous reinvestment, and long-term energy transition substitution.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 7.8% < 12%, Pricing Power = N, REJECT). Structural commodity price-taker whose operating cash flows and returns fluctuate directly with spot oil and gas prices. While contiguous Permian Basin scale and the 2025 OxyChem divestiture for $9.7B facilitate debt reduction from CrownRock and Anadarko peaks, the business lacks independent pricing power and fails the multi-cycle economic return hurdle.",
+    "evidence": "10-year median GAAP ROIC is 7.8% (averaging ~5-8% over the full cycle), failing the 12% threshold. ROIC oscillated from negative territory during the 2015-2016 and 2020 oil downturns to a temporary windfall peak of >20% in 2022 before retreating. The 2019 Anadarko acquisition ($55B) and August 2024 CrownRock acquisition ($12B) repeatedly stretched the balance sheet, with principal debt peaking near $29B. Although the October 2025 divestiture of OxyChem to Berkshire Hathaway for $9.7B cash helped accelerate debt paydown toward ~$13.3B by mid-2026, Berkshire's $10B 8% preferred stock remains an ongoing capital obligation (redemption targeted for 2029+). Fundamental lack of pricing power and commodity price-taker economics permanently disqualify OXY from compounder status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

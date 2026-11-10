@@ -1,0 +1,30 @@
+{
+  "id": "PEO.PL",
+  "ticker": "PEO",
+  "universe": "eu",
+  "company": "Bank Pekao",
+  "country": "Poland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing/HQ country Poland is outside rule-of-law Western developed markets scope (in_market == 'N'); bank is subject to state control (PZU/PFR), statutory mortgage moratoria, and special bank asset taxes.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == 'N', REJECT). Bank Pekao is Poland's second-largest commercial bank, majority state-controlled via PZU and PFR. While operating an established domestic franchise, its operations are based outside the approved Western developed market perimeter and remain vulnerable to statutory mortgage moratoria and political intervention.",
+    "evidence": "Ranked #2 bank in Poland with ~11% market share in loans and deposits. State-controlled via PZU (20%) and PFR (12.8%). The Polish banking sector has been repeatedly burdened by government-mandated mortgage payment holidays ('wakacje kredytowe') costing hundreds of millions of PLN, an onerous special asset tax on bank balance sheets, and Swiss franc (CHF) mortgage legal litigation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

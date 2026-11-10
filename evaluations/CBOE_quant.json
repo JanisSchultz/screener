@@ -1,0 +1,43 @@
+{
+  "id": "CBOE",
+  "ticker": "CBOE",
+  "universe": "us",
+  "company": "Cboe Global Markets",
+  "price": 353.27,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap for asset-light proprietary options exchange toll booth. 5-10Y through-the-cycle growth of 7.0% driven by proprietary SPX index options volume (4.0%), non-negotiable fee/market data pricing (1.5%), global trading hours expansion (1.0%), and buybacks (1.0%), less tech reinvestment (-0.5%). Pristine net cash balance sheet ($774M net cash, 28x interest coverage) and exclusive SPX license through 2051."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.9553,
+    "current_multiple": 32.25,
+    "par_multiple": 24.84,
+    "par_value": 272.13,
+    "percent_vs_par": 0.2982,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0077,
+    "expected_irr_5y": 0.0233,
+    "market_implied_cap": 19.5,
+    "moat_runway_margin": -4.5,
+    "market_implied_growth": 0.1811,
+    "growth_margin_of_safety": -0.1111
+  },
+  "health_checks": {
+    "net_debt_years": 1.31,
+    "net_debt_ok": true,
+    "interest_coverage": 28.05,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.3858,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

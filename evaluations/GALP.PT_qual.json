@@ -1,0 +1,30 @@
+{
+  "id": "GALP.PT",
+  "ticker": "GALP",
+  "universe": "eu",
+  "company": "Galp Energia",
+  "country": "Portugal",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Pure commodity price-taker across upstream crude and downstream refining. Refined product margins are dictated by northwest European crack spreads, and crude sales are tied to international Brent spot benchmarks. Lacks independent pricing power above inflation; returns on capital fluctuate violently with hydrocarbon price cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Regional Iberian integrated energy operator and non-operated upstream participant (Brazil pre-salt, Namibia Mopane discovery). Despite possessing Portugal's sole refinery at Sines and advantaged deepwater upstream barrels, Galp is fundamentally a commodity price-taker lacking pricing power above inflation. Operating cash flows and returns on capital are dictated by Brent crude prices, natural gas benchmarks, and volatile European refining crack spreads.",
+    "evidence": "Galp operates three core divisions: Upstream (offshore production in Brazil pre-salt Santos Basin and exploration in Namibia's Orange Basin), Industrial & Midstream (Sines refinery with 220 kbpd capacity and natural gas supply), and Commercial (1,200+ service stations and power/gas retail across Iberia). While recent upstream cash flows have been strong due to favorable oil pricing and low extraction costs in Brazil (<$5/boe operating cost), historical ROIC displays severe cyclicality: normalized 10-year ROIC averages ~8-10%, with sharp compressions during oil downturns (e.g. 2020 net loss of -€42M and ROIC <4%). Downstream refining margins fluctuate uncontrollably based on regional supply-demand imbalances, and retail fuel distribution operates in a competitive, price-sensitive environment. Galp has zero ability to raise prices independently of global commodity benchmarks without forfeiting market share."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

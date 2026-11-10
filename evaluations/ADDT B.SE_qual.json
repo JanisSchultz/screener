@@ -1,0 +1,30 @@
+{
+  "id": "ADDT B.SE",
+  "ticker": "ADDT B",
+  "universe": "eu",
+  "company": "Addtech",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High-value customized technical components engineered into OEM customer equipment create high switching costs and pricing power. Strict P/WC (>45%) decentralized discipline sustains >22% GAAP ROIC across cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite Swedish decentralized compounder of ~150 autonomous technical trading subsidiaries. High switching costs via design-in OEM components. Exceptional capital allocation with P/WC > 45% hurdle, 22%+ ROIC, and 15x interest coverage. [5-10Y g: organic volume 2.5% + pricing power 1.5% + self-funded bolt-on M&A 6.0%]",
+    "evidence": "GAAP ROIC median is 22.8% and operating ROIC exceeds 100%. FCF conversion is 131% with FY2025 Owner FCF of SEK 2,812M vs Net Income of SEK 2,147M. Owner EPS compounded at 14.1% CAGR from SEK 7.43 (2022) to SEK 11.02 (2025). Net debt of SEK 3,352M is 1.56x net income and interest coverage is 15.2x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB1.DE",
+  "ticker": "DB1",
+  "universe": "eu",
+  "company": "Deutsche B\u00f6rse",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Financial Exchanges & Data (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Near-monopoly in European benchmark derivatives clearing (Eurex: DAX, EURO STOXX 50, Bund futures) with massive liquidity network effects, coupled with Clearstream's international post-trade settlement/custody lock-in and SimCorp enterprise software. Erosion risks include EU regulatory push for multi-clearing interoperability and European equity capital market stagnation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier European financial exchange, clearing, and custody infrastructure oligopoly. Deep network effects in Eurex derivatives and Clearstream post-trade settlement with pricing power and >100% FCF conversion. Fortress balance sheet with 15.9x interest coverage. [5-10Y g: derivatives contract volume 3.0% + Clearstream/SimCorp recurring SaaS 3.5% + fee/index pricing power 1.0% + net share repurchases 0.5%]",
+    "evidence": "Consistent 15.0% GAAP ROIC and >90% operating tangible ROIC with 123% Owner FCF conversion over the 4-year cycle. Net Debt / NI is ~1.5x with 15.9x interest coverage (EBIT \u20ac3.05B vs \u20ac192M interest). High recurring revenue mix enhanced by SimCorp acquisition and Eurex clearing mandate."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

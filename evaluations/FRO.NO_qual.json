@@ -1,0 +1,30 @@
+{
+  "id": "FRO.NO",
+  "ticker": "FRO",
+  "universe": "eu",
+  "company": "Frontline",
+  "country": "Norway",
+  "sector": "Industrials",
+  "sub_industry": "Marine Transportation (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Commodity freight price taker lacking pricing power; violent cyclicality in spot crude tanker day rates.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Reject – G2 Essential Need). Pure-play spot crude and product tanker operator. Operates as an extreme commodity price-taker where spot day-rates fluctuate wildly based on global oil trade routes, OPEC decisions, and fleet supply cycles, resulting in boom-and-bust returns and zero durable pricing power.",
+    "evidence": "Frontline's fleet of VLCC, Suezmax, and LR2 tankers operates with heavy spot exposure. Historical ROIC swings between near-zero/negative in prolonged tanker recessions to transient spikes (>25%) during geopolitical rerouting bottlenecks (e.g. Red Sea and Russian crude sanctions). The company possesses no economic moat or pricing power over charterers, who select tonnage on spot market freight rates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

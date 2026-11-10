@@ -1,0 +1,30 @@
+{
+  "id": "OR.FR",
+  "ticker": "OR",
+  "universe": "eu",
+  "company": "L'Oréal",
+  "country": "France",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched scale with >€13B annual advertising budget, €1.3B+ R&D engine, and global omni-channel distribution across Luxe, Consumer, Dermatological Beauty, and Professional. Delivers consistent 74%+ gross margins and 19-22% GAAP ROIC (40%+ Operating ROIC). Pricing power demonstrated through continuous positive price/mix compounding above inflation across cycles. Primary risks include travel-retail volatility and Chinese domestic brand competition.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Uncontested global beauty champion with 21% GAAP ROIC (47% tangible operating ROIC), 98% FCF conversion, and net cash balance sheet. Exceptional brand compounding across mass, luxury, and dermatological categories. [5-10Y g: organic volume 2.5% + price/mix 2.5% + dermatological/luxe mix 1.0% + net share buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC is 21.0% (FY22: 20.9%, FY23: 22.3%, FY24: 21.0%, FY25: 19.0%), with tangible ROIC averaging ~47%. Gross margin stable at 74%+. FCF conversion is 98.4%. Balance sheet holds €9.87B cash against €8.07B long-term debt (net cash position) with interest coverage exceeding 23x. Exceptional century-long owner-operator stewardship under Bettencourt Meyers family."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MAS",
+  "ticker": "MAS",
+  "universe": "us",
+  "company": "Masco Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary and deferrable home improvement products (architectural paint and decorative plumbing fixtures) tied to cyclical housing turnover and discretionary remodel spending.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Decorative architectural coatings (Behr paint, Kilz primers) and decorative plumbing fixtures (Delta, Hansgrohe, Brizo) represent deferrable home improvement and remodeling purchases rather than non-displaceable daily essentials or high-frequency Lindy habits. Demand is heavily cyclical and tied to existing home sales turnover and discretionary consumer remodel spending, leading to volume contractions during housing market lulls. Extreme customer concentration with The Home Depot (representing ~38% of consolidated net sales) further compounds commercial vulnerability.",
+    "evidence": "Masco operates across two segments: Plumbing Products (~66% of sales; Delta, Brizo, Hansgrohe) and Decorative Architectural Products (~34% of sales; Behr, Kilz). Net sales declined from $7,971M in 2023 to $7,828M in 2024 (-2%) and $7,562M in 2025 (-3%) due to depressed existing home sales and deferred DIY paint projects. While operating margins (17.4% in 2024, 16.5% in 2025) and ROIC (>30%) are healthy due to disciplined cost management and asset-light assembly, ~38% of consolidated sales are concentrated at a single customer (The Home Depot), which holds retail exclusivity for Behr. The business is fundamentally tethered to cyclical and deferrable residential remodel cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

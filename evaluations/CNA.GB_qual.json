@@ -1,0 +1,30 @@
+{
+  "id": "CNA.GB",
+  "ticker": "CNA",
+  "universe": "eu",
+  "company": "Centrica",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Opaque trading book, REJECT). Centrica's earnings are heavily driven by Centrica Energy (formerly Energy Marketing & Trading), a large proprietary energy trading and optimization book that swings wildly and cannot be verified from the outside. Combined with retail supply subject to Ofgem price caps and nuclear/storage assets, the economic engine lacks transparent, predictable compounding.",
+    "evidence": "Centrica Energy operating profits fluctuated from £1.4B in 2022 to £774M in 2023 and £307M in 2024 due to market volatility. British Gas retail margins remain constrained by the UK default tariff price cap, and upstream asset dependencies make earnings unpredictable."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DANSKE.DK",
+  "ticker": "DANSKE",
+  "universe": "eu",
+  "company": "Danske Bank",
+  "country": "Denmark",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Danish retail and corporate franchise with leading market share in Danish covered mortgage lending through Realkredit Danmark. Capital regulations and primary payroll account stickiness provide high customer switching costs. Returns rebounded to >12% ROE in 2023-2024 (12.7% and 13.4%). However, moat is narrow and heavily constrained by mortgage bond market regulation and rate sensitivity.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5 < 15, REJECT). Denmark's largest lender with entrenched mortgage market share via Realkredit Danmark. However, competitive advantage period is severely capped at 5 years due to catastrophic brand dilution and severe integrity fallout from the €200B Estonia money-laundering scandal (settled with $2B in criminal fines in late 2022), intense Nordic FinTech commoditization of payments/deposits (Denmark is virtually cashless), and high regulatory compliance drag.",
+    "evidence": "Rebounded to double-digit ROE in 2023 (12.7%) and 2024 (13.4%) following rate hikes, but 2018-2022 was plagued by the Estonia AML scandal with multi-billion DKK litigation provisions culminating in a $2.0B settlement with US and Danish authorities in December 2022 (ROE of -3.1% in 2022). Endured significant customer defections, CEO/board turnover, and elevated compliance overhead. Nordic digital banking saturation and FinTech disintermediation limit long-term franchise runway to <= 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

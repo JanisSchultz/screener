@@ -1,0 +1,43 @@
+{
+  "id": "HONA",
+  "ticker": "HONA",
+  "universe": "us",
+  "company": "Honeywell Aerospace",
+  "price": 157.5,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": 6.85,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (Gate 6 temporary balance sheet waiver; 3.88x interest coverage post-spinoff): Reported pre-spin peak Owner EPS of $9.11 (FY2023) reflected an unencumbered corporate carve-out with zero interest expense. Standalone earning power is normalized via peak_eps_est = $6.85, reflecting peak EBIT of $3,564M burdened by $818M annual interest expense from the $16B senior notes dividend extracted by parent Honeywell at the June 2026 spin-off ($2,169M normalized net income @ 21% tax on 316.8M shares). Operating ROIC normalized to 35.0% cap (>70% tangible ROIC across captive commercial/defense aftermarket toll booth). 5-10Y secular growth anchored at 7.5%: commercial flight hours/defense volume (+3.5%), aftermarket pricing (+3.0%), technology mix (+1.0%), standalone corporate/R&D drag (-0.5%), and buybacks (+0.5%). At 22.99x normalized peak EPS, HONA trades Below PAR (-1.5% discount to $159.83 PAR Value at 23.33x PAR multiple), delivering a 7.8% expected 5Y cycle IRR as cash flow rapidly deleverages the balance sheet."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.85,
+    "current_multiple": 22.99,
+    "par_multiple": 23.33,
+    "par_value": 159.83,
+    "percent_vs_par": -0.0146,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0782,
+    "market_implied_cap": 19.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": 0.0699,
+    "growth_margin_of_safety": 0.0051
+  },
+  "health_checks": {
+    "net_debt_years": 0.13,
+    "net_debt_ok": true,
+    "interest_coverage": 3.88,
+    "interest_cov_ok": false,
+    "fcf_conversion": 1.0607,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

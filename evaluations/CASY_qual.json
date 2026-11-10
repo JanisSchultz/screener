@@ -1,0 +1,30 @@
+{
+  "id": "CASY",
+  "ticker": "CASY",
+  "universe": "us",
+  "company": "Casey's",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Rural geographic monopoly where ~50% of stores operate in towns with <5,000 residents lacking restaurant or grocery competition. 5th largest US pizza chain with ~60% prepared food gross margins and proven pricing power above inflation; 5Y median GAAP ROIC of 12.7% and tangible ROIC of 15.1%-17.8%. Primary erosion threats are long-term EV fleet adoption dampening fuel trips and rural population stagnation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant rural Midwest and Southern convenience hub operating as a local geographic monopoly where ~50% of stores reside in towns with populations under 5,000 lacking restaurant or grocery competition. High-margin prepared food (5th largest US pizza chain with ~60% gross margins) provides resilient pricing power above inflation. Insulated from AI disruption and structurally cushioned against rapid EV transition by rural driving dynamics and heavy fee-simple store ownership (~90%). Fortress balance sheet with 10.7x interest coverage and net debt repayable in 2.5 years of net income. [5-10Y g: store count growth 3.0% + inside traffic volume 1.5% + prepared food pricing 2.5% + mix shift 1.0% - fuel volume drag 0.5% + share repurchases 1.5%]",
+    "evidence": "Owner EPS compounded at 18.0% CAGR from $4.48 in FY2016 to $19.16 in FY2025. 5-year median GAAP ROIC is 12.71% and FY2025 tangible operating ROIC reached 17.83%. 10-year cumulative Owner FCF of $4.42B represents 115.5% conversion of GAAP Net Income ($3.83B), with TTM FCF conversion at 116.7%. Pristine balance sheet despite November 2024 acquisition of Fikes/CEFCO (198 stores, $1.15B): FY2025 Net Debt of $1.81B is 2.53x Net Income ($714.4M) and EBIT interest coverage is 10.7x ($1,033.7M EBIT vs $96.6M interest). Network of ~2,900 stores supported by self-distribution logistics (~75% inside goods) and over 9 million Casey's Rewards loyalty members."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

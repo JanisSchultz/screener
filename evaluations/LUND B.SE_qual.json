@@ -1,0 +1,30 @@
+{
+  "id": "LUND B.SE",
+  "ticker": "LUND B",
+  "universe": "eu",
+  "company": "Lundbergs",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable Scandinavian physical assets: 1.3M hectares of commercial forests and hydro power (Holmen) with near-zero marginal operating costs, prime CBD Stockholm real estate (Hufvudstaden) with CPI-indexed leases, and serial industrial compounders (Indutrade, Sandvik).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Elite Swedish holding company managed by Fredrik Lundberg. Anchored by irreplaceable physical assets including 1.3M hectares of commercial forestlands and hydro power (Holmen), prime Stockholm CBD real estate (Hufvudstaden), and serial industrial compounders (Indutrade, Sandvik). Exceptional fortress balance sheet with net debt/NAV <5% and multi-decade per-share compounding. [5-10Y g: look-through volume 3.0% + inflation-indexed pricing 2.5% + reinvestment 1.5%]",
+    "evidence": "Look-through NAV per share CAGR >10% over four decades under Fredrik Lundberg. Holding company operates with negligible leverage (LTV <5%), zero debt refinancing risk, and high-margin renewable power and forestry assets providing durable cash conversion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

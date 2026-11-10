@@ -1,0 +1,43 @@
+{
+  "id": "SIKA.CH",
+  "ticker": "SIKA",
+  "universe": "eu",
+  "company": "Sika",
+  "price": 185.25,
+  "quote_currency": "CHF",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing CHF 7.9B in MBCC acquisition goodwill and intangibles (tangible ROIC ~59.6%). Net debt rapidly reduced post-MBCC to CHF 3.0B (repayable in 2.5 years) with 9.6x interest coverage and >110% FCF conversion. Forward growth of 7.0% supported by infrastructure/refurbishment secular demand (3.5%), net pricing (0.5%), MBCC cost/revenue synergies (1.5%), and bolt-on acquisitions (1.5%). At 20.62x peak Owner EPS, shares trade Below PAR (-16.3% discount vs PAR value of CHF 221.23), offering an attractive 11.8% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.9839,
+    "current_multiple": 20.62,
+    "par_multiple": 24.63,
+    "par_value": 221.23,
+    "percent_vs_par": -0.1626,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0097,
+    "expected_irr_5y": 0.1184,
+    "market_implied_cap": 12.6,
+    "moat_runway_margin": 2.4,
+    "market_implied_growth": 0.0099,
+    "growth_margin_of_safety": 0.0601
+  },
+  "health_checks": {
+    "net_debt_years": 2.48,
+    "net_debt_ok": true,
+    "interest_coverage": 9.59,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1042,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

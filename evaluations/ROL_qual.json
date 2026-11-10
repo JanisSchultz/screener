@@ -1,0 +1,30 @@
+{
+  "id": "ROL",
+  "ticker": "ROL",
+  "universe": "us",
+  "company": "Rollins, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Environmental & Facilities Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme local route density, 120-year Lindy brand equity (Orkin), and commercial compliance lock-in create insurmountable barriers to entry. Pest eradication is a non-discretionary sanitation necessity representing a negligible budget expense, enabling consistent 3-4%+ annual pricing realization with minimal churn. 10-year median GAAP ROIC of 35.3% and tangible ROIC >100% confirm moat endurance. Primary erosion risks: technician labor wage inflation, digital customer acquisition cost inflation, and tuck-in M&A integration friction.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in route-based pest and termite control (Orkin, Fox, HomeTeam) operating an asset-light recurring subscription engine with 80%+ contract revenue. Unassailable local route density and 120-year Lindy brand equity deliver consistent 3-4% pricing power above inflation and 35%+ GAAP ROIC. Structurally insulated from all 5 macrotrends as physical pest eradication cannot be automated by AI and benefits from warming climate trends. Pristine balance sheet with net debt under 0.8x Net Income and 25x+ interest coverage. [5-10Y g: organic customer volume 4.0% + pricing realization 3.5% + tuck-in M&A 2.0% - technician wage/marketing drag 0.5% + share repurchases 0.5%]",
+    "evidence": "Empirical track record: 10-year median GAAP ROIC of 35.3% and tangible Operating ROIC >100%. Free cash flow conversion averaged 112% over 5 years (FY2025 Owner FCF of $610.3M on GAAP Net Income of $526.7M), supported by minimal capex intensity (~0.7% of sales, $28.1M in FY2025). Peak-to-peak Owner EPS compounded from $0.38 in 2016 to $1.29 in 2025 (13.7% CAGR) across 24 consecutive years of top-line revenue growth. Balance sheet remains exceptionally conservative: LT debt of $486.1M against $100.0M cash (net debt of $386.1M = 0.73x Net Income) and EBIT of $726.1M delivering 25.4x interest coverage. M&A strategy is self-funded from operating cash flows, with successful integration of Fox Pest Control ($339.5M in 2023) expanding route density."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ITX.ES",
+  "ticker": "ITX",
+  "universe": "eu",
+  "company": "Inditex (Zara)",
+  "country": "Spain",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary proximity sourcing (Spain, Portugal, Morocco, Turkey) and store-level real-time data feedback loops allow 2-3 week concept-to-rack turnaround. Generates elite 58-61% gross margins and 35-45% GAAP ROIC, virtually eliminating inventory markdown obsolescence.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global apparel retail leader powered by proprietary proximity-sourcing supply chain and real-time inventory optimization. Exceptional capital efficiency with 40%+ ROIC and €10B+ net cash fortress balance sheet. [5-10Y g: store/online volume 3.5% + price/mix 2.0% + floor-space optimization 1.0% - logistics wage drag 0.5% + dividend/cash return 1.0%]",
+    "evidence": "Multi-cycle GAAP ROIC exceeding 35-45%, gross margins stable at 58-61%, and operating margins ~20%. Proximity sourcing (Spain, Portugal, Morocco, Turkey) and automated distribution allow 2-3 week cycle times, virtually eliminating markdown risk. Inditex carries over €10B in net cash with multi-year FCF conversion near 100%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

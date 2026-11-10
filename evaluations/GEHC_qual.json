@@ -1,0 +1,30 @@
+{
+  "id": "GEHC",
+  "ticker": "GEHC",
+  "universe": "us",
+  "company": "GE HealthCare",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Massive global installed base of over 4 million medical imaging, ultrasound, and patient care systems creates high switching costs in service contracts and clinical workflow integrations. However, 10-year median GAAP ROIC is 11.5% (failing the >=12% hurdle), and post-spin 2023-2025 ROIC hovers between 7.5% and 10.5%. Core imaging operating margins (~10-13%) structurally lag Siemens Healthineers (>21%), reflecting lower pricing power against hospital GPOs and fixed-price contract inflation risk.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 11.5% < 12%, REJECT). While GE HealthCare maintains an indispensable global installed base of >4M diagnostic systems and sticky recurring service revenue, its 10-year median GAAP ROIC of 11.5% (and 2023-2025 ROIC of 7.5-10.5%) fails the 12% Munger capital hurdle. Core imaging EBIT margins (~10-13%) structurally lag Siemens Healthineers (>21%), and hospital GPO bargaining power plus fixed-price equipment backlogs restrict pricing power relative to inflation.",
+    "evidence": "10-year median GAAP ROIC is 11.5%, with post-spin 2023-2025 GAAP Net Income of $1,614M, $2,050M, and $2,154M delivering GAAP ROIC between 7.5% and 10.5%, below the 12% hurdle. Total adjusted EBIT margins sit at 15.3-16.3%, with core Imaging operating profitability lagging Siemens Healthineers' Imaging margin (>21-25%). The business carries approximately $10.0B-$10.5B in total debt and legacy liabilities from its 2023 GE spin-off, resulting in Long-Term Debt / Net Income of ~4.6-4.9x. While recurring service and consumable contracts generate steady cash flow, hospital capital equipment spending is subjected to aggressive GPO procurement and fixed-price backlog commitments, leaving insufficient pricing power to earn super-normal returns on invested capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

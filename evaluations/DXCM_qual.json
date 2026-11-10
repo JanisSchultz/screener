@@ -1,0 +1,30 @@
+{
+  "id": "DXCM",
+  "ticker": "DXCM",
+  "universe": "us",
+  "company": "Dexcom",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary enzymatic sensor chemistry, micro-filament wire technology, FDA iCGM clearance, and tight automated insulin delivery (AID) pump integration (Tandem, Insulet) provide a defensible technological barrier. However, the moat is severely undermined by head-to-head competition with Abbott Laboratories (FreeStyle Libre), persistent 5-8%/year per-patient net ASP deflation from PBM retail pharmacy rebate concessions, and margin dilution from lower-priced over-the-counter lines (Stelo).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Single-product continuous glucose monitoring (CGM) specialist operates in an intense duopoly against Abbott Laboratories (FreeStyle Libre). Dexcom lacks pricing power >= inflation: realized revenue per patient faces persistent structural annual ASP deflation driven by retail pharmacy channel rebate concessions, aggressive Abbott price competition, and lower-priced OTC expansion (Stelo). Volume growth cannot mask the structural absence of pricing power required by Munger's standard.",
+    "evidence": "Revenue grew from $1.93B in FY2020 to $4.03B in FY2024 and $4.66B in FY2025 driven by unit volume expansion, but GAAP gross margins compressed from ~68% in 2021 to 60.1% in 2025 due to manufacturing transition costs and pharmacy channel mix shift. Realized per-patient revenue has fallen from >$3,500/yr in legacy DME channels to <$2,000/yr in retail pharmacy and ~$1,000/yr for Stelo OTC. In Q2 2024, unexpected rebate concessions to secure pharmacy formulary placement and DME market share losses forced a major full-year guidance cut, triggering a >40% stock plunge. Dexcom cannot raise prices at or above inflation without immediately hemorrhaging market share to Abbott Libre."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

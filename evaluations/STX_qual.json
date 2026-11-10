@@ -1,0 +1,30 @@
+{
+  "id": "STX",
+  "ticker": "STX",
+  "universe": "us",
+  "company": "Seagate Technology Holdings plc",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Hardware, Storage & Peripherals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Duopoly with Western Digital in high-capacity 3.5\" HDDs backed by proprietary Heat-Assisted Magnetic Recording (HAMR/Mozaic) head and media technology. However, moat fails the economic test: 10-year median ROIC of 11.2% falls short of the 12% threshold, gross margins swing wildly from 18% in troughs to 45%+ at cyclical peaks, and structural $/TB storage deflation combined with concentrated hyperscaler purchasing power prevents consistent inflation-plus pricing.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). While Seagate and Western Digital form a tight duopoly in mass-capacity HDDs with proprietary HAMR/Mozaic engineering know-how (Gate 3a), the business suffers from severe cyclical earnings volatility, structural $/TB price deflation, and extreme customer concentration among cloud hyperscalers who extract price concessions. 10-year median ROIC is 11.2%, failing the 12% hurdle. In downcycles, operating margins swing negative and equity was wiped into negative territory (-$1.5B in FY2024), demonstrating an absence of inflation-plus pricing power.",
+    "evidence": "Multi-cycle financial track record shows extreme cyclicality and sub-hurdle capital efficiency. 10-year median ROIC is 11.2% (below the 12% Munger threshold). In the FY2022–FY2024 downcycle, revenues fell ~44%, gross margin plunged to 18.3% in FY2023, operating margin turned negative, and net loss reached -$529M, pushing stockholders' equity to -$1.5B in FY2024 with ~$5.4B in debt. While AI mass-storage demand and tight supply discipline generated a strong cyclical rebound in FY2025–FY2026, storage hardware faces permanent price-per-terabyte deflation and monopsonistic pressure from cloud hyperscalers (Microsoft, AWS, Google, Meta). Long-term substitution risk from declining QLC NAND flash costs further limits durable pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

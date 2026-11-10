@@ -1,0 +1,30 @@
+{
+  "id": "P911.DE",
+  "ticker": "P911",
+  "universe": "eu",
+  "company": "Dr. Ing. h.c. F. Porsche AG",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; luxury sports cars and performance SUVs represent non-essential, postponable purchases.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (discretionary big-ticket deferrable cyclical, REJECT). Luxury sports cars and high-performance SUVs (Macan, Cayenne, 911, Taycan) represent postponable big-ticket purchases rather than essential functional necessities or high-frequency everyday rituals. Sales collapsed in China (-30%+) and Group RoS compressed from 18% to 14% as discretionary demand softened.",
+    "evidence": "Porsche produces over 300,000 vehicles annually, with the vast majority comprised of Macan and Cayenne SUVs rather than scarce collector sports cars. In 2024, group operating profit dropped from €7.28B to €5.64B and Return on Sales contracted from 18.0% to 14.1%, driven by a severe ~30% volume slump in China, delays and customer friction in EV transitions (Taycan/Macan EV), and dealer discounting. Governance remains entangled with Volkswagen Group and Porsche Automobil Holding SE."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

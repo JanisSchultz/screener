@@ -1,0 +1,30 @@
+{
+  "id": "CRWD",
+  "ticker": "CRWD",
+  "universe": "us",
+  "company": "CrowdStrike Holdings, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Single-agent Falcon platform with kernel telemetry and threat graph exhibits high switching costs, but fails proof of moat: 5-year median GAAP ROIC is negative (-2.0% to 0.0%) and GAAP operating income was negative in 9 of the last 10 fiscal years due to immense stock-based compensation ($1.10B in FY25, ~23% of revenue). Pricing power was also impaired post-July 2024 outage by commercial discounting and customer commitment packages.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Enterprise endpoint security leader fails empirical proof of moat: 5-year median GAAP ROIC is negative (-2.0% to 0.0%) and GAAP EBIT has been negative in 9 of the last 10 fiscal years (-$293.3M in FY25) due to massive stock-based compensation dilution ($1,096.7M in FY25). Pricing power was additionally compromised by post-July 2024 outage customer commitment packages and discounting concessions. Even if evaluated at Gate 4, runway CAP would be capped at 5 years (<15Y threshold) due to rapid cybersecurity obsolescence, Microsoft Defender E5 bundling, and platform architecture shifts out of Windows kernel space. Calamity Tier is denied as negative GAAP ROIC predates the outage and Gate 4 fails anchor standards.",
+    "evidence": "Financial Track Record (FY2017–FY2025): Revenue expanded from $118.8M (FY17) to $4,812.0M (FY25), but cumulative GAAP net income and operating income remain negative across its public history. GAAP EBIT was -$142.5M (FY21), -$190.1M (FY22), -$19.1M (FY23), -$116.4M (FY24), and -$293.3M (FY25). Reported 'free cash flow' of $1.07B in FY25 is an artifact of adding back $1,096.7M in stock-based compensation (SBC), which constitutes a real operating expense diluting common equity. 5-year median GAAP ROIC is negative, failing the mandatory 12% hurdle (and tangible ROIC is negative, failing 15%). Following the catastrophic July 19, 2024 Falcon sensor update outage (crashing 8.5M Windows machines), CRWD issued extensive 'Customer Commitment Packages' involving contract discounting, flexible terms, and complimentary modules ($60M+ in concessions and direct expenses), demonstrating pricing concessions to prevent customer defection. Balance sheet holds $5.23B cash against $745.5M debt, but capital allocation is heavily diluted by ongoing SBC issuance."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

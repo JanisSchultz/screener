@@ -1,0 +1,30 @@
+{
+  "id": "TEL.NO",
+  "ticker": "TEL",
+  "universe": "eu",
+  "company": "Telenor",
+  "country": "Norway",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "National mobile towers and fixed fiber infrastructure provide a durable physical asset base, but stringent wholesale open-access regulation in Norway and aggressive Nordic retail price competition keep 5-year ROIC chronically sub-hurdle (~8-10%) with real ARPU lagging inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC ~8-10% < 12%, sub-inflation pricing power, REJECT). State-backed Nordic telecom incumbent owns critical physical network assets, but heavy ongoing 5G/fiber capex, strict Norwegian wholesale open-access regulation, and intense retail competition prevent earning excess economic returns on capital.",
+    "evidence": "Reported ROCE has hovered between 8.9% and 11.5% over 2020-2024, with GAAP ROIC averaging ~8-10%, failing the 12% threshold. Significant leverage (>NOK 100B net debt including lease liabilities; net debt to EBITDA ~2.2x). Restructuring of Asian holdings (True Corp JV in Thailand, CelcomDigi in Malaysia) has resulted in historical write-downs without lifting core Nordic capital returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

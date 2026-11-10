@@ -1,0 +1,30 @@
+{
+  "id": "EZJ.GB",
+  "ticker": "EZJ",
+  "universe": "eu",
+  "company": "easyJet",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Valuable primary-airport slot portfolios at London Gatwick, Geneva, and Paris provide local frequency advantages, but short-haul aviation is structurally commoditized and shopped on OTAs. 10-year median ROIC is sub-7% (far below the 12% hurdle), with structural margin compression from volatile jet fuel, airport charges, and aggressive ULCC competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject – G3 Moat & Pricing). European low-cost passenger airline operating from primary airport slots. While Gatwick and Geneva slot portfolios offer local slot protection, easyJet's cost structure sits above ultra-low-cost peers (Ryanair/Wizz Air) while seats are commoditized. 10-year median ROIC is in the 5-7% range (failing the 12% hurdle), with zero durable pricing power over economic cycles.",
+    "evidence": "Over the last decade, easyJet's ROIC has averaged well below the cost of capital: 2023-2025 normalized ROIC recovered to only 4.5-8.6%, following severe pandemic losses (-10% to -12% in 2020-2021) and pre-COVID returns of 6-9% (2018-2019). High exposure to jet fuel price volatility, union wage inflation, and European passenger fare sensitivity destroys structural pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

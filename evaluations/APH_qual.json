@@ -1,0 +1,30 @@
+{
+  "id": "APH",
+  "ticker": "APH",
+  "universe": "us",
+  "company": "Amphenol Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Custom spec-in connectors and interconnect assemblies (<2% of BOM, catastrophic failure cost) create high customer switching costs and pricing power above inflation, verified by 10-year median GAAP ROIC of 20.0%, tangible ROIC >70%, and operating margins consistently exceeding 20-25%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Best-in-class decentralized interconnect compounder. Indispensable custom spec-in connectors protect pricing power and >20% GAAP ROIC. Primary beneficiary of AI compute, electrification, and defense modernization. Conservative balance sheet with 16x interest coverage and >90% FCF conversion. [5-10Y g: organic volume 5.5% + price 1.0% + bolt-on M&A 3.5% + net buyback 0.5%]",
+    "evidence": "10-year GAAP ROIC median of 20.0% (reaching 30.3% in FY2025) and tangible ROIC >70%. FCF conversion averaged 93.3% of net income over 10 years ($4.32B Owner FCF on $4.27B net income in 2025). Peak-to-peak Owner EPS compounded from $0.34 in 2016 to $0.48 in 2018, $0.50 in 2020, $0.79 in 2023, and $1.67 in 2025. Strong balance sheet with $11.1B cash vs $14.6B debt (net debt $3.4B pre-closing of CommScope CCS, pro forma net leverage ~1.8x EBITDA) and 15.9x interest coverage. Radical decentralized operating model with <100 HQ personnel presiding over >130 autonomous units."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "EMSN.CH",
+  "ticker": "EMSN",
+  "universe": "eu",
+  "company": "EMS-Chemie",
+  "country": "Switzerland",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary high-performance polyamide compounding (EMS-Grivory) and automotive OEM co-development specifications create significant switching costs. Historical ROIC of 23-28% and ~27% EBIT margins provide empirical proof of moat, though auto OEM customer concentration poses erosion threats.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While EMS-Chemie possesses high ROIC and disciplined family ownership, ~60%+ direct exposure to global automotive manufacturing faces severe terminal headwinds from European auto de-industrialization, shift to Chinese EV ecosystems, and commoditization pressure from rival polyamide producers.",
+    "evidence": "Multi-year ROIC averages ~25-28% with operating margins around 26-28% and pristine net-cash balance sheet. However, over 60% of revenue stems from automotive applications (Grivory metal replacement and EFTEC adhesives). European automotive volume stagnation and aggressive Asian competition limit predictable competitive advantage period to well below the 15-year threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "MA",
+  "ticker": "MA",
+  "universe": "us",
+  "company": "Mastercard",
+  "price": 652.7,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Global payment toll booth duopoly operating on negative working capital with structural ROIC >80%; normalized to 35.0% cap. High FCF conversion (105%), net debt/NI 0.51x, and 26.2x interest coverage. Peak Owner EPS of $17.24 in FY2025 is clean operational cash generation with zero windfall distortion. 5-10Y through-the-cycle growth of 11.0% driven by secular digital payments growth, value-added services, and nominal inflation pass-through, partially offset by interchange fee regulation."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 17.2428,
+    "current_multiple": 37.85,
+    "par_multiple": 31.44,
+    "par_value": 542.03,
+    "percent_vs_par": 0.2042,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0048,
+    "expected_irr_5y": 0.0744,
+    "market_implied_cap": 24.1,
+    "moat_runway_margin": -4.1,
+    "market_implied_growth": 0.2063,
+    "growth_margin_of_safety": -0.0963
+  },
+  "health_checks": {
+    "net_debt_years": 1.22,
+    "net_debt_ok": true,
+    "interest_coverage": 26.17,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0534,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ERIE",
+  "ticker": "ERIE",
+  "universe": "us",
+  "company": "Erie Indemnity",
+  "price": 273.07,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting debt-free, asset-light Attorney-in-Fact toll booth collecting an ad-valorem 25% management fee on Erie Insurance Exchange premiums with zero underwriting risk. 5-10Y through-the-cycle growth of 7.5% supported by 2.5% policy growth, 4.0% P&C premium rate inflation pass-through, 0.5% operating leverage, and 0.5% dividend reinvestment/buybacks. Fortress balance sheet with $0 debt, $345.9M net cash, and pristine 99.5% Owner FCF conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.4763,
+    "current_multiple": 23.79,
+    "par_multiple": 29.01,
+    "par_value": 332.95,
+    "percent_vs_par": -0.1798,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0178,
+    "expected_irr_5y": 0.1363,
+    "market_implied_cap": 12.3,
+    "moat_runway_margin": 2.7,
+    "market_implied_growth": -0.0033,
+    "growth_margin_of_safety": 0.0783
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9952,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

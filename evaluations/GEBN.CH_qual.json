@@ -1,0 +1,30 @@
+{
+  "id": "GEBN.CH",
+  "ticker": "GEBN",
+  "universe": "eu",
+  "company": "Geberit",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Installer loyalty and decades-evolved training ecosystem. Over 50% European market share in concealed cisterns. Behind-the-wall water damage risk creates insurmountable installer switching costs and pricing power. Multi-year median GAAP ROIC is 30.7% with tangible ROIC of 89.5% and sustained EBITDA margins above 30%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled European sanitary market hegemon (~50% share in concealed cisterns). Moat anchored by deep plumber installer loyalty, 29 specialized training academies, 50-year spare parts guarantees, and severe behind-the-wall leak liabilities that deter substitution. Maintained 30%+ EBITDA margins and >100% FCF conversion throughout the severe 2022-2025 European construction downturn. Fortress balance sheet with net debt <0.9x NI and interest coverage of 27x. [5-10Y g: European renovation volume 1.5% + pre-wall system penetration 1.5% + pricing power 2.0% - raw material/energy drag 0.5% + share repurchases 0.5%]",
+    "evidence": "5-year median GAAP ROIC is 30.7% with operating tangible ROIC of 89.5%. Multi-year Owner FCF conversion averaged 107.0% (FY2025 FCF of 703.5m CHF on 597.8m CHF net income). Net debt is 505.2m CHF (0.84x NI) with 27.3x interest coverage (EBIT 762.5m CHF vs interest 27.9m CHF)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

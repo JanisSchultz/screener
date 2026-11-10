@@ -1,0 +1,30 @@
+{
+  "id": "SFSN.CH",
+  "ticker": "SFSN",
+  "universe": "eu",
+  "company": "SFS Group",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While SFS co-engineers precision components and fasteners with industrial customers, its returns on capital are sub-hurdle following the capital-dilutive acquisition of tool distributor Hoffmann SE, with ROIC of only 8.4% (2024) and 9.3% (2025), failing the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Sub-hurdle ROIC / Moat Proof, REJECT). SFS Group's post-Hoffmann acquisition return on invested capital has compressed to 8.4% (FY2024) and 9.3% (FY2025), failing the strict 12% ROIC moat-proof threshold. SFS lacks sufficient pricing power in wholesale tool distribution and automotive/construction fastening to earn super-normal returns on its CHF 3.3B+ invested capital base.",
+    "evidence": "FY2024 net sales CHF 3,031M, EBIT CHF 350.2M (11.6% margin), reported ROIC 8.4%. FY2025 net sales CHF 3,045M, reported EBIT CHF 324.3M (10.6% margin, 12.2% adjusted), reported ROIC 9.3%. Distribution & Logistics (Hoffmann) represents ~44% of group sales, permanently diluting group capital returns below the 12% hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

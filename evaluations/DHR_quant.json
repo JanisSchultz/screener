@@ -1,0 +1,43 @@
+{
+  "id": "DHR",
+  "ticker": "DHR",
+  "universe": "us",
+  "company": "Danaher Corporation",
+  "price": 227.97,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the M&A Goodwill Neutralization Principle, neutralizing $61.0B in accumulated goodwill and acquired intangibles from transformative bioprocessing and diagnostic acquisitions (Cytiva, Pall, Cepheid, Abcam), which optically suppresses GAAP ROIC to 6.83% vs tangible operating ROIC exceeding 85-138%. Balance sheet is conservative with $4.62B cash vs $18.42B LT debt ($13.80B net debt; 3.82x NI, 2.78x Owner FCF) and robust 17.70x EBIT interest coverage, supported by exceptional 113.76% Owner FCF conversion ($4.96B FCF). Through-the-cycle growth g of 8.5% driven by bioprocessing and diagnostic consumable volume (5.5%), regulatory-locked pricing power (1.5%), bolt-on M&A (1.5%), and share buybacks (0.5%), offset by reinvestment drag (-0.5%). FY2022 peak Owner EPS of $11.16 represents cycle peak earning capacity; multiple risk is strictly guarded by the 5-Year Cycle High Guardrail capping Raw PAR (24.42x) at 24.10x. At $227.97 (20.43x peak Owner EPS), DHR trades Below PAR (-15.2% discount vs PAR Value of $268.86), offering an attractive 12.69% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.1559,
+    "current_multiple": 20.43,
+    "par_multiple": 24.1,
+    "par_value": 268.86,
+    "percent_vs_par": -0.1521,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0055,
+    "expected_irr_5y": 0.1269,
+    "market_implied_cap": 17.0,
+    "moat_runway_margin": 3.0,
+    "market_implied_growth": 0.0252,
+    "growth_margin_of_safety": 0.0598
+  },
+  "health_checks": {
+    "net_debt_years": 5.1,
+    "net_debt_ok": false,
+    "interest_coverage": 17.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.1376,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

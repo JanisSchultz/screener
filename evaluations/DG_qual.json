@@ -1,0 +1,30 @@
+{
+  "id": "DG",
+  "ticker": "DG",
+  "universe": "us",
+  "company": "Dollar General",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Rural small-format store density (~20,000 locations) provides convenience in small towns, but the company lacks pricing power against Walmart and branded CPG suppliers. 5-year median GAAP ROIC has fallen to ~9.2% (6-8% in FY24-FY25), well below the 12% threshold, with negative incremental ROIIC over the last cycle. Primary erosion threats include Walmart's superior scale/omnichannel reach, hard discounters (Aldi, Dollar Tree), shift toward low-margin consumables, and inflation squeezing core low-income consumers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Rural discount retailer lacks pricing power above inflation; selling branded packaged goods to financially stretched low-income consumers forces severe margin compression when input costs rise. 5-year median GAAP ROIC has deteriorated to ~9.2% (FY24-FY25 ROIC ~6-8%), well below the 12% threshold, with negative incremental ROIIC over the past cycle as $2B+ in invested capital yielded lower operating profit ($2.2B vs $3.2B in FY21). Intense everyday low price competition from Walmart and hard discounters prevents sustained economic profit compounding.",
+    "evidence": "Dollar General operates ~20,000 small-format stores across 47 US states, serving rural areas where 75% of Americans live within 5 miles of a store. However, consumables represent over 80% of net sales, leaving the company exposed to low gross margin items (~20-25%) while higher-margin seasonal/home merchandise has lagged. Operating margin compressed from 8.6% in FY21 to 4.2% in FY24 before recovering modestly to ~5.1% in FY25 ($2.2B operating profit on $42.7B sales). 5-year GAAP ROIC has dropped below the 12% hurdle (FY21: ~14.5%, FY22: ~13.5%, FY23: ~9.2%, FY24: ~6.1%, FY25: ~6.8%, 5-year median: ~9.2%). Incremental ROIIC across the 2021-2025 cycle is negative. The business model possesses neither pricing power >= inflation nor defensible excess returns above cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

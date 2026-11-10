@@ -1,0 +1,30 @@
+{
+  "id": "UMG.NL",
+  "ticker": "UMG",
+  "universe": "eu",
+  "company": "Universal Music Group",
+  "country": "Netherlands",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Recorded music and music publishing represent discretionary media consumption rather than an essential functional necessity or entrenched non-deferrable household staple.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Recorded music and publishing are discretionary entertainment media rather than essential functional necessities or non-deferrable daily rituals. UMG operates primarily as an upstream wholesale licensor to downstream streaming DSPs without direct consumer pricing power.",
+    "evidence": "UMG owns leading recorded music and publishing catalogues (Taylor Swift, Drake, The Beatles). While music consumption is ubiquitous, it is discretionary leisure. UMG relies on downstream DSP distributors (Spotify, Apple Music, YouTube) for monetization, exposing it to platform negotiation pressure and royalty pool dilution from AI-generated audio."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

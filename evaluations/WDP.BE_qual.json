@@ -1,0 +1,30 @@
+{
+  "id": "WDP.BE",
+  "ticker": "WDP",
+  "universe": "eu",
+  "company": "WDP",
+  "country": "Belgium",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Uncapped annual CPI indexation across Benelux/Romanian leases delivered 6-9% organic rent hikes in 2022-24 at 97-98% occupancy.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "High-quality family-anchored Benelux logistics REIT, but 9.2x debt/OE, ~5-6% unlevered ROIC, loss of NAV-premium equity arbitrage, and Dutch REIT tax headwinds fail Gate 6. [5-10Y g: CPI indexation 2% + ~20% retained earnings, solar & development spread 3% - refinancing & 2025 Dutch FBI tax drag 0.5%]",
+    "evidence": "5-year median ROIC ~4.9%, lt_debt €3,242m vs net income €354m (9.2x debt/OE). As a Belgian SIR / REIT, high dividend payout (~80%+) prevents organic balance sheet deleveraging to <= 4x without equity dilution."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

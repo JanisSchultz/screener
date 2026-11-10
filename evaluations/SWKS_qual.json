@@ -1,0 +1,30 @@
+{
+  "id": "SWKS",
+  "ticker": "SWKS",
+  "universe": "us",
+  "company": "Skyworks Solutions",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary patent estates in BAW/SAW filters and RF front-end module integration provide entry barriers against commodity assemblers, but fail to confer an economic moat against monopsonistic customer power. With Apple representing ~67-69% of net revenue, Skyworks is subjected to continuous contractual price-downs and socket dual-sourcing (e.g. Apple dual-sourcing key sockets to Broadcom and Murata in 2025, stripping 20-25% of iPhone content). Multi-year ROIC collapsed to ~6.9% in FY24 and ~5.8-7.2% in FY25, breaching the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat Proof & Pricing Power, REJECT). Extreme customer concentration with Apple (~67-69% of net revenue) leaves Skyworks with zero pricing power against a monopsonistic buyer. Dual-sourcing of key iPhone RF sockets to Broadcom and Murata stripped 20-25% of content in 2025 device cycles, and multi-year ROIC collapsed to 5.8-7.2% in FY24-FY25, failing the mandatory 12% hurdle.",
+    "evidence": "Revenue contracted from $5.49B in FY22 to $4.77B in FY23, $4.18B in FY24, and $4.09B in FY25 as mobile handset cycles cooled and content share eroded. Over 67% of net sales are concentrated in Apple (~85% of which is iPhone-related), leaving Skyworks vulnerable to socket loss and annual ASP price concessions. In early 2025, Apple dual-sourced major low-band and RF filtering sockets to Broadcom and Murata for the iPhone 17 cycle, resulting in an estimated 20-25% content reduction. ROIC contracted sharply from historical 10-year medians (~14.2%) to 6.9% in FY24 and 5.8-7.2% in FY25, failing the Gate 3b hurdle. While free cash flow conversion remains healthy ($1.67B FCF in FY24, $1.11B in FY25) and the balance sheet carries modest net cash ($1.3B cash vs $1.0B term debt), strong cash generation cannot offset the absence of customer pricing power and structural moat erosion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LHX",
+  "ticker": "LHX",
+  "universe": "us",
+  "company": "L3Harris Technologies, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sole-source classified defense electronics, certified tactical radio installed base (Falcon IV, SINCGARS), and domestic duopoly in solid rocket motors (Aerojet Rocketdyne) create insurmountable switching barriers. While 5-year GAAP ROIC (5-7%) is depressed by heavy merger goodwill, underlying tangible operating ROIC exceeds 20% on hard capital.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet). Long-term debt of ~$11.1B against net income of ~$1.5B results in LT Debt / NI of ~7.2x (substantially exceeding the <=4.0x ceiling), while EBIT/interest coverage of ~4.1x falls short of the >5.0x fortress threshold following debt-funded acquisitions of Aerojet Rocketdyne and Link 16. Tangible equity remains negative.",
+    "evidence": "L3Harris operates across four core defense segments: Communication Systems, Integrated Mission Systems, Space & Airborne Systems, and Aerojet Rocketdyne. Free cash flow conversion is strong ($2.68B FCF in FY25 vs ~$1.5B net income), supported by LHX NeXt operational efficiencies. However, the balance sheet was substantially leveraged to fund the $4.7B cash acquisition of Aerojet Rocketdyne in 2023, expanding total debt to over $11B against $19.3B equity and $20.3B goodwill (resulting in negative tangible net worth). With interest expense at ~$550M-$600M and EBIT at ~$2.3B-$2.5B, interest coverage is ~4.1x (below the 5.0x minimum requirement), failing Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SREN.CH",
+  "ticker": "SREN",
+  "universe": "eu",
+  "company": "Swiss Re",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Reinsurance (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Outside Verifiability, REJECT). Opaque long-tail US liability and casualty reinsurance reserving with multi-billion-dollar retroactive reserve additions ($3.1B in 2024 alone following $2.0B in 2023) demonstrating that true underwriting profitability and economic risk exposure cannot be verified from the outside by an equity investor.",
+    "evidence": "Swiss Re added $3.1B to prior-year US casualty reserves across the first nine months of 2024 (including a $2.4B charge in Q3 2024) to address social inflation and litigation severity, following $2.0B of reserve strengthening in 2023. These repeated large-scale reserve shocks highlight long-tail casualty reserving opacity under Gate 1(b)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HCA",
+  "ticker": "HCA",
+  "universe": "us",
+  "company": "HCA Healthcare",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Facilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant acute-care hospital networks and ambulatory surgery centers with 30-50% bed share in high-growth Sunbelt MSAs create irreplaceable physical healthcare infrastructure with Certificate of Need and capital barriers. Empirical proof shown by 10-year median ROIC of 24.9% and industry-leading ~19-20% EBITDA margins. Local market density enables mid-single-digit (4-5%) annual commercial rate increases that offset wage inflation, though government payer rate pressures (Medicare/Medicaid) present ongoing margin constraints.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Premier US hospital operator with unmatched Sunbelt density and Frist family stewardship, but capital structure is burdened by $41.6B in long-term debt (6.13x LT debt/net income vs 4.0x ceiling) and negative equity (-$6.0B) resulting from multi-year debt-funded share repurchases. [5-10Y g: organic admissions 2.5% + commercial pricing/acuity mix 2.5% + margin 0.0% + net buybacks 2.5%]",
+    "evidence": "SEC EDGAR data confirms 10-year median GAAP ROIC of 24.9% (20.6% in FY2016 to 27.9% in FY2025) and FCF conversion of 107% in FY2025 ($8.7B Owner FCF vs $6.8B NI). However, long-term debt stands at $41,603M against $1,040M cash (Net Debt $40.6B) and FY2025 net income of $6,784M, yielding a 6.13x LT debt / NI ratio (far exceeding the 4.0x maximum). Stockholders' equity is -$6,027M due to aggressive debt-funded buybacks over the decade, triggering the disqualifying financial engineering red flag. Operating interest coverage has averaged 4.0x-5.4x across the cycle, falling short of the >5.0x through-the-cycle peace-of-mind fortress standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "AEM.CA",
+  "ticker": "AEM",
+  "universe": "ca",
+  "company": "Agnico Eagle Mines",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Gold",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker (gold mining) lacking essential Western utility; exposed to global commodity spot price cycles.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Despite best-in-class operating execution and low-geopolitical-risk Tier-1 jurisdictions (Canada, Finland, Australia), Agnico Eagle is an upstream gold mining company selling a speculative monetary commodity as a pure price-taker into global bullion markets. Lacks essential Western consumer utility and pricing power over its underlying product. Downstream gates bypassed per waterfall.",
+    "evidence": "Agnico Eagle operates premier mines including Canadian Malartic, Detour Lake, and Meadowbank, but its entire revenue base is driven by spot gold prices. It possesses zero pricing power to pass through inflation independently of COMEX/LBMA market movements. Multi-cycle ROIC averages ~5-8%, dipping sharply during metal bear markets. Heavy capital intensity (sustaining capex, mill expansions, tailings management) consumes a substantial portion of operating cash flow, precluding compounder-grade economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "NTR.CA",
+  "ticker": "NTR",
+  "universe": "ca",
+  "company": "Nutrien",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Fertilizers & Agricultural Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns low-cost Saskatchewan potash mining infrastructure and an extensive North American ag retail network, but operates as a price-taker in global wholesale commodity fertilizer markets. Earnings fluctuate wildly with spot potash and nitrogen prices. 5-year normalized GAAP ROIC (~8-9%) fails the 12% hurdle. Major structural threat from BHP's US$14B+ Jansen mega-project adding 8.5 Mtpa (~10% of global supply).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). World-scale Saskatchewan potash producer and North American ag retailer rejected due to extreme commodity price-taker earnings volatility, sub-hurdle normalized ROIC (~8-9%), and long-term pricing headwinds from BHP's massive Jansen supply additions.",
+    "evidence": "Nutrien's earnings are driven by commodity fertilizer benchmarks (potash, ammonia, urea). Post-2022 windfall normalization has compressed GAAP ROIC to ~9%, failing the 12% hurdle. The company has no ability to raise prices above inflation independently of global commodity supply/demand. Impending commercial startup of BHP's low-cost Jansen mine (Stage 1 in 2027, Stage 2 in 2031 adding 8.5 Mtpa) poses a structural supply shock."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FBK.IT",
+  "ticker": "FBK",
+  "universe": "eu",
+  "company": "FinecoBank",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Low-cost digital infrastructure integrated with proprietary personal financial advisor (PFA) network spreads fixed technology costs over €130B+ in total financial assets, generating >60% ROIC and >65% operating margin. High multi-product switching barriers across transactional banking, wealth management, and Fineco Asset Management (FAM) wrapper products protect returns against fee erosion.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Leading Italian digital advisory, wealth management, and transactional banking platform with >€130B in TFA, >60% pre-tax margins, and >24% CET1 ratio. Scale economies shared across digital platform and 3,000-advisor network deliver >60% multi-cycle ROIC with zero commercial loan rot. [5-10Y g: AUM/investing fee volume 6.5% + advisory pricing 1.0% + operating leverage 1.0% - NII margin normalization 1.0% + net buyback/yield 1.5%]",
+    "evidence": "4-year track record of high-return compounding: FY25 net income reached €647.0M on €1,552.8M revenue with Owner EPS of €1.08. 5-year median GAAP ROIC is 81.4% (Operating ROIC 98.5%) with FCF conversion >80% (FY25 Owner FCF €419M vs capex of €17.4M). Balance sheet fortress features €2.20B in cash against €872.9M senior/sub debt, CET1 ratio >24%, and negligible credit risk due to absence of corporate/CRE lending exposures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

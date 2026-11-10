@@ -1,0 +1,30 @@
+{
+  "id": "SAP.DE",
+  "ticker": "SAP",
+  "universe": "eu",
+  "company": "SAP",
+  "country": "Germany",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Prohibitive ERP replacement pain and deeply embedded workflow integrations provide immense lock-in, enabling regular 3-5% maintenance price increases and 20-30%+ contract value uplifts on cloud migrations.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable multinational ERP system of record driving multi-year S/4HANA cloud migration with high pricing power. Fortress balance sheet with net cash position. [5-10Y g: organic cloud/RISE migration 5.0% + pricing/contract uplifts 2.0% + operating leverage 1.0% + net buyback 1.0%]",
+    "evidence": "Tangible ROIC consistently 40%-200% (operating ROIC 84.4%), GAAP ROIC reaching 18.8% in FY25. Cash of €8.2B exceeds LT debt of €4.2B with interest coverage >21x. Over 85% of Global 2000 rely on SAP as mission-critical digital core."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

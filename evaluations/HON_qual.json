@@ -1,0 +1,30 @@
+{
+  "id": "HON",
+  "ticker": "HON",
+  "universe": "us",
+  "company": "Honeywell Technologies",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High customer switching costs and proprietary protocols in building automation (Building Solutions / EBI) and industrial process controls (Experion PKS DCS), where hardware and software are deeply embedded into industrial plants and commercial facilities. Empirically supported by 10-year median ROIC of 14.5% and stable gross margins of 33-37%. Primary erosion threats include cloud-native open industrial IoT architectures, commoditization of building sensors, and intense competition from specialized automation peers (Siemens, Schneider Electric, Emerson, Rockwell).",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Industrial Conglomerate / Capital Goods industry base rate of 10-15 years (Tier 3) incurs a -5 to -10 year deductive haircut due to active terminal headwinds on Macrotrend 4 (Energy Transition & Resource Limits) from its UOP fossil refining and petrochemical process licensing exposure, alongside industrial capex cyclicality and massive restructuring friction from its activist-driven three-way corporate breakup.",
+    "evidence": "10-year historical GAAP ROIC median of 14.5% and steady ~35% gross margins confirm moat existence in building solutions and process automation. However, long-term organic revenue growth has languished at 2-4% CAGR, masking structural deceleration with debt-financed M&A (Carrier Access Solutions for $4.95B, Civica, CAES). Decarbonization pressures create terminal headwinds for UOP petroleum refining technologies. Following Elliott Management's $5B activist campaign in late 2024, the company executed a three-way split (Solstice Advanced Materials in late 2025, Honeywell Aerospace/HONA in mid-2026), leaving Honeywell Technologies as an automation-focused entity managing separation friction and elevated net debt ($20B+ peak in 2025)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

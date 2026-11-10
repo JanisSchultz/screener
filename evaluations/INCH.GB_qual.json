@@ -1,0 +1,30 @@
+{
+  "id": "INCH.GB",
+  "ticker": "INCH",
+  "universe": "eu",
+  "company": "Inchcape",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regional distribution contracts and logistics density provide outsourced scale in small and emerging markets, but Inchcape possesses no structural pricing power against global OEMs (who dictate wholesale terms, hold contract cancellation rights, and can shift to direct-to-consumer/agency sales). Profitability remains vulnerable to OEM contract renegotiations and aggressive EV market discounting.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Rejected – G3 Moat & Pricing). Inchcape provides outsourced vehicle distribution for global automotive OEMs (Toyota, BMW, Mercedes, BYD). However, OEMs hold the whip hand with unilateral contract renewal power, margin control, and the ability to disintermediate distributors via direct-to-consumer models, leaving Inchcape without an enduring pricing power moat.",
+    "evidence": "Pure-play global automotive distributor operating across 40+ markets following the Derco acquisition and divestment of UK retail. Operating margins sit at ~5.5-6.3%. While asset-light distribution yields high ROCE on a narrow capital base, Inchcape is structurally dependent on third-party OEM distribution agreements without proprietary toll booth protections or pricing power over vehicle MSRPs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

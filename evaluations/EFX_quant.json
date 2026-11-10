@@ -1,0 +1,43 @@
+{
+  "id": "EFX",
+  "ticker": "EFX",
+  "universe": "us",
+  "company": "Equifax Inc.",
+  "price": 192.51,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Calamity pass (Gate 6 leverage during cloud overhaul). Operating ROIC normalized to 35.0% cap reflecting negative tangible equity (-$3.47B) and neutralizing $8.08B in historical M&A goodwill/intangibles. FY2025 peak Owner EPS of $7.299 achieved at mortgage origination cycle trough, confirming sustainable baseline earning power without need for haircut. 5-10Y growth of 8.5% supported by 5.0% TWN/credit bureau volume, 2.0% pricing power, 1.0% cloud cost takeout margin ($300M run-rate), and 0.5% net buybacks. Record $1.06B Owner FCF enables rapid organic deleveraging with net debt repayable in 3.67 years."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 7.299,
+    "current_multiple": 26.37,
+    "par_multiple": 28.64,
+    "par_value": 209.04,
+    "percent_vs_par": -0.0791,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0103,
+    "expected_irr_5y": 0.1133,
+    "market_implied_cap": 13.8,
+    "moat_runway_margin": 1.2,
+    "market_implied_growth": 0.051,
+    "growth_margin_of_safety": 0.034
+  },
+  "health_checks": {
+    "net_debt_years": 6.14,
+    "net_debt_ok": false,
+    "interest_coverage": 5.16,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9747,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

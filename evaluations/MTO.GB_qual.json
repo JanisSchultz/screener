@@ -1,0 +1,30 @@
+{
+  "id": "MTO.GB",
+  "ticker": "MTO",
+  "universe": "eu",
+  "company": "Mitie",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Public sector framework positions and UK scale do not protect against razor-thin 4.6% operating margins and periodic competitive re-tenders, evidenced by contract renewal rates dipping to 59% when resisting client pricing demands.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). Mitie is a UK-focused facilities management and security outsourcer operating at razor-thin operating margins (4.6%-4.7%). Contracts are subject to periodic public and corporate tenders where clients aggressively re-bid contracts (FY25 renewal rate dropped to 59%), demonstrating low switching costs and absence of structural pricing power.",
+    "evidence": "Mitie provides UK facilities management, cleaning, security, and technical maintenance. Operating margins before other items are structurally narrow at 4.6%-4.7%. The business relies heavily on low-wage labor vulnerable to National Living Wage and employer NIC hikes (£37m headwind), with public-sector clients frequently re-tendering contracts to competing outsourcers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

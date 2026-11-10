@@ -1,0 +1,43 @@
+{
+  "id": "NDSN",
+  "ticker": "NDSN",
+  "universe": "us",
+  "company": "Nordson Corporation",
+  "price": 323.84,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC capped at 35.0% standard (reported operating ROIC of 91.15% on minimal tangible operating capital; 16.2% 5Y median GAAP ROIC). Global precision dispensing installed base creates high switching costs and 45-50% recurring aftermarket consumable streams. 5-10Y through-the-cycle growth of 6.5% driven by 3.0% industrial/medical volume, 1.5% pricing power, 1.5% portfolio mix/reinvestment, offset by 0.5% integration and cyclicality drag, plus 1.0% net share buybacks. Pristine balance sheet with $1.68B LT debt (3.47x NI leverage, 3.25x net debt/NI), 6.83x EBIT interest coverage, and 108.6% Owner FCF conversion. FY2025 peak Owner EPS of $10.1366 confirmed clean. Current price of $323.84 trades at 31.95x peak Owner EPS vs fundamental PAR multiple of 24.66x (PAR Value $249.92), placing NDSN Above PAR (+29.6% premium) with a 5Y expected IRR of 2.1%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.1366,
+    "current_multiple": 31.95,
+    "par_multiple": 24.66,
+    "par_value": 249.92,
+    "percent_vs_par": 0.2958,
+    "status": "Above PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0099,
+    "expected_irr_5y": 0.0211,
+    "market_implied_cap": 19.4,
+    "moat_runway_margin": -4.4,
+    "market_implied_growth": 0.1744,
+    "growth_margin_of_safety": -0.1094
+  },
+  "health_checks": {
+    "net_debt_years": 3.47,
+    "net_debt_ok": true,
+    "interest_coverage": 6.83,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0865,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

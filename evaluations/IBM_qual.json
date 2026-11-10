@@ -1,0 +1,30 @@
+{
+  "id": "IBM",
+  "ticker": "IBM",
+  "universe": "us",
+  "company": "International Business Machines Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Mainframe zSystems and Red Hat OpenShift create high enterprise switching costs, but empirical proof of moat fails: 5-year median GAAP ROIC is ~10.5%, below the 12% hurdle, while IT Consulting (~30%+ of revenue) lacks structural pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & lack of pricing power, REJECT). Multi-year median GAAP ROIC of ~10.5% fails the 12% hurdle. High switching costs in zSystems mainframes and Red Hat cannot overcome lack of pricing power in IT Consulting (~30%+ of revenue) and exposure to AI automation headwinds.",
+    "evidence": "Historical GAAP ROIC median is 10.5% (2020-2024 range: 5.9% to 10.1%), missing the 12% proof-of-moat hurdle. IT Consulting segment faces wage inflation and commoditization. Total debt is ~$61B (including financing debt) against $10.6B GAAP Net Income in 2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

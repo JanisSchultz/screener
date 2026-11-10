@@ -1,0 +1,30 @@
+{
+  "id": "NVR",
+  "ticker": "NVR",
+  "universe": "us",
+  "company": "NVR, Inc.",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Pure-play cyclical homebuilder selling big-ticket, mortgage-rate-sensitive, deferrable residential housing purchases rather than a recurring essential necessity or entrenched everyday habit.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need & Entrenched Habits, REJECT). While NVR operates a best-in-class, asset-light finished-lot option model with a net cash balance sheet and disciplined buybacks, it remains a pure-play cyclical US homebuilder explicitly excluded under Gate 2. Buying a newly constructed home is a large, mortgage-financed, easily deferrable big-ticket purchase, as demonstrated by FY2025 new orders falling 10% YoY, ending backlog falling 15% YoY, FY2025 net income declining 20% YoY to $1.34B, and Q3 2026 net income dropping 27.5% YoY to $248.6M amid affordability and rate headwinds.",
+    "evidence": "Gate 1 passes: NVR has a >30-year post-1993 public operating record with transparent disclosure of lot purchase option deposits, pre-sold backlog, settlements, and captive originate-to-sell mortgage banking (Ryan Homes, NVHomes, Heartland Homes, NVR Mortgage Finance). Financial & multi-cycle record: NVR's asset-light land-option and pre-sold construction model generates elite capital efficiency (32.5% historical median ROIC in dossier; ~93.6% FY2022 peak, ~63.8% FY2024, ~49.8% FY2025, normalizing to ~25%-34% TTM in mid-2026) and enabled profitable survival through the 2008 GFC by walking away from option deposits rather than taking raw-land impairments. Balance sheet & cash flow: As of Dec 31, 2025, NVR held ~$1.88B in homebuilding cash (~$1.92B total cash) vs $909.2M in senior notes (zero credit facility borrowings) and $3.86B equity; FY2025 FCF was ~$1.1B (~82% conversion of $1.34B net income) while shrinking share count via buybacks (FY2025 EPS -14% to $436.55 vs -20% net income). By Sep 30, 2026, homebuilding cash stood at $1,091.3M vs $907.7M senior notes and $3,435.0M equity. Gate 2 rejection mechanism: Despite superior capital structure and capital allocation, end-market demand is fundamentally cyclical and deferrable. In FY2025, revenue fell ~2% to ~$10.3B, settlements slipped 4% to 21,915 units, new orders dropped 10% to 20,410 units, backlog declined 15% to 8,448 units, and homebuilding gross profit compressed from $2.44B to $2.14B. Cyclical pressure deepened in 2026, with Q2 2026 net income at $236.5M (~$2.32B revenue) and Q3 2026 revenue down 8% YoY to $2.40B with net income down 27.5% YoY to $248.6M. Because Gate 2 is an Anchor Gate, Calamity Tier does not apply and evaluation halts at Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

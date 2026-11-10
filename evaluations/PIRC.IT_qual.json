@@ -1,0 +1,30 @@
+{
+  "id": "PIRC.IT",
+  "ticker": "PIRC",
+  "universe": "eu",
+  "company": "Pirelli",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Tires & Rubber (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-value prestige tire positioning and Formula 1 sponsorship create brand recognition, but GAAP ROIC of ~6-7% (obscured by non-GAAP adjustments excluding €4.5B+ buyout intangibles) fails the 12% hurdle; vulnerable to automotive OEM price pressure and raw material inflation cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Proof of Moat). Premium and prestige tire focus fails to deliver the required 12% GAAP ROIC. While Pirelli reports adjusted non-GAAP 'ROIC' of >20%, this excludes over €4.5B in acquisition intangibles and goodwill; true GAAP ROIC is ~6-7%. Lacks durable pricing power above raw material inflation cycles.",
+    "evidence": "Reported GAAP net income of ~€470-500M on total invested capital of ~€7.7B (equity €5.76B + net financial debt €1.93B) results in GAAP ROIC of ~6.1-6.5% and ROE of ~8.1%, far below the 12% threshold. In addition, corporate governance is complicated by Sinochem's 37% stake and Italian government Golden Power restrictions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

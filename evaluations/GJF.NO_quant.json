@@ -1,0 +1,43 @@
+{
+  "id": "GJF.NO",
+  "ticker": "GJF",
+  "universe": "eu",
+  "company": "Gjensidige",
+  "price": 273.4,
+  "quote_currency": "NOK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.2791,
+    "fin_note": "Operating ROIC of 27.91% captures strong tangible capital efficiency and ~26% domestic Norwegian P&C market dominance. Peak Owner EPS NOK 12.83 affirmed without windfall adjustments. Forward 5-10Y compound growth of 6.5% aligned with guidance (2.0% volume + 2.5% tariff indexation + 0.5% combined ratio optimization + 1.5% capital return)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 12.8284,
+    "current_multiple": 21.31,
+    "par_multiple": 21.8,
+    "par_value": 279.64,
+    "percent_vs_par": -0.0223,
+    "status": "Below PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0366,
+    "expected_irr_5y": 0.1064,
+    "market_implied_cap": 14.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": 0.0577,
+    "growth_margin_of_safety": 0.0073
+  },
+  "health_checks": {
+    "net_debt_years": 0.64,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.97,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

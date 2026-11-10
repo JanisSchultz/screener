@@ -1,0 +1,31 @@
+{
+  "id": "VZ",
+  "ticker": "VZ",
+  "universe": "us",
+  "company": "Verizon",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scarce physical network and spectrum barrier ($157.0B YE2025 / $161.4B Q3 2026 FCC wireless licenses including $52.9B C-band, plus 30M+ fiber passings post-Frontier) deters a 4th nationwide facilities-based entrant (confirmed by EchoStar/Dish's 2025–2026 spectrum sell-off). However, intense 3-player oligopoly competition (T-Mobile, AT&T) plus wholesale cable MVNOs (Charter, Comcast on Verizon's own network) prevents excess returns or real pricing power. Fails Gate 3b empirically: 5Y median GAAP ROIC is 10.24% (<12% hurdle), 5Y median tangible ROIC is 12.06% (<15% hurdle), and incremental ROIIC over 2016–2025 was ~0% (+$99.6B net invested capital for flat EBIT). Unilateral price hikes triggered postpaid churn and handset promos, keeping 2025 GAAP EBIT ($29.26B cached; $32.16B 10-K) and Owner EPS ($4.38) below 2021 peaks ($32.45B; $5.32) despite >20% cumulative US inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT – G3 Moat & Pricing). While Verizon owns scarce nationwide wireless spectrum and fiber assets (Gate 3a: Irreplaceable infrastructure) serving an essential US need (Gates 1–2 pass), oligopolistic rivalry with T-Mobile, AT&T, and cable MVNOs prevents real pricing power and keeps returns sub-hurdle: 5Y median GAAP ROIC is 10.24% (<12%), 5Y median tangible ROIC is 12.06% (<15%), and 2020–2025 incremental ROIIC is <1% despite $52.9B C-band outlays. Ineligible for v6.25 Calamity Tier: sub-12% ROIC is structural telecom capital intensity rather than a temporary calamity, and Anchor Gate 4 also fails (Mauboussin Tier 4 Telecom Carriers baseline CAP 5–10Y, further pressured by Macrotrend [5] inflation/refinancing exposure on $166.2B post-Frontier debt). Downstream Gates 4–6 left null per sequential waterfall.",
+    "evidence": "SEC EDGAR & 2025 10-K / Q3 2026 10-Q synthesis: FY2016–FY2025 sales crept from $125.98B to $138.19B (~1.0% CAGR), while cached GAAP EBIT stagnated ($29.25B in 2016 vs $29.26B in 2025; 10-K op income $32.16B in 2025 vs $32.45B peak in 2021). GAAP ROIC compressed from 15.60% (2016) and 16.59% (2019) to 12.66% (2021), 10.32% (2022), 7.08% (2023, incl $5.8B Business goodwill impairment), 10.02% (2024), and 10.24% (2025); tangible ROIC (stripping $33.3B goodwill/finite intangibles but retaining $157.0B wireless licenses) fell from 21.78% (2016) to 12.06% (2025). Owner EPS peaked at $5.32 in 2021 and stood at $4.38 in 2025 (10-K GAAP EPS $4.06; Adjusted EPS $4.71 vs $5.50 peak in 2021). FY2025 segment mix: Consumer $106.81B (+3.8% YoY; $69.38B wireless service, $11.68B Fios) and Business $29.07B (-1.6% YoY). FCF reached $20.13B in FY2025 ($37.14B OCF - $17.01B CapEx; 115% NI conversion as CapEx normalized from $23.09B in 2022) and $18.0B in 9M 2026 (full-year 2026 FCF growth guided near +12%; Adj EPS $5.04–$5.06). Following the Oct 2025 CEO transition (Dan Schulman replacing Hans Vestberg), cost restructuring and value plans lifted Q3 2026 postpaid phone net adds to 406k (churn 0.94%), but Q3 2026 revenue rose just +1.5% YoY ($34.3B) as cable MVNOs and rivals cap pricing. The $20B Frontier acquisition (closed Jan 20, 2026) expanded fiber passings >30M but lifted total debt to $166.2B (Q3 2026) vs $4.50B cash and $107.29B equity, with 9M 2026 interest rising to $5.88B (4.10x operating income coverage) alongside ongoing FCC spectrum, CapEx, and legacy lead-sheathed cable regulatory overhangs."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3b",
+    "evaluated_at": "2026-11-10T09:33:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

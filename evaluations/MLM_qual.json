@@ -1,0 +1,30 @@
+{
+  "id": "MLM",
+  "ticker": "MLM",
+  "universe": "us",
+  "company": "Martin Marietta Materials, Inc.",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Local haul-radius quarry monopolies (low value-to-weight ratio limits truck transport to ~25-50 miles) and stringent local permitting barriers create an irreplaceable infrastructure moat. Pricing power has been demonstrated across three decades with uninterrupted positive annual aggregates pricing gains, including +10% in FY2024 ($21.80/ton) and +7% in FY2025 ($23.30/ton).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Peace-of-Mind Balance Sheet & Real Cash Conversion). Irreplaceable US Sunbelt quarry franchise with unassailable pricing power, but fails Gate 6 on excessive leverage (4.66x debt/NI at $5.29B debt vs $1.14B net income), heavy maintenance/growth capex absorption (multi-year FCF conversion 68.7% vs 80% hurdle), and sub-hurdle 8.4% 10-year median GAAP ROIC diluted by serial debt-funded acquisitions.",
+    "evidence": "Martin Marietta Materials (MLM) operates irreplaceable aggregates quarries across high-growth Sunbelt and non-residential hubs. While local haul-radius protection enables steady pricing power (aggregates ASP up 10% in FY2024 to $21.80/ton and up 6.9% in FY2025 to $23.30/ton), the business model fails Gate 6 criteria: (1) 10-year median GAAP ROIC is 8.41% (ranging from 7.9% to 10.1%, with FY2024's 15.4% distorted by a one-off divestiture gain of $2.1B South Texas cement assets to CRH); (2) Multi-year Free Cash Flow conversion is 68.69%, falling well short of the 80% hurdle due to intensive quarry stripping, equipment overhaul, and fleet replacement capex ($807M capex vs $637M D&A in FY2025); (3) Long-term debt stands at $5,293M against $1,137M net income and $67M cash, yielding a Net Debt / Net Income ratio of 4.60x (and Debt / NI of 4.66x), exceeding the <= 4.0x ceiling. Capital allocation under CEO Ward Nye has successfully shifted the portfolio toward pure-play aggregates, but ongoing debt-funded M&A keeps leverage structurally elevated."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MRSH",
+  "ticker": "MRSH",
+  "universe": "us",
+  "company": "Marsh McLennan",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant global oligopoly (Marsh, Guy Carpenter, Mercer, Oliver Wyman) protected by deep carrier integration, regulatory licensing across 130+ countries, proprietary loss analytics, and >95% client retention. Collects an ad-valorem toll on rising commercial insurance premiums with near-zero balance sheet underwriting risk. Empirical proof: 10-year median GAAP ROIC of 17.0%, tangible ROIC >100%, and consistent 15+ year operating margin expansion (EBIT margin >23%). Primary erosion threats: aggressive broker poaching, regulatory scrutiny of contingent commissions, and potential soft-market premium rate declines.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Undisputed global #1 insurance and reinsurance broker operating a resilient ad-valorem toll booth on worldwide commercial risk. Exceptional client switching costs and retention (>95%) backed by deep carrier integrations. Net debt post-McGriff acquisition is comfortably serviceable via $4.6B+ Owner FCF, with interest coverage at 6.5x. [5-10Y g: commercial risk volume 3.5% + premium price/inflation indexation 2.5% + bolt-on M&A 1.5% - deleveraging interest drag 0.5% + net buybacks 1.0%]",
+    "evidence": "Multi-cycle track record shows revenue expanding from $13.2B in 2016 to $27.0B in 2025, with GAAP EBIT compounding from $2.4B to $6.2B and Owner EPS growing from $3.73 to $9.67 without a single peak-to-peak breakdown. 10-year median GAAP ROIC is 16.95% (ranging 12.6% to 19.8% despite large goodwill balances from JLT and McGriff acquisitions). Cash conversion is pristine: FY2025 OCF of $5.29B vs capex of only $291M (1.1% of revenue), generating $4.61B in Owner FCF (110.7% conversion of GAAP Net Income of $4.16B; 5-year conversion 94.1%). Balance sheet safely absorbed the $7.75B cash acquisition of McGriff in late 2024: LT debt peaked at $19.4B and already decreased to $18.3B in 2025; cash stands at $2.69B, leaving Net Debt at $15.63B (3.39x Owner FCF, repayable within ~3.4 years). FY2025 EBIT of $6.22B covers interest expense ($960M) by 6.48x (>5.0x hurdle). Operating businesses (Marsh, Guy Carpenter, Mercer, Oliver Wyman) maintain unmatched scale and client lock-in across global commercial risk transfer."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

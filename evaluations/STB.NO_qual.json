@@ -1,0 +1,30 @@
+{
+  "id": "STB.NO",
+  "ticker": "STB",
+  "universe": "eu",
+  "company": "Storebrand",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Nordic corporate pension franchise in Norway and Sweden (SPP). Long-term occupational pension schemes have high administrative switching costs and sticky employer customer bases, enabling disciplined fee capture as capital shifts to unit-linked products.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional Nordic occupational pension provider facing demographic aging, public pension reforms, and guaranteed legacy book duration limits, capping predictable competitive advantage period well below 15 years.",
+    "evidence": "Storebrand delivers sticky occupational pension flows in Norway and Sweden (SPP), with recent ROE improving toward 11-18% via growth in capital-light unit-linked savings and insurance. However, runway is geographically capped in the Nordics, and secular demographic aging combined with regulatory pension framework changes restricts the durable competitive advantage period to 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

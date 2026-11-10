@@ -1,0 +1,30 @@
+{
+  "id": "BBOX.GB",
+  "ticker": "BBOX",
+  "universe": "eu",
+  "company": "Tritax Big Box",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Industrial REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Strategic UK logistics big-box portfolio; sub-4% ROIC fails the 12% hurdle, and index-linked rent reviews are contractually capped at 2-4% p.a., lagging inflation surges while mega-tenants possess heavy bargaining power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 3.8%, REJECT). Prime UK big-box logistics facilities fail capital efficiency hurdles with unlevered portfolio yields of ~5% and ROIC < 4%. RPI/CPI rent reviews are capped at 2-4% p.a., lagging severe inflation, while tenant concentration caps pricing power.",
+    "evidence": "Tritax Big Box manages a £5B+ UK logistics portfolio with ~11-year WAULT let to blue-chip tenants including Amazon, Morrisons, and DHL. Portfolio Net Initial Yield hovers at 4.75-5.5%, generating multi-year GAAP ROIC of 3.5-4.0% (sub-12% hurdle). Net debt/EBITDA is ~7.3x-8.2x with interest coverage of ~4.4x. While modern logistics space benefits from e-commerce tailwinds, ~50% of indexed leases have 2-4% annual caps that severely lag inflationary peaks, and development pipeline yields (~6-7%) do not elevate corporate ROIC to compounder levels."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

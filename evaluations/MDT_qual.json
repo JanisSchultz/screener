@@ -1,0 +1,30 @@
+{
+  "id": "MDT",
+  "ticker": "MDT",
+  "universe": "us",
+  "company": "Medtronic",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Moat derives from high surgeon switching costs, deep clinical training familiarity, extensive IP portfolios, and rigorous FDA PMA regulatory hurdles in cardiac rhythm management, spine, and neuromodulation. However, quantitative proof of moat is lacking: 5-year median GAAP ROIC has hovered in the 5-7% range (10-year median 9.2%), deeply diluted by $41B+ in unamortized goodwill from the 2015 Covidien acquisition. Gross and operating margins compressed under post-2021 inflation (operating margin fell from 21%+ to ~17-19%) due to an inability to pass cost increases through hospital GPO contracts. Primary ongoing erosion threats include persistent 1-3% annual ASP deflation imposed by hospital GPOs and government reimbursement authorities, intensifying competition from focused peers (Boston Scientific, Abbott, Stryker), and product quality/FDA recall setbacks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Bureaucratized medtech conglomerate burdened by the $42.9B Covidien acquisition, carrying over $41B in goodwill that structurally caps multi-cycle GAAP ROIC at 5-7%, far below the 12% threshold. Hospital GPO purchasing power and national healthcare reimbursement limits impose persistent 1-3% net price deflation, leaving Medtronic with negative real pricing power and stagnant 10-year real per-share earnings.",
+    "evidence": "Medtronic (MDT) generated $32.4B revenue in FY24 and $33.5B in FY25 across Cardiovascular, Medical Surgical, Neuroscience, and Diabetes. Despite leading market shares in cardiac rhythm management and spine devices, GAAP ROIC has hovered at 5.0%-7.1% over the past 5 years (FY23: ~5.5%, FY24: ~5.1%, FY25: ~6.2%; 10-year median 9.2%), severely diluted by $41.7B in goodwill from the 2015 Covidien acquisition (over 45% of total assets). GAAP operating margins fell from 21%+ pre-2020 to 17.1% in FY24 and 19.5% in FY25 under cost inflation, demonstrating inability to pass cost increases through hospital GPO fixed-price contracts. While FCF remains solid ($5.2B in FY24 and FY25) and debt is manageable ($25B long-term debt against $4.7B net income), the business structurally fails Gate 3b capital efficiency and pricing power hurdles without any temporary fixable calamity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

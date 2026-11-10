@@ -1,0 +1,30 @@
+{
+  "id": "BC8.DE",
+  "ticker": "BC8",
+  "universe": "eu",
+  "company": "Bechtle",
+  "country": "Germany",
+  "sector": "Information Technology",
+  "sub_industry": "Technology Distributors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive regional IT systems house footprint and public-sector framework contracts provide scale in German Mittelstand IT distribution, but thin 5-6% operating margins and sub-hurdle ~6-7% ROIC confirm the absence of a high-return structural moat.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Germany's largest IT systems house and reseller operates on razor-thin operating margins (~5-6%) and low capital returns (~6-7% ROIC), structurally squeezed between powerful enterprise software/hardware vendors and price-sensitive corporate/public-sector buyers.",
+    "evidence": "Historical GAAP ROIC tracks between 6% and 7%, well below the 12% threshold. Operating margins remain capped around 5-6% as hardware reselling and low-complexity IT provisioning face constant price competition and threat of disintermediation by direct vendor sales and cloud hyperscaler marketplaces."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ERF.FR",
+  "ticker": "ERF",
+  "universe": "eu",
+  "company": "Eurofins",
+  "country": "France",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Competitive food/environmental testing and French clinical diagnostics fee cuts prevent full inflation pass-through, resulting in sub-hurdle 6-9% GAAP ROIC diluted by hundreds of roll-up acquisitions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Broad bioanalytical testing network fails to generate hurdle returns, with multi-year GAAP ROIC mired at 6-9% due to heavy roll-up goodwill. Inability to pass through 2022-2023 wage/energy inflation and clinical tariff cuts prove insufficient pricing power.",
+    "evidence": "Eurofins operates an extensive global network of over 900 laboratories across food, environmental, and clinical testing. However, reported GAAP ROIC has persistently averaged between 6.7% and 8.9% (below the 12% hurdle), diluted by endless small-scale M&A. When wage and energy inflation hit in 2022-2023, operating margin contracted to ~8.4%, showing lack of pricing power amidst regulated clinical reimbursement tariffs and fragmented competition."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

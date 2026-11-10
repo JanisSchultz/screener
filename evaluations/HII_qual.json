@@ -1,0 +1,30 @@
+{
+  "id": "HII",
+  "ticker": "HII",
+  "universe": "us",
+  "company": "Huntington Ingalls Industries, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Sole-source builder of US Navy nuclear aircraft carriers (Newport News) and major surface combatants (Ingalls) possesses unreplicable physical drydock infrastructure. However, as a dedicated defense contractor serving a monopsonist customer (US Navy represents ~85% of revenue), allowable margins are capped under Federal Acquisition Regulations (FAR). 5-year median GAAP ROIC of ~6-8% (10-year median 9.8%) and operating margins of 5-7% fail the 12% ROIC hurdle. Fixed-price incentive contracts expose HII to acute wage inflation and skilled trade shortages without commercial pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Lack of Commercial Pricing Power, REJECT). While HII controls irreplaceable nuclear shipyard infrastructure, defense monopsony contracting caps returns on invested capital well below the 12% threshold (5Y median GAAP ROIC ~6-8%, 10Y median 9.8%). High capital intensity and exposure to fixed-price cost overruns from skilled labor shortages prevent world-class compounding.",
+    "evidence": "10-year median ROIC of 9.8% with 2021-2025 ROIC averaging 5-8% (2021: 5.8%, 2022: 6.0%, 2023: 8.0%, 2024: 4.8%, 2025: 5.9%). Operating margins remain compressed in the 5.0%-7.5% range due to fixed-price incentive contract cost absorption amid severe skilled blue-collar labor shortages (certified nuclear welders and pipefitters). 2024 FCF collapsed to ~$40M before rebounding to $800M in 2025. Long-term debt stands at ~$2.5B-$2.8B against ~$550M-$650M normalized net income. The monopsonistic procurement structure of the US Navy legally caps contractor margins, structurally precluding economic returns above the cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

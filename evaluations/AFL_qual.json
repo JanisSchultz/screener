@@ -1,0 +1,30 @@
+{
+  "id": "AFL",
+  "ticker": "AFL",
+  "universe": "us",
+  "company": "Aflac",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Iconic brand equity (the Aflac Duck) and entrenched distribution through Japan Post (over 20,000 branches), exclusive Japanese agency networks (insuring 1 in 4 Japanese households), and worksite payroll deductions at 500,000+ US employers. However, Aflac fundamentally lacks pricing power >= inflation on its core economic engine: long-term supplemental health and cancer policies are guaranteed-renewable contracts issued with fixed, level premiums. Aflac cannot unilaterally raise premium rates on its massive in-force policy book when general inflation or medical utilization escalates. Over the past decade, consolidated revenues declined from $22.6B in FY2016 to $17.2B in FY2025 (-24%), reflecting JPY depreciation and negative-to-flat local currency policy revenue growth. Primary erosion risks include severe Japanese demographic decline and BoJ/Fed rate divergence impacting investment portfolio hedging.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While Aflac possesses an iconic brand and dominant distribution in supplemental health and cancer insurance across Japan and the US, its core economic engine relies on guaranteed-renewable, level-premium policies that lack contractual pricing power or inflation escalators on in-force books. Aflac cannot unilaterally raise prices on existing policyholders when inflation or medical utilization surges. This structural constraint is evidenced by top-line revenue shrinking from $22.6B in FY2016 to $17.2B in FY2025 (-24%). Combined with severe demographic aging headwinds in Japan (where it generates ~60-70% of earnings), it fails the Munger quality hurdle.",
+    "evidence": "FY2016–FY2025 revenue declined from $22,559M to $17,164M (-23.9%), reflecting JPY depreciation and stagnant/contracting policy premium volume. Reported GAAP net income contracted from $5,443M in FY2024 to $3,646M in FY2025. Although Aflac maintains high regulatory solvency (Japan ESR 253% in 2025, well within target; US RBC ~575%) and generates strong operating cash flow used for cannibalistic share repurchases, its in-force book of cancer and supplemental indemnity policies offers zero contractual inflation indexing. In-force policyholders pay level fixed premiums while claims and operating expenses escalate with healthcare inflation. Furthermore, demographic contraction in Japan permanently caps long-term organic volume growth, leaving the firm dependent on financial engineering and foreign exchange fluctuations."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

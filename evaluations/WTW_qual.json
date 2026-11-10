@@ -1,0 +1,30 @@
+{
+  "id": "WTW",
+  "ticker": "WTW",
+  "universe": "us",
+  "company": "Willis Towers Watson",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Insurance Brokers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Commercial risk broking and employee benefits/pension advisory benefit from high switching costs and ad valorem commission pricing power tracking insurance premium rates and wage inflation. Tangible ROIC is structurally high due to low physical capital requirements, but GAAP ROIC is depressed (5Y median 8.8%) by $10.1B in goodwill and intangibles. Primary erosion threats include persistent producer talent churn to Marsh McLennan, Aon, and Arthur J. Gallagher, loss of reinsurance scale, and AI automation across benefits administration.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Distant #3/4 commercial broker and benefits consultant suffering structural moat degradation. The forced sale of Willis Re to Gallagher permanently eliminated its high-margin reinsurance broking engine, while severe post-merger broker defections to Marsh McLennan and Aon eroded core broking market share. Health, Wealth & Career segment (~55-60% of revenue) faces severe long-term headwinds from AI automation of routine actuarial calculations, benefits administration, and HR consulting (Macrotrend 1). Long-term GAAP ROIC (5Y median 8.8%) and cash conversion (63.8%) reflect chronic structural underperformance.",
+    "evidence": "Willis Towers Watson (WTW) operates via two primary segments: Health, Wealth & Career (HWC, ~57% of 2025 revenue) and Risk & Broking (R&B, ~43% of 2025 revenue). 10-year historical GAAP ROIC has consistently languished in the mid-single digits (2016: 3.3%, 2017: 3.1%, 2018: 5.1%, 2019: 6.1%, 2020: 4.6%, 2022: 7.7%, 2023: 8.8%, 2024: 4.1%), with a 5-year median of 8.77%, far below the 12% compounder hurdle. The 2021 spike (13.5%) was distorted by the $3.2B gain on sale of Willis Re to Gallagher following the DOJ-blocked Aon merger, which permanently stripped WTW of its lucrative reinsurance broking arm. Capital allocation has been troubled: acquired TRANZACT in 2019 for $1.2B+, recorded over $1.0B in pre-tax goodwill/intangible impairment charges in 2024 (pushing 2024 GAAP net income to -$98M), and disposed of it at year-end 2024 for just $632M ($400M cash). Free cash flow conversion over 5 years is poor at 63.8% of GAAP net income, trailing pure-play broking peers. Organic revenue growth (5%) consistently lags Marsh McLennan (MMC) and Arthur J. Gallagher (AJG). With substantial HR consulting exposure vulnerable to AI automation, WTW fails to satisfy the 15-year secular persistence bar."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MSFT",
+  "ticker": "MSFT",
+  "universe": "us",
+  "company": "Microsoft Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Systems Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme enterprise switching costs and network effects across M365, Azure, Windows, and enterprise identity (Active Directory) create deep workflow lock-in that competitors cannot replicate without massive switching friction. Empirically proven by 10-year median GAAP ROIC >34%, operating margins expanding from ~30% to >46%, and recurring 9-15% M365 E3/E5 pricing increases with virtually zero enterprise churn. Primary erosion threats: open-source AI tooling bypassing proprietary enterprise software layers, escalating AI datacenter capex driving heavy D&A margin drag, and antitrust/bundling scrutiny.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable enterprise software monopoly and cloud infrastructure oligopolist with insurmountable switching costs across Office 365, Azure, Windows, and Active Directory. Empirically verified pricing power with negligible customer churn. Pristine AAA-rated fortress balance sheet with net debt repayable in under two months of earnings and >50x interest coverage. [5-10Y g: enterprise cloud/AI volume 8.0% + enterprise seat price/mix 2.5% - GPU capex depreciation drag 0.5% + net share repurchases 0.5%]",
+    "evidence": "Multi-cycle 10-year median GAAP ROIC of 34.7% and operating ROIC >45%. Owner FCF conversion exceeds 95% of GAAP net income ($131.5B FCF on $133.7B NI). Operating margins expanded from 30.1% in FY2016 to 46.8% in FY2025. Long-term debt of $31.1B against $20.9B cash leaves net debt of $10.1B, which is 0.08x TTM net income. Interest coverage is 50.9x with AAA credit rating."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "UPS",
+  "ticker": "UPS",
+  "universe": "us",
+  "company": "United Parcel Service, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "UPS operates massive physical route density and integrated hub-and-spoke sortation networks with enterprise B2B pickup lock-in. However, the moat suffers severe structural erosion: it lacks pricing power above inflation without shedding customer volume and market share. The 2023 Teamsters labor contract created a structural cost disadvantage against non-union rivals, while Amazon Logistics successfully insourced and disintermediated delivery, stripping away high-density volume. Shippers actively divert volume to FedEx, USPS, and regional carriers upon aggressive price hikes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). UPS operates an indispensable physical parcel network, but it lacks genuine pricing power above inflation without shedding customer volume and market share. The landmark 2023 Teamsters labor agreement significantly escalated union wage and benefit costs, causing margin compression that could not be passed through to price-sensitive customers. Furthermore, Amazon Logistics has permanently disintermediated UPS's former largest customer (shedding over 50% of Amazon volume), while commercial shippers diverted volume to FedEx and regional carriers, depressing operating margins (~8%) and dropping normalized ROIC toward ~11-13% with sub-hurdle incremental ROIIC.",
+    "evidence": "Historical ROIC was elevated during the 2020-2022 pandemic e-commerce boom (peak ROIC 25-30%), but normalized post-pandemic ROIC deteriorated to 16.8% (2023), 13.7% (2024), and 11.4-12.9% (2025). Operating margins fell from 13.0% (2021) and 13.8% (2022) to 7.4% (2023) and ~8% (2024-2025) following the 2023 Teamsters wage contract (~$170k full-time driver comp). Total U.S. package volume declined as shippers diverted 1.2-1.5M packages/day during negotiations and Amazon insourced logistics. Amazon volume fell from >11% of revenue and 20-25% of volume toward <5%, requiring UPS to close dozens of sortation centers and cut headcounts under 'Fit to Serve'. Annual capex of $4.0-5.0B in automation generates defensive, sub-hurdle incremental returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

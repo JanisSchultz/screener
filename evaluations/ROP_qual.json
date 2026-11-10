@@ -1,0 +1,30 @@
+{
+  "id": "ROP",
+  "ticker": "ROP",
+  "universe": "us",
+  "company": "Roper Technologies, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deeply embedded vertical market software (Deltek for government contractors/AEC, Vertafore for P&C insurance agencies, Aderant for legal practice management, Frontline for K-12 administration) operating as core systems of record with prohibitive switching costs and customer retention >95%. Pricing power demonstrated by consistent annual contract escalators of 3-6% and gross margins expanding above 70%. Primary erosion threats stem from AI agentic workflow automation compressing customer seat counts and persistent valuation inflation on acquisition targets.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Vertical market software portfolio (Deltek, Vertafore, Aderant, Frontline) faces structural headwinds on seat-based licensing models from agentic AI automating professional services workflows (legal, insurance, project accounting). Additionally, Roper's serial debt-funded acquisition model faces persistent capital allocation friction in a normalized interest rate environment where high purchase price multiples on vertical software platforms yield sub-hurdle cash returns on incremental invested capital.",
+    "evidence": "FY2016-FY2025 revenue compounded from $3,789.9M to $7,902.5M and EBIT from $1,054.6M to $2,235.4M. FY2025 operating cash flow reached $2,540.3M with capex of $47.4M, delivering owner FCF of $2,326.6M (86.4% multi-year cash conversion). However, serial acquisitions accumulated $31,105.4M in goodwill and intangibles against $19,881.5M in equity, compressing 5-year median GAAP ROIC to 6.19% (FY2025: 6.64%). Long-term debt stands at $8,595.8M against cash of $297.4M (interest coverage 6.9x). Enterprise Software Tier 3 baseline CAP (10-15Y) receives deductive haircuts to CAP=5 due to seat-based AI displacement risk and cost-of-capital headwinds on M&A rollups."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TECK.B.CA",
+  "ticker": "TECK.B",
+  "universe": "ca",
+  "company": "Teck Resources",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Diversified Metals & Mining",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Possesses long-life permitted copper assets (QB2, Highland Valley) and zinc operations (Red Dog), but operates as a price-taker selling into global commodity exchanges with zero pricing power above inflation. Margins and returns on capital are dictated by global copper price swings, while major capital projects suffer historical cost-overrun risks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Transformed copper and zinc miner following the sale of steelmaking coal to Glencore, rejected as a capital-intensive commodity price-taker lacking pricing power above inflation with a history of massive project capex overruns (QB2).",
+    "evidence": "Teck's operating profitability is tied directly to global LME copper and zinc prices. Following the US$7.3B divestiture of its coal business, it is a pure-play base metals producer. Despite long-life reserves at QB2 and Highland Valley, Teck has no ability to set selling prices above inflation, and historical through-the-cycle GAAP ROIC is sub-hurdle due to extreme capital intensity and execution overruns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

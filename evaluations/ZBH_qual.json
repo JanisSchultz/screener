@@ -1,0 +1,30 @@
+{
+  "id": "ZBH",
+  "ticker": "ZBH",
+  "universe": "us",
+  "company": "Zimmer Biomet",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Orthopedic surgeons face high switching costs due to familiarity with proprietary instrumentation, kinematics, and ROSA surgical robotics. However, structural pricing power is absent: hospital GPOs, Medicare DRG bundles, and international tenders (China VBP) inflict chronic -1% to -2% annual net price deflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & negative pricing power, REJECT). While knee and hip implants benefit from surgeon switching costs, Zimmer Biomet structurally lacks pricing power, enduring -1% to -2% annual realized price deflation from hospital GPOs and government tenders (China VBP). 10-year median ROIC of ~7.5% falls well below the 12% Munger compounder threshold due to goodwill bloat from the Biomet merger and subsequent M&A.",
+    "evidence": "10-year median GAAP ROIC is ~7.5% (FY23 4.5%, FY24 4.4%, FY25 ~3.5%), far below the 12% hurdle. High gross margins (69-71%) are offset by SG&A/R&D and amortization of intangibles. The 2015 Biomet merger saddled the balance sheet with over $8B in goodwill and intangibles. Net realized pricing is consistently negative (-1% to -2% per year) across reconstructive hips and knees, offsetting procedure volume gains. Total debt stands at ~$7.5B ($6.9B long-term), while competitive pressure from Stryker's Mako robotics platform continues to challenge ROSA."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

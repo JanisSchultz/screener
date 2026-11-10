@@ -1,0 +1,30 @@
+{
+  "id": "KHC",
+  "ticker": "KHC",
+  "universe": "us",
+  "company": "Kraft Heinz",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Kraft Heinz holds iconic brand intangibles across condiments, cheese, and packaged meals (Heinz, Kraft, Philadelphia, Oscar Mayer), the economic moat fails empirical verification. 5-year median GAAP ROIC of ~5.2-6.8% falls dramatically short of the 12% hurdle (and tangible ROIC fails the 15% threshold). Pricing power above inflation is absent: price increases across 2022-2024 resulted in severe volume contraction (-2.1% volume/mix in FY2024, -3.4% organic sales in FY2025) as price-sensitive consumers migrated to private-label store brands, forcing heavy promotional rollbacks and marketing reinvestments. Structural moat erosion is compounded by retailer bargaining power (Walmart, Kroger, Aldi) and center-aisle grocery disintermediation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.2-6.8% < 12%, lack of pricing power; REJECT). Despite possessing household heritage food brands (Heinz, Kraft, Philadelphia), Kraft Heinz fails the empirical proof-of-moat test with multi-year GAAP ROIC severely below the 12% hurdle. Attempts to pass through input cost inflation via list price hikes triggered immediate volume contractions (-2.1% in FY2024, -3.4% organic sales in FY2025) and private-label market share losses in core center-store categories, disproving pricing power.",
+    "evidence": "Financial Track Record: 10-year median ROIC is 6.8%, with 2023-2025 annual ROIC lingering between 4.9% and 5.7%, well below the 12% cost of capital benchmark. In FY2024, net sales fell 3.0% (organic sales -2.1%) with persistent negative volume/mix across North American retail. In FY2025, organic net sales contracted -3.4%, driven by consumer pushback and private-label share gains in cheese, meats, and shelf-stable meals. FCF generation remained positive ($2.96B in 2023, $3.16B in 2024, ~$3.7B in 2025), but capital returns remain depressed by a legacy goodwill and intangible base that suffered a $15.4B write-down in 2019 and recurring subsequent impairments. Balance Sheet & Leverage: Net debt stands at ~$17.5B-$18.5B ($21.2B total debt vs $3.7B cash in FY2025), representing ~4.7x net debt to normalized net income, exceeding the conservative fortress threshold. Competitive Dynamics: Private label penetration in US center-aisle grocery exceeded 20-23% in 2024-2025, as major grocery retailers (Walmart Great Value, Kroger, Aldi) narrowed the quality gap and expanded price differentials, stripping Kraft Heinz of pricing independence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

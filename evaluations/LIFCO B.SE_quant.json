@@ -1,0 +1,43 @@
+{
+  "id": "LIFCO B.SE",
+  "ticker": "LIFCO B",
+  "universe": "eu",
+  "company": "Lifco",
+  "price": 283.2,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing SEK 26.8B in goodwill/intangibles from decentralized serial acquisitions (even GAAP ROIC averages 21.4%). Peak Owner EPS confirmed at SEK 10.8935 (FY2025) with continuous peak-to-peak compounding. Forward 5-10Y g_implied anchored at 10.5% per qualitative drivers (2.5% volume + 2.5% niche pricing + 5.0% bolt-on M&A + 0.5% buybacks). Fortress balance sheet with net debt repayable in 0.5 years of Owner Earnings and 12.6x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 10.8935,
+    "current_multiple": 26.0,
+    "par_multiple": 29.75,
+    "par_value": 324.03,
+    "percent_vs_par": -0.126,
+    "status": "Below PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0085,
+    "expected_irr_5y": 0.1436,
+    "market_implied_cap": 13.1,
+    "moat_runway_margin": 1.9,
+    "market_implied_growth": 0.0488,
+    "growth_margin_of_safety": 0.0562
+  },
+  "health_checks": {
+    "net_debt_years": 0.5,
+    "net_debt_ok": true,
+    "interest_coverage": 12.7,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.18,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

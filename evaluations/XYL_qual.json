@@ -1,0 +1,30 @@
+{
+  "id": "XYL",
+  "ticker": "XYL",
+  "universe": "us",
+  "company": "Xylem Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Municipal engineering specifications, certified utility standards, and vast global installed base of wastewater pumps and smart water infrastructure create customer switching inertia. However, empirical proof of moat is structurally absent: 5-year median GAAP ROIC is ~6.4% (FY21: 8.3%, FY22: 8.6%, FY23: 3.6%, FY24: 5.5%, FY25: 6.4%), consistently failing the 12% hurdle across the cycle. Dilutive mega-acquisitions (Sensus, Evoqua) continuously inflate the capital base with goodwill, while competitive RFP bidding and municipal budget caps prevent pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite strong secular tailwinds in water infrastructure and treatment, Xylem fails the empirical proof-of-moat hurdle. 5-year median GAAP ROIC is ~6.4% (FY21: 8.3%, FY22: 8.6%, FY23: 3.6%, FY24: 5.5%, FY25: 6.4%) and 10-year historical ROIC has averaged sub-10%, well below the 12% threshold. Serial M&A (Sensus for $1.7B, Evoqua for $7.5B) has continuously diluted capital efficiency, while municipal tender dynamics restrict real pricing power.",
+    "evidence": "Multi-cycle financial data confirms persistent sub-hurdle capital efficiency. GAAP ROIC: FY16 6.0%, FY17 8.0%, FY18 8.5%, FY19 6.7%, FY20 5.7%, FY21 8.3%, FY22 8.6%, FY23 3.6%, FY24 5.5%, FY25 6.4%. 5-year median GAAP ROIC is ~6.4%, far below the 12.0% hurdle. FY24 revenue of $8.56B converted to $1.01B operating income (11.8% margin) and $942M FCF. FY25 revenue of $9.04B delivered $1.22B operating income (13.5% margin) and $910M FCF. Despite solid FCF conversion and critical water installations, invested capital is heavily diluted by goodwill from serial M&A ($7.5B Evoqua merger closed May 2023). Municipal RFP procurement dynamics cap pricing power, leaving economic returns structurally mediocre across full business cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "T",
+  "ticker": "T",
+  "universe": "us",
+  "company": "AT&T",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Nationwide licensed wireless spectrum ($128.1B net licenses at FY25 plus $23B EchoStar spectrum closed Jul 2026) and dense fiber infrastructure (39.7M passings at Q3 2026, expanding via $5.75B Lumen fiber assets) deter a fourth facilities-based national entrant (shown by EchoStar's MNO exit). However, AT&T fails Proof of Moat decisively: 5Y median GAAP ROIC is 6.41% (10Y range -1.28% to 8.72%; FY25 8.72%) and 5Y median ex-goodwill tangible ROIC is 8.92% even before including $128B+ spectrum licenses in operating capital, while ~$94.1B of FY21-FY25 capex generated flat-to-negative EBIT ($25.9B in FY21 vs $24.2B in FY25). Pricing power >= inflation also fails: nominal $1-$2 wireless plan increases are eroded by 36-month $1,000+ handset promotional bill-credit subsidies (FY25 Mobility service revenue +3.1%, Q3 2026 postpaid phone ARPU $58.90), while Business Wireline revenue fell 8.4% to $17.2B with an $(816)M operating loss. Primary threats: 3-way MNO promotional churn rivalry (T-Mobile, Verizon), cable MVNO bundling (Charter/Comcast), fixed wireless/LEO satellite competition, legacy enterprise wireline decay, and perpetual 5G/fiber capex absorption.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT – G3 Moat & Pricing). While AT&T owns hard-to-replicate US wireless spectrum and fiber assets serving essential daily connectivity (passing Gates 1 and 2), its 5Y median GAAP ROIC of 6.41% (8.92% ex-goodwill tangible ROIC before $128B+ spectrum licenses) and low-single-digit incremental ROIIC fall far short of the >=12% GAAP / >=15% tangible Proof of Moat bar. Three-player wireless competition forces heavy 36-month smartphone subsidies that neutralize nominal plan hikes, while legacy Business Wireline is shrinking into operating losses ($(816)M in FY25). Ineligible for v6.25 Calamity Pass because: (1) sub-WACC ROIC and promotional wireless rivalry are chronic 10+ year structural economics rather than a temporary fixable calamity, and (2) Anchor Gate 4 also fails — Telecom Carriers sit in Mauboussin Tier 4 (natural reject CAP 5-10Y) and face Macrotrend #5 (Structural Inflation & Cost of Capital) headwinds across $23-24B annual capex and $149.8B net debt (3.13x Adj. EBITDA at Q3 2026, interest expense rising to ~$7.9B annualized run-rate, with FY25 GAAP NI inflated by a $5.6B tax-free DirecTV exit gain). Downstream Gates 4-6 left null per waterfall.",
+    "evidence": "10-year SEC EDGAR financial history (FY2016-FY2025) demonstrates chronic sub-hurdle capital efficiency: GAAP ROIC never once reached 12% (FY16 6.76%, FY17 7.02%, FY18 7.31%, FY19 6.40%, FY20 1.95%, FY21 6.41%, FY22 -1.28%, FY23 7.69%, FY24 5.81%, FY25 8.72%; 5Y median 6.41%); ex-goodwill tangible ROIC ranged -1.78% to 13.21% (5Y median 8.92%) despite omitting $128,148M of net FCC wireless licenses and $5,254M other intangibles from the tangible capital deduction (FY25 10-K). Cumulative FY21-FY25 capex of $94,129M ($15.5B-$20.8B/yr) yielded zero EBIT expansion ($25,897M in FY21 vs $24,162M in FY25) and lower Owner FCF ($25,965M in FY21 vs $18,906M in FY25). FY2025 segment breakdown (10-K): Mobility $89,482M revenue (+5.0% YoY; service revenue $67.4B, +3.1%) and $27,196M operating income (+3.4%); Consumer Wireline $14,183M revenue (+4.5% YoY; fiber $8.6B, +17.0%) and $1,547M operating income (+78.0%); Business Wireline $17,231M revenue (-8.4% YoY) and $(816)M operating loss (vs $(88)M in FY24). FY25 GAAP Net Income of $21,953M ($3.04 diluted EPS vs $2.12 adj. EPS) included a ~$5.6B tax-free gain on the final DIRECTV stake exit. Operational KPIs in Q3 2026: revenue $32.3B (+5.3% YoY), postpaid phone churn 0.92%, postpaid phone ARPU $58.90, 379k postpaid phone net adds, 442k fiber net adds (13.31M fiber subs across 39.7M passings, 42.8% wireless-fiber convergence), and 2026 capex guided at $23B-$24B with FCF $18B+. Capital allocation & balance sheet: after historical value destruction from Time Warner and DirecTV, AT&T closed $5.75B for Lumen's Mass Markets fiber business (Feb 2026), closed ~$23B for EchoStar US wireless spectrum (Jul 2026), agreed to sell AT&T Mexico for $2B cash (expected close Q1 2027, triggering a $3.4B Q3 2026 impairment/restructuring charge), froze dividends at $1.11/share (~$8.2B/yr), and accelerated 2026 buybacks toward ~$10B — lifting Q3 2026 total debt to $159.6B, net debt to $149.8B (3.13x Adj. EBITDA vs 2.68x in Q2 2026), and quarterly interest expense to $1,979M (+16.4% YoY)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:32:11Z",
+    "evaluator": "qualitative-agent"
+  }
+}

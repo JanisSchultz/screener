@@ -1,0 +1,43 @@
+{
+  "id": "WRB",
+  "ticker": "WRB",
+  "universe": "us",
+  "company": "W. R. Berkley Corporation",
+  "price": 75.92,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.16,
+    "fin_note": "Operating capital efficiency normalized to 16.0% (roic_est = 0.160) to reflect WRB's underlying operating economics (10Y median ROIC 13.8%, 20-22% operating ROE, and combined ratio consistently 90-94%), correcting for the distortion of standard non-financial ROIC formulas that artificially inflate insurer returns (~28.9%) by excluding insurance loss reserves while deducting cash. Peak Owner EPS of $4.5851 in FY2025 is fully genuine, driven by record specialty underwriting volume ($15B+ gross premiums) and expanding investment income ($1.2B+) across a $25B+ short-duration float portfolio. 5-10Y through-the-cycle secular growth of 9.0% is driven by specialty lines volume (4.0%), underwriting rate increases (3.5%), float yield reinvestment (1.5%), offset by social inflation and catastrophe drag (-1.0%), plus net share repurchases (1.0%). Balance sheet is pristine with AM Best A+ rating, $2.54B cash, zero net long-term debt, and 19.0x interest coverage. At $75.92, WRB trades at 16.56x peak Owner EPS vs fundamental PAR multiple of 17.96x (PAR value $82.36), placing it Below PAR (-7.8% discount) with an attractive 5Y expected IRR of 13.3% (including a 2.5% dividend yield)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.5851,
+    "current_multiple": 16.56,
+    "par_multiple": 17.96,
+    "par_value": 82.36,
+    "percent_vs_par": -0.0781,
+    "status": "Below PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0248,
+    "expected_irr_5y": 0.1327,
+    "market_implied_cap": 13.8,
+    "moat_runway_margin": 1.2,
+    "market_implied_growth": 0.0689,
+    "growth_margin_of_safety": 0.0211
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 18.97,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.9591,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

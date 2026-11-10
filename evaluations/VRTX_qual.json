@@ -1,0 +1,30 @@
+{
+  "id": "VRTX",
+  "ticker": "VRTX",
+  "universe": "us",
+  "company": "Vertex Pharmaceuticals",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable global monopoly in cystic fibrosis (CF) transmembrane conductance regulator (CFTR) modulators (Trikafta/Kaftrio, Alyftrek). Decades of structural biology and medicinal chemistry patents protect the franchise through 2037 (Trikafta) and 2039+ (vanzacaftor triple). Inelastic pricing power demonstrated by universal Western reimbursement at ~$300k+/patient/year with zero clinical churn. 5-year median GAAP ROIC of 59.6% and operating ROIC of 90.5% provide empirical proof of moat. Primary long-term erosion risk is eventual 2037+ patent expirations and nascent genetic curative therapies.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unrivaled biopharmaceutical monopoly in cystic fibrosis with patent protection extending into late 2030s, complemented by pipeline expansion into non-opioid pain (Suzetrigine) and gene-edited cell therapies (Casgevy). Debt-free fortress balance sheet with >$5B in cash and marketable securities and 50%+ normalized ROIC. [5-10Y g: CF global patient penetration 3.0% + Alyftrek vanzacaftor upgrade 2.0% + Suzetrigine pain launch 2.5% - R&D reinvestment drag 0.5% + net share repurchases 1.0%]",
+    "evidence": "10-year financial record demonstrates extraordinary compounding: revenue expanded from $1.7B in 2016 to $12.0B in 2025, with operating EBIT rising from $10M to $4.17B. 5-year median GAAP ROIC is 59.64% with tangible ROIC of 90.48%. FCF conversion exceeds 80% over multi-year cycles (2025 FCF of $3.19B vs Net Income of $3.95B; 2024 dip was driven solely by a one-off non-deductible $4.4B AIPR&D accounting charge for the Alpine Immune Sciences acquisition). Peak Owner EPS reached a new high of $15.32 in FY2025. Balance sheet carries zero long-term funded debt ($0.0M) and over $5.08B in cash and marketable securities. Commercial CFTR treatments face zero direct competition across ~90% of addressable CF patients globally."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

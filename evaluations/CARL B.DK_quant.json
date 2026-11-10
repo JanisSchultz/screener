@@ -1,0 +1,43 @@
+{
+  "id": "CARL B.DK",
+  "ticker": "CARL B",
+  "universe": "eu",
+  "company": "Carlsberg",
+  "price": 1020.5,
+  "quote_currency": "DKK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing DKK 83.2B goodwill/intangibles (including Britvic acquisition). 5-10Y forward growth of 5.5% aligned with qualitative guidance [volume 1.0% + price/mix 2.5% + Asia/Britvic expansion 1.5% - margin drag 0.5% + buybacks 1.0%]. PAR multiple strictly governed by 5Y cycle high guardrail (12.57x)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 68.5816,
+    "current_multiple": 14.88,
+    "par_multiple": 12.57,
+    "par_value": 862.07,
+    "percent_vs_par": 0.1838,
+    "status": "Above PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0265,
+    "expected_irr_5y": 0.0465,
+    "market_implied_cap": 17.8,
+    "moat_runway_margin": -2.8,
+    "market_implied_growth": -0.013,
+    "growth_margin_of_safety": 0.068
+  },
+  "health_checks": {
+    "net_debt_years": 9.93,
+    "net_debt_ok": false,
+    "interest_coverage": 4.1,
+    "interest_cov_ok": false,
+    "fcf_conversion": 1.15,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

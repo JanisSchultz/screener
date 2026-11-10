@@ -1,0 +1,30 @@
+{
+  "id": "A5G.IE",
+  "ticker": "A5G",
+  "universe": "eu",
+  "company": "AIB Group",
+  "country": "Ireland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irish banking duopoly with Bank of Ireland following foreign bank exits (KBC, Ulster Bank). Sticky, low-cost domestic deposit base provides switching cost advantage in daily retail and commercial banking; however, pricing on retail mortgages faces ongoing domestic political and regulatory scrutiny.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). AIB Group benefits from an Irish retail banking duopoly and sticky domestic deposits, but commercial banking possesses a structurally short competitive advantage period (Tier 4 fade rate). As ECB policy rates normalize downward, net interest margins face cyclical contraction, while digital neo-banks (e.g., Revolut) continue to disintermediate high-margin payment and transactional workflows.",
+    "evidence": "AIB Group commands ~30-32% share of Irish mortgages and >35% of domestic deposits after Ulster Bank and KBC exited the market. While ROTE peaked at >20% in 2024-2025 during the peak of ECB rate hikes, 10-year average ROE is modest at ~7.5-8.0%, weighed down by zero-rate era compression and 2020 pandemic provisions. Net interest income accounts for the vast majority of operating income, leaving earnings exposed to the ECB monetary easing cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "gate_4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

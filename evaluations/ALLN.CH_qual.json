@@ -1,0 +1,30 @@
+{
+  "id": "ALLN.CH",
+  "ticker": "ALLN",
+  "universe": "eu",
+  "company": "Allreal",
+  "country": "Switzerland",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local Zurich and Geneva property portfolio and general contracting integration, but returns are tied to local construction cycles and Swiss prime yields without distinct franchise pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Swiss real estate owner and general contractor; ROE excl. revaluations is ~5.7% and ROIC ~4-5%, failing Gate 3b proof of moat and lacking franchise pricing power.",
+    "evidence": "Net profit excl revaluations CHF 122m on CHF 2.7B+ equity (ROE ~5.7%); rental income ~CHF 204m with ROIC ~4-5% well below the 12% hurdle. General contracting division exposed to competitive bidding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

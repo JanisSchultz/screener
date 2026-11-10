@@ -1,0 +1,30 @@
+{
+  "id": "REG",
+  "ticker": "REG",
+  "universe": "us",
+  "company": "Regency Centers Corporation",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Entitled infill grocery-anchored shopping centers in high-density suburban markets are protected by municipal zoning barriers and land scarcity. However, capital efficiency is structurally capped by commercial property cap rates (5-7%), resulting in a 10-year median GAAP ROIC of only 5.1%, well below the 12% threshold. Pricing power is limited to contractual 2-3% lease bumps and cyclical re-leasing spreads, with ongoing tenant disintermediation risks from e-commerce.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.1% < 12%, REJECT). Established grocery-anchored suburban shopping center REIT with high-quality infill real estate in affluent suburban trade areas. While municipal zoning restrictions and physical site scarcity provide localized barriers to entry, commercial real estate asset yields of 5-7% structurally prevent the business from achieving the required 12% multi-cycle GAAP ROIC hurdle. Pricing power is constrained by retail tenant lease negotiation dynamics and long-term secular competition from digital commerce.",
+    "evidence": "10-year median GAAP ROIC is 5.1% (FY2024-2025 ROIC ~4.7-5.0%), failing the >=12% proof-of-moat hurdle. Portfolio comprises ~480 shopping centers (>80% grocery-anchored by dominant operators like Publix, Kroger, Whole Foods, Albertsons) across high-income suburban US markets. Leased occupancy remains high at ~96.5% with same-property NOI growth of ~3-5% post-pandemic, but contractual rent escalators average 2-3% annually. Total consolidated debt of ~$5.0B with net debt-to-EBITDAre of ~5.1x and fixed-charge coverage of ~4.1-4.3x reflect disciplined investment-grade REIT leverage, but sub-hurdle asset-level returns on capital permanently disqualify the business under Munger compounding standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RAND.NL",
+  "ticker": "RAND",
+  "universe": "eu",
+  "company": "Randstad",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Human Resource & Employment Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global #1 staffing scale and digital platform provide operational efficiency, but customer switching barriers are low and enterprise clients routinely multi-source. Pricing power is confined to passing on statutory wage inflation without gross margin spread expansion. ROIC is volatile across the economic cycle, falling to 8.9% in 2024 (10.4% in 2020), failing the standard of durable through-cycle 12%+ capital efficiency.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). World's largest staffing agency boasts excellent operational discipline and a clean balance sheet, but operates in a commoditized, low-barrier industry with near-zero client switching costs and zero real pricing power. Capital returns are cyclical and fell to 8.9% in 2024, failing the durable 12% ROIC proof-of-moat hurdle.",
+    "evidence": "ROIC exhibits extreme cyclicality: FY2020 10.4%, FY2021 16.8%, FY2022 17.9%, FY2023 14.6%, FY2024 8.9%. Gross margins (19-20%) and EBITA margins (3.5-4.5%) lack pricing power above wage inflation. Corporate clients face low switching costs, and the business faces long-term structural headwinds from AI-driven recruitment and white-collar automation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

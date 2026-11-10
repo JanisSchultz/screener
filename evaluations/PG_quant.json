@@ -1,0 +1,43 @@
+{
+  "id": "PG",
+  "ticker": "PG",
+  "universe": "us",
+  "company": "Procter & Gamble",
+  "price": 165.4,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Premier global consumer staples fortress with 20+ billion-dollar Lindy brands across daily household and personal care routines. Operating ROIC normalized to the 35.0% cap, reflecting unbounded (>100%) tangible operating return on core working assets and 23.2% 10Y median GAAP ROIC. Fortress balance sheet features $22.84B LT debt vs $9.94B cash (1.42x net debt/NI) and elite 22.52x interest coverage ($19.75B EBIT vs $877M interest), with 96.6% Owner FCF conversion ($15.9B FCF) powering 68 consecutive years of dividend hikes and steady buybacks. 5-10Y g of 6.0% is driven by 2.0% organic volume, 2.0% price/mix, 0.5% margin expansion, and 1.5% net share repurchases. At $165.40, trades Above PAR at 24.97x peak Owner EPS vs 23.94x PAR Multiple (+4.3% premium to $158.54 PAR Value), offering an expected 5Y IRR of 7.8% (high-grade compounder hold, awaiting pull-to-PAR entry)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.6237,
+    "current_multiple": 24.97,
+    "par_multiple": 23.94,
+    "par_value": 158.54,
+    "percent_vs_par": 0.0433,
+    "status": "Above PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.0267,
+    "expected_irr_5y": 0.0777,
+    "market_implied_cap": 20.9,
+    "moat_runway_margin": -0.9,
+    "market_implied_growth": 0.0755,
+    "growth_margin_of_safety": -0.0155
+  },
+  "health_checks": {
+    "net_debt_years": 1.42,
+    "net_debt_ok": true,
+    "interest_coverage": 22.52,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9664,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ALGN",
+  "ticker": "ALGN",
+  "universe": "us",
+  "company": "Align Technology",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket cosmetic orthodontic treatment; predominantly paid out-of-pocket and readily deferred during economic downturns.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Category pioneer in clear aligners (Invisalign) and intraoral scanners (iTero), but primarily serves discretionary, aesthetic adult and teen orthodontic demand ($3,000–$7,000 per case). Because treatment is overwhelmingly funded out-of-pocket rather than reimbursed by medical insurance, consumers readily defer case starts during inflationary pressure and economic uncertainty. Post-pandemic performance demonstrates acute cyclical sensitivity: revenues have stagnated at ~$4.0B from 2021 to 2025 while operating margins compressed from 25.8% to ~13.5% under heavy promotional discounting to combat post-patent competition (Envista's Spark, Straumann's ClearCorrect, Angelalign).",
+    "evidence": "Align Technology generated ~$4.04B in revenue in FY2025 (~$3.2B Clear Aligners / Invisalign, ~$770M Systems & Services / iTero & exocad), virtually flat compared to $3.95B in FY2021. Gross margins declined from 74.3% in 2021 to ~68.3% in 2025, and operating margins contracted from 25.8% to ~13.5% over the same period. ROIC has fallen from >20% to ~11-13%. Although the company maintains an unleveraged fortress balance sheet with no long-term debt and >$1.0B in cash, the business model is inherently vulnerable to consumer discretionary spending cycles and lacks pricing power against emerging clear aligner alternatives following core patent expirations."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "GBLB.BE",
+  "ticker": "GBLB",
+  "universe": "eu",
+  "company": "Groupe Bruxelles Lambert",
+  "country": "Belgium",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "SGS provides testing and certification switching-cost advantages, and Pernod Ricard/adidas possess consumer brand intangibles. However, major consolidated and look-through assets like Imerys (mineral extraction) and legacy Umicore (materials) are commodity price-takers with sub-hurdle multi-cycle ROIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Reject). Look-through portfolio of mixed listed and private assets (Imerys, Pernod Ricard, adidas, legacy Umicore) fails to generate sustainable 12%+ ROIC or reliable pricing power across the cycle. Sub-hurdle capital efficiency and sluggish NAV progression reflect structural quality deficiencies in underlying holdings.",
+    "evidence": "GBL's portfolio is anchored by industrial mineral producer Imerys (ROIC <8%) and consumer holdings facing destocking and demand headwinds. Look-through ROIC over the past 5-10 years has consistently languished below the 12% hurdle rate, leading to persistent 30%+ NAV holding discounts."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PFG",
+  "ticker": "PFG",
+  "universe": "us",
+  "company": "Principal Financial Group",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While retirement plan record-keeping and employee benefit administration feature administrative switching costs, the business lacks pricing power. Plan sponsors regularly benchmark 401(k) and record-keeping fees, driving multi-year secular fee compression. 10-year median ROIC of 9.8% falls short of the 12% hurdle. Primary erosion threats include fee deflation from low-cost scale aggregators (Empower, Vanguard, Fidelity) and passive product migration.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 9.8% < 12%, REJECT). While Principal Financial benefits from administrative switching costs in retirement plan record-keeping and group benefits, it lacks pricing power >= inflation due to persistent secular fee compression across defined contribution plans and asset management. 10-year median ROIC of 9.8% fails the 12% capital efficiency hurdle.",
+    "evidence": "Principal Financial Group operates across Retirement and Income Solutions (RIS), Principal Asset Management, and Benefits and Protection. 10-year median ROIC of 9.8% consistently fails the 12% threshold. Operating ROE averages 13-15% on a leveraged equity base, but un-levered capital efficiency is diluted by spread-based liabilities and statutory capital reserves. The retirement record-keeping industry has faced structural fee compression driven by DOL fee disclosure rules, fiduciary litigation, and aggressive pricing from low-cost scale operators like Vanguard and Empower. PFG has exited retail fixed annuities to focus on capital-light fee businesses, but fee realization per participant and asset management basis points remain under sustained downward pressure, preventing real pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "MKC",
+  "ticker": "MKC",
+  "universe": "us",
+  "company": "McCormick & Company",
+  "price": 48.4,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.055,
+    "roic_est": 0.35,
+    "fin_note": "Category-captain leader in consumer spices, seasonings, and flavors. GAAP ROIC of 9.6% is heavily depressed by $8.6B in accumulated goodwill and intangibles from the RB Foods (Frank's/French's) and Cholula transactions; operating ROIC on tangible invested capital exceeds 100%, normalized to the 35.0% cap under the v6.23 M&A goodwill neutralization principle. Balance sheet deleveraging continues steadily (Net Debt/NI reduced to 3.8x, interest coverage 5.5x). Peak Owner EPS of $2.97 in FY2025 is a genuine all-time high with ~89% cash conversion. 5-10Y through-the-cycle growth of 5.5% reflects 1.5% organic volume, 2.0% pricing/mix, 1.5% margin recovery/deleveraging, and 0.5% bolt-on M&A."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.9655,
+    "current_multiple": 16.32,
+    "par_multiple": 23.33,
+    "par_value": 69.18,
+    "percent_vs_par": -0.3004,
+    "status": "Below PAR",
+    "g_implied": 0.055,
+    "dividend_yield": 0.0371,
+    "expected_irr_5y": 0.1702,
+    "market_implied_cap": 14.0,
+    "moat_runway_margin": 6.0,
+    "market_implied_growth": -0.0501,
+    "growth_margin_of_safety": 0.1051
+  },
+  "health_checks": {
+    "net_debt_years": 3.93,
+    "net_debt_ok": true,
+    "interest_coverage": 5.46,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.893,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

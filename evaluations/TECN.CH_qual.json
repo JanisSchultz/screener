@@ -1,0 +1,30 @@
+{
+  "id": "TECN.CH",
+  "ticker": "TECN",
+  "universe": "eu",
+  "company": "Tecan",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lab automation software and OEM diagnostics components have switching costs, but low pricing power in OEM contract manufacturing (Paramit) and cyclical lab instrument capex depress multi-year ROIC to ~7-8% (and negative with 2025 impairment), failing the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Respected Swiss lab-automation engineer, but high exposure to cyclical lab instrument capex and lower-margin contract manufacturing (Paramit) compressed adjusted margins to 16% and triggered a CHF 140M goodwill impairment, leaving multi-year ROIC well below the 12% hurdle.",
+    "evidence": "Adjusted EBITDA margins compressed from 20.5% (2023) to 16.1% (2025). The $1.0B acquisition of Paramit diluted returns and caused a CHF 139.5M goodwill write-down in 2025 (CHF -110.7M net loss). Multi-year ROIC hovers around 7-8%, well beneath the 12% threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

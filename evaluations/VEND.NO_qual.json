@@ -1,0 +1,30 @@
+{
+  "id": "VEND.NO",
+  "ticker": "VEND",
+  "universe": "eu",
+  "company": "Vend Marketplaces",
+  "country": "Norway",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While FINN.no maintains strong localized classified network effects in Norway, the consolidated group fails the empirical proof-of-moat hurdle with a 5-year median GAAP ROIC of only 2.5%, sub-15% tangible ROIC, and negative operating income in FY25 (-NOK 166M).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Consolidated entity fails the empirical proof-of-moat hurdle with a 5-year median GAAP ROIC of only 2.5% (and FY25 EBIT of -NOK 166M). Erratic capital efficiency, complex corporate reorganizations, and negative operating margins post-Schibsted demerger fail to demonstrate sustained group-wide pricing power.",
+    "evidence": "5-year median GAAP ROIC is 2.5% (0.0246) and tangible ROIC median is ~3.4%, far below the 12%/15% hurdles. FY25 EBIT was -NOK 166M with net income of -NOK 184M. Multi-year corporate restructuring following the news media demerger to Tinius Trust and the Adevinta private equity buyout has produced severe earnings volatility and depressed consolidated returns on capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

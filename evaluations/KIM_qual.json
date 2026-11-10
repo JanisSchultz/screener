@@ -1,0 +1,30 @@
+{
+  "id": "KIM",
+  "ticker": "KIM",
+  "universe": "us",
+  "company": "Kimco Realty Corporation",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scarce entitled infill locations and local municipal zoning restrict new open-air retail development, but Kimco lacks pricing power above inflation and fails the proof-of-moat capital return test. 5-year median ROIC is ~2.2%, well below the 12% threshold, with contractual 1.5-3.0% rent escalators constrained by tenant occupancy costs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 2.2%, REJECT). While Kimco owns high-quality grocery-anchored shopping centers on scarce infill suburban land, retail real estate generates structurally sub-hurdle returns on capital (5Y median ROIC ~2.2% vs. 12% threshold). Contractual lease escalators are modest and pricing power is constrained by tenant retail economics, failing Charlie Munger's proof-of-moat standard.",
+    "evidence": "5-year median GAAP ROIC is ~2.2% (FY20: 1.94%, FY21: 1.54%, FY22: 2.12%, FY23: 2.42%, FY24: 2.12%, FY25: 2.60%), with 10-year median ROIC of 4.8%, far below the 12% minimum hurdle. Total debt stands at ~$8.86B against FY25 net income of $592.8M and FFO of ~$1.2B, reflecting real estate leverage required to support low asset yields. Significant acquisitive expansion (RPT Realty $2.0B all-stock acquisition in 2024, Weingarten in 2021) expands gross leasable area across Coastal/Sunbelt hubs but fails to overcome structural real estate capital intensity and thin tenant spread economics."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

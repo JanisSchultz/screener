@@ -1,0 +1,30 @@
+{
+  "id": "NDSN",
+  "ticker": "NDSN",
+  "universe": "us",
+  "company": "Nordson Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "(1) Moat Barriers: High customer switching costs and razor-and-blade consumable lock-in. Nordson's precision dispensing equipment is custom-engineered directly into customer assembly lines and medical device specifications. While dispensing hardware represents <1% of total production line cost, dispenser failure causes catastrophic line shutdowns or product ruin. Customers rely on Nordson's proprietary replacement nozzles, valves, hoses, and tips (~45-50% recurring revenue). In medical, fluid components are locked into regulatory filings (FDA 510(k)/PMA). (2) Empirical Proof: 10-year median ROIC of 17.2%, gross margins consistently 53-56% across cycles, EBITDA margins of 30-32%, and 61 consecutive years of annual dividend increases. (3) Erosion Threats: Cyclical customer capex freezes in electronics/semiconductors; potential commoditization of lower-end fluid dispensing by Asian competitors; and integration execution on larger acquisitions (ARAG, Atrion).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global precision dispensing and fluid management leader with embedded switching costs and 45-50% recurring aftermarket consumable revenue. Structurally insulated across all 5 macrotrends: active hardware enabler of automation (AI chip packaging, robotic assembly) and demographic healthcare tailwinds (medical fluid delivery), with zero unhedged exposure to energy or structural inflation. Balance sheet fortress with $660M+ FCF, 7.0x interest coverage, and LT debt/NI at 3.5x with rapid organic deleveraging. [5-10Y g: industrial/medical volume 3.0% + pricing power 1.5% + portfolio mix/reinvestment 1.5% - integration/cyclicality drag 0.5% + net share buybacks 1.0%]",
+    "evidence": "Multi-cycle financial performance anchors quality: 10-year median ROIC of 17.2%; gross margins exceptionally stable between 53% and 56% over 10+ years; EBITDA margins 30-32%. FY2025 revenue reached $2.79B with operating income of $711.7M and Net Income of $484.5M. Owner FCF was $661.1M in FY25 (136% conversion) and $491.8M in FY24 (105% conversion), exceeding the 80% FCF conversion threshold. Balance sheet is strong: Long-term debt reduced from $2.10B in FY24 to $1.68B in FY25 ($1.99B total debt) following the $800M Atrion acquisition; LT debt / Net Income is 3.47x (passes <= 4.0x); FY25 interest coverage (EBIT / Interest) is 7.04x ($711.7M / $101.1M, passes > 5.0x). Segment breakdown: Industrial Precision Solutions (~48%), Medical and Fluid Solutions (~28%), and Advanced Technology Solutions (~24%). 61 consecutive years of dividend growth."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

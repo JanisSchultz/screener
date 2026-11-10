@@ -1,0 +1,30 @@
+{
+  "id": "LNT",
+  "ticker": "LNT",
+  "universe": "us",
+  "company": "Alliant Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise service territories in Wisconsin (WPL) and Iowa (IPL). Non-replicable electric and gas transmission/distribution grid provides natural monopoly toll-booth economics, with authorized ROE of ~9.8-10.0% protected by constructive state regulatory compacts.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated electric and gas monopoly utility serving Iowa and Wisconsin with constructive regulatory relations. However, heavy ongoing capital expenditures ($2.28B capex vs $1.17B OCF in FY2025) generate continuous negative free cash flow and elevate long-term debt to $11.0B (13.5x net income) with thin 2.00x interest coverage, requiring perpetual reliance on debt and equity capital markets.",
+    "evidence": "FY2025 revenue of $4.36B, EBIT of $1,025M, and net income of $810M. 10-year median GAAP ROIC is 5.01%. Balance sheet carries $10.95B in long-term debt against $556M cash, resulting in 13.5x debt/NI (threshold <=4.0x) and 2.00x interest coverage (EBIT $1,025M / Interest $512M, threshold >5.0x). Capex of $2,277M substantially exceeded OCF of $1,169M in FY2025."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

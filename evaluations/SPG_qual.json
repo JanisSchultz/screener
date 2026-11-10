@@ -1,0 +1,30 @@
+{
+  "id": "SPG",
+  "ticker": "SPG",
+  "universe": "us",
+  "company": "Simon Property Group, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "SPG holds premier Class-A malls, The Mills, and Premium Outlets occupying scarce, highly entitled infill real estate in affluent US metros where physical replication is practically impossible. However, the business structurally fails empirical moat return hurdles: 10-year and 5-year median GAAP ROIC is 5.8%-7.5% (well below the 12% Munger threshold). Primary erosion threats stem from secular e-commerce substitution, tenant apparel bankruptcies, co-tenancy lease protections, and the ongoing capital reinvestment required to redevelop vacant anchor department stores into mixed-use spaces.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 5.8%-7.5% < 12%, REJECT). Premier retail REIT owning top-tier Class-A malls and Premium Outlets on irreplaceable infill locations, but capital-intensive commercial real estate structure yields structural multi-cycle GAAP ROIC well below the 12% threshold. E-commerce secular substitution and retailer negotiating leverage constrain through-cycle pricing power above inflation.",
+    "evidence": "10-year median GAAP ROIC is ~7.5%, with FY23-FY25 annual ROIC ranging between 5.8% and 7.4%, failing the Gate 3b >= 12% hurdle. While Simon achieves high domestic property occupancy (~96%) and positive leasing spreads, operating income before other items has remained flat-to-modest ($1.46B in 2024 vs $1.52B in 2023) on an invested capital base over $30B. Net debt to EBITDA stands at ~5.2x with >$25B in debt, reflecting a leveraged real estate model that fails the Munger hurdle for high-return compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

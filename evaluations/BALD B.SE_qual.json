@@ -1,0 +1,30 @@
+{
+  "id": "BALD B.SE",
+  "ticker": "BALD B",
+  "universe": "eu",
+  "company": "Fastighets Balder",
+  "country": "Sweden",
+  "sector": "Real Estate",
+  "sub_industry": "Real Estate Operating Companies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commercial and residential real estate leasing operates in competitive, fragmented local markets with undifferentiated physical space. Lacks pricing power above inflation and structurally fails the 12% ROIC threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing: ROIC 2.5-3.5% vs 12% hurdle; archetype 'None', REJECT). Commercial and residential real estate operating company lacking structural pricing power or an economic moat. Compounding historically relied on high financial leverage, which reversed during Nordic interest rate shocks.",
+    "evidence": "Fastighets Balder historical GAAP ROIC tracks between 2.5% and 3.5%, reflecting unlevered net rental yields on commercial and residential property in Sweden and Finland. Net debt to EBITDA exceeded 10x-12x prior to rate spikes, with debt-financed asset growth lacking an economic moat."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

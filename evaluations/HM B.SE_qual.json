@@ -1,0 +1,30 @@
+{
+  "id": "HM B.SE",
+  "ticker": "HM B",
+  "universe": "eu",
+  "company": "H&M",
+  "country": "Sweden",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary fast-fashion apparel; purchases are deferrable and non-essential during economic downturns, highly vulnerable to fashion cycle shifts and low-cost substitution.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need). Fast-fashion apparel is discretionary, deferrable, and easily forgone during economic downturns. H&M lacks Lindy brand equity or mission-critical utility, facing severe competitive substitution from ultra-fast-fashion platforms (Shein, Temu) and agile near-sourced peers (Zara).",
+    "evidence": "H&M operates over 4,000 stores globally in fast fashion. When inflation and cost-of-living pressures squeezed European consumers in 2022-2024, sales stalled and operating margins compressed to 6-8%, requiring heavy promotional markdowns to clear seasonal inventory. Discretionary, trend-driven fashion fails Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ROR.GB",
+  "ticker": "ROR",
+  "universe": "eu",
+  "company": "Rotork",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Safety-critical valve actuators and flow control equipment embedded in customer Approved Vendor Lists (AVLs); high switching costs and >24% recurring service revenue support 30%+ ROCE and >20% operating margins.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Rotork is a high-return niche leader in actuators with >30% ROCE, ~45% of group revenue remains tied to Oil & Gas midstream and upstream capex. Macrotrend 4 (Energy Transition) poses an active long-term terminal headwind to fossil fuel pipeline and extraction infrastructure, capping competitive advantage period at 10 years.",
+    "evidence": "FY2025 revenue £777.3m, with Oil & Gas at £351m (45%), Water & Power at £223m (29%), and CPI at £203m (26%). ROCE was 38.4% in FY2025 (37.3% in FY2024), adjusted operating margin 24.6%, cash conversion 101%, with £125m+ net cash. High capital efficiency, but secular terminal headwinds on 45% oil/gas exposure limit CAP."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

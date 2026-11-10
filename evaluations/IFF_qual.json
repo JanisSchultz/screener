@@ -1,0 +1,30 @@
+{
+  "id": "IFF",
+  "ticker": "IFF",
+  "universe": "us",
+  "company": "International Flavors & Fragrances",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Proprietary formulation libraries and co-development with global CPG brand owners create significant switching barriers in core flavors and fragrances. Ingredients represent <1-2% of finished goods COGS while dictating 100% of sensory taste and scent identity, granting pricing power demonstrated by ~$1.0B in gross cost inflation recovery during 2022-2023. However, severe customer destocking and volume elasticity during the inflationary shock illustrated operating vulnerabilities.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While core flavor and fragrance formulations possess switching barriers, IFF's competitive advantage period is severely truncated by the catastrophic $7.1B Frutarom (2018) and $26.2B DuPont Nutrition & Biosciences (2021) mega-mergers. Under the 5-Macrotrend framework, IFF faces acute headwinds on Macrotrend 5 (Cost of Capital & Structural Inflation) and Macrotrend 3 (Geopolitical/Botanical Supply Chain): over $8B in debt forced emergency portfolio pruning (Pharma Solutions, Cosmetic Actives), a 50% dividend cut, and over $6B in cumulative goodwill write-downs ($2.25B in 2022, $2.62B in 2023, $1.15B in 2025). Severe volume destruction during the 2022-2023 inflation cycle proved that debt-burdened specialty chemical rollups lack enduring secular compounding resilience. Calamity Tier is disqualified as Anchor Gate 4 fails (CAP < 15).",
+    "evidence": "Multi-Cycle Financial Track Record: 10-year median GAAP ROIC collapsed to 5.2% (FY22: negative due to $(1.86B) net loss; FY23: 1.9% with $(2.56B) net loss; FY24: ~2.5% on $243M net income; FY25: negative due to $(359M) net loss and $1.153B Food Ingredients impairment). Multi-year cumulative goodwill impairments exceed $6.0B. Free cash flow volatile ($979M in 2023, $623M in 2024, $275M in 2025). Segment Profile: Nourish/Taste, Scent, Health & Biosciences, and divested Pharma Solutions. Pricing & Volume Dynamics: Recovered ~$1.0B in pricing during 2022-2023 inflation, but triggered extensive customer destocking and significant volume contractions across Nourish, before stabilizing with ~6% comparable volume rebound in 2024 led by Scent. M&A & Capital Allocation Disaster: 2018 Frutarom ($7.1B) and 2021 DuPont N&B ($26.2B) loaded balance sheet with >$11B gross debt and unsupportable goodwill. Under activist pressure and new CEO Erik Fyrwald, management executed emergency repair: divested Microbial Control ($1.3B), Savory Solutions ($900M), Cosmetic Actives ($980M), and Pharma Solutions ($2.85B) to tender debt down from ~$9.6B to ~$4.7-6.0B (net leverage ~3.3x S&P-adjusted), accompanied by a 50% dividend cut in 2024. Massive historical capital misallocation permanently destroyed per-share intrinsic value runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

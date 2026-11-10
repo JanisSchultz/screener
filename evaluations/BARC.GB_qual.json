@@ -1,0 +1,30 @@
+{
+  "id": "BARC.GB",
+  "ticker": "BARC",
+  "universe": "eu",
+  "company": "Barclays",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (REJECT). Barclays is a universal banking group with a massive global Investment Bank division (£11B+ income, ~40% of group total) carrying complex trading books, extensive derivative liabilities, and opaque market-making balance sheet exposures that cannot be verified or modeled from the outside by an independent investor.",
+    "evidence": "Barclays operates across UK retail banking, UK corporate banking, US consumer cards, and a global Investment Bank (Global Markets and Investment Banking fees). The Investment Bank division ties up the majority of group risk-weighted assets and generates volatile earnings with substantial Level 2/3 fair value instruments. Over the last decade, group RoTE has frequently languished below its cost of equity (averaging 7-9%), with recurring restructuring charges and litigation provisions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "gate_1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

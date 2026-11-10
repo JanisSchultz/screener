@@ -1,0 +1,30 @@
+{
+  "id": "DD",
+  "ticker": "DD",
+  "universe": "us",
+  "company": "DuPont",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialty materials qualified into customer engineering, safety, and regulatory specifications create customer switching barriers (Tyvek, Kevlar, Nomex, FilmTec water filtration). However, fails proof of moat with a 10-year median ROIC of ~7.8% and 2024–2026 ROIC hovering at 3.4%–4.1%, well below the 12% hurdle and failing to exceed cost of capital. Key erosion threats include cyclical end-market swings, customer substitution, raw material inflation, and lingering legacy environmental (PFAS) liabilities.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). DuPont fails the Munger proof-of-moat requirement with a 10-year median ROIC of ~7.8% and 2024–2026 ROIC languishing at 3.4%–4.1%, consistently trailing its ~8% cost of capital. Despite switching costs in qualified specialty materials (Tyvek, Kevlar, Nomex, water filtration membranes), serial corporate restructurings (DowDuPont separation, Celanese divestiture, Qnity Electronics spinoff), recurring asset write-downs, cyclical end-market exposure, and substantial legacy PFAS liabilities prevent economic value creation.",
+    "evidence": "Empirical capital efficiency over the trailing decade shows structural inability to clear the 12% ROIC hurdle: 10-year median ROIC is 7.8% and average ROIC is below 4% due to large asset impairments, restructuring charges, and cyclical troughs. In 2024–2026, ROIC remained depressed at 3.4%–4.1% against an ~8% WACC. Free cash flow generation has been volatile ($473M in FY2024, $227M standard / $689M transaction-adjusted in FY2025, ~$793M TTM in 2026), heavily burdened by separation transaction expenses and ongoing multi-billion-dollar PFAS legacy liabilities. The core business lacks the pricing power and reinvestment returns required of an elite compounder."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

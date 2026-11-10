@@ -1,0 +1,30 @@
+{
+  "id": "GFC.FR",
+  "ticker": "GFC",
+  "universe": "eu",
+  "company": "Gecina",
+  "country": "France",
+  "sector": "Real Estate",
+  "sub_industry": "Office REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Prime central Paris commercial and residential real estate portfolio with high occupancy, but yields ~4.5% and ROIC well below 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (REJECT). Prime central Paris office and residential landlord holds occupancy, but unlevered property yields of ~4.5% and ROIC well below 12% hurdle fail Gate 3b proof of moat, while hybrid work dampens long-term office demand.",
+    "evidence": "Recurrent net income ~€495m on €6.1B+ net debt (~12x net debt/recurrent earnings); portfolio capitalization rates 4.6-4.9% and ROIC < 5% fail the 12% capital efficiency threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

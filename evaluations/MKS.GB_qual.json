@@ -1,0 +1,30 @@
+{
+  "id": "MKS.GB",
+  "ticker": "MKS",
+  "universe": "eu",
+  "company": "Marks & Spencer",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Consumer Staples Merchandise Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High street retail price-taker in a hyper-competitive UK grocery and apparel market. Lacks defensible switching costs or scale economies shared against discounters (Aldi, Lidl) and dominant supermarket chains (Tesco, Sainsbury's). 5-year median GAAP ROIC (~7-8%) sits far below the 12% hurdle, with Food operating margins constrained to ~4-5% and exposed to UK national living wage increases and business rates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype = None, 3b = N, REJECT). UK department and grocery retailer lacks pricing power and defensible structural barriers against discounters (Aldi/Lidl) and online apparel competitors. 5-year median GAAP ROIC (~7-8%) sits well below the 12% hurdle despite recent turnaround progress.",
+    "evidence": "Operating margins in Food hover at ~4.7-5.4% while Fashion/Home reaches ~10-11%, but multi-year GAAP ROIC has averaged ~7-8% over the full 2020-2024 cycle due to lease liabilities, Ocado Retail JV write-downs, and structural UK living wage pressures. Retail price-taker lacking durable pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

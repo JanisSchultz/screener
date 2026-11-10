@@ -1,0 +1,30 @@
+{
+  "id": "FGR.FR",
+  "ticker": "FGR",
+  "universe": "eu",
+  "company": "Eiffage",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable French toll motorway network (APRR/AREA) spanning key north-south European transit corridors. Concession tariffs are contractually indexed to French CPI, ensuring reliable pricing power. 5-year median ROIC of 13.4% and ~71% motorway EBITDA margins prove structural moat strength.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential French toll motorway network (APRR/AREA) generating high-margin non-displaceable cash flows, complemented by secularly growing energy infrastructure services. Exceptional employee-ownership culture (>70% staff participation) aligns capital allocation. Non-recourse concession debt covered by 6.4x EBIT/interest and >200% FCF conversion. [5-10Y g: traffic volume 1.0% + toll inflation escalation 2.5% + energy systems mix 1.5%]",
+    "evidence": "APRR/AREA concessions provide ~64% of operating profit with ~71% EBITDA margins. 5-year median ROIC is 13.4%, exceeding the 12% hurdle. Owner FCF conversion averaged over 200% from 2022 to 2025 (€2.3B+ Owner FCF in FY2025 vs €1.02B Net Income). EBIT/interest coverage is 6.36x, comfortably surpassing the infrastructure concession threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

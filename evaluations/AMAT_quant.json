@@ -1,0 +1,43 @@
+{
+  "id": "AMAT",
+  "ticker": "AMAT",
+  "universe": "us",
+  "company": "Applied Materials",
+  "price": 332.72,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": null,
+    "fin_note": "Capital-efficient semiconductor equipment leader delivers 5-year median GAAP ROIC of 43.4% and tangible operating ROIC of 58.5% (naturally capping the ROIC factor at 35.0%) with an unencumbered balance sheet ($3.93B goodwill vs $20.42B equity). 5-10Y through-the-cycle growth of 9.0% driven by 5.0% WFE wafer volume expansion, 1.5% pricing and process complexity tailwinds (GAA nanosheets, BSPDN, hybrid bonding), 1.0% high-margin AGS installed-base service mix, plus 1.5% net share buybacks. Fortress balance sheet in a net cash position of +$786M ($7.24B cash vs $6.46B LT debt, 0.92x NI leverage), 30.8x EBIT interest coverage, and robust 94.2% Owner FCF conversion. BIS settlement resolves legacy export inquiries. Current price of $332.72 trades at 38.42x peak Owner EPS ($8.6609) vs fundamental PAR Multiple of 28.06x (PAR Value $243.04), placing AMAT Above PAR (+36.9% premium) with a 5Y expected IRR of 2.9%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.6609,
+    "current_multiple": 38.42,
+    "par_multiple": 28.06,
+    "par_value": 243.04,
+    "percent_vs_par": 0.369,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0052,
+    "expected_irr_5y": 0.0289,
+    "market_implied_cap": 20.5,
+    "moat_runway_margin": -5.5,
+    "market_implied_growth": 0.2453,
+    "growth_margin_of_safety": -0.1553
+  },
+  "health_checks": {
+    "net_debt_years": 0.92,
+    "net_debt_ok": true,
+    "interest_coverage": 30.81,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9419,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

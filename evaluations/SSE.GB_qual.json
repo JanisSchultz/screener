@@ -1,0 +1,30 @@
+{
+  "id": "SSE.GB",
+  "ticker": "SSE",
+  "universe": "eu",
+  "company": "SSE",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable Scottish electricity transmission and distribution network monopolies under Ofgem RIIO regulation, combined with prime offshore wind farms backed by long-term UK government Contracts for Difference (CfDs). Inflation indexing protects revenues, but returns are constrained by regulatory allowed returns and merchant commodity power exposure.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (gate_6 = N, REJECT). Essential UK regulated transmission/distribution networks and leading offshore wind developer, but structurally fails the fortress balance sheet and self-funded cash conversion standards. FY2025 capex of £4.44B vastly exceeds operating cash flow (£3.44B), resulting in negative free cash flow after capex (-£1.01B). Net debt of £7.00B is 5.8x net income (£1.21B), requiring ongoing debt financing and minority asset stake sales to maintain liquidity.",
+    "evidence": "Reported 5-year median GAAP ROIC is 8.14%, constrained by Ofgem regulatory caps on networks and volatile wholesale power prices. FY2025 capex of £4.44B vs OCF of £3.44B generates a cash deficit of -£1.01B. Net debt of £7.00B represents 5.8x net income (£1.21B), while gross debt of £8.54B is 7.1x NI, both exceeding the 4.0x ceiling. Continuous dependence on capital markets and minority network stake sales (e.g. selling 25% of SSEN Transmission) violates Gate 6 balance sheet independence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

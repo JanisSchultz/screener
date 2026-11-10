@@ -1,0 +1,30 @@
+{
+  "id": "AIG",
+  "ticker": "AIG",
+  "universe": "us",
+  "company": "American International Group",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "AIG benefits from global multinational licensing, balance sheet capacity, and broker distribution for complex commercial risks. However, empirical proof of moat fails decisively: 10-year median ROIC of 7.5% and GAAP ROE of 7.5-8.6% fall well short of the 12% hurdle. Commercial P&C pricing is governed by cyclical market hard/soft dynamics rather than persistent structural pricing power, while broker intermediation (Marsh, Aon) and aggressive competition from peers (Chubb, Travelers, Zurich) arbitrage away excess returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite successful portfolio simplification under Peter Zaffino—culminating in the full separation and exit from Corebridge Financial by 2026—AIG remains a cyclical commercial P&C insurer. A 10-year median ROIC of 7.5% and recent ROIC of 5.0-7.5% fail the 12% hurdle rate. Underwriting profits remain subject to casualty social inflation, catastrophe volatility, and the broader commercial insurance pricing cycle rather than an enduring competitive moat.",
+    "evidence": "10-year median ROIC is 7.5%, with 2023-2025 ROIC hovering between 4.3% and 7.5%. GAAP ROE reached 8.6% in 2023 and 7.5% in 2025 (Core Operating ROE ~11.1%), failing the 12% multi-cycle hurdle. While General Insurance calendar combined ratio improved to 90.1%-92.9% and ex-CAT AYCR to ~88%, commercial lines lack persistent pricing power above inflation due to broker shopping (Marsh, Aon) and deep capacity from rival carriers. Successful execution of Corebridge (CRBG) sell-down through the Nippon Life deal and 2026 final exit simplified the corporate structure but does not lift baseline economic returns above cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

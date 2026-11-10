@@ -1,0 +1,30 @@
+{
+  "id": "USB",
+  "ticker": "USB",
+  "universe": "us",
+  "company": "U.S. Bancorp",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs in commercial primary banking relationships and treasury management, combined with toll-booth transaction economics in Elavon merchant acquiring (~26% of enterprise revenue). Empirically demonstrated by 12-15% normalized ROE (18%+ ROTCE) and sticky operational deposits. Primary erosion threats stem from fintech digital payment disruption, interchange fee legislative caps (Credit Card Competition Act), and deposit competition from money market alternatives.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). High-quality super-regional franchise with valuable Elavon payments integration and capable management, but inherently fails the peace-of-mind fortress balance sheet standard due to structural fractional-reserve banking leverage (~12.4x assets-to-equity), deposit duration/flight risk, and continuous capital retention required by regulatory frameworks rather than unencumbered owner free cash flow generation.",
+    "evidence": "Total assets ~$680B supported by ~$55B equity (~12.4x leverage). FY2024 net income of $6.30B expanded to $7.57B in FY2025 following full operational integration of MUFG Union Bank. ROE improved from 11.7% in 2024 to 13.0% in 2025 (ROA from 0.95% to 1.12%; NIM steady at 2.72%). Payment Services segment contributed $7.41B revenue (~26% of total), led by Elavon with $570B+ acquiring volume. CET1 capital ratio strengthened to ~10.5%+, but structural reliance on ~$500B in deposits and wholesale funding violates Gate 6 peace-of-mind solvency mandate."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:42:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

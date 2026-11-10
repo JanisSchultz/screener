@@ -1,0 +1,30 @@
+{
+  "id": "ELV",
+  "ticker": "ELV",
+  "universe": "us",
+  "company": "Elevance Health Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Managed Health Care",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Possesses significant regional scale advantages as the largest Blue Cross Blue Shield licensee (operating across 14 states with ~46M members) and vertical capabilities via Carelon. However, it lacks genuine unconstrained pricing power: statutory ACA minimum Medical Loss Ratios (80/85%) act as a regulatory cap on underwriting profitability, over 50% of revenue is tied to government reimbursement (Medicaid capitation and CMS Medicare Advantage benchmark rates), and medical cost surges (GLP-1 specialty pharmacy, elevated surgical utilization) cannot be dynamically passed through without rate approval delays and commercial membership attrition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Major US managed care organization operating Blue Cross Blue Shield plans across 14 states alongside Carelon health services. While network scale and local provider density provide meaningful cost advantages, the business lacks true pricing power >= inflation due to statutory ACA 80/85% medical loss ratio caps, state Medicaid reimbursement rate lags following redeterminations, and CMS Medicare Advantage rate determinations. Medical utilization and pharmacy cost spikes surge MLR (benefit expense ratio reached 90.0% in FY2025 and 93.5% in Q4 2025) and cannot be passed through immediately without driving customer churn.",
+    "evidence": "FY2024 revenue was ~$171B with net income of $5.98B; FY2025 revenue reached $197.6B with net income of $5.66B. Total debt was ~$31.2B in FY2024 and ~$32.0B in FY2025. Benefit expense ratio climbed from ~87-88% historically to 90.0% in FY2025 (spiking to 93.5% in Q4 2025) and ~90.2% expected in FY2026 due to Medicaid acuity mismatches and Medicare Part D seasonality under the Inflation Reduction Act. GAAP ROIC fell from historical 13-15% levels to 12.7% in FY2025 and single digits TTM in 2026. Elevance's reliance on annual government rate updates and statutory MLR rebate ceilings prevents real-time pass-through of healthcare inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ADDT B.SE",
+  "ticker": "ADDT B",
+  "universe": "eu",
+  "company": "Addtech",
+  "price": 314.2,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.1,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing SEK 10.4B acquired goodwill and intangibles; decentralized technical distributor operates under strict P/WC >45% hurdle generating 167% tangible ROIC and 22.8% median GAAP ROIC. FY25 peak Owner EPS SEK 11.02 reflects strong organic momentum and 131% FCF conversion. Forward 5-10Y compound growth of 10.0% reflects 2.5% organic volume, 1.5% pricing power, and 6.0% self-funded bolt-on acquisitions. Fundamental PAR Multiple of 28.44x yields PAR Value of SEK 313.46 vs current price SEK 314.20 (trades slightly Above PAR by 0.2%)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.02,
+    "current_multiple": 28.51,
+    "par_multiple": 28.44,
+    "par_value": 313.46,
+    "percent_vs_par": 0.0024,
+    "status": "Above PAR",
+    "g_implied": 0.1,
+    "dividend_yield": 0.0102,
+    "expected_irr_5y": 0.1097,
+    "market_implied_cap": 15.0,
+    "moat_runway_margin": 0.0,
+    "market_implied_growth": 0.101,
+    "growth_margin_of_safety": -0.001
+  },
+  "health_checks": {
+    "net_debt_years": 1.1,
+    "net_debt_ok": true,
+    "interest_coverage": 15.2,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.31,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

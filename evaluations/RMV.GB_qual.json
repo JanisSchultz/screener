@@ -1,0 +1,30 @@
+{
+  "id": "RMV.GB",
+  "ticker": "RMV",
+  "universe": "eu",
+  "company": "Rightmove",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched two-sided network effects create an indispensable toll booth for UK estate agents and home movers (>80% consumer portal time share). Demonstrated pricing power through unbroken multi-year ARPA expansion across housing cycles with operating margins ~70% and agency retention >90%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant UK property portal operating an indispensable two-sided network toll booth with >80% consumer attention share. Demonstrated pricing power through steady ARPA increases above inflation across housing cycles, ~70% operating margins, and a net-cash fortress balance sheet. [5-10Y g: agency branch count 0.0% + ARPA pricing/upsell 4.5% + new products (mortgages/commercial) 1.0% - defensive tech/marketing spend 0.5% + net share buybacks 2.5%]",
+    "evidence": "Multi-year GAAP ROIC >100% on minimal invested capital. Operating margins steady around 68-70%. FCF conversion is ~100% (£219.4M Owner FCF on £217.1M Net Income in FY25). Fortress net cash balance sheet with £37.1M cash against £3.6M debt (EBIT interest coverage >2800x). Rejected opportunistic takeover approaches from REA Group at ~£6.2B, confirming standalone franchise durability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

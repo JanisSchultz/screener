@@ -1,0 +1,30 @@
+{
+  "id": "HLMA.GB",
+  "ticker": "HLMA",
+  "universe": "eu",
+  "company": "Halma",
+  "country": "United Kingdom",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Low-ticket, high-liability, regulation-mandated safety and medical devices (>60% gross margin) consistently pass through above-inflation price increases while maintaining ~20% EBIT margins.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Archetypal UK decentralized compounder in regulation-mandated safety, environmental, and medical niches with self-funded bolt-on M&A and minimal disruption risk. [5-10Y g: organic volume 4.5% + price 1.5% + self-funded bolt-on M&A 3.5%]",
+    "evidence": "Median GAAP ROIC of 13.62% with operating ROIC of 61.05%. FCF conversion exceeds 112% (FY2025 Owner FCF £392.4M vs Net Income £372.3M). 4-year Owner EPS compounded at 14.2% CAGR from £0.765 to £1.140. Net debt of £613.3M is easily covered by Owner Earnings (Net Debt / NI = 1.65x), and EBIT/Interest coverage is 15.1x. Exceptional capital allocation record with 45+ consecutive years of >=5% dividend growth."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

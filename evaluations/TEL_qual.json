@@ -1,0 +1,30 @@
+{
+  "id": "TEL",
+  "ticker": "TEL",
+  "universe": "us",
+  "company": "TE Connectivity",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Manufacturing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep OEM specification lock-in and harsh-environment qualification cycles make switching suppliers prohibitively risky for components that cost pennies but risk catastrophic system failure. Demonstrated pricing power through contractual metal pass-through clauses across the 2021-2024 inflationary spike, maintaining 16.6% median GAAP ROIC and >35% tangible ROIC. Primary erosion threats include automotive cyclical downturns, OEM pricing pressure, and potential consolidation among hyperscale AI buyers.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "World leader in harsh-environment electrical connectors and sensor solutions. Passes all 6 gates. Extreme switching costs from mission-critical OEM platform spec-in and deep co-engineering in automotive and industrial markets, now supercharged by hyperscale AI data center interconnects. Robust balance sheet with >40x interest coverage and near 100% FCF conversion. [5-10Y g: content volume 4.0% + price 0.5% + mix/reinvestment 0.5% - cyclical auto drag 0.5% + share repurchases 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 16.6% and tangible operating ROIC of 35.7% demonstrate durable pricing power and high customer switching costs. In FY2025 and FY2026, sales expanded to $17.3B and $19.9B with FCF exceeding $3.2B and $3.4B (~100% conversion of adjusted net income). Industrial Solutions and Digital Data Networks are benefiting from massive AI infrastructure demand (+70% order growth), while Transportation Solutions continues steady content outperformance across electrified and software-defined vehicles. Fortress balance sheet with net debt ~1.0x EBITDA, long-term debt to net income of 2.6x, and interest coverage >40x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

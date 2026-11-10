@@ -1,0 +1,30 @@
+{
+  "id": "DNB.NO",
+  "ticker": "DNB",
+  "universe": "eu",
+  "company": "DNB",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant Norwegian domestic deposit and lending franchise (~30% market share) provides an insurmountable low-cost funding advantage and operational scale. Proven high ROE (13-18%) across cycles. Primary erosion risks include digital fintech disintermediation and macroeconomic commodity/oil shocks affecting Norwegian credit.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet Fortress). Dominant Norwegian retail and commercial bank with strong ~30% market share and low-cost deposit moat, but disqualified at Gate 6 due to inherent commercial fractional-reserve banking leverage (>10x assets/equity) and deposit duration/credit risk.",
+    "evidence": "DNB holds ~30% market share in Norwegian retail mortgages and corporate lending with strong ROE (15-18% in FY23-FY25, net income NOK 41.9B in FY25). However, as a commercial deposit bank, it operates with fractional-reserve leverage (assets/equity >10x) and wholesale debt funding, failing the Gate 6 non-bank fortress balance sheet requirement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

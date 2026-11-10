@@ -1,0 +1,30 @@
+{
+  "id": "SHOP",
+  "ticker": "SHOP",
+  "universe": "us",
+  "company": "Shopify",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Internet Services & Infrastructure (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Core operating system for 2M+ merchants globally with high switching costs embedded in store design, product catalogs, payments (Shop Pay), and a 10,000+ app ecosystem. Pricing power proved by 33-34% core subscription price increases in 2023 with negligible churn and take-rate expansion above 3.0%. Primary erosion threats include Amazon (Buy with Prime), cross-border Chinese commerce (Temu/Shein), and agentic AI shopping disintermediation.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Shopify operates a powerful merchant OS toll booth with high switching costs and proven pricing power in subscriptions, its competitive advantage period is severely truncated. As an Internet Services & Infrastructure provider heavily exposed to SMB merchants with 20-30%+ annual churn, it faces terminal headwinds from AI agentic commerce (autonomous consumer agents bypassing branded DTC storefronts) and cross-border trade friction on merchant supply chains. With 5-year median GAAP ROIC at 4.05% and negative 10-year median ROIC reflecting heavy reinvestment needs and past Deliverr capital destruction, its runway cannot satisfy the Mauboussin 15+ year persistence threshold.",
+    "evidence": "Recent financial performance shows operational recovery post-Deliverr divestiture: FY2025 revenue reached $11.56B (+30% YoY), operating income expanded to $1.47B (12.7% margin), and free cash flow reached $2.01B (17% margin). However, 5-year median GAAP ROIC is 4.05% (FY2021: 4.05%, FY2022: -10.32%, FY2023: -14.21%, FY2024: 11.00%, FY2025: 10.89%) and 10-year median ROIC is -6.38%. Balance sheet is clean with $1.55B cash ($5.8B including marketable securities) and virtually zero long-term funded debt. Pricing power demonstrated via 33-34% SaaS price hike in 2023 with negligible churn and take rate expanding above 3.0%. Nonetheless, high merchant churn, rapid tech evolution, and agentic AI search/purchasing disintermediation cap its competitive advantage period at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

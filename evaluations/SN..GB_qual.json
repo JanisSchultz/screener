@@ -1,0 +1,30 @@
+{
+  "id": "SN..GB",
+  "ticker": "SN.",
+  "universe": "eu",
+  "company": "Smith & Nephew",
+  "country": "United Kingdom",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Surgeon switching costs and regulatory clearances exist in theory, but chronic execution failures and persistent market share loss in reconstruction (knees and hips) to Stryker and Zimmer Biomet demonstrate weak moat. Multi-year ROIC of 6.6-8.3% persistently misses the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Multi-cycle ROIC languishes at 6.6-8.3%, well below the 12% cost-of-capital threshold. Chronic operational execution missteps, supply chain friction, and persistent market share loss in orthopedic implants to Stryker and Zimmer Biomet show lack of moat pricing power.",
+    "evidence": "Adjusted ROIC of 6.6% (2022), 7.4% (2024), and 8.3% (2025) fails the 12% hurdle. Operating margins under pressure from procurement and supply-chain challenges, trailing peers Stryker and Zimmer Biomet across hip/knee reconstruction."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

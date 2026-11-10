@@ -1,0 +1,30 @@
+{
+  "id": "AXP",
+  "ticker": "AXP",
+  "universe": "us",
+  "company": "American Express",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Consumer Finance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Closed-loop two-sided payments network toll booth combined with aspirational brand intangibles and rewards lock-in. Demonstrated extreme pricing power via repeated card annual fee hikes (Platinum to $695, Gold to $325) with record retention and net card additions, sustaining 26%+ median ROIC.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While possessing an elite spend-centric closed-loop payment network and pricing power, AXP operates as a levered Bank Holding Company (American Express National Bank) taking direct balance-sheet credit risk on $134B+ in cardmember loans funded by $152B+ in customer deposits. With LT debt/net income at 5.2x (exceeding the 4.0x ceiling) and multi-cycle interest coverage averaging 2.5x-4.5x (below the 5.0x hurdle), it structurally fails Munger's peace-of-mind fortress balance sheet standard.",
+    "evidence": "5-year median GAAP ROIC of 26.8% and owner FCF conversion >100% reflect an exceptional spend-centric payments business. However, as a regulated Bank Holding Company, AXP carries $56.4B in long-term debt and $152.5B in customer deposits against $134.0B in cardmember loans (FY2025). LT Debt / Net Income stands at 5.20x (above the 4.0x limit), while interest coverage through the cycle has ranged between 2.5x and 4.5x (below the 5.0x baseline). Capital structure is subject to credit loss provisions and bank regulatory capital requirements, failing Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

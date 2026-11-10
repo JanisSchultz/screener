@@ -1,0 +1,30 @@
+{
+  "id": "APD",
+  "ticker": "APD",
+  "universe": "us",
+  "company": "Air Products",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Industrial Gases",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Core on-site take-or-pay contracts (15-20 year terms with 100% contractual energy and CPI pass-through formulas) and regional merchant bulk distribution density provide strong pricing power, but reported 5-year median GAAP ROIC of 9.5% fails the 12% threshold due to >$15B in capital tied up in uncompleted and written-down clean energy megaprojects.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "Broken metrics: Gate 3b ROIC (5-year median GAAP ROIC 9.5% < 12% hurdle; FY25 GAAP net loss $(386.5M) from $3.75B project write-downs); Gate 5 capital allocation score 0 (prior CEO Ghasemi's promotional >$15B clean hydrogen megaproject binge without firm off-takers); Gate 6 cash conversion and balance sheet 'N' (negative FCF of -$1.5B in FY24 and -$1.8B in FY25 due to peak CapEx of $5B+/yr vs $3.3B operating cash flow). Intact moat proof: Core industrial gas franchise (on-site take-or-pay pipeline infrastructure and regional merchant distribution density) remains an unassailable global triopoly with Linde and Air Liquide, characterized by 15-20 year contracts, 100% energy cost pass-through, high switching costs, and strong double-digit operating ROC. Fix catalyst & kill-switch: Feb 2025 activist settlement with Mantle Ridge installed new CEO Eduardo Menezes (former Linde EVP) and Vice Chair Dennis Reilley (former Praxair CEO), who took $3.75B in write-downs, cancelled/descoped non-core megaprojects, and curtailed CapEx to restore positive FCF. Kill-switch: Failure to restore positive FCF by FY26/FY27 or committing new capital to speculative projects without firm take-or-pay off-takers.",
+    "note": "Core industrial gas triopoly with Linde and Air Liquide, backed by 15-20 year take-or-pay on-site pipeline contracts with 100% power pass-through and regional merchant density. Temporary calamity of >$15B speculative clean-hydrogen megaprojects depressed reported ROIC (9.5%), triggered negative FCF, and caused $3.75B in FY25 write-downs. Under activist pressure from Mantle Ridge, former Linde EVP Eduardo Menezes was appointed CEO in February 2025 and is actively descoping non-core projects and slashing CapEx to restore cash compounding. [5-10Y g: core gas volume 3.5% + price 2.0% + cost turnaround 1.0% - project/debt drag 0.5%]",
+    "evidence": "Core on-site take-or-pay and merchant gas franchises generate ~$3.3B in annual operating cash flow. However, capital expenditures surged to $5.15B in FY24 and $5.06B in FY25 due to massive clean energy megaprojects (NEOM, Louisiana, etc.), producing negative FCF of -$1.5B in FY24 and -$1.8B in FY25. In FY25, APD took $3.75B in pre-tax write-downs to exit/descope speculative projects, resulting in a GAAP net loss of $(386.5M) and depressing 5-year median GAAP ROIC to 9.5%. In February 2025, activist Mantle Ridge secured board overhaul and appointed former Linde EVP Eduardo Menezes as CEO and former Praxair CEO Dennis Reilley as Vice Chair to restore capital discipline and refocus on the core take-or-pay industrial gas business."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

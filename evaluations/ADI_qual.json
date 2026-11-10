@@ -1,0 +1,30 @@
+{
+  "id": "ADI",
+  "ticker": "ADI",
+  "universe": "us",
+  "company": "Analog Devices",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Board-level spec-in lock-in across >75,000 SKUs and >125,000 diversified customers. Analog ICs represent a negligible fraction (<1-2%) of customer system BoM but are catastrophic to system failure, creating insurmountable switching costs and multi-million-dollar redesign/recertification hurdles. Gross margins are structurally sustained at 65-70% (adjusted ~68-70%) and trough adjusted operating margins remain >40%. Operating/tangible ROIC exceeds 60-190%+, while GAAP ROIC is optically deflated by non-cash merger amortization from Linear Tech and Maxim. Primary long-term erosion risks include customer in-house ASIC design at high volumes, low-end Asian analog commoditization, and cyclical inventory corrections.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global high-performance analog and mixed-signal duopolist (ADI + Linear + Maxim) with mission-critical board-level spec-in lock-in across industrial, automotive, and communications infrastructure. Structurally insulated from or actively benefiting from all 5 macrotrends via factory automation, EV battery management systems, AI data center power stages, and a resilient hybrid manufacturing model. Highly cash-generative with 138% multi-year FCF conversion and net debt repayable in ~1.4 years of Owner FCF. [5-10Y g: industrial/auto/datacenter volume 4.5% + pricing/mix 1.5% + operating leverage 0.5% + net share repurchases 1.0%]",
+    "evidence": "Multi-cycle financial track record demonstrates exceptional compounding: sales grew from $3.4B in FY16 to $11.0B in FY25, with peak Owner EPS advancing from $5.47 (FY18) to $8.59 (FY23) and trough EPS holding at $6.03 (FY24). Gross margins consistently range between 65% and 70%. Multi-year Owner FCF conversion is 138% of GAAP Net Income ($3.96B FCF in FY25 vs $2.27B NI), reflecting heavy non-cash intangible amortization ($2.0B D&A) from the Linear Technology and Maxim Integrated acquisitions. Operating/tangible ROIC consistently exceeds 60% (192% in FY23, 63% in FY25). Segment breakdown (FY25): Industrial 45%, Automotive 30%, Communications/Datacenter 13%, Consumer 13%. Balance sheet is solid with $2.5B cash against $8.1B long-term debt; net debt of $5.6B is covered by ~1.4 years of Owner FCF, and EBIT/interest coverage stands at 9.2x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

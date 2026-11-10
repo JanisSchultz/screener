@@ -1,0 +1,30 @@
+{
+  "id": "SCA B.SE",
+  "ticker": "SCA B",
+  "universe": "eu",
+  "company": "SCA",
+  "country": "Sweden",
+  "sector": "Materials",
+  "sub_industry": "Forest Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns 2.7 million hectares of forest land in northern Sweden, representing irreplaceable European forestry infrastructure and low-cost self-sufficient fiber supply. However, end-market products (NBSK pulp, kraftliner, sawn timber) are global price-taking commodities with zero pricing power. Group ROCE averages 3-7% (failing 12% hurdle), burdened by heavy mill reinvestment capex.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing). Europe's largest private forest owner with world-class integrated mills, but commodity price-taking outputs (pulp, kraftliner, wood) and massive capital base result in multi-cycle Group ROCE of 3-6%, well below the 12% threshold.",
+    "evidence": "Reported Group ROCE was 6.9% in 2019, 3.4% in 2020, 5.4% in 2021, 4.0% in 2022, 3.3% in 2023, and 4.4% in 2024. Even Industrial ROCE dropped back to 7.3% in 2023-2024 following the 2021-2022 cyclical pulp price spike. Multi-cycle Group ROIC fails the 12% standard, and large-scale mill capex (Östrand, Obbola) absorbs substantial cash flow."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

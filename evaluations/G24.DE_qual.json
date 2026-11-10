@@ -1,0 +1,30 @@
+{
+  "id": "G24.DE",
+  "ticker": "G24",
+  "universe": "eu",
+  "company": "Scout24",
+  "country": "Germany",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant German real estate marketplace toll booth (ImmoScout24) with self-reinforcing two-sided network effects. High customer switching costs from deep agent CRM integration and tenant MieterPlus/SCHUFA verification lock-in. Demonstrated exceptional pricing power by compounding revenue and ARPU ahead of inflation throughout the severe 2022-2025 German property freeze, sustaining ~44-48% operating margins and >100% tangible operating ROIC.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Undisputed German real estate marketplace toll booth (ImmoScout24) with dual-sided agent and tenant-subscription lock-in that expanded ARPU and earnings even through Germany's residential property downturn. Debt-free balance sheet with >100% FCF conversion. [5-10Y g: agent/tenant subscriber volume 2.0% + core listing price 3.5% + digital workflow product mix 1.5% - IT/cloud reinvestment 0.5% + net share repurchases 2.0%]",
+    "evidence": "5-year median GAAP ROIC of 12.7% with tangible operating ROIC >100%. Free cash flow conversion exceeds 100% of Net Income (€262.8M Owner FCF in FY25). Operating profit margin ~44-48% (EBITDA margin >55%). Zero long-term financial debt, net cash position, and interest coverage >70x. Consistent share repurchases and growing dividends."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

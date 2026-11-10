@@ -1,0 +1,30 @@
+{
+  "id": "ROSE.GB",
+  "ticker": "ROSE",
+  "universe": "eu",
+  "company": "Rosebank Industries",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Established Operating Record, REJECT). Rosebank Industries is a newly formed (July 2024 IPO) acquisition vehicle executing a private-equity style 'Buy, Improve, Sell' turnaround strategy. It completely lacks a multi-cycle public operating track record and an established organic compounding engine.",
+    "evidence": "Founded by former Melrose executives, Rosebank listed as an AIM cash shell in July 2024 before graduating to the Main Market after acquiring North American electrical/industrial assets (ECI, CPM). Lacks multi-cycle consolidated operating history, recurring cash flow visibility, and organic track record as an independent operating company."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

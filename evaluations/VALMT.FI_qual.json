@@ -1,0 +1,30 @@
+{
+  "id": "VALMT.FI",
+  "ticker": "VALMT",
+  "universe": "eu",
+  "company": "Valmet",
+  "country": "Finland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Installed base servicing and automation systems provide recurring revenue, but large-scale pulp, paper, and energy machinery capital projects dilute returns and lack pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Capital equipment division (~50% of revenue) involves large, lumpy, negotiated project tenders for pulp and board mills with intense competition. Multi-cycle after-tax GAAP ROIC sits at 7-10%, failing the 12% minimum hurdle.",
+    "evidence": "Comparable pre-tax ROCE of 12.7% (2024) and 13.0% (2025) corresponds to an after-tax ROIC of approximately 8-10%, well below the 12% threshold. Capital project orders are cyclical and subject to fierce price competition from Andritz and Voith."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

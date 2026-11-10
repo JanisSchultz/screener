@@ -1,0 +1,30 @@
+{
+  "id": "FIS",
+  "ticker": "FIS",
+  "universe": "us",
+  "company": "Fidelity National Information Services",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Core banking platforms (IBS, Horizon, Modern Banking Platform) possess high structural switching costs due to the operational disruption and regulatory risk of core conversions. However, empirical proof of moat is lacking: 5-year median GAAP ROIC is ~3.0% and 10-year median ROIC is 7.5%, both failing the 12% hurdle. Primary erosion threats include intense fee pressure upon multi-year contract renewals, bank client consolidation, and competitive incursions from cloud-native core banking challengers (Thought Machine, Mambu, nCino).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Despite high bank switching costs in core banking software (Gate 3a Toll booth), FIS fails to demonstrate economic moat proof with a 5-year median GAAP ROIC of ~3% and 10-year median ROIC of 7.5%, well below the mandatory 12% hurdle. Massive capital destruction from the $43B Worldpay acquisition in 2019, subsequent $17.6B goodwill impairment in 2022, and discounted 55% carve-out to GTCR at an $18.5B enterprise value in 2024 demonstrate persistent capital misallocation and sub-cost-of-capital returns.",
+    "evidence": "Multi-cycle GAAP ROIC consistently lags the 12% hurdle: FY21 0.67%, FY22 negative due to a $17.6B goodwill impairment, FY23 2.58%, FY24 3.78%, and FY25 ~5.0%, with a 10-year median of 7.5%. Post-Worldpay divestiture in early 2024 (55% stake sold to GTCR for $11.7B net proceeds, retaining 45%), FIS reorganized around Banking Solutions and Capital Markets. While core banking maintains 95%+ client retention due to prohibitive migration friction, pricing power is constrained by bank customer bargaining power and competition from Fiserv and Jack Henry. Historical M&A (SunGard for $9.1B, Worldpay for $43B) severely diluted shareholder returns and bloated invested capital with unamortized intangibles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "SCHW",
+  "ticker": "SCHW",
+  "universe": "us",
+  "company": "Charles Schwab Corporation",
+  "price": 89.28,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Passes all 6 gates. Dominant retail wealth manager and RIA custodian anchored by scale economies shared over nearly $12T in client assets. FY2025 Peak Owner EPS of $4.8933 accepted without adjustment, confirming complete post-cash-sorting recovery (2019: $2.81, 2022: $3.79, 2025: $4.89) backed by 94.7% FCF conversion ($8.48B Owner FCF). Operating ROIC normalized to 35.0% cap under negative working capital / brokerage custodian standard (GAAP median 32.6%, tangible ROIC >100%). 5-10Y through-the-cycle growth of 10.5% driven by 5.5% client asset volume, 3.5% ad-valorem market appreciation, 0.5% wealth solutions mix, -0.5% cash sweep yield pressure, and 1.5% net share repurchases. Fortress balance sheet with $46.03B cash & short-term liquidity vs $22.20B LT debt (net cash surplus of +$23.83B) with zero emergency wholesale borrowings remaining. PAR Multiple capped at 24.55x 5-year cycle high guardrail (raw PAR 25.41x). Trades Below PAR at 18.25x peak EPS vs 24.55x PAR multiple ($120.13 PAR Value), offering an attractive 19.0% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.8933,
+    "current_multiple": 18.25,
+    "par_multiple": 24.55,
+    "par_value": 120.13,
+    "percent_vs_par": -0.2568,
+    "status": "Below PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0151,
+    "expected_irr_5y": 0.1877,
+    "market_implied_cap": 14.9,
+    "moat_runway_margin": 5.1,
+    "market_implied_growth": -0.0024,
+    "growth_margin_of_safety": 0.1074
+  },
+  "health_checks": {
+    "net_debt_years": 2.51,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9469,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

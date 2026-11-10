@@ -1,0 +1,30 @@
+{
+  "id": "VLO",
+  "ticker": "VLO",
+  "universe": "us",
+  "company": "Valero Energy",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Refining & Marketing",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Unmatched Gulf Coast scale and high Nelson complexity index allow lowest operating costs per barrel among merchant refiners, but Valero is a complete commodity price-taker with zero pricing power over refined petroleum products and crack spreads.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Valero is a best-in-class low-cost Gulf Coast refiner, but operates as a structural commodity price-taker with zero independent pricing power. Profitability and ROIC fluctuate violently with global crack spreads (ROIC dropped to -3% in 2020 and normalized to ~7-10% in 2024 from the 2022 windfall peak), failing Munger's hurdle for enduring moat and pricing power >= inflation.",
+    "evidence": "Valero Energy operates 15 refineries with ~3.2M bpd throughput capacity and Diamond Green Diesel JV. Despite Nelson complexity advantages processing discounted heavy/sour crudes, earnings are governed by external crack spreads rather than pricing power: GAAP ROIC was -2.9% in 2020, 6.3% in 2021, spiked to ~30-40% in 2022 post-Ukraine windfall, and normalized to 7-10% in 2024 as net income fell from $8.8B (2023) to $2.8B (2024). Cash flows cannot be defended via price increases when crack spreads contract."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

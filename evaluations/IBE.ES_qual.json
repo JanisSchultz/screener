@@ -1,0 +1,30 @@
+{
+  "id": "IBE.ES",
+  "ticker": "IBE",
+  "universe": "eu",
+  "company": "Iberdrola",
+  "country": "Spain",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unreplicable regulated electricity distribution networks in the UK (ScottishPower), US (Avangrid), and Spain, backed by massive hydro and contracted renewable capacity. Primary erosion threats include regulatory WACC determinations across four jurisdictions, foreign currency swings in Brazil, and rising refinancing costs on a €42B+ debt load.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Global utility titan with premier regulated network concessions in the UK (ScottishPower), US (Avangrid), and Spain, led by elite CEO Ignacio Galán (Gate 5 score 2). However, perpetual multi-billion annual grid capex, capped regulatory ROIC (8.9% median), €42.3B in debt (6.7x Net Income), and sub-hurdle 4.72x interest coverage fail the fortress balance sheet standard.",
+    "evidence": "Median ROIC is 8.87% (FY25 ROIC 9.45%). While owner FCF conversion is high at 99.5% of net income, long-term debt stands at €42,322.0M against net income of €6,285.0M (debt/NI of 6.73x vs. 4.0x ceiling). FY25 interest expense of €2,173.0M results in EBIT/interest coverage of 4.72x, below the >5.0x peace-of-mind threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

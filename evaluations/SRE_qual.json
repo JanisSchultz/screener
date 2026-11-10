@@ -1,0 +1,30 @@
+{
+  "id": "SRE",
+  "ticker": "SRE",
+  "universe": "us",
+  "company": "Sempra",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted utility franchises (CPUC, PUCT) operating critical electric and gas transmission/distribution networks (SDG&E, SoCalGas, Oncor) with unreplicable rights-of-way and captive rate-payers. Statutory cost-of-service ratemaking provides authorized ROE (~9.5-10.2%) with fuel and operating cost pass-through. Erosion risks center on California inverse condemnation wildfire liabilities, political scrutiny of utility bills, and long-term decarbonization pressure on gas distribution.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion). Regulated utility monopoly (SDG&E, SoCalGas, Oncor) with unreplicable physical T&D infrastructure, but suffers from structural utility capital drag: median ROIC of 4.5%, perpetual negative free cash flow after capex ($10.6B capex vs $4.6B OCF in FY2025), extreme debt leverage ($29.0B long-term debt vs $1.8B net income = 15.8x), and weak interest coverage of 2.2x requiring continuous capital market access.",
+    "evidence": "10-year median ROIC is 4.5% (2016-2025 range 3.2%-7.3%). Free cash flow after capex has been negative in 8 of the last 10 years, with FY2025 capex reaching $10.6B against OCF of $4.6B. Long-term debt expanded from $14.4B in 2016 to $29.0B in 2025 ($36.7B total debt) with cash of only $29M. TTM interest expense of $1,532M against EBIT of $3,321M leaves interest coverage thin at 2.17x. California inverse condemnation risk and S&P BBB+ rating with negative outlook reflect structural reliance on external debt and equity markets to fund the regulated asset base."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

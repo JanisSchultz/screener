@@ -1,0 +1,30 @@
+{
+  "id": "STJ.GB",
+  "ticker": "STJ",
+  "universe": "eu",
+  "company": "St. James's Place",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Historical customer lock-in relied on punitive early withdrawal exit fees and bundled charging, which were dismantled by FCA Consumer Duty enforcement. Structural unbundling of fees and elimination of exit charges permanently degrade pricing power. Provision of £426M for undocumented ongoing advice fees demonstrates regulatory vulnerability.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Lack of pricing power and dismantled moat, REJECT). UK wealth manager forced by FCA Consumer Duty to abolish exit fees, unbundle charging structures, and book a £426M ongoing advice compensation provision. Lacks genuine pricing power >= inflation as transparent unbundled fees face severe competition.",
+    "evidence": "FCA Consumer Duty forced complete elimination of early exit fees and unbundling of advice/platform charges, stripping away captive switching costs. £426M remediation charge for undocumented advice pushed the group into an IFRS loss in FY23, forcing dividend restructuring. Lacks pricing power in an increasingly commoditized UK wealth market."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

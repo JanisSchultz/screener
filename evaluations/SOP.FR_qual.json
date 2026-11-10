@@ -1,0 +1,30 @@
+{
+  "id": "SOP.FR",
+  "ticker": "SOP",
+  "universe": "eu",
+  "company": "Sopra Steria",
+  "country": "France",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Embedded relationships in French public sector and defense, but sub-hurdle capital efficiency (RoCE 6.7-7.5% vs 12% hurdle) and single-digit operating margins (7-9%) prove lack of an economic moat. Highly vulnerable to IT services commoditization and public sector budget austerity.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Undifferentiated French IT services provider with sub-hurdle capital efficiency (RoCE 6.7-7.5% vs 12% requirement) and thin operating margins (~8%). Heavy reliance on price-sensitive French public-sector RFPs leaves zero pricing power above inflation.",
+    "evidence": "Operating margin on business activity was 8.1% (2021), 8.9% (2022), 9.4% (2023), and 9.8% (2024), with standard reported operating margins of 7.5%-8.9%. Reported RoCE was 6.7% in 2021 and 7.5% in 2022, structurally failing the 12% ROIC threshold. Growth has been heavily reliant on M&A rollups (CS Group, Ordina) while core organic growth is sluggish. Public-sector customer concentration exposes the business to sovereign procurement spending freezes and billable-hour deflation from AI tooling."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

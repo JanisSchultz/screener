@@ -1,0 +1,30 @@
+{
+  "id": "A2A.IT",
+  "ticker": "A2A",
+  "universe": "eu",
+  "company": "A2A",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched local distribution concessions (electricity and gas), district heating grids, and waste-to-energy assets in Milan, Brescia, and Lombardy create local infrastructure monopolies. Operating tangible ROIC exceeds 16-20% due to local concession scale, though regulatory returns are capped by ARERA.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance sheet leverage & capex dilution, REJECT). Lombardy multi-utility with protected local concession networks, but net debt of €4.15B is 5.5x net income (€750M), exceeding the 4.0x ceiling. Heavy continuous capex (€1.68B vs €955M D&A) depresses multi-year free cash flow conversion to ~69%, requiring persistent debt reliance.",
+    "evidence": "FY2022-2025 net income averaged ~€670M while capex expanded from €1.24B to €1.68B annually, generating negative pure free cash flow in FY2023 and FY2024. Long-term debt stands at €6.03B against €1.88B cash, yielding net debt / net income of 5.5x. Regulated tariff cap keeps median GAAP ROIC at ~10%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

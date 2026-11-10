@@ -1,0 +1,30 @@
+{
+  "id": "AXFO.SE",
+  "ticker": "AXFO",
+  "universe": "eu",
+  "company": "Axfood",
+  "country": "Sweden",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading Swedish food retailer and wholesaler (Willys discount banner, Hemköp, Snabbgross, Dagab logistics). While Willys effectively shares scale through low prices ('Sveriges billigaste matkasse'), discount grocery requires passing cost savings to consumers rather than exercising pricing power above inflation. Operating margins are razor-thin at ~4.0%, and price hikes meet swift consumer defection and Swedish regulatory scrutiny.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Swedish grocery retailer operates on thin operating margins (~4.0%) and lacks pricing power above inflation due to its discount value proposition (Willys) and intense price competition in a mature, single-country domestic market. Does not possess an unassailable global moat.",
+    "evidence": "5-year median operating margin has remained fixed at ~4.0% across 2020-2024. While historical ROIC tracked at ~14-17%, heavy capital outlays for automated logistics (Bålsta) and the City Gross acquisition compressed 2024 ROIC to ~12.8%. Discount grocer model requires passing cost efficiencies to consumers rather than exercising pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

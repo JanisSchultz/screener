@@ -1,0 +1,30 @@
+{
+  "id": "RWE.DE",
+  "ticker": "RWE",
+  "universe": "eu",
+  "company": "RWE AG",
+  "country": "Germany",
+  "sector": "Utilities",
+  "sub_industry": "Independent Power Producers & Energy Traders (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Wholesale merchant power generator transitioning from coal/lignite to offshore/onshore wind and solar. Operates as a commodity price-taker on wholesale European electricity markets with zero structural pricing power above spot clearing rates. 5-year median GAAP ROIC is ~5-6% (2021: 4.4%, 2022: -3.6%, 2023: 8.6%, 2024: 5.9%), failing the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & merchant commodity pricing, REJECT). RWE operates primarily as an independent power producer and energy trader exposed to wholesale electricity spot market swings. Multi-cycle GAAP ROIC is structurally below 6%, falling far short of the 12% hurdle, while heavy renewable capex continuously dilutes returns on capital.",
+    "evidence": "Multi-year ROIC averages ~5% over 2021-2024 (4.4% in 2021, -3.6% in 2022, 8.6% in 2023, 5.9% in 2024). Electricity is a non-differentiated commodity price-taker product. Capital expenditure program for green transition requires heavy debt funding without pricing power protection."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

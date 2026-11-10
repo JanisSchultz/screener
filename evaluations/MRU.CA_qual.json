@@ -1,0 +1,30 @@
+{
+  "id": "MRU.CA",
+  "ticker": "MRU",
+  "universe": "ca",
+  "company": "Metro",
+  "country": "Canada",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Regional grocery and pharmacy chain in Quebec and Ontario (Metro, Super C, Jean Coutu). While holding strong regional market share in Quebec, its 5-year median GAAP ROIC of 11.6% fails the 12.0% capital efficiency hurdle. Furthermore, it lacks unconstrained pricing power above inflation, constrained by aggressive price competition from national peers (Loblaw, Walmart, Costco) and regulatory scrutiny over grocery prices. Primary erosion threats: discount banner market share loss, warehouse club expansion, and pharmacy distribution cost pressures.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Disciplined regional food and pharmacy retailer in Quebec and Ontario, but fails Munger quality standards. 5-year median GAAP ROIC is 11.58%, strictly failing the >=12.0% proof-of-moat hurdle. In addition, Metro lacks independent pricing power above inflation due to intense price competition from Walmart, Costco, and Loblaw, combined with regional geographic saturation in Eastern Canada. Downstream gates nullified per strict waterfall.",
+    "evidence": "Operates ~950 grocery stores (Metro, Super C, Food Basics) and ~650 drugstores (Jean Coutu, Brunet). FY2025 revenue of $22.0B CAD, EBIT of $1.48B CAD, and Net Income of $1.02B CAD. Historical GAAP ROIC has persistently hovered between 10.6% and 12.4% (FY2022: 10.63%, FY2023: 12.38%, FY2024: 11.25%, FY2025: 11.91%; 4-year median 11.58%), failing the 12% cycle hurdle. Operating in a mature, commoditized supermarket industry with limited reinvestment runway outside Quebec and Ontario."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SPIE.FR",
+  "ticker": "SPIE",
+  "universe": "eu",
+  "company": "SPIE",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local technician density and long-term facility maintenance contracts create moderate customer stickiness across electrical, mechanical, and HVAC technical services. However, switching barriers are not prohibitive, local markets remain fragmented with capable regional competitors, and contracts are subject to periodic competitive renegotiation. Multi-cycle GAAP ROIC consistently tracks around 10-11%, failing the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b=N, REJECT). SPIE is a European multi-technical services leader benefiting from electrification and energy-transition tailwinds. However, operating margins are modest (6-7%) and through-cycle GAAP ROIC (~10-11%) falls short of the 12% Munger threshold due to fragmented regional competition and tender-based contract renewals.",
+    "evidence": "EBITA margins progressed from 6.1% in 2021 to 7.2% in 2024. Return on Invested Capital (ROIC) consistently remains in the 10-11% range. Revenue expansion relies heavily on serial bolt-on acquisitions (8 deals in 2024 contributing 9.2% inorganic growth), accumulating goodwill without demonstrating organic double-digit ROIC compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

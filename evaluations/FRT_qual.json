@@ -1,0 +1,30 @@
+{
+  "id": "FRT",
+  "ticker": "FRT",
+  "universe": "us",
+  "company": "Federal Realty Investment Trust",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Federal Realty owns premier infill retail and mixed-use assets protected by scarce entitlements, zoning barriers, and high land costs in affluent first-ring coastal suburbs, commercial real estate is structurally capital-intensive. 10-year median GAAP ROIC is only 5.5% (ranging 3.0% to 5.5%), failing the non-negotiable 12% hurdle. Contractual 2-3% rent escalators and positive re-leasing spreads cannot overcome heavy capital reinvestment, leaving the business without economic super-profits.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 5.5% vs 12% hurdle, REJECT). Prime infill retail real estate in affluent submarkets possesses localized physical scarcity, but the asset-heavy REIT model structurally generates sub-hurdle returns on invested capital (10-year median GAAP ROIC ~5.5%). Pricing power via contractual rent bumps and re-leasing spreads is insufficient to transcend commercial real estate cap-rate economics.",
+    "evidence": "Federal Realty Investment Trust (FRT) owns ~102 properties comprising over 26 million square feet of retail and mixed-use real estate in affluent coastal metropolitan submarkets (D.C., Boston, Silicon Valley, Southern California). Financial track record demonstrates structural capital intensity: 10-year GAAP ROIC ranges from 3.0% to 5.5% (median ~5.5%), well below the 12% hurdle. 2024-2025 net income of $286M-$402M and operating cash flow of $575M-$622M support ~2.3x-3.5x interest coverage against $4.8B-$5.0B in total debt. Despite an admirable 55+ year dividend growth streak, capital efficiency is bounded by commercial real estate cap rates rather than compounding economic rents."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IP",
+  "ticker": "IP",
+  "universe": "us",
+  "company": "International Paper",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local sheet and box converting plants create regional freight switching friction (corrugated boxes have low value-to-bulk, limiting economic shipping to 150-200 miles). However, containerboard and linerboard are standardized industrial commodities with benchmark index pricing (RISI). IP cannot earn returns above its cost of capital across the cycle: 10-year median ROIC is ~6.5%, far below the 12% threshold. Margins are compressed whenever industry capacity expands or input costs (energy, virgin fiber, OCC) rise, as price increases lag and face intense buyer resistance.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 6.5% vs. 12% threshold, REJECT). Standardized commodity containerboard producer lacking structural pricing power. 10-year median ROIC of 6.5% reflects cyclical price-taking behavior and heavy capital intensity, exacerbated by post-DS Smith debt integration and mill restructuring.",
+    "evidence": "10-year median ROIC sits at ~6.5%, oscillating between 1% in downcycles and 8-11% at temporary cyclical peaks. Operating margins historically average 3-7% and turned negative in 2024-2025 during packaging demand softness and mill closures. FCF conversion is volatile due to high maintenance capex (~$1B+/year). The January 2025 acquisition of DS Smith increased total debt to ~$9.7B, stretching leverage during an operating trough."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

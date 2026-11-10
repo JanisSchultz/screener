@@ -1,0 +1,30 @@
+{
+  "id": "BWY.GB",
+  "ticker": "BWY",
+  "universe": "eu",
+  "company": "Bellway",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Homebuilding (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket purchase deferrable in recessions; cyclical residential homebuilder exposed to mortgage rates and housing cycle.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). National UK volume housebuilder. Residential home purchases are discretionary, deferrable big-ticket capital commitments highly sensitive to mortgage rates and general economic confidence. Cyclical homebuilders are explicitly excluded under Munger's non-deferrable everyday necessity standard.",
+    "evidence": "Bellway p.l.c. is a major UK housebuilder operating across England, Scotland, and Wales. Completions plunged 30% from 10,945 in FY23 to 7,654 in FY24 following the UK mortgage rate surge. Operating margins shrank from 16.0% in FY23 to ~10.0% in FY24, and pre-tax profit fell over 50% to £226M. While Bellway maintains a relatively conservative balance sheet with net cash (£10M-£50M) and disciplined land buying, its financial returns fluctuate wildly across the economic cycle (ROCE falling from >20% in 2021-2022 to <8% in 2024). It possesses no pricing power to counteract build-cost inflation or mortgage-driven buyer deferrals."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

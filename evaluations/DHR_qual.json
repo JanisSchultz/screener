@@ -1,0 +1,30 @@
+{
+  "id": "DHR",
+  "ticker": "DHR",
+  "universe": "us",
+  "company": "Danaher Corporation",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable switching costs driven by regulatory lock-in: Cytiva chromatography resins (MabSelect SuRe), filtration membranes, and single-use assemblies are specified directly into FDA/EMA biologic drug approvals (BLAs), making substitution prohibitively expensive and legally risky. Diagnostics segment (Cepheid GeneXpert, Beckman Coulter) operates on high-margin closed razor-and-blade consumable platforms. Demonstrated pricing power through stable ~59-61% gross margins and tangible ROIC >70-140% across business cycles. Primary erosion risks include biopharma destocking cyclicality, biotech funding fluctuations, and China local-substitution policies.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier life sciences tools, bioprocessing, and clinical diagnostics franchise powered by the Danaher Business System (DBS). Over 80% recurring revenue base anchored by Cytiva, Pall, Cepheid, and Beckman Coulter with massive regulatory lock-in and 1.5-2.0% annual pricing power. Fully insulated from AI automation (pure physical/biochemical tools) and demographic aging tailwinds. Pristine A-rated balance sheet with 17.7x interest coverage and net debt repayable in <3 years from free cash flow. [5-10Y g: bioprocess & diagnostic consumable volume 5.5% + pricing power 1.5% + bolt-on M&A & mix 1.5% - R&D/commercial reinvestment drag 0.5% + net share buybacks 0.5%]",
+    "evidence": "FY2025 revenue reached $24.6B across Diagnostics ($10.0B), Life Sciences ($7.3B), and Biotechnology ($7.3B) with gross margins stable at ~59.5% and operating cash flow of $6.4B. Multi-year Owner FCF conversion exceeds 113% of GAAP net income (FY2025 Owner FCF was $4.96B on $3.61B Net Income). Tangible ROIC consistently exceeds 80-140% (GAAP ROIC ~6.8% reflects $61B in goodwill/intangibles from transformative acquisitions including Cytiva, Pall, and Cepheid). Following the successful tax-free spin-offs of Fortive (2016), Envista (2019), and Veralto (2023), Danaher is a focused pure-play life sciences tools compounder. Balance sheet is conservative: LT debt of $18.4B against $4.6B cash yields net debt of $13.8B (2.78x Owner FCF, 3.82x NI), with $265M interest expense covered 17.7x by $4.69B EBIT, rated A2/A- with rapid deleveraging capacity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

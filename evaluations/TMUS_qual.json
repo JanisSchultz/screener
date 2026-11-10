@@ -1,0 +1,31 @@
+{
+  "id": "TMUS",
+  "ticker": "TMUS",
+  "universe": "us",
+  "company": "T-Mobile US",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "National 5G macro tower network and $98.0B of scarce FCC-licensed wireless spectrum (led by 2.5 GHz mid-band, 600 MHz low-band, and C-band/UScellular holdings) create a high physical and regulatory barrier against greenfield fourth-carrier entry. However, empirical proof of moat fails Gate 3b's >=12% GAAP / >=15% tangible ROIC threshold: 5-year median GAAP ROIC (FY2021-2025) is 8.21% (10-year peak 11.67% in FY2019; post-Sprint peak 10.62% in FY2024 and 10.61% in FY2025), and 5-year median tangible ROIC is 9.29% (10-year peak 12.37%; FY2025 12.12%). Perpetual PP&E capex ($8.8B-$14.0B/yr), recurring spectrum outlays ($1.0B-$9.4B/yr; $2.57B in FY2025), and $10B+ fiber/rural M&A commitments structurally cap returns in high single digits. Pricing power is constrained by number portability, promotional handset subsidies from AT&T and Verizon, cable MVNO fixed-mobile bundles (Comcast, Charter, Optimum), elevated ~1.09% postpaid phone churn and Price Lock arbitration pushback on 2024-2026 legacy plan hikes, and emerging SpaceX/Starlink hybrid D2D competition following its 800 MHz and EchoStar spectrum deals.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b = N, REJECT). While T-Mobile US commands scarce national RF spectrum ($98.0B carrying value) and leads US wireless net additions, capital-intensive telecom economics fail Munger's >=12% ROIC and inflation-plus pricing power bar. Across 10 years (FY2016-2025), GAAP ROIC never reached 12% (5Y median 8.21%, FY2025 10.61%) and tangible ROIC never reached 15% (5Y median 9.29%, FY2025 12.12%), weighed down by $8.8B-$14.0B annual PP&E capex, $1.0B-$9.4B annual spectrum purchases, and $10B+ recent UScellular/Metronet/Lumos commitments. 2024-2026 legacy plan price hikes lifted ARPA but provoked Price Lock arbitration pushback and elevated ~1.09% postpaid phone churn amid AT&T/Verizon promos and cable MVNO bundles. Calamity Tier is ineligible: sub-hurdle ROIC is structural rather than temporary, and telecom carriers sit in Mauboussin Tier 4 (5-10Y baseline CAP < 15Y), failing non-waivable Anchor Gate 4. Downstream gates bypassed per waterfall.",
+    "evidence": "Multi-cycle SEC EDGAR financials (FY2016-2025): Revenue scaled from $37.5B (FY2016) to $68.4B (FY2020 Sprint merger) and $88.3B (FY2025; service revenue $71.3B, +8% YoY). Operating margin expanded from 10.8% (FY2016) and 8.2%-9.7% during Sprint integration (FY2020-2022) to 20.7% in FY2025 (EBIT $18.28B, Net Income $10.99B), with Q3 2026 continuing growth (revenue $23.58B +7.4% YoY, service revenue $19.38B +6.2% YoY, net income $3.46B, FY2026 guidance raised to $37.35B-$37.45B Core Adj. EBITDA and $18.7B-$18.8B Adj. FCF). Despite operating scale, capital efficiency stays structurally below compounder hurdles: GAAP ROIC ran 7.58%, 11.35%, 11.33%, 11.67%, 6.66%, 5.05%, 4.12%, 8.21%, 10.62%, and 10.61% (FY2016-2025; 5Y median 8.21%), while tangible ROIC ran 8.11%-12.37% (5Y median 9.29%; FY2025 12.12%, still holding $98.03B spectrum licenses in tangible invested capital alongside $13.68B goodwill). Reported Owner FCF improved from negative in FY2016-2020 (-$3.09B in FY2020) and $1.05B-$2.29B in FY2021-2022 to $8.09B (FY2023), $12.80B (FY2024), and $17.17B (FY2025; OCF $27.95B less PP&E capex $9.96B and SBC $0.83B) as post-Sprint capex fell from $13.97B (FY2022) to $8.84B-$9.96B (FY2024-2025), aided by D&A ($13.51B) exceeding PP&E capex. However, cash flow statements exclude mandatory spectrum outlays ($9.37B FY2021, $3.33B FY2022, $1.01B FY2023, $3.47B FY2024, $2.57B FY2025) and M&A/fiber expansion (~$4.4B UScellular deal closed Aug 2025, ~$4.9B Metronet/KKR JV commitment, ~$950M Lumos/EQT JV). Pricing power & customer retention: ARPA reached ~$155.73+/mo via up-tiering (53%+ shoppers on top plans) and legacy price increases/per-line fees, but triggered consumer Price Lock arbitration challenges and elevated ~1.09% postpaid phone churn in 2026 amid cable MVNO bundles (Comcast/Charter/Optimum) and SpaceX/Starlink low/mid-band spectrum deals. Capital allocation & balance sheet: Led since Nov 2025 by CEO Srini Gopalan (55.9% owner Deutsche Telekom); returned $14.0B via buybacks/dividends in FY2025 (with an $18.2B 2026 return authorization) while issuing $12.0B vs repaying $6.2B LT debt in FY2025. YE 2025 LT debt stood at $81.15B ($5.60B cash; $88.6B debt + financing leases ex-tower obligations; ~$122.27B total debt/lease/tower obligations; Q3 2026 net debt ex-tower leases ~$80.34B or ~2.2x EBITDA), with FY2025 net interest expense of $3.77B (4.84x EBIT/interest) and net debt/NI of 6.87x."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:33:31Z",
+    "evaluator": "qualitative-agent"
+  }
+}

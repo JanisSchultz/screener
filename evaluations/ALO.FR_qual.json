@@ -1,0 +1,30 @@
+{
+  "id": "ALO.FR",
+  "ticker": "ALO",
+  "universe": "eu",
+  "company": "Alstom",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction Machinery & Heavy Transportation Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Rigorous rail safety homologation, proprietary signaling software, and a large global installed fleet create meaningful barriers to entry. However, primary rolling stock manufacturing suffers from fierce competitive bidding by state-backed transit authorities, leaving margins razor-thin. Value destruction from the 2021 Bombardier Transportation acquisition resulted in severe execution losses, multi-year negative free cash flow, and 5-year GAAP ROIC well below 5% (near zero/negative).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b=N, REJECT). Alstom is the world's #2 rail manufacturer, but rolling stock production is characterized by fierce public-tender bidding and zero pricing power. The value-destructive Bombardier acquisition led to massive cash burn (€-557M FCF in FY24), sub-5% ROIC, and an emergency €1B dilutive rights issue in mid-2024 to defend its investment-grade rating.",
+    "evidence": "Bombardier Transportation integration led to multi-year operating losses and negative free cash flow (€-557M in FY2023/24). Net debt escalated to ~€3B before being rescued via a €1B rights issue and €750M hybrid bond in 2024. Multi-cycle GAAP ROIC is structurally below 5%, far below the 12% Munger bar."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

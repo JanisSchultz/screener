@@ -1,0 +1,30 @@
+{
+  "id": "HST",
+  "ticker": "HST",
+  "universe": "us",
+  "company": "Host Hotels & Resorts, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Hotel & Resort REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary upscale and luxury lodging deferrable during economic downturns; highly cyclical travel demand.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Discretionary & Deferrable Cyclical, REJECT). Upper-upscale and luxury hotel REIT portfolio (Ritz-Carlton, Westin, Marriott, Hyatt) exposed to volatile business convention and leisure transient travel cycles, which are easily postponed or cancelled during recessions. Does not meet the essential Western need or entrenched daily habit standard.",
+    "evidence": "Host Hotels & Resorts is the largest US lodging REIT, owning ~74-76 luxury and upper-upscale properties (~42,000 rooms) managed by third parties (Marriott, Hyatt, Hilton). While FY2024-FY2025 revenue reached $5.68B-$6.11B with net income of $707M-$776M and carrying debt of ~$5.08B, hotel real estate economics are characterized by low multi-cycle returns on invested capital (10-year median ROIC ~5.5%), ongoing renovation capital requirements, and extreme demand sensitivity during recessions and travel freezes. Luxury lodging is non-essential and easily deferred, disqualifying it at Gate 2."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

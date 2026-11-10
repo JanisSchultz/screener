@@ -1,0 +1,30 @@
+{
+  "id": "PAYX",
+  "ticker": "PAYX",
+  "universe": "us",
+  "company": "Paychex, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Human Resource & Employment Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs and administrative lock-in for small and mid-sized businesses. Migrating payroll, tax filings, benefits, and 401(k) records creates prohibitive operational disruption and compliance risk, resulting in 82-83% retention (majority of churn is SMB business mortality). Verified by 10-year median ROIC of ~45% (26.8% in FY2025 post-$4.1B Paycor deal) and operating margins near 40%. Pricing power proven by consistent 3-4% annual module price hikes. Erosion risks: low-end self-service payroll upstarts (Gusto, Rippling), broader SMB mortality in severe recessions, and regulatory changes in PEO co-employment rules.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable small-to-medium business payroll, PEO, and HCM toll booth serving ~800k clients with deep regulatory switching costs. Demonstrates consistent pricing power (+3-4% annually) and structural inflation resilience via client fund float interest. Paycor acquisition expanded mid-market scale while keeping leverage conservative (Net Debt/EBITDA ~1.2x, interest coverage 9.3x) and cash conversion exceptional (>100% Owner FCF/NI). [5-10Y g: SMB client base expansion 2.0% + PEO & HCM cross-sell 3.0% + price indexation 2.0% - margin drags 0.0% + share repurchases 0.5%]",
+    "evidence": "10-year financial record shows exceptional capital efficiency: median GAAP ROIC of 44.9% (26.8% in FY2025 post-Paycor), operating margins steady at 38-41%, and Owner FCF conversion exceeding 100% (FY2025 Owner FCF of $2.23B on $1.76B net income). Revenue split across Management Solutions (~75%), PEO & Insurance (~25%), and high-margin client fund float interest. Serves ~800k clients with 82-83% retention. Closed $4.1B Paycor acquisition in April 2025 funded by fixed-rate bonds; LT debt of $4.56B is comfortably covered (Net debt/Owner FCF of 1.56x, EBIT/Interest of 9.3x)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

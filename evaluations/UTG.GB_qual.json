@@ -1,0 +1,30 @@
+{
+  "id": "UTG.GB",
+  "ticker": "UTG",
+  "universe": "eu",
+  "company": "Unite",
+  "country": "United Kingdom",
+  "sector": "Real Estate",
+  "sub_industry": "Other Specialized REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Long-term university nomination agreements and scarce on-campus planning permissions provide high occupancy (98%+) and 5-7% annual rent growth.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). UK purpose-built student accommodation faces severe structural headwinds from UK international student visa restrictions (dependent bans) and widespread UK university sector financial deficits, capping predictable runway < 15 years.",
+    "evidence": "PBSA leader in UK, but university sector faces severe structural deficits and government visa policies led to ~15% contraction in sponsored international study visas, impairing non-Russell Group demand."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BLK",
+  "ticker": "BLK",
+  "universe": "us",
+  "company": "BlackRock",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Insurmountable scale economies shared in iShares (over $4T ETF AUM) where massive trading volume drives the tightest secondary bid-ask spreads and lowest total ownership cost, creating a self-reinforcing liquidity flywheel that subscale competitors cannot replicate. Complementary toll booth in Aladdin enterprise software, which manages risk for tens of trillions in global institutional assets with >98% gross contract renewal. Empirical proof: 5-year median GAAP ROIC of 14.2%, tangible ROIC >100%, steady 35-42% operating margins across market cycles, and record $641B net inflows in 2024. Primary erosion risks include ongoing fee compression in plain-vanilla passive core indexing, index licensing fee inflation, potential integration frictions across massive private market acquisitions (GIP, HPS, Preqin), and political scrutiny around ESG proxy voting.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Unassailable global scale economies shared in asset management ($14.0T AUM) combined with mission-critical Aladdin enterprise software lock-in (>98% retention). Transformative pivot into high-margin private markets (GIP for infrastructure, HPS for private credit, Preqin for data). Structurally insulated from or beneficiary of all 5 macrotrends. Fortress AA- balance sheet with $11.5B cash, minimal net debt of $1.3B, and 11.5x interest coverage. [5-10Y g: market appreciation & organic volume 4.5% + pricing/fee realization 0.0% + private markets & Aladdin mix 3.0% - margin/regulatory drag 0.5% + net repurchases 1.5%]",
+    "evidence": "World's largest asset manager with $14.0T in AUM at FY2025 year-end (up from $11.6T in 2024 and $10.0T in 2023), supported by record organic net inflows of $641B in 2024 and 9% organic base fee growth in 2025. 5-year median GAAP ROIC is 14.2% and tangible operating ROIC exceeds 100%, demonstrating structural capital efficiency. FY2025 revenue grew 19% to $24.2B, with technology services (Aladdin, eFront, Preqin) expanding 24% to $1.98B as high-margin recurring SaaS. Moat anchored by iShares scale economies shared (passing low fees to clients while enjoying insurmountable liquidity network effects) and Aladdin's indispensable enterprise risk OS. Capital allocation characterized by visionary counter-cyclical M&A: BGI/iShares in 2009 ($13.5B), GIP in 2024 ($12.5B), Preqin in 2025 ($3.2B cash), and HPS in 2025 ($12B equity), creating a dominant public-plus-private markets powerhouse. Balance sheet is an AA- rated fortress: $11.5B cash vs $12.8B LT debt ($1.3B net debt, repayable in 0.23 years of net income), and EBIT/interest coverage of 11.5x ($7,045M EBIT vs $614M interest). Reported GAAP FCF conversion (58.5%) reflects ASC 810 consolidated fund investments and acquisition closing costs; underlying maintenance capex is negligible ($375M, <7% of net income), supporting consistent dividend compounding ($3.3B TTM) and share repurchases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

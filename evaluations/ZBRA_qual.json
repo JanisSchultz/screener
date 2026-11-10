@@ -1,0 +1,30 @@
+{
+  "id": "ZBRA",
+  "ticker": "ZBRA",
+  "universe": "us",
+  "company": "Zebra Technologies Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Substantial enterprise installed base in rugged handheld computers, barcode scanners, RFID, and thermal printers supported by software (Mobility DNA) and workflow integration with WMS/ERP systems. However, proof of moat fails: 5-year median GAAP ROIC is sub-12% across the cycle (2020: ~16%, 2021: ~19%, 2022: ~12%, 2023: ~7%, 2024: ~10%). Pricing power is inadequate to protect margins against component inflation and cyclical volume downturns, with severe competitive bidding pressure from Honeywell and Datalogic, as well as substitution from commercial smartphones with scanning software.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected \u2013 G3 Moat & Pricing). While Zebra possesses strong market share and switching costs in AIDC enterprise hardware, it operates as a cyclical hardware vendor selling through two-tier distribution and VAR channels. It lacks pricing power >= inflation across the cycle: during the 2022\u20132023 post-pandemic inventory digestion, customer destocking drove a >21% sales collapse, operating margins dropped from 17.2% to 7.3%, free cash flow turned negative (-$91M in 2023), and GAAP ROIC fell to ~7%, resulting in a 5-year cycle median below 12%. Direct head-to-head RFP competition with Honeywell and emerging software-based scanning on commercial smartphones limit structural pricing leverage.",
+    "evidence": "Multi-cycle financials demonstrate high cyclicality and sub-hurdle return persistence: GAAP operating margins peaked at 17.2% in FY21 ($837M net income) before collapsing to 9.4% in FY22 and 7.3% in FY23 ($333M net income) due to customer destocking across retail and logistics. FCF swung from $215M in FY22 to -$91M in FY23 before rebounding to $954M in FY24 as supply chains normalized. 5-year GAAP ROIC (FY20\u201324) traces 16% -> 19% -> 12% -> 7% -> 10%, yielding a median below the mandatory 12% hurdle. Large enterprise customers (Amazon, Walmart, FedEx) wield countervailing procurement power, routinely running competitive RFPs against Honeywell International. M&A activity (Motorola Enterprise, Fetch Robotics, Matrox) has required substantial capital deployment, muting tangible invested capital returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

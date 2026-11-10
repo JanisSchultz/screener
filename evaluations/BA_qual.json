@@ -1,0 +1,30 @@
+{
+  "id": "BA",
+  "ticker": "BA",
+  "universe": "us",
+  "company": "The Boeing Company",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global commercial aerospace duopoly with Airbus creates insurmountable physical assembly, certification, and tooling entry barriers. Pricing power is embedded via contractual formula-indexed escalation clauses tied to CPI/PPI, though delivery delays and quality issues have forced customer compensation concessions.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management Score = 0, REJECT). Decades of McDonnell Douglas financial engineering prioritized short-term EPS and $43B of debt-funded buybacks at peak multiples over engineering integrity. Catastrophic safety failures (737 MAX crashes, 2024 door-plug blowout) and culture collapse destroyed shareholder equity, forcing emergency $21B dilution at cycle lows. [5-10Y g: 737 production recovery 4% + 787 deliveries 2% - dilution/debt service -2%]",
+    "evidence": "5-year median GAAP ROIC is -5.2%. Free cash flow was -$14.3B in 2024 and -$1.8B in 2025. Total debt exceeds $50B, with negative tangible book equity prior to the October 2024 $21B equity raise. Chronic execution failures across commercial aerospace (737 MAX production caps, 777X delays) and defense fixed-price contracts (KC-46, VC-25B, Starliner) reflect deep-seated institutional decay that fails Munger's management bar."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": 5,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

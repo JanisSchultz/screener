@@ -1,0 +1,30 @@
+{
+  "id": "CB",
+  "ticker": "CB",
+  "universe": "us",
+  "company": "Chubb Limited",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exceptional underwriting discipline, actuarial data advantage, and global balance sheet scale. Consistently achieves combined ratios of 85-87% vs industry ~95-100%, securing rate increases above loss-cost inflation while walking away from mispriced casualty risks.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier global commercial and specialty P&C underwriter with an unassailable risk-control culture led by Evan Greenberg. Sub-87% combined ratios drive massive underwriting profit and high-yielding float. Fortress AA-rated balance sheet with 18x interest coverage. [5-10Y g: net premium volume 4.5% + commercial rate hardening 1.5% + float investment income 1.0% + net buybacks 1.0%]",
+    "evidence": "10-year net premium and revenue growth from $31.5B (2016) to $59.4B (2025). 5-year median GAAP ROIC of 13.8% and tangible ROIC consistently 20-23%. P&C combined ratio of 86.6% in 2024 and 85.7% in 2025 (current accident year ex-cat ~82-83%) reflects elite underwriting profitability. Multi-year FCF conversion exceeds 140% ($12.5B Owner FCF in FY2025 vs $10.3B Net Income). Pristine balance sheet with $15.7B debt vs $10.3B Net Income (1.52x) and $13.8B EBIT (18.1x interest coverage), backed by >$140B high-quality fixed income portfolio. Endorsed by Berkshire Hathaway's $6.7B+ stake."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

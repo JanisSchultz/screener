@@ -1,0 +1,30 @@
+{
+  "id": "VAR.NO",
+  "ticker": "VAR",
+  "universe": "eu",
+  "company": "V\u00e5r Energi",
+  "country": "Norway",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Exploration & Production (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Upstream exploration and production assets on the NCS provide low unit lifting costs, but the company remains a commodity price-taker with zero control over realized hydrocarbon prices.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Rejected \u2013 G3 Moat & Pricing). Eni-controlled Norwegian E&P producer with offshore scale, but operates as a price-taker lacking pricing power over global hydrocarbon prices.",
+    "evidence": "Returns and cash generation are dictated by volatile Brent and gas spot prices. Heavy capex commitments for major offshore developments (Balder X, Castberg) amplify cyclical earnings sensitivity."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ATCO A.SE",
+  "ticker": "ATCO A",
+  "universe": "eu",
+  "company": "Atlas Copco",
+  "price": 184.1,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing SEK 77.1B acquired goodwill/intangibles from Edwards vacuum and industrial gas acquisitions. Tangible ROIC exceeds 70-80%. 5-10Y forward EPS CAGR of 10.5% aligned with qualitative guidance: industrial compressor volume (3.5%), semiconductor EUV vacuum systems (3.5%), aftermarket service annuity (2.0%), pricing/mix (1.0%), and net share buybacks (0.5%). Fortress balance sheet with net debt < 0.3x NI and 39x interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.6664,
+    "current_multiple": 27.62,
+    "par_multiple": 27.91,
+    "par_value": 186.03,
+    "percent_vs_par": -0.0104,
+    "status": "Below PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0163,
+    "expected_irr_5y": 0.1236,
+    "market_implied_cap": 19.8,
+    "moat_runway_margin": 0.2,
+    "market_implied_growth": 0.1007,
+    "growth_margin_of_safety": 0.0043
+  },
+  "health_checks": {
+    "net_debt_years": 0.8,
+    "net_debt_ok": true,
+    "interest_coverage": 39.2,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8933,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

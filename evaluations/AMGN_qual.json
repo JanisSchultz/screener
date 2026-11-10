@@ -1,0 +1,30 @@
+{
+  "id": "AMGN",
+  "ticker": "AMGN",
+  "universe": "us",
+  "company": "Amgen",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Amgen holds valuable biologic patents and advanced manufacturing know-how, but lacks pricing power >= inflation. Net realized prices have declined annually (-2% in FY24, further drops in FY25) due to biosimilar erosion on legacy biologics (Prolia/Xgeva patent expiration in 2025, Neulasta) and statutory Medicare price negotiation under the Inflation Reduction Act (Enbrel facing >50% price cuts in 2026, Otezla selected in 2025 with a $1.2B impairment). PBM rebates and statutory price caps eliminate positive net pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Biopharma pioneer possesses deep biologic R&D and manufacturing intangibles, but structurally lacks pricing power >= inflation. Mature blockbuster franchises face continuous biosimilar erosion (Prolia/Xgeva cliff in 2025-2026, Neulasta) and legislative price-setting under the Inflation Reduction Act (Enbrel Medicare cuts >50% in 2026; Otezla selected in 2025 with $1.2B impairment), driving persistent negative net realized price changes (-2% in FY24, down in FY25) despite volume expansion. [5-10Y g: volume expansion/MariTide 4.0% + Horizon rare disease 2.0% - biosimilar erosion & IRA cuts -3.5% - debt paydown drag 1.0% + buybacks 0.5%]",
+    "evidence": "Multi-cycle biopharma financial treadmill: FY24 revenue of $33.4B (+19% YoY driven by Horizon acquisition; base product sales grew 7% on 23% volume growth offset by -2% net price erosion) and FY25 revenue of $36.8B (+10% on 13% volume growth offset by lower net realized prices). GAAP ROIC compressed to 9.7%-12.2% in FY23-FY24 following the $27.8B Horizon acquisition (invested capital expanded over $70B with heavy non-cash amortization) before rebounding to ~14.4% in FY25. Biosimilars continue to erode legacy assets, with Prolia/Xgeva ($4B+ sales) facing immediate loss of exclusivity in 2025-2026 from Sandoz, Samsung Bioepis, and Celltrion. Enbrel was selected in the initial IRA Medicare negotiation round (>50% price reduction from 2026), and Otezla was selected in 2025 triggering a $1.2B non-cash impairment. Total debt of $60.1B at year-end 2024 resulted in debt/EBITDA of ~4.5x and long-term debt/GAAP net income of 7.2x-15x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DBK.DE",
+  "ticker": "DBK",
+  "universe": "eu",
+  "company": "Deutsche Bank",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability). Massive global universal and investment bank with extensive FICC trading books, complex structured products, Level 3 asset exposures, and tens of trillions in gross notional OTC derivatives that are impossible to verify from the outside.",
+    "evidence": "Deutsche Bank operates a large global investment banking and trading franchise alongside its corporate and retail banking units. Its balance sheet carries massive opaque derivatives exposures and complex trading assets whose tail risks and model valuations are not verifiable from external public disclosures, violating Circle of Competence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

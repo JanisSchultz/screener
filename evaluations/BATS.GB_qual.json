@@ -1,0 +1,30 @@
+{
+  "id": "BATS.GB",
+  "ticker": "BATS",
+  "universe": "eu",
+  "company": "British American Tobacco",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Tobacco (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Addictive, socially destructive tobacco business model facing terminal volume decline, severe legislative/regulatory bans, and punitive excise taxation.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Addictive and predatory tobacco business model explicitly disqualified under Gate 2 due to severe legislative, societal, and regulatory ruin risk, persistent combustible volume declines, and aggressive excise taxation.",
+    "evidence": "Global tobacco manufacturer with brands including Lucky Strike, Dunhill, Kent, and Newport. While traditional pricing power has historically offset mid-single-digit combustible volume declines, the sector faces terminal societal headwinds, illicit vape competition, UK generational smoking bans, US menthol flavor bans, and massive goodwill impairments (£27B write-down on US cigarette brands in 2023)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

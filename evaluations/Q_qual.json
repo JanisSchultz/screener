@@ -1,0 +1,30 @@
+{
+  "id": "Q",
+  "ticker": "Q",
+  "universe": "us",
+  "company": "Qnity Electronics",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Qualified fab consumables (CMP pads, slurries, and advanced packaging materials) integrated into proprietary semiconductor fab recipes. High switching barriers as materials represent <1-2% of wafer cost but carry catastrophic yield-loss risk upon failure. Strong pricing power and high tangible ROIC (>25%), though legacy M&A goodwill from DuPont/Laird depresses GAAP ROIC to ~6.7%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Semiconductor Materials Tier 3 baseline (10-15Y) receives a severe haircut to CAP=5 under Macrotrend [3] (Geopolitical Realignment & Supply Chain Reshoring). Fab customer demand is heavily concentrated in Taiwan (TSMC) and East Asian foundries subject to intensifying US-China export controls and cross-border trade friction, alongside severe wafer-start cyclicality.",
+    "evidence": "Spun off from DuPont in November 2025 as a standalone electronics materials company. While CMP consumables benefit from high customer switching costs and operating/tangible ROIC exceeds 25-40%, 5-year median GAAP ROIC is only 6.7% due to $8.6B in legacy goodwill and intangibles. Saddled with $4.1B in debt at separation (LT Debt/NI > 5.6x). Business model faces severe structural headwinds from semiconductor fab concentration in Taiwan/East Asia, geopolitical export bans, and wafer start volatility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

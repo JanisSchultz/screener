@@ -1,0 +1,30 @@
+{
+  "id": "EMR",
+  "ticker": "EMR",
+  "universe": "us",
+  "company": "Emerson Electric Co.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Core moat is rooted in a massive global installed base of distributed control systems (DeltaV, Ovation) and mission-critical measurement instrumentation (Rosemount, Micro Motion, Fisher valves) embedded in continuous process facilities (chemical, refining, power, life sciences). Switching costs are near-prohibitive due to severe operational disruption risk, 24/7 continuous process downtime costs, and strict regulatory requalification burdens. Historical 10-year median ROIC of 14.2% and gross margins >42-45% demonstrate pricing power, but returns on total invested capital have been diluted by heavy acquisition goodwill (AspenTech, NI). Erosion threats include open process automation (OPAF) standards and IT/OT convergence.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Emerson commands an entrenched installed base in process automation (DeltaV, Fisher, Rosemount), it operates in Tier 3 Capital Goods (baseline CAP 10-15 years) and faces severe structural headwinds under the 5-Macrotrend framework. A significant portion of its process automation revenue remains anchored to fossil fuel refining, chemicals, and hydrocarbon infrastructure facing long-term energy transition headwinds (Macrotrend 4). Simultaneously, the ongoing transition toward open-architecture, software-defined automation (Macrotrend 1) challenges proprietary hardware lock-in, forcing multi-billion dollar defensive M&A (AspenTech, National Instruments) at full valuations that introduce substantial cyclicality, goodwill dilution, and integration complexity. Net CAP is capped at 5 years, failing the 15-year threshold.",
+    "evidence": "Fiscal 2024-2025 revenue reached $17.5B-$18.0B with segment EBITA margins expanding to 26-27.6% and FCF of $2.9B-$3.2B. However, consolidated ROIC has been suppressed into the 7-8% range following aggressive portfolio reshuffling ($8.2B acquisition of National Instruments and $7.2B full buyout of AspenTech funded by the sale of Copeland/Climate Technologies). While the legacy process installed base provides resilient recurring aftermarket maintenance, test & measurement and discrete automation face high cyclical volatility. Heavy exposure to energy and chemical capex cycles coupled with high purchase-price goodwill impairs long-term compounding predictability, limiting CAP to <15 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

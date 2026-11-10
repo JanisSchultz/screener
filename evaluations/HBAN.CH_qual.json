@@ -1,0 +1,30 @@
+{
+  "id": "HBAN.CH",
+  "ticker": "HBAN",
+  "universe": "eu",
+  "company": "Helvetia Baloise",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading Swiss multi-line insurer with entrenched tied agent and broker distribution networks. Strong underwriting discipline maintains combined ratios near 92-93%, enabling premium repricing in line with claims inflation. Primary erosion threats include climate-driven catastrophe volatility and fintech/direct distribution price competition.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Multi-line insurance faces structural secular headwinds from escalating natural catastrophe claims volatility across Switzerland and Europe (Macrotrend 4: climate risk), alongside demographic stagnation in domestic life insurance (Macrotrend 2) and massive post-merger integration complexity following the 2025 Helvetia-Baloise combination.",
+    "evidence": "Helvetia Baloise was created via the December 2025 merger of Helvetia and Baloise. While the combined entity holds a strong ~92% combined ratio and ~270% SST solvency ratio, baseline industry persistence is low (Tier 3/4) and vulnerable to increasing weather-related catastrophe losses. Saturated Swiss domestic market limits long-term runway."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

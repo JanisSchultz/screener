@@ -1,0 +1,30 @@
+{
+  "id": "SSAB B.SE",
+  "ticker": "SSAB B",
+  "universe": "eu",
+  "company": "SSAB",
+  "country": "Sweden",
+  "sector": "Materials",
+  "sub_industry": "Steel (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Hardox and Strenx high-strength steels possess recognized brand equity and proprietary quenching/tempering know-how in heavy machinery wear plates. However, commoditized standard steel (SSAB Europe and SSAB Americas) constitutes the majority of production volume, where SSAB is an absolute price taker vulnerable to global steel price swings and cheap foreign imports. Returns are severely cyclical, with 10-year median ROIC ~7-10%, failing the 12% threshold. Massive green steel transition capex at the Luleå and Oxelösund mini-mills threatens further capital efficiency drag.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Niche leadership in Hardox/Strenx high-strength steel cannot offset commodity price-taker dynamics in standard European and American steel sheets/plates. 10-year cycle-average ROIC hovers around 7-10%, well below the 12% hurdle. Decarbonization transition (fossil-free steel capex in Luleå) locks up massive capital in a cyclical, low-return industry.",
+    "evidence": "SSAB's 10-year historical ROIC averages 7-10%, swinging from 20%+ during post-COVID steel price spikes to near-zero/negative during industrial downturns. Consolidated margins are dictated by global iron ore, coking coal, and hot-rolled coil prices rather than proprietary pricing power. The multi-billion SEK transformation of Luleå into a fossil-free mini-mill requires sustained high capex, depressing incremental returns on invested capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ACX.ES",
+  "ticker": "ACX",
+  "universe": "eu",
+  "company": "Acerinox",
+  "country": "Spain",
+  "sector": "Materials",
+  "sub_industry": "Steel",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "North American Stainless (NAS) possesses a favorable regional cost position, but the business operates as a cyclical commodity price-taker lacking pricing power above inflation across the cycle. Margins are dictated by global stainless base prices, scrap/nickel surcharges, and Chinese overcapacity; FY2025 swung to a net loss of -€40M with ROCE averaging well below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). Commodity stainless steel price-taker subject to severe cyclical margin swings and global/Chinese overcapacity. 5-year average ROCE is ~9% and FY2025 swung to a net loss of -€40M; profit engine NAS relies heavily on US tariff protection rather than a structural customer moat.",
+    "evidence": "Reported ROCE fell to 9.0% in FY2024, and FY2025 recorded a net loss of -€40M on €5.78B revenue due to depressed stainless base prices, European weakness, and inventory write-downs. Net debt expanded to €1.2B following the €820M acquisition of Haynes International. Stainless steel base prices and alloy surcharges fluctuate directly with underlying commodity quotes, demonstrating zero independent pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

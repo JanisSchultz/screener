@@ -1,0 +1,30 @@
+{
+  "id": "SAP.CA",
+  "ticker": "SAP",
+  "universe": "ca",
+  "company": "Saputo",
+  "country": "Canada",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Saputo possesses significant dairy processing and distribution scale in Canada, the US, and internationally, but its product portfolio (fluid milk, cheese blocks, dairy ingredients) is heavily commoditized. It faces strong countervailing buyer power from national grocery chains and intense competition from private-label alternatives. Realized selling prices fluctuate with volatile dairy benchmark spreads (e.g. US block/barrel cheese) rather than independent pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3 (Moat & Pricing Power). Saputo operates in a structurally low-margin, commoditized dairy processing sector with severe private-label competition and no unilateral pricing power. Multi-cycle ROIC of 4-7% consistently fails the 12% economic moat hurdle.",
+    "evidence": "Operating margins have hovered tightly between 4.0% and 6.0% over FY2020-FY2025. 5-year median ROIC sits at ~5.2%, well below the cost of capital and the 12% Munger moat threshold. Substantial capital deployed on international acquisitions (Murray Goulburn in Australia, Dairy Crest in the UK) has failed to generate economic profits, proving the lack of structural pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

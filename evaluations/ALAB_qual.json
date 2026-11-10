@@ -1,0 +1,30 @@
+{
+  "id": "ALAB",
+  "ticker": "ALAB",
+  "universe": "us",
+  "company": "Astera Labs",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Early design-in switching costs and COSMOS software telemetry create stickiness during active cloud server deployment cycles, but returns face severe long-term arbitrage from well-capitalized merchant competitors (Broadcom, Marvell) and hyperscaler internal ASIC initiatives. No multi-cycle ROIC track record (GAAP net loss of -$83.4M in FY2024 following March 2024 IPO; founded 2017), while extreme customer concentration (>70% from a single hyperscaler) eliminates structural pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While Astera Labs has established leadership in high-speed PCIe/CXL retimers and smart fabric switches for AI clusters, it lacks a multi-cycle track record of capital efficiency (GAAP net loss of -$83.4M in FY2024 following its March 2024 IPO). With over 70% of revenue concentrated in a single hyperscaler (and ~86% across the top three), the company is subject to monopsonistic customer leverage, standard merchant semiconductor ASP deflation, and fierce competition from Broadcom and Marvell, precluding demonstrated pricing power >= inflation across a full economic cycle.",
+    "evidence": "Astera Labs was founded in 2017 and completed its IPO in March 2024. FY2024 revenue was $396.0M with a GAAP net loss of -$83.4M and negative GAAP ROIC. While revenue expanded to $853.0M in FY2025 and surged in FY2026 driven by AI data center capex cycles, it lacks a 5-10 year multi-cycle record of GAAP ROIC >= 12%. SEC Form 10-K filings reveal extreme customer concentration: a single major hyperscaler (Amazon/AWS) accounts for >70% of total revenue, and the top three customers account for ~86%. Astera competes directly against Broadcom and Marvell in high-speed connectivity silicon, leaving it vulnerable to architectural platform redesigns, hyperscaler internal silicon initiatives, and structural merchant semiconductor price deflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

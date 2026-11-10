@@ -1,0 +1,43 @@
+{
+  "id": "HD",
+  "ticker": "HD",
+  "universe": "us",
+  "company": "Home Depot (The)",
+  "price": 343.47,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.065,
+    "roic_est": 0.35,
+    "fin_note": "Dominant North American home-improvement and Pro building-materials duopolist: Operating ROIC of 59.44% (GAAP median 41.53%) normalized to standard 35.0% cap, neutralizing $32.7B of goodwill from SRS Distribution/GMS acquisitions. Peak Owner EPS of $16.69 (FY2022) reflects normalized through-the-cycle earning power; recent dip to $14.23 is cyclical trough from 30-year low housing turnover and elevated mortgage rates. 5-10Y secular growth anchored at 6.5%: R&R/Pro volume (+2.5%), pricing/ticket (+2.0%), SRS cross-sell (+1.0%), wholesale margin/tariff drag (-0.5%), and normalized post-deleveraging buybacks (+1.5%). Raw PAR multiple of 22.86x is bound by the 5-Year Cycle High Guardrail at 22.44x. At 20.58x peak Owner EPS, Home Depot trades Below PAR (-8.3% discount to $374.47 PAR Value), providing an attractive 11.0% expected 5Y cycle IRR including 2.67% dividend yield."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 16.6878,
+    "current_multiple": 20.58,
+    "par_multiple": 22.44,
+    "par_value": 374.47,
+    "percent_vs_par": -0.0828,
+    "status": "Below PAR",
+    "g_implied": 0.065,
+    "dividend_yield": 0.0267,
+    "expected_irr_5y": 0.1103,
+    "market_implied_cap": 13.8,
+    "moat_runway_margin": 1.2,
+    "market_implied_growth": 0.0309,
+    "growth_margin_of_safety": 0.0341
+  },
+  "health_checks": {
+    "net_debt_years": 3.49,
+    "net_debt_ok": true,
+    "interest_coverage": 8.66,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9159,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

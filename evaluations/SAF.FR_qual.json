@@ -1,0 +1,30 @@
+{
+  "id": "SAF.FR",
+  "ticker": "SAF",
+  "universe": "eu",
+  "company": "Safran",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "50/50 CFM International JV with GE Aerospace commands ~75% narrowbody engine market share (100% sole-source on Boeing 737 MAX, ~60% on Airbus A320neo). 25-30 year airframe lifecycles create an unassailable high-margin aftermarket spare parts toll booth with proven pricing power above inflation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Commercial aviation narrowbody engine duopoly with an unassailable 25-30 year aftermarket spare parts toll booth, net cash balance sheet, and 17%+ ROIC. [5-10Y g: commercial narrowbody flight hours 4.5% + LEAP aftermarket ramp & spares pricing 3.5% + defense/equipment 1.5% + net share buybacks 0.5% - supply chain friction 0.5%]",
+    "evidence": "17%+ Operating ROIC. Consistent annual Owner FCF of €2.7B to €4.1B with >100% conversion of adjusted net income. Pristine net cash balance sheet (€6.8B cash vs €2.1B debt). Dominant narrowbody engine market share (~75% fleet share via CFM JV with GE) ensures decades of recurring spare parts cash flows."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

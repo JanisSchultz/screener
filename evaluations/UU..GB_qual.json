@@ -1,0 +1,30 @@
+{
+  "id": "UU..GB",
+  "ticker": "UU.",
+  "universe": "eu",
+  "company": "United Utilities",
+  "country": "United Kingdom",
+  "sector": "Utilities",
+  "sub_industry": "Water Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory regional monopoly licence providing water and wastewater services across North West England. Formulaic RCV indexation to CPIH inflation provides inflation pass-through with captive regional customer base. Key risks include Ofwat regulatory tightening, environmental fines over storm overflows, and political scrutiny.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). United Utilities possesses an entrenched statutory water and wastewater monopoly in North West England with CPIH-linked revenue indexing. However, regulatory allowed ROIC is capped at ~5.5%, and the business faces perpetual capital dilution with AMP8 requiring ~£13B in totex. Balance sheet leverage is excessive with £11.2B in debt (19x net income) and interest coverage of 2.98x, failing the >5x infrastructure threshold and violating Gate 6 peace-of-mind solvency requirements.",
+    "evidence": "Statutory water and wastewater provider serving 7.4 million people in North West England. FY2025 revenue of £2,616.3M and operating profit of £1,172.9M. 4-year median GAAP ROIC is 5.55% (4.04%-7.94%), anchored by Ofwat regulated cost of capital. Total long-term debt of £11,235.4M and net debt of £9,441.1M against TTM net income of £586.8M yields a Debt / Net Income ratio of 19.1x. EBIT / Interest coverage of 2.98x (£1,172.9M / £393.9M) falls well below the 5.0x minimum threshold for infrastructure assets. Capex of £1,535.0M exceeds D&A (£500.5M) by 3x, with ~£13B AMP8 commitments ensuring persistent negative post-capex free cash flow and perpetual reliance on debt capital markets."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

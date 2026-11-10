@@ -1,0 +1,30 @@
+{
+  "id": "UMI.BE",
+  "ticker": "UMI",
+  "universe": "eu",
+  "company": "Umicore",
+  "country": "Belgium",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary metallurgy and catalytic formulation know-how are completely overwhelmed by massive capital destruction in EV battery cathode materials, resulting in a €1.60B impairment and a net loss of -€1.48B in FY2024. The legacy ICE automotive catalyst cash cow faces secular terminal obsolescence, while cathode materials generate recurring operating losses (-€91M EBIT in 2025).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). Massive capital allocation failure in EV battery cathode materials triggered a €1.60B impairment and €1.48B net loss in FY2024. Core automotive catalyst earnings face terminal secular headwinds from ICE phase-out.",
+    "evidence": "Umicore recorded a €1.60B impairment on its Battery Materials assets in 2024, driving reported FY2024 net profit to -€1.48B and crushing multi-year GAAP ROIC. In FY2025, Battery Materials Solutions continued to post an adjusted EBIT loss of -€91M. The automotive catalyst business (Catalysis segment) faces secular terminal decline as global light-duty vehicles transition away from internal combustion engines."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

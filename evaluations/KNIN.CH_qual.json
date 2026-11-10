@@ -1,0 +1,30 @@
+{
+  "id": "KNIN.CH",
+  "ticker": "KNIN",
+  "universe": "eu",
+  "company": "Kuehne+Nagel",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Air Freight & Logistics",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Kuehne+Nagel is the global #1 ocean freight forwarder and a top-3 air forwarder with scale economies shared and proprietary digital routing platforms (Seaexplorer). However, enterprise shippers face low switching costs and routinely tender shipping lanes across competing forwarders, leaving K+N as a price-taking intermediary without independent pricing power >= inflation across the freight cycle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 3b (Pricing & Proof of Moat). Kuehne+Nagel is an asset-light global forwarding leader with high return on equity and stable anchor ownership by Klaus-Michael Kühne. However, third-party logistics forwarding is structurally intermediated and subject to frequent customer RFQs; EBIT halved from 2022 peaks as global ocean/air freight spreads normalized, confirming that margins are market-driven rather than protected by proprietary pricing power.",
+    "evidence": "Group revenue declined from CHF 39.4B (2022) to CHF 23.8B (2023) and EBIT fell ~50% from CHF 3.76B to CHF 1.90B as abnormal pandemic supply-chain surcharges vanished. Core Sea and Air logistics volumes are re-tendered regularly by corporate customers on commodity freight rates with negligible customer lock-in."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SGE.GB",
+  "ticker": "SGE",
+  "universe": "eu",
+  "company": "Sage",
+  "country": "United Kingdom",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs in core accounting and payroll ledgers for SMBs and mid-market enterprises, supported by regulatory compliance mandates; proved by 4-6% annual price hikes and 100%+ net retention.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential accounting and payroll ledger for SMBs and mid-market enterprises benefiting from compliance lock-in and high recurring cash conversion. Net debt easily serviceable. [5-10Y g: organic Sage Intacct / cloud volume 4.5% + pricing 2.5% + margin expansion 0.5% + net share repurchases 1.5%]",
+    "evidence": "Multi-year median GAAP ROIC of 17.4% (reaching 23.2% in FY25) with >100% tangible ROIC. Owner FCF conversion averages 114%. Net debt / NI of 2.94x and interest coverage of 9.8x provide comfortable solvency."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

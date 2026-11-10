@@ -1,0 +1,30 @@
+{
+  "id": "STERV.FI",
+  "ticker": "STERV",
+  "universe": "eu",
+  "company": "Stora Enso",
+  "country": "Finland",
+  "sector": "Materials",
+  "sub_industry": "Paper Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Large Nordic forest landholdings and integrated pulp/board mills provide scale, but product lines are commoditized and exposed to graphic paper secular decline. Operational ROCE (excl. Forest) collapsed to 1.0% in 2023, 3.6% in 2024, and 2.7% in 2025, demonstrating complete absence of pricing power amidst global pulp and board cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Nordic forest products and packaging producer suffers from structural graphic paper decline, high wood input costs, and oversupply in consumer packaging board, dragging ROCE to 1.0-3.6% over 2023-2025.",
+    "evidence": "Operational ROCE excluding Forest was 20.9% at the 2022 commodity peak but plunged to 1.0% in 2023, 3.6% in 2024, and 2.7% in 2025 (5-year median ~3-4%, well below the 12% threshold). Heavy capex (Oulu conversion) and De Jong acquisition expanded debt (net debt reached €3.7B before forest sales) while returns stayed deeply sub-hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

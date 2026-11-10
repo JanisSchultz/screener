@@ -1,0 +1,30 @@
+{
+  "id": "EQT.SE",
+  "ticker": "EQT",
+  "universe": "eu",
+  "company": "EQT",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading global alternative asset and infrastructure manager with €195B fee-paying AUM (€354B total AUM). Thematic investment strategy backed by the Wallenberg industrial ecosystem and a proprietary network of 600+ industrial advisors. ~85%+ of FAUM in 10-12 year locked closed-end vehicles. Pricing power demonstrated by closing flagship EQT X (€22B) and Infrastructure VI (€21.5B) at their hard caps with zero fee discounts. Operating/tangible ROIC normalized at 18.3%-23.8% following BPEA integration. Primary erosion threats: macro slowdown in PE exit activity delaying performance fees, and competition in mid-market infrastructure.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global private equity and infrastructure titan with €195B fee-paying AUM, anchored by the Wallenberg industrial network. Outstanding contractual fee visibility with >85% locked in 10-12 year funds. Tangible ROIC of 18-24% post-BPEA integration and 121% FCF conversion. Balance sheet fortress with net debt 2.0x net income and 13.8x interest coverage. [5-10Y g: FAUM volume growth 7.0% + fee realization mix 1.0% + infrastructure expansion 2.0% - exit/carry cyclical drag 1.5% + net dividends/buybacks 1.5%]",
+    "evidence": "FY24-FY25 tangible ROIC reached 23.8% and 18.3% following the integration of Baring Private Equity Asia. Free cash flow conversion of 121.3% with €395M-€446M in Owner FCF. Flagship fund raises closed at hard caps (EQT X at €22B, EQT Infrastructure VI at €21.5B). Net debt of €1,465M is repayable in 2.0 years of net income (€728M), with interest coverage of 13.8x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

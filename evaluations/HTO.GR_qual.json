@@ -1,0 +1,30 @@
+{
+  "id": "HTO.GR",
+  "ticker": "HTO",
+  "universe": "eu",
+  "company": "OTE (Hellenic Telecom)",
+  "country": "Greece",
+  "sector": "Communication Services",
+  "sub_industry": "Integrated Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Primary listing in Greece is outside approved rule-of-law Western developed markets (in_market == 'N') with elevated sovereign, macroeconomic, and regulatory risk.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (gate_2 = 'N', REJECT). Primary listing and operations in Greece are outside approved Western developed markets (in_market == 'N'). Greek telecom incumbent (Deutsche Telekom-controlled) operates in a mature, low-growth market subject to historical sovereign and regulatory volatility.",
+    "evidence": "OTE holds leading market share in Greek fixed broadband and mobile telephony under Deutsche Telekom governance. However, the listing country (Greece) is excluded from the approved rule-of-law Western developed market universe (in_market == 'N'), triggering an automatic Gate 2 rejection."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

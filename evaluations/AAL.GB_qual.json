@@ -1,0 +1,30 @@
+{
+  "id": "AAL.GB",
+  "ticker": "AAL",
+  "universe": "eu",
+  "company": "Anglo American",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Diversified Metals & Mining (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "World-class Tier-1 copper (Collahuasi, Quellaveco) and iron ore assets provide resource longevity and low cash-cost curves, but Anglo American is a pure commodity price-taker with zero pricing power over global market clearing prices.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (commodity price-taker & volatile sub-hurdle ROIC, REJECT). Despite premier Tier-1 mineral deposits, Anglo American is a pure price-taker on global commodity exchanges. Realized earnings and returns swing wildly with macroeconomic cycles, lacking pricing power >= inflation.",
+    "evidence": "Attributable ROCE and ROIC swung violently from ~26% in 2021 to ~5-9% in 2023-2024, driven by commodity price slumps, high cost inflation, and multi-billion dollar asset write-downs (De Beers, Woodsmith). Revenues and operating margins are dictated entirely by global spot commodity benchmarks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

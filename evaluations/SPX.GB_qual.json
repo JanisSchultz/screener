@@ -1,0 +1,30 @@
+{
+  "id": "SPX.GB",
+  "ticker": "SPX",
+  "universe": "eu",
+  "company": "Spirax Group",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Outstanding pricing power: steam specialty valves, traps, and electric thermal solutions represent a tiny fraction of total plant capex but prevent catastrophic boiling/downtime; Watson-Marlow peristaltic pumps and single-use tubing are validated directly into regulated biopharmaceutical drug production filings with massive customer switching barriers.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global industrial steam thermal management and biopharma peristaltic fluid path leader. Direct engineering sales force creates exceptional switching barriers and pricing power above inflation. Net debt repayable in ~2.0 years with strong FCF conversion. [5-10Y g: steam thermal efficiency volume 2.5% + Watson-Marlow biopharma recovery 2.5% + pricing power 1.5% - debt paydown 0.5%]",
+    "evidence": "14.0% 5-year median GAAP ROIC; 40-65% operating tangible ROIC. Owner FCF conversion >100% (£221.8M Owner FCF vs £163.4M NI in FY25). Watson-Marlow and Steam Thermal Solutions deliver resilient gross margins >50% across the industrial cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

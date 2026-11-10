@@ -1,0 +1,43 @@
+{
+  "id": "BIM.FR",
+  "ticker": "BIM",
+  "universe": "eu",
+  "company": "bioMérieux",
+  "price": 93.3,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": 3.64,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.1637,
+    "fin_note": "Peak Owner EPS normalized to €3.64 (FY2024) stripping FY2022 COVID-19 respiratory testing windfall (€3.82). Operating ROIC normalized to 16.37% reflecting tangible capital return across closed-system hospital diagnostic instruments (VITEK, BioFire). Forward 5-10Y compound growth rate of 8.0% driven by 5.0% instrument installed-base and syndromic panel volume, 1.5% reagent pricing, and 1.0% operating leverage. Net cash fortress balance sheet."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 3.64,
+    "current_multiple": 25.63,
+    "par_multiple": 19.68,
+    "par_value": 71.62,
+    "percent_vs_par": 0.3028,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0096,
+    "expected_irr_5y": 0.034,
+    "market_implied_cap": 26.1,
+    "moat_runway_margin": -6.1,
+    "market_implied_growth": 0.1694,
+    "growth_margin_of_safety": -0.0894
+  },
+  "health_checks": {
+    "net_debt_years": 0.5,
+    "net_debt_ok": true,
+    "interest_coverage": 34.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.72,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

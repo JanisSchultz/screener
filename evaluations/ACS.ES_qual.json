@@ -1,0 +1,30 @@
+{
+  "id": "ACS.ES",
+  "ticker": "ACS",
+  "universe": "eu",
+  "company": "ACS",
+  "country": "Spain",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Scale and prequalification advantages in mega-infrastructure, advanced tech (data centers, battery plants via Turner), and toll road concessions (Abertis). However, construction contracting is structurally characterized by competitive bidding, thin operating margins (4-5%), and project execution risks, resulting in GAAP ROIC of 3-6%, well below the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Global infrastructure contractor and concessionaire (Turner, Hochtief, Abertis) has leading positions in mega-projects and data centers, but thin contracting margins (4-5%) and competitive bidding yield sub-hurdle multi-cycle GAAP ROIC (3-6%).",
+    "evidence": "Operating margins remain structurally thin at ~4.5-5.0%. Consolidated GAAP ROIC sits in the 3-6% range across the cycle, far below the 12% threshold. General contracting inherently lacks pricing power against public and corporate procurement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

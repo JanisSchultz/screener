@@ -1,0 +1,30 @@
+{
+  "id": "GLEN.GB",
+  "ticker": "GLEN",
+  "universe": "eu",
+  "company": "Glencore",
+  "country": "United Kingdom",
+  "sector": "Materials",
+  "sub_industry": "Diversified Metals & Mining (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (opaque proprietary commodity trading arm, REJECT). Glencore combines industrial mining with the world's largest commodity trading and marketing operation. The complex derivative books, counterparty credit commitments, and working capital arbitrage exposures of its Marketing division are opaque and fundamentally unverifiable from reported outside financial statements.",
+    "evidence": "Glencore's Marketing division generates hundreds of billions in gross volume using complex physical commodity trading, derivative hedging, and bilateral financing arrangements across opaque jurisdictions. Key risk exposures and mark-to-market valuations are not independently verifiable by external investors, triggering Gate 1 failure under standard (b)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

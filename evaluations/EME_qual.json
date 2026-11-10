@@ -1,0 +1,30 @@
+{
+  "id": "EME",
+  "ticker": "EME",
+  "universe": "us",
+  "company": "EMCOR Group, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "(1) What prevents competitors from arbitraging away returns: EMCOR possesses specialized engineering know-how, BIM prefabrication capabilities, deep relationships with general contractors and facility owners, and the largest aggregate pool of scarce skilled craft labor (union electrical and mechanical trades) in North America. (2) Empirical proof of moat: While 5-year median ROIC is high (~19.5% historical median, spiking to >40-50% in 2024-2025 during the AI data center buildout), this capital efficiency is mathematically driven by an asset-light working capital model rather than pricing power. Historically (2014-2020), operating margins hovered tightly in the 4.0% to 5.8% range, reflecting competitive bidding. (3) Primary erosion threats: Customer project deferrals in non-residential construction, cyclical capex normalization among hyperscalers and semiconductor manufacturers, wage inflation/craft labor shortages eroding fixed-price margins, and competition from national and regional specialty contractors (e.g., Comfort Systems, Quanta, local union shops).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). EMCOR is an exceptionally well-run specialty electrical and mechanical contractor currently enjoying peak-cycle earnings and record margins (~10%) from hyperscale AI data centers and reshoring mega-projects. However, specialty contracting lacks a structural, cycle-neutral economic moat. Work is won via competitive bidding or negotiated GMP/cost-plus contracts where bargaining power remains with facility owners and general contractors. Outside of cyclical supply crunches for skilled trades, operating margins historically average 4-6%, proving that pricing power cannot be sustained above inflation across the full business cycle without volume loss or competitive substitution.",
+    "evidence": "Multi-Cycle Financial Track Record: Revenues grew from $6.7B in FY15 to $14.6B in FY24 and over $15B in FY25. Consolidated operating margins averaged 4.0%-5.8% from 2014-2020 before expanding to 9.2% in FY24 and 10.1% in FY25, propelled by the unprecedented surge in hyperscale data center, semiconductor fab, and industrial cleanroom construction. GAAP ROIC expanded from historical averages of 15-20% (10Y median 19.5%) to 52.6% in 2024 and 41.8% in 2025; however, this high ROIC is primarily an artifact of an asset-light balance sheet with negative invested capital in certain operating units (funded by billings in excess of costs). Segment Breakdown: U.S. Electrical Construction (~35-40% of revenue, leading margins >12%), U.S. Mechanical Construction (~35-40%), U.S. Building Services (~20-25%), and Industrial Services. Divested lower-margin UK operations in 2024. Pricing Power & Customer Lock-in: Contracts are project-based (fixed-price lump sum, GMP, time & materials, cost-plus); building owners and general contractors routinely solicit competing bids from regional and national MEP peers (e.g. Comfort Systems USA, Quanta, Cupertino Electric). FCF & Balance Sheet: FCF generation is stellar (>100% net income conversion, ~$1.3B FCF in 2024, ~$1.2B in 2025), and the balance sheet is pristine with >$1.1B in cash and virtually zero funded long-term debt, providing exceptional downside protection. Nevertheless, contracting remains an inherently cyclical, project-dependent industry without an unassailable pricing moat across full macroeconomic cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

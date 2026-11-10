@@ -1,0 +1,30 @@
+{
+  "id": "BOL.SE",
+  "ticker": "BOL",
+  "universe": "eu",
+  "company": "Boliden",
+  "country": "Sweden",
+  "sector": "Materials",
+  "sub_industry": "Diversified Metals & Mining (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Highly automated, low-carbon Nordic open-pit mining (Aitik, Garpenberg) and integrated smelting (Rönnskär, Odda) provide best-in-class European cost positioning, but Boliden is fundamentally a price-taker on LME copper/zinc prices and global smelter TC/RC benchmarks.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (commodity price-taker lacking pricing power, REJECT). Boliden is an admirably efficient, low-carbon Nordic mining and smelting operator, but its top-line realizations and cash flows are entirely dictated by LME spot metal prices (copper, zinc) and global smelting treatment charges. It possesses no pricing power.",
+    "evidence": "Operating margins and ROCE swing with global metal cycles (margins 9.7% in 2023 vs 18% in 2022). As an upstream producer of refined copper and zinc cathodes, sales occur at spot market benchmark prices with zero ability to independently raise prices against inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

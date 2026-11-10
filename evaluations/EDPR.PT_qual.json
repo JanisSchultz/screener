@@ -1,0 +1,30 @@
+{
+  "id": "EDPR.PT",
+  "ticker": "EDPR",
+  "universe": "eu",
+  "company": "EDP Renováveis",
+  "country": "Portugal",
+  "sector": "Utilities",
+  "sub_industry": "Renewable Electricity (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global pure-play onshore wind and solar developer. While holding extensive grid connection permits and project pipelines, the business model produces undifferentiated commodity electricity with zero independent pricing power. Long-term power purchase agreements (PPAs) and government Contracts for Difference (CfDs) lock in fixed nominal strike prices that fail to adjust for severe capital expenditure inflation (turbines, transformers, balance of plant), while the asset-rotation funding model (selling stakes in operational farms to institutional buyers) stalled as global interest rates rose. 5-year median ROIC is severely sub-hurdle at 2.5-4%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Proof of Moat & Pricing Power, REJECT). Pure-play global wind and solar developer producing commodity power. PPA strike prices provide no pricing power against capex and supply-chain cost surges, while merchant power volumes face severe price cannibalization. Asset rotation model disrupted by higher global discount rates. Historical ROIC of 2.5-4% fails the 12% hurdle.",
+    "evidence": "Net debt expanded to €8.3B in 2024 and stabilized at ~€8.1B in 2025 following heavy growth capex and European minority portfolio buyouts. Post-tax ROIC hovered between 2.5% and 4.0% across 2023-2025, consistently lagging the company's cost of capital. PPA execution in the US and Europe faced declining realized off-take prices, while rising cost of debt severely compressed equity internal rates of return (IRRs), forcing management to pull back growth targets to defend balance sheet metrics."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

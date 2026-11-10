@@ -1,0 +1,43 @@
+{
+  "id": "HNR1.DE",
+  "ticker": "HNR1",
+  "universe": "eu",
+  "company": "Hannover Re",
+  "price": 293.0,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.1627,
+    "fin_note": "World's #3 reinsurer with lowest admin cost ratio (~1.5%) enabling scale economies shared. Operating ROIC of 16.27% aligns with GAAP ROIC due to negligible intangibles. Peak Owner EPS EUR 21.90 affirmed. Forward growth of 7.0% aligned with guidance (3.5% volume + 2.0% treaty rate hardening + 1.0% float yield + 0.5% capital return)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 21.9035,
+    "current_multiple": 13.38,
+    "par_multiple": 16.71,
+    "par_value": 365.94,
+    "percent_vs_par": -0.1993,
+    "status": "Below PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0317,
+    "expected_irr_5y": 0.1504,
+    "market_implied_cap": 12.0,
+    "moat_runway_margin": 3.0,
+    "market_implied_growth": 0.02,
+    "growth_margin_of_safety": 0.05
+  },
+  "health_checks": {
+    "net_debt_years": 1.53,
+    "net_debt_ok": true,
+    "interest_coverage": 26.54,
+    "interest_cov_ok": true,
+    "fcf_conversion": 6.23,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

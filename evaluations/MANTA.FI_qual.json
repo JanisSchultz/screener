@@ -1,0 +1,30 @@
+{
+  "id": "MANTA.FI",
+  "ticker": "MANTA",
+  "universe": "eu",
+  "company": "Mandatum",
+  "country": "Finland",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Lacks a defensible economic moat: primary legacy earnings engine is a run-off guaranteed with-profits life portfolio, while active wealth management operations operate in a competitive, fee-compressed Nordic market without pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Run-off book lacks compounding moat & zero pricing power, REJECT). Finnish life and wealth manager recently spun out of Sampo; capital release relies on a closed, self-liquidating with-profits life portfolio, while fee-based wealth management lacks pricing power against dominant Nordic banking conglomerates.",
+    "evidence": "Mandatum's with-profits book has been closed to new sales since the 2000s and is winding down over decades. Wealth management faces intense fee competition in Finland. Spun out of Sampo because it lacked structural reinvestment runways at high returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

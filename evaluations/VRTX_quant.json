@@ -1,0 +1,43 @@
+{
+  "id": "VRTX",
+  "ticker": "VRTX",
+  "universe": "us",
+  "company": "Vertex Pharmaceuticals",
+  "price": 547.09,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Unrivaled global biopharmaceutical monopoly in cystic fibrosis (Trikafta, Alyftrek vanzacaftor triple) with patent protection extending into the late 2030s. Operating ROIC normalized to the 35.0% cap (tangible ROIC of 90.48% and 5-year median GAAP ROIC of 59.64% reflect unassailable CFTR franchise pricing power). FY2025 peak Owner EPS of $15.3225 accepted without adjustment, reflecting normalized operating earnings ($3.95B net income, $3.63B OCF) following recovery from the one-off 2024 Alpine Immune Sciences accounting charge. Forward 5-10Y Owner EPS compounding calibrated at 8.0% (3.0% global CF patient penetration + 2.0% Alyftrek upgrade + 2.5% Suzetrigine acute pain launch - 0.5% R&D reinvestment drag + 1.0% net share repurchases). Pristine fortress balance sheet with zero funded debt ($0.0M), >$5.08B in cash and marketable securities, and 313.8x EBIT interest coverage."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 15.3225,
+    "current_multiple": 35.71,
+    "par_multiple": 27.19,
+    "par_value": 416.57,
+    "percent_vs_par": 0.3133,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0227,
+    "market_implied_cap": 19.7,
+    "moat_runway_margin": -4.7,
+    "market_implied_growth": 0.2078,
+    "growth_margin_of_safety": -0.1278
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 313.78,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.762,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

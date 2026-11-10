@@ -1,0 +1,30 @@
+{
+  "id": "BNY",
+  "ticker": "BNY",
+  "universe": "us",
+  "company": "BNY Mellon",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "World's largest global custodian and collateral manager ($59.3T AUC/A, $2.2T AUM) with deeply entrenched operational switching costs. Institutional clients (asset managers, pensions, sovereign wealth funds, 94% of Fortune 100) embed BNY's custody, middle-office accounting, clearing, and reporting into core daily operations, making custodian migration exceptionally risky, complex, and rare. Empirically demonstrated by 2024-2025 Return on Tangible Common Equity (ROTCE) of 23-26% and ROE of ~14%. Moat erosion threats include fee pressure from passive asset management, institutional deposit cash-sorting in volatile rate environments, and technological disintermediation / direct tokenized settlement.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT – G6 Cash & Fortress Balance Sheet). While BNY possesses a world-class custody moat (Gate 3a Toll booth / Switching costs, Gate 4 CAP 20) with $59.3T AUC/A and 23-26% ROTCE, it fails Gate 6's strict peace-of-mind fortress balance sheet standard. As a Global Systemically Important Bank (G-SIB) and custody bank, BNY operates a fractional-reserve deposit-taking balance sheet funded by ~$280B+ in institutional deposits and wholesale liabilities. Long-term debt of $31.9B exceeds 4.0x Net Income ($5.55B, LT debt/NI = 5.74x), operating cash flow swings violently with institutional deposit flows, and the institution inherently relies on continuous wholesale market access and central bank liquidity facilities ('the kindness of strangers'). Per the screening methodology, commercial fractional-reserve and custody banks fail Gate 6.",
+    "evidence": "1. Moat & Market Position: BNY is the #1 global custodian with $59.3T in Assets under Custody and/or Administration (AUC/A) and $2.2T in AUM as of FY2025, servicing 94% of Fortune 100 companies and 96% of the top 100 global banks. Core institutional custody, accounting, and clearing are deeply integrated into client operations, creating prohibitive switching costs.\n2. Capital Efficiency & Profitability: FY2025 revenue reached $20.08B with Net Income of $5.55B. ROTCE was 23% in 2024 and 26% in 2025 (ROE ~14%), demonstrating high profitability on tangible capital despite lower asset-turnover GAAP ROIC typical of leveraged financial institutions.\n3. Balance Sheet & Gate 6 Failure: FY2025 Long-Term Debt was $31.87B against Net Income of $5.55B (LT Debt / NI = 5.74x, well above the <=4.0x screener threshold). Balance sheet of >$400B in assets is levered against client deposits and repo obligations. Operating cash flows fluctuate drastically due to institutional deposit movements ($96M in 2019, $15.1B in 2022, $687M in 2024, $6.73B in 2025), failing clean multi-year FCF conversion and the 'peace of mind / no kindness of strangers' solvency standard required for Quality compounders."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

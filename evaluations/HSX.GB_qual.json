@@ -1,0 +1,30 @@
+{
+  "id": "HSX.GB",
+  "ticker": "HSX",
+  "universe": "eu",
+  "company": "Hiscox Ltd",
+  "country": "United Kingdom",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialty Lloyd's syndicate and reinsurance underwriting subject to global wholesale broker mediation (Marsh, Aon, WTW) and severe pricing cycles. Lacks sustainable pricing power across the full cycle; multi-cycle ROE fell to sub-hurdle levels (8.1% in 2021, 10.1% in 2022) due to high catastrophe losses and litigation exposure (Covid-19 BI claims).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing & Proof of Moat). Specialty Lloyd's and retail insurer exposed to severe catastrophe volatility, wholesale broker gatekeepers, and cyclical soft/hard pricing swings. Multi-cycle ROE/ROIC falls well below the 12% hurdle during normal and soft-market periods (8.1% in 2021, 10.1% in 2022).",
+    "evidence": "Hiscox operates across Retail, London Market, and Re & ILS. Performance is heavily tied to the global commercial and reinsurance pricing cycle. Pre-tax profit plunged during the Covid-19 business interruption disputes where Hiscox faced major UK FCA court action. Return on equity in 2021 (8.1%) and 2022 (10.1%) failed the 12% cost-of-capital hurdle before rebounding during the 2023-2025 hard reinsurance market. Lacks structural pricing power independent of industry capacity cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

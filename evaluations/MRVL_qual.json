@@ -1,0 +1,30 @@
+{
+  "id": "MRVL",
+  "ticker": "MRVL",
+  "universe": "us",
+  "company": "Marvell Technology",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High customer switching costs in custom silicon ASIC co-design (e.g. AWS Trainium/Inferentia) and proprietary SerDes/optical DSP IP create project lock-in across product cycles. However, the moat fails empirical verification: 10-year median GAAP ROIC is 6.5% and the company posted consecutive GAAP net losses from FY2021 through FY2025. Primary erosion threats include extreme hyperscaler customer concentration, monopsonistic pricing pressure depressing custom silicon gross margins, potential insourcing of chip design by cloud titans, and intense merchant competition from Broadcom and Nvidia.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Structural failure of empirical moat test: 10-year median GAAP ROIC is ~6.5% (sub-12% hurdle) with consecutive GAAP net losses from FY2021 through FY2025. Heavily dilutive serial M&A (Cavium, Inphi, Innovium) burdened the balance sheet with goodwill and amortization, while massive annual stock-based compensation dilutes owners. Hyperscaler monopsony power in custom ASICs depresses margins and eliminates pricing power >= inflation.",
+    "evidence": "Multi-cycle financial performance demonstrates chronic inability to meet the 12% GAAP ROIC standard. Reported GAAP net income was negative across FY2021 (-$277M), FY2022 (-$421M), FY2023 (-$164M), FY2024 (-$933M), and FY2025 (-$885M), yielding a 5-year median GAAP ROIC of approximately -2% and a 10-year median ROIC of 6.5%. While non-GAAP numbers look rosier, the divergence is driven by hundreds of millions in annual stock-based compensation ($600M-$800M+/yr) and heavy amortization of intangibles from serial M&A ($6B Cavium, $10B Inphi). In custom silicon (ASICs), Marvell is highly dependent on a handful of hyperscalers (Amazon AWS, Microsoft, Google), who dictate terms, compress gross margins (custom ASIC gross margins typically 35-45% vs 60%+ corporate average), and can dual-source or insource design, eliminating pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

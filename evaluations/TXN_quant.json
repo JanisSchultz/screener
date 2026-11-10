@@ -1,0 +1,43 @@
+{
+  "id": "TXN",
+  "ticker": "TXN",
+  "universe": "us",
+  "company": "Texas Instruments Incorporated",
+  "price": 302.02,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.29,
+    "fin_note": "Calamity pass reflecting temporary Gate 6 cash flow depression from peak $4.5B-$5.0B/year capex on 300mm fabs (Sherman TX, Lehi UT) during cyclical semiconductor destocking. Operating ROIC normalized to 29.0% reflecting 10-year median GAAP ROIC (29.03%) and physical capital efficiency across 80,000+ catalog analog parts, while recognizing that trough ROIC (~19-20%) is temporarily depressed by fab construction. Balance sheet carries $3.23B cash vs $13.55B LT debt (2.71x net debt/NI), with organic dividend coverage protected by post-Elliott capex moderation to $2.0B-$3.0B in 2026-2027 and $1.6B CHIPS Act grants. Forward 5-10Y through-the-cycle Owner EPS growth of 7.5% driven by 4.5% analog/embedded volume, 0.5% pricing, 1.5% structural 300mm cost advantage (40% unpackaged die cost savings) and FCF recovery, plus 1.0% net share repurchases. At $302.02 (31.97x peak Owner EPS of $9.4482), TXN trades Above PAR (+41.2% vs fundamental PAR Value of $213.91 and exceeding its 5-year cycle high multiple of 29.64x), offering a 2.1% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.4482,
+    "current_multiple": 31.97,
+    "par_multiple": 22.64,
+    "par_value": 213.94,
+    "percent_vs_par": 0.4117,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0181,
+    "expected_irr_5y": 0.0215,
+    "market_implied_cap": 28.2,
+    "moat_runway_margin": -8.2,
+    "market_implied_growth": 0.2148,
+    "growth_margin_of_safety": -0.1398
+  },
+  "health_checks": {
+    "net_debt_years": 2.71,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8912,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

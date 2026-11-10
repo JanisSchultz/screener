@@ -1,0 +1,30 @@
+{
+  "id": "A",
+  "ticker": "A",
+  "universe": "us",
+  "company": "Agilent Technologies",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 in gas chromatography (GC) and top-3 in liquid chromatography (LC) and mass spectrometry (LC-MS). Regulated biopharma QA/QC, clinical diagnostics, and food/environmental testing require validated analytical methods (FDA 21 CFR Part 11, USP monographs). Switching instrument platforms mandates costly, time-consuming method re-validation and regulatory audit risk. Agilent CrossLab Group captures ~42% of enterprise revenue from recurring consumables, columns, reagents, and mission-critical service contracts, sustaining 2-3% annual pricing power. Proven by 10-year median GAAP ROIC of 17.9% and operating ROIC >45%. Primary erosion threats: biopharma spending slowdowns, Chinese domestic instrument substitution policies, and lab budget austerity.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier life sciences analytical tools and diagnostics compounder with market-leading positions in chromatography and mass spectrometry. Moat is anchored in regulatory method validation lock-in (FDA/USP/EPA) and a high-margin recurring CrossLab consumables/service engine (>40% of sales). Highly insulated across all 5 macrotrends, with AI-driven drug discovery expanding compound testing volumes and lab automation demand. Fortress balance sheet with net debt under 1.0x net income and 13.2x interest coverage. [5-10Y g: instrument & recurring consumable volume 3.5% + pricing 2.0% + CrossLab services mix 1.0% - cyclical/tariff drag 0.5% + net buybacks 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 17.9% and operating ROIC of 52.5%. Owner FCF conversion averaged 95% over the past 5 years ($1.14B FCF on $1.30B net income in FY2025). Peak-to-peak Owner EPS compounded from $2.21 in 2017 to $3.63 in 2019, $4.37 in 2021, and reached a new peak of $4.57 in FY2025. Balance sheet exhibits exceptional durability with $1.79B cash against $3.05B long-term debt (net debt $1.26B vs $1.30B net income, repayable in ~1.0 year) and FY2025 interest coverage of 13.2x ($1,479M EBIT / $112M interest)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

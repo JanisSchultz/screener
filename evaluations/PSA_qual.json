@@ -1,0 +1,30 @@
+{
+  "id": "PSA",
+  "ticker": "PSA",
+  "universe": "us",
+  "company": "Public Storage",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Self-Storage REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential, deferrable overflow storage service; discretionary consumer spending vulnerable to moves, decluttering, and economic belt-tightening.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Public Storage provides self-storage rentals, which represent a discretionary and deferrable convenience rather than an essential functional necessity or entrenched everyday habit. Units store non-essential household overflow and clutter, making contracts easily cancellable during economic strain or housing freezes. Furthermore, capital-intensive real estate asset intensity results in multi-year ROIC of ~7-8%, failing quality compounding hurdles.",
+    "evidence": "Public Storage (PSA) operates ~3,000 self-storage properties across the US with ~218M sq ft. While PSA achieves high property-level NOI margins (>77%) and maintains an A-rated balance sheet, self-storage fails Munger essentiality. Storage space is a deferrable consumer discretionary expense driven by temporary moves and excess clutter. During 2023-2025 post-pandemic normalization and sluggish housing turnover, pricing power on new move-ins contracted. Structurally, capital-intensive real estate ownership caps 10-year median ROIC at ~8.2% (2024-2025 ROIC ~7.2%), far below the >=12% compounding hurdle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

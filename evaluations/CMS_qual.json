@@ -1,0 +1,30 @@
+{
+  "id": "CMS",
+  "ticker": "CMS",
+  "universe": "us",
+  "company": "CMS Energy Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Regulated utility monopoly across Michigan's Lower Peninsula. High legal and capital barriers eliminate competition. Cost-of-service tariffs pass through commodity and capital costs with authorized ROEs around 9.9%, capping ROIC at ~5.6%.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet & Cash Conversion, REJECT). Regulated electric and gas monopoly serving Michigan with clean execution on coal phase-out and regulatory rate base growth. However, structural leverage ($17.8B long-term debt, 16.6x net income, interest coverage 2.2x) and massive ongoing capex ($24B+ 5Y plan) require perpetual capital market access and equity dilution, while ROIC is capped at ~5.6%.",
+    "evidence": "10-year median ROIC of 5.6%. FY2025 long-term debt of $17,807M dwarfs net income of $1,071M (16.6x ratio). EBIT of $1,727M against interest expense of $789M yields interest coverage of 2.19x, well below the 5.0x requirement. Heavy reliance on first mortgage bonds and equity offerings ($500M-$700M/year) to fund multi-billion annual capex."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

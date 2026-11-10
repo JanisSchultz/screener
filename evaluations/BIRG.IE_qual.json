@@ -1,0 +1,30 @@
+{
+  "id": "BIRG.IE",
+  "ticker": "BIRG",
+  "universe": "eu",
+  "company": "Bank of Ireland",
+  "country": "Ireland",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched Irish banking duopoly (alongside AIB) controlling over 70% of domestic deposits and lending following foreign bank exits. Protected by sticky retail deposit relationships and primary transaction accounts, though lending products lack pricing power over monetary cycles.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Dominant Irish banking duopoly franchise with AIB; RoTE ~17% in 2023-2024 supported by foreign bank exits and high ECB rates. However, spread-lending earnings have peaked and are declining with ECB rate cuts, while facing aggressive fintech competition from Revolut and high Irish regulatory/political scrutiny.",
+    "evidence": "FY24 adjusted RoTE was 16.8% with PBT of €1.85B and NII of €3,565M (down 3% from €3,682M in FY23 as ECB rates peaked and began easing). While structural hedging and duopoly deposit market share protect near-term margins, commercial fractional-reserve spread-lenders lack 15-year secular persistence."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

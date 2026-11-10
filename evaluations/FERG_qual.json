@@ -1,0 +1,30 @@
+{
+  "id": "FERG",
+  "ticker": "FERG",
+  "universe": "us",
+  "company": "Ferguson Enterprises Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Trading Companies & Distributors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched scale in North American plumbing, HVAC, and waterworks distribution (~1,700 branches, 11 primary DCs) provides superior SKU availability and lower unit purchasing costs than fragmented regional competitors. Contractors prioritize immediate product availability over small price variances to avoid costly trade labor downtime. Proof: 5-year median GAAP ROIC of 28.2% and gross margin stability near ~30% through severe commodity cycles (PVC, copper, steel). Primary erosion threats include direct-to-contractor disintermediation by major HVAC OEMs, mitigated by Ferguson's last-mile delivery, counter network, and trade credit.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant North American distributor of plumbing, HVAC, and waterworks supplies with entrenched local branch density and scale economies shared. Heavily insulated from AI disruption with ~60% exposure to non-deferrable repair, maintenance, and improvement (RMI). Conservative balance sheet with net debt at 1.7x net income and ~14x interest coverage. [5-10Y g: organic volume & market share gains 3.0% + inflation price pass-through 1.5% + accretive bolt-on acquisitions 2.0% - margin normalization drag 0.5% + share repurchases 2.0%]",
+    "evidence": "5-year median GAAP ROIC of 28.2% and operating ROIC of 46.7%. FY2025 net sales of $30.8B, GAAP operating profit of $2.61B (8.5% margin), and net income of $1.86B. FCF conversion averages ~82% with modest capital expenditure needs (~1% of sales). Conservative balance sheet with $3.75B long-term debt against $674M cash and $1.86B net income (net debt/NI of 1.7x; net debt/EBITDA ~1.0x) and EBIT/interest coverage >14x. Demonstrated pricing power and cost pass-through discipline maintaining ~30% gross margin across raw material cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

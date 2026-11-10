@@ -1,0 +1,30 @@
+{
+  "id": "MGM",
+  "ticker": "MGM",
+  "universe": "us",
+  "company": "MGM Resorts",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Casinos & Gaming",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Predatory/addictive casino gambling and online wagering model carrying acute regulatory, licensing, gaming-tax, and Macau concession risk, combined with highly cyclical discretionary resort and convention travel.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT – Essential Need & Societal Acceptance). MGM Resorts' core casino gambling and expanding online sports betting/iGaming (BetMGM, MGM Digital) monetize an addictive, negative-expected-value wagering habit exposed to heavy licensing dependency, rising gaming taxes, and 10-year Macau concession risk under PRC oversight. Simultaneously, destination Las Vegas Strip resorts, hotels, and convention travel represent deferrable cyclical discretionary spending rather than an essential Western need or healthy everyday consumer habit.",
+    "evidence": "Established public operator across four segments (Las Vegas Strip Resorts, US Regional Operations, MGM China, MGM Digital) plus 50/50 BetMGM JV. FY2025 consolidated net revenue was $17.54B (+1.7% YoY vs. $17.24B in FY2024), led by ~11% growth at MGM China (reaching 17.1% Macau market share in Q3 2026) and MGM Digital (LeoVegas), offsetting Las Vegas Strip ADR normalization post-2024 Super Bowl and renovation disruption alongside steady Regional Operations. Profitability and capital efficiency remain weak: FY2025 operating income fell ~33% YoY to $1.00B and consolidated net income fell ~51% to $520.9M ($205.9M attributable to MGM Resorts vs. $746.6M in FY2024) due to non-cash goodwill/asset impairments, higher gaming taxes, and FX losses; 10Y median ROIC is 6.2% with FY2025 GAAP ROIC in the low single digits (~1%-2%). FY2025 FCF was ~$1.46B ($2.53B operating cash flow less $1.07B capex, vs. ~$1.76B in FY2024), while the sale-leaseback operating model carries $6.23B net long-term debt (~$3.4B domestic principal at ~6% rate plus ~$3B at MGM China; ~$190M-$210M domestic cash interest) alongside ~$25.04B in operating lease liabilities ($24.96B long-term) requiring ~$1.8B/yr in triple-net and ground lease cash rent. Capital allocation prioritized share buybacks ($1.2B+ in FY2025; ~48% share count reduction since 2021) supported by $153M MGM China and $135M BetMGM distributions while funding long-term MGM Osaka (2030 target) commitments."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "JNJ",
+  "ticker": "JNJ",
+  "universe": "us",
+  "company": "Johnson & Johnson",
+  "price": 276.22,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC >100% due to negative tangible capital post-Kenvue and MedTech acquisitions, 10Y median GAAP ROIC 19.5%). FY2023 Kenvue spin-off spike ($35.2B NI) successfully stripped by automated filter; FY2025 peak Owner EPS of $12.13 reflects continuing Innovative Medicine and MedTech operations. 5-10Y forward growth of 7.0% driven by MedTech cardiovascular/electrophysiology expansion (3.0%), oncology volume (3.0%), and price/mix (1.0%), net of Stelara biosimilar/IRA erosion (-1.5%) and buybacks (1.5%). AAA-rated pristine balance sheet ($19.7B cash, <0.8x net debt/NI, 34.6x interest coverage). Raw PAR multiple of 22.81x is capped by the 5-year cycle high guardrail at 21.91x, establishing a PAR Value of $265.83. Trades Above PAR (+3.9% vs PAR) at 22.8x peak Owner EPS, yielding an expected 5Y IRR of 8.0% (including 1.9% dividend yield)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 12.1326,
+    "current_multiple": 22.77,
+    "par_multiple": 21.91,
+    "par_value": 265.83,
+    "percent_vs_par": 0.0391,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0186,
+    "expected_irr_5y": 0.0804,
+    "market_implied_cap": 15.6,
+    "moat_runway_margin": -0.6,
+    "market_implied_growth": 0.0693,
+    "growth_margin_of_safety": 0.0007
+  },
+  "health_checks": {
+    "net_debt_years": 1.47,
+    "net_debt_ok": true,
+    "interest_coverage": 34.55,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7729,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

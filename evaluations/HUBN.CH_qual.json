@@ -1,0 +1,30 @@
+{
+  "id": "HUBN.CH",
+  "ticker": "HUBN",
+  "universe": "eu",
+  "company": "Huber+Suhner AG",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized RF and fiber connectivity engineering know-how, but faces intense competition from global interconnect peers (Amphenol, TE Connectivity). Cyclical demand from telecom carriers and industrial OEMs limits pricing power, keeping multi-year GAAP ROIC below the 12% hurdle (~10-11%) with operating margins around 9-11%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Swiss connectivity and optical component specialist with cyclical telecom and industrial exposure. Multi-year GAAP ROIC averages ~10-11% (below 12% threshold), and operating margins fluctuate around 9-11% without structural pricing power over global telecom and transport OEMs.",
+    "evidence": "EBIT dropped 25% in FY2023 (CHF 77.6M vs 103.2M in 2022) with operating margins falling to 9.1% due to telecom capex curtailments. Multi-year GAAP ROIC (NOPAT / Total Capital) tracks ~10.4-11.0% across 2020-2024, failing the 12% threshold. High exposure to cyclical 5G infrastructure capex and competition from larger peers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

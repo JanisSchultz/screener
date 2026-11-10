@@ -1,0 +1,43 @@
+{
+  "id": "JKHY",
+  "ticker": "JKHY",
+  "universe": "us",
+  "company": "Jack Henry & Associates",
+  "price": 173.23,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.06,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC 39.5%, 10Y median GAAP ROIC 22.7%), recognizing Jack Henry's asset-light software architecture and negative working capital toll booth. Forward 5-10Y through-the-cycle growth of 6.0% extracted from core banking transaction volume (2.5%), digital platform cross-sell (2.5%), contract price indexation (1.5%), offset by community bank M&A attrition (-1.0%), and net share buybacks (0.5%). Pristine balance sheet with essentially zero debt ($40M debt vs $635M EBIT), exceptional 121.2% Owner FCF conversion, and 98-99% client retention. Trades Below PAR (-3.2% vs PAR Value of $178.95) at 24.8x peak Owner EPS vs PAR multiple of 25.6x, delivering an 8.1% 5Y expected IRR (including a 1.4% dividend yield)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.9788,
+    "current_multiple": 24.82,
+    "par_multiple": 25.64,
+    "par_value": 178.95,
+    "percent_vs_par": -0.032,
+    "status": "Below PAR",
+    "g_implied": 0.06,
+    "dividend_yield": 0.014,
+    "expected_irr_5y": 0.0809,
+    "market_implied_cap": 14.5,
+    "moat_runway_margin": 0.5,
+    "market_implied_growth": 0.0477,
+    "growth_margin_of_safety": 0.0123
+  },
+  "health_checks": {
+    "net_debt_years": 0.08,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.2119,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

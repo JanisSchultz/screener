@@ -1,0 +1,30 @@
+{
+  "id": "ALLE",
+  "ticker": "ALLE",
+  "universe": "us",
+  "company": "Allegion plc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched architectural specification lock-in via certified hardware consultants embedding Schlage, Von Duprin, and LCN into Division 8/28 building schedules. Extreme switching costs from institutional master-key systems and strict life-safety fire/ADA compliance codes where liability prevents substitution. Empirical proof: 10-year median GAAP ROIC of 23.9% (operating tangible ROIC ~97%), stable ~42-44% gross margins, and consistent pricing realization exceeding inflation. Primary erosion threat is electronic access control disintermediation, though Allegion effectively embeds EAC into its mechanical door footprints.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in commercial, institutional, and residential security hardware and access solutions. Wide moat anchored by architectural specification dominance (Schlage, Von Duprin, LCN) and high-switching-cost master key installed bases. Insulated from AI disruption with tailwinds from electronic access integration. Strong cash conversion (~92% FCF/NI) and conservative balance sheet (~1.5x net debt/EBITDA, 8.5x interest coverage). [5-10Y g: institutional volume 2.0% + pricing power 2.5% + electronic access mix & bolt-ons 2.5% - integration/R&D drag 0.5% + net buybacks 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 23.9% and tangible operating ROIC of 96.7%. 10-year FCF conversion averages ~98% of net income with capex under 2.5% of sales. Americas segment generates ~80%+ of revenue and >27% operating margins driven by non-residential institutional retrofit and replacement cycles. Pristine balance sheet with net debt to EBITDA of ~1.5x and EBIT/Interest coverage of 8.5x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

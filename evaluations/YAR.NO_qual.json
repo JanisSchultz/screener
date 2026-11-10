@@ -1,0 +1,30 @@
+{
+  "id": "YAR.NO",
+  "ticker": "YAR",
+  "universe": "eu",
+  "company": "Yara",
+  "country": "Norway",
+  "sector": "Materials",
+  "sub_industry": "Fertilizers & Agricultural Chemicals (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global leader in nitrogen fertilizers and nitrates, but fundamentally a cyclical commodity price-taker. Lacks durable pricing power against global commodity cycles and suffers from structurally high European natural gas feedstock costs relative to North American and Middle Eastern peers. 5-year median ROIC (~7%) falls well short of the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing). World-scale nitrogen fertilizer producer exposed to global commodity price volatility and structurally disadvantaged European natural gas feedstock costs. Normalized ROIC averages 5-8%, well below the 12% threshold.",
+    "evidence": "Reported ROIC was 6.6% in 2019, 8.0% in 2020, 7.9% in 2021, cyclically spiking to 25.7% during the 2022 energy crisis, before plunging to 2.9% in 2023 and 5.0% in 2024. Multi-cycle median ROIC (~7%) is substantially below the 12% requirement. Feedstock exposure to volatile European natural gas undermines margin stability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

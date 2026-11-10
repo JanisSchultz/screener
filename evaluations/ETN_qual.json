@@ -1,0 +1,30 @@
+{
+  "id": "ETN",
+  "ticker": "ETN",
+  "universe": "us",
+  "company": "Eaton Corporation plc",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Engineering specification approvals in commercial/industrial electrical blueprints, UL/NEMA safety certifications, deep electrical distributor network integration (Graybar, WESCO), and substantial switching costs once equipment is embedded in facility electrical architecture. Proven by 5-year median GAAP ROIC of 15.8%, segment operating margins expanding to 24.5% in 2025, and sustained positive price realization. Primary erosion threats stem from well-capitalized global peers (Schneider Electric, ABB, Siemens) sharing distributor channels and capacity additions.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While Eaton is a leading electrical equipment provider currently benefiting from the data center power surge, Capital Goods is structurally anchored to Tier 3 persistence (10-15Y baseline) where excess returns face rapid competitive fade (f=0.21-0.25) from global peers (Schneider, ABB, Siemens) expanding manufacturing capacity. Additionally, Eaton carries an unhedged terminal headwind in its legacy Vehicle segment (~$2.5B sales, 9% of total) producing ICE truck transmissions and valvetrains facing secular phase-out from fleet decarbonization, reducing CAP below the 15-year hurdle.",
+    "evidence": "Multi-Cycle Financial Track Record: 5-year median GAAP ROIC of 15.8% (recovering from 5.2% in 2020 to 13.8% in 2024 and ~12-15% in 2025). Net income expanded from $1.41B in 2020 to $3.79B in 2024 and $4.09B in 2025. Segment operating margins expanded from ~16-17% in the 2010s to a record 24.0% in 2024 and 24.5% in 2025. Free cash flow reached $3.5B in 2024 and $3.6B in 2025, converting ~88% of GAAP net income. Segment Breakdown (FY2025): Electrical Americas $13.28B (48.4% of sales, record margin driven by data center and utility megaprojects), Electrical Global $6.82B (24.8%), Aerospace $4.25B (15.5%), Vehicle $2.51B (9.1%), and eMobility $0.60B (2.2%). Total net sales reached $27.45B (+10% YoY). Moat & Pricing Power: Engineering specification approvals in architectural blueprints, UL/NEMA safety codes, distributor shelf lock-in with Graybar and WESCO, and installed-base switching costs. Demonstrated pricing power with 3-5%+ annual price realization across 2022-2025 offsetting material inflation. Capital Allocation & Balance Sheet: Long-term debt stood at $9.89B at FY2025 year-end against $4.09B net income (~2.4x net debt/NI) and interest coverage of 21.6x. Disciplined pruning of lower-return assets (divested Hydraulics for $3.3B in 2021) and bolt-on acquisitions (Fibrebond, Ultra PCS). Runway Failure: Capital goods competitive dynamics, multi-brand distributor presence, and secular phase-out of the $2.5B ICE vehicle segment cap longevity below the 15-year CAP threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

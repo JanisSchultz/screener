@@ -1,0 +1,30 @@
+{
+  "id": "TPRO.IT",
+  "ticker": "TPRO",
+  "universe": "eu",
+  "company": "Technoprobe S.p.A.",
+  "country": "Italy",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Advanced MEMS and vertical probe cards feature proprietary micro-fabrication IP and tight engineering integration with leading chip designers. However, probe cards are custom-engineered per chip tape-out and subject to constant dual-sourcing bake-offs against FormFactor and Asian competitors. Concentrated customers (foundries, integrated device manufacturers) exert strong pricing leverage, compressing operating margins by ~17-18 percentage points between 2022 and 2025.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (pricing power/proof of moat, REJECT). World-class MEMS probe card manufacturer faces intense head-to-head dual-sourcing re-bidding against FormFactor and Asian competitors for each chip tape-out. Concentrated semiconductor buyers exercise strong purchasing power, causing EBIT margins to compress by ~17-18 percentage points (from 37.8% in 2022 to 20.5% in 2025) and preventing peak-to-peak EPS compounding.",
+    "evidence": "Technoprobe's revenues grew from €548.9M in FY22 to €628.4M in FY25, yet EBIT fell 38% from €207.4M to €129.0M, and Net Income plunged from €147.9M to €97.7M (Owner EPS dropped from €0.25 to €0.15). Operating margins experienced severe structural dilution (from 37.8% down to 20.5%) driven by mix shifts, DIS integration, and customer pricing pressure across competitive node transitions, failing the Munger standard for cycle-neutral pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

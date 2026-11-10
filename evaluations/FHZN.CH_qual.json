@@ -1,0 +1,30 @@
+{
+  "id": "FHZN.CH",
+  "ticker": "FHZN",
+  "universe": "eu",
+  "company": "Flughafen Zürich",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Airport Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Flughafen Zürich holds an irreplaceable infrastructure monopoly as Switzerland's primary gateway hub, operating under a federal concession valid through 2051. Severe geographical constraints in the Zurich basin and stringent environmental regulations make physical replication impossible. The model blends formulaic aeronautical tariffs with high-margin non-aero commercial retail and real estate (The Circle complex).",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Rejected at Gate 4 (CAP = 5, REJECT). While Zurich Airport is an irreplaceable physical infrastructure asset, aeronautical charges are governed by Swiss federal cost-plus return caps that hold multi-year ROIC to utility levels (~8.6%), while long-term runway growth is constrained by strict Swiss noise ordinances, a 23:00-06:00 curfew, contentious airspace negotiations with southern Germany, and high capex demands from the overseas Noida greenfield development in India.",
+    "evidence": "GAAP ROIC averages ~8.6% (6.05% in 2022, 8.61% in 2023, 9.05% in 2024, 8.60% in 2025), reflecting regulated utility-style asset return caps. Physical volume growth is tightly restricted by suburban noise politics and German airspace overflight restrictions, while heavy capex (CHF 550M-565M/yr) for domestic refurbishment and the Noida airport in India depresses free cash generation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

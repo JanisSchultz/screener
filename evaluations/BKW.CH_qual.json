@@ -1,0 +1,30 @@
+{
+  "id": "BKW.CH",
+  "ticker": "BKW",
+  "universe": "eu",
+  "company": "BKW",
+  "country": "Switzerland",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Cantonal electricity distribution grid monopoly concession in Bern and long-lived Swiss run-of-river hydro assets provide protected infrastructure returns. Primary erosion threats include Swiss regulatory WACC resets (ElCom), post-energy-crisis normalization of wholesale power prices, and margin dilution in fragmented engineering services acquisitions.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Swiss utility with Bern cantonal distribution grid monopoly and hydro generation, paired with an acquisitive engineering services rollup. While grid concessions provide stable cash flows, normalized ROIC has dropped to 7.6% (median 11.9%), engineering services dilute margins, and the business faces perpetual grid reinvestment and Mühleberg nuclear decommissioning obligations under cantonal majority ownership.",
+    "evidence": "5-year median GAAP ROIC is 11.9%, falling from an energy-crisis peak of 15.5% in FY22 to 7.6% in FY25 as merchant power prices normalized. Net debt is CHF 500.7M with EBIT/interest of 8.0x. Canton of Bern holds a 52.54% controlling stake. Capital allocation is mixed between regulated grid capex and lower-margin DACH engineering/installation rollups."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

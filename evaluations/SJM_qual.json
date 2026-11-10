@@ -1,0 +1,30 @@
+{
+  "id": "SJM",
+  "ticker": "SJM",
+  "universe": "us",
+  "company": "J.M. Smucker Company (The)",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Brand intangibles across US grocery shelf staples (Jif peanut butter #1, Folgers coffee #1 retail ground, Milk-Bone #1 dog treat, Smucker's fruit spreads, Uncrustables) provide widespread retail distribution, but fail to generate economic moat protection. Pricing power is severely constrained by intense private-label store brand competition in spreads and coffee, acute customer concentration with retail giants (Walmart accounts for roughly 33% of sales), and direct exposure to volatile green coffee bean commodity cycles. Capital efficiency is chronically sub-hurdle, with 10-year median GAAP ROIC of ~8.5% (and recent GAAP ROIC <2%), well below the required 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). 10-year median GAAP ROIC of ~8.5% (and low-single-digit ROIC following the $5.6B Hostess acquisition) falls far short of the mandatory 12% hurdle across the cycle. Despite leadership in pantry staples (Jif, Folgers) and pet snacks (Milk-Bone), the business lacks true pricing power above inflation due to severe customer concentration (Walmart represents roughly one-third of sales), intense private-label competition in spreads and coffee, and volatile green coffee input commodity swings. The massive ~$2.9B goodwill/intangible impairment on Hostess Brands underscores chronic value destruction and inability to compound capital at high incremental returns.",
+    "evidence": "Multi-cycle financial track record demonstrates structurally inadequate capital efficiency: 10-year median GAAP ROIC is ~8.5%, with peak pandemic-era ROIC reaching only ~7.0% (FY2021) and falling to low single digits (~1.8% or negative) in FY2025-FY2026 following $2.9B in non-cash goodwill and trademark impairments on Hostess Brands. Operating margins historically range between 12-14% during normal periods but experience significant volatility from commodity costs (green coffee, peanuts) and supply chain shocks. Revenue concentration is acute, with Walmart accounting for approximately 33% of total net sales, limiting bargaining leverage. The $5.6B Hostess acquisition completed in FY2024 increased debt to ~$7.0B (debt/EBITDA ~4.4x post-deal) with subsequent multi-billion impairment charges confirming significant capital misallocation and inability to generate >12% incremental ROIIC."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

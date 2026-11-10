@@ -1,0 +1,30 @@
+{
+  "id": "HUH1V.FI",
+  "ticker": "HUH1V",
+  "universe": "eu",
+  "company": "Huhtamaki",
+  "country": "Finland",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive manufacturing plant footprint and long-standing food service supply relationships provide customer proximity, but lack defensible barrier against rival converters. Unadjusted ROI of 9.5-10.9% falls short of the 12% ROIC hurdle. Fast-food chains and FMCG customers possess strong bargaining power, while single-use plastics regulations (EU SUP) drive recurring compliance and capex costs with limited pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power, REJECT). Finnish foodservice and flexible packaging converter is structurally constrained by powerful QSR and FMCG customer procurement, commodity resin/fiber price volatility, and tightening single-use plastics regulation, keeping multi-year returns on capital sub-hurdle (~9-10% ROI).",
+    "evidence": "Huhtamaki unadjusted ROI has hovered between 9.5% and 10.9% (2023-2025), failing the 12% ROIC hurdle. Operates as a contract packaging converter for concentrated buyers (e.g. McDonald's) with limited ability to pass through raw material cost spikes beyond standard contract lag. Facing structural regulatory headwinds from European single-use plastic restrictions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

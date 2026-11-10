@@ -1,0 +1,30 @@
+{
+  "id": "SB1NO.NO",
+  "ticker": "SB1NO",
+  "universe": "eu",
+  "company": "SpareBank 1 S\u00f8r-Norge",
+  "country": "Norway",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading regional savings bank alliance in Southern and Western Norway following the merger of SpareBank 1 SR-Bank and SpareBank 1 S\u00f8r\u00f8st-Norge. Dominant retail deposit and SME lending market share combined with shared product development via SpareBank 1 Gruppen (insurance, asset management, payment solutions). Multi-year ROE sustained at 12.8-15.3% with an efficient cost-to-income ratio of ~37-38%.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Commercial and regional savings banking sits in Mauboussin Tier 4 with high fade rates and baseline CAP of 5-10 years. SpareBank 1 S\u00f8r-Norge's earnings are heavily levered to the Norwegian regional economic cycle, commercial real estate, and energy/offshore industries. Net interest margins face structural headwinds as Norges Bank begins rate-cutting cycles, and post-merger integration risks constrain operating agility. Predictable moat runway cannot exceed 5 years.",
+    "evidence": "Reported consolidated ROE was 15.3% in 2023 (SR-Bank historical), 14.1% in 2024, and 12.8% in 2025 (~13.8% on tangible equity). Cost-to-income ratio remained well-controlled at 36.7% in 2024 and 38.0% in 2025. Total assets exceed NOK 400B funded predominantly by retail deposits and covered bonds (OMF). Reinvestment is bound to Norwegian domestic credit growth, with high cyclicality in offshore energy SME and commercial real estate lending portfolios."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

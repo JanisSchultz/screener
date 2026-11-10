@@ -1,0 +1,30 @@
+{
+  "id": "MSTR",
+  "ticker": "MSTR",
+  "universe": "us",
+  "company": "MicroStrategy Incorporated",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability, REJECT). Operates primarily as an aggressive, leveraged corporate Bitcoin treasury and financial-engineering vehicle rather than an operating business compounder. Economic performance and balance sheet solvency are overwhelmingly governed by digital asset mark-to-market fluctuations, continuous dilutive capital market issuances (convertible debt and ATM equity), and crypto volatility, with legacy enterprise analytics software representing a secondary, low-growth sliver of total value.",
+    "evidence": "Holds over 850,000 BTC acquired for ~$64B+ via multi-billion-dollar convertible note offerings, preferred shares (STRC), and continuous ATM equity dilution. Core enterprise analytics software generates ~$500M in annual revenue (~$125M/quarter), which is economically insignificant relative to balance sheet digital asset exposure. 10-year historical operating ROIC median of ~4.5% reflects lack of standalone software compounding power. Under Gate 1 Reject Standard (b), crypto treasuries and financial-engineering holding vehicles fail circle of competence and verifiability standards."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

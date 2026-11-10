@@ -1,0 +1,30 @@
+{
+  "id": "TEP.FR",
+  "ticker": "TEP",
+  "universe": "eu",
+  "company": "Teleperformance",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Data Processing & Outsourced Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary outsourced call center/BPO services easily insourced, automated, or forgone; lacks essential pricing power.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need). Teleperformance operates outsourced call centers and customer contact BPO. Customer care outsourcing is non-essential, easily forgone, or automated by enterprise clients. The labour-intensive customer care model lacks customer pricing power and faces terminal displacement by conversational AI agents.",
+    "evidence": "Teleperformance operates a global labor-intensive contact center footprint with over 400,000 employees. Contracts are commoditized and subject to client budget cuts, insourcing, and aggressive deflationary pressure from generative AI customer support agents."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

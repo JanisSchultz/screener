@@ -1,0 +1,30 @@
+{
+  "id": "KGH.PL",
+  "ticker": "KGH",
+  "universe": "eu",
+  "company": "KGHM",
+  "country": "Poland",
+  "sector": "Materials",
+  "sub_industry": "Copper (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Listing country is outside approved Western developed markets (in_market == N); speculative commodity price-taker (upstream copper and silver mining) subject to Polish state control and special mineral extraction taxes.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (in_market == N & speculative commodity price-taker, REJECT). Listing country (Poland) is outside approved Western developed markets pre-screen. KGHM is also a state-controlled upstream copper and silver price-taker burdened by special mining taxes and political governance cycles.",
+    "evidence": "Poland is flagged as in_market == N in the screener universe. KGHM is ~31.8% owned by the Polish State Treasury, exposing capital allocation to political patronage and regular management turnover. Deep underground domestic mines face rising extraction and labor costs, compounded by Poland's heavy copper extraction tax (podatek od wydobycia niekt\u00f3rych kopalin) and historic value-destructive foreign M&A (Sierra Gorda)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

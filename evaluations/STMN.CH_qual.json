@@ -1,0 +1,30 @@
+{
+  "id": "STMN.CH",
+  "ticker": "STMN",
+  "universe": "eu",
+  "company": "Straumann",
+  "country": "Switzerland",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Supplies (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global #1 dental implant franchise (~32% market share) backed by deep clinician switching costs (ITI training ecosystem), 75% gross margins, and 20-30%+ GAAP ROIC. Premium SLActive/BLX pricing and Neodent value tier offset localized pricing pressures.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global #1 dental implant and digital dentistry leader with high clinician switching costs and 75% gross margins. Structural demographic tailwinds from population aging offset dental cyclicality and China VBP. Fortress net-cash balance sheet with >30x interest coverage. [5-10Y g: organic implant/digital volume 6.5% + premium price/mix 1.5% + operating leverage 1.0% + net buybacks 0.0%]",
+    "evidence": "5-year median GAAP ROIC of 30.0% and tangible ROIC of 67.9% demonstrate an exceptional economic moat. Straumann commands ~32% global market share in dental implants, underpinned by clinician lock-in via the ITI network and proprietary surface technologies (SLActive, Roxolid). Multi-year FCF conversion averages 87.9%. Net cash position of CHF 225M (CHF 475M cash vs CHF 250M debt) and 30x+ interest coverage provide balance sheet peace of mind through consumer dental cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "CHTR",
+  "ticker": "CHTR",
+  "universe": "us",
+  "company": "Charter Communications",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Cable & Satellite",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Last-mile HFC network passing 70M+ homes post-Cox (Aug 2026) and bundled Spectrum Mobile (>13.5M lines) create local switching friction, but the moat fails both empirical Gate 3b hurdles. GAAP ROIC has stayed well below 12% across the cycle (~6.9%-9.0% in 2021-2025; 10Y median 7.2%; TTM mid-2026 ~5.7%-6.8%), and incremental ROIIC on $43.4B of 2022-2025 CapEx has stalled as EBIT slipped from $13.12B (2024) to $12.91B (2025) and pro forma EBITDA fell 4.0% YoY in Q3 2026. Pricing power >= inflation is absent: dual-front competition from FTTH overbuilders (>60% US fiber overlap) and 5G Fixed Wireless Access (17M+ US connections) forces price-locks and promotional mobile/streaming bundles while core internet customers erode (-400k in 2025, -172k standalone in Q2 2026, -233k pro forma in Q3 2026), culminating in a $6.33B Legacy Charter franchise impairment in Q3 2026.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Legacy cable broadband toll booth is structurally compressed between FTTH fiber overbuilders at the high end and 5G FWA at the value end, preventing inflation-plus pricing without accelerating subscriber losses (-233k pro forma internet subs in Q3 2026) and keeping GAAP ROIC (~7%-9%) and incremental ROIIC on $11B-$13B/yr defensive CapEx below the 12% hurdle. Not Calamity-eligible: Anchor Gate 4 would independently reject at CAP <= 10 (Tier 4 Telecom Carrier base rate + Macrotrend #5 cost-of-capital/refinancing headwind on $109B post-Cox debt and $5.8B run-rate cash interest), and coax displacement is structural rather than temporary. Downstream gates bypassed per waterfall.",
+    "evidence": "2021-2025 revenue plateaued ($51.68B -> $54.02B -> $54.61B -> $55.09B -> $54.77B, -0.6% in 2025) and declined YoY in 2026 (Q2 standalone -1.7% to $13.5B; Q3 pro forma -1.5% to $16.51B post-Aug 19, 2026 Cox/Liberty close). Operating income peaked at $13.12B in 2024 before dipping to $12.91B in 2025; Q2 2026 Adjusted EBITDA fell 4.3% YoY and Q3 2026 pro forma EBITDA fell 4.0% YoY ($6.6B), prompting a $2B annualized opex-cut overhaul on top of $1B+ targeted Cox synergies. GAAP ROIC remained 6.9%-9.0% (2021-2025) and ~5.7%-6.8% TTM mid-2026 on $144.1B net cable investment at YE 2025 ($46.44B net PP&E, $67.47B indefinite-lived franchises, $29.71B goodwill, $0.44B customer relationships, with $19.84B deferred tax liabilities and -$8.16B NWC). Despite $43.41B cumulative CapEx in 2022-2025 ($9.38B/$11.10B/$11.27B/$11.66B) and ~$13B pro forma CapEx expected in 2026, internet subs fell from 30.1M (YE 2024) to 29.7M (YE 2025) and 29.4M standalone in Q2 2026, with Q3 2026 pro forma losses of 233k (-156k legacy Charter, -77k legacy Cox) and a $6.33B Legacy Charter franchise write-down causing a ~$2.4B Q3 GAAP net loss. Multi-year FCF declined from $8.6B (2021) to $5.5B (2022), $3.5B (2023), $4.3B (2024), $5.0B (2025), and $674M in Q3 2026 (vs $4.99B 2025 net income to shareholders), while debt principal rose from $94.6B (YE 2025) to $109B post-Cox (3.93x net debt/EBITDA, $5.8B annualized cash interest, 2025 EBIT/interest ~2.4x)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

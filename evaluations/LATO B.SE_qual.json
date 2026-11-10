@@ -1,0 +1,30 @@
+{
+  "id": "LATO B.SE",
+  "ticker": "LATO B",
+  "universe": "eu",
+  "company": "Latour",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical niche industrial leaders (Nord-Lock safety fasteners, Swegon HVAC, Assa Abloy access solutions) have severe customer switching costs, low cost-to-value ratios, and demonstrated multi-cycle pricing power >= inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier Swedish industrial compounder combining wholly-owned niche B2B market leaders (Nord-Lock, Swegon, Hultafors) with anchor stakes in world-class listed compounders (Assa Abloy, Sweco). High switching costs and negligible cost-to-value ratio provide consistent pricing power. Conservative balance sheet with low net debt/NAV (<10%). [5-10Y g: organic volume 4.0% + pricing power 2.5% + bolt-on M&A 2.5%]",
+    "evidence": "Operating tangible ROIC 18.3% median (consistently 15-21% across cycles). Decades of per-share intrinsic value compounding under Douglas family stewardship. Net debt of SEK 9.5B is less than 8% of portfolio NAV, and EBIT/interest coverage exceeds 11x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

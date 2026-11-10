@@ -1,0 +1,30 @@
+{
+  "id": "VOD.GB",
+  "ticker": "VOD",
+  "universe": "eu",
+  "company": "Vodafone",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Possesses extensive European spectrum and fixed cable network assets, but operates in structurally commoditized, capital-intensive markets. Chronic value destruction is evidenced by 5-year GAAP ROIC languishing between 0.1% and 3.8% (well below 12% threshold) and inability to price above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing Power). Capital-intensive telecom network operator across Europe and Africa. Suffers from chronic sub-hurdle capital efficiency (5-year GAAP ROIC <4% vs 12% hurdle), heavy recurring 5G/cable capex, and lack of pricing power amid cutthroat market competition and regulatory price scrutiny.",
+    "evidence": "Vodafone's multi-year ROIC has persistently trailed WACC, averaging <4% for over a decade. Elevated debt (>€30B) prompted distressed divestments of Italian and Spanish units. In Germany (largest market), the abolition of the housing association bulk-billing privilege (Nebenkostenprivileg) in 2024 sparked severe TV subscriber losses. Structural failure of Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ZEG.GB",
+  "ticker": "ZEG",
+  "universe": "eu",
+  "company": "Zegona",
+  "country": "United Kingdom",
+  "sector": "Communication Services",
+  "sub_industry": "Wireless Telecommunication Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operates Vodafone Spain (acquired May 2024 via €5B debt-heavy buyout). Faces intense price deflation and churn in the Spanish telecom market from aggressive low-cost competitors (Digi Spain) and scale incumbents (Telefónica, MasOrange). Lacks pricing power >= inflation, with historical ROIC well below the 12% threshold.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat & Pricing Power). Highly leveraged buyout vehicle operating Vodafone Spain. Spain is one of Europe's most commoditized, price-deflationary telecom markets where ultra-low-cost disruptors (Digi) preclude pricing power >= inflation, resulting in sub-hurdle historical ROIC (<12%).",
+    "evidence": "Zegona acquired Vodafone Spain in 2024 for €5B financed with heavy debt (€3.2B+ net debt, ~2.3-3.1x EBITDAaL). Historical ROIC under Vodafone and post-acquisition is negative to low single-digit, failing the 12% hurdle. The Spanish market suffers from relentless promotional discounting and lack of pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

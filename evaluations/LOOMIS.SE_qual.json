@@ -1,0 +1,30 @@
+{
+  "id": "LOOMIS.SE",
+  "ticker": "LOOMIS",
+  "universe": "eu",
+  "company": "Loomis",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Security & Alarm Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local route density in cash-in-transit (CIT) and ATM logistics provides scale economies, but sub-hurdle ROIC (~8-9%) and structural secular substitution from digital/contactless payments severely constrain pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Loomis benefits from route density in cash logistics, but multi-cycle ROIC (8-9%) sits well below the 12% threshold and secular decline in cash usage gives banking and retail customers high bargaining power.",
+    "evidence": "Normalized ROIC hovers around 8.4% with 3-year incremental ROIIC around 5.7%, well below the 12% hurdle. Cash handling operates in a structurally contracting volume environment across Europe and the Nordics due to contactless and mobile payments, eroding pricing leverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

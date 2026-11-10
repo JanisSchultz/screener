@@ -1,0 +1,30 @@
+{
+  "id": "BNS.CA",
+  "ticker": "BNS",
+  "universe": "ca",
+  "company": "Bank of Nova Scotia",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Canadian Big Six banking oligopoly with low-cost core retail deposit funding and nationwide distribution scale. Historically weaker international operations (LatAm Pacific Alliance) are being restructured under CEO Scott Thomson toward the North American trade corridor (Canada, US via 14.9% KeyCorp stake, and Mexico). Primary erosion risks: Canadian mortgage credit cycle softening, emerging market volatility in residual LatAm assets, fintech payments disintermediation, and rising regulatory capital requirements (OSFI CET1 buffers).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While Scotiabank is an entrenched Canadian Big Six oligopoly bank undergoing a disciplined capital reallocation toward the North American corridor under CEO Scott Thomson, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~16x asset/equity leverage and funded by demand deposits and wholesale debt, its solvency inherently relies on depositor confidence and central bank/CDIC liquidity backstops ('kindness of strangers').",
+    "evidence": "Canadian Big Six chartered bank with dominant domestic retail and commercial footprint alongside North American trade corridor operations. Generates consistent ~12-14% ROE with tangible ROIC >15% (median GAAP ROIC ~18%). However, commercial fractional-reserve banks structurally fail Gate 6: total assets exceed C$1.4T supported by ~C$87B in common equity (balance sheet leverage >16x) and C$200B in long-term debt liabilities. The asset-liability maturity mismatch between short-term demand deposits and long-term residential mortgages and commercial credit requires continuous access to wholesale funding and central bank emergency backstops."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

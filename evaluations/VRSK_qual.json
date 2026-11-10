@@ -1,0 +1,30 @@
+{
+  "id": "VRSK",
+  "ticker": "VRSK",
+  "universe": "us",
+  "company": "Verisk Analytics",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Research & Consulting Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Near-monopoly ISO regulatory statistical reporting and Xactimate claims estimation standards command 4-6% annual pricing power with >95% customer retention, generating ~36% GAAP ROIC and ~54% EBITDA margins.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Irreplaceable US P&C insurance regulatory and claims toll booth with near-monopoly ISO loss-cost data and ubiquitous Xactimate estimating software. High pricing power demonstrated by consistent 4-6% annual contract escalators with >95% retention. Pure-play focus post-Wood Mackenzie divestiture expanded GAAP ROIC to ~36% and FCF conversion to >100%. Fortress balance sheet with net debt under 3x earnings after redeeming the AccuLynx transaction debt. [5-10Y g: organic volume/upsell 4.0% + price 3.0% + margin expansion 0.5% + net share repurchases 1.5%]",
+    "evidence": "10-year GAAP ROIC expanded from 13.2% in FY16 to 35.9% in FY25 following the disciplined divestiture of non-core energy (Wood Mackenzie for $3.1B) and financial services units. FY25 revenue reached $3,072.7M with EBIT of $1,343.9M (43.7% EBIT margin) and Owner FCF of $1,137.7M (125% conversion of $908.3M net income). Unassailable industry position as licensed statistical agent in all 50 states for insurance rate filings, with Xactimate creating a two-sided standard across carriers and adjusters. Balance sheet is sound with Net Debt / NI of 2.86x ($2,595M net debt vs $908M NI) and EBIT interest coverage of 7.86x; FY25 gross debt spike was temporary due to escrowed notes for the AccuLynx deal, which were redeemed upon transaction termination in Jan 2026."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

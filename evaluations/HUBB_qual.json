@@ -1,0 +1,30 @@
+{
+  "id": "HUBB",
+  "ticker": "HUBB",
+  "universe": "us",
+  "company": "Hubbell Incorporated",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Utility specification approvals (Approved Vendor Lists / AVLs), long utility relationships, and contractor brand habits create immense switching costs. The component cost (connectors, insulators, arresters, meter enclosures) is negligible compared to the catastrophic cost of power outages or wildfire liability. Proved empirically by 10Y median ROIC of 17.2% and operating margin expansion to >20% across inflationary cycles. Erosion threats include distributor consolidation (WESCO, Graybar), utility inventory destocking cycles, and foreign competition in non-critical commercial fittings.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Essential physical electrical infrastructure manufacturer serving electric utilities (~63% of sales) and behind-the-meter industrial/data center facilities (~37%). High customer switching costs rooted in utility specification approvals (AVLs) and catastrophic cost of component failure. Highly resilient under 5-macrotrend filter: active secular beneficiary of grid modernization/hardening, electrification, AI data center power demand, and North American manufacturing reshoring. Pruned commoditized commercial lighting to focus on high-margin utility hardware. High cash generation with ~100% FCF conversion and pristine balance sheet with 18.9x interest coverage. [5-10Y g: grid/data center volume 3.5% + utility spec price 2.0% + tuck-in M&A 1.5% - normalization margin drag 0.5% + net buyback 0.5%]",
+    "evidence": "10-year median ROIC of 17.2%; FY24 ROIC ~14.7% and FY25 ROIC ~13.3-19.0% with operating ROIC >18%. Consolidated FY25 revenue of $5.84B ($3.67B Utility Solutions, $2.17B Electrical Solutions) with operating income of $1.21B (20.7% margin). FY25 FCF of $874.7M on net income of ~$880M (99.4% conversion); FY24 FCF of $810.8M on net income of $780M (104% conversion). Balance sheet strength: total debt $2.3B, net debt ~$1.8B, net debt/EBITDA ~1.3x, net debt repayable from FCF in ~2.0 years. FY25 interest coverage ratio of 18.9x ($1,208.8M operating income / $64.1M net interest expense)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DG.FR",
+  "ticker": "DG",
+  "universe": "eu",
+  "company": "Vinci",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable French toll motorway network (ASF, Cofiroute, Escota) and premier international concession airports (London Gatwick, Lisbon, Edinburgh). Toll tariffs are legally and contractually indexed to French inflation, providing guaranteed annual pricing power without volume loss. 4-year median GAAP ROIC is 14.83%, exceeding the 12% hurdle, with 149% FCF conversion. Primary erosion threats include French concession tax/renegotiation risk approaching 2032-2036 motorway expiries and aviation shocks.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Irreplaceable French toll motorway network and premier international airport concessions (Gatwick, Lisbon, Edinburgh). Pricing power anchored by contractual CPI toll tariff indexation, yielding 14.8% GAAP ROIC and 149% FCF conversion. Concession debt is comfortably supported with 6.3x interest coverage and €17.3B cash cushion. [5-10Y g: motorway traffic volume 1.0% + contractual toll tariff indexation 2.0% + international airport traffic 1.5% + Vinci Energies electrification 1.5% - French concession tax/renegotiation drag 0.5% + net buybacks 0.5%]",
+    "evidence": "4-year median GAAP ROIC is 14.83% (FY2022: 13.51%, FY2023: 15.82%, FY2024: 15.29%, FY2025: 14.38%). Multi-year Owner FCF conversion is 149.4% (€7.7B FCF on €4.9B net income in 2025). EBIT interest coverage of 6.25x comfortably satisfies the essential concession standard (>5x), backed by €17.3B in cash."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

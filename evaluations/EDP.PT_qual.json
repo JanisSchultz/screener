@@ -1,0 +1,30 @@
+{
+  "id": "EDP.PT",
+  "ticker": "EDP",
+  "universe": "eu",
+  "company": "EDP",
+  "country": "Portugal",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Statutory electricity distribution network concessions in Portugal, Spain, and Brazil, combined with a large global renewable generation fleet (EDPR). Primary erosion threats include structurally sub-hurdle returns on heavy renewable capex, Iberian solar/wind capture price deflation, offshore wind write-downs, and regulatory tariff intervention.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Portuguese utility combining Iberian/Brazilian distribution grids with global renewable generation (EDPR). Structurally sub-hurdle multi-cycle ROIC (4-6%) fails Gate 3b. Generation assets lack pricing power due to merchant power cannibalization in Iberian renewables, offshore wind impairments, and sensitivity to higher cost of capital.",
+    "evidence": "Multi-cycle ROIC hovers between 4% and 6%, trailing cost of capital in high-rate environments. Net debt exceeds €15B with high capital intensity requiring continuous asset rotation (selling minority project stakes) to fund capex. Renewable expansion through EDPR faces margin compression from European power price cannibalization and supply chain inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

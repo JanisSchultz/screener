@@ -1,0 +1,30 @@
+{
+  "id": "OCTV SDB.SE",
+  "ticker": "OCTV SDB",
+  "universe": "eu",
+  "company": "Octave",
+  "country": "Sweden",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Mission-critical plant lifecycle and engineering software is sticky once embedded, but pricing power is unproven on a standalone basis outside Hexagon's hardware bundles, and it lacks an audited multi-year standalone ROIC track record while carrying legacy heavy R&D capitalization.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power). Recent 2026 Hexagon software spin-off lacking an audited multi-cycle standalone ROIC track record and carrying Hexagon's legacy of heavy R&D capitalization. Standalone pricing power outside hardware/software bundles remains unproven.",
+    "evidence": "Spun off from Hexagon AB in 2026. Lacks standalone 5-year public financial history to verify median GAAP ROIC >= 12% and owner FCF conversion under standalone cost structure. High historical software capitalization raises uncertainty on true economic returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

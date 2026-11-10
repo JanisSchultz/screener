@@ -1,0 +1,30 @@
+{
+  "id": "CCL",
+  "ticker": "CCL",
+  "universe": "us",
+  "company": "Carnival Corporation",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary big-ticket leisure cruise vacations that are easily deferred in economic downturns, inflationary squeezes, or travel shocks, with abundant land-based vacation substitutes; neither an essential Western need nor an entrenched everyday habit (cruise lines are an explicit Gate 2 reject category).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need & Everyday Habits, REJECT). Carnival passes Gate 1 as a transparent, long-established global cruise operator, but fails Gate 2 because multi-day leisure cruises are deferrable, big-ticket discretionary travel rather than an essential necessity or high-frequency everyday habit. Despite strong post-pandemic cyclical recovery and rational industry supply dynamics, demand remains vulnerable to macro downturns and consumers have abundant land-based resort/hotel substitutes, while the operating model remains capital-intensive, fuel-exposed, and structurally scarred by past crisis leverage and equity dilution. Gate 2 is an anchor gate, so Calamity Tier does not apply.",
+    "evidence": "Historical capital efficiency is weak across cycles, with a 10-year median ROIC of 6.5% (screener financials_csv) reflecting severe pandemic shutdown losses alongside heavy ongoing fleet capex. Post-pandemic recovery drove record FY2025 (ended Nov 30, 2025) revenue of $26.6B, operating income of $4.5B (+25% YoY), GAAP net income of $2.76B (adjusted $3.1B), operating cash flow of $6.22B, CapEx of $3.61B, FCF of $2.61B, and adjusted ROIC exceeding 13%. Momentum continued in 2026: Q1 revenue $6.2B (though surging Brent crude/fuel inflation created a >$500M earnings headwind), Q2 revenue $6.7B with record $9.0B customer deposits and unification under a single Bermuda-incorporated entity, and Q3 revenue $8.44B with $1.92B net income ($5.303B 9M operating cash flow) while trailing ROIC hovered near 11-11.5%+. Total debt fell from a ~$35B post-pandemic peak to $24.04B at FY2025 end (cash $1.928B; net interest expense $1.3B vs $1.8B in FY2024 and ~$251M in FY2019) and $23.9B by Q3 2026, eliminating all secured debt, regaining investment-grade ratings (Fitch and S&P), and resuming dividends and ~$1.2B YTD share buybacks against 1,402M FY2025 diluted shares after severe 2020-2022 equity dilution. Despite operational repair, the underlying cruise business remains cyclical, capital-heavy, and discretionary."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

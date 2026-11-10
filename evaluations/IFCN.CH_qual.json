@@ -1,0 +1,30 @@
+{
+  "id": "IFCN.CH",
+  "ticker": "IFCN",
+  "universe": "eu",
+  "company": "INFICON",
+  "country": "Switzerland",
+  "sector": "Information Technology",
+  "sub_industry": "Electronic Equipment & Instruments (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Niche sensor know-how, vacuum measurement IP, and OEM design-ins into semiconductor fabrication equipment create high switching costs and robust pricing power.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Niche leader in vacuum gauges and leak detection, but semicap capital equipment cyclicality combined with severe geopolitical/trade embargo risk (>30% China revenue exposure) limits predictable competitive advantage period.",
+    "evidence": "INFICON maintains strong operating margins (~17-20%) and high ROIC on low tangible capital, but >30% of sales are tied directly to China semiconductor customers amidst intensifying Western export controls and aggressive Chinese domestic substitution. Severe semicap cyclicality and OEM gatekeepers truncate the competitive advantage runway well below the 15-year threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

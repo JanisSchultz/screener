@@ -1,0 +1,43 @@
+{
+  "id": "WISE.GB",
+  "ticker": "WISE",
+  "universe": "eu",
+  "company": "Wise",
+  "price": 838.6,
+  "quote_currency": "GBp",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.14,
+    "roic_est": 0.35,
+    "fin_note": "Disruptive cross-border payment infrastructure operating on negative net working capital with >$12B cash balances; Operating ROIC normalized to the 35.0% maximum parameter ceiling. Peak Owner EPS of 39.0p (FY2024) affirmed. Bottom-up forward growth of 14.0% (15% volume - 3% fee cuts + 3% Wise Business - 1% rate fade) capped at the 12.0% empirical through-cycle ceiling."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 38.9969,
+    "current_multiple": 21.5,
+    "par_multiple": 33.19,
+    "par_value": 1294.37,
+    "percent_vs_par": -0.3521,
+    "status": "Below PAR",
+    "g_implied": 0.12,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.2216,
+    "market_implied_cap": 9.7,
+    "moat_runway_margin": 5.3,
+    "market_implied_growth": -0.0553,
+    "growth_margin_of_safety": 0.1753
+  },
+  "health_checks": {
+    "net_debt_years": 0.66,
+    "net_debt_ok": true,
+    "interest_coverage": 34.87,
+    "interest_cov_ok": true,
+    "fcf_conversion": 12.9,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

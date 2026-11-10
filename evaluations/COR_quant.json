@@ -1,0 +1,43 @@
+{
+  "id": "COR",
+  "ticker": "COR",
+  "universe": "us",
+  "company": "Cencora",
+  "price": 333.56,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Negative Tangible Capital Standard (tangible ROIC >100% and 5-year median GAAP ROIC of 97.0% driven by negative net working capital funded by manufacturer accounts payable). Peak Owner EPS confirmed at $11.0431 (FY2023) supported by extraordinary 167.5% multi-year FCF conversion and rational oligopoly market structure (>90% 3-player market share). Forward 5-10Y g of 8.0% driven by secular prescription & specialty oncology volume (+4.5%), high-margin biosimilar/specialty mix and tuck-in M&A (+1.5%), offset by wholesale customer contract repricing drag (-0.5%), plus aggressive share repurchases (+2.5%). Conservative balance sheet leverage with net debt of $3.19B (~1.0x Owner FCF) and interest coverage >12x. At $333.56, COR trades at 30.20x peak Owner EPS, representing a +20.3% premium over fundamental PAR value of $277.35 (25.11x PAR multiple)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.0431,
+    "current_multiple": 30.21,
+    "par_multiple": 25.11,
+    "par_value": 277.35,
+    "percent_vs_par": 0.2027,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0069,
+    "expected_irr_5y": 0.0477,
+    "market_implied_cap": 24.1,
+    "moat_runway_margin": -4.1,
+    "market_implied_growth": 0.1564,
+    "growth_margin_of_safety": -0.0764
+  },
+  "health_checks": {
+    "net_debt_years": 4.85,
+    "net_debt_ok": false,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.675,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

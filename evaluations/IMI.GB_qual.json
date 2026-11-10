@@ -1,0 +1,30 @@
+{
+  "id": "IMI.GB",
+  "ticker": "IMI",
+  "universe": "eu",
+  "company": "IMI",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical severe-service valves and actuators where failure causes catastrophic industrial shutdowns. High-margin proprietary aftermarket parts (>45% of sales) deliver defensible pricing power and ~13% ROIC.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Industrial flow-control and valve engineering group. While critical valves have high switching costs, IMI's largest division (Process Automation, >40% of sales) faces an active terminal headwind under Macrotrend [4] (Energy Transition & Resource Limits) due to heavy exposure to upstream oil & gas, petrochemicals, and thermal power.",
+    "evidence": "Process Automation generates ~£900m of IMI's £2.2B revenue, serving upstream hydrocarbon extraction, LNG, and conventional power generation. Decarbonization and energy transition create multi-decade demand headwinds and stranded asset risk for conventional thermal power and fossil process valves, capping CAP at 10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

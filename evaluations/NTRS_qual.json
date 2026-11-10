@@ -1,0 +1,30 @@
+{
+  "id": "NTRS",
+  "ticker": "NTRS",
+  "universe": "us",
+  "company": "Northern Trust",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Massive client switching costs in institutional custody, fund administration, and middle-office processing, combined with multi-generational trust relationships in private wealth management. Proof of moat shown by 19.6% 5-year median ROIC and $5.0B in sticky servicing fees. Primary erosion threats stem from back-office automation by fintech challengers, scale advantages and pricing pressure from larger custody peers (BNY, State Street), and heavy regulatory capital requirements.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While Northern Trust boasts an enduring, high-trust institutional custody and private wealth franchise with high switching costs (19.6% median ROIC), it operates as a deposit-funded custody bank with $153B+ in assets on $12.7B in equity (>12x balance sheet leverage) and $118B+ in deposits. In accordance with the Munger solvency standard, fractional-reserve and deposit-funded custody balance sheets fail Gate 6 due to inherent duration, interest-rate, and deposit flight vulnerabilities.",
+    "evidence": "FY2025 consolidated revenue of $8.09B with $5.02B in trust and servicing fees ($2.80B Asset Servicing, $2.22B Wealth Management) and $2.41B in net interest income. Total assets of $153.5B supported by $118.7B in deposits against $12.7B in equity, reflecting 12.1x leverage. 10-year median ROIC of 19.57% and owner EPS compounding from $4.51 (2016) to $12.70 (2025). Peak OE EPS was $13.11 in 2024. Despite high returns on tangible capital and deep fiduciary moat, the deposit-funded balance sheet is disqualified under Gate 6 criteria."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

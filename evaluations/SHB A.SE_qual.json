@@ -1,0 +1,30 @@
+{
+  "id": "SHB A.SE",
+  "ticker": "SHB A",
+  "universe": "eu",
+  "company": "Handelsbanken",
+  "country": "Sweden",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Decentralized branch-led credit culture (Church principle) maintained since 1970 delivers peer-leading cost-to-income and near-zero loan loss ratios across multiple Nordic real estate cycles; pricing power sustained via sticky primary-bank relationship deposits. Disintermediation from digital fintechs and Swedish mortgage price competition remain primary erosion risks.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Despite a legendary decentralized branch model (Wallander Church principle) and industry-leading credit loss discipline, Handelsbanken is a fractional-reserve commercial deposit bank with ~10-15x leverage (SEK 1.69T debt/borrowing vs SEK 199B equity) and inherent asset-liability duration mismatch, failing the Munger peace-of-mind balance sheet standard.",
+    "evidence": "5-year median ROE of ~12-14% with peer-lowest loan loss ratio (<0.05% of loans) and strong CET1 capital (>18.5%). Operating cash flow is structurally volatile (-SEK 46.3B in FY2025, -SEK 39.8B in FY2022) reflecting lending book fluctuations, and total liabilities of ~SEK 3.1T require continuous wholesale funding and covered bond market access."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

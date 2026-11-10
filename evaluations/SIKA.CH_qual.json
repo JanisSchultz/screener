@@ -1,0 +1,30 @@
+{
+  "id": "SIKA.CH",
+  "ticker": "SIKA",
+  "universe": "eu",
+  "company": "Sika",
+  "country": "Switzerland",
+  "sector": "Materials",
+  "sub_industry": "Specialty Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Architectural and structural engineering specification moat in concrete admixtures, Sikaflex sealants, and roofing membranes where chemical cost is <1-2% of project capex but product failure causes catastrophic damage (30x cost). Demonstrated pricing power by expanding material margin from 53.6% (2023) to 54.9% (2025) through retained input cost deflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Specification-driven moat in concrete admixtures and construction sealants where chemical cost is <2% of build cost but failure risk is 30x. Material margins expanded to ~55% via retained input deflation; rapid post-MBCC deleveraging with >100% FCF conversion. [5-10Y g: organic infra/repair volume 3.5% + pricing power net of CHF FX drag 0.5% + MBCC synergies and deleveraging 1.5% + selective bolt-on M&A 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 14.0% with operating/tangible ROIC exceeding 50%. Material margin expanded from 53.6% in 2023 to 54.9% in 2025. MBCC integration captured CHF 182M+ in cumulative synergies, elevating MBCC EBITDA margins from 15% to >20%. FY2025 operating FCF reached CHF 1.35B (12.1% of sales), reducing net debt to CHF 3.0B with interest coverage of ~9.6x."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

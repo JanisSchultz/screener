@@ -1,0 +1,30 @@
+{
+  "id": "MPC",
+  "ticker": "MPC",
+  "universe": "us",
+  "company": "Marathon Petroleum",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Refining & Marketing",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Marathon Petroleum operates the largest US refining system (~3.0 million barrels per calendar day across 13 refineries) integrated with extensive midstream logistics through its controlling interest in MPLX LP (gathering pipelines, processing, marine, and storage terminals). This scale and coastal/mid-continent footprint yield low unit cash operating costs (~$5.20-$5.60/bbl). However, refined products (gasoline, diesel, jet fuel) are standardized, fungible commodities traded on transparent spot benchmarks (NYMEX/Gulf Coast/Chicago/Group 3). MPC possesses zero structural pricing power and cannot unilaterally price above spot crack spreads. Returns on invested capital are volatile and macro-dictated: after a record post-Ukraine refining windfall in 2022-2023 ($14.5B and $9.7B net income), returns normalized rapidly as crack spreads compressed, with FY2025 ROIC dropping to ~9.7% and FY2020 delivering a catastrophic -$9.8B GAAP net loss. Long-term moat erosion risks include structural demand decline from automotive electrification and renewable fuels, heavy decarbonization compliance costs (RINs and LCFS), and zero barrier to customer switching among wholesale fuel distributors.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Marathon Petroleum is the largest US downstream refiner with significant scale advantages and stable midstream fee income via MPLX. However, MPC is fundamentally a price-taker selling fungible commodity fuels whose margins are dictated by volatile global and regional crack spreads rather than proprietary pricing power. Multi-cycle capital efficiency fails the Munger hurdle: FY2020 resulted in a -$9.8B net loss, and as refining margins normalized from the 2022-2023 peak, FY2025 ROIC contracted to ~9.7% (below the 12% cycle-neutral hurdle). Downstream gates 4-6 are strictly nulled per waterfall invariant.",
+    "evidence": "Financial Track Record: Net income attributable to MPC demonstrates extreme cyclicality: $2.64B (2019), -$9.83B (2020 pandemic demand shock and refining asset impairments), $9.74B (2021, aided by the $21B gross / ~$11.6B net cash proceeds from the Speedway retail divestiture), $14.52B (2022 peak post-invasion crack spread windfall), $9.68B (2023), $3.45B (2024), and $4.00B (2025). Revenue tracked $140.4B in 2024 and $132.7B in 2025. ROIC fluctuated from deeply negative in 2020 to >30% during the 2022-2023 refining margin super-cycle, before settling back to ~9.7% in 2025 as crack spreads normalized toward mid-cycle averages ($12.93/bbl R&M margin in Q4 2024). Segment Dynamics: Two primary reporting segments: (1) Refining & Marketing (R&M), which contributes the vast majority of cyclical volatility and throughput (~2.8-2.9M bpd, 92-94% utilization), and (2) Midstream (MPLX LP), which generates stable, fee-based adjusted EBITDA approaching ~$6.5-$7.0B annually, partially cushioning refinery margin swings and funding MPC's standalone dividend/capex. Capital Allocation: Management demonstrated commendable discipline by divesting Speedway to 7-Eleven in 2021 and utilizing proceeds to aggressively repurchase shares (>50% of shares retired between 2021 and 2025), but this financial engineering cannot overcome the underlying commodity price-taking nature of petroleum refining and absence of independent pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:40:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

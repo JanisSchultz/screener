@@ -1,0 +1,30 @@
+{
+  "id": "ALK B.DK",
+  "ticker": "ALK B",
+  "universe": "eu",
+  "company": "ALK-Abelló",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Pharmaceuticals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global monopoly in sublingual allergy immunotherapy tablets (SLIT). Proprietary biological extract standardization, multi-year clinical trial registries, and EMA/FDA approvals create near-impenetrable barriers; GAAP ROIC has scaled to 23.7% with strong pricing power across Western reimbursement systems.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global monopoly in allergy immunotherapy tablets (SLIT) with biological extraction know-how, deep regulatory moats, expanding EBIT margins (>26%), and a fortress net-cash balance sheet. [5-10Y g: tablet volume growth 5.0% + North American/international adoption 2.0% + price/mix 1.0% + share repurchases 0.5%]",
+    "evidence": "Operating ROIC reaches 20.4% (FY25 GAAP ROIC 23.7%) with 101.5% FCF conversion. Balance sheet has DKK 1,089M net cash and interest coverage >50x. Proprietary allergen standardization and 3-year patient adherence regimens generate high-margin recurring cash flows."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

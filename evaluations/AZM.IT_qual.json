@@ -1,0 +1,30 @@
+{
+  "id": "AZM.IT",
+  "ticker": "AZM",
+  "universe": "eu",
+  "company": "Azimut",
+  "country": "Italy",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Independent Italian financial advisor network with sticky client relationships and an integrated asset management product suite. However, moat durability is impaired by high reliance on performance fees, regulatory headwinds targeting advisor distribution kickbacks/inducements, and the costly execution risk of spinning off Italian operations into a fintech digital bank (TNB).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Gate 3b = N, REJECT). Azimut operates an advisor-led wealth management distribution network with high reported ROE, but lacks pricing power above inflation. Revenues are heavily dependent on volatile performance fees and high asset management distribution markups that face sustained regulatory scrutiny across Europe (MiFID II, ESMA value-for-money). The complex strategic pivot into a digital bank (TNB) introduces execution risk to preserve advisor retention.",
+    "evidence": "Azimut expanded total client assets to €107.5bn in 2024 and reported net profit of €576m (up from €435m in 2023), achieving ~27-28% ROE and fully repaying its €500m senior bond. However, operating earnings are heavily driven by episodic performance fees and asset market appreciation rather than contractual pricing power. Ongoing regulatory pressure against distribution fees in Italy leaves Azimut unable to raise base fee schedules, rendering it a fee price-taker."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "EVD.DE",
+  "ticker": "EVD",
+  "universe": "eu",
+  "company": "CTS Eventim",
+  "country": "Germany",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Live concerts and stadium entertainment are discretionary leisure activities deferrable in economic downturns, and booking fee take-rates face persistent regulatory and consumer antitrust scrutiny.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Live concerts, festival tours, and arena events are discretionary leisure activities easily deferred during economic downturns. In addition, Eventim's ticketing toll-booth fees and exclusive promoter/venue tie-ups face escalating regulatory and antitrust scrutiny across Europe.",
+    "evidence": "CTS Eventim is Europe's leading ticketing platform and live entertainment promoter. However, live event attendance is entirely discretionary entertainment that experienced severe impairment during economic lockdowns. Ticketing operations face constant regulatory scrutiny over booking fees and dynamic pricing from European competition authorities."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

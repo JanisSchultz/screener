@@ -1,0 +1,30 @@
+{
+  "id": "CTSH",
+  "ticker": "CTSH",
+  "universe": "us",
+  "company": "Cognizant Technology Solutions Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Moderate switching costs exist in multi-year managed services and proprietary healthcare administration platforms (TriZetto), but Cognizant lacks structural pricing power. Enterprise clients subject IT services contracts to routine competitive re-tenders (against TCS, Infosys, Wipro, Accenture) and mandate annual 3-5% productivity givebacks. Gross margins have degraded structurally from ~40% in 2015 to ~34.5% in 2024-2025. When wage inflation spiked, Cognizant was unable to pass through costs, resulting in operating margin compression and 30%+ employee attrition. Primary erosion threats include AI code generation and automated testing compressing billable delivery hours, client insourcing via Global Capability Centers (GCCs), and aggressive offshore price competition.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). Cognizant operates an IT outsourcing and systems integration model dependent on offshore labor arbitrage that lacks pricing power at or above inflation. Gross margins have declined from ~40% to ~34.5% over the past decade as corporate clients demand continuous productivity price cuts and re-bid contracts competitively. Wage inflation cannot be passed through without client churn or contract concessions. Furthermore, under Gate 4 Macrotrend [1], generative AI and automated code synthesis pose severe terminal deflationary headwinds to headcount- and hourly-based IT delivery models, compounding structural vulnerability.",
+    "evidence": "Multi-cycle financials demonstrate persistent margin erosion and inability to price above inflation: gross margins compressed from 40.1% in 2015 to 34.4% in 2023 and 34.6% in 2024; operating margins contracted from ~19% to 15.1% in 2023 and 15.7% adjusted in 2024. Organic revenue growth has stagnated (flat to +2% nominal in 2023-2024, representing negative real growth). While reported 5-year median GAAP ROIC remains ~14-16% due to modest tangible asset intensity, returns on incremental invested capital have trended downward with heavy reliance on bolt-on acquisitions ($1.3B Belcan in 2024) to offset organic headwinds. Customer contracts face aggressive competitive rebidding and insourcing to enterprise captive GCCs in India. Balance sheet remains solid ($2.2B cash against modest debt), but business model lacks the pricing power and defensible moat required for Munger compounder status."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

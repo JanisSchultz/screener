@@ -1,0 +1,30 @@
+{
+  "id": "UHS",
+  "ticker": "UHS",
+  "universe": "us",
+  "company": "Universal Health Services",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Facilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Physical footprint of over 330 inpatient behavioral health facilities and acute care hospitals is protected by state Certificate-of-Need (CON) regulations, specialized psychiatric licensing, and high replacement capital costs. However, proof of moat fails: 10-year median ROIC is ~10.5% (below the 12% threshold), and pricing power is severely constrained by Medicare/Medicaid reimbursement schedules and managed care contracts that cannot outrun structural clinical labor and nurse wage inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). While Universal Health Services possesses an irreplaceable inpatient behavioral and acute hospital physical footprint protected by Certificate of Need (CON) laws, its 10-year median ROIC of ~10.5% fails the 12% hurdle. UHS lacks structural pricing power above inflation due to heavy dependence on fixed, lagged government reimbursement (Medicare/Medicaid) and commercial managed care contracts, leaving margins vulnerable to structural clinician and nurse wage inflation.",
+    "evidence": "Universal Health Services operates acute care hospitals and behavioral health centers across the US and UK.\nMulti-Cycle Capital Efficiency: 10-year median ROIC is ~10.5% (source: 10-K filings, v1 workbook), with troughs of ~7.1-7.4% during pandemic/labor surges and recoveries to ~10.4-11.5% in 2024-2025, consistently below the 12% Munger compounder hurdle.\nPricing Power & Payor Mix: Over 50% of patient days/revenues are derived from government programs (Medicare and Medicaid) with legislated, lagged fee updates that fail to cover real-time nurse wage inflation and agency staffing costs.\nCapital Intensity: Heavy recurring maintenance capital expenditures ($800M-$1B annually) and long-term debt of ~$4.5B-$5.0B (~4.5x net income) constrain free cash flow conversion and shareholder returns.\nRegulatory Scrutiny: Subject to recurring federal regulatory scrutiny and False Claims Act settlements (e.g., $122M DOJ settlement in 2020 regarding behavioral health admissions)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

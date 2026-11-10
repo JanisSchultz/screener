@@ -1,0 +1,30 @@
+{
+  "id": "TRN.IT",
+  "ticker": "TRN",
+  "universe": "eu",
+  "company": "Terna",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory natural monopoly owning over 99% of Italy's national electricity transmission grid. Remuneration is regulated by ARERA on a formula-indexed regulatory asset base (RAB) with inflation pass-through, though returns on capital are legally capped at 5.5-8.0% nominal.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (gate_6 = N, REJECT). Monopolistic Italian transmission system operator with an essential grid asset base, but fails the fortress balance sheet and self-funded cash generation standard. Massive multi-year grid capex program (€2.59B capex in FY2024 vs €1.48B OCF) generates persistent free cash flow deficits (-€1.11B). Net debt of €9.10B represents 8.6x net income (€1.06B), far exceeding the 4.0x ceiling, requiring continuous debt market issuance to fund grid investments and €698M in dividends.",
+    "evidence": "Reported 5-year median GAAP ROIC is 7.72%, capped by ARERA regulatory allowances. FY2024 capex of €2.59B exceeds operating cash flow of €1.48B, producing structural cash flow deficits. Net debt of €9.10B (8.57x net income) and gross debt of €11.41B (10.75x net income) breach the Gate 6 threshold of <=4.0x. Continuous reliance on debt issuance to sustain capital programs and dividend payouts violates balance sheet independence from the kindness of strangers."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": 6,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

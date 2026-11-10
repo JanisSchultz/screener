@@ -1,0 +1,30 @@
+{
+  "id": "ARCAD.NL",
+  "ticker": "ARCAD",
+  "universe": "eu",
+  "company": "Arcadis",
+  "country": "Netherlands",
+  "sector": "Industrials",
+  "sub_industry": "Construction & Engineering (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Professional design, engineering, and environmental consultancy operates as a billable-hours people business with low barriers to entry and intense competition from global peers (WSP, AECOM, Jacobs). Lacks durable pricing power, resulting in sub-hurdle multi-cycle GAAP ROIC (~7-8%) and high susceptibility to wage inflation and project cancellations.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Moat Archetype 'None' & ROIC < 12%, REJECT). Design and engineering consultancy is a billable-hours professional services business with low switching barriers and high wage sensitivity, generating sub-hurdle GAAP ROIC (~7-8%).",
+    "evidence": "Consolidated GAAP operating margin averages 6-7% and multi-cycle GAAP ROIC remains around 7-8%, below the 12% threshold. Highly fragmented competitive environment against global engineering consultancies with zero proprietary lock-in."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3a",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

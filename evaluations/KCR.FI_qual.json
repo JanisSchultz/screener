@@ -1,0 +1,30 @@
+{
+  "id": "KCR.FI",
+  "ticker": "KCR",
+  "universe": "eu",
+  "company": "Konecranes Oyj",
+  "country": "Finland",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dense industrial crane service network generates stable 20%+ EBITA margins, but group returns are heavily diluted by cyclical crane equipment manufacturing and lumpy, competitive port container handling contracts.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% across cycle, REJECT). While its crane maintenance service agreement base is highly profitable, the majority of revenue derives from cyclical industrial cranes and lumpy port solutions where multi-cycle GAAP ROIC averaged 6-10% (troughing at 7.3% in 2022).",
+    "evidence": "Konecranes' long-term multi-cycle ROIC averaged 6-10% between 2016-2022 prior to the recent post-2023 supply chain backlog surge. Low-margin Port Solutions contracts, exposure to global freight trade volatility, and Asian competitors (e.g. ZPMC) dilute pricing power and group returns below the 12% Munger bar."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

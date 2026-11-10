@@ -1,0 +1,30 @@
+{
+  "id": "ADEN.CH",
+  "ticker": "ADEN",
+  "universe": "eu",
+  "company": "Adecco",
+  "country": "Switzerland",
+  "sector": "Industrials",
+  "sub_industry": "Human Resource & Employment Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Global branch network and enterprise MSP relationships provide scale, but customer switching barriers are minimal with widespread multi-sourcing. Pricing power above wage inflation is absent as markups face constant commoditization. Return on invested capital deteriorated to 9.0% in 2024 (down from 11.0% in 2022 and 10.8% in 2023), failing the 12% proof-of-moat hurdle. Akkodis integration has underperformed.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). World #2 staffing firm operates in a highly commoditized, cyclical industry with negligible customer switching costs and negative pricing power. Capital efficiency fails the 12% Munger hurdle, with ROIC deteriorating from 11.0% in 2022 to 9.0% in 2024 following the dilutive Akkodis acquisition.",
+    "evidence": "ROIC fails the 12% hurdle across the cycle: FY2021 20.3% (post-COVID volume spike), FY2022 11.0%, FY2023 10.8%, FY2024 9.0% (operating profit before one-offs / invested capital), with GAAP after-tax ROIC below 8%. Operating margins are wafer-thin (3-4% EBITA). High customer multi-sourcing and vulnerability to AI/automation in clerical recruitment preclude defensible pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

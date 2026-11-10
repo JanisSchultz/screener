@@ -1,0 +1,30 @@
+{
+  "id": "UNI.ES",
+  "ticker": "UNI",
+  "universe": "eu",
+  "company": "Unicaja Banco",
+  "country": "Spain",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Fifth-largest bank in Spain with dominant branch and deposit density in Andalusia and Castile & Le\u00f3n following the Liberbank integration. High switching costs in sticky rural and regional retail deposit accounts provide a low-cost funding base, supporting a rebound in ROTE to 10.4% in 2024 and adjusted ROTE of 12.1% in 2025.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional retail banking in Spain is subject to intense commoditization, high regulatory/political intervention (such as the Spanish extraordinary bank tax), and cyclical net interest margin compression as ECB policy rates decline. Under the Mauboussin framework, commercial banking is anchored in Tier 4 with rapid return fade (baseline CAP 5-10 years). Operating in a saturated Spanish domestic market with low economic growth and demographic headwinds in core rural regions, CAP cannot exceed 5 years.",
+    "evidence": "Historical capital returns have been modest and cyclical: ROTE was 4.7% in 2023, recovering to 10.4% in 2024 and 9.1% standard / 12.1% adjusted in 2025 as higher interest rates boosted net interest income. Cost-to-income ratio stands at ~44-46%. Balance sheet is heavily weighted toward domestic residential mortgages (~60% of loans), where pricing is largely commoditized against Santander, BBVA, and CaixaBank. Post-merger governance friction and domestic Spanish sovereign exposure further curtail long-term predictability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

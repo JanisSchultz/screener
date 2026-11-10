@@ -1,0 +1,30 @@
+{
+  "id": "VATN.CH",
+  "ticker": "VATN",
+  "universe": "eu",
+  "company": "Valiant",
+  "country": "Switzerland",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sticky retail and SME deposit franchise creates primary-bank switching costs in core cantons, but pricing power is constrained by commoditized mortgage lending and competition from state-backed Cantonal banks.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Swiss regional retail and SME bank expanding outside core Bernese cantons into competitive markets. Lacks scale, technological differentiation, or pricing power against state-guaranteed Cantonal banks and nationwide institutions, facing secular margin compression in commoditized mortgage lending.",
+    "evidence": "Valiant operates as a regional Swiss retail bank with ROE of ~5.7%, well below cost of equity hurdles. High capital intensity and credit/deposit duration risks without an enduring structural competitive advantage over 15+ years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

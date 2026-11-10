@@ -1,0 +1,30 @@
+{
+  "id": "HLN.GB",
+  "ticker": "HLN",
+  "universe": "eu",
+  "company": "Haleon",
+  "country": "United Kingdom",
+  "sector": "Consumer Staples",
+  "sub_industry": "Personal Care Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading global consumer healthcare portfolio (Sensodyne, Advil, Voltaren, Panadol, Centrum) with high professional dental and pharmacy endorsement. However, the business is burdened by £25.6B in goodwill/intangibles and £7.7B in net debt created by the GSK/Pfizer JV carve-out. 5-year median GAAP ROIC is only 6.6% (2022: 5.1%, 2023: 5.6%, 2024: 7.6%, 2025: 8.6%), failing the 12% hurdle, while OTC categories face persistent private-label substitution pressure.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (3b = N, REJECT). World #1 consumer healthcare player with leading OTC brands, but permanent capital structure created by GSK/Pfizer carve-out carries £25.6B goodwill/intangibles resulting in sub-hurdle 6.6% 5-year median GAAP ROIC (FY25 8.6%). Persistent private-label substitution caps pricing power.",
+    "evidence": "GAAP ROIC spans 5.1% to 8.6% across 2022-2025 (median 6.59%), missing the 12% standard. Total debt is £7.66B against £1.26B cash. Despite strong FCF conversion (£2.19B FCF in 2025) and professional brand loyalty for Sensodyne, low return on total capital employed and retail private-label pricing ceiling prevent a Quality Pass."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

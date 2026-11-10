@@ -1,0 +1,43 @@
+{
+  "id": "CME",
+  "ticker": "CME",
+  "universe": "us",
+  "company": "CME Group Inc.",
+  "price": 305.89,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (tangible ROIC >30% neutralizing $13.1B+ of historical CBOT/NYMEX/NEX merger accounting goodwill). Peak Owner EPS confirmed at $11.6902 (FY2025) backed by 99.0% FCF conversion and consecutive record daily contract volumes (28.1M ADV). Forward 5-10Y g of 7.5% driven by institutional hedging volume expansion (+4.0%), transaction fee index pricing (+1.5%), Google Cloud / market data analytics (+1.5%), and share repurchases (+0.5%). Capital structure is immaculate with net cash of ~$1.0B ($4.42B cash vs $3.42B gross debt) and 30x+ interest coverage. Capital allocation returns ~100% of FCF via base and variable fifth dividends (~4% total shareholder yield). At $305.89, CME trades at 26.17x peak Owner EPS, sitting marginally (+4.1%) above its through-the-cycle PAR value of $293.89 (25.14x PAR multiple), delivering an attractive ~8.3% 5Y IRR based on regular dividends alone (~10.5%+ with variable fifth dividend)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.6902,
+    "current_multiple": 26.17,
+    "par_multiple": 25.14,
+    "par_value": 293.89,
+    "percent_vs_par": 0.0408,
+    "status": "Above PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0168,
+    "expected_irr_5y": 0.0833,
+    "market_implied_cap": 20.8,
+    "moat_runway_margin": -0.8,
+    "market_implied_growth": 0.0904,
+    "growth_margin_of_safety": -0.0154
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9895,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

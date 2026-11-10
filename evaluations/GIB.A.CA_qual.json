@@ -1,0 +1,30 @@
+{
+  "id": "GIB.A.CA",
+  "ticker": "GIB.A",
+  "universe": "ca",
+  "company": "CGI",
+  "country": "Canada",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Multi-year government and enterprise IT outsourcing contracts provide baseline switching costs, but CGI faces intense competitive RFP bidding, client rate-card pressure, and limited pricing power unable to consistently outpace tech wage inflation. Primary erosion threats: commoditization of IT implementation and GenAI automated code generation compressing billable hours.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While CGI possesses switching costs in long-term government and financial IT outsourcing, it lacks structural pricing power above inflation due to competitive RFP rebidding, client rate-card pressure, and exposure to GenAI-driven coding automation compressing billable labor hours.",
+    "evidence": "CGI generates stable ~15-18% GAAP ROIC and >100% FCF conversion via disciplined M&A and outsourcing integration. However, as an IT services provider operating largely on fixed-price and billable-hour contracts, gross margins (~31%) have limited expansion capability against tech wage inflation. IT consulting is structurally exposed to cognitive automation (coding agents) reducing project person-hours, precluding pricing power above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

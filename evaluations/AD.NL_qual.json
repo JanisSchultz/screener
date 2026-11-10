@@ -1,0 +1,30 @@
+{
+  "id": "AD.NL",
+  "ticker": "AD",
+  "universe": "eu",
+  "company": "Ahold Delhaize",
+  "country": "Netherlands",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Operates dense regional grocery store networks across the US East Coast (Food Lion, Stop & Shop, Giant) and Benelux (Albert Heijn). While local scale provides distribution density, it does not confer an insurmountable cost moat or pricing power against Walmart, Aldi, or Costco. 5-year median GAAP ROIC (~6.0-6.4%) and operating margins (~2.6-3.7%) fail the Gate 3b 12% ROIC hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing, REJECT). Regional grocery retailer operates in highly competitive US East Coast and European markets with razor-thin operating margins (2.5-4.0%). 5-year median GAAP ROIC of ~6.0-6.4% sits far below the 12% hurdle. Lacks pricing power above inflation against Walmart and discounters (Aldi/Lidl).",
+    "evidence": "5-year median operating margin is 2.59% (annual range: 2.28% to 3.71% over 2020-2024). Multi-year GAAP ROIC has consistently tracked between 5.9% and 6.4%, far below the 12% threshold. Ongoing store closures at Stop & Shop reflect ongoing volume loss to price-competitive grocery rivals."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

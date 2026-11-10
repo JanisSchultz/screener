@@ -1,0 +1,30 @@
+{
+  "id": "SUBC.NO",
+  "ticker": "SUBC",
+  "universe": "eu",
+  "company": "Subsea7",
+  "country": "Norway",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Equipment & Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High-specification subsea pipelay, SURF, and offshore wind installation fleet with strong project engineering, but through-cycle ROIC averages ~6-7%, failing the 12% threshold due to severe offshore capex cyclicality, high fixed vessel operating costs, and competitive contract bidding.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Highly asset-heavy offshore pipelay and SURF contractor with high operating leverage. Through-cycle ROIC averages ~6-7%, well below the 12% Munger hurdle, as downcycle vessel underutilization wipes out upcycle gains.",
+    "evidence": "Fleet of specialized pipelay and construction vessels requires heavy ongoing capital reinvestment. While upcycle EBIT margins can touch 11-15%, extended downcycles compress operating returns into low single digits or losses, keeping long-term median ROIC well below 12%."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

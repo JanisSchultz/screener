@@ -1,0 +1,30 @@
+{
+  "id": "L.CA",
+  "ticker": "L",
+  "universe": "ca",
+  "company": "Loblaw Companies",
+  "country": "Canada",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Canada's dominant retail grocer (~28% national market share) with scale advantages in procurement and PC Optimum loyalty data. However, it lacks unconstrained pricing power above inflation: grocery retail is structurally vulnerable to price competition from Walmart and Costco, widespread consumer backlash (e.g. 2024 national boycotts), federal Grocery Code of Conduct enforcement, and parliamentary margin scrutiny. Primary erosion threats: discount shift to Walmart/Costco, political intervention, and supplier margin disputes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Canada's largest supermarket operator lacks unconstrained pricing power above inflation. While operating margins and ROIC appear resilient (~16% GAAP ROIC), the business operates under intense political scrutiny, Parliamentary committee investigations into grocery inflation ('greedflation'), consumer boycotts, and the Canadian Grocery Code of Conduct. Substantial competitive pressure from discount giants Walmart and Costco caps retail food margins, leaving pricing power strictly constrained. Downstream gates nullified per strict waterfall.",
+    "evidence": "Canada's largest food and pharmacy retailer with over 2,400 stores (Loblaws, Superstore, No Frills, Shoppers Drug Mart). Reported FY2025 sales of $63.9B CAD, EBIT of $4.45B CAD, and Net Income of $2.67B CAD with median GAAP ROIC of ~16.1% and high FCF conversion. However, grocery retailing is a commoditized, high-volume, low-margin business where customer loyalty is low and price sensitivity is extreme. Sustained public hostility, parliamentary scrutiny, and competition from low-cost non-union operators (Costco, Walmart) structurally limit long-term pricing power."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

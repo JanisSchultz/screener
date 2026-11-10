@@ -1,0 +1,30 @@
+{
+  "id": "ABT",
+  "ticker": "ABT",
+  "universe": "us",
+  "company": "Abbott Laboratories",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Abbott's economic moat rests on high customer switching barriers and consumable toll-booth dynamics across Medical Devices and Diagnostics. FreeStyle Libre commands >50% global CGM patient volume with >8 million active users purchasing recurring bi-weekly sensor replacements at >70% gross margins. In Diagnostics, closed-loop Alinity/Architect analyzers lock hospital laboratories into proprietary multi-year reagent consumable contracts. Structural heart franchises (MitraClip, TriClip, Navitor) benefit from extensive clinician procedural training and high switching costs. Empirical proof: 5-year median GAAP ROIC of 12.8%, tangible operating ROIC >25-50%, gross margins consistently 55-57%, and FCF conversion of 80.6%. Primary erosion risks include competitive encroachment from Dexcom in CGM, GLP-1 therapy penetration moderating intensive diabetes therapies, and preterm infant formula product liability claims.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global diversified medtech and healthcare leader anchored by the FreeStyle Libre CGM franchise, structural heart devices, closed-loop diagnostic lab analyzers, and leading pediatric/adult nutrition brands. Highly insulated from AI disruption and a prime secular beneficiary of global demographic aging. Fortress balance sheet with net debt of just $1.4B (0.2x net income) and 16.3x interest coverage; $670M NEC infant formula settlement is comfortably absorbed by normal cash flow. [5-10Y g: FreeStyle Libre & medtech device volume 5.5% + diagnostic & nutrition pricing 1.5% + emerging markets pharma mix 1.0% - margin/litigation drag 0.5% + share repurchases 0.5%]",
+    "evidence": "Abbott generates >$44B in diversified revenue across Medical Devices ($17B+, led by $7.6B Libre CGM and structural heart), Diagnostics ($9B+ core lab/point-of-care), Nutrition ($8B+ Similac/Ensure), and Established Pharmaceuticals ($5B+ branded generics). Capital efficiency is verified by a 5-year median GAAP ROIC of 12.8% and tangible operating ROIC of 53.3%. Free cash flow conversion averages 80.6% ($6.7B FCF in FY2025 on $6.5B Net Income). De-leveraging discipline is exemplary: debt reduced from $27.2B post-St. Jude in 2017 to $9.9B in FY2025, offset by $8.5B in cash (net debt $1.4B vs. $8.1B EBIT; interest coverage 16.3x). 52 consecutive years of dividend increases (Dividend King). Post-COVID testing normalization is complete, with organic core device and diagnostic volumes resuming high-single-digit peak-to-peak earnings expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:45:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

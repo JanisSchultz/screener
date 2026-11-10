@@ -1,0 +1,30 @@
+{
+  "id": "RF",
+  "ticker": "RF",
+  "universe": "us",
+  "company": "Regions Financial Corporation",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dense Southeastern branch network and primary operating bank status for retail and commercial clients establish meaningful switching costs. Sticky low-cost deposit franchise ($131B+ deposits, substantial non-interest bearing mix) supports 14-18% historical ROATCE and low deposit beta. Primary erosion risks stem from fintech digital disintermediation, deposit competition from money market yields and money-center banks, and regulatory scrutiny on non-interest fee income.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Regions Financial operates an entrenched Southeastern retail and commercial banking franchise with sticky low-cost deposits and switching costs (Gates 1-5 pass), but fails Gate 6 under the structural commercial fractional-reserve bank standard (g6_default: N). Financial leverage of ~9-10x on common equity ($158.8B total assets vs. ~$18.0B common equity) entails inherent asset-liability duration mismatch and deposit duration risk. Because commercial banks fundamentally rely on continuous rollover of confidence-sensitive deposits and external liquidity backstops, the balance sheet fails Charlie Munger's peace-of-mind fortress standard requiring zero reliance on the kindness of strangers.",
+    "evidence": "FY2025 consolidated assets of $158.8B and deposits of $131.1B against $18.0B common equity (~8.8x asset leverage, >10x total liabilities/equity). Capitalization remains sound by regulatory standards with CET1 ratio of 10.89% (FY2025) and 10.80% (FY2024). Net interest margin and ROE (10.0% in FY2025, 12.7% in FY2024; ROATCE ~14-18%) benefit from low-cost Sunbelt deposit density, but fractional-reserve maturity transformation creates structural deposit duration risk and exposure to yield curve shifts, resulting in default Gate 6 failure for commercial deposit banks."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

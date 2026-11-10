@@ -1,0 +1,30 @@
+{
+  "id": "PDD",
+  "ticker": "PDD",
+  "universe": "us",
+  "company": "PDD Holdings",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Broadline Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Core profit base (Pinduoduo) is concentrated in mainland China—a non-Western jurisdiction lacking Western rule of law and property rights—controlled only via PRC VIE contracts without formal intercompany cash-transfer policies; Western arm (Temu) sells non-essential discretionary impulse goods facing severe tariff and regulatory ruin risk (2025 US $800 and July 2026 EU €150 de minimis repeal, plus €200M EU DSA enforcement over counterfeit/unsafe products).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Although PDD operates an understandable marketplace model with audited Form 20-F scale (Gate 1 Y), it fails Munger's rule-of-law, Western essential-need, and societal-acceptance bar on two counts: (1) its core cash-generating engine (Pinduoduo) is concentrated in mainland China and held via Cayman/Irish entities using PRC VIE contracts with no formal cross-border cash-transfer policy, denying Western equity holders direct property rights; and (2) its Western Temu franchise sells discretionary impulse goods rather than an essential habit and depended on customs loopholes dismantled by the 2025 US $800 and July 2026 EU €150 de minimis repeals, compounded by a €200M EU DSA fine over unsafe/counterfeit listings and gamified design. Downstream governance opacity (zero Pinduoduo/Temu segment split, zero dividends/buybacks despite >RMB 456B cash) reinforces the reject under Munger's bar.",
+    "evidence": "Financial & Operating Record: FY2024 SEC Form 20-F (filed April 28, 2025) reported ~RMB 394B revenue, ~RMB 108B operating income, and >RMB 122B operating cash flow. FY2025 revenue grew ~9.7% YoY to RMB 431.8B, split ~50.4% online marketing services/other and ~49.6% transaction services, while operating income fell to ~RMB 93.1B (operating margin compressed to ~21.6% amid global fulfillment and ecosystem spend) and operating cash flow reached ~RMB 106.9B; cached workbook historical median ROIC is 26.5%. Balance sheet at YE 2025 held RMB 630B total assets and RMB 413.4B total equity, with cash, cash equivalents, and short-term investments exceeding RMB 456B (~$63.5B) and a strong net cash position. Segment & Structural Opacity: PDD reports as a single consolidated segment without separating domestic Pinduoduo from international Temu revenue or profitability, and discloses no formal cash-management policies governing fund transfers between its Cayman holding company, Dublin executive hub, and PRC VIEs (Shanghai Xunmeng, Hangzhou Aimi). Pricing/Moat & Regulatory Shocks: Value e-commerce traction relies on low-price subsidies and gamified engagement rather than durable Western pricing power; 2025 US $800 de minimis suspension drove sharp double-digit US sales/engagement contraction and forced a costly shift to domestic semi-custody warehousing, while the EU abolished its €150 de minimis exemption effective July 1, 2026 (€3/item category duty plus platform importer liability) and fined Temu €200M under the Digital Services Act over illegal/unsafe listings and recommender design. Capital Allocation: Zero dividends and zero share buybacks through 2026 despite >RMB 456B cash hoard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "G2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

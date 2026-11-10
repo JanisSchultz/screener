@@ -1,0 +1,30 @@
+{
+  "id": "SRG.IT",
+  "ticker": "SRG",
+  "universe": "eu",
+  "company": "Snam",
+  "country": "Italy",
+  "sector": "Utilities",
+  "sub_industry": "Gas Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Statutory network monopoly over ~38,000 km of Italian gas transmission pipelines, 17 Bcm of storage capacity, and LNG terminals, with ARERA inflation-indexed RAB returns.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). Italian gas transmission monopoly carries €14.4B debt (net debt ~€19B in 2025/2026) vs €1.24B net income (11.6x debt/NI), thin 4.6x interest coverage, and capped 7.6% ROIC with annual capex (€2.7B) exceeding D&A (€1.0B) by nearly 3x.",
+    "evidence": "4-year median GAAP ROIC is 7.57% (FY22: 4.57%, FY23: 7.74%, FY24: 7.95%, FY25: 7.39%), capped by ARERA regulatory parameters. Long-term debt of €14.37B and net debt of ~€19.0B severely exceed the 4.0x net debt/NI baseline (11.6x-15.4x). FY25 interest coverage is 4.58x (below the 5.0x minimum threshold), with ongoing capex of €2.7B requiring continuous debt issuance."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

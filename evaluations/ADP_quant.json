@@ -1,0 +1,43 @@
+{
+  "id": "ADP",
+  "ticker": "ADP",
+  "universe": "us",
+  "company": "Automatic Data Processing",
+  "price": 303.35,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.095,
+    "roic_est": null,
+    "fin_note": "Unrivaled payroll and HCM toll booth processing wages for 1 in 6 US workers with ~92% client retention. Operating ROIC of 77.4% capped at 35.0%. Pristine AA- balance sheet with $4.23B cash vs $4.96B LT debt (0.17x net debt/NI) and 13.5x interest coverage. Forward 5-10Y Owner EPS g of 9.5% underpinned by 2.5% employment volume, 2.5% HCM software cross-selling, 2.0% price indexation, 1.0% client float income ($35B+ float), and 1.5% net buybacks. 10-year Owner EPS compounded at 11.7% with zero cyclical down years. Trades Below PAR (-4.5% vs PAR Value of $317.61) at 25.5x peak Owner EPS, offering 12.7% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 11.9088,
+    "current_multiple": 25.47,
+    "par_multiple": 26.67,
+    "par_value": 317.61,
+    "percent_vs_par": -0.0449,
+    "status": "Below PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0219,
+    "expected_irr_5y": 0.127,
+    "market_implied_cap": 19.1,
+    "moat_runway_margin": 0.9,
+    "market_implied_growth": 0.077,
+    "growth_margin_of_safety": 0.018
+  },
+  "health_checks": {
+    "net_debt_years": 1.12,
+    "net_debt_ok": true,
+    "interest_coverage": 13.48,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0597,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

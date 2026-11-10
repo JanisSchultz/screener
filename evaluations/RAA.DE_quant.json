@@ -1,0 +1,43 @@
+{
+  "id": "RAA.DE",
+  "ticker": "RAA",
+  "universe": "eu",
+  "company": "Rational",
+  "price": 623.5,
+  "quote_currency": "EUR",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.075,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap reflecting world-class commercial kitchen combi-steamer monopoly (50% global share) and negative working capital with minimal intangible drag. 5-10Y forward EPS CAGR of 7.5% aligned with qualitative guidance: combi-steamer unit volume growth (4.0%), iVario/iHexagon penetration (2.5%), value-pricing power (1.5%), less macro capex friction (-0.5%). Pristine balance sheet with zero debt, €170M+ net cash, and >90% cash conversion."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 22.6172,
+    "current_multiple": 27.57,
+    "par_multiple": 28.89,
+    "par_value": 653.52,
+    "percent_vs_par": -0.0459,
+    "status": "Below PAR",
+    "g_implied": 0.075,
+    "dividend_yield": 0.0241,
+    "expected_irr_5y": 0.1092,
+    "market_implied_cap": 14.3,
+    "moat_runway_margin": 0.7,
+    "market_implied_growth": 0.0551,
+    "growth_margin_of_safety": 0.0199
+  },
+  "health_checks": {
+    "net_debt_years": 0.0,
+    "net_debt_ok": true,
+    "interest_coverage": 179.3,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9139,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LR.FR",
+  "ticker": "LR",
+  "universe": "eu",
+  "company": "Legrand SA",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Electrical Components & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep installer/electrician brand loyalty and mission-critical specifications create high switching costs. Products represent a minor cost fraction of building construction with high failure risks, granting reliable pricing power above inflation and ~14% GAAP ROIC (>100% tangible ROIC).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier global specialist in electrical and digital building infrastructures, with fast-growing data center white space exposure (26% of sales). Highly disciplined execution under CEO Benoît Coquart delivering ~14% GAAP ROIC, >110% FCF conversion, and conservative ~2.7x net debt/NI. [5-10Y g: data center/white space electrical 3.5% + building renovation 1.5% + pricing power 1.5% + bolt-on M&A 1.0%]",
+    "evidence": "4-year median GAAP ROIC is 13.98% (tangible ROIC >100% after adjusting for €10.2B in goodwill/intangibles). FY2025 net income reached €1,244.6M with Owner FCF of €1,328.1M (FCF conversion 114.6%). Net debt of €3,342.3M is ~2.69x net income, supported by €1,859M EBIT and 11.1x interest coverage. Fast-growing data center segment (26% of 2025 sales) benefits directly from AI compute expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

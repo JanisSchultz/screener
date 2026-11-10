@@ -1,0 +1,30 @@
+{
+  "id": "HD",
+  "ticker": "HD",
+  "universe": "us",
+  "company": "Home Depot (The)",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Home Improvement Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant North American home-improvement duopoly (~2x Lowe's revenue with far higher sales per sq ft) creates unmatched supplier purchasing scale, proprietary/exclusive brands (Ryobi, Husky, HDX, Behr), and an integrated store plus Pro flatbed/branch network (augmented by SRS Distribution and GMS) that smaller chains and parcel e-commerce cannot profitably match on heavy, immediate-need building materials. Empirical proof: 5-year median GAAP ROIC of 41.5% (27.1% GAAP / 56.7% tangible in FY25 post-M&A; company-reported FY25 Adjusted ROIC 25.7%), positive full-cycle incremental ROIIC (>15% after tax even including $23B+ of recent M&A at a housing trough), and gross margins held steady at ~33.0%-33.7% through lumber, tariff, and wholesale-mix pressures. Primary erosion threats: structural margin and ROIC dilution as lower-margin specialty Pro wholesale distribution grows in mix, prolonged high mortgage rates suppressing big-ticket remodel turnover, and e-commerce encroachment in lighter hardware SKUs.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. North America's indispensable home-improvement retail and Pro building-materials leader, anchored by scale economies shared across ~2,300 big-box stores and >1,250 SRS/GMS specialty trade branches serving continuous repair/maintenance on an aging housing stock. Physically insulated from AI disruption and online parcel economics, with diversified sourcing managing tariffs and high-rate housing turnover muting growth cyclically rather than terminally. CAP set conservatively at 15Y to reflect US store saturation and ROIC/margin fade toward wholesale Pro distribution. Balance sheet passes baseline hurdles (3.49x LT debt/NI, 3.39x net debt/NI, 8.66x EBIT/interest at cycle trough, 91.6% 5Y FCF conversion), with buybacks prudently paused since March 2024 to pay down M&A debt and commercial paper, though $32.7B of goodwill leaves negative tangible book equity and post-dividend deleveraging warrants monitoring. [5-10Y g: R&R/Pro volume 2.5% + pricing/ticket 2.0% + SRS/GMS cross-sell mix 1.0% - wholesale mix/tariff drag 0.5% + normalized buybacks 1.5%]",
+    "evidence": "10-year SEC EDGAR financials (FY2016-FY2025) and 2026 interim filings verify exceptional multi-cycle capital efficiency and cash conversion despite a frozen US housing turnover backdrop. Revenue compounded from $94,595M (FY16) to $164,683M (FY25), dipping only 3.0% from the FY22 pandemic peak ($157,403M) to FY23 ($152,669M) before rebounding via Pro expansion and turning positive organically in 1H 2026 (Q1 2026 sales $41.8B, comps +0.6%; Q2 2026 sales $47.9B, comps +1.7%). Operating margins ranged from 13.8%-15.3% pre-2024 before stepping down to 13.49% (FY24) and 12.69% (FY25) due to lower-margin SRS/GMS wholesale mix, M&A intangible amortization, and housing turnover deleverage; consolidated gross margin held tightly near ~33.0%-33.7% across 2025-1H 2026. GAAP ROIC ranged from 34.9%-55.7% across FY16-FY24 and printed 27.14% in FY25 (5Y median 41.53%; company Adjusted ROIC 25.7% in FY25, 25.4% in interim 2026), while tangible operating ROIC remained 56.74% in FY25. Owner FCF totaled $126,804M across FY16-FY25 against $129,459M Net Income (97.9% 10Y conversion; 91.6% 5Y conversion), with capital-light maintenance needs (FY25 capex $3,679M vs D&A $3,514M, ~2.2% of sales) and minimal SBC ($522M, 0.3% of sales). Owner EPS compounded at 6.84% over 10 years ($6.73 in FY16 to $16.69 FY22 peak; $14.23 in FY25 trough), with clear peak-to-peak recovery visibility as turnover normalizes and SRS/GMS synergies scale. Following major Pro acquisitions—HD Supply (2020), SRS Distribution (2024), and GMS Inc. (FY25, ~$5.5B EV)—goodwill/intangibles rose from $12,061M (FY23) to $32,673M (FY25) (yielding -$19,860M tangible equity despite GAAP equity rebounding to $12,813M), and LT debt peaked at $51,365M (FY24) before declining to $49,397M (FY25) ($1,389M cash; 3.49x LT debt/NI; 8.66x EBIT/interest). Management kept share buybacks paused from March 2024 through 1H 2026 to prioritize dividend stability ($9,152M in FY25) and commercial paper/debt reduction; CEO Ted Decker took a temporary medical leave in August 2026 with tenured insiders Ann-Marie Campbell and CFO Richard McPhail assuming interim oversight."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

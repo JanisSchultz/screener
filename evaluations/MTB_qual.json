@@ -1,0 +1,30 @@
+{
+  "id": "MTB",
+  "ticker": "MTB",
+  "universe": "us",
+  "company": "M&T Bank",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Regional Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dense regional branch network across the Mid-Atlantic and Northeast creates sticky, low-cost core retail and middle-market commercial deposit relationships with high switching costs. Wilmington Trust adds fiduciary fee revenues. Outperformed banking peers in credit underwriting discipline over multiple decades (including GFC).",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Regional commercial banking operates in a commoditized financial intermediation market subject to rapid cyclical fade. Faces secular headwinds from digital/fintech and megabank scale disintermediation (Macrotrend 1) alongside structural cost of capital pressures, deposit beta competition, and legacy CRE credit exposure (Macrotrend 5).",
+    "evidence": "Consolidated net revenue reached $9.33B in FY2024 and $9.69B in FY2025, with net income of $2.59B and $2.85B respectively. Revenue is anchored by Commercial Banking (~40%), Retail Banking (~30%), and Wealth/Trust via Wilmington Trust (~15%, generating ~$724M in fiduciary fees). Historical capital efficiency shows ROIC of ~13.0-13.7% in 2024-2025, ROE of 9.5-10.3%, and ROA of 1.2-1.35%. Commercial real estate (CRE) exposure has been actively trimmed to ~$24B-$25B with cumulative realized losses below 1%. While disciplined underwriting allowed MTB to maintain dividends through the 2008 GFC and successfully absorb People's United in 2022, regional banking lacks structural 15+ year runway immunity due to technology scale disadvantages, deposit flight risks, and macro rate/credit cycle vulnerability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:44:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

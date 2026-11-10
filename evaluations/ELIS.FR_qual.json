@@ -1,0 +1,30 @@
+{
+  "id": "ELIS.FR",
+  "ticker": "ELIS",
+  "universe": "eu",
+  "company": "Elis",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Diversified Support Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Local laundry route density provides operational scale, but heavy capital intensity, competitive B2B rental tenders, and high acquisition goodwill keep 5-year median GAAP ROIC at 7.2%, well below the 12% hurdle.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power). Route-dense commercial laundry and textile rental model generates stable cash flow, but heavy capital expenditure (industrial laundries and vehicle fleets) combined with €4.6B of acquisition goodwill keeps 5-year median GAAP ROIC at 7.2% (FY22: 4.6%, FY23: 6.3%, FY24: 8.1%, FY25: 8.3%), failing the 12% hurdle.",
+    "evidence": "Elis provides flat linen, workwear, and hygiene services across Europe and Latin America. While route density provides local scale, commercial tenders are price-sensitive. 5-year median GAAP ROIC is 7.21% (peaking at 8.27% in FY25), falling far short of the 12.0% hurdle. Capex absorbs €890M annually against €648M EBIT."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

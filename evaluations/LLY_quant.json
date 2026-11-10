@@ -1,0 +1,43 @@
+{
+  "id": "LLY",
+  "ticker": "LLY",
+  "universe": "us",
+  "company": "Lilly (Eli)",
+  "price": 1354.0,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.11,
+    "roic_est": 0.35,
+    "fin_note": "Global biopharmaceutical leader in metabolic disease, diabetes, and oncology. Deep patent protection on tirzepatide (Mounjaro/Zepbound) through 2036+ and next-gen incretin pipeline (retatrutide, orforglipron) anchored by massive proprietary sterile injectable and peptide synthesis manufacturing investments. Operating ROIC normalized to 35.0% cap under v6.23 standard (reported operating ROIC 56.72%, 5Y median GAAP ROIC 30.14%). FY2025 peak Owner EPS of .9512 confirmed clean operational earning power (27.59% peak-to-peak CAGR). 5-10Y through-the-cycle growth g_implied = 11.0% driven by 11.0% incretin volume expansion, 2.0% oncology/neuroscience volume, -3.5% price realization and IRA Medicare negotiation headwind, 1.0% pipeline mix reinvestment, and 0.5% net share repurchases. Solid investment-grade balance sheet carries .27B cash vs .87B LT debt (.60B net debt = 1.63x NI), 29.75x EBIT interest coverage, and 70.57% FCF conversion reflecting peak manufacturing capex (.84B). At ,354.00 (58.99x peak Owner EPS), trades Above PAR (+27.89% premium vs ,058.70 PAR Value at 46.13x PAR Multiple), generating a 6.12% 5Y expected IRR under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 22.9512,
+    "current_multiple": 58.99,
+    "par_multiple": 46.13,
+    "par_value": 1058.7,
+    "percent_vs_par": 0.2789,
+    "status": "Above PAR",
+    "g_implied": 0.11,
+    "dividend_yield": 0.0045,
+    "expected_irr_5y": 0.0612,
+    "market_implied_cap": 19.2,
+    "moat_runway_margin": -4.2,
+    "market_implied_growth": 0.303,
+    "growth_margin_of_safety": -0.193
+  },
+  "health_checks": {
+    "net_debt_years": 1.98,
+    "net_debt_ok": true,
+    "interest_coverage": 29.75,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7057,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

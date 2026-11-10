@@ -1,0 +1,43 @@
+{
+  "id": "MRSH",
+  "ticker": "MRSH",
+  "universe": "us",
+  "company": "Marsh McLennan",
+  "price": 204.82,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": 0.35,
+    "fin_note": "Capital-light insurance broking toll booth normalized to 35.0% operating ROIC cap, neutralizing $18B+ in accumulated M&A goodwill/intangibles (JLT, McGriff). LT debt / NI stands at 4.40x (net debt / NI is 3.76x deducting $2.69B cash) following the $7.75B McGriff transaction, but is comfortably supported by $4.6B+ Owner FCF and 6.48x EBIT interest coverage. 5-10Y secular Owner EPS compounding anchored at 8.0% (3.5% commercial risk volume + 2.5% premium pricing/inflation indexation + 1.5% bolt-on M&A - 0.5% deleveraging drag + 1.0% net buybacks). 3-Pillar fundamental PAR multiple of 24.89x yields a PAR value of $240.77. At $204.82 (21.17x peak Owner EPS), MRSH trades Below PAR (-14.9% discount), providing an attractive 13.3% 5-year expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 9.6741,
+    "current_multiple": 21.17,
+    "par_multiple": 24.89,
+    "par_value": 240.77,
+    "percent_vs_par": -0.1493,
+    "status": "Below PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0174,
+    "expected_irr_5y": 0.1329,
+    "market_implied_cap": 17.0,
+    "moat_runway_margin": 3.0,
+    "market_implied_growth": 0.0243,
+    "growth_margin_of_safety": 0.0557
+  },
+  "health_checks": {
+    "net_debt_years": 4.4,
+    "net_debt_ok": false,
+    "interest_coverage": 6.48,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9408,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

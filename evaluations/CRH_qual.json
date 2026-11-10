@@ -1,0 +1,30 @@
+{
+  "id": "CRH",
+  "ticker": "CRH",
+  "universe": "us",
+  "company": "CRH plc",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Construction Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Prohibitive permitting barriers, strict zoning restrictions, and steep weight-to-value transport economics create 20-30 mile local quarry monopolies. Proven by 14.3% 5-year median GAAP ROIC, 22.9% tangible ROIC, and 12 consecutive years of EBITDA margin expansion through high cost-inflation cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Premier vertically integrated aggregates, cement, and infrastructure solutions leader in North America and Europe. Moat underpinned by irreplaceable permitted quarry reserves with 20-30 mile haul-radius local monopolies and consistent compounding pricing power above inflation. Structurally insulated from AI disruption and well-positioned to benefit from US infrastructure (IIJA), manufacturing onshoring, and grid buildouts. Strong balance sheet with Net Debt / NI at 3.3x and 6.7x interest coverage supporting disciplined bolt-on M&A. [5-10Y g: organic volume 1.5% + pricing above inflation 2.5% + solution mix / bolt-on reinvestment 2.0% - energy/capex drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 14.3% and operating/tangible ROIC of 22.9%. Multi-year Owner FCF conversion of 83.6% ($14.1B cumulative FCF on $16.9B net income). EBIT compounded from $3.3B in 2021 to $5.4B in 2025 with Adjusted EBITDA margin expanding to 20.5%. Owner EPS reached a new cycle peak of $5.54 in 2025 (13.5% CAGR). Rational capital allocation under Albert Manifold: disciplined portfolio pruning of lower-return assets (European distribution, BuildingEnvelope) reinvested into high-return aggregate footprints (e.g. $2.1B Martin Marietta South Texas acquisition) alongside primary NYSE listing migration and S&P 500 entry. Balance sheet carries $4.1B cash with Net Debt / NI of 3.3x and 6.7x interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

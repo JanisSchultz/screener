@@ -1,0 +1,31 @@
+{
+  "id": "RDDT",
+  "ticker": "RDDT",
+  "universe": "us",
+  "company": "Reddit",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Interactive Media & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Free, ad-supported anonymous social forum and entertainment platform reliant on discretionary marketing budgets rather than an essential Western utility or consumer 'likely to spend' staple; faces escalating minor-safety legislative bans (Australia under-16 ban, UK Online Safety Act, EU DSA, US FTC/state AG scrutiny).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT — non-waivable Anchor Gate). While Reddit operates a transparent, asset-light digital advertising and data-licensing platform with strong 2025–2026 profitability and $3.03B in cash, end users pay nothing for anonymous forum browsing, memes, and community discussions, and ~94% of revenue derives from cyclically discretionary digital advertising rather than an essential Western necessity or paid consumer staple. Moreover, social UGC platforms face rising legislative hostility over minor safety—highlighted by Australia's under-16 social media ban (under High Court challenge by Reddit in Nov 2026), UK/EU age-assurance rules, and US regulatory scrutiny. Downstream gates bypassed per strict sequential waterfall (with short <3Y public tenure, 4-of-5-year negative GAAP ROIC through 2024, and AI zero-click search disintermediation also flagging structural fragility).",
+    "evidence": "Business model & revenue mix: Founded 2005 and listed March 21, 2024 ($34 IPO). Revenue is ~94% digital advertising ($847M of $895M in Q3 2026) and ~6% AI data licensing/other ($140.0M in FY25; $48M in Q3 2026, anchored by ~$60M/yr Google and ~$70M/yr OpenAI deals), concentrated 81.1% in the U.S. ($1,785.6M) and 18.9% international ($417.0M) in FY25. Multi-year financial history (FY21–9M 2026): FY21 revenue $484.9M / -$127.2M op loss / -$127.9M net loss; FY22 $666.7M / -$172.2M op loss / -$158.6M net loss / -$94.0M OCF; FY23 $804.0M / -$140.2M op loss / -$90.8M net loss / -$75.1M OCF; FY24 $1,300.4M / -$560.6M op loss / -$484.3M net loss (including $801.7M IPO-triggered SBC) / $222.1M OCF / ~$215.8M FCF / 90.5% gross margin; FY25 $2,202.5M (+69% YoY) / $442.0M op income / $529.7M net income / $690.9M OCF / $684.2M FCF ($6.7M capex) / $343.2M SBC / 91.2% gross margin / ~61.1% FY25 ROIC. 2026 YTD scaled to Q1 $663M rev ($204M NI), Q2 $805M rev ($253M NI), and Q3 2026 $895M rev (+53% YoY), 91.5% gross margin, $283M NI ($1.40 diluted EPS), $364M OCF, $363M FCF ($1M capex), and $402M Adj. EBITDA (45% margin), with Q4 2026 revenue guided at $1.00B–$1.03B. Balance sheet & capital allocation: $3,033.4M cash & marketable securities as of Sept 30, 2026 ($2,476.8M at YE25), negligible debt (~$21–25M), $42.2M goodwill, $3.58B equity, and $340.0M repurchased across 2.19M shares in 9M 2026 under a $1B Feb 2026 authorization (0.1% YTD net dilution; 206.3M diluted shares), offset by dual-class voting control (Advance Publications / CEO Steve Huffman), Tencent stake, $322.1M 9M 2026 SBC (~15% of Q3 rev), and ongoing Rule 10b5-1 insider sales. Gate 2 & corroborating structural risks: Australia included Reddit in its late-2025 under-16 social media ban (Reddit is suing in the High Court in Nov 2026) alongside UK Online Safety Act, EU DSA, and US FTC/state AG minor-safety inquiries. Beyond Gate 2, 4 of 5 years (2021–2024) were GAAP loss-making (negative historical ROIC, lacking multi-cycle >=12% proof and prior-cycle EPS peak), while Google AI Overviews/AI Mode zero-click summaries cannibalize search discovery—U.S. DAUq fell 2% YoY to 50.7M in Q3 2026 (vs 51.6M in Q3 2025; global DAUq flat QoQ at 130.3M) with management flagging potential low-double-digit sequential DAUq declines in Q4 2026 amid search traffic drops and login-wall tests, compounded by unpaid volunteer moderator friction and AI bot/GEO spam threatening forum authenticity."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:34:07Z",
+    "evaluator": "qualitative-agent"
+  }
+}

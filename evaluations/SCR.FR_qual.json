@@ -1,0 +1,30 @@
+{
+  "id": "SCR.FR",
+  "ticker": "SCR",
+  "universe": "eu",
+  "company": "SCOR",
+  "country": "France",
+  "sector": "Financials",
+  "sub_industry": "Reinsurance (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability / Outside Verifiability, REJECT). Long-tail Life & Health reinsurance assumptions and casualty reserving are opaque and unverifiable from the outside. In 2024, unexpected negative experience variances forced severe actuarial assumption revisions, wiping out group net income to €4M and requiring external actuarial firms (Milliman, WTW) to audit book values.",
+    "evidence": "SCOR incurred ~€0.7B in pre-tax insurance service result hits and a ~€1.3B CSM downward adjustment in 2024 due to legacy life reinsurance assumption revisions. Chronic reserve volatility and reliance on complex biometric/mortality actuarial estimates violate Gate 1 external verifiability."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RYA.IE",
+  "ticker": "RYA",
+  "universe": "eu",
+  "company": "Ryanair",
+  "country": "Ireland",
+  "sector": "Industrials",
+  "sub_industry": "Passenger Airlines (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Traffic is predominantly discretionary European leisure travel; airlines are cyclical price-takers exposed to consumer spending swings and escalating EU environmental taxation.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Reject – G2 Essential Need). Europe's leading ultra-low-cost airline. While Ryanair possesses the lowest cost per seat in Europe and an owner-operator culture, its traffic is predominantly discretionary European short-haul vacation/leisure travel, deferrable during economic downturns, and structurally exposed to consumer fare sensitivity and escalating EU environmental/carbon levies.",
+    "evidence": "Ryanair operates point-to-point European routes dominated by discretionary holidaymaker traffic. Despite an exceptional net-cash balance sheet (€1.3B+ net cash) and double-digit post-COVID ROIC (~17-25% in FY24-FY26), fares remain volatile and cyclical—demonstrated by 10-15% fare drops in summer 2024 when European consumers resisted higher ticket prices. As an airline, it faces structural commodity price-taker dynamics on passenger yields alongside looming ReFuelEU SAF mandates and EU ETS free allowance phase-outs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

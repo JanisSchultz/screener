@@ -1,0 +1,43 @@
+{
+  "id": "BF.B",
+  "ticker": "BF.B",
+  "universe": "us",
+  "company": "Brown\u2013Forman",
+  "price": 30.37,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": 1.84,
+    "g_est": null,
+    "g_implied": 0.045,
+    "roic_est": null,
+    "fin_note": "Global premium spirits compounder anchored by iconic Jack Daniel's trademark and aged barrel inventory moat. Peak Owner EPS of $2.1458 reported in FY2024 included an unrepeatable $267M pre-tax (~$0.44 after-tax) windfall gain from the divestiture of the Finlandia vodka business and Sonoma-Cutrer. Peak Owner EPS is calibrated to normalized operating peak of $1.84 (matching FY25 clean diluted EPS). Operating ROIC of 31.60% reflects aged inventory asset backing and high tangible brand return. 5-10Y secular growth g_implied is set to 4.5% (global volume 1.0% + price/mix 2.5% + RTD expansion 1.0% - tariff/input margin drag 0.5% + share repurchases 0.5%) reflecting spirits category normalization post-COVID and moderation headwinds. Conservative balance sheet with net debt under 3x net income ($2.08B debt vs $308M cash) and 9.72x interest coverage. Dividend Aristocrat with 3.1% dividend yield. Stock trades solidly Below PAR at 16.51x current multiple vs 21.49x PAR multiple (-23.2% discount vs $39.54 PAR value; or -34.1% discount vs unadjusted $46.11 PAR value), delivering a 13.2% 5Y expected IRR."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 1.84,
+    "current_multiple": 16.51,
+    "par_multiple": 21.49,
+    "par_value": 39.54,
+    "percent_vs_par": -0.2319,
+    "status": "Below PAR",
+    "g_implied": 0.045,
+    "dividend_yield": 0.0306,
+    "expected_irr_5y": 0.1323,
+    "market_implied_cap": 11.5,
+    "moat_runway_margin": 3.5,
+    "market_implied_growth": -0.0297,
+    "growth_margin_of_safety": 0.0747
+  },
+  "health_checks": {
+    "net_debt_years": 2.91,
+    "net_debt_ok": true,
+    "interest_coverage": 9.72,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.7751,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

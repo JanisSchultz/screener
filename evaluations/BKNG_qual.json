@@ -1,0 +1,30 @@
+{
+  "id": "BKNG",
+  "ticker": "BKNG",
+  "universe": "us",
+  "company": "Booking Holdings",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Predominantly discretionary leisure travel and vacation lodging (1.235B room nights in FY2025, ~36% alternative accommodations/vacation rentals), which are episodic, big-ticket, and deferrable in downturns rather than an essential functional necessity or daily habit.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Western Need & Entrenched Habits, REJECT). Although Booking Holdings operates a transparent, asset-light OTA marketplace (passing Gate 1), its $186.1B in gross bookings are overwhelmingly driven by discretionary consumer leisure travel and vacation lodging (including ~36% alternative accommodations), placing it alongside explicitly rejected travel cyclicals (airlines, cruise lines). Travel spending is episodic and deferrable during recessions or geopolitical disruptions, evidenced by the 54.9% revenue collapse and negative EBIT (-$631M) in FY2020 and Q4 2026 guidance moderating to 1-3% room-night growth amid softer international travel and Middle East disruptions, failing the Munger 'likely to spend' staple/necessity bar.",
+    "evidence": "Multi-cycle financials (FY2016-FY2025 SEC EDGAR): Sales compounded from $10,743M (FY16) to $15,066M (FY19), collapsed 54.9% to $6,796M in FY20 (EBIT -$631M, Owner FCF -$434M), and rebounded to $26,917M in FY25 (+13.4% YoY; EBIT $8,825M, 32.8% margin; GAAP NI $5,404M; OCF $9,409M; CapEx $322M; SBC $613M; Owner FCF $8,474M, 156.8% FCF/NI; FY25 reported FCF $9.1B; 5Y median GAAP ROIC 82.1% with negative book equity since FY23). FY2025 revenue model breakdown: Merchant $17,755M (66.0%, +25.5% YoY), Agency $7,968M (29.6%, -6.5% YoY), and Advertising/Other (KAYAK, OpenTable) $1,194M (4.4%) on $186.1B gross bookings (+12%) and 1.235B room nights (+8%; ~55% direct channel, ~36% alternative accommodations; SEC filings do not separately quantify leisure vs. business travel but confirm predominantly leisure orientation). 9M 2026 operating trajectory: Q1 rev $5.53B (+16%), Q2 rev $7.35B (+8%), Q3 GAAP rev $8.89B (-1.3% due to a discrete $900M FTC-related revenue charge at Priceline; ~+9% ex-charge), Q3 room nights 345M (+7%), Q4 room-night growth guided to 1-3%. Moat & regulatory context: Two-sided lodging supply network faces EU Digital Markets Act (DMA) gatekeeper designation removing wide/narrow EEA rate parity clauses, alongside emerging agentic-AI travel disintermediation risk. Capital allocation & balance sheet: 25-for-1 stock split effective April 2026; FY25 dividends $1,248M and 9M 2026 share buybacks ~$9.5B drove negative GAAP equity (-$5,578M at FY25, goodwill/intangibles $3,587M), supported by $17,203M cash vs. $16,856M LT debt ($347M net cash) and 5.46x FY25 EBIT/interest coverage ($8,825M / $1,617M)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

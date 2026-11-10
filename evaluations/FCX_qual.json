@@ -1,0 +1,30 @@
+{
+  "id": "FCX",
+  "ticker": "FCX",
+  "universe": "us",
+  "company": "Freeport-McMoRan Inc.",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Copper",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Tier-1 long-life permitted orebodies (Grasberg, Morenci), but pure price-taker in global commodity markets with 10-year median ROIC of 10.2% (< 12%).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). While FCX owns irreplaceable tier-1 natural resource assets including Grasberg and Morenci, it operates as a pure commodity price-taker on COMEX/LME spot pricing with zero independent pricing power. 10-year median ROIC is 10.2% (below the 12.0% hurdle), margins are highly cyclical, and earnings are exposed to capital-intensive smelter mandates and Indonesian resource nationalism.",
+    "evidence": "Freeport-McMoRan (FCX) is a leading global copper producer generating ~$25.5B–$25.9B in annual revenue (FY24–FY25), primarily from copper (~70–75%), gold (~15–20%), and molybdenum (~5%). Major assets include the Grasberg minerals district in Indonesia (PT-FI, 48.76% owned following forced 51% transfer to Indonesian state-owned MIND ID), Morenci and open pits across Arizona and New Mexico, and Cerro Verde (53.6%) in Peru. Despite owning world-class, geologically unique ore deposits, FCX has zero pricing power—realized prices are dictated entirely by COMEX and LME commodity spot markets. Multi-cycle capital efficiency fails the Munger quality hurdle: 10-year median GAAP ROIC is 10.2% (< 12.0%). Business economics are highly capital-intensive ($4.8B capex in 2024, $4.5B in 2025) and subject to heavy regulatory and resource-nationalism burdens, including billions invested in mandated domestic Indonesian smelting/refining facilities (Manyar smelter) and ongoing project debt. FCF generation fluctuates heavily with metal price cycles ($5.6B operating cash flow in 2025 vs $7.2B in 2024). Fails Munger compounder standards due to commodity price-taking and sub-hurdle cycle returns."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

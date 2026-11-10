@@ -1,0 +1,30 @@
+{
+  "id": "CIEN",
+  "ticker": "CIEN",
+  "universe": "us",
+  "company": "Ciena Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Proprietary WaveLogic coherent optical DSPs and integrated optical line systems create switching costs once deployed in carrier backbones. However, Ciena fails proof of moat: 10-year median ROIC is ~9.2%, with FY23-FY25 ROIC dropping to 3.3%-6.8%, well below the 12% hurdle. The company lacks pricing power >= inflation due to brutal oligopsonistic bargaining power from Tier-1 telcos and hyperscale cloud providers, combined with continuous 15-25% annual price-per-bit technological deflation. Key erosion threats include disaggregated open optical line systems and merchant coherent pluggables (800ZR/1600ZR).",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, lack of pricing power >= inflation). Despite leading market share in coherent optical transmission and WaveLogic DSPs, Ciena sells into an oligopsony of hyperscalers (top cloud customer 17.8% of FY25 revenue) and Tier-1 telcos (AT&T 10.5%). The business faces structural 15-25% annual price-per-bit deflation and lumpy carrier capex cycles, resulting in a 10-year median ROIC of 9.2% and FY24-FY25 GAAP operating margins compressed to ~3%.",
+    "evidence": "10-year median ROIC of ~9.2% fails the 12% cycle hurdle. In FY23, FY24, and FY25, ROIC stood at ~6.8%, ~3.4%, and ~4.2% respectively. GAAP operating margin compressed from 12.8% in FY21 to 2.99% in FY24 and 3.28% in FY25, while gross margin declined from 47.4% to 42.0%. Customer concentration is intense: a single unnamed hyperscale cloud provider contributed $851.6M (17.8% of FY25 revenue) and AT&T contributed $500.7M (10.5% of FY25 revenue). Sophisticated buyers wield immense RFP leverage against equipment vendors, forcing continuous heavy R&D reinvestment into next-generation DSPs just to offset hardware price deflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RACE.IT",
+  "ticker": "RACE",
+  "universe": "eu",
+  "company": "Ferrari N.V.",
+  "country": "Italy",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automobile Manufacturers",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deliberate scarcity model and Formula 1 heritage volume automakers cannot copy without self-cannibalization. Proof of moat: 25%+ ROIC across economic cycles, ~50% gross margins, 38%+ EBITDA margins, and a 2+ year sold-out order backlog. Extreme pricing power demonstrated by personalization options contributing over 19% of revenues. Key erosion threats include brand dilution if volume expands beyond luxury scarcity limits, powertrain sound/emotional shift in the transition to hybrid/EVs, and European small-volume emissions derogation changes.",
+    "gate_4_runway_cap": 30,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (FCF conversion < 80%, REJECT). Despite possessing one of the world's most formidable luxury moats (30Y CAP, 25%+ ROIC, multi-year order backlogs), Ferrari fails Pillar 2 FCF conversion: 5-year cumulative Industrial FCF / Net Income is ~68.4% (67.3% in 2024, 74.1% in 2023), missing the strict 80% cash conversion threshold due to continuous heavy automotive manufacturing capex and capitalized development outlays for new model architectures.",
+    "evidence": "Ferrari generated €1,526M net income and €1,027M industrial FCF in 2024 (67.3% conversion), and €1,257M net income and €932M industrial FCF in 2023 (74.1% conversion). Cumulative 2020-2024 industrial FCF of €3,531M against net income of €5,164M yields 68.4% conversion, failing the Gate 6 80% threshold. Operating ROIC exceeds 25%, gross margins exceed 49%, and order books are fully committed through 2026. Consolidated gross debt stands at €3.35B (including €1.66B financial services debt) against €3.53B equity and €1.74B cash."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

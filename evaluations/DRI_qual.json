@@ -1,0 +1,30 @@
+{
+  "id": "DRI",
+  "ticker": "DRI",
+  "universe": "us",
+  "company": "Darden Restaurants",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Full-service casual and fine dining (Olive Garden, LongHorn Steakhouse, Ruth's Chris) is discretionary and easily deferrable or substituted with home cooking during economic downturns; it fails the Munger/Buffett essential need or high-frequency everyday habit standard.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Darden is the largest full-service restaurant operator in the US, but casual dining and steakhouse concepts are deferrable discretionary spending categories rather than essential needs or entrenched everyday habits. Traffic remains vulnerable to disposable income contractions and consumer trade-down pressures.",
+    "evidence": "Operates over 2,000 full-service restaurants across brands including Olive Garden (flagship casual Italian), LongHorn Steakhouse, Cheddar's Scratch Kitchen, Yard House, and Ruth's Chris Steak House (acquired FY24). Despite purchasing scale efficiencies and FY24-FY25 revenue exceeding $11B-$13B with steady 11-14% ROIC, casual dining lacks switching costs, faces intense fragmented competition from independent eateries and fast-casual alternatives, and suffers guest count contraction during consumer discretionary belt-tightening."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

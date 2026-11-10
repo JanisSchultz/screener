@@ -1,0 +1,30 @@
+{
+  "id": "CRM",
+  "ticker": "CRM",
+  "universe": "us",
+  "company": "Salesforce, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep enterprise switching costs rooted in proprietary data architectures, custom APEX/Lightning workflows, and critical system-of-record status for corporate CRM/service data. Pricing power verified by August 2023 9% list price increase across Sales/Service Cloud with gross retention remaining >92%. 10-year median GAAP ROIC is 12.8% (tangible operating ROIC >25%). Primary erosion threat is AI agent abstraction layers decoupling users from the Salesforce UI.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Enterprise software baseline (10-15 years) haircut to CAP 10 under Macrotrend #1 (Automation & Cognitive Tech): core monetization relies on seat-based licensing across Sales and Service Clouds, which faces secular deflation as autonomous AI agents compress corporate sales and customer support headcount. Agentforce consumption pricing remains unproven to offset seat cannibalization. Downstream gates bypassed per strict waterfall.",
+    "evidence": "FY25 revenue of $37.9B (+9% YoY) and FY26 revenue of $41.5B (+10% YoY). GAAP operating margins expanded to 19.0% in FY25 and 20.1% in FY26 following activist-driven restructuring. FY25 FCF of $12.4B and FY26 FCF of $14.4B reflect excellent cash conversion. Balance sheet is conservative with ~$14B cash and marketable securities against $11.4B total debt ($8.4B core long-term notes). 10Y median GAAP ROIC is 12.8% (damped by $50B+ M&A goodwill/intangibles from Slack, Tableau, MuleSoft). However, top-line growth has decelerated from >20% to high single digits as enterprise budgets reallocate toward AI compute, and the core seat-based pricing model faces structural deflation from autonomous agent workforce automation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

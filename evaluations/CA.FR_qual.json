@@ -1,0 +1,30 @@
+{
+  "id": "CA.FR",
+  "ticker": "CA",
+  "universe": "eu",
+  "company": "Carrefour",
+  "country": "France",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Carrefour possesses substantial scale across France, Europe, and Latin America, but operates in structurally low-margin grocery and hypermarket formats. In France, it faces fierce price competition from independent cooperatives (E.Leclerc) and hard discounters (Aldi, Lidl). Historical multi-year GAAP ROIC sits at ~5.0-5.8%, falling far short of the 12% hurdle, with operating margins compressed at 2.6-3.0% demonstrating zero pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC 5-6% vs 12% hurdle, REJECT). Structural decline of the French hypermarket format, relentless price competition from E.Leclerc and hard discounters, persistent low operating margins (~2.6-3.0%), and chronic sub-cost-of-capital capital efficiency.",
+    "evidence": "5-year median GAAP ROIC is ~5.0-5.8% (against 12% hurdle). Recurring operating margins have remained compressed between 2.6% and 3.0% from 2020-2024. Net financial debt stands at €3.78B following acquisitions (Grupo BIG, Cora/Match), with serial restructuring programs failing to generate sustainable economic profit above the cost of capital."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

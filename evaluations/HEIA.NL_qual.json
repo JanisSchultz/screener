@@ -1,0 +1,30 @@
+{
+  "id": "HEIA.NL",
+  "ticker": "HEIA",
+  "universe": "eu",
+  "company": "Heineken",
+  "country": "Netherlands",
+  "sector": "Consumer Staples",
+  "sub_industry": "Brewers (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global brand leadership anchored by the flagship Heineken brand (#1 international premium beer) and entrenched local distribution infrastructure across 190+ markets. Demonstrated pricing power through premiumization, price/mix pass-through, and pioneering zero-alcohol (Heineken 0.0).",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. World's #2 brewer with the most international premium brand portfolio. Proven pricing power with positive price/mix offsetting inflationary pressures. Robust cash generation with >€3B free operating cash flow and net debt/EBITDA of 2.2x under prudent family control. [5-10Y g: volume 1.5% + price/mix 2.5% + premium/0.0% mix 1.0% - input margin drag 0.5% + buybacks/dividends 0.5%]",
+    "evidence": "Organic operating profit grew 8.3% in 2024 with organic net revenue up 5%. Free operating cash flow reached €3.0B+, driving net debt to EBITDA down to 2.2x. Operating tangible ROIC exceeds 15%. Heineken 0.0 commands leadership in non-alcoholic beer globally, insulating against volume moderation trends."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "WY",
+  "ticker": "WY",
+  "universe": "us",
+  "company": "Weyerhaeuser",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Timber REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While Weyerhaeuser controls ~10.5 million acres of irreplaceable, low-cost commercial timberland across North America, its economic engine is tied to commodity wood products (lumber, OSB) and sawlogs. 10-year median GAAP ROIC is ~6.2%, failing the 12% hurdle. The company is a price-taker on spot commodity lumber markets with zero structural pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 6.2% < 12%, REJECT). Weyerhaeuser is the largest private timberland owner in North America, but its earnings are dominated by commodity lumber, OSB, and logs. It operates as an unhedged price-taker tied to cyclical residential construction starts and spot lumber benchmarks, lacking pricing power or hurdle-rate multi-cycle capital returns.",
+    "evidence": "10-year median GAAP ROIC is 6.2% (peaked at 16.3% in 2021 during the historic pandemic lumber squeeze, then collapsed to ~3.0-4.2% in 2024 and ~3.1-4.9% in 2025). Net income plunged from $2.61B in 2021 to $396M in 2024 and $324M in 2025 on revenue of $6.91B. Lumber and OSB realizations are dictated by spot market indices (Random Lengths) and housing starts, confirming zero pricing power over inflation across the full business cycle."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

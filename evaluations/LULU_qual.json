@@ -1,0 +1,30 @@
+{
+  "id": "LULU",
+  "ticker": "LULU",
+  "universe": "us",
+  "company": "Lululemon Athletica",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary, easily deferrable premium fashion/athleisure apparel rather than a functional necessity, high-frequency daily consumable ritual, or Lindy heritage luxury house; consumers readily postpone full-price purchases or substitute lower-cost dupes and trend rivals.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (N, REJECT). Lululemon sells discretionary premium athleisure apparel that fails Buffett and Munger's 'likely to spend' essential-need and Lindy-staple standard. Unlike Hermès or daily consumer staples, its $100+ technical apparel faces zero switching costs and fashion-cycle obsolescence, evidenced in FY2025-FY2026 by stagnant/negative U.S. sales (~3% dips), increased markdowns, and consumer defection to Alo Yoga, Vuori, and discount dupes. Ineligible for Calamity Tier because Anchor Gate 2 fails.",
+    "evidence": "Historical capital efficiency is strong (10Y median ROIC of 26.2% in financials_csv) and balance sheet remains debt-free regarding long-term borrowings ($0 LT debt; ~$1.80B operating lease liabilities; $1.81B cash at FY2025-end and ~$1.4B cash plus $593.7M undrawn revolver in mid-FY2026). However, operating momentum and pricing power deteriorated across FY2024-FY2026: FY2025 revenue rose 4.9% to $11.10B (hovering near ~$11.1B in FY2026), while operating margin compressed ~380 bps from ~23.7% in FY2024 to ~19.9% ($2.21B EBIT) in FY2025 and normalized toward ~17%-20% in FY2026 amid tariff headwinds, inventory provisions, and markdowns (Q2 2026 included a $134.5M tariff refund). Net income fell from $1,814.6M in FY2024 to $1,579.2M in FY2025; OCF declined from $2,272.7M (FCF ~$1.62B after ~$651.9M CapEx, ~89% conversion) to $1,602.5M (FCF ~$913M-$950M after ~$689.2M CapEx, ~58%-60% conversion). Growth relied heavily on international/Mainland China expansion while core U.S. revenue stagnated/dipped ~3% against Alo Yoga, Vuori, and dupe competition. Leadership instability further compounded product execution misses: CEO Calvin McDonald stepped down effective Jan 31, 2026 amid founder Chip Wilson criticism, with CFO Meghan Frank and CCO André Maestrini serving as interim co-CEOs and Marti Morfitt as Executive Chair."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "Gate 2",
+    "evaluated_at": "2026-11-10T09:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

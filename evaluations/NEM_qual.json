@@ -1,0 +1,30 @@
+{
+  "id": "NEM",
+  "ticker": "NEM",
+  "universe": "us",
+  "company": "Newmont Corporation",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Gold",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Speculative commodity price-taker lacking pricing power.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Reject). Upstream gold mining operator is a speculative commodity price-taker selling an undifferentiated product into global spot markets (LBMA/COMEX) with zero structural pricing power. Gold is neither a non-discretionary Western necessity nor an entrenched, inelastic everyday habit/ritual. Returns on invested capital are entirely cyclical and tethered to volatile bullion spot prices and mining cost inflation.",
+    "evidence": "Newmont is the world's largest gold producer following the 2023 Newcrest acquisition, producing ~6.5M-7M gold ounces annually alongside copper, silver, zinc, and lead. While recent record gold prices ($2,600-$2,900/oz in 2024-2025) drove record free cash flows ($2.9B in 2024, $7.3B in 2025) and a temporary rebound in ROIC (~14% in 2025 from ~8.1% in 2024), its 10-year historical median ROIC sits at a depressed ~6.5%, well below the 12% compounding hurdle. All-in Sustaining Costs (AISC) have escalated significantly due to labor, fuel, and consumable inflation. As a pure commodity price-taker, Newmont has no ability to set prices or earn durable through-cycle excess returns on invested capital independent of bullion market cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

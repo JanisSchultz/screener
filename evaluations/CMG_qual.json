@@ -1,0 +1,30 @@
+{
+  "id": "CMG",
+  "ticker": "CMG",
+  "universe": "us",
+  "company": "Chipotle Mexican Grill",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Scale economies shared via massive direct procurement of fresh, responsibly sourced ingredients and industry-leading restaurant throughput ($3.2M+ AUV across 4,000+ company-owned locations). Insurmountable unit cost advantages allow CMG to deliver high-protein, 1.5-lb+ entrees at accessible price points that fragmented fast-casual peers cannot replicate at scale. Moat proved by multi-year GAAP ROIC consistently exceeding 20% (and operating ROIC >45%) alongside successful cumulative price realization passing through ingredient and wage inflation. Primary erosion threats: brand fatigue / portion perception backlash, unit-level labor cost escalation, and aggressive copycat fast-casual concepts.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). While Chipotle has built an exceptional fast-casual brand with high throughput and unit volumes, it operates an entirely company-owned restaurant footprint of 4,000+ units employing ~120,000 hourly workers without a franchise royalty buffer. The business faces an unhedged terminal headwind under Macrotrend 2 (Demographic Aging & Labor Scarcity), where structural food-service wage inflation and labor shortages compress restaurant-level margins (falling from 27.4% to 23.3% in 2026). Under the Mauboussin Rule of Secular Resilience, an active headwind on manual labor intensity caps the competitive advantage period at CAP <= 10 years, failing the 15-year Munger longevity threshold.",
+    "evidence": "Chipotle grew revenue from $6.0B in 2020 to $11.3B in 2024 and $11.9B in 2025, with operating income of $1.94B (16.2% operating margin). High capital efficiency is demonstrated by multi-year GAAP ROIC of 20-47%, supported by $3.2M+ average unit volumes (AUV) and sub-2-year cash payback on new builds across 4,042 restaurants. Pristine balance sheet with zero funded debt (only operating lease liabilities of $5.1B) and ~$1B+ in cash and short-term investments. FCF conversion tracks 80-85% of net income ($1.15B FCF on $1.4B net income). However, the 100% company-operated store model leaves Chipotle directly exposed to accelerating hourly labor inflation (e.g. California AB 1228 $20/hr minimum wage), requiring continuous labor investments that compressed restaurant-level margins from 27.4% to 23.3% in 2026. Executive leadership transition to CEO Scott Boatwright in late 2024 has necessitated deliberate margin concessions to protect transaction traffic and resolve consumer portion-size pushback, underscoring secular labor and consumer sensitivity limits."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

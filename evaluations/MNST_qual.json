@@ -1,0 +1,30 @@
+{
+  "id": "MNST",
+  "ticker": "MNST",
+  "universe": "us",
+  "company": "Monster Beverage",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global brand intangibles anchored by intense lifestyle/extreme-sports cultural equity, coupled with exclusive route-to-market access via the global Coca-Cola bottling network that locks up convenience store cooler shelf space. Empirical proof: 10-year median ROIC ~26.5%, gross margins stable at 54-56%, and operating margins ~28-29% despite aluminum and freight volatility. Primary erosion threats: competition from Red Bull and insurgent fitness energy brands (Celsius), retail convenience traffic softness, and regulatory caffeine/youth scrutiny.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global energy drink leader with powerful brand intangibles and exclusive Coca-Cola bottling distribution. High-margin asset-light copacking model yields ~27% ROIC and ~100% FCF conversion. Fortress net-cash balance sheet. [5-10Y g: international & category volume 4.5% + pricing power 1.5% + mix innovation 0.5% - input & distribution cost drag 0.5% + net share buybacks 1.5%]",
+    "evidence": "FY2024-FY2025 net sales grew from $7.50B to $8.29B, with operating income reaching $2.42B (29.2% operating margin) and gross margin improving to 55.8%. 10-year median ROIC exceeds 26%. Free cash flow conversion is near 100% (~$1.9B FCF on $1.91B net income in FY2025) backed by an asset-light copacking model with minimal capex requirements. Fortress balance sheet with $2.09B in cash and equivalents against ~$374M in total debt incurred to fund the accretive $3.0B Dutch auction tender offer in 2024 that retired ~5.4% of shares. Co-founders Rodney Sacks and Hilton Schlosberg possess an exemplary 35-year track record of rational capital allocation and per-share compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

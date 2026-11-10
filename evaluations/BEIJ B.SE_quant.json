@@ -1,0 +1,43 @@
+{
+  "id": "BEIJ B.SE",
+  "ticker": "BEIJ B",
+  "universe": "eu",
+  "company": "Beijer Ref",
+  "price": 156.3,
+  "quote_currency": "SEK",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap neutralizing SEK 18.9B in goodwill and intangibles from the 2023 Heritage Distribution acquisition; tangible ROIC is 42.9% median (50.8% in FY25) vs 13.0% GAAP ROIC. Peak Owner EPS of SEK 5.93 is validated by FY25 Owner EPS of SEK 5.85 and record FCF of SEK 3.8B. Forward 5-10Y compound growth of 8.5% driven by 3.5% organic volume (F-Gas/heat pump transitions), 1.5% pricing power, 0.5% margin expansion, and 3.0% bolt-on M&A. Fundamental PAR Multiple of 27.07x (vs cycle high 35.05x) yields PAR Value of SEK 160.51 vs current price SEK 156.30 (trades 2.6% Below PAR)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.9291,
+    "current_multiple": 26.36,
+    "par_multiple": 27.07,
+    "par_value": 160.51,
+    "percent_vs_par": -0.0262,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0106,
+    "expected_irr_5y": 0.1014,
+    "market_implied_cap": 14.6,
+    "moat_runway_margin": 0.4,
+    "market_implied_growth": 0.0743,
+    "growth_margin_of_safety": 0.0107
+  },
+  "health_checks": {
+    "net_debt_years": 0.3,
+    "net_debt_ok": true,
+    "interest_coverage": 7.1,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.94,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T12:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "RVTY",
+  "ticker": "RVTY",
+  "universe": "us",
+  "company": "Revvity",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High switching costs in newborn screening diagnostics (>60% global market share) and proprietary life science antibodies/reagents (BioLegend) embedded in clinical and lab protocols. However, the business structurally fails proof of moat: 10-year median GAAP ROIC is 8.5%, and FY23-FY25 GAAP ROIC languishes at 3.6%-4.5% due to an insurmountable ~$6.6B goodwill/intangibles load from the peak-bubble $5.25B BioLegend acquisition in 2021. Primary erosion threats include China Volume-Based Procurement (VBP) mandatory price cuts and persistent biopharma R&D spending headwinds preventing pricing power above inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & Pricing Power, REJECT). Revvity possesses entrenched niche franchises in newborn screening and BioLegend research reagents, but structurally fails the Munger quality hurdle with a 10-year median GAAP ROIC of 8.5% and FY23–25 ROIC of only 3.6%–4.5%. The $5.25B acquisition of BioLegend at the 2021 valuation peak saddled the balance sheet with >$6.5B in goodwill, permanently suppressing returns on capital. Furthermore, government-mandated price cuts under China Volume-Based Procurement (forcing the divestiture of China immunodiagnostics) and biopharma destocking reflect an inability to consistently pass through price increases above inflation across the cycle.",
+    "evidence": "10-year historical median ROIC is 8.5%, well below the 12% threshold. Post-divestiture/rebranding revenue was $2.755B in FY24 and $2.856B in FY25. FY25 GAAP Diluted EPS was $2.07 ($2.20 in FY24), yielding net income of ~$250M-$260M against invested capital of ~$9.7B ($7.3B equity + $3.4B debt - $1.0B cash), resulting in GAAP ROIC of ~3.6%-4.5%. In FY25, RVTY recognized a $700.7M goodwill impairment charge across EMEA, China, and Latin America units, leaving $6.61B in goodwill on the balance sheet. China VBP price compression and biopharma budgetary pressures have constrained top-line growth and margin expansion."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:47:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

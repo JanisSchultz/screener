@@ -1,0 +1,30 @@
+{
+  "id": "AEP",
+  "ticker": "AEP",
+  "universe": "us",
+  "company": "American Electric Power Company, Inc.",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise service territories across 11 states and ownership of the nation's largest electric transmission network (~40,000 miles of transmission lines, including ~90% of US 765-kV lines) create an insurmountable physical and regulatory barrier to entry. Proof of moat is demonstrated by formulaic cost-of-service rate-base recovery and authorized ROEs of 9.25%-10.50% set by state PUCs and FERC, granting reliable nominal pass-through of fuel and capital costs. Primary erosion risks stem from regulatory lag, state commission rate pushback amidst escalating retail bills, and rising capital costs.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected \u2013 G6 Cash & Fortress Balance Sheet; g6_default=N). While AEP possesses an unreplicable transmission network and state-regulated franchise monopoly (Gates 1-5 pass), its structural business model fails Munger's peace-of-mind balance sheet standard. Capped at a 6-7% regulated ROIC, AEP requires massive, continuous capital spending ($100B 5-year capex plan for 2027-2031) that vastly exceeds operating cash flow, resulting in perpetual negative free cash flow after total capex. Balance sheet carries $44.1B+ in long-term debt (total debt reaching $54.4B in 2026), representing ~11.9x TTM net income (far exceeding the <=4.0x ceiling) and weak interest coverage of 2.62x (below the >5.0x threshold). The company is structurally reliant on the perpetual 'kindness of strangers' via continuous debt and equity market issuance.",
+    "evidence": "Empirical 10-year financials verify the structural utility profile: 10-year GAAP ROIC has remained tightly range-bound between 2.6% and 7.3% (5-year median 6.26%), constrained by regulated rate base mechanics. In FY2025, AEP generated $3,696M in net income and $6,944M in operating cash flow against reported capex of $3,453M (with expanded multi-year capital plans ramping to $100B across 2027-2031, or ~$20B/year). Total debt escalated from $17.4B in 2016 to $44.1B in FY2025 and $54.4B by Q3 2026. Financial leverage is acute: LT Debt / Net Income sits at 11.94x (violating the <=4.0x threshold), while EBIT of $5,319M vs interest expense of $2,026M yields an interest coverage ratio of just 2.62x (well below the >5.0x hurdle). Cash balance stands at only $197M. Perpetual reliance on external capital markets to refinance debt maturities and fund grid expansion fails Gate 6."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

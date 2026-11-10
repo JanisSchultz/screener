@@ -1,0 +1,30 @@
+{
+  "id": "DLR",
+  "ticker": "DLR",
+  "universe": "us",
+  "company": "Digital Realty Trust, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Data Center REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Power-secured campuses and carrier-neutral interconnection facilities in constrained global metro hubs (Northern Virginia, Silicon Valley, Frankfurt, London, Singapore) create high physical barriers to entry. Pricing power is evidenced by contractual 2-4% annual lease escalators, positive renewal spreads (+11.8% cash, +26.3% GAAP in 2026), and a record leasing backlog of $2.5B. Primary moat erosion threats stem from hyperscaler customer concentration, self-building by mega-cap tech tenants, and low accounting ROIC due to high asset intensity.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). While power-secured data center campuses benefit from near-term AI and cloud compute demand, DLR faces severe structural terminal headwinds under the 5-Macrotrend framework. Under Macrotrend 5 (Structural Inflation & Cost of Capital), the business is intensely capital-dependent with $16.2B long-term debt, an interest coverage ratio of only ~1.5x (EBIT $658M vs Interest $438M), and annual capex ($3.2B) exceeding operating cash flow ($2.4B), producing negative free cash flow and continuous reliance on capital markets. Under Macrotrend 4 (Energy Transition & Resource Limits), severe grid interconnection delays and utility bottlenecks constrain organic returns. Furthermore, hyperscaler tenant concentration exposes DLR to self-build competition and long-term margin compression, capping CAP at 5 years well below the 15-year hurdle.",
+    "evidence": "10-year median GAAP ROIC is 1.78% (ranging from 10.19% in FY2016 down to 1.39% in FY2024 and 1.92% in FY2025); tangible ROIC is 2.88%. Operating margin compressed from ~23% in 2016 to ~10.8% in 2025 ($658.5M EBIT on $6.11B revenue). Multi-year pure FCF is negative due to heavy development capex ($3.18B capex vs $2.41B OCF in FY2025, pure FCF -$769M). Balance sheet carries $16.19B long-term debt against $3.45B cash, resulting in Net Debt / Net Income of 9.7x (far exceeding the 4.0x fortress threshold). Interest coverage is precarious at 1.50x ($658.5M EBIT / $437.9M interest). Although DLR maintains pricing power via annual escalators (2-4%) and positive renewal spreads (+11.8% cash in 2026), hyperscaler tenants (Microsoft, AWS, Meta, Google) possess substantial countervailing power and build their own facilities."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

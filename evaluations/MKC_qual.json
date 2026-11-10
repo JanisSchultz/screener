@@ -1,0 +1,30 @@
+{
+  "id": "MKC",
+  "ticker": "MKC",
+  "universe": "us",
+  "company": "McCormick & Company",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Category-captain shelf dominance and iconic heritage brands (McCormick, Frank's RedHot, French's, Cholula) create formidable intangible barriers. Supermarket retailers rely on McCormick to design, stock, and manage entire spice aisles. Tangible operating ROIC exceeds 100% (GAAP ROIC ~9.6-10% reflects $8.6B goodwill/intangibles from RB Foods and Cholula acquisitions). Successfully passed through 20%+ cumulative pricing over 2021-2024 with volumes recovering to positive growth in 2024-2025. Primary erosion risks are private-label trade-down in commoditized basic spices if retail price gaps widen excessively, and customer consolidation in quick-service restaurant B2B solutions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in spices, seasonings, and flavors with unmatched grocery category captaincy and iconic brands (McCormick, Frank's RedHot, French's, Cholula). Proved pricing power through 20%+ cumulative price realization during the 2021-2024 inflation cycle. Tangible operating ROIC exceeds 100%, and balance sheet deleveraging continues steadily (Net Debt / NI = 3.8x, interest coverage 5.5x). Fully insulated from AI and technology disruption. [5-10Y g: organic volume 1.5% + price/mix 2.0% + margin expansion/deleveraging 1.5% + bolt-on M&A/buybacks 0.5%]",
+    "evidence": "FY2025 revenue reached $6.84B with operating income of $1.07B (15.7% operating margin). Tangible ROIC consistently exceeds 100%, while GAAP ROIC median is 9.6% due to $8.6B of acquired goodwill/intangibles. 2025 Owner EPS reached a new peak of $2.97 (surpassing prior peak of $2.80 in 2021 and $2.62 in 2019), confirming peak-to-peak compounding. Free cash flow conversion averaged 89.3% in FY2025 ($694M Owner FCF vs $789M Net Income) and >90% over 5 years. Total long-term debt reduced from $4.44B post-RB Foods acquisition in 2017 to $3.11B in 2025. Net debt of $3.01B is repayable in 3.81 years of net income, and EBIT/interest coverage is 5.46x. 40 consecutive years of dividend increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FR.FR",
+  "ticker": "FR",
+  "universe": "eu",
+  "company": "Valeo",
+  "country": "France",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Automotive Parts & Equipment (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "OEM qualification and engineering patents fail to yield economic rents. 5-year median GAAP ROIC is 2.5-4.5%, deeply sub-hurdle, as powerful automotive OEMs demand continuous cost reductions and pass inflationary component costs back onto suppliers.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Chronic capital inefficiency with 5-year median GAAP ROIC of 2.5-4.5%. Squeezed between concentrated OEM customer buyer power and high ongoing R&D/capex requirements for electrification and ADAS.",
+    "evidence": "Historical GAAP ROIC has persistently tracked between 2.5% and 4.5% across 2021-2024. Operating margins are thin (~3-4%), and operating cash flows are largely consumed by tangible capex and capitalized R&D to service OEM contracts."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

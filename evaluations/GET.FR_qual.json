@@ -1,0 +1,30 @@
+{
+  "id": "GET.FR",
+  "ticker": "GET",
+  "universe": "eu",
+  "company": "Getlink",
+  "country": "France",
+  "sector": "Industrials",
+  "sub_industry": "Highways & Railtracks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Sole fixed-link tunnel concession connecting the UK and continental Europe to 2086. While railway access tariffs track inflation, immense capital intensity and fixed capital base constrain multi-cycle capital returns: median GAAP ROIC is 7.3% (tangible ROIC 7.6%), failing the 12% hurdle. Cross-Channel ferry competition and airline alternatives also constrain pricing freedom on passenger and truck shuttles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Proof of Moat & ROIC, REJECT). Unique, unreplicable Channel Tunnel fixed link concession through 2086 with inflation-linked tariffs, but capital efficiency is permanently constrained by extreme capital intensity, yielding a 4-year median GAAP ROIC of only 7.33% (tangible ROIC 7.5%), well below the 12% Munger threshold.",
+    "evidence": "Historical capital efficiency consistently fails the 12% GAAP ROIC standard: FY2022 GAAP ROIC 6.78% (tangible 6.97%), FY2023 7.64% (tangible 7.87%), FY2024 7.28% (tangible 7.54%), FY2025 7.39% (tangible 7.69%), median ROIC 7.33%. Net debt remains elevated at €3.57B (€4.92B LT debt vs €1.35B cash; ~11x net income). Under the v6.23 specification, sub-12% ROIC triggers rejection at Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

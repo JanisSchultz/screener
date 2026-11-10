@@ -1,0 +1,30 @@
+{
+  "id": "ES",
+  "ticker": "ES",
+  "universe": "us",
+  "company": "Eversource Energy",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territory for electric and gas distribution in CT, MA, and NH creates an insurmountable geographic barrier and captive customer base. Tariffs are set via cost-of-service rate-base regulation with formulaic cost recovery. However, allowed returns are capped by state utility commissions and FERC, exposing the firm to regulatory lag and disallowances.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Traditional regulated utility anchor falls in Mauboussin Tier 4 baseline persistence (5-10 years). Faces severe unhedged terminal macrotrend headwinds: Energy Transition capital misallocation (over $2.5B cumulative impairments and exit costs on offshore wind joint ventures) and Structural Cost of Capital/Inflation headwinds where massive ongoing capex ($4B+/year) and heavy debt load ($30B+) collide with hostile regulatory rate-setting in Connecticut (PURA).",
+    "evidence": "Eversource operates regulated electric, natural gas, and water utilities across Connecticut, Massachusetts, and New Hampshire serving ~4.4M customers. While possessing an exclusive territorial distribution monopoly, its 10-year median ROIC is just ~4.9%, structurally limited by utility rate-base regulation and heavy debt. Annual capex ($4.48B in 2024, $4.16B in 2025) perpetually exceeds operating cash flow, resulting in negative free cash flow (-$45M in 2025) and continuous debt dilution (total debt reached $30.28B by year-end 2025 against recurring earnings of ~$1.7B). Its foray into offshore wind ended in a disastrous divestiture to GIP with $1.95B in 2023 impairments, $524M in 2024 closing losses, and continued contingent liability drag in 2025-2026. Coupled with an adversarial regulatory climate at Connecticut PURA, Eversource lacks secular compounding resilience and fails the 15-year CAP threshold."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

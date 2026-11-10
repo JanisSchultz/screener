@@ -1,0 +1,30 @@
+{
+  "id": "TLX.DE",
+  "ticker": "TLX",
+  "universe": "eu",
+  "company": "Talanx",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Multi-line Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Industrial insurance underwriting franchise (HDI) paired with 50.2% controlling stake in Hannover Re (one of the world's leanest and most disciplined reinsurers). Proof shown by sustained sub-95% combined ratios and mid-teens ROE. Primary erosion threats include large-scale catastrophic climate losses and softening global reinsurance pricing cycles.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Business model heavily reliant on majority-owned Hannover Re (reinsurance) and HDI industrial property lines, both directly exposed to terminal climate volatility, secondary peril catastrophe spikes (Macrotrend 4: climate risk), and US casualty social inflation. Industry base-rate persistence is low and capped well below the 15-year threshold.",
+    "evidence": "Talanx controls 50.2% of Hannover Re and operates HDI industrial lines. While underwriting discipline is sound with combined ratios <95% and ROE ~14-16%, the earnings stream is fundamentally exposed to global catastrophe volatility and multi-year reinsurance pricing cycles. Mutual majority ownership (HDI ~77%) also restricts corporate agility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

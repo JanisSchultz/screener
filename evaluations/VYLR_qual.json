@@ -1,0 +1,30 @@
+{
+  "id": "VYLR",
+  "ticker": "VYLR",
+  "universe": "us",
+  "company": "Vylor",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Agricultural Products & Services",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Understandability, REJECT). Recent spin-off (separated from Corteva on October 1, 2026) lacking a standalone multi-cycle public operating record. Complex carve-out capitalization with ~$5.58B in borrowings, credit facilities, and a $3.5B upstream cash distribution to historical DuPont entity EIDP. Standalone capital allocation, corporate governance, and through-cycle ROIC remain unproven through an agricultural downturn.",
+    "evidence": "Vylor (VYLR) was spun off from Corteva (CTVA) on October 1, 2026, housing the Pioneer and Brevant seed and traits genetics businesses. While Pioneer has storied heritage assets, Vylor has traded publicly for only ~6 weeks as of November 2026 and lacks an independent, multi-cycle public operating and capital allocation record through an agricultural downturn. Carved-out financial history indicates sub-hurdle capital efficiency with median GAAP ROIC of 4.85% (FY24 GAAP ROIC 5.65%, FY25 GAAP ROIC 4.06%), with EBIT contracting from $1,118M in FY24 to $671M in FY25. Balance sheet at separation was structured with ~$5.58B in debt and facilities, used in part to fund a $3.5B upstream transfer to legacy DuPont entity EIDP amid lingering litigation scrutiny. Under Munger's default-reject mandate, unseasoned corporate spin-offs lacking standalone multi-cycle history fail Gate 1."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "gate_1",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

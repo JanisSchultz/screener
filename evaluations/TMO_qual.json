@@ -1,0 +1,30 @@
+{
+  "id": "TMO",
+  "ticker": "TMO",
+  "universe": "us",
+  "company": "Thermo Fisher Scientific Inc.",
+  "country": "United States",
+  "sector": "Health Care",
+  "sub_industry": "Life Sciences Tools & Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High switching costs driven by regulatory spec-in instruments (Orbitrap mass spectrometry, chromatography, electron microscopy) embedded in validated FDA/EMA biopharma workflows, high-margin proprietary consumables and reagents, and the Fisher Scientific distribution network. Tangible operating ROIC consistently exceeds 40-55% with stable gross margins (~40-44%) and demonstrated ability to push 1.5-2.5% annual price increases above inflation. Key erosion risks include biopharma funding cycles, China domestic substitution, and NIH budget constraints.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Indispensable global leader in life sciences tools, analytical instruments, and biopharma services with >80% recurring revenue. Strong switching costs and regulatory lock-in sustain pricing above inflation. Highly cash generative (>95% multi-year FCF conversion) with peace-of-mind balance sheet ($9.85B cash, 5.46x interest coverage, A3/A- rating) capable of absorbing macro cycles. [5-10Y g: volume 4.0% + price 1.5% + mix/reinvestment 1.0% + margin expansion 0.5% + buybacks 1.0%]",
+    "evidence": "Revenue expanded from $18.3B in 2016 to $44.6B in FY2025 (guided $47.7-$48.2B for FY2026 with 4% organic growth). Operating income rose to $7.75B in 2025. Tangible operating ROIC of 43.7% in 2025 (55.1% in 2023, 47.6% in 2024); 5-year median GAAP ROIC is 9.15% reflecting $65.2B in goodwill and acquired intangibles from disciplined strategic acquisitions (Life Tech, Patheon, PPD, Olink). Multi-year FCF conversion stands at 97.2% with $6.0B Owner FCF in 2025 and $7.0B in 2024. Low capex intensity (~3.4% of revenue). Balance sheet maintains $9.85B in cash against $39.2B LT debt, with 5.46x EBIT interest coverage and $7.8B+ annual operating cash flow ensuring full self-funding capability across economic cycles."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "NXPI",
+  "ticker": "NXPI",
+  "universe": "us",
+  "company": "NXP Semiconductors",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductors",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "AEC-Q100 and ISO 26262 ASIL-D functional safety qualifications create multi-year (3-5 year) automotive platform design cycles and 7-10+ year production lock-in, where Tier-1 suppliers and OEMs cannot switch microcontroller or vehicle networking silicon without costly recertification. Proof of moat is demonstrated by a 5-year median GAAP ROIC of 18.1% (tangible ROIC >40%) and resilient ~57-58% gross margins sustained through the 2024-2025 auto inventory downcycle. Primary erosion threats include the architectural transition toward centralized zonal compute (which consolidates discrete ECUs) and aggressive state-subsidized Chinese domestic auto-chip substitution.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Automotive semiconductor leader with entrenched switching costs in microcontrollers and radar, but faces active terminal headwinds under the 5-Macrotrend framework. Specifically, Macrotrend 3 (geopolitical realignment and aggressive Chinese domestic auto-chip substitution targeting its ~17% direct China revenue and broad APAC auto supply chain) along with OEM architectural migration to centralized zonal compute compresses socket counts. Under Mauboussin Tier 3 semiconductor persistence (baseline 10-15Y), these structural headwinds cap CAP at 10 years.",
+    "evidence": "10-year financials show steady compounding: FY2025 revenue was $12.27B, with GAAP operating income of $3.05B (24.8% operating margin). 5-year median GAAP ROIC is 18.1%, with tangible ROIC averaging >50% post-2020. Free cash flow conversion is robust at 85.6% ($1.96B Owner FCF vs $2.02B net income in FY2025). Segment revenue (FY2025): Automotive $7.12B (58.0%), Industrial & IoT ~$2.2B (~18%), Mobile ~$1.5B (~12%), Communication Infrastructure & Other ~$1.5B (~12%). Direct China revenue is ~$2.04B (~17%), with higher indirect exposure via assembly in China. Balance sheet shows $10.97B debt and $3.27B cash (net debt $7.7B), with interest coverage of 6.5x. Gate 4 failure is driven by Mauboussin Tier 3 semiconductor baseline (10-15Y) subject to a -5Y haircut under Macrotrend 3: geopolitical supply chain reshoring and state-mandated Chinese domestic automotive chip localization (e.g. MIIT 20-25%+ domestic sourcing mandate targeting foreign MCUs and analog ICs), alongside OEM transition to centralized zonal architectures."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

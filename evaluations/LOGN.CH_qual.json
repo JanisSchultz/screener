@@ -1,0 +1,30 @@
+{
+  "id": "LOGN.CH",
+  "ticker": "LOGN",
+  "universe": "eu",
+  "company": "Logitech",
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Consumer Electronics (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential / easily forgone product or service.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Logitech designs computer peripherals (mice, keyboards, webcams, gaming accessories). While high-quality and asset-light, PC peripherals represent deferrable, non-essential consumer hardware with multi-year replacement cycles, exhibiting severe post-pandemic cyclical contraction with zero deprivation pain.",
+    "evidence": "Global market leader in PC peripherals and gaming accessories with ~$4.3B in net sales in FY2024. Revenue surged during the 2020-2021 WFH boom before declining sharply by ~15-20% in FY2023 and an additional 5% in FY2024 as consumers and enterprise IT channels worked through inventory. Hardware upgrades are easily deferred for years, failing Munger's non-discretionary essential everyday habit standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

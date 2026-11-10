@@ -1,0 +1,30 @@
+{
+  "id": "ZEAL.DK",
+  "ticker": "ZEAL",
+  "universe": "eu",
+  "company": "Zealand Pharma",
+  "country": "Denmark",
+  "sector": "Health Care",
+  "sub_industry": "Biotechnology (mapped)",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Rejected \u2013 G1 Understandability). Pre-commercial, clinical-stage biotechnology company whose valuation and lumpy revenue hinge almost entirely on binary Phase 3 clinical trial outcomes (petrelintide, survodutide) and upfront partnership milestones rather than an established multi-cycle commercial operating track record.",
+    "evidence": "Zealand Pharma has operated historically as a clinical-stage development biotech generating chronic operating losses (e.g., 2024 net loss of DKK -1.08B on only DKK 63M commercial revenue). Although 2025 accounting net income surged to DKK 6.46B due to one-off upfront licensing milestone fees from Roche, the company lacks an established commercial sales engine. Its enterprise value remains exposed to binary regulatory approval and clinical trial execution risks in the hyper-competitive GLP-1/amylin obesity therapeutic arena."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

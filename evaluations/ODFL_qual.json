@@ -1,0 +1,30 @@
+{
+  "id": "ODFL",
+  "ticker": "ODFL",
+  "universe": "us",
+  "company": "Old Dominion Freight Line, Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Cargo Ground Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Self-reinforcing network density and irreplaceable physical terminal footprint (250+ owned/zoned cross-dock service centers) create massive scale economies shared. Unmatched service execution (99% on-time delivery, 0.1% cargo claims ratio vs industry average 1.5%) drives durable pricing power (revenue per cwt up 4-6% p.a. across all freight cycles). 5-year median GAAP ROIC is 32.7% (24.4% in 2025 trough) with best-in-class operating ratio (70-75% vs 85-95% for peers). Erosion threats from freight recessions or price wars are blunted by ODFL's premium service brand and low-cost non-union structure.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. The undisputed premier less-than-truckload (LTL) motor carrier in North America with an unreplicable nationwide terminal network, 99% on-time delivery, industry-leading operating ratio, net-cash balance sheet, and proven pricing power above inflation across freight cycles. Beneficiary of supply chain reshoring and insulated from AI disruption. [5-10Y g: LTL tonnage market share gains 3.0% + revenue per cwt pricing 3.5% + terminal density reinvestment 1.0% - cyclical/cost drag 0.5% + share repurchases 1.0%]",
+    "evidence": "10-year track record of industry-leading capital efficiency: 10-year GAAP and Tangible ROIC averaged >27% (peak 40.1% in 2022, trough 24.4% in 2025). Operating ratio consistently outperforms unionized and non-union peers by 800-1500 bps (75.2% in FY2025, improving to 71.5% in Q3 2026). Pristine balance sheet with essentially zero debt ($20M total debt vs $120M cash) and negligible interest expense. Outstanding capital allocation discipline demonstrated by walking away from overpriced Yellow terminal bidding in 2023, preserving balance sheet strength while continuing counter-cyclical network capex and share repurchases. Owner FCF conversion consistently near or above 100% of Net Income."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

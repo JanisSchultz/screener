@@ -1,0 +1,30 @@
+{
+  "id": "YUM",
+  "ticker": "YUM",
+  "universe": "us",
+  "company": "Yum! Brands",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Restaurants",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global franchisor scale advantage (~98% franchised across ~60,000 restaurants) anchored by iconic Lindy consumer brands (KFC, Taco Bell). Massive collective marketing budgets ($1B+) and supply chain purchasing power create high barriers against independent restaurant operators. Empirical proof of moat: 5-year median ROIC of 24%+ (reaching 37-46% on net invested capital) and continuous system sales expansion. Demonstrated pricing power through menu price hikes and digital upsells outpacing food-away-from-home CPI without volume destruction. Primary erosion threats include fast-casual competition, third-party delivery fee friction, and franchisee margin compression from minimum-wage inflation.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Balance Sheet, REJECT). While Yum! Brands possesses high-quality franchise economics across KFC and Taco Bell with excellent cash conversion (FCF >95% of NI), its capital structure fails Munger peace-of-mind standards: long-term net debt of ~$10.5B represents ~6.7x normal owner earnings ($1.56B FY2025 net income, well above the <=4.0x threshold), interest coverage is thin at ~4.4x EBIT/interest (below the >5.0x minimum), and multi-year debt-funded share repurchases have created a -$6.17B stockholders' deficit (severely negative tangible equity), triggering the disqualifying financial engineering red flag.",
+    "evidence": "FY2024 revenue of $7.55B, operating profit of $2.40B, net income of $1.49B, and FCF of ~$1.43B. FY2025 revenue of $8.21B (+9%), operating profit of $2.57B (+7%), net income of $1.56B (+5%), and FCF of ~$1.64B (operating cash flow $2.01B minus capex ~$370M). In mid-2026, completed the strategic divestiture of Pizza Hut for ~$2.4B total net proceeds ($1.7B one-time pre-tax gain, temporarily elevating TTM net income to $3.44B), sharpening focus on KFC (35,000+ units) and Taco Bell. Repaid $675M credit facility with proceeds but returned $1.8B to shareholders via buybacks and dividends in 9M 2026, maintaining long-term debt at ~$10.5B against cash of ~$450M. Stockholders' deficit stands at -$6.17B due to a deliberate, permanent policy of maintaining ~4.0x Net Debt/EBITDA leverage via debt-funded repurchases. Interest expense of ~$580M results in 4.4x EBIT interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:38:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

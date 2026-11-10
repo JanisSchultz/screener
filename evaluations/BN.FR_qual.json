@@ -1,0 +1,30 @@
+{
+  "id": "BN.FR",
+  "ticker": "BN",
+  "universe": "eu",
+  "company": "Danone",
+  "country": "France",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Specialized Nutrition (Aptamil, Nutricia) commands high clinical switching costs and brand pricing power, but Essential Dairy & Plant-Based (>50% of revenue) faces severe private label substitution, keeping 10-year group ROIC sub-hurdle at 7-10%.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC & Pricing Power, REJECT). Specialized Nutrition has pricing power, but over 50% of revenue resides in Essential Dairy & Plant-Based (EDP), which suffers volume erosion against grocer private labels when attempting to pass on cost inflation. 10-year historical GAAP ROIC of 7-10% fails the 12% threshold.",
+    "evidence": "Historical 10-year GAAP ROIC has consistently remained between 7% and 10%, well below the 12% hurdle. Essential Dairy & Plant-Based represents over half of sales and faces persistent private-label competition from European grocers. While Renew Danone has stabilized recurring operating margins around 13-13.4%, the substantial goodwill from historical acquisitions (e.g. WhiteWave) and inability to raise prices in dairy without volume loss prevents achieving a sustainable >12% ROIC."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

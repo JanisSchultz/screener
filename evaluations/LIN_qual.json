@@ -1,0 +1,30 @@
+{
+  "id": "LIN",
+  "ticker": "LIN",
+  "universe": "us",
+  "company": "Linde plc",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Industrial Gases",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dense local geographic monopolies in merchant/packaged gases (150-250 mile delivery radius) and 15-20 year take-or-pay on-site pipeline contracts with formulaic 100% energy cost pass-through. Switching costs are insurmountable as industrial gas represents <2% of customer operational costs but is 100% mission-critical. Empirically demonstrated by 5-year median GAAP ROIC of 13.0%, operating ROIC exceeding 54%, and operating margins expanding from ~20% to ~29.8% post-merger. Moat erosion threats are confined to local market share encroachment or extreme industrial demand destruction, both buffered by take-or-pay facility fees.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global industrial gas toll booth with local route-density monopolies and 15-20 year take-or-pay contracts featuring contractual inflation pass-through. Strong beneficiary of semiconductor fab reshoring and energy transition. Fortress balance sheet with 35x interest coverage and net debt <2.3x net income. Outsider-style capital allocation delivering disciplined share count reduction and margin expansion. [5-10Y g: backlog/volume 3.0% + price 2.0% + productivity margin 1.5% - energy cost drag 0.5% + net buybacks 1.5%]",
+    "evidence": "FY2025 revenue of $34.0B with GAAP operating profit of $8.92B (26.3% margin) and adjusted operating profit of $10.1B (29.8% margin). Multi-year GAAP ROIC of 13.0%-13.6% and tangible operating ROIC >50%. FCF conversion >100% of net income ($10.35B operating cash flow vs $6.90B net income). Balance sheet carries $20.7B debt against $5.1B cash and $8.9B EBIT, yielding 35.0x interest coverage and 2.26x net debt / net income. Continuous peak-to-peak owner EPS compounding from $5.21 (2016) to $14.61 (2025)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

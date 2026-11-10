@@ -1,0 +1,30 @@
+{
+  "id": "PCG",
+  "ticker": "PCG",
+  "universe": "us",
+  "company": "PG&E Corporation",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Multi-Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted franchise territory and electric/gas transmission and distribution grid across Northern and Central California.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Operates under California's legal doctrine of inverse condemnation, making the utility strictly liable for wildfire property damages regardless of fault. Catastrophic fire risk from climate extremes represents an active, unhedged terminal headwind under Macrotrend 4 (Energy Transition & Climate Risk), proven by the 2019 Chapter 11 bankruptcy, persistent equity dilution, and ongoing legislative refusal to enact permanent liability caps.",
+    "evidence": "History of catastrophic wildfire liabilities causing 2019 Chapter 11 bankruptcy and $13.5B+ victim trust equity dilution. Under California inverse condemnation law, PG&E faces strict liability for any ignition. 10-year average ROIC is depressed at ~4.5%. With the California legislature failing to pass comprehensive liability cap reform (SB 492), structural catastrophic wildfire and prudence disallowance risks truncate predictable runway to <=10 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

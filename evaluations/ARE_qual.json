@@ -1,0 +1,30 @@
+{
+  "id": "ARE",
+  "ticker": "ARE",
+  "universe": "us",
+  "company": "Alexandria Real Estate Equities, Inc.",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Office REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Premier Class A megacampus life-science clusters in top biomedical innovation hubs (Boston/Cambridge, South San Francisco, San Diego) provide localized physical agglomeration barriers. However, capital-intensive commercial real estate ownership generates structurally sub-hurdle returns (10-year median ROIC of ~4.5%, dropping to ~1.3-1.5% in 2024-2025). Furthermore, widespread speculative lab overbuilding post-2021 and a prolonged biotech funding winter have eroded pricing power, driving negative cash leasing spreads on renewals (-3% to -4% in oversupplied submarkets) and elevated tenant concessions.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% & Pricing Power, REJECT). Alexandria develops and operates high-quality life-science megacampuses, but as a capital-heavy commercial REIT its historical returns on capital are structurally low (10-year median ROIC of 4.5%, with FY2024-2025 at ~1.3-1.5%), failing the 12% Munger moat proof. In addition, massive post-pandemic speculative lab construction across core biotech hubs combined with a venture funding winter has driven down occupancy to ~90-93% and produced negative cash re-leasing spreads on renewals, confirming the lack of inflation-protected pricing power.",
+    "evidence": "Alexandria Real Estate Equities (ARE) is an S&P 500 urban office REIT dedicated to life science and technology megacampuses. Empirical capital efficiency fails the screener threshold: 10-year median ROIC is 4.5%, and recent returns have compressed to 1.53% (FY2024) and ~1.29% (FY2025). Capital expenditures for tenant improvements and development heavily offset operating cash flow (~$1.4B-$1.5B annually), while total debt hovers around $12.0B. A massive wave of new laboratory supply delivered between 2023 and 2025 created acute vacancy gluts across Boston/Cambridge, South San Francisco, and San Diego. Operating occupancy dropped from 94.7% (Q3 2024) to 90.6% (Q3 2025), and rental rate growth turned negative on renewals in several submarkets, forcing management into extensive asset dispositions and non-megacampus pruning."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

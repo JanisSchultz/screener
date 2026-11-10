@@ -1,0 +1,30 @@
+{
+  "id": "SAND.SE",
+  "ticker": "SAND",
+  "universe": "eu",
+  "company": "Sandvik",
+  "country": "Sweden",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global duopoly in underground hard-rock mining equipment (with Epiroc) and market leader in cemented carbide metal cutting tools (Sandvik Coromant). Extreme switching costs from proprietary mining automation platforms (AutoMine) and mission-critical tooling consumables where cutting tool cost is <3% of workpiece value. Proven pricing power evidenced by >30% tangible ROIC and 13%+ GAAP ROIC across cycles.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in underground mining automation and precision metal-cutting tools with conservative leverage (1.5x net debt/NI), 13%+ GAAP ROIC (31%+ tangible ROIC), and 94% FCF conversion. Active beneficiary of critical minerals extraction and manufacturing automation. [5-10Y g: mining equipment/automation volume 3.5% + tooling consumable pricing 2.0% + digital manufacturing software 1.0% + net buyback 0.5%]",
+    "evidence": "FY2025 revenue of SEK 120.7B and EBIT of SEK 21.3B (17.6% operating margin). 4-year median GAAP ROIC is 13.1% and operating tangible ROIC is 31.4%. Owner FCF conversion averaged 94.5% (FY2025 FCF SEK 15.4B vs NI SEK 14.7B). Net debt of SEK 22.7B is repayable in 1.5 years of Owner Earnings, and interest coverage is robust at 11.7x. Spinoff of Alleima in 2022 focused the business on high-margin mining automation, rock processing, and tooling consumables."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

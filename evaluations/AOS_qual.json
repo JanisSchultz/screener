@@ -1,0 +1,30 @@
+{
+  "id": "AOS",
+  "ticker": "AOS",
+  "universe": "us",
+  "company": "A. O. Smith",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Building Products",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "North American water heating duopoly (~35-37% residential share, >50% commercial share) protected by contractor-specified wholesale distribution (800+ independent supply houses) and professional plumber brand loyalty for same-day emergency replacements. Empirical proof includes a 10-year average GAAP ROIC above 20% (5Y median 21.2%, FY24-25 ~25-27%) and gross margin defense around 38-40% despite volatile steel and freight inflation. Key erosion threats include long-term disintermediation via retail big-box channels (Lowe's), Chinese domestic market price competition, and technological substitution during the transition to heat pumps.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Dominant North American water heater duopoly (~35-37% residential, >50% commercial share; 21.2% 5Y median ROIC) faces terminal runway constraints capped at 10 years due to active 5-macrotrend headwinds: [3] Geopolitical & China real estate secular contraction (~20% sales headwind from China property slump and aggressive domestic brand competition), and [4] Energy Transition disruption from DOE 2029 efficiency mandates requiring heat pump water heaters, which threatens legacy atmospheric tank economics and invites scaled HVAC conglomerate competition.",
+    "evidence": "Empirical financial track record shows strong historical capital efficiency: 5-year median GAAP ROIC of 21.2% (FY24 ~25%, FY25 ~26%), operating margins of 17-19%, and robust free cash flow conversion (>90-100% of net income; FY24 FCF $474M, FY25 FCF $546M). Balance sheet is pristine with total debt of ~$193M offset by cash and marketable securities (~$193M-$276M) and negligible net debt. Revenue breakdown: North America (~75-80% of sales, ~85% of EBIT) and Rest of World (~20-25% of sales, primarily China). While the North American wholesale plumbing channel creates an entrenched emergency replacement moat for legacy tanks, organic volume has stagnated (net sales flat at $3.85B in 2023, $3.82B in 2024, and $3.83B in 2025). The business faces secular growth caps and terminal disruption from the multi-year collapse of China's property market and the impending 2029 DOE regulatory shift toward heat pump water heating."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

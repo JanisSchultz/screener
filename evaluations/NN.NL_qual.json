@@ -1,0 +1,30 @@
+{
+  "id": "NN.NL",
+  "ticker": "NN",
+  "universe": "eu",
+  "company": "NN Group",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Life & Health Insurance (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Leading market position in Dutch pensions lacks pricing power: existing pension and life liabilities are fixed balance-sheet promises, while the Dutch pension reform (Wtp) accelerates fee competition across defined-contribution corporate schemes.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Capital-intensive life/pension model lacking pricing power, REJECT). Dominant Dutch life and pension insurer whose earnings are anchored in capital-intensive, rate-sensitive legacy books with zero pricing power on in-force contracts and ongoing margin compression during the Dutch pension reform transition.",
+    "evidence": "NN Group generated ~€1.9B in operating capital generation, but relies heavily on macro interest rates and legacy back-book releases. Long-term accounting ROE/ROIC fails the 12% compounder threshold. Pension reform (Wtp) brings fee scrutiny and switching risk."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

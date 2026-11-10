@@ -1,0 +1,30 @@
+{
+  "id": "CSCO",
+  "ticker": "CSCO",
+  "universe": "us",
+  "company": "Cisco Systems, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Communications Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Campus switching inertia via proprietary IOS/Catalyst architecture and CCNA certifications provides baseline lock-in, but merchant silicon commoditization and Arista Networks have eroded pricing power across cycles, preventing real above-inflation organic growth.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power & Proof of Moat, REJECT). While Cisco retains enterprise campus switching inertia through its entrenched CCNA engineering base and Catalyst hardware, it lacks secular pricing power. Organic revenue CAGR over the past decade has stagnated below 1% (FY15 $49.2B to FY24 organic ~$52.4B), failing to keep pace with ~35% cumulative inflation despite explosive global data growth. Dominance in high-speed cloud/AI data center fabrics has been ceded to Arista, NVIDIA, and white-box ODMs, compelling Cisco into dilutive mega-acquisitions like the $28B Splunk transaction which depresses post-deal GAAP ROIC to ~11-13%.",
+    "evidence": "Multi-cycle financial track record demonstrates stagnant top-line compounding and structural market share erosion in key growth domains: (1) Organic Revenue Stagnation: Revenue grew from $49.2B in FY2015 to $53.8B in FY2024 (including $1.4B from Splunk) and $56.7B in FY2025 (including full-year Splunk ARR of ~$4.5B). Organic top-line 10-year CAGR is under 1.0%, substantially trailing enterprise IT spending growth and ~35% cumulative US inflation. (2) Absence of Pricing Power: Inability to increase prices at or above inflation without losing volume or inducing customer digestion cycles; hyperscale cloud data center switching has permanently shifted to Arista EOS and merchant silicon (Broadcom Tomahawk/Jericho), while NVIDIA dominates AI back-end networking. (3) Capital Efficiency & M&A: While historical GAAP ROIC hovered near 14-17% prior to Splunk, the $28B cash acquisition in 2024 diluted invested capital returns, pulling FY24-FY25 GAAP ROIC down to ~11-13.5% and expanding debt to ~$28-31B. FCF conversion remains respectable (~$10.9B OCF in FY24, rebounding to $14.2B in FY25), but earnings compounding relies heavily on financial engineering and inorganic M&A."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

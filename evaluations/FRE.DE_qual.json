@@ -1,0 +1,30 @@
+{
+  "id": "FRE.DE",
+  "ticker": "FRE",
+  "universe": "eu",
+  "company": "Fresenius",
+  "country": "Germany",
+  "sector": "Health Care",
+  "sub_industry": "Health Care Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Hospital network density (Helios) and IV generics manufacturing scale (Kabi) fail to generate economic rents. Regulated hospital DRG reimbursement schedules, statutory staffing mandates, and generic drug procurement GPOs severely compress pricing power, yielding sub-7% ROIC.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Multi-cycle ROIC of 5.2-6.6% languishes far beneath the 12% cost-of-capital bar. Hospital operations (Helios) face severe German DRG pricing regulation and clinical wage inflation, while Kabi IV generics lack pricing power against hospital purchasing cartels.",
+    "evidence": "Reported group ROIC of 5.2% (2023), 6.2% (2024), and 6.6% (2025) persistently fails the 12% hurdle despite FME deconsolidation and #FutureFresenius cost-cutting programs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

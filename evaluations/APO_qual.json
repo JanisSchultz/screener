@@ -1,0 +1,30 @@
+{
+  "id": "APO",
+  "ticker": "APO",
+  "universe": "us",
+  "company": "Apollo Global Management",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Asset Management & Custody Banks",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 1 (Simple to Understand & Verifiable, REJECT). Following the 2022 merger with Athene, Apollo is an opaque financial conglomerate consolidating over $440B in balance sheet assets, predominantly composed of Athene's retirement annuity liabilities backed by Apollo-originated private credit, direct corporate loans, asset-backed finance (ABF), and structured credit tranches. A substantial portion of the asset portfolio consists of Level 2/3 illiquid instruments valued via internal mark-to-model assumptions rather than observable public prices. Furthermore, Athene heavily utilizes offshore reinsurance treaties in Bermuda and co-investment sidecars (ACRA) to achieve capital relief on complex credit assets, subject to mounting NAIC regulatory scrutiny. Key underlying economic risks—loan-level default probabilities, recovery rates, duration mismatch, and affiliate fee extraction—are fundamentally unobservable and unverifiable from the outside, violating Munger's circle of competence standard.",
+    "evidence": "Consolidated assets expanded to $442B in FY2025 ($363B in FY2024), dominated by Athene's $406B in liabilities. The business combines asset management fee streams with balance-sheet spread earnings. Over 90% of Athene's multi-hundred-billion portfolio is deployed into privately originated fixed income, structured debt, and asset-backed finance manufactured by Apollo, creating a closed-loop vertical integration where Apollo is originator, asset manager, and balance-sheet custodian. Reliance on Level 2/3 matrix-pricing/model valuations and Bermuda reinsurance sidecars (ACRA I & II) obscures true credit risk, loss-given-default, and economic capital adequacy during severe credit market downturns. The NAIC Macroprudential Working Group and Life Actuarial Task Force continue to target private credit opacity, asset adequacy testing, and capital charges on offshore reinsurance structures. Reported ROIC (~13.8%) and GAAP net income are heavily distorted by fair-value accounting adjustments, mark-to-model derivatives, and non-economic spread swings, failing the Munger standard of transparent, externally verifiable financial statements."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "1",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

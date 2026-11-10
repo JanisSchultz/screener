@@ -1,0 +1,30 @@
+{
+  "id": "RR..GB",
+  "ticker": "RR.",
+  "universe": "eu",
+  "company": "Rolls-Royce",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Sole-source engine supplier on the Airbus A350 (Trent XWB) and A330neo. Massive switching costs and regulatory barriers to entry. 15-25 year TotalCare LTSA contracts act as an ad valorem flying-hour toll booth where CEO Tufan Erginbilgic demonstrated formidable pricing power by renegotiating contracts and resetting spare parts pricing.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Widebody commercial aero engine monopoly on Airbus A350 with surging aftermarket cash flow, net cash balance sheet, and disciplined turnaround leadership. [5-10Y g: widebody flying hours 4.5% + LTSA price resets & escalation 2.5% + defense/power systems volume 2.0% + share buybacks 1.0%]",
+    "evidence": "Multi-cycle recovery from COVID trough to record operating profit (>£2.5B+ underlying) and >£3.5B FCF. Net cash position of £4.2B+ (Cash £6.0B vs Debt £1.8B). Sole-source engine position on Airbus A350 and A330neo with 15-25 year TotalCare LTSA cash-flow streams."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

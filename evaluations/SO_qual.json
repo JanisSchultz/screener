@@ -1,0 +1,30 @@
+{
+  "id": "SO",
+  "ticker": "SO",
+  "universe": "us",
+  "company": "Southern Company",
+  "country": "United States",
+  "sector": "Utilities",
+  "sub_industry": "Electric Utilities",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Exclusive state-granted regulated electric and gas utility franchise territories across Georgia, Alabama, and Mississippi. Irreplaceable regional transmission and distribution grid network with formulaic rate base cost recovery, bounded by state utility commission rate decisions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 0,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 5 (Management & Capital Allocation, REJECT). Regulated southeastern utility franchise benefiting from population in-migration and data center load growth. However, management triggered an automatic Gate 5 failure via multi-decade megaproject capital allocation disasters: Plant Vogtle Units 3 & 4 suffered over $20B in cost overruns (ballooning past $36B total cost, with >$10.6B incurred by Georgia Power and billions in shareholder write-offs), while the $7.5B Kemper clean-coal gasification plant was completely abandoned after producing zero commercial power.",
+    "evidence": "FY2025 revenue of $29.6B and net income of $4.34B. 10-year median ROIC is ~5.4%. Multi-decade record of catastrophic capital allocation on megaprojects: Plant Vogtle Units 3 and 4 ran over 7 years late and cost over $36.8B (more than double original estimates), forcing billions in shareholder-absorbed losses; Kemper County clean-coal project was abandoned after wasting $7.5B. Balance sheet carries over $71B in long-term debt."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G5 Management",
+    "failing_gate": "5",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

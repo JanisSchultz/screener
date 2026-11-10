@@ -1,0 +1,30 @@
+{
+  "id": "TER",
+  "ticker": "TER",
+  "universe": "us",
+  "company": "Teradyne, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Switching costs exist in qualified ATE tester architectures (UltraFLEX, J750) via custom test vectors and interface loadboards, but Teradyne lacks pricing power >= inflation across the full cycle. Teradyne lost decisive market share to Advantest (which expanded to ~65% of ATE, locking up Nvidia AI GPU and majority HBM test), while dilutive robotics acquisitions (Universal Robots, MiR) further depressed returns.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). While Teradyne possesses switching costs in installed semiconductor test platforms, it failed to demonstrate pricing power >= inflation across the cycle without losing volume and share to arch-rival Advantest. Teradyne lost primary positioning in high-growth AI compute (Nvidia GPUs) and HBM testing, causing ATE market share to drop to ~25-30% while Advantest expanded to ~65%. As a result, 2021-2023 net income collapsed by 56% ($1,015M to $449M) and 2025 net income ($554M) remained ~45% below peak despite an unprecedented semiconductor AI upcycle. Dilutive, lower-margin robotics acquisitions (Universal Robots, MiR) have compounded earnings volatility.",
+    "evidence": "Multi-cycle financial track record shows strong historical ROIC (~18.2% 10-year median) supported by a clean net-cash balance sheet, but severe cyclical earnings volatility and an inability to maintain pricing power across cycles. Revenues peaked in FY21 at $3,703M (Net Income $1,015M), collapsed in FY23 to $2,676M (Net Income $449M), and only partially recovered in FY24 ($2,820M / $542M) and FY25 ($3,190M / $554M)—still 45% below 2021 peak net income amidst a historic AI hardware boom. Gross margins have hovered between 57.4% and 59.7% without cycle-over-cycle expansion. In Semiconductor Test (70-75% of revenue), Advantest gained dominant ~65% market share by winning sole-source test positions on Nvidia AI GPUs (V93000 platform) and 60-70% of HBM memory test, leaving Teradyne dependent on mobile SoC (Apple) and custom ASICs. The Robotics segment (Universal Robots, MiR; 10-15% of revenue) has faced prolonged industrial headwinds and negative operating leverage. FCF conversion remains healthy (>80% of net income; FY23 $426M, FY24 $474M, FY25 $450M) and balance sheet holds zero long-term debt, but capital allocation into robotics M&A underperformed, and US export controls forced the costly relocation of ~$1B of manufacturing out of Suzhou, China in 2023-2024."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

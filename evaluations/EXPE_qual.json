@@ -1,0 +1,30 @@
+{
+  "id": "EXPE",
+  "ticker": "EXPE",
+  "universe": "us",
+  "company": "Expedia Group",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary, big-ticket leisure travel and vacation lodging bookings (hotels, Vrbo rentals, flights, packages) are deferrable in recessions and macro shocks rather than essential needs or entrenched everyday habits.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Essential Need & Everyday Habits). Expedia Group operates a discretionary leisure travel and lodging marketplace (Expedia, Hotels.com, Vrbo, and B2B travel distribution) in the Hotels, Resorts & Cruise Lines sub-industry. Vacation lodging, holiday rentals, and air travel are infrequent, big-ticket, deferrable expenditures that consumers curtail during recessions and macro shocks rather than essential needs or daily habits. Even on downstream metrics, Expedia trails Booking.com and Airbnb with sub-hurdle historical ROIC (~8-11.5% vs 12% threshold) and top-of-funnel dependence on Google and emerging AI search channels.",
+    "evidence": "Gate 1 passes: established US public online travel platform since 2005 with transparent 10-K reporting across B2C brands (Expedia, Hotels.com, Vrbo unified under One Key loyalty) and B2B white-label/partner distribution. Gate 2 fails: gross bookings ($119.6B in FY25) and revenues remain fundamentally tied to cyclical, discretionary leisure travel and vacation lodging rather than functional necessities or high-frequency everyday habits. Financial track record: FY24 revenue $13,691M, GAAP operating income $1,319M (~9.6% margin), GAAP net income $1,224M ($1,234M attributable), FCF $2,329M ($3,085M CFO minus $756M capex), LT debt $5,223M (total debt ~$6.53B-$6.57B). FY25 revenue rose 8% YoY to $14,733M, GAAP operating income rose 42% YoY to $1,871M (~12.7% margin), GAAP net income $1,301M ($1,294M attributable), FCF $3,110M ($3,880M CFO), LT debt $4,470M (total debt ~$6.42B, or ~4.9x FY25 GAAP net income and ~2.1x FCF). FY26 guidance targets $131.4B-$131.9B gross bookings, double-digit revenue growth, and 180-200 bps Adjusted EBITDA margin expansion, led by B2B growth and autonomous partner onboarding. Historical capital efficiency remains sub-hurdle (11.5% 10Y median ROIC in financials_csv; ~8-10% recent range vs ~10% WACC). Capital allocation prioritizes buybacks (~9M shares for $1.7B-$1.93B in FY25; ~$788M in Q1 2026) and a $0.48 quarterly dividend, while competitive positioning relies on defending traffic via Google AI Mode, Meta Muse, and OpenAI ad integrations against Booking.com and Airbnb."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "gate_2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

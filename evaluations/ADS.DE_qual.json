@@ -1,0 +1,30 @@
+{
+  "id": "ADS.DE",
+  "ticker": "ADS",
+  "universe": "eu",
+  "company": "adidas",
+  "country": "Germany",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Apparel, Accessories & Luxury Goods (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global athletic brand heritage and multi-decade sports sponsorship scale. Gross margins consistently remain around ~50% across cycles, though operating profitability fluctuates with footwear fashion trends and inventory clearing.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Athletic footwear and apparel face severe fashion-trend cycle risks, hit-franchise saturation (Samba/Gazelle fatigue), and intense market share erosion from agile challenger brands (On, Hoka). High Asian contract manufacturing exposure introduces persistent supply chain and tariff vulnerabilities.",
+    "evidence": "Adidas generates over €21B in revenue across footwear (~50%+), apparel, and accessories. While gross margins have recovered to ~51% under CEO Bjørn Gulden following the termination of the Yeezy partnership, historical GAAP ROIC has been volatile (17.6% in 2019, 4.0% in 2022, -2.1% in 2023, recovering to ~8.5% in 2024). The business model is repeatedly subject to hit-franchise overproduction cycles (Stan Smith, Superstar, Boost, Yeezy, Samba) followed by promotional discounting. Supply chain is heavily dependent on outsourced factories in Vietnam, Indonesia, and China."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": 4,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

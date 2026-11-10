@@ -1,0 +1,30 @@
+{
+  "id": "RTX",
+  "ticker": "RTX",
+  "universe": "us",
+  "company": "RTX Corporation",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dual commercial and defense moat: Collins Aerospace and Pratt & Whitney hold irreplaceable sole-source positions across commercial airframes (Airbus A320neo, Boeing 787, A220) and military platforms (F-35 F135, F-15/F-16 engines), generating high-margin aftermarket spares and MRO cash flows across 30+ year fleet lifespans where FAA regulatory certification and extreme switching costs eliminate substitution risk. Raytheon holds entrenched technological franchises in missile defense (Patriot, NASAMS), precision strike (Tomahawk, AMRAAM), and naval radar (SPY-6) backed by classified IP and sovereign procurement integration. Gross margins remain stable at 18-20% through cycles. Primary erosion risks stem from fixed-price defense contract cost overruns and engine performance issues, but high switching barriers and multi-year order backlogs protect economics.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": "Y",
+    "calamity_note": "Broken metric: Gate 6 fails due to balance sheet leverage (gross long-term debt of $37.7B vs 2025 net income of $7.11B yields ~5.3x leverage, exceeding the <=4.0x threshold; net debt ~$31.7B is ~4.5x) and multi-billion-dollar cumulative cash compensation drain to airline customers resulting from the Pratt & Whitney GTF powder metal recall (~$1B cash outflow in 2024 and ~$1B in 2025). Intact moat proof: Structural competitive position is completely unimpaired; Pratt & Whitney retains its ~50% duopoly share on the Airbus A320neo family with an 8-year backlog, Collins Aerospace maintains sole-source content across major civil and military programs, and Raytheon's defense backlog sits at an all-time high ($200B+ total company backlog). Fix catalyst & kill-switch: Peak inspection shop visits and aircraft-on-ground disruptions passed in 2024-2025; shop turnaround times are compressing and cash compensation outflows step down in 2026-2027 as free cash flow expands toward $8.5B+, enabling rapid debt paydown ($3.4B retired in 2025). Kill-switch triggers if powder metal cracking recurs in post-2021 engine builds, if airlines cancel A320neo GTF orders for CFM LEAP in volume, or if the FAA mandates an uncontained fleet-wide redesign.",
+    "note": "Aerospace and defense titan qualifying under Calamity pass. Collins Aerospace and Pratt & Whitney possess irreplaceable commercial aerospace infrastructure with 30-year aftermarket spare parts pricing power, while Raytheon is a core beneficiary of multi-decade Western geopolitical rearmament across NATO. Passes Gates 1-5; fails Gate 6 due to post-merger debt leverage (debt/NI ~5.3x) and temporary GTF powder metal recall compensation cash drains. Underlying moats and $200B+ backlog remain fully intact as FCF rebounds toward $8.5B+ in 2026. [5-10Y g: commercial aero aftermarket volume 4.0% + defense procurement volume 2.5% + pricing power 1.5% - GTF inspection compensation drag 0.5% + net share repurchases 1.0%]",
+    "evidence": "Revenues rose from $67.1B (2022) to $68.9B (2023), $74.5B (2024), and ~$80.5B (2025), driven by commercial aerospace recovery and surging defense demand. Operating margins recovered to 10-12% post the 2023 GTF operating charge ($3.0B pre-tax). FCF conversion is robust: FY2024 FCF was $4.5B on $4.8B net income (94%), FY2025 FCF reached $7.9B on $7.1B net income (111%), and FY2026 FCF guidance is $8.25B-$8.75B. Operating ROIC on tangible capital exceeds 15%, though GAAP ROIC (~6-8%) remains accounting-depressed by $53.3B in merger goodwill from the 2020 UTC/Raytheon combination. Total debt stood at $37.7B at year-end 2025 (down from $41.1B in 2024) against $6.0B+ cash, yielding interest coverage of ~6.0x. Order backlog reached record levels exceeding $200B ($130B+ commercial, $70B+ defense), demonstrating enduring customer lock-in across commercial and government clients."
+  },
+  "evaluation_metadata": {
+    "verdict": "Calamity pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

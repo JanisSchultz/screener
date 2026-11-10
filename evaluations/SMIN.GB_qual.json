@@ -1,0 +1,30 @@
+{
+  "id": "SMIN.GB",
+  "ticker": "SMIN",
+  "universe": "eu",
+  "company": "Smiths Group",
+  "country": "United Kingdom",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Conglomerates (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "While John Crane holds niche switching barriers in mechanical seals (~24% division operating margins) and Flex-Tek has specialized engineered components, group-level historical GAAP ROIC (~7-9%) persistently fails the 12% hurdle across cycles, diluted by legacy conglomerate acquisitions, asbestos liabilities, and lack of enterprise pricing power.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Multi-cycle statutory GAAP ROIC (~7-9%) trails the 12% Munger hurdle; loose conglomerate structure has suffered decades of underperformance, legacy asbestos liabilities, and dilutive capital allocation.",
+    "evidence": "Statutory ROIC hovers around 7% vs WACC of ~11.5%. Despite strong division margins in John Crane seals, group returns on total invested capital fail Munger hurdle across multi-year cycles, driving activist pressure and ongoing breakup/divestment transactions."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G3 Moat & Pricing",
+    "failing_gate": "3",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

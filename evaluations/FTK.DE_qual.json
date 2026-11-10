@@ -1,0 +1,30 @@
+{
+  "id": "FTK.DE",
+  "ticker": "FTK",
+  "universe": "eu",
+  "company": "flatexDEGIRO",
+  "country": "Germany",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Non-essential / easily forgone product or service (cyclical retail discount brokerage).",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (REJECT). Retail discount online brokerage model dependent on discretionary, highly cyclical self-directed trading volumes that evaporate during market downturns. Lacks the entrenched necessity of primary transactional banking or compulsory pension savings infrastructure, and past BaFin regulatory reprimands highlight ongoing compliance sensitivity.",
+    "evidence": "flatexDEGIRO operates as a pan-European discount broker (flatex and DEGIRO). Over the cycle, retail trading frequency and commission revenues experience extreme cyclical volatility tied to retail sentiment. Furthermore, the firm faced severe regulatory sanctions from BaFin (special audit under Section 44 KWG, €1M+ fines, capital surcharges, and temporary growth restrictions over internal control deficiencies), confirming operational and regulatory fragility."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

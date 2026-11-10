@@ -1,0 +1,30 @@
+{
+  "id": "IBKR",
+  "ticker": "IBKR",
+  "universe": "us",
+  "company": "Interactive Brokers",
+  "country": "United States",
+  "sector": "Financials",
+  "sub_industry": "Investment Banking & Brokerage",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme scale economies shared and proprietary software automation create an insurmountable cost advantage. IBKR passes operational efficiencies directly to clients via benchmark-tied margin rates (several percentage points below Schwab/Fidelity) and superior cash yields, driving self-reinforcing account growth (>30% YoY) while sustaining >70% pre-tax profit margins. High customer switching costs for institutional RIAs and multi-currency global traders. Primary erosion risk is aggressive zero-fee pricing from sub-scale competitors or severe protracted zero-interest-rate monetary policy compressing NII.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Dominant automated electronic brokerage compounder operating an unassailable 'scale economies shared' model led by founder Thomas Peterffy. Ruthless software automation enables ~72-77% pre-tax margins, allowing IBKR to offer the industry's lowest margin loan rates and highest cash yields while scaling client accounts >30% YoY. Pristine fortress balance sheet with zero long-term debt and billions in surplus regulatory capital. [5-10Y g: client account & asset volume 11.0% + operating leverage 1.5% - normalized short-rate NII compression 2.0% + dividend/reinvestment 0.5%]",
+    "evidence": "Multi-decade track record of compounding book value and owner earnings. Pre-tax profit margins expanded to 72% in FY2024 and 77% in FY2025. Customer accounts surged 33% YoY to >4.4M in 2025 with client equity approaching $800B-$900B. ROE sustained at ~19-21% without balance sheet leverage. Zero long-term debt against $4.9B+ cash and substantial regulatory capital buffer. Capex remains minimal (~$60M annually, <2% of EBIT) reflecting pure software architecture. Peterffy retains majority voting control and massive insider alignment."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:43:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

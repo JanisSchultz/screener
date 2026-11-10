@@ -1,0 +1,30 @@
+{
+  "id": "CF",
+  "ticker": "CF",
+  "universe": "us",
+  "company": "CF Industries",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Fertilizers & Agricultural Chemicals",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "CF possesses a low-cost production advantage on the global nitrogen cost curve anchored by Henry Hub natural gas feedstock, scale economies at its flagship Donaldsonville complex, and integrated distribution infrastructure. However, nitrogen fertilizers (ammonia, urea, UAN) are undifferentiated global commodities. CF is a pure price-taker with zero pricing power over inflation; realized prices and margins swing violently with global supply additions, crop economics, and volatile energy spreads.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While CF possesses a low-cost production position due to cheap North American natural gas and Donaldsonville scale, it is an undifferentiated commodity price-taker with zero structural pricing power. Realized margins and earnings are held captive to global nitrogen supply/demand cycles and volatile spot prices.",
+    "evidence": "CF manufactures nitrogen products (ammonia, urea, UAN, ammonium nitrate, DEF). While 5-year median ROIC is ~14-16% bolstered by the 2022 energy crisis windfall (revenue reached $11.2B and net income $3.3B in 2022), revenue retreated to $5.94B in 2024 before recovering to $7.08B in 2025. In past downcycles (2016-2020), revenue averaged ~$4.1B with net margins dropping to near zero (net loss of -$277M in 2016; net income $317M in 2020). CF has no contractual pricing power or customer lock-in; products trade at spot market clearing benchmarks (NOLA/Tampa). Long-term debt is manageable (~$3.0-3.2B with $2.8B+ EBITDA in 2025), and management has retired shares via buybacks, but the structural lack of pricing power fails Gate 3b."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

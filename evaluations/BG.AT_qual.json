@@ -1,0 +1,30 @@
+{
+  "id": "BG.AT",
+  "ticker": "BG",
+  "universe": "eu",
+  "company": "BAWAG",
+  "country": "Austria",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Industry-leading cost efficiency in DACH retail banking (cost-to-income ratio ~32-34%) and sticky retail deposit franchise. Defended by radical operating simplicity and digital origination, though lending products remain commoditized.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Cost-leader Austrian/DACH retail lender (CIR ~33%, RoTCE ~26%) executing disciplined bolt-on M&A (e.g. Knab in the Netherlands). However, retail and SME banking is an interest-rate-dependent spread business without pricing power over the long cycle, facing NII contraction as ECB interest rates decline.",
+    "evidence": "FY24 net profit was €760M (EPS €9.60) with RoTCE of 26.0% and cost-to-income ratio of 33.5% (FY23 net profit €683M, RoTCE 25.0%). Completed acquisition of Dutch digital bank Knab in Nov 2024. Despite exceptional operational efficiency, baseline persistence for regional spread-lenders is low, capping CAP at 5 years."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

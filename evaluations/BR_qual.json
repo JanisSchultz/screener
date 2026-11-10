@@ -1,0 +1,30 @@
+{
+  "id": "BR",
+  "ticker": "BR",
+  "universe": "us",
+  "company": "Broadridge Financial Solutions",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Data Processing & Outsourced Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unassailable two-sided network effect and regulatory switching costs as the SEC-mandated proxy clearinghouse handling >80% of US beneficial share votes. 17.1% 5-year median GAAP ROIC, >100% tangible ROIC, and 98%+ client revenue retention. Primary erosion risks (SEC fee schedule changes, broker consolidation, blockchain disintermediation) remain well-hedged by ongoing digital automation.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Entrenched regulatory and operational toll booth processing >80% of US beneficial shareholder proxies with 19% ROIC and >100% FCF conversion. Structurally insulated across all 5 macrotrends as retail position growth and wealth SaaS offset automation shifts. Prudent leverage with 11.6x interest coverage and net debt repayable in ~2.5 years. [5-10Y g: equity & fund position volume growth 4.5% + wealth & capital markets SaaS expansion 2.0% + proxy fee & contract price indexation 1.5% - digitization margin drag 0.0% + net buybacks 0.5%]",
+    "evidence": "10-year GAAP ROIC compounded from 13.9% to 19.2% (5-year median 17.1%), with tangible operating ROIC >100%. Free cash flow conversion consistently exceeds 100% (FY25 FCF $1,185M vs Net Income $1,124M; Capex only $67M on $7.48B revenue, or <1%). High recurring revenue model (~70% ICS, ~30% GTO) with 98%+ annual client revenue retention. Conservative balance sheet with $3.25B LT debt vs $403M cash, 11.6x EBIT/interest coverage, and net debt/NI at 2.54x, supporting 17 consecutive years of dividend increases."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

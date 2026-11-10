@@ -1,0 +1,30 @@
+{
+  "id": "WMB",
+  "ticker": "WMB",
+  "universe": "us",
+  "company": "Williams Companies",
+  "country": "United States",
+  "sector": "Energy",
+  "sub_industry": "Oil & Gas Storage & Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Transco right-of-way is physically irreplaceable, transporting ~15-20% of US natural gas with new greenfield interstate pipeline construction legally and politically unpermittable in the Mid-Atlantic and Northeast. However, the business fails the empirical capital efficiency proof: 10-year median GAAP ROIC is only 7.78% (peak 9.95% in 2023, 8.30% in 2025; 10-year range 1.84%–9.95%), well below the 12% hurdle. FERC cost-of-service and negotiated rate regulation structurally cap returns on invested capital while capital intensity remains perpetually high. Key erosion threats include FERC rate case challenges from utilities and long-term state-level building electrification/decarbonization mandates.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC = 7.78% vs 12% hurdle, REJECT). While the Transco pipeline network represents irreplaceable interstate energy infrastructure, high capital intensity and FERC utility rate regulation structurally constrain capital efficiency below the Munger hurdle across the entire 10-year cycle (GAAP ROIC never exceeded 10.0%, 10Y median 7.78%). Massive capital expenditures ($4.89B TTM in 2025) and heavy leverage ($27.3B debt vs $2.6B net income) permanently depress returns on total invested capital.",
+    "evidence": "10-year historical GAAP ROIC averaged 5.4% and never reached the 12% threshold: 2016 (2.26%), 2017 (2.60%), 2018 (1.84%), 2019 (3.76%), 2020 (4.75%), 2021 (6.15%), 2022 (7.78%), 2023 (9.95%), 2024 (7.42%), and 2025 (8.30%). Tangible ROIC median is identically 7.78%. Segment revenue is anchored by Transmission & Gulf of Mexico (Transco, Northwest Pipeline) alongside Northeast and Western gathering & processing. While long-term reservation contracts provide volume stability, FERC cost-of-service rate base mechanisms limit economic rent extraction. Capital allocation is burdened by $27.32B in long-term debt against $63M cash, incurring $1.44B in annual interest expense against $4.20B EBIT (interest coverage 2.91x, below the 5.0x safe harbor threshold)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:41:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

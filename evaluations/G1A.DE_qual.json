@@ -1,0 +1,30 @@
+{
+  "id": "G1A.DE",
+  "ticker": "G1A",
+  "universe": "eu",
+  "company": "GEA Group",
+  "country": "Germany",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Hygienic process engineering know-how and dairy/beverage/pharma installed base, but GAAP ROIC (~9.5-11%) falls short of the 12% hurdle due to competitive machinery tenders and cyclic capital project exposure, lacking pricing power >= inflation.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Food, beverage, and dairy processing machinery group. While management reports high ROCE by excluding €800m historical goodwill and capital items, full GAAP ROIC tracks below the 12% hurdle (~9.5-11%) due to equipment tender competition and customer buyer power.",
+    "evidence": "Statutory EBIT margins track between 7.5% and 10.3%. Reported ROCE is inflated by narrow asset definitions, while true GAAP ROIC sits around 9.5-11%, failing the 12% multi-cycle hurdle. Equipment orders remain cyclical and exposed to dairy/beverage capex swings."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

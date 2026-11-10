@@ -1,0 +1,43 @@
+{
+  "id": "CAT",
+  "ticker": "CAT",
+  "universe": "us",
+  "company": "Caterpillar Inc.",
+  "price": 558.63,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.08,
+    "roic_est": null,
+    "fin_note": "Retains physical operating ROIC of 23.95% (20.68% median GAAP ROIC). FY2024 peak Owner EPS of $22.39 confirmed as genuine cash-backed cycle peak (98% FCF conversion). 5-10Y through-the-cycle growth refined to 8.0% reflecting machine replacement volume (2.5%), pricing power (2.0%), high-margin services/parts expansion (1.5%), and share buybacks (2.5%), less cyclical margin normalization (-0.5%). Industrial ME&T operations maintain net cash."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 22.3927,
+    "current_multiple": 24.95,
+    "par_multiple": 21.74,
+    "par_value": 486.92,
+    "percent_vs_par": 0.1473,
+    "status": "Above PAR",
+    "g_implied": 0.08,
+    "dividend_yield": 0.0108,
+    "expected_irr_5y": 0.0615,
+    "market_implied_cap": 22.9,
+    "moat_runway_margin": -2.9,
+    "market_implied_growth": 0.128,
+    "growth_margin_of_safety": -0.048
+  },
+  "health_checks": {
+    "net_debt_years": 3.46,
+    "net_debt_ok": true,
+    "interest_coverage": 999.0,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.9797,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ZTS",
+  "ticker": "ZTS",
+  "universe": "us",
+  "company": "Zoetis Inc.",
+  "price": 79.4,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under the v6.23 Tangible Capital Standard (operating tangible ROIC 58.4%, 10-year median GAAP ROIC 30.5%), recognizing Zoetis's unmatched R&D scale, veterinary direct sales network, and high-margin proprietary biologics (Librela, Solensia, Apoquel, Cytopoint) in cash-pay pet economics. Peak Owner EPS of $6.0225 in FY2025 reflects unbroken 10-year compounding (12.0% CAGR from $1.70 in 2016) backed by $2.33B in Owner FCF (82.5% conversion) with zero non-cash spikes. 5-10Y secular growth of 8.5% is supported by companion animal volume expansion (3.5%), veterinary pricing power (2.5%), international market penetration (1.5%), offset by adverse event/regulatory conservatism drag (-0.5%), plus net share repurchases (1.5%). Fortress balance sheet with $2.31B cash against $9.04B debt (net debt / NI of 2.52x) and robust 16.1x interest coverage. At $79.40, Zoetis trades at a trough multiple of 13.18x peak Owner EPS (below its 5-year cycle low of 13.24x) vs fundamental PAR multiple of 26.23x (PAR value $157.94). Trading at a massive -49.7% discount Below PAR, Zoetis offers an exceptional 27.3% 5Y expected IRR (including a 2.8% dividend yield) representing a premier superinvestor entry."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.0225,
+    "current_multiple": 13.18,
+    "par_multiple": 26.22,
+    "par_value": 157.94,
+    "percent_vs_par": -0.4973,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0276,
+    "expected_irr_5y": 0.2725,
+    "market_implied_cap": 10.1,
+    "moat_runway_margin": 9.9,
+    "market_implied_growth": -0.1106,
+    "growth_margin_of_safety": 0.1956
+  },
+  "health_checks": {
+    "net_debt_years": 3.38,
+    "net_debt_ok": true,
+    "interest_coverage": 16.14,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.8246,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

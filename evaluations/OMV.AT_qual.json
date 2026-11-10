@@ -1,0 +1,30 @@
+{
+  "id": "OMV.AT",
+  "ticker": "OMV",
+  "universe": "eu",
+  "company": "OMV",
+  "country": "Austria",
+  "sector": "Energy",
+  "sub_industry": "Integrated Oil & Gas (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity price-taker across upstream oil and gas, basic petrochemicals, and polyolefins. Lacks pricing power to independently raise prices above inflation; earnings are held hostage to Brent crude, European TTF natural gas prices, and cyclical polyolefin chemical spreads.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat & Pricing Power, REJECT). Integrated Central European energy and chemicals producer. While OMV's inland refineries (Schwechat, Burghausen) enjoy logistical insulation and its Borealis chemical arm provides downstream integration, it remains an unhedged commodity price-taker across crude, natural gas, and cyclical polyolefins. Multi-cycle returns on capital fall well short of the 12% Munger hurdle during down-cycles, exacerbated by past geopolitical missteps and Russian gas supply disruption.",
+    "evidence": "OMV operates across three segments: Energy (upstream exploration & production in Norway, Romania, and the Middle East), Fuels & Feedstock (refineries in Austria, Germany, and Romania with ~17.8 mtpa refining capacity), and Chemicals & Materials (Borealis polyolefins and specialty polymers, plus Borouge JV). While the 2022-2023 energy spike produced windfall profits, OMV's multi-decade capital efficiency is deeply cyclical: 10-year median ROIC sits around 7-9%. In 2020, ROIC crashed below 4% and net income plunged to €1.48B (with heavy impairments), while 2022 was hit by a €2.5B write-down on Russian assets (Nord Stream 2 financing and Yuzhno-Russkoye upstream field). In chemicals, Borealis faces intense margin pressure from low-cost Middle Eastern and US ethane-based competitors. OMV has zero pricing power to pass through cost inflation in commodity polymers or retail fuels."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TRYG.DK",
+  "ticker": "TRYG",
+  "universe": "eu",
+  "company": "Tryg A/S",
+  "country": "Denmark",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Leading Scandinavian non-life insurer (Denmark, Norway, Sweden via Trygg-Hansa) with TryghedsGruppen member bonuses (~5-8%) supporting customer loyalty. Operates with combined ratios in the 80-84% range, though diluted GAAP returns followed the 2021 RSA/Codan mega-acquisition.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Mature Scandinavian non-life insurer constrained by high domestic market saturation and persistent organizational and operational friction from the multi-billion RSA/Codan mega-acquisition. Corporate client churn, multi-year restructuring expenses, and workforce redundancies cap predictable compounding runway to <15 years.",
+    "evidence": "Tryg executed the largest rights issue in Danish history (DKK 37 billion) in 2021 to acquire RSA's Scandinavian operations (Trygg-Hansa, Codan Norway, and 50% Codan Denmark, which was subsequently carved out and sold to Alm. Brand). This massive equity dilution depressed reported GAAP ROE to 5-9% between 2021 and 2023, while per-share EPS compounding stalled (2021 EPS was DKK 8.83 vs 2025 EPS of DKK 8.80). Prolonged restructuring, workforce layoffs, and elevated commercial churn limit predictable secular growth."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "4",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

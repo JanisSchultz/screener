@@ -1,0 +1,43 @@
+{
+  "id": "ORLY",
+  "ticker": "ORLY",
+  "universe": "us",
+  "company": "O'Reilly Automotive",
+  "price": 89.89,
+  "quote_currency": "USD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.09,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap standard, reflecting structurally unbounded returns on negative tangible working capital (supplier-funded inventory) and negative GAAP equity from decades of cash-funded buybacks (67.3% GAAP ROIC, 90.6% operating ROIC). FY2025 peak Owner EPS of $2.9655 (split-adjusted) represents clean operational earning power backed by 111.9% multi-year Owner FCF conversion. 5-10Y through-the-cycle growth refined to 9.0% based on 2.5% professional DIFM market share gains, 2.0% pricing and vehicle part complexity, 2.5% net new store expansion, offset by 0.5% distribution center/wage/EV mix drag, plus 2.5% net share repurchases. Secure investment-grade balance sheet with $6.02B LT debt (2.37x NI leverage, 2.29x net debt/NI) and 14.7x EBIT interest coverage. At $89.89 (30.31x peak Owner EPS), ORLY trades Above PAR (+9.5% premium vs PAR Value of $82.07, PAR multiple 27.68x) with a 5Y expected IRR of 7.0%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 2.9655,
+    "current_multiple": 30.31,
+    "par_multiple": 27.68,
+    "par_value": 82.07,
+    "percent_vs_par": 0.0953,
+    "status": "Above PAR",
+    "g_implied": 0.09,
+    "dividend_yield": 0.0,
+    "expected_irr_5y": 0.0703,
+    "market_implied_cap": 16.4,
+    "moat_runway_margin": -1.4,
+    "market_implied_growth": 0.1296,
+    "growth_margin_of_safety": -0.0396
+  },
+  "health_checks": {
+    "net_debt_years": 2.37,
+    "net_debt_ok": true,
+    "interest_coverage": 14.72,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.119,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-10T10:00:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HRL",
+  "ticker": "HRL",
+  "universe": "us",
+  "company": "Hormel Foods",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Packaged Foods & Meats",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Brand equity in staple packaged protein and shelf-stable foods (SPAM, Skippy, Jennie-O, Planters, Hormel Black Label) creates shelf presence, but lacks pricing power to outrun commodity cost swings. Competitors and private-label store brands readily arbitrage shelf space in packaged meats and nuts. 5-year median GAAP ROIC has deteriorated to ~8% (FY21 10.1%, FY22 9.5%, FY23 7.7%, FY24 8.5%, FY25 6.1%), well below the 12% hurdle. Pricing actions trigger retail volume elasticity and market share erosion.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power >= inflation, REJECT). While Hormel possesses recognizable consumer protein and pantry brands (SPAM, Skippy, Planters, Jennie-O), it operates as a price-sensitive packaged food processor unable to pass through sustained input cost inflation without suffering volume declines. 5-year median GAAP ROIC has sunk to ~8% (dropping to 6.1% in FY25), well below the 12% threshold. Capital allocation was further impaired by the debt-financed $3.4B Planters acquisition, which diluted returns on capital and triggered $234M in non-cash impairments in FY25.",
+    "evidence": "Multi-cycle financial track record demonstrates structural capital efficiency erosion: GAAP ROIC steadily fell from 13.1% in FY20 to 10.1% in FY21, 9.5% in FY22, 7.7% in FY23, 8.5% in FY24, and 6.1% in FY25 (5-year median ~8.1%, far below the 12% Munger hurdle). Operating margins compressed from ~10.3% in FY21 to 5.48% GAAP (8.4% adjusted) in FY25. In FY21, Hormel acquired Planters from Kraft Heinz for $3.4B funded by ~$3.2B in senior notes, expanding long-term debt from negligible levels to $2.8B-$2.9B. The acquisition diluted corporate returns and required $234M in Q4 FY25 non-cash asset impairment charges. Attempts to raise prices across Retail triggered consumer pushback and elasticity-related volume contractions, proving absence of pricing power ahead of inflation. Jennie-O turkey operations remain subject to biological and commodity cycles (avian influenza). FCF conversion has fluctuated widely ($762M in FY20, $1.01B in FY24, and dropping to $535M in FY25)."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TD.CA",
+  "ticker": "TD",
+  "universe": "ca",
+  "company": "Toronto-Dominion Bank",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Diversified Banks",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Canadian retail deposit franchise oligopolist with #2 market share in personal deposits and lending, complemented by an extensive US retail banking branch network. Canadian franchise maintains an unassailable low-cost funding moat and pricing power. Primary erosion risks: severe growth constraints from the US regulatory asset cap (imposed by the OCC/Fed following AML guilty plea), multi-billion-dollar compliance remediation costs, executive turnover, and fintech competition.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While TD Bank operates an entrenched Canadian retail banking franchise with #2 domestic market share and proven pricing power, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~15x asset/equity leverage and funded by demand deposits, its solvency inherently relies on depositor confidence and central bank/CDIC backstops ('kindness of strangers'). Compounded by the growth-restricting US regulatory asset cap and compliance remediation costs following its 2024 AML settlement, it cannot qualify as a fortress compounder.",
+    "evidence": "Canada's second-largest bank by assets with a premier Canadian retail deposit franchise and large US branch network. Historically generated 13-16% ROE (5-year median GAAP ROIC 32.8%). However, commercial fractional-reserve banks structurally fail Gate 6: balance sheet carries over C$1.9T in total assets supported by C$127.8B in common equity (~15x leverage) and C$225.3B in long-term debt liabilities. Operating cash flows swing wildly (-C$69.6B in FY2025 and -C$65.3B in FY2023) due to wholesale funding and deposit dynamics. In addition, the US operations face an unprecedented growth-limiting asset cap (US$434B cap imposed by OCC/Fed) and multi-year compliance remediation following the October 2024 US$3.09B criminal AML settlement."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

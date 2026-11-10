@@ -1,0 +1,30 @@
+{
+  "id": "KO",
+  "ticker": "KO",
+  "universe": "us",
+  "company": "Coca-Cola Company (The)",
+  "country": "United States",
+  "sector": "Consumer Staples",
+  "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global bottler ecosystem of ~200 independent partners serving over 30 million retail outlets creates unmatchable distribution scale, high route density, and pervasive cold-drink placement. Empirical moat proof: 10-year median GAAP ROIC of 17.5%, tangible operating ROIC of 26.0%, and gross margins consistently maintained at 58-61%. Demonstrated consistent pricing power via incidence-based concentrate pricing contracts with price/mix gains of 11% (2022), 10% (2023), 10% (2024), and 4% (2025) while preserving unit volumes. Primary erosion risks: adverse outcome in the Eleventh Circuit IRS transfer-pricing appeal extending to post-2009 tax years, and evolving dietary shifts away from sugar (hedged via Coke Zero Sugar and non-CSD category expansion).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Asset-light concentrate toll booth on global non-alcoholic beverage consumption with entrenched brand power and massive scale economies shared across ~200 bottling partners. Demonstrated pricing power across high-inflation cycles via incidence-based contracts. Structurally insulated across all 5 macrotrends. Net debt at 2.4x net income with 8.3x interest coverage; $6B IRS deposit already paid with manageable ongoing legal risk on appeal. [5-10Y g: organic volume 1.5% + price/mix 3.5% + product reinvestment 0.5% - foreign exchange drag 0.5% + share repurchases 1.0%]",
+    "evidence": "10-year median GAAP ROIC of 17.5% and tangible operating ROIC of 26.0% in FY2025. Gross margins steady between 58% and 61% across cycles despite severe commodity and packaging swings. Refranchising of capital-intensive bottling operations transformed KO into a high-margin (28-29% EBIT margin), asset-light cash engine. Demonstrated exceptional pricing power with non-GAAP price/mix up 11% in 2022, 10% in 2023, 10% in 2024, and 4% in 2025 alongside stable unit case volumes. 10-year cumulative Owner FCF conversion exceeds 92% (approaching ~99% normalizing for the $6.0B IRS tax deposit in 2024). Net debt of $31.8B is 2.43x FY2025 net income ($13.1B) and interest coverage is 8.3x EBIT ($13.8B / $1.65B), comfortably supporting the 60+ year dividend growth streak."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:39:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

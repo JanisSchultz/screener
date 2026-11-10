@@ -1,0 +1,30 @@
+{
+  "id": "ALLFG.NL",
+  "ticker": "ALLFG",
+  "universe": "eu",
+  "company": "Allfunds",
+  "country": "Netherlands",
+  "sector": "Financials",
+  "sub_industry": "Transaction & Payment Processing Services (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Two-sided B2B platform connecting fund managers and wealth distributors benefits from operational integration and administrative switching costs. However, it lacks genuine pricing power: institutional fund managers and private banks exert constant fee pressure, and statutory GAAP ROIC is sub-12% (averaging ~8%) weighed down by heavy post-IPO capitalized goodwill and intangibles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (ROIC < 12% and lack of pricing power). B2B mutual fund distribution platform suffers from structural active-to-passive industry migration, persistent take-rate fee compression from institutional asset managers, and sub-hurdle GAAP ROIC (~8%) burdened by historical capitalized goodwill.",
+    "evidence": "Reported GAAP net income of €49.2M in 2022 and €85.7M in 2023 yielded GAAP ROIC of ~8%, failing the 12% hurdle. In 2024, statutory results swung to a net loss of €168.5M due to discontinued operations and separately disclosed items. Platform take rates face perpetual downward renegotiation from fund managers coping with passive ETF outflows, demonstrating an inability to raise prices at or above inflation."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TOM.NO",
+  "ticker": "TOM",
+  "universe": "eu",
+  "company": "Tomra",
+  "country": "Norway",
+  "sector": "Industrials",
+  "sub_industry": "Industrial Machinery & Supplies & Components (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Dominant ~70% market share in reverse vending machines (RVM) and optical sorting, but powerful grocery retailers resist price increases, compressing margins during inflationary periods.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Pricing Power, REJECT). Despite dominant reverse-vending market share, grocery retailers treat RVMs as an unwanted regulatory compliance cost and fiercely resist price increases. Operating margins collapsed from 14.2% in 2021 to 7.8% in 2023 under component and wage inflation, demonstrating lack of pricing power >= inflation.",
+    "evidence": "EBIT margins fell from 14.2% (2021) to 11.9% (2022) and 7.8% (2023) due to cost inflation and inability to pass prices through to grocery retail clients. Demand is subject to cyclical delays in government deposit return scheme (DRS) mandates."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

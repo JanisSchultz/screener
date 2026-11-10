@@ -1,0 +1,30 @@
+{
+  "id": "KGF.GB",
+  "ticker": "KGF",
+  "universe": "eu",
+  "company": "Kingfisher",
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Home Improvement Retail (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Extensive store network (B&Q, Castorama, Screwfix) and own-brand sourcing provide retail purchasing scale, but 5-year median GAAP ROIC is deeply sub-hurdle at ~5-7% (far below the 12% threshold). Big-box DIY retail suffers from intense price competition, heavy lease liabilities, and lack of customer lock-in.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3 (Rejected – G3 Moat & Pricing). Kingfisher operates home improvement retail across the UK, France, and Poland, but generates structurally weak capital returns with multi-year ROIC hovering at only 5-7% and thin 3.5-6.5% operating margins. Highly exposed to cyclical housing turnover and consumer DIY pullbacks, it lacks genuine pricing power against discounters and online rivals.",
+    "evidence": "Multi-banner home improvement retailer with >2,000 stores across 8 European countries generating ~£13B in revenue. Group operating margins fluctuate between 3.5% and 6.5%. ROIC consistently prints in the 5-7% range, trailing its ~8% cost of capital. Substantial operating lease obligations and heavy store overhead prevent high-return capital compounding."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": 3,
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

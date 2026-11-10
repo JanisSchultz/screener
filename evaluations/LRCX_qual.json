@@ -1,0 +1,30 @@
+{
+  "id": "LRCX",
+  "ticker": "LRCX",
+  "universe": "us",
+  "company": "Lam Research Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Semiconductor Materials & Equipment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Extreme switching costs via process-of-record (POR) chamber lock-in at leading chipmakers; swapping etch/deposition tools risks fatal wafer yield loss. Over 100,000 installed chambers create a captive, high-margin CSBG service/spares annuity. Gross margins expanded to 48-50% and median GAAP ROIC is 66.8%.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Global leader in dry etch and deposition semiconductor equipment. Process-of-record chamber lock-in and 100,000+ installed chamber base drive an indispensable high-margin CSBG spares/services annuity. Major beneficiary of AI compute, GAA logic transitions, and 3D memory scaling, with global fab expansion offsetting China export restrictions. Pristine net cash fortress balance sheet with >50x interest coverage. [5-10Y g: 3D etch/deposition & CSBG upgrades volume 6.5% + price/mix 1.5% + margin 0.5% + buyback 1.5%]",
+    "evidence": "5-year median GAAP ROIC of 66.8% and Operating ROIC of 86.4%. Owner EPS compounded at 16.5% CAGR peak-to-peak from $1.01 in FY2016 to $5.76 in FY2025. Gross margins expanded to ~48-50%. CSBG installed base annuity generates ~38% of total revenue ($6.9B in FY2025) with >100,000 active chambers worldwide, insulating cash flows across memory cycles. Strong cash conversion (FCF/NI 84.2%) with $5.58B cash vs $3.72B long-term debt (net cash $1.86B) and 52.3x interest coverage."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

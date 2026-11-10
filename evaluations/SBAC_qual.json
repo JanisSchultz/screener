@@ -1,0 +1,30 @@
+{
+  "id": "SBAC",
+  "ticker": "SBAC",
+  "universe": "us",
+  "company": "SBA Communications",
+  "country": "United States",
+  "sector": "Real Estate",
+  "sub_industry": "Telecom Tower REITs",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Zoning restrictions, high capital costs, and local permitting make macro cell towers virtually irreplaceable physical infrastructure. Long-term leases (5-15 years) feature contractual ~3% annual escalators in the US and CPI/inflation-indexed escalators in international markets (Brazil), sustaining ~80% tower cash flow margins and 12-18% GAAP ROIC (19-32% tangible ROIC). Pricing power is proved by contract renewal terms and minimal competitive tenant churn, with churn driven almost entirely by carrier consolidation (Sprint/T-Mobile and Dish/EchoStar) rather than pricing pressure.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "N",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). While SBA operates an irreplaceable tower portfolio with ~80% gross margins, its balance sheet fails Munger's solvency standard: long-term debt of $11.0B represents 10.4x TTM net income ($1,053.6M), interest coverage is critically low at ~2.87x EBIT/interest ($1,342.8M EBIT vs ~$468M interest expense), and cumulative debt-funded buybacks have produced -$4.85B in negative stockholders' equity. The company relies continuously on the 'kindness of strangers' to refinance tower ABS and senior notes in debt capital markets at higher interest rates.",
+    "evidence": "Multi-cycle operational strength with 10-year median GAAP ROIC of 12.2% (tangible ROIC 19-32%) and robust Owner FCF conversion (>100% of NI). However, balance sheet leverage is structural and severe: long-term debt stands at $10,964.5M against cash of $264.6M (net debt ~$10.7B, or ~6.4x annualized EBITDA). Interest expense climbed to ~$468M in FY2025, depressing interest coverage to 2.87x, well below the 5.0x infrastructure threshold. Negative stockholders' equity (-$4,853.5M in FY2025) reflects multi-year debt-funded repurchases. Ongoing capital market dependency is demonstrated by large continuous refinancings ($3.5B senior notes and $2.0B term loan in 2026 to retire maturing debt). Carrier consolidation headwinds (Sprint churn of $50M+/yr tapering by 2027 and Dish/EchoStar bad debt/churn) add revenue friction amidst rising refinancing costs."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

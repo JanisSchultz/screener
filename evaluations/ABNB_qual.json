@@ -1,0 +1,30 @@
+{
+  "id": "ABNB",
+  "ticker": "ABNB",
+  "universe": "us",
+  "company": "Airbnb",
+  "country": "United States",
+  "sector": "Consumer Discretionary",
+  "sub_industry": "Hotels, Resorts & Cruise Lines",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary leisure travel and vacation lodging are infrequent, deferrable consumer expenditures rather than essential needs or daily habits, compounded by escalating municipal and EU short-term rental restrictions over residential housing.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (Rejected – G2 Essential Need). Despite strong asset-light marketplace economics, ~22% ROIC, and ~$8.7B net cash, Airbnb operates in discretionary, deferrable leisure travel (Hotels, Resorts & Cruise Lines) rather than an essential Western necessity or entrenched everyday ritual, and faces persistent societal and legislative hostility in dense urban markets (e.g., NYC Local Law 18 and tightening European short-term rental caps/registrations).",
+    "evidence": "Gate 1 (Y): Transparent, asset-light two-sided lodging marketplace (Dec 2020 IPO; FY2024 revenue $11.102B, FY2025 revenue $12.241B +10.3% YoY, 533M Nights & Seats Booked +8% YoY; FY2025 Net Income $2.511B, FCF ~$4.6B; ~$11.0B cash vs ~$2.27B total debt; 22.4% median ROIC, ~21-25% operating margins; Q3 2026 revenue +19% YoY with $12B Nov 2026 buyback authorization; SBC up ~13% YoY in FY2025; dual-class Class B 20-vote founder control). Gate 2 (N): Fails Munger 'likely to spend' essential/everyday-habit and low-societal-risk criteria. Leisure vacation rentals are discretionary and deferrable in downturns alongside airlines and cruise lines, while core urban supply faces durable political/housing-affordability backlash (NYC Local Law 18 banning most unhosted stays under 30 days; EU Short-Term Rental Data Regulation plus local caps/taxes in Spain, Italy, France, and Greece, prompting a pivot toward suburban stays and boutique hotels). Strict waterfall leaves Gates 3-6 null; calamity tier inapplicable since Anchor Gate 2 fails."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T09:37:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

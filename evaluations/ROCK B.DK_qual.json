@@ -1,0 +1,30 @@
+{
+  "id": "ROCK B.DK",
+  "ticker": "ROCK B",
+  "universe": "eu",
+  "company": "Rockwool",
+  "country": "Denmark",
+  "sector": "Industrials",
+  "sub_industry": "Building Products (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Fails Gate 3b. While stone wool provides superior fire resistance, insulation is fundamentally an energy-intensive industrial commodity facing direct substitution from fiberglass (Owens Corning, Saint-Gobain) and polyurethane/phenolic foams (Kingspan). Customers have virtually zero switching costs between certified insulation materials. Margins and unit economics are highly volatile and heavily exposed to natural gas, coke, and electricity input costs. Furthermore, capital intensity of melting rock at 1,500°C creates high ongoing reinvestment burdens without pricing power above inflation across full economic cycles.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (Moat proof & commodity substitution). Stone wool insulation is an energy-intensive industrial commodity lacking customer switching costs or toll-booth barriers. End-customers readily substitute alternative insulation materials (fiberglass, foam, wood fiber). Vulnerability to volatile fossil energy input costs (gas, electricity, coke) and heavy ongoing capital intensity required for furnace decarbonization prevent durable pricing power above inflation across the full cycle. Waterfall terminates at Gate 3.",
+    "evidence": "Manufacturing stone wool requires continuous melting of basalt rock at >1,500°C, exposing gross margins to extreme European energy cost volatility. High capital expenditure requirements for furnace maintenance, emissions abatement, and localized plants dilutes owner earnings. Zero customer switching costs once building specifications are met."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "gate_3b",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

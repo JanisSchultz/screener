@@ -1,0 +1,30 @@
+{
+  "id": "URW.FR",
+  "ticker": "URW",
+  "universe": "eu",
+  "company": "Unibail-Rodamco-Westfield",
+  "country": "France",
+  "sector": "Real Estate",
+  "sub_industry": "Retail REITs (mapped)",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "N",
+    "gate_2_reason": "Discretionary retail shopping mall landlord; tenant retail sales and customer footfall are non-essential, deferrable cyclicals facing secular e-commerce substitution.",
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 2 (G2 Essential Need). Flagship shopping center operator across Europe and the US. Portfolio revolves around discretionary apparel, entertainment, and consumer retail, which represent easily forgone expenditures vulnerable to economic downturns and digital commerce substitution.",
+    "evidence": "Unibail-Rodamco-Westfield owns and operates flagship destination malls across Europe and the US. The business suffered catastrophic value destruction following the debt-financed acquisition of Westfield in 2018, leading to billions in impairments and debt restructuring. The underlying tenant base is discretionary retail, failing the essential Western necessity standard."
+  },
+  "evaluation_metadata": {
+    "verdict": "Rejected – G2 Essential Need",
+    "failing_gate": "2",
+    "evaluated_at": "2026-11-10T11:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

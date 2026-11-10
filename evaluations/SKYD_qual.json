@@ -1,0 +1,31 @@
+{
+  "id": "SKYD",
+  "ticker": "SKYD",
+  "universe": "us",
+  "company": "Skydance Corporation",
+  "country": "United States",
+  "sector": "Communication Services",
+  "sub_industry": "Movies & Entertainment",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Owns premier Hollywood IP and broadcast intangibles (Warner Bros., Paramount Pictures, HBO, DC, Harry Potter, Top Gun, Star Trek, CBS, CNN, TNT Sports, and 203M combined DTC subscribers), which prevent exact duplication. However, these intangibles fail empirical proof of moat and net pricing power: Paramount Global's 10Y median ROIC is 4.5% (GAAP ROIC never reached 12% in 2019-2025, turning negative in 2024-2025), WBD's 2023-2025 ROIC ran ~2-3%, and standalone 9M 2026 Paramount Skydance annualized Tangible Operating ROIC (~8%) and GAAP ROIC (~5.7%) remain well below the 12%/15% hurdles. Primary erosion threats: secular pay-TV cord-cutting shrinking the core linear profit pool (-7% YoY at Paramount TV Media in Q3 2026; -12% YoY revenue / -21% YoY EBITDA at WBD Linear in FY25), economic rent extraction by creative talent and sports leagues (NFL, NCAA, UFC; WBD's loss of US NBA rights), and fierce DTC streaming competition (Netflix, YouTube, Disney, Amazon, Apple) forcing heavy content reinvestment and bundle discounting.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 3b (REJECT). Passes Gate 1 (established studio/TV/streaming model) and Gate 2 under the v6.19+ 'likely to' staple household entertainment standard (CBS live sports/news, HBO/Paramount+ household streaming, studio content). While iconic IP franchises support an Intangibles archetype (3a), the combined Paramount-Skydance-WBD business fails Gate 3b structurally: multi-cycle GAAP and tangible ROIC sit persistently in the low-to-mid single digits (well below 12%), economic rents are captured by sports leagues and talent, and linear TV cord-cutting destroys net pricing power across the legacy cash-cow segment. Ineligible for v6.25 Calamity Tier because Gate 3b failure is chronic rather than a temporary blip on an intact >=12-15% ROIC engine, and Anchor Gate 4 (CAP < 15Y) would also fail under secular linear decay, digital/AI attention fragmentation, and $87B gross debt refinancing risk. Downstream Gates 4-6 left null per strict sequential waterfall.",
+    "evidence": "Multi-cycle financial history demonstrates structural capital destruction rather than compounder economics. Pre-merger Paramount Global posted 10Y median ROIC of 4.5% (2019-2024 ROIC: 9.64%, 9.07%, 11.41%, 3.23%, ~3-4%, and negative/-13.0% GAAP in 2024), operating margins sliding from 18.2% (2021) to 4.2% (2022), -4.2% (2023), -21.1% (2024), and -0.1% (2025, -$35M operating income on $29.03B revenue), and FCF falling from ~$1.2-1.3B (2022) to ~$308M (2025). Pre-acquisition WBD saw revenue contract from $41.32B (2023) to $39.32B (2024) and $37.30B (2025), with FCF halving from $6.16B (2023) to $3.09B (2025), FY25 operating income of just $738M (against $2,085M net interest expense), and ~2-3% ROIC; WBD Global Linear Networks revenue fell 12% YoY to $17.66B and Adjusted EBITDA fell 21% YoY to $6.41B in FY25 (vs $2.55B Studios and $1.37B Streaming). Standalone Q3 2026 Paramount Skydance (reported Nov 9, 2026) generated $7.03B revenue (+5% YoY), $368M operating income ($1.5B 9M26), $1.0B Adjusted EBITDA, $73M GAAP net earnings, and $353M 9M26 FCF ($101M Q3 ex-restructuring; $31M reported net of $174M transformation costs): TV Media ($3.0B Q3 rev, -7% YoY; $3.1B 9M26 Adj. EBITDA) still supplies the overwhelming majority of segment profit vs DTC ($2.5B Q3 rev, $225M Adj. EBITDA; 82.2M Paramount+ subs) and Studios ($1.5B Q3 rev, $329M 9M26 Adj. EBITDA). Even after Skydance purchase-accounting write-downs (Q2 2026 goodwill $2.03B, intangibles $5.65B), 9M26 annualized EBIT of ~$2.0B (~$1.5B NOPAT) on ~$18.7B standalone tangible invested capital yields only ~8.0% Tangible ROIC (~5.7% GAAP ROIC). On Oct 6, 2026, Paramount Skydance closed the $110.9B EV ($31/sh) WBD buyout using $47B non-voting Class B equity (incl. ~$24B Gulf SWFs: PIF, L'imad, QIA) and $57B new secured debt, leaving ~$87B pro forma gross debt (~$77-80B net debt, >6x-7.8x leverage, S&P/Fitch BB / Moody's Ba3), dual-class control (<1% Class A shares holding 100% votes via Ellison family/RedBird), a $200M Q4 2026 Warner Bros. film slate EBITDA headwind, and unproven reliance on $6B 3-year cost synergies."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-10T09:34:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

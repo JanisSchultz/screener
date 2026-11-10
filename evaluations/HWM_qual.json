@@ -1,0 +1,30 @@
+{
+  "id": "HWM",
+  "ticker": "HWM",
+  "universe": "us",
+  "company": "Howmet Aerospace Inc.",
+  "country": "United States",
+  "sector": "Industrials",
+  "sub_industry": "Aerospace & Defense",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Dominant global oligopoly in mission-critical single-crystal superalloy turbine airfoils and aerospace fastening systems. High switching costs and regulatory airworthiness lock-in (FAA/EASA engine certifications take years and tens of millions of dollars) prevent competitor arbitrage. Moat proved by 5Y median GAAP ROIC of 13.6% rising to 22.7% in 2025, operating tangible ROIC of 39-58%, and contractual raw material price escalators passing through inflation. Primary erosion risks are aircraft OEM build-rate delays and long-term additive manufacturing advancements.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates. Mission-critical aerospace propulsion and structural hardware monopoly with irreplaceable single-crystal casting technology, 5Y median ROIC of 13.6% (22.7% in FY2025), and ~92% FCF conversion. Highly insulated across all 5 macrotrends due to physical manufacturing complexity, secular widebody engine replacement cycle, and reshoring of defense/commercial supply chains. De-levered fortress balance sheet with net debt/EBITDA at 1.0x and debt repayable in 1.4 years of earnings. [5-10Y g: commercial aero build volume 5.0% + spares pricing power 2.5% + IGT and defense mix 1.5% - raw material lag 0.5% + net share repurchases 1.0%]",
+    "evidence": "Operating performance transformed post-Arconic spin under CEO John Plant: operating margin expanded from 12.3% in 2021 to 24.8% in 2025, with FY2025 revenue reaching $8.25B and operating income reaching $2.05B. GAAP ROIC expanded from 8.7% (2021 trough) to 22.7% (2025), while tangible ROIC reached 57.8%. Multi-year Owner FCF conversion is 91.8% ($1.53B Owner FCF in FY2025 vs $1.51B Net Income). Balance sheet strengthened substantially: gross debt lowered from $4.23B (2021) to $2.86B (2025) against $742M cash, leaving net debt at $2.12B (1.4x NI, 1.0x EBITDA) and interest coverage >9.4x. Holds sole-source or primary-source positions on CFM LEAP, Pratt & Whitney GTF, GE9X, and F-35 airframe/engine platforms."
+  },
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-10T09:48:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}
