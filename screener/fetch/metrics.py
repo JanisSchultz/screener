@@ -196,7 +196,59 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
+    # v6.30 4-Filter Credible Growth Engine multi-year inputs
+    if sales:
+        s_end = max(sales)
+        for span in (5, 4, 3, 2):
+            s0, s1 = sales.get(s_end - span), sales.get(s_end)
+            if s0 is not None and s1 is not None and s0 > 0 and s1 > 0:
+                out["sales_cagr"] = round((s1 / s0) ** (1.0 / span) - 1.0, 4)
+                out["sales_cagr_yrs"] = span
+                break
+
     shares = implied_shares(ni, g("eps"), g("shares"))
+    sh_yrs = sorted(y for y, v in shares.items() if v and v > 0 and (last is None or y <= last))
+    if len(sh_yrs) >= 2:
+        # Use median annual YoY share reduction over latest 5 transitions so a single-year
+        # M&A stock merger or IPO share-basis jump does not masquerade as chronic dilution
+        yoy_bb = []
+        for idx in range(1, len(sh_yrs)):
+            y_prev, y_cur = sh_yrs[idx - 1], sh_yrs[idx]
+            span_y = y_cur - y_prev
+            if 1 <= span_y <= 2:
+                ann = (shares[y_prev] / shares[y_cur]) ** (1.0 / span_y) - 1.0
+                if -0.25 <= ann <= 0.20:
+                    yoy_bb.append(ann)
+        if yoy_bb:
+            raw_bb = median(yoy_bb[-5:])
+            out["buyback_yield"] = round(max(-0.05, min(0.04, raw_bb)), 4)
+
+    pos_ni_yrs = _last_years({y: v for y, v in ni.items() if v is not None and v > 0}, 5, last)
+    if pos_ni_yrs:
+        ret_by_yr = [max(0.0, min(1.0, 1.0 - abs(g("dividends").get(y) or 0) / ni[y])) for y in pos_ni_yrs]
+        out["retention_rate"] = round(median(ret_by_yr), 4)
+
+    eq_ser, debt_ser, cash_ser = g("equity"), g("debt"), g("cash")
+    ic_ser = {y: eq_ser[y] + (debt_ser.get(y) or 0) - (cash_ser.get(y) or 0)
+              for y in eq_ser if eq_ser.get(y) is not None}
+    nopat_ser = {}
+    for y, e_val in ebit.items():
+        if e_val is not None:
+            tr = tax_rate.get(y)
+            tr = DEFAULT_TAX if tr is None or not (0 <= tr <= 0.40) else tr
+            nopat_ser[y] = e_val * (1.0 - tr)
+    common_ic = sorted(y for y in set(ic_ser) & set(nopat_ser) if last is None or y <= last)
+    if len(common_ic) >= 3:
+        y1 = common_ic[-1]
+        ic_3_5 = [y for y in common_ic[:-1] if 3 <= y1 - y <= 5]
+        ic_2_5 = [y for y in common_ic[:-1] if 2 <= y1 - y <= 5]
+        y0 = ic_3_5[0] if ic_3_5 else (ic_2_5[0] if ic_2_5 else None)
+        if y0 is not None and y1 > y0:
+            sum_pos_nopat = sum(nopat_ser[y] for y in common_ic if y0 < y <= y1 and nopat_ser[y] > 0)
+            d_ic = ic_ser[y1] - ic_ser[y0]
+            if sum_pos_nopat > 0 and d_ic > 0.15 * sum_pos_nopat:
+                d_nopat = nopat_ser[y1] - nopat_ser[y0]
+                out["roiic"] = round(max(0.0, min(0.50, d_nopat / d_ic)), 4)
 
     # Buffett $1 test over the longest window up to 10 years (min 5) with prices and shares at both ends
     if price_at_year_end and shares and last:

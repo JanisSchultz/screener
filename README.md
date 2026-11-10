@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.29 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.30 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,12 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.30: 4-Filter Credible Growth Engine (Supply vs. Demand, 3.5% Nominal GDP Step-Down & Revenue Size Gravity):
+- Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math ((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing + Share Dilution deduction), catching high-payout insurers/utilities (ADM.GB, SAMPO.FI) and M&A-dilutive acquirers (BLK) while granting Zero-Capital Pricing freedom to >= 35% Operating ROIC Tollbooths (SPGI, CME, V, MSFT).
+- Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors per-share demand to verified 3-5Y Sales CAGR + recurring buyback yield (disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN), cross-checked against g_implied.
+- Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP: Steps min(g_fund, g_demand) down toward par_g_base = 3.5% over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), keeping asymmetric 'No Free Lunch' below 3.5%.
+- Filter 4b — Revenue-Anchored Size Gravity: Switched scale ceilings from Market Cap to USD Revenue (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%), ending the artificial 6.5% Market-Cap cliff on mid-revenue compounders (ISRG, IDXX).
 
 v6.29: Scale-Disciplined Mauboussin Growth Engine & Empirical Reality Anchors:
 - Multi-Tier Scale Ceilings (Law of Large Numbers): Replaced the flat 12% growth ceiling with size-dependent empirical caps normalized to USD enterprise value: Mega-Caps (>= $100B USD equivalent) capped at par_g_cap_mega = 6.5%; Large-Caps ($25B - $100B USD equivalent) capped at par_g_cap_large = 8.0%; Mid/Small-Caps (< $25B) capped at par_g_cap = 12.0%.

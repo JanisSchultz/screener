@@ -1,4 +1,4 @@
-# Per-Company Evaluation Framework Specification (v6.27)
+# Per-Company Evaluation Framework Specification (v6.30)
 ## Quality & Moat Screener — 6 Munger Quality Gates & Equity Bond Below PAR
 
 ---
@@ -285,30 +285,24 @@ To prevent accounting distortions from penalizing capital-light compounders that
 
 ---
 
-### 5.3 Expected Growth Engine ($g_{\text{exp}}$), CAP Slope & Reinvestment Efficiency
+### 5.3 4-Filter Credible Growth Engine ($g_{\text{exp}}$), CAP Slope & Reinvestment Efficiency (v6.30)
 
-Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persistence research (Counterpoint Global) and McKinsey's Value Driver formula:
-1. **Growth Parameters**:
-   - `par_g_base = 0.06` (6.0% mature large-cap post-ZIRP baseline anchor).
-   - `par_g_cap = 0.12` (12.0% empirical ceiling for through-the-cycle large-cap EPS growth).
-2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$) & Growth Slope ($M_{\text{cap}}$)**:
-   - **CAP $\ge$ 30 Years** (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V, RMS.FR): $\lambda = 0.25$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
-   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT, MC.FR): $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
-   - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
-   - **Fallback / Unpopulated**: $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$.
-3. **Scale Ceilings, Reality Anchor & Asymmetric Fade (v6.29)**:
-   - **Enterprise Scale Tiers**:
-     - **Mega-Cap Tier** ($\text{MCap}_{\text{USD}} \ge \$100\text{B}$ or $\text{Revenue}_{\text{USD}} \ge \$50\text{B}$): Scale Cap = **$6.5\%$** (`par_g_cap_mega = 0.065`).
-     - **Large-Cap Tier** ($\text{MCap}_{\text{USD}} \ge \$25\text{B}$ or $\text{Revenue}_{\text{USD}} \ge \$10\text{B}$): Scale Cap = **$8.0\%$** (`par_g_cap_large = 0.080`).
-     - **Mid/Small-Cap Tier** ($<\$25\text{B}$): Scale Cap = **$12.0\%$** (`par_g_cap = 0.120`).
-   - **Target Selection & Turnaround Clamp**:
-     - Target is selected from `g_est` (override), `g_implied` (bottom-up), or historical 5Y CAGR $g$.
-     - If not an override and historical CAGR $g < 1.0\%$ (`par_g_turnaround = 0.010`), target is clamped to $6.0\%$ base rate (turnaround optimism requires proven execution).
-   - **Moat Runway Fade**:
-     - Target $\ge 6.0\%$: $g_{\text{faded}} = \lambda \times (\text{Target} - 0.06) + 0.06$.
-     - Target $< 6.0\%$: $g_{\text{faded}} = \max(0.02, \text{Target})$ (No Free Lunch).
-   - **Final Expected Growth**: $g_{\text{exp}} = \min(\text{Scale\_Cap}, g_{\text{faded}})$.
-4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
+Grounded in bottom-up capital reinvestment math, empirical corporate base rates, and McKinsey's Value Driver formula:
+1. **Core Growth & Revenue Size Gravity Parameters**:
+   - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
+   - `par_g_cap_mega = 0.085` (`8.5%` ceiling for Mega-Revenue enterprises $\ge \$50\text{B}$ USD equivalent).
+   - `par_g_cap_large = 0.100` (`10.0%` ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
+   - `par_g_cap = 0.120` (`12.0%` ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
+2. **4 Sequential Growth Filters** (bypassed only when explicit manual override `g_est` is populated):
+   - **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**: $(1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$, where pure `Toll booth / Switching costs` businesses with $\ge 35\%$ Operating ROIC receive full Zero-Capital Pricing freedom (deducting only chronic share dilution).
+   - **Filter 2 & 4a — Demand & Margin Ceiling ($g_{\text{demand}}$)**: $\min(g_{\text{implied}}, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion (and blending downward if historical Owner EPS lagged revenue + buybacks).
+   - **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ GDP** on $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$:
+     - **CAP $\ge$ 30 Years**: $w = 0.75$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
+     - **CAP $\ge$ 20 Years**: $w = 0.60$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
+     - **CAP $\ge$ 15 Years**: $w = 0.45$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
+     - For $g_{\text{raw}} \ge 3.5\%$: $g_{\text{faded}} = w \times g_{\text{raw}} + (1 - w) \times 0.035$; for $g_{\text{raw}} < 3.5\%$: $g_{\text{faded}} = \max(0.02, g_{\text{raw}})$ ("No Free Lunch").
+   - **Filter 4b — Revenue-Anchored Size Gravity**: $g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}}, g_{\text{faded}})$.
+3. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$
    - **Effective Growth Slope**: $M_{\text{eff}} = M_{\text{cap}} \times \eta_{\text{reinv}}$.

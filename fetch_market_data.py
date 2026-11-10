@@ -214,8 +214,13 @@ def apply_mirrors(keys: list[str], yh: Yahoo, state: dict) -> None:
             rate = yh.fx(s.get("quote_currency"), t.get("quote_currency"))
             if rate is None and num(s.get("price")) and num(t.get("price")):
                 rate = t["price"] / s["price"]          # same share basis (1:1 ADR / dual line)
-            for k in ("peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok", "g_est", "g_implied"):
+            for k in ("peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok",
+                      "sales_cagr", "sales_cagr_yrs", "buyback_yield", "retention_rate", "roiic",
+                      "g_est", "g_implied"):
                 t[k] = s.get(k)
+            if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:
+                fin_rate = yh.fx(s.get("fin_currency"), t.get("fin_currency")) or rate or 1.0
+                t["sales_ttm_m"] = num(s.get("sales_ttm_m")) * fin_rate
             for k in ("peak_oe_eps", "peak_eps_est"):
                 t[k] = num(s.get(k)) * rate if (num(s.get(k)) is not None and rate) else None
             set_auto_note(t, [f"PAR inputs mirrored from {src}"])

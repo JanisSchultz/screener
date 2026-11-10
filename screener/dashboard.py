@@ -38,7 +38,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             fin = meta["financials"].get(cid, {})
             pres = res_map.get(cid, {})
             cap_val = c.get("4")
-            val = par_valuation(fin, p, cap=cap_val)
+            val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"))
 
             # Effective ROIC
             r_est = fin.get("roic_est")
@@ -80,6 +80,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "price": fin.get("price"),
                 "quote_currency": fin.get("quote_currency") or universes_meta[u_key]["currency"],
                 "market_cap_m": fin.get("market_cap_m"),
+                "sales_ttm_m": fin.get("sales_ttm_m"),
                 "ni_ttm_m": fin.get("ni_ttm_m"),
                 "ebit_ttm_m": fin.get("ebit_ttm_m"),
                 "capex_ttm_m": fin.get("capex_ttm_m"),
@@ -99,6 +100,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "mult_low_5y": fin.get("mult_low_5y"),
                 "mult_high_5y": fin.get("mult_high_5y"),
                 "cagr_oe_eps": fin.get("cagr_oe_eps"),
+                "sales_cagr": fin.get("sales_cagr"),
+                "sales_cagr_yrs": fin.get("sales_cagr_yrs"),
+                "buyback_yield": fin.get("buyback_yield"),
+                "retention_rate": fin.get("retention_rate"),
+                "roiic": fin.get("roiic"),
                 "g_implied": fin.get("g_implied"),
                 "g_est": fin.get("g_est"),
                 "p2p_ok": fin.get("p2p_ok"),
@@ -115,6 +121,9 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "g_hist": val.get("g"),
                 "g_exp": val.get("g_exp"),
                 "g_imp": val.get("g_imp"),
+                "g_fund": val.get("g_fund"),
+                "g_demand": val.get("g_demand"),
+                "g_raw": val.get("g_raw"),
                 "scale_tier": val.get("scale_tier"),
                 "scale_cap": val.get("scale_cap"),
                 "coupon": val.get("coupon"),
@@ -137,7 +146,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = sorted(irrs)[len(irrs) // 2] if irrs else 0.0
 
     return {
-        "version": "6.27",
+        "version": "6.30",
         "generated_at": "2026-11-10",
         "summary": {
             "total_companies": len(all_companies),
@@ -1457,7 +1466,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Equity Bond Below PAR</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.29):</strong>
+        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.30):</strong>
         <p class="formula-code">
           PAR Multiple = min(mult_high_5y, (M_eff * g_exp + min(5Y_Midpoint_Mult, 35.0) + min(Operating_ROIC * 100, 35.0)) / 3)<br>
           <span style="font-size: 11px; color: var(--text-dim);">M_eff = M_cap * &eta;_reinv | M_cap: 240 (CAP &ge; 30y), 200 (CAP &ge; 20y), 170 (CAP &ge; 15y) | &eta;_reinv = clamp((1 - g/ROIC) / (1 - g/0.35), 0.25, 1.0)</span>
@@ -1471,14 +1480,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </p>
       </div>
       <div class="metric-box">
-        <strong style="color: var(--text-main);">Scale-Disciplined Mauboussin Growth Engine (v6.29):</strong>
+        <strong style="color: var(--text-main);">4-Filter Credible Growth Engine (v6.30):</strong>
         <p class="formula-code">
-          Expected g (g_exp) = min(Scale_Cap, Faded_Target)<br>
+          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw))<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            <b>Scale Ceilings:</b> Mega-Cap (&ge; $100B) &le; 6.5% | Large-Cap ($25B - $100B) &le; 8.0% | Mid/Small-Cap &le; 12.0%<br>
-            <b>Target Fade:</b> Target &ge; 6.0%: &lambda; * (Target - 6.0%) + 6.0% | Target &lt; 6.0%: max(2.0%, Target) &nbsp;(No Free Lunch)<br>
-            <b>Turnaround Clamp:</b> If 5Y Hist g &lt; 1.0%, target clamped to 6.0% (no unearned turnaround optimism)<br>
-            <b>Moat Persistence &lambda;:</b> 0.25 (CAP &ge; 30y), 0.15 (CAP &ge; 20y), 0.10 (CAP &ge; 15y)
+            <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth exemption for &ge;35% Operating ROIC)<br>
+            <b>2. Demand &amp; Margin Ceiling (g_demand):</b> min(g_implied, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(disallows perpetual margin expansion)<br>
+            <b>3. Step-Down Fade toward 3.5% GDP:</b> g_raw &ge; 3.5%: w * g_raw + (1 - w) * 3.5% &nbsp;(w = 0.75 CAP &ge;30y, 0.60 CAP &ge;20y, 0.45 CAP &ge;15y) | g_raw &lt; 3.5%: max(2.0%, g_raw)<br>
+            <b>4. Revenue Size Gravity:</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
           </span>
         </p>
       </div>
@@ -2423,7 +2432,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-g-imp').textContent = fmtPct(c.g_exp !== null && c.g_exp !== undefined ? c.g_exp : c.g_imp);
       const scaleEl = document.getElementById('dossier-scale-tier');
       if (scaleEl) {{
-        scaleEl.textContent = c.scale_tier ? `${{c.scale_tier}} tier [≤${{fmtPct(c.scale_cap)}}]` : '';
+        const parts = [];
+        if (c.g_est !== null && c.g_est !== undefined) {{
+          parts.push(`Override ${{fmtPct(c.g_est)}}`);
+        }} else {{
+          if (c.g_fund !== null && c.g_fund !== undefined) parts.push(`Supply ${{fmtPct(c.g_fund)}}`);
+          if (c.g_demand !== null && c.g_demand !== undefined) parts.push(`Demand ${{fmtPct(c.g_demand)}}`);
+        }}
+        if (c.scale_tier) parts.push(`${{c.scale_tier}} [≤${{fmtPct(c.scale_cap)}}]`);
+        scaleEl.textContent = parts.join(' · ');
       }}
       document.getElementById('dossier-g-market').textContent = fmtPct(c.g_market, true);
       const gMarginEl = document.getElementById('dossier-g-margin');

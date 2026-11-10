@@ -1,4 +1,4 @@
-"""Framework configuration (v6.29): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.30): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -220,15 +220,15 @@ PARAMETER_GROUPS = [
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
-        ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Caps (Mauboussin 75-year ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth for mid/small-caps at 12.0% based on empirical regression data."),
-        ("par_g_cap_large", "Max sustainable forward growth rate for Large-Caps ($25B - $100B USD equivalent)", 0.080, "0.0%", NEW + " Empirical scale ceiling (8.0%) for large-cap compounders."),
-        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Caps (>= $100B USD equivalent)", 0.065, "0.0%", NEW + " Empirical scale ceiling (6.5%) for mega-cap enterprises based on Mauboussin 75-year Base Rate research."),
-        ("par_g_turnaround", "Turnaround stagnation threshold for historical CAGR", 0.010, "0.0%", NEW + " Historical CAGR below 1.0% clamps forward starting target to par_g_base (6.0%) to prevent ungrounded turnaround credit."),
-        ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.06, "0.0%", NEW + " Post-ZIRP normalized baseline large-cap growth rate (6.0%)."),
-        ("par_fade_cap30", "Mauboussin growth persistence for Gate 4 CAP >= 30 years (fortress moats/monopolies)", 0.25, "0.00", NEW + " Slower autoregressive fade for ultra-long runway compounders."),
-        ("par_fade_cap20", "Mauboussin growth persistence for Gate 4 CAP >= 20 years (standard quality compounders)", 0.15, "0.00", NEW + " Empirical 75-year market-wide autoregressive baseline."),
-        ("par_fade_cap15", "Mauboussin growth persistence for Gate 4 CAP >= 15 years (shorter runway / higher transition risk)", 0.10, "0.00", NEW + " Faster autoregressive fade towards baseline."),
-        ("par_fade_default", "Fallback growth persistence when CAP is unpopulated", 0.15, "0.00", NEW + " Default fallback persistence coefficient."),
+        ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Revenue enterprises (< $15B USD)", 0.120, "0.0%", NEW + " Revenue Size Gravity ceiling (12.0%) for mid/small-revenue enterprises."),
+        ("par_g_cap_large", "Max sustainable forward growth rate for Large-Revenue enterprises ($15B - $50B USD)", 0.100, "0.0%", NEW + " Revenue Size Gravity ceiling (10.0%) for large-revenue enterprises."),
+        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Revenue enterprises (>= $50B USD)", 0.085, "0.0%", NEW + " Revenue Size Gravity ceiling (8.5%) for mega-revenue enterprises."),
+        ("par_g_turnaround", "Turnaround stagnation threshold for historical CAGR fallback", 0.010, "0.0%", NEW + " When multi-year sales_cagr is unavailable and historical CAGR < 1.0%, clamps target to par_g_base (3.5%)."),
+        ("par_g_base", "Nominal GDP base-rate anchor for Step-Down Fade", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Step-Down Fade."),
+        ("par_fade_cap30", "Step-down explicit growth weight for Gate 4 CAP >= 30 years (fortress monopolies)", 0.75, "0.00", NEW + " 5-7Y PAR cycle step-down weight (75% explicit + 25% nominal GDP) for 30-year moats."),
+        ("par_fade_cap20", "Step-down explicit growth weight for Gate 4 CAP >= 20 years (standard quality compounders)", 0.60, "0.00", NEW + " 5-7Y PAR cycle step-down weight (60% explicit + 40% nominal GDP) for 20-year moats."),
+        ("par_fade_cap15", "Step-down explicit growth weight for Gate 4 CAP >= 15 years (shorter runway)", 0.45, "0.00", NEW + " 5-7Y PAR cycle step-down weight (45% explicit + 55% nominal GDP) for 15-year moats."),
+        ("par_fade_default", "Fallback step-down explicit growth weight when CAP is unpopulated", 0.60, "0.00", NEW + " Default fallback step-down persistence weight (0.60)."),
         ("par_g_mult_cap30", "Pillar 1 growth multiple slope for Gate 4 CAP >= 30 years (2.4x turns per 1% growth)", 240.0, "0.0", NEW + " Rewards 30-year fortress monopolies for extended compounding duration."),
         ("par_g_mult_cap20", "Pillar 1 growth multiple slope for Gate 4 CAP >= 20 years (2.0x turns per 1% growth)", 200.0, "0.0", NEW + " Standard Graham/Lynch baseline slope for 20-year compounders."),
         ("par_g_mult_cap15", "Pillar 1 growth multiple slope for Gate 4 CAP >= 15 years (1.7x turns per 1% growth)", 170.0, "0.0", NEW + " Shorter-runway duration haircut for 15-year CAP businesses."),
@@ -550,5 +550,17 @@ CHANGELOG = {
         "(3) Historical Reality Anchor & Turnaround Clamp (par_g_turnaround = 0.010): Stagnant enterprises with historical 5Y CAGR "
         "below 1.0% (e.g. LVMH 0.0%, EXC -7.7%, GE -2.4%) have their forward starting target clamped to par_g_base (6.0%), "
         "preventing ungrounded double-digit recovery projections until turnaround execution is proven.",
+    ],
+    "6.30": [
+        "4-Filter Credible Growth Engine (Supply vs. Demand, 3.5% Nominal GDP Step-Down & Revenue Size Gravity): "
+        "(1) Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math "
+        "((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing allowance + Share Dilution deduction), "
+        "catching high-payout asset-heavy businesses (WM, PEP) and M&A-dilutive acquirers (BLK) without starving negative-WC or R&D compounders (COST, ASML.NL). "
+        "(2) Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors per-share demand to verified multi-year Revenue CAGR "
+        "plus net buyback yield (disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN), cross-checked against g_implied. "
+        "(3) Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP: Takes min(g_fund, g_demand) and steps down toward par_g_base = 3.5% "
+        "over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), preserving asymmetric 'No Free Lunch' below 3.5%. "
+        "(4) Filter 4b — Revenue-Anchored Size Gravity: Switched scale tiers from Market Cap to USD Revenue (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, "
+        "< $15B Mid/Sm <= 12.0%), ending the artificial 6.5% Market-Cap cliff on mid-revenue high-multiple compounders (ISRG, IDXX).",
     ],
 }

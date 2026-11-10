@@ -32,13 +32,19 @@ def _cached(path: Path, fetch, days=settings.CACHE_DAYS):
 # --------------------------------------------------------------------------- SEC
 class SEC:
     def __init__(self):
-        import requests
-        self.s = requests.Session()
-        self.s.headers.update({"User-Agent": settings.SEC_USER_AGENT, "Accept-Encoding": "gzip, deflate"})
+        self.s = None
+        if not settings.OFFLINE:
+            import requests
+            self.s = requests.Session()
+            self.s.headers.update({"User-Agent": settings.SEC_USER_AGENT, "Accept-Encoding": "gzip, deflate"})
         self._last = 0.0
         self._ciks = None
 
     def _get(self, url):
+        if self.s is None:
+            import requests
+            self.s = requests.Session()
+            self.s.headers.update({"User-Agent": settings.SEC_USER_AGENT, "Accept-Encoding": "gzip, deflate"})
         wait = 1 / settings.SEC_MAX_RPS - (time.time() - self._last)
         if wait > 0:
             time.sleep(wait)
@@ -154,8 +160,10 @@ class SEC:
 # ------------------------------------------------------------------------- Yahoo
 class Yahoo:
     def __init__(self):
-        import yfinance as yf
-        self.yf = yf
+        self.yf = None
+        if not settings.OFFLINE:
+            import yfinance as yf
+            self.yf = yf
         self._fx = {}
 
     def fx(self, frm: str, to: str):
