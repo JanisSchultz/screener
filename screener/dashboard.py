@@ -115,6 +115,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "g_hist": val.get("g"),
                 "g_exp": val.get("g_exp"),
                 "g_imp": val.get("g_imp"),
+                "scale_tier": val.get("scale_tier"),
+                "scale_cap": val.get("scale_cap"),
                 "coupon": val.get("coupon"),
                 "exp_coupon": val.get("exp_coupon"),
                 "imp_coupon": val.get("imp_coupon"),
@@ -1455,7 +1457,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Equity Bond Below PAR</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.28):</strong>
+        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.29):</strong>
         <p class="formula-code">
           PAR Multiple = min(mult_high_5y, (M_eff * g_exp + min(5Y_Midpoint_Mult, 35.0) + min(Operating_ROIC * 100, 35.0)) / 3)<br>
           <span style="font-size: 11px; color: var(--text-dim);">M_eff = M_cap * &eta;_reinv | M_cap: 240 (CAP &ge; 30y), 200 (CAP &ge; 20y), 170 (CAP &ge; 15y) | &eta;_reinv = clamp((1 - g/ROIC) / (1 - g/0.35), 0.25, 1.0)</span>
@@ -1469,11 +1471,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </p>
       </div>
       <div class="metric-box">
-        <strong style="color: var(--text-main);">Mauboussin Asymmetric CAP-Linked Growth Engine:</strong>
+        <strong style="color: var(--text-main);">Scale-Disciplined Mauboussin Growth Engine (v6.29):</strong>
         <p class="formula-code">
-          Hist_g &ge; 6.0%: Expected g (g_exp) = min(12.0%, &lambda; * (Hist_g - 6.0%) + 6.0%)<br>
-          Hist_g &lt; 6.0%: Expected g (g_exp) = max(2.0%, Hist_g) &nbsp;<span style="color:var(--text-dim);">(No Free Lunch: low growth never faded up)</span><br>
-          <span style="font-size: 11px; color: var(--text-dim);">&lambda; linked to Gate 4 CAP: 0.25 (CAP &ge; 30y), 0.15 (CAP &ge; 20y), 0.10 (CAP &ge; 15y)</span>
+          Expected g (g_exp) = min(Scale_Cap, Faded_Target)<br>
+          <span style="font-size: 11px; color: var(--text-dim);">
+            <b>Scale Ceilings:</b> Mega-Cap (&ge; $100B) &le; 6.5% | Large-Cap ($25B - $100B) &le; 8.0% | Mid/Small-Cap &le; 12.0%<br>
+            <b>Target Fade:</b> Target &ge; 6.0%: &lambda; * (Target - 6.0%) + 6.0% | Target &lt; 6.0%: max(2.0%, Target) &nbsp;(No Free Lunch)<br>
+            <b>Turnaround Clamp:</b> If 5Y Hist g &lt; 1.0%, target clamped to 6.0% (no unearned turnaround optimism)<br>
+            <b>Moat Persistence &lambda;:</b> 0.25 (CAP &ge; 30y), 0.15 (CAP &ge; 20y), 0.10 (CAP &ge; 15y)
+          </span>
         </p>
       </div>
     </div>
@@ -1595,6 +1601,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <div class="metric-box">
             <div class="label">Expected g (g_exp)</div>
             <div class="value" id="dossier-g-imp">-</div>
+            <div class="subtext" id="dossier-scale-tier" style="font-size: 10px; color: var(--text-dim); margin-top: 2px;"></div>
           </div>
           <div class="metric-box">
             <div class="label">Market-Implied g</div>
@@ -2413,7 +2420,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
 
-      document.getElementById('dossier-g-imp').textContent = fmtPct(c.g_imp);
+      document.getElementById('dossier-g-imp').textContent = fmtPct(c.g_exp !== null && c.g_exp !== undefined ? c.g_exp : c.g_imp);
+      const scaleEl = document.getElementById('dossier-scale-tier');
+      if (scaleEl) {{
+        scaleEl.textContent = c.scale_tier ? `${{c.scale_tier}} tier [≤${{fmtPct(c.scale_cap)}}]` : '';
+      }}
       document.getElementById('dossier-g-market').textContent = fmtPct(c.g_market, true);
       const gMarginEl = document.getElementById('dossier-g-margin');
       gMarginEl.textContent = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';

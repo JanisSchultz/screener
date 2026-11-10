@@ -1,4 +1,4 @@
-"""Framework configuration (v6.27): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.29): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -47,6 +47,20 @@ MOAT_TYPES = [
     "R&D super-thinkers / Intangibles",
     "None",
 ]
+
+FX_TO_USD = {
+    "USD": 1.0,
+    "EUR": 1.08,
+    "GBP": 1.30,
+    "GBX": 0.013,
+    "GBp": 0.013,
+    "CHF": 1.15,
+    "CAD": 0.72,
+    "SEK": 0.095,
+    "NOK": 0.092,
+    "DKK": 0.145,
+    "PLN": 0.25,
+}
 
 S_G1 = "Gate 1: Simple to Understand"
 S_G2 = "Gate 2: Essential Western Need & Entrenched Everyday Habits"
@@ -206,7 +220,10 @@ PARAMETER_GROUPS = [
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
-        ("par_g_cap", "Max sustainable forward growth rate (Mauboussin 75-year large-cap ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth at 12.0% based on empirical regression data (Ex. 18/19)."),
+        ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Caps (Mauboussin 75-year ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth for mid/small-caps at 12.0% based on empirical regression data."),
+        ("par_g_cap_large", "Max sustainable forward growth rate for Large-Caps ($25B - $100B USD equivalent)", 0.080, "0.0%", NEW + " Empirical scale ceiling (8.0%) for large-cap compounders."),
+        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Caps (>= $100B USD equivalent)", 0.065, "0.0%", NEW + " Empirical scale ceiling (6.5%) for mega-cap enterprises based on Mauboussin 75-year Base Rate research."),
+        ("par_g_turnaround", "Turnaround stagnation threshold for historical CAGR", 0.010, "0.0%", NEW + " Historical CAGR below 1.0% clamps forward starting target to par_g_base (6.0%) to prevent ungrounded turnaround credit."),
         ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.06, "0.0%", NEW + " Post-ZIRP normalized baseline large-cap growth rate (6.0%)."),
         ("par_fade_cap30", "Mauboussin growth persistence for Gate 4 CAP >= 30 years (fortress moats/monopolies)", 0.25, "0.00", NEW + " Slower autoregressive fade for ultra-long runway compounders."),
         ("par_fade_cap20", "Mauboussin growth persistence for Gate 4 CAP >= 20 years (standard quality compounders)", 0.15, "0.00", NEW + " Empirical 75-year market-wide autoregressive baseline."),
@@ -522,5 +539,16 @@ CHANGELOG = {
         "(2) Asymmetrical Fade ('No Free Lunch' Rule): Stagnant franchises with historical cycle CAGR below 6.0% (g < 0.06) "
         "are anchored to their actual historical track record (max(2.0%, g)) rather than receiving an artificial upward boost "
         "towards the base rate. High-growth franchises (g >= 0.06) continue to fade downward based on Gate 4 CAP persistence (lambda).",
+    ],
+    "6.29": [
+        "Scale-Disciplined Mauboussin Growth Engine & Empirical Reality Anchors: "
+        "(1) Multi-Tier Scale Ceilings (Law of Large Numbers): Replaced flat growth cap with size-dependent empirical ceilings "
+        "normalized to USD enterprise value: Mega-Caps (>= $100B USD equivalent) capped at par_g_cap_mega = 6.5%; "
+        "Large-Caps ($25B - $100B USD equivalent) capped at par_g_cap_large = 8.0%; Mid/Small-Caps (< $25B) capped at par_g_cap = 12.0%. "
+        "(2) Subjected Stored Analyst Estimates (g_implied) to Mauboussin Fade: Disciplined bottom-up projections by applying "
+        "Gate 4 CAP persistence fade toward par_g_base = 6.0%, eliminating the unconstrained 'Inside View' bypass. "
+        "(3) Historical Reality Anchor & Turnaround Clamp (par_g_turnaround = 0.010): Stagnant enterprises with historical 5Y CAGR "
+        "below 1.0% (e.g. LVMH 0.0%, EXC -7.7%, GE -2.4%) have their forward starting target clamped to par_g_base (6.0%), "
+        "preventing ungrounded double-digit recovery projections until turnaround execution is proven.",
     ],
 }

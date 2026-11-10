@@ -113,7 +113,10 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     fund_cap = cap if isinstance(cap, (int, float)) else f("cap")
     par_roic_cap = (p or {}).get("par_roic_cap", 35.0)
     par_hist_cap = (p or {}).get("par_hist_cap", 35.0)
-    par_g_cap = (p or {}).get("par_g_cap", 0.12)
+    par_g_cap_default = (p or {}).get("par_g_cap", 0.12)
+    par_g_cap_large = (p or {}).get("par_g_cap_large", 0.080)
+    par_g_cap_mega = (p or {}).get("par_g_cap_mega", 0.065)
+    par_g_turnaround = (p or {}).get("par_g_turnaround", 0.010)
     par_g_base = (p or {}).get("par_g_base", 0.06)
     par_fade_cap30 = (p or {}).get("par_fade_cap30", 0.25)
     par_fade_cap20 = (p or {}).get("par_fade_cap20", 0.15)
@@ -123,6 +126,24 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     par_g_mult_cap20 = (p or {}).get("par_g_mult_cap20", 200.0)
     par_g_mult_cap15 = (p or {}).get("par_g_mult_cap15", 170.0)
     par_g_mult_default = (p or {}).get("par_g_mult_default", 200.0)
+
+    # Enterprise Scale Determination (Law of Large Numbers):
+    # Normalized to USD equivalent using standard currency cross rates
+    ccy = fin.get("fin_currency") or fin.get("quote_currency") or "USD"
+    fx_rate = C.FX_TO_USD.get(ccy, 1.0)
+    mc_usd_b = ((mc or 0.0) * fx_rate) / 1000.0
+    rev = f("revenue_ttm_m") or f("revenue_m")
+    rev_usd_b = ((rev or 0.0) * fx_rate) / 1000.0 if rev else 0.0
+
+    if mc_usd_b >= 100.0 or rev_usd_b >= 50.0:
+        scale_tier = "MEGA"
+        scale_cap = par_g_cap_mega
+    elif mc_usd_b >= 25.0 or rev_usd_b >= 10.0:
+        scale_tier = "LARGE"
+        scale_cap = par_g_cap_large
+    else:
+        scale_tier = "MID/SM"
+        scale_cap = par_g_cap_default
 
     # Mauboussin Base-Rate Regression for Expected Growth (g_exp) & CAP-Linked Growth Slope (g_mult)
     # Linked to Gate 4 Runway CAP:
@@ -143,24 +164,43 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
         pers = par_fade_default
         g_mult = par_g_mult_default
 
+    # Expected Growth (g_exp) Determination (v6.29):
+    # 1. Target Selection:
+    is_override = False
     if f("g_est") is not None:
-        g_exp = f("g_est")
+        raw_target = f("g_est")
+        is_override = True
     elif f("g_implied") is not None:
-        g_exp = min(par_g_cap, f("g_implied"))
+        raw_target = f("g_implied")
     elif g is not None:
-        if g >= par_g_base:
-            g_exp = min(par_g_cap, pers * (g - par_g_base) + par_g_base)
-        else:
-            g_exp = max(0.02, g)
+        raw_target = g
     else:
-        g_exp = par_g_base
+        raw_target = par_g_base
+
+    # 2. Historical Reality Anchor & Turnaround Clamp:
+    # Stagnant or contracting historical compounders (g < 1.0%) cannot assume ungrounded turnaround growth
+    if not is_override and g is not None and g < par_g_turnaround:
+        raw_target = min(raw_target, par_g_base)
+
+    # 3. Moat Runway Fade (Mauboussin Persistence):
+    if is_override:
+        faded_g = raw_target
+    elif raw_target >= par_g_base:
+        faded_g = pers * (raw_target - par_g_base) + par_g_base
+    else:
+        # Asymmetrical Fade ('No Free Lunch'): low growers cannot fade upward
+        faded_g = max(0.02, raw_target)
+
+    # 4. Empirical Scale Ceiling:
+    g_exp = min(scale_cap, faded_g)
 
     if not price or not peak_eps or peak_eps <= 0 or not ml or not mh:
         return {"status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None,
                 "par_val": None, "vs_par": None, "g": g, "dy": dy, "coupon": (g + dy) if g is not None else None,
                 "g_exp": g_exp, "exp_coupon": (g_exp + dy) if g_exp is not None else None,
                 "g_imp": g_exp, "imp_coupon": (g_exp + dy) if g_exp is not None else None, "irr_5y": None,
-                "cap_implied": None, "cap_gap": None, "g_market": None, "g_gap": None}
+                "cap_implied": None, "cap_gap": None, "g_market": None, "g_gap": None,
+                "scale_tier": scale_tier, "scale_cap": scale_cap}
     cur_mult = price / peak_eps
     g_val = g_exp if (g_exp is not None and g_exp > 0) else par_g_base
     roic = f("roic_est") if f("roic_est") is not None else (f("roic_operating") if f("roic_operating") is not None else f("roic_median"))
@@ -170,7 +210,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     roic_bench = max(0.15, par_roic_cap / 100.0)
     if roic is not None:
         roic_eff = min(max(roic, 0.05), roic_bench)
-        g_ref = min(max(g_val, 0.0), par_g_cap)
+        g_ref = min(max(g_val, 0.0), scale_cap)
         denom = max(0.10, 1.0 - g_ref / roic_bench)
         numer = max(0.0, 1.0 - g_ref / max(roic_eff, g_ref + 0.005))
         reinv_eff = max(0.25, min(1.0, numer / denom))
@@ -211,4 +251,6 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
         "cap_gap": cap_gap,
         "g_market": g_market,
         "g_gap": g_gap,
+        "scale_tier": scale_tier,
+        "scale_cap": scale_cap,
     }

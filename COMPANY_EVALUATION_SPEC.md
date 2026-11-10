@@ -293,18 +293,21 @@ Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persi
    - `par_g_cap = 0.12` (12.0% empirical ceiling for through-the-cycle large-cap EPS growth).
 2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$) & Growth Slope ($M_{\text{cap}}$)**:
    - **CAP $\ge$ 30 Years** (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V, RMS.FR): $\lambda = 0.25$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
-   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT): $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
+   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT, MC.FR): $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
    - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
    - **Fallback / Unpopulated**: $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$.
-3. **Growth Hierarchy & Asymmetric Fade ("No Free Lunch" Rule)**:
-   - If analyst override `g_est` is populated $\rightarrow g_{\text{exp}} = g_{\text{est}}$.
-   - Else if bottom-up estimate `g_implied` (or `g_exp`) is populated $\rightarrow g_{\text{exp}} = \min(\text{par\_g\_cap}, g_{\text{implied}})$.
-   - Else apply the **Mauboussin Asymmetric CAP-Linked Fade Formula** to historical cycle CAGR $g$:
-     - For $g \ge 0.06$ (High Growth): Fades downward towards the 6.0% base rate:
-       $$g_{\text{exp}} = \min\left(0.12, \lambda \times (g - 0.06) + 0.06\right)$$
-     - For $g < 0.06$ (Slow Growth): Anchored to actual historical CAGR (never faded up):
-       $$g_{\text{exp}} = \max(0.02, g)$$
-   - Fallback: $g_{\text{exp}} = 0.06$ (6.0%).
+3. **Scale Ceilings, Reality Anchor & Asymmetric Fade (v6.29)**:
+   - **Enterprise Scale Tiers**:
+     - **Mega-Cap Tier** ($\text{MCap}_{\text{USD}} \ge \$100\text{B}$ or $\text{Revenue}_{\text{USD}} \ge \$50\text{B}$): Scale Cap = **$6.5\%$** (`par_g_cap_mega = 0.065`).
+     - **Large-Cap Tier** ($\text{MCap}_{\text{USD}} \ge \$25\text{B}$ or $\text{Revenue}_{\text{USD}} \ge \$10\text{B}$): Scale Cap = **$8.0\%$** (`par_g_cap_large = 0.080`).
+     - **Mid/Small-Cap Tier** ($<\$25\text{B}$): Scale Cap = **$12.0\%$** (`par_g_cap = 0.120`).
+   - **Target Selection & Turnaround Clamp**:
+     - Target is selected from `g_est` (override), `g_implied` (bottom-up), or historical 5Y CAGR $g$.
+     - If not an override and historical CAGR $g < 1.0\%$ (`par_g_turnaround = 0.010`), target is clamped to $6.0\%$ base rate (turnaround optimism requires proven execution).
+   - **Moat Runway Fade**:
+     - Target $\ge 6.0\%$: $g_{\text{faded}} = \lambda \times (\text{Target} - 0.06) + 0.06$.
+     - Target $< 6.0\%$: $g_{\text{faded}} = \max(0.02, \text{Target})$ (No Free Lunch).
+   - **Final Expected Growth**: $g_{\text{exp}} = \min(\text{Scale\_Cap}, g_{\text{faded}})$.
 4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$

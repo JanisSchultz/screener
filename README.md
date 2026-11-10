@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.28 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.29 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,11 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.29: Scale-Disciplined Mauboussin Growth Engine & Empirical Reality Anchors:
+- Multi-Tier Scale Ceilings (Law of Large Numbers): Replaced the flat 12% growth ceiling with size-dependent empirical caps normalized to USD enterprise value: Mega-Caps (>= $100B USD equivalent) capped at par_g_cap_mega = 6.5%; Large-Caps ($25B - $100B USD equivalent) capped at par_g_cap_large = 8.0%; Mid/Small-Caps (< $25B) capped at par_g_cap = 12.0%.
+- Disciplined Bottom-Up Projections (g_implied): Bottom-up estimates are now disciplined by Gate 4 CAP persistence fade (lambda = 0.25, 0.15, 0.10) toward par_g_base = 6.0%, eliminating the unconstrained "Inside View" bypass.
+- Historical Reality Anchor & Turnaround Clamp (par_g_turnaround = 0.010): Stagnant enterprises with historical 5Y CAGR below 1.0% (e.g. LVMH 0.0%, EXC -7.7%, GE -2.4%) have their forward starting target clamped to par_g_base (6.0%), preventing ungrounded double-digit recovery projections until turnaround execution is proven.
 
 v6.28: Asymmetric Mauboussin Growth Engine & 6.0% Post-ZIRP Base Anchor (par_g_base = 0.06):
 - Post-ZIRP Base Anchor (6.0%): Lowered mature large-cap base rate anchor par_g_base from 7.0% to 6.0%, reflecting normalized long-term nominal GDP growth (~4.0%-4.5%) plus sustainable share repurchase accretion.
