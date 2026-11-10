@@ -140,6 +140,35 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(val_at_par["g_market"], 0.085, places=4)
         self.assertAlmostEqual(val_at_par["g_gap"], 0.0, places=4)
 
+    def test_mid_cycle_blend_when_current_eps_below_peak(self):
+        # Peak = 10.0, NI = 600M, MC = 10,000M, Price = 100.0 -> cur_eps = 6.0
+        # Active EPS = 0.5 * (10.0 + 6.0) = 8.0
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=600.0, peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 8.0, places=4)
+        self.assertAlmostEqual(val["cur_mult"], 100.0 / 8.0, places=4)
+
+    def test_compounder_at_peak_untouched(self):
+        # Peak = 10.0, NI = 1000M, MC = 10,000M, Price = 100.0 -> cur_eps = 10.0
+        # Active EPS remains 10.0
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=1000.0, peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 10.0, places=4)
+
+    def test_analyst_override_takes_precedence_over_mid_cycle(self):
+        # Peak = 10.0, cur_eps = 6.0, but analyst set peak_eps_est = 7.2
+        # Active EPS must equal 7.2
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=600.0, peak_oe_eps=10.0, peak_eps_est=7.2)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 7.2, places=4)
+
+    def test_negative_net_income_floored_at_zero(self):
+        # Peak = 10.0, NI = -500M -> cur_eps = -5.0 (floored to 0.0)
+        # Active EPS = 0.5 * (10.0 + 0.0) = 5.0
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=-500.0, peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 5.0, places=4)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -258,10 +258,10 @@ The Equity Bond Below PAR model treats high-quality compounders as equity bonds 
 1. **Owner EPS**:
    $$\text{Owner EPS} = \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Diluted Shares}}$$
    *One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out.*
-2. **Peak Owner EPS**:
+2. **Peak Owner EPS & 50/50 Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest Owner EPS achieved over the last 5 fiscal years (converted to quote currency).
    - `peak_eps_est`: Analyst override for Peak Owner EPS if the reported peak contains unrepeatable windfalls or pre-spin-off distortions.
-   - **Active Peak EPS**: Use `peak_eps_est` if populated, otherwise `peak_oe_eps`.
+   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the 50/50 Mid-Cycle Reversion standard: if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps}))$; otherwise `peak_oe_eps`.
 3. **5-Year Historical Cycle Multiples**:
    - `mult_low_5y`: 5-year cycle low multiple (median of yearly lows).
    - `mult_high_5y`: 5-year cycle high multiple (median of yearly highs).

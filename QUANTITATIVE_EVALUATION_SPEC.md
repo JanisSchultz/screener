@@ -69,13 +69,18 @@ When an evaluation is triggered, the coordinator agent provides:
      - $\text{Net Income} > 1.30 \times \text{prior year Net Income}$, **AND**
      - $\text{Net Income} > 1.30 \times \text{following year Net Income}$ (or for latest year: $+50\%$ vs prior and $> 1.30 \times \text{OCF}$).
 
-3. **Peak Owner EPS Selection & Override (`peak_eps_est`)**:
+3. **Peak Owner EPS Selection, Override (`peak_eps_est`) & 50/50 Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest valid Owner EPS in the last 5 fiscal years.
    - **Analyst Override (`peak_eps_est`)**: Required when:
      - The reported peak contains an unrepeatable operational windfall (e.g. pandemic freight rates, cyclical commodity peak).
      - Recent strategic spin-offs or restructurings distorted historical share counts or continuing operations.
-   - **Active Peak EPS**:
-     $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
+   - **The 50/50 Mid-Cycle Reversion Standard**:
+     When `peak_eps_est` is not explicitly populated, active earning power is protected against stale or bubble peaks:
+     - If current TTM EPS ($\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income}}{\text{Market Cap}}$) falls below `peak_oe_eps`:
+       $$\text{Active Peak EPS} = 0.5 \times \left(\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})\right)$$
+     - If $\text{cur\_eps} \ge \text{peak\_oe\_eps}$: $\text{Active Peak EPS} = \text{peak\_oe\_eps}$.
+   - **Active Peak EPS Summary**:
+     $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})) & \text{if } \text{cur\_eps} < \text{peak\_oe\_eps} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
 
 ---
 

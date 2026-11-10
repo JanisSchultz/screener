@@ -93,7 +93,19 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
-    peak_eps = f("peak_eps_est") if f("peak_eps_est") is not None else f("peak_oe_eps")
+    ni = f("ni_ttm_m")
+    if f("peak_eps_est") is not None:
+        peak_eps = f("peak_eps_est")
+    else:
+        oe_peak = f("peak_oe_eps")
+        # Current TTM EPS inferred from reported Net Income and Market Cap / Price
+        cur_eps = (price * (ni / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
+        if oe_peak is not None and cur_eps is not None and cur_eps < oe_peak:
+            # 50/50 Mid-Cycle Reversion Standard: when current earnings fall below peak,
+            # active earning power normalizes to the mid-cycle average between peak capacity and current reality.
+            peak_eps = 0.5 * (oe_peak + max(0.0, cur_eps))
+        else:
+            peak_eps = oe_peak
     ml = f("mult_low_5y")
     mh = f("mult_high_5y")
     g = f("cagr_oe_eps")
