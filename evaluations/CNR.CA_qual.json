@@ -1,0 +1,29 @@
+{
+  "id": "CNR.CA",
+  "ticker": "CNR",
+  "universe": "ca",
+  "company": "Canadian National Railway",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Rail Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Physically unreplicable 20,000-mile contiguous right-of-way connecting Atlantic, Pacific, and Gulf coasts forms an unassailable duopoly with CPKC. Protected by prohibitive replacement costs, environmental permitting barriers, and captive single-served shippers. Multi-cycle proof via 14.5% median GAAP ROIC and 38-40% EBIT margins; pricing escalates 1-2% above rail inflation plus fuel surcharges. Primary erosion risks: CTA/STB interswitching regulatory mandates and freight recessions.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates. Irreplaceable transcontinental three-coast freight rail duopoly (Atlantic, Pacific, Gulf of Mexico) with CPKC. Demonstrated multi-cycle pricing power with contract escalators consistently pricing 100-200 bps above rail inflation plus fuel surcharges. Passes Gate 6 under the essential infrastructure standard with 100.5% FCF conversion, 14.5% 5Y median ROIC, ~38-40% EBIT margins, and conservative 7.9x interest coverage on long-dated debt. [5-10Y g: carload volume growth 2.0% + tariff escalation above inflation 3.0% + operating ratio efficiency 0.5% + net share repurchases 1.5%]",
+    "evidence": "5Y median GAAP ROIC of 14.5% and tangible operating ROIC of 14.6%. Multi-year FCF conversion of 100.5% (EBIT 7,177M CAD, Net Income 4,720M CAD). 20,000 route miles linking Halifax, Vancouver, Prince Rupert, and New Orleans. Operates at low-60s operating ratio. Net debt of 19,950M CAD is ~4.2y owner earnings with strong 7.9x interest coverage and well-laddered long-term maturities, qualifying under the physical infrastructure solvency standard. Disciplined capital allocation with 28 consecutive years of dividend increases and steady share buybacks."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluator": "independent-agent"
+  }
+}

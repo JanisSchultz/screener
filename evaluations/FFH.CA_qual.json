@@ -1,0 +1,29 @@
+{
+  "id": "FFH.CA",
+  "ticker": "FFH",
+  "universe": "ca",
+  "company": "Fairfax Financial Holdings Limited",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Property & Casualty Insurance",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Global commercial P&C and reinsurance underwriting scale combined with a decentralized, disciplined underwriting culture where manager incentives prioritize sub-95% combined ratios over premium volume. Generates >$39B in negative-cost float invested in fixed income and look-through equities. Demonstrated pricing power via aggressive commercial rate hardening exceeding loss-cost inflation. Primary erosion threats: catastrophic mega-disaster events (hurricanes/earthquakes), prolonged casualty soft market pricing cycles, and mark-to-market investment volatility.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates under the float institution rubric. Global commercial P&C and reinsurance powerhouse led by Prem Watsa, generating durable negative-cost underwriting float (sub-95% combined ratio) compounded across high-yielding fixed income and look-through equities. Pricing power demonstrated across commercial rate hardening cycles. Fortress capital adequacy (Solvency II/LICAT >200%, 8.8x interest coverage) and exceptional 40-year track record of compounding book value per share at ~18.7% CAGR. [5-10Y g: commercial premium volume 4.0% + rate/pricing indexation 2.0% + float investment income 2.5% - catastrophe/loss cycle drag 1.0% + share repurchases 1.0%]",
+    "evidence": "Multi-cycle 5-year median ROIC/ROE exceeds 20% (operating ROIC 27.8%). Underwriting combined ratio of 92.7% (2024) and 93.0% (2025) generated >$1.8B in undiscounted annual underwriting profit, growing low-cost float to $39.3B. Investment portfolio of $60B+ yields strong recurring interest and dividend income in a normalized rate environment. Solvency II, LICAT, and RBC capital adequacy ratios across operating subsidiaries (Odyssey, Allied World, Crum & Forster, Northbridge) stand comfortably above 200%. Holding company liquidity exceeds $2B with consolidated EBIT/interest coverage of 8.8x ($7.26B EBIT vs $822M interest). Prem Watsa's decentralized 40-year stewardship has compounded book value per share at 18.7% CAGR."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

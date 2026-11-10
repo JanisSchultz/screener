@@ -1,0 +1,29 @@
+{
+  "id": "BN.CA",
+  "ticker": "BN",
+  "universe": "ca",
+  "company": "Brookfield Corporation",
+  "country": "Canada",
+  "sector": "Financials",
+  "sub_industry": "Multi-Sector Holdings",
+  "qualitative": {
+    "gate_1": "N",
+    "gate_2": null,
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": null,
+    "gate_3b_pricing_and_proof": null,
+    "gate_3m_moat_note": null,
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 1 (REJECT). Brookfield Corporation is a highly complex, multi-layered global conglomerate holding company whose economic risks and underlying asset values cannot be independently verified from the outside. While its 73%-owned asset manager (BAM) is an asset-light, transparent fee-collector, BN is the capital-heavy owner of equity residuals, unlisted private equity assets, commercial real estate (Brookfield Property Group), and expanding insurance/annuity liabilities (Brookfield Wealth Solutions). Internal mark-to-model Level 3 IFRS fair value accounting, complex unconsolidated affiliate webs, related-party capital recycling, and massive look-through leverage create structural opacity that violates the Munger circle of competence and verifiability standard. Downstream gates bypassed per waterfall.",
+    "evidence": "Brookfield Corporation operates a labyrinthine corporate structure spanning dozens of public and private entities, including listed partnerships (BIP, BEP, BBU), direct real estate holdings (privatized BPY), and an expanding insurance balance sheet ($100B+ AUM across Brookfield Wealth Solutions / AEL). Key economic risks are invisible or unverifiable from reported figures: (1) Level 3 mark-to-model IFRS fair value accounting for vast commercial real estate (office/retail) and private equity portfolios, where minor 25-50 bps shifts in subjective capitalization and discount rates swing equity book value by billions; (2) Heavy consolidated leverage with >$200B in debt; while categorized as asset-level non-recourse, holdco cash flows are structurally subordinated to subsidiary debt covenants, and holdco capital is routinely deployed to backstop or inject equity into stressed affiliates; (3) Rapid expansion into fixed annuity reinsurance backing liabilities with internally originated alternative credit, introducing opaque long-tail actuarial and credit risks; and (4) Pervasive related-party transactions, management fees, incentive distributions, and asset transfers between holdco, listed affiliates, and private funds. This opacity directly contrasts with standalone BAM Ltd. (BAM.CA) and triggers an automatic structural rejection under Gate 1 standard (b)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G1 Understandability",
+    "failing_gate": "Gate 1",
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

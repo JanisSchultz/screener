@@ -1,0 +1,29 @@
+{
+  "id": "FICO",
+  "ticker": "FICO",
+  "universe": "us",
+  "company": "Fair Isaac Corporation",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Entrenched B2B financial scoring toll booth with historically extreme pricing power in mortgage and consumer credit scoring.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Textbook cautionary tale of over-milking a toll booth. 400%+ mortgage score price hikes directly provoked the Federal Housing Finance Agency (FHFA) to approve rival VantageScore 4.0, breaking FICO's statutory mortgage monopoly. Combined with carrying >4x Net Debt from peak-multiple share repurchases, terminal durability is impaired, capping CAP at 10 years. Downstream gates bypassed per waterfall.",
+    "evidence": "FHFA transition requiring both FICO and VantageScore 4.0 for Fannie Mae and Freddie Mac loan deliveries eliminates FICO's sole-source monopoly. Extreme price exploitation invited direct regulatory intervention. Balance sheet carries $2.66B long-term debt against $134M cash (~$2.52B net debt, ~3.9x Net Income) driven by aggressive share repurchases executed at peak multiples (>50-80x P/E)."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-09T20:45:00Z",
+    "evaluator": "independent-agent"
+  }
+}

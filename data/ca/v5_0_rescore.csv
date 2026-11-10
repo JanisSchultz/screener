@@ -1,0 +1,7 @@
+id,code,value,note
+ENB.CA,2.3,N,Regulated cost-of-service pipeline; 6.6% ROIC
+ENB.CA,3.3n,5,CAP <= 5: sub-10% return on capital
+TRP.CA,2.3,N,Gas transmission pipeline; 6.5% ROIC
+TRP.CA,3.3n,5,CAP <= 5: sub-10% return on capital
+PPL.CA,2.3,N,Pipeline and midstream infrastructure; 8.0% ROIC
+PPL.CA,3.3n,5,CAP <= 5: sub-10% return on capital

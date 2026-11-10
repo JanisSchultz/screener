@@ -1,0 +1,43 @@
+{
+  "id": "IFC.CA",
+  "ticker": "IFC",
+  "universe": "ca",
+  "company": "Intact Financial Corporation",
+  "price": 276.0,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": null,
+    "fin_note": "Peak Owner EPS confirmed at 20.2521 CAD (FY2025) with pristine 120.9% FCF conversion and zero non-cash windfall spikes. Tangible Operating ROIC of 24.71% (GAAP ROIC 13.85%) neutralizes $9.79B in accumulated M&A goodwill/intangibles from AXA, OneBeacon, and RSA acquisitions. Forward 5-10Y Owner EPS compounding capacity anchored at 8.5% via bottom-up bridge (4.5% direct written premium volume + 1.5% claims scale/underwriting margin outperformance + 1.5% float investment income + 1.0% net share buybacks; Mauboussin fade on 11.78% historical CAGR yields 7.72%). 3-Pillar raw PAR multiple of 19.42x is governed by secular growth (17.00), cycle midpoint (16.54x), and tangible ROIC (24.71), safely below the 19.70x 5Y cycle high ceiling. At 276.0 CAD (13.63x peak Owner EPS), IFC trades at a deep 29.8% discount to fundamental PAR Value (393.20 CAD), generating an expected 5Y IRR of 18.60% (17.13% under pure Mauboussin) with a 6.0-year Moat Runway Margin."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 20.2521,
+    "current_multiple": 13.63,
+    "par_multiple": 19.42,
+    "par_value": 393.20,
+    "percent_vs_par": -0.2981,
+    "status": "Below PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.0214,
+    "expected_irr_5y": 0.1860,
+    "market_implied_cap": 14.0,
+    "moat_runway_margin": 6.0,
+    "market_implied_growth": -0.0018,
+    "growth_margin_of_safety": 0.0868
+  },
+  "health_checks": {
+    "net_debt_years": 0.95,
+    "net_debt_ok": true,
+    "interest_coverage": 20.14,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.21,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T21:46:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

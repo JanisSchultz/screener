@@ -1,0 +1,19 @@
+id,code,value,note
+ML.FR,2.1b,0,Long-cycle tire replacement; Asian competition
+ML.FR,2.3,N,Auto OEM volume price-taker; low pricing power
+ML.FR,3.3n,5,CAP <= 5: sub-15% tangible ROIC
+HLN.GB,2.3,N,Consumer healthcare private label erosion; 6.6% ROIC
+HLN.GB,3.3n,5,CAP <= 5: sub-10% return on capital
+ARGX.BE,3.3n,5,CAP <= 5: negative ROIC commercial-stage biotech
+LONN.CH,2.3,N,Biopharma CDMO batch manufacturing overcapacity; 7.9% ROIC
+LONN.CH,3.3n,5,CAP <= 5: sub-10% return on capital
+FHZN.CH,3.3n,5,CAP <= 5: regulated airport tariffs; 8.6% ROIC
+GET.FR,3.3n,5,CAP <= 5: high capital intensity channel tunnel; 7.3% ROIC
+DSFIR.NL,3.3n,5,CAP <= 5: chemical specialty cycle; 2.4% ROIC
+EPI A.SE,2.1b,0,Mining machinery unit sales are long-cycle deferrable purchases
+METSO.FI,2.1b,0,Crushing/screening plant unit sales are long-cycle deferrable purchases
+DG.FR,2.1b,0,Long-cycle infrastructure construction concessions
+FGR.FR,2.1b,0,Long-cycle infrastructure construction concessions
+ENR.DE,2.1b,0,Wind turbine & energy equipment long-cycle purchase trap
+ENR.DE,3.3n,5,CAP <= 5: turbine quality defects & project losses
+VEND.NO,3.3n,5,CAP <= 5: sub-5% return on capital (2.5%)

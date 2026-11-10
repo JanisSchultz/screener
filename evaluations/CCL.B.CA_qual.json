@@ -1,0 +1,29 @@
+{
+  "id": "CCL.B.CA",
+  "ticker": "CCL.B",
+  "universe": "ca",
+  "company": "CCL Industries Inc.",
+  "country": "Canada",
+  "sector": "Materials",
+  "sub_industry": "Paper & Plastic Packaging Products & Materials",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Unmatched global roll-to-roll converting scale across >200 plants in 40+ countries provides insurmountable procurement scale in resins, paper, and adhesives, combined with critical supply chain redundancy for global CPG and healthcare multinationals. Moat is reinforced by failure-cost asymmetry: labels represent <1-2% of product cost but defect risks catastrophic recall or packaging line stoppage. Empirically demonstrated by 5Y median GAAP ROIC of 13.1%, tangible Operating ROIC of 30.8%, and persistent ~15-16% EBIT margins through raw material cycles. Primary erosion threats: resin/film input cost pass-through lags, CPG volume softness, and gradual secular decline in legacy Avery office binders/paper, counterbalanced by digital direct-to-consumer labels, Avery WePrint, and Checkpoint RFID growth.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates. Global market leader in specialty pressure-sensitive labels, RFID inventory tracking, and surface-engineered barrier films. Moat underpinned by scale economies shared across 200+ plants in 40+ countries and failure-cost asymmetry for mission-critical CPG and healthcare packaging. Structurally insulated across all 5 macrotrends; RFID inventory adoption and circular recyclable films act as secular drivers. Fortress balance sheet with net debt at 0.47x net income and 10.7x EBIT interest coverage, backed by Geoff Martin and the Lang family's disciplined capital allocation. [5-10Y g: organic label & RFID volume 2.5% + pricing & raw material pass-through 1.5% + specialty film mix 1.0% + disciplined bolt-on M&A & net buybacks 2.0%]",
+    "evidence": "5Y median GAAP ROIC of 13.1% and Tangible Operating ROIC of 30.8% reflect exceptional capital efficiency. Free cash flow conversion consistently exceeds 90% (FY2025 FCF of CAD $891M vs CAD $802M net income). Unmatched global converting scale across CCL, Avery, Checkpoint, and Innovia provides insurmountable procurement advantages and supply redundancy for multinational CPGs (P&G, Unilever, L'Oréal). Failure-cost asymmetry locks in customers, as labels account for <2% of product cost but risk factory shutdowns if defective. Formula-based contracts consistently pass through resin and paper inflation. Pristine balance sheet with net funded debt of CAD $381M (<0.5y net income, <0.8x EBITDA) and 10.7x EBIT interest coverage (CAD $1,192M EBIT vs CAD $111M interest). 20+ years of consecutive dividend increases."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

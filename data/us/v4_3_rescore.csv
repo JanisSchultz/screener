@@ -1,0 +1,198 @@
+id,code,value,note
+APP,2.1a,1,Ad spend is a cyclical but structurally needed business input
+APP,2.1b,2,Ad spend is a cyclical but structurally needed business input
+OMC,2.1a,1,Ad spend is a cyclical but structurally needed business input
+OMC,2.1b,2,Ad spend is a cyclical but structurally needed business input
+TTWO,2.1a,0,
+TTWO,2.1b,1,
+DIS,2.1a,0,
+DIS,2.1b,2,
+LYV,2.1a,0,
+LYV,2.1b,2,
+NFLX,2.1a,0,
+NFLX,2.1b,2,
+SKYD,2.1a,0,
+SKYD,2.1b,2,
+TKO,2.1a,0,
+TKO,2.1b,1,
+LULU,2.1a,0,
+LULU,2.1b,1,
+NKE,2.1a,0,
+NKE,2.1b,1,
+RL,2.1a,0,
+RL,2.1b,1,
+TPR,2.1a,0,
+TPR,2.1b,1,
+F,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+F,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+GM,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+GM,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+TSLA,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+TSLA,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+APTV,2.1a,1,"Auto components to OEMs: cyclical input, not discretionary"
+APTV,2.1b,1,"Auto components to OEMs: cyclical input, not discretionary"
+LVS,2.1a,0,
+LVS,2.1b,1,
+MGM,2.1a,0,
+MGM,2.1b,1,
+WYNN,2.1a,0,
+WYNN,2.1b,1,
+BBY,2.1a,0,
+BBY,2.1b,1,
+GRMN,2.1a,0,
+GRMN,2.1b,1,
+DECK,2.1a,0,
+DECK,2.1b,1,
+DHI,2.1a,0,
+DHI,2.1b,0,
+LEN,2.1a,0,
+LEN,2.1b,0,
+NVR,2.1a,0,
+NVR,2.1b,0,
+PHM,2.1a,0,
+PHM,2.1b,0,
+WSM,2.1a,0,
+WSM,2.1b,1,
+ABNB,2.1a,0,
+ABNB,2.1b,1,
+BKNG,2.1a,0,
+BKNG,2.1b,1,
+CCL,2.1a,0,
+CCL,2.1b,1,
+EXPE,2.1a,0,
+EXPE,2.1b,1,
+HLT,2.1a,0,
+HLT,2.1b,2,
+MAR,2.1a,0,
+MAR,2.1b,2,
+NCLH,2.1a,0,
+NCLH,2.1b,1,
+RCL,2.1a,0,
+RCL,2.1b,1,
+HAS,2.1a,0,
+HAS,2.1b,1,
+BKR,2.1a,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; large service share"
+BKR,2.1b,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; large service share"
+HAL,2.1a,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; recurring well services"
+HAL,2.1b,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; recurring well services"
+SLB,2.1a,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; recurring service/production work"
+SLB,2.1b,1,"Oilfield services are E&P capex inputs: cyclical, structurally needed; recurring service/production work"
+COIN,2.1a,0,
+COIN,2.1b,1,
+DE,2.1a,1,"Parts, precision-ag subscriptions and financing give meaningful recurring share"
+DE,2.1b,1,"Parts, precision-ag subscriptions and financing give meaningful recurring share"
+DAL,2.1a,0,
+DAL,2.1b,1,
+LUV,2.1a,0,
+LUV,2.1b,1,
+UAL,2.1a,0,
+UAL,2.1b,1,
+FLEX,2.1a,1,Contract manufacturing is a continuous production input
+FLEX,2.1b,1,Contract manufacturing is a continuous production input
+JBL,2.1a,1,Contract manufacturing is a continuous production input
+JBL,2.1b,1,Contract manufacturing is a continuous production input
+TEL,2.1a,1,Connectors consumed continuously in customers' production
+TEL,2.1b,2,Connectors consumed continuously in customers' production
+AMAT,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; ~20%+ service/spares share"
+AMAT,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; ~20%+ service/spares share"
+KLAC,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; ~25% service share"
+KLAC,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; ~25% service share"
+LRCX,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; ~1/3 spares/upgrades/service share"
+LRCX,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; ~1/3 spares/upgrades/service share"
+Q,2.1a,2,CMP pads/slurries and materials consumed continuously in fabs
+Q,2.1b,2,CMP pads/slurries and materials consumed continuously in fabs
+TER,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; service share; buys track unit volumes"
+TER,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; service share; buys track unit volumes"
+ASML,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; ~25% installed-base service"
+ASML,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; ~25% installed-base service"
+AMD,2.1a,1,"Chips consumed in production but AI/capex-driven, lumpy"
+AMD,2.1b,1,"Chips consumed in production but AI/capex-driven, lumpy"
+AVGO,2.1a,1,Chips consumed continuously in customers' production; VMware subscriptions
+AVGO,2.1b,2,Chips consumed continuously in customers' production; VMware subscriptions
+INTC,2.1a,1,Chips consumed continuously in customers' production
+INTC,2.1b,2,Chips consumed continuously in customers' production
+MCHP,2.1a,1,Chips consumed continuously in customers' production
+MCHP,2.1b,2,Chips consumed continuously in customers' production
+MPWR,2.1a,1,Chips consumed continuously in customers' production
+MPWR,2.1b,2,Chips consumed continuously in customers' production
+MRVL,2.1a,1,"Chips consumed in production but AI/capex-driven, lumpy"
+MRVL,2.1b,1,"Chips consumed in production but AI/capex-driven, lumpy"
+MU,2.1a,1,Memory bits consumed continuously in production
+MU,2.1b,2,Memory bits consumed continuously in production
+NVDA,2.1a,1,"Chips consumed in production but AI/capex-driven, lumpy"
+NVDA,2.1b,1,"Chips consumed in production but AI/capex-driven, lumpy"
+NXPI,2.1a,1,Chips consumed continuously in customers' production
+NXPI,2.1b,2,Chips consumed continuously in customers' production
+ON,2.1a,1,Chips consumed continuously in customers' production
+ON,2.1b,2,Chips consumed continuously in customers' production
+QCOM,2.1a,1,Chips consumed continuously in customers' production; per-unit royalties
+QCOM,2.1b,2,Chips consumed continuously in customers' production; per-unit royalties
+SWKS,2.1a,1,Chips consumed continuously in customers' production
+SWKS,2.1b,2,Chips consumed continuously in customers' production
+TXN,2.1a,1,Chips consumed continuously in customers' production
+TXN,2.1b,2,Chips consumed continuously in customers' production
+ALAB,2.1a,1,"Chips consumed in production but AI/capex-driven, lumpy"
+ALAB,2.1b,1,"Chips consumed in production but AI/capex-driven, lumpy"
+ARM,2.1a,1,Per-chip royalties are usage-based
+ARM,2.1b,2,Per-chip royalties are usage-based
+DELL,2.1a,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+DELL,2.1b,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+HPE,2.1a,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+HPE,2.1b,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+HPQ,2.1a,1,PCs/printing deferrable but structurally needed; supplies recurring
+HPQ,2.1b,1,PCs/printing deferrable but structurally needed; supplies recurring
+NTAP,2.1a,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+NTAP,2.1b,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+P,2.1a,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+P,2.1b,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+SMCI,2.1a,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+SMCI,2.1b,1,Enterprise IT hardware: deferrable in downturns but structurally needed
+SNDK,2.1a,1,Storage components: cyclical but structurally needed
+SNDK,2.1b,1,Storage components: cyclical but structurally needed
+STX,2.1a,1,Storage components: cyclical but structurally needed
+STX,2.1b,1,Storage components: cyclical but structurally needed
+WDC,2.1a,1,Storage components: cyclical but structurally needed
+WDC,2.1b,1,Storage components: cyclical but structurally needed
+DOW,2.1a,2,Commodity chemicals consumed continuously in customers' production
+DOW,2.1b,2,Commodity chemicals consumed continuously in customers' production
+NEM,2.1a,1,Output always sold; gold demand holds/rises in downturns
+NEM,2.1b,2,Output always sold; gold demand holds/rises in downturns
+NUE,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+NUE,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+STLD,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+STLD,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+HST,2.1a,0,
+HST,2.1b,1,
+VICI,2.1a,1,Contractual triple-net rent from operators; mission-critical properties
+VICI,2.1b,2,Contractual triple-net rent from operators; mission-critical properties
+AEP,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+CEG,2.3,N,
+DUK,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+EIX,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+ES,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+ETR,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+EVRG,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+EXC,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+FE,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+LNT,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+PEG,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+PPL,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+SO,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+VST,2.3,N,
+WEC,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+ATO,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+AES,2.3,N,
+NRG,2.3,N,
+AEE,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+CMS,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+CNP,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+D,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+DTE,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+ED,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+NEE,2.3,Y,FPL regulated earnings dominate; allowed ROE on growing rate base
+NI,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+PCG,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+PNW,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+SRE,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+XEL,2.3,Y,Rate-regulated utility; cost-of-service tariffs with allowed ROE on growing rate base
+AWK,2.3,Y,

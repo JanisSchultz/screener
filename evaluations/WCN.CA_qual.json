@@ -1,0 +1,29 @@
+{
+  "id": "WCN.CA",
+  "ticker": "WCN",
+  "universe": "ca",
+  "company": "Waste Connections, Inc.",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Environmental & Facilities Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Irreplaceable permitted landfill network and exclusive secondary-market municipal franchises create localized disposal monopolies protected by insurmountable NIMBY zoning and EPA/provincial permitting barriers. Demonstrated pricing power with core price yield consistently compounding at 6-9% annually above waste inflation. Operating ROIC of 18.5% and >100% FCF conversion confirm unassailable economic moat. Primary erosion threats: localized landfill capacity exhaustion and rising leachate/PFAS regulatory remediation mandates, both hedged by contractual fee pass-throughs.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 1,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates under the v6.23 qualitative framework. Monopolistic North American solid waste and secondary-market landfill operator with industry-leading EBITDA margins (~31-32%) and 134% FCF conversion. Structurally insulated from all 5 macrotrends with renewable natural gas (RNG) acting as an energy transition tailwind. Balance sheet structured for peace of mind: essential municipal franchise cash flows and CPI-linked pricing power allow tuck-in M&A debt to be amortized organically with interest coverage >5.2x. [5-10Y g: core solid waste pricing 5.0% + volume 1.5% + tuck-in M&A & RNG 2.5% - debt interest burden 0.5%]",
+    "evidence": "18.5% Operating ROIC (tangible return on capital unburdened by Progressive Waste merger goodwill) and 133.8% FCF/NI conversion. Core price yield consistently compounds at 6-9% annually with negligible churn. Owns/operates ~100+ permitted landfills across non-urban secondary markets in North America where alternative disposal options do not exist within economic trucking distances. Non-hazardous municipal waste collection backed by long-term exclusive contracts (5-10+ years) formulaically indexed to inflation."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

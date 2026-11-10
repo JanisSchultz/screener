@@ -1,0 +1,217 @@
+"""Phase 4.1 audit metrics from annual series ({fiscal_year: value}, money in units, not millions).
+
+Shared by the SEC (US) and Yahoo (EU / gaps) fetchers so both produce identical definitions.
+"""
+from __future__ import annotations
+
+from statistics import median
+
+DEFAULT_TAX = 0.21
+ROIC_YEARS = 5                  # median ROIC over the latest 5 fiscal years (one cycle; matches the PAR window)
+
+
+def _last_years(series: dict, n: int, last: int | None = None) -> list[int]:
+    yrs = sorted(series)
+    if last is not None:
+        yrs = [y for y in yrs if last - n < y <= last]
+    return yrs[-n:]
+
+
+def cagr(series: dict, years: int):
+    """CAGR between the latest year and `years` earlier; None if either end missing or non-positive."""
+    if not series:
+        return None
+    end = max(series)
+    start = end - years
+    a, b = series.get(start), series.get(end)
+    if a is None or b is None or a <= 0 or b <= 0:
+        return None
+    return (b / a) ** (1 / years) - 1
+
+
+def implied_shares(ni: dict, eps: dict, shares: dict) -> dict:
+    """Diluted shares per year. Where net income and reported diluted EPS imply a count more than 15% away from
+    the tagged share count (multi-class structures, XBRL unit errors, wrong period-end counts), use NI ÷ EPS."""
+    out = dict(shares or {})
+    for y, n_val in (ni or {}).items():
+        e_val = (eps or {}).get(y)
+        if n_val and e_val and n_val > 0 and e_val > 0:
+            imp_sh = n_val / e_val
+            cur_sh = out.get(y)
+            if cur_sh is None or cur_sh <= 0 or not (0.85 <= cur_sh / imp_sh <= 1.18):
+                out[y] = imp_sh
+    return out
+
+
+def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None) -> dict:
+    """Owner FCF = OCF − maintenance capex − SBC. Maintenance capex = MIN(capex, depreciation & amortisation); all
+    capex when D&A is missing (or D&A when capex is not tagged separately). Outflows taken as positive."""
+    out, da = {}, da or {}
+    for y, o in ocf.items():
+        if o is None:
+            continue
+        c_val, d_val = capex.get(y), da.get(y)
+        if c_val is None and d_val is None:
+            continue
+        cx = min(abs(c_val), abs(d_val)) if (c_val is not None and d_val is not None) else abs(c_val if c_val is not None else d_val)
+        out[y] = o - cx - abs(sbc.get(y) or 0)
+    return out
+
+
+def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict, goodwill: dict, intang: dict):
+    """Per-year ROIC = EBIT × (1 − t) / average invested capital (equity + debt − cash).
+    Tangible ROIC deducts goodwill and other intangibles from invested capital (capped at -100% … +200%).
+    Years with average invested capital <= 0 (negative net capital / float) are left out: no meaningful ratio."""
+    def ic(y, tangible):
+        if y not in equity or equity[y] is None:
+            return None
+        v = equity[y] + (debt.get(y) or 0) - (cash.get(y) or 0)
+        if tangible:
+            v -= (goodwill.get(y) or 0) + (intang.get(y) or 0)
+        return v
+
+    gaap, tang = {}, {}
+    for y, e in ebit.items():
+        if e is None:
+            continue
+        t = tax_rate.get(y)
+        t = DEFAULT_TAX if t is None or not (0 <= t <= 0.40) else t
+        nopat = e * (1 - t)
+        for tangible, out in ((False, gaap), (True, tang)):
+            cur, prev = ic(y, tangible), ic(y - 1, tangible)
+            base = (cur + prev) / 2 if cur is not None and prev is not None else cur
+            if base is None:
+                continue
+            if base > 0:
+                out[y] = max(-1.0, min(2.0, nopat / base))
+            elif tangible and nopat > 0:
+                out[y] = 2.0  # unbounded operating return on zero/negative tangible capital
+    return gaap, tang
+
+
+def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
+    """s: dict of annual series. Keys used: sales, ni, eps, ocf, capex, sbc, da, dividends, equity, debt, cash,
+    goodwill, intang, ebit, pretax, tax, interest, assets, shares. Returns financials.csv fields."""
+    g = lambda k: s.get(k) or {}
+    ni, tax, interest = g("ni"), g("tax"), g("interest")
+    pretax = dict(g("pretax"))
+    for y, n_val in ni.items():
+        if pretax.get(y) is None and n_val is not None and tax.get(y) is not None:
+            pretax[y] = n_val + tax[y]
+    ebit = dict(g("ebit"))
+    for y, pt_val in pretax.items():
+        if ebit.get(y) is None and pt_val is not None:
+            ebit[y] = pt_val + abs(interest.get(y) or 0)
+
+    fcf = true_fcf(g("ocf"), g("capex"), g("sbc"), g("da"))
+    tax_rate = {y: (tax[y] / pretax[y]) for y in tax if pretax.get(y)}
+    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), g("cash"), g("goodwill"), g("intang"))
+    out = {}
+
+    all_years = set(ni) | set(g("sales")) | set(g("ocf")) | set(g("equity"))
+    last = max(all_years) if all_years else None
+
+    def latest(ser, default_zero=False):
+        if not ser:
+            return 0.0 if (default_zero and last is not None) else None
+        if last is None:
+            return ser[max(ser)]
+        if last in ser and ser[last] is not None:
+            return ser[last]
+        if (last - 1) in ser and ser[last - 1] is not None and not default_zero:
+            return ser[last - 1]
+        return 0.0 if default_zero else None
+
+    srcs = {"ni": ni, "ocf": g("ocf"), "sbc": g("sbc"), "debt": g("debt"),
+            "interest": interest, "ebit": ebit, "assets": g("assets"), "sales": g("sales"), "cash": g("cash")}
+    zero_default_keys = {"debt", "sbc", "interest"}
+    for key, src in (("ni_ttm_m", "ni"), ("ocf_ttm_m", "ocf"), ("sbc_ttm_m", "sbc"), ("lt_debt_m", "debt"),
+                     ("interest_m", "interest"), ("ebit_ttm_m", "ebit"), ("total_assets_m", "assets"),
+                     ("sales_ttm_m", "sales"), ("cash_m", "cash")):
+        v = latest(srcs[src], default_zero=(src in zero_default_keys))
+        out[key] = None if v is None else abs(v) / 1e6 if src in ("interest", "sbc") else v / 1e6
+    cx, dv, da = latest(g("capex")), latest(g("dividends"), default_zero=True), latest(g("da"))
+    if cx is None and da is not None and out.get("ocf_ttm_m") is not None:
+        cx = da
+    out["da_ttm_m"] = None if da is None else abs(da) / 1e6
+    out["capex_ttm_m"] = None if cx is None else abs(cx) / 1e6
+    out["dividends_ttm_m"] = None if dv is None else abs(dv) / 1e6
+
+    yrs = _last_years(roic, ROIC_YEARS, last)
+    if yrs:
+        out["roic_median"] = median(roic[y] for y in yrs)
+        out["roic_years"] = len(yrs)
+    yt = _last_years(roic_t, ROIC_YEARS, last)
+    if yt:
+        out["roic_tangible_median"] = median(roic_t[y] for y in yt)
+        if (out.get("roic_median") or 0) > 0 and out["roic_tangible_median"] < out["roic_median"]:
+            out["roic_tangible_median"] = out["roic_median"]
+    # Operating ROIC = 5Y median of Tangible ROIC; falls back to GAAP ROIC if tangible data is unavailable
+    out["roic_operating"] = out.get("roic_tangible_median") if out.get("roic_tangible_median") is not None else out.get("roic_median")
+
+    conv_years = [y for y in _last_years(fcf, 5, last) if ni.get(y) is not None]
+    ni_sum = sum(ni[y] for y in conv_years)
+    if conv_years and ni_sum > 0:
+        out["fcf_conv"] = sum(fcf[y] for y in conv_years) / ni_sum
+        out["fcf_conv_years"] = len(conv_years)
+
+    # v4.1 normalised earnings: mid-cycle margins and cycle-average NI (up to 10 years)
+    sales = g("sales")
+    ni_m = {y: ni[y] / sales[y] for y in ni if ni[y] is not None and (sales.get(y) or 0) > 0}
+    fcf_m = {y: fcf[y] / sales[y] for y in fcf if (sales.get(y) or 0) > 0}
+    ym = _last_years(ni_m, 10, last)
+    if ym:
+        out["ni_margin_med"] = median(ni_m[y] for y in ym)
+        out["margin_years"] = len(ym)
+    yf = _last_years(fcf_m, 10, last)
+    if yf:
+        out["fcf_margin_med"] = median(fcf_m[y] for y in yf)
+    yn = _last_years({y: v for y, v in ni.items() if v is not None}, 10, last)
+    if yn:
+        out["ni_avg_m"] = sum(ni[y] for y in yn) / len(yn) / 1e6
+
+    # v4.1 banks / insurers: return on (tangible) equity on average equity
+    def eq(y, tangible):
+        e = g("equity").get(y)
+        if e is None:
+            return None
+        return e - ((g("goodwill").get(y) or 0) + (g("intang").get(y) or 0) if tangible else 0)
+
+    for key, tangible in (("roe_median", False), ("rote_median", True)):
+        ser = {}
+        for y, n in ni.items():
+            cur, prev = eq(y, tangible), eq(y - 1, tangible)
+            base = (cur + prev) / 2 if cur is not None and prev is not None else cur
+            if n is not None and base and base > 0:
+                ser[y] = n / base
+        yrs_e = _last_years(ser, 10, last)
+        if yrs_e:
+            out[key] = median(ser[y] for y in yrs_e)
+    if g("equity"):
+        ly = max(g("equity"))
+        out["equity_m"] = g("equity")[ly] / 1e6
+        out["tbv_m"] = eq(ly, True) / 1e6
+
+    for name, ser in (("bv", g("equity")), ("eps", g("eps")), ("sales", g("sales")), ("fcf", fcf)):
+        for n in (10, 5, 3):
+            out[f"cagr_{name}_{n}"] = cagr(ser, n)
+
+    shares = implied_shares(ni, g("eps"), g("shares"))
+
+    # Buffett $1 test over the longest window up to 10 years (min 5) with prices and shares at both ends
+    if price_at_year_end and shares and last:
+        for window in range(10, 4, -1):
+            y0 = last - window
+            p0, p1 = price_at_year_end.get(y0), price_at_year_end.get(last)
+            sh0, sh1 = shares.get(y0), shares.get(last)
+            if None in (p0, p1, sh0, sh1):
+                continue
+            retained = sum((ni.get(y) or 0) - abs(g("dividends").get(y) or 0) for y in range(y0 + 1, last + 1))
+            if retained <= 0:
+                continue
+            out["mcap_delta_m"] = (p1 * sh1 - p0 * sh0) / 1e6
+            out["retained_m"] = retained / 1e6
+            out["dollar_years"] = window
+            break
+    out["fiscal_year"] = last
+    return out

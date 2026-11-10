@@ -1,0 +1,29 @@
+{
+  "id": "CSU.CA",
+  "ticker": "CSU",
+  "universe": "ca",
+  "company": "Constellation Software Inc.",
+  "country": "Canada",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Mission-critical vertical market software deeply embedded in niche customer operational workflows with immense switching costs and low annual churn (<5%). Demonstrated pricing power via routine contractual 3-5%+ CPI-plus maintenance price increases.",
+    "gate_4_runway_cap": 15,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates. Elite decentralized acquirer and operator of mission-critical vertical market software (VMS). Ultra-high switching costs and customer workflow lock-in yield <5% gross churn and consistent 3-4% annual pricing power. Highly insulated from macro trends; AI coding aids internal developer productivity without impairing entrenched niche customer relationships. Self-funding acquisition engine with pristine balance sheet (net debt <1x FCF). [5-10Y g: organic volume 0.0% + price 3.5% + M&A reinvestment 7.5% - large-deal hurdle drag 0.5% + buybacks 0.0%]",
+    "evidence": "Operating ROIC >30% on tangible capital; 5-year median GAAP ROIC ~21.7%. Multi-year Owner FCF conversion exceeds 300% of GAAP Net Income due to heavy non-cash intangible amortization under IFRS and negative working capital dynamics (advance customer maintenance billings). Balance sheet is fortress-quality with $3.09B cash against $4.00B total debt (net debt ~$909M, or ~0.6x FCF). Mark Leonard's radical decentralization, zero-option compensation policy, and open-market insider buying mandate represent world-class capital allocation alignment."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

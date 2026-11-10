@@ -1,0 +1,43 @@
+{
+  "id": "CP.CA",
+  "ticker": "CP",
+  "universe": "ca",
+  "company": "Canadian Pacific Kansas City",
+  "price": 129.97,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.085,
+    "roic_est": 0.145,
+    "fin_note": "Operating ROIC normalized to 14.5% neutralizing C$23.1B in KCS merger accounting goodwill and pre-merger voting trust distortions, reflecting true through-the-cycle Class 1 rail tangible capital return (aligned with pre-merger standalone CP of 14-17% and peer CNR of 14.62%). Peak Owner EPS confirmed clean at 4.5153 CAD (FY2025) with 82.0% FCF conversion and zero non-cash windfall spikes. Forward 5-10Y secular compounding g_implied = 8.5% anchored on unique tri-national USMCA single-line franchise: 3.0% carload volume + 2.5% tariff indexation above inflation + 1.0% single-line premium & PSR operating ratio synergies + 2.0% share repurchases as leverage normalizes to 2.5x (vs 6.88% pure Mauboussin regression on 6.20% historical CAGR). At 129.97 CAD (28.78x peak Owner EPS vs cycle high 27.81x), CP trades significantly Above PAR (+49.85% premium vs fundamental PAR Value of 86.73 CAD), pricing in 22.86% market-implied growth and yielding an expected 5Y IRR of just 0.77% under pull-to-PAR multiple compression."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.5153,
+    "current_multiple": 28.78,
+    "par_multiple": 19.21,
+    "par_value": 86.73,
+    "percent_vs_par": 0.4985,
+    "status": "Above PAR",
+    "g_implied": 0.085,
+    "dividend_yield": 0.007,
+    "expected_irr_5y": 0.0077,
+    "market_implied_cap": 30.0,
+    "moat_runway_margin": -10.0,
+    "market_implied_growth": 0.2286,
+    "growth_margin_of_safety": -0.1436
+  },
+  "health_checks": {
+    "net_debt_years": 4.77,
+    "net_debt_ok": false,
+    "interest_coverage": 7.26,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.82,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T22:45:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

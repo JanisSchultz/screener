@@ -1,0 +1,29 @@
+{
+  "id": "CRM",
+  "ticker": "CRM",
+  "universe": "us",
+  "company": "Salesforce Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "High enterprise switching costs in core Sales/Service Cloud, but seat monetization vulnerable.",
+    "gate_4_runway_cap": 10,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 4 (CAP = 10, REJECT). Capped at CAP 10 under Macrotrend #1 (Automation & Cognitive Tech): core seat-based pricing model faces structural deflation as AI agents reduce corporate sales/support headcounts. Downstream gates bypassed per waterfall.",
+    "evidence": "Organic growth slowed from 25%+ to high single digits. Customer IT budgets shifting to generative AI infrastructure. Agentforce is nascent while core seat growth stalls."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-09T20:45:00Z",
+    "evaluator": "independent-agent"
+  }
+}

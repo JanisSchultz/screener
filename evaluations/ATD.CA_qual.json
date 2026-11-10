@@ -1,0 +1,29 @@
+{
+  "id": "ATD.CA",
+  "ticker": "ATD",
+  "universe": "ca",
+  "company": "Alimentation Couche-Tard Inc.",
+  "country": "Canada",
+  "sector": "Consumer Staples",
+  "sub_industry": "Food Retail",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Scale economies shared",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Scale economies shared and prime real estate network of ~16,700 high-traffic corners. Unsurpassed procurement scale in fuel and inside-store merchandise creates a cost advantage over fragmented independent operators (60%+ of US market). Merchandising gross margins >34% and stable CPG fuel margins prove pricing power. Primary erosion threats: long-term EV adoption reducing fuel customer foot traffic (hedged via EV charging and food destination strategy) and secular cigarette volume decline (offset by nicotine alternatives and fresh food).",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates. Premier global convenience store consolidator operating ~16,700 locations under Circle K and Couche-Tard. Moat rooted in scale economies shared, superior retail procurement, and prime intersection real estate. Structurally insulated across 5 macrotrends; EV transition actively hedged via the proven Norway fast-charging and food-service playbook. Fortress balance sheet with net debt at 2.3x earnings and 6.8x interest coverage, backed by disciplined post-M&A deleveraging. [5-10Y g: same-store merchandise volume 1.5% + merchandise pricing 2.0% + fresh food mix & disciplined M&A 3.0% - fuel volume EV transition drag 0.5% + net share repurchases 1.5%]",
+    "evidence": "5Y median ROIC ~16.3% and Tangible Operating ROIC ~31.6% demonstrate enduring capital efficiency. Multi-year FCF conversion exceeds 105% of net income ($3.3B+ FCF vs $3.14B net income) due to negative working capital retail model. Merchandising gross margins expanded above 34% through fresh food and private label penetration. Fuel cents-per-gallon margins structurally elevated as higher breakeven costs for fragmented independent operators support industry margins. Net debt of $7.3B is comfortably repayable in ~2.3 years of Owner Earnings, with EBIT interest coverage at 6.8x. Proven M&A integration track record (Statoil, CST Brands, TotalEnergies) with rapid post-deal deleveraging."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluator": "qualitative-agent"
+  }
+}

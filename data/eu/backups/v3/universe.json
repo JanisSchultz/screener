@@ -1,0 +1,64 @@
+{
+  "title": "Quality & Moat Screen — STOXX Europe 600 constituents",
+  "file_stem": "Quality & Moat Screen – STOXX Europe 600 (as of 2026-10-31)",
+  "as_of": "2026-10-31",
+  "show_country": true,
+  "extra_columns": [
+    {
+      "key": "exchange",
+      "header": "Listing exchange",
+      "fmt": "@",
+      "width": 18
+    },
+    {
+      "key": "index_weight_pct",
+      "header": "Index weight (%) in EXSA, 29 Oct 2026",
+      "fmt": "0.00",
+      "width": 11
+    }
+  ],
+  "breakdowns": [
+    {
+      "title": "GICS sector (mapped)",
+      "field": "sector"
+    },
+    {
+      "title": "Country",
+      "field": "country"
+    }
+  ],
+  "universe_text": "Universe as of 2026-10-31: STOXX Europe 600 constituents taken from the iShares STOXX Europe 600 UCITS ETF (DE) (ticker EXSA, tracks the index fully replicated) holdings file, positions as of 29 Oct 2026 (ishares.com, \"latest-holdings.csv\"). 616 lines → 603 equity lines after removing cash, money-market, FX and futures lines → excluded the temporary Unipol subscription-right line (UNIAXA) → 602 companies. Separate listed entities are kept as separate rows even when related (e.g. Heineken NV and Heineken Holding, KBC and KBC Ancora, UCB and Financière de Tubize, Porsche AG and Porsche SE, Sartorius AG and Sartorius Stedim). tk accelis (TKCC, thyssenkrupp spin-off listed 28 Oct 2026) is included because the ETF held it on the as-of date. Country = ETF domicile/location field. GICS-style sector and sub-industry assigned by hand for every company (iShares/STOXX use ICB), so every sub-industry is marked \"(mapped)\".",
+  "caveat": "CAVEAT: This is a qualitative screen, not investment advice and not a valuation. Scores are judgements based on each company's business model and public knowledge as of October 2026; they can be wrong or out of date, and a PASS says nothing about whether the share price is attractive. Verify before acting.",
+  "how_produced": [
+    "1. All 602 companies were grouped into GICS-style sub-industries. For each sub-industry a baseline score was set for every criterion (industry-level traits: need permanence, essentiality, repeatability, trajectory, technology/substitution risk, structure), reusing the same baselines as the US (Nasdaq-100 + S&P 500) screen for consistency, with a few European-only sub-industries added.",
+    "2. Each company was then adjusted from that baseline for its own position: market share and rank, customer concentration, supplier/labour dependence, switching costs, barrier type, management record and pricing history. Holding companies are scored as holdings (no operating moat of their own), so most fail Pillar 4.",
+    "3. Scoring was done in industry batches, then cross-checked across industries and against the US screen. Confidence (H/M/L) flags names where the judgement is less certain (recent spin-offs/IPOs, turnarounds, commodity or cycle-driven names).",
+    "5. Rationale = company-specific analyst note (business, position, key risk). Since v2, analyst re-evaluations are logged criterion by criterion on the Overrides sheet; the 8 pre-v2 re-evaluations are kept on 'Re-evaluation history' (their pre-change criterion scores were not preserved in v1, so they stay baked into the base scores).",
+    "v3: Phases 1–3 replace the v2 pillars. Twelve v2 criteria were carried over unchanged (see 'Carried from' on Methodology); the 16 new v3 fields were pre-scored by Claude from public knowledge as of November 2026, sub-industry baseline first, then company-specific adjustment — see 'Confidence v3' and 'v3 note' on Inputs. Pre-Screen inputs are the investor's own and default to 'in circle'."
+  ],
+  "sources": "Sources: iShares EXSA holdings file (29 Oct 2026); company reports and public reporting for business-model facts; exchange/company press releases for 2026 corporate events (e.g. tk accelis spin-off, Helvetia–Baloise merger, Vend = Schibsted Marketplaces, Hiab = ex-Cargotec, Octave = Hexagon software spin-off, Magnum Ice Cream = Unilever spin-off).",
+  "symbol_rule": "eu",
+  "yahoo_suffix": {
+    "London Stock Exchange": ".L",
+    "Xetra": ".DE",
+    "Euronext Paris": ".PA",
+    "SIX Swiss Exchange": ".SW",
+    "Nasdaq Stockholm": ".ST",
+    "Borsa Italiana": ".MI",
+    "Euronext Amsterdam": ".AS",
+    "Bolsa de Madrid": ".MC",
+    "Nasdaq Copenhagen": ".CO",
+    "Oslo Børs": ".OL",
+    "Nasdaq Helsinki": ".HE",
+    "Warsaw SE": ".WA",
+    "Euronext Brussels": ".BR",
+    "Athens SE": ".AT",
+    "Wiener Börse": ".VI",
+    "Euronext Dublin": ".IR",
+    "Euronext Lisbon": ".LS"
+  },
+  "fx_note": "Financial statement values are in the reporting currency; market cap is converted into that currency by the fetcher so yields are like-for-like.",
+  "benchmark_symbols": {
+    "MARKET": "EXSA.DE"
+  }
+}

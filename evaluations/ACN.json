@@ -1,0 +1,29 @@
+{
+  "id": "ACN",
+  "ticker": "ACN",
+  "universe": "us",
+  "company": "Accenture plc",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "IT Consulting & Other Services",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Deep enterprise integration relationships and trusted C-suite advisory status support historically high capital turnover and ROIC (>25%), but lack structural technology asset lock-in.",
+    "gate_4_runway_cap": 5,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Macrotrend #1 (Automation & Cognitive Tech / AI Disruption) explicitly targets billable-hour IT consulting and system integration. Generative AI coding agents and automated integration tools structurally deflate billable-hour consulting models and commoditize routine implementation workflows, capping CAP at 5 years. Downstream gates bypassed per waterfall.",
+    "evidence": "Industry persistence research anchors IT Services at Tier 3 baseline (CAP 10-15Y). Under Step 2 inside view, Macrotrend #1 applies a maximum haircut: autonomous AI coding agents, automated migration toolchains, and synthetic workflow integration compress client demand for large headcount-heavy implementation teams. Discretionary IT consulting project budgets face persistent deflationary pressure."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G4 Runway (<15Y)",
+    "failing_gate": "Gate 4",
+    "evaluated_at": "2026-11-09T20:45:00Z",
+    "evaluator": "independent-agent"
+  }
+}

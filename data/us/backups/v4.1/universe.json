@@ -1,0 +1,87 @@
+{
+  "title": "Quality & Moat Screen — Nasdaq-100 ∪ S&P 500 constituents",
+  "file_stem": "Quality & Moat Screen – Nasdaq-100 ∪ S&P 500 (as of 2026-10-31)",
+  "as_of": "2026-10-31",
+  "show_country": false,
+  "extra_columns": [
+    {
+      "key": "in_sp500",
+      "header": "In S&P 500",
+      "fmt": "@",
+      "width": 9,
+      "validation": [
+        "Y",
+        "N"
+      ]
+    },
+    {
+      "key": "in_ndx",
+      "header": "In Nasdaq-100",
+      "fmt": "@",
+      "width": 9,
+      "validation": [
+        "Y",
+        "N"
+      ]
+    }
+  ],
+  "breakdowns": [
+    {
+      "title": "GICS sector",
+      "field": "sector"
+    },
+    {
+      "title": "Index membership",
+      "flags": [
+        [
+          "Both",
+          {
+            "in_sp500": "Y",
+            "in_ndx": "Y"
+          }
+        ],
+        [
+          "S&P 500 only",
+          {
+            "in_sp500": "Y",
+            "in_ndx": "N"
+          }
+        ],
+        [
+          "Nasdaq-100 only",
+          {
+            "in_sp500": "N",
+            "in_ndx": "Y"
+          }
+        ]
+      ]
+    }
+  ],
+  "universe_text": "Universe as of 2026-10-31: S&P 500 (Wikipedia \"List of S&P 500 companies\", revision 2026-10-27 03:50 CET; 503 securities) ∪ Nasdaq-100 (Wikipedia \"List of NASDAQ-100 companies\", revision 2026-10-24 11:15 CEST; 101 securities) = 518 tickers → 515 companies after merging share classes (GOOGL/GOOG, FOXA/FOX, NWSA/NWS). GICS sector/sub-industry from the S&P 500 list; the 15 Nasdaq-100-only names have a GICS-equivalent mapped by hand, marked \"(mapped)\".",
+  "caveat": "CAVEAT: This is a qualitative screen, not investment advice and not a valuation. Scores are judgements based on each company's business model and public knowledge as of October 2026; they can be wrong or out of date, and a PASS says nothing about whether the share price is attractive. Verify before acting.",
+  "how_produced": [
+    "1. All 515 companies were grouped into ~125 GICS sub-industries. For each sub-industry a baseline score was set for every criterion (industry-level traits: need permanence, essentiality, repeatability, trajectory, technology/substitution risk, structure).",
+    "2. Each company was then adjusted from that baseline for its own position: market share and rank, customer concentration, supplier/labour dependence, switching costs, barrier type, management record and pricing history.",
+    "3. Scoring was done in industry batches for consistency, then cross-checked across industries. Confidence (H/M/L) flags names where the judgement is less certain (recent spin-offs, IPOs, turnarounds, crypto/AI-cycle names).",
+    "5. Rationale = short analyst note. Since v2 the list of criteria scored 0 is computed live on Screen ('Weak points') instead of being typed into the note.",
+    "v3: Phases 1–3 replace the v2 pillars. Twelve v2 criteria were carried over unchanged (see 'Carried from' on Methodology); the 16 new v3 fields were pre-scored by Claude from public knowledge as of November 2026, sub-industry baseline first, then company-specific adjustment — see 'Confidence v3' and 'v3 note' on Inputs. Pre-Screen inputs are the investor's own and default to 'in circle'.",
+    "v4: gate-based framework. v3 scores converted mechanically (Methodology → 'Seeded from'); Simplicity, Geopolitics, Maslow level, Customer Breadth and Irreplaceable Physical Assets pre-scored by Claude from public knowledge as of November 2026 (sub-industry baseline, then company adjustments) — see 'Confidence v4' and 'v4 note' on Inputs. Gate 2 (Sole-Owner) is the investor's own and defaults to Y."
+  ],
+  "sources": "Sources: Wikipedia constituent lists (above); SEC EDGAR XBRL API (data.sec.gov); company filings and public reporting for business-model facts; S&P Dow Jones Indices press releases for 2026 index changes (e.g. Vylor spin from Corteva, Vivmark = Equity Residential + AvalonBay, Everpure = Pure Storage, Skydance = Paramount Skydance).",
+  "symbol_rule": "us",
+  "fx_note": "Financial statement values are in the reporting currency; market cap is converted into that currency by the fetcher so yields are like-for-like.",
+  "benchmark_symbols": {
+    "MARKET": "SPY",
+    "Communication Services": "XLC",
+    "Consumer Discretionary": "XLY",
+    "Consumer Staples": "XLP",
+    "Energy": "XLE",
+    "Financials": "XLF",
+    "Health Care": "XLV",
+    "Industrials": "XLI",
+    "Information Technology": "XLK",
+    "Materials": "XLB",
+    "Real Estate": "XLRE",
+    "Utilities": "XLU"
+  }
+}

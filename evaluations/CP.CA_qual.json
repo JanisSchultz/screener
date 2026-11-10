@@ -1,0 +1,29 @@
+{
+  "id": "CP.CA",
+  "ticker": "CP",
+  "universe": "ca",
+  "company": "Canadian Pacific Kansas City",
+  "country": "Canada",
+  "sector": "Industrials",
+  "sub_industry": "Rail Transportation",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Irreplaceable infrastructure",
+    "gate_3b_pricing_and_proof": "Y",
+    "gate_3m_moat_note": "Physically unreplicable 20,000-mile contiguous right-of-way forming the only single-line freight rail network connecting Canada, the United States, and Mexico. Insurmountable barriers to entry from prohibitive replacement costs, land condemnation impossibility, and environmental permitting. Demonstrated pricing power via contractual rail inflation escalators and single-line cross-border transit time advantages avoiding border/interchange friction. Standalone pre-merger ROIC of 14-17% proves underlying engine quality; post-merger GAAP ROIC (~7-9%) is temporarily depressed by C$23B acquisition goodwill/intangibles. Primary erosion risks: STB/CTA regulatory interswitching mandates and North American macroeconomic/automotive production cycles.",
+    "gate_4_runway_cap": 20,
+    "gate_5_management_score": 2,
+    "gate_6_cash_and_balance_sheet": "Y",
+    "note": "Passes all 6 gates. The only single-line tri-national transcontinental freight rail network in North America (Atlantic to Pacific to Gulf of Mexico). Demonstrated pricing power via contractual cost escalators and single-line border-crossing premiums. Passes Gate 6 under the essential infrastructure standard with 82.0% FCF conversion, 7.3x EBIT interest coverage on long-dated debt, and active organic deleveraging from ~4.8y Owner Earnings following the transformational KCS combination. Led by elite operator Keith Creel. [5-10Y g: USMCA cross-border carload volume 3.0% + tariff escalation above rail inflation 2.5% + single-line premium & operating ratio synergies 1.0% + post-deleveraging share buybacks 1.0%]",
+    "evidence": "Operates ~20,000 route miles linking major ports in Canada, the US, and Mexico (including Lazaro Cardenas, Saint John, Vancouver, and the US Gulf Coast). Pre-merger standalone CP generated 14-17% GAAP ROIC (2016-2021) and sub-60s operating ratios under Keith Creel. Current post-merger GAAP ROIC of 7.0% reflects C$23.1B in purchase accounting goodwill and intangibles, but tangible cash earnings power remains pristine with C$6,358M EBIT and C$4,141M Net Income (FY2025). Multi-year FCF conversion is 82.0% (FY2025 OCF of C$5,309M vs Capex of C$3,140M yielding C$2,169M FCF). Net debt of ~C$19.8B is ~4.8y owner earnings, supported by 7.3x EBIT interest coverage, well-laddered maturities with duration >10 years, and investment-grade balance sheet actively deleveraging toward target ~2.5x leverage."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Quality pass",
+    "failing_gate": null,
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "independent-agent"
+  }
+}

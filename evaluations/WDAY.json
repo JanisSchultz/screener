@@ -1,0 +1,29 @@
+{
+  "id": "WDAY",
+  "ticker": "WDAY",
+  "universe": "us",
+  "company": "Workday, Inc.",
+  "country": "United States",
+  "sector": "Information Technology",
+  "sub_industry": "Application Software",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "High switching costs in core cloud HCM and Financial Management database of record, but excessive stock-based compensation (SBC) dilutes economic returns, failing the 12% ROIC proof-of-moat test.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 3 (REJECT). Proof of moat fails: massive stock-based compensation (SBC) has kept 5-year median GAAP ROIC deeply sub-hurdle (-5.4%), failing the Gate 3b 12% hurdle. In addition, its per-employee seat pricing is directly exposed to AI-driven enterprise headcount reductions (Macrotrend #1). Downstream gates bypassed per waterfall.",
+    "evidence": "5-year median GAAP ROIC is -5.4% (reported median ROIC ~1.8%) due to persistent heavy stock-based compensation (~18-20% of revenues) diluting real economic owner returns. While non-GAAP operating margins appear respectable (~25%), true owner economic profits fail the 12% hurdle. Core HCM model charges per employee seat, leaving terminal pricing power highly vulnerable to agentic AI enterprise headcount contraction."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-09T20:45:00Z",
+    "evaluator": "independent-agent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "CCL.B.CA",
+  "ticker": "CCL.B",
+  "universe": "ca",
+  "company": "CCL Industries Inc.",
+  "price": 99.25,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": null,
+    "fin_note": "Peak Owner EPS confirmed at 4.7035 CAD (FY2025) with 91.5% FCF conversion and zero unrepeatable non-cash windfall spikes. Tangible Operating ROIC of 30.78% neutralizes $3.64B in accumulated M&A goodwill/intangibles from past roll-to-roll converting acquisitions (Avery, Checkpoint). Forward 5-10Y Owner EPS compounding capacity anchored at 7.0% via bottom-up bridge (2.5% organic label/RFID volume + 1.5% pricing pass-through + 1.0% specialty film mix + 2.0% bolt-on M&A and net buybacks; Mauboussin regression on 10.62% historical CAGR yields 7.54%). 3-Pillar raw PAR multiple of 21.30x (or 21.64x at 7.54% g) is strictly capped at 20.99x by the 5-Year Cycle High Guardrail (mult_high_5y). At 99.25 CAD (21.10x peak Owner EPS), CCL trades marginally Above PAR (+0.53% vs fundamental PAR Value of 98.73 CAD), generating an expected 5Y IRR of 8.22%."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 4.7035,
+    "current_multiple": 21.10,
+    "par_multiple": 20.99,
+    "par_value": 98.73,
+    "percent_vs_par": 0.0053,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.0133,
+    "expected_irr_5y": 0.0822,
+    "market_implied_cap": 15.1,
+    "moat_runway_margin": -0.1,
+    "market_implied_growth": 0.0670,
+    "growth_margin_of_safety": 0.0030
+  },
+  "health_checks": {
+    "net_debt_years": 0.46,
+    "net_debt_ok": true,
+    "interest_coverage": 10.72,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.91,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T22:36:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

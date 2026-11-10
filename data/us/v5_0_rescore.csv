@@ -1,0 +1,16 @@
+id,code,value,note
+KMI,2.3,N,Midstream pipeline volume price-taker; 4.8% ROIC
+KMI,3.3n,5,CAP <= 5: sub-10% return on capital
+WMB,2.3,N,Gas pipeline volume price-taker; 5.4% ROIC
+WMB,3.3n,5,CAP <= 5: sub-10% return on capital
+TMUS,2.3,N,Telecom commoditization and constant spectrum/network capex sink; 9.4% ROIC
+TMUS,3.3n,5,CAP <= 5: sub-10% return on capital
+CAT,2.1b,0,Long-cycle mining/construction equipment deferral trap
+CAT,2.3,N,Severe cyclical down-cycle price concessions
+GLW,2.3,N,Display glass and optical fiber price-taker; 6.5% ROIC
+GLW,3.3n,5,CAP <= 5: sub-10% return on capital
+ALNY,3.3n,5,CAP <= 5: chronic negative ROIC (-65.9%)
+PODD,3.3n,5,CAP <= 5: patch pump commoditization; 5.2% ROIC
+UBER,3.3n,5,CAP <= 5: 10-year median ROIC is negative (-11.3%)
+SHOP,3.3n,5,CAP <= 5: 10-year median ROIC is negative (-5.6%)
+SCHW,0.2,N,Deposit sorting / bank duration & deposit flight risk

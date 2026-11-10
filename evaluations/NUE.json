@@ -1,0 +1,29 @@
+{
+  "id": "NUE",
+  "ticker": "NUE",
+  "universe": "us",
+  "company": "Nucor Corporation",
+  "country": "United States",
+  "sector": "Materials",
+  "sub_industry": "Steel",
+  "qualitative": {
+    "gate_1": "Y",
+    "gate_2": "Y",
+    "gate_2_reason": null,
+    "gate_3a_moat_archetype": "None",
+    "gate_3b_pricing_and_proof": "N",
+    "gate_3m_moat_note": "Commodity price taker. Although Nucor is the low-cost EAF mini-mill operator, hot-rolled coil prices are set by global marginal production costs.",
+    "gate_4_runway_cap": null,
+    "gate_5_management_score": null,
+    "gate_6_cash_and_balance_sheet": null,
+    "note": "Fails Gate 3 (REJECT). Commodity price-taker lacking pricing power above inflation over the complete cycle. Downstream gates bypassed per waterfall.",
+    "evidence": "Operating margins swing from +35% at cycle peaks to near-zero or negative in troughs. Historical through-the-cycle GAAP ROIC averages 8-11%, failing the 12% hurdle."
+  },
+  "quantitative_overrides": {},
+  "evaluation_metadata": {
+    "verdict": "Rejected – G3 Moat & Pricing",
+    "failing_gate": "Gate 3",
+    "evaluated_at": "2026-11-09T20:45:00Z",
+    "evaluator": "independent-agent"
+  }
+}

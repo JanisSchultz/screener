@@ -1,0 +1,43 @@
+{
+  "id": "CNR.CA",
+  "ticker": "CNR",
+  "universe": "ca",
+  "company": "Canadian National Railway",
+  "price": 175.21,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.07,
+    "roic_est": null,
+    "fin_note": "Asset-heavy rail infrastructure: Operating ROIC of 14.62% reflects physical tangible capital (locomotives, tracks, ballast) with minimal goodwill distortion. Peak Owner EPS of 8.53 CAD (FY2023) is clean. Forward compounding capacity of 7.0% reflects 2.0% volume + 3.0% pricing + 0.5% OR efficiency + 1.5% buybacks (Mauboussin regression on 4.7% historical CAGR yields 6.66%). Stock trades Above PAR (cur_mult 20.53x vs PAR 15.71x, +30.7% vs PAR Value of 134.06 CAD)."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 8.5344,
+    "current_multiple": 20.53,
+    "par_multiple": 15.71,
+    "par_value": 134.06,
+    "percent_vs_par": 0.307,
+    "status": "Above PAR",
+    "g_implied": 0.07,
+    "dividend_yield": 0.021,
+    "expected_irr_5y": 0.0352,
+    "market_implied_cap": 26.1,
+    "moat_runway_margin": -6.1,
+    "market_implied_growth": 0.1423,
+    "growth_margin_of_safety": -0.0723
+  },
+  "health_checks": {
+    "net_debt_years": 4.23,
+    "net_debt_ok": false,
+    "interest_coverage": 7.86,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.0,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T22:30:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

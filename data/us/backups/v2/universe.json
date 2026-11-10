@@ -1,0 +1,103 @@
+{
+  "title": "Quality & Moat Screen — Nasdaq-100 ∪ S&P 500 constituents",
+  "file_stem": "Quality & Moat Screen – Nasdaq-100 ∪ S&P 500 (as of 2026-10-31)",
+  "as_of": "2026-10-31",
+  "show_country": false,
+  "extra_columns": [
+    {
+      "key": "in_sp500",
+      "header": "In S&P 500",
+      "fmt": "@",
+      "width": 9,
+      "validation": [
+        "Y",
+        "N"
+      ]
+    },
+    {
+      "key": "in_ndx",
+      "header": "In Nasdaq-100",
+      "fmt": "@",
+      "width": 9,
+      "validation": [
+        "Y",
+        "N"
+      ]
+    }
+  ],
+  "metric_columns": [
+    {
+      "key": "rev_cagr",
+      "header": "Ref: Revenue CAGR FY15–25 (EDGAR)",
+      "fmt": "0.0%",
+      "width": 11
+    },
+    {
+      "key": "ni_down_years",
+      "header": "Ref: Net-income down-years",
+      "fmt": "0",
+      "width": 9
+    },
+    {
+      "key": "ni_years",
+      "header": "Ref: Net-income years compared",
+      "fmt": "0",
+      "width": 9
+    },
+    {
+      "key": "gm_range_pp",
+      "header": "Ref: Gross-margin range (pp)",
+      "fmt": "0.0",
+      "width": 10
+    },
+    {
+      "key": "inv_minus_rev_pp",
+      "header": "Ref: Inventory − revenue growth (pp/yr)",
+      "fmt": "0.0",
+      "width": 11
+    }
+  ],
+  "breakdowns": [
+    {
+      "title": "GICS sector",
+      "field": "sector"
+    },
+    {
+      "title": "Index membership",
+      "flags": [
+        [
+          "Both",
+          {
+            "in_sp500": "Y",
+            "in_ndx": "Y"
+          }
+        ],
+        [
+          "S&P 500 only",
+          {
+            "in_sp500": "Y",
+            "in_ndx": "N"
+          }
+        ],
+        [
+          "Nasdaq-100 only",
+          {
+            "in_sp500": "N",
+            "in_ndx": "Y"
+          }
+        ]
+      ]
+    }
+  ],
+  "roic_note": "10Y Avg ROIC carried over from v1 ('Ref: 10Y Avg ROIC'); v1 did not document its source.",
+  "universe_text": "Universe as of 2026-10-31: S&P 500 (Wikipedia \"List of S&P 500 companies\", revision 2026-10-27 03:50 CET; 503 securities) ∪ Nasdaq-100 (Wikipedia \"List of NASDAQ-100 companies\", revision 2026-10-24 11:15 CEST; 101 securities) = 518 tickers → 515 companies after merging share classes (GOOGL/GOOG, FOXA/FOX, NWSA/NWS). GICS sector/sub-industry from the S&P 500 list; the 15 Nasdaq-100-only names have a GICS-equivalent mapped by hand, marked \"(mapped)\".",
+  "caveat": "CAVEAT: This is a qualitative screen, not investment advice and not a valuation. Scores are judgements based on each company's business model and public knowledge as of October 2026; they can be wrong or out of date, and a PASS says nothing about whether the share price is attractive. Verify before acting.",
+  "how_produced": [
+    "1. All 515 companies were grouped into ~125 GICS sub-industries. For each sub-industry a baseline score was set for every criterion (industry-level traits: need permanence, essentiality, repeatability, trajectory, technology/substitution risk, structure).",
+    "2. Each company was then adjusted from that baseline for its own position: market share and rank, customer concentration, supplier/labour dependence, switching costs, barrier type, management record and pricing history.",
+    "3. Scoring was done in industry batches for consistency, then cross-checked across industries. Confidence (H/M/L) flags names where the judgement is less certain (recent spin-offs, IPOs, turnarounds, crypto/AI-cycle names).",
+    "4. The 'Ref:' metric columns on Inputs do not feed any score; since v2 they drive the P5 data check on Screen, which flags disagreement for review: pulled from SEC EDGAR XBRL \"frames\" (calendar-year aligned, FY2015–FY2025 where available). Revenue CAGR = first to last available year; NI down-years = years net income fell vs prior year; Gross-margin range = max − min gross margin in percentage points; Inventory − revenue growth = inventory CAGR minus revenue CAGR (pp; positive = inventory growing faster than sales). \"n/a\" = no comparable US-GAAP USD data (foreign filers ASML, TRI, FER, CCEP, PDD, NBIS; banks/insurers without gross margin or inventory; recent listings).",
+    "5. Rationale = short analyst note. Since v2 the list of criteria scored 0 is computed live on Screen ('Weak points') instead of being typed into the note."
+  ],
+  "sources": "Sources: Wikipedia constituent lists (above); SEC EDGAR XBRL API (data.sec.gov); company filings and public reporting for business-model facts; S&P Dow Jones Indices press releases for 2026 index changes (e.g. Vylor spin from Corteva, Vivmark = Equity Residential + AvalonBay, Everpure = Pure Storage, Skydance = Paramount Skydance)."
+}

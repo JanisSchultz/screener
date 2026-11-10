@@ -1,0 +1,34 @@
+{
+  "title": "Quality & Moat Screen — S&P/TSX 60 constituents",
+  "file_stem": "Quality & Moat Screen – S&P-TSX 60 (as of 2026-10-31)",
+  "as_of": "2026-10-31",
+  "show_country": false,
+  "extra_columns": [
+    {
+      "key": "exchange",
+      "header": "Listing exchange",
+      "fmt": "@",
+      "width": 18
+    }
+  ],
+  "breakdowns": [
+    {
+      "title": "GICS sector",
+      "field": "sector"
+    }
+  ],
+  "universe_text": "Universe as of 2026-10-31: S&P/TSX 60 constituents from Claude's knowledge of the 2025/26 index composition (not from an index file — verify membership), excluding Shopify and Thomson Reuters, which are covered in the Nasdaq-100 ∪ S&P 500 workbook. GICS sector and sub-industry assigned by hand.",
+  "caveat": "CAVEAT: This is a qualitative screen, not investment advice and not a valuation. Scores are judgements based on each company's business model and public knowledge as of November 2026; they can be wrong or out of date, and a PASS says nothing about whether the share price is attractive. Verify before acting.",
+  "how_produced": [
+    "v4.4: universe added after the superinvestor cross-check (Canadian railways, Brookfield, Restaurant Brands were missing). All Phase 1–3 inputs pre-scored by Claude from public knowledge as of November 2026 with the v4.3 rubrics; bank / insurer / holding estimates (CET1, LICAT, combined ratio, NAV) are Claude estimates — verify."
+  ],
+  "sources": "Sources: Claude's knowledge of the S&P/TSX 60 composition and company reports (to be verified); market data via fetch_market_data.py (Yahoo Finance).",
+  "symbol_rule": "eu",
+  "yahoo_suffix": {
+    "Toronto Stock Exchange": ".TO"
+  },
+  "fx_note": "Financial statement values are in the reporting currency (several Canadian companies report in USD); market cap is converted into that currency by the fetcher so yields are like-for-like.",
+  "benchmark_symbols": {
+    "MARKET": "XIU.TO"
+  }
+}

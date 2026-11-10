@@ -1,0 +1,43 @@
+{
+  "id": "CSU.CA",
+  "ticker": "CSU",
+  "universe": "ca",
+  "company": "Constellation Software Inc.",
+  "price": 3526.52,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": null,
+    "g_implied": 0.105,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Negative Tangible Capital Standard (asset-free VMS model). Forward 5-10Y Owner EPS g of 10.5% driven by 3.5% contractual CPI-plus price increases and 7.5% M&A FCF reinvestment minus 0.5% scaling drag. FY2024 peak Owner EPS of 124.95 CAD confirmed clean."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 124.95,
+    "current_multiple": 28.22,
+    "par_multiple": 29.62,
+    "par_value": 3700.53,
+    "percent_vs_par": -0.047,
+    "status": "Below PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.0016,
+    "expected_irr_5y": 0.1173,
+    "market_implied_cap": 14.3,
+    "moat_runway_margin": 0.7,
+    "market_implied_growth": 0.0841,
+    "growth_margin_of_safety": 0.0209
+  },
+  "health_checks": {
+    "net_debt_years": 0.5,
+    "net_debt_ok": true,
+    "interest_coverage": 4.7,
+    "interest_cov_ok": false,
+    "fcf_conversion": 3.36,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

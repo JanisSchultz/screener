@@ -1,0 +1,185 @@
+id,code,value,note
+PUB.FR,2.1a,1,Ad spend is a cyclical but structurally needed business input
+PUB.FR,2.1b,2,Ad spend is a cyclical but structurally needed business input
+WPP.GB,2.1a,1,Ad spend is a cyclical but structurally needed business input
+WPP.GB,2.1b,2,Ad spend is a cyclical but structurally needed business input
+CDR.PL,2.1a,0,
+CDR.PL,2.1b,1,
+EVD.DE,2.1a,0,
+EVD.DE,2.1b,1,
+UMG.NL,2.1a,0,
+UMG.NL,2.1b,2,
+ADS.DE,2.1a,0,
+ADS.DE,2.1b,1,
+BC.IT,2.1a,0,
+BC.IT,2.1b,1,
+BRBY.GB,2.1a,0,
+BRBY.GB,2.1b,1,
+CFR.CH,2.1a,0,
+CFR.CH,2.1b,1,
+KER.FR,2.1a,0,
+KER.FR,2.1b,1,
+MC.FR,2.1a,0,
+MC.FR,2.1b,1,
+MONC.IT,2.1a,0,
+MONC.IT,2.1b,1,
+PNDORA.DK,2.1a,0,
+PNDORA.DK,2.1b,1,
+PUM.DE,2.1a,0,
+PUM.DE,2.1b,1,
+UHR.CH,2.1a,0,
+UHR.CH,2.1b,1,
+BMW.DE,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+BMW.DE,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+MBG.DE,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+MBG.DE,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+P911.DE,2.1a,0,"Luxury sports cars: long-cycle, deferrable purchase"
+P911.DE,2.1b,0,"Luxury sports cars: long-cycle, deferrable purchase"
+RNO.FR,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+RNO.FR,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+STLAM.IT,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+STLAM.IT,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+VOW3.DE,2.1a,1,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+VOW3.DE,2.1b,0,"Autos per rubric: essentiality 1, cars are long-cycle purchases"
+CON.DE,2.1a,1,"Now tire-led; replacement tires are recurring, needed consumables"
+CON.DE,2.1b,2,"Now tire-led; replacement tires are recurring, needed consumables"
+FR.FR,2.1a,1,"Auto components to OEMs: cyclical input, not discretionary"
+FR.FR,2.1b,1,"Auto components to OEMs: cyclical input, not discretionary"
+ENT.GB,2.1a,0,
+ENT.GB,2.1b,1,
+EVO.SE,2.1a,0,
+EVO.SE,2.1b,1,
+FDJU.FR,2.1a,1,Lottery-led; lottery volumes historically hold through recessions
+FDJU.FR,2.1b,1,Lottery-led; lottery volumes historically hold through recessions
+LTMC.IT,2.1a,0,
+LTMC.IT,2.1b,1,
+LOGN.CH,2.1a,0,
+LOGN.CH,2.1b,1,
+BKG.GB,2.1a,0,
+BKG.GB,2.1b,0,
+BTRW.GB,2.1a,0,
+BTRW.GB,2.1b,0,
+BWY.GB,2.1a,0,
+BWY.GB,2.1b,0,
+PSN.GB,2.1a,0,
+PSN.GB,2.1b,0,
+TW..GB,2.1a,0,
+TW..GB,2.1b,0,
+AC.FR,2.1a,0,
+AC.FR,2.1b,1,
+IHG.GB,2.1a,0,
+IHG.GB,2.1b,2,
+TUI1.GB,2.1a,0,
+TUI1.GB,2.1b,1,
+WTB.GB,2.1a,0,
+WTB.GB,2.1b,1,
+DLG.IT,2.1a,0,
+DLG.IT,2.1b,1,
+GAW.GB,2.1a,0,
+GAW.GB,2.1b,2,
+GTT.FR,2.1a,1,"LNG membrane royalties: industrial capex input, not discretionary"
+GTT.FR,2.1b,1,"LNG membrane royalties: industrial capex input, not discretionary"
+SBMO.NL,2.1a,1,Capex input; lease-and-operate FPSO revenue is long-term recurring
+SBMO.NL,2.1b,1,Capex input; lease-and-operate FPSO revenue is long-term recurring
+SPM.IT,2.1a,1,Energy E&C projects: capex input; still one-off projects
+SPM.IT,2.1b,0,Energy E&C projects: capex input; still one-off projects
+SUBC.NO,2.1a,1,Subsea projects: capex input; still one-off projects
+SUBC.NO,2.1b,0,Subsea projects: capex input; still one-off projects
+TEN.IT,2.1a,1,OCTG pipe consumed per well drilled; cyclical industrial input
+TEN.IT,2.1b,1,OCTG pipe consumed per well drilled; cyclical industrial input
+TGS.NO,2.1a,1,E&P exploration input; data licensing recurring but lumpy
+TGS.NO,2.1b,1,E&P exploration input; data licensing recurring but lumpy
+VK.FR,2.1a,1,OCTG pipe consumed per well drilled; cyclical industrial input
+VK.FR,2.1b,1,OCTG pipe consumed per well drilled; cyclical industrial input
+EXO.NL,2.1a,1,
+EXO.NL,2.1b,0,
+PAH3.DE,2.1a,1,
+PAH3.DE,2.1b,0,
+EZJ.GB,2.1a,0,
+EZJ.GB,2.1b,1,
+IAG.ES,2.1a,0,
+IAG.ES,2.1b,1,
+LHA.DE,2.1a,0,
+LHA.DE,2.1b,1,
+RYA.IE,2.1a,0,
+RYA.IE,2.1b,1,
+ATS.AT,2.1a,1,PCB/substrate components are cyclical production inputs
+ATS.AT,2.1b,1,PCB/substrate components are cyclical production inputs
+AIXA.DE,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; tools remain lumpy one-off purchases"
+AIXA.DE,2.1b,0,"Fab capex: deferred in downturns, so essentiality 1; tools remain lumpy one-off purchases"
+ASM.NL,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; meaningful spares and service share"
+ASM.NL,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; meaningful spares and service share"
+BESI.NL,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; tools remain lumpy one-off purchases"
+BESI.NL,2.1b,0,"Fab capex: deferred in downturns, so essentiality 1; tools remain lumpy one-off purchases"
+COTN.CH,2.1a,1,Components for equipment OEMs plus service; cyclical capex input
+COTN.CH,2.1b,1,Components for equipment OEMs plus service; cyclical capex input
+MYCR.SE,2.1a,1,"Fab capex: deferred in downturns, so essentiality 1; sizeable aftermarket share"
+MYCR.SE,2.1b,1,"Fab capex: deferred in downturns, so essentiality 1; sizeable aftermarket share"
+SOI.FR,2.1a,1,SOI wafers consumed in production; volumes swing with end-markets
+SOI.FR,2.1b,2,SOI wafers consumed in production; volumes swing with end-markets
+TPRO.IT,2.1a,1,Probe cards are consumables replaced per design; cyclical input
+TPRO.IT,2.1b,2,Probe cards are consumables replaced per design; cyclical input
+VACN.CH,2.1a,1,Valve components and wear-part service; cyclical capex input
+VACN.CH,2.1b,1,Valve components and wear-part service; cyclical capex input
+IFX.DE,2.1a,1,Chips consumed continuously in customers' production
+IFX.DE,2.1b,2,Chips consumed continuously in customers' production
+NOD.NO,2.1a,1,Chips consumed continuously in customers' production
+NOD.NO,2.1b,2,Chips consumed continuously in customers' production
+STMMI.FR,2.1a,1,Chips consumed continuously in customers' production
+STMMI.FR,2.1b,2,Chips consumed continuously in customers' production
+KTY.PL,2.1a,2,Extrusions/packaging consumed continuously in customers' production
+KTY.PL,2.1b,2,Extrusions/packaging consumed continuously in customers' production
+NHY.NO,2.1a,2,Aluminium consumed continuously in customers' production
+NHY.NO,2.1b,2,Aluminium consumed continuously in customers' production
+BAS.DE,2.1a,2,Chemicals consumed continuously in customers' production
+BAS.DE,2.1b,2,Chemicals consumed continuously in customers' production
+EDV.GB,2.1a,1,Output always sold; gold demand holds/rises in downturns
+EDV.GB,2.1b,2,Output always sold; gold demand holds/rises in downturns
+PAF.GB,2.1a,1,Output always sold; gold demand holds/rises in downturns
+PAF.GB,2.1b,2,Output always sold; gold demand holds/rises in downturns
+FRES.GB,2.1a,1,Output always sold; silver demand half industrial
+FRES.GB,2.1b,2,Output always sold; silver demand half industrial
+HOC.GB,2.1a,1,Output always sold; silver demand half industrial
+HOC.GB,2.1b,2,Output always sold; silver demand half industrial
+ACX.ES,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+ACX.ES,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+MT.FR,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+MT.FR,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+SSAB B.SE,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+SSAB B.SE,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+TKA.DE,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+TKA.DE,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+VOE.AT,2.1a,1,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+VOE.AT,2.1b,2,"Steel is a continuously consumed industrial input; cyclical, not discretionary"
+BKW.CH,2.3,N,
+EDP.PT,2.3,N,
+ELE.ES,2.3,N,
+ELI.BE,2.3,Y,
+ENEL.IT,2.3,N,
+IBE.ES,2.3,N,
+NG..GB,2.3,Y,
+PPC.GR,2.3,N,
+RED.ES,2.3,Y,
+SSE.GB,2.3,N,
+TRN.IT,2.3,Y,
+VER.AT,2.3,N,
+ENG.ES,2.3,Y,Regulated gas TSO; allowed return on regulated asset base
+IG.IT,2.3,Y,Regulated gas distribution; ARERA inflation-indexed RAB with allowed return
+RUI.FR,2.3,N,
+SRG.IT,2.3,Y,Regulated gas TSO; ARERA inflation-indexed RAB with allowed return
+DRX.GB,2.3,N,
+FORTUM.FI,2.3,N,
+RWE.DE,2.3,N,
+A2A.IT,2.3,N,
+CNA.GB,2.3,N,
+ENGI.FR,2.3,N,
+EOAN.DE,2.3,Y,Regulated energy networks ~70% of EBITDA; allowed return on RAB
+HER.IT,2.3,N,
+NTGY.ES,2.3,N,
+VIE.FR,2.3,Y,
+ANA.ES,2.3,N,
+EDPR.PT,2.3,N,
+ORSTED.DK,2.3,N,
+PNN.GB,2.3,Y,
+SVT.GB,2.3,Y,
+UU..GB,2.3,Y,

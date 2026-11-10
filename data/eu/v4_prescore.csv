@@ -1,0 +1,603 @@
+id,0.1,1.1g,1.2,1.1b,3.2d,conf_v4,note_v4
+PUB.FR,Y,Y,4,2,0,H,
+WPP.GB,Y,Y,4,2,0,H,
+ITV.GB,Y,Y,5,1,1,M,
+BT.A.GB,Y,Y,3,1,2,H,Openreach UK fixed-line/fiber network; national last-mile infrastructure.
+DTE.DE,Y,Y,3,2,2,H,German fixed/mobile networks plus T-Mobile US spectrum; irreplaceable.
+ELISA.FI,Y,Y,3,1,2,H,Finnish fixed and spectrum-backed mobile network.
+HTO.GR,Y,Y,3,1,2,H,Greek incumbent fixed/fiber and mobile network.
+KPN.NL,Y,Y,3,1,2,H,Dutch incumbent fiber and mobile spectrum network.
+ORA.FR,Y,Y,3,2,2,H,French fiber/mobile networks plus Europe/Africa footprint.
+SCMN.CH,Y,Y,3,1,2,H,Swiss incumbent fiber/mobile network plus Fastweb Italy.
+SUNN.CH,Y,Y,3,1,2,H,Swiss cable network plus spectrum-backed mobile network.
+TEF.ES,Y,Y,3,2,2,H,Spanish/German/Brazil fiber and spectrum networks.
+TEL.NO,Y,Y,3,2,2,H,Nordic and Asian spectrum-backed mobile and fiber networks.
+TEL2 B.SE,Y,Y,3,1,2,H,Swedish/Baltic spectrum-backed mobile and fixed networks.
+TELIA.SE,Y,Y,3,1,2,H,Nordic/Baltic incumbent fixed and mobile networks.
+CDR.PL,Y,Y,5,2,0,H,
+AUTO.GB,Y,Y,4,1,0,H,
+G24.DE,Y,Y,4,1,0,M,
+PRX.NL,N,Y,4,2,0,M,Holding company: value dominated by Tencent stake plus disparate e-commerce assets.
+RMV.GB,Y,Y,4,1,0,H,
+VEND.NO,Y,Y,4,1,0,M,
+EVD.DE,Y,Y,5,2,1,M,
+UMG.NL,Y,Y,5,2,0,M,
+INF.GB,Y,Y,4,2,0,M,
+AAF.GB,Y,Y,3,2,1,M,
+FNTN.DE,Y,Y,3,1,0,H,
+VOD.GB,Y,Y,3,2,2,H,"European/African spectrum and fixed networks (VodafoneThree, Germany, Vodacom)."
+ZEG.GB,Y,Y,3,1,2,H,Owns Vodafone Spain fiber and spectrum network.
+HM B.SE,Y,Y,4,2,1,H,
+ITX.ES,Y,Y,4,2,1,H,
+LPP.PL,Y,Y,4,1,1,H,
+ADS.DE,Y,Y,5,2,0,H,
+BC.IT,Y,Y,5,2,1,H,
+BRBY.GB,Y,Y,5,2,1,H,
+CFR.CH,Y,Y,5,2,1,H,
+KER.FR,Y,Y,5,2,1,H,
+MC.FR,Y,Y,5,2,2,H,"Champagne vineyards, Cognac terroir, prime flagship real estate are irreplaceable."
+MONC.IT,Y,Y,5,2,1,H,
+PNDORA.DK,Y,Y,3,2,1,M,
+PUM.DE,Y,Y,5,2,0,H,
+RMS.FR,Y,Y,5,2,1,H,
+UHR.CH,Y,Y,5,2,1,H,
+BMW.DE,Y,Y,5,2,1,H,
+MBG.DE,Y,Y,5,2,1,H,
+P911.DE,Y,Y,5,2,1,H,
+RACE.IT,Y,Y,5,2,1,H,
+RNO.FR,Y,Y,4,1,1,H,
+STLAM.IT,Y,Y,4,2,1,H,
+VOW3.DE,Y,Y,4,2,1,H,
+CON.DE,Y,Y,2,1,1,H,
+FR.FR,Y,Y,2,1,1,H,
+AG1.DE,Y,Y,4,1,1,M,
+AVOL.CH,Y,Y,5,2,1,M,
+DIE.BE,N,Y,2,2,1,M,"Holding of unrelated businesses (Belron, car import, TVH parts, Moleskine); no single engine."
+ALE.PL,Y,Y,4,1,0,H,
+NXT.GB,Y,Y,4,1,1,H,
+ZAL.DE,Y,Y,4,1,1,H,
+ENT.GB,Y,Y,5,1,1,M,
+EVO.SE,Y,Y,5,2,0,H,
+FDJU.FR,Y,Y,5,1,1,M,
+LTMC.IT,Y,Y,5,1,1,M,
+LOGN.CH,Y,Y,4,2,0,H,
+DCC.GB,Y,Y,4,2,1,M,
+INCH.GB,Y,Y,4,2,0,H,
+PSON.GB,Y,Y,5,2,0,H,
+KGF.GB,Y,Y,2,1,1,H,
+BKG.GB,Y,Y,2,1,1,H,
+BTRW.GB,Y,Y,2,1,1,H,
+BWY.GB,Y,Y,2,1,1,H,
+PSN.GB,Y,Y,2,1,1,H,
+TW..GB,Y,Y,2,1,1,H,
+AC.FR,Y,Y,5,2,0,H,
+IHG.GB,Y,Y,5,2,0,H,
+TUI1.GB,Y,Y,5,2,1,H,
+WTB.GB,Y,Y,4,1,1,H,
+DLG.IT,Y,Y,4,2,1,H,
+GAW.GB,Y,Y,5,2,0,H,
+BELA.GR,Y,Y,4,1,1,H,
+CPG.GB,Y,Y,1,2,0,H,
+SW.FR,Y,Y,1,2,0,H,
+BFT.PL,Y,Y,5,1,1,M,
+DHER.DE,Y,Y,4,2,0,H,
+ML.FR,Y,Y,2,2,1,H,
+PIRC.IT,Y,Y,2,2,1,H,
+ABI.BE,Y,Y,3,2,1,H,
+CARL B.DK,Y,Y,3,2,1,H,
+HEIA.NL,Y,Y,3,2,1,H,
+HEIO.NL,Y,Y,3,2,1,H,
+RBREW.DK,Y,Y,3,1,1,H,
+BME.GB,Y,Y,4,1,1,H,
+MKS.GB,Y,Y,1,1,1,H,
+CPR.IT,Y,Y,5,2,1,H,
+DGE.GB,Y,Y,5,2,2,H,Scotch distilleries and aged whisky stocks tied to protected origin; unreplicable.
+RI.FR,Y,Y,5,2,2,H,Cognac (Martell) and Scotch distilleries plus aged stocks; protected-origin terroir.
+AD.NL,Y,Y,1,1,1,H,
+AXFO.SE,Y,Y,1,1,1,H,
+CA.FR,Y,Y,1,1,1,H,
+DNP.PL,Y,Y,1,1,1,H,
+JMT.PT,Y,Y,1,1,1,H,
+KESKOB.FI,Y,Y,1,1,1,H,
+SBRY.GB,Y,Y,1,1,1,H,
+TSCO.GB,Y,Y,1,1,1,H,
+ZAB.PL,Y,Y,1,1,1,H,
+ESSITY B.SE,Y,Y,1,2,1,H,
+HEN3.DE,Y,Y,4,2,1,M,
+RKT.GB,Y,Y,2,2,1,H,
+AAK.SE,Y,Y,1,2,1,H,
+ABF.GB,N,Y,4,2,1,M,"Conglomerate: Primark retail plus sugar, grocery, ingredients, agriculture; no single engine."
+BARN.CH,Y,Y,1,2,1,H,
+BN.FR,Y,Y,1,2,2,H,Evian/Volvic protected mineral springs are irreplaceable.
+CWK.GB,Y,Y,1,0,1,M,UK only; Tesco and few UK grocers dominate sales.
+GL9.IE,Y,Y,4,2,1,M,
+KRZ.IE,Y,Y,1,2,1,H,
+LISP.CH,Y,Y,3,2,1,H,
+LOTB.BE,Y,Y,1,2,1,H,
+MICC.NL,Y,Y,1,2,1,H,
+MOWI.NO,Y,Y,1,2,2,H,Capped Norwegian/Scottish aquaculture licences and fjord sites; new licences scarce.
+NESN.CH,Y,Y,1,2,2,H,"Perrier, S.Pellegrino, Vittel protected mineral springs are irreplaceable."
+ORK.NO,Y,Y,1,1,1,H,
+SALM.NO,Y,Y,1,1,2,H,Capped Norwegian aquaculture licences and fjord sites; new licences scarce.
+BEI.DE,Y,Y,1,2,1,H,
+GALD.CH,Y,Y,5,2,1,H,
+HLN.GB,Y,Y,2,2,1,H,
+OR.FR,Y,Y,5,2,1,H,
+PUIG.ES,Y,Y,5,2,1,H,
+ULVR.GB,Y,Y,1,2,1,H,
+CCH.GB,Y,N,1,2,1,M,Large ongoing Russian business (local brands); sanctions/expropriation tail-risk.
+BATS.GB,Y,Y,1,2,1,H,
+IMB.GB,Y,Y,1,2,1,H,
+BP..GB,Y,Y,1,2,1,M,
+ENI.IT,Y,Y,1,2,1,H,
+EQNR.NO,Y,Y,1,2,2,M,Norwegian shelf gas fields and export pipeline system to Europe.
+GALP.PT,Y,Y,1,1,1,H,
+OMV.AT,Y,Y,1,2,1,M,
+PKN.PL,Y,Y,1,1,1,H,
+REP.ES,Y,Y,1,2,1,H,
+SHELL.GB,Y,Y,1,2,2,M,Global LNG liquefaction and regas portfolio; hard-to-replicate infrastructure.
+TTE.FR,Y,Y,1,2,1,M,
+GTT.FR,Y,Y,4,0,0,M,Revenue via handful of Korean/Chinese shipyards for LNG carriers.
+SBMO.NL,Y,Y,4,0,1,M,"Few large FPSO clients (Petrobras, ExxonMobil Guyana) dominate backlog."
+SPM.IT,Y,Y,4,1,1,H,
+SUBC.NO,Y,Y,4,1,1,H,
+TEN.IT,Y,Y,4,2,1,H,
+TGS.NO,Y,Y,4,1,1,H,
+VK.FR,Y,Y,4,1,1,H,
+AKRBP.NO,Y,Y,1,1,1,H,
+VAR.NO,Y,Y,1,1,1,H,
+MOH.GR,Y,Y,1,2,1,H,
+NESTE.FI,Y,Y,1,2,1,M,
+VPK.NL,Y,Y,1,2,2,H,Port-side storage terminals at key hubs; waterfront sites unpermittable.
+ABDN.GB,Y,Y,4,1,0,H,
+AMUN.FR,Y,Y,4,2,0,H,
+AZM.IT,Y,Y,4,1,0,H,
+BAER.CH,Y,Y,4,2,0,H,
+BGN.IT,Y,Y,4,1,0,H,
+BMED.IT,Y,Y,4,1,0,H,
+BPT.GB,Y,Y,4,1,0,H,
+CVC.NL,Y,Y,4,2,0,H,
+EMG.GB,Y,Y,4,2,0,H,
+EQT.SE,Y,Y,4,2,0,H,
+ICG.GB,Y,Y,4,2,0,H,
+MNG.GB,Y,Y,4,1,0,H,
+PGHN.CH,Y,Y,4,2,0,H,
+QLT.GB,Y,Y,4,1,0,H,
+STJ.GB,Y,Y,4,1,0,H,
+VONN.CH,Y,Y,4,1,0,H,
+VZN.CH,Y,Y,4,1,0,H,
+CMBN.CH,Y,Y,4,1,0,H,
+A5G.IE,Y,Y,2,1,0,H,
+ABN.NL,Y,Y,2,1,0,H,
+ACA.FR,N,Y,2,1,0,H,"Cooperative group structure, CIB, insurance and asset management stacked; opaque."
+ALPHA.GR,Y,Y,2,1,0,H,
+BAMI.IT,Y,Y,2,1,0,H,
+BARC.GB,N,Y,2,2,0,H,Universal bank with large investment bank and trading balance sheet.
+BBVA.ES,Y,Y,2,2,0,H,
+BCP.PT,Y,Y,2,1,0,H,
+BG.AT,Y,Y,2,1,0,H,
+BGEO.GB,Y,Y,2,1,0,M,
+BIRG.IE,Y,Y,2,1,0,H,
+BKT.ES,Y,Y,2,1,0,H,
+BMPS.IT,Y,Y,2,1,0,H,
+BNP.FR,N,Y,2,2,0,H,Universal bank-insurer with large CIB/markets balance sheet.
+BPE.IT,Y,Y,2,1,0,H,
+CABK.ES,Y,Y,2,1,0,H,
+CBK.DE,Y,Y,2,1,0,H,
+DANSKE.DK,Y,Y,2,1,0,H,
+DBK.DE,N,Y,2,2,0,H,Investment-bank-heavy universal bank; opaque derivatives book.
+DNB.NO,Y,Y,2,1,0,H,
+EBP.PL,Y,Y,2,1,0,H,
+EBS.AT,Y,Y,2,1,0,H,
+ETE.GR,Y,Y,2,1,0,H,
+EUROB.GR,Y,Y,2,1,0,H,
+GLE.FR,N,Y,2,2,0,H,Universal bank with structured-products/markets heavy CIB.
+HSBA.GB,N,Y,2,2,0,H,Global universal bank across many jurisdictions with markets business.
+ING.PL,Y,Y,2,1,0,H,
+INGA.NL,Y,Y,2,2,0,H,
+INVP.GB,Y,Y,2,1,0,M,
+ISP.IT,Y,Y,2,1,0,H,
+KBC.BE,Y,Y,2,1,0,H,
+LLOY.GB,Y,Y,2,1,0,H,
+MBK.PL,Y,Y,2,1,0,H,
+MIL.PL,Y,Y,2,1,0,H,
+NDA FI.FI,Y,Y,2,1,0,H,
+NWG.GB,Y,Y,2,1,0,H,
+PEO.PL,Y,Y,2,1,0,H,
+PKO.PL,Y,Y,2,1,0,H,
+RBI.AT,Y,N,2,1,0,H,Large Russian subsidiary still material to earnings; sanctions tail-risk.
+SAB.ES,Y,Y,2,1,0,H,
+SAN.ES,Y,Y,2,2,0,H,
+SEB A.SE,Y,Y,2,1,0,H,
+SHB A.SE,Y,Y,2,1,0,H,
+STAN.GB,N,Y,2,2,0,H,EM-focused universal bank with trade finance and markets; opaque.
+SWED A.SE,Y,Y,2,1,0,H,
+TBCG.GB,Y,Y,2,1,0,M,
+TPEIR.GR,Y,Y,2,1,0,H,
+UBSG.CH,N,Y,2,2,0,H,Global universal bank plus Credit Suisse legacy wind-down; complex.
+UCG.IT,Y,Y,2,2,0,M,
+PST.IT,Y,Y,2,1,1,M,
+DB1.DE,Y,Y,4,2,0,H,
+ENX.FR,Y,Y,4,2,0,H,
+LSEG.GB,Y,Y,4,2,0,H,
+AZA.SE,Y,Y,4,1,0,H,
+FBK.IT,Y,Y,4,1,0,H,
+FTK.DE,Y,Y,4,1,0,H,
+IGG.GB,Y,Y,4,2,0,H,
+PLUS.GB,Y,Y,4,2,0,H,
+SAVE.SE,Y,Y,4,1,0,H,
+SQN.CH,Y,Y,4,1,0,H,
+TCAP.GB,Y,Y,4,2,0,H,
+XTB.PL,Y,Y,4,2,0,H,
+AGN.NL,Y,Y,2,2,0,M,
+LGEN.GB,Y,Y,2,1,0,H,
+MANTA.FI,Y,Y,2,1,0,M,
+NN.NL,Y,Y,2,1,0,H,
+PRU.GB,Y,Y,2,2,0,H,
+SDLF.GB,Y,Y,2,1,0,M,
+SLHN.CH,Y,Y,2,1,0,H,
+STB.NO,Y,Y,2,1,0,H,
+ACKB.BE,N,Y,4,2,0,M,"Holding of unrelated businesses (dredging, private bank, real estate, other)."
+AKER.NO,N,Y,4,2,0,M,Holding of unrelated industrial/energy/tech stakes.
+BOL.FR,N,Y,4,2,0,M,Cascading holding structure with media and logistics stakes; opaque.
+EXO.NL,N,Y,4,2,0,M,"Holding of unrelated stakes (Ferrari, Stellantis, Philips, reinsurance)."
+GBLB.BE,N,Y,4,2,0,M,Investment holding of unrelated listed and private stakes.
+III.GB,Y,Y,4,1,0,M,
+INDU C.SE,N,Y,4,2,0,M,Investment company holding unrelated listed Swedish stakes.
+INVE B.SE,N,Y,4,2,0,M,Investment company holding unrelated listed and private businesses.
+KBCA.BE,Y,Y,2,1,0,H,
+LATO B.SE,N,Y,4,2,0,M,Mix of operating industrial units and unrelated listed stakes.
+LUND B.SE,N,Y,4,2,0,M,Holding of property plus unrelated listed stakes.
+PAH3.DE,Y,Y,4,2,0,M,
+SOF.BE,N,Y,4,2,0,M,Holding of VC/PE funds and minority stakes; no single engine.
+TUB.BE,Y,Y,1,2,0,H,
+AGS.BE,Y,Y,2,1,0,M,
+ALV.DE,N,Y,2,2,0,M,Global multi-line insurer plus asset management; long-tail reserves.
+ASRNL.NL,Y,Y,2,1,0,M,
+AV..GB,Y,Y,2,1,0,M,
+CS.FR,N,Y,2,2,0,M,Global multi-line insurer with long-tail commercial lines.
+G.IT,N,Y,2,2,0,M,Multi-line insurer with large life book and complex group structure.
+HBAN.CH,Y,Y,2,1,0,L,
+MAP.ES,Y,Y,2,2,0,M,
+PZU.PL,Y,Y,2,1,0,M,
+TLX.DE,N,Y,2,2,0,M,Multi-line insurer consolidating Hannover Re reinsurance.
+UNI.IT,Y,Y,2,1,0,M,
+ZURN.CH,N,Y,2,2,0,M,Global multi-line insurer with long-tail commercial reserving.
+ADM.GB,Y,Y,2,1,0,H,
+GJF.NO,Y,Y,2,1,0,H,
+HSX.GB,Y,Y,2,2,0,H,
+SAMPO.FI,Y,Y,2,1,0,H,
+TRYG.DK,Y,Y,2,1,0,H,
+ALSYDB.DK,Y,Y,2,1,0,H,
+BCVN.CH,Y,Y,2,1,0,H,
+JYSK.DK,Y,Y,2,1,0,H,
+RILBA.DK,Y,Y,2,1,0,H,
+SB1NO.NO,Y,Y,2,1,0,H,
+SBNOR.NO,Y,Y,2,1,0,H,
+UNI.ES,Y,Y,2,1,0,H,
+VATN.CH,Y,Y,2,1,0,H,
+HNR1.DE,N,Y,2,2,0,H,Global reinsurer; long-tail reserving opaque to laymen.
+MUV2.DE,N,Y,2,2,0,H,Global reinsurer plus primary insurance; long-tail reserving.
+SCR.FR,N,Y,2,2,0,H,Global reinsurer incl. life reinsurance; reserving opacity.
+SREN.CH,N,Y,2,2,0,H,Global reinsurer; long-tail casualty reserving opacity.
+ADYEN.NL,Y,Y,4,2,0,H,
+ALLFG.NL,Y,Y,4,2,0,H,
+EDEN.FR,Y,Y,4,2,0,H,
+NEXI.IT,Y,Y,4,1,0,H,
+WISE.GB,Y,Y,4,2,0,H,
+ABVX.FR,Y,Y,1,0,0,M,Pre-commercial; value hinges on single asset obefazimod.
+ARGX.BE,Y,Y,1,0,0,M,Single franchise (Vyvgart) drives nearly all revenue.
+GMAB.DK,Y,Y,1,0,0,M,Royalty income dominated by J&J Darzalex.
+GRF.ES,Y,Y,1,2,1,M,
+SOBI.SE,Y,Y,1,1,0,M,
+ZEAL.DK,Y,Y,1,0,0,M,Pipeline-stage; economics depend on Roche petrelintide partnership.
+GALE.CH,Y,Y,4,1,1,H,
+ALC.CH,Y,Y,2,2,0,M,
+BIM.FR,Y,Y,2,2,0,M,
+DEMANT.DK,Y,Y,3,2,0,M,
+EL.FR,Y,Y,4,2,0,M,
+GETI B.SE,Y,Y,2,2,0,M,
+PHIA.NL,Y,Y,2,2,0,M,
+SECT B.SE,Y,Y,4,1,0,M,
+SHL.DE,Y,Y,2,2,0,M,
+SN..GB,Y,Y,2,2,0,M,
+SOON.CH,Y,Y,3,2,0,M,
+FME.DE,Y,Y,1,2,1,M,
+FRE.DE,Y,Y,1,2,1,M,
+COLO B.DK,Y,Y,1,2,0,M,
+CTEC.GB,Y,Y,1,2,0,M,
+STMN.CH,Y,Y,4,2,0,M,
+DIM.FR,Y,Y,4,2,0,H,
+ERF.FR,Y,Y,2,2,1,H,
+LONN.CH,Y,Y,4,1,1,H,
+QIA.DE,Y,Y,4,2,0,H,
+SFZN.CH,Y,Y,4,1,1,H,
+SRT3.DE,Y,Y,4,2,0,H,
+TECN.CH,Y,Y,4,2,0,H,
+ALK B.DK,Y,Y,1,1,1,H,
+AZN.GB,Y,Y,1,2,1,H,
+BAYN.DE,Y,Y,1,2,1,M,
+GSK.GB,Y,Y,1,2,1,H,
+HIK.GB,Y,Y,1,2,1,H,
+IPN.FR,Y,Y,1,1,1,H,
+MRK.DE,Y,Y,1,2,1,M,
+NOVN.CH,Y,Y,1,2,1,H,
+NOVO B.DK,Y,Y,1,2,1,H,
+ORNBV.FI,Y,Y,1,1,1,M,
+REC.IT,Y,Y,1,2,1,H,
+ROP.CH,Y,Y,1,2,1,H,
+SAN.FR,Y,Y,1,2,1,H,
+SDZ.CH,Y,Y,1,2,1,H,
+UCB.BE,Y,Y,1,2,1,H,
+AIR.FR,Y,Y,2,1,1,M,
+AM.FR,Y,Y,2,1,0,M,
+BA..GB,Y,Y,2,1,1,M,
+BAB.GB,Y,Y,2,0,1,M,"UK MoD dominant customer (Devonport/Rosyth, nuclear support)."
+CSG.NL,Y,Y,2,1,0,L,
+HAG.DE,Y,Y,2,1,0,M,
+HO.FR,Y,Y,2,1,0,M,
+IDR.ES,Y,Y,2,1,0,M,
+KOG.NO,Y,Y,2,1,0,M,
+LDO.IT,Y,Y,2,1,0,M,
+MRO.GB,Y,Y,2,1,0,M,
+MTX.DE,Y,Y,2,1,1,M,
+QQ..GB,Y,Y,2,0,0,M,UK MoD and US DoD dominate revenue.
+R3NK.DE,Y,Y,2,1,0,M,
+RHM.DE,Y,Y,2,1,0,M,
+RR..GB,Y,Y,2,1,1,M,
+SAAB B.SE,Y,Y,2,1,0,M,
+SAF.FR,Y,Y,2,1,1,M,
+DHL.DE,Y,Y,4,2,1,H,
+DSV.DK,Y,Y,4,2,0,H,
+KNIN.CH,Y,Y,4,2,0,H,
+ADP.FR,Y,Y,4,1,2,H,Paris CDG/Orly concessions; irreplaceable airport assets.
+AENA.ES,Y,Y,4,1,2,H,Spanish airport network monopoly; unpermittable assets.
+FHZN.CH,Y,Y,4,1,2,H,Zurich airport concession; irreplaceable hub.
+ASSA B.SE,Y,Y,2,2,0,M,
+BEAN.CH,Y,Y,4,2,0,M,
+GEBN.CH,Y,Y,1,1,0,M,
+KRX.IE,Y,Y,4,2,0,M,
+NIBE B.SE,Y,Y,1,1,0,M,
+ROCK B.DK,Y,Y,4,2,0,M,
+SGO.FR,Y,Y,4,2,0,M,
+ACS.ES,Y,Y,4,1,1,M,
+ARCAD.NL,Y,Y,4,2,0,M,
+BAMNB.NL,Y,Y,4,1,0,M,
+BBY.GB,Y,Y,4,1,0,M,
+DG.FR,Y,Y,4,1,2,H,Vinci Autoroutes and airport concessions are irreplaceable.
+EN.FR,N,Y,4,1,1,M,"Holding of unrelated businesses: construction, telecom, media (TF1)."
+FGR.FR,Y,Y,4,1,2,M,APRR toll-road concessions irreplaceable.
+GBF.DE,Y,Y,4,1,0,M,
+GEKTERNA.GR,Y,Y,4,1,2,L,"Greek toll-road concessions (Attiki Odos, Egnatia) irreplaceable."
+HOT.DE,Y,Y,4,1,0,M,
+SCYR.ES,Y,Y,4,1,1,M,
+SKA B.SE,Y,Y,4,1,0,M,
+SPIE.FR,Y,Y,4,1,0,M,
+TE.FR,Y,Y,4,0,0,M,Lumpy LNG/energy mega-projects for few large customers.
+ALO.FR,Y,Y,4,1,0,M,
+DTG.DE,Y,Y,4,1,0,M,
+EPI A.SE,Y,Y,4,2,0,M,
+FLS.DK,Y,Y,4,1,0,M,
+HIAB.FI,Y,Y,4,2,0,M,
+IVG.IT,Y,Y,4,1,0,M,
+METSO.FI,Y,Y,4,2,0,M,
+VOLV B.SE,Y,Y,4,2,0,M,
+WEIR.GB,Y,Y,4,2,0,M,
+AMS.ES,Y,Y,4,2,0,M,
+TEP.FR,Y,Y,4,2,0,M,
+AYV.FR,Y,Y,4,2,0,M,
+ELIS.FR,Y,Y,4,2,1,M,
+ISS.DK,Y,Y,4,2,0,M,
+MTO.GB,Y,Y,4,1,0,M,
+SRP.GB,Y,Y,4,0,0,M,Revenue dominated by UK/US/Australian government contracts.
+ABBN.CH,Y,Y,4,2,0,M,
+HUBN.CH,Y,Y,4,1,0,M,
+LAGR B.SE,Y,Y,4,1,0,M,
+LR.FR,Y,Y,4,2,0,M,
+NEX.FR,Y,Y,4,2,1,M,
+NKT.DK,Y,Y,4,1,1,M,
+PRY.IT,Y,Y,4,2,1,M,
+SU.FR,Y,Y,4,2,0,M,
+RTO.GB,Y,Y,2,2,0,M,
+ENR.DE,Y,Y,2,2,0,M,
+NDX1.DE,Y,Y,2,1,0,M,
+VWS.DK,Y,Y,2,2,0,M,
+FER.ES,Y,Y,4,1,2,H,"407 ETR, managed lanes, airport stakes: irreplaceable concessions."
+GET.FR,Y,Y,4,1,2,H,"Channel Tunnel concession: unique, unreplicable fixed link."
+ADEN.CH,Y,Y,4,2,0,H,
+RAND.NL,Y,Y,4,2,0,H,
+LIFCO B.SE,Y,Y,4,2,0,M,
+MTLN.GR,Y,Y,4,1,0,L,
+SIE.DE,Y,Y,4,2,0,M,
+SMIN.GB,Y,Y,4,2,0,M,
+AALB.NL,Y,Y,4,2,0,M,
+ACLN.CH,Y,Y,4,2,0,M,
+ALFA.SE,Y,Y,4,2,0,M,
+ANDR.AT,Y,Y,4,2,0,M,
+ATCO A.SE,Y,Y,4,2,0,M,
+G1A.DE,Y,Y,4,2,0,M,
+GF.CH,Y,Y,4,2,0,M,
+HILS.GB,Y,Y,4,1,0,M,
+IMI.GB,Y,Y,4,2,0,M,
+IP.IT,Y,Y,4,2,0,M,
+KBX.DE,Y,Y,2,2,0,M,
+KCR.FI,Y,Y,4,2,0,M,
+KGX.DE,Y,Y,4,2,0,M,
+KNEBV.FI,Y,Y,2,2,0,H,
+RAA.DE,Y,Y,4,2,0,M,
+ROR.GB,Y,Y,4,2,0,M,
+ROSE.GB,Y,Y,4,1,0,L,
+SAND.SE,Y,Y,4,2,0,M,
+SCHP.CH,Y,Y,2,2,0,H,
+SFSN.CH,Y,Y,4,2,0,M,
+SKF B.SE,Y,Y,4,2,0,M,
+SPX.GB,Y,Y,4,2,0,M,
+SUN.CH,Y,Y,4,2,0,M,
+TOM.NO,Y,Y,4,2,0,M,
+TREL B.SE,Y,Y,4,2,0,M,
+VALMT.FI,Y,Y,4,2,0,M,
+WRT1V.FI,Y,Y,4,2,0,M,
+FRO.NO,Y,Y,4,1,0,M,
+MAERSK B.DK,Y,Y,4,2,1,M,
+EZJ.GB,Y,Y,4,1,0,M,
+IAG.ES,Y,Y,4,2,1,M,
+LHA.DE,Y,Y,4,2,1,M,
+RYA.IE,Y,Y,4,1,0,M,
+BVI.FR,Y,Y,2,2,0,M,
+EXPN.GB,Y,Y,4,2,0,M,
+ITRK.GB,Y,Y,2,2,0,M,
+REL.GB,Y,Y,4,2,0,M,
+SGSN.CH,Y,Y,2,2,0,M,
+SWEC B.SE,Y,Y,4,1,0,M,
+WKL.NL,Y,Y,4,2,0,M,
+LOOMIS.SE,Y,Y,2,2,1,M,
+SECU B.SE,Y,Y,2,2,0,M,
+VSURE.SE,Y,Y,2,2,0,M,
+ADDT B.SE,Y,Y,4,1,0,H,
+BEIJ B.SE,Y,Y,4,2,0,H,
+BNR.DE,Y,Y,4,2,0,H,
+BNZL.GB,Y,Y,4,2,0,H,
+DKSH.CH,Y,Y,4,2,0,H,
+DPLM.GB,Y,Y,4,2,0,H,
+HWDN.GB,Y,Y,4,1,0,H,
+IMCD.NL,Y,Y,4,2,0,H,
+INDT.SE,Y,Y,4,1,0,H,
+RS1.GB,Y,Y,4,2,0,H,
+RXL.FR,Y,Y,4,2,0,H,
+TKCC.DE,Y,Y,4,1,0,L,
+DSY.FR,Y,Y,4,2,0,H,
+NEM.DE,Y,Y,4,2,0,H,
+OCTV SDB.SE,Y,Y,4,2,0,H,
+SAP.DE,Y,Y,4,2,0,H,
+SGE.GB,Y,Y,4,2,0,H,
+TEMN.CH,Y,Y,4,2,0,H,
+ERIC B.SE,Y,Y,3,1,0,M,
+NOKIA.FI,Y,Y,3,1,0,M,
+HEXA B.SE,Y,Y,4,2,0,M,
+HLMA.GB,Y,Y,2,2,0,M,
+IFCN.CH,Y,Y,4,1,0,M,
+ATS.AT,Y,Y,4,0,0,M,IC substrates sold mainly to AMD/Intel; very few customers dominate sales.
+ACP.PL,Y,Y,4,2,0,M,
+CAP.FR,Y,Y,4,2,0,H,
+REY.IT,Y,Y,4,2,0,H,
+SOP.FR,Y,Y,4,2,0,H,
+AIXA.DE,Y,Y,4,1,0,M,
+ASM.NL,Y,Y,4,1,0,M,
+ASML.NL,Y,Y,4,1,0,M,
+BESI.NL,Y,Y,4,1,0,M,
+COTN.CH,Y,Y,4,0,0,M,Plasma-control/x-ray modules sold mainly to Lam/AMAT-type OEMs; concentrated buyers.
+MYCR.SE,Y,Y,4,1,0,M,
+SOI.FR,Y,Y,4,1,0,M,
+TPRO.IT,Y,Y,4,0,0,M,Probe cards; a few chipmakers account for most sales.
+VACN.CH,Y,Y,4,1,0,M,
+IFX.DE,Y,Y,2,1,1,M,
+NOD.NO,Y,Y,4,1,0,M,
+STMMI.FR,Y,Y,2,1,1,M,
+BC8.DE,Y,Y,4,1,0,H,
+CCC.GB,Y,Y,4,1,0,H,
+SCT.GB,Y,Y,4,1,0,H,
+KTY.PL,Y,Y,4,1,1,H,
+NHY.NO,Y,Y,4,2,1,M,
+BZU.IT,Y,Y,4,1,2,M,Cement plants and quarries; new kilns effectively unpermittable in Europe.
+HEI.DE,Y,Y,4,2,2,H,Global quarry/cement network; new quarries near cities hard to permit.
+HOLN.CH,Y,Y,4,2,2,H,Quarry and cement footprint post-Amrize spin; unpermittable aggregates reserves.
+ANTO.GB,Y,Y,4,1,2,M,"Tier-1 long-life Chilean copper (Los Pelambres, Centinela)."
+KGH.PL,Y,Y,4,1,1,H,
+NDA.DE,Y,Y,4,2,1,H,
+BAS.DE,Y,Y,4,2,1,H,
+AAL.GB,Y,Y,4,1,2,M,"Tier-1 assets (Collahuasi, Quellaveco, Kumba iron ore)."
+BOL.SE,Y,Y,4,1,1,M,
+GLEN.GB,N,Y,4,1,2,M,Large opaque trading book plus mining and coal; borderline simplicity.
+RIO.GB,Y,Y,4,1,2,M,Pilbara iron ore system with integrated rail/ports; irreplaceable.
+SDF.DE,Y,Y,1,1,1,H,
+YAR.NO,Y,Y,1,2,1,H,
+HOLM B.SE,Y,Y,4,1,2,M,Large Swedish forest estate plus hydro plants; unreplicable land and hydro.
+SCA B.SE,Y,Y,4,1,2,M,Europe's largest private forest estate (2.6m ha); irreplaceable land base.
+EDV.GB,Y,Y,5,2,1,H,
+PAF.GB,Y,Y,5,2,1,H,
+AI.FR,Y,Y,2,2,2,H,Pipeline basins and on-site plants under long take-or-pay contracts.
+HUH1V.FI,Y,Y,1,1,1,M,
+MNDI.GB,Y,Y,4,2,1,H,
+SIGN.CH,Y,Y,1,1,1,H,
+STERV.FI,Y,Y,4,2,1,H,
+UPM.FI,Y,Y,4,2,1,H,
+FRES.GB,Y,Y,5,2,1,H,
+HOC.GB,Y,Y,5,2,1,H,
+AKE.FR,Y,Y,4,2,1,H,
+AKZA.NL,Y,Y,4,2,1,H,
+CRDA.GB,Y,Y,4,2,1,H,
+DSFIR.NL,Y,Y,4,2,1,H,
+EMSN.CH,Y,Y,4,1,1,H,
+EVK.DE,Y,Y,4,2,1,H,
+FPE3.DE,Y,Y,2,2,1,M,
+GIVN.CH,Y,Y,4,2,1,H,
+JMAT.GB,Y,Y,4,1,1,H,
+NSIS B.DK,Y,Y,4,2,1,H,
+SIKA.CH,Y,Y,4,2,1,H,
+SY1.DE,Y,Y,4,2,1,H,
+SYENS.BE,Y,Y,2,2,1,M,
+UMI.BE,Y,Y,4,1,1,H,
+ACX.ES,Y,Y,4,1,1,H,
+MT.FR,Y,Y,4,2,1,H,
+SSAB B.SE,Y,Y,4,1,1,H,
+TKA.DE,N,Y,4,2,1,M,"Restructuring conglomerate of unrelated units (steel, materials, marine, auto); no clear engine."
+VOE.AT,Y,Y,4,2,1,H,
+BLND.GB,Y,Y,4,1,1,H,
+COV.FR,Y,Y,4,1,1,H,
+LAND.GB,Y,Y,4,1,1,H,
+MRL.ES,Y,Y,4,1,1,H,
+AED.BE,Y,Y,1,1,1,M,
+PHP.GB,Y,Y,1,0,1,M,Rent overwhelmingly paid by NHS-funded GP practices; single payer.
+BBOX.GB,Y,Y,4,1,1,H,
+LMP.GB,Y,Y,4,1,1,H,
+SAGA B.SE,Y,Y,4,1,1,H,
+SGRO.GB,Y,Y,4,2,1,H,
+WDP.BE,Y,Y,4,1,1,H,
+DLN.GB,Y,Y,4,1,1,H,
+GFC.FR,Y,Y,4,1,1,H,
+UTG.GB,Y,Y,4,1,1,M,
+ALLN.CH,Y,Y,1,1,1,H,
+BALD B.SE,Y,Y,1,1,1,M,
+CAST.SE,Y,Y,4,1,1,H,
+LEG.DE,Y,Y,1,1,1,H,
+MOBN.CH,Y,Y,1,1,1,H,
+PSPN.CH,Y,Y,4,1,1,H,
+SPSN.CH,Y,Y,4,1,1,H,
+TEG.DE,Y,Y,1,1,1,H,
+VNA.DE,Y,Y,1,1,1,H,
+LI.FR,Y,Y,4,1,1,H,
+SHC.GB,Y,Y,4,1,2,H,"Owns contiguous West End estates (Covent Garden, Carnaby); irreplaceable."
+URW.FR,Y,Y,4,1,1,H,
+CLNX.ES,Y,Y,3,1,2,H,European tower sites hard to permit; few MNO tenants per country.
+BKW.CH,Y,Y,1,1,2,M,Swiss hydro plants and grid; irreplaceable assets.
+EDP.PT,Y,Y,1,2,2,H,Iberian/Brazilian grids plus hydro fleet.
+ELE.ES,Y,Y,1,1,2,H,Spanish distribution grid plus nuclear/hydro fleet.
+ELI.BE,Y,Y,1,1,2,H,Belgian/German electricity TSO; unpermittable.
+ENEL.IT,Y,Y,1,2,2,H,Italian/Iberian/LatAm grids plus large hydro fleet.
+IBE.ES,Y,Y,1,2,2,H,Multi-country regulated grids plus hydro; unpermittable.
+NG..GB,Y,Y,1,1,2,H,UK transmission and US distribution grids.
+PPC.GR,Y,Y,1,1,2,M,Owns Greek distribution network (HEDNO) and hydro.
+RED.ES,Y,Y,1,1,2,H,Spanish electricity TSO monopoly.
+SSE.GB,Y,Y,1,1,2,H,SSEN networks plus Scottish hydro assets.
+TRN.IT,Y,Y,1,1,2,H,Italian electricity TSO monopoly.
+VER.AT,Y,Y,1,1,2,H,Austrian run-of-river and pumped-storage hydro; irreplaceable.
+ENG.ES,Y,Y,1,1,2,H,Spanish gas TSO; unpermittable network.
+IG.IT,Y,Y,1,1,2,H,Italian gas distribution network.
+RUI.FR,Y,Y,1,2,1,M,
+SRG.IT,Y,Y,1,1,2,H,Italian gas TSO and storage; unpermittable.
+DRX.GB,Y,Y,1,1,2,M,Cruachan pumped-storage hydro is irreplaceable; Drax station replicable.
+FORTUM.FI,Y,Y,1,1,2,M,Nordic hydro and nuclear fleet; Russia assets already exited/seized.
+RWE.DE,Y,Y,1,2,1,M,
+A2A.IT,Y,Y,1,1,2,M,"Lombardy grids, hydro and waste plants; hard to replicate."
+CNA.GB,N,Y,1,1,1,M,"Retail, trading, storage, upstream hybrid; opaque trading book."
+ENGI.FR,N,Y,1,2,2,M,Sprawling multi-utility with large GEMS trading book; owns GRDF grid/hydro.
+EOAN.DE,Y,Y,1,2,2,H,Pan-European distribution grids; unpermittable network monopoly.
+HER.IT,Y,Y,1,1,2,H,"Local water, gas networks and waste plants; NIMBY-protected."
+NTGY.ES,Y,Y,1,2,2,M,Spanish/LatAm gas and power networks.
+VIE.FR,Y,Y,1,2,2,M,Water concessions and hazardous-waste permits are hard to replicate.
+ANA.ES,N,Y,1,2,1,M,"Mixed group: renewables, construction, concessions, funds, mobility."
+EDPR.PT,Y,Y,1,2,1,M,
+ORSTED.DK,Y,Y,1,1,1,M,
+PNN.GB,Y,Y,1,1,2,H,Regulated water/sewer network monopoly.
+SVT.GB,Y,Y,1,1,2,H,Regulated water/sewer network monopoly.
+UU..GB,Y,Y,1,1,2,H,Regulated water/sewer network monopoly.

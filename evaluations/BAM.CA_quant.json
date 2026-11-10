@@ -1,0 +1,43 @@
+{
+  "id": "BAM.CA",
+  "ticker": "BAM",
+  "universe": "ca",
+  "company": "Brookfield Asset Management",
+  "price": 74.82,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": 0.085,
+    "g_implied": 0.105,
+    "roic_est": 0.344,
+    "fin_note": "Operating ROIC confirmed at 34.4% (roic_operating) reflecting asset-light pure-play fee-earning structure. FY22 peak Owner EPS of 6.7719 CAD includes pre-spin carveout accounting from Brookfield Corp (BN), while post-spin standalone Owner EPS has grown from 1.57 CAD (FY23) to 2.13 CAD (FY25). Peak EPS override is kept null to preserve consistency with cycle multiples (mult_low_5y 6.68x, mult_high_5y 11.30x) derived from reported peak; on normalized standalone EPS of 2.13 CAD, equivalent cycle high is ~35.9x, yielding identical PAR value (~76.52 CAD). 5-10Y secular growth g_est anchored at 8.5% (vs 10.5% bottom-up implied: 7% FBC volume + 2.5% credit/wealth + 1% margin leverage - 0.5% fee drag + 0.5% buybacks) reflecting large-cap scale and cyclical fundraising pacing."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 6.7719,
+    "current_multiple": 11.05,
+    "par_multiple": 11.30,
+    "par_value": 76.52,
+    "percent_vs_par": -0.0222,
+    "status": "Below PAR",
+    "g_implied": 0.105,
+    "dividend_yield": 0.033,
+    "expected_irr_5y": 0.1229,
+    "market_implied_cap": 14.7,
+    "moat_runway_margin": 0.3,
+    "market_implied_growth": -0.0512,
+    "growth_margin_of_safety": 0.1362
+  },
+  "health_checks": {
+    "net_debt_years": 0.63,
+    "net_debt_ok": true,
+    "interest_coverage": 11.83,
+    "interest_cov_ok": true,
+    "fcf_conversion": 0.62,
+    "fcf_conv_ok": false,
+    "peak_to_peak_ok": false
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}

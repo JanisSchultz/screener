@@ -1,0 +1,43 @@
+{
+  "id": "DOL.CA",
+  "ticker": "DOL",
+  "universe": "ca",
+  "company": "Dollarama Inc.",
+  "price": 215.49,
+  "quote_currency": "CAD",
+  "quantitative_overrides": {
+    "peak_eps_est": null,
+    "g_est": 0.095,
+    "g_implied": 0.095,
+    "roic_est": 0.35,
+    "fin_note": "Operating ROIC normalized to 35.0% cap under v6.23 Tangible Capital Standard (88.4% operating return on tangible capital). Forward growth g_imp = 9.5% anchored on bottom-up moat compounding: 2.0% store traffic + 3.5% store rollout (Canada, LatAm & Australia) + 1.5% multi-price tiering + 2.5% share buybacks (vs 8.51% pure Mauboussin autoregression from historical 17.07% CAGR). Uncorrupted Peak Owner EPS of $5.39 CAD."
+  },
+  "valuation_metrics": {
+    "active_peak_eps": 5.3856,
+    "current_multiple": 40.01,
+    "par_multiple": 28.99,
+    "par_value": 156.13,
+    "percent_vs_par": 0.3802,
+    "status": "Above PAR",
+    "g_implied": 0.095,
+    "dividend_yield": 0.0020,
+    "expected_irr_5y": 0.0286,
+    "market_implied_cap": 27.6,
+    "moat_runway_margin": -7.6,
+    "market_implied_growth": 0.2603,
+    "growth_margin_of_safety": -0.1653
+  },
+  "health_checks": {
+    "net_debt_years": 1.27,
+    "net_debt_ok": true,
+    "interest_coverage": 9.64,
+    "interest_cov_ok": true,
+    "fcf_conversion": 1.12,
+    "fcf_conv_ok": true,
+    "peak_to_peak_ok": true
+  },
+  "evaluation_metadata": {
+    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluator": "quantitative-agent"
+  }
+}
