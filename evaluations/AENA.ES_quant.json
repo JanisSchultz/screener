@@ -7,7 +7,7 @@
   "quote_currency": "EUR",
   "quantitative_overrides": {
     "peak_eps_est": null,
-    "g_est": null,
+    "g_est": 0.05,
     "g_implied": 0.05,
     "roic_est": 0.1873,
     "fin_note": "Peak Owner EPS of €1.4245 reflects post-COVID passenger normalization and commercial retail contract renewals across 46 Spanish airports without non-cash windfalls. Operating ROIC of 18.73% accurately captures regulated airport asset tangible returns (GAAP 16.49%). 5-10Y forward growth anchored at 5.0% reflecting Spanish tourist passenger volume (2.8%), DORA CPI-indexed aeronautical tariffs and retail concession spend (2.6%), partially offset by ongoing airport maintenance CapEx. Sound balance sheet with Net Debt / NI at 2.07x and interest coverage at 12.25x."

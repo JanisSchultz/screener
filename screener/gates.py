@@ -122,6 +122,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     par_g_cap_default = (p or {}).get("par_g_cap", 0.120)
     par_g_cap_large = (p or {}).get("par_g_cap_large", 0.100)
     par_g_cap_mega = (p or {}).get("par_g_cap_mega", 0.085)
+    par_g_cap_hyper = (p or {}).get("par_g_cap_hyper", 0.080)
     par_g_turnaround = (p or {}).get("par_g_turnaround", 0.010)
     par_g_base = (p or {}).get("par_g_base", 0.035)
     par_fade_cap30 = (p or {}).get("par_fade_cap30", 0.75)
@@ -142,14 +143,18 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     rev_usd_b = (rev * fx_rate) / 1000.0 if (rev is not None and rev > 0) else None
 
     if rev_usd_b is not None:
-        if rev_usd_b >= 50.0:
+        if rev_usd_b >= 250.0:
+            scale_tier, scale_cap = "HYPER", par_g_cap_hyper
+        elif rev_usd_b >= 50.0:
             scale_tier, scale_cap = "MEGA", par_g_cap_mega
         elif rev_usd_b >= 15.0:
             scale_tier, scale_cap = "LARGE", par_g_cap_large
         else:
             scale_tier, scale_cap = "MID/SM", par_g_cap_default
     else:
-        if mc_usd_b >= 250.0:
+        if mc_usd_b >= 1000.0:
+            scale_tier, scale_cap = "HYPER", par_g_cap_hyper
+        elif mc_usd_b >= 250.0:
             scale_tier, scale_cap = "MEGA", par_g_cap_mega
         elif mc_usd_b >= 50.0:
             scale_tier, scale_cap = "LARGE", par_g_cap_large
@@ -232,7 +237,13 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
                 hist_demand = 0.5 * top_per_share + 0.5 * max(0.0, g)
             else:
                 hist_demand = top_per_share + 0.005
-            g_demand = round(min(par_g_prefade_cap, hist_demand), 4)
+            raw_demand = min(par_g_prefade_cap, hist_demand)
+            # Short-Window (<5Y) & Inorganic M&A Goodwill Demand Haircut ('Free Optionality' rule):
+            is_short_window = (sales_yrs is not None and sales_yrs < 5)
+            is_ma_heavy = (roic_gaap is not None and roic_gaap < 0.15 and roiic_val is not None and roiic_val < 0.10 and roic_op >= 0.25)
+            if (is_short_window or is_ma_heavy) and raw_demand > 0.060:
+                raw_demand = min(0.140, 0.060 + 0.75 * (raw_demand - 0.060))
+            g_demand = round(raw_demand, 4)
         elif g is not None:
             g_demand = round(min(par_g_prefade_cap, g), 4)
         elif g_imp_in is not None:

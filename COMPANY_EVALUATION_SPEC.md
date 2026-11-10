@@ -291,12 +291,13 @@ Grounded in bottom-up capital reinvestment math, empirical corporate base rates,
 1. **Core Growth & Revenue Size Gravity Parameters**:
    - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
    - `par_g_prefade_cap = 0.180` (`18.0%` near-term Years 1–3 momentum ceiling before Step-Down Fade).
-   - `par_g_cap_mega = 0.085` (`8.5%` 10Y post-fade ceiling for Mega-Revenue enterprises $\ge \$50\text{B}$ USD equivalent).
+   - `par_g_cap_hyper = 0.080` (`8.0%` 10Y post-fade ceiling for Hyper-Scale enterprises $\ge \$250\text{B}$ USD equivalent).
+   - `par_g_cap_mega = 0.085` (`8.5%` 10Y post-fade ceiling for Mega-Revenue enterprises $\$50\text{B}–\$250\text{B}$ USD equivalent).
    - `par_g_cap_large = 0.100` (`10.0%` 10Y post-fade ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
    - `par_g_cap = 0.120` (`12.0%` 10Y post-fade ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
 2. **4 Sequential Growth Filters** (bypassed only when explicit manual override `g_est` is populated):
    - **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**: $(1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$, where pure `Toll booth / Switching costs` businesses with $\ge 35\%$ Operating ROIC receive `18.0%` Zero-Capital Pricing freedom (deducting only chronic share dilution).
-   - **Filter 2 & 4a — Objective Demand & Margin Ceiling ($g_{\text{demand}}$)**: $\min(18.0\%, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion (and blending downward if historical Owner EPS lagged revenue + buybacks).
+   - **Filter 2 & 4a — Objective Demand, Margin & Short-Window/M&A Ceiling ($g_{\text{demand}}$)**: $\min(18.0\%, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion and applying a $25\%$ excess haircut / $14.0\%$ cap when `sales_cagr_yrs < 5` or heavy M&A goodwill drag (`roic_median < 15%` and `roiic < 10%`) is present.
    - **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ GDP** on $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$:
      - **CAP $\ge$ 30 Years**: $w = 0.75$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
      - **CAP $\ge$ 20 Years**: $w = 0.60$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).

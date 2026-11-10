@@ -1789,9 +1789,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw))<br>
           <span style="font-size: 11px; color: var(--text-dim);">
             <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth 18.0% freedom for &ge;35% Operating ROIC)<br>
-            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(18.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(unfaded Years 1&ndash;3 momentum; disallows perpetual margin expansion)<br>
+            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(18.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(25% excess haircut / 14.0% cap on &lt;5Y windows &amp; M&A-goodwill roll-ups)<br>
             <b>3. Step-Down Fade toward 3.5% GDP:</b> g_raw &ge; 3.5%: w * g_raw + (1 - w) * 3.5% &nbsp;(w = 0.75 CAP &ge;30y, 0.60 CAP &ge;20y, 0.45 CAP &ge;15y) | g_raw &lt; 3.5%: max(2.0%, g_raw)<br>
-            <b>4. Revenue Size Gravity (10Y Post-Fade Cap):</b> Mega-Rev (&ge; $50B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
+            <b>4. Revenue Size Gravity (10Y Post-Fade Cap):</b> Hyper-Rev (&ge; $250B) &le; 8.0% | Mega-Rev ($50B - $250B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
           </span>
         </p>
       </div>
@@ -2040,7 +2040,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
                 <span>Margin Expansion Cap: <b style="color: var(--text-muted);">Max +0.5%</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(18.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance)</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(18.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance) [25% excess haircut / 14.0% cap for &lt;5Y window or M&amp;A drag]</div>
             </div>
 
             <!-- Filter 3: Step-Down Fade -->
@@ -3297,10 +3297,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       let scale_tier = "MID/SM";
       let scale_cap = 0.120;
       if (rev_usd_b !== null) {{
-        if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
+        if (rev_usd_b >= 250.0) {{ scale_tier = "HYPER"; scale_cap = 0.080; }}
+        else if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
         else if (rev_usd_b >= 15.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
       }} else {{
-        if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
+        if (mc_usd_b >= 1000.0) {{ scale_tier = "HYPER"; scale_cap = 0.080; }}
+        else if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
         else if (mc_usd_b >= 50.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
       }}
 
@@ -3360,7 +3362,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             top_per_share = 0.5 * top_per_share + 0.5 * g_oe;
           }}
           const hist_demand = (!salesChanged && g_oe !== null && g_oe < top_per_share) ? (0.5 * top_per_share + 0.5 * Math.max(0.0, g_oe)) : (top_per_share + 0.005);
-          g_demand = Math.round(Math.min(0.180, hist_demand) * 10000) / 10000;
+          let raw_demand = Math.min(0.180, hist_demand);
+          const is_short_window = (!salesChanged && sales_yrs !== null && sales_yrs < 5);
+          const is_ma_heavy = (!salesChanged && roic_gaap !== null && roic_gaap < 0.15 && roiic_val !== null && roiic_val < 0.10 && roic_op >= 0.25);
+          if ((is_short_window || is_ma_heavy) && raw_demand > 0.060) {{
+            raw_demand = Math.min(0.140, 0.060 + 0.75 * (raw_demand - 0.060));
+          }}
+          g_demand = Math.round(raw_demand * 10000) / 10000;
         }} else if (g_oe !== null) {{
           g_demand = Math.round(Math.min(0.180, g_oe) * 10000) / 10000;
         }} else if (c.g_implied !== null) {{

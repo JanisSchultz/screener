@@ -223,7 +223,8 @@ PARAMETER_GROUPS = [
         ("par_g_prefade_cap", "Max unfaded near-term (Years 1–3) momentum rate before Step-Down Fade", 0.180, "0.0%", NEW + " Bounds pre-fade g_demand and Zero-Capital Tollbooth g_fund at 18.0% before CAP step-down and Revenue Size Gravity."),
         ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Revenue enterprises (< $15B USD)", 0.120, "0.0%", NEW + " Revenue Size Gravity ceiling (12.0%) for mid/small-revenue enterprises."),
         ("par_g_cap_large", "Max sustainable forward growth rate for Large-Revenue enterprises ($15B - $50B USD)", 0.100, "0.0%", NEW + " Revenue Size Gravity ceiling (10.0%) for large-revenue enterprises."),
-        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Revenue enterprises (>= $50B USD)", 0.085, "0.0%", NEW + " Revenue Size Gravity ceiling (8.5%) for mega-revenue enterprises."),
+        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Revenue enterprises ($50B - $250B USD)", 0.085, "0.0%", NEW + " Revenue Size Gravity ceiling (8.5%) for mega-revenue enterprises."),
+        ("par_g_cap_hyper", "Max sustainable forward growth rate for Hyper-Scale enterprises (>= $250B USD)", 0.080, "0.0%", NEW + " Revenue Size Gravity ceiling (8.0%) for hyper-scale enterprises."),
         ("par_g_turnaround", "Turnaround stagnation threshold for historical CAGR fallback", 0.010, "0.0%", NEW + " When multi-year sales_cagr is unavailable and historical CAGR < 1.0%, clamps target to par_g_base (3.5%)."),
         ("par_g_base", "Nominal GDP base-rate anchor for Step-Down Fade", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Step-Down Fade."),
         ("par_fade_cap30", "Step-down explicit growth weight for Gate 4 CAP >= 30 years (fortress monopolies)", 0.75, "0.00", NEW + " 5-7Y PAR cycle step-down weight (75% explicit + 25% nominal GDP) for 30-year moats."),
@@ -557,11 +558,11 @@ CHANGELOG = {
         "(1) Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math "
         "((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing allowance + Share Dilution deduction), "
         "catching high-payout asset-heavy businesses (WM, PEP) and M&A-dilutive acquirers (BLK) while granting Zero-Capital Pricing freedom (par_g_prefade_cap = 18.0%) to >= 35% Operating ROIC Tollbooths. "
-        "(2) Filter 2 & 4a — Bottom-Up Demand & Margin Ceiling (g_demand): Anchors unfaded per-share demand to verified multi-year Revenue CAGR "
-        "plus net buyback yield (bounded at par_g_prefade_cap = 18.0% pre-fade, disallowing perpetual operating-margin expansion on low-volume stories like OTIS and LIN). "
+        "(2) Filter 2 & 4a — Bottom-Up Demand, Margin & Short-Window/M&A Ceiling (g_demand): Anchors unfaded per-share demand to verified multi-year Revenue CAGR "
+        "plus net buyback yield (bounded at 18.0% pre-fade for verified 5Y organic compounders, disallowing perpetual operating-margin expansion, and applying a 25% excess haircut / 14.0% cap to <5Y statement windows or M&A-goodwill-heavy roll-ups like BRO and ADI). "
         "(3) Filter 3 — CAP-Linked Step-Down Fade toward 3.5% Nominal GDP: Takes min(g_fund, g_demand) and steps down toward par_g_base = 3.5% "
         "over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), preserving asymmetric 'No Free Lunch' below 3.5%. "
-        "(4) Filter 4b — Revenue Size Gravity: Applies USD Revenue Size Gravity post-fade (>= $50B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
+        "(4) Filter 4b — 4-Tier Revenue Size Gravity: Applies USD Revenue Size Gravity post-fade (>= $250B Hyper <= 8.0%, $50B-$250B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
         "with legacy g_implied reserved strictly as a fallback when statement growth is unavailable.",
     ],
 }

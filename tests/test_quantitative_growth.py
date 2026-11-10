@@ -111,13 +111,14 @@ class QuantitativeGrowthTests(unittest.TestCase):
         )
         val = par_valuation(fin, self.p, cap=30, moat="Toll booth / Switching costs")
         self.assertEqual(val["g_fund"], 0.180)
-        self.assertEqual(val["g_demand"], 0.135)
-        self.assertAlmostEqual(val["g_exp"], 0.1000, places=4)
+        self.assertEqual(val["g_demand"], 0.1163)
+        self.assertAlmostEqual(val["g_exp"], 0.0960, places=4)
 
-    def test_prefade_18pct_cap_and_no_g_implied_lock_frees_googl_to_mega_ceiling(self):
-        # GOOGL archetype: 17.15% 5Y sales CAGR + 1.77% buybacks -> pre-fade g_demand = 18.0%, g_fund = 18.0%.
+    def test_prefade_18pct_cap_and_hyper_tier_bounds_googl_at_8pct(self):
+        # GOOGL archetype ($403B USD revenue -> HYPER tier <= 8.0%):
+        # 17.15% 5Y sales CAGR + 1.77% buybacks -> pre-fade g_demand = 18.0%, g_fund = 18.0%.
         # At CAP 15 (w = 0.45): faded_g = 0.45*0.18 + 0.55*0.035 = 10.025%.
-        # Legacy g_implied = 7.0% no longer locks GOOGL; Mega-Rev Size Gravity (8.50%) bounds cleanly!
+        # Hyper-Scale Size Gravity (8.00%) bounds cleanly!
         fin_googl = sample_fin(
             sales_ttm_m=402836.0,
             retention_rate=1.0,
@@ -132,9 +133,47 @@ class QuantitativeGrowthTests(unittest.TestCase):
             g_implied=0.070,
         )
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
+        self.assertEqual(val["scale_tier"], "HYPER")
+        self.assertEqual(val["scale_cap"], 0.080)
         self.assertEqual(val["g_fund"], 0.180)
         self.assertEqual(val["g_demand"], 0.180)
-        self.assertAlmostEqual(val["g_exp"], 0.0850, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0800, places=4)
+
+    def test_short_window_and_ma_goodwill_demand_haircut(self):
+        # 1) Short 3Y Yahoo window (MTX.DE archetype: 18.0% 3Y sales CAGR):
+        # Unhaircutted demand would be 18.0% -> 25% excess haircut above 6% = 6% + 0.75*(12%) = 15.0%, capped at 14.0%!
+        # At CAP 20 (w=0.60): 0.60*0.14 + 0.40*0.035 = 9.80% (instead of 12.00%)
+        fin_3y = sample_fin(
+            sales_ttm_m=8000.0,
+            retention_rate=0.75,
+            roic_median=0.20,
+            roic_operating=0.27,
+            roiic=0.35,
+            sales_cagr=0.180,
+            sales_cagr_yrs=3,
+            buyback_yield=0.0,
+            cagr_oe_eps=0.45,
+        )
+        val_3y = par_valuation(fin_3y, self.p, cap=20)
+        self.assertAlmostEqual(val_3y["g_demand"], 0.1400, places=4)
+        self.assertAlmostEqual(val_3y["g_exp"], 0.0980, places=4)
+
+        # 2) M&A-heavy 5Y roll-up (BRO archetype: roic_median = 12% < 15%, roiic = 5.8% < 10%, roic_op = 200% >= 25%):
+        # Raw demand = 15.97% -> haircutted to 6% + 0.75*(9.97%) = 13.48% -> at CAP 15 (w=0.45): 7.99%
+        fin_ma = sample_fin(
+            sales_ttm_m=4800.0,
+            retention_rate=0.80,
+            roic_median=0.1201,
+            roic_operating=2.00,
+            roiic=0.0582,
+            sales_cagr=0.177,
+            sales_cagr_yrs=5,
+            buyback_yield=-0.0155,
+            cagr_oe_eps=0.158,
+        )
+        val_ma = par_valuation(fin_ma, self.p, cap=15, moat="Toll booth / Switching costs")
+        self.assertAlmostEqual(val_ma["g_demand"], 0.1348, places=4)
+        self.assertAlmostEqual(val_ma["g_exp"], 0.0799, places=3)
 
     def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
         # When both sales_cagr and cagr_oe_eps are missing (e.g. BAM.CA / newly listed holding company),
@@ -231,7 +270,14 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(val["g_exp"], 0.1130, places=4)
 
     def test_filter4b_mega_and_large_revenue_ceilings(self):
-        # Mega-Revenue >= $50B USD -> capped at 8.5%
+        # Hyper-Revenue >= $250B USD -> capped at 8.0%
+        fin_hyper = sample_fin(sales_ttm_m=300000.0, cagr_oe_eps=0.20)
+        val_hyper = par_valuation(fin_hyper, self.p, cap=30)
+        self.assertEqual(val_hyper["scale_tier"], "HYPER")
+        self.assertEqual(val_hyper["scale_cap"], 0.080)
+        self.assertAlmostEqual(val_hyper["g_exp"], 0.080, places=4)
+
+        # Mega-Revenue $50B-$250B USD -> capped at 8.5%
         fin_mega = sample_fin(sales_ttm_m=80000.0, cagr_oe_eps=0.20)
         val_mega = par_valuation(fin_mega, self.p, cap=30)
         self.assertEqual(val_mega["scale_tier"], "MEGA")
