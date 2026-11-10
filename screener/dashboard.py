@@ -1789,7 +1789,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (currentTab === 'all' && gate !== 'all') {{
           if (gate === 'Quality pass' && c.result !== 'Quality pass') return false;
           if (gate === 'Calamity pass' && c.result !== 'Calamity pass') return false;
-          if (gate.startsWith('Gate') && (!c.rejected_at || !c.rejected_at.startsWith(gate))) return false;
+          if (gate.startsWith('Gate') || gate.startsWith('G')) {{
+            const num = gate.replace(/[^0-9]/g, '');
+            if (num) {{
+              const gPrefix = 'G' + num;
+              const gatePrefix = 'Gate ' + num;
+              const rejAt = c.rejected_at || '';
+              const res = c.result || '';
+              const matches = rejAt.startsWith(gPrefix) || rejAt.startsWith(gatePrefix) || res.includes(gPrefix);
+              if (!matches) return false;
+            }}
+          }}
         }}
 
         // Search Query
