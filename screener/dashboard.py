@@ -135,7 +135,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = sorted(irrs)[len(irrs) // 2] if irrs else 0.0
 
     return {
-        "version": "6.25",
+        "version": "6.27",
         "generated_at": "2026-11-10",
         "summary": {
             "total_companies": len(all_companies),
@@ -1455,9 +1455,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Equity Bond Below PAR</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula:</strong>
+        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.27):</strong>
         <p class="formula-code">
-          PAR Multiple = min(mult_high_5y, (2 * (g_exp * 100) + 5Y Cycle Midpoint Multiple + min(Operating_ROIC * 100, 35.0)) / 3)
+          PAR Multiple = min(mult_high_5y, (M_eff * g_exp + min(5Y_Midpoint_Mult, 35.0) + min(Operating_ROIC * 100, 35.0)) / 3)<br>
+          <span style="font-size: 11px; color: var(--text-dim);">M_eff = M_cap * &eta;_reinv | M_cap: 240 (CAP &ge; 30y), 200 (CAP &ge; 20y), 170 (CAP &ge; 15y) | &eta;_reinv = clamp((1 - g/ROIC) / (1 - g/0.35), 0.25, 1.0)</span>
         </p>
       </div>
       <div class="metric-box">

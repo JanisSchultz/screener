@@ -16,14 +16,15 @@
     "gate_4_runway_cap": 20,
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
     "note": "Passes all 6 gates. Irreplaceable transcontinental three-coast freight rail duopoly (Atlantic, Pacific, Gulf of Mexico) with CPKC. Demonstrated multi-cycle pricing power with contract escalators consistently pricing 100-200 bps above rail inflation plus fuel surcharges. Passes Gate 6 under the essential infrastructure standard with 100.5% FCF conversion, 14.5% 5Y median ROIC, ~38-40% EBIT margins, and conservative 7.9x interest coverage on long-dated debt. [5-10Y g: carload volume growth 2.0% + tariff escalation above inflation 3.0% + operating ratio efficiency 0.5% + net share repurchases 1.5%]",
     "evidence": "5Y median GAAP ROIC of 14.5% and tangible operating ROIC of 14.6%. Multi-year FCF conversion of 100.5% (EBIT 7,177M CAD, Net Income 4,720M CAD). 20,000 route miles linking Halifax, Vancouver, Prince Rupert, and New Orleans. Operates at low-60s operating ratio. Net debt of 19,950M CAD is ~4.2y owner earnings with strong 7.9x interest coverage and well-laddered long-term maturities, qualifying under the physical infrastructure solvency standard. Disciplined capital allocation with 28 consecutive years of dividend increases and steady share buybacks."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
-    "evaluated_at": "2026-11-09T21:30:00Z",
-    "evaluator": "independent-agent"
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
   }
 }

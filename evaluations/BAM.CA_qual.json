@@ -16,14 +16,15 @@
     "gate_4_runway_cap": 15,
     "gate_5_management_score": 2,
     "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
     "note": "Passes all 6 gates. Pure-play alternative asset manager with $539B+ in fee-bearing capital, 87% locked in long-duration or perpetual vehicles. Beneficiary of AI power infrastructure buildouts, energy transition, and private credit expansion. Asset-light fortress balance sheet with net debt under 0.7x net income, >11x interest cover, and 90%+ cash payout. [5-10Y g: FBC volume growth 7.0% + private credit/wealth expansion 2.5% + operating margin leverage 1.0% - institutional fee compression drag 0.5% + share repurchases 0.5%]",
-    "evidence": "33%+ GAAP ROIC and 34%+ Operating ROIC. Over $2.5B in Fee-Related Earnings (FRE) with 56%+ FRE margins. 87% of Fee-Bearing Capital locked in 10-15 year closed-end private funds or perpetual capital vehicles, shielding revenue from market runs. Net debt of $1.58B is repayable in <0.7 years from $2.48B Net Income. Corporate liquidity exceeds $1.8B with zero recourse to fund-level debt."
+    "evidence": "33%+ GAAP ROIC and 34%+ Operating ROIC reflecting an asset-light pure-play fee structure. Over $2.5B in Fee-Related Earnings (FRE) with 56%+ FRE margins. 87% of Fee-Bearing Capital locked in 10-15 year closed-end private funds or perpetual capital vehicles, shielding revenue from market runs. Net debt of $1.58B is repayable in <0.7 years from $2.48B Net Income. Corporate liquidity exceeds $1.8B with zero recourse to fund-level debt."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
-    "evaluated_at": "2026-11-09T21:30:00Z",
+    "evaluated_at": "2026-11-10T13:55:00Z",
     "evaluator": "qualitative-agent"
   }
 }

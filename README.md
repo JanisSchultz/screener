@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.26 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.27 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,11 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.27: By-the-Book PAR Valuation Refinements (Pillar 2 Cap, CAP Growth Slope & Multiplicative Reinvestment Efficiency):
+- Pillar 2 Historical Midpoint Cap (par_hist_cap = 35.0): Capped t_hist = min(35.0, 0.5 * (mult_low_5y + mult_high_5y)) symmetric with par_roic_cap = 35.0, preventing 2021 ZIRP bubble peaks and depressed-denominator years from inflating PAR above fundamental value (CFR.CH, SAF.FR, LUND B.SE) or driving g_market negative.
+- Gate 4 CAP-Linked Growth Multiple Slope (M_cap): Linked Pillar 1 growth slope directly to Gate 4 CAP (240.0 for CAP >= 30y, 200.0 for CAP >= 20y, 170.0 for CAP >= 15y) so moat duration differentiates all funnel companies even when bottom-up g_implied is populated.
+- Multiplicative Reinvestment Efficiency (eta_reinv): Scaled Pillar 1 growth credit by free-cash-flow payout capacity (1 - g_exp / ROIC) relative to the 35% ROIC capital-light standard (clamped to [0.25, 1.00]), preserving full credit for 35%+ ROIC compounders while penalizing capital-heavy growers (ALC.CH, EQT.SE, LUND B.SE) and maintaining exact closed-form g_market inversion.
 
 v6.26: Gate 4 CAP-Linked Growth Engine & Expected Growth Renaming (g_exp):
 - Gate 4 CAP-Linked Growth Persistence (λ): Grounded forward growth persistence in Gate 4 Runway CAP:

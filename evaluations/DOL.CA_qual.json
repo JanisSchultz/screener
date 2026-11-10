@@ -2,7 +2,7 @@
   "id": "DOL.CA",
   "ticker": "DOL",
   "universe": "ca",
-  "company": "Dollarama Inc.",
+  "company": "Dollarama",
   "country": "Canada",
   "sector": "Consumer Discretionary",
   "sub_industry": "Broadline Retail",
@@ -12,18 +12,19 @@
     "gate_2_reason": null,
     "gate_3a_moat_archetype": "Scale economies shared",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Direct overseas sourcing scale and unmatched Canadian store density (>1,600 stores) yield lowest retail cost structure. Successful rollout of multi-price tiers up to $5 proved pricing power, keeping gross margins at 43-45% and driving ROIC >22% (operating ROIC >50%).",
+    "gate_3m_moat_note": "Direct overseas sourcing scale and unmatched Canadian store network density (>1,600 stores) yield the lowest retail cost structure in Canada. Successful rollout of multi-price tiers up to $5.00 demonstrated strong pricing power with zero customer churn, preserving 44-45% gross margins and driving GAAP ROIC >45% (Operating ROIC >80%). Primary erosion threats: wage inflation, supply chain disruption, and long-term domestic store saturation.",
     "gate_4_runway_cap": 20,
     "gate_5_management_score": 2,
     "gate_6_cash_and_balance_sheet": "Y",
+    "calamity_flag": null,
+    "calamity_note": null,
     "note": "Passes all 6 gates. Dominant Canadian extreme-value retail monopoly operating a classic scale economies shared flywheel. Unrivaled store density, overseas direct sourcing scale, <2-year store payback economics, and disciplined international compounding via Dollarcity (LatAm) and The Reject Shop (Australia). Pristine cash conversion (>110% FCF/NI) and interest coverage (>9.6x EBIT, >11.5x EBITDA) confirm negative equity was an accounting artifact of treasury share cancellations, not balance sheet distress. [5-10Y g: Canadian store traffic 2.0% + store network expansion (Canada, LatAm & Australia) 3.5% + multi-price tiering 1.5% + net share repurchases 2.5%]",
-    "evidence": "Operating ROIC >50% (GAAP ROIC ~22-26% including IFRS 16 lease liabilities). Free cash flow conversion averaged 115% of Net Income over FY2023-FY2026. Gross margins pristine at 44.7% and EBIT margins expanded to 27.1%. Net funded debt is $2.29B CAD against TTM Net Income of $1.31B CAD (1.75x Net Debt/NI, well below 4.0x ceiling) with EBIT interest coverage of 9.6x and EBITDA interest coverage of 11.9x. Uninterrupted peak-to-peak diluted EPS compounding from $1.78 in FY2020 to $4.73 in FY2026."
+    "evidence": "Operating ROIC >50% (GAAP ROIC ~22-26% including IFRS 16 lease liabilities, and ~45-57% on net operating assets). Free cash flow conversion averaged 115% of Net Income over FY2023-FY2026. Gross margins pristine at 44.7% and EBIT margins expanded to 27.1%. Net funded debt is $1.90B CAD against TTM Net Income of $1.31B CAD (1.45x Net Debt/NI, well below 4.0x ceiling) with EBIT interest coverage of 9.6x and EBITDA interest coverage of 11.9x. Uninterrupted peak-to-peak diluted EPS compounding from $1.78 in FY2020 to $5.39 in FY2025."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
-    "evaluated_at": "2026-11-09T21:30:00Z",
-    "evaluator": "independent-agent"
+    "evaluated_at": "2026-11-10T13:55:00Z",
+    "evaluator": "qualitative-agent"
   }
 }

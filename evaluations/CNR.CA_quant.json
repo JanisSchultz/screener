@@ -37,7 +37,7 @@
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T22:30:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

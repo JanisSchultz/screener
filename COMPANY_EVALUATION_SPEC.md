@@ -1,11 +1,11 @@
-# Per-Company Evaluation Framework Specification (v6.23)
+# Per-Company Evaluation Framework Specification (v6.27)
 ## Quality & Moat Screener — 6 Munger Quality Gates & Equity Bond Below PAR
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v6.23)**.
+This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v6.27)**.
 
 ### The Evaluator Agent's Core Mindset
 As an independent evaluator agent, your role is that of an uncompromising, disciplined superinvestor operating strictly under the principles of **Charlie Munger** and **Warren Buffett**:
@@ -265,7 +265,7 @@ The Equity Bond Below PAR model treats high-quality compounders as equity bonds 
 3. **5-Year Historical Cycle Multiples**:
    - `mult_low_5y`: 5-year cycle low multiple (median of yearly lows).
    - `mult_high_5y`: 5-year cycle high multiple (median of yearly highs).
-   - `Cycle Midpoint Multiple`: $\text{t\_hist} = 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y})$.
+   - `Cycle Midpoint Multiple`: $\text{t\_hist} = \min(\text{par\_hist\_cap}, 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y}))$, where `par_hist_cap = 35.0` neutralizes 2021 ZIRP bubble and depressed-denominator spikes.
 
 ---
 
@@ -285,31 +285,35 @@ To prevent accounting distortions from penalizing capital-light compounders that
 
 ---
 
-### 5.3 Expected Growth Engine ($g_{\text{exp}}$) & Gate 4 CAP-Linked Persistence
+### 5.3 Expected Growth Engine ($g_{\text{exp}}$), CAP Slope & Reinvestment Efficiency
 
-Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persistence research (Counterpoint Global):
+Grounded in Michael Mauboussin and Dan Callahan's 75-year empirical growth persistence research (Counterpoint Global) and McKinsey's Value Driver formula:
 1. **Growth Parameters**:
    - `par_g_base = 0.07` (7.0% mature large-cap base rate anchor).
    - `par_g_cap = 0.12` (12.0% empirical ceiling for through-the-cycle large-cap EPS growth).
-2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$)**:
-   - **CAP $\ge$ 30 Years** (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V): $\lambda = 0.25$.
-   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT): $\lambda = 0.15$.
-   - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$.
-   - **Fallback / Unpopulated**: $\lambda = 0.15$.
+2. **Gate 4 CAP-Linked Growth Persistence ($\lambda$) & Growth Slope ($M_{\text{cap}}$)**:
+   - **CAP $\ge$ 30 Years** (Fortress Moats & Secular Monopolies: SPGI, MCO, MSFT, V, RMS.FR): $\lambda = 0.25$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
+   - **CAP $\ge$ 20 Years** (Standard Quality Compounders: OTIS, ZTS, CPRT): $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
+   - **CAP $\ge$ 15 Years** (Shorter Runway / Higher Transition Risk): $\lambda = 0.10$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
+   - **Fallback / Unpopulated**: $\lambda = 0.15$ and $M_{\text{cap}} = 200.0$.
 3. **Growth Hierarchy**:
    - If analyst override `g_est` is populated $\rightarrow g_{\text{exp}} = g_{\text{est}}$.
    - Else if bottom-up estimate `g_implied` (or `g_exp`) is populated $\rightarrow g_{\text{exp}} = \min(\text{par\_g\_cap}, g_{\text{implied}})$.
    - Else apply the **Mauboussin CAP-Linked Fade Formula** to historical cycle CAGR $g$:
      $$g_{\text{exp}} = \min\left(0.12, \max\left(0.02, \lambda \times (\max(0, g) - 0.07) + 0.07\right)\right)$$
    - Fallback: $g_{\text{exp}} = 0.07$ (7.0%).
+4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
+   - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
+     $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$
+   - **Effective Growth Slope**: $M_{\text{eff}} = M_{\text{cap}} \times \eta_{\text{reinv}}$.
 
 ---
 
 ### 5.4 3-Pillar Fundamental PAR Multiple & Cycle High Guardrail
 
 The fundamental fair value multiple is governed by three equal pillars:
-1. **Pillar 1: Secular Growth Factor**: $\text{t\_growth} = \min(40.0, 200.0 \times \max(0, g_{\text{exp}}))$. *(Adds $+16$ to $+24$ turns for 8%–12% compounders).*
-2. **Pillar 2: Historical Cycle Midpoint Multiple**: $\text{t\_hist} = 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y})$.
+1. **Pillar 1: Secular Growth Factor**: $\text{t\_growth} = \min(40.0, M_{\text{eff}} \times \max(0, g_{\text{exp}}))$.
+2. **Pillar 2: Historical Cycle Midpoint Multiple**: $\text{t\_hist} = \min(\text{par\_hist\_cap}, 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y}))$, where `par_hist_cap = 35.0`.
 3. **Pillar 3: Operating ROIC Factor**: $\text{t\_roic} = \min(\text{Active ROIC} \times 100, 35.0)$.
 
 $$\text{Raw PAR Multiple} = \frac{\text{t\_growth} + \text{t\_hist} + \text{t\_roic}}{3}$$
@@ -332,12 +336,12 @@ $$\text{PAR Multiple} = \min(\text{Raw PAR Multiple}, \text{mult\_high\_5y})$$
      - `Below PAR`: Current Price $\le$ PAR Value ($\% \text{ vs PAR} \le 0$). **BUYING OPPORTUNITY**.
      - `Above PAR`: Current Price $>$ PAR Value ($\% \text{ vs PAR} > 0$). **OVERVALUED**.
 4. **5-Year Expected Cycle IRR (Pull-to-PAR)**:
-   $$\text{5Y Expected IRR} = (1 + g_{\text{imp}}) \times \left(\frac{\text{PAR Value}}{\text{Current Share Price}}\right)^{0.2} + \text{Dividend Yield} - 1.0$$
+   $$\text{5Y Expected IRR} = (1 + g_{\text{exp}}) \times \left(\frac{\text{PAR Value}}{\text{Current Share Price}}\right)^{0.2} + \text{Dividend Yield} - 1.0$$
 5. **Market-Implied Growth ($g_{\text{market}}$) & Growth Margin of Safety**:
-   - Inversion of the 3-Pillar PAR Multiple formula reveals the growth rate priced into the current market multiple:
-     $$g_{\text{market}} = \frac{3 \times \text{Current Multiple} - \text{t\_hist} - \text{t\_roic}}{200}$$
+   - Exact closed-form inversion of the 3-Pillar PAR Multiple formula reveals the growth rate priced into the current market multiple:
+     $$g_{\text{market}} = \frac{3 \times \text{Current Multiple} - \text{t\_hist} - \text{t\_roic}}{M_{\text{eff}}}$$
    - **Growth Margin of Safety**:
-     $$\text{Growth Margin} = g_{\text{imp}} - g_{\text{market}}$$
+     $$\text{Growth Margin} = g_{\text{exp}} - g_{\text{market}}$$
 6. **Market-Implied CAP & Moat Runway Margin**:
    - Years of competitive advantage priced into the current stock price:
      $$\text{Market-Implied CAP} = \text{Fundamental CAP} \times \frac{\text{Current Share Price}}{\text{PAR Value}}$$

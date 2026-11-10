@@ -2,7 +2,7 @@
   "id": "IFC.CA",
   "ticker": "IFC",
   "universe": "ca",
-  "company": "Intact Financial Corporation",
+  "company": "Intact Financial",
   "country": "Canada",
   "sector": "Financials",
   "sub_industry": "Property & Casualty Insurance",
@@ -12,18 +12,19 @@
     "gate_2_reason": null,
     "gate_3a_moat_archetype": "Scale economies shared",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Dominant Canadian P&C underwriting scale (~21% market share, double its nearest competitor) provides unmatched actuarial data and claims supply chain efficiencies. Proprietary claims data across millions of Canadian policyholders enables superior risk selection, while direct supply chain ownership (Intact Service Centres, network discounts with auto repairers and restoration contractors) lowers unit claims settlement costs by 500-1,000 bps vs peers. Passing scale efficiencies back via competitive pricing allows Intact to persistently outperform the Canadian P&C industry combined ratio by 500-650 bps (multi-cycle combined ratio ~89-92%). Demonstrated pricing power via annual policy renewals repricing ahead of loss-cost inflation. Primary erosion threats: catastrophic weather frequency/severity (wildfires, convective storms), provincial auto insurance regulatory rate freezes, and post-RSA UK commercial competition.",
+    "gate_3m_moat_note": "Dominant Canadian P&C underwriting scale (~21% market share, double its nearest competitor) provides proprietary claims data across millions of policyholders and direct supply chain ownership (Intact Service Centres, network discounts with auto repairers and restoration contractors) lowering unit settlement costs by 500-1,000 bps vs peers. Passing scale efficiencies back via competitive pricing allows Intact to persistently outperform industry combined ratio by 500-650 bps (normalized combined ratio ~89-92%). Demonstrated pricing power via annual policy renewals repricing ahead of loss-cost inflation. Primary erosion threats: severe catastrophic weather frequency/severity (wildfires, convective storms), provincial auto insurance regulatory rate freezes, and UK commercial competition.",
     "gate_4_runway_cap": 20,
     "gate_5_management_score": 2,
     "gate_6_cash_and_balance_sheet": "Y",
-    "note": "Passes all 6 gates under the float institution rubric. Canada's dominant P&C insurer (~21% market share) compounding at 15%+ ROE via an insurmountable claims-scale moat and sub-92% combined ratios. Annual policy resets ensure inflation pass-through, while higher bond yields expand float investment income across a $40B+ portfolio. Pristine capital adequacy (LICAT/MCT >200%, interest coverage >15x) and outstanding 18-year leadership by CEO Charles Brindamour. [5-10Y g: direct premiums written 4.5% + underwriting margin expansion 1.5% + investment portfolio income 1.5% + share repurchases 1.0%]",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Passes all 6 gates under the float institution rubric. Canada's dominant P&C insurer (~21% market share) compounding at 15%+ ROE via an insurmountable claims-scale moat and sub-92% combined ratios. Annual policy resets ensure inflation pass-through, while higher bond yields expand float investment income across a $40B+ portfolio. Pristine capital adequacy (LICAT/MCT >200%, interest coverage >15x) and outstanding 18-year leadership by CEO Charles Brindamour. [5-10Y g: direct written premiums volume 4.5% + underwriting margin outperformance 1.5% + float investment income 1.5% + share repurchases 1.0%]",
     "evidence": "Multi-cycle 5-year median ROE of ~14-16% and operating ROIC of 24.7%. Underwriting combined ratio consistently outperforms Canadian P&C industry by 500-650 bps, achieving 89-92% normalized combined ratios. Operating cash flow grew from $3.67B (2022) to $4.39B (2025), converting to FCF at >115-130% of Net Income (4-year cumulative FCF conversion of 122.2%). Balance sheet strength: Net Debt of $3.50B is ~1.04x 2025 Net Income ($3.37B); EBIT/interest coverage is 20.1x in 2025 (9.1x in severe 2023 catastrophe trough). Total capital margin exceeds $2.5B above regulatory minimums (MCT/LICAT/Solvency II equivalent >200%). CEO Charles Brindamour has led Intact since 2008, delivering 20 consecutive years of dividend increases and disciplined value-accretive M&A (AXA Canada, OneBeacon, RSA)."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
-    "evaluated_at": "2026-11-09T21:45:00Z",
+    "evaluated_at": "2026-11-10T13:55:00Z",
     "evaluator": "qualitative-agent"
   }
 }

@@ -2,7 +2,7 @@
   "id": "CCL.B.CA",
   "ticker": "CCL.B",
   "universe": "ca",
-  "company": "CCL Industries Inc.",
+  "company": "CCL Industries",
   "price": 99.25,
   "quote_currency": "CAD",
   "quantitative_overrides": {
@@ -14,7 +14,7 @@
   },
   "valuation_metrics": {
     "active_peak_eps": 4.7035,
-    "current_multiple": 21.10,
+    "current_multiple": 21.1,
     "par_multiple": 20.99,
     "par_value": 98.73,
     "percent_vs_par": 0.0053,
@@ -24,8 +24,8 @@
     "expected_irr_5y": 0.0822,
     "market_implied_cap": 15.1,
     "moat_runway_margin": -0.1,
-    "market_implied_growth": 0.0670,
-    "growth_margin_of_safety": 0.0030
+    "market_implied_growth": 0.067,
+    "growth_margin_of_safety": 0.003
   },
   "health_checks": {
     "net_debt_years": 0.46,
@@ -37,7 +37,7 @@
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T22:36:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

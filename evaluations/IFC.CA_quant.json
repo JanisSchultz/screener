@@ -2,7 +2,7 @@
   "id": "IFC.CA",
   "ticker": "IFC",
   "universe": "ca",
-  "company": "Intact Financial Corporation",
+  "company": "Intact Financial",
   "price": 276.0,
   "quote_currency": "CAD",
   "quantitative_overrides": {
@@ -16,19 +16,19 @@
     "active_peak_eps": 20.2521,
     "current_multiple": 13.63,
     "par_multiple": 19.42,
-    "par_value": 393.20,
+    "par_value": 393.2,
     "percent_vs_par": -0.2981,
     "status": "Below PAR",
     "g_implied": 0.085,
     "dividend_yield": 0.0214,
-    "expected_irr_5y": 0.1860,
+    "expected_irr_5y": 0.186,
     "market_implied_cap": 14.0,
     "moat_runway_margin": 6.0,
     "market_implied_growth": -0.0018,
     "growth_margin_of_safety": 0.0868
   },
   "health_checks": {
-    "net_debt_years": 0.95,
+    "net_debt_years": 0.86,
     "net_debt_ok": true,
     "interest_coverage": 20.14,
     "interest_cov_ok": true,
@@ -37,7 +37,7 @@
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:46:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

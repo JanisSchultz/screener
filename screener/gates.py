@@ -89,7 +89,7 @@ def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)
 def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> dict:
-    """Python reference implementation of the v6.26 Equity Bond Below PAR valuation."""
+    """Python reference implementation of the v6.27 Equity Bond Below PAR valuation."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
@@ -100,27 +100,36 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     dy = (f("dividends_ttm_m") or 0.0) / mc if (mc and mc > 0 and f("dividends_ttm_m") is not None) else 0.0
     fund_cap = cap if isinstance(cap, (int, float)) else f("cap")
     par_roic_cap = (p or {}).get("par_roic_cap", 35.0)
+    par_hist_cap = (p or {}).get("par_hist_cap", 35.0)
     par_g_cap = (p or {}).get("par_g_cap", 0.12)
     par_g_base = (p or {}).get("par_g_base", 0.07)
     par_fade_cap30 = (p or {}).get("par_fade_cap30", 0.25)
     par_fade_cap20 = (p or {}).get("par_fade_cap20", 0.15)
     par_fade_cap15 = (p or {}).get("par_fade_cap15", 0.10)
     par_fade_default = (p or {}).get("par_fade_default", 0.15)
+    par_g_mult_cap30 = (p or {}).get("par_g_mult_cap30", 240.0)
+    par_g_mult_cap20 = (p or {}).get("par_g_mult_cap20", 200.0)
+    par_g_mult_cap15 = (p or {}).get("par_g_mult_cap15", 170.0)
+    par_g_mult_default = (p or {}).get("par_g_mult_default", 200.0)
 
-    # Mauboussin Base-Rate Regression for Expected Growth (g_exp)
+    # Mauboussin Base-Rate Regression for Expected Growth (g_exp) & CAP-Linked Growth Slope (g_mult)
     # Linked to Gate 4 Runway CAP:
-    # CAP >= 30y (fortress moats/monopolies) -> slower fade (lambda = 0.25)
-    # CAP >= 20y (standard quality compounders) -> baseline fade (lambda = 0.15)
-    # CAP >= 15y (shorter runway / higher transition risk) -> faster fade (lambda = 0.10)
+    # CAP >= 30y (fortress moats/monopolies) -> slower fade (lambda = 0.25) & 240.0 growth slope (2.4x per 1% g)
+    # CAP >= 20y (standard quality compounders) -> baseline fade (lambda = 0.15) & 200.0 growth slope (2.0x per 1% g)
+    # CAP >= 15y (shorter runway / higher transition risk) -> faster fade (lambda = 0.10) & 170.0 growth slope (1.7x per 1% g)
     if fund_cap is not None:
         if fund_cap >= 30:
             pers = par_fade_cap30
+            g_mult = par_g_mult_cap30
         elif fund_cap >= 20:
             pers = par_fade_cap20
+            g_mult = par_g_mult_cap20
         else:
             pers = par_fade_cap15
+            g_mult = par_g_mult_cap15
     else:
         pers = par_fade_default
+        g_mult = par_g_mult_default
 
     if f("g_est") is not None:
         g_exp = f("g_est")
@@ -139,9 +148,23 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
                 "cap_implied": None, "cap_gap": None, "g_market": None, "g_gap": None}
     cur_mult = price / peak_eps
     g_val = g_exp if (g_exp is not None and g_exp > 0) else par_g_base
-    t_growth = min(40.0, 200.0 * max(0.0, g_val))
-    t_hist = 0.5 * (ml + mh)
     roic = f("roic_est") if f("roic_est") is not None else (f("roic_operating") if f("roic_operating") is not None else f("roic_median"))
+
+    # Multiplicative Reinvestment Efficiency (eta_reinv):
+    # Scales growth slope by FCF payout capacity (1 - g/ROIC) relative to the 35% ROIC capital-light standard, clamped to [0.25, 1.0]
+    roic_bench = max(0.15, par_roic_cap / 100.0)
+    if roic is not None:
+        roic_eff = min(max(roic, 0.05), roic_bench)
+        g_ref = min(max(g_val, 0.0), par_g_cap)
+        denom = max(0.10, 1.0 - g_ref / roic_bench)
+        numer = max(0.0, 1.0 - g_ref / max(roic_eff, g_ref + 0.005))
+        reinv_eff = max(0.25, min(1.0, numer / denom))
+    else:
+        reinv_eff = 1.0
+
+    eff_g_mult = g_mult * reinv_eff
+    t_growth = min(40.0, eff_g_mult * max(0.0, g_val))
+    t_hist = min(par_hist_cap, 0.5 * (ml + mh))
     t_roic = min(roic * 100.0, par_roic_cap) if roic is not None else 18.0
     raw_par = (t_growth + t_hist + t_roic) / 3.0
     par_mult = min(raw_par, mh)
@@ -151,7 +174,7 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None) -> 
     irr_5y = ((1.0 + g_exp) * ((par_val / price) ** 0.2) + dy - 1.0) if (price and price > 0 and par_val and g_exp is not None) else None
     cap_implied = round(fund_cap * (price / par_val), 1) if (fund_cap and price and par_val and par_val > 0) else None
     cap_gap = round(fund_cap - cap_implied, 1) if (fund_cap is not None and cap_implied is not None) else None
-    g_market = round((3.0 * cur_mult - t_hist - t_roic) / 200.0, 4) if (cur_mult and t_hist is not None) else None
+    g_market = round((3.0 * cur_mult - t_hist - t_roic) / eff_g_mult, 4) if (cur_mult and t_hist is not None and eff_g_mult > 0) else None
     g_gap = round(g_exp - g_market, 4) if (g_exp is not None and g_market is not None) else None
     return {
         "status": status,

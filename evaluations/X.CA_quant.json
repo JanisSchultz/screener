@@ -2,7 +2,7 @@
   "id": "X.CA",
   "ticker": "X",
   "universe": "ca",
-  "company": "TMX Group Limited",
+  "company": "TMX Group",
   "price": 61.48,
   "quote_currency": "CAD",
   "quantitative_overrides": {
@@ -30,14 +30,14 @@
   "health_checks": {
     "net_debt_years": 2.52,
     "net_debt_ok": true,
-    "interest_coverage": 1.49,
+    "interest_coverage": 1.5,
     "interest_cov_ok": false,
     "fcf_conversion": 1.13,
     "fcf_conv_ok": true,
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:40:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

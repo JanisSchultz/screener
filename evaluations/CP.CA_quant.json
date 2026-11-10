@@ -28,16 +28,16 @@
     "growth_margin_of_safety": -0.1436
   },
   "health_checks": {
-    "net_debt_years": 4.77,
+    "net_debt_years": 4.8,
     "net_debt_ok": false,
-    "interest_coverage": 7.26,
+    "interest_coverage": 7.3,
     "interest_cov_ok": true,
     "fcf_conversion": 0.82,
     "fcf_conv_ok": true,
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T22:45:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

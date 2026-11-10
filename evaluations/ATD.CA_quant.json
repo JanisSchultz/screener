@@ -2,14 +2,14 @@
   "id": "ATD.CA",
   "ticker": "ATD",
   "universe": "ca",
-  "company": "Alimentation Couche-Tard Inc.",
-  "price": 83.20,
+  "company": "Alimentation Couche-Tard",
+  "price": 83.2,
   "quote_currency": "CAD",
   "quantitative_overrides": {
     "peak_eps_est": null,
     "g_est": null,
     "g_implied": 0.085,
-    "roic_est": null,
+    "roic_est": 0.3155,
     "fin_note": "Peak Owner EPS confirmed at 5.288 CAD (FY2025) with 105.3% FCF conversion and zero non-cash spikes. Tangible Operating ROIC of 31.55% neutralizes $12.1B in M&A goodwill/intangibles. 5-10Y g anchored at 8.5% via inside merchandising (+3.5%), fresh food mix & TotalEnergies European synergy integration (+3.0%), EV fuel headwind (-0.5%), and share repurchases (+2.5%). Raw PAR multiple of 21.85x is capped at 18.19x by the 5-Year Cycle High Guardrail."
   },
   "valuation_metrics": {
@@ -17,7 +17,7 @@
     "current_multiple": 15.73,
     "par_multiple": 18.19,
     "par_value": 96.19,
-    "percent_vs_par": -0.1350,
+    "percent_vs_par": -0.135,
     "status": "Below PAR",
     "g_implied": 0.085,
     "dividend_yield": 0.0075,
@@ -28,16 +28,16 @@
     "growth_margin_of_safety": 0.0917
   },
   "health_checks": {
-    "net_debt_years": 2.08,
+    "net_debt_years": 2.1,
     "net_debt_ok": true,
-    "interest_coverage": 6.75,
+    "interest_coverage": 6.8,
     "interest_cov_ok": true,
     "fcf_conversion": 1.05,
     "fcf_conv_ok": true,
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

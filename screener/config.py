@@ -1,4 +1,4 @@
-"""Framework configuration (v6.26): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.27): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -205,12 +205,17 @@ PARAMETER_GROUPS = [
     ]),
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
+        ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
         ("par_g_cap", "Max sustainable forward growth rate (Mauboussin 75-year large-cap ceiling)", 0.12, "0.0%", NEW + " Caps forward through-the-cycle growth at 12.0% based on empirical regression data (Ex. 18/19)."),
         ("par_g_base", "Baseline mature growth anchor for fallback regression", 0.07, "0.0%", NEW + " Empirical baseline large-cap growth rate (7.0%)."),
         ("par_fade_cap30", "Mauboussin growth persistence for Gate 4 CAP >= 30 years (fortress moats/monopolies)", 0.25, "0.00", NEW + " Slower autoregressive fade for ultra-long runway compounders."),
         ("par_fade_cap20", "Mauboussin growth persistence for Gate 4 CAP >= 20 years (standard quality compounders)", 0.15, "0.00", NEW + " Empirical 75-year market-wide autoregressive baseline."),
         ("par_fade_cap15", "Mauboussin growth persistence for Gate 4 CAP >= 15 years (shorter runway / higher transition risk)", 0.10, "0.00", NEW + " Faster autoregressive fade towards baseline."),
         ("par_fade_default", "Fallback growth persistence when CAP is unpopulated", 0.15, "0.00", NEW + " Default fallback persistence coefficient."),
+        ("par_g_mult_cap30", "Pillar 1 growth multiple slope for Gate 4 CAP >= 30 years (2.4x turns per 1% growth)", 240.0, "0.0", NEW + " Rewards 30-year fortress monopolies for extended compounding duration."),
+        ("par_g_mult_cap20", "Pillar 1 growth multiple slope for Gate 4 CAP >= 20 years (2.0x turns per 1% growth)", 200.0, "0.0", NEW + " Standard Graham/Lynch baseline slope for 20-year compounders."),
+        ("par_g_mult_cap15", "Pillar 1 growth multiple slope for Gate 4 CAP >= 15 years (1.7x turns per 1% growth)", 170.0, "0.0", NEW + " Shorter-runway duration haircut for 15-year CAP businesses."),
+        ("par_g_mult_default", "Fallback Pillar 1 growth multiple slope when CAP is unpopulated", 200.0, "0.0", NEW + " Default fallback growth slope (200.0)."),
     ]),
 ]
 
@@ -498,5 +503,16 @@ CHANGELOG = {
         "CAP >= 15 (shorter runway / higher transition risk) uses lambda = 0.10 (faster fade towards 7.0% base rate). "
         "(2) Renamed 'Forward Implied g' (g_imp) to 'Expected Growth' (g_exp) across documentation, specs, and dashboard UI, "
         "eliminating terminology collision with Market-Implied Growth (g_market) while maintaining backwards compatibility.",
+    ],
+    "6.27": [
+        "By-the-Book PAR Valuation Refinements (Pillar 2 Cap, CAP Growth Slope & Multiplicative Reinvestment Efficiency): "
+        "(1) Pillar 2 Historical Midpoint Cap (par_hist_cap = 35.0): Capped t_hist = min(35.0, 0.5 * (mult_low_5y + mult_high_5y)) "
+        "symmetric with par_roic_cap = 35.0, preventing 2021 ZIRP bubble peaks and depressed-denominator years from inflating PAR "
+        "above fundamental value (CFR.CH, SAF.FR, LUND B.SE) or driving g_market negative. "
+        "(2) Gate 4 CAP-Linked Growth Multiple Slope: Linked Pillar 1 growth slope directly to Gate 4 CAP (240.0 for CAP >= 30y, "
+        "200.0 for CAP >= 20y, 170.0 for CAP >= 15y) so moat duration differentiates all funnel companies even when g_implied is populated. "
+        "(3) Multiplicative Reinvestment Efficiency (eta_reinv): Scaled Pillar 1 growth credit by free-cash-flow payout capacity "
+        "(1 - g_exp / ROIC) relative to the 35% ROIC capital-light standard (clamped to [0.25, 1.00]), preserving full credit for "
+        "35%+ ROIC compounders while penalizing capital-heavy growers (ALC.CH, EQT.SE, LUND B.SE) and maintaining exact closed-form g_market inversion.",
     ],
 }

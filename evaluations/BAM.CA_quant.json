@@ -15,7 +15,7 @@
   "valuation_metrics": {
     "active_peak_eps": 6.7719,
     "current_multiple": 11.05,
-    "par_multiple": 11.30,
+    "par_multiple": 11.3,
     "par_value": 76.52,
     "percent_vs_par": -0.0222,
     "status": "Below PAR",
@@ -37,7 +37,7 @@
     "peak_to_peak_ok": false
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

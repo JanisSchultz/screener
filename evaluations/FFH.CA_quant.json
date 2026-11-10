@@ -2,8 +2,8 @@
   "id": "FFH.CA",
   "ticker": "FFH",
   "universe": "ca",
-  "company": "Fairfax Financial Holdings Limited",
-  "price": 2488.86,
+  "company": "Fairfax Financial Holdings",
+  "price": 2488.8601,
   "quote_currency": "CAD",
   "quantitative_overrides": {
     "peak_eps_est": null,
@@ -13,7 +13,7 @@
     "fin_note": "Peak Owner EPS confirmed at 311.50 CAD (FY2025) with zero unrepeatable non-cash windfall spikes. Historical Owner EPS CAGR of 68.03% reflected rapid post-ZIRP rate normalization and is regressed under Mauboussin base-rate fading to 8.5% (commercial volume +4.0%, rate indexation +2.0%, float investment yield +2.5%, share buybacks +1.0%, less catastrophe drag -1.0%). Tangible Operating ROIC stands at 27.80% (GAAP ROIC 20.09%). 3-Pillar raw PAR multiple of 18.85x is clamped at 16.89x by the 5-Year Cycle High Guardrail (mult_high_5y). At 7.99x peak Owner EPS, FFH trades at a massive 52.7% discount to PAR Value (5,261.19 CAD), generating an expected 5Y IRR of 27.0%."
   },
   "valuation_metrics": {
-    "active_peak_eps": 311.50,
+    "active_peak_eps": 311.4976,
     "current_multiple": 7.99,
     "par_multiple": 16.89,
     "par_value": 5261.19,
@@ -28,7 +28,7 @@
     "growth_margin_of_safety": 0.1628
   },
   "health_checks": {
-    "net_debt_years": 1.02,
+    "net_debt_years": 0.98,
     "net_debt_ok": true,
     "interest_coverage": 8.84,
     "interest_cov_ok": true,
@@ -37,7 +37,7 @@
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:40:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

@@ -2,28 +2,29 @@
   "id": "ABX.CA",
   "ticker": "ABX",
   "universe": "ca",
-  "company": "Barrick Mining Corporation",
+  "company": "Barrick Mining",
   "country": "Canada",
   "sector": "Materials",
   "sub_industry": "Gold",
   "qualitative": {
     "gate_1": "Y",
     "gate_2": "N",
-    "gate_2_reason": "Speculative commodity price-taker (gold and copper mining) lacking essential Western utility; exposed to volatile global spot pricing and high geopolitical risk in developing jurisdictions.",
+    "gate_2_reason": "Speculative commodity price-taker (gold and copper mining) lacking essential Western utility; exposed to volatile global spot pricing and asset concentration in high-risk developing jurisdictions.",
     "gate_3a_moat_archetype": null,
     "gate_3b_pricing_and_proof": null,
     "gate_3m_moat_note": null,
     "gate_4_runway_cap": null,
     "gate_5_management_score": null,
     "gate_6_cash_and_balance_sheet": null,
+    "calamity_flag": null,
+    "calamity_note": null,
     "note": "Fails Gate 2 (REJECT). Upstream gold and copper mining is a speculative commodity price-taking business lacking an essential Western consumer need or entrenched daily habit. Subject to global spot price cycles (LBMA/COMEX) and heavy asset concentration in non-Western jurisdictions with elevated geopolitical and resource-nationalism risk. Downstream gates bypassed per waterfall.",
     "evidence": "Barrick is a pure price-taker whose realizations depend entirely on London Bullion Market Association (LBMA) and COMEX spot fixing. Gold is an unconsumable store-of-value/monetary asset rather than an everyday Western functional necessity or ritual. Upstream mining requires massive capital reinvestment (sustaining & growth capex), with multi-year returns on capital (ROIC) fluctuating wildly between 3% and 10% across the metal cycle, failing compounder thresholds. Substantial production comes from jurisdictions with high political and regulatory risk, including Mali, DRC, Zambia, and Pakistan."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G2 Essential Need",
-    "failing_gate": "Gate 2",
-    "evaluated_at": "2026-11-09T21:30:00Z",
+    "failing_gate": 2,
+    "evaluated_at": "2026-11-10T13:55:00Z",
     "evaluator": "qualitative-agent"
   }
 }

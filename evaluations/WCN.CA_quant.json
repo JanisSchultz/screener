@@ -2,15 +2,15 @@
   "id": "WCN.CA",
   "ticker": "WCN",
   "universe": "ca",
-  "company": "Waste Connections, Inc.",
+  "company": "Waste Connections",
   "price": 261.15,
   "quote_currency": "CAD",
   "quantitative_overrides": {
     "peak_eps_est": null,
     "g_est": null,
     "g_implied": 0.085,
-    "roic_est": null,
-    "fin_note": "Operating ROIC uncorrupted at 18.47% (tangible return on capital neutralizing $8.4B Progressive Waste merger goodwill). Bottom-up secular growth g_implied = 8.5% anchored by 5.0% core municipal pricing, 1.5% volume, 2.5% tuck-in M&A/RNG, minus 0.5% debt service. Current 43.16x multiple trades at +55.9% premium above fundamental PAR (27.69x, 167.55 CAD), pricing in 31.7% growth and offering flat ~0.0% 5Y IRR under pull-to-PAR compression."
+    "roic_est": 0.1847,
+    "fin_note": "Operating ROIC normalized at 18.47% (tangible return on capital neutralizing $8.4B Progressive Waste merger goodwill). Bottom-up secular growth g_implied = 8.5% anchored by 5.0% core municipal pricing, 1.5% volume, 2.5% tuck-in M&A/RNG, minus 0.5% debt service. Current 43.16x multiple trades at +55.9% premium above fundamental PAR (27.69x, 167.55 CAD), pricing in 31.7% growth and offering flat ~0.0% 5Y IRR under pull-to-PAR compression."
   },
   "valuation_metrics": {
     "active_peak_eps": 6.0513,
@@ -37,7 +37,7 @@
     "peak_to_peak_ok": true
   },
   "evaluation_metadata": {
-    "evaluated_at": "2026-11-09T21:35:00Z",
+    "evaluated_at": "2026-11-10T14:00:00Z",
     "evaluator": "quantitative-agent"
   }
 }

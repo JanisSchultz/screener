@@ -12,18 +12,19 @@
     "gate_2_reason": null,
     "gate_3a_moat_archetype": "R&D super-thinkers / Intangibles",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Global fast-food franchisor with iconic brand intangibles (Tim Hortons, Burger King, Popeyes, Firehouse Subs) across 31,000+ restaurants (~98% franchised). Percentage-of-sales franchise royalty model captures menu inflation directly. Underlying tangible operating ROIC exceeds 50%, though GAAP ROIC (~8.8-11.3%, 5Y median ~9.7%) is depressed by $17.5B in acquisition goodwill and brand intangibles. Primary erosion threats: franchisee-level margin squeeze from food/labor costs, Burger King market share loss to McDonald's, and aggressive promotional discounting in QSR.",
+    "gate_3m_moat_note": "Global fast-food franchisor with iconic brand intangibles (Tim Hortons, Burger King, Popeyes, Firehouse Subs) across 31,000+ units. The ~98% franchised model captures menu price inflation directly via percentage-of-sales royalties. Tangible operating ROIC exceeds 50%, though GAAP ROIC is ~9-11% due to $17.5B in acquisition goodwill. Primary erosion threats: franchisee margin squeeze from labor/food costs, market share losses to McDonald's, and aggressive discounting.",
     "gate_4_runway_cap": 15,
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "N",
-    "note": "Fails Gate 6 (REJECT). While Restaurant Brands International operates an asset-light, highly cash-generative fast-food franchise model (>100% FCF conversion) with entrenched everyday consumer habits (Tim Hortons Canadian morning ritual, Burger King value dining), it structurally fails the Munger peace-of-mind fortress balance sheet standard. Legacy debt from 3G Capital's debt-financed LBOs and acquisitions (Burger King/Tim Hortons merger, Popeyes, Firehouse Subs, Carrols) leaves QSR burdened with $15.7B in total debt and $14.5B in net debt against $776M-$1,021M of GAAP net income (14.3x to 18.7x Net Debt/NI, far exceeding the <=4.0x ceiling; 10.0x Net Debt/FCF). EBIT interest coverage is persistently depressed at 3.4x to 4.2x (4-year median ~3.86x), failing the >5.0x through-the-cycle requirement. With annual dividends ($1.1B) consuming ~75% of FCF, the company cannot organically retire debt and remains perpetually reliant on debt market refinancing ('kindness of strangers').",
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While Restaurant Brands International operates an asset-light, highly cash-generative fast-food franchise model (>100% FCF conversion) with entrenched everyday consumer habits (Tim Hortons morning coffee ritual, Burger King value dining), it structurally fails the Munger peace-of-mind fortress balance sheet standard. Legacy debt from 3G Capital's debt-financed acquisitions leaves QSR burdened with $15.7B in total debt and $14.5B in net debt against $776M-$1,021M of GAAP net income (14.3x to 18.7x Net Debt/NI, far exceeding the <=4.0x ceiling; 10.0x Net Debt/FCF). EBIT interest coverage is persistently depressed at 3.4x to 4.2x (4-year median ~3.86x), failing the >5.0x through-the-cycle requirement. With annual dividends ($1.1B) consuming ~75% of FCF, the company cannot organically retire debt and remains perpetually reliant on debt market refinancing ('kindness of strangers').",
     "evidence": "Asset-light global restaurant franchisor (~98% franchised across 31,000+ units in 100+ countries). Free cash flow conversion is strong at >100% of GAAP Net Income ($1.45B FCF vs $776M Net Income in FY2025; $1.30B FCF vs $1.02B Net Income in FY2024) with low maintenance capex ($200-265M on $8.4-9.4B revenue). Tangible Operating ROIC is >50%, but reported GAAP ROIC is mediocre at 8.8% to 11.3% (5Y median ~9.7%) due to $17.5B in capitalized acquisition goodwill and brand intangibles. Structural Gate 6 failure is absolute: Total debt is $15.70B, Net debt is $14.54B, and Stockholders' Equity is $3.63B against negative tangible equity (-$13.86B). Net Debt to Net Income stands at 18.7x in FY2025 (14.3x in FY2024; 11.2x in FY2023; 13.2x in FY2022) and Net Debt to FCF is 10.0x, massively violating the 4.0-year Owner Earnings ceiling. EBIT interest coverage has failed the 5.0x threshold in every year of the cycle (FY2022: 3.67x, FY2023: 3.44x, FY2024: 4.06x, FY2025: 4.23x; 4-year median 3.86x). Dividends of $1.1B annually consume almost all free cash flow, leaving zero organic capacity for debt amortization."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
-    "failing_gate": "Gate 6",
-    "evaluated_at": "2026-11-09T22:35:00Z",
+    "failing_gate": "gate_6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
     "evaluator": "qualitative-agent"
   }
 }

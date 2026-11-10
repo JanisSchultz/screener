@@ -12,18 +12,19 @@
     "gate_2_reason": null,
     "gate_3a_moat_archetype": "Scale economies shared",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Canadian Big Six banking oligopoly protected by OSFI regulatory barriers, Bank Act foreign ownership limits, and Canada's largest low-cost core retail deposit base (~C$500B+). Delivers persistent 14-17% multi-cycle ROE with unmatched domestic scale and pricing power in fee-based wealth management and retail banking. Primary erosion risks: Canadian residential mortgage credit cycle deterioration, OSFI regulatory capital increases, open banking mandates, and fintech payments disintermediation.",
+    "gate_3m_moat_note": "Canadian Big Six banking oligopoly anchor with #1 domestic market share in retail deposits, mortgages, wealth management, and corporate banking. Protected by OSFI regulatory barriers, Bank Act ownership limits, and Canada's largest low-cost core deposit base (~C$500B+). Delivers persistent 14-17% multi-cycle ROE with unmatched domestic scale and pricing power. Primary erosion risks: Canadian residential mortgage credit cycle deterioration, OSFI regulatory capital increases (Domestic Stability Buffer), open banking mandates, and fintech payments disintermediation.",
     "gate_4_runway_cap": 20,
     "gate_5_management_score": 2,
     "gate_6_cash_and_balance_sheet": "N",
-    "note": "Fails Gate 6 (REJECT). While Royal Bank of Canada is Canada's preeminent financial institution with an exceptional ~16% multi-cycle ROE and elite stewardship, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~16-17x asset/equity leverage ($2.0T+ assets vs ~$115B equity) and funded by demand deposits, its solvency inherently relies on depositor confidence, wholesale liquidity, and central bank/CDIC backstops ('kindness of strangers'). Free cash conversion cannot be evaluated independently of regulatory capital requirements (RWA growth).",
-    "evidence": "Canadian banking oligopolist (#1 domestic market share in retail deposits, mortgages, and wealth management). Demonstrates multi-cycle ROE consistently between 14-17% (5-year median ~15%) and disciplined capital stewardship under CEO Dave McKay (e.g. non-dilutive C$13.5B acquisition of HSBC Canada). However, Gate 6 structural rejection is absolute for commercial fractional-reserve deposit banks: total balance sheet liabilities exceed C$1.9T against CET1 capital ratio of ~13.0%, with balance sheet leverage exceeding 16x. Funding model relies on short-duration demand deposits and wholesale capital market facilities to support long-duration residential mortgages and commercial credit, subjecting equity to asset-liability duration mismatch and credit cycle tail risk."
+    "calamity_flag": null,
+    "calamity_note": null,
+    "note": "Fails Gate 6 (REJECT). While Royal Bank of Canada is Canada's preeminent financial institution with an exceptional ~16% multi-cycle ROE, #1 domestic market share, and elite stewardship under CEO Dave McKay, as a fractional-reserve commercial deposit-taking bank it structurally fails the Munger Gate 6 peace-of-mind solvency standard. Operating at ~15-16x asset/equity leverage (C$2.0T+ assets vs ~C$139B equity) and funded by demand deposits, its solvency inherently relies on depositor confidence, wholesale liquidity, and central bank/CDIC backstops ('kindness of strangers').",
+    "evidence": "Canada's largest bank and premier banking oligopolist (#1 domestic share in retail deposits, mortgages, wealth management, and corporate banking). Demonstrates multi-cycle ROE consistently between 14-17% (5-year median GAAP ROIC 23.05%) and disciplined capital stewardship under CEO Dave McKay, highlighted by the strategic C$13.5B acquisition of HSBC Canada. However, Gate 6 structural rejection is absolute for commercial fractional-reserve deposit banks: total balance sheet liabilities exceed C$1.9T against CET1 ratio of ~13.0% and balance sheet leverage exceeding 15x. The funding model relies on short-duration demand deposits and wholesale capital market facilities to support long-duration residential mortgages and commercial credit, subjecting equity to asset-liability duration mismatch and credit cycle tail risk."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
-    "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
-    "failing_gate": "Gate 6",
-    "evaluated_at": "2026-11-09T21:30:00Z",
+    "verdict": "Rejected \u2013 G6 Cash & Fortress Balance Sheet",
+    "failing_gate": "6",
+    "evaluated_at": "2026-11-10T13:55:00Z",
     "evaluator": "qualitative-agent"
   }
 }
