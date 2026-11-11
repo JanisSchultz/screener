@@ -58,17 +58,26 @@ def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None) -> dict:
     return out
 
 
-def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict, goodwill: dict, intang: dict):
+def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict, goodwill: dict, intang: dict,
+                assets: dict | None = None):
     """Per-year ROIC = EBIT × (1 − t) / average invested capital (equity + debt − cash).
-    Tangible ROIC deducts goodwill and other intangibles from invested capital (capped at -100% … +200%).
-    Years with average invested capital <= 0 (negative net capital / float) are left out: no meaningful ratio."""
+    Tangible ROIC deducts goodwill and other intangibles from invested capital, floored at 1/3 of GAAP invested
+    capital (so goodwill deduction can reduce the capital denominator by at most 2/3, eliminating artificial
+    200% division-by-zero spikes when goodwill/buybacks exceed book equity)."""
+    assets = assets or {}
+
     def ic(y, tangible):
         if y not in equity or equity[y] is None:
             return None
-        v = equity[y] + (debt.get(y) or 0) - (cash.get(y) or 0)
-        if tangible:
-            v -= (goodwill.get(y) or 0) + (intang.get(y) or 0)
-        return v
+        raw_g = equity[y] + (debt.get(y) or 0) - (cash.get(y) or 0)
+        gw_ig = (goodwill.get(y) or 0) + (intang.get(y) or 0)
+        tang_oa = max(0.0, (assets.get(y) or 0) - (cash.get(y) or 0) - gw_ig)
+        ic_g = raw_g if raw_g > 0 else (0.25 * tang_oa if tang_oa > 0 else raw_g)
+        if not tangible:
+            return ic_g
+        if ic_g <= 0:
+            return None
+        return max(raw_g - gw_ig, (1.0 / 3.0) * ic_g)
 
     gaap, tang = {}, {}
     for y, e in ebit.items():
@@ -79,13 +88,10 @@ def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict
         nopat = e * (1 - t)
         for tangible, out in ((False, gaap), (True, tang)):
             cur, prev = ic(y, tangible), ic(y - 1, tangible)
-            base = (cur + prev) / 2 if cur is not None and prev is not None else cur
-            if base is None:
+            base = (cur + prev) / 2 if (cur is not None and prev is not None and cur > 0 and prev > 0) else cur
+            if base is None or base <= 0:
                 continue
-            if base > 0:
-                out[y] = max(-1.0, min(2.0, nopat / base))
-            elif tangible and nopat > 0:
-                out[y] = 2.0  # unbounded operating return on zero/negative tangible capital
+            out[y] = max(-1.0, nopat / base)
     return gaap, tang
 
 
@@ -105,7 +111,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
 
     fcf = true_fcf(g("ocf"), g("capex"), g("sbc"), g("da"))
     tax_rate = {y: (tax[y] / pretax[y]) for y in tax if pretax.get(y)}
-    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), g("cash"), g("goodwill"), g("intang"))
+    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), g("cash"), g("goodwill"), g("intang"), g("assets"))
     out = {}
 
     all_years = set(ni) | set(g("sales")) | set(g("ocf")) | set(g("equity"))
@@ -196,7 +202,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
-    # v6.31 3-Anchor + Logarithmic Mauboussin Growth Engine multi-year inputs
+    # v6.32 3-Anchor + Logarithmic Mauboussin Growth Engine multi-year inputs (incl. OpCost = Sales - EBIT)
     if sales:
         s_end = max(sales)
         s1_val = cagr(sales, 1)
@@ -207,6 +213,24 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             if s0 is not None and s1 is not None and s0 > 0 and s1 > 0:
                 out["sales_cagr"] = round((s1 / s0) ** (1.0 / span) - 1.0, 4)
                 out["sales_cagr_yrs"] = span
+                break
+
+    opcost_ser = {
+        y: sales[y] - ebit[y]
+        for y in set(sales) & set(ebit)
+        if sales.get(y) is not None and ebit.get(y) is not None and sales[y] > ebit[y] > 0
+    }
+    if opcost_ser:
+        oc_end = max(opcost_ser)
+        oc1_val = cagr(opcost_ser, 1)
+        if oc1_val is not None and -0.40 <= oc1_val <= 0.60:
+            out["opcost_1y"] = round(oc1_val, 4)
+        for span in (5, 4, 3, 2):
+            oc0, oc1 = opcost_ser.get(oc_end - span), opcost_ser.get(oc_end)
+            if oc0 is not None and oc1 is not None and oc0 > 0 and oc1 > 0:
+                oc_c = (oc1 / oc0) ** (1.0 / span) - 1.0
+                if -0.25 <= oc_c <= 0.45:
+                    out["opcost_cagr"] = round(oc_c, 4)
                 break
 
     shares = implied_shares(ni, g("eps"), g("shares"))
@@ -280,7 +304,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             d_ic = ic_ser[y1] - ic_ser[y0]
             if sum_pos_nopat > 0 and d_ic > 0.15 * sum_pos_nopat:
                 d_nopat = nopat_ser[y1] - nopat_ser[y0]
-                out["roiic"] = round(max(0.0, min(0.50, d_nopat / d_ic)), 4)
+                out["roiic"] = round(max(0.0, d_nopat / d_ic), 4)
 
     # Buffett $1 test over the longest window up to 10 years (min 5) with prices and shares at both ends
     if price_at_year_end and shares and last:

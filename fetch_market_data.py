@@ -215,7 +215,8 @@ def apply_mirrors(keys: list[str], yh: Yahoo, state: dict) -> None:
             if rate is None and num(s.get("price")) and num(t.get("price")):
                 rate = t["price"] / s["price"]          # same share basis (1:1 ADR / dual line)
             for k in ("peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok",
-                      "sales_1y", "sales_cagr", "sales_cagr_yrs", "cap_growth", "buyback_yield", "retention_rate", "roiic",
+                      "sales_1y", "sales_cagr", "sales_cagr_yrs", "opcost_1y", "opcost_cagr",
+                      "cap_growth", "buyback_yield", "retention_rate", "roiic",
                       "g_est", "g_implied"):
                 t[k] = s.get(k)
             if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:

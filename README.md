@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.31 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.33 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,16 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.33: Corporate Finance Value Driver PAR Multiple & Uncapped 5-Year Harmonic Market P/E:
+- Textbook Value Driver P/E (PE_VD = 0.50 * PE_MM + 0.50 * PE_McK, 75% weight): Replaces the heuristic 3-pillar additive formula with a 50/50 blend of Miller-Modigliani / Mauboussin Finite-CAP Linear Value Driver P/E ((1/k) * [1 + (g_exp * N * (ROIC_exp - k)) / ((1 + k) * ROIC_exp)]) and McKinsey 2-Stage Compounding Value Driver P/E (N-year explicit CAP runway at g_exp and ROIC_exp followed by mature terminal perpetuity at g_term = 3.5%, ROIC_term = 12.0%, k = 8.75%).
+- Uncapped 5-Year Historical Harmonic P/E (t_hist = 2 * Low_5Y * High_5Y / (Low_5Y + High_5Y), 25% weight): Replaces the arithmetic midpoint and removes the legacy 35.0 cap; averaging 5-year Earnings Yields (E/P) naturally dampens single-year denominator dips while allowing actual market valuation regimes (bull/bear and US/EU/CA regional differences) to nudge textbook P/E by 25%.
+- Pure Uncapped 75/25 PAR Multiple (PAR_Mult = 0.75 * PE_VD + 0.25 * t_hist): Removes the legacy min(raw_par, mult_high_5y) ceiling so every company is valued with zero hard caps anywhere in the valuation engine.
+
+v6.32: Operating Cost Growth Smoothing, Mauboussin Galton ROIC Regression & Removal of Legacy ROIC Hard Caps:
+- Operating Cost Growth Smoothing (OpCost = Sales - EBIT): Blends Sales growth 50/50 with min(Sales, OpCost) in Anchor 1 (when Sales >= 0) and Anchor 2 (3-5Y CAGR), stripping out one-off pricing/margin spikes (e.g. LLY, KLAC, ASML) while cushioning 1Y cyclical volume dips (when Sales_1Y < 0, e.g. ODFL) without rewarding cost bloat.
+- Mauboussin Galton ROIC Regression (Expected ROIC = r * (ROIC_log - 12%) + 12%): Smoothly compresses Operating ROIC above the 12.0% corporate mean via ROIC_log = 0.12 + 0.25 * ln(1 + (ROIC - 0.12)/0.25) and applies Gate 4 CAP persistence r (0.85 / 0.75 / 0.62) to compute Expected ROIC.
+- Galton ROIC Fade in Anchor 3 & Unclamped Pillar 3: Scales Operating Capital Growth in Anchor 3 by Expected_ROIC / ROIC_log and sets Pillar 3 t_roic = 100 * Expected_ROIC, removing all legacy hard caps on ROIC (par_roic_cap = 35.0, 200% tangible placeholder, and bulk roic_est = 0.35 overrides).
 
 v6.31: 3-Anchor Starting Growth (g_start) & Logarithmic Mauboussin Decay Curve (g_exp):
 - 3-Anchor Starting Growth (g_start = (g_1y + g_hist + g_cap) / 3): Combines Anchor 1 (Near-Term 1Y Sales + Buyback Momentum, clamped to [-4%, +22%]), Anchor 2 (Medium-Term 3-5Y Sales/EPS Evidence with margin-contraction check, clamped to [0%, +22%]), and Anchor 3 (Operating Capital Growth at Constant ROIC + Buybacks, using 5Y median growth of Operating Assets (Total Assets - Cash) blended with positive Invested Capital growth, clamped to [0%, +22%]). Since Reinvestment Rate * ROIC = (Delta Capital / NOPAT) * (NOPAT / Capital) = g_Capital at constant ROIC, Anchor 3 captures true organic capital expansion across asset-light payment networks (MA +10.0%/yr), lithography leaders (ASML +8.8%/yr), insurers (PGR +16.4%/yr), and mature consumer staples (PG +0.9%/yr, PEP +2.4%/yr) without special-case exemptions.

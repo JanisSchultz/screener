@@ -1,16 +1,16 @@
-# Quantitative Evaluation Framework Specification (v6.31)
+# Quantitative Evaluation Framework Specification (v6.33)
 ## Quality & Moat Screener — Equity Bond Below PAR Valuation Model
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.31). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
+This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.33). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
 
 ### The Equity Bond Below PAR Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are treated as **equity bonds** paying an expanding owner cash coupon:
-1. **Through-the-Cycle Fundamental Value (PAR Value)**: Market multiples fluctuate between irrational euphoria and panic. Fundamental PAR Multiple represents the intrinsic through-the-cycle multiple governed by three fundamental pillars: (1) secular growth, (2) historical cycle multiple midpoint, and (3) operating capital efficiency.
-2. **The 5-Year Cycle High Guardrail**: Through-the-cycle fair value can **never** exceed the highest multiple the market was willing to pay at the peak of the 5-year cycle (`mult_high_5y`). This prevents balance-sheet financials and cyclical peaks from inflating into fantasy multiples.
+1. **Through-the-Cycle Fundamental Value (PAR Value)**: Market multiples fluctuate between irrational euphoria and panic. Fundamental PAR Multiple represents the intrinsic through-the-cycle multiple governed `75%` by the **Textbook Corporate Finance Value Driver P/E** ($\text{PE}_{\text{VD}} = 0.50 \cdot \text{PE}_{\text{MM}} + 0.50 \cdot \text{PE}_{\text{McK}}$, driven by Gate 4 CAP $N$, Expected Growth $g_{\text{exp}}$, and Expected ROIC $\text{ROIC}_{\text{exp}}$) and `25%` by the **Uncapped 5-Year Historical Harmonic P/E** ($t_{\text{hist}} = \frac{2 \cdot \text{Low}_{5\text{Y}} \cdot \text{High}_{5\text{Y}}}{\text{Low}_{5\text{Y}} + \text{High}_{5\text{Y}}}$).
+2. **Market Regime Calibration Without Hard Caps**: Blending `25%` of the 5-year Harmonic P/E (the midpoint of 5Y Earnings Yield $E/P$) naturally dampens single-year trough-earnings P/E spikes while allowing actual market valuation regimes (bull vs. bear markets and US vs. European/Canadian multiple regimes) to gently adjust the textbook P/E — with zero arbitrary hard caps anywhere in the valuation engine.
 3. **Buying Below PAR**: The highest-probability path to superinvestor returns is purchasing world-class compounders when the current share price trades at a discount to fundamental PAR Value ($\text{Price} \le \text{PAR Value}$), capturing both the ongoing business coupon and the 5-year "Pull-to-PAR" multiple expansion.
 4. **Prerequisite**: In standard screening workflow, quantitative valuation is performed on companies that achieve **`Quality pass`** across the 6 qualitative gates or **`Calamity pass`** (conditional override on Gates 3b, 5, and/or 6). For **`Calamity pass`** businesses, explicitly check whether normalized earning power (`peak_eps_est`) or forward growth (`g_est` / `g_implied`) needs a haircut rather than extrapolating pre-calamity peaks unadjusted.
 
@@ -84,29 +84,28 @@ When an evaluation is triggered, the coordinator agent provides:
 
 ---
 
-### Step 2: Operating ROIC Normalization (v6.23 Tangible Capital Standard)
+### Step 2: Operating ROIC Normalization & Mauboussin Galton ROIC Regression (v6.32)
 
-To prevent accounting distortions from penalizing capital-light compounders:
-1. **The M&A Goodwill Neutralization Principle**:
+To prevent accounting distortions from penalizing capital-light compounders while eliminating arbitrary hard caps on ROIC:
+1. **The M&A Goodwill Neutralization Principle & Denominator Floor**:
    - GAAP ROIC includes historical accumulated goodwill and acquired intangibles in the denominator:
      $$\text{GAAP ROIC} = \frac{\text{NOPAT}}{\text{Total Invested Capital (including Goodwill)}}$$
-   - When a capital-light toll booth completes a strategic acquisition (e.g. S&P Global's 2022 IHS Markit merger added \$52.8B of goodwill), its GAAP ROIC collapses (11.8%), artificially deflating its fundamental multiple.
-   - **Operating ROIC (Tangible Capital Return)** restores economic reality:
-     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\text{Tangible Invested Capital}} = \frac{\text{NOPAT}}{\text{Equity} + \text{Debt} - \text{Cash} - \text{Goodwill} - \text{Intangibles}}$$
-2. **Negative Tangible Capital Standard**:
-   - Monopolies operating on negative net working capital and deferred customer revenues earn structurally unbounded returns on tangible capital. They automatically receive the maximum parameter cap:
-     $$\text{par\_roic\_cap} = 35.0\%$$
-   - True asset-heavy businesses (WM, UNP, CAT) retain their lower physical capital ROIC (12%–15%).
-3. **Active ROIC & Multiple Factor**:
+   - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3} \times \text{IC}_{\text{GAAP}}$ so goodwill deduction can reduce the capital base by at most two-thirds (eliminating artificial division-by-zero spikes when M&A goodwill or share buybacks exceed book equity):
+     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\max\!\left(\text{Equity} + \text{Debt} - \text{Cash} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
+2. **Mauboussin Galton ROIC Regression ($\text{Expected ROIC}$)**:
+   - Grounded in Michael Mauboussin's Galton regression formula ($\text{Expected ROIC} = r(\text{Current ROIC} - \text{Average ROIC}) + \text{Average ROIC}$), excess Operating ROIC above the corporate mean ($\text{ROIC}_{\text{avg}} = 12.0\%$) is first logarithmically compressed ($k_{\text{roic}} = 0.25$) and then faded by Gate 4 CAP persistence $r = \text{pers} \in \{0.85, 0.75, 0.62\}$:
+     $$\text{ROIC}_{\text{log}} = 0.12 + 0.25 \times \ln\!\left(1 + \frac{\text{Active ROIC} - 0.12}{0.25}\right)$$
+     $$\text{Expected ROIC} = r \times (\text{ROIC}_{\text{log}} - 0.12) + 0.12$$
+3. **Active ROIC & Unclamped Pillar 3 Multiple Factor**:
    - Priority: `roic_est` (override) > `roic_operating` (tangible) > `roic_median` (GAAP).
-   - ROIC Multiple Factor:
-     $$\text{t\_roic} = \min(\text{Active ROIC} \times 100, 35.0)$$
+   - Pillar 3 ROIC Multiple Factor (no hard 35.0 cap):
+     $$\text{t\_roic} = \text{Expected ROIC} \times 100$$
 
 ---
 
-### Step 3: 3-Anchor Starting Growth ($g_{\text{start}}$) & Logarithmic Mauboussin Decay Curve ($g_{\text{exp}}$) (v6.31)
+### Step 3: 3-Anchor Starting Growth ($g_{\text{start}}$), Operating Cost Smoothing & Logarithmic Mauboussin Decay Curve ($g_{\text{exp}}$) (v6.32)
 
-Grounded in empirical base-rate regression (Michael Mauboussin & Dan Callahan) and constant-ROIC capital reinvestment physics, the growth engine computes an objective **Starting Growth Rate ($g_0$ / `g_start`)** from three equal-weighted anchors and fades it smoothly toward long-term nominal GDP (`par_g_base = 3.5%`) to produce **Expected Growth ($g_{\text{exp}}$ / `g_exp`)**:
+Grounded in empirical base-rate regression (Michael Mauboussin & Dan Callahan), operating cost verification ($\text{OpCost} = \text{Sales} - \text{EBIT}$), and Galton-regressed capital reinvestment physics, the growth engine computes an objective **Starting Growth Rate ($g_0$ / `g_start`)** from three equal-weighted anchors and fades it smoothly toward long-term nominal GDP (`par_g_base = 3.5%`) to produce **Expected Growth ($g_{\text{exp}}$ / `g_exp`)**:
 
 1. **Core Growth & Decay Curve Parameters**:
    - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
@@ -117,17 +116,18 @@ Grounded in empirical base-rate regression (Michael Mauboussin & Dan Callahan) a
    - `size_factor = clamp(1.08 - 0.11 * log10(max(1.0, Rev_USD_B)), 0.72, 1.05)` (continuous log-revenue size factor).
 
 2. **Step A — 3-Anchor Starting Growth ($g_{\text{start}} = (g_{\text{1y}} + g_{\text{hist}} + g_{\text{cap}}) / 3$)**:
-   Let $\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.025]}(\text{buyback\_yield})$:
-   - **Anchor 1 — Near-Term 1Y Momentum ($g_{\text{1y}}$)**:
-     $$g_{\text{1y}} = \text{clamp}_{[-0.04,\, 0.22]}\!\left(\text{sales\_1y} + \text{bb\_eff}\right)$$
-     Captures immediate operating momentum (if last year was weak, recovery takes time; if strong, near-term momentum carries forward).
-   - **Anchor 2 — Medium-Term 3–5Y Evidence ($g_{\text{hist}}$)**:
-     $$\text{top\_5y} = \max(0, \text{sales\_cagr}) + \text{bb\_eff}$$
+   Let $\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.025]}(\text{buyback\_yield})$ and $\text{OpCost}_y = \text{Sales}_y - \text{EBIT}_y$:
+   - **Anchor 1 — Near-Term 1Y Momentum with Operating Cost Smoothing ($g_{\text{1y}}$)**:
+     $$\text{sales\_1y\_eff} = \begin{cases} 0.5 \cdot \text{sales\_1y} + 0.5 \cdot \min(\text{sales\_1y}, \text{opcost\_1y}) & \text{if } \text{sales\_1y} \ge 0 \\ 0.5 \cdot \text{sales\_1y} + 0.5 \cdot \text{opcost\_1y} & \text{if } \text{sales\_1y} < 0 \end{cases}$$
+     $$g_{\text{1y}} = \text{clamp}_{[-0.04,\, 0.22]}\!\left(\text{sales\_1y\_eff} + \text{bb\_eff}\right)$$
+     Tempers one-off 1Y pricing/margin spikes while cushioning 1Y cyclical volume dips where operating capacity is retained, and never rewards cost bloat ($\text{opcost\_1y} > \text{sales\_1y}$).
+   - **Anchor 2 — Medium-Term 3–5Y Evidence with Operating Cost Smoothing ($g_{\text{hist}}$)**:
+     $$\text{sales\_5y\_eff} = 0.5 \cdot \text{sales\_cagr} + 0.5 \cdot \min(\text{sales\_cagr}, \text{opcost\_cagr})$$
+     $$\text{top\_5y} = \max(0, \text{sales\_5y\_eff}) + \text{bb\_eff}$$
      $$g_{\text{hist}} = \text{clamp}_{[0.0,\, 0.22]}\!\left(\begin{cases} 0.5 \cdot \text{top\_5y} + 0.5 \cdot \max(0, \text{cagr\_oe\_eps}) & \text{if } \text{cagr\_oe\_eps} < \text{top\_5y} \\ \text{top\_5y} & \text{otherwise} \end{cases}\right)$$
-     Captures verified multi-year top-line compounding, tempered 50/50 if bottom-line per-share earnings lagged top-line + buybacks (margin contraction check).
-   - **Anchor 3 — Operating Capital Growth at Constant ROIC ($g_{\text{cap}}$)**:
-     At constant Operating ROIC ($\text{ROIC} = \text{NOPAT}/\text{Capital}$), the organic growth rate sustainable from actual capital expansion is identically the growth rate of the operating capital base ($\text{Reinvestment Rate} \times \text{ROIC} = \frac{\Delta \text{Capital}}{\text{NOPAT}} \times \frac{\text{NOPAT}}{\text{Capital}} = g_{\text{Capital}}$):
-     $$g_{\text{cap}} = \text{clamp}_{[0.0,\, 0.22]}\!\left(\max(0, \text{cap\_growth}) + \text{bb\_eff}\right)$$
+   - **Anchor 3 — Operating Capital Growth with Mauboussin Galton ROIC Fade ($g_{\text{cap}}$)**:
+     Existing capital earns $\text{ROIC}_{\text{log}}$ while incremental capital $\Delta \text{Capital}$ earns $\text{Expected ROIC}$, scaling organic capital expansion by $\text{ROIC\_Fade\_Ratio} = \frac{\text{Expected ROIC}}{\text{ROIC}_{\text{log}}}$:
+     $$g_{\text{cap}} = \text{clamp}_{[0.0,\, 0.22]}\!\left(\max(0, \text{cap\_growth}) \times \frac{\text{Expected ROIC}}{\text{ROIC}_{\text{log}}} + \text{bb\_eff}\right)$$
      where `cap_growth` is the 5-year median annual growth rate of Operating Assets ($\text{Total Assets} - \text{Cash}$) blended 50/50 with positive Invested Capital ($\text{Equity} + \text{Debt} - \text{Cash}$) median annual growth.
 
 3. **Step B — Logarithmic Compression & Continuous Mauboussin Decay to Expected Growth ($g_{\text{exp}}$)**:
@@ -138,27 +138,27 @@ Grounded in empirical base-rate regression (Michael Mauboussin & Dan Callahan) a
      $$g_{\text{exp}} = \min\!\left(\text{Scale\_Cap}_{\text{rev}},\; 0.035 + (g_{\text{log}} - 0.035) \times \text{pers} \times \text{size\_factor}\right)$$
      where Gate 4 CAP sets both persistence ($\text{pers} \in \{0.85, 0.75, 0.62\}$) and Pillar 1 growth slope ($M_{\text{cap}} \in \{240.0, 200.0, 170.0\}$ for CAP $\ge 30, \ge 20, \ge 15$ years).
 
-4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$) & Growth Multiple Factor**:
-   - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
-     $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$
-   - **Effective Growth Slope**: $M_{\text{eff}} = M_{\text{cap}} \times \eta_{\text{reinv}}$.
-   - **Growth Multiple Factor**:
-     $$\text{t\_growth} = \min(40.0, M_{\text{eff}} \times \max(0, g_{\text{exp}}))$$
+### Step 4: Corporate Finance Value Driver PAR Multiple & Uncapped 5-Year Harmonic Market P/E (v6.33)
 
----
+With **Expected Growth ($g_{\text{exp}}$)**, **Expected ROIC ($\text{ROIC}_{\text{exp}}$)**, and **Gate 4 CAP ($N$ years)** established, the fundamental PAR Multiple blends the **Textbook Corporate Finance Value Driver P/E ($\text{PE}_{\text{VD}}$, `75%` weight)** with the **Uncapped 5-Year Historical Harmonic P/E ($t_{\text{hist}}$, `25%` weight)**:
 
-### Step 4: 3-Pillar Fundamental PAR Multiple & Cycle High Guardrail
+1. **Miller-Modigliani (1961) / Mauboussin Finite-CAP Linear Value Driver P/E ($\text{PE}_{\text{MM}}$)**:
+   $$\text{PE}_{\text{MM}} = \frac{1}{k} \cdot \left[1 + \frac{g_{\text{exp}} \cdot N \cdot (\text{ROIC}_{\text{exp}} - k)}{(1 + k) \cdot \text{ROIC}_{\text{exp}}}\right]$$
+   Separates the steady-state no-growth base value ($\frac{1}{k} = 11.43\text{x}$ at $k = 8.75\%$) from the present value of excess-return reinvestment over $N = \text{CAP}$ years.
 
-The fundamental multiple is governed by three equal pillars:
-1. **Pillar 1: Secular Growth Factor**: $\text{t\_growth} = \min(40.0, M_{\text{eff}} \times \max(0, g_{\text{exp}}))$.
-2. **Pillar 2: Historical Cycle Midpoint Multiple**: $\text{t\_hist} = \min(\text{par\_hist\_cap}, 0.5 \times (\text{mult\_low\_5y} + \text{mult\_high\_5y}))$, where `par_hist_cap = 35.0` neutralizes 2021 ZIRP bubble and depressed-denominator spikes.
-3. **Pillar 3: Operating ROIC Factor**: $\text{t\_roic} = \min(\text{Active ROIC} \times 100, 35.0)$.
+2. **McKinsey *Valuation* (Koller, Goedhart & Wessels) 2-Stage Compounding Value Driver P/E ($\text{PE}_{\text{McK}}$)**:
+   $$\text{PE}_{\text{McK}} = \left(1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{exp}}}\right) \sum_{t=1}^{N} \left(\frac{1 + g_{\text{exp}}}{1 + k}\right)^t + \frac{\left(1 - \frac{g_{\text{term}}}{\text{ROIC}_{\text{term}}}\right)(1 + g_{\text{exp}})^N(1 + g_{\text{term}})}{(k - g_{\text{term}})(1 + k)^N}$$
+   Captures geometric compounding during the $N$-year moat runway before transitioning to steady-state maturity ($g_{\text{term}} = 3.5\%$, $\text{ROIC}_{\text{term}} = 12.0\%$, $k = 8.75\%$).
 
-$$\text{Raw PAR Multiple} = \frac{\text{t\_growth} + \text{t\_hist} + \text{t\_roic}}{3}$$
+3. **50/50 Textbook Value Driver Blend ($\text{PE}_{\text{VD}}$)**:
+   $$\text{PE}_{\text{VD}} = 0.50 \cdot \text{PE}_{\text{MM}} + 0.50 \cdot \text{PE}_{\text{McK}}$$
 
-#### The 5-Year Cycle High Guardrail
-A core tenet of value investing: through-the-cycle fair value can **never** exceed the highest multiple the market was willing to pay at the peak of the 5-year cycle:
-$$\text{PAR Multiple} = \min(\text{Raw PAR Multiple}, \text{mult\_high\_5y})$$
+4. **Uncapped 5-Year Historical Harmonic P/E ($t_{\text{hist}}$)**:
+   $$t_{\text{hist}} = \frac{2 \cdot \text{mult\_low\_5y} \cdot \text{mult\_high\_5y}}{\text{mult\_low\_5y} + \text{mult\_high\_5y}}$$
+   As the reciprocal of the arithmetic midpoint of 5-year Earnings Yields ($E/P$), the harmonic mean naturally dampens single-year denominator dips without an arbitrary `35.0` cap.
+
+5. **Pure Uncapped `75/25` PAR Multiple**:
+   $$\text{PAR Multiple} = 0.75 \cdot \text{PE}_{\text{VD}} + 0.25 \cdot t_{\text{hist}}$$
 
 ---
 
@@ -177,8 +177,8 @@ $$\text{PAR Multiple} = \min(\text{Raw PAR Multiple}, \text{mult\_high\_5y})$$
    $$\text{5Y Expected IRR} = (1 + g_{\text{exp}}) \times \left(\frac{\text{PAR Value}}{\text{Current Share Price}}\right)^{0.2} + \text{Dividend Yield} - 1.0$$
    *Where $\text{Dividend Yield} = \text{dividends\_ttm\_m} \div \text{market\_cap\_m}$.*
 5. **Market-Implied Growth ($g_{\text{market}}$) & Growth Margin of Safety**:
-   - Exact closed-form inversion of the 3-Pillar PAR Multiple formula reveals the growth rate priced into the current market multiple:
-     $$g_{\text{market}} = \frac{3 \times \text{Current Multiple} - \text{t\_hist} - \text{t\_roic}}{M_{\text{eff}}}$$
+   - Exact inversion of the `75/25` Value Driver PAR Multiple formula using the zero-growth Value Driver base $\text{PE}_{\text{VD}}(0)$ and effective Value Driver slope $M_{\text{eff}} = \frac{\text{PE}_{\text{VD}}(g_{\text{exp}}) - \text{PE}_{\text{VD}}(0)}{g_{\text{exp}}}$ reveals the growth rate priced into the current market multiple:
+     $$g_{\text{market}} = \frac{\frac{\text{Current Multiple} - 0.25 \cdot t_{\text{hist}}}{0.75} - \text{PE}_{\text{VD}}(0)}{M_{\text{eff}}}$$
    - **Growth Margin of Safety**:
      $$\text{Growth Margin} = g_{\text{exp}} - g_{\text{market}}$$
 6. **Market-Implied CAP & Moat Runway Margin**:

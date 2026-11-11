@@ -1,4 +1,4 @@
-"""Framework configuration (v6.31): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.33): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -218,8 +218,10 @@ PARAMETER_GROUPS = [
         ("t_near_high", "Within this % of 52-wk high = topping zone (Stage 3 when flat)", 0.10, "0%", NEW),
     ]),
     ("PAR Valuation parameters (Quantitative sheet)", [
-        ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
-        ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
+        ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate k for Value Driver P/E (8.75%)", 0.0875, "0.00%", NEW + " Nominal equity cost of capital k (8.75% = 4.0% risk-free + 4.75% ERP) used in Miller-Modigliani and McKinsey 2-Stage Value Driver P/E."),
+        ("par_vd_weight", "Weight of textbook Corporate Finance Value Driver P/E (PE_VD) in PAR Multiple (75.0%)", 0.75, "0%", NEW + " Blends 75% Textbook Value Driver P/E (50/50 Miller-Modigliani + McKinsey 2-Stage) with 25% uncapped 5-year Harmonic Market P/E."),
+        ("par_roic_avg", "Corporate average ROIC baseline for Mauboussin Galton ROIC regression & Terminal Stage 2 (12.0%)", 0.120, "0.0%", NEW + " Corporate mean ROIC (12.0%) toward which excess ROIC regresses: Expected_ROIC = r * (ROIC_log - 0.12) + 0.12."),
+        ("par_roic_log_k", "Logarithmic compression curvature constant k for Operating ROIC above 12% (25.0%)", 0.250, "0.0%", NEW + " Smoothly compresses small-denominator tangible ROIC above 12.0% via ROIC_log = 0.12 + k * ln(1 + (ROIC - 0.12)/k) without hard caps."),
         ("par_g_anchor_max", "Max individual anchor growth rate before 3-Anchor averaging (22.0%)", 0.220, "0.0%", NEW + " Bounds each of the 3 starting growth anchors (1Y Momentum, 3-5Y History, Capital Growth) at 22.0%."),
         ("par_g_1y_floor", "Floor on Anchor 1 (1Y sales + buyback momentum) during cyclical dips (-4.0%)", -0.040, "0.0%", NEW + " Bounds single-year cyclical contractions at -4.0% in Anchor 1 so temporary dips penalize Starting g without destroying multi-year value."),
         ("par_g_log_k", "Logarithmic compression curvature constant k above nominal GDP (12.0%)", 0.120, "0.0%", NEW + " Controls logarithmic compression g_log = g_base + k * ln(1 + (g_start - g_base)/k) before Mauboussin persistence fade."),
@@ -227,19 +229,15 @@ PARAMETER_GROUPS = [
         ("par_g_cap_large", "Max sustainable forward growth rate ceiling for Large-Revenue enterprises ($15B - $50B USD)", 0.105, "0.0%", NEW + " Tail safety ceiling (10.5%) for large-revenue enterprises."),
         ("par_g_cap_mega", "Max sustainable forward growth rate ceiling for Mega-Revenue enterprises ($50B - $250B USD)", 0.098, "0.0%", NEW + " Tail safety ceiling (9.8%) for mega-revenue enterprises."),
         ("par_g_cap_hyper", "Max sustainable forward growth rate ceiling for Hyper-Scale enterprises (>= $250B USD)", 0.095, "0.0%", NEW + " Tail safety ceiling (9.5%) for hyper-scale enterprises."),
-        ("par_g_base", "Nominal GDP base-rate anchor for Logarithmic Mauboussin Fade", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Logarithmic Mauboussin Decay Curve."),
-        ("par_fade_cap30", "Mauboussin persistence factor for Gate 4 CAP >= 30 years (fortress monopolies)", 0.85, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.85) applied to log-compressed excess growth for 30-year moats."),
-        ("par_fade_cap20", "Mauboussin persistence factor for Gate 4 CAP >= 20 years (standard quality compounders)", 0.75, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.75) applied to log-compressed excess growth for 20-year moats."),
-        ("par_fade_cap15", "Mauboussin persistence factor for Gate 4 CAP >= 15 years (shorter runway)", 0.62, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.62) applied to log-compressed excess growth for 15-year moats."),
+        ("par_g_base", "Nominal GDP base-rate anchor for Logarithmic Mauboussin Fade & Terminal Stage 2 (3.5%)", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Logarithmic Mauboussin Decay Curve and McKinsey Stage 2 terminal growth."),
+        ("par_fade_cap30", "Mauboussin persistence factor for Gate 4 CAP >= 30 years (fortress monopolies)", 0.85, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.85) applied to log-compressed excess growth and Galton ROIC regression for 30-year moats."),
+        ("par_fade_cap20", "Mauboussin persistence factor for Gate 4 CAP >= 20 years (standard quality compounders)", 0.75, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.75) applied to log-compressed excess growth and Galton ROIC regression for 20-year moats."),
+        ("par_fade_cap15", "Mauboussin persistence factor for Gate 4 CAP >= 15 years (shorter runway)", 0.62, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.62) applied to log-compressed excess growth and Galton ROIC regression for 15-year moats."),
         ("par_fade_default", "Fallback Mauboussin persistence factor when CAP is unpopulated", 0.75, "0.00", NEW + " Default fallback persistence weight (0.75)."),
         ("par_size_factor_intercept", "Continuous log-revenue size factor intercept (1.08)", 1.08, "0.00", NEW + " Intercept in size_factor = clamp(1.08 - 0.11 * log10(Rev_USD_B), 0.72, 1.05)."),
         ("par_size_factor_slope", "Continuous log-revenue size factor slope per 10x revenue (0.11)", 0.11, "0.00", NEW + " Log10 revenue decay slope (0.11 per 10x scale increase) from Mauboussin base rates."),
         ("par_size_factor_min", "Minimum continuous log-revenue size factor (0.72)", 0.72, "0.00", NEW + " Floor on continuous size factor for hyper-scale enterprises."),
         ("par_size_factor_max", "Maximum continuous log-revenue size factor (1.05)", 1.05, "0.00", NEW + " Ceiling on continuous size factor for smaller agile compounders."),
-        ("par_g_mult_cap30", "Pillar 1 growth multiple slope for Gate 4 CAP >= 30 years (2.4x turns per 1% growth)", 240.0, "0.0", NEW + " Rewards 30-year fortress monopolies for extended compounding duration."),
-        ("par_g_mult_cap20", "Pillar 1 growth multiple slope for Gate 4 CAP >= 20 years (2.0x turns per 1% growth)", 200.0, "0.0", NEW + " Standard Graham/Lynch baseline slope for 20-year compounders."),
-        ("par_g_mult_cap15", "Pillar 1 growth multiple slope for Gate 4 CAP >= 15 years (1.7x turns per 1% growth)", 170.0, "0.0", NEW + " Shorter-runway duration haircut for 15-year CAP businesses."),
-        ("par_g_mult_default", "Fallback Pillar 1 growth multiple slope when CAP is unpopulated", 200.0, "0.0", NEW + " Default fallback growth slope (200.0)."),
     ]),
 ]
 
@@ -581,5 +579,23 @@ CHANGELOG = {
         "g_log = g_base + k * ln(1 + (g_start - g_base)/k) (k = 0.12), and fades it by Gate 4 CAP persistence (0.85 for 30y, 0.75 for 20y, 0.62 for 15y) "
         "multiplied by a continuous log10(Revenue_USD) Mauboussin size factor (1.08 - 0.11 * log10(Rev_B), clamped to [0.72, 1.05]), eliminating hard step-function clustering. "
         "(3) Dual Growth Columns in Dashboard: Exposed both Starting Growth ('Start g', g_start) and Expected Growth ('Exp g', g_exp) as separate columns across all valuation tables, dossiers, and the sensitivity sandbox.",
+    ],
+    "6.32": [
+        "Operating Cost Growth Smoothing, Mauboussin Galton ROIC Regression & Removal of Legacy ROIC Hard Caps: "
+        "(1) Operating Cost Growth Smoothing (OpCost = Sales - EBIT): Blends Sales growth 50/50 with min(Sales, OpCost) in Anchor 1 (when Sales >= 0) "
+        "and Anchor 2 (3-5Y CAGR), stripping out one-off pricing/margin spikes (e.g. LLY, KLAC, ASML) while cushioning 1Y cyclical volume dips (when Sales_1Y < 0, e.g. ODFL) without rewarding cost bloat. "
+        "(2) Mauboussin Galton ROIC Regression (Expected ROIC = r * (ROIC_log - 12%) + 12%): Smoothly compresses Operating ROIC above the 12.0% corporate mean "
+        "via ROIC_log = 0.12 + 0.25 * ln(1 + (ROIC - 0.12)/0.25) and applies Gate 4 CAP persistence r (0.85 / 0.75 / 0.62) to compute Expected ROIC. "
+        "(3) Galton ROIC Fade in Anchor 3 & Unclamped Pillar 3: Scales Operating Capital Growth in Anchor 3 by Expected_ROIC / ROIC_log "
+        "and sets Pillar 3 t_roic = 100 * Expected_ROIC, removing all legacy hard caps on ROIC (par_roic_cap = 35.0, 200% tangible placeholder, and bulk roic_est = 0.35 overrides).",
+    ],
+    "6.33": [
+        "Corporate Finance Value Driver PAR Multiple & Uncapped 5-Year Harmonic Market P/E: "
+        "(1) Textbook Value Driver P/E (PE_VD = 0.50 * PE_MM + 0.50 * PE_McK, 75% weight): Replaces the heuristic 3-pillar additive formula with a 50/50 blend "
+        "of Miller-Modigliani / Mauboussin Finite-CAP Linear Value Driver P/E ((1/k) * [1 + (g_exp * N * (ROIC_exp - k)) / ((1 + k) * ROIC_exp)]) and "
+        "McKinsey 2-Stage Compounding Value Driver P/E (N-year explicit CAP runway at g_exp and ROIC_exp followed by mature terminal perpetuity at g_term = 3.5%, ROIC_term = 12.0%, k = 8.75%). "
+        "(2) Uncapped 5-Year Historical Harmonic P/E (t_hist = 2 * Low_5Y * High_5Y / (Low_5Y + High_5Y), 25% weight): Replaces the arithmetic midpoint and removes the legacy 35.0 cap; "
+        "averaging 5-year Earnings Yields (E/P) naturally dampens single-year denominator dips while allowing actual market valuation regimes (bull/bear and US/EU/CA regional differences) to nudge textbook P/E by 25%. "
+        "(3) Pure Uncapped 75/25 PAR Multiple (PAR_Mult = 0.75 * PE_VD + 0.25 * t_hist): Removes the legacy min(raw_par, mult_high_5y) ceiling so every company is valued with zero hard caps anywhere in the valuation engine.",
     ],
 }

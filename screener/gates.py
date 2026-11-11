@@ -89,7 +89,7 @@ def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)
 def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moat: str | None = None) -> dict:
-    """Python reference implementation of the v6.31 Equity Bond Below PAR & 3-Anchor Logarithmic Mauboussin Growth valuation."""
+    """Python reference implementation of the v6.33 Equity Bond Below PAR, Value Driver P/E & 3-Anchor Logarithmic Mauboussin Growth valuation."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
@@ -116,8 +116,10 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18
 
-    par_roic_cap = (p or {}).get("par_roic_cap", 35.0)
-    par_hist_cap = (p or {}).get("par_hist_cap", 35.0)
+    par_cost_of_equity = (p or {}).get("par_cost_of_equity", 0.0875)
+    par_vd_weight = (p or {}).get("par_vd_weight", 0.75)
+    par_roic_avg = (p or {}).get("par_roic_avg", 0.120)
+    par_roic_log_k = (p or {}).get("par_roic_log_k", 0.250)
     par_g_anchor_max = (p or {}).get("par_g_anchor_max", 0.220)
     par_g_1y_floor = (p or {}).get("par_g_1y_floor", -0.040)
     par_g_log_k = (p or {}).get("par_g_log_k", 0.120)
@@ -134,10 +136,6 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     par_size_slope = (p or {}).get("par_size_factor_slope", 0.11)
     par_size_min = (p or {}).get("par_size_factor_min", 0.72)
     par_size_max = (p or {}).get("par_size_factor_max", 1.05)
-    par_g_mult_cap30 = (p or {}).get("par_g_mult_cap30", 240.0)
-    par_g_mult_cap20 = (p or {}).get("par_g_mult_cap20", 200.0)
-    par_g_mult_cap15 = (p or {}).get("par_g_mult_cap15", 170.0)
-    par_g_mult_default = (p or {}).get("par_g_mult_default", 200.0)
 
     # Revenue-Anchored Size Gravity & Continuous Log-Revenue Size Factor:
     # Normalized to USD equivalent using standard currency cross rates; falls back to Market Cap / 4.0 only if revenue missing.
@@ -172,21 +170,33 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
         4,
     )
 
-    # Gate 4 CAP-Linked Persistence (pers) & Pillar 1 Growth Slope (g_mult):
-    # CAP >= 30y (fortress monopolies) -> 0.85 persistence factor & 240.0 growth slope (2.4x per 1% g)
-    # CAP >= 20y (standard quality compounders) -> 0.75 persistence factor & 200.0 growth slope (2.0x per 1% g)
-    # CAP >= 15y (shorter runway) -> 0.62 persistence factor & 170.0 growth slope (1.7x per 1% g)
+    # Gate 4 CAP-Linked Persistence (pers / r):
+    # CAP >= 30y (fortress monopolies) -> 0.85 persistence factor
+    # CAP >= 20y (standard quality compounders) -> 0.75 persistence factor
+    # CAP >= 15y (shorter runway) -> 0.62 persistence factor
     if fund_cap is not None:
         if fund_cap >= 30:
-            pers, g_mult = par_fade_cap30, par_g_mult_cap30
+            pers = par_fade_cap30
         elif fund_cap >= 20:
-            pers, g_mult = par_fade_cap20, par_g_mult_cap20
+            pers = par_fade_cap20
         else:
-            pers, g_mult = par_fade_cap15, par_g_mult_cap15
+            pers = par_fade_cap15
     else:
-        pers, g_mult = par_fade_default, par_g_mult_default
+        pers = par_fade_default
+    g_mult = 200.0
 
-    # 3-Anchor Starting Growth (g_start) & Logarithmic Mauboussin Decay Curve (v6.31):
+    # Mauboussin Galton ROIC Regression (v6.32):
+    # Expected ROIC = r * (ROIC_log - Average_ROIC) + Average_ROIC
+    if roic_op > par_roic_avg:
+        roic_log = round(par_roic_avg + par_roic_log_k * math.log(1.0 + (roic_op - par_roic_avg) / par_roic_log_k), 4)
+        roic_exp = round(pers * (roic_log - par_roic_avg) + par_roic_avg, 4)
+        roic_fade_ratio = round(roic_exp / roic_log, 4)
+    else:
+        roic_log = round(max(0.05, roic_op), 4)
+        roic_exp = roic_log
+        roic_fade_ratio = 1.0
+
+    # 3-Anchor Starting Growth (g_start) & Logarithmic Mauboussin Decay Curve (v6.32):
     bb_raw = f("buyback_yield")
     bb_eff = max(-0.03, min(0.025, bb_raw)) if bb_raw is not None else 0.0
 
@@ -199,38 +209,50 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     else:
         retention = None
     roiic_val = f("roiic")
-    r_cap = par_roic_cap / 100.0
-    r_inc = min(r_cap, max(0.0, roiic_val if roiic_val is not None else roic_op)) if (roiic_val is not None or roic is not None) else None
+    r_inc = max(0.0, roiic_val if roiic_val is not None else roic_exp) if (roiic_val is not None or roic is not None) else None
     zc_pricing = None
 
     sales_1y_val = f("sales_1y")
     sales_cagr_val = f("sales_cagr")
+    opcost_1y_val = f("opcost_1y")
+    opcost_cagr_val = f("opcost_cagr")
     cap_growth_val = f("cap_growth")
     g_imp_in = f("g_implied")
     has_stmt_growth = any(x is not None for x in (sales_1y_val, sales_cagr_val, g, cap_growth_val))
 
     if has_stmt_growth:
-        # Anchor 1 — Near-Term 1Y Momentum (g_1y):
+        # Anchor 1 — Near-Term 1Y Momentum with Operating Cost Smoothing (g_1y):
         s1_base = sales_1y_val if sales_1y_val is not None else (sales_cagr_val if sales_cagr_val is not None else (g or 0.0))
-        g_1y = round(max(par_g_1y_floor, min(par_g_anchor_max, s1_base + bb_eff)), 4)
+        if sales_1y_val is not None and opcost_1y_val is not None:
+            if sales_1y_val >= 0.0:
+                s1_eff = 0.5 * sales_1y_val + 0.5 * min(sales_1y_val, opcost_1y_val)
+            else:
+                s1_eff = 0.5 * sales_1y_val + 0.5 * opcost_1y_val
+        else:
+            s1_eff = s1_base
+        g_1y = round(max(par_g_1y_floor, min(par_g_anchor_max, s1_eff + bb_eff)), 4)
 
-        # Anchor 2 — Medium-Term 3–5Y Evidence (g_hist):
+        # Anchor 2 — Medium-Term 3–5Y Evidence with Operating Cost Smoothing (g_hist):
         s5_base = sales_cagr_val if sales_cagr_val is not None else (g if g is not None else (sales_1y_val or 0.0))
-        top_5y = max(0.0, s5_base) + bb_eff
+        if sales_cagr_val is not None and opcost_cagr_val is not None:
+            s5_eff = 0.5 * sales_cagr_val + 0.5 * min(sales_cagr_val, opcost_cagr_val)
+        else:
+            s5_eff = s5_base
+        top_5y = max(0.0, s5_eff) + bb_eff
         if sales_cagr_val is not None and g is not None and g < top_5y:
             hist_val = 0.5 * top_5y + 0.5 * max(0.0, g)
         else:
             hist_val = top_5y
         g_hist = round(max(0.0, min(par_g_anchor_max, hist_val)), 4)
 
-        # Anchor 3 — Operating Capital Growth at Constant ROIC (g_cap):
+        # Anchor 3 — Operating Capital Growth with Mauboussin Galton ROIC Fade (g_cap):
         if cap_growth_val is not None:
             cg_base = cap_growth_val
         elif sales_cagr_val is not None:
-            cg_base = sales_cagr_val
+            cg_base = s5_eff
         else:
             cg_base = g or 0.0
-        g_cap = round(max(0.0, min(par_g_anchor_max, max(0.0, cg_base) + bb_eff)), 4)
+        g_cap = round(max(0.0, min(par_g_anchor_max, max(0.0, cg_base) * roic_fade_ratio + bb_eff)), 4)
 
         # 3-Anchor Starting Growth (g_start / g_0):
         g_start = round((g_1y + g_hist + g_cap) / 3.0, 4)
@@ -280,36 +302,56 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
                 "g_fund": g_fund, "g_demand": g_demand, "g_raw": g_raw,
                 "fund_cap": fund_cap, "pers": pers, "g_mult": g_mult,
                 "reinv_eff": 1.0, "eff_g_mult": g_mult,
+                "pe_mm": None, "pe_mck": None, "pe_vd": None,
                 "t_growth": None, "t_hist": None, "t_roic": None, "raw_par": None,
+                "roic_log": roic_log, "roic_exp": roic_exp, "roic_fade_ratio": roic_fade_ratio,
+                "opcost_1y": opcost_1y_val, "opcost_cagr": opcost_cagr_val,
                 "retention": retention, "r_inc": r_inc, "zc_pricing": zc_pricing, "bb_eff": bb_eff}
     cur_mult = price / peak_eps
     g_val = g_exp if (g_exp is not None and g_exp > 0) else par_g_base
 
-    # Multiplicative Reinvestment Efficiency (eta_reinv):
-    # Scales growth slope by FCF payout capacity (1 - g/ROIC) relative to the 35% ROIC capital-light standard, clamped to [0.25, 1.0]
-    roic_bench = max(0.15, par_roic_cap / 100.0)
-    if roic is not None:
-        roic_eff = min(max(roic, 0.05), roic_bench)
-        g_ref = min(max(g_val, 0.0), scale_cap)
-        denom = max(0.10, 1.0 - g_ref / roic_bench)
-        numer = max(0.0, 1.0 - g_ref / max(roic_eff, g_ref + 0.005))
-        reinv_eff = max(0.25, min(1.0, numer / denom))
-    else:
-        reinv_eff = 1.0
+    # Corporate Finance Value Driver P/E (v6.33):
+    # 50/50 blend of Miller-Modigliani Finite-CAP P/E and McKinsey 2-Stage Compounding P/E
+    k = max(0.05, par_cost_of_equity)
+    n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
+    roic_eff = max(roic_exp, 0.05)
+    reinv_term = par_g_base / max(0.05, par_roic_avg)
 
-    eff_g_mult = g_mult * reinv_eff
-    t_growth = min(40.0, eff_g_mult * max(0.0, g_val))
-    t_hist = min(par_hist_cap, 0.5 * (ml + mh))
-    t_roic = min(roic * 100.0, par_roic_cap) if roic is not None else 18.0
-    raw_par = (t_growth + t_hist + t_roic) / 3.0
-    par_mult = min(raw_par, mh)
+    def _compute_vd(g_rate: float) -> tuple[float, float, float, float]:
+        mm_val = (1.0 / k) * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
+        reinv_stage1 = min(0.95, max(0.0, g_rate) / roic_eff)
+        q = (1.0 + g_rate) / (1.0 + k)
+        pv_stage1 = (1.0 - reinv_stage1) * (n_cap if abs(1.0 - q) < 1e-9 else q * (1.0 - (q ** n_cap)) / (1.0 - q))
+        pv_stage2 = ((1.0 - reinv_term) * ((1.0 + g_rate) ** n_cap) * (1.0 + par_g_base)) / (
+            max(0.01, k - par_g_base) * ((1.0 + k) ** n_cap)
+        )
+        mck_val = pv_stage1 + pv_stage2
+        return 0.5 * mm_val + 0.5 * mck_val, mm_val, mck_val, 1.0 - reinv_stage1
+
+    pe_vd, pe_mm, pe_mck, reinv_eff = _compute_vd(g_val)
+    pe_vd0, _, _, _ = _compute_vd(0.0)
+    raw_slope = (pe_vd - pe_vd0) / g_val if g_val > 1e-6 else 100.0
+    eff_g_mult = raw_slope if raw_slope > 10.0 else 100.0
+
+    # Uncapped 5-Year Historical Harmonic P/E (midpoint of 5Y Earnings Yield E/P):
+    t_hist = (2.0 * ml * mh) / (ml + mh)
+
+    # Pure Uncapped 75/25 PAR Multiple:
+    par_mult = par_vd_weight * pe_vd + (1.0 - par_vd_weight) * t_hist
+
+    # Backwards-compatibility aliases for downstream callers
+    t_growth = pe_mm
+    t_roic = pe_mck
+    raw_par = pe_vd
+
     par_val = par_mult * peak_eps
     vs_par = price / par_val - 1.0
     status = C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR
     irr_5y = ((1.0 + g_exp) * ((par_val / price) ** 0.2) + dy - 1.0) if (price and price > 0 and par_val and g_exp is not None) else None
     cap_implied = round(fund_cap * (price / par_val), 1) if (fund_cap and price and par_val and par_val > 0) else None
     cap_gap = round(fund_cap - cap_implied, 1) if (fund_cap is not None and cap_implied is not None) else None
-    g_market = round((3.0 * cur_mult - t_hist - t_roic) / eff_g_mult, 4) if (cur_mult and t_hist is not None and eff_g_mult > 0) else None
+    vd_implied = (cur_mult - (1.0 - par_vd_weight) * t_hist) / par_vd_weight
+    g_market = round((vd_implied - pe_vd0) / eff_g_mult, 4) if (cur_mult and t_hist is not None and eff_g_mult > 0) else None
     g_gap = round(g_exp - g_market, 4) if (g_exp is not None and g_market is not None) else None
     return {
         "status": status,
@@ -347,10 +389,18 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
         "g_mult": g_mult,
         "reinv_eff": reinv_eff,
         "eff_g_mult": eff_g_mult,
+        "pe_mm": pe_mm,
+        "pe_mck": pe_mck,
+        "pe_vd": pe_vd,
         "t_growth": t_growth,
         "t_hist": t_hist,
         "t_roic": t_roic,
         "raw_par": raw_par,
+        "roic_log": roic_log,
+        "roic_exp": roic_exp,
+        "roic_fade_ratio": roic_fade_ratio,
+        "opcost_1y": opcost_1y_val,
+        "opcost_cagr": opcost_cagr_val,
         "retention": retention,
         "r_inc": r_inc,
         "zc_pricing": zc_pricing,

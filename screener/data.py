@@ -48,6 +48,8 @@ FIN_COLUMNS = [
     ("sales_1y", "Sales growth (1y YoY)", "0.0%", 9),
     ("sales_cagr", "Sales CAGR (3–5y)", "0.0%", 9),
     ("sales_cagr_yrs", "Sales CAGR window (yrs)", "0", 7),
+    ("opcost_1y", "Operating cost growth (1y YoY)", "0.0%", 9),
+    ("opcost_cagr", "Operating cost CAGR (3–5y)", "0.0%", 9),
     ("cap_growth", "Operating capital growth (5y med)", "0.0%", 9),
     ("buyback_yield", "Net buyback / dilution yield (3–5y)", "0.0%", 9),
     ("retention_rate", "5y earnings retention (1 − div/NI)", "0.0%", 9),
