@@ -328,8 +328,10 @@ The fundamental fair value multiple blends the **Textbook Corporate Finance Valu
    - **Valuation Status**:
      - `Below PAR`: Current Price $\le$ PAR Value ($\% \text{ vs PAR} \le 0$). **BUYING OPPORTUNITY**.
      - `Above PAR`: Current Price $>$ PAR Value ($\% \text{ vs PAR} > 0$). **OVERVALUED**.
-4. **5-Year Expected Cycle IRR (Pull-to-PAR)**:
-   $$\text{5Y Expected IRR} = (1 + g_{\text{exp}}) \times \left(\frac{\text{PAR Value}}{\text{Current Share Price}}\right)^{0.2} + \text{Dividend Yield} - 1.0$$
+4. **5-Year Expected Cycle IRR (Pull-to-PAR Cash-Flow IRR)**:
+   Solves for the exact 5-year internal rate of return ($\text{IRR}$) equating the current share price $P_0$ to the present value of 5 years of growing dividends $D_t = D_0(1 + g_{\text{exp}})^t$ plus Year-5 terminal PAR value $P_5 = \text{PAR Value} \times (1 + g_{\text{exp}})^5$:
+   $$P_0 = \sum_{t=1}^{5} \frac{D_0 (1 + g_{\text{exp}})^t}{(1 + \text{IRR})^t} + \frac{\text{PAR Value} \cdot (1 + g_{\text{exp}})^5}{(1 + \text{IRR})^5}$$
+   where $u = \frac{1 + g_{\text{exp}}}{1 + \text{IRR}}$ satisfies $\text{dy} \sum_{t=1}^{5} u^t + \left(\frac{\text{PAR Value}}{P_0}\right) u^5 = 1$, yielding $\text{5Y Expected IRR} = \frac{1 + g_{\text{exp}}}{u} - 1$.
 5. **Market-Implied Growth ($g_{\text{market}}$) & Growth Margin of Safety**:
    - Exact inversion of the `75/25` Value Driver PAR Multiple formula using the zero-growth Value Driver base $\text{PE}_{\text{VD}}(0)$ and effective Value Driver slope $M_{\text{eff}} = \frac{\text{PE}_{\text{VD}}(g_{\text{exp}}) - \text{PE}_{\text{VD}}(0)}{g_{\text{exp}}}$ reveals the growth rate priced into the current market multiple:
      $$g_{\text{market}} = \frac{\frac{\text{Current Multiple} - 0.25 \cdot t_{\text{hist}}}{0.75} - \text{PE}_{\text{VD}}(0)}{M_{\text{eff}}}$$

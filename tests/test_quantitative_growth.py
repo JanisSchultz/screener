@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from screener.fetch import metrics
-from screener.gates import params, par_valuation
+from screener.gates import params, par_valuation, solve_irr_5y
 
 
 def sample_fin(**overrides) -> dict:
@@ -462,6 +462,29 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertLess(val_conc["pe_mck"], 9.0)
         self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 3.0)
         self.assertAlmostEqual(val_conc["par_mult"], 0.75 * val_conc["pe_vd"] + 0.25 * val_conc["t_hist"], places=4)
+
+    def test_textbook_5y_cash_flow_irr_satisfies_npv_zero(self):
+        # 1. Zero-dividend case reduces exactly to (1 + g_exp) * (par_val / price)^0.2 - 1
+        irr_zero_div = solve_irr_5y(price=100.0, par_val=130.0, g_exp=0.09, dy=0.0)
+        self.assertAlmostEqual(irr_zero_div, 1.09 * (1.30 ** 0.2) - 1.0, places=9)
+
+        # 2. At-PAR case (price == par_val) reduces to exact geometric compounding (1 + g_exp) * (1 + dy) - 1
+        irr_at_par = solve_irr_5y(price=100.0, par_val=100.0, g_exp=0.08, dy=0.025)
+        self.assertAlmostEqual(irr_at_par, 1.08 * 1.025 - 1.0, places=9)
+
+        # 3. General Below-PAR and Above-PAR cases satisfy exact 5-year DCF cash-flow equation:
+        #    P_0 = sum_{t=1..5} [D_0 * (1 + g_exp)^t / (1 + IRR)^t] + [PAR_Val * (1 + g_exp)^5 / (1 + IRR)^5]
+        for price, par_val, g_exp, dy in (
+            (80.0, 120.0, 0.085, 0.030),
+            (150.0, 100.0, 0.065, 0.040),
+            (100.0, 145.0, 0.105, 0.012),
+        ):
+            irr = solve_irr_5y(price=price, par_val=par_val, g_exp=g_exp, dy=dy)
+            self.assertIsNotNone(irr)
+            d0 = price * dy
+            pv_divs = sum((d0 * ((1.0 + g_exp) ** t)) / ((1.0 + irr) ** t) for t in range(1, 6))
+            pv_term = (par_val * ((1.0 + g_exp) ** 5)) / ((1.0 + irr) ** 5)
+            self.assertAlmostEqual(pv_divs + pv_term, price, places=7)
 
 
 if __name__ == "__main__":

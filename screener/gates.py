@@ -130,6 +130,38 @@ def is_finite_concession(sub_industry: str | None, fcf_conv: float | None) -> bo
     return fcf_conv is not None and fcf_conv > 1.25
 
 
+def solve_irr_5y(
+    price: float | None,
+    par_val: float | None,
+    g_exp: float | None,
+    dy: float | None = 0.0,
+) -> float | None:
+    """Solve for the textbook 5-Year Cash-Flow IRR satisfying:
+    Price = sum_{t=1..5} [D_0 * (1 + g_exp)^t / (1 + IRR)^t] + [PAR_Val * (1 + g_exp)^5 / (1 + IRR)^5]
+    Using the substitution u = (1 + g_exp) / (1 + IRR), this reduces to the strictly monotonic polynomial:
+    dy * (u + u^2 + u^3 + u^4 + u^5) + (PAR_Val / Price) * u^5 = 1."""
+    if not price or price <= 0 or not par_val or par_val <= 0 or g_exp is None or g_exp <= -1.0:
+        return None
+    d = max(0.0, float(dy or 0.0))
+    r_par = float(par_val) / float(price)
+    if d <= 1e-12:
+        return (1.0 + g_exp) * (r_par ** 0.2) - 1.0
+    u = (r_par ** -0.2) / (1.0 + d)
+    for _ in range(12):
+        u2 = u * u
+        u3 = u2 * u
+        u4 = u3 * u
+        u5 = u4 * u
+        f_val = d * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0
+        if abs(f_val) < 1e-12:
+            break
+        f_deriv = d * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4
+        if f_deriv <= 0:
+            break
+        u = max(1e-6, u - f_val / f_deriv)
+    return (1.0 + g_exp) / u - 1.0
+
+
 def par_valuation(
     fin: dict,
     p: dict = None,
@@ -418,7 +450,7 @@ def par_valuation(
     par_val = par_mult * peak_eps
     vs_par = price / par_val - 1.0
     status = C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR
-    irr_5y = ((1.0 + g_exp) * ((par_val / price) ** 0.2) + dy - 1.0) if (price and price > 0 and par_val and g_exp is not None) else None
+    irr_5y = solve_irr_5y(price, par_val, g_exp, dy)
     cap_implied = round(fund_cap * (price / par_val), 1) if (fund_cap and price and par_val and par_val > 0) else None
     cap_gap = round(fund_cap - cap_implied, 1) if (fund_cap is not None and cap_implied is not None) else None
     vd_implied = (cur_mult - (1.0 - par_vd_weight) * t_hist) / par_vd_weight

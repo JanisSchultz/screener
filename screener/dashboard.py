@@ -1811,7 +1811,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <span style="font-size: 11px; color: var(--text-dim);">When current earnings drop below peak, normalizes base earning power to mid-cycle to prevent cyclical bubble peaks from distorting PAR Value and 5Y IRR.</span>
         </p>
       </div>
-      <div class="metric-box">
+      <div class="metric-box" style="margin-bottom: 12px;">
         <strong style="color: var(--text-main);">3-Anchor Starting Growth (g₀), Operating Cost Smoothing &amp; Logarithmic Mauboussin Decay Curve (v6.32):</strong>
         <p class="formula-code">
           Starting g (g₀) = (g_1y + g_hist + g_cap) / 3 &nbsp;|&nbsp; Expected g (g_exp) = 3.5% + (g_log - 3.5%) &times; pers &times; size_factor<br>
@@ -1821,6 +1821,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <b>3. Anchor 3 — Capital Growth with Galton ROIC Fade (g_cap):</b> clamp(max(0, Cap_Growth) &times; (Expected_ROIC / ROIC_log) + Buyback_Yield, 0.0%, +22.0%) &nbsp;(scales incremental capital expansion by Mauboussin Galton ROIC regression)<br>
             <b>4. Logarithmic Compression &amp; Mauboussin Fade:</b> g_log = 3.5% + 0.12 &times; ln(1 + (g₀ - 3.5%)/0.12) &nbsp;|&nbsp; pers (r): 0.85 (CAP &ge;30y), 0.75 (CAP &ge;20y), 0.62 (CAP &ge;15y) &nbsp;|&nbsp; size_factor = clamp(1.08 - 0.11 &times; log10(Rev_USD_B), 0.72, 1.05)
           </span>
+        </p>
+      </div>
+      <div class="metric-box">
+        <strong style="color: var(--text-main);">Textbook 5-Year Cash-Flow IRR (Pull-to-PAR):</strong>
+        <p class="formula-code">
+          P₀ = &Sigma;<sub>t=1..5</sub> [D₀(1 + g_exp)<sup>t</sup> / (1 + IRR)<sup>t</sup>] + [PAR_Val(1 + g_exp)<sup>5</sup> / (1 + IRR)<sup>5</sup>]<br>
+          <span style="font-size: 11px; color: var(--text-dim);">Solves the exact 5-year cash-flow internal rate of return across growing annual dividend distributions D<sub>t</sub> = D₀(1 + g_exp)<sup>t</sup> and Year-5 terminal value P₅ = PAR_Val &times; (1 + g_exp)<sup>5</sup> via u = (1 + g_exp)/(1 + IRR) satisfying dy &times; &Sigma;<sub>t=1..5</sub>u<sup>t</sup> + (PAR_Val / P₀) &times; u<sup>5</sup> = 1.</span>
         </p>
       </div>
     </div>
@@ -3464,8 +3471,25 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const par_val = par_mult * peak_eps;
       const vs_par = price / par_val - 1.0;
 
-      const dy = (c.dividends_ttm_m || 0.0) / (mc || 1.0);
-      const irr_5y = (price > 0 && par_val > 0 && g_exp !== null) ? ((1.0 + g_exp) * Math.pow(par_val / price, 0.2) + dy - 1.0) : null;
+      const dy = Math.max(0.0, (c.dividends_ttm_m || 0.0) / (mc || 1.0));
+      let irr_5y = null;
+      if (price > 0 && par_val > 0 && g_exp !== null && g_exp > -1.0) {{
+        const r_par = par_val / price;
+        if (dy <= 1e-12) {{
+          irr_5y = (1.0 + g_exp) * Math.pow(r_par, 0.2) - 1.0;
+        }} else {{
+          let u = Math.pow(r_par, -0.2) / (1.0 + dy);
+          for (let i = 0; i < 12; i++) {{
+            const u2 = u * u, u3 = u2 * u, u4 = u3 * u, u5 = u4 * u;
+            const f_val = dy * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0;
+            if (Math.abs(f_val) < 1e-12) break;
+            const f_deriv = dy * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4;
+            if (f_deriv <= 0) break;
+            u = Math.max(1e-6, u - f_val / f_deriv);
+          }}
+          irr_5y = (1.0 + g_exp) / u - 1.0;
+        }}
+      }}
       const cap_implied = (fund_cap && price > 0 && par_val > 0) ? Math.round(fund_cap * (price / par_val) * 10) / 10 : null;
       const cap_gap = (fund_cap !== null && cap_implied !== null) ? Math.round((fund_cap - cap_implied) * 10) / 10 : null;
 

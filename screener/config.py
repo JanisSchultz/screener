@@ -598,6 +598,7 @@ CHANGELOG = {
         "averaging 5-year Earnings Yields (E/P) naturally dampens single-year denominator dips while allowing actual market valuation regimes (bull/bear and US/EU/CA regional differences) to nudge textbook P/E by 25%. "
         "(3) Pure Uncapped 75/25 PAR Multiple (PAR_Mult = 0.75 * PE_VD + 0.25 * t_hist): Removes the legacy min(raw_par, mult_high_5y) ceiling so every company is valued with zero hard caps anywhere in the valuation engine. "
         "(4) Balance-Sheet Financials, Mark-to-Market HoldCos & IFRIC-12 Concessions: Uses GAAP ROIC (roic_median) for Insurance, Reinsurance, Banks, Multi-Sector Holdings, and IFRIC-12 Concessions (Construction & Engineering / Highways & Railtracks); "
-        "values Mark-to-Market HoldCos / Insurers (fcf_conv < 0.25) at P/B = 1.0x via PE_VD = 1 / ROIC_exp; and values IFRIC-12 Concessions (fcf_conv > 1.25) over their finite N-year runway by omitting Stage 2 terminal perpetuity.",
+        "values Mark-to-Market HoldCos / Insurers (fcf_conv < 0.25) at P/B = 1.0x via PE_VD = 1 / ROIC_exp; and values IFRIC-12 Concessions (fcf_conv > 1.25) over their finite N-year runway by omitting Stage 2 terminal perpetuity. "
+        "(5) Textbook 5-Year Cash-Flow IRR: Replaces the linear '+ dy' approximation with the exact 5-year cash-flow internal rate of return solving P_0 = sum_{t=1..5} [D_0(1+g_exp)^t / (1+IRR)^t] + [PAR_Val(1+g_exp)^5 / (1+IRR)^5].",
     ],
 }
