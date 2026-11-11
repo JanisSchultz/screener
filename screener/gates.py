@@ -147,8 +147,12 @@ def par_valuation(
         peak_eps = peak_eps_override
     else:
         oe_peak = f("peak_oe_eps")
-        # Current TTM EPS inferred from reported Net Income and Market Cap / Price
-        cur_eps = (price * (ni / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
+        # Current Owner EPS inferred from latest-FY Net Income + max(0, D&A − CapEx) and Market Cap / Price,
+        # so both sides of the comparison are on the same Owner EPS basis as peak_oe_eps (add-back identical to
+        # screener/fetch/par.py owner_eps_series); a GAAP EPS here would spuriously haircut amortisation-heavy names.
+        da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
+        oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
+        cur_eps = (price * ((ni + oe_add) / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
         if oe_peak is not None and cur_eps is not None and cur_eps < oe_peak:
             # 50/50 Mid-Cycle Reversion Standard: when current earnings fall below peak,
             # active earning power normalizes to the mid-cycle average between peak capacity and current reality.

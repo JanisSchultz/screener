@@ -76,9 +76,10 @@ When an evaluation is triggered, the coordinator agent provides:
      - Recent strategic spin-offs or restructurings distorted historical share counts or continuing operations.
    - **The 50/50 Mid-Cycle Reversion Standard**:
      When `peak_eps_est` is not explicitly populated, active earning power is protected against stale or bubble peaks:
-     - If current TTM EPS ($\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income}}{\text{Market Cap}}$) falls below `peak_oe_eps`:
+     - If current Owner EPS ($\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Market Cap}}$, latest fiscal year) falls below `peak_oe_eps`:
        $$\text{Active Peak EPS} = 0.5 \times \left(\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})\right)$$
      - If $\text{cur\_eps} \ge \text{peak\_oe\_eps}$: $\text{Active Peak EPS} = \text{peak\_oe\_eps}$.
+     - *Both sides are on the same Owner EPS basis (identical D\&A − CapEx add-back), so amortisation-heavy compounders at peak are not spuriously haircut.*
    - **Active Peak EPS Summary**:
      $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})) & \text{if } \text{cur\_eps} < \text{peak\_oe\_eps} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
 

@@ -1807,7 +1807,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <div class="metric-box" style="margin-bottom: 12px;">
         <strong style="color: var(--text-main);">Active Earning Power (50/50 Mid-Cycle Reversion Standard):</strong>
         <p class="formula-code">
-          Active EPS = min(Peak_OE_EPS, 0.5 * (Peak_OE_EPS + max(0, Cur_TTM_EPS))) | Peak_eps_est overrides<br>
+          Active EPS = min(Peak_OE_EPS, 0.5 * (Peak_OE_EPS + max(0, Cur_Owner_EPS))) | Peak_eps_est overrides<br>
           <span style="font-size: 11px; color: var(--text-dim);">When current earnings drop below peak, normalizes base earning power to mid-cycle to prevent cyclical bubble peaks from distorting PAR Value and 5Y IRR.</span>
         </p>
       </div>

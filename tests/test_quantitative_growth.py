@@ -392,6 +392,23 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val = par_valuation(fin, self.p, cap=20)
         self.assertAlmostEqual(val["peak_eps"], 5.0, places=4)
 
+    def test_mid_cycle_compares_owner_eps_like_for_like_at_peak(self):
+        # Amortisation-heavy compounder at peak: GAAP EPS 6.0 but Owner EPS (600 + 500 - 100) / 100 = 10.0 = peak,
+        # so the 50/50 haircut must not fire (a GAAP-vs-Owner comparison would wrongly give 8.0).
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=600.0, da_ttm_m=500.0, capex_ttm_m=100.0,
+                         peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 10.0, places=4)
+        self.assertAlmostEqual(val["cur_mult"], 10.0, places=4)
+
+    def test_mid_cycle_blend_uses_owner_eps_on_genuine_decline(self):
+        # Genuine decline: current Owner EPS (400 + 300 - 100) / 100 = 6.0 < peak 10.0 -> 0.5 * (10 + 6) = 8.0
+        # (a GAAP basis of 4.0 would give 7.0).
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=400.0, da_ttm_m=300.0, capex_ttm_m=100.0,
+                         peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20)
+        self.assertAlmostEqual(val["peak_eps"], 8.0, places=4)
+
     def test_gaap_roic_selected_for_balance_sheet_financials_and_concessions(self):
         # Insurer / Bank / Concession should use roic_median (0.104) instead of roic_operating (0.217)
         fin = sample_fin(roic_median=0.104, roic_operating=0.217, fcf_conv=1.0)
