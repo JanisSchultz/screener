@@ -282,9 +282,8 @@ def main():
     keys = a.universes or universe_keys()
     for key in keys:
         fetch_universe(key, a, yh, state)
-    if not a.prices_only:
-        apply_mirrors(keys, yh, state)
-        write_report(state)
+    apply_mirrors(keys, yh, state)
+    write_report(state)
 
 
 if __name__ == "__main__":
