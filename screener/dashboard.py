@@ -100,8 +100,10 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "mult_low_5y": fin.get("mult_low_5y"),
                 "mult_high_5y": fin.get("mult_high_5y"),
                 "cagr_oe_eps": fin.get("cagr_oe_eps"),
+                "sales_1y": fin.get("sales_1y"),
                 "sales_cagr": fin.get("sales_cagr"),
                 "sales_cagr_yrs": fin.get("sales_cagr_yrs"),
+                "cap_growth": fin.get("cap_growth"),
                 "buyback_yield": fin.get("buyback_yield"),
                 "retention_rate": fin.get("retention_rate"),
                 "roiic": fin.get("roiic"),
@@ -119,6 +121,12 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "irr_5y": val.get("irr_5y"),
                 "dy": val.get("dy"),
                 "g_hist": val.get("g"),
+                "g_start": val.get("g_start"),
+                "g_1y": val.get("g_1y"),
+                "g_hist_5y": val.get("g_hist"),
+                "g_cap": val.get("g_cap"),
+                "g_log": val.get("g_log"),
+                "size_factor": val.get("size_factor"),
                 "g_exp": val.get("g_exp"),
                 "g_imp": val.get("g_imp"),
                 "g_fund": val.get("g_fund"),
@@ -158,8 +166,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = sorted(irrs)[len(irrs) // 2] if irrs else 0.0
 
     return {
-        "version": "6.30",
-        "generated_at": "2026-11-10",
+        "version": "6.31",
+        "generated_at": "2026-11-11",
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
@@ -1650,6 +1658,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="par_mult-desc">Sort: PAR Mult ↓</option>
         <option value="price-asc">Sort: Share Price ↑</option>
         <option value="price-desc">Sort: Share Price ↓</option>
+        <option value="g_start-desc">Sort: Starting g (g₀) ↓</option>
         <option value="g_imp-desc">Sort: Expected g (g_exp) ↓</option>
         <option value="g_market-asc">Sort: Market-Implied g ↑</option>
         <option value="g_gap-desc">Sort: Growth Margin ↓</option>
@@ -1770,7 +1779,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Equity Bond Below PAR</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.30):</strong>
+        <strong style="color: var(--text-main);">Fundamental PAR Multiple Formula (v6.31):</strong>
         <p class="formula-code">
           PAR Multiple = min(mult_high_5y, (M_eff * g_exp + min(5Y_Midpoint_Mult, 35.0) + min(Operating_ROIC * 100, 35.0)) / 3)<br>
           <span style="font-size: 11px; color: var(--text-dim);">M_eff = M_cap * &eta;_reinv | M_cap: 240 (CAP &ge; 30y), 200 (CAP &ge; 20y), 170 (CAP &ge; 15y) | &eta;_reinv = clamp((1 - g/ROIC) / (1 - g/0.35), 0.25, 1.0)</span>
@@ -1784,14 +1793,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </p>
       </div>
       <div class="metric-box">
-        <strong style="color: var(--text-main);">4-Filter Credible Growth Engine (v6.30):</strong>
+        <strong style="color: var(--text-main);">3-Anchor Starting Growth (g₀) &amp; Logarithmic Mauboussin Decay Curve (v6.31):</strong>
         <p class="formula-code">
-          g_raw = min(g_fund, g_demand) &nbsp;|&nbsp; Expected g (g_exp) = min(Rev_Scale_Cap, StepDown_Fade(g_raw))<br>
+          Starting g (g₀) = (g_1y + g_hist + g_cap) / 3 &nbsp;|&nbsp; Expected g (g_exp) = 3.5% + (g_log - 3.5%) &times; pers &times; size_factor<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            <b>1. Capital Supply Ceiling (g_fund):</b> (1 - 5Y_Div_Payout) * R_inc + Zero_Cap_Pricing + min(0, Buyback_Yield) &nbsp;(Zero-Cap Tollbooth 18.0% freedom for &ge;35% Operating ROIC)<br>
-            <b>2. Objective Demand &amp; Margin Ceiling (g_demand):</b> min(18.0%, Verified_Sales_CAGR + Buyback_Yield + 0.5%) &nbsp;(25% excess haircut / 14.0% cap on &lt;5Y windows &amp; M&A-goodwill roll-ups)<br>
-            <b>3. Step-Down Fade toward 3.5% GDP:</b> g_raw &ge; 3.5%: w * g_raw + (1 - w) * 3.5% &nbsp;(w = 0.75 CAP &ge;30y, 0.60 CAP &ge;20y, 0.45 CAP &ge;15y) | g_raw &lt; 3.5%: max(2.0%, g_raw)<br>
-            <b>4. Revenue Size Gravity (10Y Post-Fade Cap):</b> Hyper-Rev (&ge; $250B) &le; 8.0% | Mega-Rev ($50B - $250B) &le; 8.5% | Large-Rev ($15B - $50B) &le; 10.0% | Mid/Small-Rev (&lt; $15B) &le; 12.0%
+            <b>1. Anchor 1 — Near-Term 1Y Momentum (g_1y):</b> clamp(Sales_1Y + Buyback_Yield, -4.0%, +22.0%) &nbsp;(reflects immediate trajectory &amp; recovery lag)<br>
+            <b>2. Anchor 2 — Medium-Term 3–5Y Evidence (g_hist):</b> clamp(Sales_CAGR_5Y + Buyback_Yield, 0.0%, +22.0%) &nbsp;(blended 50/50 with Cycle OE EPS CAGR if margins contracted)<br>
+            <b>3. Anchor 3 — Capital Growth @ Constant ROIC (g_cap):</b> clamp(5Y_Median_Operating_Capital_Growth + Buyback_Yield, 0.0%, +22.0%) &nbsp;(since Reinvestment &times; ROIC = &Delta;Capital/NOPAT &times; NOPAT/Capital = g_Capital at constant ROIC)<br>
+            <b>4. Logarithmic Compression &amp; Mauboussin Fade:</b> g_log = 3.5% + 0.12 &times; ln(1 + (g₀ - 3.5%)/0.12) &nbsp;|&nbsp; pers: 0.85 (CAP &ge;30y), 0.75 (CAP &ge;20y), 0.62 (CAP &ge;15y) &nbsp;|&nbsp; size_factor = clamp(1.08 - 0.11 &times; log10(Rev_USD_B), 0.72, 1.05) &nbsp;(Asymmetric: g₀ &le; 3.5% never fades upward)
           </span>
         </p>
       </div>
@@ -1924,7 +1933,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Expected g (g_exp)</div>
+            <div class="label">Start g → Exp g</div>
             <div class="value" id="dossier-g-imp">-</div>
             <div class="subtext" id="dossier-scale-tier" style="font-size: 10px; color: var(--text-dim); margin-top: 2px;"></div>
           </div>
@@ -2005,70 +2014,70 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
           </div>
 
-          <!-- 2. EXP G 4-Filter Engine Card -->
+          <!-- 2. START G & EXP G 3-Anchor + Log Mauboussin Engine Card -->
           <div class="audit-card">
             <div class="audit-card-header">
-              <span class="audit-card-title"><span>📈</span> 2. Expected Growth (EXP G) — 4-Filter Engine</span>
+              <span class="audit-card-title"><span>📈</span> 2. Starting g (g₀) &amp; Expected g (g_exp) — 3-Anchor Log Mauboussin Curve</span>
               <span class="val" style="color: var(--accent); font-size: 14px;" id="audit-gexp-summary">-</span>
             </div>
 
-            <!-- Filter 1: Capital Supply Ceiling -->
+            <!-- Anchor 1: Near-Term 1Y Momentum -->
             <div class="filter-step-box" id="box-filter-supply">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Filter 1: Capital Supply Ceiling (g_fund)</strong>
-                <span class="val" style="font-size: 12px;" id="audit-gfund-val">-</span>
+                <strong style="font-size: 11px; color: var(--text-main);">Anchor 1: Near-Term 1Y Momentum (g_1y)</strong>
+                <span class="val" style="font-size: 12px;" id="audit-g1y-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
-                <span>Tangible ROIC: <b id="audit-roic-val" style="color: var(--text-muted);">-</b></span>
-                <span>Incremental ROIC: <b id="audit-rinc-val" style="color: var(--text-muted);">-</b></span>
-                <span>Zero-Cap Pricing: <b id="audit-zc-val" style="color: var(--text-muted);">-</b></span>
+                <span>1Y Sales Growth: <b id="audit-sales1y-val" style="color: var(--text-muted);">-</b></span>
                 <span>Buybacks / Dilution: <b id="audit-bb-val" style="color: var(--text-muted);">-</b></span>
+                <span>Bounds: <b style="color: var(--text-muted);">[-4.0%, +22.0%]</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-supply-desc">Formula: Retention × R_inc + Zero_Cap_Pricing + Dilution_Adj</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Formula: clamp(Sales_1Y + Buyback_Yield, -4.0%, +22.0%) — captures current operating trajectory</div>
             </div>
 
-            <!-- Filter 2: Objective Demand & Margin Ceiling -->
+            <!-- Anchor 2: Medium-Term 3-5Y Evidence -->
             <div class="filter-step-box" id="box-filter-demand">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Filter 2 &amp; 4a: Objective Demand Ceiling (g_demand)</strong>
+                <strong style="font-size: 11px; color: var(--text-main);">Anchor 2: Medium-Term 3–5Y Evidence (g_hist)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-gdemand-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
                 <span>Verified Sales CAGR: <b id="audit-salescagr-val" style="color: var(--text-muted);">-</b></span>
                 <span>Statement Window: <b id="audit-salesyrs-val" style="color: var(--text-muted);">-</b></span>
                 <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
-                <span>Margin Expansion Cap: <b style="color: var(--text-muted);">Max +0.5%</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-demand-desc">Formula: min(18.0%, Sales_CAGR + Buyback_Yield + Margin_Allowance) [25% excess haircut / 14.0% cap for &lt;5Y window or M&amp;A drag]</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Formula: clamp(Sales_CAGR + Buyback_Yield, 0.0%, +22.0%) [blended 50/50 with OE EPS CAGR if margins contracted]</div>
             </div>
 
-            <!-- Filter 3: Step-Down Fade -->
+            <!-- Anchor 3: Operating Capital Growth @ Constant ROIC -->
             <div class="filter-step-box" id="box-filter-fade">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Filter 3: CAP Step-Down Fade toward 3.5% Nominal GDP</strong>
+                <strong style="font-size: 11px; color: var(--text-main);">Anchor 3: Capital Growth @ Constant ROIC (g_cap)</strong>
+                <span class="val" style="font-size: 12px;" id="audit-gfund-val">-</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
+                <span>5Y Operating Capital Growth: <b id="audit-capgrowth-val" style="color: var(--text-muted);">-</b></span>
+                <span>Tangible Op ROIC: <b id="audit-roic-val" style="color: var(--text-muted);">-</b></span>
+                <span>5Y Earnings Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
+              </div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Formula: clamp(max(0, Cap_Growth) + Buyback_Yield, 0.0%, +22.0%) — Reinvestment &times; ROIC = g_Capital at constant ROIC</div>
+            </div>
+
+            <!-- Step B: Starting Growth -> Logarithmic Mauboussin Decay Curve -->
+            <div class="filter-step-box" id="box-filter-gravity">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 11px; color: var(--text-main);">Starting g (g₀) → Log Compression &amp; Mauboussin Fade (g_exp)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-fade-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Raw Unfaded Growth: <b id="audit-graw-val" style="color: var(--text-muted);">-</b></span>
-                <span>Nominal GDP Base: <b style="color: var(--text-muted);">3.5%</b></span>
-                <span>Fade Weight (w): <b id="audit-fadew-val" style="color: var(--text-muted);">-</b></span>
-              </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-fade-desc">Formula: w × g_raw + (1 - w) × 3.5% (Asymmetric: g &lt; 3.5% never fades up)</div>
-            </div>
-
-            <!-- Filter 4: Revenue Size Gravity -->
-            <div class="filter-step-box" id="box-filter-gravity">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Filter 4b: Revenue Size Gravity (10Y Scale Cap)</strong>
-                <span class="val" style="font-size: 12px;" id="audit-gravity-val">-</span>
-              </div>
-              <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Scale Tier: <b id="audit-scaletier-val" style="color: var(--text-muted);">-</b></span>
-                <span>Revenue Size Ceiling: <b id="audit-scalecap-val" style="color: var(--text-muted);">-</b></span>
-                <span>Fallback g_implied: <b id="audit-gimplied-val" style="color: var(--text-muted);">-</b></span>
+                <span>Starting g (g₀ = 3-Anchor Avg): <b id="audit-graw-val" style="color: var(--accent);">-</b></span>
+                <span>Log-Compressed (g_log): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
+                <span>CAP Persistence (w): <b id="audit-fadew-val" style="color: var(--text-muted);">-</b></span>
+                <span>Log-Rev Size Factor: <b id="audit-sizefactor-val" style="color: var(--text-muted);">-</b></span>
+                <span>Scale Tier: <b id="audit-scaletier-val" style="color: var(--text-muted);">-</b> (<b id="audit-scalecap-val" style="color: var(--text-muted);">-</b>)</span>
                 <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
               </div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Formula: g_exp = 3.5% + (g_log - 3.5%) &times; pers &times; size_factor (Asymmetric: g₀ &le; 3.5% never fades up)</div>
             </div>
           </div>
 
@@ -2137,25 +2146,31 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 </div>
               </div>
 
-              <!-- Control 2: Top-Line Sales CAGR -->
+              <!-- Control 2: 1Y Sales Growth (Anchor 1) -->
               <div class="sandbox-group">
-                <label>Sales CAGR (Top-line): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
+                <label>1Y Sales Growth (Anchor 1): <span class="sb-val" id="sb-val-sales1y">8.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-sales1y" min="-10" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('sales1y', this.value, '%')">
+              </div>
+
+              <!-- Control 3: 3-5Y Sales CAGR (Anchor 2) -->
+              <div class="sandbox-group">
+                <label>3–5Y Sales CAGR (Anchor 2): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-salescagr" min="-5" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('salescagr', this.value, '%')">
               </div>
 
-              <!-- Control 3: Tangible Operating ROIC -->
+              <!-- Control 4: Operating Capital Growth (Anchor 3) -->
+              <div class="sandbox-group">
+                <label>Capital Growth @ Constant ROIC (Anchor 3): <span class="sb-val" id="sb-val-capgrowth">8.0%</span></label>
+                <input type="range" class="sandbox-slider" id="sb-slider-capgrowth" min="0" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('capgrowth', this.value, '%')">
+              </div>
+
+              <!-- Control 5: Tangible Operating ROIC -->
               <div class="sandbox-group">
                 <label>Tangible Operating ROIC: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-roic" min="5" max="60" step="0.5" value="20" oninput="onSandboxSliderChange('roic', this.value, '%')">
               </div>
 
-              <!-- Control 4: Dividend Payout Ratio -->
-              <div class="sandbox-group">
-                <label>Dividend Payout Ratio: <span class="sb-val" id="sb-val-payout">30.0%</span></label>
-                <input type="range" class="sandbox-slider" id="sb-slider-payout" min="0" max="100" step="1" value="30" oninput="onSandboxSliderChange('payout', this.value, '%')">
-              </div>
-
-              <!-- Control 5: Buyback Yield -->
+              <!-- Control 6: Buyback Yield -->
               <div class="sandbox-group">
                 <label>Buyback Yield (Dilution if &lt; 0): <span class="sb-val" id="sb-val-bb">1.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-bb" min="-3" max="5" step="0.2" value="1" oninput="onSandboxSliderChange('bb', this.value, '%')">
@@ -2525,6 +2540,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_mult', label: 'PAR Mult', num: true }},
           {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+          {{ key: 'g_start', label: 'Start g', num: true }},
           {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
@@ -2546,6 +2562,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_val', label: 'PAR Val', num: true }},
           {{ key: 'vs_par', label: 'vs PAR', num: true }},
           {{ key: 'irr_5y', label: '5Y IRR', num: true }},
+          {{ key: 'g_start', label: 'Start g', num: true }},
           {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
@@ -2567,6 +2584,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           {{ key: 'par_mult', label: 'PAR Mult', num: true }},
           {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
           {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+          {{ key: 'g_start', label: 'Start g', num: true }},
           {{ key: 'g_imp', label: 'Exp g', num: true }},
           {{ key: 'g_market', label: 'Mkt g', num: true }},
           {{ key: 'g_gap', label: 'g Gap', num: true }},
@@ -2645,7 +2663,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'price' || col.key === 'par_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
-          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'g_imp' || col.key === 'g_exp') {{
+          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'g_start' || col.key === 'g_imp' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
             cellContent = fmtPct(val, true);
@@ -2686,6 +2704,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function triadCardsHtml(c) {{
+      const gStart = fmtPct(c.g_start);
       const gOur = fmtPct(c.g_imp);
       const gMkt = fmtPct(c.g_market, true);
       const gGap = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
@@ -2696,9 +2715,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const cColor = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
       return `
         <div class="card-metric-cell">
-          <div class="card-metric-label">Growth (Exp / Mkt / Gap)</div>
+          <div class="card-metric-label">Growth (Start → Exp / Mkt / Gap)</div>
           <div class="card-metric-val" style="font-size: 11.5px;">
-            ${{gOur}} / ${{gMkt}} <span style="color:${{gColor}};">(${{gGap}})</span>
+            ${{gStart}} → ${{gOur}} / ${{gMkt}} <span style="color:${{gColor}};">(${{gGap}})</span>
           </div>
         </div>
         <div class="card-metric-cell">
@@ -2998,17 +3017,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
 
-      document.getElementById('dossier-g-imp').textContent = fmtPct(c.g_exp !== null && c.g_exp !== undefined ? c.g_exp : c.g_imp);
+      const gStartDisp = fmtPct(c.g_start);
+      const gExpDisp = fmtPct(c.g_exp !== null && c.g_exp !== undefined ? c.g_exp : c.g_imp);
+      document.getElementById('dossier-g-imp').textContent = `${{gStartDisp}} → ${{gExpDisp}}`;
       const scaleEl = document.getElementById('dossier-scale-tier');
       if (scaleEl) {{
         const parts = [];
         if (c.g_est !== null && c.g_est !== undefined) {{
           parts.push(`Override ${{fmtPct(c.g_est)}}`);
         }} else {{
-          if (c.g_fund !== null && c.g_fund !== undefined) parts.push(`Supply ${{fmtPct(c.g_fund)}}`);
-          if (c.g_demand !== null && c.g_demand !== undefined) parts.push(`Demand ${{fmtPct(c.g_demand)}}`);
+          if (c.g_1y !== null && c.g_1y !== undefined) parts.push(`1Y ${{fmtPct(c.g_1y)}}`);
+          if (c.g_hist_5y !== null && c.g_hist_5y !== undefined) parts.push(`5Y ${{fmtPct(c.g_hist_5y)}}`);
+          if (c.g_cap !== null && c.g_cap !== undefined) parts.push(`Cap ${{fmtPct(c.g_cap)}}`);
         }}
-        if (c.scale_tier) parts.push(`${{c.scale_tier}} [≤${{fmtPct(c.scale_cap)}}]`);
+        if (c.size_factor !== null && c.size_factor !== undefined) parts.push(`Size ×${{c.size_factor.toFixed(2)}}`);
         scaleEl.textContent = parts.join(' · ');
       }}
       document.getElementById('dossier-g-market').textContent = fmtPct(c.g_market, true);
@@ -3076,30 +3098,30 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const pricingMap = {{ '2': 'High Pricing Power (Score 2)', '1': 'Moderate Pricing Power (Score 1)', '0': 'No Pricing Power (Score 0)' }};
       document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
 
-      // 2. EXP G
-      document.getElementById('audit-gexp-summary').textContent = fmtPct(c.g_exp);
-      document.getElementById('audit-gfund-val').textContent = (c.g_fund !== null && c.g_fund !== undefined) ? fmtPct(c.g_fund) : 'N/A';
-      document.getElementById('audit-retention-val').textContent = (c.retention !== null && c.retention !== undefined) ? fmtPct(c.retention) : ((c.retention_rate !== null && c.retention_rate !== undefined) ? fmtPct(c.retention_rate) : '-');
-      document.getElementById('audit-roic-val').textContent = fmtPct(c.roic_operating);
-      document.getElementById('audit-rinc-val').textContent = (c.r_inc !== null && c.r_inc !== undefined) ? fmtPct(c.r_inc) : (c.roiic !== null ? fmtPct(c.roiic) : '-');
-      document.getElementById('audit-zc-val').textContent = (c.zc_pricing !== null && c.zc_pricing !== undefined) ? fmtPct(c.zc_pricing, true) : (c.g3a_moat_archetype === 'Toll booth / Switching costs' ? '+2.5%' : '+1.5%');
+      // 2. START G & EXP G
+      document.getElementById('audit-gexp-summary').textContent = `${{fmtPct(c.g_start)}} → ${{fmtPct(c.g_exp)}}`;
+      document.getElementById('audit-g1y-val').textContent = (c.g_1y !== null && c.g_1y !== undefined) ? fmtPct(c.g_1y) : 'N/A';
+      document.getElementById('audit-sales1y-val').textContent = fmtPct(c.sales_1y);
       document.getElementById('audit-bb-val').textContent = fmtPct(c.buyback_yield, true);
-      document.getElementById('audit-gdemand-val').textContent = (c.g_demand !== null && c.g_demand !== undefined) ? fmtPct(c.g_demand) : 'N/A';
+      document.getElementById('audit-gdemand-val').textContent = (c.g_hist_5y !== null && c.g_hist_5y !== undefined) ? fmtPct(c.g_hist_5y) : 'N/A';
       document.getElementById('audit-salescagr-val').textContent = fmtPct(c.sales_cagr);
       document.getElementById('audit-salesyrs-val').textContent = c.sales_cagr_yrs ? `${{c.sales_cagr_yrs}} Years` : '5 Years';
       document.getElementById('audit-oecagr-val').textContent = fmtPct(c.cagr_oe_eps);
-      const fadePers = c.pers || (c.g4_cap >= 30 ? 0.75 : (c.g4_cap >= 20 ? 0.60 : 0.45));
-      const calcFaded = (c.g_raw !== null && c.g_raw !== undefined) ? (c.g_raw >= 0.035 ? (fadePers * c.g_raw + (1.0 - fadePers) * 0.035) : Math.max(0.02, c.g_raw)) : null;
-      document.getElementById('audit-fade-val').textContent = calcFaded !== null ? fmtPct(calcFaded) : '-';
-      document.getElementById('audit-graw-val').textContent = fmtPct(c.g_raw);
+      document.getElementById('audit-gfund-val').textContent = (c.g_cap !== null && c.g_cap !== undefined) ? fmtPct(c.g_cap) : 'N/A';
+      document.getElementById('audit-capgrowth-val').textContent = fmtPct(c.cap_growth);
+      document.getElementById('audit-roic-val').textContent = fmtPct(c.roic_operating);
+      document.getElementById('audit-retention-val').textContent = (c.retention !== null && c.retention !== undefined) ? fmtPct(c.retention) : ((c.retention_rate !== null && c.retention_rate !== undefined) ? fmtPct(c.retention_rate) : '-');
+      const fadePers = c.pers || (c.g4_cap >= 30 ? 0.85 : (c.g4_cap >= 20 ? 0.75 : 0.62));
+      document.getElementById('audit-fade-val').textContent = fmtPct(c.g_exp);
+      document.getElementById('audit-graw-val').textContent = fmtPct(c.g_start);
+      document.getElementById('audit-glog-val').textContent = fmtPct(c.g_log);
       document.getElementById('audit-fadew-val').textContent = `${{Math.round(fadePers * 100)}}%`;
-      document.getElementById('audit-gravity-val').textContent = fmtPct(c.scale_cap);
+      document.getElementById('audit-sizefactor-val').textContent = (c.size_factor !== null && c.size_factor !== undefined) ? `${{c.size_factor.toFixed(2)}}x` : '1.00x';
       document.getElementById('audit-scaletier-val').textContent = c.scale_tier || 'MID/SM';
       document.getElementById('audit-scalecap-val').textContent = fmtPct(c.scale_cap);
-      document.getElementById('audit-gimplied-val').textContent = (c.g_implied !== null && c.g_implied !== undefined) ? fmtPct(c.g_implied) : 'None';
       document.getElementById('audit-gest-val').textContent = (c.g_est !== null && c.g_est !== undefined) ? fmtPct(c.g_est) : 'None';
 
-      // Binding Constraint
+      // Binding / Dominant Driver Badge
       const boxSupply = document.getElementById('box-filter-supply');
       const boxDemand = document.getElementById('box-filter-demand');
       const boxFade = document.getElementById('box-filter-fade');
@@ -3110,21 +3132,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (c.g_est !== null && c.g_est !== undefined) {{
         badge.textContent = `Analyst Override (${{fmtPct(c.g_est)}})`;
         badge.className = 'binding-badge active-constraint';
-      }} else if (c.g_exp !== null && c.scale_cap !== null && Math.abs(c.g_exp - c.scale_cap) < 0.0002 && (calcFaded || 0) > c.scale_cap) {{
+      }} else if (c.g_start !== null && c.g_start <= 0.035) {{
         if (boxGravity) boxGravity.classList.add('binding');
-        badge.textContent = `Binding: Size Gravity (≤${{fmtPct(c.scale_cap)}})`;
-        badge.className = 'binding-badge active-constraint';
-      }} else if (c.g_fund !== null && c.g_raw !== null && Math.abs(c.g_raw - c.g_fund) < 0.0002 && (c.g_demand === null || c.g_fund <= c.g_demand)) {{
-        if (boxSupply) boxSupply.classList.add('binding');
-        badge.textContent = `Binding: Capital Supply (${{fmtPct(c.g_fund)}})`;
-        badge.className = 'binding-badge active-constraint';
-      }} else if (c.g_demand !== null) {{
-        if (boxDemand) boxDemand.classList.add('binding');
-        badge.textContent = `Binding: Demand Ceiling (${{fmtPct(c.g_demand)}})`;
+        badge.textContent = `No Free Lunch (g₀ ${{fmtPct(c.g_start)}} ≤ 3.5%)`;
         badge.className = 'binding-badge active-constraint';
       }} else {{
-        badge.textContent = 'Formula Derived';
-        badge.className = 'binding-badge';
+        if (boxGravity) boxGravity.classList.add('binding');
+        badge.textContent = `3-Anchor g₀ ${{fmtPct(c.g_start)}} → Log Fade ${{fmtPct(c.g_exp)}}`;
+        badge.className = 'binding-badge active-constraint';
       }}
 
       // 3. PAR MULT
@@ -3143,14 +3158,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : 20;
       const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : 8.0;
+      const sales1y = (c.sales_1y !== null && c.sales_1y !== undefined) ? (c.sales_1y * 100) : salescagr;
+      const capgrowth = (c.cap_growth !== null && c.cap_growth !== undefined) ? (c.cap_growth * 100) : salescagr;
       const roic = (c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100) : ((c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100) : ((c.roic_median || 0.18) * 100));
-
-      let payout = 30.0;
-      if (c.retention_rate !== null && c.retention_rate !== undefined) {{
-        payout = Math.max(0, Math.min(100, (1.0 - c.retention_rate) * 100));
-      }} else if (c.dividends_ttm_m !== null && c.ni_ttm_m && c.ni_ttm_m > 0) {{
-        payout = Math.max(0, Math.min(100, (c.dividends_ttm_m / c.ni_ttm_m) * 100));
-      }}
 
       const bb = (c.buyback_yield !== null && c.buyback_yield !== undefined) ? (c.buyback_yield * 100) : 0.0;
       const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined) ? c.peak_eps : (c.price ? c.price / 15 : 1.0);
@@ -3158,7 +3168,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const mh = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? c.mult_high_5y : 28.0;
       const gest = (c.g_est !== null && c.g_est !== undefined) ? (c.g_est * 100) : null;
 
-      sbBaseline = {{ cap, salescagr, roic, payout, bb, peakeps, ml, mh, gest }};
+      sbBaseline = {{ cap, sales1y, salescagr, capgrowth, roic, bb, peakeps, ml, mh, gest }};
       sbCurrent = {{ ...sbBaseline }};
 
       syncSandboxInputs();
@@ -3174,14 +3184,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (capEl) capEl.textContent = `${{sbCurrent.cap}}y`;
 
       // Sliders & value displays
+      const s1y = document.getElementById('sb-slider-sales1y');
+      if (s1y) {{ s1y.value = sbCurrent.sales1y; document.getElementById('sb-val-sales1y').textContent = `${{sbCurrent.sales1y.toFixed(1)}}%`; }}
+
       const sCagr = document.getElementById('sb-slider-salescagr');
       if (sCagr) {{ sCagr.value = sbCurrent.salescagr; document.getElementById('sb-val-salescagr').textContent = `${{sbCurrent.salescagr.toFixed(1)}}%`; }}
 
+      const sCapG = document.getElementById('sb-slider-capgrowth');
+      if (sCapG) {{ sCapG.value = sbCurrent.capgrowth; document.getElementById('sb-val-capgrowth').textContent = `${{sbCurrent.capgrowth.toFixed(1)}}%`; }}
+
       const sRoic = document.getElementById('sb-slider-roic');
       if (sRoic) {{ sRoic.value = sbCurrent.roic; document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`; }}
-
-      const sPayout = document.getElementById('sb-slider-payout');
-      if (sPayout) {{ sPayout.value = sbCurrent.payout; document.getElementById('sb-val-payout').textContent = `${{sbCurrent.payout.toFixed(1)}}%`; }}
 
       const sBb = document.getElementById('sb-slider-bb');
       if (sBb) {{ sBb.value = sbCurrent.bb; document.getElementById('sb-val-bb').textContent = `${{sbCurrent.bb.toFixed(1)}}%`; }}
@@ -3297,102 +3310,60 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       let scale_tier = "MID/SM";
       let scale_cap = 0.120;
       if (rev_usd_b !== null) {{
-        if (rev_usd_b >= 250.0) {{ scale_tier = "HYPER"; scale_cap = 0.080; }}
-        else if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
-        else if (rev_usd_b >= 15.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
+        if (rev_usd_b >= 250.0) {{ scale_tier = "HYPER"; scale_cap = 0.095; }}
+        else if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.098; }}
+        else if (rev_usd_b >= 15.0) {{ scale_tier = "LARGE"; scale_cap = 0.105; }}
       }} else {{
-        if (mc_usd_b >= 1000.0) {{ scale_tier = "HYPER"; scale_cap = 0.080; }}
-        else if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.085; }}
-        else if (mc_usd_b >= 50.0) {{ scale_tier = "LARGE"; scale_cap = 0.100; }}
+        if (mc_usd_b >= 1000.0) {{ scale_tier = "HYPER"; scale_cap = 0.095; }}
+        else if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.098; }}
+        else if (mc_usd_b >= 50.0) {{ scale_tier = "LARGE"; scale_cap = 0.105; }}
       }}
 
+      const eff_rev_b = (rev_usd_b !== null && rev_usd_b > 0) ? rev_usd_b : (mc_usd_b > 0 ? Math.max(0.5, mc_usd_b / 4.0) : 5.0);
+      const size_factor = Math.max(0.72, Math.min(1.05, 1.08 - 0.11 * Math.log10(Math.max(1.0, eff_rev_b))));
+
       const fund_cap = sbCurrent.cap;
-      let pers = 0.60;
+      let pers = 0.75;
       let g_mult = 200.0;
       if (fund_cap !== null && fund_cap !== undefined) {{
-        if (fund_cap >= 30) {{ pers = 0.75; g_mult = 240.0; }}
-        else if (fund_cap >= 20) {{ pers = 0.60; g_mult = 200.0; }}
-        else {{ pers = 0.45; g_mult = 170.0; }}
+        if (fund_cap >= 30) {{ pers = 0.85; g_mult = 240.0; }}
+        else if (fund_cap >= 20) {{ pers = 0.75; g_mult = 200.0; }}
+        else {{ pers = 0.62; g_mult = 170.0; }}
       }}
 
       const bb_eff = Math.max(-0.03, Math.min(0.025, sbCurrent.bb / 100.0));
-      let g_fund = null;
-      let g_demand = null;
-      let g_raw = null;
+      const s1_val = sbCurrent.sales1y / 100.0;
+      const s5_val = sbCurrent.salescagr / 100.0;
+      const cg_val = sbCurrent.capgrowth / 100.0;
+      const salesChanged = Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.05;
+      const g_oe = c.cagr_oe_eps;
+
+      // Anchor 1: 1Y Momentum
+      const g_1y = Math.max(-0.04, Math.min(0.22, s1_val + bb_eff));
+
+      // Anchor 2: 3-5Y History
+      const top_5y = Math.max(0.0, s5_val) + bb_eff;
+      const hist_val = (!salesChanged && g_oe !== null && g_oe !== undefined && g_oe < top_5y) ? (0.5 * top_5y + 0.5 * Math.max(0.0, g_oe)) : top_5y;
+      const g_hist = Math.max(0.0, Math.min(0.22, hist_val));
+
+      // Anchor 3: Capital Growth @ Constant ROIC
+      const g_cap = Math.max(0.0, Math.min(0.22, Math.max(0.0, cg_val) + bb_eff));
+
+      // 3-Anchor Starting Growth (g_start)
+      const g_start = Math.round(((g_1y + g_hist + g_cap) / 3.0) * 10000) / 10000;
+
+      // Log Compression & Mauboussin Fade to Expected Growth (g_exp)
+      const g_base = 0.035;
+      const k_log = 0.12;
       let g_exp = null;
-
       if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
-        g_raw = sbCurrent.gest / 100.0;
-        g_exp = Math.min(scale_cap, g_raw);
+        g_exp = Math.min(scale_cap, sbCurrent.gest / 100.0);
+      }} else if (g_start > g_base) {{
+        const g_log = g_base + k_log * Math.log(1.0 + (g_start - g_base) / k_log);
+        const faded_g = g_base + (g_log - g_base) * pers * size_factor;
+        g_exp = Math.round(Math.min(scale_cap, faded_g) * 10000) / 10000;
       }} else {{
-        // Filter 1: Supply Ceiling
-        const retention = Math.max(0.0, Math.min(1.0, 1.0 - (sbCurrent.payout / 100.0)));
-        const roic_op = sbCurrent.roic / 100.0;
-        const roic_gaap = c.roic_median;
-        const roiic_val = c.roiic;
-        const r_cap = 0.35;
-        const is_zero_cap_tollbooth = (c.g3a_moat_archetype === "Toll booth / Switching costs" && roic_op >= r_cap);
-
-        if (is_zero_cap_tollbooth) {{
-          g_fund = Math.round(Math.max(0.0, 0.180 + Math.min(0.0, bb_eff)) * 10000) / 10000;
-        }} else {{
-          let r_inc = roic_op;
-          if (roiic_val !== null && roic_gaap !== null) {{
-            r_inc = Math.min(r_cap, 0.5 * Math.max(0.0, roiic_val) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_gaap)));
-          }} else if (roiic_val !== null) {{
-            r_inc = Math.min(r_cap, 0.5 * Math.max(0.0, roiic_val) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_op)));
-          }} else if (roic_gaap !== null) {{
-            r_inc = Math.min(r_cap, 0.5 * Math.min(r_cap, Math.max(0.0, roic_gaap)) + 0.5 * Math.min(r_cap, Math.max(0.0, roic_op)));
-          }}
-          const zc_pricing = (c.g3a_moat_archetype === "Toll booth / Switching costs" || roic_op >= 0.30) ? 0.025 : 0.015;
-          const dilution_adj = Math.min(0.0, bb_eff);
-          g_fund = Math.round(Math.max(0.0, retention * r_inc + zc_pricing + dilution_adj) * 10000) / 10000;
-        }}
-
-        // Filter 2: Demand Ceiling (18.0% pre-fade momentum cap)
-        const salesChanged = Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.05;
-        const sales_g = (c.sales_cagr !== null && c.sales_cagr !== undefined || salesChanged) ? (sbCurrent.salescagr / 100.0) : null;
-        const sales_yrs = c.sales_cagr_yrs;
-        const g_oe = c.cagr_oe_eps;
-        let already_faded = false;
-
-        if (sales_g !== null && !isNaN(sales_g)) {{
-          let top_per_share = Math.max(0.0, sales_g) + bb_eff;
-          if (!salesChanged && sales_yrs !== null && sales_yrs < 5 && c.p2p_ok === 'Y' && g_oe !== null && g_oe > top_per_share) {{
-            top_per_share = 0.5 * top_per_share + 0.5 * g_oe;
-          }}
-          const hist_demand = (!salesChanged && g_oe !== null && g_oe < top_per_share) ? (0.5 * top_per_share + 0.5 * Math.max(0.0, g_oe)) : (top_per_share + 0.005);
-          let raw_demand = Math.min(0.180, hist_demand);
-          const is_short_window = (!salesChanged && sales_yrs !== null && sales_yrs < 5);
-          const is_ma_heavy = (!salesChanged && roic_gaap !== null && roic_gaap < 0.15 && roiic_val !== null && roiic_val < 0.10 && roic_op >= 0.25);
-          if ((is_short_window || is_ma_heavy) && raw_demand > 0.060) {{
-            raw_demand = Math.min(0.140, 0.060 + 0.75 * (raw_demand - 0.060));
-          }}
-          g_demand = Math.round(raw_demand * 10000) / 10000;
-        }} else if (g_oe !== null) {{
-          g_demand = Math.round(Math.min(0.180, g_oe) * 10000) / 10000;
-        }} else if (c.g_implied !== null) {{
-          g_demand = Math.round(Math.max(0.02, c.g_implied) * 10000) / 10000;
-          already_faded = true;
-        }} else {{
-          g_demand = 0.035;
-          already_faded = true;
-        }}
-
-        g_raw = (g_fund !== null) ? Math.min(g_fund, g_demand) : g_demand;
-
-        // Filter 3: Fade
-        let faded_g = g_raw;
-        if (already_faded) {{
-          faded_g = Math.max(0.02, g_raw);
-        }} else if (g_raw >= 0.035) {{
-          faded_g = pers * g_raw + (1.0 - pers) * 0.035;
-        }} else {{
-          faded_g = Math.max(0.02, g_raw);
-        }}
-
-        // Filter 4b: Revenue Size Gravity
-        g_exp = Math.min(scale_cap, faded_g);
+        g_exp = Math.round(Math.max(0.02, g_start) * 10000) / 10000;
       }}
 
       // Valuation
@@ -3430,6 +3401,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         return isPos ? 'diff-pos' : 'diff-neg';
       }};
 
+      const dGStart = (g_start !== null && c.g_start !== null && c.g_start !== undefined) ? (g_start - c.g_start) : null;
       const dG = (g_exp !== null && c.g_exp !== null) ? (g_exp - c.g_exp) : null;
       const dMult = (par_mult !== null && c.par_mult !== null) ? (par_mult - c.par_mult) : null;
       const dVal = (par_val !== null && c.par_val !== null) ? (par_val - c.par_val) : null;
@@ -3440,7 +3412,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const deltaRows = [
         `<tr>
-          <td>Expected Growth (EXP G)</td>
+          <td>Starting Growth (START G / g₀)</td>
+          <td>${{fmtPct(c.g_start)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_start)}}</td>
+          <td class="${{diffClass(dGStart)}}">${{dGStart !== null ? fmtPct(dGStart, true) : '-'}}</td>
+        </tr>`,
+        `<tr>
+          <td>Expected Growth (EXP G / g_exp)</td>
           <td>${{fmtPct(c.g_exp)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_exp)}}</td>
           <td class="${{diffClass(dG)}}">${{dG !== null ? fmtPct(dG, true) : '-'}}</td>
@@ -3510,7 +3488,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', 'Our Implied g', 'Market-Implied g', 'Growth Margin', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', 'Starting g', 'Expected g', 'Market-Implied g', 'Growth Margin', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
@@ -3530,6 +3508,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           c.g4_cap !== null && c.g4_cap !== undefined ? c.g4_cap : '',
           c.cap_implied !== null && c.cap_implied !== undefined ? c.cap_implied : '',
           c.cap_gap !== null && c.cap_gap !== undefined ? c.cap_gap : '',
+          c.g_start !== null && c.g_start !== undefined ? c.g_start : '',
           c.g_imp !== null && c.g_imp !== undefined ? c.g_imp : '',
           c.g_market !== null && c.g_market !== undefined ? c.g_market : '',
           c.g_gap !== null && c.g_gap !== undefined ? c.g_gap : '',

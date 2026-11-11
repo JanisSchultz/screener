@@ -1,4 +1,4 @@
-# Per-Company Evaluation Framework Specification (v6.30)
+# Per-Company Evaluation Framework Specification (v6.31)
 ## Quality & Moat Screener — 6 Munger Quality Gates & Equity Bond Below PAR
 
 ---
@@ -285,25 +285,19 @@ To prevent accounting distortions from penalizing capital-light compounders that
 
 ---
 
-### 5.3 4-Filter Credible Growth Engine ($g_{\text{exp}}$), CAP Slope & Reinvestment Efficiency (v6.30)
+### 5.3 3-Anchor Starting Growth ($g_{\text{start}}$) & Logarithmic Mauboussin Decay Curve ($g_{\text{exp}}$) (v6.31)
 
-Grounded in bottom-up capital reinvestment math, empirical corporate base rates, and McKinsey's Value Driver formula:
-1. **Core Growth & Revenue Size Gravity Parameters**:
-   - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
-   - `par_g_prefade_cap = 0.180` (`18.0%` near-term Years 1–3 momentum ceiling before Step-Down Fade).
-   - `par_g_cap_hyper = 0.080` (`8.0%` 10Y post-fade ceiling for Hyper-Scale enterprises $\ge \$250\text{B}$ USD equivalent).
-   - `par_g_cap_mega = 0.085` (`8.5%` 10Y post-fade ceiling for Mega-Revenue enterprises $\$50\text{B}–\$250\text{B}$ USD equivalent).
-   - `par_g_cap_large = 0.100` (`10.0%` 10Y post-fade ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
-   - `par_g_cap = 0.120` (`12.0%` 10Y post-fade ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
-2. **4 Sequential Growth Filters** (bypassed only when explicit manual override `g_est` is populated):
-   - **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**: $(1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$, where pure `Toll booth / Switching costs` businesses with $\ge 35\%$ Operating ROIC receive `18.0%` Zero-Capital Pricing freedom (deducting only chronic share dilution).
-   - **Filter 2 & 4a — Objective Demand, Margin & Short-Window/M&A Ceiling ($g_{\text{demand}}$)**: $\min(18.0\%, \text{Verified Sales CAGR} + \text{Buyback Yield} + 0.5\%)$, disallowing perpetual operating-margin expansion and applying a $25\%$ excess haircut / $14.0\%$ cap when `sales_cagr_yrs < 5` or heavy M&A goodwill drag (`roic_median < 15%` and `roiic < 10%`) is present.
-   - **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ GDP** on $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$:
-     - **CAP $\ge$ 30 Years**: $w = 0.75$ and $M_{\text{cap}} = 240.0$ ($2.4\text{x}$ turns per $1\%$ growth).
-     - **CAP $\ge$ 20 Years**: $w = 0.60$ and $M_{\text{cap}} = 200.0$ ($2.0\text{x}$ turns per $1\%$ growth).
-     - **CAP $\ge$ 15 Years**: $w = 0.45$ and $M_{\text{cap}} = 170.0$ ($1.7\text{x}$ turns per $1\%$ growth).
-     - For $g_{\text{raw}} \ge 3.5\%$: $g_{\text{faded}} = w \times g_{\text{raw}} + (1 - w) \times 0.035$; for $g_{\text{raw}} < 3.5\%$: $g_{\text{faded}} = \max(0.02, g_{\text{raw}})$ ("No Free Lunch").
-   - **Filter 4b — Revenue Size Gravity**: $g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}},\, g_{\text{faded}})$ (with `g_implied` used strictly as a fallback when statement growth is unavailable).
+Grounded in empirical corporate base rates (Mauboussin & Callahan) and constant-ROIC capital reinvestment physics:
+1. **Step A — 3-Anchor Starting Growth ($g_{\text{start}} = (g_{\text{1y}} + g_{\text{hist}} + g_{\text{cap}}) / 3$)**:
+   - **Anchor 1 — Near-Term 1Y Momentum ($g_{\text{1y}}$)**: $\text{clamp}_{[-0.04,\, 0.22]}(\text{sales\_1y} + \text{Buyback Yield})$, capturing immediate trajectory and recovery lag.
+   - **Anchor 2 — Medium-Term 3–5Y Evidence ($g_{\text{hist}}$)**: $\text{clamp}_{[0.0,\, 0.22]}(\text{sales\_cagr} + \text{Buyback Yield})$, blended 50/50 with cycle Owner EPS CAGR if bottom-line earnings lagged top-line + buybacks.
+   - **Anchor 3 — Operating Capital Growth at Constant ROIC ($g_{\text{cap}}$)**: $\text{clamp}_{[0.0,\, 0.22]}(\max(0, \text{cap\_growth}) + \text{Buyback Yield})$, where `cap_growth` is the 5Y median annual growth of Operating Assets ($\text{Total Assets} - \text{Cash}$) blended with positive Invested Capital growth (since $\text{Reinvestment Rate} \times \text{ROIC} = \frac{\Delta \text{Capital}}{\text{NOPAT}} \times \frac{\text{NOPAT}}{\text{Capital}} = g_{\text{Capital}}$ at constant ROIC).
+2. **Step B — Logarithmic Compression & Continuous Mauboussin Fade ($g_{\text{exp}}$)**:
+   - For $g_{\text{start}} \le 3.5\%$: $g_{\text{exp}} = \max(0.02, g_{\text{start}})$ ("No Free Lunch").
+   - For $g_{\text{start}} > 3.5\%$:
+     $$g_{\text{log}} = 0.035 + 0.12 \times \ln\!\left(1 + \frac{g_{\text{start}} - 0.035}{0.12}\right)$$
+     $$g_{\text{exp}} = \min\!\left(\text{Scale\_Cap}_{\text{rev}},\; 0.035 + (g_{\text{log}} - 0.035) \times \text{pers} \times \text{size\_factor}\right)$$
+     where Gate 4 CAP sets $\text{pers} \in \{0.85, 0.75, 0.62\}$ and $M_{\text{cap}} \in \{240.0, 200.0, 170.0\}$ for CAP $\ge 30, \ge 20, \ge 15$ years, and $\text{size\_factor} = \text{clamp}_{[0.72,\, 1.05]}(1.08 - 0.11 \times \log_{10}(\max(1.0, \text{Rev}_{\text{USD, B}})))$.
 3. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$)**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$

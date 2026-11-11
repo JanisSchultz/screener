@@ -196,9 +196,12 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
-    # v6.30 4-Filter Credible Growth Engine multi-year inputs
+    # v6.31 3-Anchor + Logarithmic Mauboussin Growth Engine multi-year inputs
     if sales:
         s_end = max(sales)
+        s1_val = cagr(sales, 1)
+        if s1_val is not None:
+            out["sales_1y"] = round(s1_val, 4)
         for span in (5, 4, 3, 2):
             s0, s1 = sales.get(s_end - span), sales.get(s_end)
             if s0 is not None and s1 is not None and s0 > 0 and s1 > 0:
@@ -231,6 +234,35 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     eq_ser, debt_ser, cash_ser = g("equity"), g("debt"), g("cash")
     ic_ser = {y: eq_ser[y] + (debt_ser.get(y) or 0) - (cash_ser.get(y) or 0)
               for y in eq_ser if eq_ser.get(y) is not None}
+    assets_ser = g("assets")
+    op_assets_ser = {
+        y: assets_ser[y] - (cash_ser.get(y) or 0)
+        for y in assets_ser
+        if assets_ser.get(y) is not None and assets_ser[y] > (cash_ser.get(y) or 0)
+    }
+
+    def _median_cap_yoy(ser: dict) -> float | None:
+        yrs_pos = sorted(y for y, v in ser.items() if v is not None and v > 0 and (last is None or y <= last))
+        if len(yrs_pos) < 2:
+            return None
+        yoy = []
+        for idx in range(1, len(yrs_pos)):
+            y0_c, y1_c = yrs_pos[idx - 1], yrs_pos[idx]
+            sp = y1_c - y0_c
+            if 1 <= sp <= 2:
+                ann_g = (ser[y1_c] / ser[y0_c]) ** (1.0 / sp) - 1.0
+                if -0.30 <= ann_g <= 0.50:
+                    yoy.append(ann_g)
+        return median(yoy[-5:]) if yoy else None
+
+    g_oa = _median_cap_yoy(op_assets_ser)
+    g_ic = _median_cap_yoy(ic_ser)
+    if g_oa is not None and g_ic is not None and g_ic > 0:
+        out["cap_growth"] = round(0.5 * g_oa + 0.5 * g_ic, 4)
+    elif g_oa is not None:
+        out["cap_growth"] = round(g_oa, 4)
+    elif g_ic is not None:
+        out["cap_growth"] = round(g_ic, 4)
     nopat_ser = {}
     for y, e_val in ebit.items():
         if e_val is not None:

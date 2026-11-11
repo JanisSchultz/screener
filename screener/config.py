@@ -1,4 +1,4 @@
-"""Framework configuration (v6.30): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.31): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -220,17 +220,22 @@ PARAMETER_GROUPS = [
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_roic_cap", "Max ROIC points counted toward PAR multiple (operating-side ROIC proxy, neutralizes buyback/negative equity distortions)", 35.0, "0.0", NEW + " Caps ROIC*100 at 35.0 (proxy for true uncorrupted operating ROIC: OTIS 32.7%, AZO 35.7%, AAPL 35.2%)."),
         ("par_hist_cap", "Max 5Y cycle midpoint multiple counted toward Pillar 2 (neutralizes ZIRP bubble & denominator-dip spikes)", 35.0, "0.0", NEW + " Caps t_hist = 0.5*(mult_low_5y + mult_high_5y) at 35.0, symmetric with par_roic_cap."),
-        ("par_g_prefade_cap", "Max unfaded near-term (Years 1–3) momentum rate before Step-Down Fade", 0.180, "0.0%", NEW + " Bounds pre-fade g_demand and Zero-Capital Tollbooth g_fund at 18.0% before CAP step-down and Revenue Size Gravity."),
-        ("par_g_cap", "Max sustainable forward growth rate for Mid/Small-Revenue enterprises (< $15B USD)", 0.120, "0.0%", NEW + " Revenue Size Gravity ceiling (12.0%) for mid/small-revenue enterprises."),
-        ("par_g_cap_large", "Max sustainable forward growth rate for Large-Revenue enterprises ($15B - $50B USD)", 0.100, "0.0%", NEW + " Revenue Size Gravity ceiling (10.0%) for large-revenue enterprises."),
-        ("par_g_cap_mega", "Max sustainable forward growth rate for Mega-Revenue enterprises ($50B - $250B USD)", 0.085, "0.0%", NEW + " Revenue Size Gravity ceiling (8.5%) for mega-revenue enterprises."),
-        ("par_g_cap_hyper", "Max sustainable forward growth rate for Hyper-Scale enterprises (>= $250B USD)", 0.080, "0.0%", NEW + " Revenue Size Gravity ceiling (8.0%) for hyper-scale enterprises."),
-        ("par_g_turnaround", "Turnaround stagnation threshold for historical CAGR fallback", 0.010, "0.0%", NEW + " When multi-year sales_cagr is unavailable and historical CAGR < 1.0%, clamps target to par_g_base (3.5%)."),
-        ("par_g_base", "Nominal GDP base-rate anchor for Step-Down Fade", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Step-Down Fade."),
-        ("par_fade_cap30", "Step-down explicit growth weight for Gate 4 CAP >= 30 years (fortress monopolies)", 0.75, "0.00", NEW + " 5-7Y PAR cycle step-down weight (75% explicit + 25% nominal GDP) for 30-year moats."),
-        ("par_fade_cap20", "Step-down explicit growth weight for Gate 4 CAP >= 20 years (standard quality compounders)", 0.60, "0.00", NEW + " 5-7Y PAR cycle step-down weight (60% explicit + 40% nominal GDP) for 20-year moats."),
-        ("par_fade_cap15", "Step-down explicit growth weight for Gate 4 CAP >= 15 years (shorter runway)", 0.45, "0.00", NEW + " 5-7Y PAR cycle step-down weight (45% explicit + 55% nominal GDP) for 15-year moats."),
-        ("par_fade_default", "Fallback step-down explicit growth weight when CAP is unpopulated", 0.60, "0.00", NEW + " Default fallback step-down persistence weight (0.60)."),
+        ("par_g_anchor_max", "Max individual anchor growth rate before 3-Anchor averaging (22.0%)", 0.220, "0.0%", NEW + " Bounds each of the 3 starting growth anchors (1Y Momentum, 3-5Y History, Capital Growth) at 22.0%."),
+        ("par_g_1y_floor", "Floor on Anchor 1 (1Y sales + buyback momentum) during cyclical dips (-4.0%)", -0.040, "0.0%", NEW + " Bounds single-year cyclical contractions at -4.0% in Anchor 1 so temporary dips penalize Starting g without destroying multi-year value."),
+        ("par_g_log_k", "Logarithmic compression curvature constant k above nominal GDP (12.0%)", 0.120, "0.0%", NEW + " Controls logarithmic compression g_log = g_base + k * ln(1 + (g_start - g_base)/k) before Mauboussin persistence fade."),
+        ("par_g_cap", "Max sustainable forward growth rate ceiling for Mid/Small-Revenue enterprises (< $15B USD)", 0.120, "0.0%", NEW + " Tail safety ceiling (12.0%) for mid/small-revenue enterprises."),
+        ("par_g_cap_large", "Max sustainable forward growth rate ceiling for Large-Revenue enterprises ($15B - $50B USD)", 0.105, "0.0%", NEW + " Tail safety ceiling (10.5%) for large-revenue enterprises."),
+        ("par_g_cap_mega", "Max sustainable forward growth rate ceiling for Mega-Revenue enterprises ($50B - $250B USD)", 0.098, "0.0%", NEW + " Tail safety ceiling (9.8%) for mega-revenue enterprises."),
+        ("par_g_cap_hyper", "Max sustainable forward growth rate ceiling for Hyper-Scale enterprises (>= $250B USD)", 0.095, "0.0%", NEW + " Tail safety ceiling (9.5%) for hyper-scale enterprises."),
+        ("par_g_base", "Nominal GDP base-rate anchor for Logarithmic Mauboussin Fade", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for Logarithmic Mauboussin Decay Curve."),
+        ("par_fade_cap30", "Mauboussin persistence factor for Gate 4 CAP >= 30 years (fortress monopolies)", 0.85, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.85) applied to log-compressed excess growth for 30-year moats."),
+        ("par_fade_cap20", "Mauboussin persistence factor for Gate 4 CAP >= 20 years (standard quality compounders)", 0.75, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.75) applied to log-compressed excess growth for 20-year moats."),
+        ("par_fade_cap15", "Mauboussin persistence factor for Gate 4 CAP >= 15 years (shorter runway)", 0.62, "0.00", NEW + " 5-7Y PAR horizon persistence factor (0.62) applied to log-compressed excess growth for 15-year moats."),
+        ("par_fade_default", "Fallback Mauboussin persistence factor when CAP is unpopulated", 0.75, "0.00", NEW + " Default fallback persistence weight (0.75)."),
+        ("par_size_factor_intercept", "Continuous log-revenue size factor intercept (1.08)", 1.08, "0.00", NEW + " Intercept in size_factor = clamp(1.08 - 0.11 * log10(Rev_USD_B), 0.72, 1.05)."),
+        ("par_size_factor_slope", "Continuous log-revenue size factor slope per 10x revenue (0.11)", 0.11, "0.00", NEW + " Log10 revenue decay slope (0.11 per 10x scale increase) from Mauboussin base rates."),
+        ("par_size_factor_min", "Minimum continuous log-revenue size factor (0.72)", 0.72, "0.00", NEW + " Floor on continuous size factor for hyper-scale enterprises."),
+        ("par_size_factor_max", "Maximum continuous log-revenue size factor (1.05)", 1.05, "0.00", NEW + " Ceiling on continuous size factor for smaller agile compounders."),
         ("par_g_mult_cap30", "Pillar 1 growth multiple slope for Gate 4 CAP >= 30 years (2.4x turns per 1% growth)", 240.0, "0.0", NEW + " Rewards 30-year fortress monopolies for extended compounding duration."),
         ("par_g_mult_cap20", "Pillar 1 growth multiple slope for Gate 4 CAP >= 20 years (2.0x turns per 1% growth)", 200.0, "0.0", NEW + " Standard Graham/Lynch baseline slope for 20-year compounders."),
         ("par_g_mult_cap15", "Pillar 1 growth multiple slope for Gate 4 CAP >= 15 years (1.7x turns per 1% growth)", 170.0, "0.0", NEW + " Shorter-runway duration haircut for 15-year CAP businesses."),
@@ -564,5 +569,17 @@ CHANGELOG = {
         "over the 5-7Y PAR horizon using Gate 4 CAP weights (0.75 for CAP >= 30y, 0.60 for CAP >= 20y, 0.45 for CAP >= 15y), preserving asymmetric 'No Free Lunch' below 3.5%. "
         "(4) Filter 4b — 4-Tier Revenue Size Gravity: Applies USD Revenue Size Gravity post-fade (>= $250B Hyper <= 8.0%, $50B-$250B Mega <= 8.5%, $15B-$50B Large <= 10.0%, < $15B Mid/Sm <= 12.0%) "
         "with legacy g_implied reserved strictly as a fallback when statement growth is unavailable.",
+    ],
+    "6.31": [
+        "3-Anchor Starting Growth (g_start) & Logarithmic Mauboussin Decay Curve (g_exp): "
+        "(1) 3-Anchor Starting Growth (g_start = (g_1y + g_hist + g_cap) / 3): Combines Anchor 1 (Near-Term 1Y Sales + Buyback Momentum, clamped to [-4%, +22%]), "
+        "Anchor 2 (Medium-Term 3-5Y Sales/EPS Evidence with margin-contraction check, clamped to [0%, +22%]), and Anchor 3 (Operating Capital Growth at Constant ROIC + Buybacks, "
+        "using 5Y median growth of Operating Assets (Total Assets - Cash) blended with positive Invested Capital growth, clamped to [0%, +22%]). "
+        "Because Reinvestment Rate * ROIC = (Delta Capital / NOPAT) * (NOPAT / Capital) = g_Capital at constant ROIC, Anchor 3 naturally captures real capital expansion "
+        "across asset-light payment networks (MA +10.0%/yr), lithography leaders (ASML +8.8%/yr), insurers (PGR +16.4%/yr), and mature consumer staples (PG +0.9%/yr, PEP +2.4%/yr) without special-case exemptions. "
+        "(2) Logarithmic Compression & Continuous Mauboussin Fade to Expected Growth (g_exp): Smoothly compresses excess starting growth above par_g_base = 3.5% via "
+        "g_log = g_base + k * ln(1 + (g_start - g_base)/k) (k = 0.12), and fades it by Gate 4 CAP persistence (0.85 for 30y, 0.75 for 20y, 0.62 for 15y) "
+        "multiplied by a continuous log10(Revenue_USD) Mauboussin size factor (1.08 - 0.11 * log10(Rev_B), clamped to [0.72, 1.05]), eliminating hard step-function clustering. "
+        "(3) Dual Growth Columns in Dashboard: Exposed both Starting Growth ('Start g', g_start) and Expected Growth ('Exp g', g_exp) as separate columns across all valuation tables, dossiers, and the sensitivity sandbox.",
     ],
 }

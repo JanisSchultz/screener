@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.30 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.31 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,11 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.31: 3-Anchor Starting Growth (g_start) & Logarithmic Mauboussin Decay Curve (g_exp):
+- 3-Anchor Starting Growth (g_start = (g_1y + g_hist + g_cap) / 3): Combines Anchor 1 (Near-Term 1Y Sales + Buyback Momentum, clamped to [-4%, +22%]), Anchor 2 (Medium-Term 3-5Y Sales/EPS Evidence with margin-contraction check, clamped to [0%, +22%]), and Anchor 3 (Operating Capital Growth at Constant ROIC + Buybacks, using 5Y median growth of Operating Assets (Total Assets - Cash) blended with positive Invested Capital growth, clamped to [0%, +22%]). Since Reinvestment Rate * ROIC = (Delta Capital / NOPAT) * (NOPAT / Capital) = g_Capital at constant ROIC, Anchor 3 captures true organic capital expansion across asset-light payment networks (MA +10.0%/yr), lithography leaders (ASML +8.8%/yr), insurers (PGR +16.4%/yr), and mature consumer staples (PG +0.9%/yr, PEP +2.4%/yr) without special-case exemptions.
+- Logarithmic Compression & Continuous Mauboussin Fade to Expected Growth (g_exp): Smoothly compresses excess starting growth above par_g_base = 3.5% via g_log = 3.5% + 0.12 * ln(1 + (g_start - 3.5%)/0.12), and fades it by Gate 4 CAP persistence (0.85 for 30y, 0.75 for 20y, 0.62 for 15y) multiplied by a continuous log10(Revenue_USD) Mauboussin size factor (1.08 - 0.11 * log10(Rev_B), clamped to [0.72, 1.05]), eliminating hard step-function clustering.
+- Dual Growth Columns in Dashboard: Surfaced both Starting Growth ('Start g', g_start) and Expected Growth ('Exp g', g_exp) as separate columns across all valuation tables, dossiers, and the sensitivity sandbox.
 
 v6.30: 4-Filter Credible Growth Engine (Supply vs. Demand, 3.5% Nominal GDP Step-Down & Revenue Size Gravity):
 - Filter 1 — Capital Supply Ceiling (g_fund): Bounds sustainable compounding via payout-retention math ((1 - 5Y Dividend Payout) * Incremental/GAAP ROIC + Zero-Capital Pricing + Share Dilution deduction), catching high-payout insurers/utilities (ADM.GB, SAMPO.FI) and M&A-dilutive acquirers (BLK) while granting 18.0% Zero-Capital Pricing freedom to >= 35% Operating ROIC Tollbooths (SPGI, CME, V, MSFT).

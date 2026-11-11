@@ -1,11 +1,11 @@
-# Quantitative Evaluation Framework Specification (v6.30)
+# Quantitative Evaluation Framework Specification (v6.31)
 ## Quality & Moat Screener — Equity Bond Below PAR Valuation Model
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.30). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
+This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.31). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
 
 ### The Equity Bond Below PAR Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are treated as **equity bonds** paying an expanding owner cash coupon:
@@ -104,45 +104,41 @@ To prevent accounting distortions from penalizing capital-light compounders:
 
 ---
 
-### Step 3: 4-Filter Credible Growth Engine ($g_{\text{exp}}$), CAP Slope & Reinvestment Efficiency (v6.30)
+### Step 3: 3-Anchor Starting Growth ($g_{\text{start}}$) & Logarithmic Mauboussin Decay Curve ($g_{\text{exp}}$) (v6.31)
 
-Grounded in bottom-up capital reinvestment math, empirical corporate base rates, and McKinsey's Value Driver formula, expected compounding is bounded sequentially across four filters:
+Grounded in empirical base-rate regression (Michael Mauboussin & Dan Callahan) and constant-ROIC capital reinvestment physics, the growth engine computes an objective **Starting Growth Rate ($g_0$ / `g_start`)** from three equal-weighted anchors and fades it smoothly toward long-term nominal GDP (`par_g_base = 3.5%`) to produce **Expected Growth ($g_{\text{exp}}$ / `g_exp`)**:
 
-1. **Core Growth, Step-Down & Revenue Size Gravity Parameters**:
+1. **Core Growth & Decay Curve Parameters**:
    - `par_g_base = 0.035` (`3.5%` long-term nominal GDP gravity anchor).
-   - `par_g_prefade_cap = 0.180` (`18.0%` near-term Years 1–3 momentum ceiling before Step-Down Fade).
-   - `par_g_cap_hyper = 0.080` (`8.0%` 10Y post-fade ceiling for Hyper-Scale enterprises $\ge \$250\text{B}$ USD equivalent).
-   - `par_g_cap_mega = 0.085` (`8.5%` 10Y post-fade ceiling for Mega-Revenue enterprises $\$50\text{B}–\$250\text{B}$ USD equivalent).
-   - `par_g_cap_large = 0.100` (`10.0%` 10Y post-fade ceiling for Large-Revenue enterprises $\$15\text{B}–\$50\text{B}$ USD equivalent).
-   - `par_g_cap = 0.120` (`12.0%` 10Y post-fade ceiling for Mid/Small-Revenue enterprises $<\$15\text{B}$ USD equivalent).
-   - `par_g_turnaround = 0.010` (`1.0%` historical stagnation threshold when multi-year `sales_cagr` is unavailable).
+   - `par_g_anchor_max = 0.220` (`22.0%` ceiling on each individual starting growth anchor).
+   - `par_g_1y_floor = -0.040` (`-4.0%` floor on Anchor 1 during single-year cyclical contractions).
+   - `par_g_log_k = 0.120` ($k = 12.0\%$ logarithmic compression curvature constant above nominal GDP).
+   - `par_fade_cap30 = 0.85`, `par_fade_cap20 = 0.75`, `par_fade_cap15 = 0.62`, `par_fade_default = 0.75` (Mauboussin Gate 4 CAP persistence weights).
+   - `size_factor = clamp(1.08 - 0.11 * log10(max(1.0, Rev_USD_B)), 0.72, 1.05)` (continuous log-revenue size factor).
 
-2. **Filter 1 — Capital Supply Ceiling ($g_{\text{fund}}$)**:
-   - **Zero-Capital Tollbooth Rule**: Pure `Toll booth / Switching costs` businesses earning $\ge 35\%$ tangible Operating ROIC require near-zero incremental capital to grow organically; their supply ceiling is `par_g_prefade_cap` (`18.0%`) adjusted only for chronic share dilution (`min(0, buyback_yield)`).
-   - **Payout-Retention Capital Math**: For all other businesses, sustainable capital-funded growth is bounded by 5-year median earnings retention $(1 - \text{Dividends}/\text{NI})$, blended Incremental/GAAP ROIC ($R_{\text{inc}}$, capturing M&A goodwill and diminishing returns), a modest zero-capital inflation pass-through allowance ($2.5\%$ for Tollbooths / $\ge 30\%$ Operating ROIC, $1.5\%$ otherwise), and recurring share dilution:
-     $$g_{\text{fund}} = (1 - \text{Payout}_{5\text{Y}}) \times R_{\text{inc}} + g_{\text{zero-cap}} + \min(0, \text{Buyback Yield})$$
+2. **Step A — 3-Anchor Starting Growth ($g_{\text{start}} = (g_{\text{1y}} + g_{\text{hist}} + g_{\text{cap}}) / 3$)**:
+   Let $\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.025]}(\text{buyback\_yield})$:
+   - **Anchor 1 — Near-Term 1Y Momentum ($g_{\text{1y}}$)**:
+     $$g_{\text{1y}} = \text{clamp}_{[-0.04,\, 0.22]}\!\left(\text{sales\_1y} + \text{bb\_eff}\right)$$
+     Captures immediate operating momentum (if last year was weak, recovery takes time; if strong, near-term momentum carries forward).
+   - **Anchor 2 — Medium-Term 3–5Y Evidence ($g_{\text{hist}}$)**:
+     $$\text{top\_5y} = \max(0, \text{sales\_cagr}) + \text{bb\_eff}$$
+     $$g_{\text{hist}} = \text{clamp}_{[0.0,\, 0.22]}\!\left(\begin{cases} 0.5 \cdot \text{top\_5y} + 0.5 \cdot \max(0, \text{cagr\_oe\_eps}) & \text{if } \text{cagr\_oe\_eps} < \text{top\_5y} \\ \text{top\_5y} & \text{otherwise} \end{cases}\right)$$
+     Captures verified multi-year top-line compounding, tempered 50/50 if bottom-line per-share earnings lagged top-line + buybacks (margin contraction check).
+   - **Anchor 3 — Operating Capital Growth at Constant ROIC ($g_{\text{cap}}$)**:
+     At constant Operating ROIC ($\text{ROIC} = \text{NOPAT}/\text{Capital}$), the organic growth rate sustainable from actual capital expansion is identically the growth rate of the operating capital base ($\text{Reinvestment Rate} \times \text{ROIC} = \frac{\Delta \text{Capital}}{\text{NOPAT}} \times \frac{\text{NOPAT}}{\text{Capital}} = g_{\text{Capital}}$):
+     $$g_{\text{cap}} = \text{clamp}_{[0.0,\, 0.22]}\!\left(\max(0, \text{cap\_growth}) + \text{bb\_eff}\right)$$
+     where `cap_growth` is the 5-year median annual growth rate of Operating Assets ($\text{Total Assets} - \text{Cash}$) blended 50/50 with positive Invested Capital ($\text{Equity} + \text{Debt} - \text{Cash}$) median annual growth.
 
-3. **Filter 2 & Filter 4a — Bottom-Up Objective Demand, Margin & Short-Window/M&A Ceiling ($g_{\text{demand}}$)**:
-   - Anchors unfaded per-share top-line demand to verified 3–5Y `sales_cagr` plus recurring `buyback_yield` (clamped to $[-3.0\%, +2.5\%]$).
-   - **Short-Window Safeguard**: When statement history is $<5$ years (`sales_cagr_yrs < 5`) and `p2p_ok == "Y"`, blends 50/50 with 5Y cycle `cagr_oe_eps` if higher so 3-year post-COVID destocking troughs do not masquerade as structural stagnation.
-   - **Margin Ceiling**: Disallows perpetual operating-margin expansion (at most $+0.5\%$ mix/leverage above revenue + buybacks; blends 50/50 downward when historical Owner EPS lagged revenue + buybacks), bounded at `par_g_prefade_cap = 18.0%` pre-fade (with `g_implied` used strictly as an already-faded fallback if statement growth is unavailable).
-   - **Short-Window (`<5Y`) & Inorganic M&A Goodwill Haircut**: When `sales_cagr_yrs < 5` or heavy M&A goodwill drag is present (`roic_median < 15%`, `roiic < 10%`, and `roic_operating >= 25%`), excess demand above $6.0\%$ is haircutted by $25\%$ and capped at $14.0\%$ pre-fade ($\min(14.0\%, 6.0\% + 0.75 \times (g_{\text{demand}} - 6.0\%))$).
+3. **Step B — Logarithmic Compression & Continuous Mauboussin Decay to Expected Growth ($g_{\text{exp}}$)**:
+   - **Asymmetric "No Free Lunch" Rule ($g_{\text{start}} \le 3.5\%$ )**: Slow growers below $3.5\%$ never mean-revert upward:
+     $$g_{\text{exp}} = \max(0.02, g_{\text{start}})$$
+   - **Logarithmic Compression & Mauboussin Fade ($g_{\text{start}} > 3.5\%$ )**:
+     $$g_{\text{log}} = 0.035 + 0.12 \times \ln\!\left(1 + \frac{g_{\text{start}} - 0.035}{0.12}\right)$$
+     $$g_{\text{exp}} = \min\!\left(\text{Scale\_Cap}_{\text{rev}},\; 0.035 + (g_{\text{log}} - 0.035) \times \text{pers} \times \text{size\_factor}\right)$$
+     where Gate 4 CAP sets both persistence ($\text{pers} \in \{0.85, 0.75, 0.62\}$) and Pillar 1 growth slope ($M_{\text{cap}} \in \{240.0, 200.0, 170.0\}$ for CAP $\ge 30, \ge 20, \ge 15$ years).
 
-4. **Filter 3 — CAP-Linked Step-Down Fade toward $3.5\%$ Nominal GDP**:
-   - Takes $g_{\text{raw}} = \min(g_{\text{fund}}, g_{\text{demand}})$ (bypassed only when explicit manual override `g_est` is populated) and steps down toward `par_g_base = 3.5%` over the 5–7Y PAR horizon using Gate 4 CAP weights ($w$) alongside CAP-linked growth slopes ($M_{\text{cap}}$):
-     - **CAP $\ge$ 30 Years**: $w = 0.75$ (`par_fade_cap30`) and $M_{\text{cap}} = 240.0$ (`par_g_mult_cap30`).
-     - **CAP $\ge$ 20 Years**: $w = 0.60$ (`par_fade_cap20`) and $M_{\text{cap}} = 200.0$ (`par_g_mult_cap20`).
-     - **CAP $\ge$ 15 Years**: $w = 0.45$ (`par_fade_cap15`) and $M_{\text{cap}} = 170.0$ (`par_g_mult_cap15`).
-     - **Fallback / Unpopulated**: $w = 0.60$ (`par_fade_default`) and $M_{\text{cap}} = 200.0$ (`par_g_mult_default`).
-   - **Asymmetric Step-Down**:
-     - For $g_{\text{raw}} \ge 0.035$: $g_{\text{faded}} = w \times g_{\text{raw}} + (1 - w) \times 0.035$.
-     - For $g_{\text{raw}} < 0.035$ ("No Free Lunch"): $g_{\text{faded}} = \max(0.02, g_{\text{raw}})$.
-
-5. **Filter 4b — Revenue Size Gravity (10Y Post-Fade Ceiling)**:
-   - Normalizes latest fiscal revenue (`sales_ttm_m`) to USD equivalent (falling back to Market Cap $\ge \$250\text{B} / \$50\text{B}$ only if revenue is absent) and bounds faded growth directly by the enterprise's revenue scale ceiling:
-     $$g_{\text{exp}} = \min(\text{Scale\_Cap}_{\text{rev}},\, g_{\text{faded}})$$
-
-6. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$) & Growth Multiple Factor**:
+4. **Multiplicative Reinvestment Efficiency ($\eta_{\text{reinv}}$) & Growth Multiple Factor**:
    - Scales growth credit by implied free-cash-flow payout capacity $(1 - g_{\text{exp}}/\text{ROIC})$ relative to the $35\%$ capital-light compounder standard (`par_roic_cap / 100`), clamped to $[0.25, 1.00]$:
      $$\eta_{\text{reinv}} = \text{clamp}_{[0.25,\, 1.00]}\!\left(\frac{1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{eff}}}}{1 - \frac{g_{\text{exp}}}{0.35}}\right)$$
    - **Effective Growth Slope**: $M_{\text{eff}} = M_{\text{cap}} \times \eta_{\text{reinv}}$.
