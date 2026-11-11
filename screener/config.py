@@ -590,12 +590,14 @@ CHANGELOG = {
         "and sets Pillar 3 t_roic = 100 * Expected_ROIC, removing all legacy hard caps on ROIC (par_roic_cap = 35.0, 200% tangible placeholder, and bulk roic_est = 0.35 overrides).",
     ],
     "6.33": [
-        "Corporate Finance Value Driver PAR Multiple & Uncapped 5-Year Harmonic Market P/E: "
+        "Corporate Finance Value Driver PAR Multiple, Uncapped 5-Year Harmonic Market P/E & Balance-Sheet Financial / Concession Physics: "
         "(1) Textbook Value Driver P/E (PE_VD = 0.50 * PE_MM + 0.50 * PE_McK, 75% weight): Replaces the heuristic 3-pillar additive formula with a 50/50 blend "
         "of Miller-Modigliani / Mauboussin Finite-CAP Linear Value Driver P/E ((1/k) * [1 + (g_exp * N * (ROIC_exp - k)) / ((1 + k) * ROIC_exp)]) and "
         "McKinsey 2-Stage Compounding Value Driver P/E (N-year explicit CAP runway at g_exp and ROIC_exp followed by mature terminal perpetuity at g_term = 3.5%, ROIC_term = 12.0%, k = 8.75%). "
         "(2) Uncapped 5-Year Historical Harmonic P/E (t_hist = 2 * Low_5Y * High_5Y / (Low_5Y + High_5Y), 25% weight): Replaces the arithmetic midpoint and removes the legacy 35.0 cap; "
         "averaging 5-year Earnings Yields (E/P) naturally dampens single-year denominator dips while allowing actual market valuation regimes (bull/bear and US/EU/CA regional differences) to nudge textbook P/E by 25%. "
-        "(3) Pure Uncapped 75/25 PAR Multiple (PAR_Mult = 0.75 * PE_VD + 0.25 * t_hist): Removes the legacy min(raw_par, mult_high_5y) ceiling so every company is valued with zero hard caps anywhere in the valuation engine.",
+        "(3) Pure Uncapped 75/25 PAR Multiple (PAR_Mult = 0.75 * PE_VD + 0.25 * t_hist): Removes the legacy min(raw_par, mult_high_5y) ceiling so every company is valued with zero hard caps anywhere in the valuation engine. "
+        "(4) Balance-Sheet Financials, Mark-to-Market HoldCos & IFRIC-12 Concessions: Uses GAAP ROIC (roic_median) for Insurance, Reinsurance, Banks, Multi-Sector Holdings, and IFRIC-12 Concessions (Construction & Engineering / Highways & Railtracks); "
+        "values Mark-to-Market HoldCos / Insurers (fcf_conv < 0.25) at P/B = 1.0x via PE_VD = 1 / ROIC_exp; and values IFRIC-12 Concessions (fcf_conv > 1.25) over their finite N-year runway by omitting Stage 2 terminal perpetuity.",
     ],
 }

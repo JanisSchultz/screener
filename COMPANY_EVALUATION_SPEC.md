@@ -280,7 +280,9 @@ To prevent accounting distortions from penalizing capital-light compounders whil
    - Excess Operating ROIC above the corporate mean ($\text{ROIC}_{\text{avg}} = 12.0\%$) is logarithmically compressed ($k_{\text{roic}} = 0.25$) and regressed via Gate 4 CAP persistence $r = \text{pers} \in \{0.85, 0.75, 0.62\}$:
      $$\text{ROIC}_{\text{log}} = 0.12 + 0.25 \times \ln\!\left(1 + \frac{\text{Active ROIC} - 0.12}{0.25}\right), \qquad \text{Expected ROIC} = r \times (\text{ROIC}_{\text{log}} - 0.12) + 0.12$$
 3. **Active ROIC Priority**:
-   - Use `roic_est` (override) if provided; else `roic_operating` (tangible) if available; else `roic_median` (GAAP).
+   - Use `roic_est` (override) if provided;
+   - Else for **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`) and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), use `roic_median` (GAAP ROIC) if available, falling back to `roic_operating`;
+   - Else for all standard operating companies and asset-light fee financials (`Insurance Brokers`, `Financial Exchanges & Data`, `Transaction & Payment Processing Services`), use `roic_operating` (tangible) if available, falling back to `roic_median` (GAAP).
 
 ---
 
@@ -309,6 +311,9 @@ The fundamental fair value multiple blends the **Textbook Corporate Finance Valu
    $$\text{PE}_{\text{McK}} = \left(1 - \frac{g_{\text{exp}}}{\text{ROIC}_{\text{exp}}}\right) \sum_{t=1}^{N} \left(\frac{1 + g_{\text{exp}}}{1 + k}\right)^t + \frac{\left(1 - \frac{0.035}{0.12}\right)(1 + g_{\text{exp}})^N(1.035)}{(k - 0.035)(1 + k)^N}$$
 3. **50/50 Textbook Value Driver Blend ($\text{PE}_{\text{VD}}$) & Uncapped `75/25` PAR Multiple**:
    $$\text{PE}_{\text{VD}} = 0.50 \cdot \text{PE}_{\text{MM}} + 0.50 \cdot \text{PE}_{\text{McK}}, \qquad \text{PAR Multiple} = 0.75 \cdot \text{PE}_{\text{VD}} + 0.25 \cdot t_{\text{hist}}$$
+4. **Mark-to-Market HoldCo NAV & Finite Concession Physics**:
+   - **Mark-to-Market HoldCos / Insurers** (`Multi-Sector Holdings` or `Insurance` excluding `Insurance Brokers` with `fcf_conv < 0.25` and no `peak_eps_est` override): $\text{PE}_{\text{VD}} = \text{PE}_{\text{MM}} = \text{PE}_{\text{McK}} = \frac{1}{\text{ROIC}_{\text{exp}}}$ ($\text{P/B} = 1.0\text{x}$).
+   - **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering` or `Highways & Railtracks` with `fcf_conv > 1.25`): Stage 2 terminal perpetuity is omitted ($\text{PV}_{\text{Stage 2}} = 0$) and $\text{PE}_{\text{MM}}$ uses the $N$-year finite annuity factor $A_{N,k} = \frac{1 - (1+k)^{-N}}{k}$.
 
 ---
 

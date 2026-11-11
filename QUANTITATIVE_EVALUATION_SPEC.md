@@ -160,6 +160,11 @@ With **Expected Growth ($g_{\text{exp}}$)**, **Expected ROIC ($\text{ROIC}_{\tex
 5. **Pure Uncapped `75/25` PAR Multiple**:
    $$\text{PAR Multiple} = 0.75 \cdot \text{PE}_{\text{VD}} + 0.25 \cdot t_{\text{hist}}$$
 
+6. **Industry-Specific Capital Base & Value Driver Physics**:
+   - **GAAP ROIC (`roic_median`) Selection**: For **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`) and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), active ROIC defaults to `roic_median` (GAAP ROIC) rather than `roic_operating` (Tangible ROIC), since statutory book equity, acquisition float, or concession intangible assets are the required operating capital base.
+   - **Mark-to-Market HoldCo / Insurer NAV Physics**: For `Multi-Sector Holdings` and `Insurance` (excluding `Insurance Brokers`) where reported EPS already captures unrealized mark-to-market portfolio appreciation $\Delta\text{NAV}$ (`fcf_conv is None or fcf_conv < 0.25` and `peak_eps_est is None`), a fair $1.0\text{x}$ NAV ($\text{P/B} = 1.0\text{x}$) implies $\text{PE}_{\text{VD}} = \text{PE}_{\text{MM}} = \text{PE}_{\text{McK}} = \frac{1}{\text{ROIC}_{\text{exp}}}$.
+   - **IFRIC-12 Finite Concession Annuity Physics**: For `Construction & Engineering` and `Highways & Railtracks` with `fcf_conv > 1.25` (where concession assets amortize and revert to the state at expiry), Stage 2 terminal perpetuity is omitted ($\text{PV}_{\text{Stage 2}} = 0$) and $\text{PE}_{\text{MM}}$ replaces $\frac{1}{k}$ with the $N$-year finite annuity factor $A_{N,k} = \frac{1 - (1+k)^{-N}}{k}$.
+
 ---
 
 ### Step 5: Valuation Metrics & Status

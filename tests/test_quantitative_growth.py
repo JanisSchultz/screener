@@ -392,6 +392,60 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val = par_valuation(fin, self.p, cap=20)
         self.assertAlmostEqual(val["peak_eps"], 5.0, places=4)
 
+    def test_gaap_roic_selected_for_balance_sheet_financials_and_concessions(self):
+        # Insurer / Bank / Concession should use roic_median (0.104) instead of roic_operating (0.217)
+        fin = sample_fin(roic_median=0.104, roic_operating=0.217, fcf_conv=1.0)
+        val_ins = par_valuation(fin, self.p, cap=20, sub_industry="Property & Casualty Insurance")
+        val_bank = par_valuation(fin, self.p, cap=20, sub_industry="Diversified Banks (mapped)")
+        val_conc = par_valuation(fin, self.p, cap=20, sub_industry="Construction & Engineering (mapped)")
+        self.assertAlmostEqual(val_ins["roic_exp"], 0.104, places=4)
+        self.assertAlmostEqual(val_bank["roic_exp"], 0.104, places=4)
+        self.assertAlmostEqual(val_conc["roic_exp"], 0.104, places=4)
+
+        # Insurance Brokers and Payment Networks should continue using roic_operating (0.217)
+        val_broker = par_valuation(fin, self.p, cap=20, sub_industry="Insurance Brokers")
+        val_pay = par_valuation(fin, self.p, cap=20, sub_industry="Transaction & Payment Processing Services")
+        self.assertGreater(val_broker["roic_exp"], 0.17)
+        self.assertGreater(val_pay["roic_exp"], 0.17)
+
+    def test_mtm_holdco_uses_nav_value_driver_physics(self):
+        # 3i Group / Investor AB style Mark-to-Market HoldCo (fcf_conv is None or < 0.25)
+        fin_mtm = sample_fin(
+            roic_median=0.1972, roic_operating=0.1972,
+            mult_low_5y=4.3, mult_high_5y=7.2,
+            fcf_conv=None, peak_eps_est=None,
+        )
+        val_mtm = par_valuation(fin_mtm, self.p, cap=30, sub_industry="Multi-Sector Holdings (mapped)")
+        expected_nav_pe = 1.0 / val_mtm["roic_exp"]
+        self.assertAlmostEqual(val_mtm["pe_vd"], expected_nav_pe, places=4)
+        self.assertAlmostEqual(val_mtm["pe_mm"], expected_nav_pe, places=4)
+        self.assertAlmostEqual(val_mtm["pe_mck"], expected_nav_pe, places=4)
+        self.assertAlmostEqual(val_mtm["par_mult"], 0.75 * expected_nav_pe + 0.25 * val_mtm["t_hist"], places=4)
+
+        # Operating HoldCo consolidating cash-generating subsidiaries (fcf_conv >= 0.25) uses standard Value Driver
+        fin_op_holdco = sample_fin(
+            roic_median=0.15, roic_operating=0.18,
+            mult_low_5y=15.0, mult_high_5y=25.0,
+            fcf_conv=0.80, peak_eps_est=None,
+        )
+        val_op = par_valuation(fin_op_holdco, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
+        self.assertGreater(val_op["pe_vd"], 1.0 / val_op["roic_exp"] + 2.0)
+
+    def test_finite_concession_omits_stage2_terminal_perpetuity(self):
+        # Eiffage / Vinci style IFRIC-12 Concessionaire (fcf_conv > 1.25 in Construction & Engineering)
+        fin_conc = sample_fin(
+            roic_median=0.1342, roic_operating=0.4025,
+            mult_low_5y=5.7, mult_high_5y=7.9,
+            fcf_conv=1.82,
+        )
+        val_conc = par_valuation(fin_conc, self.p, cap=15, sub_industry="Construction & Engineering (mapped)")
+        # Compare against a non-concession with the same GAAP ROIC
+        val_std = par_valuation(fin_conc, self.p, cap=15, sub_industry="Industrial Machinery & Supplies & Components")
+        self.assertAlmostEqual(val_conc["roic_exp"], 0.1286, places=3)
+        self.assertLess(val_conc["pe_mck"], 9.0)
+        self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 3.0)
+        self.assertAlmostEqual(val_conc["par_mult"], 0.75 * val_conc["pe_vd"] + 0.25 * val_conc["t_hist"], places=4)
+
 
 if __name__ == "__main__":
     unittest.main()

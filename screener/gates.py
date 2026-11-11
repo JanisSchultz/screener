@@ -88,14 +88,63 @@ def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
 
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)
-def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moat: str | None = None) -> dict:
+def uses_gaap_roic(sub_industry: str | None) -> bool:
+    """Return True for Balance-Sheet Financials and IFRIC-12 Infrastructure Concessions where book capital / concession intangibles are the true operating capital base."""
+    if not sub_industry or not isinstance(sub_industry, str):
+        return False
+    s = sub_industry.strip()
+    if "Insurance Brokers" in s or "Asset Management & Custody Banks" in s or "Investment Banking & Brokerage" in s:
+        return False
+    return any(
+        kw in s
+        for kw in (
+            "Insurance",
+            "Reinsurance",
+            "Multi-Sector Holdings",
+            "Banks",
+            "Construction & Engineering",
+            "Highways & Railtracks",
+        )
+    )
+
+
+def is_mtm_holdco(sub_industry: str | None, fcf_conv: float | None, peak_eps_est: float | None) -> bool:
+    """Return True for Mark-to-Market HoldCos / Insurers where reported EPS already captures unrealized portfolio NAV appreciation."""
+    if not sub_industry or not isinstance(sub_industry, str):
+        return False
+    s = sub_industry.strip()
+    if "Insurance Brokers" in s:
+        return False
+    if not ("Multi-Sector Holdings" in s or "Insurance" in s):
+        return False
+    return (fcf_conv is None or fcf_conv < 0.25) and (peak_eps_est is None)
+
+
+def is_finite_concession(sub_industry: str | None, fcf_conv: float | None) -> bool:
+    """Return True for IFRIC-12 Infrastructure Concessions where concession assets amortize and revert to the state at expiry (D&A >> CapEx)."""
+    if not sub_industry or not isinstance(sub_industry, str):
+        return False
+    s = sub_industry.strip()
+    if not ("Construction & Engineering" in s or "Highways & Railtracks" in s):
+        return False
+    return fcf_conv is not None and fcf_conv > 1.25
+
+
+def par_valuation(
+    fin: dict,
+    p: dict = None,
+    cap: float | int | None = None,
+    moat: str | None = None,
+    sub_industry: str | None = None,
+) -> dict:
     """Python reference implementation of the v6.33 Equity Bond Below PAR, Value Driver P/E & 3-Anchor Logarithmic Mauboussin Growth valuation."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
     ni = f("ni_ttm_m")
-    if f("peak_eps_est") is not None:
-        peak_eps = f("peak_eps_est")
+    peak_eps_override = f("peak_eps_est")
+    if peak_eps_override is not None:
+        peak_eps = peak_eps_override
     else:
         oe_peak = f("peak_oe_eps")
         # Current TTM EPS inferred from reported Net Income and Market Cap / Price
@@ -112,7 +161,14 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     dy = (f("dividends_ttm_m") or 0.0) / mc if (mc and mc > 0 and f("dividends_ttm_m") is not None) else 0.0
     fund_cap = cap if isinstance(cap, (int, float)) else f("cap")
     moat_arch = moat if isinstance(moat, str) and moat else fin.get("moat")
-    roic = f("roic_est") if f("roic_est") is not None else (f("roic_operating") if f("roic_operating") is not None else f("roic_median"))
+    sub_ind = sub_industry if isinstance(sub_industry, str) and sub_industry else fin.get("sub_industry")
+    fcf_conv_val = f("fcf_conv")
+    if f("roic_est") is not None:
+        roic = f("roic_est")
+    elif uses_gaap_roic(sub_ind):
+        roic = f("roic_median") if f("roic_median") is not None else f("roic_operating")
+    else:
+        roic = f("roic_operating") if f("roic_operating") is not None else f("roic_median")
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18
 
@@ -311,17 +367,28 @@ def par_valuation(fin: dict, p: dict = None, cap: float | int | None = None, moa
     g_val = g_exp if (g_exp is not None and g_exp > 0) else par_g_base
 
     # Corporate Finance Value Driver P/E (v6.33):
-    # 50/50 blend of Miller-Modigliani Finite-CAP P/E and McKinsey 2-Stage Compounding P/E
+    # 50/50 blend of Miller-Modigliani Finite-CAP P/E and McKinsey 2-Stage Compounding P/E,
+    # with specialized physics for Mark-to-Market HoldCos (1 / ROIC_exp) and IFRIC-12 Finite Concessions.
     k = max(0.05, par_cost_of_equity)
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
     roic_eff = max(roic_exp, 0.05)
     reinv_term = par_g_base / max(0.05, par_roic_avg)
+    mtm_holdco = is_mtm_holdco(sub_ind, fcf_conv_val, peak_eps_override)
+    finite_conc = is_finite_concession(sub_ind, fcf_conv_val)
 
     def _compute_vd(g_rate: float) -> tuple[float, float, float, float]:
-        mm_val = (1.0 / k) * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
+        if mtm_holdco:
+            nav_pe = 1.0 / roic_eff
+            return nav_pe, nav_pe, nav_pe, 1.0
         reinv_stage1 = min(0.95, max(0.0, g_rate) / roic_eff)
         q = (1.0 + g_rate) / (1.0 + k)
         pv_stage1 = (1.0 - reinv_stage1) * (n_cap if abs(1.0 - q) < 1e-9 else q * (1.0 - (q ** n_cap)) / (1.0 - q))
+        if finite_conc:
+            ann_n = (1.0 - ((1.0 + k) ** (-n_cap))) / k
+            mm_val = ann_n * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
+            mck_val = pv_stage1
+            return 0.5 * mm_val + 0.5 * mck_val, mm_val, mck_val, 1.0 - reinv_stage1
+        mm_val = (1.0 / k) * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
         pv_stage2 = ((1.0 - reinv_term) * ((1.0 + g_rate) ** n_cap) * (1.0 + par_g_base)) / (
             max(0.01, k - par_g_base) * ((1.0 + k) ** n_cap)
         )

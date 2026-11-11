@@ -11,7 +11,7 @@ from typing import Any
 
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
-from .gates import params, par_valuation, results
+from .gates import params, par_valuation, results, uses_gaap_roic
 
 
 def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
@@ -38,13 +38,19 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             fin = meta["financials"].get(cid, {})
             pres = res_map.get(cid, {})
             cap_val = c.get("4")
-            val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"))
+            sub_ind = c.get("sub_industry", "")
+            val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"), sub_industry=sub_ind)
 
-            # Effective ROIC
+            # Effective ROIC (GAAP ROIC for Balance-Sheet Financials & IFRIC-12 Concessions; Tangible ROIC otherwise)
             r_est = fin.get("roic_est")
             r_op = fin.get("roic_operating")
             r_med = fin.get("roic_median")
-            roic_used = r_est if r_est is not None else (r_op if r_op is not None else r_med)
+            if r_est is not None:
+                roic_used = r_est
+            elif uses_gaap_roic(sub_ind):
+                roic_used = r_med if r_med is not None else r_op
+            else:
+                roic_used = r_op if r_op is not None else r_med
 
             company_record = {
                 "id": cid,
@@ -1793,7 +1799,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <span style="font-size: 11px; color: var(--text-dim);">
             <b>Miller-Modigliani Finite-CAP P/E (PE_MM):</b> (1/k) &times; [1 + (g_exp &times; N &times; (Expected_ROIC - k)) / ((1 + k) &times; Expected_ROIC)] &nbsp;(N = Gate 4 CAP yrs, k = 8.75%)<br>
             <b>McKinsey 2-Stage Compounding P/E (PE_McK):</b> (1 - g_exp/Expected_ROIC) &times; &Sigma;<sub>t=1..N</sub>((1+g_exp)/(1+k))<sup>t</sup> + [(1 - 3.5%/12%) &times; (1+g_exp)<sup>N</sup>(1+3.5%)] / [(k - 3.5%)(1+k)<sup>N</sup>]<br>
-            <b>Expected ROIC (Galton Regression):</b> Expected_ROIC = r &times; (ROIC_log - 12%) + 12% &nbsp;|&nbsp; ROIC_log = 12% + 0.25 &times; ln(1 + (Op_ROIC - 12%)/0.25)
+            <b>Expected ROIC (Galton Regression):</b> Expected_ROIC = r &times; (ROIC_log - 12%) + 12% &nbsp;|&nbsp; ROIC_log = 12% + 0.25 &times; ln(1 + (Active_ROIC - 12%)/0.25)<br>
+            <b>Balance-Sheet Financials &amp; Concessions:</b> Uses GAAP ROIC (<code style="color: var(--accent);">roic_median</code>) for Insurance, Reinsurance, Banks, Multi-Sector Holdings &amp; IFRIC-12 Concessions; Mark-to-Market HoldCos use <code style="color: var(--accent);">PE_VD = 1 / Expected_ROIC</code> (P/B = 1.0x); IFRIC-12 Concessions (FCF Conv &gt; 1.25x) omit Stage 2 terminal perpetuity.
           </span>
         </p>
       </div>
@@ -3126,7 +3133,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-oecagr-val').textContent = fmtPct(c.cagr_oe_eps);
       document.getElementById('audit-gfund-val').textContent = (c.g_cap !== null && c.g_cap !== undefined) ? fmtPct(c.g_cap) : 'N/A';
       document.getElementById('audit-capgrowth-val').textContent = fmtPct(c.cap_growth);
-      document.getElementById('audit-roic-val').textContent = `${{fmtPct(c.roic_operating)}} → ${{fmtPct(c.roic_exp)}}`;
+      document.getElementById('audit-roic-val').textContent = `${{fmtPct(c.roic_used)}} → ${{fmtPct(c.roic_exp)}}`;
       const rFadeEl = document.getElementById('audit-roicfade-val');
       if (rFadeEl) rFadeEl.textContent = (c.roic_fade_ratio !== null && c.roic_fade_ratio !== undefined) ? `${{c.roic_fade_ratio.toFixed(2)}}x` : '1.00x';
       document.getElementById('audit-retention-val').textContent = (c.retention !== null && c.retention !== undefined) ? fmtPct(c.retention) : ((c.retention_rate !== null && c.retention_rate !== undefined) ? fmtPct(c.retention_rate) : '-');
@@ -3426,13 +3433,30 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const n_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : 20.0;
       const roic_eff = Math.max(roic_exp, 0.05);
       const reinv_term = g_base / roic_avg;
-      const pe_mm = (1.0 / k) * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
-      const reinv_stage1 = Math.min(0.95, Math.max(0.0, g_val) / roic_eff);
-      const q = (1.0 + g_val) / (1.0 + k);
-      const pv_stage1 = (1.0 - reinv_stage1) * (Math.abs(1.0 - q) < 1e-9 ? n_cap : q * (1.0 - Math.pow(q, n_cap)) / (1.0 - q));
-      const pv_stage2 = ((1.0 - reinv_term) * Math.pow(1.0 + g_val, n_cap) * (1.0 + g_base)) / ((k - g_base) * Math.pow(1.0 + k, n_cap));
-      const pe_mck = pv_stage1 + pv_stage2;
-      const pe_vd = 0.5 * pe_mm + 0.5 * pe_mck;
+      const subInd = (c.sub_industry || '').trim();
+      const fcfConv = (c.fcf_conv !== null && c.fcf_conv !== undefined) ? c.fcf_conv : null;
+      const isMtmHoldco = !subInd.includes('Insurance Brokers') && (subInd.includes('Multi-Sector Holdings') || subInd.includes('Insurance')) && (fcfConv === null || fcfConv < 0.25) && (c.peak_eps_est === null || c.peak_eps_est === undefined);
+      const isFiniteConc = (subInd.includes('Construction & Engineering') || subInd.includes('Highways & Railtracks')) && (fcfConv !== null && fcfConv > 1.25);
+      let pe_mm, pe_mck, pe_vd;
+      if (isMtmHoldco) {{
+        pe_mm = 1.0 / roic_eff;
+        pe_mck = pe_mm;
+        pe_vd = pe_mm;
+      }} else {{
+        const reinv_stage1 = Math.min(0.95, Math.max(0.0, g_val) / roic_eff);
+        const q = (1.0 + g_val) / (1.0 + k);
+        const pv_stage1 = (1.0 - reinv_stage1) * (Math.abs(1.0 - q) < 1e-9 ? n_cap : q * (1.0 - Math.pow(q, n_cap)) / (1.0 - q));
+        if (isFiniteConc) {{
+          const ann_n = (1.0 - Math.pow(1.0 + k, -n_cap)) / k;
+          pe_mm = ann_n * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
+          pe_mck = pv_stage1;
+        }} else {{
+          pe_mm = (1.0 / k) * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
+          const pv_stage2 = ((1.0 - reinv_term) * Math.pow(1.0 + g_val, n_cap) * (1.0 + g_base)) / ((k - g_base) * Math.pow(1.0 + k, n_cap));
+          pe_mck = pv_stage1 + pv_stage2;
+        }}
+        pe_vd = 0.5 * pe_mm + 0.5 * pe_mck;
+      }}
 
       // Uncapped 5-Year Historical Harmonic P/E (25% weight)
       const t_hist = (2.0 * ml * mh) / (ml + mh);
