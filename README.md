@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.33 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.34 — 6 Munger Quality Gates & Equity Bond Below PAR)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,12 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.34: Organic Value Driver Separation, FCF-Bounded 5Y IRR, Regime-Bounded Harmonic P/E & Quantitative Audit Remediation:
+- Buyback Neutrality in PE_VD & FCF-Conserved 5Y IRR: Computes parallel Organic Firm Growth (g_org_start -> g_org_exp, stripping positive buybacks while retaining share dilution) and evaluates Miller-Modigliani and McKinsey 2-Stage Value Driver P/E strictly on g_org_exp, eliminating share-buyback double-counting in PAR Multiple while capping buyback accretion in 5Y IRR at sustainable Stage-1 FCF payout capacity ((1 - g_org_exp/ROIC_exp)/Cur_Mult - Dividend_Yield).
+- Regime-Bounded 5Y Harmonic P/E ([0.50x, 1.50x] of PE_VD): Bounds t_hist within [0.50x, 1.50x] of PE_VD, preserving market regime calibration for durable compounders (e.g. Hermès) while preventing 70x-96x bubble/trough outliers (SECT B.SE, CDNS, LLY) from inflating PAR Multiple.
+- Zero-Moat 1/k Floor in Market-Implied CAP & Exact g_market Inversion: Scales Market-Implied CAP above the zero-moat steady-state base multiple 1/k = 11.43x and preserves exact g_market == g_exp round-trip at PAR.
+- Data & Sandbox Integrity Fixes: Guards cur_eps against multi-class share-basis mismatches and non-cash spikes; merges Yahoo shares/EPS when SEC dual-class tags are stale (HSY); normalizes post-spin-off BAM.CA Peak EPS; clamps extreme OpCost growth rates instead of dropping to None; and syncs What-If Valuation Sandbox 1:1 with v6.34 gates.py and apply_evaluation.py.
 
 v6.33: Corporate Finance Value Driver PAR Multiple, Uncapped 5-Year Harmonic Market P/E & Balance-Sheet Financial / Concession Physics:
 - Textbook Value Driver P/E (PE_VD = 0.50 * PE_MM + 0.50 * PE_McK, 75% weight): Replaces the heuristic 3-pillar additive formula with a 50/50 blend of Miller-Modigliani / Mauboussin Finite-CAP Linear Value Driver P/E ((1/k) * [1 + (g_exp * N * (ROIC_exp - k)) / ((1 + k) * ROIC_exp)]) and McKinsey 2-Stage Compounding Value Driver P/E (N-year explicit CAP runway at g_exp and ROIC_exp followed by mature terminal perpetuity at g_term = 3.5%, ROIC_term = 12.0%, k = 8.75%).
@@ -227,7 +233,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Equity Bond Below PAR v6.23)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Equity Bond Below PAR v6.34)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

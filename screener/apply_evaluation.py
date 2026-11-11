@@ -1,6 +1,6 @@
 """Apply an independent agent's company evaluation JSON payload to data/<universe>/.
 
-Validates the evaluation against the v6.23 framework rules, enforces the sequential
+Validates the evaluation against the v6.34 framework rules, enforces the sequential
 waterfall (clearing downstream fields after a failed gate), and updates:
 - data/<universe>/inputs.csv (Qualitative gates 1-6, notes, evidence)
 - data/<universe>/financials.csv (Quantitative overrides: peak_eps_est, g_est, g_implied, roic_est, fin_note)

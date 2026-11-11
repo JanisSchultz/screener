@@ -223,14 +223,13 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     if opcost_ser:
         oc_end = max(opcost_ser)
         oc1_val = cagr(opcost_ser, 1)
-        if oc1_val is not None and -0.40 <= oc1_val <= 0.60:
-            out["opcost_1y"] = round(oc1_val, 4)
+        if oc1_val is not None:
+            out["opcost_1y"] = round(max(-0.40, min(0.60, oc1_val)), 4)
         for span in (5, 4, 3, 2):
             oc0, oc1 = opcost_ser.get(oc_end - span), opcost_ser.get(oc_end)
             if oc0 is not None and oc1 is not None and oc0 > 0 and oc1 > 0:
                 oc_c = (oc1 / oc0) ** (1.0 / span) - 1.0
-                if -0.25 <= oc_c <= 0.45:
-                    out["opcost_cagr"] = round(oc_c, 4)
+                out["opcost_cagr"] = round(max(-0.25, min(0.45, oc_c)), 4)
                 break
 
     shares = implied_shares(ni, g("eps"), g("shares"))

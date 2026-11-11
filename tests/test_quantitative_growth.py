@@ -1,4 +1,4 @@
-"""Tests for the v6.32 3-Anchor Starting Growth (g_start), Operating Cost Smoothing, Mauboussin Galton ROIC Regression & Logarithmic Decay Curve (g_exp)."""
+"""Tests for the v6.34 3-Anchor Starting Growth (g_start), Organic Value Driver P/E (PE_VD), Regime-Bounded Harmonic P/E, and FCF-Conserved 5Y IRR."""
 from __future__ import annotations
 
 import math
@@ -485,6 +485,115 @@ class QuantitativeGrowthTests(unittest.TestCase):
             pv_divs = sum((d0 * ((1.0 + g_exp) ** t)) / ((1.0 + irr) ** t) for t in range(1, 6))
             pv_term = (par_val * ((1.0 + g_exp) ** 5)) / ((1.0 + irr) ** 5)
             self.assertAlmostEqual(pv_divs + pv_term, price, places=7)
+
+    def test_buyback_neutrality_in_pe_vd_and_fcf_cap_in_5y_irr(self):
+        """Positive buybacks increase per-share g_start/g_exp without inflating firm-level PE_VD, and obey FCF payout conservation in 5Y IRR."""
+        fin_no_bb = sample_fin(
+            price=100.0, market_cap_m=10000.0, dividends_ttm_m=150.0,
+            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, cap_growth=0.08,
+            cagr_oe_eps=0.08, buyback_yield=0.0, roic_operating=0.30,
+        )
+        fin_with_bb = sample_fin(
+            price=100.0, market_cap_m=10000.0, dividends_ttm_m=150.0,
+            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, cap_growth=0.08,
+            cagr_oe_eps=0.105, buyback_yield=0.025, roic_operating=0.30,
+        )
+        v_no = par_valuation(fin_no_bb, self.p, cap=20)
+        v_bb = par_valuation(fin_with_bb, self.p, cap=20)
+        # Per-share growth rises with buybacks, while organic firm growth and PE_VD stay neutral!
+        self.assertGreater(v_bb["g_start"], v_no["g_start"] + 0.02)
+        self.assertGreater(v_bb["g_exp"], v_no["g_exp"] + 0.01)
+        self.assertAlmostEqual(v_bb["g_org_exp"], v_no["g_org_exp"], places=4)
+        self.assertAlmostEqual(v_bb["pe_vd"], v_no["pe_vd"], places=4)
+        self.assertAlmostEqual(v_bb["par_val"], v_no["par_val"], places=4)
+
+        # At expensive current multiple (e.g. 50x P/E), FCF yield cannot fund 1.5% div + full buybacks:
+        fin_expensive = dict(fin_with_bb, price=250.0, market_cap_m=25000.0, dividends_ttm_m=375.0)
+        v_exp = par_valuation(fin_expensive, self.p, cap=20)
+        # PAR Value is 100% independent of current share price!
+        self.assertAlmostEqual(v_exp["par_val"], v_bb["par_val"], places=4)
+        # g_irr is capped below g_exp due to FCF conservation at 50x P/E
+        self.assertLess(v_exp["g_irr"], v_exp["g_exp"])
+        self.assertGreaterEqual(v_exp["g_irr"], v_exp["g_org_exp"])
+
+    def test_regime_bounded_harmonic_pe_blocks_bubble_outliers_while_preserving_compounders(self):
+        """t_hist is bounded within [0.50x, 1.50x] of PE_VD so 96x bubble outliers cannot distort PAR_Mult."""
+        fin_bubble = sample_fin(mult_low_5y=75.0, mult_high_5y=130.0, g_est=0.09, roic_operating=0.30)
+        val_bubble = par_valuation(fin_bubble, self.p, cap=20)
+        self.assertGreater(val_bubble["t_hist_raw"], 95.0)
+        self.assertAlmostEqual(val_bubble["t_hist"], 1.50 * val_bubble["pe_vd"], places=4)
+        self.assertAlmostEqual(val_bubble["par_mult"], 0.75 * val_bubble["pe_vd"] + 0.25 * val_bubble["t_hist"], places=4)
+
+        # Depressed trough outlier below 0.50x PE_VD is floored at 0.50x PE_VD
+        fin_deep = sample_fin(mult_low_5y=5.0, mult_high_5y=7.0, g_est=0.09, roic_operating=0.30)
+        val_deep = par_valuation(fin_deep, self.p, cap=20)
+        self.assertAlmostEqual(val_deep["t_hist"], 0.50 * val_deep["pe_vd"], places=4)
+
+    def test_market_implied_cap_zero_moat_floor_and_at_par_identity(self):
+        """Market-Implied CAP equals 0.0y at <= 1/k = 11.43x and equals Fundamental CAP at PAR Value."""
+        fin = sample_fin(mult_low_5y=18.0, mult_high_5y=28.0, g_est=0.085, roic_operating=0.28)
+        v0 = par_valuation(fin, self.p, cap=20)
+
+        # At PAR Value -> Market-Implied CAP == 20.0y
+        v_par = par_valuation(dict(fin, price=v0["par_val"]), self.p, cap=20)
+        self.assertAlmostEqual(v_par["cap_implied"], 20.0, places=1)
+        self.assertAlmostEqual(v_par["cap_gap"], 0.0, places=1)
+
+        # At 10.0x P/E (< 1/k = 11.43x) -> Market-Implied CAP == 0.0y
+        v_cheap = par_valuation(dict(fin, price=10.0 * v0["peak_eps"]), self.p, cap=20)
+        self.assertAlmostEqual(v_cheap["cap_implied"], 0.0, places=1)
+        self.assertAlmostEqual(v_cheap["cap_gap"], 20.0, places=1)
+
+    def test_g_market_round_trip_with_buybacks_and_mtm_holdco(self):
+        """g_market == g_exp (g_gap == 0.0) holds at Price == PAR Value even with non-zero buybacks and on MTM HoldCos."""
+        fin_bb = sample_fin(
+            sales_ttm_m=15000.0, sales_1y=0.10, sales_cagr=0.10, cap_growth=0.09,
+            cagr_oe_eps=0.12, buyback_yield=0.02, roic_operating=0.32,
+            mult_low_5y=18.0, mult_high_5y=30.0,
+        )
+        v0 = par_valuation(fin_bb, self.p, cap=20)
+        v_at_par = par_valuation(dict(fin_bb, price=v0["par_val"]), self.p, cap=20)
+        self.assertAlmostEqual(v_at_par["g_market"], v0["g_exp"], places=4)
+        self.assertAlmostEqual(v_at_par["g_gap"], 0.0, places=4)
+
+        # MTM HoldCo round-trip & realistic sensitivity
+        fin_mtm = sample_fin(
+            roic_median=0.18, roic_operating=0.18,
+            mult_low_5y=4.5, mult_high_5y=7.5,
+            fcf_conv=None, peak_eps_est=None, cagr_oe_eps=0.08,
+        )
+        vm0 = par_valuation(fin_mtm, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
+        vm_par = par_valuation(dict(fin_mtm, price=vm0["par_val"]), self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
+        self.assertAlmostEqual(vm_par["g_market"], vm0["g_exp"], places=4)
+        self.assertAlmostEqual(vm_par["g_gap"], 0.0, places=4)
+
+    def test_insurer_missing_ocf_not_misclassified_as_mtm_holdco(self):
+        """Standard operating insurers missing OCF tags (fcf_conv=None) use normal PE_VD, not 1/ROIC_exp."""
+        fin_ins = sample_fin(
+            roic_median=0.145, roic_operating=0.145,
+            mult_low_5y=10.5, mult_high_5y=14.8,
+            fcf_conv=None, peak_eps_est=None, cagr_oe_eps=0.075,
+        )
+        val_ins = par_valuation(fin_ins, self.p, cap=20, sub_industry="Multi-line Insurance (mapped)")
+        self.assertGreater(val_ins["pe_vd"], 1.0 / val_ins["roic_exp"] + 3.0)
+
+    def test_cur_eps_guards_multi_class_share_basis_and_unstripped_spike(self):
+        """Multi-class 'check share basis' notes and >1.5x latest-year spikes do not corrupt Active Peak EPS."""
+        # Multi-class share basis mismatch (e.g. dual-class firm market_cap_m vs single-class peak_oe_eps)
+        fin_mc = sample_fin(
+            price=200.0, market_cap_m=45000.0, ni_ttm_m=900.0, peak_oe_eps=10.0,
+            fin_note="[auto] short history (4y); check share basis (mktcap/price = 1.9x shares)",
+        )
+        val_mc = par_valuation(fin_mc, self.p, cap=20)
+        self.assertAlmostEqual(val_mc["peak_eps"], 10.0, places=4)
+
+        # Latest-year non-cash disposal spike left out of peak_oe_eps should not prevent mid-cycle check or inflate cur_eps
+        fin_spike = sample_fin(
+            price=100.0, market_cap_m=10000.0, ni_ttm_m=2200.0, peak_oe_eps=8.0,
+            fin_note="[auto] non-cash earnings spike left out of peak: 2025",
+        )
+        val_sp = par_valuation(fin_spike, self.p, cap=20)
+        self.assertAlmostEqual(val_sp["peak_eps"], 8.0, places=4)
 
 
 if __name__ == "__main__":

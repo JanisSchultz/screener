@@ -1,4 +1,4 @@
-"""Framework configuration (v6.33): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.34): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -219,7 +219,9 @@ PARAMETER_GROUPS = [
     ]),
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate k for Value Driver P/E (8.75%)", 0.0875, "0.00%", NEW + " Nominal equity cost of capital k (8.75% = 4.0% risk-free + 4.75% ERP) used in Miller-Modigliani and McKinsey 2-Stage Value Driver P/E."),
-        ("par_vd_weight", "Weight of textbook Corporate Finance Value Driver P/E (PE_VD) in PAR Multiple (75.0%)", 0.75, "0%", NEW + " Blends 75% Textbook Value Driver P/E (50/50 Miller-Modigliani + McKinsey 2-Stage) with 25% uncapped 5-year Harmonic Market P/E."),
+        ("par_vd_weight", "Weight of textbook Corporate Finance Value Driver P/E (PE_VD) in PAR Multiple (75.0%)", 0.75, "0%", NEW + " Blends 75% Textbook Value Driver P/E (50/50 Miller-Modigliani + McKinsey 2-Stage) with 25% Regime-Bounded 5-year Harmonic Market P/E."),
+        ("par_thist_min_ratio", "Minimum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (0.50x)", 0.50, "0.00", NEW + " Prevents distorted or depressed historical multiple regimes from pulling t_hist below 0.50x of intrinsic PE_VD."),
+        ("par_thist_max_ratio", "Maximum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (1.50x)", 1.50, "0.00", NEW + " Prevents 5-year bubble or trough-earnings P/E outliers from inflating t_hist above 1.50x of intrinsic PE_VD."),
         ("par_roic_avg", "Corporate average ROIC baseline for Mauboussin Galton ROIC regression & Terminal Stage 2 (12.0%)", 0.120, "0.0%", NEW + " Corporate mean ROIC (12.0%) toward which excess ROIC regresses: Expected_ROIC = r * (ROIC_log - 0.12) + 0.12."),
         ("par_roic_log_k", "Logarithmic compression curvature constant k for Operating ROIC above 12% (25.0%)", 0.250, "0.0%", NEW + " Smoothly compresses small-denominator tangible ROIC above 12.0% via ROIC_log = 0.12 + k * ln(1 + (ROIC - 0.12)/k) without hard caps."),
         ("par_g_anchor_max", "Max individual anchor growth rate before 3-Anchor averaging (22.0%)", 0.220, "0.0%", NEW + " Bounds each of the 3 starting growth anchors (1Y Momentum, 3-5Y History, Capital Growth) at 22.0%."),
@@ -600,5 +602,14 @@ CHANGELOG = {
         "(4) Balance-Sheet Financials, Mark-to-Market HoldCos & IFRIC-12 Concessions: Uses GAAP ROIC (roic_median) for Insurance, Reinsurance, Banks, Multi-Sector Holdings, and IFRIC-12 Concessions (Construction & Engineering / Highways & Railtracks); "
         "values Mark-to-Market HoldCos / Insurers (fcf_conv < 0.25) at P/B = 1.0x via PE_VD = 1 / ROIC_exp; and values IFRIC-12 Concessions (fcf_conv > 1.25) over their finite N-year runway by omitting Stage 2 terminal perpetuity. "
         "(5) Textbook 5-Year Cash-Flow IRR: Replaces the linear '+ dy' approximation with the exact 5-year cash-flow internal rate of return solving P_0 = sum_{t=1..5} [D_0(1+g_exp)^t / (1+IRR)^t] + [PAR_Val(1+g_exp)^5 / (1+IRR)^5].",
+    ],
+    "6.34": [
+        "Quantitative Valuation Audit Remediation (Organic PE_VD Separation, FCF-Bounded 5Y IRR, Regime-Bounded Harmonic P/E & Zero-Moat Implied CAP): "
+        "(1) Organic vs. Per-Share Growth Separation in Value Driver P/E: Retains per-share Starting Growth (g_start) and Expected Growth (g_exp) for UI and 5Y IRR, "
+        "while stripping positive share buybacks (g_org_exp) when evaluating firm-level Miller-Modigliani and McKinsey 2-Stage Value Driver P/E (PE_VD), eliminating buyback double-counting in PAR Multiple and preserving exact g_market round-trip inversion. "
+        "(2) FCF Payout Conservation in 5Y IRR: Bounds forward buyback accretion inside 5Y IRR at max(0, (1 - reinv_stage1)/cur_mult - dy) so high-multiple cannibals never violate Dividends + Buybacks + Reinvestment <= 100% of Owner Earnings, while keeping PAR Value 100% price-independent. "
+        "(3) Regime-Bounded 5-Year Harmonic P/E (t_hist within [0.50x, 1.50x] of PE_VD): Preserves full market-regime calibration for durable franchises (e.g. Hermes) while blocking 70x-96x bubble/trough-denominator outliers (SECT B.SE, CDNS, LLY) from distorting PAR Multiple. "
+        "(4) Zero-Moat Base Floor (1/k = 11.43x) in Market-Implied CAP: Scales implied moat runway on excess valuation multiple above steady-state no-moat P/E (1/k) rather than zero price, mapping cur_mult <= 1/k cleanly to 0.0 years of priced-in moat. "
+        "(5) Active Peak EPS Guards, Distorted Peak Normalization (BAM.CA, HSY) & Interactive Sandbox Parity: Guarded cur_eps against non-cash spikes and multi-class/merger share-basis mismatches, normalized BAM.CA (2.13 CAD) and HSY ($9.50) Peak EPS + 5Y cycle multiples, unmuted Sandbox growth sliders, and synchronized all specifications to v6.34.",
     ],
 }

@@ -128,9 +128,18 @@ def fetch_universe(key: str, a, yh: Yahoo, state: dict) -> None:
                 if facts:
                     series, source = sec.annual_series(facts), "SEC EDGAR companyfacts"
                     row["fin_currency"] = "USD"
-                    if series.get("ni") and not series.get("shares") and not series.get("eps"):
-                        ys = yh.statements(sym)          # multi-class filers (e.g. V) tag EPS only per class
-                        series["shares"], series["eps"] = ys.get("shares") or {}, ys.get("eps") or {}
+                    if series.get("ni"):
+                        last_ni_yr = max(series["ni"])
+                        sh_yrs = [y for y, v in (series.get("shares") or {}).items() if v]
+                        ep_yrs = [y for y, v in (series.get("eps") or {}).items() if v]
+                        last_ps_yr = max(sh_yrs + ep_yrs) if (sh_yrs or ep_yrs) else 0
+                        if last_ps_yr < last_ni_yr - 1:
+                            # Multi-class filers (e.g. V, HSY, BRK.B) often stop tagging combined shares/EPS in SEC XBRL
+                            ys = yh.statements(sym)
+                            if ys.get("shares"):
+                                series.setdefault("shares", {}).update(ys["shares"])
+                            if ys.get("eps"):
+                                series.setdefault("eps", {}).update(ys["eps"])
             if not series or not series.get("ni"):
                 series, source = yh.statements(sym), "Yahoo Finance annual statements (~4 yrs)"
                 row["fin_currency"] = q.get("fin_currency") or old.get("fin_currency")
