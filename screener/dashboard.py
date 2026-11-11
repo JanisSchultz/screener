@@ -2165,6 +2165,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="sandbox-group">
                 <label>Moat Runway (Gate 4 CAP): <span class="sb-val" id="sb-val-cap">20y</span></label>
                 <div class="cap-btn-group">
+                  <button type="button" class="cap-pill-btn" data-cap="5" onclick="setSandboxCap(5)">5y</button>
                   <button type="button" class="cap-pill-btn" data-cap="10" onclick="setSandboxCap(10)">10y</button>
                   <button type="button" class="cap-pill-btn" data-cap="15" onclick="setSandboxCap(15)">15y</button>
                   <button type="button" class="cap-pill-btn" data-cap="20" onclick="setSandboxCap(20)">20y</button>
@@ -2203,13 +2204,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <input type="range" class="sandbox-slider" id="sb-slider-bb" min="-3" max="5" step="0.2" value="1" oninput="onSandboxSliderChange('bb', this.value, '%')">
               </div>
 
-              <!-- Control 6: Peak EPS Normalization -->
+              <!-- Control 7: Peak EPS Normalization -->
               <div class="sandbox-group">
-                <label>Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">$4.50</span></label>
+                <label>Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">-</span></label>
                 <input type="number" class="sandbox-num-input" id="sb-input-peakeps" step="0.05" oninput="onSandboxInputChange()">
               </div>
 
-              <!-- Control 7: 5Y Multiple Low / High -->
+              <!-- Control 8: 5Y Multiple Low / High -->
               <div class="sandbox-group">
                 <label>5Y Multiple Low / High:</label>
                 <div class="sandbox-input-row">
@@ -2219,7 +2220,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 </div>
               </div>
 
-              <!-- Control 8: Direct Expected Growth Override -->
+              <!-- Control 9: Direct Expected Growth Override -->
               <div class="sandbox-group">
                 <label>Direct EXP G Override: <span class="sb-val" id="sb-val-gest">None</span></label>
                 <div class="sandbox-input-row">
@@ -3120,7 +3121,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-cap-pers').textContent = (c.pers !== null && c.pers !== undefined) ? `${{Math.round(c.pers * 100)}}%` : (c.g4_cap >= 30 ? '75%' : (c.g4_cap >= 20 ? '60%' : '45%'));
       document.getElementById('audit-cap-gmult').textContent = (c.g_mult !== null && c.g_mult !== undefined) ? `${{Math.round(c.g_mult)}}x` : (c.g4_cap >= 30 ? '240x' : (c.g4_cap >= 20 ? '200x' : '170x'));
       document.getElementById('audit-cap-market').textContent = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
-      document.getElementById('audit-cap-gap').textContent = `${{fmtSignedYears(c.cap_gap)}} runway margin`;
+      document.getElementById('audit-cap-gap').textContent = (c.cap_gap !== null && c.cap_gap !== undefined) ? `${{fmtSignedYears(c.cap_gap)}} runway margin` : '-';
       document.getElementById('audit-moat-arch').textContent = c.g3a_moat_archetype || 'None';
       const pricingMap = {{ '2': 'High Pricing Power (Score 2)', '1': 'Moderate Pricing Power (Score 1)', '0': 'No Pricing Power (Score 0)' }};
       document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
@@ -3195,16 +3196,25 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function initValuationSandbox(c) {{
       if (!c) return;
 
-      const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : 20;
-      const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : 8.0;
-      const sales1y = (c.sales_1y !== null && c.sales_1y !== undefined) ? (c.sales_1y * 100) : salescagr;
-      const capgrowth = (c.cap_growth !== null && c.cap_growth !== undefined) ? (c.cap_growth * 100) : salescagr;
-      const roic = (c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100) : ((c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100) : ((c.roic_median || 0.18) * 100));
+      const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : null;
+
+      // Base growth fallback hierarchy: sales_cagr -> cagr_oe_eps -> sales_1y -> g_start -> 8.0%
+      const baseGrowth = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? c.sales_cagr
+        : ((c.cagr_oe_eps !== null && c.cagr_oe_eps !== undefined) ? c.cagr_oe_eps
+        : ((c.sales_1y !== null && c.sales_1y !== undefined) ? c.sales_1y
+        : ((c.g_start !== null && c.g_start !== undefined) ? c.g_start : 0.08)));
+
+      const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : (baseGrowth * 100);
+      const sales1y = (c.sales_1y !== null && c.sales_1y !== undefined) ? (c.sales_1y * 100) : (baseGrowth * 100);
+      const capgrowth = (c.cap_growth !== null && c.cap_growth !== undefined) ? (c.cap_growth * 100) : (baseGrowth * 100);
+      const roic = (c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100)
+        : ((c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100)
+        : ((c.roic_median !== null && c.roic_median !== undefined) ? (c.roic_median * 100) : 18.0));
 
       const bb = (c.buyback_yield !== null && c.buyback_yield !== undefined) ? (c.buyback_yield * 100) : 0.0;
-      const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined) ? c.peak_eps : (c.price ? c.price / 15 : 1.0);
-      const ml = (c.mult_low_5y !== null && c.mult_low_5y !== undefined) ? c.mult_low_5y : 15.0;
-      const mh = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? c.mult_high_5y : 28.0;
+      const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined) ? c.peak_eps : ((c.price && c.price > 0) ? c.price / 15 : null);
+      const ml = (c.mult_low_5y !== null && c.mult_low_5y !== undefined) ? c.mult_low_5y : null;
+      const mh = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? c.mult_high_5y : null;
       const gest = (c.g_est !== null && c.g_est !== undefined) ? (c.g_est * 100) : null;
 
       sbBaseline = {{ cap, sales1y, salescagr, capgrowth, roic, bb, peakeps, ml, mh, gest }};
@@ -3215,40 +3225,70 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function syncSandboxInputs() {{
+      const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId) || {{}};
+
       // Update CAP Pills
       document.querySelectorAll('.cap-pill-btn').forEach(btn => {{
-        btn.classList.toggle('active', parseInt(btn.dataset.cap, 10) === sbCurrent.cap);
+        btn.classList.toggle('active', sbCurrent.cap !== null && parseInt(btn.dataset.cap, 10) === sbCurrent.cap);
       }});
       const capEl = document.getElementById('sb-val-cap');
-      if (capEl) capEl.textContent = `${{sbCurrent.cap}}y`;
+      if (capEl) capEl.textContent = sbCurrent.cap !== null ? `${{sbCurrent.cap}}y` : 'Unassigned';
 
-      // Sliders & value displays
+      // Sliders & value displays with dynamic min/max adjustment to avoid clipping outliers
       const s1y = document.getElementById('sb-slider-sales1y');
-      if (s1y) {{ s1y.value = sbCurrent.sales1y; document.getElementById('sb-val-sales1y').textContent = `${{sbCurrent.sales1y.toFixed(1)}}%`; }}
+      if (s1y) {{
+        s1y.min = Math.min(-20, Math.floor(sbCurrent.sales1y - 5));
+        s1y.max = Math.max(40, Math.ceil(sbCurrent.sales1y + 5));
+        s1y.value = sbCurrent.sales1y;
+        document.getElementById('sb-val-sales1y').textContent = `${{sbCurrent.sales1y.toFixed(1)}}%`;
+      }}
 
       const sCagr = document.getElementById('sb-slider-salescagr');
-      if (sCagr) {{ sCagr.value = sbCurrent.salescagr; document.getElementById('sb-val-salescagr').textContent = `${{sbCurrent.salescagr.toFixed(1)}}%`; }}
+      if (sCagr) {{
+        sCagr.min = Math.min(-20, Math.floor(sbCurrent.salescagr - 5));
+        sCagr.max = Math.max(40, Math.ceil(sbCurrent.salescagr + 5));
+        sCagr.value = sbCurrent.salescagr;
+        document.getElementById('sb-val-salescagr').textContent = `${{sbCurrent.salescagr.toFixed(1)}}%`;
+      }}
 
       const sCapG = document.getElementById('sb-slider-capgrowth');
-      if (sCapG) {{ sCapG.value = sbCurrent.capgrowth; document.getElementById('sb-val-capgrowth').textContent = `${{sbCurrent.capgrowth.toFixed(1)}}%`; }}
+      if (sCapG) {{
+        sCapG.min = Math.min(-20, Math.floor(sbCurrent.capgrowth - 5));
+        sCapG.max = Math.max(40, Math.ceil(sbCurrent.capgrowth + 5));
+        sCapG.value = sbCurrent.capgrowth;
+        document.getElementById('sb-val-capgrowth').textContent = `${{sbCurrent.capgrowth.toFixed(1)}}%`;
+      }}
 
       const sRoic = document.getElementById('sb-slider-roic');
-      if (sRoic) {{ sRoic.value = sbCurrent.roic; document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`; }}
+      if (sRoic) {{
+        sRoic.min = Math.min(5, Math.floor(sbCurrent.roic - 5));
+        sRoic.max = Math.max(150, Math.ceil(sbCurrent.roic + 10));
+        sRoic.value = sbCurrent.roic;
+        document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`;
+      }}
 
       const sBb = document.getElementById('sb-slider-bb');
-      if (sBb) {{ sBb.value = sbCurrent.bb; document.getElementById('sb-val-bb').textContent = `${{sbCurrent.bb.toFixed(1)}}%`; }}
+      if (sBb) {{
+        sBb.value = sbCurrent.bb;
+        document.getElementById('sb-val-bb').textContent = `${{sbCurrent.bb.toFixed(1)}}%`;
+      }}
 
       // Numeric inputs
       const inPeak = document.getElementById('sb-input-peakeps');
-      if (inPeak) inPeak.value = sbCurrent.peakeps !== null ? sbCurrent.peakeps.toFixed(2) : '';
+      if (inPeak) inPeak.value = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? sbCurrent.peakeps.toFixed(2) : '';
+      const valPeakEl = document.getElementById('sb-val-peakeps');
+      if (valPeakEl) valPeakEl.textContent = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? fmtPrice(sbCurrent.peakeps, c.quote_currency) : '-';
+
       const inMl = document.getElementById('sb-input-ml');
-      if (inMl) inMl.value = sbCurrent.ml !== null ? sbCurrent.ml.toFixed(1) : '';
+      if (inMl) inMl.value = (sbCurrent.ml !== null && sbCurrent.ml !== undefined) ? sbCurrent.ml.toFixed(1) : '';
+
       const inMh = document.getElementById('sb-input-mh');
-      if (inMh) inMh.value = sbCurrent.mh !== null ? sbCurrent.mh.toFixed(1) : '';
+      if (inMh) inMh.value = (sbCurrent.mh !== null && sbCurrent.mh !== undefined) ? sbCurrent.mh.toFixed(1) : '';
+
       const inGest = document.getElementById('sb-input-gest');
-      if (inGest) inGest.value = sbCurrent.gest !== null ? sbCurrent.gest.toFixed(1) : '';
+      if (inGest) inGest.value = (sbCurrent.gest !== null && sbCurrent.gest !== undefined) ? sbCurrent.gest.toFixed(1) : '';
       const valGestEl = document.getElementById('sb-val-gest');
-      if (valGestEl) valGestEl.textContent = sbCurrent.gest !== null ? `${{sbCurrent.gest.toFixed(1)}}%` : 'None';
+      if (valGestEl) valGestEl.textContent = (sbCurrent.gest !== null && sbCurrent.gest !== undefined) ? `${{sbCurrent.gest.toFixed(1)}}%` : 'None';
     }}
 
     function setSandboxCap(cap) {{
@@ -3270,14 +3310,21 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function onSandboxInputChange() {{
-      const pe = parseFloat(document.getElementById('sb-input-peakeps').value);
-      if (!isNaN(pe) && pe > 0) sbCurrent.peakeps = pe;
+      const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId) || {{}};
 
-      const ml = parseFloat(document.getElementById('sb-input-ml').value);
-      if (!isNaN(ml) && ml > 0) sbCurrent.ml = ml;
+      const peInput = document.getElementById('sb-input-peakeps').value.trim();
+      const pe = parseFloat(peInput);
+      sbCurrent.peakeps = (!isNaN(pe) && pe > 0) ? pe : null;
+      const valPeakEl = document.getElementById('sb-val-peakeps');
+      if (valPeakEl) valPeakEl.textContent = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? fmtPrice(sbCurrent.peakeps, c.quote_currency) : '-';
 
-      const mh = parseFloat(document.getElementById('sb-input-mh').value);
-      if (!isNaN(mh) && mh > 0) sbCurrent.mh = mh;
+      const mlVal = document.getElementById('sb-input-ml').value.trim();
+      const parsedMl = parseFloat(mlVal);
+      sbCurrent.ml = (!isNaN(parsedMl) && parsedMl > 0) ? parsedMl : null;
+
+      const mhVal = document.getElementById('sb-input-mh').value.trim();
+      const parsedMh = parseFloat(mhVal);
+      sbCurrent.mh = (!isNaN(parsedMh) && parsedMh > 0) ? parsedMh : null;
 
       const gestVal = document.getElementById('sb-input-gest').value.trim();
       if (gestVal === '') {{
@@ -3314,11 +3361,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         ticker: c.ticker,
         company: c.company,
         gate_4_cap: sbCurrent.cap,
-        peak_eps_est: Math.round(sbCurrent.peakeps * 100) / 100,
+        peak_eps_est: (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? Math.round(sbCurrent.peakeps * 100) / 100 : null,
         g_est: sbCurrent.gest !== null ? Math.round(sbCurrent.gest * 10) / 1000 : null,
         roic_est: Math.round(sbCurrent.roic * 10) / 1000,
         sales_cagr_scenario: Math.round(sbCurrent.salescagr * 10) / 1000,
-        fin_note: `Sandbox sensitivity: CAP ${{sbCurrent.cap}}y, g ${{sbCurrent.gest !== null ? sbCurrent.gest : sbCurrent.salescagr}}%, ROIC ${{sbCurrent.roic}}%`
+        fin_note: `Sandbox sensitivity: CAP ${{sbCurrent.cap !== null ? sbCurrent.cap + 'y' : 'Unassigned'}}, g ${{sbCurrent.gest !== null ? sbCurrent.gest : sbCurrent.salescagr}}%, ROIC ${{sbCurrent.roic}}%`
       }};
       const jsonStr = JSON.stringify(overrideObj, null, 2);
       navigator.clipboard.writeText(jsonStr).then(() => {{
@@ -3340,87 +3387,97 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const ml = sbCurrent.ml;
       const mh = sbCurrent.mh;
       const mc = c.market_cap_m;
-      const rev = c.sales_ttm_m;
-      const fx_rate = (SCREENER_DATA.fx_rates && SCREENER_DATA.fx_rates[c.quote_currency]) || 1.0;
 
-      const rev_usd_b = (rev !== null && rev > 0) ? (rev * fx_rate) / 1000.0 : null;
-      const mc_usd_b = (mc !== null && mc > 0) ? (mc * fx_rate) / 1000.0 : 0.0;
-
-      let scale_tier = "MID/SM";
-      let scale_cap = 0.120;
-      if (rev_usd_b !== null) {{
-        if (rev_usd_b >= 250.0) {{ scale_tier = "HYPER"; scale_cap = 0.095; }}
-        else if (rev_usd_b >= 50.0) {{ scale_tier = "MEGA"; scale_cap = 0.098; }}
-        else if (rev_usd_b >= 15.0) {{ scale_tier = "LARGE"; scale_cap = 0.105; }}
-      }} else {{
-        if (mc_usd_b >= 1000.0) {{ scale_tier = "HYPER"; scale_cap = 0.095; }}
-        else if (mc_usd_b >= 250.0) {{ scale_tier = "MEGA"; scale_cap = 0.098; }}
-        else if (mc_usd_b >= 50.0) {{ scale_tier = "LARGE"; scale_cap = 0.105; }}
-      }}
-
-      const eff_rev_b = (rev_usd_b !== null && rev_usd_b > 0) ? rev_usd_b : (mc_usd_b > 0 ? Math.max(0.5, mc_usd_b / 4.0) : 5.0);
-      const size_factor = Math.max(0.72, Math.min(1.05, 1.08 - 0.11 * Math.log10(Math.max(1.0, eff_rev_b))));
+      const size_factor = (c.size_factor !== null && c.size_factor !== undefined) ? c.size_factor : 1.0;
+      const scale_cap = (c.scale_cap !== null && c.scale_cap !== undefined) ? c.scale_cap : 0.120;
 
       const fund_cap = sbCurrent.cap;
       let pers = 0.75;
-      let g_mult = 200.0;
       if (fund_cap !== null && fund_cap !== undefined) {{
-        if (fund_cap >= 30) {{ pers = 0.85; g_mult = 240.0; }}
-        else if (fund_cap >= 20) {{ pers = 0.75; g_mult = 200.0; }}
-        else {{ pers = 0.62; g_mult = 170.0; }}
+        if (fund_cap >= 30) pers = 0.85;
+        else if (fund_cap >= 20) pers = 0.75;
+        else pers = 0.62;
       }}
 
       const bb_eff = Math.max(-0.03, Math.min(0.025, sbCurrent.bb / 100.0));
       const s1_val = sbCurrent.sales1y / 100.0;
       const s5_val = sbCurrent.salescagr / 100.0;
       const cg_val = sbCurrent.capgrowth / 100.0;
-      const s1Changed = Math.abs(sbCurrent.sales1y - sbBaseline.sales1y) > 0.05;
-      const salesChanged = Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.05;
       const g_oe = c.cagr_oe_eps;
       const oc_1y = c.opcost_1y;
       const oc_cagr = c.opcost_cagr;
+      const has_stmt_growth = (c.sales_1y !== null && c.sales_1y !== undefined) ||
+                              (c.sales_cagr !== null && c.sales_cagr !== undefined) ||
+                              (c.cagr_oe_eps !== null && c.cagr_oe_eps !== undefined) ||
+                              (c.cap_growth !== null && c.cap_growth !== undefined);
+
+      const isGrowthTweaked = (sbBaseline.sales1y !== undefined) && (
+        Math.abs(sbCurrent.sales1y - sbBaseline.sales1y) > 0.01 ||
+        Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.01 ||
+        Math.abs(sbCurrent.capgrowth - sbBaseline.capgrowth) > 0.01
+      );
+      const treatAsStmtGrowth = has_stmt_growth || isGrowthTweaked;
 
       // Mauboussin Galton ROIC Regression
       const roic_op = sbCurrent.roic / 100.0;
       const roic_avg = 0.12;
       const roic_log_k = 0.25;
-      let roic_log = Math.max(0.05, roic_op);
+      let roic_log = Math.round(Math.max(0.05, roic_op) * 10000) / 10000;
       let roic_exp = roic_log;
       let roic_fade_ratio = 1.0;
       if (roic_op > roic_avg) {{
-        roic_log = roic_avg + roic_log_k * Math.log(1.0 + (roic_op - roic_avg) / roic_log_k);
-        roic_exp = pers * (roic_log - roic_avg) + roic_avg;
-        roic_fade_ratio = roic_exp / roic_log;
+        roic_log = Math.round((roic_avg + roic_log_k * Math.log(1.0 + (roic_op - roic_avg) / roic_log_k)) * 10000) / 10000;
+        roic_exp = Math.round((pers * (roic_log - roic_avg) + roic_avg) * 10000) / 10000;
+        roic_fade_ratio = Math.round((roic_exp / roic_log) * 10000) / 10000;
       }}
 
-      // Anchor 1: 1Y Momentum with OpCost Smoothing
-      let s1_eff = s1_val;
-      if (!s1Changed && oc_1y !== null && oc_1y !== undefined) {{
-        s1_eff = (s1_val >= 0.0) ? (0.5 * s1_val + 0.5 * Math.min(s1_val, oc_1y)) : (0.5 * s1_val + 0.5 * oc_1y);
+      let g_start, g_1y, g_hist, g_cap;
+      if (treatAsStmtGrowth) {{
+        // Anchor 1: 1Y Momentum with OpCost Smoothing
+        let s1_eff = s1_val;
+        if (c.sales_1y !== null && oc_1y !== null && oc_1y !== undefined) {{
+          s1_eff = (s1_val >= 0.0) ? (0.5 * s1_val + 0.5 * Math.min(s1_val, oc_1y)) : (0.5 * s1_val + 0.5 * oc_1y);
+        }}
+        g_1y = Math.round(Math.max(-0.04, Math.min(0.22, s1_eff + bb_eff)) * 10000) / 10000;
+
+        // Anchor 2: 3-5Y History with OpCost Smoothing
+        let s5_eff = s5_val;
+        if (c.sales_cagr !== null && oc_cagr !== null && oc_cagr !== undefined) {{
+          s5_eff = 0.5 * s5_val + 0.5 * Math.min(s5_val, oc_cagr);
+        }}
+        const top_5y = Math.max(0.0, s5_eff) + bb_eff;
+        const hist_val = (c.sales_cagr !== null && g_oe !== null && g_oe !== undefined && g_oe < top_5y) ? (0.5 * top_5y + 0.5 * Math.max(0.0, g_oe)) : top_5y;
+        g_hist = Math.round(Math.max(0.0, Math.min(0.22, hist_val)) * 10000) / 10000;
+
+        // Anchor 3: Capital Growth with Mauboussin Galton ROIC Fade
+        const cg_base = (c.cap_growth !== null && c.cap_growth !== undefined) ? cg_val : ((c.sales_cagr !== null && c.sales_cagr !== undefined) ? s5_eff : (g_oe || 0.0));
+        g_cap = Math.round(Math.max(0.0, Math.min(0.22, Math.max(0.0, cg_base) * roic_fade_ratio + bb_eff)) * 10000) / 10000;
+
+        // 3-Anchor Starting Growth (g_start)
+        g_start = Math.round(((g_1y + g_hist + g_cap) / 3.0) * 10000) / 10000;
+      }} else {{
+        g_1y = null;
+        g_hist = null;
+        g_cap = null;
+        if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
+          g_start = Math.round((sbCurrent.gest / 100.0) * 10000) / 10000;
+        }} else if (c.g_start !== null && c.g_start !== undefined) {{
+          g_start = c.g_start;
+        }} else if (c.g_implied !== null && c.g_implied !== undefined) {{
+          g_start = Math.round(Math.max(0.02, c.g_implied) * 10000) / 10000;
+        }} else {{
+          g_start = 0.035;
+        }}
       }}
-      const g_1y = Math.max(-0.04, Math.min(0.22, s1_eff + bb_eff));
-
-      // Anchor 2: 3-5Y History with OpCost Smoothing
-      let s5_eff = s5_val;
-      if (!salesChanged && oc_cagr !== null && oc_cagr !== undefined) {{
-        s5_eff = 0.5 * s5_val + 0.5 * Math.min(s5_val, oc_cagr);
-      }}
-      const top_5y = Math.max(0.0, s5_eff) + bb_eff;
-      const hist_val = (!salesChanged && g_oe !== null && g_oe !== undefined && g_oe < top_5y) ? (0.5 * top_5y + 0.5 * Math.max(0.0, g_oe)) : top_5y;
-      const g_hist = Math.max(0.0, Math.min(0.22, hist_val));
-
-      // Anchor 3: Capital Growth with Mauboussin Galton ROIC Fade
-      const g_cap = Math.max(0.0, Math.min(0.22, Math.max(0.0, cg_val) * roic_fade_ratio + bb_eff));
-
-      // 3-Anchor Starting Growth (g_start)
-      const g_start = Math.round(((g_1y + g_hist + g_cap) / 3.0) * 10000) / 10000;
 
       // Log Compression & Mauboussin Fade to Expected Growth (g_exp)
       const g_base = 0.035;
       const k_log = 0.12;
       let g_exp = null;
       if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
-        g_exp = Math.min(scale_cap, sbCurrent.gest / 100.0);
+        g_exp = Math.round(Math.min(scale_cap, sbCurrent.gest / 100.0) * 10000) / 10000;
+      }} else if (!treatAsStmtGrowth) {{
+        g_exp = (c.g_exp !== null && c.g_exp !== undefined) ? c.g_exp : (c.g_implied !== null && c.g_implied !== undefined ? Math.round(Math.min(scale_cap, Math.max(0.02, c.g_implied)) * 10000) / 10000 : Math.round(Math.max(0.02, g_start) * 10000) / 10000);
       }} else if (g_start > g_base) {{
         const g_log = g_base + k_log * Math.log(1.0 + (g_start - g_base) / k_log);
         const faded_g = g_base + (g_log - g_base) * pers * size_factor;
@@ -3430,78 +3487,85 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       // Valuation
-      if (!price || !peak_eps || peak_eps <= 0 || !ml || !mh) return;
+      const hasValuationInputs = Boolean(price && peak_eps && peak_eps > 0 && ml && mh);
+      let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null;
 
-      const cur_mult = price / peak_eps;
-      const g_val = (g_exp !== null && g_exp > 0) ? g_exp : 0.035;
+      if (hasValuationInputs) {{
+        cur_mult = price / peak_eps;
+        const g_val = (g_exp !== null && g_exp > 0) ? g_exp : 0.035;
 
-      // Corporate Finance Value Driver P/E (v6.33): 50/50 Miller-Modigliani + McKinsey 2-Stage
-      const k = 0.0875;
-      const n_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : 20.0;
-      const roic_eff = Math.max(roic_exp, 0.05);
-      const reinv_term = g_base / roic_avg;
-      const subInd = (c.sub_industry || '').trim();
-      const fcfConv = (c.fcf_conv !== null && c.fcf_conv !== undefined) ? c.fcf_conv : null;
-      const isMtmHoldco = !subInd.includes('Insurance Brokers') && (subInd.includes('Multi-Sector Holdings') || subInd.includes('Insurance')) && (fcfConv === null || fcfConv < 0.25) && (c.peak_eps_est === null || c.peak_eps_est === undefined);
-      const isFiniteConc = (subInd.includes('Construction & Engineering') || subInd.includes('Highways & Railtracks')) && (fcfConv !== null && fcfConv > 1.25);
-      let pe_mm, pe_mck, pe_vd;
-      if (isMtmHoldco) {{
-        pe_mm = 1.0 / roic_eff;
-        pe_mck = pe_mm;
-        pe_vd = pe_mm;
-      }} else {{
-        const reinv_stage1 = Math.min(0.95, Math.max(0.0, g_val) / roic_eff);
-        const q = (1.0 + g_val) / (1.0 + k);
-        const pv_stage1 = (1.0 - reinv_stage1) * (Math.abs(1.0 - q) < 1e-9 ? n_cap : q * (1.0 - Math.pow(q, n_cap)) / (1.0 - q));
-        if (isFiniteConc) {{
-          const ann_n = (1.0 - Math.pow(1.0 + k, -n_cap)) / k;
-          pe_mm = ann_n * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
-          pe_mck = pv_stage1;
+        // Corporate Finance Value Driver P/E (v6.33): 50/50 Miller-Modigliani + McKinsey 2-Stage
+        const k = 0.0875;
+        const n_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : 20.0;
+        const roic_eff = Math.max(roic_exp, 0.05);
+        const reinv_term = g_base / roic_avg;
+        const subInd = (c.sub_industry || '').trim();
+        const fcfConv = (c.fcf_conv !== null && c.fcf_conv !== undefined) ? c.fcf_conv : null;
+        const isMtmHoldco = !subInd.includes('Insurance Brokers') && (subInd.includes('Multi-Sector Holdings') || subInd.includes('Insurance')) && (fcfConv === null || fcfConv < 0.25) && (c.peak_eps_est === null || c.peak_eps_est === undefined);
+        const isFiniteConc = (subInd.includes('Construction & Engineering') || subInd.includes('Highways & Railtracks')) && (fcfConv !== null && fcfConv > 1.25);
+        let pe_mm, pe_mck;
+        if (isMtmHoldco) {{
+          pe_mm = 1.0 / roic_eff;
+          pe_mck = pe_mm;
+          pe_vd = pe_mm;
         }} else {{
-          pe_mm = (1.0 / k) * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
-          const pv_stage2 = ((1.0 - reinv_term) * Math.pow(1.0 + g_val, n_cap) * (1.0 + g_base)) / ((k - g_base) * Math.pow(1.0 + k, n_cap));
-          pe_mck = pv_stage1 + pv_stage2;
-        }}
-        pe_vd = 0.5 * pe_mm + 0.5 * pe_mck;
-      }}
-
-      // Uncapped 5-Year Historical Harmonic P/E (25% weight)
-      const t_hist = (2.0 * ml * mh) / (ml + mh);
-      const par_mult = 0.75 * pe_vd + 0.25 * t_hist;
-      const par_val = par_mult * peak_eps;
-      const vs_par = price / par_val - 1.0;
-
-      const dy = Math.max(0.0, (c.dividends_ttm_m || 0.0) / (mc || 1.0));
-      let irr_5y = null;
-      if (price > 0 && par_val > 0 && g_exp !== null && g_exp > -1.0) {{
-        const r_par = par_val / price;
-        if (dy <= 1e-12) {{
-          irr_5y = (1.0 + g_exp) * Math.pow(r_par, 0.2) - 1.0;
-        }} else {{
-          let u = Math.pow(r_par, -0.2) / (1.0 + dy);
-          for (let i = 0; i < 12; i++) {{
-            const u2 = u * u, u3 = u2 * u, u4 = u3 * u, u5 = u4 * u;
-            const f_val = dy * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0;
-            if (Math.abs(f_val) < 1e-12) break;
-            const f_deriv = dy * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4;
-            if (f_deriv <= 0) break;
-            u = Math.max(1e-6, u - f_val / f_deriv);
+          const reinv_stage1 = Math.min(0.95, Math.max(0.0, g_val) / roic_eff);
+          const q = (1.0 + g_val) / (1.0 + k);
+          const pv_stage1 = (1.0 - reinv_stage1) * (Math.abs(1.0 - q) < 1e-9 ? n_cap : q * (1.0 - Math.pow(q, n_cap)) / (1.0 - q));
+          if (isFiniteConc) {{
+            const ann_n = (1.0 - Math.pow(1.0 + k, -n_cap)) / k;
+            pe_mm = ann_n * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
+            pe_mck = pv_stage1;
+          }} else {{
+            pe_mm = (1.0 / k) * (1.0 + (g_val * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff));
+            const pv_stage2 = ((1.0 - reinv_term) * Math.pow(1.0 + g_val, n_cap) * (1.0 + g_base)) / (Math.max(0.01, k - g_base) * Math.pow(1.0 + k, n_cap));
+            pe_mck = pv_stage1 + pv_stage2;
           }}
-          irr_5y = (1.0 + g_exp) / u - 1.0;
+          pe_vd = 0.5 * pe_mm + 0.5 * pe_mck;
         }}
+
+        // Uncapped 5-Year Historical Harmonic P/E (25% weight)
+        const t_hist = (2.0 * ml * mh) / (ml + mh);
+        par_mult = 0.75 * pe_vd + 0.25 * t_hist;
+        par_val = par_mult * peak_eps;
+        vs_par = price / par_val - 1.0;
+
+        const dy = (mc && mc > 0 && c.dividends_ttm_m) ? Math.max(0.0, c.dividends_ttm_m / mc) : 0.0;
+        if (price > 0 && par_val > 0 && g_exp !== null && g_exp > -1.0) {{
+          const r_par = par_val / price;
+          if (dy <= 1e-12) {{
+            irr_5y = (1.0 + g_exp) * Math.pow(r_par, 0.2) - 1.0;
+          }} else {{
+            let u = Math.pow(r_par, -0.2) / (1.0 + dy);
+            for (let i = 0; i < 12; i++) {{
+              const u2 = u * u, u3 = u2 * u, u4 = u3 * u, u5 = u4 * u;
+              const f_val = dy * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0;
+              if (Math.abs(f_val) < 1e-12) break;
+              const f_deriv = dy * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4;
+              if (f_deriv <= 0) break;
+              u = Math.max(1e-6, u - f_val / f_deriv);
+            }}
+            irr_5y = (1.0 + g_exp) / u - 1.0;
+          }}
+        }}
+        cap_implied = (fund_cap && price > 0 && par_val > 0) ? Math.round(fund_cap * (price / par_val) * 10) / 10 : null;
+        cap_gap = (fund_cap !== null && cap_implied !== null) ? Math.round((fund_cap - cap_implied) * 10) / 10 : null;
       }}
-      const cap_implied = (fund_cap && price > 0 && par_val > 0) ? Math.round(fund_cap * (price / par_val) * 10) / 10 : null;
-      const cap_gap = (fund_cap !== null && cap_implied !== null) ? Math.round((fund_cap - cap_implied) * 10) / 10 : null;
 
       // Populate Delta Table
-      const diffClass = (val, inv=false) => {{
-        if (val === null || isNaN(val) || Math.abs(val) < 0.0001) return 'diff-neutral';
+      const isPctZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.0002;
+      const isMultZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.02;
+      const isPriceZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.02;
+      const isYearZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.05;
+
+      const diffClass = (val, isZero, inv=false) => {{
+        if (isZero || val === null || isNaN(val)) return 'diff-neutral';
         const isPos = inv ? val < 0 : val > 0;
         return isPos ? 'diff-pos' : 'diff-neg';
       }};
 
       const dGStart = (g_start !== null && c.g_start !== null && c.g_start !== undefined) ? (g_start - c.g_start) : null;
-      const dG = (g_exp !== null && c.g_exp !== null) ? (g_exp - c.g_exp) : null;
+      const dG = (g_exp !== null && c.g_exp !== null && c.g_exp !== undefined) ? (g_exp - c.g_exp) : null;
       const dMult = (par_mult !== null && c.par_mult !== null) ? (par_mult - c.par_mult) : null;
       const dVal = (par_val !== null && c.par_val !== null) ? (par_val - c.par_val) : null;
       const dVsPar = (vs_par !== null && c.vs_par !== null) ? (vs_par - c.vs_par) : null;
@@ -3514,49 +3578,49 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <td>Starting Growth (START G / g₀)</td>
           <td>${{fmtPct(c.g_start)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_start)}}</td>
-          <td class="${{diffClass(dGStart)}}">${{dGStart !== null ? fmtPct(dGStart, true) : '-'}}</td>
+          <td class="${{diffClass(dGStart, isPctZero(dGStart))}}">${{!isPctZero(dGStart) ? fmtPct(dGStart, true) : '-'}}</td>
         </tr>`,
         `<tr>
           <td>Expected Growth (EXP G / g_exp)</td>
           <td>${{fmtPct(c.g_exp)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_exp)}}</td>
-          <td class="${{diffClass(dG)}}">${{dG !== null ? fmtPct(dG, true) : '-'}}</td>
+          <td class="${{diffClass(dG, isPctZero(dG))}}">${{!isPctZero(dG) ? fmtPct(dG, true) : '-'}}</td>
         </tr>`,
         `<tr>
           <td>PAR Multiple (Ceiling)</td>
           <td>${{c.par_mult !== null ? fmtNum(c.par_mult) + 'x' : '-'}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{par_mult !== null ? fmtNum(par_mult) + 'x' : '-'}}</td>
-          <td class="${{diffClass(dMult)}}">${{dMult !== null ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}}</td>
+          <td class="${{diffClass(dMult, isMultZero(dMult))}}">${{!isMultZero(dMult) ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}}</td>
         </tr>`,
         `<tr>
           <td>Fundamental PAR Value</td>
           <td>${{fmtPrice(c.par_val, c.quote_currency)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPrice(par_val, c.quote_currency)}}</td>
-          <td class="${{diffClass(dVal)}}">${{dVal !== null ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}}</td>
+          <td class="${{diffClass(dVal, isPriceZero(dVal))}}">${{!isPriceZero(dVal) ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}}</td>
         </tr>`,
         `<tr>
           <td>Margin vs PAR (Price / PAR - 1)</td>
-          <td>${{fmtPct(c.vs_par, true)}} (${{c.vs_par <= 0 ? 'Below' : 'Above'}})</td>
-          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(vs_par, true)}} (${{vs_par <= 0 ? 'Below' : 'Above'}})</td>
-          <td class="${{diffClass(dVsPar, true)}}">${{dVsPar !== null ? fmtPct(dVsPar, true) : '-'}}</td>
+          <td>${{c.vs_par !== null ? fmtPct(c.vs_par, true) + ' (' + (c.vs_par <= 0 ? 'Below' : 'Above') + ')' : '-'}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{vs_par !== null ? fmtPct(vs_par, true) + ' (' + (vs_par <= 0 ? 'Below' : 'Above') + ')' : '-'}}</td>
+          <td class="${{diffClass(dVsPar, isPctZero(dVsPar), true)}}">${{!isPctZero(dVsPar) ? fmtPct(dVsPar, true) : '-'}}</td>
         </tr>`,
         `<tr>
           <td>5-Year Expected IRR</td>
           <td>${{fmtPct(c.irr_5y)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(irr_5y)}}</td>
-          <td class="${{diffClass(dIrr)}}">${{dIrr !== null ? fmtPct(dIrr, true) : '-'}}</td>
+          <td class="${{diffClass(dIrr, isPctZero(dIrr))}}">${{!isPctZero(dIrr) ? fmtPct(dIrr, true) : '-'}}</td>
         </tr>`,
         `<tr>
           <td>Our Moat Runway (CAP)</td>
           <td>${{c.g4_cap ? c.g4_cap + 'y' : '-'}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fund_cap ? fund_cap + 'y' : '-'}}</td>
-          <td class="${{diffClass(dCap)}}">${{dCap !== null ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}}</td>
+          <td class="${{diffClass(dCap, isYearZero(dCap))}}">${{!isYearZero(dCap) ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}}</td>
         </tr>`,
         `<tr>
           <td>Runway Margin of Safety</td>
           <td>${{fmtSignedYears(c.cap_gap)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtSignedYears(cap_gap)}}</td>
-          <td class="${{diffClass(dCapGap)}}">${{dCapGap !== null ? fmtSignedYears(dCapGap) : '-'}}</td>
+          <td class="${{diffClass(dCapGap, isYearZero(dCapGap))}}">${{!isYearZero(dCapGap) ? fmtSignedYears(dCapGap) : '-'}}</td>
         </tr>`
       ];
 
@@ -3567,7 +3631,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const sbVerdict = document.getElementById('sb-status-verdict');
       const sbIrrBadge = document.getElementById('sb-irr-badge');
 
-      if (vs_par <= 0) {{
+      if (!hasValuationInputs || par_val === null || par_val <= 0 || vs_par === null) {{
+        sbBox.style.background = 'rgba(100, 116, 139, 0.12)';
+        sbBox.style.borderColor = 'rgba(100, 116, 139, 0.3)';
+        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">— Scenario Verdict: Valuation Unavailable (Missing Price, Peak EPS, or 5Y Multiples)</span>`;
+        sbIrrBadge.className = 'badge badge-slate';
+        sbIrrBadge.textContent = '5Y IRR: -';
+      }} else if (vs_par <= 0) {{
         sbBox.style.background = 'rgba(16, 185, 129, 0.15)';
         sbBox.style.borderColor = 'rgba(16, 185, 129, 0.35)';
         sbVerdict.innerHTML = `<span style="color: var(--green);">✓ Scenario Verdict: BELOW PAR (${{fmtPct(vs_par, true)}}) — Buyable Quality Funnel</span>`;
