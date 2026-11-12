@@ -2564,73 +2564,42 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const thead = document.getElementById('table-head');
       const tbody = document.getElementById('table-body');
 
-      // Define columns per tab
+      // Define columns per tab (Shortlist, Quality Pass, and Calamity share the exact same 18 core columns in order)
+      const coreValuationCols = [
+        {{ key: 'ticker', label: 'Ticker' }},
+        {{ key: 'company', label: 'Company' }},
+        {{ key: 'country', label: 'Country' }},
+        {{ key: 'price', label: 'Price', num: true }},
+        {{ key: 'par_val', label: 'PAR Value', num: true }},
+        {{ key: 'vs_par', label: 'vs PAR', num: true }},
+        {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
+        {{ key: 'par_mult', label: 'PAR Mult', num: true }},
+        {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
+        {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+        {{ key: 'g_start', label: 'Start g', num: true }},
+        {{ key: 'g_imp', label: 'Exp g', num: true }},
+        {{ key: 'g_market', label: 'Mkt g', num: true }},
+        {{ key: 'g_gap', label: 'g Gap', num: true }},
+        {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+        {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
+        {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
+        {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
+      ];
       let cols = [];
       if (currentTab === 'shortlist') {{
-        cols = [
-          {{ key: 'ticker', label: 'Ticker' }},
-          {{ key: 'company', label: 'Company' }},
-          {{ key: 'country', label: 'Country' }},
-          {{ key: 'price', label: 'Price', num: true }},
-          {{ key: 'par_val', label: 'PAR Value', num: true }},
-          {{ key: 'vs_par', label: 'vs PAR', num: true }},
-          {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
-          {{ key: 'par_mult', label: 'PAR Mult', num: true }},
-          {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
-          {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g_start', label: 'Start g', num: true }},
-          {{ key: 'g_imp', label: 'Exp g', num: true }},
-          {{ key: 'g_market', label: 'Mkt g', num: true }},
-          {{ key: 'g_gap', label: 'g Gap', num: true }},
-          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
-          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
-          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
-          {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
-        ];
+        cols = [...coreValuationCols];
       }} else if (currentTab === 'qpass') {{
         cols = [
-          {{ key: 'ticker', label: 'Ticker' }},
-          {{ key: 'company', label: 'Company' }},
-          {{ key: 'country', label: 'Country' }},
-          {{ key: 'sector', label: 'Sector' }},
-          {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
-          {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+          ...coreValuationCols,
           {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
-          {{ key: 'price', label: 'Price', num: true }},
-          {{ key: 'par_val', label: 'PAR Val', num: true }},
-          {{ key: 'vs_par', label: 'vs PAR', num: true }},
-          {{ key: 'irr_5y', label: '5Y IRR', num: true }},
-          {{ key: 'g_start', label: 'Start g', num: true }},
-          {{ key: 'g_imp', label: 'Exp g', num: true }},
-          {{ key: 'g_market', label: 'Mkt g', num: true }},
-          {{ key: 'g_gap', label: 'g Gap', num: true }},
-          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
-          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
-          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
-          {{ key: 'val_status', label: 'Valuation' }}
+          {{ key: 'val_status', label: 'Valuation' }},
+          {{ key: 'sector', label: 'Sector' }}
         ];
       }} else if (currentTab === 'calamity') {{
         cols = [
-          {{ key: 'ticker', label: 'Ticker' }},
-          {{ key: 'company', label: 'Company' }},
-          {{ key: 'country', label: 'Country' }},
+          ...coreValuationCols,
           {{ key: 'waived_gates', label: 'Waived Gate(s)' }},
-          {{ key: 'price', label: 'Price', num: true }},
-          {{ key: 'par_val', label: 'PAR Value', num: true }},
-          {{ key: 'vs_par', label: 'vs PAR', num: true }},
-          {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
-          {{ key: 'par_mult', label: 'PAR Mult', num: true }},
-          {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
-          {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g_start', label: 'Start g', num: true }},
-          {{ key: 'g_imp', label: 'Exp g', num: true }},
-          {{ key: 'g_market', label: 'Mkt g', num: true }},
-          {{ key: 'g_gap', label: 'g Gap', num: true }},
-          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
-          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
-          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
-          {{ key: 'val_status', label: 'Valuation' }},
-          {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
+          {{ key: 'val_status', label: 'Valuation' }}
         ];
       }} else {{
         cols = [
@@ -2667,7 +2636,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           let cellContent = '';
 
           if (col.key === 'ticker') {{
-            const cTag = (c.result === 'Calamity pass' && currentTab !== 'calamity')
+            const cTag = (c.result === 'Calamity pass')
               ? ` <span class="badge badge-amber" style="font-size: 9px; padding: 1px 5px; margin-left: 4px;">${{escHtml(calamityTag(c))}}</span>`
               : '';
             cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>${{cTag}}`;
@@ -2776,10 +2745,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         let badgeHtml = '';
         let metricsHtml = '';
 
-        if (currentTab === 'shortlist') {{
-          const vsParCls = (c.vs_par <= 0) ? 'badge-green' : 'badge-amber';
+        if (currentTab === 'shortlist' || currentTab === 'qpass' || currentTab === 'calamity') {{
+          const vsParText = c.vs_par !== null && c.vs_par !== undefined ? `${{fmtPct(c.vs_par, true)}} vs PAR` : escHtml(c.val_status);
+          const vsParCls = (c.vs_par !== null && c.vs_par !== undefined)
+            ? (c.vs_par <= 0 ? 'badge-green' : 'badge-amber')
+            : (c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray'));
           const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
-          badgeHtml = `${{calBadge}}<span class="badge ${{vsParCls}}">${{fmtPct(c.vs_par, true)}} vs PAR</span>`;
+          badgeHtml = `${{calBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
@@ -2797,52 +2769,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="card-metric-label">Op ROIC • Moat</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 ${{fmtPct(c.roic_used)}} • ${{escHtml(c.g3a_moat_archetype) || '-'}}
-              </div>
-            </div>
-          ` + triadCardsHtml(c);
-        }} else if (currentTab === 'qpass') {{
-          const bCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
-          badgeHtml = `<span class="badge ${{bCls}}">${{escHtml(c.val_status)}}</span>`;
-          metricsHtml = `
-            <div class="card-metric-cell">
-              <div class="card-metric-label">5Y Exp IRR</div>
-              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">vs PAR Margin</div>
-              <div class="card-metric-val">${{c.vs_par !== null ? fmtPct(c.vs_par, true) : '-'}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">Op ROIC / FCF</div>
-              <div class="card-metric-val">${{fmtPct(c.roic_used)}} / ${{fmtPct(c.fcf_conv)}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">Moat Archetype</div>
-              <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{escHtml(c.g3a_moat_archetype) || '-'}}
-              </div>
-            </div>
-          ` + triadCardsHtml(c);
-        }} else if (currentTab === 'calamity') {{
-          const vCls = c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray');
-          badgeHtml = `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span><span class="badge ${{vCls}}">${{escHtml(c.val_status)}}</span>`;
-          metricsHtml = `
-            <div class="card-metric-cell">
-              <div class="card-metric-label">5Y Exp IRR</div>
-              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">vs PAR Margin</div>
-              <div class="card-metric-val">${{c.vs_par !== null ? fmtPct(c.vs_par, true) : '-'}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">Price / PAR</div>
-              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val)}}</div>
-            </div>
-            <div class="card-metric-cell">
-              <div class="card-metric-label">Waived Gate(s)</div>
-              <div class="card-metric-val" style="font-size: 11.5px; color: var(--amber); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{escHtml((c.waived_gates || []).join(', ')) || '-'}}
               </div>
             </div>
           ` + triadCardsHtml(c);
