@@ -31,7 +31,5 @@
   "benchmark_symbols": {
     "MARKET": "XIU.TO"
   },
-  "parameters": {
-    "par_roic_cap": 35.0
-  }
+  "parameters": {}
 }

@@ -6,6 +6,7 @@ zero-dependency standalone HTML application (output/screener.html).
 from __future__ import annotations
 
 import json
+import statistics
 from pathlib import Path
 from typing import Any
 
@@ -99,6 +100,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "roic_operating": r_op,
                 "roic_est": r_est,
                 "roic_used": roic_used,
+                "uses_gaap_roic": uses_gaap_roic(sub_ind),
                 "fcf_conv": fin.get("fcf_conv"),
                 "peak_oe_year": fin.get("peak_oe_year"),
                 "peak_oe_eps": fin.get("peak_oe_eps"),
@@ -181,7 +183,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     below_par_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_BELOW_PAR]
     below_par_count = len(below_par_list)
     irrs = [c["irr_5y"] for c in below_par_list if c["irr_5y"] is not None]
-    median_irr = sorted(irrs)[len(irrs) // 2] if irrs else 0.0
+    median_irr = statistics.median(irrs) if irrs else 0.0
 
     return {
         "version": "6.34",
@@ -892,7 +894,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       color: var(--purple);
       border: 1px solid rgba(168, 85, 247, 0.3);
     }}
-    .badge-gray {{
+    .badge-gray, .badge-slate {{
       background: rgba(148, 163, 184, 0.1);
       color: var(--text-muted);
       border: 1px solid rgba(148, 163, 184, 0.2);
@@ -2024,12 +2026,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="audit-stat">
                 <span class="lbl">Fade Persistence (w)</span>
                 <span class="val" id="audit-cap-pers">-</span>
-                <span class="sub">Weight toward GDP</span>
+                <span class="sub">Excess Return Retention</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">Growth Slope (g_mult)</span>
+                <span class="lbl">Growth Slope (eff_g_mult)</span>
                 <span class="val" id="audit-cap-gmult">-</span>
-                <span class="sub">Points per 1% g</span>
+                <span class="sub" id="audit-cap-gmult-sub">Points per 1% g</span>
               </div>
               <div class="audit-stat">
                 <span class="lbl">Market-Implied CAP</span>
@@ -2199,7 +2201,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
               <!-- Control 5: Tangible Operating ROIC -->
               <div class="sandbox-group">
-                <label>Tangible Operating ROIC: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
+                <label><span id="sb-label-roic-text">Tangible Operating ROIC</span>: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-roic" min="5" max="150" step="0.5" value="20" oninput="onSandboxSliderChange('roic', this.value, '%')">
               </div>
 
@@ -2320,13 +2322,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function updateTabCounts() {{
-      const qpass = SCREENER_DATA.companies.filter(c => c.result === 'Quality pass');
-      const calamity = SCREENER_DATA.companies.filter(c => c.result === 'Calamity pass');
-      const shortlist = qpass.filter(c => c.val_status === 'Below PAR');
+      const incCal = document.getElementById('toggle-calamities') && document.getElementById('toggle-calamities').checked;
+      const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
+      const qpass = base.filter(c => c.result === 'Quality pass');
+      const calamity = base.filter(c => c.result === 'Calamity pass');
+      const shortlist = base.filter(c => (c.result === 'Quality pass' || (incCal && c.result === 'Calamity pass')) && c.val_status === 'Below PAR');
       document.getElementById('count-shortlist').textContent = shortlist.length;
       document.getElementById('count-qpass').textContent = qpass.length;
       document.getElementById('count-calamity').textContent = calamity.length;
-      document.getElementById('count-all').textContent = SCREENER_DATA.companies.length;
+      document.getElementById('count-all').textContent = base.length;
     }}
 
     function setTab(tab) {{
@@ -2542,6 +2546,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function renderCurrentView() {{
+      updateTabCounts();
       if (currentTab === 'methodology') return;
       const data = sortData(getFilteredData());
       const empty = document.getElementById('empty-state');
@@ -3046,7 +3051,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-par-mult').textContent = fmtNum(c.par_mult) + 'x';
       document.getElementById('dossier-irr').textContent = fmtPct(c.irr_5y);
 
-      document.getElementById('dossier-roic-op').textContent = fmtPct(c.roic_operating);
+      const opRoicVal = (c.roic_est !== null && c.roic_est !== undefined)
+        ? `${{fmtPct(c.roic_est)}} (Est.)`
+        : ((c.roic_operating !== null && c.roic_operating !== undefined) ? fmtPct(c.roic_operating) : fmtPct(c.roic_used));
+      document.getElementById('dossier-roic-op').textContent = opRoicVal;
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
 
@@ -3123,12 +3131,21 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-cap-years').textContent = c.g4_cap ? `${{c.g4_cap}} Years` : 'None';
       const capTierText = c.g4_cap >= 30 ? 'Fortress (30y+)' : (c.g4_cap >= 20 ? 'Compounder (20y+)' : (c.g4_cap ? 'Standard (<20y)' : 'Unassigned'));
       document.getElementById('audit-cap-tier').textContent = capTierText;
-      document.getElementById('audit-cap-pers').textContent = (c.pers !== null && c.pers !== undefined) ? `${{Math.round(c.pers * 100)}}%` : (c.g4_cap >= 30 ? '75%' : (c.g4_cap >= 20 ? '60%' : '45%'));
-      document.getElementById('audit-cap-gmult').textContent = (c.g_mult !== null && c.g_mult !== undefined) ? `${{Math.round(c.g_mult)}}x` : (c.g4_cap >= 30 ? '240x' : (c.g4_cap >= 20 ? '200x' : '170x'));
+      document.getElementById('audit-cap-pers').textContent = (c.pers !== null && c.pers !== undefined) ? `${{Math.round(c.pers * 100)}}%` : (c.g4_cap >= 30 ? '85%' : (c.g4_cap >= 20 ? '75%' : '62%'));
+      const effSlope = (c.eff_g_mult !== null && c.eff_g_mult !== undefined) ? c.eff_g_mult : c.g_mult;
+      document.getElementById('audit-cap-gmult').textContent = (effSlope !== null && effSlope !== undefined) ? `${{Math.round(effSlope)}}x` : '-';
+      const gmultSubEl = document.getElementById('audit-cap-gmult-sub');
+      if (gmultSubEl) gmultSubEl.textContent = (effSlope !== null && effSlope !== undefined) ? `+${{(effSlope / 100).toFixed(2)}}x P/E per 1% g` : 'Points per 1% g';
       document.getElementById('audit-cap-market').textContent = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
       document.getElementById('audit-cap-gap').textContent = (c.cap_gap !== null && c.cap_gap !== undefined) ? `${{fmtSignedYears(c.cap_gap)}} runway margin` : '-';
       document.getElementById('audit-moat-arch').textContent = c.g3a_moat_archetype || 'None';
-      const pricingMap = {{ '2': 'High Pricing Power (Score 2)', '1': 'Moderate Pricing Power (Score 1)', '0': 'No Pricing Power (Score 0)' }};
+      const pricingMap = {{
+        'Y': 'Pass (≥ Inflation & ROIC ≥ 12%)',
+        'N': 'Fail (< Inflation or Sub-Hurdle)',
+        '2': 'High Pricing Power (Score 2)',
+        '1': 'Moderate Pricing Power (Score 1)',
+        '0': 'No Pricing Power (Score 0)'
+      }};
       document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
 
       // 2. START G & EXP G
@@ -3191,10 +3208,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-troic-val').textContent = (peMck !== null && peMck !== undefined) ? `${{fmtNum(peMck)}}x` : '-';
       document.getElementById('audit-rawpar-val').textContent = (peVd !== null && peVd !== undefined) ? `${{fmtNum(peVd)}}x` : '-';
       document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '100%';
-      const rangeStr = (c.mult_low_5y !== null && c.mult_low_5y !== undefined && c.mult_high_5y !== null && c.mult_high_5y !== undefined)
+      const hasHistRange = (c.mult_low_5y !== null && c.mult_low_5y !== undefined && c.mult_high_5y !== null && c.mult_high_5y !== undefined);
+      const rangeStr = hasHistRange
         ? `${{fmtNum(c.mult_low_5y)}}x–${{fmtNum(c.mult_high_5y)}}x`
-        : ((c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? `${{fmtNum(c.mult_high_5y)}}x` : '-');
+        : ((c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? `${{fmtNum(c.mult_high_5y)}}x` : 'N/A (<12m trading)');
       document.getElementById('audit-mh-val').textContent = rangeStr;
+      const thistSubEl = document.getElementById('audit-thist-sub');
+      if (thistSubEl) thistSubEl.textContent = hasHistRange ? 'Bounded [0.5x, 1.5x] PE_VD (25%)' : 'Fallback to 100% PE_VD (Short History)';
       document.getElementById('audit-peakeps-val').textContent = fmtPrice(c.peak_eps, c.quote_currency);
     }}
 
@@ -3270,6 +3290,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         sRoic.max = Math.max(150, Math.ceil(sbCurrent.roic + 10));
         sRoic.value = sbCurrent.roic;
         document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`;
+      }}
+      const lblRoicText = document.getElementById('sb-label-roic-text');
+      if (lblRoicText) {{
+        lblRoicText.textContent = (c.roic_est !== null && c.roic_est !== undefined)
+          ? 'Normalized Operating ROIC'
+          : (c.uses_gaap_roic ? 'GAAP ROIC (incl. Goodwill)' : 'Tangible Operating ROIC');
       }}
 
       const sBb = document.getElementById('sb-slider-bb');
@@ -3526,7 +3552,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const bb_contrib = Math.round(Math.max(0.0, g_exp - g_org_exp) * 10000) / 10000;
 
       // Valuation
-      const hasValuationInputs = Boolean(price && peak_eps && peak_eps > 0 && ml && mh);
+      const hasHistMults = Boolean(ml && mh);
+      const hasValuationInputs = Boolean(price && peak_eps && peak_eps > 0 && (hasHistMults || fund_cap !== null || c.peak_eps_est !== null));
       let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null;
 
       if (hasValuationInputs) {{
@@ -3569,9 +3596,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           pe_vd = 0.5 * pe_mm + 0.5 * pe_mck;
         }}
 
-        // Regime-Bounded 5-Year Historical Harmonic P/E ([0.50x, 1.50x] of PE_VD, 25% weight)
-        const t_hist_raw = (2.0 * ml * mh) / (ml + mh);
-        const t_hist = Math.max(0.50 * pe_vd, Math.min(1.50 * pe_vd, t_hist_raw));
+        // Regime-Bounded 5-Year Historical Harmonic P/E ([0.50x, 1.50x] of PE_VD, 25% weight; falls back to PE_VD when 5Y history is unavailable)
+        let t_hist = pe_vd;
+        if (hasHistMults) {{
+          const t_hist_raw = (2.0 * ml * mh) / (ml + mh);
+          t_hist = Math.max(0.50 * pe_vd, Math.min(1.50 * pe_vd, t_hist_raw));
+        }}
         par_mult = 0.75 * pe_vd + 0.25 * t_hist;
         par_val = par_mult * peak_eps;
         vs_par = price / par_val - 1.0;
@@ -3717,10 +3747,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', 'Starting g', 'Expected g', 'Market-Implied g', 'Growth Margin', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', 'Starting g', 'Expected g', 'Market-Implied g', 'Growth Margin', 'Price', 'PAR Value', 'vs PAR', 'Cur P/E', 'PAR Mult', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
+        const gExpVal = (c.g_exp !== null && c.g_exp !== undefined) ? c.g_exp : c.g_imp;
         const row = [
           `"${{c.ticker || ''}}"`,
           `"${{(c.company || '').replace(/"/g, '""')}}"`,
@@ -3738,7 +3769,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           c.cap_implied !== null && c.cap_implied !== undefined ? c.cap_implied : '',
           c.cap_gap !== null && c.cap_gap !== undefined ? c.cap_gap : '',
           c.g_start !== null && c.g_start !== undefined ? c.g_start : '',
-          c.g_imp !== null && c.g_imp !== undefined ? c.g_imp : '',
+          gExpVal !== null && gExpVal !== undefined ? gExpVal : '',
           c.g_market !== null && c.g_market !== undefined ? c.g_market : '',
           c.g_gap !== null && c.g_gap !== undefined ? c.g_gap : '',
           c.price !== null && c.price !== undefined ? c.price : '',
@@ -3747,6 +3778,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           c.cur_mult !== null && c.cur_mult !== undefined ? c.cur_mult : '',
           c.par_mult !== null && c.par_mult !== undefined ? c.par_mult : '',
           c.irr_5y !== null && c.irr_5y !== undefined ? c.irr_5y : '',
+          c.roic_used !== null && c.roic_used !== undefined ? c.roic_used : '',
           c.roic_operating !== null && c.roic_operating !== undefined ? c.roic_operating : '',
           c.roic_median !== null && c.roic_median !== undefined ? c.roic_median : '',
           c.fcf_conv !== null && c.fcf_conv !== undefined ? c.fcf_conv : ''

@@ -88,7 +88,5 @@
     "ASML": "eu:ASML.NL",
     "FER": "eu:FER.ES"
   },
-  "parameters": {
-    "par_roic_cap": 35.0
-  }
+  "parameters": {}
 }

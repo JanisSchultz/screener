@@ -62,7 +62,5 @@
   "benchmark_symbols": {
     "MARKET": "EXSA.DE"
   },
-  "parameters": {
-    "par_roic_cap": 35.0
-  }
+  "parameters": {}
 }

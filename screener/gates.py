@@ -431,7 +431,8 @@ def par_valuation(
     g_demand = g_hist
     g_raw = g_start
 
-    if not price or not peak_eps or peak_eps <= 0 or not ml or not mh:
+    has_hist_mults = bool(ml and mh)
+    if not price or not peak_eps or peak_eps <= 0 or (not has_hist_mults and not fund_cap and peak_eps_override is None):
         return {"status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None,
                 "par_val": None, "vs_par": None, "g": g, "dy": dy, "coupon": (g + dy) if g is not None else None,
                 "g_start": g_start, "g_org_start": g_org_start, "g_1y": g_1y, "g_hist": g_hist, "g_cap": g_cap,
@@ -484,9 +485,13 @@ def par_valuation(
     raw_slope = (pe_vd - pe_vd0) / g_org_val if g_org_val > 1e-6 else 100.0
     eff_g_mult = raw_slope if raw_slope > 10.0 else 100.0
 
-    # Regime-Bounded 5-Year Historical Harmonic P/E (bounded within [0.50x, 1.50x] of PE_VD):
-    t_hist_raw = (2.0 * ml * mh) / (ml + mh)
-    t_hist = max(par_thist_min_ratio * pe_vd, min(par_thist_max_ratio * pe_vd, t_hist_raw))
+    # Regime-Bounded 5-Year Historical Harmonic P/E (bounded within [0.50x, 1.50x] of PE_VD; falls back to PE_VD when 5Y history is unavailable):
+    if has_hist_mults:
+        t_hist_raw = (2.0 * ml * mh) / (ml + mh)
+        t_hist = max(par_thist_min_ratio * pe_vd, min(par_thist_max_ratio * pe_vd, t_hist_raw))
+    else:
+        t_hist_raw = None
+        t_hist = pe_vd
 
     # 75/25 PAR Multiple:
     par_mult = par_vd_weight * pe_vd + (1.0 - par_vd_weight) * t_hist

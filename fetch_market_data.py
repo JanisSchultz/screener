@@ -226,7 +226,7 @@ def apply_mirrors(keys: list[str], yh: Yahoo, state: dict) -> None:
             for k in ("peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok",
                       "sales_1y", "sales_cagr", "sales_cagr_yrs", "opcost_1y", "opcost_cagr",
                       "cap_growth", "buyback_yield", "retention_rate", "roiic",
-                      "g_est", "g_implied"):
+                      "g_est", "g_implied", "roic_est"):
                 t[k] = s.get(k)
             if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:
                 fin_rate = yh.fx(s.get("fin_currency"), t.get("fin_currency")) or rate or 1.0
@@ -244,6 +244,9 @@ def write_report(state: dict) -> None:
     latest = {}
     for key, i, old, new in state["report"]:
         latest[(key, i)] = (old if (key, i) not in latest else latest[(key, i)][0], new)
+    metas = {key: load_universe(key) for key in {k for k, _ in latest}}
+    cmaps = {key: {c["id"]: c for c in m["companies"]} for key, m in metas.items()}
+    pmaps = {key: params(m) for key, m in metas.items()}
     cols = ["universe", "id"] + [f"{k}_{s}" for k in ("peak_oe_eps", "peak_oe_year", "mult_low_5y", "mult_high_5y",
                                                        "cagr_oe_eps", "roic_median", "dividends_ttm_m") for s in ("old", "new")]
     cols += ["p2p_ok", "verdict_old", "verdict_new", "vs_par_old", "vs_par_new", "irr_old", "irr_new", "fin_note"]
@@ -253,7 +256,10 @@ def write_report(state: dict) -> None:
         w = csv.writer(fh)
         w.writerow(cols)
         for (key, i), (old, new) in latest.items():
-            po, pn = par_valuation(old), par_valuation(new)
+            c = cmaps.get(key, {}).get(i, {})
+            p = pmaps.get(key)
+            po = par_valuation(old, p, cap=c.get("4"), moat=c.get("3a"), sub_industry=c.get("sub_industry"))
+            pn = par_valuation(new, p, cap=c.get("4"), moat=c.get("3a"), sub_industry=c.get("sub_industry"))
             r = [key, i]
             for k in ("peak_oe_eps", "peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "roic_median", "dividends_ttm_m"):
                 r += [old.get(k), new.get(k)]
