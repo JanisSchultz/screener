@@ -191,11 +191,14 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
 
     # ---- fundamentals + PAR inputs + multi-year panel
     fins = dict(meta["financials"])
+    yh = sources.Yahoo() if (not a.offline and not a.prices_only) else None
     today = dt.date.today().isoformat()
     for n, i in enumerate(ids, 1):
         c, esym = by_id[i], syms[i]
         old = fins.get(i, {"id": i})
         fund = eod.fundamentals(esym)
+        if yh is not None:
+            yh.statements(esym, force_refresh=a.refresh_fundamentals)
         s_check = eod.annual_series(fund) if fund else {}
         if (
             (not fund or not (s_check.get("ni") and s_check.get("sales")) or stale_fundamentals(s_check))

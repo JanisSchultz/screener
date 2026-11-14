@@ -845,6 +845,40 @@ class EODHD:
                     out[k][fy] = val
             out["period_end"][fy] = d_str
 
+        # 0. Reconcile IFRS PP&E-only EODHD CapEx and missing D&A/SBC against cached Yahoo statements (which sum PP&E + Intangibles).
+        pt_sym = (fund_data.get("General") or {}).get("PrimaryTicker")
+        if pt_sym and out["period_end"]:
+            y_stmt_path = next(
+                (p for p in (CACHE / "yahoo" / f"stmt_{safe_name(ys)}.json" for ys in _yahoo_sym_candidates(pt_sym))
+                 if p.exists()),
+                None,
+            )
+            if y_stmt_path is not None:
+                try:
+                    y_cf = (json.loads(y_stmt_path.read_text(encoding="utf-8")).get("cf") or {})
+                    y_cap = y_cf.get("Capital Expenditure") or {}
+                    y_ocf = y_cf.get("Operating Cash Flow") or {}
+                    y_da = y_cf.get("Depreciation And Amortization") or {}
+                    y_sbc = y_cf.get("Stock Based Compensation") or {}
+                except Exception:
+                    y_cap, y_ocf, y_da, y_sbc = {}, {}, {}, {}
+                for fy, d_str in out["period_end"].items():
+                    yv, yo = _f(y_cap.get(d_str)), _f(y_ocf.get(d_str))
+                    eo = out["ocf"].get(fy)
+                    if not (eo and yo and 0.90 <= abs(yo / eo) <= 1.10):
+                        continue
+                    ec = out["capex"].get(fy)
+                    if yv is not None and abs(yv) > 0 and (ec is None or abs(yv) > 1.5 * abs(ec)):
+                        out["capex"][fy] = abs(yv)
+                    if out["da"].get(fy) is None:
+                        yda = _f(y_da.get(d_str))
+                        if yda is not None:
+                            out["da"][fy] = abs(yda)
+                    if out["sbc"].get(fy) is None:
+                        ysbc = _f(y_sbc.get(d_str))
+                        if ysbc is not None:
+                            out["sbc"][fy] = abs(ysbc)
+
         # 1. Reporting Currency Transition Normalization (e.g. GMAB DKK->USD, NSIS-B DKK->EUR, TOM.OL NOK->EUR):
         # Check each section (income, balance sheet, cash flow) independently against the target currency so partial
         # restatements (e.g. NSIS-B 2022 where Income_Statement rev/ni were restated to EUR while Balance_Sheet & Cash_Flow
@@ -1296,13 +1330,27 @@ class SEC:
         return out
 
 
-# ------------------------------------------------------------------------- Yahoo (Legacy)
+# ------------------------------------------------------------------------- Yahoo (Cross-Validation & Gap-Fill)
+def _yahoo_sym_candidates(sym: str) -> list[str]:
+    """Map EODHD symbol (e.g. AAPL.US, EXPN.LSE, AMS.MC) to candidate Yahoo Finance tickers."""
+    out = []
+    if sym.endswith(".US"):
+        out.append(sym[:-3])
+    elif sym.endswith(".LSE"):
+        out.append(sym[:-4] + ".L")
+    out.append(sym)
+    return list(dict.fromkeys(out))
+
+
 class Yahoo:
     def __init__(self):
         self.yf = None
         if not settings.OFFLINE:
-            import yfinance as yf
-            self.yf = yf
+            try:
+                import yfinance as yf
+                self.yf = yf
+            except ImportError:
+                self.yf = None
         self._fx = {}
 
     def fx(self, frm: str, to: str):
@@ -1362,6 +1410,40 @@ class Yahoo:
         if not settings.OFFLINE:
             time.sleep(settings.YAHOO_PAUSE_S)
         return _cached(CACHE / "yahoo" / f"quote_{safe_name(symbol)}.json", fetch, days=1)
+
+    def statements(self, symbol: str, force_refresh: bool = False) -> dict | None:
+        """Fetch and cache annual financial statements (is, cf, bs) in data/_cache/yahoo/stmt_{y_sym}.json."""
+        cands = _yahoo_sym_candidates(symbol)
+        for ys in cands:
+            p = CACHE / "yahoo" / f"stmt_{safe_name(ys)}.json"
+            if p.exists() and not force_refresh and (settings.OFFLINE or (time.time() - p.stat().st_mtime) < settings.FUND_CACHE_DAYS * 86400):
+                try:
+                    return json.loads(p.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+        if settings.OFFLINE or self.yf is None:
+            return None
+        for ys in cands:
+            def fetch(y_sym=ys):
+                try:
+                    t = self.yf.Ticker(y_sym)
+                    def df_to_dict(df):
+                        if df is None or df.empty:
+                            return {}
+                        out = {}
+                        for row_name, row in df.iterrows():
+                            out[str(row_name)] = {str(col)[:10]: _f(val) for col, val in row.items()}
+                        return out
+                    res = {"is": df_to_dict(t.financials), "cf": df_to_dict(t.cashflow), "bs": df_to_dict(t.balance_sheet)}
+                    return res if (res["is"] or res["cf"] or res["bs"]) else None
+                except Exception:
+                    return None
+            time.sleep(settings.YAHOO_PAUSE_S)
+            data = _cached(CACHE / "yahoo" / f"stmt_{safe_name(ys)}.json", fetch,
+                           days=settings.FUND_CACHE_DAYS, force_refresh=force_refresh)
+            if data:
+                return data
+        return None
 
 
 def split_adjust(series: dict, splits: dict, ref_shares: float | None = None) -> dict:

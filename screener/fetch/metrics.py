@@ -42,11 +42,11 @@ def owner_addback(s: dict, y: int) -> float:
     D&A above maintenance capex is added back to net income; lease depreciation (rent paid through financing cash
     flow under IFRS 16) is deducted first so it is not treated as free cash. s['lease'] is empty for US GAAP filers."""
     da, cx, lease = s.get("da") or {}, s.get("capex") or {}, s.get("lease") or {}
-    if da.get(y) is None:
+    if da.get(y) is None or cx.get(y) is None:
         return 0.0
     l_cur, l_prev = lease.get(y), lease.get(y - 1)
     l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
-    return max(0.0, abs(da[y]) - abs(cx.get(y) or 0) - LEASE_DEP_RATE * l_avg)
+    return max(0.0, abs(da[y]) - abs(cx[y]) - LEASE_DEP_RATE * l_avg)
 
 
 def _last_years(series: dict, n: int, last: int | None = None) -> list[int]:
