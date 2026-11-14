@@ -93,7 +93,9 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
     windfall / one-off years the override excludes cannot depress the multiples."""
     eps = owner_eps_series(series)
     out, notes = {}, []
-    spikes = spike_years(series)
+    all_ni_yrs = series.get("ni") or {}
+    ref_last = max(eps) if eps else (max(all_ni_yrs) if all_ni_yrs else None)
+    spikes = [y for y in spike_years(series) if ref_last is None or y > ref_last - 2 * PEAK_YEARS]
     if spikes:
         notes.append("non-cash earnings spike left out of peak: FY" + ", FY".join(map(str, spikes)))
     if not eps or not fx_rep_to_quote:

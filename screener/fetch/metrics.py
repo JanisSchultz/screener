@@ -4,6 +4,7 @@ Shared by the SEC (US) and Yahoo (EU / gaps) fetchers so both produce identical 
 """
 from __future__ import annotations
 
+import math
 from statistics import median
 
 DEFAULT_TAX = 0.21
@@ -27,6 +28,83 @@ def cagr(series: dict, years: int):
     if a is None or b is None or a <= 0 or b <= 0:
         return None
     return (b / a) ** (1 / years) - 1
+
+
+def exp_weighted_ols_cagr(
+    series: dict,
+    max_years: int = 10,
+    half_life: float = 5.0,
+    last: int | None = None,
+) -> tuple[float | None, int | None]:
+    """Compute 10-Year Exponentially-Weighted Log-Linear OLS growth rate (half-life = 5.0y),
+    with automatic permanent spinoff/divestiture perimeter reset and single-year M&A/outlier winsorization."""
+    if not series:
+        return None, None
+    yrs_all = sorted(y for y, v in series.items() if v is not None and v > 0 and (last is None or y <= last))
+    if len(yrs_all) < 2:
+        return None, None
+    end_y = yrs_all[-1]
+    yrs = [y for y in yrs_all if end_y - max_years <= y <= end_y]
+    if len(yrs) < 2:
+        return None, None
+
+    # 1. Detect permanent corporate breakup / spinoff perimeter resets (e.g. GE 2023, HWM 2019):
+    # where revenue/cost drops >35% in one year AND the post-reset maximum remains <82% of the pre-reset minimum.
+    reset_idx = 0
+    for i in range(1, len(yrs)):
+        y0, y1 = yrs[i - 1], yrs[i]
+        if series[y1] / series[y0] < 0.65 and len(yrs[i:]) >= 3:
+            pre_min = min(series[y] for y in yrs[:i])
+            post_max = max(series[y] for y in yrs[i:])
+            if post_max < 0.82 * pre_min:
+                reset_idx = i
+    if reset_idx > 0:
+        yrs = yrs[reset_idx:]
+
+    # 2. Extract annual log-transitions and winsorize isolated 1-year M&A / restructuring jumps
+    yoy_logs = []
+    for i in range(1, len(yrs)):
+        y0, y1 = yrs[i - 1], yrs[i]
+        dt_y = y1 - y0
+        if 1 <= dt_y <= 2:
+            yoy_logs.append(math.log(series[y1] / series[y0]) / dt_y)
+    if not yoy_logs:
+        span_tot = yrs[-1] - yrs[0]
+        if span_tot > 0:
+            return (series[yrs[-1]] / series[yrs[0]]) ** (1.0 / span_tot) - 1.0, span_tot
+        return None, None
+
+    med_log = median(yoy_logs)
+    clean_pts = [(yrs[0], 0.0)]
+    cum = 0.0
+    for i in range(1, len(yrs)):
+        y0, y1 = yrs[i - 1], yrs[i]
+        dt_y = y1 - y0
+        raw_step = math.log(series[y1] / series[y0]) / dt_y
+        if len(yoy_logs) >= 4 and (raw_step < med_log - 0.22 or raw_step > med_log + 0.30):
+            adj_step = max(med_log - 0.15, min(med_log + 0.20, 0.5 * raw_step + 0.5 * med_log))
+        else:
+            adj_step = raw_step
+        cum += adj_step * dt_y
+        clean_pts.append((y1, cum))
+
+    # 3. Exponentially-Weighted Least Squares (WLS) regression slope over clean_pts
+    lam = math.log(2.0) / half_life
+    ws, xs, ys = [], [], []
+    for t_y, val_log in clean_pts:
+        w = math.exp(-lam * (end_y - t_y))
+        ws.append(w)
+        xs.append(float(t_y - yrs[0]))
+        ys.append(val_log)
+    w_sum = sum(ws)
+    x_bar = sum(w * x for w, x in zip(ws, xs)) / w_sum
+    y_bar = sum(w * y for w, y in zip(ws, ys)) / w_sum
+    num = sum(w * (x - x_bar) * (y - y_bar) for w, x, y in zip(ws, xs, ys))
+    den = sum(w * ((x - x_bar) ** 2) for w, x in zip(ws, xs))
+    if den <= 1e-9:
+        return None, None
+    beta = num / den
+    return math.exp(beta) - 1.0, (yrs[-1] - yrs[0])
 
 
 def implied_shares(ni: dict, eps: dict, shares: dict) -> dict:
@@ -202,35 +280,31 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
-    # v6.32 3-Anchor + Logarithmic Mauboussin Growth Engine multi-year inputs (incl. OpCost = Sales - EBIT)
+    # 10-Year Exponentially-Weighted Log-Linear OLS Growth Engine (Sales & Operating Costs)
     if sales:
-        s_end = max(sales)
         s1_val = cagr(sales, 1)
         if s1_val is not None:
             out["sales_1y"] = round(s1_val, 4)
-        for span in (5, 4, 3, 2):
-            s0, s1 = sales.get(s_end - span), sales.get(s_end)
-            if s0 is not None and s1 is not None and s0 > 0 and s1 > 0:
-                out["sales_cagr"] = round((s1 / s0) ** (1.0 / span) - 1.0, 4)
-                out["sales_cagr_yrs"] = span
-                break
+        s_wls, s_span = exp_weighted_ols_cagr(sales, max_years=10, half_life=5.0, last=last)
+        if s_wls is not None and s_span is not None:
+            out["sales_cagr"] = round(s_wls, 4)
+            out["sales_cagr_yrs"] = s_span
 
     opcost_ser = {
         y: sales[y] - ebit[y]
         for y in set(sales) & set(ebit)
-        if sales.get(y) is not None and ebit.get(y) is not None and sales[y] > ebit[y] > 0
+        if sales.get(y) is not None and ebit.get(y) is not None and sales[y] > ebit[y] and sales[y] > 0
     }
+    for y, oc_v in g("opcost").items():
+        if oc_v is not None and oc_v > 0:
+            opcost_ser[y] = oc_v
     if opcost_ser:
-        oc_end = max(opcost_ser)
         oc1_val = cagr(opcost_ser, 1)
         if oc1_val is not None:
             out["opcost_1y"] = round(max(-0.40, min(0.60, oc1_val)), 4)
-        for span in (5, 4, 3, 2):
-            oc0, oc1 = opcost_ser.get(oc_end - span), opcost_ser.get(oc_end)
-            if oc0 is not None and oc1 is not None and oc0 > 0 and oc1 > 0:
-                oc_c = (oc1 / oc0) ** (1.0 / span) - 1.0
-                out["opcost_cagr"] = round(max(-0.25, min(0.45, oc_c)), 4)
-                break
+        oc_wls, _ = exp_weighted_ols_cagr(opcost_ser, max_years=10, half_life=5.0, last=last)
+        if oc_wls is not None:
+            out["opcost_cagr"] = round(max(-0.25, min(0.45, oc_wls)), 4)
 
     shares = implied_shares(ni, g("eps"), g("shares"))
     sh_yrs = sorted(y for y, v in shares.items() if v and v > 0 and (last is None or y <= last))

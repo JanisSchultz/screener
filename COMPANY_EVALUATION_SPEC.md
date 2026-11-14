@@ -293,9 +293,9 @@ Because companies passing the 6 Munger Quality Gates maintain roughly constant m
 2. **Normal Organic Growth Fallback Hierarchy (`base_org`)**:
    - `opcost_cagr` $\rightarrow$ `sales_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ `sales_1y` $\rightarrow$ $\text{g\_implied} - \text{bb\_pos}$ $\rightarrow$ `0.035`.
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Ceiling (`g_exp`)**:
-   - Bounded by $[2.0\%, \text{Scale\_Cap}_{\text{rev}}]$ (`HYPER` $9.5\%$, `MEGA` $9.8\%$, `LARGE` $10.5\%$, `MID/SM` $12.0\%$):
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.02,\, \text{Scale\_Cap}_{\text{rev}}]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
-   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.02,\, \text{Scale\_Cap}_{\text{rev}}]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.02,\, \text{Scale\_Cap}_{\text{rev}} + \text{bb\_pos}]}(g_{\text{est}})$.
+   - Because the Explicit Mauboussin-Fade DCF already fades growth linearly each year from $g_0$ down to $3.5\%$, $g_0$ is anchored directly on `base_org` without legacy revenue scale caps or the `2.0%` floor:
+     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.22]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
+   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.22]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.22 + \text{bb\_pos}]}(g_{\text{est}})$.
 
 ---
 
@@ -310,7 +310,8 @@ Fair Value Multiple (`par_mult` / `pe_vd`) is computed `100%` from an explicit y
    $$\text{PV}_{\text{Stage 2}} = \frac{E_N(1 + 0.035)\left(1 - \frac{0.035}{\text{ROIC}_{\text{term}}}\right)}{(r - 0.035)(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck})$$
 3. **100% Explicit DCF Fair Value Multiple**:
    $$\text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
-4. **Mark-to-Market HoldCo NAV & Finite Concession Physics**:
+4. **Balance-Sheet Financial Discount Rate ($r_{\text{fin}} = 10.25\%$), Mark-to-Market HoldCo NAV & Finite Concession Physics**:
+   - **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`): Discounted at $r_{\text{fin}} = 10.25\%$ (`par_cost_of_equity_fin = 0.1025`) vs $r = 8.50\%$ for operating companies and asset-light fee financials.
    - **Mark-to-Market HoldCos / Insurers**: $\text{par\_mult} = \text{pe\_vd} = \frac{1}{\text{ROIC}_0}$ ($\text{P/B} = 1.0\text{x}$).
    - **IFRIC-12 Infrastructure Concessions** (`fcf_conv > 1.25`): $\text{PV}_{\text{Stage 2}} = 0$ and $\text{par\_mult} = \text{PV}_{\text{Stage 1}}$.
 

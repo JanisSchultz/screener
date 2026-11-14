@@ -127,10 +127,11 @@ Because companies passing the 6 Munger Quality Gates maintain roughly constant o
    - **Fallback 5**: `par_g_base = 0.035` (`3.5%`).
 
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Growth Ceiling (`g_exp`)**:
+   - Because the Explicit Mauboussin-Fade DCF already fades growth linearly every year from $g_0$ down to $g_{\text{term}} = 3.5\%$, legacy pre-fade revenue scale caps (`scale_cap`) and the `2.0%` floor are not applied:
    - If explicit analyst override `g_est` is populated:
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.02,\, \text{scale\_cap}]}(g_{\text{est}} - \text{bb\_pos}), \qquad g_{\text{exp}} = \text{clamp}_{[0.02,\, \text{scale\_cap} + \text{bb\_pos}]}(g_{\text{est}})$$
+     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.22]}(g_{\text{est}} - \text{bb\_pos}), \qquad g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.22 + \text{bb\_pos}]}(g_{\text{est}})$$
    - Otherwise:
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.02,\, \text{scale\_cap}]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
+     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.22]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
    - Crucially, a temporary 1-year growth slump (`sales_1y`) does not penalize $g_0$ (`g_org_exp`), allowing the screener to identify compounders whose current 1Y growth has slumped well below their normal Operating Cost Base growth ceiling while their share price is temporarily depressed.
 
 ---
@@ -153,8 +154,9 @@ Because the DCF explicitly values `100%` of firm Free Cash Flow ($1 - g_t/\text{
 3. **100% Explicit DCF Fair Value Multiple (`par_mult` / `pe_vd`)**:
    $$\text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
 
-4. **Industry-Specific Capital Base & Value Driver Physics**:
-   - **GAAP ROIC (`roic_median`) Selection**: For **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`) and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), active ROIC defaults to `roic_median` (GAAP ROIC) rather than `roic_operating` (Tangible ROIC).
+4. **Industry-Specific Capital Base, Discount Rate ($r_{\text{fin}} = 10.25\%$) & Value Driver Physics**:
+   - **Balance-Sheet Financial Discount Rate ($r_{\text{fin}} = 10.25\%$)**: For **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, and `Multi-Sector Holdings`), the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion use $r_{\text{fin}} = 10.25\%$ (`par_cost_of_equity_fin = 0.1025`) rather than $r = 8.50\%$, reflecting balance-sheet leverage, tail/catastrophe risk, and regulatory solvency capital lock-up.
+   - **GAAP ROIC (`roic_median`) Selection**: For **Balance-Sheet Financials** and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), active ROIC defaults to `roic_median` (GAAP ROIC) rather than `roic_operating` (Tangible ROIC).
    - **Mark-to-Market HoldCo / Insurer NAV Physics**: For `Multi-Sector Holdings` and `Insurance` (excluding `Insurance Brokers`) with no `peak_eps_est` override where reported EPS already captures unrealized mark-to-market portfolio appreciation $\Delta\text{NAV}$ (`fcf_conv < 0.25`, or `fcf_conv is None` in `Multi-Sector Holdings` with `mult_high_5y < 12.0`), a fair $1.0\text{x}$ NAV ($\text{P/B} = 1.0\text{x}$) implies $\text{par\_mult} = \text{pe\_vd} = \frac{1}{\text{ROIC}_{\text{exp}}}$.
    - **IFRIC-12 Finite Concession Annuity Physics**: For `Construction & Engineering` and `Highways & Railtracks` with `fcf_conv > 1.25` (where concession assets amortize and revert to the state at expiry), Stage 2 terminal perpetuity is omitted ($\text{PV}_{\text{Stage 2}} = 0$) and $\text{par\_mult} = \text{PV}_{\text{Stage 1}}$.
 

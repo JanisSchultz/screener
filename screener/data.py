@@ -76,6 +76,23 @@ FIN_FIELDS = [c[0] for c in FIN_COLUMNS]
 TECH_FIELDS = [c[0] for c in TECH_COLUMNS]
 BENCH_FIELDS = [c[0] for c in BENCH_COLUMNS]
 
+PANEL_FIELDS = [
+    "id", "ticker", "eodhd_symbol", "fy", "period_end", "filing_date", "fin_currency",
+    "revenue_m", "cogs_m", "gross_profit_m", "rd_m", "sga_m", "opex_m", "opcost_m",
+    "ebitda_m", "da_m", "ebit_m", "interest_expense_m", "interest_income_m",
+    "pretax_income_m", "tax_m", "eff_tax_rate", "net_income_m", "net_income_common_m",
+    "ocf_m", "capex_m", "fcf_reported_m", "owner_fcf_m", "sbc_m", "dividends_paid_m",
+    "share_buybacks_m", "net_borrowings_m", "working_capital_change_m",
+    "cash_m", "cash_and_st_inv_m", "receivables_m", "inventory_m", "current_assets_m",
+    "ppe_net_m", "goodwill_m", "intangibles_m", "total_assets_m",
+    "accounts_payable_m", "current_deferred_rev_m", "current_liab_m",
+    "st_debt_m", "lt_debt_m", "total_debt_m", "net_debt_m", "total_liab_m",
+    "equity_m", "retained_earnings_m", "net_working_capital_m",
+    "ic_gaap_m", "ic_tangible_m", "nopat_m", "roic_gaap", "roic_tangible",
+    "roe", "rote", "gross_margin", "ebit_margin", "net_margin", "fcf_conversion",
+    "diluted_shares_m", "eps_gaap", "eps_street", "owner_eps", "ye_price_quote",
+]
+
 
 def universe_keys() -> list[str]:
     return sorted(p.name for p in DATA_DIR.iterdir() if (p / "universe.json").exists())

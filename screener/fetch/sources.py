@@ -1,35 +1,1087 @@
-"""Data sources: SEC EDGAR companyfacts (US fundamentals, ~10 yrs) and Yahoo Finance via yfinance
-(prices, weekly history, FX, and ~4 yrs of annual statements for non-SEC filers)."""
+"""Data sources: EODHD Fundamentals & EOD Historical Prices/FX API (primary),
+plus legacy SEC EDGAR and Yahoo Finance wrappers for backwards compatibility."""
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import datetime as dt
 import json
 import math
+import os
+from pathlib import Path
+import re
+from statistics import median
+import threading
 import time
 import warnings
-from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
+from .. import config as C
 from ..data import DATA_DIR
-from . import settings
+from . import metrics, par, settings
 
 CACHE = DATA_DIR / "_cache"
+EODHD_CACHE = CACHE / "eodhd"
 
 
-def _cached(path: Path, fetch, days=settings.CACHE_DAYS):
-    if path.exists() and (settings.OFFLINE or (time.time() - path.stat().st_mtime) < days * 86400):
-        return json.loads(path.read_text())
+def _load_api_key() -> str:
+    key = os.environ.get("EODHD_API_KEY", "").strip()
+    if key:
+        return key
+    env_path = DATA_DIR.parent / ".env"
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                if k.strip() == "EODHD_API_KEY":
+                    return v.strip().strip("'").strip('"')
+    return ""
+
+
+def _cached(path: Path, fetch, days=settings.CACHE_DAYS, force_refresh: bool = False):
+    if path.exists() and not force_refresh:
+        if settings.OFFLINE or (time.time() - path.stat().st_mtime) < days * 86400:
+            try:
+                return json.loads(path.read_text(encoding="utf-8"))
+            except Exception:
+                pass
     if settings.OFFLINE:                    # offline: use the cache whatever its age, never fetch
+        if path.exists():
+            try:
+                return json.loads(path.read_text(encoding="utf-8"))
+            except Exception:
+                return None
         return None
     data = fetch()
     if data is not None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(data))
+        path.write_text(json.dumps(data), encoding="utf-8")
     return data
 
 
-# --------------------------------------------------------------------------- SEC
+def _f(x):
+    if x is None or x == "" or x == "None" or x == "NA":
+        return None
+    try:
+        v = float(x)
+        return None if (math.isnan(v) or math.isinf(v)) else v
+    except (TypeError, ValueError):
+        return None
+
+
+def _fval(row: dict | None, *keys: str) -> float | None:
+    if not isinstance(row, dict):
+        return None
+    for k in keys:
+        v = _f(row.get(k))
+        if v is not None:
+            return v
+    return None
+
+
+def _norm_name(name: str | None) -> str:
+    if not name:
+        return ""
+    s = name.lower()
+    for tok in (" inc.", " inc", " corp.", " corp", " corporation", " plc", " n.v.", " nv", " s.a.", " sa",
+                " se", " ag", " ab", " asa", " oyj", " a/s", " s.p.a.", " spa", " ltd.", " ltd", " limited",
+                " holding", " holdings", " group", " co.", " company", " the "):
+        s = s.replace(tok, " ")
+    return re.sub(r"[^a-z0-9]+", "", s)
+
+
+# ------------------------------------------------------------------------- EODHD
+class EODHD:
+    """Clean per-company fundamentals, EOD prices, splits, and FX from EODHD API."""
+
+    EXCHANGE_MAP = {
+        "US": "US",
+        "Toronto Stock Exchange": "TO",
+        "London Stock Exchange": "LSE",
+        "Xetra": "XETRA",
+        "Euronext Paris": "PA",
+        "SIX Swiss Exchange": "SW",
+        "Nasdaq Stockholm": "ST",
+        "Borsa Italiana": "MI",
+        "Euronext Amsterdam": "AS",
+        "Bolsa de Madrid": "MC",
+        "Nasdaq Copenhagen": "CO",
+        "Oslo Børs": "OL",
+        "Nasdaq Helsinki": "HE",
+        "Warsaw SE": "WAR",
+        "Euronext Brussels": "BR",
+        "Athens SE": "AT",
+        "Wiener Börse": "VI",
+        "Euronext Dublin": "IR",
+        "Euronext Lisbon": "LS",
+    }
+
+    BENCHMARK_MAP = {
+        "SPY": "SPY.US",
+        "XLC": "XLC.US",
+        "XLY": "XLY.US",
+        "XLP": "XLP.US",
+        "XLE": "XLE.US",
+        "XLF": "XLF.US",
+        "XLV": "XLV.US",
+        "XLI": "XLI.US",
+        "XLK": "XLK.US",
+        "XLB": "XLB.US",
+        "XLRE": "XLRE.US",
+        "XLU": "XLU.US",
+        "EXSA.DE": "EXSA.XETRA",
+        "XIU.TO": "XIU.TO",
+    }
+
+    def __init__(self, api_key: str | None = None):
+        self.api_key = api_key or _load_api_key()
+        self._lock = threading.Lock()
+        self._last_req = 0.0
+        self._local = threading.local()
+        self._fx: dict[tuple[str, str], float | None] = {}
+        self._ex_symbols: dict[str, dict[str, dict]] = {}
+        self._symbol_map_path = EODHD_CACHE / "symbol_map.json"
+        self._symbol_map: dict[str, str] = {}
+        if self._symbol_map_path.exists():
+            try:
+                self._symbol_map = json.loads(self._symbol_map_path.read_text(encoding="utf-8"))
+            except Exception:
+                self._symbol_map = {}
+
+    def _session(self):
+        s = getattr(self._local, "session", None)
+        if s is None:
+            import requests
+            s = requests.Session()
+            s.headers.update({"Accept-Encoding": "gzip, deflate", "User-Agent": settings.SEC_USER_AGENT})
+            self._local.session = s
+        return s
+
+    def _get(self, path: str, params: dict | None = None):
+        if settings.OFFLINE:
+            return None
+        if not self.api_key:
+            raise RuntimeError("EODHD_API_KEY not found in .env or environment")
+        with self._lock:
+            now = time.time()
+            wait = (1.0 / settings.EODHD_MAX_RPS) - (now - self._last_req)
+            if wait > 0:
+                time.sleep(wait)
+            self._last_req = time.time()
+        q = {"api_token": self.api_key, "fmt": "json"}
+        if params:
+            q.update(params)
+        url = f"https://eodhd.com/api/{path.lstrip('/')}"
+        for attempt in range(3):
+            try:
+                r = self._session().get(url, params=q, timeout=30)
+                if r.status_code == 404:
+                    return None
+                if r.status_code == 429:
+                    time.sleep(2.0 * (attempt + 1))
+                    continue
+                r.raise_for_status()
+                return r.json()
+            except Exception as exc:
+                msg = str(exc)
+                if any(s in msg for s in ("nodename nor servname", "Name or service not known", "Failed to establish a new connection", "Max retries exceeded", "Failed to resolve")):
+                    raise RuntimeError(f"Network unreachable (sandboxed): {exc}") from exc
+                if attempt == 2:
+                    return None
+                time.sleep(1.0 * (attempt + 1))
+        return None
+
+    def user_info(self) -> dict | None:
+        """Query /api/user to check daily API quota usage and limits."""
+        return self._get("user")
+
+    def save_symbol_map(self) -> None:
+        self._symbol_map_path.parent.mkdir(parents=True, exist_ok=True)
+        self._symbol_map_path.write_text(json.dumps(dict(sorted(self._symbol_map.items())), indent=2), encoding="utf-8")
+
+    def exchange_symbols(self, ex_code: str) -> dict[str, dict]:
+        """Return {Code.upper(): item_dict} for an EODHD exchange code (1 API call, cached 30 days)."""
+        if ex_code in self._ex_symbols:
+            return self._ex_symbols[ex_code]
+        data = _cached(
+            EODHD_CACHE / "exchanges" / f"{ex_code}.json",
+            lambda: self._get(f"exchange-symbol-list/{ex_code}"),
+            days=30,
+        )
+        by_code = {}
+        if isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict) and item.get("Code"):
+                    by_code[str(item["Code"]).upper()] = item
+        self._ex_symbols[ex_code] = by_code
+        return by_code
+
+    def search_symbol(self, query: str) -> list[dict]:
+        safe = re.sub(r"[^A-Za-z0-9_.-]+", "_", query.strip())
+        data = _cached(
+            EODHD_CACHE / "search" / f"{safe}.json",
+            lambda: self._get(f"search/{query.strip()}"),
+            days=30,
+        )
+        return data if isinstance(data, list) else []
+
+    def benchmark_symbol(self, sym: str) -> str:
+        if sym in self.BENCHMARK_MAP:
+            return self.BENCHMARK_MAP[sym]
+        if "." not in sym:
+            return f"{sym}.US"
+        return sym
+
+    def default_symbol(self, c: dict, meta: dict) -> str:
+        """Deterministic heuristic EODHD symbol (used before or without exchange list lookup)."""
+        t = str(c["ticker"]).split(" / ")[0].strip()
+        if meta.get("symbol_rule") == "us":
+            return t.replace(".", "-").replace(" ", "-") + ".US"
+        ex_name = c.get("exchange") or ""
+        ex_code = self.EXCHANGE_MAP.get(ex_name, "US")
+        # Clean London trailing dots (e.g. BP. -> BP, TW. -> TW, BT.A -> BT-A)
+        if ex_code == "LSE":
+            t_clean = t.rstrip(".").replace(".", "-").replace(" ", "-")
+            return f"{t_clean}.{ex_code}"
+        t_clean = t.rstrip(".").replace(".", "-").replace(" ", "-")
+        return f"{t_clean}.{ex_code}"
+
+    def resolve_symbol(self, c: dict, meta: dict) -> str:
+        """Fast deterministic EODHD SYMBOL.EXCHANGE resolution (uses cached symbol_map override if present)."""
+        key = meta.get("key") or ("us" if meta.get("symbol_rule") == "us" else "eu")
+        cid = c["id"]
+        map_key = f"{key}:{cid}"
+        if map_key in self._symbol_map:
+            return self._symbol_map[map_key]
+        heur = self.default_symbol(c, meta)
+        self._symbol_map[map_key] = heur
+        return heur
+
+    def fallback_resolve(self, c: dict, meta: dict) -> str | None:
+        """Called only when `default_symbol` returns 404 from EODHD: searches EODHD /api/search/ and exchange list."""
+        if settings.OFFLINE:
+            return None
+        key = meta.get("key") or ("us" if meta.get("symbol_rule") == "us" else "eu")
+        cid = c["id"]
+        map_key = f"{key}:{cid}"
+        heur = self.default_symbol(c, meta)
+        ex_name = "US" if meta.get("symbol_rule") == "us" else (c.get("exchange") or "US")
+        ex_code = self.EXCHANGE_MAP.get(ex_name, "US")
+        raw_t = str(c["ticker"]).split(" / ")[0].strip()
+
+        candidates = []
+        for cand in (
+            raw_t,
+            raw_t.rstrip("."),
+            raw_t.replace(" ", "-").replace(".", "-"),
+            raw_t.rstrip(".").replace(" ", "-").replace(".", "-"),
+            raw_t.replace(" ", ""),
+            raw_t.replace(".", ""),
+            raw_t.replace(" ", "_"),
+            raw_t[:-3].strip() if raw_t.upper().endswith(" FI") else "",
+            raw_t[:-4].strip() if raw_t.upper().endswith(" SDB") else "",
+        ):
+            cand_u = cand.strip().upper()
+            if cand_u and cand_u not in candidates:
+                candidates.append(cand_u)
+
+        target_norm = _norm_name(c.get("company"))
+        comp_q = (c.get("company") or "").replace("'", " ").replace("’", " ")
+        queries = [comp_q, raw_t.rstrip(".")] if ex_code == "MI" else [raw_t.rstrip("."), comp_q]
+        for q in queries:
+            if not q:
+                continue
+            hits = self.search_symbol(q)
+            if not hits:
+                continue
+            # 1. Exact exchange + candidate ticker match
+            for h in hits:
+                if str(h.get("Exchange")).upper() == ex_code and str(h.get("Code")).upper() in candidates:
+                    sym = f"{h['Code']}.{h['Exchange']}"
+                    if sym != heur:
+                        self._symbol_map[map_key] = sym
+                        return sym
+            # 2. Exact exchange + company name match
+            for h in hits:
+                h_norm = _norm_name(h.get("Name"))
+                if str(h.get("Exchange")).upper() == ex_code and target_norm and h_norm and (target_norm in h_norm or h_norm in target_norm):
+                    sym = f"{h['Code']}.{h['Exchange']}"
+                    if sym != heur:
+                        self._symbol_map[map_key] = sym
+                        return sym
+            # 3. Cross-exchange match: MUST match company name (prefer Frankfurt F for Borsa Italiana listings)
+            pref_ex = (
+                ("F", "XETRA", "PA", "AS", "STU", "DU", "MU", "MI", "MIL", "LSE", "SW", "MC", "BR", "ST", "CO", "HE", "OL", "VI", "IR", "LS", "WAR", "AT", "TO", "US")
+                if ex_code == "MI"
+                else ("XETRA", "F", "PA", "AS", "STU", "DU", "MU", "MI", "MIL", "LSE", "SW", "MC", "BR", "ST", "CO", "HE", "OL", "VI", "IR", "LS", "WAR", "AT", "TO", "US")
+            )
+            matched = []
+            for h in hits:
+                h_ex = str(h.get("Exchange") or "").upper()
+                h_norm = _norm_name(h.get("Name"))
+                if h_ex in pref_ex and target_norm and h_norm and (target_norm in h_norm or h_norm in target_norm):
+                    matched.append((pref_ex.index(h_ex), f"{h['Code']}.{h['Exchange']}"))
+            if matched:
+                matched.sort(key=lambda x: x[0])
+                for _, sym in matched:
+                    if sym == heur:
+                        continue
+                    f_test = self.fundamentals(sym)
+                    if f_test:
+                        s_test = self.annual_series(f_test)
+                        if s_test.get("ni") and s_test.get("sales"):
+                            self._symbol_map[map_key] = sym
+                            return sym
+                sym = matched[0][1]
+                if sym != heur:
+                    self._symbol_map[map_key] = sym
+                    return sym
+        return None
+
+    def fundamentals(self, symbol: str) -> dict | None:
+        """Fetch full unfiltered EODHD fundamentals JSON (1 request = 10 API calls) and cache in data/_cache/eodhd/{symbol}.json."""
+        path = EODHD_CACHE / f"{symbol}.json"
+        data = _cached(
+            path,
+            lambda: self._get(f"fundamentals/{symbol}"),
+            days=settings.FUND_CACHE_DAYS,
+            force_refresh=settings.REFRESH_FUNDAMENTALS,
+        )
+        return data if isinstance(data, dict) and ("Financials" in data or "General" in data) else None
+
+    def eod(self, symbol: str, start: str = "2014-01-01") -> list[dict]:
+        """Fetch 12+ years of daily EOD bars (1 request = 1 API call) and cache in data/_cache/eodhd/eod/{symbol}.json."""
+        path = EODHD_CACHE / "eod" / f"{symbol}.json"
+        data = _cached(
+            path,
+            lambda: self._get(f"eod/{symbol}", {"from": start, "period": "d"}),
+            days=settings.EOD_CACHE_DAYS,
+        )
+        return data if isinstance(data, list) else []
+
+    def splits(self, symbol: str, fund_data: dict | None = None, start: str = "2014-01-01") -> dict[str, float]:
+        """Return {ISO_date: split_factor}. Skips API call if LastSplitDate in fundamentals is before `start`."""
+        if isinstance(fund_data, dict):
+            sd = fund_data.get("SplitsDividends") or {}
+            last_split = sd.get("LastSplitDate")
+            if not last_split or str(last_split) < start:
+                return {}
+        path = EODHD_CACHE / "splits" / f"{symbol}.json"
+        raw = _cached(
+            path,
+            lambda: self._get(f"splits/{symbol}", {"from": start}),
+            days=settings.FUND_CACHE_DAYS,
+        )
+        out: dict[str, float] = {}
+        if isinstance(raw, list):
+            for item in raw:
+                if not isinstance(item, dict) or not item.get("date") or not item.get("split"):
+                    continue
+                sp_str = str(item["split"])
+                if "/" in sp_str:
+                    a, b = sp_str.split("/", 1)
+                    fa, fb = _f(a), _f(b)
+                    if fa and fb and fb > 0:
+                        out[str(item["date"])] = fa / fb
+        elif isinstance(fund_data, dict):
+            sd = fund_data.get("SplitsDividends") or {}
+            last_split = sd.get("LastSplitDate")
+            fac_str = str(sd.get("LastSplitFactor") or "")
+            if last_split and str(last_split) >= start and ":" in fac_str:
+                a, b = fac_str.split(":", 1)
+                fa, fb = _f(a), _f(b)
+                if fa and fb and fb > 0:
+                    out[str(last_split)] = fa / fb
+        return out
+
+    def fx(self, frm: str | None, to: str | None) -> float | None:
+        """Rate to convert 1 unit of `frm` into `to` (handles GBp/GBX/ZAc sub-unit quotes)."""
+        if not frm or not to:
+            return None
+        scale = 1.0
+        if frm in ("GBp", "GBX"):
+            frm, scale = "GBP", 0.01
+        elif frm == "ZAc":
+            frm, scale = "ZAR", 0.01
+        to_scale = 1.0
+        if to in ("GBp", "GBX"):
+            to, to_scale = "GBP", 100.0
+        elif to == "ZAc":
+            to, to_scale = "ZAR", 100.0
+        if frm == to:
+            return scale * to_scale
+
+        k = (frm, to)
+        if k not in self._fx:
+            rate = self._fetch_fx_pair(frm, to)
+            if rate is None:
+                inv = self._fetch_fx_pair(to, frm)
+                if inv and inv > 0:
+                    rate = 1.0 / inv
+            if rate is None and frm != "USD" and to != "USD":
+                r1 = self._fetch_fx_pair(frm, "USD") or (1.0 / self._fetch_fx_pair("USD", frm) if self._fetch_fx_pair("USD", frm) else None)
+                r2 = self._fetch_fx_pair("USD", to) or (1.0 / self._fetch_fx_pair(to, "USD") if self._fetch_fx_pair(to, "USD") else None)
+                if r1 and r2:
+                    rate = r1 * r2
+            if rate is None:
+                # Fallback to static config FX_TO_USD table or legacy Yahoo FX cache
+                u_frm, u_to = C.FX_TO_USD.get(frm), C.FX_TO_USD.get(to)
+                if u_frm and u_to:
+                    rate = u_frm / u_to
+            self._fx[k] = rate
+        return None if self._fx[k] is None else self._fx[k] * scale * to_scale
+
+    def _fetch_fx_pair(self, frm: str, to: str) -> float | None:
+        path = EODHD_CACHE / "fx" / f"fx_{frm}{to}.json"
+        start = (dt.date.today() - dt.timedelta(days=30)).isoformat()
+
+        def fetch():
+            bars = self._get(f"eod/{frm}{to}.FOREX", {"from": start, "period": "d"})
+            if isinstance(bars, list) and bars:
+                last_close = _f(bars[-1].get("close"))
+                if last_close and last_close > 0:
+                    return last_close
+            return None
+
+        val = _cached(path, fetch, days=settings.EOD_CACHE_DAYS)
+        if isinstance(val, (int, float)) and val > 0:
+            return float(val)
+        # Check legacy yahoo fx cache if offline
+        yh_path = CACHE / "yahoo" / f"fx_{frm}{to}.json"
+        if yh_path.exists():
+            try:
+                v = json.loads(yh_path.read_text(encoding="utf-8"))
+                if isinstance(v, (int, float)) and v > 0:
+                    return float(v)
+            except Exception:
+                pass
+        return None
+
+    def seed_fx(self, frm: str, to: str, rate: float) -> None:
+        if frm in ("GBp", "GBX"):
+            frm, rate = "GBP", rate * 100.0
+        if to in ("GBp", "GBX"):
+            to, rate = "GBP", rate / 100.0
+        if frm and to and rate and frm != to:
+            self._fx.setdefault((frm, to), rate)
+
+    @staticmethod
+    def _split_adjusted_bars(eod_bars: list[dict], splits: dict[str, float]) -> list[tuple[str, float, float]]:
+        """Return [(date_str, split_adj_close, volume)] sorted chronologically.
+        Adjusts raw `close` strictly for stock splits (avoiding dividend-reinvestment distortion in historical P/E)."""
+        if not eod_bars:
+            return []
+        sp_events = sorted((d, r) for d, r in (splits or {}).items() if r and r > 0)
+        out = []
+        for b in eod_bars:
+            d = b.get("date")
+            c = _f(b.get("close"))
+            v = _f(b.get("volume")) or 0.0
+            if not d or c is None or c <= 0:
+                continue
+            factor = 1.0
+            for sp_d, sp_r in sp_events:
+                if d < sp_d:
+                    factor *= sp_r
+            out.append((str(d), c / factor, v))
+        out.sort(key=lambda x: x[0])
+        return out
+
+    def monthly_prices(self, symbol: str, eod_bars: list[dict] | None = None, splits: dict[str, float] | None = None) -> dict[str, float]:
+        """{ISO_date_of_month_end_bar: split_adjusted_close} over ~12 years in quote currency."""
+        bars = eod_bars if eod_bars is not None else self.eod(symbol)
+        adj = self._split_adjusted_bars(bars, splits or {})
+        by_ym: dict[str, tuple[str, float]] = {}
+        for d, c, _ in adj:
+            by_ym[d[:7]] = (d, c)
+        return {d: c for d, c in by_ym.values()}
+
+    def year_end_prices(self, symbol: str, eod_bars: list[dict] | None = None, splits: dict[str, float] | None = None) -> dict[int, float]:
+        """{calendar_year: last_monthly_close} in quote currency."""
+        mp = self.monthly_prices(symbol, eod_bars, splits)
+        out: dict[int, float] = {}
+        for d, c in sorted(mp.items()):
+            out[int(d[:4])] = c
+        return out
+
+    def weekly_bars(self, eod_bars: list[dict], splits: dict[str, float] | None = None) -> tuple[list[float], list[float], list[str]]:
+        """Aggregate daily EOD bars into weekly (closes, volumes, dates) over the latest ~2.5 years."""
+        adj = self._split_adjusted_bars(eod_bars, splits or {})
+        if not adj:
+            return [], [], []
+        cutoff = (dt.date.fromisoformat(adj[-1][0]) - dt.timedelta(days=800)).isoformat()
+        recent = [x for x in adj if x[0] >= cutoff]
+        by_wk: dict[tuple[int, int], list[tuple[str, float, float]]] = {}
+        for d, c, v in recent:
+            iso = dt.date.fromisoformat(d).isocalendar()
+            by_wk.setdefault((iso[0], iso[1]), []).append((d, c, v))
+        closes, volumes, dates = [], [], []
+        for wk in sorted(by_wk):
+            items = by_wk[wk]
+            dates.append(items[-1][0])
+            closes.append(items[-1][1])
+            volumes.append(sum(x[2] for x in items))
+        return closes, volumes, dates
+
+    @staticmethod
+    def _detect_currencies(symbol: str, fund_data: dict | None, latest_price: float | None) -> tuple[str | None, str | None]:
+        """Return (quote_currency, fin_currency), normalizing LSE pence to 'GBp' and statement currency to 'GBP'."""
+        if not isinstance(fund_data, dict):
+            return None, None
+        gen = fund_data.get("General") or {}
+        hl = fund_data.get("Highlights") or {}
+        ss = fund_data.get("SharesStats") or {}
+        fin = fund_data.get("Financials") or {}
+        inc = fin.get("Income_Statement") or {}
+        yearly = inc.get("yearly") or {}
+
+        q_ccy = gen.get("CurrencyCode") or None
+        fin_ccy = inc.get("currency_symbol")
+        if yearly:
+            latest_dt = max(yearly)
+            fin_ccy = (yearly[latest_dt] or {}).get("currency_symbol") or fin_ccy
+        fin_ccy = fin_ccy or q_ccy
+        if fin_ccy in ("GBX", "GBp"):
+            fin_ccy = "GBP"
+        elif fin_ccy == "ZAc":
+            fin_ccy = "ZAR"
+
+        if q_ccy in ("GBX", "GBp"):
+            q_ccy = "GBp"
+        elif q_ccy == "GBP" and symbol.endswith(".LSE"):
+            # Verify whether EOD price is in pence (GBp) or pounds (GBP)
+            mcap = _f(hl.get("MarketCapitalization"))
+            sh = _f(ss.get("SharesOutstanding"))
+            if latest_price and mcap and sh and sh > 0 and (latest_price * sh) / mcap > 25.0:
+                q_ccy = "GBp"
+            elif latest_price and latest_price > 100.0:
+                q_ccy = "GBp"
+        return q_ccy, fin_ccy
+
+    def quote(self, symbol: str, fund_data: dict | None = None, eod_bars: list[dict] | None = None,
+              series: dict | None = None) -> dict:
+        """Build quote dict {price, currency, shares, fin_currency, dps, market_cap_raw} from EODHD data."""
+        fund = fund_data if fund_data is not None else self.fundamentals(symbol)
+        bars = eod_bars if eod_bars is not None else self.eod(symbol)
+        hl = (fund or {}).get("Highlights") or {}
+        ss = (fund or {}).get("SharesStats") or {}
+        sd = (fund or {}).get("SplitsDividends") or {}
+        val = (fund or {}).get("Valuation") or {}
+
+        px = _f(bars[-1].get("close")) if bars else None
+        q_ccy, fin_ccy = self._detect_currencies(symbol, fund, px)
+        mcap_raw = _f(hl.get("MarketCapitalization"))
+        if mcap_raw is None and _f(hl.get("MarketCapitalizationMln")):
+            mcap_raw = _f(hl.get("MarketCapitalizationMln")) * 1e6
+
+        sh_stats = _f(ss.get("SharesOutstanding"))
+        sh_series = (series or {}).get("shares") or {}
+        latest_stmt_sh = sh_series[max(sh_series)] if sh_series else None
+
+        # If EOD price is missing, infer from MarketCapitalization / SharesOutstanding
+        if px is None and mcap_raw and sh_stats and sh_stats > 0:
+            px = mcap_raw / sh_stats
+            if q_ccy == "GBp":
+                px *= 100.0
+
+        # Reconcile share count for market_cap_m so multi-class shares (e.g. ROG.SW, MAERSK-B.CO, BRK-B.US)
+        # use whole-firm share count on the exact same basis as `price` and `owner_eps`
+        px_in_main_ccy = (px * 0.01) if (px and q_ccy in ("GBp", "GBX", "ZAc")) else px
+        imp_mcap_sh = (mcap_raw / px_in_main_ccy) if (mcap_raw and px_in_main_ccy and px_in_main_ccy > 0) else None
+
+        shares = sh_stats
+        if latest_stmt_sh and latest_stmt_sh > 0:
+            if not shares or shares <= 0:
+                shares = latest_stmt_sh
+            elif not (0.75 <= shares / latest_stmt_sh <= 1.33):
+                # When SharesStats counts only a single share class while statements count total firm shares,
+                # use latest_stmt_sh (which has already been aligned to the traded share class in annual_series)
+                shares = imp_mcap_sh if (imp_mcap_sh and 0.75 <= imp_mcap_sh / latest_stmt_sh <= 1.33) else latest_stmt_sh
+        elif imp_mcap_sh and (not shares or not (0.75 <= shares / imp_mcap_sh <= 1.33)):
+            shares = imp_mcap_sh
+
+        dps = _f(hl.get("DividendShare")) or _f(sd.get("ForwardAnnualDividendRate"))
+        # Note: DividendShare is in main currency (e.g. GBP or EUR/USD); if quote_currency is GBp, convert DPS to GBp
+        if dps is not None and q_ccy in ("GBp", "GBX"):
+            dy_hl = _f(hl.get("DividendYield")) or _f(sd.get("ForwardAnnualDividendYield"))
+            if px and dy_hl and dy_hl > 0 and abs((dps / px) - dy_hl) > abs((dps * 100.0 / px) - dy_hl):
+                dps *= 100.0
+
+        return {
+            "price": px,
+            "currency": q_ccy,
+            "shares": shares,
+            "fin_currency": fin_ccy,
+            "dps": dps,
+            "market_cap_raw": mcap_raw,
+            "trailing_pe": _f(val.get("TrailingPE")) or _f(hl.get("PERatio")),
+            "forward_pe": _f(val.get("ForwardPE")),
+        }
+
+    def annual_series(self, fund_data: dict, latest_price: float | None = None,
+                      splits: dict[str, float] | None = None) -> dict:
+        """Extract clean multi-decade annual series from EODHD Fundamentals JSON."""
+        fin = fund_data.get("Financials") or {}
+        inc = (fin.get("Income_Statement") or {}).get("yearly") or {}
+        qtr_inc = (fin.get("Income_Statement") or {}).get("quarterly") or {}
+        bs = (fin.get("Balance_Sheet") or {}).get("yearly") or {}
+        cf = (fin.get("Cash_Flow") or {}).get("yearly") or {}
+        hl = fund_data.get("Highlights") or {}
+        ss = fund_data.get("SharesStats") or {}
+        gen = fund_data.get("General") or {}
+        earn_ann = (fund_data.get("Earnings") or {}).get("Annual") or {}
+
+        is_bank = (
+            "Bank" in str(gen.get("Industry") or "")
+            or gen.get("GicGroup") == "Banks"
+            or gen.get("GicIndustry") in ("Banks", "Consumer Finance")
+        )
+
+        osh_raw = (fund_data.get("outstandingShares") or {}).get("annual") or {}
+        osh_by_yr: dict[int, float] = {}
+        for v in osh_raw.values():
+            if isinstance(v, dict) and v.get("date") and _f(v.get("shares")):
+                try:
+                    osh_by_yr[int(str(v["date"])[:4])] = float(_f(v["shares"]))
+                except (ValueError, TypeError):
+                    pass
+
+        keys = ("sales", "opcost", "ni", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
+                "ocf", "capex", "sbc", "da", "dividends",
+                "equity", "debt", "cash", "goodwill", "intang", "assets", "shares")
+        out: dict[str, dict[int, float]] = {k: {} for k in keys}
+        inc_ccys: dict[int, str] = {}
+
+        all_dates = sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys()))
+        inc_dates = sorted(inc.keys())
+        for d_str in all_dates:
+            try:
+                day = dt.date.fromisoformat(d_str)
+            except ValueError:
+                continue
+            fy = day.year if day.month > 6 else day.year - 1
+            i_r, b_r, c_r = inc.get(d_str) or {}, bs.get(d_str) or {}, cf.get(d_str) or {}
+
+            rev_raw = _fval(i_r, "totalRevenue", "grossProfit")
+            gp_raw = _fval(i_r, "grossProfit")
+            op_inc = _fval(i_r, "operatingIncome")
+
+            # Skip trailing single-quarter transition stubs in yearly table (e.g. FERG.US 2026-07-31)
+            if inc_dates and d_str == inc_dates[-1] and len(inc_dates) >= 2 and rev_raw and rev_raw > 0:
+                prev_rev = _fval(inc.get(inc_dates[-2]) or {}, "totalRevenue", "grossProfit")
+                q_rev = _fval(qtr_inc.get(d_str) or {}, "totalRevenue", "grossProfit")
+                if prev_rev and prev_rev > 0 and q_rev and q_rev > 0:
+                    if rev_raw < 0.45 * prev_rev and 0.80 <= (rev_raw / q_rev) <= 1.25:
+                        continue
+
+            # For Banks & Consumer Lenders, grossProfit is Net Banking Revenue (NII + Non-Interest Income),
+            # stripping out deposit interest expense (costOfRevenue) that distorts gross revenue in rate cycles.
+            if (
+                is_bank
+                and gp_raw is not None
+                and gp_raw > 0
+                and (rev_raw is None or gp_raw >= 0.25 * rev_raw)
+                and (op_inc is None or gp_raw > op_inc)
+            ):
+                sales = gp_raw
+            else:
+                sales = rev_raw
+
+            ni = _fval(i_r, "netIncomeApplicableToCommonShares", "netIncome", "netIncomeFromContinuingOps")
+            if ni is None:
+                ni = _fval(c_r, "netIncome")
+            # Require at least revenue or net income to count as a reported fiscal year
+            if sales is None and ni is None:
+                continue
+
+            r_ccy = i_r.get("currency_symbol") or b_r.get("currency_symbol") or c_r.get("currency_symbol")
+            if r_ccy in ("GBX", "GBp"):
+                r_ccy = "GBP"
+            elif r_ccy == "ZAc":
+                r_ccy = "ZAR"
+            if r_ccy:
+                inc_ccys[fy] = str(r_ccy)
+
+            pretax = _fval(i_r, "incomeBeforeTax")
+            tax = _fval(i_r, "incomeTaxExpense", "taxProvision")
+            interest = _fval(i_r, "interestExpense")
+
+            # Prefer operatingIncome (true GAAP operating profit = Revenue - COGS - OpEx);
+            # for banks/insurers where operatingIncome may be absent or >= revenue, fall back cleanly
+            ebit_raw = _fval(i_r, "ebit")
+            if op_inc is not None and (sales is None or op_inc < sales):
+                ebit = op_inc
+            elif ebit_raw is not None and (sales is None or ebit_raw < sales):
+                ebit = ebit_raw
+            elif pretax is not None and (sales is None or pretax < sales):
+                ebit = pretax
+            else:
+                ebit = op_inc if op_inc is not None else ebit_raw
+
+            # Direct Recurring Operating Cost (OpCost = COGS + OpEx), including years with GAAP operating losses (ebit <= 0)
+            opcost = (sales - ebit) if (sales is not None and ebit is not None and sales > ebit and sales > 0) else None
+            if not is_bank and sales and sales > 0:
+                cor = _fval(i_r, "costOfRevenue")
+                sga = _fval(i_r, "sellingGeneralAdministrative")
+                rnd = _fval(i_r, "researchDevelopment")
+                opex_tot = _fval(i_r, "totalOperatingExpenses")
+                if cor and cor > 0 and sga and sga > 0:
+                    direct_cost = cor + sga + max(0.0, rnd or 0.0)
+                    if 0.35 * sales <= direct_cost <= 1.25 * sales:
+                        if (opex_tot is not None and opex_tot < 0) or (
+                            ebit is not None and ebit <= 0 and opex_tot and opex_tot > 2.2 * (sga + max(0.0, rnd or 0.0))
+                        ):
+                            opcost = direct_cost
+
+            ocf = _fval(c_r, "totalCashFromOperatingActivities")
+            capex = _fval(c_r, "capitalExpenditures")
+            sbc = _fval(c_r, "stockBasedCompensation")
+            da_cands = [abs(x) for x in (
+                _fval(i_r, "reconciledDepreciation"),
+                _fval(i_r, "depreciationAndAmortization"),
+                _fval(c_r, "depreciation"),
+            ) if x is not None]
+            da = max(da_cands) if da_cands else None
+            div = _fval(c_r, "dividendsPaid")
+
+            eq = _fval(b_r, "totalStockholderEquity", "commonStockTotalEquity")
+            debt = _fval(b_r, "longTermDebt", "longTermDebtTotal", "shortLongTermDebtTotal")
+            cash = _fval(b_r, "cashAndEquivalents", "cash", "cashAndShortTermInvestments")
+            gw = _fval(b_r, "goodWill")
+            intang = _fval(b_r, "intangibleAssets")
+            assets = _fval(b_r, "totalAssets")
+
+            bs_sh = _fval(b_r, "commonStockSharesOutstanding")
+            o_sh = osh_by_yr.get(fy)
+            sh = o_sh if (o_sh and o_sh > 0) else bs_sh
+            if o_sh and bs_sh and bs_sh > 0 and not (0.33 <= o_sh / bs_sh <= 3.0):
+                # If one of the two share sources has a unit outlier, pick the one closer to SharesStats
+                sh_ref = _f(ss.get("SharesOutstanding"))
+                if sh_ref and sh_ref > 0:
+                    sh = o_sh if abs(math.log(o_sh / sh_ref)) <= abs(math.log(bs_sh / sh_ref)) else bs_sh
+
+            e_st = _f((earn_ann.get(d_str) or {}).get("epsActual"))
+
+            for k, val in (
+                ("sales", sales), ("opcost", opcost), ("ni", ni), ("ebit", ebit), ("pretax", pretax),
+                ("tax", tax), ("interest", interest), ("ocf", ocf), ("capex", capex),
+                ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq),
+                ("debt", debt), ("cash", cash), ("goodwill", gw), ("intang", intang),
+                ("assets", assets), ("shares", sh), ("eps_street", e_st),
+            ):
+                if val is not None:
+                    out[k][fy] = val
+
+        # 1. Reporting Currency Transition Normalization (e.g. GMAB DKK->USD, NSIS-B DKK->EUR, TOM.OL NOK->EUR):
+        # Check each section (income, balance sheet, cash flow) independently against the target currency so partial
+        # restatements (e.g. NSIS-B 2022 where Income_Statement rev/ni were restated to EUR while Balance_Sheet & Cash_Flow
+        # remained in DKK) convert only the items still in the old currency.
+        if inc_ccys and len(set(inc_ccys.values())) > 1 and out["sales"]:
+            target_ccy = inc_ccys[max(inc_ccys)]
+            inc_keys = ("sales", "opcost", "ni", "ebit", "pretax", "tax", "interest")
+            bs_keys = ("equity", "debt", "cash", "goodwill", "intang", "assets")
+            cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
+            yrs_sorted = sorted(out["sales"])
+            for sec_ref_key, sec_keys in (("sales", inc_keys), ("assets", bs_keys), ("ocf", cf_keys)):
+                if not out[sec_ref_key]:
+                    continue
+                ref_val = abs(out[sec_ref_key].get(yrs_sorted[-1]) or 0.0)
+                for idx in range(len(yrs_sorted) - 2, -1, -1):
+                    y = yrs_sorted[idx]
+                    y_ccy = inc_ccys.get(y)
+                    cur_val = abs(out[sec_ref_key].get(y) or 0.0)
+                    if not (cur_val > 0 and ref_val > 0):
+                        continue
+                    if y_ccy and y_ccy != target_ccy:
+                        fx_rate = self.fx(y_ccy, target_ccy)
+                        if fx_rate and not (0.55 <= fx_rate <= 1.80):
+                            raw_ratio = cur_val / ref_val
+                            adj_ratio = (cur_val * fx_rate) / ref_val
+                            if abs(math.log(adj_ratio)) < abs(math.log(raw_ratio)) - 0.5:
+                                for mk in sec_keys:
+                                    if y in out[mk]:
+                                        out[mk][y] = out[mk][y] * fx_rate
+                                cur_val = abs(out[sec_ref_key].get(y) or 0.0)
+                    ref_val = cur_val
+
+        # 2. Historical Share Count Split / Glitch Reconciliation:
+        # Reconcile single-year unadjusted pre-split share counts (e.g. SAMPO 2023 1/5th, SQN 2022 1/10th, SFZN 2023 1/10th)
+        # and unadjusted historical pre-split share counts against the latest share count basis.
+        if len(out["shares"]) >= 3:
+            sh_yrs = sorted(out["shares"])
+            # First pass: fix isolated 1-year share count glitches where year y jumps by >1.85x or <0.54x vs BOTH neighbors
+            for i in range(1, len(sh_yrs) - 1):
+                y_prev, y_cur, y_next = sh_yrs[i - 1], sh_yrs[i], sh_yrs[i + 1]
+                s_prev, s_cur, s_next = out["shares"][y_prev], out["shares"][y_cur], out["shares"][y_next]
+                if s_prev > 0 and s_cur > 0 and s_next > 0 and (0.75 <= s_prev / s_next <= 1.33):
+                    r_prev = s_cur / s_prev
+                    if r_prev < 0.54 or r_prev > 1.85:
+                        out["shares"][y_cur] = 0.5 * (s_prev + s_next)
+            # Also check if the very last year in `out["shares"]` is an isolated 2x/0.5x glitch relative to SharesOutstanding AND prior year (e.g. HON 2025)
+            sh_ref = _f(ss.get("SharesOutstanding"))
+            if sh_ref and sh_ref > 0 and len(sh_yrs) >= 2:
+                y_last, y_prev = sh_yrs[-1], sh_yrs[-2]
+                s_last, s_prev = out["shares"][y_last], out["shares"][y_prev]
+                if s_last > 0 and s_prev > 0 and (0.75 <= s_prev / sh_ref <= 1.33):
+                    if s_last / sh_ref > 1.75 or s_last / sh_ref < 0.57:
+                        out["shares"][y_last] = sh_ref
+            # Second pass: if a recent stock split occurred (`splits` or `LastSplitFactor`) and earlier years
+            # are unadjusted by that exact split factor, adjust them to the current post-split basis
+            sd = fund_data.get("SplitsDividends") or {}
+            cand_factors: list[float] = []
+            for sp_d, sp_r in (splits or {}).items():
+                if sp_d >= "2019-01-01" and sp_r and (sp_r >= 1.8 or sp_r <= 0.55):
+                    cand_factors.append(sp_r)
+            fac_str = str(sd.get("LastSplitFactor") or "")
+            last_sp_dt = str(sd.get("LastSplitDate") or "")
+            if last_sp_dt >= "2019-01-01" and ":" in fac_str:
+                a_s, b_s = fac_str.split(":", 1)
+                fa, fb = _f(a_s), _f(b_s)
+                if fa and fb and fb > 0:
+                    r_sp = fa / fb
+                    if (r_sp >= 1.8 or r_sp <= 0.55) and not any(abs(r_sp - x) < 0.05 for x in cand_factors):
+                        cand_factors.append(r_sp)
+            if cand_factors:
+                latest_sh = out["shares"][sh_yrs[-1]]
+                for y in sh_yrs[:-1]:
+                    s_y = out["shares"][y]
+                    if s_y > 0 and latest_sh > 0:
+                        ratio_to_latest = latest_sh / s_y
+                        for cf_val in cand_factors:
+                            if 0.72 <= (ratio_to_latest / cf_val) <= 1.38:
+                                out["shares"][y] = s_y * cf_val
+                                break
+
+        # 3. Multi-class / ADR share-basis alignment:
+        # Check if statement shares differ by a class/ADR multiplier from traded share basis (e.g. BRK-B 1:1500)
+        if out["shares"] and out["ni"]:
+            last_fy = max(out["shares"])
+            last_sh = out["shares"][last_fy]
+            mcap = _f(hl.get("MarketCapitalization"))
+            gen_ccy = (fund_data.get("General") or {}).get("CurrencyCode")
+            px_main = (latest_price * 0.01) if (latest_price and gen_ccy in ("GBX", "GBp", "ZAc")) else latest_price
+            imp_mcap_sh = (mcap / px_main) if (mcap and px_main and px_main > 0) else _f(ss.get("SharesOutstanding"))
+            eps_hl = _f(hl.get("DilutedEpsTTM")) or _f(hl.get("EarningsShare"))
+            last_ni = out["ni"].get(last_fy)
+            if imp_mcap_sh and last_sh > 0 and not (0.40 <= last_sh / imp_mcap_sh <= 2.50):
+                # Verify via Highlights EPS whether traded price is on `imp_mcap_sh` per-share basis
+                if eps_hl and eps_hl > 0 and last_ni and last_ni > 0:
+                    imp_eps_sh = last_ni / eps_hl
+                    if 0.50 <= imp_eps_sh / imp_mcap_sh <= 2.0:
+                        scale_sh = imp_mcap_sh / last_sh
+                        out["shares"] = {y: v * scale_sh for y, v in out["shares"].items()}
+
+        # Compute clean GAAP EPS = NI / shares so `implied_shares` in metrics.py is never corrupted by Non-GAAP Street EPS
+        for y, n_val in out["ni"].items():
+            sh_val = out["shares"].get(y)
+            if n_val is not None and sh_val and sh_val > 0:
+                out["eps"][y] = n_val / sh_val
+
+        return out
+
+    def panel_rows(self, cid: str, ticker: str, symbol: str, fund_data: dict,
+                   series: dict | None = None, ye_prices: dict[int, float] | None = None) -> list[dict]:
+        """Build multi-year historical fundamental panel rows (PANEL_FIELDS) for a company."""
+        fin = fund_data.get("Financials") or {}
+        inc = (fin.get("Income_Statement") or {}).get("yearly") or {}
+        bs = (fin.get("Balance_Sheet") or {}).get("yearly") or {}
+        cf = (fin.get("Cash_Flow") or {}).get("yearly") or {}
+        s = series if series is not None else self.annual_series(fund_data)
+        _, fin_ccy = self._detect_currencies(symbol, fund_data, None)
+
+        tax_rate = {
+            y: (s["tax"][y] / s["pretax"][y])
+            for y in s.get("tax", {})
+            if s.get("pretax", {}).get(y)
+        }
+        roic_g, roic_t = metrics.roic_series(
+            s.get("ebit", {}), tax_rate, s.get("equity", {}), s.get("debt", {}),
+            s.get("cash", {}), s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {})
+        )
+        fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}))
+        oe_ser = par.owner_eps_series(s)
+
+        by_fy_dates: dict[int, str] = {}
+        for d_str in sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys())):
+            try:
+                day = dt.date.fromisoformat(d_str)
+                fy = day.year if day.month > 6 else day.year - 1
+                by_fy_dates[fy] = d_str
+            except ValueError:
+                continue
+
+        rows = []
+        m = lambda v: round(v / 1e6, 3) if v is not None else None
+        r4 = lambda v: round(v, 4) if v is not None else None
+
+        for fy in sorted(by_fy_dates):
+            d_str = by_fy_dates[fy]
+            i_r, b_r, c_r = inc.get(d_str) or {}, bs.get(d_str) or {}, cf.get(d_str) or {}
+            rev = s["sales"].get(fy)
+            ni = s["ni"].get(fy)
+            if rev is None and ni is None:
+                continue
+            ebit = s["ebit"].get(fy)
+            da = s["da"].get(fy)
+            pretax = s["pretax"].get(fy)
+            tax = s["tax"].get(fy)
+            tr = tax_rate.get(fy)
+            eff_tr = metrics.DEFAULT_TAX if (tr is None or not (0.0 <= tr <= 0.40)) else tr
+            nopat = ebit * (1.0 - eff_tr) if ebit is not None else None
+
+            eq = s["equity"].get(fy)
+            debt = s["debt"].get(fy)
+            cash = s["cash"].get(fy)
+            gw = s["goodwill"].get(fy)
+            intang = s["intang"].get(fy)
+            ic_g = (eq + (debt or 0.0) - (cash or 0.0)) if eq is not None else None
+            ic_t = max(ic_g - ((gw or 0.0) + (intang or 0.0)), (1.0 / 3.0) * ic_g) if (ic_g is not None and ic_g > 0) else None
+            tbv = (eq - ((gw or 0.0) + (intang or 0.0))) if eq is not None else None
+
+            ocf = s["ocf"].get(fy)
+            capex = s["capex"].get(fy)
+            sbc = s["sbc"].get(fy)
+            div = s["dividends"].get(fy)
+            fcf_rep = _fval(c_r, "freeCashFlow")
+            o_fcf = fcf_ser.get(fy)
+            buybacks_raw = _fval(c_r, "salePurchaseOfStock")
+            buybacks = -buybacks_raw if buybacks_raw is not None else None
+
+            sh = s["shares"].get(fy)
+            st_debt = _fval(b_r, "shortLongTermDebt", "shortTermDebt")
+            tot_debt = _fval(b_r, "shortLongTermDebtTotal", "longTermDebtTotal") or ((debt or 0.0) + (st_debt or 0.0) if (debt is not None or st_debt is not None) else None)
+            net_debt = _fval(b_r, "netDebt")
+            if net_debt is None and tot_debt is not None and cash is not None:
+                net_debt = tot_debt - cash
+
+            rows.append({
+                "id": cid,
+                "ticker": ticker,
+                "eodhd_symbol": symbol,
+                "fy": fy,
+                "period_end": d_str,
+                "filing_date": i_r.get("filing_date") or b_r.get("filing_date") or c_r.get("filing_date"),
+                "fin_currency": i_r.get("currency_symbol") or fin_ccy,
+                "revenue_m": m(rev),
+                "cogs_m": m(_fval(i_r, "costOfRevenue")),
+                "gross_profit_m": m(_fval(i_r, "grossProfit")),
+                "rd_m": m(_fval(i_r, "researchDevelopment")),
+                "sga_m": m(_fval(i_r, "sellingGeneralAdministrative")),
+                "opex_m": m(_fval(i_r, "totalOperatingExpenses")),
+                "opcost_m": m(rev - ebit) if (rev is not None and ebit is not None and rev > ebit) else None,
+                "ebitda_m": m(_fval(i_r, "ebitda") or ((ebit + da) if (ebit is not None and da is not None) else None)),
+                "da_m": m(da),
+                "ebit_m": m(ebit),
+                "interest_expense_m": m(abs(s["interest"][fy])) if s["interest"].get(fy) is not None else None,
+                "interest_income_m": m(_fval(i_r, "interestIncome")),
+                "pretax_income_m": m(pretax),
+                "tax_m": m(tax),
+                "eff_tax_rate": r4(tr),
+                "net_income_m": m(_fval(i_r, "netIncome") or ni),
+                "net_income_common_m": m(ni),
+                "ocf_m": m(ocf),
+                "capex_m": m(abs(capex)) if capex is not None else None,
+                "fcf_reported_m": m(fcf_rep),
+                "owner_fcf_m": m(o_fcf),
+                "sbc_m": m(abs(sbc)) if sbc is not None else None,
+                "dividends_paid_m": m(abs(div)) if div is not None else None,
+                "share_buybacks_m": m(buybacks),
+                "net_borrowings_m": m(_fval(c_r, "netBorrowings")),
+                "working_capital_change_m": m(_fval(c_r, "changeInWorkingCapital")),
+                "cash_m": m(cash),
+                "cash_and_st_inv_m": m(_fval(b_r, "cashAndShortTermInvestments") or cash),
+                "receivables_m": m(_fval(b_r, "netReceivables")),
+                "inventory_m": m(_fval(b_r, "inventory")),
+                "current_assets_m": m(_fval(b_r, "totalCurrentAssets")),
+                "ppe_net_m": m(_fval(b_r, "propertyPlantAndEquipmentNet", "propertyPlantEquipment")),
+                "goodwill_m": m(gw),
+                "intangibles_m": m(intang),
+                "total_assets_m": m(s["assets"].get(fy)),
+                "accounts_payable_m": m(_fval(b_r, "accountsPayable")),
+                "current_deferred_rev_m": m(_fval(b_r, "currentDeferredRevenue")),
+                "current_liab_m": m(_fval(b_r, "totalCurrentLiabilities")),
+                "st_debt_m": m(st_debt),
+                "lt_debt_m": m(debt),
+                "total_debt_m": m(tot_debt),
+                "net_debt_m": m(net_debt),
+                "total_liab_m": m(_fval(b_r, "totalLiab")),
+                "equity_m": m(eq),
+                "retained_earnings_m": m(_fval(b_r, "retainedEarnings")),
+                "net_working_capital_m": m(_fval(b_r, "netWorkingCapital")),
+                "ic_gaap_m": m(ic_g),
+                "ic_tangible_m": m(ic_t),
+                "nopat_m": m(nopat),
+                "roic_gaap": r4(roic_g.get(fy)),
+                "roic_tangible": r4(roic_t.get(fy)),
+                "roe": r4(ni / eq) if (ni is not None and eq and eq > 0) else None,
+                "rote": r4(ni / tbv) if (ni is not None and tbv and tbv > 0) else None,
+                "gross_margin": r4(_fval(i_r, "grossProfit") / rev) if (_fval(i_r, "grossProfit") is not None and rev and rev > 0) else None,
+                "ebit_margin": r4(ebit / rev) if (ebit is not None and rev and rev > 0) else None,
+                "net_margin": r4(ni / rev) if (ni is not None and rev and rev > 0) else None,
+                "fcf_conversion": r4(o_fcf / ni) if (o_fcf is not None and ni and ni > 0) else None,
+                "diluted_shares_m": round(sh / 1e6, 3) if sh else None,
+                "eps_gaap": r4(s["eps"].get(fy)),
+                "eps_street": r4(s["eps_street"].get(fy)),
+                "owner_eps": r4(oe_ser.get(fy)),
+                "ye_price_quote": round(ye_prices[fy], 2) if (ye_prices and fy in ye_prices) else None,
+            })
+        return rows
+
+    def prefetch_batch(self, symbols: list[str], fetch_fundamentals: bool = True, fetch_eod: bool = True) -> None:
+        """Concurrent prefetcher for EODHD fundamentals and EOD price series."""
+        if settings.OFFLINE:
+            return
+        todo_fund = [
+            s for s in symbols
+            if fetch_fundamentals and (
+                settings.REFRESH_FUNDAMENTALS
+                or not (EODHD_CACHE / f"{s}.json").exists()
+                or (time.time() - (EODHD_CACHE / f"{s}.json").stat().st_mtime) >= settings.FUND_CACHE_DAYS * 86400
+            )
+        ]
+        todo_eod = [
+            s for s in symbols
+            if fetch_eod and (
+                not (EODHD_CACHE / "eod" / f"{s}.json").exists()
+                or (time.time() - (EODHD_CACHE / "eod" / f"{s}.json").stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400
+            )
+        ]
+        if not todo_fund and not todo_eod:
+            return
+
+        total_tasks = len(todo_fund) + len(todo_eod)
+        done = 0
+        with ThreadPoolExecutor(max_workers=settings.EODHD_WORKERS) as pool:
+            futs = []
+            for s in todo_fund:
+                futs.append(pool.submit(self.fundamentals, s))
+            for s in todo_eod:
+                futs.append(pool.submit(self.eod, s))
+            for _ in as_completed(futs):
+                done += 1
+                if done % 100 == 0 or done == total_tasks:
+                    print(f"  prefetched {done}/{total_tasks} EODHD payloads", flush=True)
+
+        # Prefetch splits only for symbols whose cached fundamentals indicate a split since 2014-01-01
+        if fetch_eod:
+            todo_splits = []
+            for s in symbols:
+                sp_path = EODHD_CACHE / "splits" / f"{s}.json"
+                if sp_path.exists():
+                    continue
+                fp = EODHD_CACHE / f"{s}.json"
+                if fp.exists():
+                    fund = self.fundamentals(s)
+                    last_sp = ((fund or {}).get("SplitsDividends") or {}).get("LastSplitDate")
+                    if last_sp and str(last_sp) >= "2014-01-01":
+                        todo_splits.append((s, fund))
+            if todo_splits:
+                with ThreadPoolExecutor(max_workers=settings.EODHD_WORKERS) as pool:
+                    list(pool.map(lambda x: self.splits(x[0], x[1]), todo_splits))
+
+
+# --------------------------------------------------------------------------- SEC (Legacy)
 class SEC:
     def __init__(self):
         self.s = None
@@ -67,7 +1119,6 @@ class SEC:
         return _cached(CACHE / "sec" / f"CIK{cik:010d}.json",
                        lambda: self._get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"))
 
-    # concept fallbacks per series; first concept with data wins per year
     CONCEPTS = {
         "sales": ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet",
                   "RevenueFromContractWithCustomerIncludingAssessedTax", "RevenuesNetOfInterestExpense"],
@@ -108,8 +1159,8 @@ class SEC:
 
     def _extract_series(self, gaap: dict, concepts: list[str], is_instant: bool = False) -> dict:
         merged = {}
-        for c in concepts:                      # companies switch tags over time: fill each year
-            ser = {}                            # from the first concept that reports it
+        for c in concepts:
+            ser = {}
             units = gaap.get(c, {}).get("units", {})
             vals = units.get("USD") or units.get("USD/shares") or units.get("shares") or []
             for v in vals:
@@ -122,7 +1173,7 @@ class SEC:
                     days = (end - dt.date.fromisoformat(v["start"])).days
                     if not 330 <= days <= 400:
                         continue
-                fy = end.year if end.month > 6 else end.year - 1   # fiscal year label by period end
+                fy = end.year if end.month > 6 else end.year - 1
                 prev = ser.get(fy)
                 if prev is None or v.get("filed", "") > prev[1]:
                     ser[fy] = (v["val"], v.get("filed", ""))
@@ -138,7 +1189,6 @@ class SEC:
                 continue
             out[key] = self._extract_series(gaap, concepts, is_instant=(key in self.INSTANT))
 
-        # D&A: prefer combined line items; if not reported or if split depreciation + amortization is larger, use split sum
         da_comb = {}
         for c in self.COMBINED_DA:
             s = self._extract_series(gaap, [c])
@@ -157,7 +1207,7 @@ class SEC:
         return out
 
 
-# ------------------------------------------------------------------------- Yahoo
+# ------------------------------------------------------------------------- Yahoo (Legacy)
 class Yahoo:
     def __init__(self):
         self.yf = None
@@ -167,7 +1217,6 @@ class Yahoo:
         self._fx = {}
 
     def fx(self, frm: str, to: str):
-        """Rate to convert 1 unit of `frm` into `to` (handles GBp/ZAc pence quotes)."""
         if not frm or not to:
             return None
         scale = 1.0
@@ -191,7 +1240,6 @@ class Yahoo:
         return None if self._fx[k] is None else self._fx[k] * scale
 
     def seed_fx(self, frm: str, to: str, rate: float):
-        """Offline: register a rate implied by stored data (e.g. market cap ÷ price × shares)."""
         if frm in ("GBp", "GBX"):
             frm, rate = "GBP", rate * 100
         if frm and to and rate and frm != to:
@@ -214,7 +1262,7 @@ class Yahoo:
             try:
                 return _quote(symbol)
             except Exception:
-                return None                       # Yahoo occasionally returns incomplete metadata
+                return None
 
         def _quote(symbol):
             t = self.yf.Ticker(symbol)
@@ -231,97 +1279,9 @@ class Yahoo:
             time.sleep(settings.YAHOO_PAUSE_S)
         return _cached(CACHE / "yahoo" / f"quote_{symbol}.json", fetch, days=1)
 
-    def statements(self, symbol: str) -> dict:
-        """~4 years of annual statements -> series dict compatible with metrics.summarize (fiscal-year keys)."""
-        def fetch():
-            t = self.yf.Ticker(symbol)
-            out = {}
-            frames = {"is": t.income_stmt, "cf": t.cashflow, "bs": t.balance_sheet}
-            for k, df in frames.items():
-                if df is None or df.empty:
-                    continue
-                out[k] = {str(idx): {str(c.date()): _f(df.loc[idx, c]) for c in df.columns} for idx in df.index}
-            return out
-        if not settings.OFFLINE:
-            time.sleep(settings.YAHOO_PAUSE_S)
-        raw = _cached(CACHE / "yahoo" / f"stmt_{symbol}.json", fetch) or {}
-        pick = lambda sheet, *names: next((raw.get(sheet, {}).get(n) for n in names if raw.get(sheet, {}).get(n)), {})
-
-        def ser(sheet, *names):
-            d = {}
-            for date, v in pick(sheet, *names).items():
-                if v is None:
-                    continue
-                y = dt.date.fromisoformat(date)
-                d[y.year if y.month > 6 else y.year - 1] = v
-            return d
-
-        return {
-            "sales": ser("is", "Total Revenue", "Operating Revenue"),
-            "ni": ser("is", "Net Income Common Stockholders", "Net Income"),
-            "eps": ser("is", "Diluted EPS", "Basic EPS"),
-            "ebit": ser("is", "EBIT", "Operating Income"),
-            "pretax": ser("is", "Pretax Income"),
-            "tax": ser("is", "Tax Provision"),
-            "interest": ser("is", "Interest Expense", "Interest Expense Non Operating"),
-            "ocf": ser("cf", "Operating Cash Flow", "Cash Flow From Continuing Operating Activities"),
-            "capex": ser("cf", "Capital Expenditure"),
-            "sbc": ser("cf", "Stock Based Compensation"),
-            "da": ser("cf", "Depreciation And Amortization", "Depreciation"),
-            "dividends": ser("cf", "Cash Dividends Paid", "Common Stock Dividend Paid"),
-            "equity": ser("bs", "Stockholders Equity", "Common Stock Equity"),
-            "debt": ser("bs", "Long Term Debt", "Long Term Debt And Capital Lease Obligation"),
-            "cash": ser("bs", "Cash And Cash Equivalents"),
-            "goodwill": ser("bs", "Goodwill"),
-            "intang": ser("bs", "Other Intangible Assets"),
-            "assets": ser("bs", "Total Assets"),
-            "shares": ser("is", "Diluted Average Shares") or ser("bs", "Ordinary Shares Number", "Share Issued"),
-        }
-
-    def weekly(self, symbols: list[str]):
-        """2 years of weekly OHLCV for many symbols -> {symbol: (closes, volumes, dates)}."""
-        out = {}
-        for i in range(0, len(symbols), 100):
-            chunk = symbols[i:i + 100]
-            df = self.yf.download(chunk, period="2y", interval="1wk", progress=False, auto_adjust=True,
-                                  group_by="ticker", threads=True)
-            for s in chunk:
-                try:
-                    sub = df[s] if len(chunk) > 1 else df
-                    sub = sub.dropna(subset=["Close"])
-                    out[s] = (list(sub["Close"].astype(float)), list(sub["Volume"].astype(float)),
-                              [d.date().isoformat() for d in sub.index])
-                except Exception:
-                    pass
-        return out
-
-    def splits(self, symbol: str) -> dict:
-        def fetch():
-            sp = self.yf.Ticker(symbol).splits
-            return {str(d.date()): float(x) for d, x in sp.items() if x and x > 0}
-        return _cached(CACHE / "yahoo" / f"splits_{symbol}.json", fetch)
-
-    def monthly_prices(self, symbol: str) -> dict:
-        """{month (ISO date of the monthly bar): close}, ~12 years, split-adjusted, quote currency."""
-        def fetch():
-            h = self.yf.Ticker(symbol).history(period="12y", interval="1mo", auto_adjust=False)
-            return {str(d.date()): float(c) for d, c in h["Close"].dropna().items()}
-        return _cached(CACHE / "yahoo" / f"px12y_{symbol}.json", fetch) or {}
-
-    def year_end_prices(self, symbol: str) -> dict:
-        raw = self.monthly_prices(symbol)
-        out = {}
-        for d, c in sorted(raw.items()):
-            y = dt.date.fromisoformat(d)
-            out[y.year] = c          # last monthly close of each calendar year
-        return out
-
 
 def split_adjust(series: dict, splits: dict, ref_shares: float | None = None) -> dict:
-    """Restate per-share and share-count series to today's share basis (prices from Yahoo are split-adjusted).
-    A filing already restates every split before its filing date, so a year's value needs the product of only
-    the *latest* k splits after its fiscal year (k = 0 … all). Pick the k that brings the share count closest to
-    today's count (`ref_shares`: quote shares, else the latest year's count adjusted for later splits)."""
+    """Restate per-share and share-count series to today's share basis."""
     if not splits:
         return series
     order = sorted((dt.date.fromisoformat(d), r) for d, r in splits.items() if r and r > 0)
@@ -352,14 +1312,6 @@ def split_adjust(series: dict, splits: dict, ref_shares: float | None = None) ->
     if shares:
         out["shares"] = {y: v * applied(y) for y, v in shares.items()}
     return out
-
-
-def _f(x):
-    try:
-        x = float(x)
-        return None if math.isnan(x) else x
-    except (TypeError, ValueError):
-        return None
 
 
 def technicals(closes, volumes, dates, market_closes=None) -> dict:

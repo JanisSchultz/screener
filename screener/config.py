@@ -218,7 +218,8 @@ PARAMETER_GROUPS = [
         ("t_near_high", "Within this % of 52-wk high = topping zone (Stage 3 when flat)", 0.10, "0%", NEW),
     ]),
     ("PAR Valuation parameters (Quantitative sheet)", [
-        ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate r for Explicit Mauboussin-Fade DCF (8.50%)", 0.085, "0.00%", NEW + " Nominal equity discount rate r (8.50%) used in the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion."),
+        ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate r for Operating Companies & Fee Financials (8.50%)", 0.085, "0.00%", NEW + " Nominal equity discount rate r (8.50%) used in the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion for operating companies and asset-light fee financials."),
+        ("par_cost_of_equity_fin", "Nominal equity discount rate r_fin for Balance-Sheet Financials (10.25%)", 0.1025, "0.00%", NEW + " Nominal equity discount rate r_fin (10.25%) for Balance-Sheet Financials (Insurers, Reinsurers, Banks, Multi-Sector HoldCos) reflecting balance-sheet leverage, tail risk, and regulatory capital lock-up."),
         ("par_vd_weight", "Weight of Explicit Mauboussin-Fade DCF Multiple in Fair Value Multiple (100.0%)", 1.00, "0%", NEW + " 100% pure Explicit Mauboussin-Fade DCF multiple over Gate 4 CAP N years."),
         ("par_thist_min_ratio", "Minimum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (0.50x)", 0.50, "0.00", NEW + " Informational 5Y Harmonic Market P/E lower ratio bound."),
         ("par_thist_max_ratio", "Maximum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (1.50x)", 1.50, "0.00", NEW + " Informational 5Y Harmonic Market P/E upper ratio bound."),
@@ -613,15 +614,15 @@ CHANGELOG = {
         "(5) Active Peak EPS Guards, Distorted Peak Normalization (BAM.CA, HSY) & Interactive Sandbox Parity: Guarded cur_eps against non-cash spikes and multi-class/merger share-basis mismatches, normalized BAM.CA (2.13 CAD) and HSY ($9.50) Peak EPS + 5Y cycle multiples, unmuted Sandbox growth sliders, and synchronized all specifications to v6.34.",
     ],
     "6.35": [
-        "Explicit Mauboussin-Fade DCF (r = 8.5%), Operating Cost Growth Ceiling (opcost_cagr) & Slump-Cannibal Screener Rework: "
+        "Explicit Mauboussin-Fade DCF (r = 8.50% / r_fin = 10.25%), Operating Cost Growth Ceiling (opcost_cagr) & Slump-Cannibal Screener Rework: "
         "(1) Operating Cost Base Growth Ceiling (g_0 / g_org_exp): Anchors normal organic business growth directly on 3-5Y Operating Cost Base CAGR "
-        "(OpCost = Sales - EBIT = COGS + OpEx, bounded by revenue-scale ceiling 9.5%-12.0% and net share dilution), looking through temporary 1-year demand slumps "
+        "(OpCost = Sales - EBIT = COGS + OpEx, net of share dilution, without legacy revenue scale caps or 2.0% floor), looking through temporary 1-year demand slumps "
         "and stripping out unsustainable margin spikes (since Gates 3b and 5 already filter for constant through-the-cycle margins). "
-        "(2) Explicit Year-by-Year Mauboussin-Fade DCF (r = 8.50%): Computes Fair Value Multiple and Fair Value Price via an explicit N-year DCF (N = Gate 4 CAP years) "
+        "(2) Explicit Year-by-Year Mauboussin-Fade DCF (r = 8.50% for Operating & Fee Financials; r_fin = 10.25% for Balance-Sheet Financials): Computes Fair Value Multiple and Fair Value Price via an explicit N-year DCF (N = Gate 4 CAP years) "
         "where organic growth g_t and ROIC_t fade linearly each year from (g_0, ROIC_exp) in Year 1 down to terminal steady state (g_term = 3.5%, ROIC_term) at Year N, "
         "generating annual Free Cash Flow FCF_t = E_t * (1 - g_t / ROIC_t) plus Year-N Gordon Growth terminal value. "
-        "(3) Exact DCF-Inverted Market-Implied Growth (g_market at r = 8.50%): Solves for the exact starting organic growth rate priced into the current share price. "
-        "(4) Slump-Cannibal Table Columns: Reworked dashboard columns to display Price, 1Y Growth, 3-5Y Growth, OpCost Growth, Growth Ceiling (g_0), Buyback Yield, "
-        "Mkt Implied g, g Margin, Fair Value, Discount (vs FV), Cur P/E, Fair P/E, 5Y Exp IRR, Op ROIC, and CAP metrics side-by-side.",
+        "(3) Exact DCF-Inverted Market-Implied Growth (g_market at r = 8.50% / 10.25%): Solves for the exact starting organic growth rate priced into the current share price. "
+        "(4) Slump-Cannibal Table Columns & Explicit DCF Tab: Reworked dashboard columns to display Price, 1Y Growth, 3-5Y Growth, Growth Ceiling (OpCost), Buyback Yield, "
+        "Mkt Implied g, g Margin, Fair Value, Discount (vs FV), Cur P/E, Fair P/E, 5Y Exp IRR, Op ROIC, and CAP metrics side-by-side, plus a 3rd Dossier Tab showing the year-by-year Explicit DCF Table.",
     ],
 }
