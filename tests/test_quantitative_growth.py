@@ -39,8 +39,9 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.p = params({})
 
     def test_opcost_cagr_primary_growth_ceiling_and_fallback_chain(self):
-        # When both opcost_cagr (8.5%) and sales_cagr (7.5%) are present, 70/30 blend anchors g_org_exp (8.20%)
-        fin = sample_fin(
+        # Cost-bloat guard: when opcost_cagr (8.5%) > sales_cagr (7.5%), base_org is bounded by sales_cagr (7.50%);
+        # when opcost_cagr (7.0%) < sales_cagr (8.5%), 70/30 blend yields 0.70*7.0% + 0.30*8.5% = 7.45%.
+        fin_bloat = sample_fin(
             sales_ttm_m=10000.0,
             sales_1y=-0.04,
             sales_cagr=0.075,
@@ -49,12 +50,17 @@ class QuantitativeGrowthTests(unittest.TestCase):
             buyback_yield=0.020,
             cagr_oe_eps=0.11,
         )
+        val_bloat = par_valuation(fin_bloat, self.p, cap=20)
+        self.assertAlmostEqual(val_bloat["g_org_exp"], 0.0750, places=4)
+        self.assertAlmostEqual(val_bloat["g_exp"], 0.0950, places=4)
+
+        fin = dict(fin_bloat, sales_cagr=0.085, opcost_cagr=0.070)
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_org_exp"], 0.0820, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.1020, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0745, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0945, places=4)
 
         # Fallback to sales_cagr when opcost_cagr is None
-        fin_no_oc = dict(fin, opcost_cagr=None)
+        fin_no_oc = dict(fin_bloat, opcost_cagr=None)
         val_no_oc = par_valuation(fin_no_oc, self.p, cap=20)
         self.assertAlmostEqual(val_no_oc["g_org_exp"], 0.0750, places=4)
         self.assertAlmostEqual(val_no_oc["g_exp"], 0.0950, places=4)
@@ -84,10 +90,10 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(val_slump["par_val"], val_norm["par_val"], places=4)
 
     def test_mauboussin_galton_roic_regression_and_explicit_dcf_pe(self):
-        # Ultra-light network (e.g. MA): Operating ROIC = 250%, CAP = 30 (pers = 0.85)
-        fin_ultra = sample_fin(roic_operating=2.50, mult_low_5y=25.0, mult_high_5y=60.0)
+        # Ultra-light network (e.g. MA): Operating ROIC = 250%, single initial cap par_roic_cap = 50%
+        fin_ultra = sample_fin(roic_operating=2.50, roic_median=0.90, mult_low_5y=25.0, mult_high_5y=60.0)
         val_u = par_valuation(fin_ultra, self.p, cap=30)
-        self.assertGreater(val_u["roic_exp"], 0.50)
+        self.assertAlmostEqual(val_u["roic_exp"], 0.50, places=4)
         self.assertIsNotNone(val_u["pe_mm"])
         self.assertIsNotNone(val_u["pe_mck"])
         # pe_vd = Stage 1 PV (pe_mm) + Stage 2 Terminal PV (pe_mck), and par_mult = 100% pe_vd
@@ -151,11 +157,12 @@ class QuantitativeGrowthTests(unittest.TestCase):
             buyback_yield=0.0205,
             cagr_oe_eps=0.1846,
             roic_operating=2.54,
+            roic_median=0.97,
         )
         val = par_valuation(fin_ma, self.p, cap=20, moat="Toll booth / Switching costs")
         self.assertAlmostEqual(val["g_org_exp"], 0.1508, places=4)
         self.assertAlmostEqual(val["g_exp"], 0.1713, places=4)
-        self.assertGreater(val["roic_exp"], 0.50)
+        self.assertAlmostEqual(val["roic_exp"], 0.50, places=4)
         self.assertGreater(val["pe_vd"], 30.0)
 
     def test_mature_staple_pg_archetype_bounded_by_slow_opcost_growth(self):
@@ -375,36 +382,31 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val_conc = par_valuation(fin_conc, self.p, cap=15, sub_industry="Construction & Engineering (mapped)")
         # Compare against a non-concession with the same GAAP ROIC
         val_std = par_valuation(fin_conc, self.p, cap=15, sub_industry="Industrial Machinery & Supplies & Components")
-        self.assertAlmostEqual(val_conc["roic_exp"], 0.1286, places=3)
+        self.assertAlmostEqual(val_conc["roic_exp"], 0.1342, places=3)
         self.assertAlmostEqual(val_conc["pe_mck"], 0.0, places=4)
         self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 5.0)
         self.assertAlmostEqual(val_conc["par_mult"], val_conc["pe_vd"], places=4)
 
     def test_textbook_5y_cash_flow_irr_satisfies_npv_zero(self):
-        # 1. Zero-dividend case reduces exactly to (1 + g_exp) * (par_val / price)^0.2 - 1
-        irr_zero_div = solve_irr_5y(price=100.0, par_val=130.0, g_exp=0.09, dy=0.0)
+        # 1. Legacy 4-scalar mode: zero-dividend case reduces to (1 + g_exp) * (par_val / price)^0.2 - 1
+        irr_zero_div = solve_irr_5y(100.0, 130.0, 0.09, dy=0.0)
         self.assertAlmostEqual(irr_zero_div, 1.09 * (1.30 ** 0.2) - 1.0, places=9)
 
-        # 2. At-PAR case (price == par_val) reduces to exact geometric compounding (1 + g_exp) * (1 + dy) - 1
-        irr_at_par = solve_irr_5y(price=100.0, par_val=100.0, g_exp=0.08, dy=0.025)
+        # 2. Legacy 4-scalar mode: at-PAR case (price == par_val) reduces to (1 + g_exp) * (1 + dy) - 1
+        irr_at_par = solve_irr_5y(100.0, 100.0, 0.08, dy=0.025)
         self.assertAlmostEqual(irr_at_par, 1.08 * 1.025 - 1.0, places=9)
 
-        # 3. General Below-PAR and Above-PAR cases satisfy exact 5-year DCF cash-flow equation:
-        #    P_0 = sum_{t=1..5} [D_0 * (1 + g_exp)^t / (1 + IRR)^t] + [PAR_Val * (1 + g_exp)^5 / (1 + IRR)^5]
-        for price, par_val, g_exp, dy in (
-            (80.0, 120.0, 0.085, 0.030),
-            (150.0, 100.0, 0.065, 0.040),
-            (100.0, 145.0, 0.105, 0.012),
-        ):
-            irr = solve_irr_5y(price=price, par_val=par_val, g_exp=g_exp, dy=dy)
-            self.assertIsNotNone(irr)
-            d0 = price * dy
-            pv_divs = sum((d0 * ((1.0 + g_exp) ** t)) / ((1.0 + irr) ** t) for t in range(1, 6))
-            pv_term = (par_val * ((1.0 + g_exp) ** 5)) / ((1.0 + irr) ** 5)
-            self.assertAlmostEqual(pv_divs + pv_term, price, places=7)
+        # 3. Primary Bellman-Consistent DCF Schedule mode: at Cur_PE == Fair_PE, IRR == r (8.50%) identically
+        from screener.gates import dcf_schedule_and_continuation
+        for g0 in (0.0, 0.04, 0.10, 0.16):
+            for roic0 in (0.12, 0.25, 0.50):
+                for n_cap in (10, 15, 20, 30):
+                    total_pe, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(g0, roic0, n_cap, r=0.085)
+                    irr_par = solve_irr_5y(total_pe, fcfs_5, v_5)
+                    self.assertAlmostEqual(irr_par, 0.085, places=7)
 
-    def test_buyback_neutrality_in_pe_vd_and_fcf_cap_in_5y_irr(self):
-        """Positive buybacks increase per-share g_exp without inflating firm-level PE_VD, and obey FCF payout conservation in 5Y IRR."""
+    def test_buyback_neutrality_in_pe_vd_and_bellman_5y_irr(self):
+        """Positive buybacks increase per-share g_exp without inflating firm-level PE_VD, and 5Y IRR equals r at Fair Value."""
         fin_no_bb = sample_fin(
             price=100.0, market_cap_m=10000.0, dividends_ttm_m=150.0,
             sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, opcost_cagr=0.08, cap_growth=0.08,
@@ -423,13 +425,12 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(v_bb["pe_vd"], v_no["pe_vd"], places=4)
         self.assertAlmostEqual(v_bb["par_val"], v_no["par_val"], places=4)
 
-        # At expensive current multiple (e.g. 50x P/E), FCF yield cannot fund 1.5% div + full buybacks:
+        # At expensive current multiple (e.g. 50x P/E), Fair Value is 100% independent of current share price, and 5Y IRR drops below r:
         fin_expensive = dict(fin_with_bb, price=250.0, market_cap_m=25000.0, dividends_ttm_m=375.0)
         v_exp = par_valuation(fin_expensive, self.p, cap=20)
-        # Fair Value is 100% independent of current share price!
         self.assertAlmostEqual(v_exp["par_val"], v_bb["par_val"], places=4)
-        # g_irr is capped below v_bb["g_irr"] due to FCF conservation at 50x P/E
-        self.assertLess(v_exp["g_irr"], v_bb["g_irr"])
+        self.assertLess(v_exp["irr_5y"], 0.085)
+        self.assertLess(v_exp["irr_5y"], v_bb["irr_5y"])
 
     def test_market_implied_cap_zero_moat_floor_and_at_par_identity(self):
         """Market-Implied CAP equals 0.0y at <= 1/k = 11.76x and equals Fundamental CAP at Fair Value."""

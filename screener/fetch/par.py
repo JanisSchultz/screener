@@ -108,6 +108,7 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
     if peak is None:
         return {"_notes": ["PAR inputs n/a"]}
     out["peak_oe_year"], out["peak_oe_eps"] = py, round(peak * fx_rep_to_quote, 4)
+    out["cur_oe_eps"] = round(eps[last] * fx_rep_to_quote, 4)
 
     # peak-to-peak growth and test
     prior = {y: v for y, v in eps.items() if last - 2 * PEAK_YEARS < y <= last - PEAK_YEARS}

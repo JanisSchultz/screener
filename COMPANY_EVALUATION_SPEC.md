@@ -245,94 +245,74 @@ Provide a comprehensive synthesis including:
 
 ---
 
-## 5. Quantitative Evaluation: Explicit Mauboussin-Fade DCF & Operating Cost Base Growth Ceiling (v6.35)
+## 5. Quantitative Evaluation: Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR (v7.0)
 
 > **Important**: Quantitative valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates, as well as **`Calamity pass`** candidates (conditional waiver on Gates 3b, 5, and/or 6). Rejected companies are designated `"Not in funnel"` for quantitative valuation. For `Calamity pass` companies, verify whether normalized earning power (`peak_eps_est`) or forward growth (`g_est`) requires an explicit adjustment.
 
-The v6.35 valuation model identifies **Slump-Cannibal Compounders** — world-class businesses experiencing a temporary 1-year growth slump (`sales_1y`) while their structural Operating Cost Base growth ceiling (`opcost_cagr`) remains intact and they cannibalize shares via strong Free Cash Flow — using an **Explicit $N$-Year Mauboussin-Fade DCF** at discount rate $r = 8.50\%$.
+The v7.0 valuation model identifies **Slump-Cannibal Compounders** — world-class businesses experiencing a temporary 1-year growth slump (`sales_1y`) while their structural cost-bloat guarded growth ceiling (`g_org_exp`) remains intact — using a **Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year Mauboussin-Fade DCF** at discount rate $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials) and a **Bellman-Consistent 5-Year Expected IRR** (`irr_5y`).
 
 ---
 
 ### 5.1 Core Valuation Inputs
 
-1. **Owner EPS**:
-   $$\text{Owner EPS} = \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Diluted Shares}}$$
-   *One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out.*
-2. **Peak Owner EPS & 50/50 Mid-Cycle Reversion Standard**:
+1. **Owner EPS & IFRS-16 Lease Deduction**:
+   $$\text{Owner EPS}_y = \frac{\text{Net Income}_y + \max(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y)}{\text{Diluted Shares}_y}$$
+   *One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out. For IFRS filers in `eu` and `ca`, $20\%$ of average right-of-use lease obligations is deducted from both `owner_addback` and `true_fcf` (`fcf_conv`), while US-GAAP filers (`us` and Canadian US-GAAP filers `WCN.CA`, `CP.CA`, `QSR.CA`, `SHOP.CA`) are exempt.*
+2. **Peak Owner EPS, Direct `cur_oe_eps` & 50/50 Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest Owner EPS achieved over the last 5 fiscal years (converted to quote currency).
+   - `cur_oe_eps`: Latest fiscal-year Owner EPS on the exact diluted share basis (converted to quote currency).
    - `peak_eps_est`: Analyst override for Peak Owner EPS if the reported peak contains unrepeatable windfalls or pre-spin-off distortions.
-   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the 50/50 Mid-Cycle Reversion standard: if $\text{cur\_eps} < \text{peak\_oe\_eps}$ (where $\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Market Cap}}$ is current Owner EPS, guarded against multi-class `"check share basis"` flags and non-cash earnings spikes), $\text{Active Peak EPS} = 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps}))$; otherwise `peak_oe_eps`.
+   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the 50/50 Mid-Cycle Reversion standard using `cur_oe_eps` (falling back to implied `cur_eps` if absent): if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps}))$; otherwise `peak_oe_eps`.
 3. **5-Year Historical Cycle Multiples (Informational Reference)**:
-   - `mult_low_5y`: 5-year cycle low multiple (median of yearly lows).
-   - `mult_high_5y`: 5-year cycle high multiple (median of yearly highs).
+   - `mult_low_5y` and `mult_high_5y`: 5-year cycle low and high multiples.
 
 ---
 
-### 5.2 Operating ROIC Normalization & Mauboussin Galton ROIC Regression (v6.35)
+### 5.2 Operating ROIC Normalization, M&A Capital Matching & Single Initial Cap (`par_roic_cap = 50%`) (v7.0)
 
-To prevent accounting distortions from penalizing capital-light compounders while removing arbitrary hard caps on ROIC:
 1. **GAAP ROIC vs Operating ROIC**:
-   - GAAP ROIC includes accumulated goodwill and acquired intangibles in the denominator, severely understating ongoing operating quality.
-   - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3}\text{IC}_{\text{GAAP}}$:
-     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\max\!\left(\text{Equity} + \text{Debt} - \text{Cash} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
-2. **Mauboussin Galton ROIC Regression ($\text{Expected ROIC}$ / $\text{ROIC}_0$)**:
-   - Excess Operating ROIC above the corporate mean ($\text{ROIC}_{\text{avg}} = 12.0\%$) is logarithmically compressed ($k_{\text{roic}} = 0.25$) and regressed via Gate 4 CAP persistence $r = \text{pers} \in \{0.85, 0.75, 0.62\}$:
-     $$\text{ROIC}_{\text{log}} = 0.12 + 0.25 \times \ln\!\left(1 + \frac{\text{Active ROIC} - 0.12}{0.25}\right), \qquad \text{Expected ROIC} = r \times (\text{ROIC}_{\text{log}} - 0.12) + 0.12$$
+   - **Operating ROIC (Tangible Capital Return)** nets cash and short-term marketable securities (`cash_sti`) and deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3}\text{IC}_{\text{GAAP}}$.
+2. **M&A-Matched Harmonic RONIC & Single Initial Cap (`par_roic_cap = 0.50`)**:
+   - When Goodwill exceeds $20\%$ of Invested Capital ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$) and Invested Capital is growing ($\text{cap\_growth} > 0$), marginal return $\text{RONIC}_0$ blends harmonically between $r_{\text{tang}}$ and $r_{\text{GAAP}}$ with M&A weight $\alpha = \text{clip}_{[0, 1]}(\text{cap\_growth} / \max(0.04, \text{base\_org}))$, and is capped at `par_roic_cap = 0.50` (`50.0%`, unless `roic_est` is populated).
 3. **Active ROIC Priority**:
-   - Use `roic_est` (override) if provided;
-   - Else for **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`) and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), use `roic_median` (GAAP ROIC) if available, falling back to `roic_operating`;
-   - Else for all standard operating companies and asset-light fee financials (`Insurance Brokers`, `Financial Exchanges & Data`, `Transaction & Payment Processing Services`), use `roic_operating` (tangible) if available, falling back to `roic_median` (GAAP).
+   - `roic_est` (override) $\rightarrow$ Balance-Sheet Financials: `roe_median` (consolidated for Up-C structures like `IBKR`) $\rightarrow$ IFRIC-12 Concessions: `roic_median` $\rightarrow$ All others: `roic_operating` $\rightarrow$ `roic_median`.
 
 ---
 
-### 5.3 Operating Cost Base Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v6.35)
+### 5.3 Cost-Bloat Guarded Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.0)
 
-Because companies passing the 6 Munger Quality Gates maintain roughly constant margins over the cycle (Gate 3b pricing power $\ge$ inflation, Gate 5 rejects SG&A bloat), the 3–5Y CAGR of the operating cost base ($\text{OpCost} = \text{Sales} - \text{EBIT} = \text{COGS} + \text{OpEx}$, stored in `opcost_cagr`) serves as the primary anchor for the company's **Normal Organic Growth Ceiling ($g_0$ / `g_org_exp`)**:
 1. **Share Buyback / Dilution Split**:
    $$\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.035]}(\text{buyback\_yield}), \qquad \text{bb\_pos} = \max(0.0, \text{bb\_eff}), \qquad \text{bb\_org} = \min(0.0, \text{bb\_eff})$$
-2. **Normal Organic Growth Fallback Hierarchy (`base_org`)**:
-   - `opcost_cagr` $\rightarrow$ `sales_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ `sales_1y` $\rightarrow$ $\text{g\_implied} - \text{bb\_pos}$ $\rightarrow$ `0.035`.
+2. **Cost-Bloat Guarded Organic Growth Base (`base_org`)**:
+   - When both `opcost_cagr` and `sales_cagr` are present: $\text{base\_org} = \min(\text{sales\_cagr},\; 0.70 \times \text{opcost\_cagr} + 0.30 \times \text{sales\_cagr})$.
+   - Fallbacks: `opcost_cagr` $\rightarrow$ `sales_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ `sales_1y` $\rightarrow$ $\text{g\_implied} - \text{bb\_pos}$ $\rightarrow$ `0.035`.
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Ceiling (`g_exp`)**:
-   - Because the Explicit Mauboussin-Fade DCF already fades growth linearly each year from $g_0$ down to $3.5\%$, $g_0$ is anchored directly on `base_org` without legacy revenue scale caps or the `2.0%` floor:
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.22]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
-   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.22]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.22 + \text{bb\_pos}]}(g_{\text{est}})$.
+   $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.18]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
+   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.18]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.18 + \text{bb\_pos}]}(g_{\text{est}})$.
 
 ---
 
-### 5.4 Explicit $N$-Year Mauboussin-Fade DCF Valuation ($r = 8.50\%$) (v6.35)
+### 5.4 Explicit $N$-Year Mauboussin-Fade DCF Valuation ($r = 8.50\% / 10.25\%$) (v7.0)
 
-Fair Value Multiple (`par_mult` / `pe_vd`) is computed `100%` from an explicit year-by-year cash flow simulation across the Gate 4 Competitive Advantage Period ($N = \text{Gate 4 CAP}$ years, default `20`) at discount rate $r = 8.50\%$:
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade ($t = 1 \dots N$)**:
-   $$\text{frac}_t = \frac{t - 1}{N}, \qquad g_t = g_0 - \text{frac}_t(g_0 - 0.035), \qquad \text{ROIC}_t = \text{ROIC}_0 - \text{frac}_t(\text{ROIC}_0 - \text{ROIC}_{\text{term}})$$
-   where $\text{ROIC}_{\text{term}} = \max(0.12, \min(\text{ROIC}_0, 0.20))$, $E_t = E_{t-1}(1 + g_t)$, $\text{FCF}_t = E_t\left(1 - \min\!\left(0.95, \frac{\max(0, g_t)}{\max(0.05, \text{ROIC}_t)}\right)\right)$, and:
-   $$\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \frac{\text{FCF}_t}{(1 + r)^t} \qquad (\text{stored in } \text{pe\_mm})$$
+   Starting at $E_1 = 1.0$, $\text{frac}_t = \frac{t - 1}{\max(1, N - 1)}$, $g_t = g_0 - \text{frac}_t(g_0 - \min(g_0, 0.035))$, $\text{RONIC}_t = \text{RONIC}_0 - \text{frac}_t(\text{RONIC}_0 - \min(\text{RONIC}_0, 0.20))$, $\text{FCF}_t = E_t\left(1 - \frac{\max(0, g_t)}{\max(0.05, \text{RONIC}_t)}\right)$, $E_{t+1} = E_t(1 + g_t)$, and $\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \text{FCF}_t (1 + r)^{-t}$.
 2. **Stage 2 — Post-CAP Terminal Perpetuity Value ($t > N$)**:
-   $$\text{PV}_{\text{Stage 2}} = \frac{E_N(1 + 0.035)\left(1 - \frac{0.035}{\text{ROIC}_{\text{term}}}\right)}{(r - 0.035)(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck})$$
-3. **100% Explicit DCF Fair Value Multiple**:
-   $$\text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
-4. **Balance-Sheet Financial Discount Rate ($r_{\text{fin}} = 10.25\%$), Mark-to-Market HoldCo NAV & Finite Concession Physics**:
-   - **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, `Multi-Sector Holdings`): Discounted at $r_{\text{fin}} = 10.25\%$ (`par_cost_of_equity_fin = 0.1025`) vs $r = 8.50\%$ for operating companies and asset-light fee financials.
-   - **Mark-to-Market HoldCos / Insurers**: $\text{par\_mult} = \text{pe\_vd} = \frac{1}{\text{ROIC}_0}$ ($\text{P/B} = 1.0\text{x}$).
-   - **IFRIC-12 Infrastructure Concessions** (`fcf_conv > 1.25`): $\text{PV}_{\text{Stage 2}} = 0$ and $\text{par\_mult} = \text{PV}_{\text{Stage 1}}$.
+   $$\text{PV}_{\text{Stage 2}} = \frac{E_{N+1}}{r(1 + r)^N}, \qquad \text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
+   *Guarantees exact Miller–Modigliani zero-spread invariance ($\text{Fair P/E} \equiv 1/r$ when $\text{RONIC}_t = r$).*
 
 ---
 
-### 5.5 Valuation Metrics & Status (v6.35)
+### 5.5 Valuation Metrics & Bellman-Consistent 5-Year Expected IRR (v7.0)
 
-1. **Fair Value Price (`par_val`)**:
-   $$\text{Fair Value Price} = \text{Fair P/E} \times \text{Active Peak Owner EPS}$$
-2. **Current Multiple (`cur_mult`)**:
-   $$\text{Current Multiple} = \frac{\text{Current Share Price}}{\text{Active Peak Owner EPS}}$$
-3. **Discount vs Fair Value (`vs_par`)**:
-   $$\text{Discount} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$$
-   - `Below PAR` ($\le 0$): **BUYING OPPORTUNITY**; `Above PAR` ($> 0$): **OVERVALUED**.
-4. **5-Year Expected Cycle IRR (FCF-Conserved Pull-to-Fair-Value Cash-Flow IRR)**:
-   Uses 5-year average organic growth along the fade $g_{\text{org,5y}} = g_0 - \frac{2}{N}(g_0 - 0.035)$ plus FCF-conserved buyback accretion $\min\!\left(\text{bb\_pos}, \max\!\left(0, \frac{\max(0, 1 - g_0/\text{ROIC}_0)}{\text{Current Multiple}} - \text{dy}\right)\right)$, solving for the 5-year IRR to `Fair Value Price`.
-5. **Exact DCF-Inverted Market-Implied Growth ($g_{\text{market}}$ at $r = 8.50\%$) & Growth Margin (`g_gap`)**:
-   - Solves $\text{DCF\_PE}(g_{\text{market}},\, \text{ROIC}_0,\, N,\, r=8.50\%) = \text{Current Multiple}$ via bisection, with $\text{Growth Margin} = g_0 - g_{\text{market}}$.
+1. **Fair Value Price (`par_val`)**: $\text{Fair P/E} \times \text{Active Peak Owner EPS}$.
+2. **Current Multiple (`cur_mult`)**: $\text{Current Share Price} \div \text{Active Peak Owner EPS}$.
+3. **Discount vs Fair Value (`vs_par`)**: $\text{Current Share Price} \div \text{Fair Value Price} - 1.0$.
+4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
+   Solves $\text{Current Multiple} = \sum_{t=1}^{5} \text{FCF}_t (1 + \text{IRR})^{-t} + V_5 (1 + \text{IRR})^{-5}$ directly on the Year 1–5 DCF cash flows and Year-5 DCF continuation value $V_5 = (\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \text{FCF}_t(1+r)^{-t})(1+r)^{\min(5, N)}$, guaranteeing $\text{IRR}_{5\text{y}} \equiv r$ at $\text{Price} = \text{Fair Value}$.
+5. **Root-Safe DCF-Inverted Market-Implied Growth ($g_{\text{market}}$) & Growth Margin (`g_gap`)**:
+   Solves $\text{DCF\_PE}(g_{\text{market}},\, \text{RONIC}_0,\, N,\, r) = \text{Current Multiple}$, with $\text{Growth Margin} = g_0 - g_{\text{market}}$.
 6. **Market-Implied CAP & Moat Runway Margin**:
-   - Years of competitive advantage priced above the zero-moat steady-state base multiple $\frac{1}{r} = 11.76\text{x}$:
-     $$\text{Market-Implied CAP} = \max\!\left(0.0,\; \text{Fundamental CAP} \times \frac{\text{Current Multiple} - \frac{1}{r}}{\text{Fair P/E} - \frac{1}{r}}\right), \qquad \text{Moat Margin} = \text{Fundamental CAP} - \text{Market-Implied CAP}$$
+   $$\text{Market-Implied CAP} = \max\!\left(0.0,\; \text{Fundamental CAP} \times \frac{\text{Current Multiple} - \frac{1}{r}}{\text{Fair P/E} - \frac{1}{r}}\right), \qquad \text{Moat Margin} = \text{Fundamental CAP} - \text{Market-Implied CAP}$$
 
 ---
 

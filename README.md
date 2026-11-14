@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.36 — 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.0 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,12 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.0: Sure & Simple Quantitative Engine — Miller-Modigliani Zero-Spread Invariance, Bellman-Consistent 5Y IRR, Cost-Bloat Guard & M&A-Matched RONIC:
+- Miller-Modigliani Zero-Spread Invariant Explicit DCF (`dcf_schedule_and_continuation`): Starts Year-1 earnings at normalized run-rate E_1 = 1.0 on existing capital IC_0 and deducts end-of-year reinvestment Reinv_t = E_t * max(0, g_t) / RONIC_t to fund Year-(t+1) growth E_{t+1} = E_t * (1 + g_t) across t = 1..N (frac_t = (t - 1)/(N - 1)) with terminal value TV_N = E_{N+1} / r. Guarantees exact Miller-Modigliani invariance: when RONIC_t == r, Fair P/E == 1 / r identically across all g_0 and N.
+- Bellman-Consistent 5-Year Expected IRR (`solve_irr_5y`): Solves directly on the Year 1-5 DCF free cash flows FCF_1..FCF_5 plus the exact Year-5 DCF continuation value V_5 = (Fair_PE - sum_{t=1..5} FCF_t / (1+r)^t) * (1+r)^5, guaranteeing IRR == r (8.50% / 10.25%) whenever Price == Fair Value with zero sign contradictions against vs_par.
+- Cost-Bloat Guard, M&A-Matched Harmonic RONIC & Single Initial Caps (`par_roic_cap = 0.50`, `par_g_anchor_max = 0.18`): Bounds the 70/30 OpCost/Sales WLS blend by Sales WLS CAGR (`min(sales_cagr, 0.70*opcost_cagr + 0.30*sales_cagr)`) so margin contraction cannot inflate growth; blends Tangible and GAAP ROIC harmonically by M&A capital-growth share alpha = clip(cap_growth / max(0.04, base_org), 0, 1) when Goodwill > 20% of IC; and replaces 15 legacy PAR parameters with single initial caps (50% RONIC, 18% g_0).
+- Accounting & Data Hygiene: Adjusts Up-C consolidated ROE for minority interest when commonStockTotalEquity is missing (`IBKR`), applies the 20% IFRS-16 lease depreciation deduction to `true_fcf` (`fcf_conv`), exempts Canadian US-GAAP filers (`WCN.CA`, `CP.CA`, `QSR.CA`, `SHOP.CA`) from IFRS-16 lease deductions, exports diluted `cur_oe_eps` directly, synchronizes dual-listed mirrors (`ASML` <-> `ASML.NL`, `FER` <-> `FER.ES`), and streamlines the What-If Sandbox to 4 live controls with non-destructive JSON overrides.
 
 v6.36: Quantitative Valuation Model Audit Remediation — IFRS-16 Lease & Impairment Guards, Financial ROE & Book-Value Anchors, Rolled-Forward 5Y IRR, Uncapped Reinvestment & Root-Safe g_market:
 - Owner Earnings Sanitization (Deterministic D&A, 1.5x Impairment Guard & IFRS-16 Lease Deduction): Replaces max(da_cands) with deterministic tag priority, caps single-year D&A write-down spikes at 1.5x the prior-3Y median (`clean_da`), and deducts 20% of average `capitalLeaseObligations` from the D&A add-back for IFRS universes (`eu`, `ca`) so right-of-use store lease amortization is not treated as free cash (`owner_add_m`).

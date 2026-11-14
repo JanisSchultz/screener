@@ -148,6 +148,54 @@ def is_finite_concession(sub_industry: str | None, fcf_conv: float | None) -> bo
     return fcf_conv is not None and fcf_conv > 1.25
 
 
+def dcf_schedule_and_continuation(
+    g0: float,
+    roic0: float,
+    n_cap: float | int | None,
+    r: float = 0.085,
+    g_term: float = 0.035,
+    roic_term_base: float = 0.12,
+    finite_conc: bool = False,
+    mtm_holdco: bool = False,
+    roic_end: float | None = None,
+) -> tuple[float, float, float, float, list[float], float]:
+    """Compute Explicit N-Year Mauboussin-Fade DCF Fair P/E and 5-Year Continuation Schedule (v7.0):
+    Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share, fcfs_5, v_5).
+    - Year 1 starts at normalized run-rate earnings E_1 = 1.0 on current capital IC_0.
+    - At the end of each year t = 1..N (N = Gate 4 CAP), Reinv_t = E_t * max(0, g_t) / RONIC_t is deducted from E_t
+      to fund Year-(t+1) growth E_{t+1} = E_t * (1 + g_t), with g_t and RONIC_t fading linearly from (g0, roic0) at t=1
+      to (min(g0, g_term), min(roic0, 20%)) at t=N.
+    - Terminal value at t=N is TV_N = E_{N+1} / r (post-CAP growth earns RONIC = r and adds zero NPV).
+    - Guarantees exact Miller-Modigliani zero-spread invariance: when RONIC_t == r, total_dcf_pe == 1 / r for all g0, N."""
+    roic_start = max(0.05, float(roic0))
+    if mtm_holdco:
+        nav_pe = 1.0 / roic_start
+        return nav_pe, nav_pe, 0.0, 1.0, [0.0] * 5, nav_pe * ((1.0 + r) ** 5)
+    n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
+    roic_fin = min(roic_start, 0.20) if roic_end is None else max(0.05, float(roic_end))
+    g_term_eff = min(g0, g_term)
+    reinv_1 = max(0.0, g0) / roic_start
+    pv_stage1 = 0.0
+    e_t = 1.0
+    fcfs: list[float] = []
+    for t in range(1, n + 1):
+        frac = (t - 1.0) / float(max(1, n - 1)) if n > 1 else 1.0
+        g_t = g0 - frac * (g0 - g_term_eff)
+        roic_t = roic_start - frac * (roic_start - roic_fin)
+        reinv_t = max(0.0, g_t) / max(0.05, roic_t)
+        fcf_t = e_t * (1.0 - reinv_t)
+        fcfs.append(fcf_t)
+        pv_stage1 += fcf_t / ((1.0 + r) ** t)
+        e_t = e_t * (1.0 + g_t)
+    tv_n = 0.0 if finite_conc else (e_t / max(0.01, r))
+    pv_stage2 = tv_n / ((1.0 + r) ** n)
+    total_pe = pv_stage1 + pv_stage2
+    fcfs_5 = (fcfs + [e_t] * 5)[:5]
+    pv_first5 = sum(fcfs[t] / ((1.0 + r) ** (t + 1)) for t in range(min(5, n)))
+    v_5 = max(0.0, (total_pe - pv_first5) * ((1.0 + r) ** min(5, n)))
+    return total_pe, pv_stage1, pv_stage2, 1.0 - reinv_1, fcfs_5, v_5
+
+
 def explicit_dcf_multiple(
     g0: float,
     roic0: float,
@@ -159,38 +207,11 @@ def explicit_dcf_multiple(
     mtm_holdco: bool = False,
     roic_end: float | None = None,
 ) -> tuple[float, float, float, float]:
-    """Compute Explicit N-Year Mauboussin-Fade DCF Fair Value P/E Multiple (v6.36):
-    Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share).
-    Each year t = 1..N (N = Gate 4 CAP), organic growth g_t and ROIC_t fade linearly from (g0, roic0) at t=1 toward
-    (g_term, roic_end) with roic_end = max(roic_term_base, min(roic0, 20%)) unless passed explicitly (year-5 roll-forward),
-    generating FCF_t = E_t * (1 - g_t / ROIC_t). Reinvestment is NOT capped: when g_t > ROIC_t, FCF is negative
-    (externally funded growth), so growth never becomes "free" and DCF_PE(g) is monotonic wherever ROIC > r.
-    Terminal value (code convention, v6.36 spec): TV_N = E_N / r — post-CAP growth earns exactly r (RONIC = r) and
-    therefore adds no value; ROIC_term only governs the Stage-1 fade."""
-    roic_start = max(0.05, float(roic0))
-    if mtm_holdco:
-        nav_pe = 1.0 / roic_start
-        return nav_pe, nav_pe, 0.0, 1.0
-    n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_fin = max(roic_term_base, min(roic_start, 0.20)) if roic_end is None else max(0.05, float(roic_end))
-    g_term_eff = min(g0, g_term)
-    reinv_1 = max(0.0, g0) / roic_start
-    pv_stage1 = 0.0
-    e_t = 1.0
-    for t in range(1, n + 1):
-        frac = (t - 1.0) / float(n)
-        g_t = g0 - frac * (g0 - g_term_eff)
-        roic_t = roic_start - frac * (roic_start - roic_fin)
-        e_t = e_t * (1.0 + g_t)
-        reinv_t = max(0.0, g_t) / max(0.05, roic_t)
-        fcf_t = e_t * (1.0 - reinv_t)
-        pv_stage1 += fcf_t / ((1.0 + r) ** t)
-    if finite_conc:
-        return pv_stage1, pv_stage1, 0.0, 1.0 - reinv_1
-    fcf_n1 = e_t
-    tv_n = fcf_n1 / max(0.01, r)
-    pv_stage2 = tv_n / ((1.0 + r) ** n)
-    return pv_stage1 + pv_stage2, pv_stage1, pv_stage2, 1.0 - reinv_1
+    """Compute Explicit N-Year Mauboussin-Fade DCF Fair Value P/E Multiple (v7.0):
+    Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share)."""
+    return dcf_schedule_and_continuation(
+        g0, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco, roic_end
+    )[:4]
 
 
 G_MARKET_LO, G_MARKET_HI, G_MARKET_STEP = -0.20, 0.50, 0.01
@@ -277,17 +298,44 @@ def solve_implied_dcf_growth(
 
 
 def solve_irr_5y(
-    price: float | None,
-    par_val: float | None,
-    g_exp: float | None,
+    price_or_cur_pe: float | None,
+    fcfs_or_par_val: list[float] | tuple[float, ...] | float | None,
+    v5_or_g_exp: float | None,
     dy: float | None = 0.0,
 ) -> float | None:
-    """Solve for the textbook 5-Year Cash-Flow IRR satisfying:
-    Price = sum_{t=1..5} [D_0 * (1 + g_exp)^t / (1 + IRR)^t] + [PAR_Val * (1 + g_exp)^5 / (1 + IRR)^5]
-    Using the substitution u = (1 + g_exp) / (1 + IRR), this reduces to the strictly monotonic polynomial:
-    dy * (u + u^2 + u^3 + u^4 + u^5) + (PAR_Val / Price) * u^5 = 1.
-    (par_val may be the year-5 roll-forward equivalent PAR_Val × PE_5 / PE_0, see par_valuation.)
-    Newton iterations with a convergence check and a bisection fallback."""
+    """Solve for the 5-Year Expected IRR (v7.0):
+    1. Primary Bellman-Consistent DCF Schedule Mode (when fcfs_or_par_val is the 5-year FCF list):
+       Solves sum_{t=1..5} [FCF_t / (1 + IRR)^t] + [V_5 / (1 + IRR)^5] = Cur_PE via 60-step bisection.
+       Guarantees IRR == r (8.50% / 10.25%) whenever Price == Fair Value (Cur_PE == Fair_PE).
+    2. Legacy 4-scalar Mode (price, par_val, g_exp, dy) kept for backwards-compatible unit test callers."""
+    if isinstance(fcfs_or_par_val, (list, tuple)):
+        cur_pe = price_or_cur_pe
+        fcfs_5 = fcfs_or_par_val
+        v_5 = v5_or_g_exp
+        if not cur_pe or cur_pe <= 0 or v_5 is None or len(fcfs_5) < 5:
+            return None
+        if sum(fcfs_5[:5]) + v_5 <= 0:
+            return None
+
+        def npv(rate: float) -> float:
+            d = 1.0 + rate
+            if d <= 1e-4:
+                return 1e9
+            return sum(fcfs_5[t] / (d ** (t + 1)) for t in range(5)) + v_5 / (d ** 5) - cur_pe
+
+        lo, hi = -0.50, 2.50
+        f_lo, f_hi = npv(lo), npv(hi)
+        if f_lo * f_hi > 0:
+            return None
+        for _ in range(60):
+            mid = 0.5 * (lo + hi)
+            if npv(mid) > 0:
+                lo = mid
+            else:
+                hi = mid
+        return 0.5 * (lo + hi)
+
+    price, par_val, g_exp = price_or_cur_pe, fcfs_or_par_val, v5_or_g_exp
     if not price or price <= 0 or not par_val or par_val <= 0 or g_exp is None or g_exp <= -1.0:
         return None
     d = max(0.0, float(dy or 0.0))
@@ -324,37 +372,11 @@ def solve_irr_5y(
     return (1.0 + g_exp) / u - 1.0
 
 
-def year5_multiple_ratio(
-    g0: float,
-    roic0: float,
-    n_cap: float | int | None,
-    r: float = 0.085,
-    g_term: float = 0.035,
-    roic_term_base: float = 0.12,
-    finite_conc: bool = False,
-) -> float:
-    """PE_5 / PE_0: the Fair P/E five years out, rolled forward along the same Mauboussin fade (growth and ROIC at their
-    year-6 values, remaining CAP N − 5, same terminal ROIC), relative to today's Fair P/E. Used so the 5Y IRR exit
-    price does not assume today's multiple survives five years of fade (v6.36)."""
-    roic_start = max(0.05, float(roic0))
-    n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_end = max(roic_term_base, min(roic_start, 0.20))
-    pe0 = explicit_dcf_multiple(g0, roic_start, n, r, g_term, roic_term_base, finite_conc, False)[0]
-    if n <= 5 or pe0 <= 0:
-        return 1.0
-    g_term_eff = min(g0, g_term)
-    frac6 = 5.0 / float(n)
-    g6 = g0 - frac6 * (g0 - g_term_eff)
-    roic6 = roic_start - frac6 * (roic_start - roic_end)
-    pe5 = explicit_dcf_multiple(g6, roic6, n - 5, r, g_term, roic_term_base, finite_conc, False, roic_end=roic_end)[0]
-    return max(0.0, pe5 / pe0)
-
-
 def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str | None]:
-    """Capital-return input to the Galton regression and DCF reinvestment rate, with its source label.
-    Priority: roic_est override > Balance-Sheet Financials: roe_median (the DCF is an equity-level EPS model, so g / ROE
-    is the consistent reinvestment rate; deposits / float never enter equity + debt − cash) > IFRIC-12 concessions:
-    roic_median (GAAP) > everyone else: roic_operating (tangible) > roic_median."""
+    """Capital-return input to the DCF reinvestment rate, with its source label (v7.0).
+    Priority: roic_est override > Balance-Sheet Financials: roe_median (unless roe_median < 8.5% while roic_median >= 12%
+    due to Up-C non-controlling interest mismatch) > IFRIC-12 concessions: roic_median (GAAP) > everyone else:
+    roic_operating (tangible) > roic_median."""
     def f(k):
         v = fin.get(k)
         return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
@@ -362,6 +384,9 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
     if f("roic_est") is not None:
         return f("roic_est"), "roic_est"
     if is_balance_sheet_financial(sub_industry):
+        roe_v, gaap_v = f("roe_median"), f("roic_median")
+        if roe_v is not None and gaap_v is not None and roe_v < 0.085 and gaap_v >= 0.12:
+            return gaap_v, "roic_median"
         for k in ("roe_median", "roic_median", "roic_operating"):
             if f(k) is not None:
                 return f(k), k
@@ -380,7 +405,7 @@ def par_valuation(
     moat: str | None = None,
     sub_industry: str | None = None,
 ) -> dict:
-    """Python reference implementation of the v6.36 Explicit Mauboussin-Fade DCF (r = 8.5%) & Operating Cost Growth Ceiling valuation."""
+    """Python reference implementation of the v7.0 Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
@@ -390,17 +415,17 @@ def par_valuation(
         peak_eps = peak_eps_override
     else:
         oe_peak = f("peak_oe_eps")
-        # Current Owner EPS inferred from latest-FY Net Income + owner-earnings add-back and Market Cap / Price, on the
-        # same Owner EPS basis as peak_oe_eps. owner_add_m is written by the fetch layer with exactly the
-        # screener/fetch/metrics.py owner_addback definition (D&A − CapEx − IFRS-16 lease depreciation); the legacy
-        # MAX(0, D&A − CapEx) is only a fallback for rows not yet recomputed.
-        add_stored = f("owner_add_m")
-        if add_stored is not None:
-            oe_add = max(0.0, add_stored)
+        cur_oe = f("cur_oe_eps")
+        if cur_oe is not None and cur_oe > 0:
+            cur_eps = cur_oe
         else:
-            da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
-            oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
-        cur_eps = (price * ((ni + oe_add) / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
+            add_stored = f("owner_add_m")
+            if add_stored is not None:
+                oe_add = max(0.0, add_stored)
+            else:
+                da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
+                oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
+            cur_eps = (price * ((ni + oe_add) / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
         fin_note_str = str(fin.get("fin_note") or "")
         auto_note = fin_note_str.split("[auto]", 1)[1] if "[auto]" in fin_note_str else ""
         if oe_peak is not None and cur_eps is not None:
@@ -409,8 +434,6 @@ def par_valuation(
             elif "non-cash earnings spike left out of peak" in auto_note or cur_eps > 1.5 * oe_peak:
                 cur_eps = min(cur_eps, oe_peak)
         if oe_peak is not None and cur_eps is not None and cur_eps < oe_peak:
-            # 50/50 Mid-Cycle Reversion Standard: when current earnings fall below peak,
-            # active earning power normalizes to the mid-cycle average between peak capacity and current reality.
             peak_eps = 0.5 * (oe_peak + max(0.0, cur_eps))
         else:
             peak_eps = oe_peak
@@ -428,27 +451,14 @@ def par_valuation(
 
     par_cost_of_equity = (p or {}).get("par_cost_of_equity", 0.085)
     par_cost_of_equity_fin = (p or {}).get("par_cost_of_equity_fin", 0.1025)
-    par_roic_avg = (p or {}).get("par_roic_avg", 0.120)
-    par_roic_log_k = (p or {}).get("par_roic_log_k", 0.250)
-    par_g_anchor_max = (p or {}).get("par_g_anchor_max", 0.220)
-    par_g_1y_floor = (p or {}).get("par_g_1y_floor", -0.040)
-    par_g_log_k = (p or {}).get("par_g_log_k", 0.120)
-    par_g_cap_default = (p or {}).get("par_g_cap", 0.120)
-    par_g_cap_large = (p or {}).get("par_g_cap_large", 0.105)
-    par_g_cap_mega = (p or {}).get("par_g_cap_mega", 0.098)
-    par_g_cap_hyper = (p or {}).get("par_g_cap_hyper", 0.095)
+    par_g_anchor_max = (p or {}).get("par_g_anchor_max", 0.180)
+    par_roic_cap = (p or {}).get("par_roic_cap", 0.500)
     par_g_base = (p or {}).get("par_g_base", 0.035)
     par_fade_cap30 = (p or {}).get("par_fade_cap30", 0.85)
     par_fade_cap20 = (p or {}).get("par_fade_cap20", 0.75)
     par_fade_cap15 = (p or {}).get("par_fade_cap15", 0.62)
-    par_fade_default = (p or {}).get("par_fade_default", 0.75)
-    par_size_intercept = (p or {}).get("par_size_factor_intercept", 1.08)
-    par_size_slope = (p or {}).get("par_size_factor_slope", 0.11)
-    par_size_min = (p or {}).get("par_size_factor_min", 0.72)
-    par_size_max = (p or {}).get("par_size_factor_max", 1.05)
+    par_fade_default = (p or {}).get("par_fade_default", 0.62)
 
-    # Revenue-Anchored Size Gravity & Scale Ceiling:
-    # Normalized to USD equivalent using standard currency cross rates; falls back to Market Cap / 4.0 only if revenue missing.
     ccy = fin.get("fin_currency") or fin.get("quote_currency") or "USD"
     fx_rate = C.FX_TO_USD.get(ccy, 1.0)
     mc_usd_b = ((mc or 0.0) * fx_rate) / 1000.0
@@ -456,70 +466,23 @@ def par_valuation(
     rev_usd_b = (rev * fx_rate) / 1000.0 if (rev is not None and rev > 0) else None
 
     if rev_usd_b is not None:
-        if rev_usd_b >= 250.0:
-            scale_tier, scale_cap = "HYPER", par_g_cap_hyper
-        elif rev_usd_b >= 50.0:
-            scale_tier, scale_cap = "MEGA", par_g_cap_mega
-        elif rev_usd_b >= 15.0:
-            scale_tier, scale_cap = "LARGE", par_g_cap_large
-        else:
-            scale_tier, scale_cap = "MID/SM", par_g_cap_default
+        scale_tier = "HYPER" if rev_usd_b >= 250.0 else ("MEGA" if rev_usd_b >= 50.0 else ("LARGE" if rev_usd_b >= 15.0 else "MID/SM"))
     else:
-        if mc_usd_b >= 1000.0:
-            scale_tier, scale_cap = "HYPER", par_g_cap_hyper
-        elif mc_usd_b >= 250.0:
-            scale_tier, scale_cap = "MEGA", par_g_cap_mega
-        elif mc_usd_b >= 50.0:
-            scale_tier, scale_cap = "LARGE", par_g_cap_large
-        else:
-            scale_tier, scale_cap = "MID/SM", par_g_cap_default
+        scale_tier = "HYPER" if mc_usd_b >= 1000.0 else ("MEGA" if mc_usd_b >= 250.0 else ("LARGE" if mc_usd_b >= 50.0 else "MID/SM"))
+    scale_cap = par_g_anchor_max
+    size_factor = 1.0
 
-    eff_rev_b = rev_usd_b if (rev_usd_b is not None and rev_usd_b > 0) else (max(0.5, mc_usd_b / 4.0) if mc_usd_b > 0 else 5.0)
-    size_factor = round(
-        max(par_size_min, min(par_size_max, par_size_intercept - par_size_slope * math.log10(max(1.0, eff_rev_b)))),
-        4,
-    )
-
-    # Gate 4 CAP-Linked Persistence (pers / r):
     if fund_cap is not None:
-        if fund_cap >= 30:
-            pers = par_fade_cap30
-        elif fund_cap >= 20:
-            pers = par_fade_cap20
-        else:
-            pers = par_fade_cap15
+        pers = par_fade_cap30 if fund_cap >= 30 else (par_fade_cap20 if fund_cap >= 20 else par_fade_cap15)
     else:
         pers = par_fade_default
     g_mult = 200.0
 
-    # Mauboussin Galton ROIC Regression:
-    # Expected ROIC = r * (ROIC_log - Average_ROIC) + Average_ROIC
-    if roic_op > par_roic_avg:
-        roic_log = round(par_roic_avg + par_roic_log_k * math.log(1.0 + (roic_op - par_roic_avg) / par_roic_log_k), 4)
-        roic_exp = round(pers * (roic_log - par_roic_avg) + par_roic_avg, 4)
-        roic_fade_ratio = round(roic_exp / roic_log, 4)
-    else:
-        roic_log = round(max(0.05, roic_op), 4)
-        roic_exp = roic_log
-        roic_fade_ratio = 1.0
-
-    # Operating Cost Base Growth Ceiling (g_org_exp / g_0) & Buyback Accretion (v6.35):
+    # Cost-Bloat Guarded Growth Ceiling (g_org_exp / g_0) & Buyback Accretion (v7.0):
     bb_raw = f("buyback_yield")
     bb_eff = max(-0.03, min(0.035, bb_raw)) if bb_raw is not None else 0.0
     bb_pos = max(0.0, bb_eff)
     bb_org = min(0.0, bb_eff)
-
-    ret_stored = f("retention_rate")
-    div_m = f("dividends_ttm_m")
-    if ret_stored is not None:
-        retention = max(0.0, min(1.0, ret_stored))
-    elif ni is not None and ni > 0 and div_m is not None:
-        retention = max(0.0, min(1.0, 1.0 - div_m / ni))
-    else:
-        retention = None
-    roiic_val = f("roiic")
-    r_inc = max(0.0, roiic_val if roiic_val is not None else roic_exp) if (roiic_val is not None or roic is not None) else None
-    zc_pricing = None
 
     sales_1y_val = f("sales_1y")
     sales_cagr_val = f("sales_cagr")
@@ -534,9 +497,10 @@ def par_valuation(
     g_cap = round(opcost_cagr_val, 4) if opcost_cagr_val is not None else (round(cap_growth_val, 4) if cap_growth_val is not None else None)
 
     if has_stmt_growth:
-        # Primary normal organic growth anchor: 70/30 blend of 10Y WLS Operating Cost Base & Sales Growth
+        # Cost-bloat guard: 70/30 blend of OpCost & Sales WLS CAGR, bounded above by Sales WLS CAGR so
+        # margin contraction (OpCost > Sales) never awards growth faster than revenue growth.
         if opcost_cagr_val is not None and sales_cagr_val is not None:
-            base_org = 0.70 * opcost_cagr_val + 0.30 * sales_cagr_val
+            base_org = min(sales_cagr_val, 0.70 * opcost_cagr_val + 0.30 * sales_cagr_val)
         elif opcost_cagr_val is not None:
             base_org = opcost_cagr_val
         elif sales_cagr_val is not None:
@@ -544,7 +508,7 @@ def par_valuation(
         else:
             base_org = (g - bb_pos) if g is not None else (sales_1y_val if sales_1y_val is not None else par_g_base)
         g_org_start = round(max(0.0, min(par_g_anchor_max, base_org + bb_org)), 4)
-        g_start = round(max(par_g_1y_floor, min(par_g_anchor_max + bb_pos, g_org_start + bb_pos)), 4)
+        g_start = round(max(-0.04, min(par_g_anchor_max + bb_pos, g_org_start + bb_pos)), 4)
     else:
         if f("g_est") is not None:
             g_start = round(f("g_est"), 4)
@@ -552,9 +516,9 @@ def par_valuation(
             g_start = round(max(0.0, g_imp_in), 4)
         else:
             g_start = par_g_base
-        g_org_start = round(max(0.0, g_start - bb_pos), 4)
+        base_org = g_start - bb_pos
+        g_org_start = round(max(0.0, min(par_g_anchor_max, base_org)), 4)
 
-    # Organic Growth Ceiling (g_0 / g_org_exp) = Operating Cost Base CAGR (no legacy scale_cap or 2.0% floor):
     if f("g_est") is not None:
         g_est_val = f("g_est")
         g_org_exp = round(max(0.0, min(par_g_anchor_max, g_est_val - bb_pos)), 4)
@@ -566,10 +530,42 @@ def par_valuation(
         g_org_exp = g_org_start
         g_exp = round(g_org_exp + bb_pos, 4)
 
-    g_log = g_org_exp
-    bb_contrib = round(max(0.0, g_exp - g_org_exp), 4)
+    # M&A-Matched Harmonic RONIC & Single Initial Cap (par_roic_cap = 50%):
+    # Serial acquirers whose Goodwill-inclusive capital base grows alongside top-line growth (cap_growth / g_raw)
+    # blend harmonically from Tangible Operating ROIC toward GAAP ROIC (only when Goodwill > 20% of IC: r_tang > 1.25 * r_gaap).
+    r_tang = f("roic_operating")
+    if (
+        f("roic_est") is None
+        and not uses_gaap_roic(sub_ind)
+        and r_tang is not None
+        and roic_gaap is not None
+        and r_tang > 1.25 * roic_gaap
+        and roic_gaap > 0
+        and cap_growth_val is not None
+        and cap_growth_val > 0
+    ):
+        g_ref = max(0.04, base_org if has_stmt_growth else par_g_base)
+        alpha = max(0.0, min(1.0, cap_growth_val / g_ref))
+        ronic_raw = 1.0 / ((1.0 - alpha) / r_tang + alpha / roic_gaap)
+    else:
+        ronic_raw = roic_op
+    roic_log = round(max(0.05, ronic_raw), 4)
+    roic_exp = round(max(0.05, min(par_roic_cap, ronic_raw)) if f("roic_est") is None else max(0.05, ronic_raw), 4)
+    roic_fade_ratio = round(roic_exp / roic_log, 4) if roic_log > 0 else 1.0
 
-    # Backwards-compatibility aliases for downstream callers
+    ret_stored = f("retention_rate")
+    div_m = f("dividends_ttm_m")
+    if ret_stored is not None:
+        retention = max(0.0, min(1.0, ret_stored))
+    elif ni is not None and ni > 0 and div_m is not None:
+        retention = max(0.0, min(1.0, 1.0 - div_m / ni))
+    else:
+        retention = None
+    roiic_val = f("roiic")
+    r_inc = max(0.0, roiic_val if roiic_val is not None else roic_exp) if (roiic_val is not None or roic is not None) else None
+    zc_pricing = None
+
+    g_log = g_org_exp
     g_fund = g_cap
     g_demand = g_hist
     g_raw = g_start
@@ -596,7 +592,7 @@ def par_valuation(
     cur_mult = price / peak_eps
     g_org_val = g_org_exp if g_org_exp is not None else par_g_base
 
-    # Explicit N-Year Mauboussin-Fade DCF at r = 8.50% (10.25% for Balance-Sheet Financials) (v6.36):
+    # Explicit N-Year Mauboussin-Fade DCF at r = 8.50% (10.25% for Balance-Sheet Financials) (v7.0):
     bs_fin = is_balance_sheet_financial(sub_ind)
     k = max(0.05, par_cost_of_equity_fin if bs_fin else par_cost_of_equity)
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
@@ -604,20 +600,19 @@ def par_valuation(
     mtm_holdco = is_mtm_holdco(sub_ind, fcf_conv_val, peak_eps_override, mh, f("ocf_ni_2y"))
     finite_conc = is_finite_concession(sub_ind, fcf_conv_val)
 
-    pe_vd, pe_mm, pe_mck, reinv_eff = explicit_dcf_multiple(
-        g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+    pe_vd, pe_mm, pe_mck, reinv_eff, fcfs_5, v_5 = dcf_schedule_and_continuation(
+        g_org_val, roic_eff, n_cap, k, par_g_base, 0.12, finite_conc, mtm_holdco
     )
-    # Mark-to-Market HoldCo / Insurer: fair value = 1.0x NAV = book value per share (equity_m in reporting ccy and
-    # market_cap_m in the same ccy, so BVPS in quote ccy = equity_m × price / market_cap_m). Falls back to the legacy
-    # 1 / ROIC_exp multiple only when equity is unavailable.
     eq_m = f("equity_m")
     bvps = (eq_m * price / mc) if (eq_m is not None and eq_m > 0 and mc and mc > 0 and price) else None
     nav_anchor = bool(mtm_holdco and bvps)
     if nav_anchor:
         pe_vd = pe_mm = bvps / peak_eps
         pe_mck = 0.0
+        fcfs_5 = [0.0] * 5
+        v_5 = pe_vd * ((1.0 + k) ** 5)
     pe_vd0, _, _, _ = explicit_dcf_multiple(
-        0.0, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+        0.0, roic_eff, n_cap, k, par_g_base, 0.12, finite_conc, mtm_holdco
     )
     raw_slope = (pe_vd - pe_vd0) / g_org_val if g_org_val > 1e-6 else 100.0
     eff_g_mult = raw_slope if raw_slope > 10.0 else 100.0
@@ -629,10 +624,7 @@ def par_valuation(
         t_hist_raw = None
         t_hist = pe_vd
 
-    # 100% Explicit Mauboussin-Fade DCF Fair Value Multiple:
     par_mult = pe_vd
-
-    # Backwards-compatibility aliases for downstream callers
     t_growth = pe_mm
     t_roic = pe_mck
     raw_par = pe_vd
@@ -641,19 +633,11 @@ def par_valuation(
     vs_par = price / par_val - 1.0
     status = C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR
 
-    # 5Y IRR along the Mauboussin fade trajectory + FCF-conserved buyback accretion:
+    # Bellman-Consistent 5Y Expected IRR directly from Stage-1 DCF FCF_1..5 and Year-5 continuation Fair Value V_5:
     g_term_eff = min(g_org_val, par_g_base)
-    g_org_5y = round(g_org_val - (2.0 / max(5.0, n_cap)) * (g_org_val - g_term_eff), 4) if not mtm_holdco else g_org_val
-    if bb_pos > 0 and cur_mult > 0:
-        bb_fcf_cap = max(0.0, (max(0.0, reinv_eff) / cur_mult) - dy)
-        g_irr = round(g_org_5y + min(bb_pos, bb_fcf_cap), 4)
-    else:
-        g_irr = round(g_org_5y, 4)
-    # Year-5 exit at the rolled-forward Fair P/E (growth and ROIC faded 5 years, remaining CAP N − 5), not today's:
-    # P_5 = Active EPS × (1 + g_irr)^5 × PE_5  ⇔  PAR_Val × (PE_5 / PE_0) × (1 + g_irr)^5.
-    pe5_ratio = 1.0 if mtm_holdco else year5_multiple_ratio(g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc)
-    par_val_5y = par_val * pe5_ratio
-    irr_5y = solve_irr_5y(price, par_val_5y, g_irr, dy)
+    g_irr = round(g_org_val - (2.0 / max(5.0, n_cap)) * (g_org_val - g_term_eff), 4) if not mtm_holdco else g_org_val
+    pe5_ratio = (v_5 / (pe_vd * ((1.0 + g_irr) ** 5))) if (pe_vd > 0 and not mtm_holdco) else 1.0
+    irr_5y = solve_irr_5y(cur_mult, fcfs_5, v_5)
 
     # Market-Implied CAP scaled above zero-moat steady-state base multiple (1 / r = 11.76x):
     pe_base = 1.0 / k
@@ -667,10 +651,8 @@ def par_valuation(
         cap_implied = None
     cap_gap = round(eff_cap - cap_implied, 1) if (eff_cap is not None and cap_implied is not None) else None
 
-    # Root-safe DCF-inverted Market-Implied Organic Growth (g_market at r) & Growth Margin of Safety (g_gap).
-    # g_gap is only reported where the inversion is unambiguous (ok / saturated at a grid edge).
     g_market, g_market_flag = solve_market_growth(
-        cur_mult, g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+        cur_mult, g_org_val, roic_eff, n_cap, k, par_g_base, 0.12, finite_conc, mtm_holdco
     )
     g_gap = (
         round(g_org_val - g_market, 4)
@@ -709,7 +691,6 @@ def par_valuation(
         "g_org_exp": g_org_exp,
         "g_irr": g_irr,
         "exp_coupon": (g_exp + dy) if g_exp is not None else None,
-        # Backwards compatibility aliases
         "g_imp": g_exp,
         "imp_coupon": (g_exp + dy) if g_exp is not None else None,
         "irr_5y": irr_5y,

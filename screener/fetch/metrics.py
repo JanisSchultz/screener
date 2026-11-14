@@ -151,18 +151,22 @@ def implied_shares(ni: dict, eps: dict, shares: dict) -> dict:
     return out
 
 
-def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None) -> dict:
-    """Owner FCF = OCF − maintenance capex − SBC. Maintenance capex = MIN(capex, depreciation & amortisation); all
-    capex when D&A is missing (or D&A when capex is not tagged separately). Outflows taken as positive."""
-    out, da = {}, da or {}
+def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None, lease: dict | None = None) -> dict:
+    """Owner FCF = OCF − IFRS-16 lease depreciation proxy − maintenance capex − SBC. Maintenance capex =
+    MIN(capex, D&A − lease_dep); all capex when D&A is missing (or D&A when capex is not tagged separately)."""
+    out, da, lease = {}, da or {}, lease or {}
     for y, o in ocf.items():
         if o is None:
             continue
         c_val, d_val = capex.get(y), da.get(y)
         if c_val is None and d_val is None:
             continue
-        cx = min(abs(c_val), abs(d_val)) if (c_val is not None and d_val is not None) else abs(c_val if c_val is not None else d_val)
-        out[y] = o - cx - abs(sbc.get(y) or 0)
+        l_cur, l_prev = lease.get(y), lease.get(y - 1)
+        l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
+        lease_dep = LEASE_DEP_RATE * l_avg
+        d_clean = max(0.0, abs(d_val) - lease_dep) if d_val is not None else None
+        cx = min(abs(c_val), d_clean) if (c_val is not None and d_clean is not None) else abs(c_val if c_val is not None else d_clean)
+        out[y] = (o - lease_dep) - cx - abs(sbc.get(y) or 0)
     return out
 
 
@@ -217,7 +221,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         if ebit.get(y) is None and pt_val is not None:
             ebit[y] = pt_val + abs(interest.get(y) or 0)
 
-    fcf = true_fcf(g("ocf"), g("capex"), g("sbc"), g("da"))
+    fcf = true_fcf(g("ocf"), g("capex"), g("sbc"), g("da"), g("lease"))
     tax_rate = {y: (tax[y] / pretax[y]) for y in tax if pretax.get(y)}
     # Operating capital nets cash AND short-term investments (liquid treasury assets are not operating capital);
     # falls back to cash & equivalents where the combined figure is not reported.
@@ -240,7 +244,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         return 0.0 if default_zero else None
 
     srcs = {"ni": ni, "ocf": g("ocf"), "sbc": g("sbc"), "debt": g("debt"),
-            "interest": interest, "ebit": ebit, "assets": g("assets"), "sales": g("sales"), "cash": g("cash")}
+            "interest": interest, "ebit": ebit, "assets": g("assets"), "sales": g("sales"), "cash": cash_op}
     zero_default_keys = {"debt", "sbc", "interest"}
     for key, src in (("ni_ttm_m", "ni"), ("ocf_ttm_m", "ocf"), ("sbc_ttm_m", "sbc"), ("lt_debt_m", "debt"),
                      ("interest_m", "interest"), ("ebit_ttm_m", "ebit"), ("total_assets_m", "assets"),
@@ -306,13 +310,21 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             return None
         return e - ((g("goodwill").get(y) or 0) + (g("intang").get(y) or 0) if tangible else 0)
 
+    mi_ser = g("minority_interest")
     for key, tangible in (("roe_median", False), ("rote_median", True)):
         ser = {}
         for y, n in ni.items():
             cur, prev = eq(y, tangible), eq(y - 1, tangible)
             base = (cur + prev) / 2 if cur is not None and prev is not None else cur
             if n is not None and base and base > 0:
-                ser[y] = n / base
+                mi_y = mi_ser.get(y)
+                n_eff = n
+                if mi_y is not None and abs(mi_y) > 0.15 * abs(n):
+                    pt_y, tx_y = pretax.get(y), tax.get(y)
+                    cons_ni = n + abs(mi_y)
+                    if pt_y is None or tx_y is None or abs(cons_ni - (pt_y - tx_y)) < abs(n - (pt_y - tx_y)):
+                        n_eff = cons_ni
+                ser[y] = n_eff / base
         yrs_e = _last_years(ser, ROIC_YEARS, last)
         if yrs_e:
             out[key] = median(ser[y] for y in yrs_e)

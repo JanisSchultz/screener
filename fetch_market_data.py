@@ -37,7 +37,9 @@ from screener.data import (
     FIN_FIELDS,
     OUTPUT_DIR,
     PANEL_FIELDS,
+    QUAL_CODES,
     TECH_FIELDS,
+    input_fields,
     load_universe,
     universe_keys,
     write_csv,
@@ -48,15 +50,16 @@ from screener.fetch.sqlite_db import build_sqlite_db
 from screener.gates import funnel_ids, params, par_valuation
 
 ANALYST_FIELDS = ("peak_eps_est", "g_est", "roic_est", "g_implied", "fin_note")
-PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
+PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
 US_GAAP_UNIVERSES = ("us",)     # operating-lease cost sits outside D&A under US GAAP -> no IFRS-16 lease deduction
+US_GAAP_IDS = {"WCN.CA", "CP.CA", "QSR.CA", "SHOP.CA"}
 
 
-def apply_lease_basis(series: dict, key: str) -> dict:
+def apply_lease_basis(series: dict, key: str, cid: str | None = None) -> dict:
     """IFRS-16 lessees carry right-of-use depreciation inside D&A; US GAAP filers do not. Drop the lease series for
-    US GAAP universes so screener.fetch.metrics.owner_addback only deducts lease depreciation for IFRS reporters."""
-    if series and key in US_GAAP_UNIVERSES:
+    US GAAP universes and US-GAAP Canadian filers so owner_addback / true_fcf only deduct lease depreciation for IFRS reporters."""
+    if series and (key in US_GAAP_UNIVERSES or (cid and cid in US_GAAP_IDS)):
         series["lease"] = {}
     return series
 
@@ -212,7 +215,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         bars = eod.eod(esym)
         sp = eod.splits(esym, fund) if (fund or bars) else {}
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num(old.get("price"))
-        series = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px, splits=sp) if fund else {}, key)
+        series = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px, splits=sp) if fund else {}, key, i)
         q = eod.quote(esym, fund_data=fund, eod_bars=bars, series=series) if (fund or bars) else {}
 
         if a.prices_only:
@@ -317,7 +320,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         sp = eod.splits(esym, fund) if bars else {}
         ye_px = eod.year_end_prices(esym, bars, sp) if bars else None
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num((fins.get(cid) or {}).get("price"))
-        ser = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px), key)
+        ser = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px), key, cid)
         panel_all.extend(eod.panel_rows(cid, str(c["ticker"]), esym, fund, series=ser, ye_prices=ye_px))
     if panel_all:
         write_csv(DATA_DIR / key / "fundamentals_panel.csv", PANEL_FIELDS, panel_all)
@@ -330,17 +333,27 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
 
 
 def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
-    """Dual listings: copy PAR inputs and analyst overrides from the primary listing ("mirror" in universe.json)."""
+    """Dual listings: copy PAR inputs, analyst overrides, and qualitative gate scores from the primary listing ("mirror" in universe.json)."""
     for key in keys:
         meta = load_universe(key)
         mirror = meta.get("mirror") or {}
         if not mirror:
             continue
         fins = dict(meta["financials"])
+        cmap = {c["id"]: c for c in meta["companies"]}
+        inputs_changed = False
         for i, src in mirror.items():
             skey, sid = src.split(":", 1)
-            s = load_universe(skey)["financials"].get(sid)
+            s_meta = load_universe(skey)
+            s = s_meta["financials"].get(sid)
             t = fins.get(i)
+            s_co = next((c for c in s_meta["companies"] if c["id"] == sid), None)
+            t_co = cmap.get(i)
+            if s_co and t_co:
+                for qk in [*QUAL_CODES, "calamity", "calamity_note"]:
+                    if t_co.get(qk) != s_co.get(qk):
+                        t_co[qk] = s_co.get(qk)
+                        inputs_changed = True
             if not s or not t:
                 print(f"  mirror {key}:{i} <- {src}: missing row")
                 continue
@@ -359,11 +372,13 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
             if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:
                 fin_rate = eod.fx(s.get("fin_currency"), t.get("fin_currency")) or rate or 1.0
                 t["sales_ttm_m"] = num(s.get("sales_ttm_m")) * fin_rate
-            for k in ("peak_oe_eps", "peak_eps_est"):
-                t[k] = num(s.get(k)) * rate if (num(s.get(k)) is not None and rate) else None
+            for k in ("peak_oe_eps", "cur_oe_eps", "peak_eps_est"):
+                t[k] = round(num(s.get(k)) * rate, 4) if (num(s.get(k)) is not None and rate) else None
             set_auto_note(t, [f"PAR inputs mirrored from {src}"])
             state["report"].append((key, i, old, t))
             fins[i] = t
+        if inputs_changed:
+            write_csv(DATA_DIR / key / "inputs.csv", input_fields(meta), meta["companies"])
         write_csv(DATA_DIR / key / "financials.csv", FIN_FIELDS, [fins.get(c["id"], {"id": c["id"]}) for c in meta["companies"]])
         print(f"{key}: mirrored {len(mirror)} dual listing(s)")
 

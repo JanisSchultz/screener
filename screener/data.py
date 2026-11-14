@@ -41,6 +41,7 @@ FIN_COLUMNS = [
     ("fcf_conv", "Owner FCF ÷ NI (multi-yr)", "0%", 9),
     ("peak_oe_year", "Peak Owner EPS year", "0", 8),
     ("peak_oe_eps", "Last peak Owner EPS (quote ccy)", "#,##0.00", 11),
+    ("cur_oe_eps", "Latest FY Owner EPS (quote ccy)", "#,##0.00", 11),
     ("mult_low_5y", "Cycle low multiple (5y)", "0.0", 9),
     ("mult_high_5y", "Cycle high multiple (5y)", "0.0", 9),
     ("cagr_oe_eps", "Cycle Owner EPS CAGR (g)", "0.0%", 9),

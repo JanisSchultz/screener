@@ -17,6 +17,7 @@ from screener.dashboard import build_dashboard_html, collect_screener_data
 from screener.fetch.metrics import clean_da, exp_weighted_ols_cagr, owner_addback, summarize
 from screener.gates import (
     active_roic,
+    dcf_schedule_and_continuation,
     explicit_dcf_multiple,
     is_balance_sheet_financial,
     is_mtm_holdco,
@@ -24,7 +25,7 @@ from screener.gates import (
     par_valuation,
     solve_irr_5y,
     solve_market_growth,
-    year5_multiple_ratio,
+    uses_gaap_roic,
 )
 
 
@@ -219,6 +220,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
 
         s1_tweaked = abs(sales1y - base_sales1y) > 0.01
         s5_tweaked = abs(salescagr - base_salescagr) > 0.01
+        cg_tweaked = abs(capgrowth - base_capgrowth) > 0.01
         base_bb = (c.get("buyback_yield") * 100.0) if c.get("buyback_yield") is not None else 0.0
         bb_tweaked = abs(bb - base_bb) > 0.01
         base_roic = (c.get("roic_used") * 100.0) if c.get("roic_used") is not None else (
@@ -234,49 +236,78 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         bb_org = min(0.0, bb_eff)
         s1_val = c.get("sales_1y") if (not s1_tweaked and c.get("sales_1y") is not None) else (sales1y / 100.0)
         s5_val = c.get("sales_cagr") if (not s5_tweaked and c.get("sales_cagr") is not None) else (salescagr / 100.0)
+        cg_val = c.get("cap_growth") if (not cg_tweaked and c.get("cap_growth") is not None) else ((capgrowth / 100.0) if cg_tweaked else None)
 
         delta_s5 = (salescagr - base_salescagr) / 100.0 if s5_tweaked else 0.0
         oc_cagr = (c.get("opcost_cagr") + delta_s5) if c.get("opcost_cagr") is not None else None
         g_oe = (c.get("cagr_oe_eps") + delta_s5) if c.get("cagr_oe_eps") is not None else None
 
-        roic_input = c.get("roic_used") if (not roic_tweaked and c.get("roic_used") is not None) else (roic / 100.0)
-        roic_avg = 0.12
-        roic_log_k = 0.25
-        roic_log = round(max(0.05, roic_input), 4)
-        roic_exp = roic_log
-        if roic_input > roic_avg:
-            roic_log = round(roic_avg + roic_log_k * math.log(1.0 + (roic_input - roic_avg) / roic_log_k), 4)
-            roic_exp = round(pers * (roic_log - roic_avg) + roic_avg, 4)
-
         g_base = 0.035
+        g_anchor_max = 0.18
+        roic_cap = 0.50
         has_sales_cagr = (c.get("sales_cagr") is not None) or s5_tweaked
-        base_org = g_base
-        if oc_cagr is not None and has_sales_cagr:
-            base_org = 0.70 * oc_cagr + 0.30 * s5_val
-        elif oc_cagr is not None:
-            base_org = oc_cagr
-        elif has_sales_cagr:
-            base_org = s5_val
-        elif g_oe is not None:
-            base_org = g_oe - bb_pos
-        elif c.get("sales_1y") is not None or s1_tweaked:
-            base_org = s1_val
-        elif c.get("g_implied") is not None:
-            base_org = c.get("g_implied") - bb_pos
+        has_sales_1y = (c.get("sales_1y") is not None) or s1_tweaked
+        has_stmt_growth = (oc_cagr is not None) or has_sales_cagr or has_sales_1y or (g_oe is not None) or (cg_val is not None)
 
-        g_org_start = round(max(0.0, min(0.22, base_org + bb_org)), 4)
-        g_start = round(max(-0.04, min(0.22 + bb_pos, g_org_start + bb_pos)), 4)
+        base_org = g_base
+        if has_stmt_growth:
+            if oc_cagr is not None and has_sales_cagr:
+                base_org = min(s5_val, 0.70 * oc_cagr + 0.30 * s5_val)
+            elif oc_cagr is not None:
+                base_org = oc_cagr
+            elif has_sales_cagr:
+                base_org = s5_val
+            elif g_oe is not None:
+                base_org = g_oe - bb_pos
+            elif has_sales_1y:
+                base_org = s1_val
+            g_org_start = round(max(0.0, min(g_anchor_max, base_org + bb_org)), 4)
+            g_start = round(max(-0.04, min(g_anchor_max + bb_pos, g_org_start + bb_pos)), 4)
+        else:
+            if c.get("g_est") is not None:
+                g_start = round(c.get("g_est"), 4)
+            elif c.get("g_implied") is not None:
+                g_start = round(max(0.0, c.get("g_implied")), 4)
+            else:
+                g_start = g_base
+            base_org = g_start - bb_pos
+            g_org_start = round(max(0.0, min(g_anchor_max, base_org)), 4)
 
         if gest is not None:
             g_est_val = gest / 100.0
-            g_org_exp = round(max(0.0, min(0.22, g_est_val - bb_pos)), 4)
-            g_exp = round(max(0.0, min(0.22 + bb_pos, g_est_val)), 4)
+            g_org_exp = round(max(0.0, min(g_anchor_max, g_est_val - bb_pos)), 4)
+            g_exp = round(max(0.0, min(g_anchor_max + bb_pos, g_est_val)), 4)
+        elif not has_stmt_growth and c.get("g_implied") is not None:
+            g_org_exp = round(max(0.0, min(g_anchor_max, c.get("g_implied") - bb_pos)), 4)
+            g_exp = round(g_org_exp + bb_pos, 4)
         else:
             g_org_exp = g_org_start
             g_exp = round(g_org_exp + bb_pos, 4)
 
-        g_org_exp = min(g_exp, g_org_exp)
-        bb_contrib = round(max(0.0, g_exp - g_org_exp), 4)
+        roic_input = c.get("roic_used") if (not roic_tweaked and c.get("roic_used") is not None) else (roic / 100.0)
+        has_roic_est = (c.get("roic_est") is not None) or roic_tweaked
+        r_tang = c.get("roic_operating")
+        roic_gaap = c.get("roic_median")
+        sub_ind = (c.get("sub_industry") or "").strip()
+        uses_gaap = bool(c.get("uses_gaap_roic")) if c.get("uses_gaap_roic") is not None else uses_gaap_roic(sub_ind)
+        if (
+            not has_roic_est
+            and not uses_gaap
+            and r_tang is not None
+            and roic_gaap is not None
+            and r_tang > 1.25 * roic_gaap
+            and roic_gaap > 0
+            and cg_val is not None
+            and cg_val > 0
+        ):
+            g_ref = max(0.04, base_org if has_stmt_growth else g_base)
+            alpha = max(0.0, min(1.0, cg_val / g_ref))
+            ronic_raw = 1.0 / ((1.0 - alpha) / r_tang + alpha / roic_gaap)
+        else:
+            ronic_raw = roic_input
+        roic_log = round(max(0.05, ronic_raw), 4)
+        roic_exp = round(max(0.05, ronic_raw) if has_roic_est else max(0.05, min(roic_cap, ronic_raw)), 4)
+        roic_avg = 0.12
 
         # Valuation
         has_hist_mults = bool(ml and mh)
@@ -288,7 +319,6 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
 
         cur_mult = price / peak_eps
         g_org_val = g_org_exp if g_org_exp is not None else 0.035
-        sub_ind = (c.get("sub_industry") or "").strip()
         is_bs_fin = (
             bool(c.get("bs_fin"))
             if c.get("bs_fin") is not None
@@ -315,34 +345,18 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
             pe_mck = 0.0
             pe_vd = nav_mult
             reinv_eff = 1.0
+            fcfs_5 = [0.0] * 5
+            v_5 = pe_vd * ((1.0 + k) ** 5)
         else:
-            reinv_stage1 = max(0.0, g_org_val) / roic_eff
-            reinv_eff = 1.0 - reinv_stage1
-            pe_vd, pe_mm, pe_mck, _ = explicit_dcf_multiple(
+            pe_vd, pe_mm, pe_mck, reinv_eff, fcfs_5, v_5 = dcf_schedule_and_continuation(
                 g_org_val, roic_eff, n_cap, r=k, g_term=g_base, roic_term_base=roic_avg, finite_conc=is_finite
             )
 
         par_mult = pe_vd
-        par_val = par_mult * peak_eps
+        par_val = bvps if (is_mtm and bvps and bvps > 0) else par_mult * peak_eps
         vs_par = price / par_val - 1.0
 
-        dy = max(0.0, (c.get("dividends_ttm_m") or 0.0) / mc) if (mc and mc > 0) else 0.0
-        g_term_eff_5y = min(g_org_exp, g_base) if g_org_exp is not None else g_base
-        g_org_5y = (
-            g_org_exp
-            if is_mtm
-            else round((g_org_exp - (2.0 / max(5.0, n_cap)) * (g_org_exp - g_term_eff_5y)) * 10000) / 10000
-        ) if g_org_exp is not None else g_base
-        g_irr = round((g_org_5y + bb_contrib) * 10000) / 10000
-        if bb_contrib > 0 and cur_mult > 0:
-            bb_fcf_cap = max(0.0, (max(0.0, reinv_eff) / cur_mult) - dy)
-            g_irr = round((g_org_5y + min(bb_contrib, bb_fcf_cap)) * 10000) / 10000
-
-        pe5_ratio = 1.0 if is_mtm else year5_multiple_ratio(
-            g_org_val, roic_eff, n_cap, r=k, g_term=g_base, roic_term_base=roic_avg, finite_conc=is_finite
-        )
-        par_val_5y = par_val * pe5_ratio
-        irr_5y = solve_irr_5y(price, par_val_5y, g_irr, dy) if (price and par_val_5y and g_irr is not None) else None
+        irr_5y = solve_irr_5y(cur_mult, fcfs_5, v_5)
 
         pe_base = 1.0 / k
         eff_cap = fund_cap if (fund_cap is not None and fund_cap > 0) else (20.0 if has_moat_arch else None)
@@ -533,25 +547,38 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         pe_high_g, _, _, _ = explicit_dcf_multiple(0.12, 0.06, 20, r=0.085, g_term=0.02, roic_term_base=0.06, roic_end=0.06)
         self.assertLess(pe_high_g, pe_low_g)
 
-    def test_year5_multiple_ratio_and_irr_convergence(self):
-        """Verify Year-5 rolled-forward Fair P/E compresses during fade and solve_irr_5y converges."""
-        # High-growth compounder fading from g0=14%, ROIC=30% -> PE_5 < PE_0
-        ratio = year5_multiple_ratio(0.14, 0.30, 20, r=0.085, g_term=0.035)
-        self.assertLess(ratio, 1.0)
-        self.assertGreater(ratio, 0.70)
+    def test_miller_modigliani_zero_spread_invariance_and_bellman_5y_irr(self):
+        """Verify Fair P/E == 1/r when RONIC == r across all g0 and N, and Bellman 5Y IRR == r at Fair Value."""
+        # 1. Exact Miller-Modigliani zero-spread theorem: when RONIC_t == r, Fair P/E == 1 / r to < 1e-12
+        for r in (0.085, 0.1025):
+            for g0 in (0.0, 0.035, 0.08, 0.14, 0.18):
+                for n_cap in (5, 10, 15, 20, 30):
+                    pe, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(g0, r, n_cap, r=r, g_term=0.035, roic_end=r)
+                    self.assertAlmostEqual(pe, 1.0 / r, places=12)
+                    irr = solve_irr_5y(pe, fcfs_5, v_5)
+                    self.assertAlmostEqual(irr, r, places=7)
 
-        # Steady-state company with g0=0%, ROIC=12%, CAP=30 -> ratio == 1.0 (zero fade, zero reinvestment)
-        ratio_steady = year5_multiple_ratio(0.0, 0.12, 30, r=0.085, g_term=0.035)
-        self.assertAlmostEqual(ratio_steady, 1.0, places=4)
+        # 2. Across all funnel companies in the live dataset, IRR > r iff vs_par < 0 (zero sign contradictions)
+        data = collect_screener_data(["us", "eu", "ca"])
+        contradictions = []
+        for c in data["companies"]:
+            if c.get("result") not in ("Quality pass", "Calamity pass"):
+                continue
+            vs_par = c.get("vs_par")
+            irr = c.get("irr_5y")
+            r = c.get("disc_rate") or 0.085
+            if vs_par is None or irr is None:
+                continue
+            if (vs_par < -1e-4 and irr < r - 1e-4) or (vs_par > 1e-4 and irr > r + 1e-4):
+                contradictions.append((c["id"], vs_par, irr, r))
+        self.assertEqual(contradictions, [])
 
-        # IRR solver accuracy across dividend regimes
-        for dy in (0.0, 0.025, 0.08):
-            irr = solve_irr_5y(price=100.0, par_val=120.0, g_exp=0.08, dy=dy)
-            self.assertIsNotNone(irr)
-            # Verify NPV == price at solved IRR
-            pv = sum((100.0 * dy * ((1.08 / (1.0 + irr)) ** t)) for t in range(1, 6))
-            pv += 120.0 * ((1.08 / (1.0 + irr)) ** 5)
-            self.assertAlmostEqual(pv, 100.0, places=6)
+        # 3. Verify ASML == ASML.NL cross-universe mirror parity and IBKR consolidated ROE
+        by_id = {c["id"]: c for c in data["companies"]}
+        self.assertAlmostEqual(by_id["ASML"]["par_mult"], by_id["ASML.NL"]["par_mult"], places=4)
+        self.assertEqual(by_id["ASML"]["g4_cap"], by_id["ASML.NL"]["g4_cap"])
+        self.assertEqual(by_id["FER"]["result"], by_id["FER.ES"]["result"])
+        self.assertGreater(by_id["IBKR"]["roic_exp"], 0.18)
 
     def test_mtm_holdco_2y_cash_conversion_and_bvps_anchor(self):
         """Verify 2Y OCF/NI < 0.25 triggers MTM HoldCo and anchors Fair Value to 1.0x BVPS."""

@@ -647,7 +647,7 @@ class EODHD:
                 except (ValueError, TypeError):
                     pass
 
-        keys = ("sales", "opcost", "ni", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
+        keys = ("sales", "opcost", "ni", "minority_interest", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
                 "ocf", "capex", "sbc", "da", "dividends",
                 "equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "shares")
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
@@ -706,6 +706,7 @@ class EODHD:
             pretax = _fval(i_r, "incomeBeforeTax")
             tax = _fval(i_r, "incomeTaxExpense", "taxProvision")
             interest = _fval(i_r, "interestExpense")
+            mi = _fval(i_r, "minorityInterest") if _fval(b_r, "commonStockTotalEquity") is None else None
 
             # Prefer operatingIncome (true GAAP operating profit = Revenue - COGS - OpEx);
             # for banks/insurers where operatingIncome may be absent or >= revenue, fall back cleanly
@@ -774,7 +775,7 @@ class EODHD:
             e_st = _f((earn_ann.get(d_str) or {}).get("epsActual"))
 
             for k, val in (
-                ("sales", sales), ("opcost", opcost), ("ni", ni), ("ebit", ebit), ("pretax", pretax),
+                ("sales", sales), ("opcost", opcost), ("ni", ni), ("minority_interest", mi), ("ebit", ebit), ("pretax", pretax),
                 ("tax", tax), ("interest", interest), ("ocf", ocf), ("capex", capex),
                 ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq),
                 ("debt", debt), ("cash", cash), ("cash_sti", cash_sti), ("lease", lease),
@@ -790,7 +791,7 @@ class EODHD:
         # remained in DKK) convert only the items still in the old currency.
         if inc_ccys and len(set(inc_ccys.values())) > 1 and out["sales"]:
             target_ccy = inc_ccys[max(inc_ccys)]
-            inc_keys = ("sales", "opcost", "ni", "ebit", "pretax", "tax", "interest")
+            inc_keys = ("sales", "opcost", "ni", "minority_interest", "ebit", "pretax", "tax", "interest")
             bs_keys = ("equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
