@@ -23,6 +23,7 @@ from screener.gates import (
     is_mtm_holdco,
     params,
     par_valuation,
+    ronic0,
     solve_irr_5y,
     solve_market_growth,
     uses_gaap_roic,
@@ -95,35 +96,43 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         self.assertIn('id="sb-val-peakeps">-</span>', self.html)
 
     def test_dynamic_slider_bounds(self):
-        """Verify dynamic slider min/max assignment in syncSandboxInputs."""
-        self.assertIn("s1y.min = Math.min(-20, Math.floor(sbCurrent.sales1y - 5));", self.html)
-        self.assertIn("s1y.max = Math.max(40, Math.ceil(sbCurrent.sales1y + 5));", self.html)
+        """Verify dynamic slider min/max assignment in syncSandboxInputs (only controls that exist in the HTML)."""
+        self.assertIn("sCagr.min = Math.min(-20, Math.floor(sbCurrent.salescagr - 5));", self.html)
         self.assertIn("sRoic.min = Math.min(5, Math.floor(sbCurrent.roic - 5));", self.html)
+        for dead in ("sb-slider-sales1y", "sb-slider-capgrowth", "sb-slider-bb", "sb-input-ml", "sb-input-mh"):
+            self.assertNotIn(dead, self.html)
 
     def test_growth_fallback_hierarchy(self):
         """Verify initValuationSandbox implements the robust fallback hierarchy."""
         self.assertIn("const baseGrowth = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? c.sales_cagr", self.html)
         self.assertIn(": ((c.cagr_oe_eps !== null && c.cagr_oe_eps !== undefined) ? c.cagr_oe_eps", self.html)
         self.assertIn(": ((c.sales_1y !== null && c.sales_1y !== undefined) ? c.sales_1y", self.html)
-        self.assertIn(": ((c.g_start !== null && c.g_start !== undefined) ? c.g_start : 0.08)));", self.html)
+        self.assertIn(": ((c.g_org_exp !== null && c.g_org_exp !== undefined) ? c.g_org_exp : 0.08)));", self.html)
+        self.assertNotIn("c.price / 15", self.html)
 
     def test_valuation_unavailable_status_box(self):
         """Verify status box properly shows Valuation Unavailable when inputs are missing and defines .badge-slate CSS."""
-        self.assertIn("Valuation Unavailable (Missing Price, Peak EPS, or 5Y Multiples)", self.html)
+        self.assertIn("Scenario Verdict: Valuation Unavailable (", self.html)
+        self.assertIn("'Missing Price, Peak EPS, or 5Y Multiples'", self.html)
+        self.assertIn("NO POSITIVE DCF VALUE", self.html)
         self.assertIn("badge-slate", self.html)
         self.assertIn(".badge-gray, .badge-slate", self.html)
 
-    def test_valuation_audit_uses_eff_g_mult_and_yn_pricing_map(self):
-        """Verify Valuation Audit card displays eff_g_mult (not hardcoded 200x) and maps Y/N Gate 3b pricing."""
-        self.assertIn("const effSlope = (c.eff_g_mult !== null && c.eff_g_mult !== undefined) ? c.eff_g_mult : c.g_mult;", self.html)
+    def test_valuation_audit_dead_fields_removed_and_yn_pricing_map(self):
+        """Valuation Audit card shows the live inputs (r, RONIC₀, M&A share) and maps Y/N Gate 3b pricing."""
         self.assertIn("'Y': 'Pass (≥ Inflation & ROIC ≥ 12%)'", self.html)
         self.assertIn("'N': 'Fail (< Inflation or Sub-Hurdle)'", self.html)
-        self.assertIn("c.g4_cap >= 30 ? '85%' : (c.g4_cap >= 20 ? '75%' : '62%')", self.html)
+        for dead in ("eff_g_mult", "audit-cap-pers", "audit-scaletier-val", "audit-thist-val", "fade_cap30", "roic_avg"):
+            self.assertNotIn(dead, self.html)
+        for live in ("audit-cap-rate", "audit-mashare-val", "c.ronic_le_r"):
+            self.assertIn(live, self.html)
+        self.assertNotIn("r=8.5%", self.html)
 
     def test_dynamic_tab_counts_respect_market_and_calamity_toggle(self):
         """Verify updateTabCounts filters by currentMarket and shortlist Include Calamities toggle."""
         self.assertIn("const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);", self.html)
         self.assertIn("(c.result === 'Quality pass' || (incCal && c.result === 'Calamity pass')) && c.val_status === 'Below PAR'", self.html)
+        self.assertIn("setKpi('kpi-median-irr'", self.html)
 
     def test_consistent_column_order_across_shortlist_qpass_and_calamity(self):
         """Verify Shortlist, Quality Pass Funnel, and Calamity Watchlist share the exact same 18 core columns."""
@@ -138,10 +147,10 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         self.assertIn("isYearZero", self.html)
 
     def test_cap_override_json_formatting(self):
-        """Verify copySandboxOverrideJson displays 'Unassigned' instead of 'nully' and matches apply_evaluation.py schema."""
-        self.assertIn("sbCurrent.cap !== null ? sbCurrent.cap + 'y' : 'Unassigned'", self.html)
-        self.assertIn("quantitative_overrides:", self.html)
-        self.assertIn("gate_4_runway_cap: sbCurrent.cap", self.html)
+        """copySandboxOverrideJson emits only changed overrides (no nulls that would clear existing ones)."""
+        self.assertIn("sbCurrent.cap !== null ? sbCurrent.cap + 'y' : '20y default'", self.html)
+        self.assertIn("overrideObj.quantitative_overrides = overrides;", self.html)
+        self.assertIn("if (tw.cap) overrideObj.qualitative = {{ gate_4_runway_cap: sbCurrent.cap }};".replace("{{", "{").replace("}}", "}"), self.html)
 
 
 class ValuationSandboxSimulationTests(unittest.TestCase):
@@ -151,249 +160,165 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         cls.companies = cls.screener_data.get("companies", [])
 
     def _simulate_js_sandbox(self, c: dict, overrides: dict | None = None) -> dict:
-        """Simulate JS sandbox calculation logic 1:1 matching screener/dashboard.py (v6.36)."""
+        """Simulate the JS sandbox (screener/dashboard.py recalcSandboxValuation, v7.1) 1:1."""
+        r4 = lambda x: math.floor(x * 10000.0 + 0.5) / 10000.0
+        r1 = lambda x: math.floor(x * 10.0 + 0.5) / 10.0
+        snap = lambda v: math.floor(v * 2.0 + 0.5) / 2.0
         # 1. initValuationSandbox(c)
-        cap = c.get("g4_cap") if (c.get("g4_cap") is not None) else None
-        base_growth = c.get("sales_cagr") if c.get("sales_cagr") is not None else (
-            c.get("cagr_oe_eps") if c.get("cagr_oe_eps") is not None else (
-                c.get("sales_1y") if c.get("sales_1y") is not None else (
-                    c.get("g_start") if c.get("g_start") is not None else 0.08
-                )
-            )
-        )
-        base_salescagr = (c.get("sales_cagr") * 100.0) if c.get("sales_cagr") is not None else (base_growth * 100.0)
-        base_sales1y = (c.get("sales_1y") * 100.0) if c.get("sales_1y") is not None else (base_growth * 100.0)
-        base_capgrowth = (c.get("cap_growth") * 100.0) if c.get("cap_growth") is not None else (base_growth * 100.0)
-        roic = (c.get("roic_used") * 100.0) if c.get("roic_used") is not None else (
-            (c.get("roic_operating") * 100.0) if c.get("roic_operating") is not None else (
-                (c.get("roic_median") * 100.0) if c.get("roic_median") is not None else 18.0
-            )
-        )
-        bb = (c.get("buyback_yield") * 100.0) if c.get("buyback_yield") is not None else 0.0
-        base_peakeps = c.get("peak_eps") if c.get("peak_eps") is not None else (
-            (c.get("price") / 15.0) if (c.get("price") and c.get("price") > 0) else None
-        )
-        ml = c.get("mult_low_5y")
-        mh = c.get("mult_high_5y")
-        gest = (c.get("g_est") * 100.0) if c.get("g_est") is not None else None
-
-        salescagr = base_salescagr
-        sales1y = base_sales1y
-        capgrowth = base_capgrowth
-        peakeps = base_peakeps
-        if overrides:
-            if "cap" in overrides:
-                cap = overrides["cap"]
-            if "salescagr" in overrides:
-                salescagr = overrides["salescagr"]
-            if "sales1y" in overrides:
-                sales1y = overrides["sales1y"]
-            if "capgrowth" in overrides:
-                capgrowth = overrides["capgrowth"]
-            if "roic" in overrides:
-                roic = overrides["roic"]
-            if "bb" in overrides:
-                bb = overrides["bb"]
-            if "peakeps" in overrides:
-                peakeps = overrides["peakeps"]
-            if "ml" in overrides:
-                ml = overrides["ml"]
-            if "mh" in overrides:
-                mh = overrides["mh"]
-            if "gest" in overrides:
-                gest = overrides["gest"]
+        cap = c.get("g4_cap")
+        base_growth = next((c[k] for k in ("sales_cagr", "cagr_oe_eps", "sales_1y", "g_org_exp") if c.get(k) is not None), 0.08)
+        base_salescagr = base_growth * 100.0
+        base_roic = (c["roic_exp"] * 100.0) if c.get("roic_exp") is not None else (
+            (c["roic_used"] * 100.0) if c.get("roic_used") is not None else 18.0)
+        base_peakeps = c.get("peak_eps") if (c.get("peak_eps") or 0) > 0 else None
+        base_gest = (c["g_est"] * 100.0) if c.get("g_est") is not None else None
+        cur = {"cap": cap, "salescagr": snap(base_salescagr), "roic": snap(base_roic), "peakeps": base_peakeps, "gest": base_gest}
+        cur.update(overrides or {})
 
         # 2. recalcSandboxValuation()
-        price = c.get("price")
-        peak_eps = peakeps
-        mc = c.get("market_cap_m")
-
-        fund_cap = cap
-        pers = 0.75
-        if fund_cap is not None:
-            if fund_cap >= 30:
-                pers = 0.85
-            elif fund_cap >= 20:
-                pers = 0.75
-            else:
-                pers = 0.62
-
-        s1_tweaked = abs(sales1y - base_sales1y) > 0.01
-        s5_tweaked = abs(salescagr - base_salescagr) > 0.01
-        cg_tweaked = abs(capgrowth - base_capgrowth) > 0.01
-        base_bb = (c.get("buyback_yield") * 100.0) if c.get("buyback_yield") is not None else 0.0
-        bb_tweaked = abs(bb - base_bb) > 0.01
-        base_roic = (c.get("roic_used") * 100.0) if c.get("roic_used") is not None else (
-            (c.get("roic_operating") * 100.0) if c.get("roic_operating") is not None else (
-                (c.get("roic_median") * 100.0) if c.get("roic_median") is not None else 18.0
-            )
-        )
-        roic_tweaked = abs(roic - base_roic) > 0.01
-
-        raw_bb = c.get("buyback_yield") if (not bb_tweaked and c.get("buyback_yield") is not None) else (bb / 100.0)
-        bb_eff = max(-0.03, min(0.035, raw_bb))
-        bb_pos = max(0.0, bb_eff)
-        bb_org = min(0.0, bb_eff)
-        s1_val = c.get("sales_1y") if (not s1_tweaked and c.get("sales_1y") is not None) else (sales1y / 100.0)
-        s5_val = c.get("sales_cagr") if (not s5_tweaked and c.get("sales_cagr") is not None) else (salescagr / 100.0)
-        cg_val = c.get("cap_growth") if (not cg_tweaked and c.get("cap_growth") is not None) else ((capgrowth / 100.0) if cg_tweaked else None)
-
-        delta_s5 = (salescagr - base_salescagr) / 100.0 if s5_tweaked else 0.0
-        oc_cagr = (c.get("opcost_cagr") + delta_s5) if c.get("opcost_cagr") is not None else None
-        g_oe = (c.get("cagr_oe_eps") + delta_s5) if c.get("cagr_oe_eps") is not None else None
-
-        g_base = 0.035
-        g_anchor_max = 0.18
-        roic_cap = 0.50
-        has_sales_cagr = (c.get("sales_cagr") is not None) or s5_tweaked
-        has_sales_1y = (c.get("sales_1y") is not None) or s1_tweaked
-        has_stmt_growth = (oc_cagr is not None) or has_sales_cagr or has_sales_1y or (g_oe is not None) or (cg_val is not None)
-
-        base_org = g_base
-        if has_stmt_growth:
-            if oc_cagr is not None and has_sales_cagr:
-                base_org = min(s5_val, 0.70 * oc_cagr + 0.30 * s5_val)
-            elif oc_cagr is not None:
-                base_org = oc_cagr
-            elif has_sales_cagr:
-                base_org = s5_val
-            elif g_oe is not None:
-                base_org = g_oe - bb_pos
-            elif has_sales_1y:
-                base_org = s1_val
-            g_org_start = round(max(0.0, min(g_anchor_max, base_org + bb_org)), 4)
-            g_start = round(max(-0.04, min(g_anchor_max + bb_pos, g_org_start + bb_pos)), 4)
-        else:
-            if c.get("g_est") is not None:
-                g_start = round(c.get("g_est"), 4)
+        tw_growth = abs(cur["salescagr"] - snap(base_salescagr)) > 0.01
+        tw_roic = abs(cur["roic"] - snap(base_roic)) > 0.01
+        tw_gest = cur["gest"] != base_gest
+        tw_peak = cur["peakeps"] is not None and (base_peakeps is None or abs(cur["peakeps"] - base_peakeps) > 1e-4)
+        g_base, g_max = 0.035, 0.18
+        bb_eff = c.get("bb_eff") or 0.0
+        bb_pos, bb_org = max(0.0, bb_eff), min(0.0, bb_eff)
+        g_org_exp, g_exp = c.get("g_org_exp"), c.get("g_exp")
+        if tw_growth or tw_gest:
+            d = (cur["salescagr"] - base_salescagr) / 100.0 if tw_growth else 0.0
+            has_sales = c.get("sales_cagr") is not None or tw_growth
+            s5 = cur["salescagr"] / 100.0 if tw_growth else c.get("sales_cagr")
+            oc = c["opcost_cagr"] + d if c.get("opcost_cagr") is not None else None
+            g_oe = c["cagr_oe_eps"] + d if c.get("cagr_oe_eps") is not None else None
+            has_stmt = oc is not None or has_sales or c.get("sales_1y") is not None or g_oe is not None
+            if has_stmt:
+                if oc is not None and has_sales:
+                    base_org = min(s5, 0.70 * oc + 0.30 * s5)
+                elif oc is not None:
+                    base_org = oc
+                elif has_sales:
+                    base_org = s5
+                else:
+                    base_org = (g_oe - bb_pos) if g_oe is not None else c.get("sales_1y")
             elif c.get("g_implied") is not None:
-                g_start = round(max(0.0, c.get("g_implied")), 4)
+                base_org = c["g_implied"] - bb_pos
             else:
-                g_start = g_base
-            base_org = g_start - bb_pos
-            g_org_start = round(max(0.0, min(g_anchor_max, base_org)), 4)
+                base_org = g_base
+            if cur["gest"] is not None:
+                g_est_val = cur["gest"] / 100.0
+                g_org_exp = r4(max(0.0, min(g_max, g_est_val - bb_pos)))
+                g_exp = r4(max(0.0, min(g_max + bb_pos, g_est_val)))
+            else:
+                g_org_exp = r4(max(0.0, min(g_max, base_org + bb_org)))
+                g_exp = r4(g_org_exp + bb_pos)
+        roic_exp = c.get("roic_exp") if c.get("roic_exp") is not None else 0.18
+        if tw_roic:
+            roic_exp = r4(max(0.05, cur["roic"] / 100.0))
+        elif (tw_growth or tw_gest) and c.get("roic_used") is not None:
+            raw = ronic0(c.get("roic_est_override"), c["roic_used"], c.get("roic_operating"), c.get("roic_median"),
+                         c.get("ma_reinvest"), g_org_exp, bool(c.get("uses_gaap_roic")))[0]
+            roic_exp = r4(max(0.05, raw) if c.get("roic_est_override") is not None else max(0.05, min(0.50, raw)))
 
-        if gest is not None:
-            g_est_val = gest / 100.0
-            g_org_exp = round(max(0.0, min(g_anchor_max, g_est_val - bb_pos)), 4)
-            g_exp = round(max(0.0, min(g_anchor_max + bb_pos, g_est_val)), 4)
-        elif not has_stmt_growth and c.get("g_implied") is not None:
-            g_org_exp = round(max(0.0, min(g_anchor_max, c.get("g_implied") - bb_pos)), 4)
-            g_exp = round(g_org_exp + bb_pos, 4)
-        else:
-            g_org_exp = g_org_start
-            g_exp = round(g_org_exp + bb_pos, 4)
-
-        roic_input = c.get("roic_used") if (not roic_tweaked and c.get("roic_used") is not None) else (roic / 100.0)
-        has_roic_est = (c.get("roic_est") is not None) or roic_tweaked
-        r_tang = c.get("roic_operating")
-        roic_gaap = c.get("roic_median")
-        sub_ind = (c.get("sub_industry") or "").strip()
-        uses_gaap = bool(c.get("uses_gaap_roic")) if c.get("uses_gaap_roic") is not None else uses_gaap_roic(sub_ind)
-        if (
-            not has_roic_est
-            and not uses_gaap
-            and r_tang is not None
-            and roic_gaap is not None
-            and r_tang > 1.25 * roic_gaap
-            and roic_gaap > 0
-            and cg_val is not None
-            and cg_val > 0
-        ):
-            g_ref = max(0.04, base_org if has_stmt_growth else g_base)
-            alpha = max(0.0, min(1.0, cg_val / g_ref))
-            ronic_raw = 1.0 / ((1.0 - alpha) / r_tang + alpha / roic_gaap)
-        else:
-            ronic_raw = roic_input
-        roic_log = round(max(0.05, ronic_raw), 4)
-        roic_exp = round(max(0.05, ronic_raw) if has_roic_est else max(0.05, min(roic_cap, ronic_raw)), 4)
-        roic_avg = 0.12
-
-        # Valuation
-        has_hist_mults = bool(ml and mh)
+        price, peak_eps, fund_cap = c.get("price"), cur["peakeps"], cur["cap"]
         moat_arch = c.get("g3a_moat_archetype")
         has_moat_arch = bool(moat_arch and str(moat_arch).strip() not in ("", "None"))
-        has_valuation_inputs = bool(price and peak_eps and peak_eps > 0 and (has_hist_mults or fund_cap is not None or c.get("peak_eps_est") is not None or has_moat_arch))
+        has_peak_override = c.get("peak_eps_est") is not None or tw_peak
+        stale = "stale fundamentals" in (str(c.get("fin_note") or "").split("[auto]") + [""])[1]
+        has_valuation_inputs = bool(
+            not stale and price and peak_eps and peak_eps > 0
+            and (bool(c.get("mult_low_5y") and c.get("mult_high_5y")) or (fund_cap and fund_cap > 0) or has_peak_override or has_moat_arch)
+        )
         if not has_valuation_inputs:
             return {"has_inputs": False}
-
         cur_mult = price / peak_eps
-        g_org_val = g_org_exp if g_org_exp is not None else 0.035
-        is_bs_fin = (
-            bool(c.get("bs_fin"))
-            if c.get("bs_fin") is not None
-            else is_balance_sheet_financial(sub_ind)
-        )
-        k = 0.1025 if is_bs_fin else 0.085
-        n_cap = fund_cap if (fund_cap is not None and fund_cap > 0) else 20.0
+        g_org_val = g_org_exp if g_org_exp is not None else g_base
+        k = c.get("disc_rate") if c.get("disc_rate") is not None else (0.1025 if c.get("bs_fin") else 0.085)
+        n_cap = fund_cap if (fund_cap and fund_cap > 0) else 20.0
         roic_eff = max(roic_exp, 0.05)
-
-        fcf_conv = c.get("fcf_conv")
-        ocf_ni_2y = c.get("ocf_ni_2y")
-        is_peak_edited = (base_peakeps is not None and peak_eps is not None) and abs(peak_eps - base_peakeps) > 0.01
-        has_peak_override = (c.get("peak_eps_est") is not None) or is_peak_edited
-        if c.get("mtm_holdco") is not None and not is_peak_edited:
-            is_mtm = bool(c.get("mtm_holdco"))
-        else:
-            is_mtm = is_mtm_holdco(sub_ind, fcf_conv, None if not has_peak_override else peak_eps, mh, ocf_ni_2y=ocf_ni_2y)
-        is_finite = ("Construction & Engineering" in sub_ind or "Highways & Railtracks" in sub_ind) and (fcf_conv is not None and fcf_conv > 1.25)
-
-        bvps = c.get("bvps")
+        is_mtm = bool(c.get("mtm_holdco")) and not tw_peak
+        bvps = c.get("bvps") if (c.get("bvps") or 0) > 0 else None
         if is_mtm:
-            nav_mult = (bvps / peak_eps) if (bvps and bvps > 0 and peak_eps > 0) else (1.0 / roic_eff)
-            pe_mm = nav_mult
-            pe_mck = 0.0
-            pe_vd = nav_mult
-            reinv_eff = 1.0
-            fcfs_5 = [0.0] * 5
-            v_5 = pe_vd * ((1.0 + k) ** 5)
+            pe_vd = (bvps / peak_eps) if bvps else (1.0 / roic_eff)
+            fcfs_5, v_5 = [0.0] * 5, pe_vd * ((1.0 + k) ** 5)
         else:
-            pe_vd, pe_mm, pe_mck, reinv_eff, fcfs_5, v_5 = dcf_schedule_and_continuation(
-                g_org_val, roic_eff, n_cap, r=k, g_term=g_base, roic_term_base=roic_avg, finite_conc=is_finite
-            )
-
+            pe_vd, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(
+                g_org_val, roic_eff, n_cap, r=k, g_term=g_base, finite_conc=bool(c.get("finite_conc")))
         par_mult = pe_vd
-        par_val = bvps if (is_mtm and bvps and bvps > 0) else par_mult * peak_eps
+        par_val = bvps if (is_mtm and bvps) else par_mult * peak_eps
+        out = {"has_inputs": True, "g_exp": g_exp, "g_org_exp": g_org_exp, "roic_exp": roic_exp, "pe_vd": pe_vd,
+               "par_mult": par_mult, "par_val": par_val, "vs_par": None, "irr_5y": None, "cap_implied": None,
+               "cap_gap": None, "status": "No value"}
+        if par_val <= 0:
+            return out
         vs_par = price / par_val - 1.0
-
-        irr_5y = solve_irr_5y(cur_mult, fcfs_5, v_5)
-
         pe_base = 1.0 / k
-        eff_cap = fund_cap if (fund_cap is not None and fund_cap > 0) else (20.0 if has_moat_arch else None)
-        if eff_cap and price > 0 and par_val > 0:
-            if not is_mtm and par_mult > pe_base + 0.5:
-                cap_implied = round(max(0.0, eff_cap * (cur_mult - pe_base) / (par_mult - pe_base)) * 10) / 10
-            else:
-                cap_implied = round(eff_cap * (price / par_val) * 10) / 10
-        else:
-            cap_implied = None
-        cap_gap = round((eff_cap - cap_implied) * 10) / 10 if (eff_cap is not None and cap_implied is not None) else None
+        eff_cap = fund_cap if (fund_cap and fund_cap > 0) else (20.0 if has_moat_arch else None)
+        cap_implied = cap_gap = None
+        if eff_cap:
+            cap_implied = (r1(max(0.0, eff_cap * (cur_mult - pe_base) / (par_mult - pe_base)))
+                           if (not is_mtm and par_mult > pe_base + 0.5) else r1(eff_cap * (price / par_val)))
+            cap_gap = r1(eff_cap - cap_implied)
+        out.update({"vs_par": vs_par, "irr_5y": solve_irr_5y(cur_mult, fcfs_5, v_5), "cap_implied": cap_implied,
+                    "cap_gap": cap_gap, "status": "Below PAR" if vs_par <= 0 else "Above PAR"})
+        return out
 
-        return {
-            "has_inputs": True,
-            "g_start": g_start,
-            "g_org_start": g_org_start,
-            "g_exp": g_exp,
-            "g_org_exp": g_org_exp,
-            "pe_vd": pe_vd,
-            "par_mult": par_mult,
-            "par_val": par_val,
-            "vs_par": vs_par,
-            "irr_5y": irr_5y,
-            "cap_implied": cap_implied,
-            "cap_gap": cap_gap,
-        }
-
-    def test_growth_sliders_responsive_without_opcost_muting(self):
-        """Raising 1Y Sales and 5Y Sales CAGR sliders in Sandbox should shift g_start full-strength."""
+    def test_growth_slider_responsive_without_opcost_muting(self):
+        """Raising the sales-growth slider shifts g₀ full-strength (sales, OpCost and OE growth move together)."""
         sample = next(c for c in self.companies if c.get("ticker") == "MSFT")
         base = self._simulate_js_sandbox(sample)
-        tweaked = self._simulate_js_sandbox(sample, {
-            "sales1y": (sample["sales_1y"] * 100.0) + 4.0,
-            "salescagr": (sample["sales_cagr"] * 100.0) + 4.0,
-        })
-        self.assertGreater(tweaked["g_start"], base["g_start"] + 0.02)
+        tweaked = self._simulate_js_sandbox(sample, {"salescagr": math.floor(sample["sales_cagr"] * 200 + 0.5) / 2 + 4.0})
+        self.assertGreater(tweaked["g_org_exp"], base["g_org_exp"] + 0.02)
         self.assertGreater(tweaked["par_val"], base["par_val"])
+
+    def test_growth_tweak_matches_python_with_shifted_inputs(self):
+        """A sales-growth slider move equals Python par_valuation on inputs shifted by the same delta (incl. M&A blend)."""
+        from screener.data import load_universe
+        p = params({})
+        bad = []
+        for u in ("us", "eu", "ca"):
+            meta = load_universe(u)
+            for c in self.companies:
+                if c["universe"] != u or c.get("val_status") not in ("Below PAR", "Above PAR") or c.get("sales_cagr") is None:
+                    continue
+                if c.get("g_est") is not None or c.get("mtm_holdco"):
+                    continue
+                slider = math.floor(c["sales_cagr"] * 200 + 0.5) / 2 + 2.0
+                d = (slider - c["sales_cagr"] * 100.0) / 100.0
+                sim = self._simulate_js_sandbox(c, {"salescagr": slider})
+                fin = dict(meta["financials"][c["id"]])
+                fin["sales_cagr"] = slider / 100.0
+                for k in ("opcost_cagr", "cagr_oe_eps"):
+                    if fin.get(k) is not None:
+                        fin[k] = fin[k] + d
+                ref = par_valuation(fin, p, cap=c.get("g4_cap"), moat=c.get("g3a_moat_archetype"), sub_industry=c.get("sub_industry"))
+                if ref.get("par_mult") is None or sim.get("par_mult") is None:
+                    continue
+                if abs(ref["roic_exp"] - sim["roic_exp"]) > 1e-4 or abs(ref["par_mult"] / sim["par_mult"] - 1) > 1e-6:
+                    bad.append((c["id"], ref["roic_exp"], sim["roic_exp"], ref["par_mult"], sim["par_mult"]))
+        self.assertEqual(bad[:5], [])
+
+    def test_roic_slider_touch_does_not_jump(self):
+        """The RONIC slider starts at the RONIC₀ actually used (after M&A blend and 50% cap): moving it back to its
+        start reproduces the baseline exactly, a one-step move at RONIC₀ >= 15% changes Fair P/E only marginally, and a
+        moved slider equals Python with roic_est = slider value."""
+        moved, mismatched = [], []
+        for c in self.companies:
+            if c.get("par_mult") is None or c.get("val_status") not in ("Below PAR", "Above PAR") or c.get("mtm_holdco"):
+                continue
+            base = self._simulate_js_sandbox(c)
+            if not base["has_inputs"]:
+                continue
+            self.assertAlmostEqual(self._simulate_js_sandbox(c, {"roic": math.floor(c["roic_exp"] * 200 + 0.5) / 2})["par_mult"],
+                                   base["par_mult"], places=9)
+            slider = math.floor(c["roic_exp"] * 200 + 0.5) / 2 + 0.5
+            step = self._simulate_js_sandbox(c, {"roic": slider})
+            if c["roic_exp"] >= 0.15 and abs(step["par_mult"] / base["par_mult"] - 1.0) > 0.10:
+                moved.append(c["id"])
+            exp_roic = max(0.05, slider / 100.0)
+            if abs(step["roic_exp"] - exp_roic) > 1e-4:
+                mismatched.append(c["id"])
+        self.assertEqual(moved, [])
+        self.assertEqual(mismatched, [])
 
     def test_holdco_peak_eps_override_unlocks_standard_value_driver(self):
         """Editing Peak EPS on an MTM HoldCo in Sandbox unlocks standard PE_VD instead of NAV anchor."""
@@ -429,6 +354,9 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
 
     def test_all_companies_have_zero_baseline_discrepancies(self):
         """Simulate JS sandbox baseline calculation across all universe companies and assert 0 discrepancies."""
+        no_value = [c for c in self.companies if c.get("val_status") == "No value"]
+        for c in no_value:
+            self.assertEqual(self._simulate_js_sandbox(c)["status"], "No value", c["id"])
         discrepancies = []
         tested_count = 0
 
@@ -523,11 +451,11 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         self.assertEqual(flag, "ok")
         self.assertAlmostEqual(g_mkt, g0, places=4)
 
-        # 2. When ROIC_0 < r (and roic_term_base < r), growth destroys value -> no_value_creation
-        g_mkt_flat, flag_flat = solve_market_growth(14.0, 0.05, 0.06, 20, r=0.085, g_term=0.035, roic_term_base=0.06)
+        # 2. When ROIC_0 < r, growth destroys value -> no_value_creation
+        g_mkt_flat, flag_flat = solve_market_growth(14.0, 0.05, 0.06, 20, r=0.085, g_term=0.035)
         self.assertEqual(flag_flat, "no_value_creation")
 
-        # 3. Finite-horizon concession (e.g. FGR.FR / DG.FR) where reinvestment destroys finite annuity value
+        # 3. Finite-horizon (opt-in) concession where reinvestment destroys finite annuity value
         g_mkt_conc, flag_conc = solve_market_growth(9.5, 0.06, 0.13, 20, r=0.085, g_term=0.035, finite_conc=True)
         self.assertEqual(flag_conc, "no_value_creation")
 
@@ -543,8 +471,8 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
     def test_uncapped_reinvestment_prevents_free_growth_when_g_exceeds_roic(self):
         """Verify removing the 0.95 reinvestment cap prevents free-lunch valuation inflation when ROIC < r."""
         # When ROIC_0 = 6% < r = 8.5% (and roic_end=6%), higher growth must REDUCE Fair P/E even if g_0 > 6%
-        pe_low_g, _, _, _ = explicit_dcf_multiple(0.02, 0.06, 20, r=0.085, g_term=0.02, roic_term_base=0.06, roic_end=0.06)
-        pe_high_g, _, _, _ = explicit_dcf_multiple(0.12, 0.06, 20, r=0.085, g_term=0.02, roic_term_base=0.06, roic_end=0.06)
+        pe_low_g, _, _, _ = explicit_dcf_multiple(0.02, 0.06, 20, r=0.085, g_term=0.02, roic_end=0.06)
+        pe_high_g, _, _, _ = explicit_dcf_multiple(0.12, 0.06, 20, r=0.085, g_term=0.02, roic_end=0.06)
         self.assertLess(pe_high_g, pe_low_g)
 
     def test_miller_modigliani_zero_spread_invariance_and_bellman_5y_irr(self):

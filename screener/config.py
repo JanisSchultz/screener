@@ -60,6 +60,8 @@ FX_TO_USD = {
     "NOK": 0.092,
     "DKK": 0.145,
     "PLN": 0.25,
+    "CNY": 0.14,
+    "GEL": 0.37,
 }
 
 S_G1 = "Gate 1: Simple to Understand"
@@ -223,10 +225,6 @@ PARAMETER_GROUPS = [
         ("par_g_base", "Nominal GDP base-rate anchor for Mauboussin Fade & Terminal Stage 2 (3.5%)", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for the Explicit Mauboussin-Fade DCF."),
         ("par_g_anchor_max", "Max initial organic growth rate ceiling g_0 (18.0%)", 0.180, "0.0%", NEW + " Bounds initial Year-1 organic growth rate g_0 at 18.0% before Stage-1 fade."),
         ("par_roic_cap", "Max initial marginal RONIC ceiling before Stage-1 fade (50.0%)", 0.500, "0.0%", NEW + " Bounds initial Year-1 marginal return on invested capital at 50.0% before linear fade toward min(RONIC_0, 20.0%) over CAP years."),
-        ("par_fade_cap30", "Mauboussin persistence factor for Gate 4 CAP >= 30 years (fortress monopolies)", 0.85, "0.00", NEW + " Persistence weight (0.85) applied to structural excess growth for 30-year moats."),
-        ("par_fade_cap20", "Mauboussin persistence factor for Gate 4 CAP >= 20 years (standard quality compounders)", 0.75, "0.00", NEW + " Persistence weight (0.75) applied to structural excess growth for 20-year moats."),
-        ("par_fade_cap15", "Mauboussin persistence factor for Gate 4 CAP >= 15 years (shorter runway)", 0.62, "0.00", NEW + " Persistence weight (0.62) applied to structural excess growth for 15-year moats."),
-        ("par_fade_default", "Fallback Mauboussin persistence factor when CAP is unpopulated", 0.62, "0.00", NEW + " Default fallback persistence weight (0.62)."),
     ]),
 ]
 
@@ -242,8 +240,9 @@ V_NOTFUNNEL = "Not in funnel"
 V_NODATA = "No data"
 V_BELOW_PAR = "Below PAR"
 V_ABOVE_PAR = "Above PAR"
+V_NOVALUE = "No value"  # DCF fair value <= 0 (growth funded at RONIC below g): never "cheap"
 V_CALAMITY = "Calamity Watchlist"
-V_RESULTS = [V_BELOW_PAR, V_ABOVE_PAR, V_NODATA, V_NOTFUNNEL]
+V_RESULTS = [V_BELOW_PAR, V_ABOVE_PAR, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
 LIST_CAPACITY = {V_BELOW_PAR: 150, V_ABOVE_PAR: 200, V_CALAMITY: 100}
 
@@ -624,5 +623,14 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.1": [
+        "Quantitative Model Forensic-Audit Remediation (No-Value Status, Opt-In Concessions, Growth-Weighted M&A RONIC, Consistent Tangible ROIC, Data Integrity & Sandbox Parity): "
+        "(1) Valuation core: a DCF fair value <= 0 is status 'No value' (never Below PAR; 38 names were mislabelled); the zero-terminal-value concession rule is opt-in by id (FINITE_CONCESSION_IDS, empty) instead of fcf_conv > 1.25 (Vinci 9.1x -> 14.7x, Eiffage 6.9x -> 12.7x); "
+        "the growth gap is shown only for a unique g_market root (not for grid-saturated results); RONIC0 <= r is flagged for review; IRR solved on [-99%, +250%]; JS-identical half-up rounding; no-data rows carry r / financial classification; dead outputs and the par_fade_* parameters removed. "
+        "(2) M&A-matched RONIC0: bought growth = ma_reinvest (median yearly delta goodwill+intangibles / NOPAT) x GAAP ROIC, w = its share of g0, 1/RONIC0 = (1-w)/tangible ROIC + w/GAAP ROIC — serial acquirers (CSU, BNZL) are matched to GAAP ROIC while one transformational merger (SPGI, ICE) no longer is, and organic capital growth no longer counts as M&A. "
+        "(3) Capital base & earnings consistency: tangible ROIC adds back the owner-earnings add-back (acquired-intangible amortisation) exactly as Owner EPS does; invested capital includes non-controlling interests and short-term debt (HEIO 46.9% -> 23.1%); impairment guard keeps persistent merger / capex-driven D&A step-ups (MSFT); US-GAAP filers in EU/CA exempt from the IFRS-16 lease deduction. "
+        "(4) Data integrity: value-based reporting-currency switch conversion (DGE GBP->USD), stale-statement guard ('[auto] stale fundamentals' -> No data; PRY.IT), word-boundary + ISIN resolver (no Nexi->Nexity, Terna->GEK Terna; no remap on transient errors), last-year share-count glitch fix (HEIO), point-in-time cycle multiples, peak-to-peak CAGR over the actual gap, CA USD-reporter dividend fix; "
+        "sandbox: RONIC slider starts at RONIC0 (no jump), unreachable controls removed, override JSON emits only changed fields and apply_evaluation preserves '[auto]' notes and calamity flags; stale valuation snapshots stripped from fin_notes (output/v7.1 fin_note review.csv).",
     ],
 }

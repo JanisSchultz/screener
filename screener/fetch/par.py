@@ -1,16 +1,16 @@
 """Quantitative PAR inputs computed from annual series and monthly prices (no network).
 
 Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, D&A − CapEx − IFRS-16 lease depreciation)) ÷
-diluted shares (scaled to reported diluted EPS when net income clearly includes minority interests). D&A is taken
+period-end shares outstanding (scaled to reported diluted EPS when net income clearly includes minority interests). D&A is taken
 deterministically (cash-flow depreciation → income-statement D&A → reconciled depreciation) and capped at 1.5× its
 prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease liabilities for IFRS reporters only.
 - Last peak Owner EPS = highest Owner EPS of the latest 5 fiscal years (converted to the quote currency).
 - Cycle low / high multiple: for each of the last 60 monthly closes, price ÷ the peak Owner EPS known at that
-  month (a fiscal year counts from 1 April of the following calendar year; peak over the 5 fiscal years up to
+  month (a fiscal year counts from its period end + 3 months filing lag; peak over the 5 fiscal years up to
   then; months where that peak is <= 0 are skipped). Low / high = MIN / MAX of the calendar-year medians
   (years with >= 3 months), so single bubble or crash months do not set the range. Current FX for all months.
 - Cycle Owner EPS growth g = peak-to-peak growth: latest peak vs the peak of the prior 5 fiscal years
-  (years last−9 … last−5), annualised over 5 years (one cycle). With a short history (Yahoo, ~4 years)
+  (years last−9 … last−5), annualised over the actual gap between the two peak years. With a short history (Yahoo, ~4 years)
   g = growth from the first positive year in the window to the latest peak, annualised over >= 3 years.
 - Years whose net income is more than 10% above operating cash flow and 30% above the prior year and (if
   reported) the following year — for the latest year +50% vs prior and 30% above cash flow — (one-off gains: tax-allowance releases, disposal / spin-off gains, hedge marks) are left out
@@ -85,7 +85,18 @@ def _peak(eps: dict, last: int):
     return eps[y], y
 
 
-def _available(fy: int) -> dt.date:
+FILING_LAG_DAYS = 92
+
+
+def _available(fy: int, period_end: dict | None = None) -> dt.date:
+    """Point-in-time availability of a fiscal year: period end + ~3 months filing lag (no look-ahead for
+    January–June year-ends); 1 April of the following year when the period end is unknown."""
+    pe = (period_end or {}).get(fy)
+    if pe:
+        try:
+            return dt.date.fromisoformat(str(pe)[:10]) + dt.timedelta(days=FILING_LAG_DAYS)
+        except ValueError:
+            pass
     return dt.date(fy + 1, 4, 1)
 
 
@@ -117,7 +128,7 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
         pp = prior[ppy]
         out["p2p_ok"] = "Y" if peak > pp else "N"
         if pp > 0 and peak > 0:
-            out["cagr_oe_eps"] = round((peak / pp) ** (1 / PEAK_YEARS) - 1, 4)
+            out["cagr_oe_eps"] = round((peak / pp) ** (1 / max(1, py - ppy)) - 1, 4)
     else:
         notes.append("short history")
         window = sorted(y for y in eps if last - PEAK_YEARS < y <= last)
@@ -139,7 +150,7 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
         mults, by_year = [], {}
         for d in months:
             day = dt.date.fromisoformat(d)
-            known = [y for y in m_eps if _available(y) <= day]
+            known = [y for y in m_eps if _available(y, series.get("period_end")) <= day]
             if not known:
                 continue
             pk, _ = _peak({y: m_eps[y] for y in known}, max(known))

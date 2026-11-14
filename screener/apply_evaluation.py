@@ -1,6 +1,6 @@
 """Apply an independent agent's company evaluation JSON payload to data/<universe>/.
 
-Validates the evaluation against the v7.0 framework rules, enforces the sequential
+Validates the evaluation against the v7.1 framework rules, enforces the sequential
 waterfall (clearing downstream fields after a failed gate), and updates:
 - data/<universe>/inputs.csv (Qualitative gates 1-6, notes, evidence)
 - data/<universe>/financials.csv (Quantitative overrides: peak_eps_est, g_est, g_implied, roic_est, fin_note)
@@ -100,6 +100,17 @@ def sanitize_val(v):
     return str(v).strip()
 
 
+AUTO_PREFIX = "[auto] "
+
+
+def merge_fin_note(new_note, old_note) -> str:
+    """New analyst text replaces the analyst part of fin_note; the machine-written '[auto] …' part (read by the
+    peak-EPS logic in screener/gates.py: share basis, non-cash spikes, stale fundamentals) is always preserved."""
+    analyst = [p for p in str(new_note or "").split(" | ") if p.strip() and not p.startswith(AUTO_PREFIX)]
+    auto = [p for p in str(old_note or "").split(" | ") if p.startswith(AUTO_PREFIX)]
+    return " | ".join(analyst + auto)
+
+
 def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
     warnings = []
     qual_raw = eval_data.get("qualitative", {})
@@ -114,8 +125,9 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
             target_key = QUAL_KEY_MAP[k]
             qual[target_key] = v
 
-    if qual:
-        # Normalize calamity fields
+    # Normalize calamity fields only when the payload speaks about them (a full qualitative evaluation, or explicit
+    # calamity keys) — a sandbox payload carrying only gate_4_runway_cap must not wipe an existing calamity flag.
+    if qual and ("calamity" in qual or "calamity_note" in qual or "1" in qual):
         calamity = sanitize_val(qual.get("calamity"))
         if calamity not in ("", "Y"):
             warnings.append(f"Invalid calamity_flag '{calamity}' (expected 'Y' or null); cleared.")
@@ -126,6 +138,7 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
                 warnings.append("Waterfall: cleared 'calamity_note' because calamity_flag is not 'Y'")
             qual["calamity_note"] = ""
 
+    if qual:
         def clear_calamity(reason: str):
             if qual.get("calamity") or sanitize_val(qual.get("calamity_note")):
                 warnings.append(f"Waterfall: cleared 'calamity'/'calamity_note' because {reason} (non-waivable)")
@@ -278,6 +291,8 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
         for k, new_v in fin.items():
             if k in fin_fieldnames:
                 old_v = fin_row.get(k, "")
+                if k == "fin_note":
+                    new_v = merge_fin_note(new_v, old_v)
                 if old_v != new_v:
                     fin_diff[k] = (old_v, new_v)
 

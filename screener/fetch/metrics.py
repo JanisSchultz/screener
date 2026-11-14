@@ -13,10 +13,12 @@ LEASE_DEP_RATE = 0.20           # IFRS-16 right-of-use depreciation ≈ 20% of a
 DA_IMPAIRMENT_CAP = 1.5         # D&A above 1.5× the prior-3y median is treated as a one-off impairment / write-down
 
 
-def clean_da(da: dict) -> dict:
-    """Impairment guard: cap each year's D&A at DA_IMPAIRMENT_CAP × the median of the prior 3 reported years,
-    so one-off write-downs folded into D&A (e.g. COLO B FY2026 Kerecis) are not added back as recurring earnings."""
-    out = {}
+def clean_da(da: dict, capex: dict | None = None) -> dict:
+    """Impairment guard: cap a year's D&A at DA_IMPAIRMENT_CAP × the median of the prior 3 reported years, but only when
+    the spike is transient — so one-off write-downs folded into D&A (e.g. COLO B FY2026 Kerecis) are not added back
+    as recurring earnings, while genuine step-ups are kept: capex rising ≥ 1.5× alongside (MSFT AI build-out) or the
+    following year staying ≥ 1.25× the prior median (merger amortisation, e.g. NSIS / Chr. Hansen)."""
+    out, capex = {}, capex or {}
     yrs = sorted(y for y, v in (da or {}).items() if v is not None)
     for idx, y in enumerate(yrs):
         v = abs(da[y])
@@ -24,7 +26,13 @@ def clean_da(da: dict) -> dict:
         if len(prior) >= 3:
             ref = median(prior)
             if ref > 0 and v > DA_IMPAIRMENT_CAP * ref:
-                v = DA_IMPAIRMENT_CAP * ref
+                cx_prior = [abs(capex[p]) for p in yrs[max(0, idx - 3):idx] if capex.get(p) is not None]
+                cx_up = (capex.get(y) is not None and cx_prior and median(cx_prior) > 0
+                         and abs(capex[y]) >= DA_IMPAIRMENT_CAP * median(cx_prior))
+                nxt = da.get(y + 1)
+                persistent = nxt is not None and abs(nxt) >= 1.25 * ref
+                if not (cx_up or persistent):
+                    v = DA_IMPAIRMENT_CAP * ref
         out[y] = v
     return out
 
@@ -171,12 +179,14 @@ def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None, lease: d
 
 
 def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict, goodwill: dict, intang: dict,
-                assets: dict | None = None):
-    """Per-year ROIC = EBIT × (1 − t) / average invested capital (equity + debt − cash).
+                assets: dict | None = None, addback: dict | None = None):
+    """Per-year ROIC = EBIT × (1 − t) / average invested capital (equity + debt − cash). Pass consolidated equity
+    (incl. non-controlling interests) and total debt so the capital base matches consolidated EBIT.
     Tangible ROIC deducts goodwill and other intangibles from invested capital, floored at 1/3 of GAAP invested
     capital (so goodwill deduction can reduce the capital denominator by at most 2/3, eliminating artificial
-    200% division-by-zero spikes when goodwill/buybacks exceed book equity)."""
-    assets = assets or {}
+    200% division-by-zero spikes when goodwill/buybacks exceed book equity). Its NOPAT adds back the owner-earnings
+    add-back (D&A above capex, i.e. acquired-intangible amortisation), exactly as Owner EPS does."""
+    assets, addback = assets or {}, addback or {}
 
     def ic(y, tangible):
         if y not in equity or equity[y] is None:
@@ -203,8 +213,21 @@ def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict
             base = (cur + prev) / 2 if (cur is not None and prev is not None and cur > 0 and prev > 0) else cur
             if base is None or base <= 0:
                 continue
-            out[y] = max(-1.0, nopat / base)
+            out[y] = max(-1.0, (nopat + ((addback.get(y) or 0.0) if tangible else 0.0)) / base)
     return gaap, tang
+
+
+def ic_inputs(s: dict) -> tuple[dict, dict]:
+    """Consolidated invested-capital inputs: equity + non-controlling interests, long-term + short-term debt."""
+    eq, nci = s.get("equity") or {}, s.get("nci") or {}
+    debt, st = s.get("debt") or {}, s.get("st_debt") or {}
+    eq_ic = {y: v + (nci.get(y) or 0.0) for y, v in eq.items() if v is not None}
+    debt_ic = {y: (debt.get(y) or 0.0) + (st.get(y) or 0.0) for y in set(debt) | set(st)}
+    return eq_ic, debt_ic
+
+
+def addback_series(s: dict) -> dict:
+    return {y: owner_addback(s, y) for y, v in (s.get("da") or {}).items() if v is not None}
 
 
 def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
@@ -226,7 +249,9 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     # Operating capital nets cash AND short-term investments (liquid treasury assets are not operating capital);
     # falls back to cash & equivalents where the combined figure is not reported.
     cash_op = {**g("cash"), **g("cash_sti")}
-    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), cash_op, g("goodwill"), g("intang"), g("assets"))
+    eq_ic, debt_ic = ic_inputs(s)
+    roic, roic_t = roic_series(ebit, tax_rate, eq_ic, debt_ic, cash_op, g("goodwill"), g("intang"), g("assets"),
+                               addback_series(s))
     out = {}
 
     all_years = set(ni) | set(g("sales")) | set(g("ocf")) | set(g("equity"))
@@ -239,7 +264,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             return ser[max(ser)]
         if last in ser and ser[last] is not None:
             return ser[last]
-        if (last - 1) in ser and ser[last - 1] is not None and not default_zero:
+        if (last - 1) in ser and ser[last - 1] is not None:
             return ser[last - 1]
         return 0.0 if default_zero else None
 
@@ -385,9 +410,8 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         ret_by_yr = [max(0.0, min(1.0, 1.0 - abs(g("dividends").get(y) or 0) / ni[y])) for y in pos_ni_yrs]
         out["retention_rate"] = round(median(ret_by_yr), 4)
 
-    eq_ser, debt_ser, cash_ser = g("equity"), g("debt"), cash_op
-    ic_ser = {y: eq_ser[y] + (debt_ser.get(y) or 0) - (cash_ser.get(y) or 0)
-              for y in eq_ser if eq_ser.get(y) is not None}
+    cash_ser = cash_op
+    ic_ser = {y: eq_ic[y] + (debt_ic.get(y) or 0) - (cash_ser.get(y) or 0) for y in eq_ic}
     assets_ser = g("assets")
     op_assets_ser = {
         y: assets_ser[y] - (cash_ser.get(y) or 0)
@@ -423,6 +447,17 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             tr = tax_rate.get(y)
             tr = DEFAULT_TAX if tr is None or not (0 <= tr <= 0.40) else tr
             nopat_ser[y] = e_val * (1.0 - tr)
+    # M&A reinvestment rate = median over the latest 5 yearly transitions of max(0, Δ(goodwill + intangibles)) ÷ NOPAT:
+    # the share of earnings spent buying growth (serial acquirers CSU / BNZL high; one transformational merger such as
+    # SPGI/IHS moves the median little). Feeds the M&A-matched RONIC blend in screener/gates.py.
+    gwi = {y: (g("goodwill").get(y) or 0.0) + (g("intang").get(y) or 0.0) for y in nopat_ser
+           if g("goodwill").get(y) is not None or g("intang").get(y) is not None}
+    gw_yrs = sorted(y for y in gwi if last is None or y <= last)
+    spend = [max(0.0, gwi[y1] - gwi[y0]) / nopat_ser[y1]
+             for y0, y1 in zip(gw_yrs, gw_yrs[1:]) if y1 - y0 == 1 and nopat_ser.get(y1) and nopat_ser[y1] > 0]
+    if len(spend) >= 3:
+        out["ma_reinvest"] = round(min(3.0, median(spend[-5:])), 4)
+
     common_ic = sorted(y for y in set(ic_ser) & set(nopat_ser) if last is None or y <= last)
     if len(common_ic) >= 3:
         y1 = common_ic[-1]

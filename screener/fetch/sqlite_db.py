@@ -8,7 +8,7 @@ import sqlite3
 
 from ..data import DATA_DIR, FIN_FIELDS, PANEL_FIELDS, TECH_FIELDS, load_universe, read_csv, universe_keys
 from ..gates import results as compute_gate_results
-from .sources import EODHD, EODHD_CACHE, _f, _fval
+from .sources import EODHD, _f, _fval, symbol_cache
 
 DB_PATH = DATA_DIR / "fundamentals.sqlite"
 
@@ -192,7 +192,7 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
             if t_row:
                 tech_rows.append((k, *[t_row.get(col) for col in TECH_FIELDS]))
 
-            fp = EODHD_CACHE / f"{esym}.json"
+            fp = symbol_cache(esym)
             if fp.exists():
                 fund = eod.fundamentals(esym)
                 if fund:

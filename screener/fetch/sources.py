@@ -23,6 +23,19 @@ from . import metrics, par, settings
 CACHE = DATA_DIR / "_cache"
 EODHD_CACHE = CACHE / "eodhd"
 
+# Windows / OneDrive reserve these device names for any file stem ("CON.XETRA.json" for Continental cannot sync)
+RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(10)), *(f"LPT{i}" for i in range(10))}
+
+
+def safe_name(name: str) -> str:
+    """File-name-safe cache stem: reserved device names (CON, PRN, AUX, NUL, COM1, LPT1 …) get a '_' prefix."""
+    return "_" + name if name.split(".", 1)[0].upper() in RESERVED_NAMES else name
+
+
+def symbol_cache(symbol: str, sub: str | None = None) -> Path:
+    """data/_cache/eodhd[/sub]/<symbol>.json with reserved device names made OneDrive-safe."""
+    return (EODHD_CACHE / sub if sub else EODHD_CACHE) / f"{safe_name(symbol)}.json"
+
 
 def _load_api_key() -> str:
     key = os.environ.get("EODHD_API_KEY", "").strip()
@@ -91,6 +104,41 @@ def _norm_name(name: str | None) -> str:
     return re.sub(r"[^a-z0-9]+", "", s)
 
 
+def _name_tokens(name: str | None) -> list[str]:
+    s = (name or "").lower()
+    for tok in (" inc.", " inc", " corp.", " corp", " corporation", " plc", " n.v.", " nv", " s.a.", " sa",
+                " se", " ag", " ab", " asa", " oyj", " a/s", " s.p.a.", " spa", " ltd.", " ltd", " limited",
+                " holding", " holdings", " group", " co.", " company", " the "):
+        s = s.replace(tok, " ")
+    return [t for t in re.split(r"[^a-z0-9]+", s) if t]
+
+
+def _same_company(target: str | None, hit: str | None) -> bool:
+    """Word-boundary name match: one name's tokens are a prefix of the other's ("Prysmian" ~ "Prysmian SpA"),
+    never a substring inside a word ("Nexi" !~ "Nexity", "Terna" !~ "GEK Terna Holdings")."""
+    a, b = _name_tokens(target), _name_tokens(hit)
+    if not a or not b:
+        return False
+    n = min(len(a), len(b))
+    return a[:n] == b[:n]
+
+
+def stale_fundamentals(s: dict, today: dt.date | None = None) -> str | None:
+    """'[auto]' note text when a listing's statements are stale: revenue / balance sheet ending >= 2 fiscal years
+    before cash flow / net income (thin secondary listings, e.g. PRY.IT on 0NUX.LSE), or the latest revenue /
+    balance-sheet year >= 3 years old. Valuation treats such rows as No data until refetched."""
+    last = lambda k: max((y for y, v in (s.get(k) or {}).items() if v is not None), default=None)
+    core = [y for y in (last("sales"), last("equity")) if y is not None]
+    if not core:
+        return None
+    flow = max((y for y in (last("ocf"), last("ni")) if y is not None), default=None)
+    if flow is not None and flow - min(core) >= 2:
+        return f"stale fundamentals (revenue/balance sheet end FY{min(core)}, cash flow FY{flow})"
+    if max(core) <= (today or dt.date.today()).year - 3:
+        return f"stale fundamentals (latest FY{max(core)})"
+    return None
+
+
 # ------------------------------------------------------------------------- EODHD
 class EODHD:
     """Clean per-company fundamentals, EOD prices, splits, and FX from EODHD API."""
@@ -143,6 +191,7 @@ class EODHD:
         self._ex_symbols: dict[str, dict[str, dict]] = {}
         self._symbol_map_path = EODHD_CACHE / "symbol_map.json"
         self._symbol_map: dict[str, str] = {}
+        self._transient: set[str] = set()      # paths whose last request failed with 5xx / timeout (not a 404)
         if self._symbol_map_path.exists():
             try:
                 self._symbol_map = json.loads(self._symbol_map_path.read_text(encoding="utf-8"))
@@ -188,9 +237,15 @@ class EODHD:
                 if any(s in msg for s in ("nodename nor servname", "Name or service not known", "Failed to establish a new connection", "Max retries exceeded", "Failed to resolve")):
                     raise RuntimeError(f"Network unreachable (sandboxed): {exc}") from exc
                 if attempt == 2:
+                    self._transient.add(path)
                     return None
                 time.sleep(1.0 * (attempt + 1))
+        self._transient.add(path)
         return None
+
+    def transient_failure(self, symbol: str) -> bool:
+        """True when a request for `symbol` failed transiently: never remap a listing on a temporary error."""
+        return any(symbol in p for p in self._transient)
 
     def user_info(self) -> dict | None:
         """Query /api/user to check daily API quota usage and limits."""
@@ -205,7 +260,7 @@ class EODHD:
         if ex_code in self._ex_symbols:
             return self._ex_symbols[ex_code]
         data = _cached(
-            EODHD_CACHE / "exchanges" / f"{ex_code}.json",
+            symbol_cache(ex_code, "exchanges"),
             lambda: self._get(f"exchange-symbol-list/{ex_code}"),
             days=30,
         )
@@ -220,7 +275,7 @@ class EODHD:
     def search_symbol(self, query: str) -> list[dict]:
         safe = re.sub(r"[^A-Za-z0-9_.-]+", "_", query.strip())
         data = _cached(
-            EODHD_CACHE / "search" / f"{safe}.json",
+            EODHD_CACHE / "search" / f"{safe_name(safe)}.json",
             lambda: self._get(f"search/{query.strip()}"),
             days=30,
         )
@@ -286,7 +341,16 @@ class EODHD:
             if cand_u and cand_u not in candidates:
                 candidates.append(cand_u)
 
-        target_norm = _norm_name(c.get("company"))
+        target_name = c.get("company")
+        home_iso = str(cid).rsplit(".", 1)[1].upper() if "." in str(cid) else "US"
+        home_iso = {"UK": "GB"}.get(home_iso, home_iso)
+
+        def same_issuer(h: dict) -> bool:
+            isin = str(h.get("ISIN") or "")
+            if len(isin) >= 2:
+                return isin[:2].upper() == home_iso or _norm_name(h.get("Name")) == _norm_name(target_name)
+            return _norm_name(h.get("Name")) == _norm_name(target_name)
+
         comp_q = (c.get("company") or "").replace("'", " ").replace("’", " ")
         queries = [comp_q, raw_t.rstrip(".")] if ex_code == "MI" else [raw_t.rstrip("."), comp_q]
         for q in queries:
@@ -304,8 +368,7 @@ class EODHD:
                         return sym
             # 2. Exact exchange + company name match
             for h in hits:
-                h_norm = _norm_name(h.get("Name"))
-                if str(h.get("Exchange")).upper() == ex_code and target_norm and h_norm and (target_norm in h_norm or h_norm in target_norm):
+                if str(h.get("Exchange")).upper() == ex_code and _same_company(target_name, h.get("Name")):
                     sym = f"{h['Code']}.{h['Exchange']}"
                     if sym != heur:
                         self._symbol_map[map_key] = sym
@@ -319,8 +382,7 @@ class EODHD:
             matched = []
             for h in hits:
                 h_ex = str(h.get("Exchange") or "").upper()
-                h_norm = _norm_name(h.get("Name"))
-                if h_ex in pref_ex and target_norm and h_norm and (target_norm in h_norm or h_norm in target_norm):
+                if h_ex in pref_ex and _same_company(target_name, h.get("Name")) and same_issuer(h):
                     matched.append((pref_ex.index(h_ex), f"{h['Code']}.{h['Exchange']}"))
             if matched:
                 matched.sort(key=lambda x: x[0])
@@ -330,18 +392,14 @@ class EODHD:
                     f_test = self.fundamentals(sym)
                     if f_test:
                         s_test = self.annual_series(f_test)
-                        if s_test.get("ni") and s_test.get("sales"):
+                        if s_test.get("ni") and s_test.get("sales") and not stale_fundamentals(s_test):
                             self._symbol_map[map_key] = sym
                             return sym
-                sym = matched[0][1]
-                if sym != heur:
-                    self._symbol_map[map_key] = sym
-                    return sym
         return None
 
     def fundamentals(self, symbol: str) -> dict | None:
         """Fetch full unfiltered EODHD fundamentals JSON (1 request = 10 API calls) and cache in data/_cache/eodhd/{symbol}.json."""
-        path = EODHD_CACHE / f"{symbol}.json"
+        path = symbol_cache(symbol)
         data = _cached(
             path,
             lambda: self._get(f"fundamentals/{symbol}"),
@@ -352,7 +410,7 @@ class EODHD:
 
     def eod(self, symbol: str, start: str = "2014-01-01") -> list[dict]:
         """Fetch 12+ years of daily EOD bars (1 request = 1 API call) and cache in data/_cache/eodhd/eod/{symbol}.json."""
-        path = EODHD_CACHE / "eod" / f"{symbol}.json"
+        path = symbol_cache(symbol, "eod")
         data = _cached(
             path,
             lambda: self._get(f"eod/{symbol}", {"from": start, "period": "d"}),
@@ -367,7 +425,7 @@ class EODHD:
             last_split = sd.get("LastSplitDate")
             if not last_split or str(last_split) < start:
                 return {}
-        path = EODHD_CACHE / "splits" / f"{symbol}.json"
+        path = symbol_cache(symbol, "splits")
         raw = _cached(
             path,
             lambda: self._get(f"splits/{symbol}", {"from": start}),
@@ -458,13 +516,6 @@ class EODHD:
                 pass
         return None
 
-    def seed_fx(self, frm: str, to: str, rate: float) -> None:
-        if frm in ("GBp", "GBX"):
-            frm, rate = "GBP", rate * 100.0
-        if to in ("GBp", "GBX"):
-            to, rate = "GBP", rate / 100.0
-        if frm and to and rate and frm != to:
-            self._fx.setdefault((frm, to), rate)
 
     @staticmethod
     def _split_adjusted_bars(eod_bars: list[dict], splits: dict[str, float]) -> list[tuple[str, float, float]]:
@@ -649,9 +700,11 @@ class EODHD:
 
         keys = ("sales", "opcost", "ni", "minority_interest", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
                 "ocf", "capex", "sbc", "da", "dividends",
-                "equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "shares")
+                "equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "shares")
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
+        out["period_end"] = {}          # {fy: "YYYY-MM-DD"} (strings; used for point-in-time availability in par.py)
         inc_ccys: dict[int, str] = {}
+        bs_shares: dict[int, float] = {}
 
         all_dates = sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys()))
         inc_dates = sorted(inc.keys())
@@ -753,7 +806,11 @@ class EODHD:
             div = _fval(c_r, "dividendsPaid")
 
             eq = _fval(b_r, "totalStockholderEquity", "commonStockTotalEquity")
-            debt = _fval(b_r, "longTermDebt", "longTermDebtTotal", "shortLongTermDebtTotal")
+            nci = _fval(b_r, "noncontrollingInterestInConsolidatedEntity")
+            debt = _fval(b_r, "longTermDebt", "longTermDebtTotal")
+            st_debt = _fval(b_r, "shortLongTermDebt", "shortTermDebt") if debt is not None else None
+            if debt is None:
+                debt = _fval(b_r, "shortLongTermDebtTotal")      # already total (long- + short-term) debt
             cash = _fval(b_r, "cashAndEquivalents", "cash", "cashAndShortTermInvestments")
             cash_sti = _fval(b_r, "cashAndShortTermInvestments", "cash", "cashAndEquivalents")
             if cash_sti is not None and cash is not None and cash_sti < cash:
@@ -764,6 +821,8 @@ class EODHD:
             assets = _fval(b_r, "totalAssets")
 
             bs_sh = _fval(b_r, "commonStockSharesOutstanding")
+            if bs_sh and bs_sh > 0:
+                bs_shares[fy] = bs_sh
             o_sh = osh_by_yr.get(fy)
             sh = o_sh if (o_sh and o_sh > 0) else bs_sh
             if o_sh and bs_sh and bs_sh > 0 and not (0.33 <= o_sh / bs_sh <= 3.0):
@@ -777,22 +836,24 @@ class EODHD:
             for k, val in (
                 ("sales", sales), ("opcost", opcost), ("ni", ni), ("minority_interest", mi), ("ebit", ebit), ("pretax", pretax),
                 ("tax", tax), ("interest", interest), ("ocf", ocf), ("capex", capex),
-                ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq),
-                ("debt", debt), ("cash", cash), ("cash_sti", cash_sti), ("lease", lease),
+                ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq), ("nci", nci),
+                ("debt", debt), ("st_debt", st_debt), ("cash", cash), ("cash_sti", cash_sti), ("lease", lease),
                 ("goodwill", gw), ("intang", intang),
                 ("assets", assets), ("shares", sh), ("eps_street", e_st),
             ):
                 if val is not None:
                     out[k][fy] = val
+            out["period_end"][fy] = d_str
 
         # 1. Reporting Currency Transition Normalization (e.g. GMAB DKK->USD, NSIS-B DKK->EUR, TOM.OL NOK->EUR):
         # Check each section (income, balance sheet, cash flow) independently against the target currency so partial
         # restatements (e.g. NSIS-B 2022 where Income_Statement rev/ni were restated to EUR while Balance_Sheet & Cash_Flow
         # remained in DKK) convert only the items still in the old currency.
+        out["ccy"] = dict(inc_ccys)     # {fy: currency of the income statement after normalisation}
         if inc_ccys and len(set(inc_ccys.values())) > 1 and out["sales"]:
             target_ccy = inc_ccys[max(inc_ccys)]
             inc_keys = ("sales", "opcost", "ni", "minority_interest", "ebit", "pretax", "tax", "interest")
-            bs_keys = ("equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
+            bs_keys = ("equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
             for sec_ref_key, sec_keys in (("sales", inc_keys), ("assets", bs_keys), ("ocf", cf_keys)):
@@ -807,13 +868,17 @@ class EODHD:
                         continue
                     if y_ccy and y_ccy != target_ccy:
                         fx_rate = self.fx(y_ccy, target_ccy)
-                        if fx_rate and not (0.55 <= fx_rate <= 1.80):
+                        if fx_rate and fx_rate > 0:
+                            # Value-based test (no FX band): convert only when it shrinks the year-on-year jump, so
+                            # GBP→USD (DGE FY22) is converted while mislabelled years already in target currency are not.
                             raw_ratio = cur_val / ref_val
                             adj_ratio = (cur_val * fx_rate) / ref_val
-                            if abs(math.log(adj_ratio)) < abs(math.log(raw_ratio)) - 0.5:
+                            if abs(math.log(adj_ratio)) + 0.02 < abs(math.log(raw_ratio)):
                                 for mk in sec_keys:
                                     if y in out[mk]:
                                         out[mk][y] = out[mk][y] * fx_rate
+                                if sec_ref_key == "sales":
+                                    out["ccy"][y] = target_ccy
                                 cur_val = abs(out[sec_ref_key].get(y) or 0.0)
                     ref_val = cur_val
 
@@ -838,6 +903,12 @@ class EODHD:
                 if s_last > 0 and s_prev > 0 and (0.75 <= s_prev / sh_ref <= 1.33):
                     if s_last / sh_ref > 1.75 or s_last / sh_ref < 0.57:
                         out["shares"][y_last] = sh_ref
+            # Latest year deviates > 15% from the prior year while the balance-sheet count agrees with it (±5%):
+            # the outstandingShares figure is the glitch (HEIO FY2025 362.9m vs 281m) -> use the balance-sheet count
+            y_last, y_prev = sh_yrs[-1], sh_yrs[-2]
+            s_last, s_prev, b_last = out["shares"][y_last], out["shares"][y_prev], bs_shares.get(y_last)
+            if s_last > 0 and s_prev > 0 and b_last and not (0.85 <= s_last / s_prev <= 1.18) and 0.95 <= b_last / s_prev <= 1.05:
+                out["shares"][y_last] = b_last
             # Second pass: if a recent stock split occurred (`splits` or `LastSplitFactor`) and earlier years
             # are unadjusted by that exact split factor, adjust them to the current post-split basis
             sd = fund_data.get("SplitsDividends") or {}
@@ -891,7 +962,7 @@ class EODHD:
                 out["eps"][y] = n_val / sh_val
 
         # Impairment guard on D&A (after currency normalisation so all years are on the same basis)
-        out["da"] = metrics.clean_da(out["da"])
+        out["da"] = metrics.clean_da(out["da"], out["capex"])
 
         return out
 
@@ -910,11 +981,13 @@ class EODHD:
             for y in s.get("tax", {})
             if s.get("pretax", {}).get(y)
         }
+        eq_ic, debt_ic = metrics.ic_inputs(s)
         roic_g, roic_t = metrics.roic_series(
-            s.get("ebit", {}), tax_rate, s.get("equity", {}), s.get("debt", {}),
-            {**s.get("cash", {}), **s.get("cash_sti", {})}, s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {})
+            s.get("ebit", {}), tax_rate, eq_ic, debt_ic,
+            {**s.get("cash", {}), **s.get("cash_sti", {})}, s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {}),
+            metrics.addback_series(s),
         )
-        fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}))
+        fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}), s.get("lease", {}))
         oe_ser = par.owner_eps_series(s)
 
         by_fy_dates: dict[int, str] = {}
@@ -951,7 +1024,7 @@ class EODHD:
             cash_op = (s.get("cash_sti") or {}).get(fy, cash)
             gw = s["goodwill"].get(fy)
             intang = s["intang"].get(fy)
-            ic_g = (eq + (debt or 0.0) - (cash_op or 0.0)) if eq is not None else None
+            ic_g = (eq_ic[fy] + (debt_ic.get(fy) or 0.0) - (cash_op or 0.0)) if fy in eq_ic else None
             ic_t = max(ic_g - ((gw or 0.0) + (intang or 0.0)), (1.0 / 3.0) * ic_g) if (ic_g is not None and ic_g > 0) else None
             tbv = (eq - ((gw or 0.0) + (intang or 0.0))) if eq is not None else None
 
@@ -978,7 +1051,7 @@ class EODHD:
                 "fy": fy,
                 "period_end": d_str,
                 "filing_date": i_r.get("filing_date") or b_r.get("filing_date") or c_r.get("filing_date"),
-                "fin_currency": i_r.get("currency_symbol") or fin_ccy,
+                "fin_currency": (s.get("ccy") or {}).get(fy) or i_r.get("currency_symbol") or fin_ccy,
                 "revenue_m": m(rev),
                 "cogs_m": m(_fval(i_r, "costOfRevenue")),
                 "gross_profit_m": m(_fval(i_r, "grossProfit")),
@@ -1052,15 +1125,15 @@ class EODHD:
             s for s in symbols
             if fetch_fundamentals and (
                 settings.REFRESH_FUNDAMENTALS
-                or not (EODHD_CACHE / f"{s}.json").exists()
-                or (time.time() - (EODHD_CACHE / f"{s}.json").stat().st_mtime) >= settings.FUND_CACHE_DAYS * 86400
+                or not (symbol_cache(s)).exists()
+                or (time.time() - (symbol_cache(s)).stat().st_mtime) >= settings.FUND_CACHE_DAYS * 86400
             )
         ]
         todo_eod = [
             s for s in symbols
             if fetch_eod and (
-                not (EODHD_CACHE / "eod" / f"{s}.json").exists()
-                or (time.time() - (EODHD_CACHE / "eod" / f"{s}.json").stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400
+                not (symbol_cache(s, "eod")).exists()
+                or (time.time() - (symbol_cache(s, "eod")).stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400
             )
         ]
         if not todo_fund and not todo_eod:
@@ -1083,10 +1156,10 @@ class EODHD:
         if fetch_eod:
             todo_splits = []
             for s in symbols:
-                sp_path = EODHD_CACHE / "splits" / f"{s}.json"
+                sp_path = symbol_cache(s, "splits")
                 if sp_path.exists():
                     continue
-                fp = EODHD_CACHE / f"{s}.json"
+                fp = symbol_cache(s)
                 if fp.exists():
                     fund = self.fundamentals(s)
                     last_sp = ((fund or {}).get("SplitsDividends") or {}).get("LastSplitDate")
@@ -1255,11 +1328,6 @@ class Yahoo:
                 self._fx[k] = self._cross(frm, to)
         return None if self._fx[k] is None else self._fx[k] * scale
 
-    def seed_fx(self, frm: str, to: str, rate: float):
-        if frm in ("GBp", "GBX"):
-            frm, rate = "GBP", rate * 100
-        if frm and to and rate and frm != to:
-            self._fx.setdefault((frm, to), rate)
 
     def _cross(self, frm: str, to: str):
         known = {k: v for k, v in self._fx.items() if v}
@@ -1293,7 +1361,7 @@ class Yahoo:
                     "dps": _f(info.get("trailingAnnualDividendRate"))}
         if not settings.OFFLINE:
             time.sleep(settings.YAHOO_PAUSE_S)
-        return _cached(CACHE / "yahoo" / f"quote_{symbol}.json", fetch, days=1)
+        return _cached(CACHE / "yahoo" / f"quote_{safe_name(symbol)}.json", fetch, days=1)
 
 
 def split_adjust(series: dict, splits: dict, ref_shares: float | None = None) -> dict:

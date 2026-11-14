@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.0 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.1 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,13 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.1: Quantitative Model Forensic-Audit Remediation — No-Value Status, Opt-In Concessions, Growth-Weighted M&A RONIC, Consistent Tangible ROIC & Data Integrity:
+- Valuation core (`screener/gates.py`): a DCF fair value <= 0 is `No value` (never Below PAR); zero terminal value only for ids in `FINITE_CONCESSION_IDS` (empty — Vinci / Eiffage / WSP now get a terminal value); growth gap only for a unique `g_market` root; `ronic_le_r` review flag (RONIC₀ <= r means growth adds no value); IRR on [-99%, +250%]; JS-identical rounding; dead outputs and `par_fade_*` removed. Year-1 convention documented: E₁ = trailing normalized Owner EPS (conservative by one year of growth).
+- M&A-matched RONIC₀ (`ronic0`): bought growth = `ma_reinvest` (median yearly Δ goodwill+intangibles ÷ NOPAT) × GAAP ROIC; w = its share of g₀; 1/RONIC₀ = (1−w)/tangible ROIC + w/GAAP ROIC. Serial acquirers (CSU, BNZL) are matched to GAAP ROIC; one transformational merger (SPGI, ICE) is not; organic capital growth is no longer mistaken for M&A.
+- Capital base (`screener/fetch/metrics.py`): tangible NOPAT adds back the owner-earnings add-back exactly as Owner EPS does; invested capital = equity + non-controlling interests + long- and short-term debt − cash; impairment guard keeps persistent / capex-driven D&A step-ups; US-GAAP filers in EU/CA (ABB, Alcon, Logitech, Qiagen, STMicro, ENB, TRP, IMO, CNR, FTS, EMA, H) skip the IFRS-16 deduction.
+- Data integrity (`screener/fetch/sources.py`, `fetch_market_data.py`): value-based reporting-currency switch conversion (DGE GBP→USD); `[auto] stale fundamentals` → No data (PRY.IT, BMPS.IT, NEXI.IT, TRN.IT until an online refetch); word-boundary + ISIN symbol resolver that never remaps on transient errors; HEIO share-count glitch; point-in-time cycle multiples (period end + 3 months); peak-to-peak CAGR over the actual gap; CA USD-reporter dividend fix; `as_of` = fundamentals date.
+- Sandbox & ingestion: RONIC slider starts at the RONIC₀ actually used (no jump on touch); unreachable controls removed; header KPIs follow the market filter / calamity toggle; Copy-JSON emits only changed overrides; `apply_evaluation.py` preserves `[auto]` notes and calamity flags. Stale valuation snapshots stripped from fin_notes (`screener/migrations/remediate_v7_1_fin_notes.py`, review in `output/v7.1 fin_note review.csv`).
 
 v7.0: Sure & Simple Quantitative Engine — Miller-Modigliani Zero-Spread Invariance, Bellman-Consistent 5Y IRR, Cost-Bloat Guard & M&A-Matched RONIC:
 - Miller-Modigliani Zero-Spread Invariant Explicit DCF (`dcf_schedule_and_continuation`): Starts Year-1 earnings at normalized run-rate E_1 = 1.0 on existing capital IC_0 and deducts end-of-year reinvestment Reinv_t = E_t * max(0, g_t) / RONIC_t to fund Year-(t+1) growth E_{t+1} = E_t * (1 + g_t) across t = 1..N (frac_t = (t - 1)/(N - 1)) with terminal value TV_N = E_{N+1} / r. Guarantees exact Miller-Modigliani invariance: when RONIC_t == r, Fair P/E == 1 / r identically across all g_0 and N.
@@ -251,7 +258,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v6.35)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.1)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

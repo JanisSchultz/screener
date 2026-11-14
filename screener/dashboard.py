@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import statistics
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -39,10 +40,6 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             "g_anchor_max": p.get("par_g_anchor_max", 0.18),
             "roic_cap": p.get("par_roic_cap", 0.50),
             "g_base": p.get("par_g_base", 0.035),
-            "fade_cap30": p.get("par_fade_cap30", 0.85),
-            "fade_cap20": p.get("par_fade_cap20", 0.75),
-            "fade_cap15": p.get("par_fade_cap15", 0.62),
-            "fade_default": p.get("par_fade_default", 0.62),
         }
         res_map = results(meta)
 
@@ -144,7 +141,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "g_est": fin.get("g_est"),
                 "p2p_ok": fin.get("p2p_ok"),
                 "fin_note": fin.get("fin_note"),
-                # Quantitative Valuation
+                # Quantitative Valuation (screener/gates.py par_valuation)
                 "val_status": val.get("status", C.V_NODATA),
                 "peak_eps": val.get("peak_eps"),
                 "cur_mult": val.get("cur_mult"),
@@ -153,56 +150,30 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "vs_par": val.get("vs_par"),
                 "irr_5y": val.get("irr_5y"),
                 "dy": val.get("dy"),
-                "g_hist": val.get("g"),
                 "g_start": val.get("g_start"),
                 "g_org_start": val.get("g_org_start"),
-                "g_1y": val.get("g_1y"),
-                "g_hist_5y": val.get("g_hist"),
-                "g_cap": val.get("g_cap"),
-                "g_log": val.get("g_log"),
-                "size_factor": val.get("size_factor"),
                 "g_exp": val.get("g_exp"),
                 "g_org_exp": val.get("g_org_exp"),
-                "g_irr": val.get("g_irr"),
-                "g_imp": val.get("g_imp"),
-                "g_fund": val.get("g_fund"),
-                "g_demand": val.get("g_demand"),
-                "g_raw": val.get("g_raw"),
-                "scale_tier": val.get("scale_tier"),
-                "scale_cap": val.get("scale_cap"),
-                "coupon": val.get("coupon"),
-                "exp_coupon": val.get("exp_coupon"),
-                "imp_coupon": val.get("imp_coupon"),
                 "cap_implied": val.get("cap_implied"),
                 "cap_gap": val.get("cap_gap"),
                 "g_market": val.get("g_market"),
                 "g_market_flag": val.get("g_market_flag"),
-                "pe5_ratio": val.get("pe5_ratio"),
+                "g_gap": val.get("g_gap"),
                 "bvps": val.get("bvps"),
                 "nav_anchor": val.get("nav_anchor"),
                 "mtm_holdco": val.get("mtm_holdco"),
                 "finite_conc": val.get("finite_conc"),
                 "bs_fin": val.get("bs_fin"),
                 "disc_rate": val.get("k"),
-                "g_gap": val.get("g_gap"),
-                "pers": val.get("pers"),
-                "g_mult": val.get("g_mult"),
                 "reinv_eff": val.get("reinv_eff"),
-                "eff_g_mult": val.get("eff_g_mult"),
                 "pe_mm": val.get("pe_mm"),
                 "pe_mck": val.get("pe_mck"),
                 "pe_vd": val.get("pe_vd"),
-                "t_growth": val.get("t_growth"),
-                "t_hist": val.get("t_hist"),
-                "t_hist_raw": val.get("t_hist_raw"),
-                "t_roic": val.get("t_roic"),
-                "raw_par": val.get("raw_par"),
-                "roic_log": val.get("roic_log"),
                 "roic_exp": val.get("roic_exp"),
-                "roic_fade_ratio": val.get("roic_fade_ratio"),
-                "retention": val.get("retention"),
-                "r_inc": val.get("r_inc"),
-                "zc_pricing": val.get("zc_pricing"),
+                "ma_reinvest": val.get("ma_reinvest"),
+                "roic_est_override": fin.get("roic_est"),
+                "ma_alpha": val.get("ma_alpha"),
+                "ronic_le_r": val.get("ronic_le_r"),
                 "bb_eff": val.get("bb_eff"),
             }
             all_companies.append(company_record)
@@ -214,11 +185,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     below_par_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_BELOW_PAR]
     below_par_count = len(below_par_list)
     irrs = [c["irr_5y"] for c in below_par_list if c["irr_5y"] is not None]
-    median_irr = statistics.median(irrs) if irrs else 0.0
+    median_irr = statistics.median(irrs) if irrs else None
 
     return {
-        "version": "7.0",
-        "generated_at": "2026-11-14",
+        "version": "7.1",
+        "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
@@ -1718,23 +1689,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="kpi-bar">
       <div class="kpi-chip">
         <span class="kpi-label">Universe</span>
-        <span class="kpi-value">{data['summary']['total_companies']}</span>
+        <span class="kpi-value" id="kpi-universe">{data['summary']['total_companies']}</span>
       </div>
       <div class="kpi-chip">
         <span class="kpi-label">Quality Pass</span>
-        <span class="kpi-value accent">{data['summary']['quality_pass']}</span>
+        <span class="kpi-value accent" id="kpi-qpass">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
         <span class="kpi-label">Calamity</span>
-        <span class="kpi-value amber">{data['summary']['calamity_pass']}</span>
+        <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
       </div>
       <div class="kpi-chip">
         <span class="kpi-label">Below PAR</span>
-        <span class="kpi-value green">{data['summary']['below_par']}</span>
+        <span class="kpi-value green" id="kpi-below-par">{data['summary']['below_par']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Median IRR</span>
-        <span class="kpi-value green">{f"{data['summary']['median_irr_below_par']*100:.1f}%"}</span>
+        <span class="kpi-label" title="Median 5Y IRR of the Below PAR shortlist (hurdle r = 8.50% operating / 10.25% balance-sheet financials)">Median 5Y IRR</span>
+        <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_irr_below_par']*100:.1f}%" if data['summary']['median_irr_below_par'] is not None else "—"}</span>
       </div>
     </div>
   </header>
@@ -1797,7 +1768,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="vs_par-asc">Sort: Discount vs Fair Value ↑</option>
         <option value="vs_par-desc">Sort: Premium vs Fair Value ↓</option>
         <option value="g_gap-desc">Sort: Growth Margin (g₀ - g_mkt) ↓</option>
-        <option value="g_market-asc">Sort: Market-Implied g (r=8.5%) ↑</option>
+        <option value="g_market-asc">Sort: Market-Implied g (at r) ↑</option>
         <option value="g_org_exp-desc">Sort: Growth Ceiling (g₀) ↓</option>
         <option value="opcost_cagr-desc">Sort: 10Y WLS OpCost Growth ↓</option>
         <option value="sales_1y-asc">Sort: 1Y Growth (Slump) ↑</option>
@@ -1847,6 +1818,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="all">All Valuations</option>
         <option value="Below PAR">Below PAR Only</option>
         <option value="Above PAR">Above PAR Only</option>
+        <option value="No value">No value (Fair value ≤ 0)</option>
+        <option value="No data">No data</option>
       </select>
 
       <!-- Shortlist Calamity Toggle (Visible in Shortlist tab; off by default) -->
@@ -1933,25 +1906,28 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     </div>
 
     <div class="dossier-section">
-      <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Explicit Mauboussin-Fade DCF &amp; Slump-Cannibal Compounders (v6.35)</h2>
+      <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Explicit Mauboussin-Fade DCF &amp; Slump-Cannibal Compounders (v{data['version']})</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">1. Explicit N-Year Mauboussin-Fade DCF Fair Value at Cost of Equity r = 8.50% (v6.35):</strong>
+        <strong style="color: var(--text-main);">1. Explicit N-Year Mauboussin-Fade DCF Fair Value at r = 8.50% (r<sub>fin</sub> = 10.25% for Balance-Sheet Financials):</strong>
         <p class="formula-code">
           Fair P/E = PV<sub>Stage 1</sub> + PV<sub>Stage 2</sub> &nbsp;|&nbsp; Fair Value = Fair P/E &times; Active EPS &nbsp;|&nbsp; Discount = Price / Fair Value - 1<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> Linear fade of organic growth g<sub>t</sub> = g₀ - ((t-1)/N)(g₀ - 3.5%) and return on capital ROIC<sub>t</sub> = ROIC₀ - ((t-1)/N)(ROIC₀ - ROIC<sub>term</sub>), where E<sub>t</sub> = E<sub>t-1</sub>(1 + g<sub>t</sub>) and FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/ROIC<sub>t</sub>), discounted at r = 8.50%.<br>
-            <b>Stage 2 (Post-CAP Perpetuity at t = N):</b> TV<sub>N</sub> = E<sub>N</sub> / r &mdash; growth after the CAP earns exactly r (RONIC = r) and therefore adds no value (ROIC<sub>term</sub> only governs the Stage-1 fade), discounted back from Year N at r = 8.50%. Reinvestment g<sub>t</sub>/ROIC<sub>t</sub> is uncapped (FCF may turn negative when growth exceeds ROIC).<br>
-            <b>Market-Implied Growth (g<sub>market</sub> at r = 8.50%):</b> Root-safe DCF inversion (grid scan &minus;20%..+50% + bisection) solving for the starting organic growth rate g<sub>market</sub> where DCF_PE(g<sub>market</sub>) == Cur_Mult &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub> (shown only when the root is unique; flagged otherwise: saturated, no value creation at ROIC &le; r, multiple roots, NAV-anchored).<br>
-            <b>Balance-Sheet Financials &amp; Concessions:</b> Insurance, Reinsurance, Banks, deposit-funded Brokers (Investment Banking &amp; Brokerage) &amp; Multi-Sector Holdings use 5Y median ROE (<code style="color: var(--accent);">roe_median</code>) at r<sub>fin</sub> = 10.25%; IFRIC-12 Concessions use GAAP ROIC (<code style="color: var(--accent);">roic_median</code>); Mark-to-Market HoldCos / Insurers (5Y FCF Conv or 2Y OCF/NI &lt; 0.25) are valued at <code style="color: var(--accent);">Fair Value = 1.0x Book Value / Share</code>; IFRIC-12 Concessions (FCF Conv &gt; 1.25x) omit Stage 2 terminal perpetuity.
+            <b>Year-1 convention:</b> E<sub>1</sub> = the active (trailing, normalized) Owner EPS — conservative by one year of growth versus a forward E<sub>1</sub> = EPS &times; (1 + g₀).<br>
+            <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> g<sub>t</sub> fades linearly from g₀ to min(g₀, 3.5%) and RONIC<sub>t</sub> from RONIC₀ to min(RONIC₀, 20%); FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/RONIC<sub>t</sub>), E<sub>t+1</sub> = E<sub>t</sub>(1 + g<sub>t</sub>).<br>
+            <b>Stage 2:</b> TV<sub>N</sub> = E<sub>N+1</sub> / r &mdash; post-CAP growth earns exactly r and adds no value. When RONIC = r, Fair P/E = 1/r for every g₀ and N.<br>
+            <b>No value:</b> when growth is funded at a RONIC far below g the DCF value is &le; 0 &mdash; such stocks are labelled <code style="color: var(--accent);">No value</code>, never Below PAR. A &#9888; flags RONIC₀ &le; r (growth adds no value; review the capital base against the moat gates).<br>
+            <b>Market-Implied Growth (g<sub>market</sub>):</b> root-safe DCF inversion (grid &minus;20%..+50% + bisection) at the company's r &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub>, shown only for a unique root (saturated results are shown as &le; / &ge; without a margin).<br>
+            <b>Balance-Sheet Financials &amp; HoldCos:</b> Insurance, Reinsurance, Banks, deposit-funded Brokers &amp; Multi-Sector Holdings use 5Y median ROE at r<sub>fin</sub> = 10.25%; Mark-to-Market HoldCos / Insurers (5Y FCF Conv or 2Y OCF/NI &lt; 0.25) are valued at 1.0x Book Value / Share. Construction &amp; Engineering and Highways use GAAP ROIC (incl. concession intangibles); a zero terminal value applies only to concessions explicitly listed as expiring.
           </span>
         </p>
       </div>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">2. 10Y Exponentially-Weighted OLS Growth Ceiling (g₀ = 70% OpCost + 30% Sales WLS):</strong>
+        <strong style="color: var(--text-main);">2. Cost-Bloat Guarded Growth Ceiling (g₀) &amp; M&amp;A-Matched RONIC₀:</strong>
         <p class="formula-code">
-          Organic Growth Ceiling (g₀) = clamp(0.70 &times; OpCost_WLS + 0.30 &times; Sales_WLS + min(0, Buyback_Yield), 0.0%, 22.0%) &nbsp;|&nbsp; Per-Share Ceiling (g_exp) = g₀ + max(0, Buyback_Yield)<br>
+          g₀ = clamp(min(Sales_WLS, 0.70 &times; OpCost_WLS + 0.30 &times; Sales_WLS) + min(0, Buyback_Yield), 0.0%, 18.0%) &nbsp;|&nbsp; g_exp = g₀ + max(0, Buyback_Yield)<br>
+          1 / RONIC₀ = (1 − w) / Tangible ROIC + w / GAAP ROIC (capped at 50%), w = bought share of g₀ = min(1, M&amp;A spend &times; GAAP ROIC / g₀), M&amp;A spend = median yearly &Delta;Goodwill&amp;Intangibles &divide; NOPAT<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            Fits a 10-year Exponentially-Weighted Log-Linear OLS trendline (&tau; = 5.0y half-life, automatic corporate spinoff reset, and M&amp;A transition winsorization) to both the Operating Cost Base (<code style="color: var(--accent);">COGS + OpEx</code>) and Top-Line Sales, blending 70% OpCost WLS (physical capacity &amp; customer volume expansion) + 30% Sales WLS (structural pricing power &amp; mix upgrade). Sub-GDP compounders (g₀ &lt; 3.5%) hold their organic ceiling rather than fading upward.
+            10-year exponentially-weighted log-linear OLS (&tau; = 5y half-life) on Sales and Operating Cost (COGS + OpEx). Tangible ROIC adds back acquired-intangible amortisation (D&amp;A above capex), exactly as Owner EPS does; invested capital includes minority interests and short-term debt.
           </span>
         </p>
       </div>
@@ -2053,7 +2029,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       <!-- Quantitative Valuation Profile -->
       <div class="dossier-section" id="dossier-quant-section">
-        <div class="section-title">Explicit Mauboussin-Fade DCF Scorecard (r = 8.5%)</div>
+        <div class="section-title">Explicit Mauboussin-Fade DCF Scorecard (<span id="dossier-rate-title">r</span>)</div>
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
             <div class="label">Current Share Price</div>
@@ -2075,7 +2051,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="value" id="dossier-cur-mult">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">DCF Fair P/E (r=8.5%)</div>
+            <div class="label">DCF Fair P/E (<span id="dossier-rate-pe">r</span>)</div>
             <div class="value" id="dossier-par-mult">-</div>
           </div>
           <div class="metric-box">
@@ -2106,7 +2082,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="subtext" id="dossier-scale-tier" style="font-size: 10px; color: var(--text-dim); margin-top: 2px;"></div>
           </div>
           <div class="metric-box">
-            <div class="label">Market-Implied g (8.5%)</div>
+            <div class="label">Market-Implied g (<span id="dossier-rate-g">r</span>)</div>
             <div class="value" id="dossier-g-market">-</div>
           </div>
           <div class="metric-box">
@@ -2149,7 +2125,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <!-- 1. OUR CAP Audit Card -->
           <div class="audit-card">
             <div class="audit-card-header">
-              <span class="audit-card-title"><span>🛡️</span> 1. OUR CAP (Moat Runway) &amp; Mauboussin Fade</span>
+              <span class="audit-card-title"><span>🛡️</span> 1. OUR CAP (Moat Runway) &amp; Discount Rate</span>
               <span class="cell-ticker" id="audit-cap-summary" style="font-size: 13px;">-</span>
             </div>
             <div class="audit-grid">
@@ -2159,14 +2135,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span class="sub" id="audit-cap-tier">-</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">ROIC Persistence (w)</span>
-                <span class="val" id="audit-cap-pers">-</span>
-                <span class="sub">Initial ROIC₀ Retention</span>
-              </div>
-              <div class="audit-stat">
-                <span class="lbl">DCF Growth Slope</span>
-                <span class="val" id="audit-cap-gmult">-</span>
-                <span class="sub" id="audit-cap-gmult-sub">Points per 1% g₀</span>
+                <span class="lbl">Discount Rate r</span>
+                <span class="val" id="audit-cap-rate">-</span>
+                <span class="sub" id="audit-cap-rate-sub">-</span>
               </div>
               <div class="audit-stat">
                 <span class="lbl">Market-Implied CAP</span>
@@ -2185,7 +2156,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <!-- 2. Growth Ceiling (g₀) & Per-Share Ceiling (g_exp) Card -->
           <div class="audit-card">
             <div class="audit-card-header">
-              <span class="audit-card-title"><span>📈</span> 2. Organic Growth Ceiling (g₀) &amp; Buybacks — 10Y WLS 70/30 Structural Engine</span>
+              <span class="audit-card-title"><span>📈</span> 2. Organic Growth Ceiling (g₀), Buybacks &amp; Marginal RONIC</span>
               <span class="val" style="color: var(--accent); font-size: 14px;" id="audit-gexp-summary">-</span>
             </div>
 
@@ -2193,20 +2164,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="filter-step-box" id="box-filter-supply">
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <strong style="font-size: 11px; color: var(--text-main);">Near-Term 1Y Growth vs. Slump Check</strong>
-                <span class="val" style="font-size: 12px;" id="audit-g1y-val">-</span>
+                <span class="val" style="font-size: 12px;" id="audit-sales1y-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>1Y Sales Growth: <b id="audit-sales1y-val" style="color: var(--text-muted);">-</b></span>
                 <span>1Y OpCost Growth: <b id="audit-opcost1y-val" style="color: var(--text-muted);">-</b></span>
                 <span>Buybacks / Dilution: <b id="audit-bb-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Compares 1Y top-line &amp; operating cost momentum against 10Y WLS structural growth ceiling to spot temporary slumps.</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Reference only: a 1Y slump never lowers the structural growth ceiling.</div>
             </div>
 
             <!-- Anchor 2: 10Y WLS Operating Cost Base & Sales Growth -->
             <div class="filter-step-box" id="box-filter-demand">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">10Y WLS Operating Cost Base (70%) &amp; Sales (30%) Compounding</strong>
+                <strong style="font-size: 11px; color: var(--text-main);">10Y WLS Cost-Bloat Guard: min(Sales, 0.70·OpCost + 0.30·Sales)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-gdemand-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
@@ -2214,22 +2184,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span>OpCost WLS (COGS+OpEx): <b id="audit-opcostcagr-val" style="color: var(--accent);">-</b></span>
                 <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">70% OpCost WLS (volume &amp; capacity) + 30% Sales WLS (pricing power &amp; mix) across up to 10Y (&tau;=5y half-life).</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Weighted least-squares log-growth over up to 10Y (&tau;=5y half-life); cost bloat never awards growth above sales.</div>
             </div>
 
-            <!-- Anchor 3: Capital Growth & ROIC Profile -->
+            <!-- Anchor 3: Marginal RONIC -->
             <div class="filter-step-box" id="box-filter-fade">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Capital Reinvestment &amp; Mauboussin ROIC Profile</strong>
-                <span class="val" style="font-size: 12px;" id="audit-gfund-val">-</span>
+                <strong style="font-size: 11px; color: var(--text-main);">Marginal RONIC₀ (M&amp;A-Matched, capped)</strong>
+                <span class="val" style="font-size: 12px;" id="audit-roic-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>5Y Cap Growth: <b id="audit-capgrowth-val" style="color: var(--text-muted);">-</b></span>
-                <span>Op ROIC → Initial ROIC₀: <b id="audit-roic-val" style="color: var(--text-muted);">-</b></span>
-                <span>ROIC Fade Ratio: <b id="audit-roicfade-val" style="color: var(--text-muted);">-</b></span>
+                <span>Tangible ROIC: <b id="audit-roictang-val" style="color: var(--text-muted);">-</b></span>
+                <span>GAAP ROIC: <b id="audit-roicgaap-val" style="color: var(--text-muted);">-</b></span>
+                <span>M&amp;A Spend: <b id="audit-mashare-val" style="color: var(--text-muted);">-</b></span>
                 <span>5Y Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">ROIC fades linearly across CAP from Initial ROIC₀ down to terminal steady-state clamp(ROIC₀, 12%, 20%).</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-roic-note">RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%).</div>
             </div>
 
             <!-- Step B: Growth Ceiling (g₀) & Per-Share Ceiling (g_exp) -->
@@ -2239,50 +2209,41 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span class="val" style="font-size: 12px;" id="audit-fade-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Organic Ceiling (g₀): <b id="audit-graw-val" style="color: var(--accent);">-</b></span>
                 <span>Per-Share Ceiling (g_exp): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
-                <span>CAP Persistence (w): <b id="audit-fadew-val" style="color: var(--text-muted);">-</b></span>
-                <span>Log-Rev Size Factor: <b id="audit-sizefactor-val" style="color: var(--text-muted);">-</b></span>
-                <span>Scale Tier: <b id="audit-scaletier-val" style="color: var(--text-muted);">-</b> (<b id="audit-scalecap-val" style="color: var(--text-muted);">-</b>)</span>
                 <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Formula: g₀ = clamp(0.70·OpCost_WLS + 0.30·Sales_WLS + min(0, BB), 0.0%, 22.0%) fades linearly to min(g₀, 3.5%) over CAP.</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-gformula">Formula: g₀ = clamp(cost-bloat guarded WLS growth + min(0, BB), 0%, g_max) fades linearly to min(g₀, g_term) over CAP.</div>
             </div>
           </div>
 
           <!-- 3. Explicit Mauboussin-Fade DCF Multiple Audit Card -->
           <div class="audit-card">
             <div class="audit-card-header">
-              <span class="audit-card-title"><span>⚖️</span> 3. Explicit Mauboussin-Fade DCF Fair P/E (r = 8.50%)</span>
+              <span class="audit-card-title"><span>⚖️</span> 3. Explicit Mauboussin-Fade DCF Fair P/E (<span id="audit-dcf-rate">r</span>)</span>
               <span class="val" style="color: var(--accent); font-size: 14px;" id="audit-parmult-summary">-</span>
             </div>
             <div class="audit-grid">
               <div class="audit-stat">
                 <span class="lbl">Stage 1 CAP PV</span>
                 <span class="val" id="audit-tgrowth-val">-</span>
-                <span class="sub" id="audit-tgrowth-sub">Years 1..N FCF @ r=8.5%</span>
+                <span class="sub" id="audit-tgrowth-sub">Years 1..N FCF</span>
               </div>
               <div class="audit-stat">
                 <span class="lbl">Stage 2 Terminal PV</span>
                 <span class="val" id="audit-troic-val">-</span>
-                <span class="sub">Post-CAP Perpetuity @ 0.0% (E<sub>N</sub>/r)</span>
+                <span class="sub">Post-CAP Perpetuity (E<sub>N+1</sub>/r)</span>
               </div>
               <div class="audit-stat">
                 <span class="lbl">Explicit DCF Fair P/E</span>
                 <span class="val" id="audit-rawpar-val">-</span>
-                <span class="sub">Stage 1 + Stage 2 (100% Weight)</span>
-              </div>
-              <div class="audit-stat">
-                <span class="lbl">5Y Harmonic P/E (Ref)</span>
-                <span class="val" id="audit-thist-val">-</span>
-                <span class="sub" id="audit-thist-sub">Reference Only (0% Weight)</span>
+                <span class="sub">Stage 1 + Stage 2</span>
               </div>
             </div>
             <div class="filter-step-box">
               <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
-                <span>Year-1 FCF Payout (1 - g₀/ROIC₀): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
-                <span>5Y Low–High Range: <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
-                <span>Normalized Peak EPS: <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
+                <span>Year-1 FCF Payout (1 - g₀/RONIC₀): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
+                <span>5Y Low–High Range (reference): <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
+                <span>Normalized Peak EPS (= Year-1 E₁): <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
               </div>
             </div>
           </div>
@@ -2318,7 +2279,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
               <!-- Control 2: 10Y WLS Structural Growth Anchor -->
               <div class="sandbox-group">
-                <label>Structural Growth Anchor (g₀): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
+                <label>Sales WLS Growth (shifts g₀ inputs): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-salescagr" min="-5" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('salescagr', this.value, '%')">
               </div>
 
@@ -2331,14 +2292,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <!-- Control 4: Peak EPS Normalization -->
               <div class="sandbox-group">
                 <label>Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">-</span></label>
-                <input type="number" class="sandbox-num-input" id="sb-input-peakeps" step="0.05" oninput="onSandboxInputChange()">
+                <input type="number" class="sandbox-num-input" id="sb-input-peakeps" step="0.05" oninput="onSandboxPeakChange()">
               </div>
 
               <!-- Control 5: Direct Expected Growth Override -->
               <div class="sandbox-group">
                 <label>Direct Growth Ceiling Override: <span class="sb-val" id="sb-val-gest">None</span></label>
                 <div class="sandbox-input-row">
-                  <input type="number" class="sandbox-num-input" id="sb-input-gest" placeholder="e.g. 7.5 (overrides g₀)" step="0.1" oninput="onSandboxInputChange()">
+                  <input type="number" class="sandbox-num-input" id="sb-input-gest" placeholder="e.g. 7.5 (overrides g₀)" step="0.1" oninput="onSandboxGestChange()">
                   <button type="button" class="btn-export" style="padding: 4px 8px; font-size: 11px;" onclick="clearSandboxGest()">Clear</button>
                 </div>
               </div>
@@ -2395,7 +2356,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <div class="audit-stat">
               <span class="lbl">ROIC Fade &amp; Discount (r)</span>
               <span class="val" id="dcf-sum-rfade">-</span>
-              <span class="sub" id="dcf-sum-disc">Discount Rate r = 8.50%</span>
+              <span class="sub" id="dcf-sum-disc">Discount Rate r</span>
             </div>
             <div class="audit-stat">
               <span class="lbl">Stage 1 PV + Terminal PV</span>
@@ -2494,6 +2455,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return st['1'] === 'pass' && st['2'] === 'pass' && Boolean(c.g3a_moat_archetype && c.g3a_moat_archetype !== 'None');
     }}
 
+    function hasMoatArchetype(c) {{
+      // Python par_valuation assumes a default 20y CAP whenever a moat archetype is set and Gate 4 is blank
+      return Boolean(c.g3a_moat_archetype && String(c.g3a_moat_archetype).trim() !== '' && String(c.g3a_moat_archetype).trim() !== 'None');
+    }}
+
+    function parParams(c) {{
+      return Object.assign({{ k: 0.085, k_fin: 0.1025, g_anchor_max: 0.18, roic_cap: 0.50, g_base: 0.035 }},
+        ((SCREENER_DATA.universes || {{}})[c.universe] || {{}}).par_params || {{}});
+    }}
+
     function updateTabCounts() {{
       const incCal = document.getElementById('toggle-calamities') && document.getElementById('toggle-calamities').checked;
       const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
@@ -2501,6 +2472,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const calamity = base.filter(c => c.result === 'Calamity pass');
       const moatUni = base.filter(c => passesG123a(c));
       const shortlist = base.filter(c => (c.result === 'Quality pass' || (incCal && c.result === 'Calamity pass')) && c.val_status === 'Below PAR');
+      // Header KPIs follow the market filter and calamity toggle (computed client-side)
+      const irrs = shortlist.map(c => c.irr_5y).filter(v => v !== null && v !== undefined).sort((a, b) => a - b);
+      const medIrr = irrs.length ? (irrs.length % 2 ? irrs[(irrs.length - 1) / 2] : 0.5 * (irrs[irrs.length / 2 - 1] + irrs[irrs.length / 2])) : null;
+      const setKpi = (id, v) => {{ const el = document.getElementById(id); if (el) el.textContent = v; }};
+      setKpi('kpi-universe', base.length);
+      setKpi('kpi-qpass', qpass.length);
+      setKpi('kpi-calamity', calamity.length);
+      setKpi('kpi-below-par', shortlist.length);
+      setKpi('kpi-median-irr', medIrr !== null ? `${{(medIrr * 100).toFixed(1)}}%` : '—');
       document.getElementById('count-shortlist').textContent = shortlist.length;
       document.getElementById('count-qpass').textContent = qpass.length;
       document.getElementById('count-calamity').textContent = calamity.length;
@@ -2872,7 +2852,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'val_status') {{
             const bCls = val === 'Below PAR' ? 'badge-green' : (val === 'Above PAR' ? 'badge-amber' : 'badge-gray');
-            cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
+            const ronicFlag = c.ronic_le_r ? ` <span title="RONIC₀ ≤ r: growth adds no value (Fair P/E ≤ 1/r) — review capital base" style="color: var(--amber);">⚠</span>` : '';
+            cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>${{ronicFlag}}`;
           }} else if (col.key === 'result') {{
             const bCls = val === 'Quality pass' ? 'badge-green' : (val === 'Calamity pass' ? 'badge-amber' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
@@ -2896,7 +2877,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               const bbColor = val >= 0.01 ? 'var(--green)' : (val < 0 ? 'var(--red)' : 'var(--text-muted)');
               cellContent = `<span style="color: ${{bbColor}};">${{fmtPct(val, true)}}</span>`;
             }}
-          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_imp' || col.key === 'g_exp') {{
+          }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
             cellContent = fmtGMarket(c);
@@ -2916,7 +2897,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               cellContent = `<span class="badge ${{bCls}}">${{sign}}${{fmtNum(val, 1)}}y</span>`;
             }}
           }} else if (col.key === 'g4_cap') {{
-            cellContent = val ? `${{val}}y` : (passesG123a(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-');
+            cellContent = val ? `${{val}}y` : (hasMoatArchetype(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-');
           }} else if (col.num) {{
             cellContent = fmtNum(val);
           }} else {{
@@ -2936,7 +2917,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return (val > 0 ? '+' : '') + fmtNum(val, 1) + 'y';
     }}
 
-    // Market-Implied Growth with its solver flag (screener/gates.py solve_market_growth, v6.36)
+    // Market-Implied Growth with its solver flag (screener/gates.py solve_market_growth); growth gap only when 'ok'
+    // (a saturated g_market is a grid bound, shown as ≤ / ≥, so no gap is computed)
     const G_MARKET_FLAG_LABELS = {{
       saturated_low: '≤', saturated_high: '≥',
       no_value_creation: 'n/a (ROIC ≤ r: growth destroys value)',
@@ -2954,11 +2936,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
     function triadCardsHtml(c) {{
       const g1y = fmtPct(c.sales_1y, true);
-      const gCeil = fmtPct(c.g_org_exp !== null && c.g_org_exp !== undefined ? c.g_org_exp : c.g_imp);
+      const gCeil = fmtPct(c.g_org_exp);
       const gMkt = fmtGMarket(c);
       const gGap = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
       const gColor = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
-      const cOur = c.g4_cap ? `${{c.g4_cap}}y` : (passesG123a(c) ? '20y*' : '-');
+      const cOur = c.g4_cap ? `${{c.g4_cap}}y` : (hasMoatArchetype(c) ? '20y*' : '-');
       const cMkt = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
       const cGap = fmtSignedYears(c.cap_gap);
       const cColor = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
@@ -3108,8 +3090,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const valBadge = document.getElementById('dossier-val-badge');
       if (c.result === 'Quality pass') {{
-        valBadge.textContent = c.val_status + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '');
-        valBadge.className = `badge ${{c.val_status === 'Below PAR' ? 'badge-green' : 'badge-amber'}}`;
+        valBadge.textContent = c.val_status + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '') + (c.ronic_le_r ? ' • ⚠ RONIC₀ ≤ r (review)' : '');
+        valBadge.className = `badge ${{c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray')}}`;
       }} else if (c.result === 'Calamity pass') {{
         valBadge.textContent = `${{calamityTag(c)}} • ${{c.val_status}}` + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '');
         valBadge.className = 'badge badge-amber';
@@ -3232,6 +3214,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-cur-mult').textContent = fmtNum(c.cur_mult) + 'x';
       document.getElementById('dossier-par-mult').textContent = fmtNum(c.par_mult) + 'x';
       document.getElementById('dossier-irr').textContent = fmtPct(c.irr_5y);
+      const rTxt = (c.disc_rate !== null && c.disc_rate !== undefined) ? `r = ${{(c.disc_rate * 100).toFixed(2)}}%` : 'r';
+      ['dossier-rate-title', 'dossier-rate-pe', 'dossier-rate-g'].forEach(id => {{ const el = document.getElementById(id); if (el) el.textContent = rTxt; }});
 
       const opRoicVal = (c.roic_est !== null && c.roic_est !== undefined)
         ? `${{fmtPct(c.roic_est)}} (Est.)`
@@ -3241,7 +3225,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
 
       const gOrgDisp = fmtPct(c.g_org_exp !== null && c.g_org_exp !== undefined ? c.g_org_exp : c.g_start);
-      const gExpDisp = fmtPct(c.g_exp !== null && c.g_exp !== undefined ? c.g_exp : c.g_imp);
+      const gExpDisp = fmtPct(c.g_exp);
       document.getElementById('dossier-g-imp').textContent = (c.g_exp !== c.g_org_exp && c.g_exp !== null) ? `${{gOrgDisp}} → ${{gExpDisp}}` : gOrgDisp;
       const scaleEl = document.getElementById('dossier-scale-tier');
       if (scaleEl) {{
@@ -3261,7 +3245,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       gMarginEl.textContent = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
       gMarginEl.style.color = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-main)';
 
-      document.getElementById('dossier-cap-our').textContent = c.g4_cap ? `${{c.g4_cap}}y` : (passesG123a(c) ? '20y (Def)' : '-');
+      document.getElementById('dossier-cap-our').textContent = c.g4_cap ? `${{c.g4_cap}}y` : (hasMoatArchetype(c) ? '20y (Def)' : '-');
       document.getElementById('dossier-cap-implied').textContent = c.cap_implied !== null && c.cap_implied !== undefined ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
       const capMarginEl = document.getElementById('dossier-cap-margin');
       capMarginEl.textContent = fmtSignedYears(c.cap_gap);
@@ -3308,17 +3292,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function populateValuationAudit(c) {{
-      // 1. OUR CAP
-      const hasDefCap = !c.g4_cap && passesG123a(c);
+      const P = parParams(c);
+      const k = (c.disc_rate !== null && c.disc_rate !== undefined) ? c.disc_rate : (c.bs_fin ? P.k_fin : P.k);
+      // 1. OUR CAP & discount rate
+      const hasDefCap = !c.g4_cap && hasMoatArchetype(c);
       document.getElementById('audit-cap-summary').textContent = c.g4_cap ? `${{c.g4_cap}}y Runway` : (hasDefCap ? '20y Runway (Default)' : 'Unassigned');
       document.getElementById('audit-cap-years').textContent = c.g4_cap ? `${{c.g4_cap}} Years` : (hasDefCap ? '20 Years (Unscored G4)' : 'None');
       const capTierText = c.g4_cap >= 30 ? 'Fortress (30y+)' : (c.g4_cap >= 20 ? 'Compounder (20y+)' : (c.g4_cap ? 'Standard (<20y)' : (hasDefCap ? 'Default Moat (20y)' : 'Unassigned')));
       document.getElementById('audit-cap-tier').textContent = capTierText;
-      document.getElementById('audit-cap-pers').textContent = (c.pers !== null && c.pers !== undefined) ? `${{Math.round(c.pers * 100)}}%` : (c.g4_cap >= 30 ? '85%' : (c.g4_cap >= 20 ? '75%' : '62%'));
-      const effSlope = (c.eff_g_mult !== null && c.eff_g_mult !== undefined) ? c.eff_g_mult : c.g_mult;
-      document.getElementById('audit-cap-gmult').textContent = (effSlope !== null && effSlope !== undefined) ? `${{Math.round(effSlope)}}x` : '-';
-      const gmultSubEl = document.getElementById('audit-cap-gmult-sub');
-      if (gmultSubEl) gmultSubEl.textContent = (effSlope !== null && effSlope !== undefined) ? `+${{(effSlope / 100).toFixed(2)}}x P/E per 1% g` : 'Points per 1% g';
+      document.getElementById('audit-cap-rate').textContent = `${{(k * 100).toFixed(2)}}%`;
+      document.getElementById('audit-cap-rate-sub').textContent = c.bs_fin ? 'Balance-Sheet Financial (r_fin)' : 'Operating Company / Fee Financial';
       document.getElementById('audit-cap-market').textContent = (c.cap_implied !== null && c.cap_implied !== undefined) ? `${{fmtNum(c.cap_implied, 1)}}y` : '-';
       document.getElementById('audit-cap-gap').textContent = (c.cap_gap !== null && c.cap_gap !== undefined) ? `${{fmtSignedYears(c.cap_gap)}} runway margin` : '-';
       document.getElementById('audit-moat-arch').textContent = c.g3a_moat_archetype || 'None';
@@ -3331,102 +3314,95 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }};
       document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
 
-      // 2. GROWTH CEILING (g₀) & PER-SHARE CEILING (g_exp)
+      // 2. GROWTH CEILING (g₀), PER-SHARE CEILING (g_exp) & MARGINAL RONIC
       document.getElementById('audit-gexp-summary').textContent = `${{fmtPct(c.g_org_exp)}} → ${{fmtPct(c.g_exp)}}`;
-      document.getElementById('audit-g1y-val').textContent = (c.sales_1y !== null && c.sales_1y !== undefined) ? fmtPct(c.sales_1y, true) : 'N/A';
       document.getElementById('audit-sales1y-val').textContent = fmtPct(c.sales_1y, true);
-      const oc1yEl = document.getElementById('audit-opcost1y-val');
-      if (oc1yEl) oc1yEl.textContent = fmtPct(c.opcost_1y, true);
+      document.getElementById('audit-opcost1y-val').textContent = fmtPct(c.opcost_1y, true);
       document.getElementById('audit-bb-val').textContent = fmtPct(c.buyback_yield, true);
-      document.getElementById('audit-gdemand-val').textContent = (c.opcost_cagr !== null && c.opcost_cagr !== undefined) ? fmtPct(c.opcost_cagr) : fmtPct(c.sales_cagr);
+      const hasOc = c.opcost_cagr !== null && c.opcost_cagr !== undefined;
+      const hasS = c.sales_cagr !== null && c.sales_cagr !== undefined;
+      const blend = (hasOc && hasS) ? Math.min(c.sales_cagr, 0.70 * c.opcost_cagr + 0.30 * c.sales_cagr) : (hasOc ? c.opcost_cagr : (hasS ? c.sales_cagr : null));
+      document.getElementById('audit-gdemand-val').textContent = blend !== null ? fmtPct(blend) : '-';
       document.getElementById('audit-salescagr-val').textContent = fmtPct(c.sales_cagr);
       document.getElementById('audit-salesyrs-val').textContent = c.sales_cagr_yrs ? `${{c.sales_cagr_yrs}}Y` : '5Y';
-      const ocCagrEl = document.getElementById('audit-opcostcagr-val');
-      if (ocCagrEl) ocCagrEl.textContent = fmtPct(c.opcost_cagr);
+      document.getElementById('audit-opcostcagr-val').textContent = fmtPct(c.opcost_cagr);
       document.getElementById('audit-oecagr-val').textContent = fmtPct(c.cagr_oe_eps);
-      document.getElementById('audit-gfund-val').textContent = (c.cap_growth !== null && c.cap_growth !== undefined) ? fmtPct(c.cap_growth) : 'N/A';
-      document.getElementById('audit-capgrowth-val').textContent = fmtPct(c.cap_growth);
       document.getElementById('audit-roic-val').textContent = `${{fmtPct(c.roic_used)}} → ${{fmtPct(c.roic_exp)}}`;
-      const rFadeEl = document.getElementById('audit-roicfade-val');
-      if (rFadeEl) rFadeEl.textContent = (c.roic_fade_ratio !== null && c.roic_fade_ratio !== undefined) ? `${{c.roic_fade_ratio.toFixed(2)}}x` : '1.00x';
-      document.getElementById('audit-retention-val').textContent = (c.retention !== null && c.retention !== undefined) ? fmtPct(c.retention) : ((c.retention_rate !== null && c.retention_rate !== undefined) ? fmtPct(c.retention_rate) : '-');
-      const fadePers = c.pers || (c.g4_cap >= 30 ? 0.85 : (c.g4_cap >= 20 ? 0.75 : 0.62));
+      document.getElementById('audit-roictang-val').textContent = fmtPct(c.roic_operating);
+      document.getElementById('audit-roicgaap-val').textContent = fmtPct(c.roic_median);
+      document.getElementById('audit-mashare-val').textContent = (c.ma_reinvest !== null && c.ma_reinvest !== undefined)
+        ? `${{fmtPct(c.ma_reinvest)}} of NOPAT → ${{c.ma_alpha ? fmtPct(c.ma_alpha) + ' of g₀ bought' : 'blend off'}}` : '-';
+      document.getElementById('audit-retention-val').textContent = fmtPct(c.retention_rate);
+      document.getElementById('audit-roic-note').innerHTML = c.ronic_le_r
+        ? `<b style="color: var(--amber);">⚠ RONIC₀ ${{fmtPct(c.roic_exp)}} ≤ r ${{(k * 100).toFixed(2)}}%: growth adds no value, so Fair P/E ≤ 1/r. Review the capital base (goodwill, minorities) against the moat gates.</b>`
+        : 'RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%).';
       document.getElementById('audit-fade-val').textContent = fmtPct(c.g_org_exp);
-      document.getElementById('audit-graw-val').textContent = fmtPct(c.g_org_exp);
       document.getElementById('audit-glog-val').textContent = fmtPct(c.g_exp);
-      document.getElementById('audit-fadew-val').textContent = `${{Math.round(fadePers * 100)}}%`;
-      document.getElementById('audit-sizefactor-val').textContent = (c.size_factor !== null && c.size_factor !== undefined) ? `${{c.size_factor.toFixed(2)}}x` : '1.00x';
-      document.getElementById('audit-scaletier-val').textContent = c.scale_tier || 'MID/SM';
-      document.getElementById('audit-scalecap-val').textContent = fmtPct(c.scale_cap);
       document.getElementById('audit-gest-val').textContent = (c.g_est !== null && c.g_est !== undefined) ? fmtPct(c.g_est) : 'None';
+      document.getElementById('audit-gformula').textContent = `Formula: g₀ = clamp(cost-bloat guarded WLS growth + min(0, BB), 0%, ${{fmtPct(P.g_anchor_max)}}) fades linearly to min(g₀, ${{fmtPct(P.g_base)}}) over CAP.`;
 
-      // Binding / Dominant Driver Badge
-      const boxSupply = document.getElementById('box-filter-supply');
-      const boxDemand = document.getElementById('box-filter-demand');
-      const boxFade = document.getElementById('box-filter-fade');
-      const boxGravity = document.getElementById('box-filter-gravity');
-      [boxSupply, boxDemand, boxFade, boxGravity].forEach(el => {{ if (el) el.classList.remove('binding'); }});
-
+      // Binding / Dominant Driver Badge: name the term that actually sets g₀
+      ['box-filter-supply', 'box-filter-demand', 'box-filter-fade', 'box-filter-gravity'].forEach(id => {{
+        const el = document.getElementById(id); if (el) el.classList.remove('binding');
+      }});
       const badge = document.getElementById('audit-binding-badge');
+      const fadeTxt = `→ ${{fmtPct(Math.min(c.g_org_exp || 0, P.g_base))}} over CAP`;
+      let bindTxt;
       if (c.g_est !== null && c.g_est !== undefined) {{
-        badge.textContent = `Analyst Override (${{fmtPct(c.g_est)}})`;
-        badge.className = 'binding-badge active-constraint';
-      }} else if (c.opcost_cagr !== null && c.opcost_cagr !== undefined) {{
-        if (boxDemand) boxDemand.classList.add('binding');
-        badge.textContent = `OpCost Ceiling g₀ ${{fmtPct(c.g_org_exp)}} → 3.5% CAP Fade`;
-        badge.className = 'binding-badge active-constraint';
+        bindTxt = `Analyst Override g₀ ${{fmtPct(c.g_org_exp)}}`;
+      }} else if (c.g_org_exp !== null && c.g_org_exp >= P.g_anchor_max - 1e-6) {{
+        bindTxt = `${{fmtPct(P.g_anchor_max)}} Ceiling binds`;
+        document.getElementById('box-filter-gravity').classList.add('binding');
+      }} else if (hasOc && hasS) {{
+        const ocBinds = 0.70 * c.opcost_cagr + 0.30 * c.sales_cagr < c.sales_cagr;
+        bindTxt = ocBinds ? `OpCost 70/30 Blend g₀ ${{fmtPct(c.g_org_exp)}}` : `Sales WLS Cap g₀ ${{fmtPct(c.g_org_exp)}}`;
+        document.getElementById('box-filter-demand').classList.add('binding');
+      }} else if (hasOc || hasS) {{
+        bindTxt = `${{hasOc ? 'OpCost' : 'Sales'}} WLS g₀ ${{fmtPct(c.g_org_exp)}}`;
+        document.getElementById('box-filter-demand').classList.add('binding');
       }} else {{
-        if (boxGravity) boxGravity.classList.add('binding');
-        badge.textContent = `Growth Ceiling g₀ ${{fmtPct(c.g_org_exp)}} → 3.5% CAP Fade`;
-        badge.className = 'binding-badge active-constraint';
+        bindTxt = `Fallback g₀ ${{fmtPct(c.g_org_exp)}}`;
+        document.getElementById('box-filter-gravity').classList.add('binding');
       }}
+      badge.textContent = `${{bindTxt}} ${{fadeTxt}}`;
+      badge.className = 'binding-badge active-constraint';
 
       // 3. Explicit Mauboussin-Fade DCF Fair Multiple
+      document.getElementById('audit-dcf-rate').textContent = `r = ${{(k * 100).toFixed(2)}}%`;
+      document.getElementById('audit-tgrowth-sub').textContent = `Years 1..N FCF @ r=${{(k * 100).toFixed(2)}}%`;
       document.getElementById('audit-parmult-summary').textContent = `${{fmtNum(c.par_mult)}}x`;
-      const peMm = (c.pe_mm !== null && c.pe_mm !== undefined) ? c.pe_mm : c.t_growth;
-      const peMck = (c.pe_mck !== null && c.pe_mck !== undefined) ? c.pe_mck : c.t_roic;
-      const peVd = (c.pe_vd !== null && c.pe_vd !== undefined) ? c.pe_vd : c.raw_par;
-      document.getElementById('audit-tgrowth-val').textContent = (peMm !== null && peMm !== undefined) ? `${{fmtNum(peMm)}}x` : '-';
-      document.getElementById('audit-thist-val').textContent = (c.t_hist !== null && c.t_hist !== undefined) ? `${{fmtNum(c.t_hist)}}x` : '-';
-      document.getElementById('audit-troic-val').textContent = (peMck !== null && peMck !== undefined) ? `${{fmtNum(peMck)}}x` : '-';
-      document.getElementById('audit-rawpar-val').textContent = (peVd !== null && peVd !== undefined) ? `${{fmtNum(peVd)}}x` : '-';
-      document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '100%';
+      document.getElementById('audit-tgrowth-val').textContent = (c.pe_mm !== null && c.pe_mm !== undefined) ? `${{fmtNum(c.pe_mm)}}x` : '-';
+      document.getElementById('audit-troic-val').textContent = (c.pe_mck !== null && c.pe_mck !== undefined) ? `${{fmtNum(c.pe_mck)}}x` : '-';
+      document.getElementById('audit-rawpar-val').textContent = (c.pe_vd !== null && c.pe_vd !== undefined) ? `${{fmtNum(c.pe_vd)}}x` : '-';
+      document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '-';
       const hasHistRange = (c.mult_low_5y !== null && c.mult_low_5y !== undefined && c.mult_high_5y !== null && c.mult_high_5y !== undefined);
-      const rangeStr = hasHistRange
-        ? `${{fmtNum(c.mult_low_5y)}}x–${{fmtNum(c.mult_high_5y)}}x`
-        : ((c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? `${{fmtNum(c.mult_high_5y)}}x` : 'N/A (<12m trading)');
-      document.getElementById('audit-mh-val').textContent = rangeStr;
-      const thistSubEl = document.getElementById('audit-thist-sub');
-      if (thistSubEl) thistSubEl.textContent = hasHistRange ? 'Reference Only (0% Weight in Pure DCF)' : 'No 5Y History (100% Pure DCF)';
+      document.getElementById('audit-mh-val').textContent = hasHistRange ? `${{fmtNum(c.mult_low_5y)}}x–${{fmtNum(c.mult_high_5y)}}x` : 'N/A (<12m trading)';
       document.getElementById('audit-peakeps-val').textContent = fmtPrice(c.peak_eps, c.quote_currency);
     }}
+
+    const SB_STEP_SNAP = (v) => Math.round(v * 2) / 2;      // sliders use step="0.5"
+    const PEAK_EPS_TOL = 1e-4;
 
     function initValuationSandbox(c) {{
       if (!c) return;
 
       const cap = (c.g4_cap !== null && c.g4_cap !== undefined) ? c.g4_cap : null;
 
-      // Base growth fallback hierarchy: sales_cagr -> cagr_oe_eps -> sales_1y -> g_start -> 8.0%
+      // Growth slider = sales WLS CAGR (moving it shifts sales, OpCost and Owner EPS growth by the same delta)
       const baseGrowth = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? c.sales_cagr
         : ((c.cagr_oe_eps !== null && c.cagr_oe_eps !== undefined) ? c.cagr_oe_eps
         : ((c.sales_1y !== null && c.sales_1y !== undefined) ? c.sales_1y
-        : ((c.g_start !== null && c.g_start !== undefined) ? c.g_start : 0.08)));
-
-      const salescagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) ? (c.sales_cagr * 100) : (baseGrowth * 100);
-      const sales1y = (c.sales_1y !== null && c.sales_1y !== undefined) ? (c.sales_1y * 100) : (baseGrowth * 100);
-      const capgrowth = (c.cap_growth !== null && c.cap_growth !== undefined) ? (c.cap_growth * 100) : (baseGrowth * 100);
-      const roic = (c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100)
-        : ((c.roic_operating !== null && c.roic_operating !== undefined) ? (c.roic_operating * 100)
-        : ((c.roic_median !== null && c.roic_median !== undefined) ? (c.roic_median * 100) : 18.0));
-
-      const bb = (c.buyback_yield !== null && c.buyback_yield !== undefined) ? (c.buyback_yield * 100) : 0.0;
-      const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined) ? c.peak_eps : ((c.price && c.price > 0) ? c.price / 15 : null);
-      const ml = (c.mult_low_5y !== null && c.mult_low_5y !== undefined) ? c.mult_low_5y : null;
-      const mh = (c.mult_high_5y !== null && c.mult_high_5y !== undefined) ? c.mult_high_5y : null;
+        : ((c.g_org_exp !== null && c.g_org_exp !== undefined) ? c.g_org_exp : 0.08)));
+      const salescagr = baseGrowth * 100;
+      // RONIC slider starts at the RONIC₀ the DCF actually uses (after M&A blend and cap); moving it sets RONIC₀
+      // directly (= a roic_est override in Python) so touching it never jumps.
+      const roic = (c.roic_exp !== null && c.roic_exp !== undefined) ? (c.roic_exp * 100)
+        : ((c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100) : 18.0);
+      const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined && c.peak_eps > 0) ? c.peak_eps : null;
       const gest = (c.g_est !== null && c.g_est !== undefined) ? (c.g_est * 100) : null;
 
-      sbBaseline = {{ cap, sales1y, salescagr, capgrowth, roic, bb, peakeps, ml, mh, gest }};
-      sbCurrent = {{ ...sbBaseline }};
+      sbBaseline = {{ cap, salescagr, salescagrSnap: SB_STEP_SNAP(salescagr), roic, roicSnap: SB_STEP_SNAP(roic), peakeps, gest }};
+      sbCurrent = {{ cap, salescagr: sbBaseline.salescagrSnap, roic: sbBaseline.roicSnap, peakeps, gest }};
 
       syncSandboxInputs();
       recalcSandboxValuation();
@@ -3435,22 +3411,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function syncSandboxInputs() {{
       const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId) || {{}};
 
-      // Update CAP Pills
       document.querySelectorAll('.cap-pill-btn').forEach(btn => {{
         btn.classList.toggle('active', sbCurrent.cap !== null && parseInt(btn.dataset.cap, 10) === sbCurrent.cap);
       }});
       const capEl = document.getElementById('sb-val-cap');
-      if (capEl) capEl.textContent = sbCurrent.cap !== null ? `${{sbCurrent.cap}}y` : 'Unassigned';
+      if (capEl) capEl.textContent = sbCurrent.cap !== null ? `${{sbCurrent.cap}}y` : 'Unassigned (20y default)';
 
-      // Sliders & value displays with dynamic min/max adjustment to avoid clipping outliers
-      const s1y = document.getElementById('sb-slider-sales1y');
-      if (s1y) {{
-        s1y.min = Math.min(-20, Math.floor(sbCurrent.sales1y - 5));
-        s1y.max = Math.max(40, Math.ceil(sbCurrent.sales1y + 5));
-        s1y.value = sbCurrent.sales1y;
-        document.getElementById('sb-val-sales1y').textContent = `${{sbCurrent.sales1y.toFixed(1)}}%`;
-      }}
-
+      // Sliders with dynamic min/max adjustment to avoid clipping outliers
       const sCagr = document.getElementById('sb-slider-salescagr');
       if (sCagr) {{
         sCagr.min = Math.min(-20, Math.floor(sbCurrent.salescagr - 5));
@@ -3458,15 +3425,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         sCagr.value = sbCurrent.salescagr;
         document.getElementById('sb-val-salescagr').textContent = `${{sbCurrent.salescagr.toFixed(1)}}%`;
       }}
-
-      const sCapG = document.getElementById('sb-slider-capgrowth');
-      if (sCapG) {{
-        sCapG.min = Math.min(-20, Math.floor(sbCurrent.capgrowth - 5));
-        sCapG.max = Math.max(40, Math.ceil(sbCurrent.capgrowth + 5));
-        sCapG.value = sbCurrent.capgrowth;
-        document.getElementById('sb-val-capgrowth').textContent = `${{sbCurrent.capgrowth.toFixed(1)}}%`;
-      }}
-
       const sRoic = document.getElementById('sb-slider-roic');
       if (sRoic) {{
         sRoic.min = Math.min(5, Math.floor(sbCurrent.roic - 5));
@@ -3477,27 +3435,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const lblRoicText = document.getElementById('sb-label-roic-text');
       if (lblRoicText) {{
         lblRoicText.textContent = (c.roic_est !== null && c.roic_est !== undefined)
-          ? 'Normalized Operating ROIC'
-          : (c.uses_gaap_roic ? 'GAAP ROIC (incl. Goodwill)' : 'Tangible Operating ROIC');
+          ? 'RONIC₀ (analyst roic_est)'
+          : `RONIC₀ (${{c.uses_gaap_roic ? (c.bs_fin ? 'ROE' : 'GAAP ROIC') : 'Tangible ROIC'}}, M&A-matched, capped)`;
       }}
 
-      const sBb = document.getElementById('sb-slider-bb');
-      if (sBb) {{
-        sBb.value = sbCurrent.bb;
-        document.getElementById('sb-val-bb').textContent = `${{sbCurrent.bb.toFixed(1)}}%`;
-      }}
-
-      // Numeric inputs
       const inPeak = document.getElementById('sb-input-peakeps');
       if (inPeak) inPeak.value = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? sbCurrent.peakeps.toFixed(2) : '';
       const valPeakEl = document.getElementById('sb-val-peakeps');
       if (valPeakEl) valPeakEl.textContent = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? fmtPrice(sbCurrent.peakeps, c.quote_currency) : '-';
-
-      const inMl = document.getElementById('sb-input-ml');
-      if (inMl) inMl.value = (sbCurrent.ml !== null && sbCurrent.ml !== undefined) ? sbCurrent.ml.toFixed(1) : '';
-
-      const inMh = document.getElementById('sb-input-mh');
-      if (inMh) inMh.value = (sbCurrent.mh !== null && sbCurrent.mh !== undefined) ? sbCurrent.mh.toFixed(1) : '';
 
       const inGest = document.getElementById('sb-input-gest');
       if (inGest) inGest.value = (sbCurrent.gest !== null && sbCurrent.gest !== undefined) ? sbCurrent.gest.toFixed(1) : '';
@@ -3523,39 +3468,21 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       recalcSandboxValuation();
     }}
 
-    function onSandboxInputChange() {{
+    function onSandboxPeakChange() {{
       const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId) || {{}};
-
       const peInputEl = document.getElementById('sb-input-peakeps');
-      const peInput = peInputEl ? peInputEl.value.trim() : '';
-      const pe = parseFloat(peInput);
+      const pe = parseFloat(peInputEl ? peInputEl.value.trim() : '');
       sbCurrent.peakeps = (!isNaN(pe) && pe > 0) ? pe : null;
       const valPeakEl = document.getElementById('sb-val-peakeps');
-      if (valPeakEl) valPeakEl.textContent = (sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined) ? fmtPrice(sbCurrent.peakeps, c.quote_currency) : '-';
+      if (valPeakEl) valPeakEl.textContent = (sbCurrent.peakeps !== null) ? fmtPrice(sbCurrent.peakeps, c.quote_currency) : '-';
+      recalcSandboxValuation();
+    }}
 
-      const mlEl = document.getElementById('sb-input-ml');
-      if (mlEl) {{
-        const parsedMl = parseFloat(mlEl.value.trim());
-        sbCurrent.ml = (!isNaN(parsedMl) && parsedMl > 0) ? parsedMl : null;
-      }}
-
-      const mhEl = document.getElementById('sb-input-mh');
-      if (mhEl) {{
-        const parsedMh = parseFloat(mhEl.value.trim());
-        sbCurrent.mh = (!isNaN(parsedMh) && parsedMh > 0) ? parsedMh : null;
-      }}
-
+    function onSandboxGestChange() {{
       const gestVal = document.getElementById('sb-input-gest').value.trim();
-      if (gestVal === '') {{
-        sbCurrent.gest = null;
-        document.getElementById('sb-val-gest').textContent = 'None';
-      }} else {{
-        const parsedG = parseFloat(gestVal);
-        if (!isNaN(parsedG)) {{
-          sbCurrent.gest = parsedG;
-          document.getElementById('sb-val-gest').textContent = `${{parsedG.toFixed(1)}}%`;
-        }}
-      }}
+      const parsedG = parseFloat(gestVal);
+      sbCurrent.gest = (gestVal === '' || isNaN(parsedG)) ? null : parsedG;
+      document.getElementById('sb-val-gest').textContent = sbCurrent.gest !== null ? `${{sbCurrent.gest.toFixed(1)}}%` : 'None';
       recalcSandboxValuation();
     }}
 
@@ -3568,39 +3495,40 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function resetSandboxValuation() {{
-      sbCurrent = {{ ...sbBaseline }};
+      sbCurrent = {{ cap: sbBaseline.cap, salescagr: sbBaseline.salescagrSnap, roic: sbBaseline.roicSnap, peakeps: sbBaseline.peakeps, gest: sbBaseline.gest }};
       syncSandboxInputs();
       recalcSandboxValuation();
+    }}
+
+    function sandboxTweaks() {{
+      const peakEdited = sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined &&
+        (sbBaseline.peakeps === null || Math.abs(sbCurrent.peakeps - sbBaseline.peakeps) > PEAK_EPS_TOL);
+      return {{
+        growth: Math.abs(sbCurrent.salescagr - sbBaseline.salescagrSnap) > 0.01,
+        roic: Math.abs(sbCurrent.roic - sbBaseline.roicSnap) > 0.01,
+        gest: sbCurrent.gest !== sbBaseline.gest,
+        peak: peakEdited,
+        cap: sbCurrent.cap !== sbBaseline.cap
+      }};
     }}
 
     function copySandboxOverrideJson() {{
       const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId);
       if (!c) return;
-      const peakChanged = sbCurrent.peakeps !== null && sbCurrent.peakeps !== undefined && (
-        (c.peak_eps_est !== null && c.peak_eps_est !== undefined) ||
-        sbBaseline.peakeps === null ||
-        Math.abs(sbCurrent.peakeps - sbBaseline.peakeps) > 1e-4
-      );
-      const roicChanged = sbCurrent.roic !== null && sbCurrent.roic !== undefined && (
-        (c.roic_est !== null && c.roic_est !== undefined) ||
-        sbBaseline.roic === null ||
-        Math.abs(sbCurrent.roic - sbBaseline.roic) > 0.05
-      );
-      const overrideObj = {{
-        id: c.id,
-        ticker: c.ticker,
-        universe: c.universe,
-        company: c.company,
-        qualitative: {{
-          gate_4_runway_cap: sbCurrent.cap
-        }},
-        quantitative_overrides: {{
-          peak_eps_est: peakChanged ? Math.round(sbCurrent.peakeps * 100) / 100 : null,
-          g_est: sbCurrent.gest !== null ? Math.round(sbCurrent.gest * 10) / 1000 : null,
-          roic_est: roicChanged ? Math.round(sbCurrent.roic * 10) / 1000 : null,
-          fin_note: `Sandbox sensitivity: CAP ${{sbCurrent.cap !== null ? sbCurrent.cap + 'y' : 'Unassigned'}}, g ${{sbCurrent.gest !== null ? sbCurrent.gest : sbCurrent.salescagr}}%, ROIC ${{sbCurrent.roic}}%`
-        }}
-      }};
+      const tw = sandboxTweaks();
+      // Only changed fields are emitted: apply_evaluation.py treats an explicit null as "clear the override"
+      const overrides = {{}};
+      if (tw.peak) overrides.peak_eps_est = Math.round(sbCurrent.peakeps * 100) / 100;
+      if (tw.gest) overrides.g_est = sbCurrent.gest !== null ? Math.round(sbCurrent.gest * 10) / 1000 : null;
+      if (tw.roic) overrides.roic_est = Math.round(sbCurrent.roic * 10) / 1000;
+      const parts = [`CAP ${{sbCurrent.cap !== null ? sbCurrent.cap + 'y' : '20y default'}}`];
+      if (tw.gest || tw.growth) parts.push(`g₀ ${{sbCurrent.gest !== null ? sbCurrent.gest.toFixed(1) : sbCurrent.salescagr.toFixed(1)}}%`);
+      if (tw.roic) parts.push(`RONIC₀ ${{sbCurrent.roic.toFixed(1)}}%`);
+      if (tw.peak) parts.push(`peak EPS ${{sbCurrent.peakeps.toFixed(2)}}`);
+      overrides.fin_note = `Sandbox sensitivity: ${{parts.join(', ')}}`;
+      const overrideObj = {{ id: c.id, ticker: c.ticker, universe: c.universe, company: c.company }};
+      if (tw.cap) overrideObj.qualitative = {{ gate_4_runway_cap: sbCurrent.cap }};
+      overrideObj.quantitative_overrides = overrides;
       const jsonStr = JSON.stringify(overrideObj, null, 2);
       navigator.clipboard.writeText(jsonStr).then(() => {{
         const btn = document.getElementById('btn-copy-sandbox');
@@ -3612,14 +3540,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
     }}
 
-    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false, roicEndOverride=null) {{
-      // Mirrors screener/gates.py dcf_schedule_and_continuation (v7.0): Year-1 starts at normalized run-rate E_1 = 1.0;
+    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.035, isFiniteConc=false, roicEndOverride=null) {{
+      // Mirrors screener/gates.py dcf_schedule_and_continuation (v7.1): Year-1 E_1 = 1.0 is the trailing normalized EPS;
       // at each year t = 1..N, Reinv_t = E_t * max(0, g_t) / RONIC_t funds E_(t+1) = E_t * (1 + g_t); TV_N = E_(N+1) / r.
       const nSteps = Math.max(1, Math.round(nCap));
       const roicStart = Math.max(0.05, roic0);
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
         ? Math.max(0.05, roicEndOverride)
-        : Math.min(roicStart, roicTermCap);
+        : Math.min(roicStart, 0.20);
       const gTermEff = Math.min(g0, gTerm);
       let pvStage1 = 0.0;
       let sumFcf1 = 0.0;
@@ -3705,7 +3633,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const nCap = opts.n_cap;
       const k = opts.k;
       const gTerm = opts.g_base;
-      const roicAvg = opts.roic_avg;
       const isFiniteConc = opts.isFiniteConc;
       const isMtmHoldco = opts.isMtmHoldco;
       const isTweaked = opts.isTweaked;
@@ -3734,11 +3661,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         document.getElementById('dcf-sum-disc').textContent = '-';
         document.getElementById('dcf-sum-fv').textContent = 'No Data';
         document.getElementById('dcf-sum-split').textContent = '-';
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (company is outside the Quantitative funnel or missing Peak Owner EPS).</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (missing Peak Owner EPS / valuation inputs, or stale fundamentals awaiting a refetch).</td></tr>`;
         return;
       }}
 
-      const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, roicAvg, 0.20, isFiniteConc);
+      const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, isFiniteConc);
       const navMult = (opts.navMult !== null && opts.navMult !== undefined) ? opts.navMult : (1.0 / roic0);
       const effMult = isMtmHoldco ? navMult : dcf.total;
       const effFv = effMult * e0;
@@ -3767,9 +3694,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (isMtmHoldco) {{
           noteEl.style.display = 'block';
           noteEl.innerHTML = `<strong>ℹ️ Mark-to-Market HoldCo / Insurer NAV Rule:</strong> Because reported GAAP EPS already includes unrealized mark-to-market portfolio gains (&Delta;NAV), intrinsic Fair Value is anchored at <b>1.0x NAV = Book Value / Share = ${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x Peak EPS)</b>. The table below displays the illustrative operating cash-flow fade schedule at r = ${{(k * 100).toFixed(2)}}%.`;
+        }} else if (effFv <= 0) {{
+          noteEl.style.display = 'block';
+          noteEl.innerHTML = `<strong>⚠ No positive DCF value:</strong> reinvestment g₀ / RONIC₀ = ${{fmtPct(re0)}} of earnings exceeds what the business earns on new capital, so the present value of owner cash flows is ${{fmtNum(effMult)}}x — status <b>No value</b> (never Below PAR).`;
         }} else if (isFiniteConc) {{
           noteEl.style.display = 'block';
-          noteEl.innerHTML = `<strong>ℹ️ IFRIC-12 Finite Infrastructure Concession Rule:</strong> Concession assets amortize and revert to the state at expiry, so Stage 2 Terminal Value is <b>0.00</b> and Fair Value is 100% Stage 1 CAP cash flows over N = ${{dcf.nSteps}} years.`;
+          noteEl.innerHTML = `<strong>ℹ️ Expiring Concession (opt-in):</strong> Concession assets revert to the grantor at expiry, so Stage 2 Terminal Value is <b>0.00</b> and Fair Value is 100% Stage 1 CAP cash flows over N = ${{dcf.nSteps}} years.`;
         }} else {{
           noteEl.style.display = 'none';
         }}
@@ -3779,7 +3709,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       // Base Row (Year 0)
       htmlRows.push(`<tr class="dcf-row-base">
-        <td><b>Year 0 (Base)</b><span class="dcf-sub">Normalized Peak</span></td>
+        <td><b>Year 0 (Base)</b><span class="dcf-sub">Trailing normalized EPS = Year-1 E₁</span></td>
         <td>${{fmtPct(g0)}}<span class="dcf-sub">Initial Ceiling g₀</span></td>
         <td>${{fmtPct(dcf.roicStart)}}<span class="dcf-sub">Reinv ${{Math.round(re0 * 100)}}%</span></td>
         <td>${{fmtPrice(e0, ccy)}}<span class="dcf-sub">1.00x E₀</span></td>
@@ -3852,14 +3782,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = htmlRows.join('');
     }}
 
-    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false, g0Ref=0.0) {{
-      // Mirrors screener/gates.py solve_market_growth (v6.36): grid scan [-20%, +50%] in 1pp steps, bisection in
+    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.035, isFiniteConc=false, g0Ref=0.0) {{
+      // Mirrors screener/gates.py solve_market_growth: grid scan [-20%, +50%] in 1pp steps, bisection in
       // every sign-change bracket; returns {{ g, flag }} with flag in ok | saturated_low | saturated_high |
       // no_value_creation | multi_root.
       if (!targetPe || targetPe <= 0) return {{ g: null, flag: null }};
       const LO = -0.20, HI = 0.50, STEP = 0.01;
       const nPts = Math.round((HI - LO) / STEP);
-      const pe = (g) => explicitDcfMultiple(g, roic0, nCap, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
+      const pe = (g) => explicitDcfMultiple(g, roic0, nCap, k, gTerm, isFiniteConc).total;
       const grid = [], pes = [];
       for (let i = 0; i <= nPts; i++) {{ const g = LO + i * STEP; grid.push(g); pes.push(pe(g)); }}
       let increasing = true;
@@ -3891,7 +3821,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function solveDcfIrr5y(curPe, fcfs5, v5) {{
-      // Mirrors screener/gates.py solve_irr_5y (v7.0 Bellman-Consistent DCF Schedule Mode):
+      // Mirrors screener/gates.py solve_irr_5y (Bellman-consistent DCF schedule, bisection on [-99%, +250%]):
       // Solves sum_{{t=1..5}} [FCF_t / (1 + IRR)^t] + [V_5 / (1 + IRR)^5] = Cur_PE via 60-step bisection.
       if (!curPe || curPe <= 0 || v5 === null || v5 === undefined || !fcfs5 || fcfs5.length < 5) return null;
       let sumCash = v5;
@@ -3904,7 +3834,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         for (let t = 0; t < 5; t++) pv += fcfs5[t] / Math.pow(d, t + 1);
         return pv - curPe;
       }};
-      let lo = -0.50, hi = 2.50;
+      let lo = -0.99, hi = 2.50;
       const fLo = npv(lo), fHi = npv(hi);
       if (fLo * fHi > 0) return null;
       for (let i = 0; i < 60; i++) {{
@@ -3914,195 +3844,130 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return 0.5 * (lo + hi);
     }}
 
+    function ronic0(roicEst, roicActive, rTang, rGaap, maReinvest, g0, gaapBasis) {{
+      // Mirrors screener/gates.py ronic0: bought growth (M&A spend × GAAP ROIC) earns GAAP ROIC, the rest tangible ROIC
+      const has = (v) => v !== null && v !== undefined;
+      if (!has(roicEst) && !gaapBasis && has(rTang) && has(rGaap) && rGaap > 0 && rTang > 1.25 * rGaap && maReinvest > 0 && g0 > 0) {{
+        const w = Math.max(0.0, Math.min(1.0, maReinvest * rGaap / g0));
+        return [1.0 / ((1.0 - w) / rTang + w / rGaap), w];
+      }}
+      return [roicActive, 0.0];
+    }}
+
     function recalcSandboxValuation() {{
+      // Mirrors screener/gates.py par_valuation (v7.1). With untouched inputs the Python baseline is reproduced exactly;
+      // classification (balance-sheet financial, NAV HoldCo, opt-in finite concession, r) always comes from Python.
       const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId);
       if (!c) return;
+      const P = parParams(c);
+      const r4 = (x) => Math.round(x * 10000) / 10000;
+      const r1 = (x) => Math.round(x * 10) / 10;
+      const has = (v) => v !== null && v !== undefined;
 
       const price = c.price;
       const peak_eps = sbCurrent.peakeps;
-      const ml = sbCurrent.ml;
-      const mh = sbCurrent.mh;
-      const mc = c.market_cap_m;
-
-      // PAR parameters injected from Python params(meta) (defaults + universe.json overrides), v7.0
-      const P = Object.assign({{
-        k: 0.085, k_fin: 0.1025, g_anchor_max: 0.18, roic_cap: 0.50,
-        g_base: 0.035, fade_cap30: 0.85, fade_cap20: 0.75, fade_cap15: 0.62, fade_default: 0.62
-      }}, ((SCREENER_DATA.universes || {{}})[c.universe] || {{}}).par_params || {{}});
       const fund_cap = sbCurrent.cap;
-      let pers = P.fade_default;
-      if (fund_cap !== null && fund_cap !== undefined) {{
-        if (fund_cap >= 30) pers = P.fade_cap30;
-        else if (fund_cap >= 20) pers = P.fade_cap20;
-        else pers = P.fade_cap15;
-      }}
+      const g_base = P.g_base;
+      const tw = sandboxTweaks();
 
-      const s1Tweaked = (sbBaseline.sales1y !== undefined) && Math.abs(sbCurrent.sales1y - sbBaseline.sales1y) > 0.01;
-      const s5Tweaked = (sbBaseline.salescagr !== undefined) && Math.abs(sbCurrent.salescagr - sbBaseline.salescagr) > 0.01;
-      const cgTweaked = (sbBaseline.capgrowth !== undefined) && Math.abs(sbCurrent.capgrowth - sbBaseline.capgrowth) > 0.01;
-      const bbTweaked = (sbBaseline.bb !== undefined) && Math.abs(sbCurrent.bb - sbBaseline.bb) > 0.01;
-      const roicTweaked = (sbBaseline.roic !== undefined) && Math.abs(sbCurrent.roic - sbBaseline.roic) > 0.01;
-      const isGrowthTweaked = s1Tweaked || s5Tweaked || cgTweaked;
-
-      const rawBb = (!bbTweaked && c.buyback_yield !== null && c.buyback_yield !== undefined) ? c.buyback_yield : (sbCurrent.bb / 100.0);
-      const bb_eff = Math.max(-0.03, Math.min(0.035, rawBb));
+      // Step 3 — organic growth ceiling g₀ and per-share ceiling g_exp
+      const bb_eff = has(c.bb_eff) ? c.bb_eff : 0.0;
       const bb_pos = Math.max(0.0, bb_eff);
       const bb_org = Math.min(0.0, bb_eff);
-      const s1_val = (!s1Tweaked && c.sales_1y !== null && c.sales_1y !== undefined) ? c.sales_1y : (sbCurrent.sales1y / 100.0);
-      const s5_val = (!s5Tweaked && c.sales_cagr !== null && c.sales_cagr !== undefined) ? c.sales_cagr : (sbCurrent.salescagr / 100.0);
-      const cg_val = (!cgTweaked && c.cap_growth !== null && c.cap_growth !== undefined) ? c.cap_growth : (cgTweaked ? (sbCurrent.capgrowth / 100.0) : null);
-
-      const deltaS5 = s5Tweaked ? (sbCurrent.salescagr - sbBaseline.salescagr) / 100.0 : 0.0;
-      const oc_cagr = (c.opcost_cagr !== null && c.opcost_cagr !== undefined) ? (c.opcost_cagr + deltaS5) : null;
-      const g_oe = (c.cagr_oe_eps !== null && c.cagr_oe_eps !== undefined) ? (c.cagr_oe_eps + deltaS5) : null;
-
-      // Cost-Bloat Guarded Growth Ceiling (g₀): min(sales_cagr, 0.70 * opcost_cagr + 0.30 * sales_cagr)
-      const g_base = P.g_base;
-      const hasSalesCagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) || s5Tweaked;
-      const hasSales1y = (c.sales_1y !== null && c.sales_1y !== undefined) || s1Tweaked;
-      const hasStmtGrowth = (oc_cagr !== null) || hasSalesCagr || hasSales1y || (g_oe !== null) || (cg_val !== null);
-
-      let base_org = g_base;
-      let g_org_start = g_base;
-      let g_start = g_base;
-      if (hasStmtGrowth) {{
-        if (oc_cagr !== null && hasSalesCagr) {{
-          base_org = Math.min(s5_val, 0.70 * oc_cagr + 0.30 * s5_val);
-        }} else if (oc_cagr !== null) {{
-          base_org = oc_cagr;
-        }} else if (hasSalesCagr) {{
-          base_org = s5_val;
-        }} else if (g_oe !== null) {{
-          base_org = g_oe - bb_pos;
-        }} else if (hasSales1y) {{
-          base_org = s1_val;
-        }}
-        g_org_start = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, base_org + bb_org)) * 10000) / 10000;
-        g_start = Math.round(Math.max(-0.04, Math.min(P.g_anchor_max + bb_pos, g_org_start + bb_pos)) * 10000) / 10000;
-      }} else {{
-        if (c.g_est !== null && c.g_est !== undefined) {{
-          g_start = Math.round(c.g_est * 10000) / 10000;
-        }} else if (c.g_implied !== null && c.g_implied !== undefined) {{
-          g_start = Math.round(Math.max(0.0, c.g_implied) * 10000) / 10000;
+      let g_org_exp = c.g_org_exp, g_exp = c.g_exp;
+      if (tw.growth || tw.gest) {{
+        const d = tw.growth ? (sbCurrent.salescagr - sbBaseline.salescagr) / 100.0 : 0.0;
+        const hasSales = has(c.sales_cagr) || tw.growth;
+        const s5 = tw.growth ? sbCurrent.salescagr / 100.0 : c.sales_cagr;
+        const oc = has(c.opcost_cagr) ? c.opcost_cagr + d : null;
+        const g_oe = has(c.cagr_oe_eps) ? c.cagr_oe_eps + d : null;
+        const hasStmt = oc !== null || hasSales || has(c.sales_1y) || g_oe !== null;
+        let base_org;
+        if (hasStmt) {{
+          if (oc !== null && hasSales) base_org = Math.min(s5, 0.70 * oc + 0.30 * s5);
+          else if (oc !== null) base_org = oc;
+          else if (hasSales) base_org = s5;
+          else base_org = (g_oe !== null) ? g_oe - bb_pos : c.sales_1y;
+        }} else if (has(c.g_implied)) {{
+          base_org = c.g_implied - bb_pos;
         }} else {{
-          g_start = g_base;
+          base_org = g_base;
         }}
-        base_org = g_start - bb_pos;
-        g_org_start = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, base_org)) * 10000) / 10000;
+        if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
+          const g_est_val = sbCurrent.gest / 100.0;
+          g_org_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max, g_est_val - bb_pos)));
+          g_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max + bb_pos, g_est_val)));
+        }} else {{
+          g_org_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max, base_org + bb_org)));
+          g_exp = r4(g_org_exp + bb_pos);
+        }}
       }}
 
-      let g_exp = null, g_org_exp = null;
-      const gestTweaked = sbCurrent.gest !== sbBaseline.gest;
-      if (!isGrowthTweaked && !gestTweaked && c.g_org_exp !== null && c.g_org_exp !== undefined) {{
-        g_org_exp = c.g_org_exp;
-        g_exp = c.g_exp;
-      }} else if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
-        const g_est_val = sbCurrent.gest / 100.0;
-        g_org_exp = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, g_est_val - bb_pos)) * 10000) / 10000;
-        g_exp = Math.round(Math.max(0.0, Math.min(P.g_anchor_max + bb_pos, g_est_val)) * 10000) / 10000;
-      }} else if (!hasStmtGrowth && c.g_implied !== null && c.g_implied !== undefined) {{
-        g_org_exp = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, c.g_implied - bb_pos)) * 10000) / 10000;
-        g_exp = Math.round((g_org_exp + bb_pos) * 10000) / 10000;
-      }} else {{
-        g_org_exp = g_org_start;
-        g_exp = Math.round((g_org_exp + bb_pos) * 10000) / 10000;
+      // Step 2 — RONIC₀: the slider sets it directly (roic_est semantics); a growth change re-weights the M&A blend
+      let roic_exp = has(c.roic_exp) ? c.roic_exp : 0.18;
+      if (tw.roic) {{
+        roic_exp = r4(Math.max(0.05, sbCurrent.roic / 100.0));
+      }} else if ((tw.growth || tw.gest) && has(c.roic_used)) {{
+        const raw = ronic0(c.roic_est_override, c.roic_used, c.roic_operating, c.roic_median, c.ma_reinvest, g_org_exp, c.uses_gaap_roic)[0];
+        roic_exp = r4(has(c.roic_est_override) ? Math.max(0.05, raw) : Math.max(0.05, Math.min(P.roic_cap, raw)));
       }}
-
-      // M&A-Matched Harmonic RONIC & Single Initial Cap (P.roic_cap = 50%):
-      const roic_op = (!roicTweaked && c.roic_used !== null && c.roic_used !== undefined) ? c.roic_used : (sbCurrent.roic / 100.0);
-      const hasRoicEst = (c.roic_est !== null && c.roic_est !== undefined) || roicTweaked;
-      const r_tang = c.roic_operating;
-      const roic_gaap = c.roic_median;
-      let ronic_raw = roic_op;
-      if (
-        !hasRoicEst &&
-        !c.uses_gaap_roic &&
-        r_tang !== null && r_tang !== undefined &&
-        roic_gaap !== null && roic_gaap !== undefined &&
-        r_tang > 1.25 * roic_gaap &&
-        roic_gaap > 0 &&
-        cg_val !== null && cg_val > 0
-      ) {{
-        const g_ref = Math.max(0.04, hasStmtGrowth ? base_org : g_base);
-        const alpha = Math.max(0.0, Math.min(1.0, cg_val / g_ref));
-        ronic_raw = 1.0 / ((1.0 - alpha) / r_tang + alpha / roic_gaap);
-      }}
-      const roic_log = (!isGrowthTweaked && !roicTweaked && c.roic_log !== null && c.roic_log !== undefined)
-        ? c.roic_log
-        : Math.round(Math.max(0.05, ronic_raw) * 10000) / 10000;
-      const roic_exp = (!isGrowthTweaked && !roicTweaked && c.roic_exp !== null && c.roic_exp !== undefined)
-        ? c.roic_exp
-        : Math.round((hasRoicEst ? Math.max(0.05, ronic_raw) : Math.max(0.05, Math.min(P.roic_cap, ronic_raw))) * 10000) / 10000;
-      const roic_fade_ratio = roic_log > 0 ? Math.round((roic_exp / roic_log) * 10000) / 10000 : 1.0;
 
       // Valuation
-      const hasHistMults = Boolean(ml && mh);
-      const hasMoatArch = Boolean(c.g3a_moat_archetype && String(c.g3a_moat_archetype).trim() !== '' && String(c.g3a_moat_archetype).trim() !== 'None');
-      const hasValuationInputs = Boolean(price && peak_eps && peak_eps > 0 && (hasHistMults || fund_cap !== null || c.peak_eps_est !== null || hasMoatArch));
+      const hasHistMults = Boolean(c.mult_low_5y && c.mult_high_5y);
+      const hasMoatArch = hasMoatArchetype(c);
+      const hasPeakOverride = has(c.peak_eps_est) || tw.peak;
+      const autoNote = String(c.fin_note || '').split('[auto]')[1] || '';
+      const staleData = autoNote.includes('stale fundamentals');
+      const hasValuationInputs = Boolean(!staleData && price && peak_eps && peak_eps > 0 &&
+        (hasHistMults || (fund_cap && fund_cap > 0) || hasPeakOverride || hasMoatArch));
       let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null, g_market_flag = null, nav_mult = null;
-      const g_org_val = (g_org_exp !== null && g_org_exp !== undefined) ? g_org_exp : g_base;
-      const isBsFin = Boolean(c.bs_fin);
-      const k = (c.disc_rate !== null && c.disc_rate !== undefined) ? c.disc_rate : (isBsFin ? P.k_fin : P.k);
-      const n_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : 20.0;
+      const g_org_val = has(g_org_exp) ? g_org_exp : g_base;
+      const k = has(c.disc_rate) ? c.disc_rate : (c.bs_fin ? P.k_fin : P.k);
+      const n_cap = (fund_cap && fund_cap > 0) ? fund_cap : 20.0;
       const roic_eff = Math.max(roic_exp, 0.05);
-      const isPeakEdited = (sbBaseline.peakeps !== null && sbBaseline.peakeps !== undefined && peak_eps !== null) && Math.abs(peak_eps - sbBaseline.peakeps) > 0.01;
-      const isMtmHoldco = Boolean(c.mtm_holdco) && !isPeakEdited;
+      const isMtmHoldco = Boolean(c.mtm_holdco) && !tw.peak;
       const isFiniteConc = Boolean(c.finite_conc);
-      const bvps = (c.bvps !== null && c.bvps !== undefined && c.bvps > 0) ? c.bvps : null;
-      const roic_avg = 0.12;
+      const bvps = (has(c.bvps) && c.bvps > 0) ? c.bvps : null;
+      let noValue = false;
 
       if (hasValuationInputs) {{
         cur_mult = price / peak_eps;
-        let pe_mm, pe_mck, reinv_eff, fcfs5, v5;
+        let fcfs5, v5;
         if (isMtmHoldco) {{
           nav_mult = bvps ? (bvps / peak_eps) : (1.0 / roic_eff);
-          pe_mm = nav_mult;
-          pe_mck = 0.0;
-          pe_vd = pe_mm;
-          reinv_eff = 1.0;
+          pe_vd = nav_mult;
           fcfs5 = [0.0, 0.0, 0.0, 0.0, 0.0];
           v5 = pe_vd * Math.pow(1.0 + k, 5);
         }} else {{
-          reinv_eff = 1.0 - Math.max(0.0, g_org_val) / roic_eff;
-          const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc);
-          pe_mm = dcf.pvStage1;
-          pe_mck = dcf.pvStage2;
+          const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc);
           pe_vd = dcf.total;
           fcfs5 = dcf.fcfs5;
           v5 = dcf.v5;
         }}
-
         par_mult = pe_vd;
         par_val = (isMtmHoldco && bvps) ? bvps : par_mult * peak_eps;
-        vs_par = price / par_val - 1.0;
-
-        // Root-safe DCF-inverted Market-Implied Growth (g_market at r); Growth Margin only when unambiguous
-        if (isMtmHoldco) {{
-          g_market = null;
-          g_market_flag = 'nav_anchored';
+        if (par_val <= 0) {{
+          noValue = true;          // growth funded at RONIC far below g: no positive DCF value (never "Below PAR")
         }} else {{
-          const sol = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc, g_org_val);
-          g_market = sol.g;
-          g_market_flag = sol.flag;
-        }}
-        if (g_org_exp !== null && g_market !== null && ['ok', 'saturated_low', 'saturated_high'].includes(g_market_flag)) {{
-          g_gap = Math.round((g_org_val - g_market) * 10000) / 10000;
-        }}
-
-        irr_5y = solveDcfIrr5y(cur_mult, fcfs5, v5);
-
-        const pe_base = 1.0 / k;
-        const eff_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : (hasMoatArch ? 20.0 : null);
-        if (eff_cap && price > 0 && par_val > 0) {{
-          if (!isMtmHoldco && par_mult > pe_base + 0.5) {{
-            cap_implied = Math.round(Math.max(0.0, eff_cap * (cur_mult - pe_base) / (par_mult - pe_base)) * 10) / 10;
+          vs_par = price / par_val - 1.0;
+          if (isMtmHoldco) {{
+            g_market_flag = 'nav_anchored';
           }} else {{
-            cap_implied = Math.round(eff_cap * (price / par_val) * 10) / 10;
+            const sol = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, isFiniteConc, g_org_val);
+            g_market = sol.g;
+            g_market_flag = sol.flag;
           }}
-        }} else {{
-          cap_implied = null;
+          if (g_market !== null && g_market_flag === 'ok') g_gap = r4(g_org_val - g_market);
+          irr_5y = solveDcfIrr5y(cur_mult, fcfs5, v5);
+          const pe_base = 1.0 / k;
+          const eff_cap = (fund_cap && fund_cap > 0) ? fund_cap : (hasMoatArch ? 20.0 : null);
+          if (eff_cap) {{
+            cap_implied = (!isMtmHoldco && par_mult > pe_base + 0.5)
+              ? r1(Math.max(0.0, eff_cap * (cur_mult - pe_base) / (par_mult - pe_base)))
+              : r1(eff_cap * (price / par_val));
+            cap_gap = r1(eff_cap - cap_implied);
+          }}
         }}
-        cap_gap = (eff_cap !== null && cap_implied !== null) ? Math.round((eff_cap - cap_implied) * 10) / 10 : null;
       }}
 
       // Populate Delta Table
@@ -4110,84 +3975,67 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const isMultZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.02;
       const isPriceZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.02;
       const isYearZero = (d) => d === null || isNaN(d) || Math.abs(d) < 0.05;
-
       const diffClass = (val, isZero, inv=false) => {{
         if (isZero || val === null || isNaN(val)) return 'diff-neutral';
         const isPos = inv ? val < 0 : val > 0;
         return isPos ? 'diff-pos' : 'diff-neg';
       }};
-
-      const dGStart = (g_org_exp !== null && c.g_org_exp !== null && c.g_org_exp !== undefined) ? (g_org_exp - c.g_org_exp) : null;
-      const dG = (g_exp !== null && c.g_exp !== null && c.g_exp !== undefined) ? (g_exp - c.g_exp) : null;
-      const dMult = (par_mult !== null && c.par_mult !== null) ? (par_mult - c.par_mult) : null;
-      const dVal = (par_val !== null && c.par_val !== null) ? (par_val - c.par_val) : null;
-      const dVsPar = (vs_par !== null && c.vs_par !== null) ? (vs_par - c.vs_par) : null;
-      const dIrr = (irr_5y !== null && c.irr_5y !== null) ? (irr_5y - c.irr_5y) : null;
-      const dCap = (fund_cap !== null && c.g4_cap !== null) ? (fund_cap - c.g4_cap) : null;
-      const dCapGap = (cap_gap !== null && c.cap_gap !== null) ? (cap_gap - c.cap_gap) : null;
+      const dGStart = (has(g_org_exp) && has(c.g_org_exp)) ? (g_org_exp - c.g_org_exp) : null;
+      const dG = (has(g_exp) && has(c.g_exp)) ? (g_exp - c.g_exp) : null;
+      const dMult = (par_mult !== null && has(c.par_mult)) ? (par_mult - c.par_mult) : null;
+      const dVal = (par_val !== null && has(c.par_val)) ? (par_val - c.par_val) : null;
+      const dVsPar = (vs_par !== null && has(c.vs_par)) ? (vs_par - c.vs_par) : null;
+      const dIrr = (irr_5y !== null && has(c.irr_5y)) ? (irr_5y - c.irr_5y) : null;
+      const dCap = (fund_cap !== null && has(c.g4_cap)) ? (fund_cap - c.g4_cap) : null;
+      const dCapGap = (cap_gap !== null && has(c.cap_gap)) ? (cap_gap - c.cap_gap) : null;
+      const vsLbl = (v) => v !== null && v !== undefined ? fmtPct(v, true) + ' (' + (v <= 0 ? 'Below' : 'Above') + ')' : '-';
 
       const deltaRows = [
-        `<tr>
-          <td>Organic Growth Ceiling (g₀)</td>
-          <td>${{fmtPct(c.g_org_exp)}}</td>
+        `<tr><td>Organic Growth Ceiling (g₀)</td><td>${{fmtPct(c.g_org_exp)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_org_exp)}}</td>
-          <td class="${{diffClass(dGStart, isPctZero(dGStart))}}">${{!isPctZero(dGStart) ? fmtPct(dGStart, true) : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>Per-Share Ceiling (g₀ + Buyback)</td>
-          <td>${{fmtPct(c.g_exp)}}</td>
+          <td class="${{diffClass(dGStart, isPctZero(dGStart))}}">${{!isPctZero(dGStart) ? fmtPct(dGStart, true) : '-'}}</td></tr>`,
+        `<tr><td>Per-Share Ceiling (g₀ + Buyback)</td><td>${{fmtPct(c.g_exp)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(g_exp)}}</td>
-          <td class="${{diffClass(dG, isPctZero(dG))}}">${{!isPctZero(dG) ? fmtPct(dG, true) : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>Explicit DCF Fair P/E (r=8.5%)</td>
-          <td>${{c.par_mult !== null ? fmtNum(c.par_mult) + 'x' : '-'}}</td>
+          <td class="${{diffClass(dG, isPctZero(dG))}}">${{!isPctZero(dG) ? fmtPct(dG, true) : '-'}}</td></tr>`,
+        `<tr><td>Marginal RONIC₀</td><td>${{fmtPct(c.roic_exp)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPct(roic_exp)}}</td>
+          <td class="${{diffClass(has(c.roic_exp) ? roic_exp - c.roic_exp : null, !has(c.roic_exp) || isPctZero(roic_exp - c.roic_exp))}}">${{has(c.roic_exp) && !isPctZero(roic_exp - c.roic_exp) ? fmtPct(roic_exp - c.roic_exp, true) : '-'}}</td></tr>`,
+        `<tr><td>Explicit DCF Fair P/E (r=${{(k * 100).toFixed(2)}}%)</td>
+          <td>${{has(c.par_mult) ? fmtNum(c.par_mult) + 'x' : '-'}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{par_mult !== null ? fmtNum(par_mult) + 'x' : '-'}}</td>
-          <td class="${{diffClass(dMult, isMultZero(dMult))}}">${{!isMultZero(dMult) ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>DCF Fair Value Price</td>
-          <td>${{fmtPrice(c.par_val, c.quote_currency)}}</td>
+          <td class="${{diffClass(dMult, isMultZero(dMult))}}">${{!isMultZero(dMult) ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}}</td></tr>`,
+        `<tr><td>DCF Fair Value Price</td><td>${{fmtPrice(c.par_val, c.quote_currency)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPrice(par_val, c.quote_currency)}}</td>
-          <td class="${{diffClass(dVal, isPriceZero(dVal))}}">${{!isPriceZero(dVal) ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>Discount vs Fair Value (Price / FV - 1)</td>
-          <td>${{c.vs_par !== null ? fmtPct(c.vs_par, true) + ' (' + (c.vs_par <= 0 ? 'Below' : 'Above') + ')' : '-'}}</td>
-          <td style="font-weight: 600; color: var(--accent);">${{vs_par !== null ? fmtPct(vs_par, true) + ' (' + (vs_par <= 0 ? 'Below' : 'Above') + ')' : '-'}}</td>
-          <td class="${{diffClass(dVsPar, isPctZero(dVsPar), true)}}">${{!isPctZero(dVsPar) ? fmtPct(dVsPar, true) : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>5-Year Expected IRR</td>
-          <td>${{fmtPct(c.irr_5y)}}</td>
+          <td class="${{diffClass(dVal, isPriceZero(dVal))}}">${{!isPriceZero(dVal) ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}}</td></tr>`,
+        `<tr><td>Discount vs Fair Value (Price / FV - 1)</td><td>${{vsLbl(c.vs_par)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{vsLbl(vs_par)}}</td>
+          <td class="${{diffClass(dVsPar, isPctZero(dVsPar), true)}}">${{!isPctZero(dVsPar) ? fmtPct(dVsPar, true) : '-'}}</td></tr>`,
+        `<tr><td>5-Year Expected IRR</td><td>${{fmtPct(c.irr_5y)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(irr_5y)}}</td>
-          <td class="${{diffClass(dIrr, isPctZero(dIrr))}}">${{!isPctZero(dIrr) ? fmtPct(dIrr, true) : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>Our Moat Runway (CAP)</td>
-          <td>${{c.g4_cap ? c.g4_cap + 'y' : '-'}}</td>
+          <td class="${{diffClass(dIrr, isPctZero(dIrr))}}">${{!isPctZero(dIrr) ? fmtPct(dIrr, true) : '-'}}</td></tr>`,
+        `<tr><td>Our Moat Runway (CAP)</td><td>${{c.g4_cap ? c.g4_cap + 'y' : '-'}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fund_cap ? fund_cap + 'y' : '-'}}</td>
-          <td class="${{diffClass(dCap, isYearZero(dCap))}}">${{!isYearZero(dCap) ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}}</td>
-        </tr>`,
-        `<tr>
-          <td>Runway Margin of Safety</td>
-          <td>${{fmtSignedYears(c.cap_gap)}}</td>
+          <td class="${{diffClass(dCap, isYearZero(dCap))}}">${{!isYearZero(dCap) ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}}</td></tr>`,
+        `<tr><td>Runway Margin of Safety</td><td>${{fmtSignedYears(c.cap_gap)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtSignedYears(cap_gap)}}</td>
-          <td class="${{diffClass(dCapGap, isYearZero(dCapGap))}}">${{!isYearZero(dCapGap) ? fmtSignedYears(dCapGap) : '-'}}</td>
-        </tr>`
+          <td class="${{diffClass(dCapGap, isYearZero(dCapGap))}}">${{!isYearZero(dCapGap) ? fmtSignedYears(dCapGap) : '-'}}</td></tr>`
       ];
-
       document.getElementById('sb-delta-tbody').innerHTML = deltaRows.join('');
 
       // Status Box Verdict
       const sbBox = document.getElementById('sb-status-box');
       const sbVerdict = document.getElementById('sb-status-verdict');
       const sbIrrBadge = document.getElementById('sb-irr-badge');
-
-      if (!hasValuationInputs || par_val === null || par_val <= 0 || vs_par === null) {{
+      if (noValue) {{
         sbBox.style.background = 'rgba(100, 116, 139, 0.12)';
         sbBox.style.borderColor = 'rgba(100, 116, 139, 0.3)';
-        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">— Scenario Verdict: Valuation Unavailable (Missing Price, Peak EPS, or 5Y Multiples)</span>`;
+        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">✕ Scenario Verdict: NO POSITIVE DCF VALUE (Fair P/E ${{fmtNum(par_mult)}}x — growth funded at RONIC₀ ${{fmtPct(roic_exp)}} far below g₀)</span>`;
+        sbIrrBadge.className = 'badge badge-slate';
+        sbIrrBadge.textContent = '5Y IRR: -';
+      }} else if (!hasValuationInputs || vs_par === null) {{
+        sbBox.style.background = 'rgba(100, 116, 139, 0.12)';
+        sbBox.style.borderColor = 'rgba(100, 116, 139, 0.3)';
+        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">— Scenario Verdict: Valuation Unavailable (${{staleData ? 'Stale Fundamentals — refetch required' : 'Missing Price, Peak EPS, or 5Y Multiples'}})</span>`;
         sbIrrBadge.className = 'badge badge-slate';
         sbIrrBadge.textContent = '5Y IRR: -';
       }} else if (vs_par <= 0) {{
@@ -4205,36 +4053,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       // Render Tab 3: Explicit Year-by-Year DCF Schedule Table
-      const anySandboxTweaked = isGrowthTweaked || isPeakEdited ||
-        (sbBaseline.cap !== sbCurrent.cap) ||
-        (sbBaseline.roic !== undefined && Math.abs(sbCurrent.roic - sbBaseline.roic) > 0.01) ||
-        (sbBaseline.bb !== undefined && Math.abs(sbCurrent.bb - sbBaseline.bb) > 0.01) ||
-        (sbBaseline.gest !== sbCurrent.gest);
-
+      const anySandboxTweaked = tw.growth || tw.roic || tw.gest || tw.peak || tw.cap;
       renderDcfScheduleTable(c, {{
-        peak_eps,
-        g_org_val,
-        roic_eff,
-        n_cap,
-        k,
-        g_base,
-        roic_avg,
-        isFiniteConc,
-        isMtmHoldco,
-        navMult: nav_mult,
-        isTweaked: anySandboxTweaked,
-        hasValuationInputs
+        peak_eps, g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc, isMtmHoldco,
+        navMult: nav_mult, isTweaked: anySandboxTweaked, hasValuationInputs
       }});
 
-      // Runtime parity self-check (v6.36): with untouched inputs the JS sandbox must reproduce the Python baseline.
+      // Runtime parity self-check: with untouched inputs the JS sandbox must reproduce the Python baseline.
       if (!anySandboxTweaked && hasValuationInputs && c.par_mult && par_mult) {{
         const multDrift = Math.abs(par_mult / c.par_mult - 1.0);
         const valDrift = (par_val && c.par_val) ? Math.abs(par_val / c.par_val - 1.0) : 0.0;
-        const irrDrift = (irr_5y !== null && c.irr_5y !== null && c.irr_5y !== undefined) ? Math.abs(irr_5y - c.irr_5y) : 0.0;
-        const gMktDrift = (g_market !== null && c.g_market !== null && c.g_market !== undefined) ? Math.abs(g_market - c.g_market) : 0.0;
+        const irrDrift = (irr_5y !== null && has(c.irr_5y)) ? Math.abs(irr_5y - c.irr_5y) : ((irr_5y === null) === !has(c.irr_5y) ? 0.0 : 1.0);
+        const gMktDrift = (g_market !== null && has(c.g_market)) ? Math.abs(g_market - c.g_market) : 0.0;
         const flagDrift = (g_market_flag || null) !== (c.g_market_flag || null);
-        if (multDrift > 0.005 || valDrift > 0.005 || irrDrift > 0.005 || gMktDrift > 0.002 || flagDrift) {{
-          console.warn(`[parity] ${{c.id}}: JS sandbox vs Python baseline drift (Fair P/E ${{fmtNum(par_mult)}}x vs ${{fmtNum(c.par_mult)}}x, FV ${{par_val}} vs ${{c.par_val}}, IRR ${{fmtPct(irr_5y)}} vs ${{fmtPct(c.irr_5y)}}, g_mkt ${{g_market}} (${{g_market_flag}}) vs ${{c.g_market}} (${{c.g_market_flag}}))`);
+        const statusDrift = (noValue ? 'No value' : (vs_par <= 0 ? 'Below PAR' : 'Above PAR')) !== c.val_status;
+        const gapDrift = (g_gap === null) !== !has(c.g_gap) || (g_gap !== null && Math.abs(g_gap - c.g_gap) > 0.002);
+        if (multDrift > 0.005 || valDrift > 0.005 || irrDrift > 0.005 || gMktDrift > 0.002 || flagDrift || statusDrift || gapDrift) {{
+          console.warn(`[parity] ${{c.id}}: JS sandbox vs Python baseline drift (Fair P/E ${{fmtNum(par_mult)}}x vs ${{fmtNum(c.par_mult)}}x, FV ${{par_val}} vs ${{c.par_val}}, IRR ${{fmtPct(irr_5y)}} vs ${{fmtPct(c.irr_5y)}}, g_mkt ${{g_market}} (${{g_market_flag}}) vs ${{c.g_market}} (${{c.g_market_flag}}), status ${{c.val_status}})`);
           const modeBadge = document.getElementById('dcf-tab-mode-badge');
           if (modeBadge) {{
             modeBadge.textContent = 'Baseline DCF ⚠ JS/Python parity drift';
@@ -4253,7 +4088,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
-        const gExpVal = (c.g_exp !== null && c.g_exp !== undefined) ? c.g_exp : c.g_imp;
+        const gExpVal = c.g_exp;
         const row = [
           `"${{c.ticker || ''}}"`,
           `"${{(c.company || '').replace(/"/g, '""')}}"`,

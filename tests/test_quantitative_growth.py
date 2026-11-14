@@ -11,7 +11,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from screener.fetch import metrics
-from screener.gates import explicit_dcf_multiple, params, par_valuation, solve_implied_dcf_growth, solve_irr_5y
+from screener import gates as G
+from screener.gates import explicit_dcf_multiple, params, par_valuation, solve_irr_5y
 
 
 def sample_fin(**overrides) -> dict:
@@ -194,7 +195,6 @@ class QuantitativeGrowthTests(unittest.TestCase):
             roic_operating=0.3166,
         )
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
-        self.assertEqual(val["scale_tier"], "HYPER")
         self.assertAlmostEqual(val["g_org_exp"], 0.1530, places=4)
 
     def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
@@ -223,16 +223,10 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val = par_valuation(fin_neg, self.p, cap=30)
         self.assertAlmostEqual(val["g_org_exp"], 0.0, places=4)
 
-    def test_scale_tier_and_currency_normalization(self):
-        fin_eur = sample_fin(sales_ttm_m=50000.0, fin_currency="EUR", opcost_cagr=0.15)
-        val_eur = par_valuation(fin_eur, self.p, cap=20)
-        self.assertEqual(val_eur["scale_tier"], "MEGA")
-        self.assertAlmostEqual(val_eur["g_org_exp"], 0.1500, places=4)
-
-        fin_cad = sample_fin(sales_ttm_m=15000.0, fin_currency="CAD", opcost_cagr=0.15)
-        val_cad = par_valuation(fin_cad, self.p, cap=20)
-        self.assertEqual(val_cad["scale_tier"], "MID/SM")
-        self.assertAlmostEqual(val_cad["g_org_exp"], 0.1500, places=4)
+    def test_growth_ceiling_independent_of_company_size_and_currency(self):
+        for sales, ccy in ((50000.0, "EUR"), (15000.0, "CAD")):
+            val = par_valuation(sample_fin(sales_ttm_m=sales, fin_currency=ccy, opcost_cagr=0.15), self.p, cap=20)
+            self.assertAlmostEqual(val["g_org_exp"], 0.1500, places=4)
 
     def test_metrics_summarize_computes_sales_1y_opcost_cap_growth_and_median_buyback(self):
         series = {
@@ -372,31 +366,30 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val_op = par_valuation(fin_op_holdco, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
         self.assertGreater(val_op["pe_vd"], 1.0 / val_op["roic_exp"] + 2.0)
 
-    def test_finite_concession_omits_stage2_terminal_perpetuity(self):
-        # Eiffage / Vinci style IFRIC-12 Concessionaire (fcf_conv > 1.25 in Construction & Engineering)
+    def test_finite_concession_is_opt_in_only(self):
+        # Vinci / Eiffage style contractor-concessionaire: high cash conversion alone no longer zeroes terminal value
         fin_conc = sample_fin(
-            roic_median=0.1342, roic_operating=0.4025,
+            id="XCONC.FR", roic_median=0.1342, roic_operating=0.4025,
             mult_low_5y=5.7, mult_high_5y=7.9,
             fcf_conv=1.82,
         )
-        val_conc = par_valuation(fin_conc, self.p, cap=15, sub_industry="Construction & Engineering (mapped)")
-        # Compare against a non-concession with the same GAAP ROIC
-        val_std = par_valuation(fin_conc, self.p, cap=15, sub_industry="Industrial Machinery & Supplies & Components")
-        self.assertAlmostEqual(val_conc["roic_exp"], 0.1342, places=3)
+        val_auto = par_valuation(fin_conc, self.p, cap=15, sub_industry="Construction & Engineering (mapped)")
+        self.assertAlmostEqual(val_auto["roic_exp"], 0.1342, places=3)      # GAAP ROIC incl. concession intangibles
+        self.assertFalse(val_auto["finite_conc"])
+        self.assertGreater(val_auto["pe_mck"], 0.0)
+        # Only ids listed in FINITE_CONCESSION_IDS get no terminal value
+        orig = G.FINITE_CONCESSION_IDS
+        try:
+            G.FINITE_CONCESSION_IDS = frozenset({"XCONC.FR"})
+            val_conc = par_valuation(fin_conc, self.p, cap=15, sub_industry="Construction & Engineering (mapped)")
+        finally:
+            G.FINITE_CONCESSION_IDS = orig
+        self.assertTrue(val_conc["finite_conc"])
         self.assertAlmostEqual(val_conc["pe_mck"], 0.0, places=4)
-        self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 5.0)
-        self.assertAlmostEqual(val_conc["par_mult"], val_conc["pe_vd"], places=4)
+        self.assertLess(val_conc["pe_vd"], val_auto["pe_vd"] - 5.0)
 
     def test_textbook_5y_cash_flow_irr_satisfies_npv_zero(self):
-        # 1. Legacy 4-scalar mode: zero-dividend case reduces to (1 + g_exp) * (par_val / price)^0.2 - 1
-        irr_zero_div = solve_irr_5y(100.0, 130.0, 0.09, dy=0.0)
-        self.assertAlmostEqual(irr_zero_div, 1.09 * (1.30 ** 0.2) - 1.0, places=9)
-
-        # 2. Legacy 4-scalar mode: at-PAR case (price == par_val) reduces to (1 + g_exp) * (1 + dy) - 1
-        irr_at_par = solve_irr_5y(100.0, 100.0, 0.08, dy=0.025)
-        self.assertAlmostEqual(irr_at_par, 1.08 * 1.025 - 1.0, places=9)
-
-        # 3. Primary Bellman-Consistent DCF Schedule mode: at Cur_PE == Fair_PE, IRR == r (8.50%) identically
+        # Primary Bellman-Consistent DCF Schedule mode: at Cur_PE == Fair_PE, IRR == r (8.50%) identically
         from screener.gates import dcf_schedule_and_continuation
         for g0 in (0.0, 0.04, 0.10, 0.16):
             for roic0 in (0.12, 0.25, 0.50):

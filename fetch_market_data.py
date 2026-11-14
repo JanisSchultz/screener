@@ -45,7 +45,7 @@ from screener.data import (
     write_csv,
 )
 from screener.fetch import metrics, par, settings
-from screener.fetch.sources import EODHD, EODHD_CACHE, technicals
+from screener.fetch.sources import EODHD, stale_fundamentals, symbol_cache, technicals
 from screener.fetch.sqlite_db import build_sqlite_db
 from screener.gates import funnel_ids, params, par_valuation
 
@@ -53,7 +53,11 @@ ANALYST_FIELDS = ("peak_eps_est", "g_est", "roic_est", "g_implied", "fin_note")
 PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
 US_GAAP_UNIVERSES = ("us",)     # operating-lease cost sits outside D&A under US GAAP -> no IFRS-16 lease deduction
-US_GAAP_IDS = {"WCN.CA", "CP.CA", "QSR.CA", "SHOP.CA"}
+# Non-US-universe companies that file under US GAAP (no IFRS-16 right-of-use depreciation inside D&A)
+US_GAAP_IDS = {
+    "ABBN.CH", "ALC.CH", "LOGN.CH", "QIA.DE", "STMMI.FR",
+    "WCN.CA", "CP.CA", "QSR.CA", "SHOP.CA", "ENB.CA", "TRP.CA", "IMO.CA", "CNR.CA", "FTS.CA", "EMA.CA", "H.CA",
+}
 
 
 def apply_lease_basis(series: dict, key: str, cid: str | None = None) -> dict:
@@ -74,16 +78,6 @@ def set_auto_note(row: dict, notes: list[str]) -> None:
 
 def num(x):
     return x if isinstance(x, (int, float)) else None
-
-
-def seed_offline_fx(eod: EODHD, meta: dict) -> None:
-    """Offline: FX rates implied by stored rows (market cap in reporting ccy ÷ price × shares in quote ccy)."""
-    for _, f in meta["financials"].items():
-        qc, fc = f.get("quote_currency"), f.get("fin_currency")
-        if qc and fc and qc != fc:
-            r = eod.fx(qc, fc)
-            if r:
-                eod.seed_fx(qc, fc, r)
 
 
 def check_and_report_quota(eod: EODHD, est_calls: int = 0) -> dict | None:
@@ -115,10 +109,10 @@ def estimate_calls_for_symbols(symbols: list[str], prices_only: bool) -> int:
     now = time.time()
     for s in set(symbols):
         if not prices_only:
-            fp = EODHD_CACHE / f"{s}.json"
+            fp = symbol_cache(s)
             if settings.REFRESH_FUNDAMENTALS or not fp.exists() or (now - fp.stat().st_mtime) >= settings.FUND_CACHE_DAYS * 86400:
                 calls += 10
-        ep = EODHD_CACHE / "eod" / f"{s}.json"
+        ep = symbol_cache(s, "eod")
         if not ep.exists() or (now - ep.stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400:
             calls += 1
     return calls
@@ -147,8 +141,6 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
     syms = {i: eod.resolve_symbol(by_id[i], meta) for i in by_id}
     if not a.offline:
         eod.save_symbol_map()
-    if a.offline:
-        seed_offline_fx(eod, meta)
 
     bench = meta.get("benchmark_symbols", {})
     bench_syms = {name: eod.benchmark_symbol(sym) for name, sym in bench.items()}
@@ -185,7 +177,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         for i in ids:
             esym = syms[i]
             bars = eod.eod(esym)
-            fund = eod.fundamentals(esym) if (EODHD_CACHE / f"{esym}.json").exists() else None
+            fund = eod.fundamentals(esym) if (symbol_cache(esym)).exists() else None
             sp = eod.splits(esym, fund) if bars else {}
             w = eod.weekly_bars(bars, sp) if bars else ([], [], [])
             t = technicals(*w, market_closes=mkt_closes) if w[0] else {}
@@ -205,7 +197,10 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         old = fins.get(i, {"id": i})
         fund = eod.fundamentals(esym)
         s_check = eod.annual_series(fund) if fund else {}
-        if (not fund or not (s_check.get("ni") and s_check.get("sales"))) and not a.offline and not a.prices_only:
+        if (
+            (not fund or not (s_check.get("ni") and s_check.get("sales")) or stale_fundamentals(s_check))
+            and not a.offline and not a.prices_only and not eod.transient_failure(esym)
+        ):
             alt_sym = eod.fallback_resolve(c, meta)
             if alt_sym and alt_sym != esym:
                 esym = alt_sym
@@ -241,6 +236,9 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             row["source"] = f"EODHD ({esym}); FY{m.get('fiscal_year')}" if m.get("fiscal_year") else f"EODHD ({esym})"
 
             notes = []
+            stale = stale_fundamentals(series)
+            if stale:
+                notes.append(stale)
             pr = par.compute(
                 series,
                 mp,
@@ -273,7 +271,8 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
                 else num(old.get("market_cap_m"))
             )
             dv = num(row.get("dividends_ttm_m"))
-            if q.get("dps") and px_now and dv and mc_new:
+            same_ccy = (row.get("fin_currency") or "").upper() == ("GBP" if q_ccy in ("GBp", "GBX") else (q_ccy or "")).upper()
+            if q.get("dps") and px_now and dv and mc_new and same_ccy:
                 y_stmt, y_dps = dv / mc_new, q["dps"] / px_now
                 if 1.3 * y_dps < y_stmt < 2.5 * y_dps:
                     row["dividends_ttm_m"] = y_dps * mc_new
@@ -282,7 +281,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
                 notes.append(f"dividend yield {dv / mc_new:.1%} unverified (cash-flow figure may include minority dividends)")
             set_auto_note(row, notes)
 
-        row["as_of"] = old.get("as_of") if a.offline else today
+        row["as_of"] = old.get("as_of") if (a.offline or a.prices_only) else today     # date of the fundamentals
         row["price"] = q.get("price") or old.get("price")
         row["quote_currency"] = q.get("currency") or old.get("quote_currency")
         fxr = eod.fx(row.get("quote_currency"), row.get("fin_currency")) if row.get("fin_currency") else None
@@ -290,8 +289,12 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             row["market_cap_m"] = row["price"] * q["shares"] * fxr / 1e6
         elif q.get("market_cap_raw") and row.get("fin_currency"):
             q_main_ccy = "GBP" if row.get("quote_currency") in ("GBp", "GBX") else row.get("quote_currency")
-            fx_mcap = eod.fx(q_main_ccy, row.get("fin_currency")) or 1.0
-            row["market_cap_m"] = q["market_cap_raw"] * fx_mcap / 1e6
+            fx_mcap = eod.fx(q_main_ccy, row.get("fin_currency"))
+            if fx_mcap:
+                row["market_cap_m"] = q["market_cap_raw"] * fx_mcap / 1e6
+            else:
+                print(f"  WARNING {key}:{i}: no FX {q_main_ccy}->{row.get('fin_currency')}; market cap kept from previous data")
+                row["market_cap_m"] = old.get("market_cap_m")
         elif old.get("market_cap_m"):
             row["market_cap_m"] = old.get("market_cap_m")
         else:
@@ -309,13 +312,13 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
     for c in meta["companies"]:
         cid = c["id"]
         esym = syms[cid]
-        fp = EODHD_CACHE / f"{esym}.json"
+        fp = symbol_cache(esym)
         if not fp.exists():
             continue
         fund = eod.fundamentals(esym)
         if not fund:
             continue
-        ep = EODHD_CACHE / "eod" / f"{esym}.json"
+        ep = symbol_cache(esym, "eod")
         bars = eod.eod(esym) if ep.exists() else []
         sp = eod.splits(esym, fund) if bars else {}
         ye_px = eod.year_end_prices(esym, bars, sp) if bars else None
@@ -365,13 +368,16 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
                 "peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok",
                 "roic_median", "roic_operating", "fcf_conv", "roe_median", "ocf_ni_2y",
                 "sales_1y", "sales_cagr", "sales_cagr_yrs", "opcost_1y", "opcost_cagr",
-                "cap_growth", "buyback_yield", "retention_rate", "roiic",
+                "cap_growth", "ma_reinvest", "buyback_yield", "retention_rate", "roiic",
                 "g_est", "g_implied", "roic_est",
             ):
                 t[k] = s.get(k)
             if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:
-                fin_rate = eod.fx(s.get("fin_currency"), t.get("fin_currency")) or rate or 1.0
-                t["sales_ttm_m"] = num(s.get("sales_ttm_m")) * fin_rate
+                fin_rate = eod.fx(s.get("fin_currency"), t.get("fin_currency")) or rate
+                if fin_rate:
+                    t["sales_ttm_m"] = num(s.get("sales_ttm_m")) * fin_rate
+                else:
+                    print(f"  WARNING mirror {key}:{i}: no FX {s.get('fin_currency')}->{t.get('fin_currency')}; sales left blank")
             for k in ("peak_oe_eps", "cur_oe_eps", "peak_eps_est"):
                 t[k] = round(num(s.get(k)) * rate, 4) if (num(s.get(k)) is not None and rate) else None
             set_auto_note(t, [f"PAR inputs mirrored from {src}"])

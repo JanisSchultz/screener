@@ -36,7 +36,8 @@ def main():
     print(f"  • Total Companies: {summary['total_companies']}")
     print(f"  • Quality Pass Funnel: {summary['quality_pass']}")
     print(f"  • Calamity Watchlist (Conditional): {summary['calamity_pass']} ({summary['calamity_below_par']} Below PAR)")
-    print(f"  • Below PAR Shortlist: {summary['below_par']} (Median 5Y IRR: {summary['median_irr_below_par']*100:.1f}%)")
+    med = summary['median_irr_below_par']
+    print(f"  • Below PAR Shortlist: {summary['below_par']} (Median 5Y IRR: {f'{med * 100:.1f}%' if med is not None else '—'})")
     print(f"\nTo view, open in browser: open \"{out_path}\"")
 
 
