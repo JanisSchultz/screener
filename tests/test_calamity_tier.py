@@ -208,7 +208,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
         self.assertIn("Calamity Watchlist", html)
         self.assertIn("Include Calamities", html)
         self.assertIn("Temporary M&A bridge debt; 24m deleveraging catalyst.", html)
-        for token in ("Exp g", "Mkt g", "g Gap", "Our CAP", "Mkt CAP", "CAP Gap", "dossier-g-imp", "dossier-cap-implied"):
+        for token in ("Growth Ceiling", "Mkt Implied g", "g Margin", "Our CAP", "Mkt CAP", "CAP Gap", "dossier-g-imp", "dossier-cap-implied"):
             self.assertIn(token, html)
 
 

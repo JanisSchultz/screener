@@ -137,6 +137,79 @@ def is_finite_concession(sub_industry: str | None, fcf_conv: float | None) -> bo
     return fcf_conv is not None and fcf_conv > 1.25
 
 
+def explicit_dcf_multiple(
+    g0: float,
+    roic0: float,
+    n_cap: float | int | None,
+    r: float = 0.085,
+    g_term: float = 0.035,
+    roic_term_base: float = 0.12,
+    finite_conc: bool = False,
+    mtm_holdco: bool = False,
+) -> tuple[float, float, float, float]:
+    """Compute Explicit N-Year Mauboussin-Fade DCF Fair Value P/E Multiple (v6.35):
+    Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share).
+    Each year t = 1..N (N = Gate 4 CAP), organic growth g_t and ROIC_t fade linearly from
+    (g0, roic0) at t=1 down to (g_term, roic_term) at the end of CAP, generating
+    FCF_t = E_t * (1 - g_t / ROIC_t), plus Year-N Gordon Growth terminal value."""
+    roic_start = max(0.05, float(roic0))
+    if mtm_holdco:
+        nav_pe = 1.0 / roic_start
+        return nav_pe, nav_pe, 0.0, 1.0
+    n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
+    roic_end = max(roic_term_base, min(roic_start, 0.20))
+    reinv_1 = min(0.95, max(0.0, g0) / roic_start)
+    pv_stage1 = 0.0
+    e_t = 1.0
+    for t in range(1, n + 1):
+        frac = (t - 1.0) / float(n)
+        g_t = g0 - frac * (g0 - g_term)
+        roic_t = roic_start - frac * (roic_start - roic_end)
+        e_t = e_t * (1.0 + g_t)
+        reinv_t = min(0.95, max(0.0, g_t) / max(0.05, roic_t))
+        fcf_t = e_t * (1.0 - reinv_t)
+        pv_stage1 += fcf_t / ((1.0 + r) ** t)
+    if finite_conc:
+        return pv_stage1, pv_stage1, 0.0, 1.0 - reinv_1
+    reinv_term = max(0.0, g_term) / roic_end
+    fcf_n1 = e_t * (1.0 + g_term) * (1.0 - reinv_term)
+    tv_n = fcf_n1 / max(0.01, r - g_term)
+    pv_stage2 = tv_n / ((1.0 + r) ** n)
+    return pv_stage1 + pv_stage2, pv_stage1, pv_stage2, 1.0 - reinv_1
+
+
+def solve_implied_dcf_growth(
+    target_pe: float | None,
+    g0_ref: float,
+    roic0: float,
+    n_cap: float | int | None,
+    r: float = 0.085,
+    g_term: float = 0.035,
+    roic_term_base: float = 0.12,
+    finite_conc: bool = False,
+    mtm_holdco: bool = False,
+) -> float | None:
+    """Solve for the exact starting organic growth rate g_market (fading to g_term over CAP N at discount rate r)
+    that equates Explicit Mauboussin-Fade DCF P/E to target_pe (Current Multiple)."""
+    if target_pe is None or target_pe <= 0:
+        return None
+    if mtm_holdco:
+        base_pe = 1.0 / max(0.05, float(roic0))
+        return round(g0_ref * (target_pe / base_pe), 4) if base_pe > 0 else None
+    ref_pe, _, _, _ = explicit_dcf_multiple(g0_ref, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco)
+    if abs(ref_pe - target_pe) < 1e-6:
+        return round(g0_ref, 4)
+    lo, hi = -0.25, 0.60
+    for _ in range(36):
+        mid = 0.5 * (lo + hi)
+        pe_mid, _, _, _ = explicit_dcf_multiple(mid, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco)
+        if pe_mid < target_pe:
+            lo = mid
+        else:
+            hi = mid
+    return round(0.5 * (lo + hi), 4)
+
+
 def solve_irr_5y(
     price: float | None,
     par_val: float | None,
@@ -176,7 +249,7 @@ def par_valuation(
     moat: str | None = None,
     sub_industry: str | None = None,
 ) -> dict:
-    """Python reference implementation of the v6.34 Equity Bond Below PAR, Organic Value Driver P/E & 3-Anchor Logarithmic Mauboussin Growth valuation."""
+    """Python reference implementation of the v6.35 Explicit Mauboussin-Fade DCF (r = 8.5%) & Operating Cost Growth Ceiling valuation."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
@@ -222,10 +295,7 @@ def par_valuation(
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18
 
-    par_cost_of_equity = (p or {}).get("par_cost_of_equity", 0.0875)
-    par_vd_weight = (p or {}).get("par_vd_weight", 0.75)
-    par_thist_min_ratio = (p or {}).get("par_thist_min_ratio", 0.50)
-    par_thist_max_ratio = (p or {}).get("par_thist_max_ratio", 1.50)
+    par_cost_of_equity = (p or {}).get("par_cost_of_equity", 0.085)
     par_roic_avg = (p or {}).get("par_roic_avg", 0.120)
     par_roic_log_k = (p or {}).get("par_roic_log_k", 0.250)
     par_g_anchor_max = (p or {}).get("par_g_anchor_max", 0.220)
@@ -245,7 +315,7 @@ def par_valuation(
     par_size_min = (p or {}).get("par_size_factor_min", 0.72)
     par_size_max = (p or {}).get("par_size_factor_max", 1.05)
 
-    # Revenue-Anchored Size Gravity & Continuous Log-Revenue Size Factor:
+    # Revenue-Anchored Size Gravity & Scale Ceiling:
     # Normalized to USD equivalent using standard currency cross rates; falls back to Market Cap / 4.0 only if revenue missing.
     ccy = fin.get("fin_currency") or fin.get("quote_currency") or "USD"
     fx_rate = C.FX_TO_USD.get(ccy, 1.0)
@@ -279,9 +349,6 @@ def par_valuation(
     )
 
     # Gate 4 CAP-Linked Persistence (pers / r):
-    # CAP >= 30y (fortress monopolies) -> 0.85 persistence factor
-    # CAP >= 20y (standard quality compounders) -> 0.75 persistence factor
-    # CAP >= 15y (shorter runway) -> 0.62 persistence factor
     if fund_cap is not None:
         if fund_cap >= 30:
             pers = par_fade_cap30
@@ -293,7 +360,7 @@ def par_valuation(
         pers = par_fade_default
     g_mult = 200.0
 
-    # Mauboussin Galton ROIC Regression (v6.32):
+    # Mauboussin Galton ROIC Regression:
     # Expected ROIC = r * (ROIC_log - Average_ROIC) + Average_ROIC
     if roic_op > par_roic_avg:
         roic_log = round(par_roic_avg + par_roic_log_k * math.log(1.0 + (roic_op - par_roic_avg) / par_roic_log_k), 4)
@@ -304,9 +371,9 @@ def par_valuation(
         roic_exp = roic_log
         roic_fade_ratio = 1.0
 
-    # 3-Anchor Starting Growth (g_start) & Parallel Organic Growth (g_org_start -> g_org_exp) (v6.34):
+    # Operating Cost Base Growth Ceiling (g_org_exp / g_0) & Buyback Accretion (v6.35):
     bb_raw = f("buyback_yield")
-    bb_eff = max(-0.03, min(0.025, bb_raw)) if bb_raw is not None else 0.0
+    bb_eff = max(-0.03, min(0.035, bb_raw)) if bb_raw is not None else 0.0
     bb_pos = max(0.0, bb_eff)
     bb_org = min(0.0, bb_eff)
 
@@ -328,61 +395,22 @@ def par_valuation(
     opcost_cagr_val = f("opcost_cagr")
     cap_growth_val = f("cap_growth")
     g_imp_in = f("g_implied")
-    has_stmt_growth = any(x is not None for x in (sales_1y_val, sales_cagr_val, g, cap_growth_val))
+    has_stmt_growth = any(x is not None for x in (opcost_cagr_val, sales_cagr_val, sales_1y_val, g, cap_growth_val))
+
+    g_1y = round(sales_1y_val, 4) if sales_1y_val is not None else None
+    g_hist = round(sales_cagr_val, 4) if sales_cagr_val is not None else (round(g, 4) if g is not None else None)
+    g_cap = round(opcost_cagr_val, 4) if opcost_cagr_val is not None else (round(cap_growth_val, 4) if cap_growth_val is not None else None)
 
     if has_stmt_growth:
-        # Anchor 1 — Near-Term 1Y Momentum with Operating Cost Smoothing (g_1y):
-        s1_base = sales_1y_val if sales_1y_val is not None else (sales_cagr_val if sales_cagr_val is not None else (g or 0.0))
-        if sales_1y_val is not None and opcost_1y_val is not None:
-            if sales_1y_val >= 0.0:
-                s1_eff = 0.5 * sales_1y_val + 0.5 * min(sales_1y_val, opcost_1y_val)
-            else:
-                s1_eff = 0.5 * sales_1y_val + 0.5 * opcost_1y_val
-        elif sales_1y_val is not None and sales_1y_val > 0.25 and sales_cagr_val is not None:
-            s1_eff = 0.5 * sales_1y_val + 0.5 * max(0.0, sales_cagr_val)
-        else:
-            s1_eff = s1_base
-        g_1y = round(max(par_g_1y_floor, min(par_g_anchor_max, s1_eff + bb_eff)), 4)
-        g_1y_org = round(max(par_g_1y_floor, min(par_g_anchor_max, s1_eff + bb_org)), 4)
-
-        # Anchor 2 — Medium-Term 3–5Y Evidence with Operating Cost Smoothing (g_hist):
-        s5_base = sales_cagr_val if sales_cagr_val is not None else (g if g is not None else (sales_1y_val or 0.0))
-        if sales_cagr_val is not None and opcost_cagr_val is not None:
-            s5_eff = 0.5 * sales_cagr_val + 0.5 * min(sales_cagr_val, opcost_cagr_val)
-        else:
-            s5_eff = s5_base
-        top_5y = max(0.0, s5_eff) + bb_eff
-        if sales_cagr_val is not None and g is not None and g < top_5y:
-            hist_val = 0.5 * top_5y + 0.5 * max(0.0, g)
-        else:
-            hist_val = top_5y
-        g_hist = round(max(0.0, min(par_g_anchor_max, hist_val)), 4)
-
-        top_5y_org = max(0.0, s5_eff) + bb_org
-        g_oe_org = (g - bb_pos) if g is not None else None
-        if sales_cagr_val is not None and g_oe_org is not None and g_oe_org < top_5y_org:
-            hist_val_org = 0.5 * top_5y_org + 0.5 * max(0.0, g_oe_org)
-        else:
-            hist_val_org = top_5y_org
-        g_hist_org = round(max(0.0, min(par_g_anchor_max, hist_val_org)), 4)
-
-        # Anchor 3 — Operating Capital Growth with Mauboussin Galton ROIC Fade (g_cap):
-        if cap_growth_val is not None:
-            cg_base = cap_growth_val
-        elif sales_cagr_val is not None:
-            cg_base = s5_eff
-        else:
-            cg_base = g or 0.0
-        g_cap = round(max(0.0, min(par_g_anchor_max, max(0.0, cg_base) * roic_fade_ratio + bb_eff)), 4)
-        g_cap_org = round(max(0.0, min(par_g_anchor_max, max(0.0, cg_base) * roic_fade_ratio + bb_org)), 4)
-
-        # 3-Anchor Starting Growth (per-share g_start & firm-level organic g_org_start):
-        g_start = round((g_1y + g_hist + g_cap) / 3.0, 4)
-        g_org_start = round((g_1y_org + g_hist_org + g_cap_org) / 3.0, 4)
+        # Primary normal organic growth anchor: 3-5Y Operating Cost Base CAGR (OpCost = Sales - EBIT = COGS + OpEx)
+        base_org = (
+            opcost_cagr_val
+            if opcost_cagr_val is not None
+            else (sales_cagr_val if sales_cagr_val is not None else ((g - bb_pos) if g is not None else (sales_1y_val or par_g_base)))
+        )
+        g_org_start = round(max(par_g_1y_floor, min(par_g_anchor_max, base_org + bb_org)), 4)
+        g_start = round(max(par_g_1y_floor, min(par_g_anchor_max, base_org + bb_eff)), 4)
     else:
-        g_1y = None
-        g_hist = None
-        g_cap = None
         if f("g_est") is not None:
             g_start = round(f("g_est"), 4)
         elif g_imp_in is not None:
@@ -391,39 +419,19 @@ def par_valuation(
             g_start = par_g_base
         g_org_start = round(max(0.02, g_start - bb_pos), 4) if g_start > 0.02 else g_start
 
-    # Logarithmic Compression (g_log) & Continuous Mauboussin Fade to Expected Growth (g_exp & g_org_exp):
-    if g_start > par_g_base:
-        g_log = round(par_g_base + par_g_log_k * math.log(1.0 + (g_start - par_g_base) / par_g_log_k), 4)
-    else:
-        g_log = round(max(0.02, g_start), 4)
-
-    if g_org_start > par_g_base:
-        g_org_log = round(par_g_base + par_g_log_k * math.log(1.0 + (g_org_start - par_g_base) / par_g_log_k), 4)
-    else:
-        g_org_log = round(max(0.02, g_org_start), 4)
-
+    # Organic Growth Ceiling (g_0 / g_org_exp) bounded by [2.0%, scale_cap], and Per-Share Growth Ceiling (g_exp):
     if f("g_est") is not None:
-        # Explicit analyst override sets g_exp directly (bounded by scale_cap) while preserving objective g_start
-        g_exp = round(min(scale_cap, f("g_est")), 4)
-        g_org_exp = round(max(0.02, g_exp - bb_pos), 4) if g_exp > 0.02 else g_exp
+        g_est_val = f("g_est")
+        g_org_exp = round(max(0.02, min(scale_cap, g_est_val - bb_pos if g_est_val > 0.02 else g_est_val)), 4)
+        g_exp = round(min(scale_cap + bb_pos, max(0.02, g_est_val)), 4)
     elif not has_stmt_growth and g_imp_in is not None:
-        g_exp = round(min(scale_cap, max(0.02, g_imp_in)), 4)
-        g_org_exp = round(max(0.02, g_exp - bb_pos), 4) if g_exp > 0.02 else g_exp
+        g_org_exp = round(max(0.02, min(scale_cap, g_imp_in - bb_pos if g_imp_in > 0.02 else g_imp_in)), 4)
+        g_exp = round(g_org_exp + bb_pos, 4)
     else:
-        if g_start > par_g_base:
-            faded_g = par_g_base + (g_log - par_g_base) * pers * size_factor
-            g_exp = round(min(scale_cap, faded_g), 4)
-        else:
-            # Asymmetric 'No Free Lunch' rule: slow growers <= 3.5% do not mean-revert upward
-            g_exp = round(max(0.02, g_start), 4)
+        g_org_exp = round(max(0.02, min(scale_cap, g_org_start)), 4)
+        g_exp = round(g_org_exp + bb_pos, 4)
 
-        if g_org_start > par_g_base:
-            faded_g_org = par_g_base + (g_org_log - par_g_base) * pers * size_factor
-            g_org_exp = round(min(scale_cap, faded_g_org), 4)
-        else:
-            g_org_exp = round(max(0.02, g_org_start), 4)
-
-    g_org_exp = min(g_exp, g_org_exp)
+    g_log = g_org_exp
     bb_contrib = round(max(0.0, g_exp - g_org_exp), 4)
 
     # Backwards-compatibility aliases for downstream callers
@@ -452,49 +460,31 @@ def par_valuation(
     cur_mult = price / peak_eps
     g_org_val = g_org_exp if (g_org_exp is not None and g_org_exp > 0) else par_g_base
 
-    # Corporate Finance Value Driver P/E (v6.34):
-    # Evaluated strictly on firm-level organic growth (g_org_val) so share buybacks are never double-counted as ROIC_exp reinvestment.
+    # Explicit N-Year Mauboussin-Fade DCF at r = 8.50% (v6.35):
     k = max(0.05, par_cost_of_equity)
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
     roic_eff = max(roic_exp, 0.05)
-    reinv_term = par_g_base / max(0.05, par_roic_avg)
     mtm_holdco = is_mtm_holdco(sub_ind, fcf_conv_val, peak_eps_override, mh)
     finite_conc = is_finite_concession(sub_ind, fcf_conv_val)
 
-    def _compute_vd(g_rate: float) -> tuple[float, float, float, float]:
-        if mtm_holdco:
-            nav_pe = 1.0 / roic_eff
-            return nav_pe, nav_pe, nav_pe, 1.0
-        reinv_stage1 = min(0.95, max(0.0, g_rate) / roic_eff)
-        q = (1.0 + g_rate) / (1.0 + k)
-        pv_stage1 = (1.0 - reinv_stage1) * (n_cap if abs(1.0 - q) < 1e-9 else q * (1.0 - (q ** n_cap)) / (1.0 - q))
-        if finite_conc:
-            ann_n = (1.0 - ((1.0 + k) ** (-n_cap))) / k
-            mm_val = ann_n * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
-            mck_val = pv_stage1
-            return 0.5 * mm_val + 0.5 * mck_val, mm_val, mck_val, 1.0 - reinv_stage1
-        mm_val = (1.0 / k) * (1.0 + (g_rate * n_cap * (roic_eff - k)) / ((1.0 + k) * roic_eff))
-        pv_stage2 = ((1.0 - reinv_term) * ((1.0 + g_rate) ** n_cap) * (1.0 + par_g_base)) / (
-            max(0.01, k - par_g_base) * ((1.0 + k) ** n_cap)
-        )
-        mck_val = pv_stage1 + pv_stage2
-        return 0.5 * mm_val + 0.5 * mck_val, mm_val, mck_val, 1.0 - reinv_stage1
-
-    pe_vd, pe_mm, pe_mck, reinv_eff = _compute_vd(g_org_val)
-    pe_vd0, _, _, _ = _compute_vd(0.0)
+    pe_vd, pe_mm, pe_mck, reinv_eff = explicit_dcf_multiple(
+        g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+    )
+    pe_vd0, _, _, _ = explicit_dcf_multiple(
+        0.0, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+    )
     raw_slope = (pe_vd - pe_vd0) / g_org_val if g_org_val > 1e-6 else 100.0
     eff_g_mult = raw_slope if raw_slope > 10.0 else 100.0
 
-    # Regime-Bounded 5-Year Historical Harmonic P/E (bounded within [0.50x, 1.50x] of PE_VD; falls back to PE_VD when 5Y history is unavailable):
     if has_hist_mults:
         t_hist_raw = (2.0 * ml * mh) / (ml + mh)
-        t_hist = max(par_thist_min_ratio * pe_vd, min(par_thist_max_ratio * pe_vd, t_hist_raw))
+        t_hist = t_hist_raw
     else:
         t_hist_raw = None
         t_hist = pe_vd
 
-    # 75/25 PAR Multiple:
-    par_mult = par_vd_weight * pe_vd + (1.0 - par_vd_weight) * t_hist
+    # 100% Explicit Mauboussin-Fade DCF Fair Value Multiple:
+    par_mult = pe_vd
 
     # Backwards-compatibility aliases for downstream callers
     t_growth = pe_mm
@@ -505,15 +495,16 @@ def par_valuation(
     vs_par = price / par_val - 1.0
     status = C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR
 
-    # FCF Payout Conservation in 5Y IRR: bound buyback accretion at current multiple by available Owner FCF after dividends
-    if bb_contrib > 0 and cur_mult > 0 and g_exp is not None and g_org_exp is not None:
+    # 5Y IRR along the Mauboussin fade trajectory + FCF-conserved buyback accretion:
+    g_org_5y = round(g_org_val - (2.0 / max(5.0, n_cap)) * (g_org_val - par_g_base), 4) if not mtm_holdco else g_org_val
+    if bb_pos > 0 and cur_mult > 0:
         bb_fcf_cap = max(0.0, (max(0.0, reinv_eff) / cur_mult) - dy)
-        g_irr = round(min(g_exp, g_org_exp + bb_fcf_cap), 4)
+        g_irr = round(g_org_5y + min(bb_pos, bb_fcf_cap), 4)
     else:
-        g_irr = g_exp
+        g_irr = round(g_org_5y, 4)
     irr_5y = solve_irr_5y(price, par_val, g_irr, dy)
 
-    # Market-Implied CAP scaled above zero-moat steady-state base multiple (1 / k = 11.43x):
+    # Market-Implied CAP scaled above zero-moat steady-state base multiple (1 / r = 11.76x):
     pe_base = 1.0 / k
     if fund_cap and price and par_val and par_val > 0:
         if not mtm_holdco and par_mult > pe_base + 0.5:
@@ -524,13 +515,11 @@ def par_valuation(
         cap_implied = None
     cap_gap = round(fund_cap - cap_implied, 1) if (fund_cap is not None and cap_implied is not None) else None
 
-    if mtm_holdco:
-        g_market = round(g_exp * (cur_mult / par_mult), 4) if (g_exp is not None and par_mult > 0) else None
-    else:
-        vd_implied = (cur_mult - (1.0 - par_vd_weight) * t_hist) / par_vd_weight
-        g_org_market = (vd_implied - pe_vd0) / eff_g_mult if (cur_mult and t_hist is not None and eff_g_mult > 0) else None
-        g_market = round(g_org_market + bb_contrib, 4) if g_org_market is not None else None
-    g_gap = round(g_exp - g_market, 4) if (g_exp is not None and g_market is not None) else None
+    # Exact DCF-inverted Market-Implied Organic Growth (g_market at r = 8.5%) & Growth Margin of Safety (g_gap):
+    g_market = solve_implied_dcf_growth(
+        cur_mult, g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
+    )
+    g_gap = round(g_org_val - g_market, 4) if (g_org_val is not None and g_market is not None) else None
     return {
         "status": status,
         "peak_eps": peak_eps,

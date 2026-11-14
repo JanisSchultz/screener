@@ -1,4 +1,4 @@
-"""Framework configuration (v6.34): the 6 Munger Quality Gates & Equity Bond Below PAR Framework.
+"""Framework configuration (v6.35): the 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -218,10 +218,10 @@ PARAMETER_GROUPS = [
         ("t_near_high", "Within this % of 52-wk high = topping zone (Stage 3 when flat)", 0.10, "0%", NEW),
     ]),
     ("PAR Valuation parameters (Quantitative sheet)", [
-        ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate k for Value Driver P/E (8.75%)", 0.0875, "0.00%", NEW + " Nominal equity cost of capital k (8.75% = 4.0% risk-free + 4.75% ERP) used in Miller-Modigliani and McKinsey 2-Stage Value Driver P/E."),
-        ("par_vd_weight", "Weight of textbook Corporate Finance Value Driver P/E (PE_VD) in PAR Multiple (75.0%)", 0.75, "0%", NEW + " Blends 75% Textbook Value Driver P/E (50/50 Miller-Modigliani + McKinsey 2-Stage) with 25% Regime-Bounded 5-year Harmonic Market P/E."),
-        ("par_thist_min_ratio", "Minimum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (0.50x)", 0.50, "0.00", NEW + " Prevents distorted or depressed historical multiple regimes from pulling t_hist below 0.50x of intrinsic PE_VD."),
-        ("par_thist_max_ratio", "Maximum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (1.50x)", 1.50, "0.00", NEW + " Prevents 5-year bubble or trough-earnings P/E outliers from inflating t_hist above 1.50x of intrinsic PE_VD."),
+        ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate r for Explicit Mauboussin-Fade DCF (8.50%)", 0.085, "0.00%", NEW + " Nominal equity discount rate r (8.50%) used in the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion."),
+        ("par_vd_weight", "Weight of Explicit Mauboussin-Fade DCF Multiple in Fair Value Multiple (100.0%)", 1.00, "0%", NEW + " 100% pure Explicit Mauboussin-Fade DCF multiple over Gate 4 CAP N years."),
+        ("par_thist_min_ratio", "Minimum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (0.50x)", 0.50, "0.00", NEW + " Informational 5Y Harmonic Market P/E lower ratio bound."),
+        ("par_thist_max_ratio", "Maximum ratio of 5Y Harmonic Market P/E (t_hist) relative to PE_VD (1.50x)", 1.50, "0.00", NEW + " Informational 5Y Harmonic Market P/E upper ratio bound."),
         ("par_roic_avg", "Corporate average ROIC baseline for Mauboussin Galton ROIC regression & Terminal Stage 2 (12.0%)", 0.120, "0.0%", NEW + " Corporate mean ROIC (12.0%) toward which excess ROIC regresses: Expected_ROIC = r * (ROIC_log - 0.12) + 0.12."),
         ("par_roic_log_k", "Logarithmic compression curvature constant k for Operating ROIC above 12% (25.0%)", 0.250, "0.0%", NEW + " Smoothly compresses small-denominator tangible ROIC above 12.0% via ROIC_log = 0.12 + k * ln(1 + (ROIC - 0.12)/k) without hard caps."),
         ("par_g_anchor_max", "Max individual anchor growth rate before 3-Anchor averaging (22.0%)", 0.220, "0.0%", NEW + " Bounds each of the 3 starting growth anchors (1Y Momentum, 3-5Y History, Capital Growth) at 22.0%."),
@@ -611,5 +611,17 @@ CHANGELOG = {
         "(3) Regime-Bounded 5-Year Harmonic P/E (t_hist within [0.50x, 1.50x] of PE_VD): Preserves full market-regime calibration for durable franchises (e.g. Hermes) while blocking 70x-96x bubble/trough-denominator outliers (SECT B.SE, CDNS, LLY) from distorting PAR Multiple. "
         "(4) Zero-Moat Base Floor (1/k = 11.43x) in Market-Implied CAP: Scales implied moat runway on excess valuation multiple above steady-state no-moat P/E (1/k) rather than zero price, mapping cur_mult <= 1/k cleanly to 0.0 years of priced-in moat. "
         "(5) Active Peak EPS Guards, Distorted Peak Normalization (BAM.CA, HSY) & Interactive Sandbox Parity: Guarded cur_eps against non-cash spikes and multi-class/merger share-basis mismatches, normalized BAM.CA (2.13 CAD) and HSY ($9.50) Peak EPS + 5Y cycle multiples, unmuted Sandbox growth sliders, and synchronized all specifications to v6.34.",
+    ],
+    "6.35": [
+        "Explicit Mauboussin-Fade DCF (r = 8.5%), Operating Cost Growth Ceiling (opcost_cagr) & Slump-Cannibal Screener Rework: "
+        "(1) Operating Cost Base Growth Ceiling (g_0 / g_org_exp): Anchors normal organic business growth directly on 3-5Y Operating Cost Base CAGR "
+        "(OpCost = Sales - EBIT = COGS + OpEx, bounded by revenue-scale ceiling 9.5%-12.0% and net share dilution), looking through temporary 1-year demand slumps "
+        "and stripping out unsustainable margin spikes (since Gates 3b and 5 already filter for constant through-the-cycle margins). "
+        "(2) Explicit Year-by-Year Mauboussin-Fade DCF (r = 8.50%): Computes Fair Value Multiple and Fair Value Price via an explicit N-year DCF (N = Gate 4 CAP years) "
+        "where organic growth g_t and ROIC_t fade linearly each year from (g_0, ROIC_exp) in Year 1 down to terminal steady state (g_term = 3.5%, ROIC_term) at Year N, "
+        "generating annual Free Cash Flow FCF_t = E_t * (1 - g_t / ROIC_t) plus Year-N Gordon Growth terminal value. "
+        "(3) Exact DCF-Inverted Market-Implied Growth (g_market at r = 8.50%): Solves for the exact starting organic growth rate priced into the current share price. "
+        "(4) Slump-Cannibal Table Columns: Reworked dashboard columns to display Price, 1Y Growth, 3-5Y Growth, OpCost Growth, Growth Ceiling (g_0), Buyback Yield, "
+        "Mkt Implied g, g Margin, Fair Value, Discount (vs FV), Cur P/E, Fair P/E, 5Y Exp IRR, Op ROIC, and CAP metrics side-by-side.",
     ],
 }

@@ -1,4 +1,4 @@
-"""Tests for the v6.34 3-Anchor Starting Growth (g_start), Organic Value Driver P/E (PE_VD), Regime-Bounded Harmonic P/E, and FCF-Conserved 5Y IRR."""
+"""Tests for the v6.35 Operating Cost Base Growth Ceiling (g_org_exp), Explicit Mauboussin-Fade DCF (r=8.5%), and FCF-Conserved 5Y IRR."""
 from __future__ import annotations
 
 import math
@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from screener.fetch import metrics
-from screener.gates import params, par_valuation, solve_irr_5y
+from screener.gates import explicit_dcf_multiple, params, par_valuation, solve_implied_dcf_growth, solve_irr_5y
 
 
 def sample_fin(**overrides) -> dict:
@@ -38,175 +38,138 @@ class QuantitativeGrowthTests(unittest.TestCase):
     def setUp(self):
         self.p = params({})
 
-    def test_three_anchor_starting_growth_average(self):
-        # For roic_operating = 0.25 and CAP = 20 (pers = 0.75):
-        # roic_log = 0.12 + 0.25 * ln(1 + 0.13/0.25) = 0.2247
-        # roic_exp = 0.75 * (0.2247 - 0.12) + 0.12 = 0.1985
-        # roic_fade_ratio = 0.1985 / 0.2247 = 0.8834
-        # Anchor 1 (1Y sales + bb): 14.0% + 1.0% = 15.0%
-        # Anchor 2 (5Y sales + bb): 11.0% + 1.0% = 12.0% (cagr_oe_eps = 13.0% >= 12.0%, so no margin haircut)
-        # Anchor 3 (Cap growth * roic_fade_ratio + bb): 8.0% * 0.8834 + 1.0% = 8.07%
+    def test_opcost_cagr_primary_growth_ceiling_and_fallback_chain(self):
+        # When opcost_cagr is present (8.5%), it anchors g_org_exp directly regardless of 1Y slump (-4.0%)
         fin = sample_fin(
             sales_ttm_m=10000.0,
-            sales_1y=0.14,
-            sales_cagr=0.11,
-            cap_growth=0.08,
-            buyback_yield=0.01,
-            cagr_oe_eps=0.13,
+            sales_1y=-0.04,
+            sales_cagr=0.075,
+            opcost_cagr=0.085,
+            cap_growth=0.070,
+            buyback_yield=0.020,
+            cagr_oe_eps=0.11,
         )
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_1y"], 0.1500, places=4)
-        self.assertAlmostEqual(val["g_hist"], 0.1200, places=4)
-        self.assertAlmostEqual(val["g_cap"], round(0.08 * val["roic_fade_ratio"] + 0.01, 4), places=4)
-        self.assertAlmostEqual(val["g_start"], round((0.1500 + 0.1200 + val["g_cap"]) / 3.0, 4), places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0850, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.1050, places=4)
 
-    def test_opcost_smoothing_tempers_windfalls_and_cushions_dips(self):
-        # Windfall case: 1Y sales +40%, 1Y OpCost +20% -> effective 1Y sales = 0.5*40% + 0.5*min(40%, 20%) = 30%
-        # 5Y sales +16%, 5Y OpCost +12% -> effective 5Y sales = 0.5*16% + 0.5*min(16%, 12%) = 14%
-        fin_windfall = sample_fin(
-            sales_ttm_m=20000.0,
-            sales_1y=0.40,
-            opcost_1y=0.20,
-            sales_cagr=0.16,
-            opcost_cagr=0.12,
-            cap_growth=0.10,
-            buyback_yield=0.0,
-            cagr_oe_eps=0.25,
-        )
-        val_w = par_valuation(fin_windfall, self.p, cap=20)
-        # Anchor 1: 30% clamped to 22.0%; Anchor 2: 14.0%
-        self.assertAlmostEqual(val_w["g_1y"], 0.2200, places=4)
-        self.assertAlmostEqual(val_w["g_hist"], 0.1400, places=4)
+        # Fallback to sales_cagr when opcost_cagr is None
+        fin_no_oc = dict(fin, opcost_cagr=None)
+        val_no_oc = par_valuation(fin_no_oc, self.p, cap=20)
+        self.assertAlmostEqual(val_no_oc["g_org_exp"], 0.0750, places=4)
+        self.assertAlmostEqual(val_no_oc["g_exp"], 0.0950, places=4)
 
-        # Cost bloat case: 1Y sales +4%, 1Y OpCost +10% -> min(4%, 10%) = 4%, so cost bloat never inflates growth
-        fin_bloat = sample_fin(
-            sales_ttm_m=20000.0,
-            sales_1y=0.04,
-            opcost_1y=0.10,
-            sales_cagr=0.04,
-            opcost_cagr=0.08,
-            cap_growth=0.04,
-            buyback_yield=0.0,
-            cagr_oe_eps=0.05,
-        )
-        val_b = par_valuation(fin_bloat, self.p, cap=20)
-        self.assertAlmostEqual(val_b["g_1y"], 0.0400, places=4)
-        self.assertAlmostEqual(val_b["g_hist"], 0.0400, places=4)
+        # Fallback to cagr_oe_eps - bb_pos when sales_cagr is also None
+        fin_oe_only = dict(fin_no_oc, sales_cagr=None)
+        val_oe = par_valuation(fin_oe_only, self.p, cap=20)
+        self.assertAlmostEqual(val_oe["g_org_exp"], 0.0900, places=4)
+        self.assertAlmostEqual(val_oe["g_exp"], 0.1100, places=4)
 
-        # Cyclical dip case (ODFL archetype): 1Y sales -6.0%, 1Y OpCost -3.0% -> effective 1Y = -4.5% -> floored at -4.0%,
-        # or -5.0% and -2.0% -> effective 1Y = -3.5%
-        fin_dip = sample_fin(
+    def test_1y_slump_does_not_penalize_growth_ceiling_when_opcost_cagr_intact(self):
+        # Slump-Cannibal Compounder archetype: 1Y sales -5%, 5Y OpCost CAGR +8.0%, +2.5% buybacks
+        fin_slump = sample_fin(
             sales_ttm_m=10000.0,
             sales_1y=-0.05,
             opcost_1y=-0.02,
             sales_cagr=0.08,
             opcost_cagr=0.08,
             cap_growth=0.08,
-            buyback_yield=0.0,
-            cagr_oe_eps=0.09,
+            buyback_yield=0.025,
+            cagr_oe_eps=0.10,
         )
-        val_d = par_valuation(fin_dip, self.p, cap=20)
-        self.assertAlmostEqual(val_d["g_1y"], -0.0350, places=4)
+        fin_normal = dict(fin_slump, sales_1y=0.08, opcost_1y=0.08)
+        val_slump = par_valuation(fin_slump, self.p, cap=20)
+        val_norm = par_valuation(fin_normal, self.p, cap=20)
+        self.assertAlmostEqual(val_slump["g_org_exp"], 0.0800, places=4)
+        self.assertAlmostEqual(val_slump["par_val"], val_norm["par_val"], places=4)
 
-    def test_mauboussin_galton_roic_regression_and_value_driver_pe(self):
+    def test_mauboussin_galton_roic_regression_and_explicit_dcf_pe(self):
         # Ultra-light network (e.g. MA): Operating ROIC = 250%, CAP = 30 (pers = 0.85)
         fin_ultra = sample_fin(roic_operating=2.50, mult_low_5y=25.0, mult_high_5y=60.0)
         val_u = par_valuation(fin_ultra, self.p, cap=30)
-        # roic_log = 0.12 + 0.25 * ln(1 + 2.38/0.25) = 0.7082
-        # roic_exp = 0.85 * (0.7082 - 0.12) + 0.12 = 0.6200
         self.assertGreater(val_u["roic_exp"], 0.50)
         self.assertIsNotNone(val_u["pe_mm"])
         self.assertIsNotNone(val_u["pe_mck"])
-        self.assertAlmostEqual(val_u["pe_vd"], 0.5 * val_u["pe_mm"] + 0.5 * val_u["pe_mck"], places=4)
-        self.assertAlmostEqual(val_u["par_mult"], 0.75 * val_u["pe_vd"] + 0.25 * val_u["t_hist"], places=4)
+        # pe_vd = Stage 1 PV (pe_mm) + Stage 2 Terminal PV (pe_mck), and par_mult = 100% pe_vd
+        self.assertAlmostEqual(val_u["pe_vd"], val_u["pe_mm"] + val_u["pe_mck"], places=4)
+        self.assertAlmostEqual(val_u["par_mult"], val_u["pe_vd"], places=4)
 
-    def test_logarithmic_mauboussin_fade_cap30_cap20_cap15(self):
-        fin = sample_fin(cagr_oe_eps=0.10)
+    def test_explicit_mauboussin_fade_dcf_cap30_cap20_cap15(self):
+        fin = sample_fin(opcost_cagr=0.09, roic_operating=0.28)
         v30 = par_valuation(fin, self.p, cap=30)
         v20 = par_valuation(fin, self.p, cap=20)
         v15 = par_valuation(fin, self.p, cap=15)
 
-        self.assertGreater(v30["g_start"], v20["g_start"])
-        self.assertGreater(v20["g_start"], v15["g_start"])
-        self.assertGreater(v30["g_exp"], v20["g_exp"])
-        self.assertGreater(v20["g_exp"], v15["g_exp"])
-        self.assertAlmostEqual(v30["g_imp"], v30["g_exp"], places=4)
-        self.assertEqual(v30["exp_coupon"], v30["imp_coupon"])
+        self.assertAlmostEqual(v30["g_org_exp"], 0.0900, places=4)
+        self.assertAlmostEqual(v20["g_org_exp"], 0.0900, places=4)
+        self.assertAlmostEqual(v15["g_org_exp"], 0.0900, places=4)
+        # Longer CAP runway produces higher Stage 1 + Stage 2 DCF Fair P/E
+        self.assertGreater(v30["par_mult"], v20["par_mult"])
+        self.assertGreater(v20["par_mult"], v15["par_mult"])
 
-    def test_unpopulated_cap_falls_back_to_default_persistence_075(self):
-        fin = sample_fin(cagr_oe_eps=0.10)
+    def test_unpopulated_cap_falls_back_to_default_20y_dcf(self):
+        fin = sample_fin(opcost_cagr=0.09)
         v_none = par_valuation(fin, self.p, cap=None)
         v_20 = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(v_none["g_exp"], v_20["g_exp"], places=4)
+        self.assertAlmostEqual(v_none["par_mult"], v_20["par_mult"], places=4)
 
-    def test_analyst_override_g_est_sets_g_exp_while_preserving_objective_g_start(self):
+    def test_analyst_override_g_est_sets_g_exp_and_g_org_exp(self):
         fin = sample_fin(
             sales_ttm_m=5000.0,
             sales_1y=0.06,
             sales_cagr=0.06,
+            opcost_cagr=0.06,
             cap_growth=0.06,
             cagr_oe_eps=0.06,
+            buyback_yield=0.01,
             roic_operating=0.12,
-            g_est=0.05,
+            g_est=0.08,
         )
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_start"], 0.0600, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.0500, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0700, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0800, places=4)
 
     def test_mastercard_archetype_operating_asset_growth_sustains_compounder(self):
-        # MA archetype: $32.8B revenue, 16.0% 1Y sales, 16.4% 5Y sales, 10.0% operating capital growth, +2.05% buybacks
+        # MA archetype: $32.8B revenue, 14.5% OpCost CAGR (capped at LARGE scale_cap = 10.5%), +2.05% buybacks
         fin_ma = sample_fin(
             sales_ttm_m=32791.0,
             sales_1y=0.1602,
             sales_cagr=0.1642,
+            opcost_cagr=0.1450,
             cap_growth=0.1002,
             buyback_yield=0.0205,
             cagr_oe_eps=0.1846,
             roic_operating=2.54,
         )
         val = par_valuation(fin_ma, self.p, cap=20, moat="Toll booth / Switching costs")
-        self.assertGreater(val["g_start"], 0.145)
-        self.assertGreater(val["g_exp"], 0.085)
+        self.assertAlmostEqual(val["g_org_exp"], 0.1050, places=4)
+        self.assertGreater(val["g_exp"], 0.125)
         self.assertGreater(val["roic_exp"], 0.50)
         self.assertGreater(val["pe_vd"], 25.0)
 
-    def test_mature_staple_pg_archetype_bounded_by_slow_capital_and_sales_growth(self):
-        # PG archetype: $84.3B revenue, 0.3% 1Y sales, 3.5% 5Y sales, 0.9% operating capital growth, +0.9% buybacks
+    def test_mature_staple_pg_archetype_bounded_by_slow_opcost_growth(self):
+        # PG archetype: $84.3B revenue, 2.8% OpCost CAGR, +0.9% buybacks
         fin_pg = sample_fin(
             sales_ttm_m=84284.0,
             sales_1y=0.003,
             sales_cagr=0.035,
+            opcost_cagr=0.028,
             cap_growth=0.009,
             buyback_yield=0.009,
             cagr_oe_eps=0.038,
             roic_operating=0.30,
         )
         val = par_valuation(fin_pg, self.p, cap=20, moat="Scale economies shared")
-        self.assertLess(val["g_start"], 0.040)
-        self.assertLess(val["g_exp"], 0.040)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0280, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0370, places=4)
 
-    def test_progressive_insurer_archetype_scales_smoothly(self):
-        # PGR archetype: $87.7B revenue, 16.9% 1Y sales, 15.5% 5Y sales, 16.4% capital growth, +0.16% buybacks, CAP 15
-        fin_pgr = sample_fin(
-            sales_ttm_m=87696.0,
-            sales_1y=0.169,
-            sales_cagr=0.155,
-            cap_growth=0.164,
-            buyback_yield=0.0016,
-            cagr_oe_eps=0.180,
-            roic_operating=0.206,
-        )
-        val = par_valuation(fin_pgr, self.p, cap=15, moat="Scale economies shared")
-        self.assertGreater(val["g_start"], 0.150)
-        self.assertGreater(val["g_exp"], 0.078)
-        self.assertLess(val["g_exp"], 0.088)
-
-    def test_hyper_scale_googl_fades_via_continuous_log_revenue_and_cap15(self):
-        # GOOGL archetype: $402.8B revenue, CAP 15 (pers=0.62, size_factor=0.793)
+    def test_hyper_scale_googl_capped_by_hyper_scale_cap(self):
+        # GOOGL archetype: $402.8B revenue -> HYPER scale_cap = 9.5%
         fin_googl = sample_fin(
             sales_ttm_m=402836.0,
             sales_1y=0.151,
             sales_cagr=0.1715,
+            opcost_cagr=0.145,
             cap_growth=0.141,
             buyback_yield=0.0177,
             cagr_oe_eps=0.3447,
@@ -214,42 +177,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         )
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
         self.assertEqual(val["scale_tier"], "HYPER")
-        self.assertGreater(val["g_start"], 0.155)
-        self.assertGreater(val["g_exp"], 0.075)
-        self.assertLess(val["g_exp"], 0.085)
-
-    def test_anchor2_margin_contraction_check(self):
-        # When 5Y OE EPS CAGR (3.0%) lagged 5Y sales + buybacks (8.0% + 2.0% = 10.0%),
-        # Anchor 2 blends 50/50: 0.5 * 10.0% + 0.5 * 3.0% = 6.5%
-        fin = sample_fin(
-            sales_ttm_m=14000.0,
-            sales_1y=0.08,
-            sales_cagr=0.08,
-            cap_growth=0.08,
-            buyback_yield=0.02,
-            cagr_oe_eps=0.03,
-            roic_operating=0.12,
-        )
-        val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_1y"], 0.1000, places=4)
-        self.assertAlmostEqual(val["g_hist"], 0.0650, places=4)
-        self.assertAlmostEqual(val["g_cap"], 0.1000, places=4)
-        self.assertAlmostEqual(val["g_start"], (0.10 + 0.065 + 0.10) / 3.0, places=4)
-
-    def test_anchor1_floor_limits_single_year_cyclical_contraction(self):
-        # If 1Y sales dropped -15% in a cyclical downturn, Anchor 1 is floored at -4.0%
-        fin = sample_fin(
-            sales_ttm_m=10000.0,
-            sales_1y=-0.15,
-            sales_cagr=0.08,
-            cap_growth=0.07,
-            buyback_yield=0.0,
-            cagr_oe_eps=0.08,
-            roic_operating=0.12,
-        )
-        val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_1y"], -0.0400, places=4)
-        self.assertAlmostEqual(val["g_start"], (-0.04 + 0.08 + 0.07) / 3.0, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0950, places=4)
 
     def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
         fin_fallback = sample_fin(
@@ -257,37 +185,36 @@ class QuantitativeGrowthTests(unittest.TestCase):
             cagr_oe_eps=None,
             sales_1y=None,
             sales_cagr=None,
+            opcost_cagr=None,
             cap_growth=None,
             g_implied=0.085,
         )
         val = par_valuation(fin_fallback, self.p, cap=15)
-        self.assertAlmostEqual(val["g_start"], 0.0850, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0850, places=4)
         self.assertAlmostEqual(val["g_exp"], 0.0850, places=4)
 
-    def test_asymmetric_low_growth_not_faded_up(self):
-        # g_start <= 3.5% GDP -> No Free Lunch! Kept at g_start, NOT faded up toward 3.5%
-        fin_low = sample_fin(cagr_oe_eps=0.028, roic_operating=0.12)
+    def test_low_growth_preserved_down_to_two_percent_floor(self):
+        fin_low = sample_fin(opcost_cagr=0.028, roic_operating=0.12)
         for cap_val in (30, 20, 15):
             val = par_valuation(fin_low, self.p, cap=cap_val)
-            self.assertAlmostEqual(val["g_start"], 0.0280, places=4)
+            self.assertAlmostEqual(val["g_org_exp"], 0.0280, places=4)
             self.assertAlmostEqual(val["g_exp"], 0.0280, places=4)
 
     def test_negative_cagr_floored_at_two_percent(self):
-        fin_neg = sample_fin(cagr_oe_eps=-0.10)
+        fin_neg = sample_fin(opcost_cagr=-0.10)
         val = par_valuation(fin_neg, self.p, cap=30)
-        self.assertAlmostEqual(val["g_exp"], 0.02, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.02, places=4)
 
-    def test_continuous_size_factor_and_currency_normalization(self):
-        fin_eur = sample_fin(sales_ttm_m=50000.0, fin_currency="EUR", cagr_oe_eps=0.15)
+    def test_scale_tier_and_currency_normalization(self):
+        fin_eur = sample_fin(sales_ttm_m=50000.0, fin_currency="EUR", opcost_cagr=0.15)
         val_eur = par_valuation(fin_eur, self.p, cap=20)
         self.assertEqual(val_eur["scale_tier"], "MEGA")
-        self.assertAlmostEqual(val_eur["size_factor"], round(1.08 - 0.11 * math.log10(50.0 * 1.08), 4), places=4)
+        self.assertAlmostEqual(val_eur["g_org_exp"], 0.0980, places=4)
 
-        fin_cad = sample_fin(sales_ttm_m=15000.0, fin_currency="CAD", cagr_oe_eps=0.15)
+        fin_cad = sample_fin(sales_ttm_m=15000.0, fin_currency="CAD", opcost_cagr=0.15)
         val_cad = par_valuation(fin_cad, self.p, cap=20)
         self.assertEqual(val_cad["scale_tier"], "MID/SM")
-        self.assertGreater(val_cad["size_factor"], val_eur["size_factor"])
-        self.assertGreater(val_cad["g_exp"], val_eur["g_exp"])
+        self.assertAlmostEqual(val_cad["g_org_exp"], 0.1200, places=4)
 
     def test_metrics_summarize_computes_sales_1y_opcost_cap_growth_and_median_buyback(self):
         series = {
@@ -312,63 +239,42 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertGreater(m["buyback_yield"], 0.019)
 
     def test_growth_margin_of_safety_calculation(self):
-        fin = sample_fin(cagr_oe_eps=0.10)
+        fin = sample_fin(opcost_cagr=0.09)
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_gap"], round(val["g_exp"] - val["g_market"], 4), places=4)
+        self.assertAlmostEqual(val["g_gap"], round(val["g_org_exp"] - val["g_market"], 4), places=4)
 
-    def test_uncapped_harmonic_5y_pe_dampens_spikes_without_35_cap(self):
-        # Low = 20x, High = 100x -> arithmetic mean is 60x, but harmonic mean is 2*20*100/120 = 33.33x
-        fin_spike = sample_fin(mult_low_5y=20.0, mult_high_5y=100.0, g_est=0.10, roic_operating=0.35)
-        val_spike = par_valuation(fin_spike, self.p, cap=20)
-        self.assertAlmostEqual(val_spike["t_hist"], 2.0 * 20.0 * 100.0 / 120.0, places=4)
-        self.assertAlmostEqual(val_spike["par_mult"], 0.75 * val_spike["pe_vd"] + 0.25 * val_spike["t_hist"], places=4)
+    def test_pure_explicit_dcf_independent_of_5y_historical_multiples(self):
+        # Fair P/E (par_mult) is 100% pure Explicit DCF and does not change when 5Y low/high multiples vary
+        fin1 = sample_fin(mult_low_5y=12.0, mult_high_5y=15.0, g_est=0.09, roic_operating=0.35)
+        fin2 = sample_fin(mult_low_5y=35.0, mult_high_5y=60.0, g_est=0.09, roic_operating=0.35)
+        val1 = par_valuation(fin1, self.p, cap=20)
+        val2 = par_valuation(fin2, self.p, cap=20)
+        self.assertAlmostEqual(val1["par_mult"], val1["pe_vd"], places=4)
+        self.assertAlmostEqual(val1["par_mult"], val2["par_mult"], places=4)
 
-        # True high-multiple compounder (e.g. Hermes): Low = 38x, High = 52x -> harmonic mean = 43.91x (not capped at 35.0!)
-        fin_hermes = sample_fin(mult_low_5y=38.0, mult_high_5y=52.0, g_est=0.082, roic_operating=0.55)
-        val_hermes = par_valuation(fin_hermes, self.p, cap=30)
-        self.assertGreater(val_hermes["t_hist"], 43.0)
-        self.assertAlmostEqual(val_hermes["par_mult"], 0.75 * val_hermes["pe_vd"] + 0.25 * val_hermes["t_hist"], places=4)
-
-    def test_pure_75_25_par_mult_not_capped_by_mult_high_5y(self):
-        # When 0.75 * pe_vd + 0.25 * t_hist exceeds mult_high_5y (e.g. BLK / depressed 5Y range), par_mult is not capped at mh
-        fin = sample_fin(mult_low_5y=12.0, mult_high_5y=15.0, g_est=0.09, roic_operating=0.35)
-        val = par_valuation(fin, self.p, cap=20)
-        self.assertGreater(val["par_mult"], 15.0)
-        self.assertAlmostEqual(val["par_mult"], 0.75 * val["pe_vd"] + 0.25 * val["t_hist"], places=4)
-
-    def test_value_driver_differentiates_across_cap_tiers_and_handles_g_equal_k(self):
-        fin = sample_fin(mult_low_5y=20.0, mult_high_5y=40.0, cagr_oe_eps=0.10, roic_operating=0.35)
+    def test_explicit_dcf_differentiates_across_cap_tiers_and_penalizes_low_roic(self):
+        fin = sample_fin(opcost_cagr=0.09, roic_operating=0.35)
         v30 = par_valuation(fin, self.p, cap=30)
         v20 = par_valuation(fin, self.p, cap=20)
         v15 = par_valuation(fin, self.p, cap=15)
         self.assertGreater(v30["pe_vd"], v20["pe_vd"])
         self.assertGreater(v20["pe_vd"], v15["pe_vd"])
-        self.assertGreater(v30["par_mult"], v20["par_mult"])
-        self.assertGreater(v20["par_mult"], v15["par_mult"])
 
-        # Exact continuity when g_exp == k = 0.0875
-        fin_eq_k = sample_fin(mult_low_5y=20.0, mult_high_5y=30.0, g_est=0.0875, roic_operating=0.30)
-        val_eq_k = par_valuation(fin_eq_k, self.p, cap=20)
-        self.assertIsNotNone(val_eq_k["pe_mck"])
-        self.assertGreater(val_eq_k["pe_mck"], 20.0)
-
-    def test_value_driver_penalizes_low_roic_grower_vs_high_roic_grower(self):
-        fin_low_roic = sample_fin(mult_low_5y=20.0, mult_high_5y=30.0, g_est=0.09, roic_operating=0.12)
-        fin_high_roic = sample_fin(mult_low_5y=20.0, mult_high_5y=30.0, g_est=0.09, roic_operating=0.40)
+        fin_low_roic = sample_fin(g_est=0.09, roic_operating=0.12)
+        fin_high_roic = sample_fin(g_est=0.09, roic_operating=0.40)
         val_low = par_valuation(fin_low_roic, self.p, cap=20)
         val_high = par_valuation(fin_high_roic, self.p, cap=20)
-        self.assertGreater(val_high["pe_vd"], val_low["pe_vd"] + 5.0)
-        self.assertGreater(val_high["par_mult"], val_low["par_mult"] + 3.5)
+        self.assertGreater(val_high["par_mult"], val_low["par_mult"] + 4.0)
 
-    def test_closed_form_g_market_inversion_round_trip(self):
-        fin = sample_fin(mult_low_5y=18.0, mult_high_5y=36.0, cagr_oe_eps=0.085, roic_operating=0.22)
+    def test_dcf_g_market_inversion_round_trip(self):
+        fin = sample_fin(opcost_cagr=0.085, roic_operating=0.22)
         val0 = par_valuation(fin, self.p, cap=15)
         fin_at_par = sample_fin(
             price=val0["par_val"], peak_oe_eps=5.0,
-            mult_low_5y=18.0, mult_high_5y=36.0, cagr_oe_eps=0.085, roic_operating=0.22,
+            opcost_cagr=0.085, roic_operating=0.22,
         )
         val_at_par = par_valuation(fin_at_par, self.p, cap=15)
-        self.assertAlmostEqual(val_at_par["g_market"], val0["g_exp"], places=4)
+        self.assertAlmostEqual(val_at_par["g_market"], val0["g_org_exp"], places=4)
         self.assertAlmostEqual(val_at_par["g_gap"], 0.0, places=4)
 
     def test_mid_cycle_blend_when_current_eps_below_peak(self):
@@ -436,10 +342,10 @@ class QuantitativeGrowthTests(unittest.TestCase):
         expected_nav_pe = 1.0 / val_mtm["roic_exp"]
         self.assertAlmostEqual(val_mtm["pe_vd"], expected_nav_pe, places=4)
         self.assertAlmostEqual(val_mtm["pe_mm"], expected_nav_pe, places=4)
-        self.assertAlmostEqual(val_mtm["pe_mck"], expected_nav_pe, places=4)
-        self.assertAlmostEqual(val_mtm["par_mult"], 0.75 * expected_nav_pe + 0.25 * val_mtm["t_hist"], places=4)
+        self.assertAlmostEqual(val_mtm["pe_mck"], 0.0, places=4)
+        self.assertAlmostEqual(val_mtm["par_mult"], expected_nav_pe, places=4)
 
-        # Operating HoldCo consolidating cash-generating subsidiaries (fcf_conv >= 0.25) uses standard Value Driver
+        # Operating HoldCo consolidating cash-generating subsidiaries (fcf_conv >= 0.25) uses standard Explicit DCF
         fin_op_holdco = sample_fin(
             roic_median=0.15, roic_operating=0.18,
             mult_low_5y=15.0, mult_high_5y=25.0,
@@ -459,9 +365,9 @@ class QuantitativeGrowthTests(unittest.TestCase):
         # Compare against a non-concession with the same GAAP ROIC
         val_std = par_valuation(fin_conc, self.p, cap=15, sub_industry="Industrial Machinery & Supplies & Components")
         self.assertAlmostEqual(val_conc["roic_exp"], 0.1286, places=3)
-        self.assertLess(val_conc["pe_mck"], 9.0)
-        self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 3.0)
-        self.assertAlmostEqual(val_conc["par_mult"], 0.75 * val_conc["pe_vd"] + 0.25 * val_conc["t_hist"], places=4)
+        self.assertAlmostEqual(val_conc["pe_mck"], 0.0, places=4)
+        self.assertLess(val_conc["pe_vd"], val_std["pe_vd"] - 5.0)
+        self.assertAlmostEqual(val_conc["par_mult"], val_conc["pe_vd"], places=4)
 
     def test_textbook_5y_cash_flow_irr_satisfies_npv_zero(self):
         # 1. Zero-dividend case reduces exactly to (1 + g_exp) * (par_val / price)^0.2 - 1
@@ -487,22 +393,21 @@ class QuantitativeGrowthTests(unittest.TestCase):
             self.assertAlmostEqual(pv_divs + pv_term, price, places=7)
 
     def test_buyback_neutrality_in_pe_vd_and_fcf_cap_in_5y_irr(self):
-        """Positive buybacks increase per-share g_start/g_exp without inflating firm-level PE_VD, and obey FCF payout conservation in 5Y IRR."""
+        """Positive buybacks increase per-share g_exp without inflating firm-level PE_VD, and obey FCF payout conservation in 5Y IRR."""
         fin_no_bb = sample_fin(
             price=100.0, market_cap_m=10000.0, dividends_ttm_m=150.0,
-            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, cap_growth=0.08,
+            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, opcost_cagr=0.08, cap_growth=0.08,
             cagr_oe_eps=0.08, buyback_yield=0.0, roic_operating=0.30,
         )
         fin_with_bb = sample_fin(
             price=100.0, market_cap_m=10000.0, dividends_ttm_m=150.0,
-            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, cap_growth=0.08,
+            sales_ttm_m=12000.0, sales_1y=0.08, sales_cagr=0.08, opcost_cagr=0.08, cap_growth=0.08,
             cagr_oe_eps=0.105, buyback_yield=0.025, roic_operating=0.30,
         )
         v_no = par_valuation(fin_no_bb, self.p, cap=20)
         v_bb = par_valuation(fin_with_bb, self.p, cap=20)
         # Per-share growth rises with buybacks, while organic firm growth and PE_VD stay neutral!
-        self.assertGreater(v_bb["g_start"], v_no["g_start"] + 0.02)
-        self.assertGreater(v_bb["g_exp"], v_no["g_exp"] + 0.01)
+        self.assertGreater(v_bb["g_exp"], v_no["g_exp"] + 0.02)
         self.assertAlmostEqual(v_bb["g_org_exp"], v_no["g_org_exp"], places=4)
         self.assertAlmostEqual(v_bb["pe_vd"], v_no["pe_vd"], places=4)
         self.assertAlmostEqual(v_bb["par_val"], v_no["par_val"], places=4)
@@ -510,50 +415,36 @@ class QuantitativeGrowthTests(unittest.TestCase):
         # At expensive current multiple (e.g. 50x P/E), FCF yield cannot fund 1.5% div + full buybacks:
         fin_expensive = dict(fin_with_bb, price=250.0, market_cap_m=25000.0, dividends_ttm_m=375.0)
         v_exp = par_valuation(fin_expensive, self.p, cap=20)
-        # PAR Value is 100% independent of current share price!
+        # Fair Value is 100% independent of current share price!
         self.assertAlmostEqual(v_exp["par_val"], v_bb["par_val"], places=4)
-        # g_irr is capped below g_exp due to FCF conservation at 50x P/E
-        self.assertLess(v_exp["g_irr"], v_exp["g_exp"])
-        self.assertGreaterEqual(v_exp["g_irr"], v_exp["g_org_exp"])
-
-    def test_regime_bounded_harmonic_pe_blocks_bubble_outliers_while_preserving_compounders(self):
-        """t_hist is bounded within [0.50x, 1.50x] of PE_VD so 96x bubble outliers cannot distort PAR_Mult."""
-        fin_bubble = sample_fin(mult_low_5y=75.0, mult_high_5y=130.0, g_est=0.09, roic_operating=0.30)
-        val_bubble = par_valuation(fin_bubble, self.p, cap=20)
-        self.assertGreater(val_bubble["t_hist_raw"], 95.0)
-        self.assertAlmostEqual(val_bubble["t_hist"], 1.50 * val_bubble["pe_vd"], places=4)
-        self.assertAlmostEqual(val_bubble["par_mult"], 0.75 * val_bubble["pe_vd"] + 0.25 * val_bubble["t_hist"], places=4)
-
-        # Depressed trough outlier below 0.50x PE_VD is floored at 0.50x PE_VD
-        fin_deep = sample_fin(mult_low_5y=5.0, mult_high_5y=7.0, g_est=0.09, roic_operating=0.30)
-        val_deep = par_valuation(fin_deep, self.p, cap=20)
-        self.assertAlmostEqual(val_deep["t_hist"], 0.50 * val_deep["pe_vd"], places=4)
+        # g_irr is capped below v_bb["g_irr"] due to FCF conservation at 50x P/E
+        self.assertLess(v_exp["g_irr"], v_bb["g_irr"])
 
     def test_market_implied_cap_zero_moat_floor_and_at_par_identity(self):
-        """Market-Implied CAP equals 0.0y at <= 1/k = 11.43x and equals Fundamental CAP at PAR Value."""
+        """Market-Implied CAP equals 0.0y at <= 1/k = 11.76x and equals Fundamental CAP at Fair Value."""
         fin = sample_fin(mult_low_5y=18.0, mult_high_5y=28.0, g_est=0.085, roic_operating=0.28)
         v0 = par_valuation(fin, self.p, cap=20)
 
-        # At PAR Value -> Market-Implied CAP == 20.0y
+        # At Fair Value -> Market-Implied CAP == 20.0y
         v_par = par_valuation(dict(fin, price=v0["par_val"]), self.p, cap=20)
         self.assertAlmostEqual(v_par["cap_implied"], 20.0, places=1)
         self.assertAlmostEqual(v_par["cap_gap"], 0.0, places=1)
 
-        # At 10.0x P/E (< 1/k = 11.43x) -> Market-Implied CAP == 0.0y
+        # At 10.0x P/E (< 1/k = 11.76x) -> Market-Implied CAP == 0.0y
         v_cheap = par_valuation(dict(fin, price=10.0 * v0["peak_eps"]), self.p, cap=20)
         self.assertAlmostEqual(v_cheap["cap_implied"], 0.0, places=1)
         self.assertAlmostEqual(v_cheap["cap_gap"], 20.0, places=1)
 
     def test_g_market_round_trip_with_buybacks_and_mtm_holdco(self):
-        """g_market == g_exp (g_gap == 0.0) holds at Price == PAR Value even with non-zero buybacks and on MTM HoldCos."""
+        """g_market == g_org_exp (g_gap == 0.0) holds at Price == Fair Value even with non-zero buybacks and on MTM HoldCos."""
         fin_bb = sample_fin(
-            sales_ttm_m=15000.0, sales_1y=0.10, sales_cagr=0.10, cap_growth=0.09,
+            sales_ttm_m=15000.0, sales_1y=0.10, sales_cagr=0.10, opcost_cagr=0.095, cap_growth=0.09,
             cagr_oe_eps=0.12, buyback_yield=0.02, roic_operating=0.32,
             mult_low_5y=18.0, mult_high_5y=30.0,
         )
         v0 = par_valuation(fin_bb, self.p, cap=20)
         v_at_par = par_valuation(dict(fin_bb, price=v0["par_val"]), self.p, cap=20)
-        self.assertAlmostEqual(v_at_par["g_market"], v0["g_exp"], places=4)
+        self.assertAlmostEqual(v_at_par["g_market"], v0["g_org_exp"], places=4)
         self.assertAlmostEqual(v_at_par["g_gap"], 0.0, places=4)
 
         # MTM HoldCo round-trip & realistic sensitivity
@@ -564,7 +455,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         )
         vm0 = par_valuation(fin_mtm, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
         vm_par = par_valuation(dict(fin_mtm, price=vm0["par_val"]), self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
-        self.assertAlmostEqual(vm_par["g_market"], vm0["g_exp"], places=4)
+        self.assertAlmostEqual(vm_par["g_market"], vm0["g_org_exp"], places=4)
         self.assertAlmostEqual(vm_par["g_gap"], 0.0, places=4)
 
     def test_insurer_missing_ocf_not_misclassified_as_mtm_holdco(self):

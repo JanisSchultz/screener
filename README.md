@@ -1,10 +1,10 @@
-# Quality & Moat Screener (v6.34 — 6 Munger Quality Gates & Equity Bond Below PAR)
+# Quality & Moat Screener (v6.35 — 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
 
 ```
-Pre-Screen (markets → Gate 2, sub-industry → Gate 6 default) → 6 Munger Reject Gates (Qualitative) → Quantitative (Equity Bond Below PAR) → Shortlists
+Pre-Screen (markets → Gate 2, sub-industry → Gate 6 default) → 6 Munger Reject Gates (Qualitative) → Quantitative (Explicit Mauboussin-Fade DCF) → Shortlists
 
 Every qualitative step is a REJECT gate; Qualitative → "Review Stage / Action" and "Rejected at" show live flow:
 Gate 1: Simple to Understand (verifiable, established model)
@@ -14,8 +14,14 @@ Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 yrs via Mauboussin B
 Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation (5 vectors >= 1)
 Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance Sheet (3 pillars: Peak-to-Peak, FCF >= 80% NI, Debt <= 4y & Interest Cover > 5x)
 
--> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Equity Bond Below PAR: 4-5Y Peak Owner EPS, PAR Multiple, 5Y Expected IRR, Market-Implied CAP, Market-Implied g), separated into clean Shortlists vs. the Calamity Watchlist.
+-> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.35: Slump-Cannibal Compounder Rework — Operating Cost Base Growth Ceiling (g_org_exp) & Explicit N-Year Mauboussin-Fade DCF (r = 8.50%):
+- Normal Organic Growth Ceiling (g_0 / g_org_exp) Anchored on Operating Cost Base (opcost_cagr): Because companies passing the 6 Munger Quality Gates maintain roughly constant margins over the cycle (Gate 3b pricing power >= inflation, Gate 5 rejects SG&A bloat), the 3-5Y CAGR of the operating cost base (OpCost = Sales - EBIT = COGS + OpEx) anchors the normal organic growth ceiling (bounded by [2.0%, scale_cap]), unaffected by temporary 1Y revenue slumps.
+- Explicit N-Year Mauboussin-Fade DCF (r = 8.50%, 100% weight): Replaces the legacy 3-anchor pre-faded growth and 75/25 historical P/E blend with a year-by-year explicit DCF over the company's Gate 4 CAP (N years), where organic growth g_t and return on incremental capital ROIC_t fade linearly from (g_0 = g_org_exp, ROIC_0 = ROIC_exp) at Year 1 down to terminal steady state (g_term = 3.5%, ROIC_term = max(12.0%, min(ROIC_0, 20.0%))) at Year N, plus terminal perpetuity discounted at r = 8.50%.
+- Exact DCF-Inverted Market-Implied Growth (g_market at r = 8.50%): Solves via bisection for the initial organic growth rate g_market that makes the Explicit Mauboussin-Fade DCF multiple equal to Current P/E, surfacing Growth Margin of Safety (g_0 - g_market) alongside Discount to Fair Value.
+- Reworked Slump-Cannibal Cockpit Columns: Displays Price, 1Y Growth (sales_1y), 3-5Y Growth (sales_cagr), OpCost g (opcost_cagr), Growth Ceiling (g_org_exp), Buyback (buyback_yield), Mkt Implied g (g_market), g Margin (g_gap), Fair Value (par_val), Discount (vs_par), Cur P/E, Fair P/E, and 5Y Exp IRR.
 
 v6.34: Organic Value Driver Separation, FCF-Bounded 5Y IRR, Regime-Bounded Harmonic P/E & Quantitative Audit Remediation:
 - Buyback Neutrality in PE_VD & FCF-Conserved 5Y IRR: Computes parallel Organic Firm Growth (g_org_start -> g_org_exp, stripping positive buybacks while retaining share dilution) and evaluates Miller-Modigliani and McKinsey 2-Stage Value Driver P/E strictly on g_org_exp, eliminating share-buyback double-counting in PAR Multiple while capping buyback accretion in 5Y IRR at sustainable Stage-1 FCF payout capacity ((1 - g_org_exp/ROIC_exp)/Cur_Mult - Dividend_Yield).
@@ -233,7 +239,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Equity Bond Below PAR v6.34)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v6.35)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving
