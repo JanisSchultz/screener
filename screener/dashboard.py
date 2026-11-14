@@ -12,7 +12,7 @@ from typing import Any
 
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
-from .gates import params, par_valuation, results, uses_gaap_roic
+from .gates import active_roic, params, par_valuation, results, uses_gaap_roic
 
 
 def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
@@ -32,6 +32,20 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             "parameters": meta.get("parameters", {}),
         }
         p = params(meta)
+        # Full PAR parameter set (defaults + universe.json overrides) so the JS sandbox uses exactly the Python constants
+        universes_meta[u_key]["par_params"] = {
+            "k": p.get("par_cost_of_equity", 0.085),
+            "k_fin": p.get("par_cost_of_equity_fin", 0.1025),
+            "roic_avg": p.get("par_roic_avg", 0.12),
+            "roic_log_k": p.get("par_roic_log_k", 0.25),
+            "g_anchor_max": p.get("par_g_anchor_max", 0.22),
+            "g_1y_floor": p.get("par_g_1y_floor", -0.04),
+            "g_base": p.get("par_g_base", 0.035),
+            "fade_cap30": p.get("par_fade_cap30", 0.85),
+            "fade_cap20": p.get("par_fade_cap20", 0.75),
+            "fade_cap15": p.get("par_fade_cap15", 0.62),
+            "fade_default": p.get("par_fade_default", 0.75),
+        }
         res_map = results(meta)
 
         for c in meta["companies"]:
@@ -42,16 +56,12 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             sub_ind = c.get("sub_industry", "")
             val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"), sub_industry=sub_ind)
 
-            # Effective ROIC (GAAP ROIC for Balance-Sheet Financials & IFRIC-12 Concessions; Tangible ROIC otherwise)
+            # Active capital-return input (same helper as par_valuation): ROE for Balance-Sheet Financials,
+            # GAAP ROIC for IFRIC-12 Concessions, Tangible Operating ROIC otherwise; roic_est override first.
             r_est = fin.get("roic_est")
             r_op = fin.get("roic_operating")
             r_med = fin.get("roic_median")
-            if r_est is not None:
-                roic_used = r_est
-            elif uses_gaap_roic(sub_ind):
-                roic_used = r_med if r_med is not None else r_op
-            else:
-                roic_used = r_op if r_op is not None else r_med
+            roic_used, roic_source = active_roic(fin, sub_ind)
 
             st_map = pres.get("status", {})
             moat_arch_val = c.get("3a")
@@ -109,6 +119,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "roic_operating": r_op,
                 "roic_est": r_est,
                 "roic_used": roic_used,
+                "roic_source": roic_source,
+                "roe_median": fin.get("roe_median"),
+                "equity_m": fin.get("equity_m"),
+                "ocf_ni_2y": fin.get("ocf_ni_2y"),
+                "owner_add_m": fin.get("owner_add_m"),
                 "uses_gaap_roic": uses_gaap_roic(sub_ind),
                 "fcf_conv": fin.get("fcf_conv"),
                 "peak_oe_year": fin.get("peak_oe_year"),
@@ -162,6 +177,14 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "cap_implied": val.get("cap_implied"),
                 "cap_gap": val.get("cap_gap"),
                 "g_market": val.get("g_market"),
+                "g_market_flag": val.get("g_market_flag"),
+                "pe5_ratio": val.get("pe5_ratio"),
+                "bvps": val.get("bvps"),
+                "nav_anchor": val.get("nav_anchor"),
+                "mtm_holdco": val.get("mtm_holdco"),
+                "finite_conc": val.get("finite_conc"),
+                "bs_fin": val.get("bs_fin"),
+                "disc_rate": val.get("k"),
                 "g_gap": val.get("g_gap"),
                 "pers": val.get("pers"),
                 "g_mult": val.get("g_mult"),
@@ -195,7 +218,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = statistics.median(irrs) if irrs else 0.0
 
     return {
-        "version": "6.35",
+        "version": "6.36",
         "generated_at": "2026-11-14",
         "summary": {
             "total_companies": len(all_companies),
@@ -1918,9 +1941,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           Fair P/E = PV<sub>Stage 1</sub> + PV<sub>Stage 2</sub> &nbsp;|&nbsp; Fair Value = Fair P/E &times; Active EPS &nbsp;|&nbsp; Discount = Price / Fair Value - 1<br>
           <span style="font-size: 11px; color: var(--text-dim);">
             <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> Linear fade of organic growth g<sub>t</sub> = g₀ - ((t-1)/N)(g₀ - 3.5%) and return on capital ROIC<sub>t</sub> = ROIC₀ - ((t-1)/N)(ROIC₀ - ROIC<sub>term</sub>), where E<sub>t</sub> = E<sub>t-1</sub>(1 + g<sub>t</sub>) and FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/ROIC<sub>t</sub>), discounted at r = 8.50%.<br>
-            <b>Stage 2 (Post-CAP Perpetuity at t = N):</b> Zero-growth steady-state perpetuity (g<sub>TV</sub> = 0.0%, TV<sub>N</sub> = E<sub>N</sub> / r), discounted back from Year N at r = 8.50%.<br>
-            <b>Market-Implied Growth (g<sub>market</sub> at r = 8.50%):</b> Exact DCF inversion solving for the starting organic growth rate g<sub>market</sub> where DCF_PE(g<sub>market</sub>) == Cur_Mult &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub>.<br>
-            <b>Balance-Sheet Financials &amp; Concessions:</b> Uses GAAP ROIC (<code style="color: var(--accent);">roic_median</code>) for Insurance, Reinsurance, Banks, Multi-Sector Holdings &amp; IFRIC-12 Concessions; Mark-to-Market HoldCos use <code style="color: var(--accent);">Fair P/E = 1 / ROIC₀</code> (P/B = 1.0x); IFRIC-12 Concessions (FCF Conv &gt; 1.25x) omit Stage 2 terminal perpetuity.
+            <b>Stage 2 (Post-CAP Perpetuity at t = N):</b> TV<sub>N</sub> = E<sub>N</sub> / r &mdash; growth after the CAP earns exactly r (RONIC = r) and therefore adds no value (ROIC<sub>term</sub> only governs the Stage-1 fade), discounted back from Year N at r = 8.50%. Reinvestment g<sub>t</sub>/ROIC<sub>t</sub> is uncapped (FCF may turn negative when growth exceeds ROIC).<br>
+            <b>Market-Implied Growth (g<sub>market</sub> at r = 8.50%):</b> Root-safe DCF inversion (grid scan &minus;20%..+50% + bisection) solving for the starting organic growth rate g<sub>market</sub> where DCF_PE(g<sub>market</sub>) == Cur_Mult &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub> (shown only when the root is unique; flagged otherwise: saturated, no value creation at ROIC &le; r, multiple roots, NAV-anchored).<br>
+            <b>Balance-Sheet Financials &amp; Concessions:</b> Insurance, Reinsurance, Banks, deposit-funded Brokers (Investment Banking &amp; Brokerage) &amp; Multi-Sector Holdings use 5Y median ROE (<code style="color: var(--accent);">roe_median</code>) at r<sub>fin</sub> = 10.25%; IFRIC-12 Concessions use GAAP ROIC (<code style="color: var(--accent);">roic_median</code>); Mark-to-Market HoldCos / Insurers (5Y FCF Conv or 2Y OCF/NI &lt; 0.25) are valued at <code style="color: var(--accent);">Fair Value = 1.0x Book Value / Share</code>; IFRIC-12 Concessions (FCF Conv &gt; 1.25x) omit Stage 2 terminal perpetuity.
           </span>
         </p>
       </div>
@@ -1943,7 +1966,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <div class="metric-box">
         <strong style="color: var(--text-main);">4. Textbook 5-Year Cash-Flow IRR with FCF Payout Conservation (Cannibal Slump Compounding):</strong>
         <p class="formula-code">
-          P₀ = &Sigma;<sub>t=1..5</sub> [D₀(1 + g_irr)<sup>t</sup> / (1 + IRR)<sup>t</sup>] + [Fair_Value(1 + g_irr)<sup>5</sup> / (1 + IRR)<sup>5</sup>] &nbsp;|&nbsp; g_irr = g<sub>org,5y</sub> + min(bb_pos, max(0, FCF_Payout/Cur_Mult - dy))<br>
+          P₀ = &Sigma;<sub>t=1..5</sub> [D₀(1 + g_irr)<sup>t</sup> / (1 + IRR)<sup>t</sup>] + [Fair_Value &times; (PE<sub>5</sub>/PE<sub>0</sub>) &times; (1 + g_irr)<sup>5</sup> / (1 + IRR)<sup>5</sup>] (PE<sub>5</sub> = Fair P/E rolled forward 5 years along the fade, remaining CAP N&minus;5) &nbsp;|&nbsp; g_irr = g<sub>org,5y</sub> + min(bb_pos, max(0, FCF_Payout/Cur_Mult - dy))<br>
           <span style="font-size: 11px; color: var(--text-dim);">Solves the exact 5-year cash-flow internal rate of return across growing annual dividends and Year-5 DCF Fair Value while bounding buyback accretion at current P/E so Dividends + Buybacks + Organic Reinvestment never exceed 100% of Owner Earnings.</span>
         </p>
       </div>
@@ -2905,7 +2928,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_imp' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
-            cellContent = fmtPct(val, true);
+            cellContent = fmtGMarket(c);
           }} else if (col.key === 'g_gap') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -2942,10 +2965,26 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return (val > 0 ? '+' : '') + fmtNum(val, 1) + 'y';
     }}
 
+    // Market-Implied Growth with its solver flag (screener/gates.py solve_market_growth, v6.36)
+    const G_MARKET_FLAG_LABELS = {{
+      saturated_low: '≤', saturated_high: '≥',
+      no_value_creation: 'n/a (ROIC ≤ r: growth destroys value)',
+      multi_root: '(ambiguous)',
+      nav_anchored: 'n/a (NAV-anchored)'
+    }};
+    function fmtGMarket(c) {{
+      const flag = c.g_market_flag;
+      if (flag === 'nav_anchored' || flag === 'no_value_creation') return G_MARKET_FLAG_LABELS[flag];
+      if (c.g_market === null || c.g_market === undefined) return '-';
+      if (flag === 'saturated_low' || flag === 'saturated_high') return `${{G_MARKET_FLAG_LABELS[flag]}} ${{fmtPct(c.g_market, true)}}`;
+      if (flag === 'multi_root') return `${{fmtPct(c.g_market, true)}} ${{G_MARKET_FLAG_LABELS[flag]}}`;
+      return fmtPct(c.g_market, true);
+    }}
+
     function triadCardsHtml(c) {{
       const g1y = fmtPct(c.sales_1y, true);
       const gCeil = fmtPct(c.g_org_exp !== null && c.g_org_exp !== undefined ? c.g_org_exp : c.g_imp);
-      const gMkt = fmtPct(c.g_market, true);
+      const gMkt = fmtGMarket(c);
       const gGap = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
       const gColor = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
       const cOur = c.g4_cap ? `${{c.g4_cap}}y` : (passesG123a(c) ? '20y*' : '-');
@@ -3246,7 +3285,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (c.buyback_yield !== null && c.buyback_yield !== undefined) parts.push(`BB ${{fmtPct(c.buyback_yield, true)}}`);
         scaleEl.textContent = parts.join(' · ');
       }}
-      document.getElementById('dossier-g-market').textContent = fmtPct(c.g_market, true);
+      document.getElementById('dossier-g-market').textContent = fmtGMarket(c);
       const gMarginEl = document.getElementById('dossier-g-margin');
       gMarginEl.textContent = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
       gMarginEl.style.color = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-main)';
@@ -3587,10 +3626,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
     }}
 
-    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false) {{
+    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false, roicEndOverride=null) {{
+      // Mirrors screener/gates.py explicit_dcf_multiple (v6.36): uncapped reinvestment g_t / ROIC_t (FCF may be
+      // negative = externally funded growth) and TV_N = E_N / r (post-CAP growth earns RONIC = r).
       const nSteps = Math.max(1, Math.round(nCap));
       const roicStart = Math.max(0.05, roic0);
-      const roicTerm = Math.max(roicTermFloor, Math.min(roicStart, roicTermCap));
+      const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
+        ? Math.max(0.05, roicEndOverride)
+        : Math.max(roicTermFloor, Math.min(roicStart, roicTermCap));
       const gTermEff = Math.min(g0, gTerm);
       let pvStage1 = 0.0;
       let sumFcf1 = 0.0;
@@ -3601,7 +3644,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const gT = g0 - frac * (g0 - gTermEff);
         const roicT = Math.max(0.05, roicStart - frac * (roicStart - roicTerm));
         earn = earn * (1.0 + gT);
-        const reinvT = Math.min(0.95, Math.max(0.0, gT) / roicT);
+        const reinvT = Math.max(0.0, gT) / roicT;
         const fcfT = earn * (1.0 - reinvT);
         const dfT = 1.0 / Math.pow(1.0 + k, t);
         const pvT = fcfT * dfT;
@@ -3699,7 +3742,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, roicAvg, 0.20, isFiniteConc);
-      const effMult = isMtmHoldco ? (1.0 / roic0) : dcf.total;
+      const navMult = (opts.navMult !== null && opts.navMult !== undefined) ? opts.navMult : (1.0 / roic0);
+      const effMult = isMtmHoldco ? navMult : dcf.total;
       const effFv = effMult * e0;
       const pv1Dollar = dcf.pvStage1 * e0;
       const pv2Dollar = dcf.pvStage2 * e0;
@@ -3708,7 +3752,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const s2Share = dcf.total > 0 ? (dcf.pvStage2 / dcf.total) : 0.0;
 
       // Populate Top Summary Strip
-      const re0 = Math.min(0.95, Math.max(0.0, g0) / dcf.roicStart);
+      const re0 = Math.max(0.0, g0) / dcf.roicStart;
       const fcf0 = e0 * (1.0 - re0);
       document.getElementById('dcf-sum-e0').textContent = fmtPrice(e0, ccy);
       document.getElementById('dcf-sum-price').textContent = `Cur Price: ${{fmtPrice(price, ccy)}} (${{price && e0 ? fmtNum(price / e0) + 'x' : '-'}})`;
@@ -3718,14 +3762,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dcf-sum-disc').textContent = `Discount Rate r = ${{(k * 100).toFixed(2)}}%`;
       document.getElementById('dcf-sum-fv').textContent = `${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x)`;
       document.getElementById('dcf-sum-split').textContent = isMtmHoldco
-        ? `MTM HoldCo NAV Anchor: 1 / ROIC₀ = ${{fmtNum(effMult)}}x`
+        ? `MTM HoldCo NAV Anchor: 1.0x Book Value / Share = ${{fmtNum(effMult)}}x Peak EPS`
         : `Stage 1: ${{Math.round(s1Share * 100)}}% (${{fmtNum(dcf.pvStage1)}}x) · TV: ${{Math.round(s2Share * 100)}}% (${{fmtNum(dcf.pvStage2)}}x)`;
 
       const noteEl = document.getElementById('dcf-special-note');
       if (noteEl) {{
         if (isMtmHoldco) {{
           noteEl.style.display = 'block';
-          noteEl.innerHTML = `<strong>ℹ️ Mark-to-Market HoldCo / Insurer NAV Rule:</strong> Because reported GAAP EPS already includes unrealized mark-to-market portfolio gains (&Delta;NAV), intrinsic Fair Value is anchored at <b>1.0x NAV = E₀ / ROIC₀ = ${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x P/E)</b>. The table below displays the illustrative operating cash-flow fade schedule at r = ${{(k * 100).toFixed(2)}}%.`;
+          noteEl.innerHTML = `<strong>ℹ️ Mark-to-Market HoldCo / Insurer NAV Rule:</strong> Because reported GAAP EPS already includes unrealized mark-to-market portfolio gains (&Delta;NAV), intrinsic Fair Value is anchored at <b>1.0x NAV = Book Value / Share = ${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x Peak EPS)</b>. The table below displays the illustrative operating cash-flow fade schedule at r = ${{(k * 100).toFixed(2)}}%.`;
         }} else if (isFiniteConc) {{
           noteEl.style.display = 'block';
           noteEl.innerHTML = `<strong>ℹ️ IFRIC-12 Finite Infrastructure Concession Rule:</strong> Concession assets amortize and revert to the state at expiry, so Stage 2 Terminal Value is <b>0.00</b> and Fair Value is 100% Stage 1 CAP cash flows over N = ${{dcf.nSteps}} years.`;
@@ -3785,8 +3829,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const fcfTermDollar = tv.fcfTerm * e0;
       const tvUndiscDollar = tv.termVal * e0;
       htmlRows.push(`<tr class="dcf-row-terminal">
-        <td>Terminal Value (Yr ${{dcf.nSteps + 1}}+ Perpetuity)<span class="dcf-sub">${{isFiniteConc ? 'Concession Expiry (No TV)' : 'E_N / r (0% TV Growth)'}}</span></td>
-        <td>${{fmtPct(tv.gTerm)}}<span class="dcf-sub">Terminal g_TV (0%)</span></td>
+        <td>Terminal Value (Yr ${{dcf.nSteps + 1}}+ Perpetuity)<span class="dcf-sub">${{isFiniteConc ? 'Concession Expiry (No TV)' : 'E_N / r (RONIC = r)'}}</span></td>
+        <td>${{fmtPct(tv.gTerm)}}<span class="dcf-sub">Post-CAP growth adds no value</span></td>
         <td>${{fmtPct(tv.roicTerm)}}<span class="dcf-sub">Reinv ${{(tv.reinvTerm * 100).toFixed(1)}}%</span></td>
         <td>${{fmtPrice(earnTermDollar, ccy)}}<span class="dcf-sub">Yr ${{dcf.nSteps + 1}} EPS</span></td>
         <td>${{isFiniteConc ? fmtPrice(0, ccy) : fmtPrice(tvUndiscDollar, ccy)}}<span class="dcf-sub">${{isFiniteConc ? 'Expiry' : 'Yr ' + (dcf.nSteps + 1) + ' FCF: ' + fmtPrice(fcfTermDollar, ccy)}}</span></td>
@@ -3811,21 +3855,57 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = htmlRows.join('');
     }}
 
-    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false) {{
-      if (!targetPe || targetPe <= 0) return null;
-      let lo = -0.15, hi = 0.35;
-      const peLo = explicitDcfMultiple(lo, roic0, nCap, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
-      if (targetPe <= peLo) return Math.round(lo * 10000) / 10000;
-      const peHi = explicitDcfMultiple(hi, roic0, nCap, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
-      if (targetPe >= peHi) return Math.round(hi * 10000) / 10000;
-      for (let i = 0; i < 40; i++) {{
-        const mid = 0.5 * (lo + hi);
-        const peMid = explicitDcfMultiple(mid, roic0, nCap, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
-        if (Math.abs(peMid - targetPe) < 1e-7) {{ lo = mid; hi = mid; break; }}
-        if (peMid < targetPe) lo = mid;
-        else hi = mid;
+    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false, g0Ref=0.0) {{
+      // Mirrors screener/gates.py solve_market_growth (v6.36): grid scan [-20%, +50%] in 1pp steps, bisection in
+      // every sign-change bracket; returns {{ g, flag }} with flag in ok | saturated_low | saturated_high |
+      // no_value_creation | multi_root.
+      if (!targetPe || targetPe <= 0) return {{ g: null, flag: null }};
+      const LO = -0.20, HI = 0.50, STEP = 0.01;
+      const nPts = Math.round((HI - LO) / STEP);
+      const pe = (g) => explicitDcfMultiple(g, roic0, nCap, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
+      const grid = [], pes = [];
+      for (let i = 0; i <= nPts; i++) {{ const g = LO + i * STEP; grid.push(g); pes.push(pe(g)); }}
+      let increasing = true;
+      for (let i = 0; i < nPts; i++) {{ if (pes[i + 1] < pes[i] - 1e-9) {{ increasing = false; break; }} }}
+      const roots = [];
+      for (let i = 0; i < nPts; i++) {{
+        const d0 = pes[i] - targetPe, d1 = pes[i + 1] - targetPe;
+        if (d0 === 0) {{ roots.push(grid[i]); continue; }}
+        if (d0 * d1 < 0) {{
+          let lo = grid[i], hi = grid[i + 1], fLo = d0;
+          for (let j = 0; j < 40; j++) {{
+            const mid = 0.5 * (lo + hi);
+            const fMid = pe(mid) - targetPe;
+            if ((fMid < 0) === (fLo < 0)) {{ lo = mid; fLo = fMid; }} else {{ hi = mid; }}
+          }}
+          roots.push(0.5 * (lo + hi));
+        }}
       }}
-      return Math.round(0.5 * (lo + hi) * 10000) / 10000;
+      if (pes[nPts] - targetPe === 0) roots.push(grid[nPts]);
+      const r4 = (x) => Math.round(x * 10000) / 10000;
+      const nearest = () => roots.length ? r4(roots.reduce((a, b) => Math.abs(b - g0Ref) < Math.abs(a - g0Ref) ? b : a)) : null;
+      if (increasing) {{
+        if (roots.length) return {{ g: r4(roots[0]), flag: 'ok' }};
+        return targetPe < pes[0] ? {{ g: r4(LO), flag: 'saturated_low' }} : {{ g: r4(HI), flag: 'saturated_high' }};
+      }}
+      const i0 = Math.round(-LO / STEP), i10 = Math.round((0.10 - LO) / STEP);
+      if (pes[i10] < pes[i0]) return {{ g: nearest(), flag: 'no_value_creation' }};
+      return {{ g: nearest(), flag: 'multi_root' }};
+    }}
+
+    function year5MultipleRatio(g0, roic0, nCap, k=0.085, gTerm=0.035, roicTermFloor=0.12, roicTermCap=0.20, isFiniteConc=false) {{
+      // Mirrors screener/gates.py year5_multiple_ratio: PE_5 / PE_0 along the same fade (remaining CAP N - 5).
+      const roicStart = Math.max(0.05, roic0);
+      const n = Math.max(1, Math.round(nCap));
+      const roicEnd = Math.max(roicTermFloor, Math.min(roicStart, roicTermCap));
+      const pe0 = explicitDcfMultiple(g0, roicStart, n, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc).total;
+      if (n <= 5 || pe0 <= 0) return 1.0;
+      const gTermEff = Math.min(g0, gTerm);
+      const frac6 = 5.0 / n;
+      const g6 = g0 - frac6 * (g0 - gTermEff);
+      const roic6 = roicStart - frac6 * (roicStart - roicEnd);
+      const pe5 = explicitDcfMultiple(g6, roic6, n - 5, k, gTerm, roicTermFloor, roicTermCap, isFiniteConc, roicEnd).total;
+      return Math.max(0.0, pe5 / pe0);
     }}
 
     function recalcSandboxValuation() {{
@@ -3841,12 +3921,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const size_factor = (c.size_factor !== null && c.size_factor !== undefined) ? c.size_factor : 1.0;
       const scale_cap = (c.scale_cap !== null && c.scale_cap !== undefined) ? c.scale_cap : 0.120;
 
+      // PAR parameters injected from Python params(meta) (defaults + universe.json overrides), v6.36
+      const P = Object.assign({{
+        k: 0.085, k_fin: 0.1025, roic_avg: 0.12, roic_log_k: 0.25, g_anchor_max: 0.22, g_1y_floor: -0.04,
+        g_base: 0.035, fade_cap30: 0.85, fade_cap20: 0.75, fade_cap15: 0.62, fade_default: 0.75
+      }}, ((SCREENER_DATA.universes || {{}})[c.universe] || {{}}).par_params || {{}});
       const fund_cap = sbCurrent.cap;
-      let pers = 0.75;
+      let pers = P.fade_default;
       if (fund_cap !== null && fund_cap !== undefined) {{
-        if (fund_cap >= 30) pers = 0.85;
-        else if (fund_cap >= 20) pers = 0.75;
-        else pers = 0.62;
+        if (fund_cap >= 30) pers = P.fade_cap30;
+        else if (fund_cap >= 20) pers = P.fade_cap20;
+        else pers = P.fade_cap15;
       }}
 
       const s1Tweaked = (sbBaseline.sales1y !== undefined) && Math.abs(sbCurrent.sales1y - sbBaseline.sales1y) > 0.01;
@@ -3872,8 +3957,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       // Mauboussin Galton ROIC Regression
       const roic_op = (!roicTweaked && c.roic_used !== null && c.roic_used !== undefined) ? c.roic_used : (sbCurrent.roic / 100.0);
-      const roic_avg = 0.12;
-      const roic_log_k = 0.25;
+      const roic_avg = P.roic_avg;
+      const roic_log_k = P.roic_log_k;
       let roic_log = Math.round(Math.max(0.05, roic_op) * 10000) / 10000;
       let roic_exp = roic_log;
       let roic_fade_ratio = 1.0;
@@ -3884,7 +3969,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       // Normal Organic Growth Ceiling (g₀) Anchored on 70% OpCost WLS + 30% Sales WLS
-      const g_base = 0.035;
+      const g_base = P.g_base;
       const hasSalesCagr = (c.sales_cagr !== null && c.sales_cagr !== undefined) || s5Tweaked;
       let base_org = g_base;
       if (oc_cagr !== null && hasSalesCagr) {{
@@ -3901,53 +3986,49 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         base_org = c.g_implied - bb_pos;
       }}
 
-      const g_org_start = Math.round(Math.max(0.0, Math.min(0.22, base_org + bb_org)) * 10000) / 10000;
-      const g_start = Math.round(Math.max(-0.04, Math.min(0.22 + bb_pos, g_org_start + bb_pos)) * 10000) / 10000;
+      const g_org_start = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, base_org + bb_org)) * 10000) / 10000;
+      const g_start = Math.round(Math.max(P.g_1y_floor, Math.min(P.g_anchor_max + bb_pos, g_org_start + bb_pos)) * 10000) / 10000;
 
       let g_exp = null, g_org_exp = null;
       if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
         const g_est_val = sbCurrent.gest / 100.0;
-        g_org_exp = Math.round(Math.max(0.0, Math.min(0.22, g_est_val - bb_pos)) * 10000) / 10000;
-        g_exp = Math.round(Math.max(0.0, Math.min(0.22 + bb_pos, g_est_val)) * 10000) / 10000;
+        g_org_exp = Math.round(Math.max(0.0, Math.min(P.g_anchor_max, g_est_val - bb_pos)) * 10000) / 10000;
+        g_exp = Math.round(Math.max(0.0, Math.min(P.g_anchor_max + bb_pos, g_est_val)) * 10000) / 10000;
       }} else {{
         g_org_exp = g_org_start;
         g_exp = Math.round((g_org_exp + bb_pos) * 10000) / 10000;
       }}
-      g_org_exp = Math.min(g_exp, g_org_exp);
       const bb_contrib = Math.round(Math.max(0.0, g_exp - g_org_exp) * 10000) / 10000;
 
       // Valuation
       const hasHistMults = Boolean(ml && mh);
       const hasMoatArch = Boolean(c.g3a_moat_archetype && String(c.g3a_moat_archetype).trim() !== '' && String(c.g3a_moat_archetype).trim() !== 'None');
       const hasValuationInputs = Boolean(price && peak_eps && peak_eps > 0 && (hasHistMults || fund_cap !== null || c.peak_eps_est !== null || hasMoatArch));
-      let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null;
-      const g_org_val = (g_org_exp !== null && g_org_exp !== undefined) ? g_org_exp : 0.035;
+      let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null, g_market_flag = null, nav_mult = null;
+      const g_org_val = (g_org_exp !== null && g_org_exp !== undefined) ? g_org_exp : g_base;
       const subInd = (c.sub_industry || '').trim();
-      const isBsFin = !subInd.includes('Insurance Brokers') && !subInd.includes('Asset Management & Custody Banks') && !subInd.includes('Investment Banking & Brokerage') && (
-        subInd.includes('Insurance') || subInd.includes('Reinsurance') || subInd.includes('Multi-Sector Holdings') || subInd.includes('Banks')
-      );
-      const k = isBsFin ? 0.1025 : 0.085;
+      // Classification comes from Python (screener/gates.py) so the sandbox can never drift from the baseline:
+      // bs_fin (r_fin, ROE capital base), mtm_holdco (1.0x NAV anchor) and finite_conc (no terminal value).
+      const isBsFin = Boolean(c.bs_fin);
+      const k = (c.disc_rate !== null && c.disc_rate !== undefined) ? c.disc_rate : (isBsFin ? P.k_fin : P.k);
       const n_cap = (fund_cap !== null && fund_cap !== undefined && fund_cap > 0) ? fund_cap : 20.0;
       const roic_eff = Math.max(roic_exp, 0.05);
-      const fcfConv = (c.fcf_conv !== null && c.fcf_conv !== undefined) ? c.fcf_conv : null;
       const isPeakEdited = (sbBaseline.peakeps !== null && sbBaseline.peakeps !== undefined && peak_eps !== null) && Math.abs(peak_eps - sbBaseline.peakeps) > 0.01;
-      const hasPeakOverride = (c.peak_eps_est !== null && c.peak_eps_est !== undefined) || isPeakEdited;
-      const isMtmHoldco = !hasPeakOverride && !subInd.includes('Insurance Brokers') && (subInd.includes('Multi-Sector Holdings') || subInd.includes('Insurance')) && (
-        fcfConv !== null ? (fcfConv < 0.25) : (subInd.includes('Multi-Sector Holdings') && (mh === null || mh < 12.0))
-      );
-      const isFiniteConc = (subInd.includes('Construction & Engineering') || subInd.includes('Highways & Railtracks')) && (fcfConv !== null && fcfConv > 1.25);
+      const isMtmHoldco = Boolean(c.mtm_holdco) && !isPeakEdited;
+      const isFiniteConc = Boolean(c.finite_conc);
+      const bvps = (c.bvps !== null && c.bvps !== undefined && c.bvps > 0) ? c.bvps : null;
 
       if (hasValuationInputs) {{
         cur_mult = price / peak_eps;
         let pe_mm, pe_mck, reinv_eff;
         if (isMtmHoldco) {{
-          pe_mm = 1.0 / roic_eff;
+          nav_mult = bvps ? (bvps / peak_eps) : (1.0 / roic_eff);
+          pe_mm = nav_mult;
           pe_mck = 0.0;
           pe_vd = pe_mm;
           reinv_eff = 1.0;
         }} else {{
-          const reinv_stage1 = Math.min(0.95, Math.max(0.0, g_org_val) / roic_eff);
-          reinv_eff = 1.0 - reinv_stage1;
+          reinv_eff = 1.0 - Math.max(0.0, g_org_val) / roic_eff;
           const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc);
           pe_mm = dcf.pvStage1;
           pe_mck = dcf.pvStage2;
@@ -3955,17 +4036,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }}
 
         par_mult = pe_vd;
-        par_val = par_mult * peak_eps;
+        par_val = (isMtmHoldco && bvps) ? bvps : par_mult * peak_eps;
         vs_par = price / par_val - 1.0;
 
-        // Exact DCF-inverted Market-Implied Growth (g_market at r = 8.5%)
+        // Root-safe DCF-inverted Market-Implied Growth (g_market at r); Growth Margin only when unambiguous
         if (isMtmHoldco) {{
-          g_market = Math.round(Math.max(-0.15, Math.min(0.35, g_org_val + (cur_mult - par_mult) * (k - g_base))) * 10000) / 10000;
+          g_market = null;
+          g_market_flag = 'nav_anchored';
         }} else {{
-          g_market = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc);
+          const sol = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc, g_org_val);
+          g_market = sol.g;
+          g_market_flag = sol.flag;
         }}
-        if (g_org_exp !== null && g_market !== null) {{
-          g_gap = Math.round((g_org_exp - g_market) * 10000) / 10000;
+        if (g_org_exp !== null && g_market !== null && ['ok', 'saturated_low', 'saturated_high'].includes(g_market_flag)) {{
+          g_gap = Math.round((g_org_val - g_market) * 10000) / 10000;
         }}
 
         const dy = (mc && mc > 0 && c.dividends_ttm_m) ? Math.max(0.0, c.dividends_ttm_m / mc) : 0.0;
@@ -3978,19 +4062,30 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           const bb_fcf_cap = Math.max(0.0, (Math.max(0.0, reinv_eff) / cur_mult) - dy);
           g_irr = Math.round((g_org_5y + Math.min(bb_contrib, bb_fcf_cap)) * 10000) / 10000;
         }}
-        if (price > 0 && par_val > 0 && g_irr !== null && g_irr > -1.0) {{
-          const r_par = par_val / price;
+        // Year-5 exit at the rolled-forward Fair P/E (PE_5 / PE_0), mirroring screener/gates.py year5_multiple_ratio
+        const pe5Ratio = isMtmHoldco ? 1.0 : year5MultipleRatio(g_org_val, roic_eff, n_cap, k, g_base, roic_avg, 0.20, isFiniteConc);
+        const par_val_5y = par_val * pe5Ratio;
+        if (price > 0 && par_val_5y > 0 && g_irr !== null && g_irr > -1.0) {{
+          const r_par = par_val_5y / price;
           if (dy <= 1e-12) {{
             irr_5y = (1.0 + g_irr) * Math.pow(r_par, 0.2) - 1.0;
           }} else {{
+            const poly = (x) => dy * (x + x * x + x ** 3 + x ** 4 + x ** 5) + r_par * x ** 5 - 1.0;
             let u = Math.pow(r_par, -0.2) / (1.0 + dy);
-            for (let i = 0; i < 12; i++) {{
+            let converged = false;
+            for (let i = 0; i < 50; i++) {{
               const u2 = u * u, u3 = u2 * u, u4 = u3 * u, u5 = u4 * u;
               const f_val = dy * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0;
-              if (Math.abs(f_val) < 1e-12) break;
+              if (Math.abs(f_val) < 1e-12) {{ converged = true; break; }}
               const f_deriv = dy * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4;
               if (f_deriv <= 0) break;
               u = Math.max(1e-6, u - f_val / f_deriv);
+            }}
+            if (!converged && Math.abs(poly(u)) > 1e-9) {{
+              let lo = 0.0, hi = 1.0;
+              while (poly(hi) < 0 && hi < 1e6) hi *= 2.0;
+              for (let i = 0; i < 200; i++) {{ const mid = 0.5 * (lo + hi); if (poly(mid) < 0) lo = mid; else hi = mid; }}
+              u = 0.5 * (lo + hi);
             }}
             irr_5y = (1.0 + g_irr) / u - 1.0;
           }}
@@ -4125,9 +4220,27 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         roic_avg,
         isFiniteConc,
         isMtmHoldco,
+        navMult: nav_mult,
         isTweaked: anySandboxTweaked,
         hasValuationInputs
       }});
+
+      // Runtime parity self-check (v6.36): with untouched inputs the JS sandbox must reproduce the Python baseline.
+      if (!anySandboxTweaked && hasValuationInputs && c.par_mult && par_mult) {{
+        const multDrift = Math.abs(par_mult / c.par_mult - 1.0);
+        const valDrift = (par_val && c.par_val) ? Math.abs(par_val / c.par_val - 1.0) : 0.0;
+        const irrDrift = (irr_5y !== null && c.irr_5y !== null && c.irr_5y !== undefined) ? Math.abs(irr_5y - c.irr_5y) : 0.0;
+        const gMktDrift = (g_market !== null && c.g_market !== null && c.g_market !== undefined) ? Math.abs(g_market - c.g_market) : 0.0;
+        const flagDrift = (g_market_flag || null) !== (c.g_market_flag || null);
+        if (multDrift > 0.005 || valDrift > 0.005 || irrDrift > 0.005 || gMktDrift > 0.002 || flagDrift) {{
+          console.warn(`[parity] ${{c.id}}: JS sandbox vs Python baseline drift (Fair P/E ${{fmtNum(par_mult)}}x vs ${{fmtNum(c.par_mult)}}x, FV ${{par_val}} vs ${{c.par_val}}, IRR ${{fmtPct(irr_5y)}} vs ${{fmtPct(c.irr_5y)}}, g_mkt ${{g_market}} (${{g_market_flag}}) vs ${{c.g_market}} (${{c.g_market_flag}}))`);
+          const modeBadge = document.getElementById('dcf-tab-mode-badge');
+          if (modeBadge) {{
+            modeBadge.textContent = 'Baseline DCF ⚠ JS/Python parity drift';
+            modeBadge.className = 'binding-badge active-constraint';
+          }}
+        }}
+      }}
     }}
 
     // Export Table as CSV

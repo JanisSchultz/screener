@@ -1,11 +1,11 @@
-# Quantitative Evaluation Framework Specification (v6.35)
+# Quantitative Evaluation Framework Specification (v6.36)
 ## Quality & Moat Screener — Explicit Mauboussin-Fade DCF & Operating Cost Base Growth Ceiling
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.35). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
+This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v6.36). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
 
 ### The Slump-Cannibal Compounder & Explicit DCF Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, **Michael Mauboussin**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are valued via an **Explicit $N$-Year Mauboussin-Fade Discounted Cash Flow (DCF) model** at a discount rate of $r = 8.50\%$:
@@ -52,15 +52,18 @@ When an evaluation is triggered, the coordinator agent provides:
 
 ---
 
-## 3. Step-by-Step Valuation Methodology (v6.35)
+## 3. Step-by-Step Valuation Methodology (v6.36)
 
 ---
 
-### Step 1: Owner EPS Calculation & Peak Normalization
+### Step 1: Owner EPS Calculation, Lease/Impairment Normalization & Peak Selection (v6.36)
 
-1. **Owner EPS Definition (Per Fiscal Year)**:
-   $$\text{Owner EPS} = \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Diluted Shares}}$$
-   *Scaled to reported diluted EPS when net income includes minority interests.*
+1. **Owner EPS Definition, Deterministic D&A & IFRS-16 Lease Normalization (Per Fiscal Year)**:
+   $$\text{Owner Add-Back}_y = \max\!\left(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y\right), \qquad \text{Owner EPS}_y = \frac{\text{Net Income}_y + \text{Owner Add-Back}_y}{\text{Diluted Shares}_y}$$
+   - **Deterministic D&A Priority**: Extracted in strict priority order: cash-flow statement `depreciation` $\to$ income-statement `depreciationAndAmortization` $\to$ `reconciledDepreciation` (replacing `max(...)` across tags).
+   - **Impairment Guard (`clean_da`)**: Each year's D&A is capped at $1.5\times$ the median of the prior 3 fiscal years (`DA_IMPAIRMENT_CAP = 1.5`) so one-off goodwill or intangible write-downs folded into D&A are not added back as recurring earnings.
+   - **IFRS-16 Right-of-Use Lease Depreciation Deduction (`LEASE_DEP_RATE = 0.20`)**: For IFRS universes (`eu`, `ca`), IFRS-16 capitalizes operating store/facility leases onto the balance sheet (`capitalLeaseObligations`), routing rent payments through D&A while excluding lease additions from cash CapEx. Deducting $20\%$ of average `capitalLeaseObligations` ($\overline{\text{Lease}}_y$) from the D&A add-back prevents lease amortization from inflating Owner EPS (e.g. luxury retail store leases). US GAAP filers (`us`) expense operating lease cost inside operating cash flow and are excluded (`lease` series cleared).
+   - *Scaled to reported diluted EPS when net income includes minority interests. Latest fiscal-year add-back is stored in `owner_add_m`.*
 
 2. **Spike Stripping (One-Off Earnings Spikes)**:
    Non-cash windfall gains (tax-allowance releases, subsidiary disposal gains, hedge marks) must be stripped from the Owner EPS series:
@@ -77,30 +80,33 @@ When an evaluation is triggered, the coordinator agent provides:
    - **The 50/50 Mid-Cycle Reversion Standard**:
      When `peak_eps_est` is not explicitly populated, active earning power is protected against stale or bubble peaks:
      - If `fin_note` flags a multi-class share-basis mismatch (`"check share basis"`), $\text{cur\_eps}$ defaults to `peak_oe_eps` so whole-firm `market_cap_m` does not depress per-share `cur_eps`; if `fin_note` flags `"non-cash earnings spike left out of peak"` or $\text{cur\_eps} > 1.5 \times \text{peak\_oe\_eps}$, $\text{cur\_eps}$ is capped at `peak_oe_eps`.
-     - If current Owner EPS ($\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income} + \max(0, \text{D\&A} - \text{CapEx})}{\text{Market Cap}}$, latest fiscal year) falls below `peak_oe_eps`:
+     - If current Owner EPS ($\text{cur\_eps} = \text{Price} \times \frac{\text{Net Income} + \text{owner\_add\_m}}{\text{Market Cap}}$, latest fiscal year) falls below `peak_oe_eps`:
        $$\text{Active Peak EPS} = 0.5 \times \left(\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})\right)$$
      - If $\text{cur\_eps} \ge \text{peak\_oe\_eps}$: $\text{Active Peak EPS} = \text{peak\_oe\_eps}$.
-     - *Both sides are on the same Owner EPS basis (identical D\&A − CapEx add-back), so amortisation-heavy compounders at peak are not spuriously haircut.*
+     - *Both sides use the identical `owner_add_m` add-back (with impairment guard and IFRS-16 lease deduction), so compounders at peak are compared like-for-like.*
    - **Active Peak EPS Summary**:
      $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})) & \text{if } \text{cur\_eps} < \text{peak\_oe\_eps} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
 
 ---
 
-### Step 2: Operating ROIC Normalization & Mauboussin Galton ROIC Regression (v6.32)
+### Step 2: Operating ROIC Normalization, Short-Term Investments Netting & Mauboussin Galton Regression (v6.36)
 
 To prevent accounting distortions from penalizing capital-light compounders while eliminating arbitrary hard caps on ROIC:
-1. **The M&A Goodwill Neutralization Principle & Denominator Floor**:
-   - GAAP ROIC includes historical accumulated goodwill and acquired intangibles in the denominator:
-     $$\text{GAAP ROIC} = \frac{\text{NOPAT}}{\text{Total Invested Capital (including Goodwill)}}$$
+1. **Short-Term Investments Netting, M&A Goodwill Neutralization & Denominator Floor**:
+   - Operating cash $\text{Cash}_{\text{op}}$ nets both cash & equivalents and marketable short-term treasury investments (`cashAndShortTermInvestments`, stored in `cash_sti`) from Invested Capital, so liquid T-bill portfolios (e.g. `VEEV`) are not misclassified as deployed operating assets:
+     $$\text{IC}_{\text{GAAP}} = \text{Equity} + \text{Debt} - \text{Cash}_{\text{op}} \qquad \left(\text{floored at } 0.25 \times \text{Tangible Operating Assets when } \text{IC}_{\text{GAAP}} \le 0\right)$$
    - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3} \times \text{IC}_{\text{GAAP}}$ so goodwill deduction can reduce the capital base by at most two-thirds (eliminating artificial division-by-zero spikes when M&A goodwill or share buybacks exceed book equity):
-     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\max\!\left(\text{Equity} + \text{Debt} - \text{Cash} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
+     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\max\!\left(\text{Equity} + \text{Debt} - \text{Cash}_{\text{op}} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
 2. **Mauboussin Galton ROIC Regression ($\text{Expected ROIC}$)**:
-   - Grounded in Michael Mauboussin's Galton regression formula ($\text{Expected ROIC} = r(\text{Current ROIC} - \text{Average ROIC}) + \text{Average ROIC}$), excess Operating ROIC above the corporate mean ($\text{ROIC}_{\text{avg}} = 12.0\%$) is first logarithmically compressed ($k_{\text{roic}} = 0.25$) and then faded by Gate 4 CAP persistence $r = \text{pers} \in \{0.85, 0.75, 0.62\}$:
+   - Grounded in Michael Mauboussin's Galton regression formula ($\text{Expected ROIC} = r(\text{Current ROIC} - \text{Average ROIC}) + \text{Average ROIC}$), excess Active ROIC above the corporate mean ($\text{ROIC}_{\text{avg}} = 12.0\%$) is first logarithmically compressed ($k_{\text{roic}} = 0.25$) and then faded by Gate 4 CAP persistence $r = \text{pers} \in \{0.85, 0.75, 0.62\}$:
      $$\text{ROIC}_{\text{log}} = 0.12 + 0.25 \times \ln\!\left(1 + \frac{\text{Active ROIC} - 0.12}{0.25}\right)$$
      $$\text{Expected ROIC} = r \times (\text{ROIC}_{\text{log}} - 0.12) + 0.12$$
-3. **Active ROIC Selection**:
-   - Priority: `roic_est` (override) > `roic_median` (for Balance-Sheet Financials & IFRIC-12 Concessions) > `roic_operating` (tangible) > `roic_median` (GAAP).
-   - Feeds directly into $\text{Expected ROIC}$ for Anchor 3 Galton capital fade and Step 4 Corporate Finance Value Driver P/E ($\text{PE}_{\text{VD}}$).
+3. **Active ROIC Selection (`active_roic`)**:
+   - Priority:
+     1. `roic_est` (analyst override, if populated)
+     2. **Balance-Sheet Financials** (`Insurance` excl. `Insurance Brokers`, `Reinsurance`, `Banks` excl. `Asset Management & Custody Banks`, `Investment Banking & Brokerage`, and `Multi-Sector Holdings`): **`roe_median`** (5-year median Return on Equity, since the DCF is an equity-level EPS model where reinvestment is $g/\text{ROE}$ and customer deposits/float do not enter $\text{Equity} + \text{Debt} - \text{Cash}$) $\to$ `roic_median` $\to$ `roic_operating`
+     3. **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`): **`roic_median`** (5-year median GAAP ROIC including concession intangibles) $\to$ `roic_operating`
+     4. **All Other Operating & Fee Businesses**: **`roic_operating`** (5-year median Tangible Operating ROIC) $\to$ `roic_median` (GAAP).
 
 ---
 
@@ -136,33 +142,33 @@ Because companies passing the 6 Munger Quality Gates maintain roughly constant o
 
 ---
 
-### Step 4: Explicit $N$-Year Mauboussin-Fade DCF Valuation ($r = 8.50\%$) (v6.35)
+### Step 4: Explicit $N$-Year Mauboussin-Fade DCF Valuation ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v6.36)
 
 Because the DCF explicitly values `100%` of firm Free Cash Flow ($1 - g_t/\text{ROIC}_t$) before deciding whether FCF is distributed as dividends or share buybacks, the explicit DCF is evaluated strictly on the **Normal Organic Growth Ceiling ($g_0 = g_{\text{org,exp}}$)** — eliminating share-buyback double-counting in `Fair P/E` (`par_mult`) while removing the legacy 5-year historical multiple (`t_hist`) blend (`par_vd_weight = 1.00`):
 
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade Over Gate 4 CAP ($t = 1 \dots N$)**:
-   Starting from normalized Year-0 Owner Earnings $E_0 = 1.0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial return on incremental capital $\text{ROIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and incremental ROIC fade linearly across the $N$-year Competitive Advantage Period ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = 3.5\%$, $\text{ROIC}_{\text{term}} = \max(12.0\%, \min(\text{ROIC}_0, 20.0\%))$):
+   Starting from normalized Year-0 Owner Earnings $E_0 = 1.0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial return on incremental capital $\text{ROIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and incremental ROIC fade linearly across the $N$-year Competitive Advantage Period ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = \min(g_0, 3.5\%)$, $\text{ROIC}_{\text{term}} = \max(12.0\%, \min(\text{ROIC}_0, 20.0\%))$):
    $$\text{frac}_t = \frac{t - 1}{N}, \qquad g_t = g_0 - \text{frac}_t \cdot (g_0 - g_{\text{term}}), \qquad \text{ROIC}_t = \text{ROIC}_0 - \text{frac}_t \cdot (\text{ROIC}_0 - \text{ROIC}_{\text{term}})$$
-   $$E_t = E_{t-1} \cdot (1 + g_t), \qquad \text{Reinv}_t = \min\!\left(0.95,\; \frac{\max(0.0, g_t)}{\max(0.05, \text{ROIC}_t)}\right), \qquad \text{FCF}_t = E_t \cdot (1 - \text{Reinv}_t)$$
-   $$\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \frac{\text{FCF}_t}{(1 + r)^t} \qquad (\text{stored in } \text{pe\_mm},\; r = 8.50\%)$$
+   $$E_t = E_{t-1} \cdot (1 + g_t), \qquad \text{Reinv}_t = \frac{\max(0.0, g_t)}{\max(0.05, \text{ROIC}_t)}, \qquad \text{FCF}_t = E_t \cdot (1 - \text{Reinv}_t)$$
+   $$\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \frac{\text{FCF}_t}{(1 + r)^t} \qquad (\text{stored in } \text{pe\_mm},\; r = 8.50\% \text{ or } 10.25\%)$$
+   *Reinvestment $\text{Reinv}_t$ is uncapped: when $g_t > \text{ROIC}_t$, $\text{FCF}_t < 0$ (externally funded growth), ensuring growth never becomes "free" and $\text{DCF\_PE}(g)$ remains strictly monotonic wherever $\text{ROIC} > r$.*
 
 2. **Stage 2 — Post-CAP Terminal Perpetuity Value ($t > N$)**:
-   At the end of the Competitive Advantage Period ($t = N$), excess growth has faded to $g_{\text{term}} = 3.5\%$ and incremental return on capital is $\text{ROIC}_{\text{term}} = \max(12.0\%, \min(\text{ROIC}_0, 20.0\%))$:
-   $$E_{N+1} = E_N \cdot (1 + g_{\text{term}}), \qquad \text{FCF}_{N+1} = E_{N+1} \cdot \left(1 - \frac{g_{\text{term}}}{\text{ROIC}_{\text{term}}}\right)$$
-   $$\text{TV}_N = \frac{\text{FCF}_{N+1}}{r - g_{\text{term}}}, \qquad \text{PV}_{\text{Stage 2}} = \frac{\text{TV}_N}{(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck},\; r = 8.50\%)$$
+   At the end of the Competitive Advantage Period ($t = N$), competitive advantage has expired, so any post-CAP growth beyond Year $N$ earns exactly the cost of capital ($\text{RONIC} = r$) and adds zero net present value ($\text{ROIC}_{\text{term}}$ governs only the Stage-1 linear fade):
+   $$\text{TV}_N = \frac{E_N}{r}, \qquad \text{PV}_{\text{Stage 2}} = \frac{\text{TV}_N}{(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck},\; r = 8.50\% \text{ or } 10.25\%)$$
 
 3. **100% Explicit DCF Fair Value Multiple (`par_mult` / `pe_vd`)**:
    $$\text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
 
 4. **Industry-Specific Capital Base, Discount Rate ($r_{\text{fin}} = 10.25\%$) & Value Driver Physics**:
-   - **Balance-Sheet Financial Discount Rate ($r_{\text{fin}} = 10.25\%$)**: For **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks` / `Investment Banking & Brokerage`, and `Multi-Sector Holdings`), the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion use $r_{\text{fin}} = 10.25\%$ (`par_cost_of_equity_fin = 0.1025`) rather than $r = 8.50\%$, reflecting balance-sheet leverage, tail/catastrophe risk, and regulatory solvency capital lock-up.
-   - **GAAP ROIC (`roic_median`) Selection**: For **Balance-Sheet Financials** and **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), active ROIC defaults to `roic_median` (GAAP ROIC) rather than `roic_operating` (Tangible ROIC).
-   - **Mark-to-Market HoldCo / Insurer NAV Physics**: For `Multi-Sector Holdings` and `Insurance` (excluding `Insurance Brokers`) with no `peak_eps_est` override where reported EPS already captures unrealized mark-to-market portfolio appreciation $\Delta\text{NAV}$ (`fcf_conv < 0.25`, or `fcf_conv is None` in `Multi-Sector Holdings` with `mult_high_5y < 12.0`), a fair $1.0\text{x}$ NAV ($\text{P/B} = 1.0\text{x}$) implies $\text{par\_mult} = \text{pe\_vd} = \frac{1}{\text{ROIC}_{\text{exp}}}$.
+   - **Balance-Sheet Financial Discount Rate ($r_{\text{fin}} = 10.25\%$) & ROE Capital Base (`roe_median`)**: For **Balance-Sheet Financials** (`Insurance` excluding `Insurance Brokers`, `Reinsurance`, `Banks` excluding `Asset Management & Custody Banks`, `Investment Banking & Brokerage`, and `Multi-Sector Holdings`), the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion use $r_{\text{fin}} = 10.25\%$ (`par_cost_of_equity_fin = 0.1025`) rather than $r = 8.50\%$, and `active_roic` selects 5-year median Return on Equity (`roe_median`) so equity reinvestment equals $g_t / \text{ROE}_t$.
+   - **IFRIC-12 Concession Capital Base (`roic_median`)**: For **IFRIC-12 Infrastructure Concessions** (`Construction & Engineering`, `Highways & Railtracks`), `active_roic` defaults to `roic_median` (GAAP ROIC including concession intangibles).
+   - **Mark-to-Market HoldCo / Insurer NAV Physics (`1.0x BVPS`)**: For `Multi-Sector Holdings` and `Insurance` (excluding `Insurance Brokers`) with no `peak_eps_est` override where reported EPS already captures unrealized mark-to-market portfolio appreciation $\Delta\text{NAV}$ (5Y `fcf_conv < 0.25`, **or** latest 2Y `ocf_ni_2y < 0.25`, **or** `fcf_conv is None` in `Multi-Sector Holdings` with `mult_high_5y < 12.0`), Fair Value is anchored directly to $1.0\times$ Book Value per Share ($\text{BVPS} = \text{equity\_m} \times \frac{\text{Price}}{\text{Market Cap}}$, so $\text{par\_val} = \text{BVPS}$ and $\text{par\_mult} = \frac{\text{BVPS}}{\text{Active Peak EPS}}$, falling back to $\frac{1}{\text{ROIC}_{\text{exp}}}$ only if `equity_m` is unavailable).
    - **IFRIC-12 Finite Concession Annuity Physics**: For `Construction & Engineering` and `Highways & Railtracks` with `fcf_conv > 1.25` (where concession assets amortize and revert to the state at expiry), Stage 2 terminal perpetuity is omitted ($\text{PV}_{\text{Stage 2}} = 0$) and $\text{par\_mult} = \text{PV}_{\text{Stage 1}}$.
 
 ---
 
-### Step 5: Valuation Metrics & Status (v6.35)
+### Step 5: Valuation Metrics & Status (v6.36)
 
 1. **Fair Value Price (`par_val`)**:
    $$\text{Fair Value Price} = \text{Fair P/E} \times \text{Active Peak Owner EPS}$$
@@ -174,18 +180,25 @@ Because the DCF explicitly values `100%` of firm Free Cash Flow ($1 - g_t/\text{
    - **Valuation Status**:
      - `Below PAR`: Current Price $\le$ Fair Value Price ($\text{vs\_par} \le 0$). **ATTRACTIVE ENTRY**.
      - `Above PAR`: Current Price $>$ Fair Value Price ($\text{vs\_par} > 0$). **PREMIUM / HOLD**.
-4. **5-Year Expected Cycle IRR (FCF-Conserved Pull-to-Fair-Value Cash-Flow IRR)**:
+4. **5-Year Expected Cycle IRR (FCF-Conserved Pull-to-Fair-Value Cash-Flow IRR with Rolled-Forward Exit Multiple)**:
    - **5-Year Average Organic Fade Growth ($g_{\text{org,5y}}$)**: Over Years 1–5 along the linear Mauboussin fade trajectory, average annual organic growth is:
-     $$g_{\text{org,5y}} = g_0 - \frac{2}{N}(g_0 - g_{\text{term}})$$
+     $$g_{\text{org,5y}} = g_0 - \frac{2}{\max(5, N)}(g_0 - g_{\text{term}})$$
    - **Cash-Flow Conservation Cap on Buybacks ($g_{\text{irr}}$)**: Total cash returned to shareholders ($\text{Dividends} + \text{Buybacks}$) cannot exceed Stage-1 Free Cash Flow Yield $\frac{1 - g_0/\text{ROIC}_0}{\text{Current Multiple}}$:
      $$\text{bb\_fcf\_cap} = \max\!\left(0,\; \frac{\max(0, 1 - g_0/\text{ROIC}_0)}{\text{Current Multiple}} - \text{dy}\right), \qquad g_{\text{irr}} = g_{\text{org,5y}} + \min\!\left(\text{bb\_pos},\; \text{bb\_fcf\_cap}\right)$$
-   - Solves for the exact 5-year internal rate of return ($\text{IRR}$) equating current share price $P_0$ to 5 years of growing dividends $D_t = D_0(1 + g_{\text{irr}})^t$ plus Year-5 terminal Fair Value $P_5 = \text{Fair Value Price} \times (1 + g_{\text{irr}})^5$:
-     $$P_0 = \sum_{t=1}^{5} \frac{D_0 (1 + g_{\text{irr}})^t}{(1 + \text{IRR})^t} + \frac{\text{Fair Value Price} \cdot (1 + g_{\text{irr}})^5}{(1 + \text{IRR})^5}$$
-5. **Exact DCF-Inverted Market-Implied Growth ($g_{\text{market}}$ at $r = 8.50\%$) & Growth Margin of Safety (`g_gap`)**:
-   - Solves via bisection for the initial organic growth rate $g_{\text{market}} \in [-15.0\%, +35.0\%]$ that makes the Explicit $N$-Year Mauboussin-Fade DCF multiple at $r = 8.50\%$ equal to the stock's current multiple:
-     $$\text{DCF\_PE}(g_{\text{market}},\, \text{ROIC}_0,\, N,\, r=8.50\%) = \text{Current Multiple}$$
-     *(Guarantees $g_{\text{market}} = g_0$ and $g_{\text{gap}} = 0$ when $\text{Price} = \text{Fair Value Price}$.)*
-   - **Growth Margin of Safety (`g_gap`)**:
+   - **Rolled-Forward Year-5 Exit Fair Value ($\text{PAR\_Val}_{5\text{y}}$)**: Because 5 years of the Competitive Advantage Period have elapsed by Year 5, the exit Fair P/E $\text{PE}_5$ is evaluated at Year-6 growth $g_6 = g_0 - \frac{5}{N}(g_0 - g_{\text{term}})$, $\text{ROIC}_6 = \text{ROIC}_0 - \frac{5}{N}(\text{ROIC}_0 - \text{ROIC}_{\text{term}})$, and remaining runway $N - 5$ (`year5_multiple_ratio` $= \text{PE}_5 / \text{PE}_0$, or $1.0$ for NAV-anchored MTM HoldCos):
+     $$\text{PAR\_Val}_{5\text{y}} = \text{Fair Value Price} \times \frac{\text{PE}_5}{\text{PE}_0}$$
+   - Solves (via Newton-Raphson with convergence check and bisection fallback) for the exact 5-year internal rate of return ($\text{IRR}$) equating current share price $P_0$ to 5 years of growing dividends $D_t = D_0(1 + g_{\text{irr}})^t$ plus Year-5 terminal Fair Value $P_5 = \text{PAR\_Val}_{5\text{y}} \times (1 + g_{\text{irr}})^5$:
+     $$P_0 = \sum_{t=1}^{5} \frac{D_0 (1 + g_{\text{irr}})^t}{(1 + \text{IRR})^t} + \frac{\text{PAR\_Val}_{5\text{y}} \cdot (1 + g_{\text{irr}})^5}{(1 + \text{IRR})^5}$$
+5. **Root-Safe DCF-Inverted Market-Implied Growth ($g_{\text{market}}$) & Growth Margin of Safety (`g_gap`)**:
+   - Scans a $[-20.0\%, +50.0\%]$ grid in $1\text{pp}$ steps and bisects inside every sign-change bracket to solve for the starting organic growth rate $g_{\text{market}}$ satisfying:
+     $$\text{DCF\_PE}(g_{\text{market}},\, \text{ROIC}_0,\, N,\, r) = \text{Current Multiple}$$
+   - Returns `(g_market, g_market_flag)`:
+     - `ok`: Unique root on a monotonically increasing $\text{DCF\_PE}(g)$ curve (guarantees $g_{\text{market}} = g_0$ and $g_{\text{gap}} = 0$ when $\text{Price} = \text{Fair Value Price}$).
+     - `saturated_low` / `saturated_high`: Target P/E lies below $-20\%$ or above $+50\%$ on a monotonic curve (`g_market` clamped to grid bound).
+     - `no_value_creation`: $\text{DCF\_PE}(g)$ declines with growth ($\text{ROIC} \le r$ or finite-horizon concession without terminal value); `g_gap` is left blank (`None`).
+     - `multi_root`: Non-monotonic curve with multiple roots; root nearest $g_0$ is reported and `g_gap` is left blank (`None`).
+     - `nav_anchored`: Mark-to-market HoldCo valued at $1.0\times\text{BVPS}$; both `g_market` and `g_gap` are `None`.
+   - **Growth Margin of Safety (`g_gap`, populated when `g_market_flag` $\in \{\text{ok}, \text{saturated\_low}, \text{saturated\_high}\}$)**:
      $$\text{Growth Margin} = g_0 - g_{\text{market}} = g_{\text{org,exp}} - g_{\text{market}}$$
 6. **Market-Implied CAP & Moat Runway Margin**:
    - Scales excess multiple above the zero-moat steady-state base multiple $\text{PE}_{\text{base}} = \frac{1}{r} = 11.76\text{x}$ (at $r = 8.50\%$):

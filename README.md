@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v6.35 — 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v6.36 — 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,12 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v6.36: Quantitative Valuation Model Audit Remediation — IFRS-16 Lease & Impairment Guards, Financial ROE & Book-Value Anchors, Rolled-Forward 5Y IRR, Uncapped Reinvestment & Root-Safe g_market:
+- Owner Earnings Sanitization (Deterministic D&A, 1.5x Impairment Guard & IFRS-16 Lease Deduction): Replaces max(da_cands) with deterministic tag priority, caps single-year D&A write-down spikes at 1.5x the prior-3Y median (`clean_da`), and deducts 20% of average `capitalLeaseObligations` from the D&A add-back for IFRS universes (`eu`, `ca`) so right-of-use store lease amortization is not treated as free cash (`owner_add_m`).
+- Short-Term Investments Netted in Invested Capital (`cash_sti`): Nets `cashAndShortTermInvestments` (cash + marketable T-bills) from Invested Capital in `roic_series` and `cap_growth` so liquid treasury portfolios (e.g. `VEEV`, `ISRG`) do not depress Operating or GAAP ROIC.
+- Balance-Sheet Financial Routing, 5Y ROE Base & 1.0x BVPS MTM Anchor: Includes `Investment Banking & Brokerage` in Balance-Sheet Financials (`r_fin = 10.25%`), switches Balance-Sheet Financial `active_roic` to 5-year median ROE (`roe_median`, fixing deposit-funded brokers like `SCHW`), triggers MTM HoldCo detection when 2Y `ocf_ni_2y < 0.25` (fixing `III.GB`), and anchors MTM HoldCo Fair Value directly to 1.0x Book Value per Share (`bvps = equity_m * price / market_cap_m`).
+- Uncapped DCF Reinvestment, Rolled-Forward Year-5 IRR Exit Multiple & Root-Safe `g_market` Solver: Removes the `0.95` reinvestment cap in `explicit_dcf_multiple`, rolls the 5Y IRR exit multiple forward to Year 5 along the fade trajectory (`year5_multiple_ratio = PE_5 / PE_0`), and replaces blind bisection with a `[-20%, +50%]` grid-scan + bisection solver surfacing `g_market_flag` (`ok`, `saturated_low`, `saturated_high`, `no_value_creation`, `multi_root`, `nav_anchored`) and JS/Python runtime parity verification.
 
 v6.35: Slump-Cannibal Compounder Rework — Operating Cost Base Growth Ceiling (g_org_exp) & Explicit N-Year Mauboussin-Fade DCF (r = 8.50% / r_fin = 10.25%):
 - Normal Organic Growth Ceiling (g_0 / g_org_exp) Anchored on Operating Cost Base (opcost_cagr): Because companies passing the 6 Munger Quality Gates maintain roughly constant margins over the cycle (Gate 3b pricing power >= inflation, Gate 5 rejects SG&A bloat), the 3-5Y CAGR of the operating cost base (OpCost = Sales - EBIT = COGS + OpEx) anchors the normal organic growth ceiling (without legacy revenue scale caps or 2.0% floor), unaffected by temporary 1Y revenue slumps.

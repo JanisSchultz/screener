@@ -458,7 +458,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(v_at_par["g_market"], v0["g_org_exp"], places=4)
         self.assertAlmostEqual(v_at_par["g_gap"], 0.0, places=4)
 
-        # MTM HoldCo round-trip & realistic sensitivity
+        # MTM HoldCo is NAV-anchored in v6.36 (g_market is None, g_market_flag == 'nav_anchored', g_gap is None)
         fin_mtm = sample_fin(
             roic_median=0.18, roic_operating=0.18,
             mult_low_5y=4.5, mult_high_5y=7.5,
@@ -466,8 +466,9 @@ class QuantitativeGrowthTests(unittest.TestCase):
         )
         vm0 = par_valuation(fin_mtm, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
         vm_par = par_valuation(dict(fin_mtm, price=vm0["par_val"]), self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
-        self.assertAlmostEqual(vm_par["g_market"], vm0["g_org_exp"], places=4)
-        self.assertAlmostEqual(vm_par["g_gap"], 0.0, places=4)
+        self.assertEqual(vm_par["g_market_flag"], "nav_anchored")
+        self.assertIsNone(vm_par["g_market"])
+        self.assertIsNone(vm_par["g_gap"])
 
     def test_insurer_missing_ocf_not_misclassified_as_mtm_holdco(self):
         """Standard operating insurers missing OCF tags (fcf_conv=None) use normal PE_VD, not 1/ROIC_exp."""

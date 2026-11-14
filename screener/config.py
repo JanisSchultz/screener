@@ -1,4 +1,4 @@
-"""Framework configuration (v6.35): the 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF Framework.
+"""Framework configuration (v6.36): the 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF Framework.
 
 Qualitative (6 Sequential Munger Reject Gates, all companies):
   Gate 1: Simple to Understand
@@ -624,5 +624,12 @@ CHANGELOG = {
         "(3) Exact DCF-Inverted Market-Implied Growth (g_market at r = 8.50% / 10.25%): Solves for the exact starting organic growth rate priced into the current share price. "
         "(4) Slump-Cannibal Table Columns & Explicit DCF Tab: Reworked dashboard columns to display Price, 1Y Growth, 3-5Y Growth, Growth Ceiling (OpCost), Buyback Yield, "
         "Mkt Implied g, g Margin, Fair Value, Discount (vs FV), Cur P/E, Fair P/E, 5Y Exp IRR, Op ROIC, and CAP metrics side-by-side, plus a 3rd Dossier Tab showing the year-by-year Explicit DCF Table.",
+    ],
+    "6.36": [
+        "Quantitative Valuation Model Audit Remediation (IFRS-16 Lease & Impairment Guards, Financial ROE & Book-Value Anchors, Rolled-Forward 5Y IRR, Uncapped Reinvestment & Root-Safe g_market): "
+        "(1) Owner Earnings Sanitization (Deterministic D&A, Impairment Guard & IFRS-16 Lease Deduction): Replaced max(da_cands) with deterministic tag priority, capped single-year D&A spikes at 1.5x the prior-3Y median (clean_da), and deducted 20% of average capitalLeaseObligations from the D&A add-back for IFRS universes (eu, ca) so right-of-use store lease amortization is not treated as free cash (e.g. MC.FR). "
+        "(2) Short-Term Investments Netted in Invested Capital (cash_sti): Nets cashAndShortTermInvestments (cash + marketable T-bills) from Invested Capital in roic_series and cap_growth so treasury portfolios (e.g. VEEV, ISRG) do not depress Operating/GAAP ROIC. "
+        "(3) Balance-Sheet Financial Routing, 5Y ROE Base & 1.0x BVPS MTM Anchor: Included Investment Banking & Brokerage in Balance-Sheet Financials (r_fin = 10.25%), switched Balance-Sheet Financial active_roic to 5-year median ROE (roe_median, fixing SCHW), added 2Y OCF/NI < 0.25 MTM HoldCo detection (fixing III.GB), and anchored MTM HoldCo Fair Value directly to 1.0x Book Value per Share (bvps = equity_m * price / market_cap_m). "
+        "(4) Uncapped DCF Reinvestment, Rolled-Forward Year-5 IRR Exit Multiple & Root-Safe g_market Solver: Removed the 0.95 reinvestment cap in explicit_dcf_multiple, rolled the 5Y IRR exit multiple forward to Year 5 along the fade schedule (year5_multiple_ratio = PE_5 / PE_0), and replaced pure bisection with a [-20%, +50%] grid-scan + bisection solver returning g_market_flag (ok, saturated_low, saturated_high, no_value_creation, multi_root, nav_anchored).",
     ],
 }
