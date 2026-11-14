@@ -1,7 +1,9 @@
 """Quantitative PAR inputs computed from annual series and monthly prices (no network).
 
-Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, D&A − CapEx)) ÷ diluted shares
-(scaled to reported diluted EPS when net income clearly includes minority interests).
+Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, D&A − CapEx − IFRS-16 lease depreciation)) ÷
+diluted shares (scaled to reported diluted EPS when net income clearly includes minority interests). D&A is taken
+deterministically (cash-flow depreciation → income-statement D&A → reconciled depreciation) and capped at 1.5× its
+prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease liabilities for IFRS reporters only.
 - Last peak Owner EPS = highest Owner EPS of the latest 5 fiscal years (converted to the quote currency).
 - Cycle low / high multiple: for each of the last 60 monthly closes, price ÷ the peak Owner EPS known at that
   month (a fiscal year counts from 1 April of the following calendar year; peak over the 5 fiscal years up to
@@ -23,7 +25,7 @@ from __future__ import annotations
 import datetime as dt
 from statistics import median
 
-from .metrics import implied_shares
+from .metrics import implied_shares, owner_addback
 
 PEAK_YEARS = 5
 MULT_MONTHS = 60
@@ -53,9 +55,10 @@ def spike_years(s: dict) -> list[int]:
 
 
 def owner_eps_series(s: dict) -> dict:
-    """{fiscal year: Owner EPS in reporting currency} for years with net income and shares (spike years left out)."""
+    """{fiscal year: Owner EPS in reporting currency} for years with net income and shares (spike years left out).
+    Add-back = MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy), see metrics.owner_addback."""
     g = lambda k: s.get(k) or {}
-    ni, da, cx, eps = g("ni"), g("da"), g("capex"), g("eps")
+    ni, eps = g("ni"), g("eps")
     shares = implied_shares(ni, eps, g("shares"))
     skip = set(spike_years(s))
     out = {}
@@ -63,7 +66,7 @@ def owner_eps_series(s: dict) -> dict:
         sh = shares.get(y)
         if n is None or not sh or sh <= 0 or y in skip:
             continue
-        add = max(0.0, abs(da.get(y) or 0) - abs(cx.get(y) or 0)) if da.get(y) is not None else 0.0
+        add = owner_addback(s, y)
         e = eps.get(y)
         if e and n > 0 and e > 0 and not 0.67 <= (n / sh) / e <= 1.5:
             # net income includes minority interests (e.g. IBKR: holding-company NI vs Class A shares):

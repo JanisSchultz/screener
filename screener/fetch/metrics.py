@@ -9,6 +9,36 @@ from statistics import median
 
 DEFAULT_TAX = 0.21
 ROIC_YEARS = 5                  # median ROIC over the latest 5 fiscal years (one cycle; matches the PAR window)
+LEASE_DEP_RATE = 0.20           # IFRS-16 right-of-use depreciation ≈ 20% of average lease liabilities (~5y avg term)
+DA_IMPAIRMENT_CAP = 1.5         # D&A above 1.5× the prior-3y median is treated as a one-off impairment / write-down
+
+
+def clean_da(da: dict) -> dict:
+    """Impairment guard: cap each year's D&A at DA_IMPAIRMENT_CAP × the median of the prior 3 reported years,
+    so one-off write-downs folded into D&A (e.g. COLO B FY2026 Kerecis) are not added back as recurring earnings."""
+    out = {}
+    yrs = sorted(y for y, v in (da or {}).items() if v is not None)
+    for idx, y in enumerate(yrs):
+        v = abs(da[y])
+        prior = [abs(da[p]) for p in yrs[max(0, idx - 3):idx] if 1 <= y - p <= 4]
+        if len(prior) >= 3:
+            ref = median(prior)
+            if ref > 0 and v > DA_IMPAIRMENT_CAP * ref:
+                v = DA_IMPAIRMENT_CAP * ref
+        out[y] = v
+    return out
+
+
+def owner_addback(s: dict, y: int) -> float:
+    """Owner-earnings add-back for fiscal year y: MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy).
+    D&A above maintenance capex is added back to net income; lease depreciation (rent paid through financing cash
+    flow under IFRS 16) is deducted first so it is not treated as free cash. s['lease'] is empty for US GAAP filers."""
+    da, cx, lease = s.get("da") or {}, s.get("capex") or {}, s.get("lease") or {}
+    if da.get(y) is None:
+        return 0.0
+    l_cur, l_prev = lease.get(y), lease.get(y - 1)
+    l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
+    return max(0.0, abs(da[y]) - abs(cx.get(y) or 0) - LEASE_DEP_RATE * l_avg)
 
 
 def _last_years(series: dict, n: int, last: int | None = None) -> list[int]:
@@ -189,7 +219,10 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
 
     fcf = true_fcf(g("ocf"), g("capex"), g("sbc"), g("da"))
     tax_rate = {y: (tax[y] / pretax[y]) for y in tax if pretax.get(y)}
-    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), g("cash"), g("goodwill"), g("intang"), g("assets"))
+    # Operating capital nets cash AND short-term investments (liquid treasury assets are not operating capital);
+    # falls back to cash & equivalents where the combined figure is not reported.
+    cash_op = {**g("cash"), **g("cash_sti")}
+    roic, roic_t = roic_series(ebit, tax_rate, g("equity"), g("debt"), cash_op, g("goodwill"), g("intang"), g("assets"))
     out = {}
 
     all_years = set(ni) | set(g("sales")) | set(g("ocf")) | set(g("equity"))
@@ -239,6 +272,18 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         out["fcf_conv"] = sum(fcf[y] for y in conv_years) / ni_sum
         out["fcf_conv_years"] = len(conv_years)
 
+    # Recent cash backing of earnings (latest 2 FYs): Σ OCF ÷ Σ NI. Catches mark-to-market HoldCos / insurers whose
+    # latest earnings are unrealised NAV gains even when the 5Y fcf_conv still looks healthy (e.g. III.GB).
+    ocf_s = g("ocf")
+    yrs2 = [y for y in _last_years({y: v for y, v in ni.items() if v is not None}, 2, last) if ocf_s.get(y) is not None]
+    ni2 = sum(ni[y] for y in yrs2)
+    if len(yrs2) == 2 and ni2 > 0:
+        out["ocf_ni_2y"] = round(sum(ocf_s[y] for y in yrs2) / ni2, 4)
+
+    # Latest-FY owner-earnings add-back (same definition as screener/fetch/par.py owner_eps_series)
+    if last is not None and g("da").get(last) is not None:
+        out["owner_add_m"] = owner_addback(s, last) / 1e6
+
     # v4.1 normalised earnings: mid-cycle margins and cycle-average NI (up to 10 years)
     sales = g("sales")
     ni_m = {y: ni[y] / sales[y] for y in ni if ni[y] is not None and (sales.get(y) or 0) > 0}
@@ -268,7 +313,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             base = (cur + prev) / 2 if cur is not None and prev is not None else cur
             if n is not None and base and base > 0:
                 ser[y] = n / base
-        yrs_e = _last_years(ser, 10, last)
+        yrs_e = _last_years(ser, ROIC_YEARS, last)
         if yrs_e:
             out[key] = median(ser[y] for y in yrs_e)
     if g("equity"):
@@ -328,7 +373,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         ret_by_yr = [max(0.0, min(1.0, 1.0 - abs(g("dividends").get(y) or 0) / ni[y])) for y in pos_ni_yrs]
         out["retention_rate"] = round(median(ret_by_yr), 4)
 
-    eq_ser, debt_ser, cash_ser = g("equity"), g("debt"), g("cash")
+    eq_ser, debt_ser, cash_ser = g("equity"), g("debt"), cash_op
     ic_ser = {y: eq_ser[y] + (debt_ser.get(y) or 0) - (cash_ser.get(y) or 0)
               for y in eq_ser if eq_ser.get(y) is not None}
     assets_ser = g("assets")

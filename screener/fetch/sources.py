@@ -649,7 +649,7 @@ class EODHD:
 
         keys = ("sales", "opcost", "ni", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
                 "ocf", "capex", "sbc", "da", "dividends",
-                "equity", "debt", "cash", "goodwill", "intang", "assets", "shares")
+                "equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "shares")
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
         inc_ccys: dict[int, str] = {}
 
@@ -737,17 +737,27 @@ class EODHD:
             ocf = _fval(c_r, "totalCashFromOperatingActivities")
             capex = _fval(c_r, "capitalExpenditures")
             sbc = _fval(c_r, "stockBasedCompensation")
-            da_cands = [abs(x) for x in (
-                _fval(i_r, "reconciledDepreciation"),
-                _fval(i_r, "depreciationAndAmortization"),
-                _fval(c_r, "depreciation"),
-            ) if x is not None]
-            da = max(da_cands) if da_cands else None
+            # Deterministic D&A priority (not max): cash-flow depreciation → income-statement D&A → reconciled
+            # depreciation. reconciledDepreciation often includes impairments (e.g. DGE FY26 2,480 vs 747 D&A).
+            da_raw = None
+            da_opts = [x for x in (_fval(c_r, "depreciation"), _fval(i_r, "depreciationAndAmortization"),
+                                   _fval(i_r, "reconciledDepreciation")) if x is not None]
+            for da_src in da_opts:
+                if da_src != 0:
+                    da_raw = da_src
+                    break
+            if da_raw is None and da_opts:
+                da_raw = da_opts[0]
+            da = abs(da_raw) if da_raw is not None else None
             div = _fval(c_r, "dividendsPaid")
 
             eq = _fval(b_r, "totalStockholderEquity", "commonStockTotalEquity")
             debt = _fval(b_r, "longTermDebt", "longTermDebtTotal", "shortLongTermDebtTotal")
             cash = _fval(b_r, "cashAndEquivalents", "cash", "cashAndShortTermInvestments")
+            cash_sti = _fval(b_r, "cashAndShortTermInvestments", "cash", "cashAndEquivalents")
+            if cash_sti is not None and cash is not None and cash_sti < cash:
+                cash_sti = cash
+            lease = _fval(b_r, "capitalLeaseObligations")
             gw = _fval(b_r, "goodWill")
             intang = _fval(b_r, "intangibleAssets")
             assets = _fval(b_r, "totalAssets")
@@ -767,7 +777,8 @@ class EODHD:
                 ("sales", sales), ("opcost", opcost), ("ni", ni), ("ebit", ebit), ("pretax", pretax),
                 ("tax", tax), ("interest", interest), ("ocf", ocf), ("capex", capex),
                 ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq),
-                ("debt", debt), ("cash", cash), ("goodwill", gw), ("intang", intang),
+                ("debt", debt), ("cash", cash), ("cash_sti", cash_sti), ("lease", lease),
+                ("goodwill", gw), ("intang", intang),
                 ("assets", assets), ("shares", sh), ("eps_street", e_st),
             ):
                 if val is not None:
@@ -780,7 +791,7 @@ class EODHD:
         if inc_ccys and len(set(inc_ccys.values())) > 1 and out["sales"]:
             target_ccy = inc_ccys[max(inc_ccys)]
             inc_keys = ("sales", "opcost", "ni", "ebit", "pretax", "tax", "interest")
-            bs_keys = ("equity", "debt", "cash", "goodwill", "intang", "assets")
+            bs_keys = ("equity", "debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
             for sec_ref_key, sec_keys in (("sales", inc_keys), ("assets", bs_keys), ("ocf", cf_keys)):
@@ -878,6 +889,9 @@ class EODHD:
             if n_val is not None and sh_val and sh_val > 0:
                 out["eps"][y] = n_val / sh_val
 
+        # Impairment guard on D&A (after currency normalisation so all years are on the same basis)
+        out["da"] = metrics.clean_da(out["da"])
+
         return out
 
     def panel_rows(self, cid: str, ticker: str, symbol: str, fund_data: dict,
@@ -897,7 +911,7 @@ class EODHD:
         }
         roic_g, roic_t = metrics.roic_series(
             s.get("ebit", {}), tax_rate, s.get("equity", {}), s.get("debt", {}),
-            s.get("cash", {}), s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {})
+            {**s.get("cash", {}), **s.get("cash_sti", {})}, s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {})
         )
         fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}))
         oe_ser = par.owner_eps_series(s)
@@ -933,9 +947,10 @@ class EODHD:
             eq = s["equity"].get(fy)
             debt = s["debt"].get(fy)
             cash = s["cash"].get(fy)
+            cash_op = (s.get("cash_sti") or {}).get(fy, cash)
             gw = s["goodwill"].get(fy)
             intang = s["intang"].get(fy)
-            ic_g = (eq + (debt or 0.0) - (cash or 0.0)) if eq is not None else None
+            ic_g = (eq + (debt or 0.0) - (cash_op or 0.0)) if eq is not None else None
             ic_t = max(ic_g - ((gw or 0.0) + (intang or 0.0)), (1.0 / 3.0) * ic_g) if (ic_g is not None and ic_g > 0) else None
             tbv = (eq - ((gw or 0.0) + (intang or 0.0))) if eq is not None else None
 

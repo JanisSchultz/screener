@@ -50,6 +50,15 @@ from screener.gates import funnel_ids, params, par_valuation
 ANALYST_FIELDS = ("peak_eps_est", "g_est", "roic_est", "g_implied", "fin_note")
 PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
+US_GAAP_UNIVERSES = ("us",)     # operating-lease cost sits outside D&A under US GAAP -> no IFRS-16 lease deduction
+
+
+def apply_lease_basis(series: dict, key: str) -> dict:
+    """IFRS-16 lessees carry right-of-use depreciation inside D&A; US GAAP filers do not. Drop the lease series for
+    US GAAP universes so screener.fetch.metrics.owner_addback only deducts lease depreciation for IFRS reporters."""
+    if series and key in US_GAAP_UNIVERSES:
+        series["lease"] = {}
+    return series
 
 
 def set_auto_note(row: dict, notes: list[str]) -> None:
@@ -203,7 +212,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         bars = eod.eod(esym)
         sp = eod.splits(esym, fund) if (fund or bars) else {}
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num(old.get("price"))
-        series = eod.annual_series(fund, latest_price=latest_px, splits=sp) if fund else {}
+        series = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px, splits=sp) if fund else {}, key)
         q = eod.quote(esym, fund_data=fund, eod_bars=bars, series=series) if (fund or bars) else {}
 
         if a.prices_only:
@@ -308,7 +317,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         sp = eod.splits(esym, fund) if bars else {}
         ye_px = eod.year_end_prices(esym, bars, sp) if bars else None
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num((fins.get(cid) or {}).get("price"))
-        ser = eod.annual_series(fund, latest_price=latest_px)
+        ser = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px), key)
         panel_all.extend(eod.panel_rows(cid, str(c["ticker"]), esym, fund, series=ser, ye_prices=ye_px))
     if panel_all:
         write_csv(DATA_DIR / key / "fundamentals_panel.csv", PANEL_FIELDS, panel_all)
@@ -341,7 +350,7 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
                 rate = t["price"] / s["price"]          # same share basis (1:1 ADR / dual line)
             for k in (
                 "peak_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok",
-                "roic_median", "roic_operating", "fcf_conv",
+                "roic_median", "roic_operating", "fcf_conv", "roe_median", "ocf_ni_2y",
                 "sales_1y", "sales_cagr", "sales_cagr_yrs", "opcost_1y", "opcost_cagr",
                 "cap_growth", "buyback_yield", "retention_rate", "roiic",
                 "g_est", "g_implied", "roic_est",

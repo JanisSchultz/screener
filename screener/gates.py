@@ -88,43 +88,33 @@ def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
 
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)
+# Asset-light fee financials valued as operating companies (tangible ROIC, r = 8.5%). Deposit-funded brokers
+# (`Investment Banking & Brokerage`: SCHW, IBKR, AZA, SAVE, FBK) are NOT excluded since v6.36: they earn net interest
+# income on client deposits that never enter "equity + debt − cash", so their operating ROIC is meaningless (SCHW 85–147%).
+FEE_FINANCIAL_KEYWORDS = ("Insurance Brokers", "Asset Management & Custody Banks")
+BALANCE_SHEET_KEYWORDS = ("Insurance", "Reinsurance", "Multi-Sector Holdings", "Banks", "Investment Banking & Brokerage")
+CONCESSION_KEYWORDS = ("Construction & Engineering", "Highways & Railtracks")
+
+
 def uses_gaap_roic(sub_industry: str | None) -> bool:
-    """Return True for Balance-Sheet Financials and IFRIC-12 Infrastructure Concessions where book capital / concession intangibles are the true operating capital base."""
-    if not sub_industry or not isinstance(sub_industry, str):
-        return False
-    s = sub_industry.strip()
-    if "Insurance Brokers" in s or "Asset Management & Custody Banks" in s or "Investment Banking & Brokerage" in s:
-        return False
-    return any(
-        kw in s
-        for kw in (
-            "Insurance",
-            "Reinsurance",
-            "Multi-Sector Holdings",
-            "Banks",
-            "Construction & Engineering",
-            "Highways & Railtracks",
-        )
-    )
+    """Return True where the operating-ROIC capital base is not used: Balance-Sheet Financials (valued on ROE, see
+    is_balance_sheet_financial) and IFRIC-12 Infrastructure Concessions (GAAP ROIC incl. concession intangibles)."""
+    return is_balance_sheet_financial(sub_industry) or is_concession_sector(sub_industry)
+
+
+def is_concession_sector(sub_industry: str | None) -> bool:
+    return isinstance(sub_industry, str) and any(kw in sub_industry for kw in CONCESSION_KEYWORDS)
 
 
 def is_balance_sheet_financial(sub_industry: str | None) -> bool:
-    """Return True for Balance-Sheet Financials (Insurers, Reinsurers, Banks, and Multi-Sector HoldCos),
-    excluding asset-light fee financials (Insurance Brokers, Asset Management, Investment Banking & Brokerage)."""
+    """Return True for Balance-Sheet Financials (Insurers, Reinsurers, Banks, deposit-funded Brokers and Multi-Sector
+    HoldCos), excluding asset-light fee financials (Insurance Brokers, Asset Management & Custody Banks)."""
     if not sub_industry or not isinstance(sub_industry, str):
         return False
     s = sub_industry.strip()
-    if "Insurance Brokers" in s or "Asset Management & Custody Banks" in s or "Investment Banking & Brokerage" in s:
+    if any(kw in s for kw in FEE_FINANCIAL_KEYWORDS):
         return False
-    return any(
-        kw in s
-        for kw in (
-            "Insurance",
-            "Reinsurance",
-            "Multi-Sector Holdings",
-            "Banks",
-        )
-    )
+    return any(kw in s for kw in BALANCE_SHEET_KEYWORDS)
 
 
 def is_mtm_holdco(
@@ -132,8 +122,11 @@ def is_mtm_holdco(
     fcf_conv: float | None,
     peak_eps_est: float | None,
     mult_high_5y: float | None = None,
+    ocf_ni_2y: float | None = None,
 ) -> bool:
-    """Return True for Mark-to-Market HoldCos / Insurers where reported EPS already captures unrealized portfolio NAV appreciation."""
+    """Return True for Mark-to-Market HoldCos / Insurers where reported EPS already captures unrealized portfolio NAV
+    appreciation: 5Y Owner FCF ÷ NI < 0.25, or latest-2Y OCF ÷ NI < 0.25 (catches III.GB, whose 5Y conversion still
+    reads 0.43 while FY24–25 OCF/NI is 0.15 / 0.03)."""
     if not sub_industry or not isinstance(sub_industry, str) or peak_eps_est is not None:
         return False
     s = sub_industry.strip()
@@ -141,6 +134,8 @@ def is_mtm_holdco(
         return False
     if not ("Multi-Sector Holdings" in s or "Insurance" in s):
         return False
+    if ocf_ni_2y is not None and ocf_ni_2y < 0.25:
+        return True
     if fcf_conv is not None:
         return fcf_conv < 0.25
     return "Multi-Sector Holdings" in s and (mult_high_5y is None or mult_high_5y < 12.0)
@@ -148,10 +143,7 @@ def is_mtm_holdco(
 
 def is_finite_concession(sub_industry: str | None, fcf_conv: float | None) -> bool:
     """Return True for IFRIC-12 Infrastructure Concessions where concession assets amortize and revert to the state at expiry (D&A >> CapEx)."""
-    if not sub_industry or not isinstance(sub_industry, str):
-        return False
-    s = sub_industry.strip()
-    if not ("Construction & Engineering" in s or "Highways & Railtracks" in s):
+    if not is_concession_sector(sub_industry):
         return False
     return fcf_conv is not None and fcf_conv > 1.25
 
@@ -165,28 +157,32 @@ def explicit_dcf_multiple(
     roic_term_base: float = 0.12,
     finite_conc: bool = False,
     mtm_holdco: bool = False,
+    roic_end: float | None = None,
 ) -> tuple[float, float, float, float]:
-    """Compute Explicit N-Year Mauboussin-Fade DCF Fair Value P/E Multiple (v6.35):
+    """Compute Explicit N-Year Mauboussin-Fade DCF Fair Value P/E Multiple (v6.36):
     Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share).
-    Each year t = 1..N (N = Gate 4 CAP), organic growth g_t and ROIC_t fade linearly from
-    (g0, roic0) at t=1 down to (g_term, roic_term) at the end of CAP, generating
-    FCF_t = E_t * (1 - g_t / ROIC_t), plus Year-N Gordon Growth terminal value."""
+    Each year t = 1..N (N = Gate 4 CAP), organic growth g_t and ROIC_t fade linearly from (g0, roic0) at t=1 toward
+    (g_term, roic_end) with roic_end = max(roic_term_base, min(roic0, 20%)) unless passed explicitly (year-5 roll-forward),
+    generating FCF_t = E_t * (1 - g_t / ROIC_t). Reinvestment is NOT capped: when g_t > ROIC_t, FCF is negative
+    (externally funded growth), so growth never becomes "free" and DCF_PE(g) is monotonic wherever ROIC > r.
+    Terminal value (code convention, v6.36 spec): TV_N = E_N / r — post-CAP growth earns exactly r (RONIC = r) and
+    therefore adds no value; ROIC_term only governs the Stage-1 fade."""
     roic_start = max(0.05, float(roic0))
     if mtm_holdco:
         nav_pe = 1.0 / roic_start
         return nav_pe, nav_pe, 0.0, 1.0
     n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_end = max(roic_term_base, min(roic_start, 0.20))
+    roic_fin = max(roic_term_base, min(roic_start, 0.20)) if roic_end is None else max(0.05, float(roic_end))
     g_term_eff = min(g0, g_term)
-    reinv_1 = min(0.95, max(0.0, g0) / roic_start)
+    reinv_1 = max(0.0, g0) / roic_start
     pv_stage1 = 0.0
     e_t = 1.0
     for t in range(1, n + 1):
         frac = (t - 1.0) / float(n)
         g_t = g0 - frac * (g0 - g_term_eff)
-        roic_t = roic_start - frac * (roic_start - roic_end)
+        roic_t = roic_start - frac * (roic_start - roic_fin)
         e_t = e_t * (1.0 + g_t)
-        reinv_t = min(0.95, max(0.0, g_t) / max(0.05, roic_t))
+        reinv_t = max(0.0, g_t) / max(0.05, roic_t)
         fcf_t = e_t * (1.0 - reinv_t)
         pv_stage1 += fcf_t / ((1.0 + r) ** t)
     if finite_conc:
@@ -195,6 +191,74 @@ def explicit_dcf_multiple(
     tv_n = fcf_n1 / max(0.01, r)
     pv_stage2 = tv_n / ((1.0 + r) ** n)
     return pv_stage1 + pv_stage2, pv_stage1, pv_stage2, 1.0 - reinv_1
+
+
+G_MARKET_LO, G_MARKET_HI, G_MARKET_STEP = -0.20, 0.50, 0.01
+G_FLAG_OK = "ok"
+G_FLAG_SAT_LO = "saturated_low"
+G_FLAG_SAT_HI = "saturated_high"
+G_FLAG_NO_VALUE = "no_value_creation"
+G_FLAG_MULTI = "multi_root"
+G_FLAG_NAV = "nav_anchored"
+G_GAP_FLAGS = (G_FLAG_OK, G_FLAG_SAT_LO, G_FLAG_SAT_HI)
+
+
+def solve_market_growth(
+    target_pe: float | None,
+    g0_ref: float,
+    roic0: float,
+    n_cap: float | int | None,
+    r: float = 0.085,
+    g_term: float = 0.035,
+    roic_term_base: float = 0.12,
+    finite_conc: bool = False,
+    mtm_holdco: bool = False,
+) -> tuple[float | None, str | None]:
+    """Root-safe inversion of the Explicit DCF: starting organic growth g_market (fading to g_term over CAP N at r)
+    whose DCF P/E equals target_pe. Scans a [-20%, +50%] grid in 1pp steps, bisects inside every sign-change bracket
+    and returns (g_market, flag):
+      ok                 unique root on a monotonic DCF_PE(g) curve
+      saturated_low/high target outside the grid on a monotonic curve (g_market clamped to the grid edge)
+      no_value_creation  DCF_PE falls as growth rises (ROIC <= r, or a finite concession without TV); root nearest g0
+      multi_root         non-monotonic curve with several roots; root nearest g0
+      nav_anchored       mark-to-market HoldCo valued at 1.0x NAV (growth inversion not meaningful)
+    The dashboard sandbox (screener/dashboard.py solveImpliedDcfGrowth) mirrors this exactly."""
+    if target_pe is None or target_pe <= 0:
+        return None, None
+    if mtm_holdco:
+        return None, G_FLAG_NAV
+    pe = lambda g: explicit_dcf_multiple(g, roic0, n_cap, r, g_term, roic_term_base, finite_conc, False)[0]
+    n_pts = int(round((G_MARKET_HI - G_MARKET_LO) / G_MARKET_STEP))
+    grid = [G_MARKET_LO + i * G_MARKET_STEP for i in range(n_pts + 1)]
+    pes = [pe(g) for g in grid]
+    increasing = all(b >= a - 1e-9 for a, b in zip(pes, pes[1:]))
+    roots = []
+    for i in range(n_pts):
+        d0, d1 = pes[i] - target_pe, pes[i + 1] - target_pe
+        if d0 == 0.0:
+            roots.append(grid[i])
+            continue
+        if d0 * d1 < 0:
+            lo, hi, f_lo = grid[i], grid[i + 1], d0
+            for _ in range(40):
+                mid = 0.5 * (lo + hi)
+                f_mid = pe(mid) - target_pe
+                if (f_mid < 0) == (f_lo < 0):
+                    lo, f_lo = mid, f_mid
+                else:
+                    hi = mid
+            roots.append(0.5 * (lo + hi))
+    if pes[-1] - target_pe == 0.0:
+        roots.append(grid[-1])
+    nearest = (lambda rs: round(min(rs, key=lambda x: abs(x - g0_ref)), 4)) if roots else (lambda rs: None)
+    if increasing:
+        if roots:
+            return round(roots[0], 4), G_FLAG_OK
+        return (round(G_MARKET_LO, 4), G_FLAG_SAT_LO) if target_pe < pes[0] else (round(G_MARKET_HI, 4), G_FLAG_SAT_HI)
+    i0, i10 = int(round(-G_MARKET_LO / G_MARKET_STEP)), int(round((0.10 - G_MARKET_LO) / G_MARKET_STEP))
+    if pes[i10] < pes[i0]:
+        return nearest(roots), G_FLAG_NO_VALUE
+    return nearest(roots), G_FLAG_MULTI
 
 
 def solve_implied_dcf_growth(
@@ -208,25 +272,8 @@ def solve_implied_dcf_growth(
     finite_conc: bool = False,
     mtm_holdco: bool = False,
 ) -> float | None:
-    """Solve for the exact starting organic growth rate g_market (fading to g_term over CAP N at discount rate r)
-    that equates Explicit Mauboussin-Fade DCF P/E to target_pe (Current Multiple)."""
-    if target_pe is None or target_pe <= 0:
-        return None
-    if mtm_holdco:
-        base_pe = 1.0 / max(0.05, float(roic0))
-        return round(g0_ref * (target_pe / base_pe), 4) if base_pe > 0 else None
-    ref_pe, _, _, _ = explicit_dcf_multiple(g0_ref, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco)
-    if abs(ref_pe - target_pe) < 1e-6:
-        return round(g0_ref, 4)
-    lo, hi = -0.25, 0.60
-    for _ in range(36):
-        mid = 0.5 * (lo + hi)
-        pe_mid, _, _, _ = explicit_dcf_multiple(mid, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco)
-        if pe_mid < target_pe:
-            lo = mid
-        else:
-            hi = mid
-    return round(0.5 * (lo + hi), 4)
+    """Backwards-compatible wrapper: g_market only (see solve_market_growth for the flag)."""
+    return solve_market_growth(target_pe, g0_ref, roic0, n_cap, r, g_term, roic_term_base, finite_conc, mtm_holdco)[0]
 
 
 def solve_irr_5y(
@@ -238,27 +285,92 @@ def solve_irr_5y(
     """Solve for the textbook 5-Year Cash-Flow IRR satisfying:
     Price = sum_{t=1..5} [D_0 * (1 + g_exp)^t / (1 + IRR)^t] + [PAR_Val * (1 + g_exp)^5 / (1 + IRR)^5]
     Using the substitution u = (1 + g_exp) / (1 + IRR), this reduces to the strictly monotonic polynomial:
-    dy * (u + u^2 + u^3 + u^4 + u^5) + (PAR_Val / Price) * u^5 = 1."""
+    dy * (u + u^2 + u^3 + u^4 + u^5) + (PAR_Val / Price) * u^5 = 1.
+    (par_val may be the year-5 roll-forward equivalent PAR_Val × PE_5 / PE_0, see par_valuation.)
+    Newton iterations with a convergence check and a bisection fallback."""
     if not price or price <= 0 or not par_val or par_val <= 0 or g_exp is None or g_exp <= -1.0:
         return None
     d = max(0.0, float(dy or 0.0))
     r_par = float(par_val) / float(price)
     if d <= 1e-12:
         return (1.0 + g_exp) * (r_par ** 0.2) - 1.0
+    poly = lambda x: d * (x + x * x + x ** 3 + x ** 4 + x ** 5) + r_par * x ** 5 - 1.0
     u = (r_par ** -0.2) / (1.0 + d)
-    for _ in range(12):
+    converged = False
+    for _ in range(50):
         u2 = u * u
         u3 = u2 * u
         u4 = u3 * u
         u5 = u4 * u
         f_val = d * (u + u2 + u3 + u4 + u5) + r_par * u5 - 1.0
         if abs(f_val) < 1e-12:
+            converged = True
             break
         f_deriv = d * (1.0 + 2.0 * u + 3.0 * u2 + 4.0 * u3 + 5.0 * u4) + 5.0 * r_par * u4
         if f_deriv <= 0:
             break
         u = max(1e-6, u - f_val / f_deriv)
+    if not converged and abs(poly(u)) > 1e-9:
+        lo, hi = 0.0, 1.0
+        while poly(hi) < 0 and hi < 1e6:
+            hi *= 2.0
+        for _ in range(200):
+            mid = 0.5 * (lo + hi)
+            if poly(mid) < 0:
+                lo = mid
+            else:
+                hi = mid
+        u = 0.5 * (lo + hi)
     return (1.0 + g_exp) / u - 1.0
+
+
+def year5_multiple_ratio(
+    g0: float,
+    roic0: float,
+    n_cap: float | int | None,
+    r: float = 0.085,
+    g_term: float = 0.035,
+    roic_term_base: float = 0.12,
+    finite_conc: bool = False,
+) -> float:
+    """PE_5 / PE_0: the Fair P/E five years out, rolled forward along the same Mauboussin fade (growth and ROIC at their
+    year-6 values, remaining CAP N − 5, same terminal ROIC), relative to today's Fair P/E. Used so the 5Y IRR exit
+    price does not assume today's multiple survives five years of fade (v6.36)."""
+    roic_start = max(0.05, float(roic0))
+    n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
+    roic_end = max(roic_term_base, min(roic_start, 0.20))
+    pe0 = explicit_dcf_multiple(g0, roic_start, n, r, g_term, roic_term_base, finite_conc, False)[0]
+    if n <= 5 or pe0 <= 0:
+        return 1.0
+    g_term_eff = min(g0, g_term)
+    frac6 = 5.0 / float(n)
+    g6 = g0 - frac6 * (g0 - g_term_eff)
+    roic6 = roic_start - frac6 * (roic_start - roic_end)
+    pe5 = explicit_dcf_multiple(g6, roic6, n - 5, r, g_term, roic_term_base, finite_conc, False, roic_end=roic_end)[0]
+    return max(0.0, pe5 / pe0)
+
+
+def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str | None]:
+    """Capital-return input to the Galton regression and DCF reinvestment rate, with its source label.
+    Priority: roic_est override > Balance-Sheet Financials: roe_median (the DCF is an equity-level EPS model, so g / ROE
+    is the consistent reinvestment rate; deposits / float never enter equity + debt − cash) > IFRIC-12 concessions:
+    roic_median (GAAP) > everyone else: roic_operating (tangible) > roic_median."""
+    def f(k):
+        v = fin.get(k)
+        return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
+
+    if f("roic_est") is not None:
+        return f("roic_est"), "roic_est"
+    if is_balance_sheet_financial(sub_industry):
+        for k in ("roe_median", "roic_median", "roic_operating"):
+            if f(k) is not None:
+                return f(k), k
+        return None, None
+    order = ("roic_median", "roic_operating") if is_concession_sector(sub_industry) else ("roic_operating", "roic_median")
+    for k in order:
+        if f(k) is not None:
+            return f(k), k
+    return None, None
 
 
 def par_valuation(
@@ -268,7 +380,7 @@ def par_valuation(
     moat: str | None = None,
     sub_industry: str | None = None,
 ) -> dict:
-    """Python reference implementation of the v6.35 Explicit Mauboussin-Fade DCF (r = 8.5%) & Operating Cost Growth Ceiling valuation."""
+    """Python reference implementation of the v6.36 Explicit Mauboussin-Fade DCF (r = 8.5%) & Operating Cost Growth Ceiling valuation."""
     f = lambda k: None if (fin.get(k) is None or (isinstance(fin.get(k), float) and math.isnan(fin.get(k)))) else (fin.get(k) if isinstance(fin.get(k), (int, float)) else None)
     price = f("price")
     mc = f("market_cap_m")
@@ -278,11 +390,16 @@ def par_valuation(
         peak_eps = peak_eps_override
     else:
         oe_peak = f("peak_oe_eps")
-        # Current Owner EPS inferred from latest-FY Net Income + max(0, D&A − CapEx) and Market Cap / Price,
-        # so both sides of the comparison are on the same Owner EPS basis as peak_oe_eps (add-back identical to
-        # screener/fetch/par.py owner_eps_series); a GAAP EPS here would spuriously haircut amortisation-heavy names.
-        da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
-        oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
+        # Current Owner EPS inferred from latest-FY Net Income + owner-earnings add-back and Market Cap / Price, on the
+        # same Owner EPS basis as peak_oe_eps. owner_add_m is written by the fetch layer with exactly the
+        # screener/fetch/metrics.py owner_addback definition (D&A − CapEx − IFRS-16 lease depreciation); the legacy
+        # MAX(0, D&A − CapEx) is only a fallback for rows not yet recomputed.
+        add_stored = f("owner_add_m")
+        if add_stored is not None:
+            oe_add = max(0.0, add_stored)
+        else:
+            da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
+            oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
         cur_eps = (price * ((ni + oe_add) / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
         fin_note_str = str(fin.get("fin_note") or "")
         auto_note = fin_note_str.split("[auto]", 1)[1] if "[auto]" in fin_note_str else ""
@@ -305,12 +422,7 @@ def par_valuation(
     moat_arch = moat if isinstance(moat, str) and moat else fin.get("moat")
     sub_ind = sub_industry if isinstance(sub_industry, str) and sub_industry else fin.get("sub_industry")
     fcf_conv_val = f("fcf_conv")
-    if f("roic_est") is not None:
-        roic = f("roic_est")
-    elif uses_gaap_roic(sub_ind):
-        roic = f("roic_median") if f("roic_median") is not None else f("roic_operating")
-    else:
-        roic = f("roic_operating") if f("roic_operating") is not None else f("roic_median")
+    roic, roic_source = active_roic(fin, sub_ind)
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18
 
@@ -484,17 +596,26 @@ def par_valuation(
     cur_mult = price / peak_eps
     g_org_val = g_org_exp if g_org_exp is not None else par_g_base
 
-    # Explicit N-Year Mauboussin-Fade DCF at r = 8.50% (10.25% for Balance-Sheet Financials) (v6.35):
+    # Explicit N-Year Mauboussin-Fade DCF at r = 8.50% (10.25% for Balance-Sheet Financials) (v6.36):
     bs_fin = is_balance_sheet_financial(sub_ind)
     k = max(0.05, par_cost_of_equity_fin if bs_fin else par_cost_of_equity)
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
     roic_eff = max(roic_exp, 0.05)
-    mtm_holdco = is_mtm_holdco(sub_ind, fcf_conv_val, peak_eps_override, mh)
+    mtm_holdco = is_mtm_holdco(sub_ind, fcf_conv_val, peak_eps_override, mh, f("ocf_ni_2y"))
     finite_conc = is_finite_concession(sub_ind, fcf_conv_val)
 
     pe_vd, pe_mm, pe_mck, reinv_eff = explicit_dcf_multiple(
         g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
     )
+    # Mark-to-Market HoldCo / Insurer: fair value = 1.0x NAV = book value per share (equity_m in reporting ccy and
+    # market_cap_m in the same ccy, so BVPS in quote ccy = equity_m × price / market_cap_m). Falls back to the legacy
+    # 1 / ROIC_exp multiple only when equity is unavailable.
+    eq_m = f("equity_m")
+    bvps = (eq_m * price / mc) if (eq_m is not None and eq_m > 0 and mc and mc > 0 and price) else None
+    nav_anchor = bool(mtm_holdco and bvps)
+    if nav_anchor:
+        pe_vd = pe_mm = bvps / peak_eps
+        pe_mck = 0.0
     pe_vd0, _, _, _ = explicit_dcf_multiple(
         0.0, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
     )
@@ -516,7 +637,7 @@ def par_valuation(
     t_roic = pe_mck
     raw_par = pe_vd
 
-    par_val = par_mult * peak_eps
+    par_val = bvps if nav_anchor else par_mult * peak_eps
     vs_par = price / par_val - 1.0
     status = C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR
 
@@ -528,7 +649,11 @@ def par_valuation(
         g_irr = round(g_org_5y + min(bb_pos, bb_fcf_cap), 4)
     else:
         g_irr = round(g_org_5y, 4)
-    irr_5y = solve_irr_5y(price, par_val, g_irr, dy)
+    # Year-5 exit at the rolled-forward Fair P/E (growth and ROIC faded 5 years, remaining CAP N − 5), not today's:
+    # P_5 = Active EPS × (1 + g_irr)^5 × PE_5  ⇔  PAR_Val × (PE_5 / PE_0) × (1 + g_irr)^5.
+    pe5_ratio = 1.0 if mtm_holdco else year5_multiple_ratio(g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc)
+    par_val_5y = par_val * pe5_ratio
+    irr_5y = solve_irr_5y(price, par_val_5y, g_irr, dy)
 
     # Market-Implied CAP scaled above zero-moat steady-state base multiple (1 / r = 11.76x):
     pe_base = 1.0 / k
@@ -542,11 +667,16 @@ def par_valuation(
         cap_implied = None
     cap_gap = round(eff_cap - cap_implied, 1) if (eff_cap is not None and cap_implied is not None) else None
 
-    # Exact DCF-inverted Market-Implied Organic Growth (g_market at r = 8.5%) & Growth Margin of Safety (g_gap):
-    g_market = solve_implied_dcf_growth(
+    # Root-safe DCF-inverted Market-Implied Organic Growth (g_market at r) & Growth Margin of Safety (g_gap).
+    # g_gap is only reported where the inversion is unambiguous (ok / saturated at a grid edge).
+    g_market, g_market_flag = solve_market_growth(
         cur_mult, g_org_val, roic_eff, n_cap, k, par_g_base, par_roic_avg, finite_conc, mtm_holdco
     )
-    g_gap = round(g_org_val - g_market, 4) if (g_org_val is not None and g_market is not None) else None
+    g_gap = (
+        round(g_org_val - g_market, 4)
+        if (g_org_val is not None and g_market is not None and g_market_flag in G_GAP_FLAGS)
+        else None
+    )
     return {
         "status": status,
         "peak_eps": peak_eps,
@@ -554,6 +684,17 @@ def par_valuation(
         "par_mult": par_mult,
         "par_val": par_val,
         "vs_par": vs_par,
+        "g_market_flag": g_market_flag,
+        "pe5_ratio": round(pe5_ratio, 4),
+        "bvps": bvps,
+        "nav_anchor": nav_anchor,
+        "mtm_holdco": mtm_holdco,
+        "finite_conc": finite_conc,
+        "bs_fin": bs_fin,
+        "k": k,
+        "roic_source": roic_source,
+        "roic_active": roic,
+        "fcf_share": reinv_eff,
         "g": g,
         "dy": dy,
         "coupon": (g + dy) if g is not None else None,
