@@ -35,8 +35,8 @@ class DashboardGateFilterTests(unittest.TestCase):
         for old_label in ("Quality Pass Funnel", "Calamity Watchlist", "Moat Universe", "Full Universe &amp; Waterfall", "Full Universe & Waterfall"):
             self.assertNotIn(old_label, html)
 
-    def test_quality_grade_covers_g1_g2_g3_g4_and_g6_rule_check(self):
-        """Verify passes_quality_grade requires G1, G2, G3 (3a+3b), G4, and G6 rule check (0 flags)."""
+    def test_quality_grade_covers_g1_g2_g3_g4(self):
+        """Verify passes_quality_grade requires G1, G2, G3 (3a+3b), and G4 while allowing G5/G6 failures."""
         screener_data = collect_screener_data(["us", "eu", "ca"])
         companies = screener_data["companies"]
         qg = [c for c in companies if c.get("passes_quality_grade")]
@@ -48,7 +48,6 @@ class DashboardGateFilterTests(unittest.TestCase):
             self.assertNotIn(c.get("g3a_moat_archetype"), (None, "", "None"))
             self.assertEqual(st.get("3b"), "pass")
             self.assertEqual(st.get("4"), "pass")
-            self.assertEqual(c.get("g6_flags"), 0)
 
     def test_gate_filter_matches_rejected_companies(self):
         """Ensure each 'Rejected at Gate X' filter matches the actual companies in the screener data."""

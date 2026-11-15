@@ -71,7 +71,6 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 passes_g123a
                 and st_map.get("3b") == "pass"
                 and st_map.get("4") == "pass"
-                and g6_flags == 0
             )
 
             company_record = {
@@ -1874,7 +1873,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
       <select id="filter-gate" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
-        <option value="quality_grade">Quality Grade (G1, G2, G3, G4, G6 Rule Check)</option>
+        <option value="quality_grade">Quality Grade (G1, G2, G3, G4)</option>
         <option value="Quality pass">Prime Grade Only</option>
         <option value="Calamity pass">Prime Grade Calamity (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
@@ -1982,7 +1981,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">
             <strong>&#128737;&#65039; Prime Grade:</strong> Passes all 6 Munger Reject Gates (G1&ndash;G6) cleanly.<br>
             <strong>&#9888;&#65039; Prime Grade Calamity:</strong> Conditional pass for franchises with a temporary, fixable calamity on G3b, G5, and/or G6.<br>
-            <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), G3 (Moat &amp; Pricing Power), G4 (Runway CAP &ge; 15Y), and G6 Rule Check (0 numeric flags).<br>
+            <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), G3 (Moat &amp; Pricing Power), and G4 (Runway CAP &ge; 15Y).<br>
             <strong>&#128269; Full Universe:</strong> Every screened company across US, EU, and CA with full gate-waterfall status.
           </p>
         </div>
@@ -2618,7 +2617,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function passesQualityGrade(c) {{
       if (c.passes_quality_grade !== undefined) return Boolean(c.passes_quality_grade);
       const st = c.gate_status || {{}};
-      return passesG123a(c) && st['3b'] === 'pass' && st['4'] === 'pass' && (c.g6_flags || 0) === 0;
+      return passesG123a(c) && st['3b'] === 'pass' && st['4'] === 'pass';
     }}
 
     function hasMoatArchetype(c) {{
