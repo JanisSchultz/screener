@@ -912,10 +912,10 @@
       top: 0;
       right: 0;
       bottom: 0;
-      width: 780px;
-      max-width: 95vw;
+      width: 100vw;
+      max-width: 100vw;
       background: var(--bg-surface);
-      border-left: 1px solid var(--border);
+      border-left: none;
       box-shadow: -8px 0 28px rgba(0,0,0,0.4);
       z-index: 60;
       transform: translateX(100%);
@@ -976,6 +976,8 @@
       display: none;
       flex-direction: column;
       gap: 20px;
+      min-width: 0;
+      max-width: 100%;
     }
     .dossier-tab-pane.active {
       display: flex;
@@ -1234,11 +1236,31 @@
       background: rgba(17, 24, 39, 0.85);
       border: 1px solid var(--border);
       border-radius: 8px;
-      overflow-x: auto;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--text-dim) var(--bg-base);
       -webkit-overflow-scrolling: touch;
+    }
+    .dcf-table-wrap::-webkit-scrollbar {
+      height: 10px;
+    }
+    .dcf-table-wrap::-webkit-scrollbar-track {
+      background: var(--bg-base);
+      border-radius: 0 0 8px 8px;
+    }
+    .dcf-table-wrap::-webkit-scrollbar-thumb {
+      background: var(--text-dim);
+      border-radius: 5px;
+    }
+    .dcf-table-wrap::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
     }
     .dcf-schedule-table {
       width: 100%;
+      min-width: max-content;
       border-collapse: collapse;
       font-size: 11.5px;
       font-variant-numeric: tabular-nums;
@@ -1440,6 +1462,8 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
+      min-width: 0;
+      max-width: 100%;
     }
     .section-title {
       font-size: 12px;
@@ -1527,7 +1551,7 @@
     /* Custom Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
-      height: 6px;
+      height: 8px;
     }
     ::-webkit-scrollbar-track {
       background: var(--bg-base);
