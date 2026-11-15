@@ -148,8 +148,8 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
         payload = {"id": "RTO.GB", "quantitative_overrides": {"g_implied": 0.055, "roic_est": 0.35}}
         qual, fin, warnings = validate_and_waterfall(payload)
         self.assertEqual(qual, {})
-        self.assertEqual(fin["g_implied"], "0.055")
-        self.assertEqual(warnings, [])
+        self.assertEqual(fin, {})                                  # v7.6: no analyst overrides are ingested
+        self.assertTrue(any("quantitative_overrides ignored" in w for w in warnings))
 
 
 class DashboardAndDataIntegrityTests(unittest.TestCase):

@@ -703,5 +703,43 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             out["retained_m"] = retained / 1e6
             out["dollar_years"] = window
             break
+    # v7.6 Gate 6 review numbers (3-year medians, "through the cycle"; flags only, see gates.g6_checks)
+    g6_yrs = [y for y in sorted(ni) if last is not None and last - 3 < y <= last]
+    nd_vals, ic_vals = [], []
+    for y in g6_yrs:
+        net_debt = (g("debt").get(y) or 0.0) + (g("st_debt").get(y) or 0.0) - (cash_op.get(y) or 0.0)
+        oe = (ni.get(y) or 0.0) + owner_addback(s, y)
+        if ni.get(y) is not None:
+            nd_vals.append(net_debt / oe if oe > 0 else (0.0 if net_debt <= 0 else 99.0))
+        e_y, i_y = ebit.get(y), abs(interest.get(y) or 0.0)
+        if e_y is not None:
+            ic_vals.append(e_y / i_y if i_y > 0 else 99.0)
+    if nd_vals:
+        out["g6_netdebt_yrs"] = round(median(nd_vals), 2)
+    if ic_vals:
+        out["g6_intcov"] = round(median(ic_vals), 2)
+
     out["fiscal_year"] = last
     return out
+
+
+NONCASH_FLIPS, NONCASH_NI_OCF = 2, 1.2
+
+
+def noncash_marks(s: dict, years: int = 5) -> str | None:
+    """v7.6 data check: reported earnings dominated by non-cash marks (FX-hedge marks SAF, investment gains BRK) —
+    net income changes sign >= 2 times over the latest `years` fiscal years while operating cash flow stays positive
+    in every one of them, and at least one profitable year shows NI > 1.2 × OCF (gains, not just impairment losses as
+    at CARL / MTX). Returns the '[auto]' note text (valuation No data) or None."""
+    ni, ocf = s.get("ni") or {}, s.get("ocf") or {}
+    if not ni:
+        return None
+    last = max(ni)
+    yrs = [y for y in range(last - years + 1, last + 1) if ni.get(y) is not None]
+    if len(yrs) < 4 or not all((ocf.get(y) or 0) > 0 for y in yrs):
+        return None
+    flips = sum(1 for a, b in zip(yrs, yrs[1:]) if (ni[a] > 0) != (ni[b] > 0))
+    ratios = [ni[y] / ocf[y] for y in yrs if ni[y] > 0]
+    if flips >= NONCASH_FLIPS and ratios and max(ratios) > NONCASH_NI_OCF:
+        return f"earnings dominated by non-cash marks (NI sign changes {flips}x in {len(yrs)}y, NI up to {max(ratios):.1f}x OCF)"
+    return None

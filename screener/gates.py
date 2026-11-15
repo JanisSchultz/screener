@@ -104,7 +104,8 @@ IC_NEG_YEARS_FOR_ROE = 2
 ROE_AS_CAPITAL_MAX = 0.50
 # '[auto]' fin_note markers written by fetch_market_data.py that make the statements unusable for a per-share
 # valuation until refetched or reviewed (status 'No data'). Mirrored by the dashboard sandbox (BLOCKING_AUTO_NOTES).
-BLOCKING_AUTO_NOTES = ("stale fundamentals", "share count changed since FY", "currency switch unresolved")
+BLOCKING_AUTO_NOTES = ("stale fundamentals", "share count changed since FY", "currency switch unresolved",
+                       "earnings dominated by non-cash marks")
 
 
 def peak_weight(cur_year, peak_year) -> float:
@@ -151,14 +152,13 @@ def is_balance_sheet_financial(sub_industry: str | None) -> bool:
 def is_mtm_holdco(
     sub_industry: str | None,
     fcf_conv: float | None,
-    peak_eps_est: float | None,
     mult_high_5y: float | None = None,
     ocf_ni_2y: float | None = None,
 ) -> bool:
     """Return True for Mark-to-Market HoldCos / Insurers where reported EPS already captures unrealized portfolio NAV
     appreciation: 5Y Owner FCF ÷ NI < 0.25, or latest-2Y OCF ÷ NI < 0.25 (catches III.GB, whose 5Y conversion still
     reads 0.43 while FY24–25 OCF/NI is 0.15 / 0.03)."""
-    if not sub_industry or not isinstance(sub_industry, str) or peak_eps_est is not None:
+    if not sub_industry or not isinstance(sub_industry, str):
         return False
     s = sub_industry.strip()
     if "Insurance Brokers" in s:
@@ -175,6 +175,30 @@ def is_mtm_holdco(
     if fcf_conv is not None:
         return False
     return "Multi-Sector Holdings" in s and (mult_high_5y is None or mult_high_5y < 12.0)
+
+
+def g6_checks(fin: dict, sub_industry: str | None, p: dict | None = None) -> dict:
+    """v7.6 Gate 6 rule check — review flags only (your qualitative Gate 6 decides; never used by phase_results or
+    par_valuation). {check: "ok" | "flag" | "n/a" | "info"} for net debt ÷ owner earnings (<= g6_netdebt_yrs),
+    EBIT ÷ interest (> g6_intcov), 5Y owner FCF ÷ NI (>= a_fcfconv) and the peak-to-peak test. Balance-sheet
+    financials: net debt and interest cover are n/a (debt and interest are their raw material), cash conversion is
+    informational."""
+    p = p or {}
+
+    def f(k):
+        v = fin.get(k)
+        return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
+
+    bs = is_balance_sheet_financial(sub_industry)
+    nd, ic, fc, pp = f("g6_netdebt_yrs"), f("g6_intcov"), f("fcf_conv"), fin.get("p2p_ok")
+    lim_nd, lim_ic, lim_fc = p.get("g6_netdebt_yrs", 4.0), p.get("g6_intcov", 5.0), p.get("a_fcfconv", 0.80)
+    grade = lambda ok: "n/a" if ok is None else ("ok" if ok else "flag")
+    return {
+        "netdebt": "n/a" if bs else grade(None if nd is None else nd <= lim_nd),
+        "intcov": "n/a" if bs else grade(None if ic is None else ic > lim_ic),
+        "fcfconv": ("info" if fc is not None else "n/a") if bs else grade(None if fc is None else fc >= lim_fc),
+        "p2p": grade(None if pp not in ("Y", "N") else pp == "Y"),
+    }
 
 
 def is_finite_concession(cid: str | None) -> bool:
@@ -386,7 +410,7 @@ def solve_irr_5y(cur_pe: float | None, fcfs_5: list[float] | tuple[float, ...] |
 
 def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str | None]:
     """Capital-return input to the DCF reinvestment rate, with its source label.
-    Priority: roic_est override > Balance-Sheet Financials: roe_median (unless roe_median < 8.5% while roic_median >= 12%
+    Priority (no analyst overrides since v7.6): Balance-Sheet Financials: roe_median (unless roe_median < 8.5% while roic_median >= 12%
     due to Up-C non-controlling interest mismatch) > IFRIC-12 concessions: roic_median (GAAP) > everyone else:
     roic_operating (tangible) > roic_median; except that an operating company with invested capital <= 0 in >= 2 of 5
     years and 0 < roe_median <= 50% uses roe_median (v7.5, customer / clearing cash balance sheets)."""
@@ -394,8 +418,6 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
         v = fin.get(k)
         return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
 
-    if f("roic_est") is not None:
-        return f("roic_est"), "roic_est"
     if is_balance_sheet_financial(sub_industry):
         roe_v, gaap_v = f("roe_median"), f("roic_median")
         if roe_v is not None and gaap_v is not None and roe_v < 0.085 and gaap_v >= 0.12:
@@ -415,13 +437,13 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
     return None, None
 
 
-def ronic0(roic_est, roic_active, r_tang, r_gaap, ma_reinvest, g0, gaap_basis) -> tuple[float, float]:
+def ronic0(roic_active, r_tang, r_gaap, ma_reinvest, g0, gaap_basis) -> tuple[float, float]:
     """Raw marginal return on new capital (before the 5% floor / par_roic_cap) and the bought-growth share w.
     When goodwill-heavy (r_tang > 1.25 × r_gaap) the business keeps spending ma_reinvest (v7.2: Σ cash-funded
     Δ goodwill+intangibles ÷ Σ NOPAT over the g0 window) of earnings on acquisitions earning GAAP ROIC, i.e. bought growth g_m = ma_reinvest × r_gaap and w = clip(g_m / g0, 0, 1); the
     reinvestment rate g0 / RONIC₀ = (1 − w)·g0 / r_tang + w·g0 / r_gaap gives the growth-weighted harmonic blend.
     Mirrored by the dashboard sandbox (screener/dashboard.py ronic0)."""
-    if (roic_est is None and not gaap_basis and r_tang is not None and r_gaap is not None and r_gaap > 0
+    if (not gaap_basis and r_tang is not None and r_gaap is not None and r_gaap > 0
             and r_tang > 1.25 * r_gaap and ma_reinvest and ma_reinvest > 0 and g0 and g0 > 0):
         w = max(0.0, min(1.0, ma_reinvest * r_gaap / g0))
         return 1.0 / ((1.0 - w) / r_tang + w / r_gaap), w
@@ -440,8 +462,13 @@ def par_valuation(
     cap: float | int | None = None,
     moat: str | None = None,
     sub_industry: str | None = None,
+    scenario: dict | None = None,
 ) -> dict:
-    """Python reference implementation of the Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR (v7.1)."""
+    """Python reference implementation of the Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR.
+    No analyst overrides (v7.6): every input comes from the statements. `scenario` is the dashboard sandbox's what-if
+    mirror only (keys peak_eps, g (per-share growth incl. buybacks), ronic0) — used by the sandbox parity tests, never
+    by data."""
+    scenario = scenario or {}
     def f(k):
         v = fin.get(k)
         return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
@@ -456,8 +483,8 @@ def par_valuation(
     price, mc, ni = f("price"), f("market_cap_m"), f("ni_ttm_m")
     note_auto = auto_note(fin)
 
-    # Step 1 — Active Peak Owner EPS: override > age-weighted mid-cycle reversion toward the 5Y peak.
-    peak_eps_override = f("peak_eps_est")
+    # Step 1 — Active Peak Owner EPS: age-weighted mid-cycle reversion toward the 5Y peak (scenario: sandbox what-if).
+    peak_eps_override = scenario.get("peak_eps")
     oe_peak = f("peak_oe_eps")
     w_peak = None
     if peak_eps_override is not None:
@@ -500,7 +527,7 @@ def par_valuation(
     bb_pos, bb_org = max(0.0, bb_eff), min(0.0, bb_eff)
     sales_1y_val, sales_cagr_val = f("sales_1y"), f("sales_cagr")
     opcost_1y_val, opcost_cagr_val = f("opcost_1y"), f("opcost_cagr")
-    g_imp_in, g_est_in = f("g_implied"), f("g_est")
+    g_est_in = scenario.get("g")
     has_stmt_growth = any(x is not None for x in (sales_cagr_val, opcost_cagr_val, sales_1y_val, g))
 
     if has_stmt_growth:
@@ -514,8 +541,6 @@ def par_valuation(
             raw_org = g - bb_pos
         else:
             raw_org = sales_1y_val + bb_org
-    elif g_imp_in is not None:
-        raw_org = g_imp_in - bb_pos + bb_org
     else:
         raw_org = g_base
     g_org_start = _r4(max(0.0, min(g_max, raw_org)))
@@ -530,13 +555,15 @@ def par_valuation(
     # Step 2 — M&A-matched RONIC₀ (screener/gates.ronic0): bought growth earns GAAP ROIC, organic growth tangible ROIC.
     # ROE sits on goodwill-inclusive equity, so (like GAAP-basis sectors) no tangible / GAAP M&A blend
     gaap_basis = uses_gaap_roic(sub_ind) or roic_source == "roe_median"
-    ronic_raw, alpha = ronic0(f("roic_est"), roic_op, f("roic_operating"), roic_gaap, f("ma_reinvest"), g_org_exp, gaap_basis)
-    roic_exp = _r4(max(0.05, min(roic_cap, ronic_raw)) if f("roic_est") is None else max(0.05, ronic_raw))
+    ronic_raw, alpha = ronic0(roic_op, f("roic_operating"), roic_gaap, f("ma_reinvest"), g_org_exp, gaap_basis)
+    roic_exp = _r4(max(0.05, min(roic_cap, ronic_raw)))
+    if scenario.get("ronic0") is not None:
+        roic_exp, alpha = _r4(max(0.05, scenario["ronic0"])), 0.0
 
     # Industry physics: discount rate, NAV-anchored HoldCos, opt-in finite concessions.
     bs_fin = is_balance_sheet_financial(sub_ind)
     k = max(0.05, k_fin if bs_fin else k_op)
-    mtm_holdco = is_mtm_holdco(sub_ind, f("fcf_conv"), peak_eps_override, mh, f("ocf_ni_2y"))
+    mtm_holdco = is_mtm_holdco(sub_ind, f("fcf_conv"), mh, f("ocf_ni_2y"))
     finite_conc = is_finite_concession(fin.get("id"))
     eq_m = f("equity_m")
     bvps = (eq_m * price / mc) if (eq_m is not None and eq_m > 0 and mc and mc > 0 and price) else None

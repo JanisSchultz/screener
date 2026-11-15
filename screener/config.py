@@ -623,6 +623,12 @@ CHANGELOG = {
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
     ],
+    "7.6": [
+        "Gate 6 review flags, no analyst overrides, non-cash-marks check: numeric Gate 6 checks (net debt / owner earnings, EBIT / "
+        "interest as 3y medians, cash conversion, peak-to-peak) shown as flags only (G6 Checks column, dossier, review filter), n/a for "
+        "balance-sheet financials; peak_eps_est / g_est / roic_est / g_implied and analyst fin_note text removed (data, valuation, sandbox "
+        "export, apply_evaluation); '[auto] earnings dominated by non-cash marks' -> No data (SAF.FR, BRK.B); CP.CA 14.0x -> 10.5x.",
+    ],
     "7.5": [
         "ROE as the capital return for customer-cash balance sheets: operating / fee companies with invested capital <= 0 in >= 2 of 5 "
         "years (ic_neg_years) and 0 < ROE <= 50% use roe_median (no M&A blend, r = 8.5%): DB1 7% -> 19% (Fair P/E 9.2x -> 19.2x), "

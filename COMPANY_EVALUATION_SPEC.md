@@ -247,7 +247,7 @@ Provide a comprehensive synthesis including:
 
 ## 5. Quantitative Evaluation: Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR (v7.1)
 
-> **Important**: Quantitative valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates, as well as **`Calamity pass`** candidates (conditional waiver on Gates 3b, 5, and/or 6). Rejected companies are designated `"Not in funnel"` for quantitative valuation. For `Calamity pass` companies, verify whether normalized earning power (`peak_eps_est`) or forward growth (`g_est`) requires an explicit adjustment.
+> **Important**: Quantitative valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates, as well as **`Calamity pass`** candidates (conditional waiver on Gates 3b, 5, and/or 6). Rejected companies are designated `"Not in funnel"` for quantitative valuation. Since v7.6 the quantitative valuation takes **no analyst overrides**: every input comes from the statements, and data that cannot support a per-share valuation is shown as **No data** with an `[auto]` reason. An evaluator supplies only the qualitative gates.
 
 The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-class businesses experiencing a temporary 1-year growth slump (`sales_1y`) while their structural cost-bloat guarded growth ceiling (`g_org_exp`) remains intact — using a **Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year Mauboussin-Fade DCF** at discount rate $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials) and a **Bellman-Consistent 5-Year Expected IRR** (`irr_5y`).
 
@@ -261,8 +261,7 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
 2. **Peak Owner EPS, Direct `cur_oe_eps` & Age-Weighted Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest Owner EPS achieved over the last 5 fiscal years (converted to quote currency).
    - `cur_oe_eps`: Latest fiscal-year Owner EPS (converted to quote currency).
-   - `peak_eps_est`: Analyst override for Peak Owner EPS if the reported peak contains unrepeatable windfalls or pre-spin-off distortions.
-   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the age-weighted Mid-Cycle Reversion standard using `cur_oe_eps` (falling back to implied `cur_eps` if absent): if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = \text{cur}^{+} + w \times (\text{peak\_oe\_eps} - \text{cur}^{+})$ with $w = 0.5$ for a peak at most 1 year older than `cur_oe_year`, fading linearly to 0 at 4 years; otherwise `peak_oe_eps`. Fiscal years before the listing date are not part of the Owner EPS series.
+   - **Active Peak EPS**: apply the age-weighted Mid-Cycle Reversion standard using `cur_oe_eps` (falling back to implied `cur_eps` if absent): if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = \text{cur}^{+} + w \times (\text{peak\_oe\_eps} - \text{cur}^{+})$ with $w = 0.5$ for a peak at most 1 year older than `cur_oe_year`, fading linearly to 0 at 4 years; otherwise `peak_oe_eps`. Fiscal years before the listing date are not part of the Owner EPS series.
 3. **5-Year Historical Cycle Multiples (Informational Reference)**:
    - `mult_low_5y` and `mult_high_5y`: 5-year cycle low and high multiples.
 
@@ -274,10 +273,10 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
    - Invested Capital = equity + non-controlling interests + long- and short-term debt − cash & short-term investments (`cash_sti`), so the capital base matches consolidated EBIT.
    - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital (floored at $\frac{1}{3}\text{IC}_{\text{GAAP}}$) on the same NOPAT — no D&A add-back since v7.3; when GAAP invested capital is $\le 0$ it falls back to GAAP ROIC.
 2. **M&A-Matched RONIC & Single Initial Cap (`par_roic_cap = 0.50`)**:
-   - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), a serial acquirer keeps spending `ma_reinvest` ($\Sigma$ cash-funded $\Delta$(goodwill + intangibles) ÷ $\Sigma$ NOPAT over the 10-year $g_0$ window; only acquisition years with goodwill up > 2%; stock-funded years skipped) on acquisitions earning GAAP ROIC: bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$, bought share $w = \text{clip}_{[0,1]}(g_m / g_0)$ and $1/\text{RONIC}_0 = (1-w)/r_{\text{tang}} + w/r_{\text{GAAP}}$, capped at `par_roic_cap = 0.50` (unless `roic_est` is populated). One transformational merger moves the median little; organic capital growth never counts as M&A.
+   - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), a serial acquirer keeps spending `ma_reinvest` ($\Sigma$ cash-funded $\Delta$(goodwill + intangibles) ÷ $\Sigma$ NOPAT over the 10-year $g_0$ window; only acquisition years with goodwill up > 2%; stock-funded years skipped) on acquisitions earning GAAP ROIC: bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$, bought share $w = \text{clip}_{[0,1]}(g_m / g_0)$ and $1/\text{RONIC}_0 = (1-w)/r_{\text{tang}} + w/r_{\text{GAAP}}$, capped at `par_roic_cap = 0.50`. One transformational merger moves the median little; organic capital growth never counts as M&A.
    - A $\text{RONIC}_0 \le r$ is flagged (`ronic_le_r`) for review: growth then adds no value and Fair P/E $\le 1/r$.
 3. **Active ROIC Priority**:
-   - `roic_est` (override) $\rightarrow$ Balance-Sheet Financials: `roe_median` (consolidated for Up-C structures like `IBKR`) $\rightarrow$ IFRIC-12 Concessions: `roic_median` $\rightarrow$ All others: `roic_operating` $\rightarrow$ `roic_median` — except `roe_median` when invested capital is $\le 0$ in $\ge 2$ of 5 years and $0 < \text{ROE} \le 50\%$ (v7.5, clearing / customer cash: DB1, ADYEN).
+   - Balance-Sheet Financials: `roe_median` (consolidated for Up-C structures like `IBKR`) $\rightarrow$ IFRIC-12 Concessions: `roic_median` $\rightarrow$ All others: `roic_operating` $\rightarrow$ `roic_median` — except `roe_median` when invested capital is $\le 0$ in $\ge 2$ of 5 years and $0 < \text{ROE} \le 50\%$ (v7.5, clearing / customer cash: DB1, ADYEN).
 
 ---
 
@@ -291,10 +290,9 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
      2. **Pillar 2 (Cycle-Spanning Theil–Sen)**: All pairwise annualized log-slopes spanning $\Delta t \ge 5\text{y}$, extracting median ($P_{50}$), Lower Confidence Bound ($P_{25}$), and MAD dispersion ($\hat{\sigma}_b$).
      3. **Pillar 3 (3-Driver Triangulation)**: $\hat{g}_{\text{tri}} = \min(\hat{g}_{\text{Rev}, P25},\; \text{median}(\hat{g}_{\text{Rev}, P50}, \hat{g}_{\text{NOPAT}, P50}, \hat{g}_{\text{OE}, P50}))$ (plus refranchising guard).
      4. **Pillar 4 (Empirical Bayes Shrinkage & $\tanh$ Tail Compression)**: Precision shrinkage $w_i = \tau_0^2 / (\tau_0^2 + \hat{\sigma}_{b,i}^2)$ ($\tau_0 = 0.060$) toward $g_{\text{base}} = 3.0\%$, compressed via $\text{compress\_g0}$ with asymptote `par_g_anchor_max = 0.130` (`13.0%`).
-   - **Fallbacks**: `opcost_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ $\text{sales\_1y} + \text{bb\_org}$ $\rightarrow$ $\text{g\_implied} - \text{bb\_pos} + \text{bb\_org}$ $\rightarrow$ `0.030`.
+   - **Fallbacks**: `opcost_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ $\text{sales\_1y} + \text{bb\_org}$ $\rightarrow$ `0.030`.
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Ceiling (`g_exp`)**:
    $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.13]}(\text{raw\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
-   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.13]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.13 + \text{bb\_pos}]}(g_{\text{est}})$.
 
 ---
 
@@ -353,13 +351,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "note": "Indispensable enterprise software and cloud oligopolist. Pricing power demonstrated by repeated price hikes with zero churn. $80B+ net cash balance sheet. [5-10Y g: cloud volume 6.5% + enterprise price 2.0% - AI GPU capex D&A drag 0.5% + net buyback 1.0%]",
     "evidence": "30%+ Operating ROIC over 10 years. FCF conversion >100%. Azure and Office 365 form an indispensable productivity layer for modern enterprise."
   },
-  "quantitative_overrides": {
-    "peak_eps_est": null,
-    "g_est": null,
-    "g_implied": 0.09,
-    "roic_est": null,
-    "fin_note": "5-10Y g anchored in cloud volume and enterprise price expansion."
-  },
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
@@ -387,12 +378,8 @@ When the independent agent completes an evaluation, it must return a strictly va
 | `note` | `note` | String | Mandatory summary text |
 | `evidence` | `evidence` | String | Mandatory empirical evidence |
 
-#### `quantitative_overrides` Object (for `Quality pass` and `Calamity pass`)
-- `peak_eps_est`: Float or null.
-- `g_est`: Float (e.g. `0.095` for 9.5%) or null — sole explicit discretionary override for `g_exp`.
-- `g_implied`: Float (e.g. `0.10` for 10.0%) or null — informational bottom-up reference & fallback when statement growth is missing.
-- `roic_est`: Float (e.g. `0.30` for 30.0%) or null — leave `null` by default unless reported capital is distorted.
-- `fin_note`: String or null.
+#### No `quantitative_overrides` (v7.6)
+The quantitative valuation uses statement data only; a `quantitative_overrides` block in a payload is ignored with a warning.
 
 ---
 
@@ -420,13 +407,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "gate_6_cash_and_balance_sheet": "Y",
     "note": "Passes all 6 gates. The ultimate electronic payment toll booth with 67% operating margins, zero credit risk, and perpetual owner earnings compounding. Balance sheet fortress with net cash/minimal debt. [5-10Y g: payments volume 6% + cross-border travel 2% + value-added services (cyber/fraud) 2% + buyback 1% - credit card competition act drag 1%]",
     "evidence": "10-year average GAAP ROIC exceeds 45%. Free cash flow conversion consistently 100%+. Duopoly with Mastercard processes over $14 trillion in annual volume. Network effects across 4 billion credentials and 100 million merchants."
-  },
-  "quantitative_overrides": {
-    "peak_eps_est": null,
-    "g_est": null,
-    "g_implied": 0.10,
-    "roic_est": null,
-    "fin_note": "Bottom-up reference g_implied of 10.0% anchored in global nominal PCE growth, cross-border recovery, and value-added services."
   },
   "evaluation_metadata": {
     "verdict": "Quality pass",
@@ -462,7 +442,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "note": "Fails Gate 2 (REJECT). Discretionary big-ticket leisure purchase with high cyclicality, immense fixed vessel capital costs, and fuel exposure. Downstream gates bypassed per waterfall.",
     "evidence": "Revenues collapsed over 70% during the pandemic, forcing billions in dilutive equity issuance and high-yield debt to stay afloat. Negative free cash flow in downturns."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G2 Essential Need",
     "failing_gate": "Gate 2",
@@ -497,7 +476,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "note": "Fails Gate 3 (REJECT). Commodity price-taker lacking pricing power above inflation over the complete cycle. Downstream gates bypassed per waterfall.",
     "evidence": "Operating margins swing from +35% at cycle peaks to near-zero or negative in troughs. Historical through-the-cycle GAAP ROIC averages 8-11%, failing the 12% hurdle."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G3 Moat & Pricing",
     "failing_gate": "Gate 3",
@@ -532,7 +510,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "note": "Fails Gate 4 (CAP = 10, REJECT). Capped at CAP 10 under Macrotrend #1 (Automation & Cognitive Tech): core seat-based pricing model faces structural deflation as AI agents reduce corporate sales/support headcounts.",
     "evidence": "Organic growth slowed from 25%+ to high single digits. Customer IT budgets shifting to generative AI infrastructure. Agentforce is nascent while core seat growth stalls."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G4 Runway (<15Y)",
     "failing_gate": "Gate 4",
@@ -567,7 +544,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "note": "Fails Gate 6 (REJECT). While the index toll booth is world-class, the balance sheet has been compromised by financial engineering: $4.5B+ in long-term debt funded share repurchases at 40-50x earnings, resulting in negative stockholders' equity (-$800M) and Net Debt > 4.5x Owner Earnings.",
     "evidence": "Negative book equity of -$820M. Total debt of $4.5B represents over 4.5 years of normalized net income, violating the peace-of-mind fortress standard."
   },
-  "quantitative_overrides": {},
   "evaluation_metadata": {
     "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
     "failing_gate": "Gate 6",
@@ -593,12 +569,11 @@ The script verifies:
 1. All required fields are present.
 2. The waterfall invariant is respected (e.g. if Gate 2 failed, Gates 3–6 must be null).
 3. If Quality Pass, Gate 4 $\ge 15$, Gate 5 $\ge 1$, and Gates 1, 2, 3b, 6 are `"Y"`.
-4. Overrides in `quantitative_overrides` match supported formats.
+4. No `quantitative_overrides` are applied (ignored with a warning).
 
 ### Step 2: Apply Updates to Datasets
 `screener/apply_evaluation.py` automatically updates:
 - `data/<universe>/inputs.csv`: updates columns `1`, `2`, `2r`, `3a`, `3b`, `3m`, `4`, `5`, `6`, `calamity`, `calamity_note`, `note`, `evidence`.
-- `data/<universe>/financials.csv`: updates columns `peak_eps_est`, `g_est`, `g_implied`, `roic_est`, `fin_note` (if provided).
 
 ### Step 3: Rebuild HTML Cockpit
 After updating, compile the standalone HTML cockpit (`output/screener.html`, `output/index.html`, `docs/index.html`):

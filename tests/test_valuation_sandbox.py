@@ -202,8 +202,8 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
     def test_consistent_column_order_across_qpass_and_calamity(self):
         """Verify Quality Pass Funnel and Calamity Watchlist share coreValuationCols."""
         self.assertIn("const coreValuationCols = [", self.html)
-        self.assertIn("cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.sector];", self.html)
-        self.assertIn("cols = [...coreValuationCols, ALL_COLS.waived_gates];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.g6_flags];", self.html)
 
     def test_zero_diff_thresholds(self):
         """Verify diff thresholds prevent epsilon jitter from showing spurious +0.0% colors."""
@@ -212,11 +212,10 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         self.assertIn("isPriceZero", self.html)
         self.assertIn("isYearZero", self.html)
 
-    def test_cap_override_json_formatting(self):
-        """copySandboxOverrideJson emits only changed overrides (no nulls that would clear existing ones)."""
-        self.assertIn("sbCurrent.cap !== null ? sbCurrent.cap + 'y' : '20y default'", self.html)
-        self.assertIn("overrideObj.quantitative_overrides = overrides;", self.html)
-        self.assertIn("if (tw.cap) overrideObj.qualitative = {{ gate_4_runway_cap: sbCurrent.cap }};".replace("{{", "{").replace("}}", "}"), self.html)
+    def test_sandbox_exports_no_override_json(self):
+        """v7.6: no analyst overrides — the sandbox is what-if only and offers no override JSON export."""
+        self.assertNotIn("copySandboxOverrideJson", self.html)
+        self.assertNotIn("quantitative_overrides", self.html)
 
 
 class ValuationSandboxSimulationTests(unittest.TestCase):
@@ -237,7 +236,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         base_roic = (c["roic_exp"] * 100.0) if c.get("roic_exp") is not None else (
             (c["roic_used"] * 100.0) if c.get("roic_used") is not None else 18.0)
         base_peakeps = c.get("peak_eps") if (c.get("peak_eps") or 0) > 0 else None
-        base_gest = (c["g_est"] * 100.0) if c.get("g_est") is not None else None
+        base_gest = None                     # what-if growth input starts empty (no analyst overrides)
         cur = {"cap": cap, "salescagr": snap(base_salescagr), "roic": snap(base_roic), "peakeps": base_peakeps, "gest": base_gest}
         cur.update(overrides or {})
 
@@ -266,8 +265,6 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
                     raw_org = g_oe - bb_pos
                 else:
                     raw_org = c.get("sales_1y") + bb_org
-            elif c.get("g_implied") is not None:
-                raw_org = c["g_implied"] - bb_pos + bb_org
             else:
                 raw_org = g_base + bb_org
             if cur["gest"] is not None:
@@ -281,14 +278,14 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         if tw_roic:
             roic_exp = r4(max(0.05, cur["roic"] / 100.0))
         elif (tw_growth or tw_gest) and c.get("roic_used") is not None:
-            raw = ronic0(c.get("roic_est_override"), c["roic_used"], c.get("roic_operating"), c.get("roic_median"),
+            raw = ronic0(c["roic_used"], c.get("roic_operating"), c.get("roic_median"),
                          c.get("ma_reinvest"), g_org_exp, bool(c.get("uses_gaap_roic")))[0]
-            roic_exp = r4(max(0.05, raw) if c.get("roic_est_override") is not None else max(0.05, min(0.50, raw)))
+            roic_exp = r4(max(0.05, min(0.50, raw)))
 
         price, peak_eps, fund_cap = c.get("price"), cur["peakeps"], cur["cap"]
         moat_arch = c.get("g3a_moat_archetype")
         has_moat_arch = bool(moat_arch and str(moat_arch).strip() not in ("", "None"))
-        has_peak_override = c.get("peak_eps_est") is not None or tw_peak
+        has_peak_override = tw_peak
         stale = "stale fundamentals" in (str(c.get("fin_note") or "").split("[auto]") + [""])[1]
         has_valuation_inputs = bool(
             not stale and price and peak_eps and peak_eps > 0
@@ -346,7 +343,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
             for c in self.companies:
                 if c["universe"] != u or c.get("val_status") != "Valued" or c.get("sales_cagr") is None:
                     continue
-                if c.get("g_est") is not None or c.get("mtm_holdco"):
+                if c.get("mtm_holdco"):
                     continue
                 slider = math.floor(c["sales_cagr"] * 200 + 0.5) / 2 + 2.0
                 d = (slider - c["sales_cagr"] * 100.0) / 100.0
@@ -366,7 +363,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
     def test_roic_slider_touch_does_not_jump(self):
         """The RONIC slider starts at the RONIC₀ actually used (after M&A blend and 50% cap): moving it back to its
         start reproduces the baseline exactly, a one-step move at RONIC₀ >= 15% changes Fair P/E only marginally, and a
-        moved slider equals Python with roic_est = slider value."""
+        moved slider equals Python with scenario ronic0 = slider value."""
         moved, mismatched = [], []
         for c in self.companies:
             if c.get("par_mult") is None or c.get("val_status") != "Valued" or c.get("mtm_holdco"):
@@ -392,7 +389,6 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
             (
                 c for c in self.companies
                 if "Multi-Sector Holdings" in (c.get("sub_industry") or "")
-                and c.get("peak_eps_est") is None
                 and c.get("mtm_holdco")
                 and (c.get("roic_exp") or 0) > 0.12
                 and (c.get("g_org_exp") or 0) > 0.030
@@ -577,8 +573,8 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
     def test_mtm_holdco_2y_cash_conversion_and_bvps_anchor(self):
         """Verify 2Y OCF/NI < 0.25 triggers MTM HoldCo and anchors Fair Value to 1.0x BVPS."""
         # III.GB pattern: 5Y fcf_conv = 0.43 (>= 0.25), but recent 2Y ocf_ni_2y = 0.08 (< 0.25)
-        self.assertFalse(is_mtm_holdco("Multi-Sector Holdings", fcf_conv=0.43, peak_eps_est=None, mult_high_5y=8.0, ocf_ni_2y=0.40))
-        self.assertTrue(is_mtm_holdco("Multi-Sector Holdings", fcf_conv=0.43, peak_eps_est=None, mult_high_5y=8.0, ocf_ni_2y=0.08))
+        self.assertFalse(is_mtm_holdco("Multi-Sector Holdings", fcf_conv=0.43, mult_high_5y=8.0, ocf_ni_2y=0.40))
+        self.assertTrue(is_mtm_holdco("Multi-Sector Holdings", fcf_conv=0.43, mult_high_5y=8.0, ocf_ni_2y=0.08))
 
         # Valuation of MTM HoldCo uses 1.0x BVPS (equity_m * price / market_cap_m)
         fin = {

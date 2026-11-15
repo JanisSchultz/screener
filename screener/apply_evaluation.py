@@ -1,9 +1,9 @@
 """Apply an independent agent's company evaluation JSON payload to data/<universe>/.
 
-Validates the evaluation against the v7.1 framework rules, enforces the sequential
+Validates the evaluation against the framework rules, enforces the sequential
 waterfall (clearing downstream fields after a failed gate), and updates:
 - data/<universe>/inputs.csv (Qualitative gates 1-6, notes, evidence)
-- data/<universe>/financials.csv (Quantitative overrides: peak_eps_est, g_est, g_implied, roic_est, fin_note)
+Quantitative inputs come only from the statements (v7.6): a `quantitative_overrides` block is ignored with a warning.
 
 Usage:
     python3 screener/apply_evaluation.py --input result.json
@@ -58,14 +58,6 @@ QUAL_KEY_MAP = {
     "6": "6",
 }
 
-FIN_KEY_MAP = {
-    "peak_eps_est": "peak_eps_est",
-    "g_est": "g_est",
-    "g_implied": "g_implied",
-    "g_exp": "g_implied",
-    "roic_est": "roic_est",
-    "fin_note": "fin_note",
-}
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -99,16 +91,6 @@ def sanitize_val(v):
         return str(int(v))
     return str(v).strip()
 
-
-AUTO_PREFIX = "[auto] "
-
-
-def merge_fin_note(new_note, old_note) -> str:
-    """New analyst text replaces the analyst part of fin_note; the machine-written '[auto] …' part (read by the
-    peak-EPS logic in screener/gates.py: share basis, non-cash spikes, stale fundamentals) is always preserved."""
-    analyst = [p for p in str(new_note or "").split(" | ") if p.strip() and not p.startswith(AUTO_PREFIX)]
-    auto = [p for p in str(old_note or "").split(" | ") if p.startswith(AUTO_PREFIX)]
-    return " | ".join(analyst + auto)
 
 
 def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
@@ -210,14 +192,11 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
             if not has_eligible_fail:
                 warnings.append("Calamity flag 'Y' is set, but no eligible gate (3b, 5, or 6) failed.")
 
-    # Normalize financials
-    fin_raw = eval_data.get("quantitative_overrides", {})
-    fin = {}
-    for k, v in fin_raw.items():
-        if k in FIN_KEY_MAP:
-            fin[FIN_KEY_MAP[k]] = sanitize_val(v)
+    # v7.6: no analyst overrides — quantitative inputs come only from the statements
+    if eval_data.get("quantitative_overrides"):
+        warnings.append("quantitative_overrides ignored: the valuation uses statement data only (no analyst overrides).")
 
-    return qual, fin, warnings
+    return qual, {}, warnings
 
 
 def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool = False) -> bool:
@@ -240,7 +219,6 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
         universe, u_dir = found
 
     inputs_path = u_dir / "inputs.csv"
-    fin_path = u_dir / "financials.csv"
 
     inputs_rows = read_csv(inputs_path)
     if not inputs_rows:
@@ -259,7 +237,7 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
         print(f"Error: Company '{company_id}' not found in {inputs_path}", file=sys.stderr)
         return False
 
-    qual, fin, warnings = validate_and_waterfall(payload)
+    qual, _, warnings = validate_and_waterfall(payload)
     for w in warnings:
         print(f"[{company_id}] {w}")
 
@@ -276,44 +254,19 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
             if old_v != sanitized_new:
                 input_diff[k] = (old_v, sanitized_new)
 
-    # Build financials diff
-    fin_diff = {}
-    fin_rows = read_csv(fin_path)
-    fin_row = None
-    if fin_rows:
-        for r in fin_rows:
-            if r.get("id") == company_id:
-                fin_row = r
-                break
-
-    if fin and fin_row:
-        fin_fieldnames = list(fin_rows[0].keys())
-        for k, new_v in fin.items():
-            if k in fin_fieldnames:
-                old_v = fin_row.get(k, "")
-                if k == "fin_note":
-                    new_v = merge_fin_note(new_v, old_v)
-                if old_v != new_v:
-                    fin_diff[k] = (old_v, new_v)
-
     # Print summary
     print(f"\nEvaluation summary for {company_id} ({universe.upper()}):")
     verdict = payload.get("evaluation_metadata", {}).get("verdict")
     if verdict:
         print(f"Verdict: {verdict}")
 
-    if not input_diff and not fin_diff:
+    if not input_diff:
         print("No changes required. Company data is already up-to-date.")
         return True
 
     if input_diff:
         print("\nQualitative Updates (inputs.csv):")
         for k, (old_v, new_v) in input_diff.items():
-            print(f"  [{k}] {repr(old_v)} -> {repr(new_v)}")
-
-    if fin_diff:
-        print("\nQuantitative Overrides (financials.csv):")
-        for k, (old_v, new_v) in fin_diff.items():
             print(f"  [{k}] {repr(old_v)} -> {repr(new_v)}")
 
     if dry_run:
@@ -328,12 +281,6 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
         print(f"\nSuccessfully updated {inputs_path}")
 
     # Apply financial changes if any
-    if fin_diff and fin_row:
-        for k, (_, new_v) in fin_diff.items():
-            fin_row[k] = new_v
-        write_csv(fin_path, list(fin_rows[0].keys()), fin_rows)
-        print(f"\nSuccessfully updated {fin_path}")
-
     return True
 
 

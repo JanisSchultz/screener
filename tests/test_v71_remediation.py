@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
 
 from screener import config as C
 from screener import gates as G
-from screener.apply_evaluation import merge_fin_note, validate_and_waterfall
+from screener.apply_evaluation import validate_and_waterfall
 from screener.fetch import metrics, par, settings
 from screener.fetch.sources import EODHD, _same_company, safe_name, stale_fundamentals, symbol_cache
 
@@ -67,11 +67,10 @@ class ValuationCoreTests(unittest.TestCase):
         self.assertTrue(v["bs_fin"])
         self.assertAlmostEqual(v["k"], 0.1025)
 
-    def test_cap_growth_only_falls_back_to_g_implied_and_dilution_applies(self):
+    def test_no_statement_growth_falls_back_to_base_rate(self):
+        # v7.6: no g_implied override — capital growth alone is not growth evidence, g0 = g_base
         v = G.par_valuation(fin(sales_cagr=None, opcost_cagr=None, cap_growth=0.05, g_implied=0.10), self.p, cap=20)
-        self.assertAlmostEqual(v["g_org_exp"], 0.10, places=4)
-        v_dil = G.par_valuation(fin(sales_cagr=None, opcost_cagr=None, g_implied=0.10, buyback_yield=-0.02), self.p, cap=20)
-        self.assertAlmostEqual(v_dil["g_org_exp"], 0.08, places=4)
+        self.assertAlmostEqual(v["g_org_exp"], 0.03, places=4)
 
     def test_irr_below_minus_fifty_percent_is_solved(self):
         pe, _, _, _, f5, v5 = G.dcf_schedule_and_continuation(0.05, 0.20, 20)
@@ -173,11 +172,6 @@ class PipelineTests(unittest.TestCase):
 
 
 class IngestionTests(unittest.TestCase):
-    def test_fin_note_merge_preserves_auto_part(self):
-        old = "Old analyst text | [auto] check share basis (statements ÷ quote shares = 1.80)"
-        self.assertEqual(merge_fin_note("Sandbox sensitivity: CAP 20y", old),
-                         "Sandbox sensitivity: CAP 20y | [auto] check share basis (statements ÷ quote shares = 1.80)")
-
     def test_sandbox_payload_does_not_touch_calamity(self):
         qual, fin_ov, _ = validate_and_waterfall({"qualitative": {"gate_4_runway_cap": 20},
                                                   "quantitative_overrides": {"g_est": 0.09}})

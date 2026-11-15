@@ -62,11 +62,9 @@ FIN_COLUMNS = [
     ("equity_m", "Shareholders' equity latest FY (m)", "#,##0", 11),
     ("ocf_ni_2y", "Operating cash flow ÷ NI (latest 2y)", "0%", 9),
     ("owner_add_m", "Owner-earnings add-back latest FY (m): D&A − CapEx − lease dep.", "#,##0", 10),
-    ("g_implied", "Implied Owner EPS g (5–10y)", "0.0%", 10),
-    ("peak_eps_est", "My Peak EPS (blank = reported)", "#,##0.00", 10),
-    ("g_est", "My growth g (blank = cycle CAGR)", "0.0%", 10),
-    ("roic_est", "My ROIC (blank = operating ROIC)", "0.0%", 10),
-    ("fin_note", "Note", "@", 30),
+    ("g6_netdebt_yrs", "Gate 6 check: net debt ÷ owner earnings (3y median, years)", "0.0", 8),
+    ("g6_intcov", "Gate 6 check: EBIT ÷ interest (3y median)", "0.0", 8),
+    ("fin_note", "[auto] data notes", "@", 30),
 ]
 TECH_COLUMNS = [
     ("id", "ID", "@", 11), ("symbol", "Price symbol", "@", 11), ("as_of", "As of (week)", "@", 11),

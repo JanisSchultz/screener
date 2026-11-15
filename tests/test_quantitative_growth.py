@@ -20,16 +20,12 @@ def sample_fin(**overrides) -> dict:
         "price": 100.0,
         "market_cap_m": 10000.0,
         "peak_oe_eps": 5.0,
-        "peak_eps_est": None,
         "mult_low_5y": 15.0,
         "mult_high_5y": 25.0,
         "cagr_oe_eps": 0.10,
         "dividends_ttm_m": 200.0,
         "roic_median": 0.20,
         "roic_operating": 0.25,
-        "roic_est": None,
-        "g_est": None,
-        "g_implied": None,
     }
     fin.update(overrides)
     return fin
@@ -131,7 +127,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(v_ins["par_mult"], pe_1025, places=4)
         self.assertAlmostEqual(v_bro["par_mult"], pe_850, places=4)
 
-    def test_analyst_override_g_est_sets_g_exp_and_g_org_exp(self):
+    def test_sandbox_growth_scenario_sets_g_exp_and_g_org_exp(self):
         fin = sample_fin(
             sales_ttm_m=5000.0,
             sales_1y=0.06,
@@ -141,9 +137,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
             cagr_oe_eps=0.06,
             buyback_yield=0.01,
             roic_operating=0.12,
-            g_est=0.08,
         )
-        val = par_valuation(fin, self.p, cap=20)
+        val = par_valuation(fin, self.p, cap=20, scenario={"g": 0.08})   # sandbox what-if (no data overrides)
         self.assertAlmostEqual(val["g_org_exp"], 0.0700, places=4)
         self.assertAlmostEqual(val["g_exp"], 0.0800, places=4)
 
@@ -200,7 +195,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
         self.assertAlmostEqual(val["g_org_exp"], 0.1180, places=4)
 
-    def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
+    def test_base_rate_used_when_statement_growth_missing(self):
         fin_fallback = sample_fin(
             sales_ttm_m=6000.0,
             cagr_oe_eps=None,
@@ -208,11 +203,10 @@ class QuantitativeGrowthTests(unittest.TestCase):
             sales_cagr=None,
             opcost_cagr=None,
             cap_growth=None,
-            g_implied=0.085,
         )
         val = par_valuation(fin_fallback, self.p, cap=15)
-        self.assertAlmostEqual(val["g_org_exp"], 0.0850, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.0850, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0300, places=4)      # v7.6: no g_implied override -> g_base
+        self.assertAlmostEqual(val["g_exp"], 0.0300, places=4)
 
     def test_low_growth_preserved_without_artificial_two_percent_floor(self):
         fin_low = sample_fin(opcost_cagr=0.012, roic_operating=0.12)
@@ -262,8 +256,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
 
     def test_pure_explicit_dcf_independent_of_5y_historical_multiples(self):
         # Fair P/E (par_mult) is 100% pure Explicit DCF and does not change when 5Y low/high multiples vary
-        fin1 = sample_fin(mult_low_5y=12.0, mult_high_5y=15.0, g_est=0.09, roic_operating=0.35)
-        fin2 = sample_fin(mult_low_5y=35.0, mult_high_5y=60.0, g_est=0.09, roic_operating=0.35)
+        fin1 = sample_fin(mult_low_5y=12.0, mult_high_5y=15.0, sales_cagr=0.09, roic_operating=0.35)
+        fin2 = sample_fin(mult_low_5y=35.0, mult_high_5y=60.0, sales_cagr=0.09, roic_operating=0.35)
         val1 = par_valuation(fin1, self.p, cap=20)
         val2 = par_valuation(fin2, self.p, cap=20)
         self.assertAlmostEqual(val1["par_mult"], val1["pe_vd"], places=4)
@@ -277,8 +271,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertGreater(v30["pe_vd"], v20["pe_vd"])
         self.assertGreater(v20["pe_vd"], v15["pe_vd"])
 
-        fin_low_roic = sample_fin(g_est=0.09, roic_operating=0.12)
-        fin_high_roic = sample_fin(g_est=0.09, roic_operating=0.40)
+        fin_low_roic = sample_fin(sales_cagr=0.09, roic_operating=0.12)
+        fin_high_roic = sample_fin(sales_cagr=0.09, roic_operating=0.40)
         val_low = par_valuation(fin_low_roic, self.p, cap=20)
         val_high = par_valuation(fin_high_roic, self.p, cap=20)
         self.assertGreater(val_high["par_mult"], val_low["par_mult"] + 4.0)
@@ -305,9 +299,9 @@ class QuantitativeGrowthTests(unittest.TestCase):
         val = par_valuation(fin, self.p, cap=20)
         self.assertAlmostEqual(val["peak_eps"], 10.0, places=4)
 
-    def test_analyst_override_takes_precedence_over_mid_cycle(self):
-        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=600.0, peak_oe_eps=10.0, peak_eps_est=7.2)
-        val = par_valuation(fin, self.p, cap=20)
+    def test_sandbox_peak_scenario_takes_precedence_over_mid_cycle(self):
+        fin = sample_fin(price=100.0, market_cap_m=10000.0, ni_ttm_m=600.0, peak_oe_eps=10.0)
+        val = par_valuation(fin, self.p, cap=20, scenario={"peak_eps": 7.2})
         self.assertAlmostEqual(val["peak_eps"], 7.2, places=4)
 
     def test_negative_net_income_floored_at_zero(self):
@@ -353,7 +347,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         fin_mtm = sample_fin(
             roic_median=0.1972, roic_operating=0.1972,
             mult_low_5y=4.3, mult_high_5y=7.2,
-            fcf_conv=None, peak_eps_est=None,
+            fcf_conv=None,
         )
         val_mtm = par_valuation(fin_mtm, self.p, cap=30, sub_industry="Multi-Sector Holdings (mapped)")
         expected_nav_pe = 1.0 / val_mtm["roic_exp"]
@@ -366,7 +360,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         fin_op_holdco = sample_fin(
             roic_median=0.15, roic_operating=0.18,
             mult_low_5y=15.0, mult_high_5y=25.0,
-            fcf_conv=0.80, peak_eps_est=None,
+            fcf_conv=0.80,
         )
         val_op = par_valuation(fin_op_holdco, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
         self.assertGreater(val_op["pe_vd"], 1.0 / val_op["roic_exp"] + 2.0)
@@ -432,7 +426,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
 
     def test_market_implied_cap_zero_moat_floor_and_at_par_identity(self):
         """Market-Implied CAP equals 0.0y at <= 1/k = 11.76x and equals Fundamental CAP at Fair Value."""
-        fin = sample_fin(mult_low_5y=18.0, mult_high_5y=28.0, g_est=0.085, roic_operating=0.28)
+        fin = sample_fin(mult_low_5y=18.0, mult_high_5y=28.0, sales_cagr=0.085, roic_operating=0.28)
         v0 = par_valuation(fin, self.p, cap=20)
 
         # At Fair Value -> Market-Implied CAP == 20.0y
@@ -461,7 +455,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         fin_mtm = sample_fin(
             roic_median=0.18, roic_operating=0.18,
             mult_low_5y=4.5, mult_high_5y=7.5,
-            fcf_conv=None, peak_eps_est=None, cagr_oe_eps=0.08,
+            fcf_conv=None, cagr_oe_eps=0.08,
         )
         vm0 = par_valuation(fin_mtm, self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
         vm_par = par_valuation(dict(fin_mtm, price=vm0["par_val"]), self.p, cap=20, sub_industry="Multi-Sector Holdings (mapped)")
@@ -474,7 +468,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         fin_ins = sample_fin(
             roic_median=0.145, roic_operating=0.145,
             mult_low_5y=10.5, mult_high_5y=14.8,
-            fcf_conv=None, peak_eps_est=None, cagr_oe_eps=0.075,
+            fcf_conv=None, cagr_oe_eps=0.075,
         )
         val_ins = par_valuation(fin_ins, self.p, cap=20, sub_industry="Multi-line Insurance (mapped)")
         self.assertGreater(val_ins["pe_vd"], 1.0 / val_ins["roic_exp"] + 3.0)

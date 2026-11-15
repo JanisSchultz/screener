@@ -1,0 +1,237 @@
+id,result,gate6_answer,v75_status,v76_status,v75_active_eps,v76_active_eps,v75_fair_pe,v76_fair_pe,v75_vs_fair,v76_vs_fair,g6_netdebt,g6_netdebt_yrs,g6_intcov_chk,g6_intcov,g6_fcfconv,g6_p2p
+IFC.CA,Quality pass,Y,Valued,Valued,19.5674,19.5674,12.4978,12.4978,0.1363,0.1363,n/a,-5.93,n/a,12.96,info,ok
+FFH.CA,Quality pass,Y,Valued,Valued,316.6537,316.6537,6.2131,6.2131,0.4069,0.4069,n/a,0.41,n/a,8.69,info,ok
+BAM.CA,Quality pass,Y,Valued,Valued,2.13,2.2339,11.8824,11.7647,1.9033,1.7959,ok,0.8,flag,0.79,flag,ok
+X.CA,Quality pass,Y,Valued,Valued,1.7911,1.7911,12.4413,12.4413,1.8708,1.8708,ok,2.9,flag,0.4,ok,ok
+CCL.B.CA,Quality pass,Y,Valued,Valued,4.6838,4.6838,14.8072,14.8072,0.4673,0.4673,ok,1.67,ok,9.47,ok,ok
+CNR.CA,Quality pass,Y,Valued,Valued,8.0035,8.0035,12.9105,12.9105,0.7545,0.7545,flag,4.42,ok,7.21,ok,ok
+CP.CA,Quality pass,Y,Valued,Valued,4.6093,4.6093,14.0096,10.5273,1.0779,1.7653,flag,5.61,ok,6.47,ok,ok
+WCN.CA,Quality pass,Y,Valued,Valued,6.2006,6.2006,14.4533,14.4533,2.0817,2.0817,flag,8.02,flag,4.5,ok,ok
+ATD.CA,Quality pass,Y,Valued,Valued,4.7698,4.7698,15.7728,15.7728,0.1012,0.1012,ok,2.77,ok,6.43,ok,ok
+DOL.CA,Quality pass,Y,Valued,Valued,4.7438,4.7438,24.2719,24.2719,0.9125,0.9125,ok,1.85,ok,8.69,ok,ok
+CSU.CA,Quality pass,Y,Valued,Valued,113.8319,113.8319,16.6333,16.6333,0.8445,0.8445,ok,1.38,flag,2.21,ok,ok
+AUTO.GB,Quality pass,Y,Valued,Valued,33.5166,33.5166,18.3724,18.3724,-0.0633,-0.0633,ok,0.04,ok,87.17,ok,ok
+G24.DE,Quality pass,Y,Valued,Valued,3.8816,3.8816,19.1964,19.1964,0.2213,0.2213,ok,0.38,ok,50.1,ok,ok
+RMV.GB,Quality pass,Y,Valued,Valued,28.1566,28.1566,17.1417,17.1417,0.2063,0.2063,ok,-0.16,ok,516.83,ok,ok
+ITX.ES,Quality pass,Y,Valued,Valued,1.9959,1.9959,18.2674,18.2674,0.6358,0.6358,ok,-1.96,ok,22.13,ok,ok
+CFR.CH,Quality pass,Y,Valued,Valued,5.4637,5.4637,19.4624,19.4624,0.5935,0.5935,ok,-3.0,ok,10.8,ok,ok
+MC.FR,Quality pass,Y,Valued,Valued,24.6852,24.6852,21.6599,21.6599,-0.2454,-0.2454,ok,0.7,ok,15.94,ok,ok
+RMS.FR,Quality pass,Y,Valued,Valued,43.463,43.463,33.2863,33.2863,-0.0727,-0.0727,ok,-2.52,ok,104.24,ok,ok
+CPG.GB,Quality pass,Y,No data,No data,1.1331,1.1331,,,,,ok,2.52,ok,8.96,ok,ok
+CARL B.DK,Quality pass,Y,Valued,Valued,56.8926,56.8926,12.6736,12.6736,0.416,0.416,flag,9.76,ok,7.88,n/a,ok
+HEIA.NL,Quality pass,Y,Valued,Valued,3.3627,3.3627,11.7773,11.7773,1.1392,1.1392,flag,6.89,ok,5.17,ok,ok
+HEIO.NL,Quality pass,Y,Valued,Valued,3.3866,3.3866,11.783,11.783,1.0261,1.0261,flag,13.6,ok,5.17,ok,ok
+DGE.GB,Calamity pass,Y,Valued,Valued,58.5626,58.5626,11.8906,11.8906,1.7594,1.7594,flag,9.72,ok,5.27,ok,ok
+RI.FR,Quality pass,Y,Valued,Valued,5.4486,5.4486,11.7255,11.7255,0.1392,0.1392,flag,7.11,ok,5.72,ok,ok
+LISP.CH,Quality pass,Y,Valued,Valued,318.3754,318.3754,15.6564,15.6564,0.7223,0.7223,ok,0.78,ok,19.18,ok,ok
+LOTB.BE,Quality pass,Y,Valued,Valued,211.8795,211.8795,19.0842,19.0842,2.4623,2.4623,ok,1.07,ok,46.45,ok,ok
+NESN.CH,Calamity pass,N,Valued,Valued,3.7523,3.7523,11.8887,11.8887,0.9664,0.9664,flag,4.78,ok,8.0,ok,flag
+BEI.DE,Quality pass,Y,Valued,Valued,4.297,4.297,12.4739,12.4739,0.5709,0.5709,ok,-2.54,ok,42.5,flag,ok
+OR.FR,Quality pass,Y,Valued,Valued,11.7001,11.7001,19.1218,19.1218,1.0167,1.0167,ok,0.39,ok,24.31,ok,ok
+ULVR.GB,Quality pass,Y,Valued,Valued,231.6115,231.6115,11.7647,11.7647,0.8304,0.8304,ok,3.54,ok,9.08,ok,ok
+GTT.FR,Quality pass,Y,Valued,Valued,11.121,11.121,17.7697,17.7697,-0.0578,-0.0578,ok,-0.95,ok,112.72,ok,ok
+VPK.NL,Quality pass,Y,Valued,Valued,5.268,5.268,11.7647,11.7647,-0.115,-0.115,ok,3.61,flag,3.15,ok,ok
+CVC.NL,Quality pass,Y,Valued,Valued,0.2729,0.2729,21.3588,21.3588,1.4808,1.4808,ok,3.47,ok,11.28,ok,n/a
+EQT.SE,Quality pass,Y,Valued,Valued,10.5443,10.5443,20.9945,20.9945,0.436,0.436,ok,-2.81,ok,18.03,ok,ok
+PGHN.CH,Quality pass,Y,Valued,Valued,49.4195,49.4195,17.4982,17.4982,-0.2386,-0.2386,ok,1.56,ok,52.24,flag,ok
+VZN.CH,Quality pass,Y,Valued,Valued,5.8352,5.8352,19.0071,19.0071,0.6121,0.6121,ok,-5.66,ok,136.98,flag,ok
+DB1.DE,Quality pass,Y,Valued,Valued,12.712,12.712,19.2416,19.2416,0.3508,0.3508,ok,-61.36,ok,19.41,ok,ok
+ENX.FR,Quality pass,Y,Valued,Valued,6.7367,6.7367,16.2053,16.2053,0.5453,0.5453,ok,1.96,ok,21.55,ok,ok
+AZA.SE,Quality pass,Y,Valued,Valued,16.788,16.788,17.4479,17.4479,0.354,0.354,n/a,26.0,n/a,2.37,info,ok
+FBK.IT,Quality pass,Y,Valued,Valued,1.0772,1.0772,15.2616,15.2616,0.3768,0.3768,n/a,-3.43,n/a,9.22,info,ok
+SAVE.SE,Quality pass,Y,Valued,Valued,12.0931,12.0931,15.0239,15.0239,0.9803,0.9803,n/a,-1.27,n/a,5.19,info,ok
+III.GB,Quality pass,Y,Valued,Valued,547.4708,547.4708,5.5685,5.5685,-0.1324,-0.1324,n/a,0.16,n/a,63.19,info,ok
+INDU C.SE,Quality pass,Y,Valued,Valued,45.7406,45.7406,9.6692,9.6692,0.2223,0.2223,n/a,0.27,n/a,218.25,info,flag
+INVE B.SE,Quality pass,Y,Valued,Valued,51.3722,51.3722,6.0595,6.0595,0.4014,0.4014,n/a,0.55,n/a,33.85,info,ok
+LATO B.SE,Quality pass,Y,Valued,Valued,8.6466,8.6466,12.1894,12.1894,1.2079,1.2079,n/a,1.97,n/a,7.73,info,ok
+LUND B.SE,Quality pass,Y,Valued,Valued,27.3811,27.3811,9.7561,9.7561,1.276,1.276,n/a,2.3,n/a,16.97,info,ok
+ADM.GB,Quality pass,Y,Valued,Valued,240.9099,240.9099,12.8942,12.8942,0.2774,0.2774,n/a,-3.44,n/a,21.6,info,ok
+GJF.NO,Quality pass,Y,Valued,Valued,13.1126,13.1126,9.8371,9.8371,1.1893,1.1893,n/a,-0.02,n/a,99.0,info,ok
+SAMPO.FI,Quality pass,Y,Valued,Valued,0.7493,0.7493,9.7561,9.7561,0.3898,0.3898,n/a,1.05,n/a,20.56,info,ok
+HNR1.DE,Quality pass,Y,Valued,Valued,23.7008,23.7008,11.3316,11.3316,0.1155,0.1155,n/a,1.2,n/a,21.12,info,ok
+MUV2.DE,Quality pass,Y,Valued,Valued,49.3343,49.3343,10.7691,10.7691,0.1128,0.1128,n/a,-0.78,n/a,23.38,info,ok
+ADYEN.NL,Quality pass,Y,Valued,Valued,33.6128,33.6128,23.138,23.138,0.1149,0.1149,ok,-10.55,ok,147.42,ok,ok
+WISE.GB,Quality pass,Y,No data,No data,33.1506,33.1506,,,,,ok,-30.55,ok,30.77,ok,n/a
+ALC.CH,Quality pass,Y,Valued,Valued,3.0556,3.0556,12.6927,12.6927,0.5821,0.5821,ok,1.78,ok,6.67,ok,ok
+BIM.FR,Quality pass,Y,Valued,Valued,3.64,3.743,15.0233,15.0233,0.697,0.6503,ok,-0.3,ok,36.8,flag,ok
+EL.FR,Quality pass,Y,Valued,Valued,6.782,6.782,7.5443,7.5443,2.564,2.564,ok,2.29,ok,16.04,ok,ok
+SECT B.SE,Quality pass,Y,Valued,Valued,2.9262,2.9262,23.0714,23.0714,3.7666,3.7666,ok,-2.23,ok,115.28,ok,ok
+SHL.DE,Quality pass,Y,Valued,Valued,2.2987,2.2987,15.1991,15.1991,0.2579,0.2579,flag,4.42,ok,7.83,ok,ok
+COLO B.DK,Quality pass,Y,Valued,Valued,17.6593,17.6593,15.2464,15.2464,0.8868,0.8868,flag,5.77,ok,9.19,ok,flag
+STMN.CH,Quality pass,Y,Valued,Valued,2.3277,2.3277,17.9542,17.9542,1.5651,1.5651,ok,-0.67,ok,27.75,ok,ok
+QIA.DE,Quality pass,Y,Valued,Valued,1.8555,1.8555,11.8897,11.8897,1.0534,1.0534,ok,1.44,ok,7.68,ok,ok
+ALK B.DK,Quality pass,Y,Valued,Valued,5.4025,5.4025,11.7647,11.7647,2.9082,2.9082,ok,-0.02,ok,30.27,ok,ok
+ROP.CH,Quality pass,Y,Valued,Valued,16.0399,16.0399,11.7647,11.7647,1.1446,1.1446,ok,1.63,ok,14.28,ok,flag
+KOG.NO,Quality pass,Y,Valued,Valued,9.0417,9.0417,18.1631,18.1631,1.0679,1.0679,ok,-2.21,ok,8.61,ok,ok
+MTX.DE,Quality pass,Y,Valued,Valued,18.7634,18.7634,15.6441,15.6441,0.1978,0.1978,ok,-0.3,ok,14.49,ok,ok
+RR..GB,Quality pass,Y,Valued,Valued,29.8732,29.8732,11.7647,11.7647,2.8429,2.8429,ok,-0.64,ok,8.03,ok,flag
+SAF.FR,Quality pass,Y,Valued,No data,8.88,17.1797,16.9874,,1.0325,,ok,-0.31,ok,27.95,ok,ok
+AENA.ES,Quality pass,Y,Valued,Valued,1.4672,1.4672,14.2015,14.2015,0.3812,0.3812,ok,2.64,ok,9.39,ok,ok
+ASSA B.SE,Quality pass,Y,Valued,Valued,15.7027,15.7027,14.7733,14.7733,0.7057,0.7057,ok,3.46,ok,7.36,ok,ok
+BEAN.CH,Quality pass,Y,Valued,Valued,14.7747,14.7747,20.2349,20.2349,1.5639,1.5639,ok,-0.72,ok,110.37,ok,ok
+GEBN.CH,Quality pass,Y,Valued,Valued,17.997,17.997,12.7086,12.7086,1.605,1.605,ok,1.48,ok,28.89,ok,ok
+KRX.IE,Quality pass,Y,Valued,Valued,3.679,3.679,17.6278,17.6278,0.4818,0.4818,ok,2.37,ok,12.79,ok,ok
+DG.FR,Quality pass,Y,Valued,Valued,8.652,8.652,14.1351,14.1351,-0.0556,-0.0556,ok,3.33,ok,6.23,ok,ok
+FGR.FR,Quality pass,Y,Valued,Valued,12.7326,12.7326,12.606,12.606,-0.3178,-0.3178,flag,7.56,ok,5.77,ok,ok
+EPI A.SE,Quality pass,Y,Valued,Valued,7.7128,7.7128,18.5336,18.5336,0.709,0.709,ok,0.72,ok,15.81,flag,ok
+AMS.ES,Quality pass,Y,Valued,Valued,3.0759,3.0759,11.9973,11.9973,0.6844,0.6844,ok,1.63,ok,15.69,ok,ok
+ABBN.CH,Quality pass,Y,Valued,Valued,2.1789,2.1789,18.5763,18.5763,0.7284,0.7284,ok,0.36,ok,64.23,flag,ok
+LAGR B.SE,Quality pass,Y,Valued,Valued,7.1167,7.1167,19.3621,19.3621,0.7258,0.7258,ok,2.75,ok,9.36,ok,ok
+LR.FR,Quality pass,Y,Valued,Valued,5.2043,5.2043,15.335,15.335,0.7091,0.7091,ok,2.16,ok,12.06,ok,ok
+PRY.IT,Quality pass,Y,Valued,Valued,4.428,4.428,16.0978,16.0978,0.536,0.536,ok,2.19,ok,6.67,ok,ok
+SU.FR,Quality pass,Y,Valued,Valued,8.3758,8.3758,15.9234,15.9234,0.8254,0.8254,ok,2.27,ok,13.57,ok,ok
+RTO.GB,Calamity pass,N,No data,No data,15.606,15.606,,,,,flag,5.4,flag,4.05,ok,ok
+LIFCO B.SE,Quality pass,Y,Valued,Valued,10.4458,10.4458,18.8048,18.8048,0.4784,0.4784,ok,1.85,ok,11.16,ok,ok
+ACLN.CH,Quality pass,Y,Valued,Valued,2.0814,2.0814,16.1688,16.1688,1.0176,1.0176,ok,1.21,ok,34.23,ok,n/a
+ATCO A.SE,Quality pass,Y,Valued,Valued,6.301,6.301,18.1034,18.1034,0.6854,0.6854,ok,0.38,ok,44.82,ok,ok
+KBX.DE,Quality pass,Y,Valued,Valued,3.8596,3.8596,11.7647,11.7647,1.1781,1.1781,ok,1.47,ok,8.16,ok,ok
+KNEBV.FI,Quality pass,Y,Valued,Valued,2.0413,2.0413,11.7647,11.7647,1.4235,1.4235,ok,-1.4,ok,32.61,ok,ok
+RAA.DE,Quality pass,Y,Valued,Valued,22.326,22.326,18.6381,18.6381,0.4996,0.4996,ok,-1.89,ok,192.86,ok,ok
+SAND.SE,Quality pass,Y,Valued,Valued,13.6244,13.6244,13.433,13.433,0.9785,0.9785,ok,2.15,ok,8.55,ok,ok
+SCHP.CH,Quality pass,Y,Valued,Valued,10.5912,10.5912,12.3576,12.3576,1.3624,1.3624,ok,-3.52,ok,21.6,ok,ok
+SPX.GB,Quality pass,Y,Valued,Valued,266.1087,266.1087,13.3982,13.3982,1.1148,1.1148,ok,3.05,ok,5.83,ok,flag
+BVI.FR,Quality pass,Y,Valued,Valued,1.453,1.453,14.4418,14.4418,0.453,0.453,ok,1.94,ok,8.07,ok,ok
+EXPN.GB,Quality pass,Y,Valued,Valued,132.4783,132.4783,15.4328,15.4328,0.4512,0.4512,ok,3.15,ok,10.71,ok,ok
+ITRK.GB,Quality pass,Y,Valued,Valued,218.8902,218.8902,12.6237,12.6237,1.1497,1.1497,ok,1.88,ok,10.95,ok,ok
+REL.GB,Quality pass,Y,Valued,Valued,123.8567,123.8567,14.3503,14.3503,0.7267,0.7267,ok,3.0,ok,10.01,ok,ok
+SGSN.CH,Quality pass,Y,Valued,Valued,3.8986,3.8986,11.7647,11.7647,1.2468,1.2468,ok,3.07,ok,12.84,ok,ok
+WKL.NL,Quality pass,Y,Valued,Valued,6.1721,6.1721,17.6575,17.6575,-0.1665,-0.1665,ok,2.41,ok,14.27,ok,ok
+ADDT B.SE,Quality pass,Y,Valued,Valued,8.5968,8.5968,19.9974,19.9974,0.9324,0.9324,ok,1.77,ok,11.39,ok,ok
+BEIJ B.SE,Quality pass,Y,Valued,Valued,4.8123,4.8123,18.9251,18.9251,0.8084,0.8084,ok,2.88,ok,5.42,flag,ok
+BNZL.GB,Quality pass,Y,Valued,Valued,200.9735,200.9735,15.0917,15.0917,-0.0465,-0.0465,ok,2.23,flag,4.9,ok,ok
+DPLM.GB,Quality pass,Y,Valued,Valued,147.469,147.469,17.7326,17.7326,1.7706,1.7706,ok,2.16,ok,8.85,ok,ok
+HWDN.GB,Quality pass,Y,Valued,Valued,52.4338,52.4338,15.6069,15.6069,0.0424,0.0424,ok,1.35,ok,16.39,ok,ok
+INDT.SE,Quality pass,Y,Valued,Valued,9.7555,9.7555,18.4018,18.4018,0.4918,0.4918,ok,1.61,ok,8.01,ok,ok
+DSY.FR,Quality pass,Y,Valued,Valued,1.1081,1.1081,16.1084,16.1084,0.4555,0.4555,ok,-1.0,ok,20.9,ok,ok
+NEM.DE,Quality pass,Y,Valued,Valued,2.2884,2.2884,22.8576,22.8576,0.2159,0.2159,ok,0.38,ok,15.83,ok,ok
+SAP.DE,Quality pass,Y,Valued,Valued,6.4454,6.4454,11.7647,11.7647,1.8149,1.8149,ok,-0.65,ok,8.56,flag,ok
+SGE.GB,Quality pass,Y,Valued,Valued,40.7574,40.7574,12.4979,12.4979,1.3165,1.3165,ok,1.82,ok,9.82,ok,ok
+HLMA.GB,Quality pass,Y,Valued,Valued,112.6049,112.6049,16.6834,16.6834,0.8535,0.8535,ok,1.55,ok,12.42,ok,ok
+ASM.NL,Quality pass,Y,Valued,Valued,14.8924,14.8924,24.3099,24.3099,0.9186,0.9186,ok,-1.3,ok,425.76,ok,ok
+ASML.NL,Quality pass,Y,Valued,Valued,24.8305,24.8305,36.1657,36.1657,0.4908,0.4908,ok,-0.93,ok,59.45,ok,ok
+MYCR.SE,Quality pass,Y,Valued,Valued,8.5837,8.5837,19.6939,19.6939,0.7155,0.7155,ok,-1.79,ok,92.85,ok,ok
+VACN.CH,Quality pass,Y,Valued,Valued,7.6638,7.6638,19.5846,19.5846,2.5538,2.5538,ok,0.5,ok,35.68,ok,ok
+AI.FR,Quality pass,Y,Valued,Valued,6.0967,6.0967,15.479,15.479,1.0485,1.0485,ok,2.77,ok,10.56,ok,ok
+FPE3.DE,Quality pass,Y,Valued,Valued,2.3893,2.3893,12.6672,12.6672,0.4624,0.4624,ok,-0.48,ok,35.58,ok,ok
+GIVN.CH,Quality pass,Y,Valued,Valued,116.5228,116.5228,13.8992,13.8992,1.5254,1.5254,ok,3.27,ok,12.22,ok,ok
+NSIS B.DK,Quality pass,Y,Valued,Valued,9.9055,9.9055,11.7647,11.7647,2.9378,2.9378,ok,3.09,ok,10.96,ok,ok
+SIKA.CH,Quality pass,Y,Valued,Valued,7.8195,7.8195,18.3262,18.3262,0.3395,0.3395,ok,3.71,ok,9.32,ok,ok
+GOOGL,Calamity pass,N,Valued,Valued,10.8088,10.8088,25.0173,25.0173,0.0938,0.0938,ok,-0.82,ok,273.68,ok,ok
+ROST,Quality pass,Y,Valued,Valued,6.599,6.599,17.3864,17.3864,1.0193,1.0193,ok,-1.29,ok,40.79,ok,ok
+TJX,Quality pass,Y,Valued,Valued,4.8792,4.8792,20.704,20.704,0.3301,0.3301,ok,-0.25,ok,82.92,ok,ok
+ORLY,Quality pass,Y,Valued,Valued,2.9917,2.9917,18.2413,18.2413,0.6893,0.6893,ok,2.43,ok,14.72,ok,ok
+HD,Quality pass,Y,Valued,Valued,15.0252,15.0252,18.6666,18.6666,0.2432,0.2432,ok,3.43,ok,9.27,ok,ok
+MCD,Quality pass,Y,Valued,Valued,11.9528,11.9528,18.0145,18.0145,0.2631,0.2631,flag,4.62,ok,7.83,ok,ok
+COST,Quality pass,Y,Valued,Valued,20.7623,20.7623,24.4754,24.4754,1.1769,1.1769,ok,-1.17,ok,67.42,ok,ok
+WMT,Quality pass,Y,Valued,Valued,2.7329,2.7329,14.0101,14.0101,2.3454,2.3454,ok,1.55,ok,10.66,ok,ok
+BF.B,Quality pass,Y,Valued,Valued,1.7195,1.7195,11.7647,11.7647,0.5151,0.5151,ok,2.63,ok,9.57,flag,ok
+CASY,Quality pass,Y,Valued,Valued,19.1618,19.1618,16.606,16.606,1.2378,1.2378,ok,2.85,ok,10.89,ok,ok
+CHD,Quality pass,Y,Valued,Valued,3.5968,3.5968,12.1232,12.1232,1.5915,1.5915,ok,2.08,ok,9.28,ok,ok
+CL,Quality pass,Y,Valued,Valued,3.145,3.145,11.7647,11.7647,1.6938,1.6938,ok,3.05,ok,14.39,ok,ok
+HSY,Quality pass,Y,Valued,Valued,7.6306,7.6306,16.6159,16.6159,0.3745,0.3745,ok,2.37,ok,15.86,ok,ok
+MKC,Quality pass,Y,Valued,Valued,2.9655,2.9655,13.4853,13.4853,0.1743,0.1743,flag,5.27,ok,5.06,ok,ok
+EL,Calamity pass,N,Valued,Valued,1.4282,1.4282,11.9949,11.9949,5.5232,5.5232,flag,11.22,flag,2.82,ok,flag
+PG,Quality pass,Y,Valued,Valued,6.6196,6.6196,16.4539,16.4539,0.559,0.559,ok,1.57,ok,22.52,ok,ok
+KO,Quality pass,Y,Valued,Valued,3.039,3.039,13.9322,13.9322,1.3441,1.3441,ok,2.65,ok,7.41,flag,ok
+MNST,Quality pass,Y,Valued,Valued,0.9655,0.9655,22.3684,22.3684,1.1513,1.1513,ok,-1.45,ok,69.19,ok,ok
+PEP,Quality pass,Y,Valued,Valued,6.4805,6.4805,15.3096,15.3096,0.4659,0.4659,ok,3.76,ok,14.02,ok,ok
+BLK,Quality pass,Y,Valued,Valued,38.6736,38.6736,15.622,15.622,1.0242,1.0242,ok,-0.22,ok,14.08,flag,ok
+BX,Quality pass,Y,Valued,Valued,3.8662,3.8662,15.3301,15.3301,1.0279,1.0279,ok,3.37,ok,14.12,flag,ok
+CBOE,Quality pass,Y,Valued,Valued,10.9657,10.9657,17.0157,17.0157,1.012,1.012,ok,0.51,ok,21.33,ok,ok
+CME,Quality pass,Y,Valued,Valued,11.914,11.914,19.1069,19.1069,0.3968,0.3968,ok,0.11,ok,24.43,ok,ok
+ICE,Quality pass,Y,Valued,Valued,7.1286,7.1286,10.9822,10.9822,1.2802,1.2802,flag,5.39,flag,4.74,ok,ok
+MCO,Quality pass,Y,Valued,Valued,14.6212,14.6212,20.3976,20.3976,0.704,0.704,ok,2.05,ok,14.56,ok,ok
+NDAQ,Calamity pass,N,Valued,Valued,3.7377,3.7377,15.0679,15.0679,0.926,0.926,flag,5.72,ok,5.8,ok,ok
+SPGI,Quality pass,Y,Valued,Valued,17.8211,17.8211,20.3332,20.3332,0.307,0.307,ok,2.1,ok,18.79,ok,ok
+AON,Quality pass,Y,Valued,Valued,17.6723,17.6723,19.8859,19.8859,-0.0373,-0.0373,ok,3.25,ok,5.33,ok,ok
+BRO,Quality pass,Y,Valued,Valued,3.8608,3.8608,16.052,16.052,0.1607,0.1607,ok,3.07,ok,6.8,ok,ok
+ERIE,Quality pass,Y,Valued,Valued,11.0456,11.0456,19.5434,19.5434,0.2727,0.2727,ok,-0.52,ok,99.0,ok,ok
+MRSH,Quality pass,Y,Valued,Valued,9.731,9.731,17.6691,17.6691,0.2085,0.2085,ok,3.54,ok,8.31,ok,ok
+IBKR,Quality pass,Y,Valued,Valued,2.2116,2.2116,13.3755,13.3755,1.7649,1.7649,n/a,-4.72,n/a,0.89,info,ok
+SCHW,Quality pass,Y,Valued,Valued,5.4395,5.4395,11.621,11.621,0.4709,0.4709,n/a,-11.78,n/a,1.2,info,ok
+BRK.B,Quality pass,Y,Valued,No data,31.29,35.4391,11.3808,,0.6651,,n/a,-2.35,n/a,11.43,info,ok
+CB,Quality pass,Y,Valued,Valued,26.7394,26.7394,11.445,11.445,0.2278,0.2278,n/a,-2.39,n/a,15.46,info,ok
+PGR,Quality pass,Y,Valued,Valued,19.2248,19.2248,14.7972,14.7972,-0.1712,-0.1712,n/a,-8.18,n/a,38.4,info,ok
+WRB,Quality pass,Y,Valued,Valued,4.5004,4.5004,13.001,13.001,0.3236,0.3236,n/a,-14.18,n/a,17.84,info,ok
+JKHY,Quality pass,Y,Valued,Valued,6.9432,6.9432,17.1073,17.1073,0.4958,0.4958,ok,0.06,ok,54.49,ok,flag
+MA,Quality pass,Y,Valued,Valued,16.6682,16.6682,26.2675,26.2675,0.5101,0.5101,ok,0.58,ok,25.44,ok,ok
+V,Quality pass,Y,Valued,Valued,12.4888,12.4888,23.2825,23.2825,0.4642,0.4642,ok,0.29,ok,37.08,ok,ok
+VRTX,Quality pass,Y,Valued,Valued,15.4362,15.4362,23.8619,23.8619,0.4622,0.4622,ok,-1.16,ok,86.89,flag,ok
+COR,Quality pass,Y,Valued,Valued,18.8788,18.8788,19.7414,19.7414,-0.0367,-0.0367,ok,1.67,ok,8.69,ok,ok
+MCK,Quality pass,Y,Valued,Valued,38.4964,38.4964,16.492,16.492,0.737,0.737,ok,0.35,ok,17.08,ok,ok
+ABT,Quality pass,Y,Valued,Valued,4.2753,4.2753,18.5169,18.5169,0.3708,0.3708,ok,0.53,ok,11.32,ok,ok
+BSX,Quality pass,Y,Valued,Valued,2.2657,2.2657,10.9004,10.9004,0.7954,0.7954,flag,4.19,ok,8.02,ok,ok
+EW,Quality pass,Y,Valued,Valued,1.9492,1.9492,17.7019,17.7019,2.1054,2.1054,ok,-0.8,ok,80.21,flag,ok
+IDXX,Quality pass,Y,Valued,Valued,13.3867,13.3867,24.8957,24.8957,1.1131,1.1131,ok,0.62,ok,35.54,ok,ok
+ISRG,Quality pass,Y,Valued,Valued,8.3028,8.3028,20.7745,20.7745,1.5717,1.5717,ok,-1.88,ok,99.0,flag,ok
+RMD,Quality pass,Y,Valued,Valued,10.9575,10.9575,21.7326,21.7326,0.0059,0.0059,ok,-0.35,ok,65.74,ok,ok
+STE,Quality pass,Y,Valued,Valued,9.1314,9.1314,16.2556,16.2556,0.7807,0.7807,ok,2.6,ok,10.05,ok,ok
+SYK,Quality pass,Y,Valued,Valued,9.5162,9.5162,14.5825,14.5825,1.2313,1.2313,ok,2.8,ok,9.32,ok,ok
+WST,Quality pass,Y,Valued,Valued,6.7909,6.7909,22.0768,22.0768,1.7776,1.7776,ok,-1.09,ok,205.03,ok,ok
+VEEV,Quality pass,Y,Valued,Valued,5.5387,5.5387,25.0048,25.0048,1.1772,1.1772,ok,-6.95,ok,99.0,ok,ok
+A,Quality pass,Y,Valued,Valued,4.588,4.588,16.3503,16.3503,1.319,1.319,ok,1.2,ok,14.21,ok,ok
+DHR,Quality pass,Y,Valued,Valued,7.5756,7.5756,10.5856,10.5856,1.9058,1.9058,ok,2.81,ok,18.65,ok,ok
+MTD,Quality pass,Y,Valued,Valued,43.419,43.419,20.2528,20.2528,0.9775,0.9775,ok,2.35,ok,15.1,ok,ok
+TMO,Quality pass,Y,Valued,Valued,21.103,21.103,14.7949,14.7949,1.2427,1.2427,ok,3.39,flag,4.99,ok,ok
+WAT,Quality pass,Y,No data,No data,12.3173,12.3173,,,,,ok,1.93,ok,9.94,flag,ok
+JNJ,Quality pass,Y,Valued,Valued,12.0849,12.0849,13.1563,13.1563,0.7973,0.7973,ok,0.71,ok,26.36,flag,ok
+LLY,Quality pass,Y,Valued,Valued,22.9844,22.9844,19.8415,19.8415,2.1653,2.1653,ok,2.85,ok,22.2,flag,ok
+ZTS,Quality pass,Y,Valued,Valued,6.0944,6.0944,22.4043,22.4043,-0.3861,-0.3861,ok,1.93,ok,14.02,ok,ok
+GD,Quality pass,Y,Valued,Valued,15.3706,15.3706,12.7326,12.7326,0.8572,0.8572,ok,1.87,ok,12.2,ok,ok
+GE,Quality pass,Y,Valued,Valued,8.3689,8.3689,11.7647,11.7647,2.3701,2.3701,ok,0.7,ok,6.86,flag,ok
+HONA,Calamity pass,N,Valued,Valued,6.85,6.7814,25.0386,25.0386,-0.0379,-0.0282,ok,0.0,ok,99.0,ok,flag
+HWM,Quality pass,Y,Valued,Valued,3.7277,3.7277,12.746,12.746,3.6475,3.6475,ok,2.39,ok,9.19,ok,ok
+NOC,Calamity pass,N,Valued,Valued,29.7976,29.7976,14.8584,14.8584,0.2432,0.2432,ok,2.93,ok,6.44,flag,ok
+RTX,Calamity pass,N,Valued,Valued,5.8243,5.8243,11.7647,11.7647,1.8981,1.8981,flag,5.55,flag,3.32,ok,flag
+EXPD,Quality pass,Y,Valued,Valued,5.9749,6.4867,16.5711,16.5711,0.9675,0.8122,ok,-0.91,ok,99.0,ok,ok
+ALLE,Quality pass,Y,Valued,Valued,7.8486,7.8486,18.2427,18.2427,0.3408,0.3408,ok,2.4,ok,7.65,ok,ok
+TT,Quality pass,Y,Valued,Valued,13.0528,13.0528,17.3446,17.3446,0.8463,0.8463,ok,1.23,ok,14.68,ok,ok
+ODFL,Quality pass,Y,Valued,Valued,5.0975,5.0975,21.0511,21.0511,0.6265,0.6265,ok,-0.08,ok,4598.12,ok,ok
+CAT,Quality pass,Y,Valued,Valued,20.5581,20.5581,16.0917,16.0917,0.8143,0.8143,ok,3.0,ok,25.37,ok,ok
+BR,Quality pass,Y,Valued,Valued,11.4953,11.4953,17.012,17.012,-0.0159,-0.0159,ok,2.2,ok,8.75,ok,ok
+CPRT,Quality pass,Y,Valued,Valued,1.57,1.57,25.5571,25.5571,-0.2067,-0.2067,ok,-2.97,ok,10.79,ok,ok
+CTAS,Quality pass,Y,Valued,Valued,5.2105,5.2105,21.7097,21.7097,1.0,1.0,ok,1.17,ok,23.34,ok,ok
+AME,Quality pass,Y,Valued,Valued,7.6956,7.6956,14.8717,14.8717,1.1155,1.1155,ok,1.05,ok,20.87,ok,ok
+ROL,Quality pass,Y,Valued,Valued,1.2912,1.2912,22.4233,22.4233,0.3429,0.3429,ok,0.82,ok,25.42,ok,ok
+RSG,Quality pass,Y,Valued,Valued,7.0391,7.0391,17.1838,17.1838,1.0915,1.0915,flag,6.19,ok,5.79,ok,ok
+VLTO,Quality pass,Y,Valued,Valued,3.8124,3.8124,17.2565,17.2565,0.7974,0.7974,ok,1.8,ok,13.3,ok,n/a
+WM,Quality pass,Y,Valued,Valued,6.7492,6.7492,14.2061,14.2061,1.5431,1.5431,flag,8.38,ok,6.94,ok,ok
+ADP,Quality pass,Y,Valued,Valued,10.9056,10.9056,21.0116,21.0116,0.3526,0.3526,ok,0.17,ok,11.87,ok,ok
+PAYX,Quality pass,Y,Valued,Valued,4.9574,4.9574,20.399,20.399,0.1439,0.1439,ok,1.9,ok,20.95,ok,ok
+GWW,Quality pass,Y,Valued,Valued,37.5198,37.5198,21.4393,21.4393,0.8515,0.8515,ok,0.91,ok,33.22,ok,ok
+HUBB,Quality pass,Y,Valued,Valued,17.5085,17.5085,16.678,16.678,0.4965,0.4965,ok,1.95,ok,18.99,ok,ok
+ITW,Quality pass,Y,Valued,Valued,11.1784,11.1784,15.777,15.777,0.6303,0.6303,ok,2.4,ok,15.07,ok,ok
+NDSN,Quality pass,Y,Valued,Valued,10.2263,10.2263,15.0626,15.0626,1.1082,1.1082,ok,3.27,ok,7.58,ok,ok
+OTIS,Quality pass,Y,Valued,Valued,3.8839,3.8839,13.6519,13.6519,0.4616,0.4616,ok,3.86,ok,14.57,ok,ok
+PH,Quality pass,Y,Valued,Valued,32.216,32.216,16.5604,16.5604,0.7913,0.7913,ok,2.2,ok,9.93,ok,ok
+SNA,Quality pass,Y,Valued,Valued,19.726,19.726,17.6604,17.6604,0.0581,0.0581,ok,-0.15,ok,26.26,ok,ok
+UNP,Quality pass,Y,Valued,Valued,12.027,12.027,13.233,13.233,0.9003,0.9003,flag,4.47,ok,7.52,ok,ok
+EFX,Calamity pass,N,Valued,Valued,7.3943,7.3943,11.6728,11.6728,1.1795,1.1795,flag,6.27,flag,4.55,ok,ok
+VRSK,Quality pass,Y,Valued,Valued,7.2321,7.2321,15.3472,15.3472,0.8724,0.8724,ok,2.62,ok,9.8,ok,ok
+FAST,Quality pass,Y,Valued,Valued,1.0937,1.0937,21.121,21.121,1.3892,1.3892,ok,-0.05,ok,206.85,ok,ok
+FERG,Quality pass,Y,Valued,Valued,9.8673,9.8673,18.8324,18.8324,0.3802,0.3802,ok,1.81,ok,14.45,ok,ok
+ADSK,Quality pass,Y,Valued,Valued,5.7814,5.7814,21.3017,21.3017,1.1471,1.1471,ok,0.11,ok,99.0,ok,ok
+CDNS,Quality pass,Y,Valued,Valued,4.3416,4.3416,25.0411,25.0411,1.9711,1.9711,ok,-0.44,ok,17.77,ok,ok
+PTC,Quality pass,Y,Valued,Valued,10.1087,10.1087,13.9996,13.9996,0.385,0.385,ok,1.41,ok,12.76,ok,ok
+SNPS,Calamity pass,N,Valued,Valued,9.4834,9.4834,24.9869,24.9869,0.921,0.921,ok,-1.16,ok,36.81,flag,ok
+TYL,Quality pass,Y,Valued,Valued,9.8908,9.8908,8.3637,8.3637,4.1262,4.1262,ok,-0.44,ok,50.5,ok,ok
+MSI,Quality pass,Y,Valued,Valued,13.763,13.763,20.6885,20.6885,0.8656,0.8656,ok,2.38,ok,9.11,ok,ok
+APH,Quality pass,Y,Valued,Valued,1.6568,1.6568,20.4287,20.4287,1.3113,1.3113,ok,1.36,ok,15.96,ok,ok
+TEL,Quality pass,Y,Valued,Valued,11.0741,11.0741,14.7091,14.7091,0.3281,0.3281,ok,1.21,ok,39.94,ok,ok
+VRSN,Quality pass,Y,Valued,Valued,9.0076,9.0076,18.1458,18.1458,0.9151,0.9151,ok,1.45,ok,14.05,ok,ok
+AMAT,Quality pass,Y,Valued,Valued,12.6416,12.6416,21.4717,21.4717,0.365,0.365,ok,-0.29,ok,31.85,ok,ok
+KLAC,Quality pass,Y,Valued,Valued,3.6731,3.6731,28.0524,28.0524,0.4783,0.4783,ok,0.35,ok,16.59,ok,ok
+LRCX,Quality pass,Y,Valued,Valued,5.741,5.741,21.7151,21.7151,0.8122,0.8122,ok,-0.26,ok,33.11,ok,ok
+ASML,Quality pass,Y,Valued,Valued,27.3672,27.3672,36.1657,36.1657,0.5106,0.5106,ok,-0.93,ok,59.45,ok,ok
+ADI,Quality pass,Y,Valued,Valued,7.9084,7.9084,15.8289,15.8289,2.1791,2.1791,ok,1.38,ok,9.23,ok,ok
+AVGO,Quality pass,Y,Valued,Valued,6.1319,6.1319,22.2999,22.2999,1.5377,1.5377,ok,1.63,ok,7.94,ok,ok
+TXN,Calamity pass,N,Valued,Valued,6.1565,6.1565,14.5431,14.5431,2.3909,2.3909,ok,1.25,ok,11.09,ok,ok
+FTNT,Quality pass,Y,Valued,Valued,2.4778,2.4778,25.535,25.535,1.0107,1.0107,ok,-1.4,ok,90.17,ok,ok
+MSFT,Quality pass,Y,Valued,Valued,17.9288,17.9288,27.3363,27.3363,0.0689,0.0689,ok,-0.27,ok,50.88,ok,ok
+AAPL,Quality pass,Y,Valued,Valued,9.3338,9.3338,21.2313,21.2313,0.7978,0.7978,ok,0.39,ok,99.0,ok,ok
+CRH,Quality pass,Y,Valued,Valued,6.1613,6.1613,14.6472,14.6472,0.0323,0.0323,ok,2.93,ok,8.05,ok,ok
+VMC,Quality pass,Y,Valued,Valued,8.6966,8.6966,16.4449,16.4449,0.9483,0.9483,ok,3.64,ok,7.14,ok,ok
+APD,Calamity pass,N,Valued,Valued,7.3163,7.3163,12.7663,12.7663,2.3889,2.3889,flag,31.76,flag,-0.19,ok,ok
+LIN,Quality pass,Y,Valued,Valued,14.7172,14.7172,19.0895,19.0895,0.8725,0.8725,ok,2.55,ok,16.61,ok,ok
+ECL,Quality pass,Y,Valued,Valued,7.3485,7.3485,11.7835,11.7835,2.5716,2.5716,ok,3.66,ok,7.72,ok,ok
+SHW,Quality pass,Y,Valued,Valued,10.4381,10.4381,16.7415,16.7415,1.0023,1.0023,flag,4.01,ok,8.72,ok,ok

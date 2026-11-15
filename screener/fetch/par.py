@@ -15,7 +15,6 @@ prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease 
 - Years whose net income is more than 10% above operating cash flow and 30% above the prior year and (if
   reported) the following year — for the latest year +50% vs prior and 30% above cash flow — (one-off gains: tax-allowance releases, disposal / spin-off gains, hedge marks) are left out
   of the Owner EPS series.
-- With an analyst 'My Peak EPS', each year's Owner EPS is capped at it before the cycle multiples are measured.
 - v7.2: fiscal years ending before the first trading day (listing_date, primary listing only) are left out of the
   Owner EPS series — pre-IPO / carve-out years sit on a different share and capital basis (CVC FY2021).
 - p2p_ok (peak-to-peak test, feeds the Gate 6 rule check): "Y" latest peak above the prior-cycle peak,
@@ -112,11 +111,9 @@ def pre_listing_years(series: dict, listing_date: str | None) -> list[int]:
 
 
 def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | None,
-            peak_override: float | None = None, listing_date: str | None = None) -> dict:
+            listing_date: str | None = None) -> dict:
     """financials.csv fields peak_oe_year, peak_oe_eps, cur_oe_eps, cur_oe_year, mult_low_5y, mult_high_5y,
-    cagr_oe_eps, p2p_ok (+ notes). peak_override ('My Peak EPS', quote currency): each year's Owner EPS is capped at it
-    for the cycle multiples, so the windfall / one-off years the override excludes cannot depress the multiples.
-    listing_date: first trading day of the primary listing; earlier fiscal years are left out of the Owner EPS series."""
+    cagr_oe_eps, p2p_ok (+ notes). listing_date: first trading day of the primary listing; earlier fiscal years are left out of the Owner EPS series."""
     eps = owner_eps_series(series)
     out, notes = {}, []
     pre = [y for y in pre_listing_years(series, listing_date) if y in eps]
@@ -157,11 +154,6 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
 
     # cycle multiples on monthly closes
     m_eps = eps
-    if peak_override and peak_override > 0:
-        cap = peak_override / fx_rep_to_quote
-        m_eps = {y: min(v, cap) for y, v in eps.items()}
-        if any(v > cap for v in eps.values()):
-            notes.append("cycle multiples on Owner EPS capped at My Peak EPS")
     if monthly_prices:
         months = sorted(monthly_prices)[-MULT_MONTHS:]
         mults, by_year = [], {}

@@ -13,7 +13,7 @@ from typing import Any
 
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
-from .gates import active_roic, params, par_valuation, results, uses_gaap_roic
+from .gates import active_roic, g6_checks, params, par_valuation, results, uses_gaap_roic
 
 
 def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
@@ -52,8 +52,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"), sub_industry=sub_ind)
 
             # Active capital-return input (same helper as par_valuation): ROE for Balance-Sheet Financials,
-            # GAAP ROIC for IFRIC-12 Concessions, Tangible Operating ROIC otherwise; roic_est override first.
-            r_est = fin.get("roic_est")
+            # GAAP ROIC for IFRIC-12 Concessions, Tangible Operating ROIC otherwise (no analyst overrides since v7.6).
             r_op = fin.get("roic_operating")
             r_med = fin.get("roic_median")
             roic_used, roic_source = active_roic(fin, sub_ind)
@@ -112,7 +111,6 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "interest_m": fin.get("interest_m"),
                 "roic_median": r_med,
                 "roic_operating": r_op,
-                "roic_est": r_est,
                 "roic_used": roic_used,
                 "roic_source": roic_source,
                 "roe_median": fin.get("roe_median"),
@@ -124,7 +122,6 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "peak_oe_year": fin.get("peak_oe_year"),
                 "peak_oe_eps": fin.get("peak_oe_eps"),
                 "cur_oe_eps": fin.get("cur_oe_eps"),
-                "peak_eps_est": fin.get("peak_eps_est"),
                 "mult_low_5y": fin.get("mult_low_5y"),
                 "mult_high_5y": fin.get("mult_high_5y"),
                 "cagr_oe_eps": fin.get("cagr_oe_eps"),
@@ -137,9 +134,13 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "buyback_yield": fin.get("buyback_yield"),
                 "retention_rate": fin.get("retention_rate"),
                 "roiic": fin.get("roiic"),
-                "g_implied": fin.get("g_implied"),
-                "g_est": fin.get("g_est"),
                 "p2p_ok": fin.get("p2p_ok"),
+                # Gate 6 rule check (review flags only; the qualitative Gate 6 decides)
+                "g6_checks": g6_checks(fin, sub_ind, p),
+                "g6_flags": sum(1 for v_ in g6_checks(fin, sub_ind, p).values() if v_ == "flag"),
+                "g6_answer": c.get("6"),
+                "g6_netdebt_yrs": fin.get("g6_netdebt_yrs"),
+                "g6_intcov": fin.get("g6_intcov"),
                 "fin_note": fin.get("fin_note"),
                 # Quantitative Valuation (screener/gates.py par_valuation)
                 "val_status": val.get("status", C.V_NODATA),
@@ -176,7 +177,6 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "pe_vd": val.get("pe_vd"),
                 "roic_exp": val.get("roic_exp"),
                 "ma_reinvest": val.get("ma_reinvest"),
-                "roic_est_override": fin.get("roic_est"),
                 "ma_alpha": val.get("ma_alpha"),
                 "ronic_le_r": val.get("ronic_le_r"),
                 "bb_eff": val.get("bb_eff"),
@@ -191,7 +191,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = statistics.median(irrs) if irrs else None
 
     return {
-        "version": "7.5",
+        "version": "7.6",
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
@@ -1880,6 +1880,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="Valued">Valued</option>
         <option value="No value">No value (Fair value ≤ 0)</option>
         <option value="No data">No data</option>
+        <option value="g6flag">Gate 6 = Y but numeric ⚠ (review)</option>
       </select>
     </div>
 
@@ -1959,7 +1960,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </div>
         <div class="metric-box">
           <strong style="color: var(--accent);">Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Fortress Balance Sheet</strong>
-          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Triad: (1) Secular Peak-to-Peak Owner EPS compounding across cycles, (2) Real cash conversion (multi-year FCF &ge; 80% GAAP NI), (3) Peace-of-mind fortress balance sheet (Net Debt &le; 4y Owner Earnings, Interest Coverage &gt; 5x).</p>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Triad: (1) Secular Peak-to-Peak Owner EPS compounding across cycles, (2) Real cash conversion (multi-year FCF &ge; 80% GAAP NI), (3) Peace-of-mind fortress balance sheet (Net Debt &le; 4y Owner Earnings, Interest Coverage &gt; 5x). Your qualitative answer decides; the numeric checks (3-year medians; net debt and interest cover n/a for balance-sheet financials) are shown as review flags in the "G6 Checks" column and the dossier, never as a reject.</p>
         </div>
         <div class="metric-box" style="border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
           <strong style="color: var(--amber);">Conditional Calamity Pass (Buffett Temporary Fixable Calamities — Gates 3b, 5, 6 Only)</strong>
@@ -2154,6 +2155,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           </div>
         </div>
 
+        <div class="metric-box" style="margin-bottom: 10px;">
+          <div class="label">Gate 6 Rule Check (review flags only — your Gate 6 answer decides: <b id="dossier-g6-answer">-</b>)</div>
+          <div id="dossier-g6-checks" style="font-size: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; margin-top: 4px;"></div>
+        </div>
+
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
             <div class="label">Growth Ceiling (g₀ → +BB)</div>
@@ -2289,7 +2295,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
                 <span>Per-Share Ceiling (g_exp): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
-                <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
               </div>
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-gformula">Formula: g₀ = clamp(Sales WLS growth + min(0, BB), 0%, g_max) fades linearly to min(g₀, g_term) over CAP.</div>
             </div>
@@ -2339,7 +2344,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               </div>
               <div style="display: flex; gap: 8px;">
                 <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" onclick="resetSandboxValuation()">↺ Reset</button>
-                <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" id="btn-copy-sandbox" onclick="copySandboxOverrideJson()">📋 Copy JSON</button>
               </div>
             </div>
 
@@ -2525,6 +2529,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       cap_gap: {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
       g3a_moat_archetype: {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
       fcf_conv: {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
+      g6_flags: {{ key: 'g6_flags', label: 'G6 Checks', num: true }},
       val_status: {{ key: 'val_status', label: 'Valuation' }},
       sector: {{ key: 'sector', label: 'Sector' }}
     }};
@@ -2751,7 +2756,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         // Valuation Status (in Quality Pass, Moat Universe & Full Universe tabs)
         if ((currentTab === 'qpass' || currentTab === 'all' || currentTab === 'moat_universe') && valFilter !== 'all') {{
-          if (c.val_status !== valFilter) return false;
+          if (valFilter === 'g6flag') {{
+            if (!(c.g6_flags > 0 && c.g6_answer === 'Y')) return false;
+          }} else if (c.val_status !== valFilter) return false;
         }}
 
         // Gate
@@ -2934,9 +2941,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (compactColumns) {{
         let colKeys = [];
         if (currentTab === 'qpass') {{
-          colKeys = [...compactKeys, 'fcf_conv'];
+          colKeys = [...compactKeys, 'fcf_conv', 'g6_flags'];
         }} else if (currentTab === 'calamity') {{
-          colKeys = [...compactKeys, 'waived_gates'];
+          colKeys = [...compactKeys, 'waived_gates', 'g6_flags'];
         }} else if (currentTab === 'moat_universe') {{
           colKeys = [...compactKeys, 'result', 'rejected_at', 'val_status'];
         }} else {{
@@ -2945,11 +2952,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         cols = colKeys.map(k => ALL_COLS[k]).filter(Boolean);
       }} else {{
         if (currentTab === 'qpass') {{
-          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.sector];
+          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];
         }} else if (currentTab === 'calamity') {{
-          cols = [...coreValuationCols, ALL_COLS.waived_gates];
+          cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.g6_flags];
         }} else if (currentTab === 'moat_universe') {{
-          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.fcf_conv, ALL_COLS.val_status, ALL_COLS.sector];
+          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
         }} else {{
           cols = [
             ALL_COLS.ticker, ALL_COLS.company, ALL_COLS.country, ALL_COLS.result, ALL_COLS.rejected_at,
@@ -3037,6 +3044,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               const bbColor = val >= 0.01 ? 'var(--green)' : (val < 0 ? 'var(--red)' : 'var(--text-muted)');
               cellContent = `<span style="color: ${{bbColor}};">${{fmtPct(val, true)}}</span>`;
             }}
+          }} else if (col.key === 'g6_flags') {{
+            cellContent = g6Markers(c);
           }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
@@ -3398,12 +3407,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const rTxt = (c.disc_rate !== null && c.disc_rate !== undefined) ? `r = ${{(c.disc_rate * 100).toFixed(2)}}%` : 'r';
       ['dossier-rate-title', 'dossier-rate-pe', 'dossier-rate-g'].forEach(id => {{ const el = document.getElementById(id); if (el) el.textContent = rTxt; }});
 
-      const opRoicVal = (c.roic_est !== null && c.roic_est !== undefined)
-        ? `${{fmtPct(c.roic_est)}} (Est.)`
-        : ((c.roic_operating !== null && c.roic_operating !== undefined) ? fmtPct(c.roic_operating) : fmtPct(c.roic_used));
+      const opRoicVal = (c.roic_operating !== null && c.roic_operating !== undefined) ? fmtPct(c.roic_operating) : fmtPct(c.roic_used);
       document.getElementById('dossier-roic-op').textContent = opRoicVal;
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
+      const g6Ans = document.getElementById('dossier-g6-answer');
+      if (g6Ans) g6Ans.textContent = c.g6_answer || 'blank';
+      const g6Box = document.getElementById('dossier-g6-checks');
+      if (g6Box) {{
+        const chk = c.g6_checks || {{}};
+        g6Box.innerHTML = ['netdebt', 'intcov', 'fcfconv', 'p2p'].map(k => {{
+          const st = chk[k] || 'n/a';
+          const col = st === 'ok' ? 'var(--green)' : (st === 'flag' ? 'var(--amber)' : 'var(--text-dim)');
+          const sym = st === 'ok' ? '✓' : (st === 'flag' ? '⚠' : '–');
+          return `<div><span style="color: ${{col}};">${{sym}}</span> ${{G6_LABELS[k]}}: <b>${{escHtml(g6Detail(c, k))}}</b>${{st === 'info' ? ' <span style="color: var(--text-dim);">(info)</span>' : ''}}</div>`;
+        }}).join('');
+      }}
 
       const gOrgDisp = fmtPct(c.g_org_exp !== null && c.g_org_exp !== undefined ? c.g_org_exp : c.g_start);
       const gExpDisp = fmtPct(c.g_exp);
@@ -3411,13 +3430,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const scaleEl = document.getElementById('dossier-scale-tier');
       if (scaleEl) {{
         const parts = [];
-        if (c.g_est !== null && c.g_est !== undefined) {{
-          parts.push(`Override ${{fmtPct(c.g_est)}}`);
-        }} else {{
-          if (c.sales_1y !== null && c.sales_1y !== undefined) parts.push(`1Y ${{fmtPct(c.sales_1y, true)}}`);
-          if (c.sales_cagr !== null && c.sales_cagr !== undefined) parts.push(`${{c.sales_cagr_yrs ? c.sales_cagr_yrs + 'Y' : '10Y'}} ${{fmtPct(c.sales_cagr)}}`);
-          if (c.opcost_cagr !== null && c.opcost_cagr !== undefined) parts.push(`OpCost ${{fmtPct(c.opcost_cagr)}}`);
-        }}
+        if (c.sales_1y !== null && c.sales_1y !== undefined) parts.push(`1Y ${{fmtPct(c.sales_1y, true)}}`);
+        if (c.sales_cagr !== null && c.sales_cagr !== undefined) parts.push(`${{c.sales_cagr_yrs ? c.sales_cagr_yrs + 'Y' : '10Y'}} ${{fmtPct(c.sales_cagr)}}`);
+        if (c.opcost_cagr !== null && c.opcost_cagr !== undefined) parts.push(`OpCost ${{fmtPct(c.opcost_cagr)}}`);
         if (c.buyback_yield !== null && c.buyback_yield !== undefined) parts.push(`BB ${{fmtPct(c.buyback_yield, true)}}`);
         scaleEl.textContent = parts.join(' · ');
       }}
@@ -3521,7 +3536,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         : 'RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%, r + 0.5·(RONIC₀ − r)).';
       document.getElementById('audit-fade-val').textContent = fmtPct(c.g_org_exp);
       document.getElementById('audit-glog-val').textContent = fmtPct(c.g_exp);
-      document.getElementById('audit-gest-val').textContent = (c.g_est !== null && c.g_est !== undefined) ? fmtPct(c.g_est) : 'None';
       document.getElementById('audit-gformula').textContent = `Formula: g₀ = 4-Pillar Statistical Organic Growth (Dilution-Adjusted Cycle-Spanning Theil-Sen P25 + 3-Driver Triangulation + Empirical Bayes Shrinkage, 0%–${{fmtPct(P.g_anchor_max)}}) fades linearly to min(g₀, ${{fmtPct(P.g_base)}}) over CAP.`;
 
       // Binding / Dominant Driver Badge: name the term that actually sets g₀
@@ -3531,9 +3545,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const badge = document.getElementById('audit-binding-badge');
       const fadeTxt = `→ ${{fmtPct(Math.min(c.g_org_exp || 0, P.g_base))}} over CAP`;
       let bindTxt;
-      if (c.g_est !== null && c.g_est !== undefined) {{
-        bindTxt = `Analyst Override g₀ ${{fmtPct(c.g_org_exp)}}`;
-      }} else if (c.g_org_exp !== null && c.g_org_exp >= P.g_anchor_max - 1e-6) {{
+      if (c.g_org_exp !== null && c.g_org_exp >= P.g_anchor_max - 1e-6) {{
         bindTxt = `${{fmtPct(P.g_anchor_max)}} Ceiling binds`;
         document.getElementById('box-filter-gravity').classList.add('binding');
       }} else if (hasS) {{
@@ -3583,11 +3595,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         : ((c.g_org_exp !== null && c.g_org_exp !== undefined) ? c.g_org_exp : 0.08)));
       const salescagr = baseGrowth * 100;
       // RONIC slider starts at the RONIC₀ the DCF actually uses (after M&A blend and cap); moving it sets RONIC₀
-      // directly (= a roic_est override in Python) so touching it never jumps.
+      // directly (Python par_valuation scenario["ronic0"], a what-if only) so touching it never jumps.
       const roic = (c.roic_exp !== null && c.roic_exp !== undefined) ? (c.roic_exp * 100)
         : ((c.roic_used !== null && c.roic_used !== undefined) ? (c.roic_used * 100) : 18.0);
       const peakeps = (c.peak_eps !== null && c.peak_eps !== undefined && c.peak_eps > 0) ? c.peak_eps : null;
-      const gest = (c.g_est !== null && c.g_est !== undefined) ? (c.g_est * 100) : null;
+      const gest = null;   // what-if growth input starts empty (no analyst overrides)
 
       sbBaseline = {{ cap, salescagr, salescagrSnap: SB_STEP_SNAP(salescagr), roic, roicSnap: SB_STEP_SNAP(roic), peakeps, gest }};
       sbCurrent = {{ cap, salescagr: sbBaseline.salescagrSnap, roic: sbBaseline.roicSnap, peakeps, gest }};
@@ -3622,9 +3634,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
       const lblRoicText = document.getElementById('sb-label-roic-text');
       if (lblRoicText) {{
-        lblRoicText.textContent = (c.roic_est !== null && c.roic_est !== undefined)
-          ? 'RONIC₀ (analyst roic_est)'
-          : `RONIC₀ (${{c.uses_gaap_roic ? (c.bs_fin ? 'ROE' : (c.roic_source === 'roe_median' ? 'ROE — invested capital ≤ 0' : 'GAAP ROIC')) : 'Tangible ROIC'}}, M&A-matched, capped)`;
+        lblRoicText.textContent = `RONIC₀ (${{c.uses_gaap_roic ? (c.bs_fin ? 'ROE' : (c.roic_source === 'roe_median' ? 'ROE — invested capital ≤ 0' : 'GAAP ROIC')) : 'Tangible ROIC'}}, M&A-matched, capped)`;
       }}
 
       const inPeak = document.getElementById('sb-input-peakeps');
@@ -3698,34 +3708,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         peak: peakEdited,
         cap: sbCurrent.cap !== sbBaseline.cap
       }};
-    }}
-
-    function copySandboxOverrideJson() {{
-      const c = SCREENER_DATA.companies.find(item => item.id === selectedCompanyId);
-      if (!c) return;
-      const tw = sandboxTweaks();
-      // Only changed fields are emitted: apply_evaluation.py treats an explicit null as "clear the override"
-      const overrides = {{}};
-      if (tw.peak) overrides.peak_eps_est = Math.round(sbCurrent.peakeps * 100) / 100;
-      if (tw.gest) overrides.g_est = sbCurrent.gest !== null ? Math.round(sbCurrent.gest * 10) / 1000 : null;
-      if (tw.roic) overrides.roic_est = Math.round(sbCurrent.roic * 10) / 1000;
-      const parts = [`CAP ${{sbCurrent.cap !== null ? sbCurrent.cap + 'y' : '20y default'}}`];
-      if (tw.gest || tw.growth) parts.push(`g₀ ${{sbCurrent.gest !== null ? sbCurrent.gest.toFixed(1) : sbCurrent.salescagr.toFixed(1)}}%`);
-      if (tw.roic) parts.push(`RONIC₀ ${{sbCurrent.roic.toFixed(1)}}%`);
-      if (tw.peak) parts.push(`peak EPS ${{sbCurrent.peakeps.toFixed(2)}}`);
-      overrides.fin_note = `Sandbox sensitivity: ${{parts.join(', ')}}`;
-      const overrideObj = {{ id: c.id, ticker: c.ticker, universe: c.universe, company: c.company }};
-      if (tw.cap) overrideObj.qualitative = {{ gate_4_runway_cap: sbCurrent.cap }};
-      overrideObj.quantitative_overrides = overrides;
-      const jsonStr = JSON.stringify(overrideObj, null, 2);
-      navigator.clipboard.writeText(jsonStr).then(() => {{
-        const btn = document.getElementById('btn-copy-sandbox');
-        const orig = btn.textContent;
-        btn.textContent = '✓ Copied!';
-        setTimeout(() => {{ btn.textContent = orig; }}, 2000);
-      }}).catch(() => {{
-        prompt('Copy Override JSON:', jsonStr);
-      }});
     }}
 
     function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null) {{
@@ -3863,7 +3845,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         document.getElementById('dcf-sum-disc').textContent = '-';
         document.getElementById('dcf-sum-fv').textContent = 'No Data';
         document.getElementById('dcf-sum-split').textContent = '-';
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (missing Peak Owner EPS / valuation inputs, or an [auto] data check — stale fundamentals, share count changed since FY, currency switch unresolved — awaiting a refetch / review).</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (missing Peak Owner EPS / valuation inputs, or an [auto] data check — stale fundamentals, share count changed since FY, currency switch unresolved, earnings dominated by non-cash marks — awaiting a refetch / review).</td></tr>`;
         return;
       }}
 
@@ -4046,10 +4028,29 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return 0.5 * (lo + hi);
     }}
 
-    function ronic0(roicEst, roicActive, rTang, rGaap, maReinvest, g0, gaapBasis) {{
+    const G6_LABELS = {{ netdebt: 'Net debt ÷ owner earnings', intcov: 'Interest cover', fcfconv: 'Cash conversion', p2p: 'Peak-to-peak' }};
+    function g6Detail(c, k) {{
+      // Gate 6 rule check (screener/gates.py g6_checks): review flags only, the qualitative Gate 6 decides
+      const v = k === 'netdebt' ? (c.g6_netdebt_yrs !== null && c.g6_netdebt_yrs !== undefined ? `${{fmtNum(c.g6_netdebt_yrs)}}y (≤ 4y)` : 'n/a')
+        : k === 'intcov' ? (c.g6_intcov !== null && c.g6_intcov !== undefined ? `${{c.g6_intcov >= 99 ? 'no interest' : fmtNum(c.g6_intcov) + 'x'}} (> 5x)` : 'n/a')
+        : k === 'fcfconv' ? (c.fcf_conv !== null && c.fcf_conv !== undefined ? `${{fmtPct(c.fcf_conv)}} (≥ 80%)` : 'n/a')
+        : (c.p2p_ok === 'Y' ? 'new peak' : (c.p2p_ok === 'N' ? 'below prior peak' : 'n/a'));
+      return v;
+    }}
+    function g6Markers(c) {{
+      const chk = c.g6_checks || {{}};
+      return ['netdebt', 'intcov', 'fcfconv', 'p2p'].map(k => {{
+        const st = chk[k] || 'n/a';
+        const sym = st === 'ok' ? '✓' : (st === 'flag' ? '⚠' : '–');
+        const col = st === 'ok' ? 'var(--green)' : (st === 'flag' ? 'var(--amber)' : 'var(--text-dim)');
+        return `<span title="${{G6_LABELS[k]}}: ${{escHtml(g6Detail(c, k))}}${{st === 'info' ? ' (informational for balance-sheet financials)' : ''}}" style="color: ${{col}}; margin-right: 3px;">${{sym}}</span>`;
+      }}).join('');
+    }}
+
+    function ronic0(roicActive, rTang, rGaap, maReinvest, g0, gaapBasis) {{
       // Mirrors screener/gates.py ronic0: bought growth (M&A spend × GAAP ROIC) earns GAAP ROIC, the rest tangible ROIC
       const has = (v) => v !== null && v !== undefined;
-      if (!has(roicEst) && !gaapBasis && has(rTang) && has(rGaap) && rGaap > 0 && rTang > 1.25 * rGaap && maReinvest > 0 && g0 > 0) {{
+      if (!gaapBasis && has(rTang) && has(rGaap) && rGaap > 0 && rTang > 1.25 * rGaap && maReinvest > 0 && g0 > 0) {{
         const w = Math.max(0.0, Math.min(1.0, maReinvest * rGaap / g0));
         return [1.0 / ((1.0 - w) / rTang + w / rGaap), w];
       }}
@@ -4089,8 +4090,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           if (hasSales) raw_org = s5;
           else if (oc !== null) raw_org = oc;
           else raw_org = (g_oe !== null) ? g_oe - bb_pos : (c.sales_1y + bb_org);
-        }} else if (has(c.g_implied)) {{
-          raw_org = c.g_implied - bb_pos + bb_org;
         }} else {{
           raw_org = g_base;
         }}
@@ -4104,22 +4103,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }}
       }}
 
-      // Step 2 — RONIC₀: the slider sets it directly (roic_est semantics); a growth change re-weights the M&A blend
+      // Step 2 — RONIC₀: the slider sets it directly (scenario ronic0 in Python); a growth change re-weights the M&A blend
       let roic_exp = has(c.roic_exp) ? c.roic_exp : 0.18;
       if (tw.roic) {{
         roic_exp = r4(Math.max(0.05, sbCurrent.roic / 100.0));
       }} else if ((tw.growth || tw.gest) && has(c.roic_used)) {{
-        const raw = ronic0(c.roic_est_override, c.roic_used, c.roic_operating, c.roic_median, c.ma_reinvest, g_org_exp, c.uses_gaap_roic)[0];
-        roic_exp = r4(has(c.roic_est_override) ? Math.max(0.05, raw) : Math.max(0.05, Math.min(P.roic_cap, raw)));
+        const raw = ronic0(c.roic_used, c.roic_operating, c.roic_median, c.ma_reinvest, g_org_exp, c.uses_gaap_roic)[0];
+        roic_exp = r4(Math.max(0.05, Math.min(P.roic_cap, raw)));
       }}
 
       // Valuation
       const hasHistMults = Boolean(c.mult_low_5y && c.mult_high_5y);
       const hasMoatArch = hasMoatArchetype(c);
-      const hasPeakOverride = has(c.peak_eps_est) || tw.peak;
+      const hasPeakOverride = tw.peak;
       const autoNote = String(c.fin_note || '').split('[auto]')[1] || '';
       // Mirrors screener/gates.py BLOCKING_AUTO_NOTES: statements unusable until refetched / reviewed -> No data
-      const BLOCKING_AUTO_NOTES = ['stale fundamentals', 'share count changed since FY', 'currency switch unresolved'];
+      const BLOCKING_AUTO_NOTES = ['stale fundamentals', 'share count changed since FY', 'currency switch unresolved', 'earnings dominated by non-cash marks'];
       const blockingNote = BLOCKING_AUTO_NOTES.find(tok => autoNote.includes(tok)) || null;
       const staleData = blockingNote !== null;
       const hasValuationInputs = Boolean(!staleData && price && peak_eps && peak_eps > 0 &&

@@ -10,8 +10,8 @@
 Sources: EODHD Fundamentals API (full unfiltered 20-40 yr annual & quarterly statements, 1 request = 10 API calls per
 company, cached in data/_cache/eodhd/{SYMBOL}.json) and EODHD Historical EOD / Splits / FOREX API (1 API call per
 symbol, cached in data/_cache/eodhd/eod/{SYMBOL}.json).
-Fetched and computed fields overwrite financials.csv and fundamentals_panel.csv; analyst override columns
-(peak_eps_est, g_est, roic_est, g_implied, fin_note) are preserved. A company whose fetch returns nothing keeps its
+Fetched and computed fields overwrite financials.csv and fundamentals_panel.csv (no analyst overrides since v7.6;
+fin_note holds only the machine-written '[auto]' data notes). A company whose fetch returns nothing keeps its
 previous row. Dual listings named in universe.json "mirror" copy their PAR inputs from the primary listing.
 A diff report of PAR inputs (old -> new) is written to output/par_recompute_report.csv.
 """
@@ -49,7 +49,6 @@ from screener.fetch.sources import EODHD, stale_fundamentals, symbol_cache, tech
 from screener.fetch.sqlite_db import build_sqlite_db
 from screener.gates import funnel_ids, params, par_valuation
 
-ANALYST_FIELDS = ("peak_eps_est", "g_est", "roic_est", "g_implied", "fin_note")
 PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "cur_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
 US_GAAP_UNIVERSES = ("us",)     # operating-lease cost sits outside D&A under US GAAP -> no IFRS-16 lease deduction
@@ -87,11 +86,8 @@ def apply_lease_basis(series: dict, key: str, cid: str | None = None) -> dict:
 
 
 def set_auto_note(row: dict, notes: list[str]) -> None:
-    """fin_note = analyst text (kept) + one '[auto] …' part rewritten on every fetch."""
-    keep = [p for p in str(row.get("fin_note") or "").split(" | ") if p.strip() and not p.startswith(AUTO)]
-    if notes:
-        keep.append(AUTO + "; ".join(dict.fromkeys(notes)))
-    row["fin_note"] = " | ".join(keep) or None
+    """fin_note = the machine-written '[auto] …' data notes only, rewritten on every fetch (v7.6: no analyst text)."""
+    row["fin_note"] = (AUTO + "; ".join(dict.fromkeys(notes))) if notes else None
 
 
 def num(x):
@@ -245,7 +241,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             if not series.get("ni") or not (q.get("price") or old.get("price")):
                 state["kept"].append(f"{key}:{i}")      # nothing fetched: never overwrite stored data
                 continue
-            row = {"id": i, **{k: old.get(k) for k in ANALYST_FIELDS}}
+            row = {"id": i}
             row["fin_currency"] = q.get("fin_currency") or old.get("fin_currency")
             q_ccy = q.get("currency") or old.get("quote_currency")
 
@@ -269,10 +265,12 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
                 series,
                 mp,
                 (1.0 / fx_q_rep) if fx_q_rep else None,
-                num(old.get("peak_eps_est")),
                 listing_date(fund, esym, bars),
             )
             notes += pr.pop("_notes", [])
+            marks = metrics.noncash_marks(series)
+            if marks:
+                notes.append(marks)
             for k in PAR_FIELDS:
                 row[k] = pr.get(k)
             if pr.get("peak_oe_eps") is None and old.get("peak_oe_eps") is not None:
@@ -327,7 +325,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         elif old.get("market_cap_m"):
             row["market_cap_m"] = old.get("market_cap_m")
         else:
-            row["fin_note"] = (row.get("fin_note") or "") + " market cap n/a (FX or shares missing)"
+            row["fin_note"] = ((row.get("fin_note") + "; ") if row.get("fin_note") else AUTO) + "market cap n/a (FX or shares missing)"
 
         state["report"].append((key, i, old, row))
         fins[i] = row
@@ -398,7 +396,7 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
                 "roic_median", "roic_operating", "fcf_conv", "roe_median", "ocf_ni_2y",
                 "sales_1y", "sales_cagr", "sales_cagr_yrs", "opcost_1y", "opcost_cagr",
                 "cap_growth", "ma_reinvest", "buyback_yield", "retention_rate", "roiic",
-                "g_est", "g_implied", "roic_est",
+                "cur_oe_year", "ic_neg_years", "g6_netdebt_yrs", "g6_intcov",
             ):
                 t[k] = s.get(k)
             if num(t.get("sales_ttm_m")) is None and num(s.get("sales_ttm_m")) is not None:
@@ -407,7 +405,7 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
                     t["sales_ttm_m"] = num(s.get("sales_ttm_m")) * fin_rate
                 else:
                     print(f"  WARNING mirror {key}:{i}: no FX {s.get('fin_currency')}->{t.get('fin_currency')}; sales left blank")
-            for k in ("peak_oe_eps", "cur_oe_eps", "peak_eps_est"):
+            for k in ("peak_oe_eps", "cur_oe_eps"):
                 t[k] = round(num(s.get(k)) * rate, 4) if (num(s.get(k)) is not None and rate) else None
             set_auto_note(t, [f"PAR inputs mirrored from {src}"])
             state["report"].append((key, i, old, t))
