@@ -39,6 +39,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             "k_fin": p.get("par_cost_of_equity_fin", 0.1025),
             "g_anchor_max": p.get("par_g_anchor_max", 0.130),
             "roic_cap": p.get("par_roic_cap", 0.50),
+            "roic_term_max": p.get("par_roic_term_max", 0.20),
             "g_base": p.get("par_g_base", 0.030),
         }
         res_map = results(meta)
@@ -187,18 +188,19 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     qpass_count = sum(1 for c in all_companies if c["result"] == C.RES_QPASS)
     calamity_list = [c for c in all_companies if c["result"] == C.RES_CALAMITY]
     valued_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_VALUED]
-    irrs = [c["irr_5y"] for c in valued_list if c["irr_5y"] is not None]
-    median_irr = statistics.median(irrs) if irrs else None
+    # v7.7: IRR in excess of each company's own hurdle r, so 8.50% and 10.25% names are comparable
+    excess = [c["irr_5y"] - c["disc_rate"] for c in valued_list if c["irr_5y"] is not None and c["disc_rate"] is not None]
+    median_excess_irr = statistics.median(excess) if excess else None
 
     return {
-        "version": "7.6",
+        "version": "7.7",
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
             "calamity_pass": len(calamity_list),
             "valued": len(valued_list),
-            "median_irr": median_irr,
+            "median_excess_irr": median_excess_irr,
         },
         "universes": universes_meta,
         "companies": all_companies,
@@ -1767,8 +1769,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label" title="Median 5Y IRR of valued Quality Pass stocks (hurdle r = 8.50% operating / 10.25% balance-sheet financials)">Median 5Y IRR</span>
-        <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_irr']*100:.1f}%" if data['summary']['median_irr'] is not None else "—"}</span>
+        <span class="kpi-label" title="Median of (5Y IRR − own hurdle r) over valued Quality Pass stocks; r = 8.50% operating / 10.25% balance-sheet financials. Negative = expected return below the hurdle.">Median IRR vs hurdle</span>
+        <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_excess_irr']*100:+.1f}pp" if data['summary'].get('median_excess_irr') is not None else "—"}</span>
       </div>
     </div>
   </header>
@@ -1835,7 +1837,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="sales_1y-desc">Sort: 1Y Growth ↓</option>
         <option value="sales_cagr-desc">Sort: 10Y WLS Sales Growth ↓</option>
         <option value="buyback_yield-desc">Sort: Buyback Yield ↓</option>
-        <option value="roic_used-desc">Sort: Op ROIC ↓</option>
+        <option value="roic_exp-desc">Sort: RONIC₀ ↓</option>
         <option value="cur_mult-asc">Sort: Cur P/E ↑</option>
         <option value="cur_mult-desc">Sort: Cur P/E ↓</option>
         <option value="par_mult-desc">Sort: Fair P/E ↓</option>
@@ -2486,7 +2488,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     const SCREENER_DATA = JSON.parse(document.getElementById('screener-raw-data').textContent);
     let currentTab = 'qpass';
     let currentMarket = 'all';
-    let sortColumn = 'roic_used';
+    let sortColumn = 'roic_exp';
     let sortAsc = false;
     let selectedCompanyId = null;
     let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
@@ -2494,7 +2496,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let compactColumns = true;
 
     const TAB_DEFAULT_SORTS = {{
-      qpass: {{ col: 'roic_used', asc: false }},
+      qpass: {{ col: 'roic_exp', asc: false }},
       calamity: {{ col: 'irr_5y', asc: false }},
       moat_universe: {{ col: 'irr_5y', asc: false }},
       all: {{ col: 'ticker', asc: true }}
@@ -2523,7 +2525,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       par_mult: {{ key: 'par_mult', label: 'Fair P/E', num: true }},
       term_mult: {{ key: 'term_mult', label: 'Term P/E', num: true }},
       irr_5y: {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
-      roic_used: {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+      roic_used: {{ key: 'roic_exp', label: 'RONIC₀', num: true }},
       g4_cap: {{ key: 'g4_cap', label: 'Our CAP', num: true }},
       cap_implied: {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
       cap_gap: {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
@@ -2601,7 +2603,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function parParams(c) {{
-      return Object.assign({{ k: 0.085, k_fin: 0.1025, g_anchor_max: 0.18, roic_cap: 0.50, g_base: 0.030 }},
+      return Object.assign({{ k: 0.085, k_fin: 0.1025, g_anchor_max: 0.13, roic_cap: 0.50, roic_term_max: 0.20, g_base: 0.030 }},
         ((SCREENER_DATA.universes || {{}})[c.universe] || {{}}).par_params || {{}});
     }}
 
@@ -2612,13 +2614,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const moatUni = base.filter(c => passesG123a(c));
       const valued = qpass.filter(c => c.val_status === 'Valued');
       // Header KPIs follow the market filter (computed client-side)
-      const irrs = valued.map(c => c.irr_5y).filter(v => v !== null && v !== undefined).sort((a, b) => a - b);
+      const irrs = valued.filter(c => c.irr_5y !== null && c.irr_5y !== undefined && c.disc_rate !== null && c.disc_rate !== undefined)
+        .map(c => c.irr_5y - c.disc_rate).sort((a, b) => a - b);
       const medIrr = irrs.length ? (irrs.length % 2 ? irrs[(irrs.length - 1) / 2] : 0.5 * (irrs[irrs.length / 2 - 1] + irrs[irrs.length / 2])) : null;
       const setKpi = (id, v) => {{ const el = document.getElementById(id); if (el) el.textContent = v; }};
       setKpi('kpi-universe', base.length);
       setKpi('kpi-qpass', qpass.length);
       setKpi('kpi-calamity', calamity.length);
-      setKpi('kpi-median-irr', medIrr !== null ? `${{(medIrr * 100).toFixed(1)}}%` : '—');
+      setKpi('kpi-median-irr', medIrr !== null ? `${{medIrr >= 0 ? '+' : ''}}${{(medIrr * 100).toFixed(1)}}pp` : '—');
       document.getElementById('count-qpass').textContent = qpass.length;
       document.getElementById('count-calamity').textContent = calamity.length;
       const moatCountEl = document.getElementById('count-moat-universe');
@@ -2796,6 +2799,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return list.sort((a, b) => {{
         let vA = a[sortColumn];
         let vB = b[sortColumn];
+        if (sortColumn === 'g_market') {{
+          // rows shown as n/a (no_value_creation, multi_root, nav_anchored) sort as empty, not by hidden numbers
+          const shown = (x) => ['ok', 'saturated_low', 'saturated_high'].includes(x.g_market_flag);
+          if (!shown(a)) vA = null;
+          if (!shown(b)) vB = null;
+        }}
 
         if (Array.isArray(vA)) vA = vA.join(', ');
         if (Array.isArray(vB)) vB = vB.join(', ');
@@ -3005,13 +3014,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           }} else if (col.key === 'vs_term') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
-              const badgeClass = val <= 0.10 ? 'badge-green' : 'badge-amber';
-              cellContent = `<span class="badge ${{badgeClass}}" title="${{val <= 0 ? 'At or below Terminal Price floor' : (val <= 0.10 ? 'Within 10% of Terminal Price floor' : 'Premium above Terminal Price floor')}}">${{fmtPct(val, true)}}</span>`;
+              const badgeClass = val <= 0 ? 'badge-green' : 'badge-amber';
+              cellContent = `<span class="badge ${{badgeClass}}" title="${{val <= 0 ? 'At or below Terminal Price floor' : 'Premium above Terminal Price floor'}}">${{fmtPct(val, true)}}</span>`;
             }}
           }} else if (col.key === 'irr_5y') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
-              const color = val >= 0.12 ? 'var(--green)' : (val >= 0.08 ? 'var(--accent)' : 'var(--text-muted)');
+              const color = irrColor(c, val);
               cellContent = `<strong style="color: ${{color}};">${{fmtPct(val)}}</strong>`;
             }}
           }} else if (col.key === 'val_status') {{
@@ -3046,6 +3055,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'g6_flags') {{
             cellContent = g6Markers(c);
+          }} else if (col.key === 'roic_exp') {{
+            const srcLbl = c.roic_source === 'roe_median' ? 'ROE' : (c.roic_source === 'roic_median' ? 'GAAP ROIC' : 'Tangible ROIC');
+            cellContent = (val === null || val === undefined) ? '-'
+              : `<span title="RONIC₀ used by the DCF (after M&A blend and 50% cap); input ${{srcLbl}} ${{fmtPct(c.roic_used)}}">${{fmtPct(val)}}</span>`;
           }} else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_exp') {{
             cellContent = fmtPct(val);
           }} else if (col.key === 'g_market') {{
@@ -3145,8 +3158,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         if (currentTab === 'qpass' || currentTab === 'calamity') {{
           const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
-          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0.10)
-            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading near or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
+          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0)
+            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading at or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
           badgeHtml = `${{calBadge}}${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const roicExtra = currentTab === 'qpass'
             ? `FCF ${{fmtPct(c.fcf_conv)}}`
@@ -3157,7 +3170,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
-              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
+              <div class="card-metric-val" style="color: ${{irrColor(c, c.irr_5y)}};">${{fmtPct(c.irr_5y)}}</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Price / Fair / Term</div>
@@ -3176,8 +3189,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           ` + triadCardsHtml(c);
         }} else {{
           const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result === 'Calamity pass' ? 'badge-amber' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
-          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0.10)
-            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading near or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
+          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0)
+            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading at or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
           badgeHtml = `<span class="badge ${{bCls}}" style="margin-right:4px;">${{escHtml(c.result)}}</span>${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const stageColor = c.result === 'Quality pass' ? 'var(--green)' : (c.result === 'Calamity pass' ? 'var(--amber)' : 'var(--red)');
           const stageText = c.result === 'Calamity pass'
@@ -3192,7 +3205,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
-              <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
+              <div class="card-metric-val" style="color: ${{irrColor(c, c.irr_5y)}};">${{fmtPct(c.irr_5y)}}</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Price / Fair / Term</div>
@@ -3396,7 +3409,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (dVsTermEl) {{
         dVsTermEl.textContent = fmtPct(c.vs_term, true);
         dVsTermEl.style.color = (c.vs_term !== null && c.vs_term !== undefined)
-          ? (c.vs_term <= 0.10 ? 'var(--green)' : 'var(--text-main)')
+          ? (c.vs_term <= 0 ? 'var(--green)' : 'var(--text-main)')
           : 'var(--text-main)';
       }}
       const dTermMultEl = document.getElementById('dossier-term-mult');
@@ -3710,7 +3723,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }};
     }}
 
-    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null) {{
+    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null, roicTermMax=0.20) {{
       // Mirrors screener/gates.py dcf_schedule_and_continuation: Year-1 E_1 = 1.0 is the trailing normalized EPS;
       // at each year t = 1..N, Reinv_t = E_t * max(0, g_t) / RONIC_t funds E_(t+1) = E_t * (1 + g_t);
       // TV_N = E_(N+1) * (1 - g_tv / RONIC_term) / (r - g_tv) with g_tv = max(0, min(g0, gTerm)).
@@ -3718,7 +3731,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const roicStart = Math.max(0.05, roic0);
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
         ? Math.max(0.05, roicEndOverride)
-        : Math.max(0.05, Math.min(roicStart, 0.20, k + 0.5 * (roicStart - k)));
+        : Math.max(0.05, Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k)));
       const gTermEff = Math.min(g0, gTerm);
       let pvStage1 = 0.0;
       let sumFcf1 = 0.0;
@@ -3793,14 +3806,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }};
     }}
 
-    function terminalMultiple(roic0, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null) {{
+    function terminalMultiple(roic0, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null, roicTermMax=0.20) {{
       // Mirrors screener/gates.py terminal_multiple: standalone McKinsey Value-Driver Terminal P/E at 3.0% historical
       // inflation pass-through and 'keeping the lights on' reinvestment (gTerm / roicTerm).
       if (isFiniteConc) return 0.0;
       const roicStart = Math.max(0.05, roic0);
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
         ? Math.max(0.05, roicEndOverride)
-        : Math.max(0.05, Math.min(roicStart, 0.20, k + 0.5 * (roicStart - k)));
+        : Math.max(0.05, Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k)));
       if (roicTerm <= k) return 1.0 / k;
       const gInf = Math.max(0.0, gTerm);
       return (1.0 - gInf / roicTerm) / Math.max(0.01, k - gInf);
@@ -3849,7 +3862,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         return;
       }}
 
-      const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, isFiniteConc);
+      const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, isFiniteConc, null, opts.roic_term_max);
       const navMult = (opts.navMult !== null && opts.navMult !== undefined) ? opts.navMult : (1.0 / roic0);
       const effMult = isMtmHoldco ? navMult : dcf.total;
       const effFv = effMult * e0;
@@ -3966,14 +3979,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = htmlRows.join('');
     }}
 
-    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, g0Ref=0.0) {{
+    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, g0Ref=0.0, roicTermMax=0.20) {{
       // Mirrors screener/gates.py solve_market_growth: grid scan [-20%, +50%] in 1pp steps, bisection in
       // every sign-change bracket; returns {{ g, flag }} with flag in ok | saturated_low | saturated_high |
       // no_value_creation | multi_root.
       if (!targetPe || targetPe <= 0) return {{ g: null, flag: null }};
       const LO = -0.20, HI = 0.50, STEP = 0.01;
       const nPts = Math.round((HI - LO) / STEP);
-      const pe = (g) => explicitDcfMultiple(g, roic0, nCap, k, gTerm, isFiniteConc).total;
+      const pe = (g) => explicitDcfMultiple(g, roic0, nCap, k, gTerm, isFiniteConc, null, roicTermMax).total;
       const grid = [], pes = [];
       for (let i = 0; i <= nPts; i++) {{ const g = LO + i * STEP; grid.push(g); pes.push(pe(g)); }}
       let increasing = true;
@@ -4026,6 +4039,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (npv(mid) > 0) lo = mid; else hi = mid;
       }}
       return 0.5 * (lo + hi);
+    }}
+
+    function irrColor(c, irr) {{
+      // v7.7: relative to the company's own hurdle r (8.50% operating / 10.25% balance-sheet financials)
+      if (irr === null || irr === undefined) return 'var(--text-muted)';
+      const r = (c.disc_rate !== null && c.disc_rate !== undefined) ? c.disc_rate : 0.085;
+      return irr >= r + 0.035 ? 'var(--green)' : (irr >= r ? 'var(--accent)' : 'var(--text-muted)');
     }}
 
     const G6_LABELS = {{ netdebt: 'Net debt ÷ owner earnings', intcov: 'Interest cover', fcfconv: 'Cash conversion', p2p: 'Peak-to-peak' }};
@@ -4143,9 +4163,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           fcfs5 = [0.0, 0.0, 0.0, 0.0, 0.0];
           v5 = pe_vd * Math.pow(1.0 + k, 5);
         }} else {{
-          const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc);
+          const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc, null, P.roic_term_max);
           pe_vd = dcf.total;
-          term_mult = terminalMultiple(roic_eff, k, g_base, isFiniteConc);
+          term_mult = terminalMultiple(roic_eff, k, g_base, isFiniteConc, null, P.roic_term_max);
           fcfs5 = dcf.fcfs5;
           v5 = dcf.v5;
         }}
@@ -4160,7 +4180,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           if (isMtmHoldco) {{
             g_market_flag = 'nav_anchored';
           }} else {{
-            const sol = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, isFiniteConc, g_org_val);
+            const sol = solveImpliedDcfGrowth(cur_mult, roic_eff, n_cap, k, g_base, isFiniteConc, g_org_val, P.roic_term_max);
             g_market = sol.g;
             g_market_flag = sol.flag;
           }}
@@ -4267,7 +4287,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const anySandboxTweaked = tw.growth || tw.roic || tw.gest || tw.peak || tw.cap;
       renderDcfScheduleTable(c, {{
         peak_eps, g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc, isMtmHoldco,
-        navMult: nav_mult, isTweaked: anySandboxTweaked, hasValuationInputs
+        roic_term_max: P.roic_term_max, navMult: nav_mult, isTweaked: anySandboxTweaked, hasValuationInputs
       }});
 
       // Runtime parity self-check: with untouched inputs the JS sandbox must reproduce the Python baseline.

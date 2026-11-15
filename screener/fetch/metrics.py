@@ -7,6 +7,8 @@ from __future__ import annotations
 import math
 from statistics import median
 
+from .. import config as C
+
 DEFAULT_TAX = 0.21
 ROIC_YEARS = 5                  # median ROIC over the latest 5 fiscal years (one cycle; matches the PAR window)
 LEASE_DEP_RATE = 0.20           # IFRS-16 right-of-use depreciation ≈ 20% of average lease liabilities (~5y avg term)
@@ -168,13 +170,15 @@ def exp_weighted_ols_cagr(
     return wls_cagr, span_tot
 
 
-G_BASE_STAT = 0.030
-G_MAX_STAT = 0.130
-TAU_PRIOR_STAT = 0.060
+TAU_PRIOR_STAT = 0.060          # Empirical Bayes prior spread of excess growth (estimator constant)
+# g_base / g_max come from config (par_g_base / par_g_anchor_max) — one source for fetch-time growth and the valuation
 
 
-def compress_g0(raw_g: float, g_base: float = G_BASE_STAT, g_max: float = G_MAX_STAT) -> float:
-    """Pillar 4b: Smooth Bayesian hyperbolic-tangent tail compression above g_base with asymptote g_max."""
+def compress_g0(raw_g: float, g_base: float | None = None, g_max: float | None = None) -> float:
+    """Pillar 4b: Smooth Bayesian hyperbolic-tangent tail compression above g_base with asymptote g_max
+    (defaults: config par_g_base / par_g_anchor_max)."""
+    g_base = C.param_default("par_g_base") if g_base is None else g_base
+    g_max = C.param_default("par_g_anchor_max") if g_max is None else g_max
     if raw_g <= g_base:
         return max(0.0, raw_g)
     span = max(1e-6, g_max - g_base)
@@ -265,10 +269,14 @@ def statistical_organic_g0(
     shares: dict | None = None,
     max_years: int = 10,
     last: int | None = None,
+    g_base: float | None = None,
+    g_max: float | None = None,
 ) -> tuple[float | None, int | None]:
     """Pillar 3 & 4a: 3-driver triangulation (Revenue, NOPAT, Owner Earnings) on dilution-adjusted
     per-share series via Cycle-Spanning Theil-Sen, followed by Empirical Bayes precision shrinkage
-    of excess growth above G_BASE_STAT (3.0%)."""
+    of excess growth above g_base and tanh compression toward g_max (config par_g_base / par_g_anchor_max)."""
+    g_base = C.param_default("par_g_base") if g_base is None else g_base
+    g_max = C.param_default("par_g_anchor_max") if g_max is None else g_max
     rev_med, rev_p25, rev_se, span = theil_sen_organic_cagr(sales, shares=shares, max_years=max_years, min_span=5, last=last)
     if rev_p25 is None or span is None:
         return None, None
@@ -297,33 +305,19 @@ def statistical_organic_g0(
     # Refranchising guard (e.g. MCD, KO): if top-line revenue stagnated (<3.0%) due to gross-to-net royalty
     # transition while BOTH operating profit (NOPAT) and Owner Earnings P25 grew faster than revenue:
     if (
-        rev_med is not None and rev_med < G_BASE_STAT
+        rev_med is not None and rev_med < g_base
         and nop_p25 is not None and (nop_span or 0) >= 5
         and oe_p25 is not None and (oe_span or 0) >= 5
         and min(nop_p25, oe_p25) > rev_med
     ):
         g_tri = min(0.060, nop_p25, oe_p25)
 
-    # Pillar 4a & 4b: Empirical Bayes precision shrinkage toward G_BASE_STAT = 3.0%
-    # followed by smooth hyperbolic-tangent tail compression with asymptote G_MAX_STAT = 13.0%.
+    # Pillar 4a & 4b: Empirical Bayes precision shrinkage toward g_base (one weight from the revenue Theil-Sen
+    # spread) followed by smooth hyperbolic-tangent tail compression with asymptote g_max.
     se = rev_se if rev_se is not None else 0.030
     w = (TAU_PRIOR_STAT ** 2) / (TAU_PRIOR_STAT ** 2 + se ** 2)
-    g_eb = G_BASE_STAT + w * (g_tri - G_BASE_STAT) if g_tri > G_BASE_STAT else g_tri
-    return compress_g0(g_eb, G_BASE_STAT, G_MAX_STAT), span
-
-
-def implied_shares(ni: dict, eps: dict, shares: dict) -> dict:
-    """Diluted shares per year. Where net income and reported diluted EPS imply a count more than 15% away from
-    the tagged share count (multi-class structures, XBRL unit errors, wrong period-end counts), use NI ÷ EPS."""
-    out = dict(shares or {})
-    for y, n_val in (ni or {}).items():
-        e_val = (eps or {}).get(y)
-        if n_val and e_val and n_val > 0 and e_val > 0:
-            imp_sh = n_val / e_val
-            cur_sh = out.get(y)
-            if cur_sh is None or cur_sh <= 0 or not (0.85 <= cur_sh / imp_sh <= 1.18):
-                out[y] = imp_sh
-    return out
+    g_eb = g_base + w * (g_tri - g_base) if g_tri > g_base else g_tri
+    return compress_g0(g_eb, g_base, g_max), span
 
 
 def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None, lease: dict | None = None) -> dict:
@@ -394,7 +388,7 @@ def ic_inputs(s: dict) -> tuple[dict, dict]:
     return eq_ic, debt_ic
 
 
-def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
+def summarize(s: dict, price_at_year_end: dict | None = None, p: dict | None = None) -> dict:
     """s: dict of annual series. Keys used: sales, ni, eps, ocf, capex, sbc, da, dividends, equity, debt, cash,
     goodwill, intang, ebit, pretax, tax, interest, assets, shares. Returns financials.csv fields."""
     g = lambda k: s.get(k) or {}
@@ -556,7 +550,10 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
-    shares = implied_shares(ni, g("eps"), g("shares"))
+    shares = dict(g("shares"))     # period-end counts (EPS = NI ÷ shares, see sources.annual_series)
+    p = p or {}
+    g_base_p = p.get("par_g_base", C.param_default("par_g_base"))
+    g_max_p = p.get("par_g_anchor_max", C.param_default("par_g_anchor_max"))
     nopat_ser = {}
     for y, e_val in ebit.items():
         if e_val is not None:
@@ -575,7 +572,8 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         if s1_val is not None:
             out["sales_1y"] = round(s1_val, 4)
         s_stat, s_span = statistical_organic_g0(
-            sales, nopat=nopat_ser, owner_earn=owner_earn_ser, shares=shares, max_years=10, last=last
+            sales, nopat=nopat_ser, owner_earn=owner_earn_ser, shares=shares, max_years=10, last=last,
+            g_base=g_base_p, g_max=g_max_p,
         )
         if s_stat is not None and s_span is not None:
             out["sales_cagr"] = round(s_stat, 4)

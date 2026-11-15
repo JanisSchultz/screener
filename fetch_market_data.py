@@ -253,7 +253,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             else:
                 px_rep = None
 
-            m = metrics.summarize(series, px_rep)
+            m = metrics.summarize(series, px_rep, params(meta))
             row.update({k: v for k, v in m.items() if k in FIN_FIELDS})
             row["source"] = f"EODHD ({esym}); FY{m.get('fiscal_year')}" if m.get("fiscal_year") else f"EODHD ({esym})"
 

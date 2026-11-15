@@ -166,7 +166,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                 "quality_pass": 1,
                 "calamity_pass": 1,
                 "valued": 1,
-                "median_irr": 0.14,
+                "median_excess_irr": 0.14,
             },
             "universes": {"us": {"key": "us", "title": "US", "index_name": "US", "currency": "USD", "as_of": "2026-11-10", "parameters": {}}},
             "companies": [

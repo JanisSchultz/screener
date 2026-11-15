@@ -139,7 +139,7 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         data = {
             "version": "6.33",
             "generated_at": "2026-11-11T00:00:00Z",
-            "summary": {"total_companies": 0, "quality_pass": 0, "calamity_pass": 0, "valued": 0, "median_irr": 0.0},
+            "summary": {"total_companies": 0, "quality_pass": 0, "calamity_pass": 0, "valued": 0, "median_excess_irr": 0.0},
             "sectors": [],
             "moats": [],
             "universes": {},

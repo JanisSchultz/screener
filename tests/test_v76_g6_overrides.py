@@ -90,7 +90,7 @@ class NoOverrideTests(unittest.TestCase):
     def test_js_mirror_has_noncash_token(self):
         html = build_dashboard_html({"version": "7.6", "generated_at": "x", "universes": {}, "companies": [],
                                      "changelog": [], "summary": {"total_companies": 0, "quality_pass": 0,
-                                                                  "calamity_pass": 0, "valued": 0, "median_irr": None}})
+                                                                  "calamity_pass": 0, "valued": 0, "median_excess_irr": None}})
         self.assertIn("'earnings dominated by non-cash marks'", html)
         self.assertIn("g6Markers", html)
 

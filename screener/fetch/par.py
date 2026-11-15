@@ -1,7 +1,7 @@
 """Quantitative PAR inputs computed from annual series and monthly prices (no network).
 
 Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, D&A − CapEx − IFRS-16 lease depreciation)) ÷
-period-end shares outstanding (scaled to reported diluted EPS when net income clearly includes minority interests). D&A is taken
+period-end shares outstanding. D&A is taken
 deterministically (cash-flow depreciation → income-statement D&A → reconciled depreciation) and capped at 1.5× its
 prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease liabilities for IFRS reporters only.
 - Last peak Owner EPS = highest Owner EPS of the latest 5 fiscal years (converted to the quote currency).
@@ -26,7 +26,7 @@ from __future__ import annotations
 import datetime as dt
 from statistics import median
 
-from .metrics import implied_shares, owner_addback
+from .metrics import owner_addback
 
 PEAK_YEARS = 5
 MULT_MONTHS = 60
@@ -59,22 +59,14 @@ def owner_eps_series(s: dict) -> dict:
     """{fiscal year: Owner EPS in reporting currency} for years with net income and shares (spike years left out).
     Add-back = MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy), see metrics.owner_addback."""
     g = lambda k: s.get(k) or {}
-    ni, eps = g("ni"), g("eps")
-    shares = implied_shares(ni, eps, g("shares"))
+    ni, shares = g("ni"), g("shares")
     skip = set(spike_years(s))
     out = {}
     for y, n in ni.items():
         sh = shares.get(y)
         if n is None or not sh or sh <= 0 or y in skip:
             continue
-        add = owner_addback(s, y)
-        e = eps.get(y)
-        if e and n > 0 and e > 0 and not 0.67 <= (n / sh) / e <= 1.5:
-            # net income includes minority interests (e.g. IBKR: holding-company NI vs Class A shares):
-            # scale to the owners' share implied by reported diluted EPS
-            out[y] = e * (1 + add / n)
-        else:
-            out[y] = (n + add) / sh
+        out[y] = (n + owner_addback(s, y)) / sh
     return out
 
 

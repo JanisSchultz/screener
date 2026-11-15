@@ -119,6 +119,16 @@ def peak_weight(cur_year, peak_year) -> float:
     return max(0.0, 0.5 * (4.0 - age) / 3.0)
 
 
+RONIC_FLOOR = 0.05                # floor on any RONIC used for reinvestment (avoids division blow-ups)
+ROIC_TERM_MAX = 0.20              # default of config par_roic_term_max (terminal RONIC ceiling)
+BUYBACK_CLAMP = (-0.03, 0.035)    # buyback_yield clamp before splitting into accretion (+) / dilution (−)
+
+
+def roic_terminal(roic_start: float, r: float, roic_term_max: float = ROIC_TERM_MAX) -> float:
+    """Terminal RONIC at the end of the CAP fade: min(RONIC_0, roic_term_max, r + 0.5 · (RONIC_0 − r)), floored."""
+    return max(RONIC_FLOOR, min(roic_start, roic_term_max, r + 0.5 * (roic_start - r)))
+
+
 def _r4(x: float) -> float:
     """Round half up to 4 dp — identical to the dashboard's JS Math.round(x * 1e4) / 1e4."""
     return math.floor(x * 10000.0 + 0.5) / 10000.0
@@ -215,6 +225,7 @@ def dcf_schedule_and_continuation(
     finite_conc: bool = False,
     mtm_holdco: bool = False,
     roic_end: float | None = None,
+    roic_term_max: float = ROIC_TERM_MAX,
 ) -> tuple[float, float, float, float, list[float], float]:
     """Explicit N-Year Mauboussin-Fade DCF Fair P/E and 5-Year continuation schedule.
     Returns (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share, fcfs_5, v_5).
@@ -222,20 +233,16 @@ def dcf_schedule_and_continuation(
       of growth versus a forward E_1 = EPS × (1 + g0).
     - At the end of each year t = 1..N (N = Gate 4 CAP), Reinv_t = E_t * max(0, g_t) / RONIC_t is deducted from E_t
       to fund Year-(t+1) growth E_{t+1} = E_t * (1 + g_t), with g_t and RONIC_t fading linearly from (g0, roic0) at t=1
-      to (min(g0, g_term), min(roic0, 20%, r + 0.5 * (roic0 - r))) at t=N.
+      to (min(g0, g_term), min(roic0, roic_term_max = 20%, r + 0.5 * (roic0 - r))) at t=N.
     - Terminal value at t=N is McKinsey Value Driver TV_N = E_{N+1} * (1 - g_tv / RONIC_term) / (r - g_tv) with
       g_tv = max(0, min(g0, g_term)) (3.0% historical inflation pass-through, or g0 when g0 < 3.0%).
     - Exact Miller-Modigliani zero-spread invariance: when RONIC_t == r, total_dcf_pe == 1 / r for all g0 >= 0, N."""
-    roic_start = max(0.05, float(roic0))
+    roic_start = max(RONIC_FLOOR, float(roic0))
     if mtm_holdco:
         nav_pe = 1.0 / roic_start
         return nav_pe, nav_pe, 0.0, 1.0, [0.0] * 5, nav_pe * ((1.0 + r) ** 5)
     n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_fin = (
-        max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r)))
-        if roic_end is None
-        else max(0.05, float(roic_end))
-    )
+    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else max(RONIC_FLOOR, float(roic_end))
     g_term_eff = min(g0, g_term)
     reinv_1 = max(0.0, g0) / roic_start
     pv_stage1 = 0.0
@@ -245,13 +252,13 @@ def dcf_schedule_and_continuation(
         frac = (t - 1.0) / float(max(1, n - 1)) if n > 1 else 1.0
         g_t = g0 - frac * (g0 - g_term_eff)
         roic_t = roic_start - frac * (roic_start - roic_fin)
-        reinv_t = max(0.0, g_t) / max(0.05, roic_t)
+        reinv_t = max(0.0, g_t) / max(RONIC_FLOOR, roic_t)
         fcf_t = e_t * (1.0 - reinv_t)
         fcfs.append(fcf_t)
         pv_stage1 += fcf_t / ((1.0 + r) ** t)
         e_t = e_t * (1.0 + g_t)
     g_tv = max(0.0, g_term_eff)
-    reinv_tv = g_tv / max(0.05, roic_fin)
+    reinv_tv = g_tv / max(RONIC_FLOOR, roic_fin)
     fcf_tv = e_t * (1.0 - reinv_tv)
     tv_n = 0.0 if finite_conc else (fcf_tv / max(0.01, r - g_tv))
     pv_stage2 = tv_n / ((1.0 + r) ** n)
@@ -271,9 +278,10 @@ def explicit_dcf_multiple(
     finite_conc: bool = False,
     mtm_holdco: bool = False,
     roic_end: float | None = None,
+    roic_term_max: float = ROIC_TERM_MAX,
 ) -> tuple[float, float, float, float]:
     """Explicit N-Year Mauboussin-Fade DCF Fair P/E: (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share)."""
-    return dcf_schedule_and_continuation(g0, roic0, n_cap, r, g_term, finite_conc, mtm_holdco, roic_end)[:4]
+    return dcf_schedule_and_continuation(g0, roic0, n_cap, r, g_term, finite_conc, mtm_holdco, roic_end, roic_term_max)[:4]
 
 
 def terminal_multiple(
@@ -283,32 +291,21 @@ def terminal_multiple(
     finite_conc: bool = False,
     mtm_holdco: bool = False,
     roic_end: float | None = None,
+    roic_term_max: float = ROIC_TERM_MAX,
 ) -> float:
     """Standalone McKinsey Value-Driver Terminal P/E at 3.0% historical inflation pass-through and 'keeping the lights on'
-    reinvestment (g_term / RONIC_term), where RONIC_term = max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r))).
+    reinvestment (g_term / RONIC_term), where RONIC_term = roic_terminal(roic_start, r, roic_term_max).
     When RONIC_term <= r, growth adds no value so g_inf = 0.0 and Terminal P/E = 1 / r."""
     if finite_conc:
         return 0.0
-    roic_start = max(0.05, float(roic0))
+    roic_start = max(RONIC_FLOOR, float(roic0))
     if mtm_holdco:
         return 1.0 / roic_start
-    roic_fin = (
-        max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r)))
-        if roic_end is None
-        else max(0.05, float(roic_end))
-    )
+    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else max(RONIC_FLOOR, float(roic_end))
     if roic_fin <= r:
         return 1.0 / r
     g_inf = max(0.0, g_term)
     return (1.0 - g_inf / roic_fin) / max(0.01, r - g_inf)
-
-
-def compress_g0(raw_g: float, g_base: float = 0.030, g_max: float = 0.130) -> float:
-    """Smooth Bayesian hyperbolic-tangent tail compression above g_base with asymptote g_max."""
-    if raw_g <= g_base:
-        return max(0.0, raw_g)
-    span = max(1e-6, g_max - g_base)
-    return g_base + span * math.tanh((raw_g - g_base) / span)
 
 
 G_MARKET_LO, G_MARKET_HI, G_MARKET_STEP = -0.20, 0.50, 0.01
@@ -331,6 +328,7 @@ def solve_market_growth(
     g_term: float = 0.030,
     finite_conc: bool = False,
     mtm_holdco: bool = False,
+    roic_term_max: float = ROIC_TERM_MAX,
 ) -> tuple[float | None, str | None]:
     """Root-safe inversion of the Explicit DCF: starting organic growth g_market (fading to g_term over CAP N at r)
     whose DCF P/E equals target_pe. Scans a [-20%, +50%] grid in 1pp steps, bisects inside every sign-change bracket
@@ -345,7 +343,7 @@ def solve_market_growth(
         return None, None
     if mtm_holdco:
         return None, G_FLAG_NAV
-    pe = lambda g: explicit_dcf_multiple(g, roic0, n_cap, r, g_term, finite_conc, False)[0]
+    pe = lambda g: explicit_dcf_multiple(g, roic0, n_cap, r, g_term, finite_conc, False, None, roic_term_max)[0]
     n_pts = int(round((G_MARKET_HI - G_MARKET_LO) / G_MARKET_STEP))
     grid = [G_MARKET_LO + i * G_MARKET_STEP for i in range(n_pts + 1)]
     pes = [pe(g) for g in grid]
@@ -478,6 +476,7 @@ def par_valuation(
     k_fin = p.get("par_cost_of_equity_fin", 0.1025)
     g_max = p.get("par_g_anchor_max", 0.130)
     roic_cap = p.get("par_roic_cap", 0.500)
+    roic_term_max = p.get("par_roic_term_max", ROIC_TERM_MAX)
     g_base = p.get("par_g_base", 0.030)
 
     price, mc, ni = f("price"), f("market_cap_m"), f("ni_ttm_m")
@@ -523,7 +522,7 @@ def par_valuation(
 
     # Step 3 — 4-Pillar Statistical Organic Growth Ceiling g0 (g_org_exp) and buyback accretion (g_exp).
     bb_raw = f("buyback_yield")
-    bb_eff = max(-0.03, min(0.035, bb_raw)) if bb_raw is not None else 0.0
+    bb_eff = max(BUYBACK_CLAMP[0], min(BUYBACK_CLAMP[1], bb_raw)) if bb_raw is not None else 0.0
     bb_pos, bb_org = max(0.0, bb_eff), min(0.0, bb_eff)
     sales_1y_val, sales_cagr_val = f("sales_1y"), f("sales_cagr")
     opcost_1y_val, opcost_cagr_val = f("opcost_1y"), f("opcost_cagr")
@@ -598,9 +597,9 @@ def par_valuation(
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
     roic_eff = max(roic_exp, 0.05)
     pe_vd, pe_mm, pe_mck, fcf_share, fcfs_5, v_5 = dcf_schedule_and_continuation(
-        g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco
+        g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco, None, roic_term_max
     )
-    term_mult = terminal_multiple(roic_eff, k, g_base, finite_conc, mtm_holdco)
+    term_mult = terminal_multiple(roic_eff, k, g_base, finite_conc, mtm_holdco, None, roic_term_max)
     if nav_anchor:
         pe_vd = pe_mm = term_mult = bvps / peak_eps
         pe_mck = 0.0
@@ -631,7 +630,8 @@ def par_valuation(
         cap_gap = _r1(eff_cap - cap_implied)
     else:
         cap_implied = cap_gap = None
-    g_market, g_market_flag = solve_market_growth(cur_mult, g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco)
+    g_market, g_market_flag = solve_market_growth(cur_mult, g_org_exp, roic_eff, n_cap, k, g_base, finite_conc,
+                                                  mtm_holdco, roic_term_max)
     g_gap = _r4(g_org_exp - g_market) if (g_market is not None and g_market_flag in G_GAP_FLAGS) else None
     out.update({
         "status": C.V_VALUED,

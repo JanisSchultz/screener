@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.6 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.7 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,11 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.7: Spec matches code, one source for model parameters, hurdle-aware dashboard (no valuation change — every value identical to v7.6):
+- Spec aligned to the tested code: Pillar 3 triangulation (median P25 / median P50 / revenue P50 + 1.5pp), refranchising guard 6% cap, single EB weight from the revenue spread, market-implied CAP fallback, `ma_reinvest` FX allowance, period-end share counts; new appendix "Model Constants" in the quantitative spec.
+- Parameters: `par_g_base` / `par_g_anchor_max` now drive the fetch-time growth estimate too (duplicated constants in `metrics.py` removed; universe overrides reach the fetch); new config parameter `par_roic_term_max` (20%) replaces the hard-coded terminal RONIC ceiling in Python and the JS sandbox; dead code removed (`implied_shares`, diluted-EPS rescaling, duplicate `compress_g0`).
+- Dashboard: IRR colours relative to each company's hurdle (green ≥ r + 3.5pp, accent ≥ r); header KPI "Median IRR vs hurdle" in pp; the "Op ROIC" column is now "RONIC₀" (the return the DCF uses, input in the tooltip); "vs Term" green only at or below the terminal price; "Mkt Implied g" sorts n/a rows as empty.
 
 v7.6: Gate 6 review flags, no analyst overrides, non-cash-marks data check:
 - Gate 6 stays your qualitative decision. The numeric checks — net debt ÷ owner earnings ≤ 4y and EBIT ÷ interest > 5× (3-year medians, `g6_netdebt_yrs` / `g6_intcov` in financials.csv), 5Y cash conversion ≥ 80%, peak-to-peak — are shown as ✓ / ⚠ / – in a "G6 Checks" column and the dossier, with a filter "Gate 6 = Y but numeric ⚠"; they never reject and never feed the valuation (`gates.g6_checks`). Net debt and interest cover are n/a for balance-sheet financials.
@@ -286,7 +291,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.6)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.7)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

@@ -1195,7 +1195,7 @@ class EODHD:
                         scale_sh = imp_mcap_sh / last_sh
                         out["shares"] = {y: v * scale_sh for y, v in out["shares"].items()}
 
-        # Compute clean GAAP EPS = NI / shares so `implied_shares` in metrics.py is never corrupted by Non-GAAP Street EPS
+        # Clean GAAP EPS = NI / shares (period-end counts); Non-GAAP street EPS stays in eps_street
         for y, n_val in out["ni"].items():
             sh_val = out["shares"].get(y)
             if n_val is not None and sh_val and sh_val > 0:
