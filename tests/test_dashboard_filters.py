@@ -36,7 +36,7 @@ class DashboardGateFilterTests(unittest.TestCase):
             self.assertNotIn(old_label, html)
 
     def test_quality_grade_covers_g1_g2_g3_and_g6_flags(self):
-        """Verify passes_quality_grade requires G1, G2, G3 (3a+3b), and 0 G6 flags; Prime Grade requires 0 G6 flags; Calamity requires < 3 G6 flags."""
+        """Verify Prime Grade, Prime Grade Calamity, and Quality Grade all require g6_flags < 3."""
         screener_data = collect_screener_data(["us", "eu", "ca"])
         companies = screener_data["companies"]
         qg = [c for c in companies if c.get("passes_quality_grade")]
@@ -47,13 +47,14 @@ class DashboardGateFilterTests(unittest.TestCase):
             self.assertEqual(st.get("2"), "pass")
             self.assertNotIn(c.get("g3a_moat_archetype"), (None, "", "None"))
             self.assertEqual(st.get("3b"), "pass")
-            self.assertEqual(c.get("g6_flags"), 0)
+            self.assertLess(c.get("g6_flags"), 3)
+        self.assertTrue(any(c.get("id") == "NFLX" for c in qg), "NFLX (1 G6 flag) should be in Quality Grade")
 
         pg = [c for c in companies if c.get("passes_prime_grade")]
         self.assertGreater(len(pg), 0)
         for c in pg:
             self.assertEqual(c.get("result"), "Quality pass")
-            self.assertEqual(c.get("g6_flags"), 0)
+            self.assertLess(c.get("g6_flags"), 3)
 
         cal = [c for c in companies if c.get("passes_calamity_grade")]
         for c in cal:
