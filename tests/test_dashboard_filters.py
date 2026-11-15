@@ -35,8 +35,8 @@ class DashboardGateFilterTests(unittest.TestCase):
         for old_label in ("Quality Pass Funnel", "Calamity Watchlist", "Moat Universe", "Full Universe &amp; Waterfall", "Full Universe & Waterfall"):
             self.assertNotIn(old_label, html)
 
-    def test_quality_grade_covers_g1_g2_g3(self):
-        """Verify passes_quality_grade requires G1, G2, and G3 (3a+3b) while allowing G4/G5/G6 failures."""
+    def test_quality_grade_covers_g1_g2_g3_and_g6_flags(self):
+        """Verify passes_quality_grade requires G1, G2, G3 (3a+3b), and 0 G6 flags; Prime Grade requires 0 G6 flags; Calamity requires < 3 G6 flags."""
         screener_data = collect_screener_data(["us", "eu", "ca"])
         companies = screener_data["companies"]
         qg = [c for c in companies if c.get("passes_quality_grade")]
@@ -47,6 +47,18 @@ class DashboardGateFilterTests(unittest.TestCase):
             self.assertEqual(st.get("2"), "pass")
             self.assertNotIn(c.get("g3a_moat_archetype"), (None, "", "None"))
             self.assertEqual(st.get("3b"), "pass")
+            self.assertEqual(c.get("g6_flags"), 0)
+
+        pg = [c for c in companies if c.get("passes_prime_grade")]
+        self.assertGreater(len(pg), 0)
+        for c in pg:
+            self.assertEqual(c.get("result"), "Quality pass")
+            self.assertEqual(c.get("g6_flags"), 0)
+
+        cal = [c for c in companies if c.get("passes_calamity_grade")]
+        for c in cal:
+            self.assertEqual(c.get("result"), "Calamity pass")
+            self.assertLess(c.get("g6_flags"), 3)
 
     def test_gate_filter_matches_rejected_companies(self):
         """Ensure each 'Rejected at Gate X' filter matches the actual companies in the screener data."""

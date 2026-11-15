@@ -70,6 +70,15 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             passes_quality_grade = bool(
                 passes_g123a
                 and st_map.get("3b") == "pass"
+                and g6_flags == 0
+            )
+            passes_prime_grade = bool(
+                pres.get("result") == C.RES_QPASS
+                and g6_flags == 0
+            )
+            passes_calamity_grade = bool(
+                pres.get("result") == C.RES_CALAMITY
+                and g6_flags < 3
             )
 
             company_record = {
@@ -96,6 +105,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "evidence": c.get("evidence"),
                 "passes_g123a": passes_g123a,
                 "passes_quality_grade": passes_quality_grade,
+                "passes_prime_grade": passes_prime_grade,
+                "passes_calamity_grade": passes_calamity_grade,
                 # Gate Waterfall status
                 "result": pres.get("result", C.RES_REVIEW),
                 "rejected_at": pres.get("rejected_at", ""),
@@ -192,9 +203,9 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             all_companies.append(company_record)
 
     # Global KPI Aggregates
-    qpass_count = sum(1 for c in all_companies if c["result"] == C.RES_QPASS)
-    calamity_list = [c for c in all_companies if c["result"] == C.RES_CALAMITY]
-    valued_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_VALUED]
+    qpass_count = sum(1 for c in all_companies if c["passes_prime_grade"])
+    calamity_list = [c for c in all_companies if c["passes_calamity_grade"]]
+    valued_list = [c for c in all_companies if c["passes_prime_grade"] and c["val_status"] == C.V_VALUED]
     # v7.7: IRR in excess of each company's own hurdle r, so 8.50% and 10.25% names are comparable
     excess = [c["irr_5y"] - c["disc_rate"] for c in valued_list if c["irr_5y"] is not None and c["disc_rate"] is not None]
     median_excess_irr = statistics.median(excess) if excess else None
@@ -1780,11 +1791,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value" id="kpi-universe">{data['summary']['total_companies']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label" title="Companies passing all 6 Munger Reject Gates cleanly (Quality pass).">Prime Grade</span>
+        <span class="kpi-label" title="Companies passing all 6 Munger Reject Gates cleanly (Quality pass) with 0 Gate 6 numeric flags.">Prime Grade</span>
         <span class="kpi-value accent" id="kpi-qpass">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label" title="Conditional pass for franchises with an intact moat and runway (G1–G4 pass) experiencing a temporary, fixable calamity on G3b, G5, or G6.">Prime Grade Calamity</span>
+        <span class="kpi-label" title="Conditional pass for franchises with an intact moat and runway (G1–G4 pass) experiencing a temporary, fixable calamity on G3b, G5, or G6, with fewer than 3 Gate 6 numeric flags.">Prime Grade Calamity</span>
         <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
       </div>
       <div class="kpi-chip">
@@ -1884,7 +1895,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
       <select id="filter-gate" class="select-filter" style="display:none;" title="Filter companies by 6-Gate waterfall outcome or first failing gate." onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
-        <option value="quality_grade">Quality Grade (G1, G2, G3)</option>
+        <option value="quality_grade">Quality Grade (G1, G2, G3, G6 Rule Check)</option>
         <option value="Quality pass">Prime Grade Only</option>
         <option value="Calamity pass">Prime Grade Calamity (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
@@ -1990,9 +2001,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <div class="metric-box" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(56, 189, 248, 0.06);">
           <strong style="color: var(--accent);">Dashboard Views &amp; Quality Tiers</strong>
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">
-            <strong>&#128737;&#65039; Prime Grade:</strong> Passes all 6 Munger Reject Gates (G1&ndash;G6) cleanly.<br>
-            <strong>&#9888;&#65039; Prime Grade Calamity:</strong> Conditional pass for franchises with a temporary, fixable calamity on G3b, G5, and/or G6.<br>
-            <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), and G3 (Moat &amp; Pricing Power).<br>
+            <strong>&#128737;&#65039; Prime Grade:</strong> Passes all 6 Munger Reject Gates (G1&ndash;G6) cleanly with 0 Gate 6 numeric flags.<br>
+            <strong>&#9888;&#65039; Prime Grade Calamity:</strong> Conditional pass for franchises with a temporary, fixable calamity on G3b, G5, and/or G6 (&lt; 3 Gate 6 numeric flags).<br>
+            <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), G3 (Moat &amp; Pricing Power), and G6 Rule Check (0 numeric flags).<br>
             <strong>&#128269; Full Universe:</strong> Every screened company across US, EU, and CA with full gate-waterfall status.
           </p>
         </div>
@@ -2658,10 +2669,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return st['1'] === 'pass' && st['2'] === 'pass' && Boolean(c.g3a_moat_archetype && c.g3a_moat_archetype !== 'None');
     }}
 
+    function passesPrimeGrade(c) {{
+      if (c.passes_prime_grade !== undefined) return Boolean(c.passes_prime_grade);
+      return c.result === 'Quality pass' && (c.g6_flags || 0) === 0;
+    }}
+
+    function passesCalamityGrade(c) {{
+      if (c.passes_calamity_grade !== undefined) return Boolean(c.passes_calamity_grade);
+      return c.result === 'Calamity pass' && (c.g6_flags || 0) < 3;
+    }}
+
     function passesQualityGrade(c) {{
       if (c.passes_quality_grade !== undefined) return Boolean(c.passes_quality_grade);
       const st = c.gate_status || {{}};
-      return passesG123a(c) && st['3b'] === 'pass';
+      return passesG123a(c) && st['3b'] === 'pass' && (c.g6_flags || 0) === 0;
     }}
 
     function hasMoatArchetype(c) {{
@@ -2676,8 +2697,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
     function updateTabCounts() {{
       const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
-      const qpass = base.filter(c => c.result === 'Quality pass');
-      const calamity = base.filter(c => c.result === 'Calamity pass');
+      const qpass = base.filter(c => passesPrimeGrade(c));
+      const calamity = base.filter(c => passesCalamityGrade(c));
       const qualityGrade = base.filter(c => passesQualityGrade(c));
       const valued = qpass.filter(c => c.val_status === 'Valued');
       // Header KPIs follow the market filter (computed client-side)
@@ -2811,8 +2832,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       return SCREENER_DATA.companies.filter(c => {{
         // Tab restriction
-        if (currentTab === 'qpass' && c.result !== 'Quality pass') return false;
-        if (currentTab === 'calamity' && c.result !== 'Calamity pass') return false;
+        if (currentTab === 'qpass' && !passesPrimeGrade(c)) return false;
+        if (currentTab === 'calamity' && !passesCalamityGrade(c)) return false;
         if (currentTab === 'moat_universe' && !passesQualityGrade(c)) return false;
 
         // Market
@@ -2834,8 +2855,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         // Gate
         if ((currentTab === 'all' || currentTab === 'moat_universe') && gate !== 'all') {{
           if ((gate === 'quality_grade' || gate === 'g123a') && !passesQualityGrade(c)) return false;
-          if (gate === 'Quality pass' && c.result !== 'Quality pass') return false;
-          if (gate === 'Calamity pass' && c.result !== 'Calamity pass') return false;
+          if (gate === 'Quality pass' && !passesPrimeGrade(c)) return false;
+          if (gate === 'Calamity pass' && !passesCalamityGrade(c)) return false;
           if (gate.startsWith('Gate') || gate.startsWith('G')) {{
             const num = gate.replace(/[^0-9]/g, '');
             if (num) {{

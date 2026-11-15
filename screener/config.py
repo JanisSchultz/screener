@@ -257,7 +257,7 @@ V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
 LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
 
-SCREENER_VERSION = "7.13"
+SCREENER_VERSION = "7.14"
 
 CHANGELOG = {
     "6.0": [
@@ -636,6 +636,9 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.14": [
+        "Added G6 Rule Check thresholds to dashboard lists: Prime Grade and Quality Grade require 0 G6 numeric flags; Prime Grade Calamity requires < 3 G6 numeric flags.",
     ],
     "7.13": [
         "Updated Quality Grade tab and filter to cover G1, G2, and G3 (3a + 3b) — 483 companies including all 223 Prime Grade names.",
