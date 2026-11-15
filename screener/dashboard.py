@@ -65,10 +65,13 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 and st_map.get("2") == "pass"
                 and moat_arch_val not in (None, "", "None")
             )
+            g6_chk = g6_checks(fin, sub_ind, p)
+            g6_flags = sum(1 for v_ in g6_chk.values() if v_ == "flag")
             passes_quality_grade = bool(
                 passes_g123a
+                and st_map.get("3b") == "pass"
                 and st_map.get("4") == "pass"
-                and st_map.get("6") == "pass"
+                and g6_flags == 0
             )
 
             company_record = {
@@ -143,8 +146,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "roiic": fin.get("roiic"),
                 "p2p_ok": fin.get("p2p_ok"),
                 # Gate 6 rule check (review flags only; the qualitative Gate 6 decides)
-                "g6_checks": g6_checks(fin, sub_ind, p),
-                "g6_flags": sum(1 for v_ in g6_checks(fin, sub_ind, p).values() if v_ == "flag"),
+                "g6_checks": g6_chk,
+                "g6_flags": g6_flags,
                 "g6_answer": c.get("6"),
                 "g6_netdebt_yrs": fin.get("g6_netdebt_yrs"),
                 "g6_intcov": fin.get("g6_intcov"),
@@ -1871,7 +1874,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
       <select id="filter-gate" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
-        <option value="quality_grade">Quality Grade (G1, G2, G3a, G4, G6)</option>
+        <option value="quality_grade">Quality Grade (G1, G2, G3, G4, G6 Rule Check)</option>
         <option value="Quality pass">Prime Grade Only</option>
         <option value="Calamity pass">Prime Grade Calamity (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
@@ -1943,7 +1946,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section" style="margin-bottom: 24px;">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">The 6 Munger Reject Gates (v{data['version']})</h2>
       <p style="color: var(--text-muted); margin-bottom: 16px;">
-        "Tell me where I am going to die so that I never go there." Every qualitative step is a sequential REJECT gate: a company leaves the funnel at the first gate it fails. Only companies clearing all 6 gates enter the Quantitative valuation sheet.
+        "Tell me where I am going to die so that I never go there." Every qualitative step is a sequential REJECT gate: a company leaves the funnel at the first gate it fails. Companies clearing all 6 gates earn <strong style="color: var(--green);">Prime Grade</strong> and enter the Quantitative PAR valuation funnel.
       </p>
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <div class="metric-box">
@@ -1971,8 +1974,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Triad: (1) Secular Peak-to-Peak Owner EPS compounding across cycles, (2) Real cash conversion (multi-year FCF &ge; 80% GAAP NI), (3) Peace-of-mind fortress balance sheet (Net Debt &le; 4y Owner Earnings, Interest Coverage &gt; 5x). Your qualitative answer decides; the numeric checks (3-year medians; net debt and interest cover n/a for balance-sheet financials) are shown as review flags in the "G6 Checks" column and the dossier, never as a reject.</p>
         </div>
         <div class="metric-box" style="border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
-          <strong style="color: var(--amber);">Conditional Calamity Pass (Buffett Temporary Fixable Calamities — Gates 3b, 5, 6 Only)</strong>
-          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Great franchises with an intact moat and runway occasionally breach Gate 3b (trailing ROIC/pricing dip), Gate 5 (outgoing/remediating management), or Gate 6 (temporary M&amp;A bridge debt or capex surge). Flagging <code style="color: var(--amber);">calamity = Y</code> preserves raw failed scores, evaluates all remaining gates, and admits them into Quantitative PAR valuation under a separate <strong style="color: var(--amber);">Calamity pass</strong> tier. Gates 1, 2, 3a (moat != None), and 4 (CAP &ge; 15Y) are never waivable.</p>
+          <strong style="color: var(--amber);">Prime Grade Calamity (Conditional Pass — Gates 3b, 5, 6 Only)</strong>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Great franchises with an intact moat and runway occasionally breach Gate 3b (trailing ROIC/pricing dip), Gate 5 (outgoing/remediating management), or Gate 6 (temporary M&amp;A bridge debt or capex surge). Flagging <code style="color: var(--amber);">calamity = Y</code> preserves raw failed scores, evaluates all remaining gates, and admits them into Quantitative PAR valuation under the <strong style="color: var(--amber);">Prime Grade Calamity</strong> tier (<code style="color: var(--amber);">Calamity pass</code>). Gates 1, 2, 3a (moat != None), and 4 (CAP &ge; 15Y) are never waivable.</p>
+        </div>
+        <div class="metric-box" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(56, 189, 248, 0.06);">
+          <strong style="color: var(--accent);">Dashboard Views &amp; Quality Tiers</strong>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">
+            <strong>&#128737;&#65039; Prime Grade:</strong> Passes all 6 Munger Reject Gates (G1&ndash;G6) cleanly.<br>
+            <strong>&#9888;&#65039; Prime Grade Calamity:</strong> Conditional pass for franchises with a temporary, fixable calamity on G3b, G5, and/or G6.<br>
+            <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), G3 (Moat &amp; Pricing Power), G4 (Runway CAP &ge; 15Y), and G6 Rule Check (0 numeric flags).<br>
+            <strong>&#128269; Full Universe:</strong> Every screened company across US, EU, and CA with full gate-waterfall status.
+          </p>
         </div>
       </div>
     </div>
@@ -2606,7 +2618,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function passesQualityGrade(c) {{
       if (c.passes_quality_grade !== undefined) return Boolean(c.passes_quality_grade);
       const st = c.gate_status || {{}};
-      return passesG123a(c) && st['4'] === 'pass' && st['6'] === 'pass';
+      return passesG123a(c) && st['3b'] === 'pass' && st['4'] === 'pass' && (c.g6_flags || 0) === 0;
     }}
 
     function hasMoatArchetype(c) {{
