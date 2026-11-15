@@ -1880,8 +1880,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <span class="pill-count" id="count-all">0</span>
     </button>
     <button class="tab-btn" data-tab="methodology" onclick="setTab('methodology')" title="Reference documentation for the 6 Munger Reject Gates and the Explicit Mauboussin-Fade DCF model.">
-      <span class="tab-label-full">📖 Framework Rubric</span>
-      <span class="tab-label-short">📖 Rubric</span>
+      <span class="tab-label-full">📖 Framework</span>
+      <span class="tab-label-short">📖 Framework</span>
     </button>
   </nav>
 
