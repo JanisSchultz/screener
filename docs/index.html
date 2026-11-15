@@ -129,6 +129,18 @@
     .kpi-value.accent { color: var(--accent); }
     .kpi-value.amber { color: var(--amber); }
 
+    .kpi-label[title],
+    .metric-box .label[title],
+    .audit-stat .lbl[title],
+    .card-metric-label[title],
+    .sandbox-group label[title],
+    .dcf-schedule-table th[title],
+    .delta-table td:first-child[title],
+    .filter-step-box strong[title],
+    .filter-step-box span[title] {
+      cursor: help;
+    }
+
     /* Header Responsiveness */
     @media (max-width: 1024px) {
       .app-header {
@@ -1542,15 +1554,15 @@
     </div>
     <div class="kpi-bar">
       <div class="kpi-chip">
-        <span class="kpi-label">Universe</span>
+        <span class="kpi-label" title="Total number of screened companies across all active markets (US, EU, and CA).">Universe</span>
         <span class="kpi-value" id="kpi-universe">1175</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Prime Grade</span>
+        <span class="kpi-label" title="Companies passing all 6 Munger Reject Gates cleanly (Quality pass).">Prime Grade</span>
         <span class="kpi-value accent" id="kpi-qpass">223</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Prime Grade Calamity</span>
+        <span class="kpi-label" title="Conditional pass for franchises with an intact moat and runway (G1–G4 pass) experiencing a temporary, fixable calamity on G3b, G5, or G6.">Prime Grade Calamity</span>
         <span class="kpi-value amber" id="kpi-calamity">13</span>
       </div>
       <div class="kpi-chip">
@@ -1562,27 +1574,27 @@
 
   <!-- View Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" data-tab="qpass" onclick="setTab('qpass')">
+    <button class="tab-btn active" data-tab="qpass" onclick="setTab('qpass')" title="Companies passing all 6 Munger Reject Gates cleanly.">
       <span class="tab-label-full">🛡️ Prime Grade</span>
       <span class="tab-label-short">🛡️ Prime</span>
       <span class="pill-count" id="count-qpass">0</span>
     </button>
-    <button class="tab-btn" data-tab="calamity" onclick="setTab('calamity')">
+    <button class="tab-btn" data-tab="calamity" onclick="setTab('calamity')" title="Conditional pass for franchises with a temporary, fixable calamity on Gate 3b, 5, and/or 6.">
       <span class="tab-label-full">⚠️ Prime Grade Calamity</span>
       <span class="tab-label-short">⚠️ Calamity</span>
       <span class="pill-count" id="count-calamity">0</span>
     </button>
-    <button class="tab-btn" data-tab="moat_universe" onclick="setTab('moat_universe')">
+    <button class="tab-btn" data-tab="moat_universe" onclick="setTab('moat_universe')" title="Structural franchise cohort passing Gate 1 (Understandable), Gate 2 (Essential Need), and Gate 3 (Moat &amp; Pricing Power).">
       <span class="tab-label-full">🏰 Quality Grade</span>
       <span class="tab-label-short">🏰 Quality</span>
       <span class="pill-count" id="count-moat-universe">0</span>
     </button>
-    <button class="tab-btn" data-tab="all" onclick="setTab('all')">
+    <button class="tab-btn" data-tab="all" onclick="setTab('all')" title="Every screened company across US, EU, and CA with full 6-gate waterfall status.">
       <span class="tab-label-full">🔍 Full Universe</span>
       <span class="tab-label-short">🔍 All</span>
       <span class="pill-count" id="count-all">0</span>
     </button>
-    <button class="tab-btn" data-tab="methodology" onclick="setTab('methodology')">
+    <button class="tab-btn" data-tab="methodology" onclick="setTab('methodology')" title="Reference documentation for the 6 Munger Reject Gates and the Explicit Mauboussin-Fade DCF model.">
       <span class="tab-label-full">📖 Framework Rubric</span>
       <span class="tab-label-short">📖 Rubric</span>
     </button>
@@ -1594,20 +1606,20 @@
       <!-- Search Input -->
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="filter-search" class="search-input" placeholder="Search ticker, company, sector..." oninput="handleSearchInput()">
-        <button id="search-clear" class="search-clear" onclick="clearSearch()" aria-label="Clear search">&times;</button>
+        <input type="text" id="filter-search" class="search-input" placeholder="Search ticker, company, sector..." title="Filter companies by ticker symbol, company name, or sector." oninput="handleSearchInput()">
+        <button id="search-clear" class="search-clear" onclick="clearSearch()" aria-label="Clear search" title="Clear search">&times;</button>
       </div>
 
       <!-- Market Universe Pills -->
       <div class="market-pills">
-        <button class="market-btn active" data-market="all" onclick="setMarket('all')">All</button>
-        <button class="market-btn" data-market="us" onclick="setMarket('us')">🇺🇸 US</button>
-        <button class="market-btn" data-market="eu" onclick="setMarket('eu')">🇪🇺 EU</button>
-        <button class="market-btn" data-market="ca" onclick="setMarket('ca')">🇨🇦 CA</button>
+        <button class="market-btn active" data-market="all" onclick="setMarket('all')" title="Show companies from all markets (US, EU, and CA).">All</button>
+        <button class="market-btn" data-market="us" onclick="setMarket('us')" title="Filter to US-listed companies.">🇺🇸 US</button>
+        <button class="market-btn" data-market="eu" onclick="setMarket('eu')" title="Filter to European-listed companies.">🇪🇺 EU</button>
+        <button class="market-btn" data-market="ca" onclick="setMarket('ca')" title="Filter to Canadian-listed companies.">🇨🇦 CA</button>
       </div>
 
       <!-- Sort Filter -->
-      <select id="filter-sort" class="select-filter" onchange="applySortFromSelect(this.value)">
+      <select id="filter-sort" class="select-filter" title="Sort companies by valuation, growth, return on capital, moat runway, or alphabetically." onchange="applySortFromSelect(this.value)">
         <option value="irr_5y-desc">Sort: 5Y Exp IRR ↓</option>
         <option value="irr_5y-asc">Sort: 5Y Exp IRR ↑</option>
         <option value="vs_par-asc">Sort: Discount vs Fair Value ↑</option>
@@ -1638,17 +1650,17 @@
       </select>
 
       <!-- Sector Filter -->
-      <select id="filter-sector" class="select-filter" onchange="applyFilters()">
+      <select id="filter-sector" class="select-filter" title="Filter companies by industry sector." onchange="applyFilters()">
         <option value="all">All Sectors</option>
       </select>
 
       <!-- Moat Archetype Filter -->
-      <select id="filter-moat" class="select-filter" onchange="applyFilters()">
+      <select id="filter-moat" class="select-filter" title="Filter companies by primary Gate 3a economic moat archetype." onchange="applyFilters()">
         <option value="all">All Moats</option>
       </select>
 
       <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
-      <select id="filter-gate" class="select-filter" style="display:none;" onchange="applyFilters()">
+      <select id="filter-gate" class="select-filter" style="display:none;" title="Filter companies by 6-Gate waterfall outcome or first failing gate." onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
         <option value="quality_grade">Quality Grade (G1, G2, G3)</option>
         <option value="Quality pass">Prime Grade Only</option>
@@ -1662,7 +1674,7 @@
       </select>
 
       <!-- Valuation Status Filter (Visible in Prime Grade, Quality Grade & Full Universe tabs) -->
-      <select id="filter-val" class="select-filter" style="display:none;" onchange="applyFilters()">
+      <select id="filter-val" class="select-filter" style="display:none;" title="Filter companies by quantitative valuation status (Valued, No value, No data, or Gate 6 review flags)." onchange="applyFilters()">
         <option value="all">All Valuations</option>
         <option value="Valued">Valued</option>
         <option value="No value">No value (Fair value ≤ 0)</option>
@@ -1673,7 +1685,7 @@
 
     <!-- Controls Right: Filter Count, Density, View Toggle & Export Button -->
     <div class="filters-right">
-      <span class="filter-count-pill" id="filter-count-pill"></span>
+      <span class="filter-count-pill" id="filter-count-pill" title="Number of companies matching current filters vs total in this tab."></span>
       <button class="btn-reset-filters" id="btn-reset-filters" onclick="resetAllFilters()" title="Reset search and filters">✕ Reset</button>
       <button class="btn-export" id="btn-col-density" onclick="toggleColumnDensity()" title="Switch between Essential columns and All 20+ columns" style="padding: 0 10px;">
         <span id="col-density-label">All Cols</span>
@@ -1687,7 +1699,7 @@
         </button>
       </div>
 
-      <button class="btn-export" id="btn-export" onclick="exportCurrentView()">
+      <button class="btn-export" id="btn-export" onclick="exportCurrentView()" title="Download the currently filtered view as a CSV file.">
         <span>📥</span> Export
       </button>
     </div>
@@ -1853,37 +1865,37 @@
         <div class="section-title">Qualitative Investment Thesis & Moat Analysis</div>
         <div class="grid-2" style="margin-bottom: 12px;">
           <div class="metric-box">
-            <div class="label">Moat Archetype</div>
+            <div class="label" title="Primary economic moat archetype from Gate 3a (e.g., Toll booth, Scale economies, Infrastructure, R&amp;D super-thinkers).">Moat Archetype</div>
             <div class="value" style="font-size: 13px;" id="dossier-moat-type">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Moat Runway (CAP)</div>
+            <div class="label" title="Gate 4 Competitive Advantage Period (CAP) in years over which growth g₀ and RONIC₀ fade toward terminal levels (15–30y for Prime Grade).">Moat Runway (CAP)</div>
             <div class="value" style="font-size: 13px;" id="dossier-cap">-</div>
           </div>
         </div>
 
         <div id="dossier-calamity-box" class="metric-box" style="margin-bottom: 12px; display: none; border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
-          <div class="label" style="color: var(--amber);">⚠️ Temporary Calamity Rationale &amp; Kill-Switch</div>
+          <div class="label" style="color: var(--amber);" title="Explanation of the temporary, fixable calamity (on Gate 3b, 5, or 6) and the kill-switch condition that would permanently impair the thesis.">⚠️ Temporary Calamity Rationale &amp; Kill-Switch</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-calamity-note"></div>
         </div>
 
         <div id="dossier-moat-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
-          <div class="label" style="color: var(--accent);">Moat & Pricing Power Note</div>
+          <div class="label" style="color: var(--accent);" title="Qualitative assessment of the company's competitive advantage and pricing power relative to inflation (Gate 3).">Moat & Pricing Power Note</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-moat-note"></div>
         </div>
 
         <div id="dossier-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
-          <div class="label" style="color: var(--accent);">Gate Review Thesis / Rationale</div>
+          <div class="label" style="color: var(--accent);" title="Overall qualitative thesis and rationale from the 6-Gate review.">Gate Review Thesis / Rationale</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-note"></div>
         </div>
 
         <div id="dossier-evidence-box" class="metric-box" style="display: none;">
-          <div class="label" style="color: var(--accent);">5-Macrotrend Evidence & Longevity Analysis</div>
+          <div class="label" style="color: var(--accent);" title="Gate 4 Inside View: deductive CAP adjustments for AI cognitive disruption, demographics, reshoring, energy limits, and structural inflation.">5-Macrotrend Evidence & Longevity Analysis</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-evidence"></div>
         </div>
 
         <div id="dossier-g2r-box" class="metric-box" style="display: none;">
-          <div class="label" style="color: var(--red);">Gate 2 Non-Essential Reason</div>
+          <div class="label" style="color: var(--red);" title="Reason the company failed Gate 2 (e.g., deferrable cyclical, non-essential product, or non-Western jurisdiction risk).">Gate 2 Non-Essential Reason</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-g2r"></div>
         </div>
       </div>
@@ -1893,102 +1905,102 @@
         <div class="section-title">Explicit Mauboussin-Fade DCF Scorecard (<span id="dossier-rate-title">r</span>)</div>
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Current Share Price</div>
+            <div class="label" title="Latest market share price in the stock's quote currency.">Current Share Price</div>
             <div class="value" id="dossier-price">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">DCF Fair Value</div>
+            <div class="label" title="Intrinsic Fair Value per share = DCF Fair P/E × Active Owner EPS at hurdle rate r (8.50% operating / 10.25% balance-sheet financials).">DCF Fair Value</div>
             <div class="value" id="dossier-par-val">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Discount vs Fair Value</div>
+            <div class="label" title="Current share price premium (+) or discount (−) relative to DCF Fair Value: (Price / Fair Value) − 1.">Discount vs Fair Value</div>
             <div class="value" id="dossier-vs-par">-</div>
           </div>
         </div>
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Terminal Price (3% Inf. Floor)</div>
+            <div class="label" title="Standalone Terminal Price floor = Terminal P/E × Active Owner EPS, assuming 3.0% perpetual inflation growth and maintenance reinvestment.">Terminal Price (3% Inf. Floor)</div>
             <div class="value" id="dossier-term-val">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">vs Terminal Price</div>
+            <div class="label" title="Current share price premium (+) or discount (−) relative to the standalone Terminal Price floor.">vs Terminal Price</div>
             <div class="value" id="dossier-vs-term">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Terminal P/E (Floor)</div>
+            <div class="label" title="Standalone Terminal P/E floor = (1 − 3.0% / RONIC_term) / (r − 3.0%), capped at ~15.5x for operating companies (~10.9x for financials).">Terminal P/E (Floor)</div>
             <div class="value" id="dossier-term-mult">-</div>
           </div>
         </div>
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Current Multiple</div>
+            <div class="label" title="Current price-to-active-Owner-EPS multiple: Share Price ÷ Active Owner EPS.">Current Multiple</div>
             <div class="value" id="dossier-cur-mult">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">DCF Fair P/E (<span id="dossier-rate-pe">r</span>)</div>
+            <div class="label" title="Explicit Mauboussin-Fade DCF Fair P/E = PV(Stage 1 FCFs) + PV(Stage 2 Terminal Value) at the company's hurdle rate r.">DCF Fair P/E (<span id="dossier-rate-pe">r</span>)</div>
             <div class="value" id="dossier-par-mult">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">5Y Expected IRR</div>
+            <div class="label" title="5-Year Expected IRR solving across growing annual dividends (with FCF payout conservation) and Year-5 rolled-forward DCF Fair Value.">5Y Expected IRR</div>
             <div class="value" id="dossier-irr">-</div>
           </div>
         </div>
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Operating ROIC (Tangible)</div>
+            <div class="label" title="Operating Return on Tangible Invested Capital (adds back acquired-intangible amortisation; invested capital excludes goodwill &amp; intangibles).">Operating ROIC (Tangible)</div>
             <div class="value" id="dossier-roic-op">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">GAAP ROIC (incl. Goodwill)</div>
+            <div class="label" title="GAAP Return on Invested Capital including goodwill and acquired intangibles (used to blend RONIC₀ for M&amp;A-driven growth).">GAAP ROIC (incl. Goodwill)</div>
             <div class="value" id="dossier-roic-gaap">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">FCF Conversion (÷ NI)</div>
+            <div class="label" title="Multi-year Free Cash Flow conversion ratio (FCF ÷ GAAP Net Income).">FCF Conversion (÷ NI)</div>
             <div class="value" id="dossier-fcf-conv">-</div>
           </div>
         </div>
 
         <div class="metric-box" style="margin-bottom: 10px;">
-          <div class="label">Gate 6 Rule Check (review flags only — your Gate 6 answer decides: <b id="dossier-g6-answer">-</b>)</div>
+          <div class="label" title="Numeric Gate 6 balance-sheet and cash-conversion checks (3-year medians). Informational review flags only — your qualitative Gate 6 answer decides.">Gate 6 Rule Check (review flags only — your Gate 6 answer decides: <b id="dossier-g6-answer">-</b>)</div>
           <div id="dossier-g6-checks" style="font-size: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; margin-top: 4px;"></div>
         </div>
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label">Growth Ceiling (g₀ → +BB)</div>
+            <div class="label" title="Organic Growth Ceiling g₀ = clamp(Sales WLS + min(0, Buyback Yield), 0%, 18%), plus positive buyback yield (g_exp) shown after the arrow.">Growth Ceiling (g₀ → +BB)</div>
             <div class="value" id="dossier-g-imp">-</div>
             <div class="subtext" id="dossier-scale-tier" style="font-size: 10px; color: var(--text-dim); margin-top: 2px;"></div>
           </div>
           <div class="metric-box">
-            <div class="label">Market-Implied g (<span id="dossier-rate-g">r</span>)</div>
+            <div class="label" title="Market-implied initial growth rate g₀ that equates the Explicit DCF Fair Value to the current share price at hurdle rate r.">Market-Implied g (<span id="dossier-rate-g">r</span>)</div>
             <div class="value" id="dossier-g-market">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Growth Margin (g₀ - g_mkt)</div>
+            <div class="label" title="Growth Margin = g₀ − g_market. Positive means our structural growth ceiling exceeds what the market currently prices in.">Growth Margin (g₀ - g_mkt)</div>
             <div class="value" id="dossier-g-margin">-</div>
           </div>
         </div>
 
         <div class="grid-3">
           <div class="metric-box">
-            <div class="label">Our CAP (Gate 4)</div>
+            <div class="label" title="Assigned Competitive Advantage Period (CAP) in years from Gate 4.">Our CAP (Gate 4)</div>
             <div class="value" id="dossier-cap-our">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Market-Implied CAP</div>
+            <div class="label" title="Market-implied Competitive Advantage Period (years) needed for the DCF to justify the current share price given g₀ and RONIC₀.">Market-Implied CAP</div>
             <div class="value" id="dossier-cap-implied">-</div>
           </div>
           <div class="metric-box">
-            <div class="label">Runway Margin</div>
+            <div class="label" title="Runway Margin = Our CAP − Market-Implied CAP. Positive means our moat runway exceeds what the market prices in.">Runway Margin</div>
             <div class="value" id="dossier-cap-margin">-</div>
           </div>
         </div>
 
         <div id="dossier-fin-note-box" class="metric-box" style="margin-top: 10px; display: none;">
-          <div class="label" style="color: var(--text-dim);">Financial Notes & Overrides</div>
+          <div class="label" style="color: var(--text-dim);" title="Data source notes, accounting adjustments, and any active manual financial overrides.">Financial Notes & Overrides</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-fin-note"></div>
         </div>
       </div>
@@ -2011,25 +2023,25 @@
             </div>
             <div class="audit-grid">
               <div class="audit-stat">
-                <span class="lbl">Assigned Runway (G4)</span>
+                <span class="lbl" title="Gate 4 Competitive Advantage Period (CAP) in years over which g₀ and RONIC₀ fade toward terminal levels.">Assigned Runway (G4)</span>
                 <span class="val" id="audit-cap-years">-</span>
                 <span class="sub" id="audit-cap-tier">-</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">Discount Rate r</span>
+                <span class="lbl" title="Hurdle discount rate r applied in the DCF: 8.50% for operating companies, 10.25% for balance-sheet financials.">Discount Rate r</span>
                 <span class="val" id="audit-cap-rate">-</span>
                 <span class="sub" id="audit-cap-rate-sub">-</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">Market-Implied CAP</span>
+                <span class="lbl" title="Years of competitive advantage required for the DCF to match the current share price given g₀ and RONIC₀.">Market-Implied CAP</span>
                 <span class="val" id="audit-cap-market">-</span>
                 <span class="sub" id="audit-cap-gap">-</span>
               </div>
             </div>
             <div class="filter-step-box">
               <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
-                <span style="color: var(--text-dim);">Moat Archetype (G3a): <b style="color: var(--text-main);" id="audit-moat-arch">-</b></span>
-                <span style="color: var(--text-dim);">Pricing Power (G3b): <b style="color: var(--text-main);" id="audit-moat-pricing">-</b></span>
+                <span style="color: var(--text-dim);" title="Primary economic moat archetype from Gate 3a.">Moat Archetype (G3a): <b style="color: var(--text-main);" id="audit-moat-arch">-</b></span>
+                <span style="color: var(--text-dim);" title="Pricing power score from Gate 3b (ability to raise prices ≥ inflation without losing volume).">Pricing Power (G3b): <b style="color: var(--text-main);" id="audit-moat-pricing">-</b></span>
               </div>
             </div>
           </div>
@@ -2044,12 +2056,12 @@
             <!-- Anchor 1: Near-Term 1Y Momentum / Slump Check -->
             <div class="filter-step-box" id="box-filter-supply">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Near-Term 1Y Growth vs. Slump Check</strong>
+                <strong style="font-size: 11px; color: var(--text-main);" title="Trailing 1-year revenue growth for slump context; never lowers the structural growth ceiling g₀.">Near-Term 1Y Growth vs. Slump Check</strong>
                 <span class="val" style="font-size: 12px;" id="audit-sales1y-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>1Y OpCost Growth: <b id="audit-opcost1y-val" style="color: var(--text-muted);">-</b></span>
-                <span>Buybacks / Dilution: <b id="audit-bb-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Trailing 1-year growth in operating costs (COGS + OpEx).">1Y OpCost Growth: <b id="audit-opcost1y-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Net annual share buyback yield (positive = share count reduction; negative = dilution, which reduces g₀).">Buybacks / Dilution: <b id="audit-bb-val" style="color: var(--text-muted);">-</b></span>
               </div>
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Reference only: a 1Y slump never lowers the structural growth ceiling.</div>
             </div>
@@ -2057,13 +2069,13 @@
             <!-- Anchor 2: 10Y WLS Structural Revenue Growth -->
             <div class="filter-step-box" id="box-filter-demand">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">10Y WLS Structural Revenue Growth (Sales WLS CAGR)</strong>
+                <strong style="font-size: 11px; color: var(--text-main);" title="10-year exponentially-weighted log-linear OLS revenue growth (τ = 5y half-life), primary anchor for g₀.">10Y WLS Structural Revenue Growth (Sales WLS CAGR)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-gdemand-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Sales WLS (<span id="audit-salesyrs-val">10Y</span>): <b id="audit-salescagr-val" style="color: var(--accent);">-</b></span>
-                <span>OpCost WLS (COGS+OpEx): <b id="audit-opcostcagr-val" style="color: var(--text-muted);">-</b></span>
-                <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Exponentially-weighted log-linear OLS revenue CAGR over available history (up to 10Y).">Sales WLS (<span id="audit-salesyrs-val">10Y</span>): <b id="audit-salescagr-val" style="color: var(--accent);">-</b></span>
+                <span title="10-year WLS growth rate of COGS + OpEx (fallback anchor when sales history is unavailable).">OpCost WLS (COGS+OpEx): <b id="audit-opcostcagr-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Cycle Owner Earnings per-share CAGR net of buybacks (reference / fallback growth anchor).">Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
               </div>
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Weighted least-squares log-growth over up to 10Y (&tau;=5y half-life); Gate 5 filters out management cost bloat.</div>
             </div>
@@ -2071,14 +2083,14 @@
             <!-- Anchor 3: Marginal RONIC -->
             <div class="filter-step-box" id="box-filter-fade">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Marginal RONIC₀ (M&amp;A-Matched, capped)</strong>
+                <strong style="font-size: 11px; color: var(--text-main);" title="Harmonic blend of Tangible ROIC and GAAP ROIC weighted by cash-funded M&amp;A share of growth, capped at 50%.">Marginal RONIC₀ (M&amp;A-Matched, capped)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-roic-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Tangible ROIC: <b id="audit-roictang-val" style="color: var(--text-muted);">-</b></span>
-                <span>GAAP ROIC: <b id="audit-roicgaap-val" style="color: var(--text-muted);">-</b></span>
-                <span>M&amp;A Spend: <b id="audit-mashare-val" style="color: var(--text-muted);">-</b></span>
-                <span>5Y Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Operating Return on Tangible Invested Capital (excludes goodwill &amp; acquired intangibles).">Tangible ROIC: <b id="audit-roictang-val" style="color: var(--text-muted);">-</b></span>
+                <span title="GAAP Return on Invested Capital (includes goodwill &amp; acquired intangibles).">GAAP ROIC: <b id="audit-roicgaap-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Cash-funded M&amp;A spend (ΔGoodwill &amp; Intangibles ÷ ΣNOPAT over the 10Y window, skipping stock-funded years).">M&amp;A Spend: <b id="audit-mashare-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Share of Owner Earnings retained over the past 5 years (1 − 5Y Dividend Payout Ratio).">5Y Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
               </div>
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-roic-note">RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%, r + 0.5·(RONIC₀ − r)).</div>
             </div>
@@ -2086,11 +2098,11 @@
             <!-- Step B: Growth Ceiling (g₀) & Per-Share Ceiling (g_exp) -->
             <div class="filter-step-box" id="box-filter-gravity">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">Organic Growth Ceiling (g₀) &amp; Per-Share Ceiling (g_exp)</strong>
+                <strong style="font-size: 11px; color: var(--text-main);" title="Organic Growth Ceiling g₀ (used in the DCF) and Per-Share Ceiling g_exp = g₀ + positive buyback yield.">Organic Growth Ceiling (g₀) &amp; Per-Share Ceiling (g_exp)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-fade-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Per-Share Ceiling (g_exp): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
+                <span title="Per-share expected growth rate including positive net buybacks: g₀ + max(0, Buyback Yield).">Per-Share Ceiling (g_exp): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
               </div>
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-gformula">Formula: g₀ = clamp(Sales WLS growth + min(0, BB), 0%, g_max) fades linearly to min(g₀, g_term) over CAP.</div>
             </div>
@@ -2104,27 +2116,27 @@
             </div>
             <div class="audit-grid">
               <div class="audit-stat">
-                <span class="lbl">Stage 1 CAP PV</span>
+                <span class="lbl" title="Present value of Years 1..N Free Cash Flows during the Competitive Advantage Period, per unit of Year-1 Owner EPS.">Stage 1 CAP PV</span>
                 <span class="val" id="audit-tgrowth-val">-</span>
                 <span class="sub" id="audit-tgrowth-sub">Years 1..N FCF</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">Stage 2 Terminal PV</span>
+                <span class="lbl" title="Present value at t=0 of the Year-N Value Driver Terminal Value TV_N, per unit of Year-1 Owner EPS.">Stage 2 Terminal PV</span>
                 <span class="val" id="audit-troic-val">-</span>
                 <span class="sub">Post-CAP Value Driver TV</span>
               </div>
               <div class="audit-stat">
-                <span class="lbl">Explicit DCF Fair P/E</span>
+                <span class="lbl" title="Total Explicit DCF Fair P/E = Stage 1 CAP PV + Stage 2 Terminal PV.">Explicit DCF Fair P/E</span>
                 <span class="val" id="audit-rawpar-val">-</span>
                 <span class="sub">Stage 1 + Stage 2</span>
               </div>
             </div>
             <div class="filter-step-box">
               <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
-                <span>Terminal Floor (3% Inf.): <b id="audit-termmult-val" style="color: var(--accent);">-</b> (<span id="audit-termval-val">-</span>)</span>
-                <span>Year-1 FCF Payout (1 - g₀/RONIC₀): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
-                <span>5Y Low–High Range (reference): <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
-                <span>Normalized Peak EPS (= Year-1 E₁): <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
+                <span title="Standalone Terminal P/E and Terminal Price assuming 3.0% perpetual inflation growth and maintenance reinvestment.">Terminal Floor (3% Inf.): <b id="audit-termmult-val" style="color: var(--accent);">-</b> (<span id="audit-termval-val">-</span>)</span>
+                <span title="Year-1 Free Cash Flow payout ratio = 1 − g₀ / RONIC₀ (share of Owner Earnings not needed to fund g₀ growth).">Year-1 FCF Payout (1 - g₀/RONIC₀): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
+                <span title="Trailing 5-year low-to-high share price range (historical market reference only).">5Y Low–High Range (reference): <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
+                <span title="Active Owner EPS used as Year-1 E₁ in the DCF (50/50 mid-cycle reversion when below peak, or manual peak_eps_est override).">Normalized Peak EPS (= Year-1 E₁): <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
               </div>
             </div>
           </div>
@@ -2139,14 +2151,14 @@
                 <div style="font-size: 11px; color: var(--text-dim);">Tweak variables below to dynamically recalculate Explicit DCF Fair P/E, Fair Value, and 5Y IRR in real-time.</div>
               </div>
               <div style="display: flex; gap: 8px;">
-                <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" onclick="resetSandboxValuation()">↺ Reset</button>
+                <button type="button" class="btn-export" style="padding: 4px 10px; font-size: 11px;" title="Restore all sandbox sliders and overrides to the company's baseline values." onclick="resetSandboxValuation()">↺ Reset</button>
               </div>
             </div>
 
             <div class="sandbox-grid">
               <!-- Control 1: Moat Runway (CAP) -->
               <div class="sandbox-group">
-                <label>Moat Runway (Gate 4 CAP): <span class="sb-val" id="sb-val-cap">20y</span></label>
+                <label title="Adjust the Gate 4 Competitive Advantage Period (CAP) in years over which g₀ and RONIC₀ fade.">Moat Runway (Gate 4 CAP): <span class="sb-val" id="sb-val-cap">20y</span></label>
                 <div class="cap-btn-group">
                   <button type="button" class="cap-pill-btn" data-cap="5" onclick="setSandboxCap(5)">5y</button>
                   <button type="button" class="cap-pill-btn" data-cap="10" onclick="setSandboxCap(10)">10y</button>
@@ -2159,28 +2171,28 @@
 
               <!-- Control 2: 10Y WLS Structural Growth Anchor -->
               <div class="sandbox-group">
-                <label>Sales WLS Growth (shifts g₀ inputs): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
+                <label title="Adjust the 10Y Sales WLS growth anchor (recomputes g₀ after negative buybacks and 0%–18% clamp).">Sales WLS Growth (shifts g₀ inputs): <span class="sb-val" id="sb-val-salescagr">8.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-salescagr" min="-5" max="30" step="0.5" value="8" oninput="onSandboxSliderChange('salescagr', this.value, '%')">
               </div>
 
               <!-- Control 3: Marginal RONIC -->
               <div class="sandbox-group">
-                <label><span id="sb-label-roic-text">Marginal RONIC</span>: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
+                <label title="Adjust Marginal RONIC₀ (or ROE for balance-sheet financials), controlling capital efficiency and reinvestment need."><span id="sb-label-roic-text">Marginal RONIC</span>: <span class="sb-val" id="sb-val-roic">20.0%</span></label>
                 <input type="range" class="sandbox-slider" id="sb-slider-roic" min="5" max="150" step="0.5" value="20" oninput="onSandboxSliderChange('roic', this.value, '%')">
               </div>
 
               <!-- Control 4: Peak EPS Normalization -->
               <div class="sandbox-group">
-                <label>Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">-</span></label>
+                <label title="Override the Active Owner EPS (E₁) used to scale DCF Fair P/E and Terminal P/E into per-share prices.">Normalized Peak EPS: <span class="sb-val" id="sb-val-peakeps">-</span></label>
                 <input type="number" class="sandbox-num-input" id="sb-input-peakeps" step="0.05" oninput="onSandboxPeakChange()">
               </div>
 
               <!-- Control 5: Direct Expected Growth Override -->
               <div class="sandbox-group">
-                <label>Direct Growth Ceiling Override: <span class="sb-val" id="sb-val-gest">None</span></label>
+                <label title="Directly override the initial organic growth ceiling g₀ (%) in the DCF, bypassing the Sales WLS + buyback formula.">Direct Growth Ceiling Override: <span class="sb-val" id="sb-val-gest">None</span></label>
                 <div class="sandbox-input-row">
                   <input type="number" class="sandbox-num-input" id="sb-input-gest" placeholder="e.g. 7.5 (overrides g₀)" step="0.1" oninput="onSandboxGestChange()">
-                  <button type="button" class="btn-export" style="padding: 4px 8px; font-size: 11px;" onclick="clearSandboxGest()">Clear</button>
+                  <button type="button" class="btn-export" style="padding: 4px 8px; font-size: 11px;" title="Clear the direct growth ceiling override." onclick="clearSandboxGest()">Clear</button>
                 </div>
               </div>
             </div>
@@ -2224,22 +2236,22 @@
           <!-- Summary Strip -->
           <div class="audit-grid" style="margin-bottom: 12px;">
             <div class="audit-stat">
-              <span class="lbl">Base Peak EPS (E₀)</span>
+              <span class="lbl" title="Active Owner EPS used as Year-1 E₁ in the explicit DCF schedule.">Base Peak EPS (E₀)</span>
               <span class="val" id="dcf-sum-e0">-</span>
               <span class="sub" id="dcf-sum-price">Cur Price: -</span>
             </div>
             <div class="audit-stat">
-              <span class="lbl">Growth Fade (g₀ → g_term)</span>
+              <span class="lbl" title="Linear fade of annual Owner EPS growth from initial g₀ to terminal g_term (min(g₀, 3.0%)) over N CAP years.">Growth Fade (g₀ → g_term)</span>
               <span class="val" id="dcf-sum-gfade">-</span>
               <span class="sub" id="dcf-sum-cap">Over N = - CAP Yrs</span>
             </div>
             <div class="audit-stat">
-              <span class="lbl">ROIC Fade &amp; Discount (r)</span>
+              <span class="lbl" title="Linear fade of incremental return on capital from RONIC₀ toward terminal RONIC_term, discounted at hurdle rate r.">ROIC Fade &amp; Discount (r)</span>
               <span class="val" id="dcf-sum-rfade">-</span>
               <span class="sub" id="dcf-sum-disc">Discount Rate r</span>
             </div>
             <div class="audit-stat">
-              <span class="lbl">Stage 1 PV + Terminal PV</span>
+              <span class="lbl" title="DCF Fair Value per share = PV of Stage 1 (Years 1..N) Free Cash Flows + PV of Stage 2 Terminal Value.">Stage 1 PV + Terminal PV</span>
               <span class="val" style="color: var(--accent);" id="dcf-sum-fv">-</span>
               <span class="sub" id="dcf-sum-split">Stage 1: - | TV: -</span>
             </div>
@@ -2252,14 +2264,14 @@
             <table class="dcf-schedule-table" id="dcf-schedule-table">
               <thead>
                 <tr>
-                  <th>Year / Stage</th>
-                  <th>Growth (g<sub>t</sub>)</th>
-                  <th>ROIC<sub>t</sub> (Reinv)</th>
-                  <th>Owner EPS (E<sub>t</sub>)</th>
-                  <th>Cash Flow (FCF<sub>t</sub>)</th>
-                  <th>Disc. Rate (DF)</th>
-                  <th>PV of Cash Flow</th>
-                  <th>Cumulative PV</th>
+                  <th title="Explicit forecast year t = 1..N (CAP) followed by Stage 2 Terminal Value at Year N.">Year / Stage</th>
+                  <th title="Annual Owner EPS growth rate g_t fading linearly from g₀ to g_term.">Growth (g<sub>t</sub>)</th>
+                  <th title="Incremental Return on New Invested Capital (RONIC_t) and implied reinvestment rate (g_t / RONIC_t).">ROIC<sub>t</sub> (Reinv)</th>
+                  <th title="Projected Owner Earnings per share in year t: E(1) = Active EPS, E(t+1) = E(t) × (1 + g_t).">Owner EPS (E<sub>t</sub>)</th>
+                  <th title="Projected Free Cash Flow per share in year t: FCF_t = E_t × (1 − g_t / RONIC_t).">Cash Flow (FCF<sub>t</sub>)</th>
+                  <th title="Discount factor (1 + r)^t at the company's hurdle rate r.">Disc. Rate (DF)</th>
+                  <th title="Present value of Year t cash flow (or Terminal Value): FCF_t / (1 + r)^t.">PV of Cash Flow</th>
+                  <th title="Running cumulative sum of discounted cash flows through year t.">Cumulative PV</th>
                 </tr>
               </thead>
               <tbody id="dcf-schedule-tbody">
@@ -2328,6 +2340,39 @@
       g6_flags: { key: 'g6_flags', label: 'G6 Checks', num: true },
       val_status: { key: 'val_status', label: 'Valuation' },
       sector: { key: 'sector', label: 'Sector' }
+    };
+
+    const COL_TIPS = {
+      ticker: "Primary exchange ticker symbol. Click any row to open the full company dossier.",
+      company: "Company name (with ⚠ badge if admitted as Prime Grade Calamity).",
+      country: "Primary listing or domicile country.",
+      result: "Overall 6-Gate verdict: Quality pass (Prime Grade), Calamity pass (conditional), or Rejected.",
+      rejected_at: "First Munger Reject Gate failed, or waived gate(s) for Prime Grade Calamity.",
+      waived_gates: "Gate(s) temporarily waived under Prime Grade Calamity (G3b, G5, and/or G6 only).",
+      price: "Latest market share price in the stock's quote currency.",
+      sales_1y: "Trailing 1-year revenue growth (slump check only; does not lower structural growth ceiling g₀).",
+      sales_cagr: "10-year exponentially-weighted log-linear OLS revenue growth rate (τ = 5y half-life).",
+      g_org_exp: "Organic Growth Ceiling g₀ = clamp(Sales WLS + min(0, Buyback Yield), 0%, 18%), fading linearly to min(g₀, 3%) over CAP.",
+      buyback_yield: "Net annual share buyback yield (positive = share count reduction; negative = net dilution, which reduces g₀).",
+      g_market: "Market-implied initial growth rate g₀ that equates DCF Fair Value to the current share price at hurdle rate r.",
+      g_gap: "Growth Margin = g₀ − Mkt Implied g (positive = our growth ceiling exceeds what the market prices in).",
+      par_val: "Intrinsic DCF Fair Value per share = Fair P/E × Active Owner EPS at hurdle rate r (8.50% operating / 10.25% financials).",
+      vs_par: "Current share price premium (+) or discount (−) relative to DCF Fair Value.",
+      term_val: "Standalone Terminal Price floor = Terminal P/E × Active Owner EPS, assuming 3.0% perpetual inflation growth.",
+      vs_term: "Current share price premium (+) or discount (−) relative to the standalone Terminal Price floor.",
+      cur_mult: "Current multiple = Share Price ÷ Active Owner EPS.",
+      par_mult: "Explicit Mauboussin-Fade DCF Fair P/E = PV(Stage 1 FCFs) + PV(Stage 2 Terminal Value) at hurdle rate r.",
+      term_mult: "Standalone Terminal P/E floor = (1 − 3.0% / RONIC_term) / (r − 3.0%), capped at ~15.5x operating / ~10.9x financials.",
+      irr_5y: "5-Year Expected IRR across growing annual dividends (with FCF payout conservation) and Year-5 rolled-forward DCF Fair Value.",
+      roic_exp: "Marginal RONIC₀ used by the DCF (Tangible ROIC blended with GAAP ROIC by cash-funded M&A share, capped at 50%; or 5Y median ROE for financials).",
+      g4_cap: "Gate 4 Competitive Advantage Period (CAP) in years over which g₀ and RONIC₀ fade (15–30y for Prime Grade).",
+      cap_implied: "Market-implied Competitive Advantage Period (years) needed for the DCF to match the current share price given g₀ and RONIC₀.",
+      cap_gap: "Runway Margin = Our CAP − Market-Implied CAP (positive = our moat runway exceeds what the market prices in).",
+      g3a_moat_archetype: "Primary economic moat archetype assigned at Gate 3a.",
+      fcf_conv: "Multi-year Free Cash Flow conversion ratio (FCF ÷ GAAP Net Income).",
+      g6_flags: "Gate 6 numeric review flags (3Y medians): Net debt ÷ owner earnings, Interest cover, Cash conversion, Peak-to-peak EPS.",
+      val_status: "Quantitative valuation status: Valued, No value (DCF ≤ 0), or No data.",
+      sector: "Industry sector classification."
     };
 
     // Initialize Dropdowns & Counts
@@ -2781,7 +2826,9 @@
         const isSorted = sortColumn === c.key;
         const arrow = isSorted ? (sortAsc ? ' ▲' : ' ▼') : '';
         const cls = (isSorted ? 'sorted ' : '') + (c.num ? 'num' : '');
-        thHtml += `<th class="${cls}" onclick="handleSort('${c.key}')">${c.label}${arrow}</th>`;
+        const tipText = COL_TIPS[c.key] || '';
+        const tipAttr = tipText ? ` title="${escHtml(tipText)}"` : '';
+        thHtml += `<th class="${cls}"${tipAttr} onclick="handleSort('${c.key}')">${c.label}${arrow}</th>`;
       });
       thHtml += '</tr>';
       thead.innerHTML = thHtml;
@@ -2928,13 +2975,13 @@
       const cColor = (c.cap_gap !== null && c.cap_gap !== undefined) ? (c.cap_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
       return `
         <div class="card-metric-cell">
-          <div class="card-metric-label">Growth (1Y / Ceiling / Mkt / Gap)</div>
+          <div class="card-metric-label" title="1Y trailing revenue growth / Organic Growth Ceiling g₀ / Market-implied growth g_mkt / Growth Margin (g₀ − g_mkt).">Growth (1Y / Ceiling / Mkt / Gap)</div>
           <div class="card-metric-val" style="font-size: 11.5px;">
             ${g1y} / ${gCeil} / ${gMkt} <span style="color:${gColor};">(${gGap})</span>
           </div>
         </div>
         <div class="card-metric-cell">
-          <div class="card-metric-label">Runway (Our / Mkt / Gap)</div>
+          <div class="card-metric-label" title="Gate 4 Competitive Advantage Period (Our CAP) / Market-Implied CAP / Runway Margin (Our CAP − Mkt CAP).">Runway (Our / Mkt / Gap)</div>
           <div class="card-metric-val" style="font-size: 11.5px;">
             ${cOur} / ${cMkt} <span style="color:${cColor};">(${cGap})</span>
           </div>
@@ -2967,21 +3014,24 @@
           const roicExtraLabel = currentTab === 'qpass'
             ? 'Op ROIC • FCF Conv'
             : 'Op ROIC • Waived';
+          const roicExtraTip = currentTab === 'qpass'
+            ? 'Marginal RONIC₀ used by the DCF • Multi-year Free Cash Flow conversion (FCF ÷ Net Income).'
+            : 'Marginal RONIC₀ used by the DCF • Gate(s) temporarily waived under Prime Grade Calamity.';
           metricsHtml = `
             <div class="card-metric-cell">
-              <div class="card-metric-label">5Y Exp IRR</div>
+              <div class="card-metric-label" title="5-Year Expected IRR across growing annual dividends and Year-5 rolled-forward DCF Fair Value.">5Y Exp IRR</div>
               <div class="card-metric-val" style="color: ${irrColor(c, c.irr_5y)};">${fmtPct(c.irr_5y)}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Price / Fair / Term</div>
+              <div class="card-metric-label" title="Current Share Price / DCF Fair Value / Standalone Terminal Price (3% inflation floor).">Price / Fair / Term</div>
               <div class="card-metric-val" style="font-size: 11.5px;">${fmtPrice(c.price, c.quote_currency)} / ${fmtPrice(c.par_val, c.quote_currency)} / ${fmtPrice(c.term_val, c.quote_currency)}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Cur / Fair / Term P/E</div>
+              <div class="card-metric-label" title="Current P/E (Price ÷ Active EPS) / Explicit DCF Fair P/E / Standalone Terminal P/E floor.">Cur / Fair / Term P/E</div>
               <div class="card-metric-val">${fmtNum(c.cur_mult)}x / ${fmtNum(c.par_mult)}x / ${fmtNum(c.term_mult)}x</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">${roicExtraLabel}</div>
+              <div class="card-metric-label" title="${roicExtraTip}">${roicExtraLabel}</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 ${fmtPct(c.roic_used)} • ${roicExtra}
               </div>
@@ -2998,25 +3048,25 @@
             : (escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result)));
           metricsHtml = `
             <div class="card-metric-cell" style="grid-column: span 2;">
-              <div class="card-metric-label">Gate Stage • Moat Archetype</div>
+              <div class="card-metric-label" title="6-Gate waterfall outcome (first failed or waived gate) • Gate 3a primary economic moat archetype.">Gate Stage • Moat Archetype</div>
               <div class="card-metric-val" style="font-size: 11.5px; color: ${stageColor}; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 ${stageText} • <span style="color: var(--text-main);">${escHtml(c.g3a_moat_archetype) || 'None'}</span>
               </div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">5Y Exp IRR</div>
+              <div class="card-metric-label" title="5-Year Expected IRR across growing annual dividends and Year-5 rolled-forward DCF Fair Value.">5Y Exp IRR</div>
               <div class="card-metric-val" style="color: ${irrColor(c, c.irr_5y)};">${fmtPct(c.irr_5y)}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Price / Fair / Term</div>
+              <div class="card-metric-label" title="Current Share Price / DCF Fair Value / Standalone Terminal Price (3% inflation floor).">Price / Fair / Term</div>
               <div class="card-metric-val" style="font-size: 11.5px;">${fmtPrice(c.price, c.quote_currency)} / ${fmtPrice(c.par_val, c.quote_currency)} / ${fmtPrice(c.term_val, c.quote_currency)}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Cur / Fair / Term P/E</div>
+              <div class="card-metric-label" title="Current P/E (Price ÷ Active EPS) / Explicit DCF Fair P/E / Standalone Terminal P/E floor.">Cur / Fair / Term P/E</div>
               <div class="card-metric-val">${fmtNum(c.cur_mult)}x / ${fmtNum(c.par_mult)}x / ${fmtNum(c.term_mult)}x</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Op ROIC • Buyback</div>
+              <div class="card-metric-label" title="Marginal RONIC₀ used by the DCF • Net annual share buyback yield (positive = buybacks; negative = dilution).">Op ROIC • Buyback</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 ${fmtPct(c.roic_used)} • BB ${fmtPct(c.buyback_yield, true)}
               </div>
@@ -4020,39 +4070,39 @@
       const vsLbl = (v) => v !== null && v !== undefined ? fmtPct(v, true) + ' (' + (v <= 0 ? 'Below' : 'Above') + ')' : '-';
 
       const deltaRows = [
-        `<tr><td>Organic Growth Ceiling (g₀)</td><td>${fmtPct(c.g_org_exp)}</td>
+        `<tr><td title="Initial organic growth ceiling g₀ = clamp(Sales WLS + min(0, Buyback Yield), 0%, 18%).">Organic Growth Ceiling (g₀)</td><td>${fmtPct(c.g_org_exp)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPct(g_org_exp)}</td>
           <td class="${diffClass(dGStart, isPctZero(dGStart))}">${!isPctZero(dGStart) ? fmtPct(dGStart, true) : '-'}</td></tr>`,
-        `<tr><td>Per-Share Ceiling (g₀ + Buyback)</td><td>${fmtPct(c.g_exp)}</td>
+        `<tr><td title="Expected per-share growth ceiling including positive net buyback yield: g₀ + max(0, Buyback Yield).">Per-Share Ceiling (g₀ + Buyback)</td><td>${fmtPct(c.g_exp)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPct(g_exp)}</td>
           <td class="${diffClass(dG, isPctZero(dG))}">${!isPctZero(dG) ? fmtPct(dG, true) : '-'}</td></tr>`,
-        `<tr><td>Marginal RONIC₀</td><td>${fmtPct(c.roic_exp)}</td>
+        `<tr><td title="Marginal RONIC₀ used by the DCF (Tangible ROIC blended with GAAP ROIC by M&amp;A share, capped at 50%; or ROE for financials).">Marginal RONIC₀</td><td>${fmtPct(c.roic_exp)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPct(roic_exp)}</td>
           <td class="${diffClass(has(c.roic_exp) ? roic_exp - c.roic_exp : null, !has(c.roic_exp) || isPctZero(roic_exp - c.roic_exp))}">${has(c.roic_exp) && !isPctZero(roic_exp - c.roic_exp) ? fmtPct(roic_exp - c.roic_exp, true) : '-'}</td></tr>`,
-        `<tr><td>Explicit DCF Fair P/E (r=${(k * 100).toFixed(2)}%)</td>
+        `<tr><td title="Explicit Mauboussin-Fade DCF Fair P/E = PV(Stage 1 FCFs) + PV(Stage 2 Terminal Value) at hurdle rate r.">Explicit DCF Fair P/E (r=${(k * 100).toFixed(2)}%)</td>
           <td>${has(c.par_mult) ? fmtNum(c.par_mult) + 'x' : '-'}</td>
           <td style="font-weight: 600; color: var(--accent);">${par_mult !== null ? fmtNum(par_mult) + 'x' : '-'}</td>
           <td class="${diffClass(dMult, isMultZero(dMult))}">${!isMultZero(dMult) ? (dMult > 0 ? '+' : '') + fmtNum(dMult) + 'x' : '-'}</td></tr>`,
-        `<tr><td>DCF Fair Value Price</td><td>${fmtPrice(c.par_val, c.quote_currency)}</td>
+        `<tr><td title="Intrinsic DCF Fair Value per share = Explicit DCF Fair P/E × Active Owner EPS.">DCF Fair Value Price</td><td>${fmtPrice(c.par_val, c.quote_currency)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPrice(par_val, c.quote_currency)}</td>
           <td class="${diffClass(dVal, isPriceZero(dVal))}">${!isPriceZero(dVal) ? (dVal > 0 ? '+' : '') + fmtPrice(dVal, c.quote_currency) : '-'}</td></tr>`,
-        `<tr><td>Discount vs Fair Value (Price / FV - 1)</td><td>${vsLbl(c.vs_par)}</td>
+        `<tr><td title="Current share price premium (+) or discount (−) relative to DCF Fair Value.">Discount vs Fair Value (Price / FV - 1)</td><td>${vsLbl(c.vs_par)}</td>
           <td style="font-weight: 600; color: var(--accent);">${vsLbl(vs_par)}</td>
           <td class="${diffClass(dVsPar, isPctZero(dVsPar), true)}">${!isPctZero(dVsPar) ? fmtPct(dVsPar, true) : '-'}</td></tr>`,
-        `<tr><td>Terminal P/E (3% Inf. Floor)</td>
+        `<tr><td title="Standalone Terminal P/E floor = (1 − 3.0% / RONIC_term) / (r − 3.0%).">Terminal P/E (3% Inf. Floor)</td>
           <td>${has(c.term_mult) ? fmtNum(c.term_mult) + 'x' : '-'}</td>
           <td style="font-weight: 600; color: var(--accent);">${term_mult !== null ? fmtNum(term_mult) + 'x' : '-'}</td>
           <td class="${diffClass(dTermMult, isMultZero(dTermMult))}">${!isMultZero(dTermMult) ? (dTermMult > 0 ? '+' : '') + fmtNum(dTermMult) + 'x' : '-'}</td></tr>`,
-        `<tr><td>Terminal Price (Floor)</td><td>${fmtPrice(c.term_val, c.quote_currency)}</td>
+        `<tr><td title="Standalone Terminal Price floor = Terminal P/E × Active Owner EPS.">Terminal Price (Floor)</td><td>${fmtPrice(c.term_val, c.quote_currency)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPrice(term_val, c.quote_currency)}</td>
           <td class="${diffClass(dTermVal, isPriceZero(dTermVal))}">${!isPriceZero(dTermVal) ? (dTermVal > 0 ? '+' : '') + fmtPrice(dTermVal, c.quote_currency) : '-'}</td></tr>`,
-        `<tr><td>5-Year Expected IRR</td><td>${fmtPct(c.irr_5y)}</td>
+        `<tr><td title="5-Year Expected IRR across growing annual dividends (with FCF payout conservation) and Year-5 rolled-forward DCF Fair Value.">5-Year Expected IRR</td><td>${fmtPct(c.irr_5y)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtPct(irr_5y)}</td>
           <td class="${diffClass(dIrr, isPctZero(dIrr))}">${!isPctZero(dIrr) ? fmtPct(dIrr, true) : '-'}</td></tr>`,
-        `<tr><td>Our Moat Runway (CAP)</td><td>${c.g4_cap ? c.g4_cap + 'y' : '-'}</td>
+        `<tr><td title="Competitive Advantage Period (CAP) in years over which g₀ and RONIC₀ fade.">Our Moat Runway (CAP)</td><td>${c.g4_cap ? c.g4_cap + 'y' : '-'}</td>
           <td style="font-weight: 600; color: var(--accent);">${fund_cap ? fund_cap + 'y' : '-'}</td>
           <td class="${diffClass(dCap, isYearZero(dCap))}">${!isYearZero(dCap) ? (dCap > 0 ? '+' : '') + dCap + 'y' : '-'}</td></tr>`,
-        `<tr><td>Runway Margin of Safety</td><td>${fmtSignedYears(c.cap_gap)}</td>
+        `<tr><td title="Runway Margin = Our Moat Runway (CAP) − Market-Implied CAP.">Runway Margin of Safety</td><td>${fmtSignedYears(c.cap_gap)}</td>
           <td style="font-weight: 600; color: var(--accent);">${fmtSignedYears(cap_gap)}</td>
           <td class="${diffClass(dCapGap, isYearZero(dCapGap))}">${!isYearZero(dCapGap) ? fmtSignedYears(dCapGap) : '-'}</td></tr>`
       ];
