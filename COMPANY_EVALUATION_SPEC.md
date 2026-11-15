@@ -258,11 +258,11 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
 1. **Owner EPS & IFRS-16 Lease Deduction**:
    $$\text{Owner EPS}_y = \frac{\text{Net Income}_y + \max(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y)}{\text{Shares Outstanding}_y}$$
    *Shares are period-end outstanding (scaled to reported diluted EPS when net income includes minorities). One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out. For IFRS filers $20\%$ of average right-of-use lease obligations is deducted from both `owner_addback` and `true_fcf` (`fcf_conv`); US-GAAP filers (`us`, plus `US_GAAP_IDS` in `fetch_market_data.py`: ABB, Alcon, Logitech, Qiagen, STMicro and the Canadian ENB, TRP, IMO, CNR, FTS, EMA, H, WCN, CP, QSR) are exempt. Rows whose statements are stale (`[auto] stale fundamentals`) are valued as No data until refetched.*
-2. **Peak Owner EPS, Direct `cur_oe_eps` & 50/50 Mid-Cycle Reversion Standard**:
+2. **Peak Owner EPS, Direct `cur_oe_eps` & Age-Weighted Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest Owner EPS achieved over the last 5 fiscal years (converted to quote currency).
    - `cur_oe_eps`: Latest fiscal-year Owner EPS (converted to quote currency).
    - `peak_eps_est`: Analyst override for Peak Owner EPS if the reported peak contains unrepeatable windfalls or pre-spin-off distortions.
-   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the 50/50 Mid-Cycle Reversion standard using `cur_oe_eps` (falling back to implied `cur_eps` if absent): if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps}))$; otherwise `peak_oe_eps`.
+   - **Active Peak EPS**: Use `peak_eps_est` if populated. Otherwise, apply the age-weighted Mid-Cycle Reversion standard using `cur_oe_eps` (falling back to implied `cur_eps` if absent): if $\text{cur\_eps} < \text{peak\_oe\_eps}$, $\text{Active Peak EPS} = \text{cur}^{+} + w \times (\text{peak\_oe\_eps} - \text{cur}^{+})$ with $w = 0.5$ for a peak at most 1 year older than `cur_oe_year`, fading linearly to 0 at 4 years; otherwise `peak_oe_eps`. Fiscal years before the listing date are not part of the Owner EPS series.
 3. **5-Year Historical Cycle Multiples (Informational Reference)**:
    - `mult_low_5y` and `mult_high_5y`: 5-year cycle low and high multiples.
 
@@ -315,7 +315,7 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
 2. **Standalone Terminal P/E (`term_mult`), Terminal Price (`term_val`) & `% vs Terminal` (`vs_term`)**:
    $$\text{term\_mult} = \frac{1 - 0.030 / \text{RONIC}_{\text{term}}}{\max(0.01,\; r - 0.030)} \quad (\text{when } \text{RONIC}_{\text{term}} > r,\text{ else } 1/r), \qquad \text{term\_val} = \text{term\_mult} \times \text{Active Peak Owner EPS}, \qquad \text{vs\_term} = \frac{\text{Current Share Price}}{\text{term\_val}} - 1.0$$
 3. **Current Multiple (`cur_mult`)**: $\text{Current Share Price} \div \text{Active Peak Owner EPS}$.
-4. **Discount vs Fair Value (`vs_par`)**: $\text{Current Share Price} \div \text{Fair Value Price} - 1.0$ (`Below PAR` when $\le 0$). When the DCF fair value is $\le 0$ the status is **`No value`** and `vs_par`, IRR and runway metrics are left blank.
+4. **Discount vs Fair Value (`vs_par`)**: $\text{Current Share Price} \div \text{Fair Value Price} - 1.0$ (negative = discount; there is no Below / Above PAR label since v7.2 — the status of a valued company is `Valued`). When the DCF fair value is $\le 0$ the status is **`No value`** and `vs_par`, IRR and runway metrics are left blank.
 4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
    Solves $\text{Current Multiple} = \sum_{t=1}^{5} \text{FCF}_t (1 + \text{IRR})^{-t} + V_5 (1 + \text{IRR})^{-5}$ directly on the Year 1–5 DCF cash flows and Year-5 DCF continuation value $V_5 = (\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \text{FCF}_t(1+r)^{-t})(1+r)^{\min(5, N)}$, guaranteeing $\text{IRR}_{5\text{y}} \equiv r$ at $\text{Price} = \text{Fair Value}$.
 5. **Root-Safe DCF-Inverted Market-Implied Growth ($g_{\text{market}}$) & Growth Margin (`g_gap`)**:
@@ -605,4 +605,4 @@ After updating, compile the standalone HTML cockpit (`output/screener.html`, `ou
 ```bash
 python3 build.py
 ```
-The newly evaluated company will immediately reflect its updated status across `★ Below PAR Shortlist`, `🛡️ Quality Pass Funnel`, `⚠️ Calamity Watchlist`, and `🔍 Full Universe & Waterfall`.
+The newly evaluated company will immediately reflect its updated status across `🛡️ Quality Pass Funnel`, `⚠️ Calamity Watchlist`, and `🔍 Full Universe & Waterfall`.

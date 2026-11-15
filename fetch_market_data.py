@@ -44,13 +44,13 @@ from screener.data import (
     universe_keys,
     write_csv,
 )
-from screener.fetch import metrics, par, settings
+from screener.fetch import metrics, par, settings, sources
 from screener.fetch.sources import EODHD, stale_fundamentals, symbol_cache, technicals
 from screener.fetch.sqlite_db import build_sqlite_db
 from screener.gates import funnel_ids, params, par_valuation
 
 ANALYST_FIELDS = ("peak_eps_est", "g_est", "roic_est", "g_implied", "fin_note")
-PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
+PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "cur_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
 US_GAAP_UNIVERSES = ("us",)     # operating-lease cost sits outside D&A under US GAAP -> no IFRS-16 lease deduction
 # Non-US-universe companies that file under US GAAP (no IFRS-16 right-of-use depreciation inside D&A)
@@ -58,6 +58,24 @@ US_GAAP_IDS = {
     "ABBN.CH", "ALC.CH", "LOGN.CH", "QIA.DE", "STMMI.FR",
     "WCN.CA", "CP.CA", "QSR.CA", "SHOP.CA", "ENB.CA", "TRP.CA", "IMO.CA", "CNR.CA", "FTS.CA", "EMA.CA", "H.CA",
 }
+
+
+# v7.2 statement-integrity reviews (both empty by default; add an id once its data has been checked by hand):
+# SHARE_BASIS_REVIEWED_IDS clears '[auto] share count changed since FY…' (valuation on statement shares);
+# CCY_SWITCH_OVERRIDES forces the reporting-currency block decision ("convert" / "keep") and clears
+# '[auto] currency switch unresolved …'.
+SHARE_BASIS_REVIEWED_IDS: set[str] = set()
+CCY_SWITCH_OVERRIDES: dict[str, str] = {
+    "IMO.CA": "keep",       # Imperial Oil reports in CAD throughout; EODHD labels FY2014-20 "USD"
+}
+
+
+def listing_date(fund: dict | None, esym: str, bars: list | None) -> str | None:
+    """First trading day of the primary listing (None for secondary listings, whose history can start late)."""
+    if not bars or not bars[0].get("date"):
+        return None
+    primary = ((fund or {}).get("General") or {}).get("PrimaryTicker")
+    return str(bars[0]["date"]) if (not primary or primary == esym) else None
 
 
 def apply_lease_basis(series: dict, key: str, cid: str | None = None) -> dict:
@@ -213,8 +231,13 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         bars = eod.eod(esym)
         sp = eod.splits(esym, fund) if (fund or bars) else {}
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num(old.get("price"))
-        series = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px, splits=sp) if fund else {}, key, i)
+        last_bar = str(bars[-1].get("date")) if bars else None
+        series = apply_lease_basis(
+            eod.annual_series(fund, latest_price=latest_px, splits=sp, ccy_override=CCY_SWITCH_OVERRIDES.get(i),
+                              last_bar_date=last_bar) if fund else {}, key, i)
         q = eod.quote(esym, fund_data=fund, eod_bars=bars, series=series) if (fund or bars) else {}
+        if q.get("share_basis_flag") and i in SHARE_BASIS_REVIEWED_IDS and q.get("statement_shares"):
+            q["shares"] = q["statement_shares"]          # reviewed: value on the statement share basis
 
         if a.prices_only:
             row = dict(old)
@@ -238,7 +261,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             row.update({k: v for k, v in m.items() if k in FIN_FIELDS})
             row["source"] = f"EODHD ({esym}); FY{m.get('fiscal_year')}" if m.get("fiscal_year") else f"EODHD ({esym})"
 
-            notes = []
+            notes = list(series.get("_notes") or [])     # statement-integrity notes from annual_series (currency)
             stale = stale_fundamentals(series)
             if stale:
                 notes.append(stale)
@@ -247,6 +270,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
                 mp,
                 (1.0 / fx_q_rep) if fx_q_rep else None,
                 num(old.get("peak_eps_est")),
+                listing_date(fund, esym, bars),
             )
             notes += pr.pop("_notes", [])
             for k in PAR_FIELDS:
@@ -263,7 +287,9 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             sh = series.get("shares") or {}
             if sh and q.get("shares"):
                 ratio = sh[max(sh)] / q["shares"]
-                if not 0.67 <= ratio <= 1.5:
+                if q.get("share_basis_flag") and i not in SHARE_BASIS_REVIEWED_IDS:
+                    notes.append(f"share count changed since FY{max(sh)} (current ÷ statements = {q['share_basis_flag']:.2f})")
+                elif not 0.67 <= ratio <= 1.5:
                     notes.append(f"check share basis (statements ÷ quote shares = {ratio:.2f})")
 
             # Dividend check: cash-flow dividends can include dividends paid to minority shareholders

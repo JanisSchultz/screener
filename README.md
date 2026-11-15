@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.1 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.2 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,14 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.2: Audit items 1–5 — Cash-Funded M&A Matching, Age-Weighted Peak Blend, No PAR Labels, Share-Count & Currency-Switch Integrity:
+- M&A reinvestment (`metrics.summarize` → `ma_reinvest`): Σ cash-funded Δ goodwill+intangibles ÷ Σ NOPAT over the same 10-year window as g₀ (was: median of the last 5 years, 0 for one-off deals). Years with shares +3% or more are skipped — stock-funded deals (SPGI/IHS, ADI/Maxim) are already netted out of g₀ by the dilution index S_t. Cash acquirers now carry their acquisition cost in RONIC₀ (MC.FR 50% → 29%, ICE 31% → 8%, TYL 33% → 7%).
+- Peak blend (`gates.peak_weight`): when the latest Owner EPS is below the 5Y peak, active EPS = current + w × (peak − current) with w = 50% for a peak ≤ 1 year old, fading to 0% at 4 years (`cur_oe_year` added to financials.csv). Fiscal years before the first trading day of the primary listing are left out of the Owner EPS series (CVC.NL pre-IPO FY2021 peak, spin-off carve-out years).
+- No Below / Above PAR classification: valued funnel stocks have status `Valued` (`No value` / `No data` remain data states); the Quality tab lists the whole funnel and you read price vs fair value (column "vs Fair Value"), fair price and terminal price directly. The Below-PAR KPI, filter options and verdict wording are gone; the median-IRR KPI covers all valued Quality-pass names.
+- Share-count integrity (`sources.quote` / `annual_series`): splits or consolidations of any ratio after the latest fiscal year rescale statement shares when SharesStats confirms the factor (JMAT 3:4); a current share count that disagrees with the statements (post-FY mergers KMB, WAT, OMC; statement glitch AC.PA) writes `[auto] share count changed since FY…` → No data until the next fiscal year or until the id is added to `SHARE_BASIS_REVIEWED_IDS`.
+- Reporting-currency switches: each statement section is tested against its own currency label at the FX rate of its fiscal period end (`EODHD.fx_on`, daily FX history cached on the next online fetch; spot rate offline, noted). Close pairs (GBP/USD, CHF/USD, CAD/USD …) decide the old-currency block before the switch as one unit (CPG FY2014–19 no longer left in GBP); far pairs keep the per-year value test. Within the 10-year valuation window, ambiguous switches, a boundary revenue jump outside 0.75–1.33×, or a first-years-after-switch revenue more than 25% off TTM write `[auto] currency switch unresolved …` → No data (CPG.GB, RTO.GB, WISE.GB, SREN.CH); `CCY_SWITCH_OVERRIDES` settles verified cases (IMO.CA: keep, CAD throughout).
+- `fetch_market_data.py` imports `sources` again, so online fundamentals runs (Yahoo cross-check) work. Review file: `output/v7.2 changes vs v7.1.csv`.
 
 v7.1: Quantitative Model Forensic-Audit Remediation — No-Value Status, Opt-In Concessions, Growth-Weighted M&A RONIC, Consistent Tangible ROIC & Data Integrity:
 - Valuation core (`screener/gates.py`): a DCF fair value <= 0 is `No value` (never Below PAR); zero terminal value only for ids in `FINITE_CONCESSION_IDS` (empty — Vinci / Eiffage / WSP now get a terminal value); growth gap only for a unique `g_market` root; `ronic_le_r` review flag (RONIC₀ <= r means growth adds no value); IRR on [-99%, +250%]; JS-identical rounding; dead outputs and `par_fade_*` removed. Year-1 convention documented: E₁ = trailing normalized Owner EPS (conservative by one year of growth).
@@ -258,7 +266,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.1)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.2)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

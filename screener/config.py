@@ -238,13 +238,12 @@ Q_RESULTS = [RES_QPASS, RES_CALAMITY, RES_REVIEW] + [RES_REJ[p] for p in (6, 5, 
 
 V_NOTFUNNEL = "Not in funnel"
 V_NODATA = "No data"
-V_BELOW_PAR = "Below PAR"
-V_ABOVE_PAR = "Above PAR"
+V_VALUED = "Valued"  # v7.2: no Below/Above PAR label — read the discount from price vs fair value / terminal price
 V_NOVALUE = "No value"  # DCF fair value <= 0 (growth funded at RONIC below g): never "cheap"
 V_CALAMITY = "Calamity Watchlist"
-V_RESULTS = [V_BELOW_PAR, V_ABOVE_PAR, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
+V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
-LIST_CAPACITY = {V_BELOW_PAR: 150, V_ABOVE_PAR: 200, V_CALAMITY: 100}
+LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
 
 CHANGELOG = {
     "6.0": [
@@ -623,6 +622,18 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.2": [
+        "Audit items 1-5 (cash-funded M&A matching, age-weighted peak blend, no PAR labels, share-count & currency-switch integrity): "
+        "(1) ma_reinvest = sum of cash-funded delta goodwill+intangibles / sum NOPAT over the 10Y g0 window; stock-funded years (shares +3%) skipped "
+        "because S_t already nets that growth out of g0 (MC.FR RONIC0 50% -> 29%, ICE 31% -> 8%; SPGI, ADI unchanged). "
+        "(2) Peak weight 50% for a peak <= 1y old, fading to 0% at 4y (gates.peak_weight, cur_oe_year); pre-listing fiscal years left out of Owner EPS (CVC.NL). "
+        "(3) Below / Above PAR labels removed: status 'Valued'; the Quality tab shows the whole funnel with 'vs Fair Value', Fair and Terminal Price. "
+        "(4) Post-FY splits / consolidations of any ratio rescale statement shares (JMAT); a current share count that disagrees with the statements "
+        "('[auto] share count changed since FY') -> No data (KMB, WAT, OMC, AC.PA) unless in SHARE_BASIS_REVIEWED_IDS. "
+        "(5) Currency switches: per-section labels, period-end FX history (fx_on), close-pair blocks decided as one unit (CPG), "
+        "'[auto] currency switch unresolved' -> No data (CPG, RTO, WISE, SREN) unless settled in CCY_SWITCH_OVERRIDES (IMO.CA keep). "
+        "fetch_market_data.py imports sources again (online runs).",
     ],
     "7.1": [
         "Quantitative Model Forensic-Audit Remediation (No-Value Status, Opt-In Concessions, Growth-Weighted M&A RONIC, Consistent Tangible ROIC, Data Integrity & Sandbox Parity): "

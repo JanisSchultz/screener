@@ -106,9 +106,13 @@ class PipelineTests(unittest.TestCase):
                 "tax": {y: 0.0 for y in yrs}, "pretax": {y: 100.0 for y in yrs}, "sales": {y: 1000.0 for y in yrs},
                 "equity": {y: 1000.0 for y in yrs}}
         serial = {**base, "goodwill": {y: 200.0 + 30.0 * (y - 2019) for y in yrs}}
-        self.assertAlmostEqual(metrics.summarize(serial)["ma_reinvest"], 0.30, places=4)   # 30% of NOPAT / year
+        # v7.2: Σ spend ÷ Σ NOPAT over the g0 window (FX allowance 0.035 × (320 − 300) in FY2024)
+        self.assertAlmostEqual(metrics.summarize(serial)["ma_reinvest"], (150.0 - 0.7) / 500.0, places=4)
         one_off = {**base, "goodwill": {2019: 200.0, 2020: 2200.0, 2021: 2150.0, 2022: 2100.0, 2023: 2050.0, 2024: 2000.0}}
-        self.assertAlmostEqual(metrics.summarize(one_off)["ma_reinvest"], 0.0, places=4)   # one transformational deal
+        # a cash-funded transformational deal now counts: 2000 spent over 5 years of 100 NOPAT (capped at 3.0)
+        self.assertAlmostEqual(metrics.summarize(one_off)["ma_reinvest"], 3.0, places=4)
+        stock = {**one_off, "shares": {2019: 100.0, 2020: 140.0, 2021: 140.0, 2022: 140.0, 2023: 140.0, 2024: 140.0}}
+        self.assertAlmostEqual(metrics.summarize(stock)["ma_reinvest"], 0.0, places=4)    # stock deal: netted by S_t
 
     def test_impairment_guard_keeps_genuine_step_ups(self):
         da = {2020: 100.0, 2021: 100.0, 2022: 100.0, 2023: 300.0, 2024: 100.0}
@@ -153,6 +157,7 @@ class PipelineTests(unittest.TestCase):
         settings.OFFLINE = True
         eod = EODHD(api_key="offline")
         eod._fx[("GBP", "USD")] = 1.30
+        eod._fx_hist = {("GBP", "USD"): [], ("USD", "GBP"): []}     # spot rate only (deterministic after online runs)
         inc, bs, cf = {}, {}, {}
         for y, (rev, ccy) in {2019: (100.0, "GBP"), 2020: (104.0, "GBP"), 2021: (108.0, "GBP"),
                               2022: (146.0, "USD"), 2023: (152.0, "USD")}.items():

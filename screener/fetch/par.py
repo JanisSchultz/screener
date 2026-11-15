@@ -16,6 +16,8 @@ prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease 
   reported) the following year — for the latest year +50% vs prior and 30% above cash flow — (one-off gains: tax-allowance releases, disposal / spin-off gains, hedge marks) are left out
   of the Owner EPS series.
 - With an analyst 'My Peak EPS', each year's Owner EPS is capped at it before the cycle multiples are measured.
+- v7.2: fiscal years ending before the first trading day (listing_date, primary listing only) are left out of the
+  Owner EPS series — pre-IPO / carve-out years sit on a different share and capital basis (CVC FY2021).
 - p2p_ok (peak-to-peak test, feeds the Gate 6 rule check): "Y" latest peak above the prior-cycle peak,
   "N" not above it — or, with a short history, the peak is the first year available and the latest year is
   more than 10% below it (earnings falling since the start of the data); blank = cannot tell.
@@ -86,6 +88,7 @@ def _peak(eps: dict, last: int):
 
 
 FILING_LAG_DAYS = 92
+PRICE_HISTORY_START = "2014-02-01"   # EOD cache starts 2014-01-01: an earlier first bar says nothing about listing
 
 
 def _available(fy: int, period_end: dict | None = None) -> dt.date:
@@ -100,13 +103,26 @@ def _available(fy: int, period_end: dict | None = None) -> dt.date:
     return dt.date(fy + 1, 4, 1)
 
 
+def pre_listing_years(series: dict, listing_date: str | None) -> list[int]:
+    """Fiscal years whose period end precedes the first trading day (None when listed before the price history)."""
+    if not listing_date or str(listing_date) <= PRICE_HISTORY_START:
+        return []
+    pe = series.get("period_end") or {}
+    return sorted(y for y, d in pe.items() if d and str(d)[:10] < str(listing_date)[:10])
+
+
 def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | None,
-            peak_override: float | None = None) -> dict:
-    """financials.csv fields peak_oe_year, peak_oe_eps, mult_low_5y, mult_high_5y, cagr_oe_eps, p2p_ok (+ notes).
-    peak_override ('My Peak EPS', quote currency): each year's Owner EPS is capped at it for the cycle multiples, so the
-    windfall / one-off years the override excludes cannot depress the multiples."""
+            peak_override: float | None = None, listing_date: str | None = None) -> dict:
+    """financials.csv fields peak_oe_year, peak_oe_eps, cur_oe_eps, cur_oe_year, mult_low_5y, mult_high_5y,
+    cagr_oe_eps, p2p_ok (+ notes). peak_override ('My Peak EPS', quote currency): each year's Owner EPS is capped at it
+    for the cycle multiples, so the windfall / one-off years the override excludes cannot depress the multiples.
+    listing_date: first trading day of the primary listing; earlier fiscal years are left out of the Owner EPS series."""
     eps = owner_eps_series(series)
     out, notes = {}, []
+    pre = [y for y in pre_listing_years(series, listing_date) if y in eps]
+    if pre and len(pre) < len(eps):
+        eps = {y: v for y, v in eps.items() if y not in pre}
+        notes.append(f"pre-listing FY{pre[0]}" + (f"–FY{pre[-1]}" if len(pre) > 1 else "") + " left out of Owner EPS")
     all_ni_yrs = series.get("ni") or {}
     ref_last = max(eps) if eps else (max(all_ni_yrs) if all_ni_yrs else None)
     spikes = [y for y in spike_years(series) if ref_last is None or y > ref_last - 2 * PEAK_YEARS]
@@ -120,6 +136,7 @@ def compute(series: dict, monthly_prices: dict | None, fx_rep_to_quote: float | 
         return {"_notes": ["PAR inputs n/a"]}
     out["peak_oe_year"], out["peak_oe_eps"] = py, round(peak * fx_rep_to_quote, 4)
     out["cur_oe_eps"] = round(eps[last] * fx_rep_to_quote, 4)
+    out["cur_oe_year"] = last
 
     # peak-to-peak growth and test
     prior = {y: v for y, v in eps.items() if last - 2 * PEAK_YEARS < y <= last - PEAK_YEARS}

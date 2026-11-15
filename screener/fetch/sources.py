@@ -22,6 +22,9 @@ from . import metrics, par, settings
 
 CACHE = DATA_DIR / "_cache"
 EODHD_CACHE = CACHE / "eodhd"
+CCY_CLOSE_PAIR_LOG = 0.4        # |ln fx| below this (GBP/USD, CHF/USD, CAD/USD …): currency switch decided per block
+CCY_AMBIGUOUS_MARGIN = 0.05     # block decision closer than this (in log points) = ambiguous -> flagged for review
+FX_HISTORY_START = "2010-01-01"
 
 # Windows / OneDrive reserve these device names for any file stem ("CON.XETRA.json" for Continental cannot sync)
 RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(10)), *(f"LPT{i}" for i in range(10))}
@@ -188,6 +191,7 @@ class EODHD:
         self._last_req = 0.0
         self._local = threading.local()
         self._fx: dict[tuple[str, str], float | None] = {}
+        self._fx_hist: dict[tuple[str, str], list] = {}
         self._ex_symbols: dict[str, dict[str, dict]] = {}
         self._symbol_map_path = EODHD_CACHE / "symbol_map.json"
         self._symbol_map: dict[str, str] = {}
@@ -490,6 +494,43 @@ class EODHD:
             self._fx[k] = rate
         return None if self._fx[k] is None else self._fx[k] * scale * to_scale
 
+    def _fx_history(self, frm: str, to: str) -> list:
+        """Daily [date, close] history of frm->to (EODHD {frm}{to}.FOREX since 2010), cached; [] when unavailable."""
+        k = (frm, to)
+        if k not in self._fx_hist:
+            path = EODHD_CACHE / "fx" / f"hist_{frm}{to}.json"
+
+            def fetch():
+                bars = self._get(f"eod/{frm}{to}.FOREX", {"from": FX_HISTORY_START, "period": "d"})
+                rows = [[str(b["date"]), _f(b.get("close"))] for b in bars if isinstance(b, dict) and b.get("date")] \
+                    if isinstance(bars, list) else []
+                return [r for r in rows if r[1] and r[1] > 0] or None
+
+            val = _cached(path, fetch, days=settings.FUND_CACHE_DAYS)
+            self._fx_hist[k] = val if isinstance(val, list) else []
+        return self._fx_hist[k]
+
+    def fx_on(self, frm: str | None, to: str | None, date: str | None) -> tuple[float | None, bool]:
+        """(rate converting 1 frm into to at `date`, True if from FX history). Last close on or before the date;
+        falls back to the spot rate fx() (False) when no history is cached or the date is outside it."""
+        if not frm or not to or frm == to:
+            return self.fx(frm, to), True
+        if date:
+            d = str(date)[:10]
+            for pair, invert in (((frm, to), False), ((to, frm), True)):
+                hist = self._fx_history(*pair)
+                if hist and hist[0][0] <= d:
+                    lo, hi = 0, len(hist) - 1
+                    while lo < hi:                      # last index with hist[i][0] <= d
+                        mid = (lo + hi + 1) // 2
+                        if hist[mid][0] <= d:
+                            lo = mid
+                        else:
+                            hi = mid - 1
+                    rate = hist[lo][1]
+                    return (1.0 / rate if invert else rate), True
+        return self.fx(frm, to), False
+
     def _fetch_fx_pair(self, frm: str, to: str) -> float | None:
         path = EODHD_CACHE / "fx" / f"fx_{frm}{to}.json"
         start = (dt.date.today() - dt.timedelta(days=30)).isoformat()
@@ -642,13 +683,21 @@ class EODHD:
         imp_mcap_sh = (mcap_raw / px_in_main_ccy) if (mcap_raw and px_in_main_ccy and px_in_main_ccy > 0) else None
 
         shares = sh_stats
+        share_flag = None
         if latest_stmt_sh and latest_stmt_sh > 0:
             if not shares or shares <= 0:
                 shares = latest_stmt_sh
             elif not (0.75 <= shares / latest_stmt_sh <= 1.33):
-                # When SharesStats counts only a single share class while statements count total firm shares,
-                # use latest_stmt_sh (which has already been aligned to the traded share class in annual_series)
-                shares = imp_mcap_sh if (imp_mcap_sh and 0.75 <= imp_mcap_sh / latest_stmt_sh <= 1.33) else latest_stmt_sh
+                market_pair = bool(imp_mcap_sh and 0.95 <= imp_mcap_sh / shares <= 1.05)
+                if imp_mcap_sh and 0.75 <= imp_mcap_sh / latest_stmt_sh <= 1.33 and not market_pair:
+                    # SharesStats counts a single share class while statements (aligned to the traded class in
+                    # annual_series) and the market cap count the whole firm (ROG, BRK-B, INVE-B): keep that basis
+                    shares = imp_mcap_sh
+                else:
+                    # v7.2: SharesStats (and the market cap) disagree with the latest statements — a merger, issuance,
+                    # consolidation or buyback after the fiscal year (KMB, WAT, OMC) or a statement glitch (AC.PA).
+                    # Market cap uses the current count; the valuation is blocked until reviewed (fetch_market_data).
+                    share_flag = round(shares / latest_stmt_sh, 2)
         elif imp_mcap_sh and (not shares or not (0.75 <= shares / imp_mcap_sh <= 1.33)):
             shares = imp_mcap_sh
 
@@ -666,13 +715,18 @@ class EODHD:
             "fin_currency": fin_ccy,
             "dps": dps,
             "market_cap_raw": mcap_raw,
+            "share_basis_flag": share_flag,
+            "statement_shares": latest_stmt_sh,
             "trailing_pe": _f(val.get("TrailingPE")) or _f(hl.get("PERatio")),
             "forward_pe": _f(val.get("ForwardPE")),
         }
 
     def annual_series(self, fund_data: dict, latest_price: float | None = None,
-                      splits: dict[str, float] | None = None) -> dict:
-        """Extract clean multi-decade annual series from EODHD Fundamentals JSON."""
+                      splits: dict[str, float] | None = None, ccy_override: str | None = None,
+                      last_bar_date: str | None = None) -> dict:
+        """Extract clean multi-decade annual series from EODHD Fundamentals JSON.
+        ccy_override ("convert" / "keep") forces the reporting-currency block decision (fetch_market_data
+        CCY_SWITCH_OVERRIDES); last_bar_date bounds which post-FY splits are applied to statement share counts."""
         fin = fund_data.get("Financials") or {}
         inc = (fin.get("Income_Statement") or {}).get("yearly") or {}
         qtr_inc = (fin.get("Income_Statement") or {}).get("quarterly") or {}
@@ -704,6 +758,8 @@ class EODHD:
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
         out["period_end"] = {}          # {fy: "YYYY-MM-DD"} (strings; used for point-in-time availability in par.py)
         inc_ccys: dict[int, str] = {}
+        bs_ccys: dict[int, str] = {}
+        cf_ccys: dict[int, str] = {}
         bs_shares: dict[int, float] = {}
 
         all_dates = sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys()))
@@ -753,13 +809,16 @@ class EODHD:
             if sales is None and ni is None:
                 continue
 
-            r_ccy = i_r.get("currency_symbol") or b_r.get("currency_symbol") or c_r.get("currency_symbol")
-            if r_ccy in ("GBX", "GBp"):
-                r_ccy = "GBP"
-            elif r_ccy == "ZAc":
-                r_ccy = "ZAR"
+            def _main_ccy(c):
+                return "GBP" if c in ("GBX", "GBp") else ("ZAR" if c == "ZAc" else c)
+
+            r_ccy = _main_ccy(i_r.get("currency_symbol") or b_r.get("currency_symbol") or c_r.get("currency_symbol"))
             if r_ccy:
                 inc_ccys[fy] = str(r_ccy)
+            if b_r.get("currency_symbol"):
+                bs_ccys[fy] = str(_main_ccy(b_r["currency_symbol"]))
+            if c_r.get("currency_symbol"):
+                cf_ccys[fy] = str(_main_ccy(c_r["currency_symbol"]))
 
             pretax = _fval(i_r, "incomeBeforeTax")
             tax = _fval(i_r, "incomeTaxExpense", "taxProvision")
@@ -884,17 +943,28 @@ class EODHD:
                         if ysbc is not None:
                             out["sbc"][fy] = abs(ysbc)
 
-        # 1. Reporting Currency Transition Normalization (e.g. GMAB DKK->USD, NSIS-B DKK->EUR, TOM.OL NOK->EUR):
-        # Check each section (income, balance sheet, cash flow) independently against the target currency so partial
-        # restatements (e.g. NSIS-B 2022 where Income_Statement rev/ni were restated to EUR while Balance_Sheet & Cash_Flow
-        # remained in DKK) convert only the items still in the old currency.
+        # 1. Reporting Currency Transition Normalization (e.g. GMAB DKK->USD, NSIS-B DKK->EUR, CPG GBP->USD):
+        # Each section (income, balance sheet, cash flow) is checked against its own currency label so partial
+        # restatements (NSIS-B 2022 income restated to EUR, balance sheet / cash flow still DKK; DGE FY23) convert only
+        # the items still in the old currency. Conversions use the FX rate at each fiscal period end (fx_on).
+        # - Close pairs (|ln fx| < 0.4, e.g. GBP/USD, CHF/USD): growth and FX moves are the same size, so the contiguous
+        #   old-currency block before the final target-currency run is decided as ONE unit on 3-year medians (a COVID
+        #   trough next to the switch no longer leaves CPG FY2014-19 in GBP inside a USD series).
+        # - Far pairs (DKK/NOK/SEK -> EUR) and isolated label islands: per-year value test against the next year.
+        # Ambiguous or unresolved switches add '[auto] currency switch unresolved …' (valuation No data, see gates.py).
         out["ccy"] = dict(inc_ccys)     # {fy: currency of the income statement after normalisation}
-        if inc_ccys and len(set(inc_ccys.values())) > 1 and out["sales"]:
+        out["_notes"] = []
+        if inc_ccys and len(set(inc_ccys.values()) | set(bs_ccys.values()) | set(cf_ccys.values())) > 1 and out["sales"]:
             target_ccy = inc_ccys[max(inc_ccys)]
             inc_keys = ("sales", "opcost", "ni", "minority_interest", "ebit", "pretax", "tax", "interest")
             bs_keys = ("equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
+            spot_used = False
+            unresolved: list[str] = []
+            # integrity notes only for years the valuation uses (10-year g0 / ROIC / Owner EPS windows)
+            window_start = yrs_sorted[-1] - 10
+
             def _sec_val(ref_k: str, yr: int) -> float:
                 v = abs(out[ref_k].get(yr) or 0.0)
                 if ref_k == "assets" and v > 0:
@@ -902,31 +972,93 @@ class EODHD:
                     return max(0.25 * v, v - gwi_yr)
                 return v
 
-            for sec_ref_key, sec_keys in (("sales", inc_keys), ("assets", bs_keys), ("ocf", cf_keys)):
+            def _rate(frm: str, yr: int) -> float | None:
+                nonlocal spot_used
+                rate, hist = self.fx_on(frm, target_ccy, out["period_end"].get(yr))
+                spot_used = spot_used or (rate is not None and not hist and yr > window_start)
+                return rate
+
+            def _convert(sec_keys, sec_ref_key, yr, rate):
+                for mk in sec_keys:
+                    if yr in out[mk]:
+                        out[mk][yr] = out[mk][yr] * rate
+                if sec_ref_key == "sales":
+                    out["ccy"][yr] = target_ccy
+
+            for sec_ref_key, sec_keys, sec_lab in (("sales", inc_keys, inc_ccys), ("assets", bs_keys, bs_ccys),
+                                                   ("ocf", cf_keys, cf_ccys)):
                 if not out[sec_ref_key]:
                     continue
+                # a year's old currency: its own section label, else the income-statement label
+                lab = {y: (sec_lab.get(y) if sec_lab.get(y) not in (None, target_ccy) else inc_ccys.get(y))
+                       for y in yrs_sorted}
+                k = len(yrs_sorted) - 1
+                while k > 0 and lab.get(yrs_sorted[k - 1]) in (None, target_ccy):
+                    k -= 1
+                block: list[int] = []
+                j = k - 1
+                while (j >= 0 and lab.get(yrs_sorted[j]) not in (None, target_ccy)
+                       and lab[yrs_sorted[j]] == lab[yrs_sorted[k - 1]]):
+                    block.insert(0, yrs_sorted[j])
+                    j -= 1
+                spot = self.fx(lab[block[0]], target_ccy) if block else None
+                if not (spot and spot > 0 and abs(math.log(spot)) < CCY_CLOSE_PAIR_LOG):
+                    block = []
+                block_set = set(block)
+                if block:
+                    rates = {y: _rate(lab[y], y) for y in block}
+                    tail = [y for y in block[-3:] if _sec_val(sec_ref_key, y) > 0 and rates.get(y)]
+                    head = [y for y in yrs_sorted[k:k + 3] if _sec_val(sec_ref_key, y) > 0]
+                    if tail and head:
+                        ref = median(_sec_val(sec_ref_key, y) for y in head)
+                        raw = median(_sec_val(sec_ref_key, y) for y in tail)
+                        conv = median(_sec_val(sec_ref_key, y) * rates[y] for y in tail)
+                        margin = abs(math.log(raw / ref)) - abs(math.log(conv / ref))
+                        forced = ccy_override in ("convert", "keep")
+                        if (ccy_override == "convert") if forced else margin > 0:
+                            for y in block:
+                                if rates.get(y):
+                                    _convert(sec_keys, sec_ref_key, y, rates[y])
+                        if sec_ref_key == "sales" and not forced and yrs_sorted[k] > window_start:
+                            b0, b1 = block[-1], yrs_sorted[k]
+                            jump = (_sec_val("sales", b1) / _sec_val("sales", b0)) if _sec_val("sales", b0) > 0 else None
+                            if abs(margin) < CCY_AMBIGUOUS_MARGIN:
+                                unresolved.append(f"FY{b1}: {lab[b0]}→{target_ccy} ambiguous by value")
+                            elif jump is not None and not (0.75 <= jump <= 1.33):
+                                unresolved.append(f"FY{b1}: revenue ×{jump:.2f} at the {lab[b0]}→{target_ccy} switch")
+
                 ref_val = _sec_val(sec_ref_key, yrs_sorted[-1])
                 for idx in range(len(yrs_sorted) - 2, -1, -1):
                     y = yrs_sorted[idx]
-                    y_ccy = inc_ccys.get(y)
+                    y_ccy = lab.get(y)
                     cur_val = _sec_val(sec_ref_key, y)
                     if not (cur_val > 0 and ref_val > 0):
                         continue
-                    if y_ccy and y_ccy != target_ccy:
-                        fx_rate = self.fx(y_ccy, target_ccy)
+                    if y not in block_set and y_ccy and y_ccy != target_ccy:
+                        fx_rate = _rate(y_ccy, y)
                         if fx_rate and fx_rate > 0:
                             # Value-based test (no FX band): convert only when it shrinks the year-on-year jump, so
                             # GBP→USD (DGE FY22) is converted while mislabelled years already in target currency are not.
                             raw_ratio = cur_val / ref_val
                             adj_ratio = (cur_val * fx_rate) / ref_val
                             if abs(math.log(adj_ratio)) + 0.02 < abs(math.log(raw_ratio)):
-                                for mk in sec_keys:
-                                    if y in out[mk]:
-                                        out[mk][y] = out[mk][y] * fx_rate
-                                if sec_ref_key == "sales":
-                                    out["ccy"][y] = target_ccy
+                                _convert(sec_keys, sec_ref_key, y, fx_rate)
                                 cur_val = _sec_val(sec_ref_key, y)
                     ref_val = cur_val
+
+            # Latest year among the first 2 in a new currency: its revenue must match the TTM figure (RTO FY2025 is
+            # labelled USD but carries a GBP-converted value).
+            last_old = next((y for y in reversed(yrs_sorted) if inc_ccys.get(y) not in (None, target_ccy)), None)
+            rev_ttm = _f(hl.get("RevenueTTM"))
+            last_rev = out["sales"].get(yrs_sorted[-1])
+            if (ccy_override not in ("convert", "keep") and last_old is not None
+                    and len([y for y in yrs_sorted if y > last_old]) <= 2 and rev_ttm and last_rev and last_rev > 0
+                    and not (0.75 <= rev_ttm / last_rev <= 1.33)):
+                unresolved.append(f"FY{yrs_sorted[-1]} revenue ×{rev_ttm / last_rev:.2f} vs TTM after the switch")
+            if unresolved:
+                out["_notes"].append("currency switch unresolved (" + "; ".join(unresolved) + ")")
+            if spot_used:
+                out["_notes"].append("FX history n/a — spot rate used for the currency switch")
 
         # 2. Historical Share Count Split / Glitch Reconciliation:
         # Reconcile single-year unadjusted pre-split share counts (e.g. SAMPO 2023 1/5th, SQN 2022 1/10th, SFZN 2023 1/10th)
@@ -981,6 +1113,21 @@ class EODHD:
                             if 0.72 <= (ratio_to_latest / cf_val) <= 1.38:
                                 out["shares"][y] = s_y * cf_val
                                 break
+
+        # 2b. Split / consolidation of ANY ratio after the latest fiscal year (JMAT 3:4 on 2026-08-17 after the Mar-2026
+        # year end): every statement count is pre-split while the price is post-split. Rescale all years when the
+        # current SharesStats count confirms the factor (±10%) AND visibly disagrees with the statements (> 15%), so
+        # small spin-off price adjustments (SPGI 1.057) never rescale shares; splits after the last price bar wait.
+        pe_last = out["period_end"].get(max(out["period_end"])) if out["period_end"] else None
+        sh_now = _f(ss.get("SharesOutstanding"))
+        if pe_last and sh_now and sh_now > 0 and out["shares"] and out["shares"][max(out["shares"])] > 0:
+            latest_sh = out["shares"][max(out["shares"])]
+            gap = sh_now / latest_sh
+            for sp_d, sp_r in sorted((splits or {}).items()):
+                if (sp_d > str(pe_last)[:10] and (last_bar_date is None or sp_d <= str(last_bar_date)[:10])
+                        and sp_r and sp_r > 0 and abs(math.log(gap)) > 0.15 and 0.90 <= gap / sp_r <= 1.10):
+                    out["shares"] = {y: v * sp_r for y, v in out["shares"].items()}
+                    break
 
         # 3. Multi-class / ADR share-basis alignment:
         # Check if statement shares differ by a class/ADR multiplier from traded share basis (e.g. BRK-B 1:1500)

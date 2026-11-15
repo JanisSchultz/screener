@@ -165,9 +165,8 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                 "total_companies": 2,
                 "quality_pass": 1,
                 "calamity_pass": 1,
-                "calamity_below_par": 1,
-                "below_par": 1,
-                "median_irr_below_par": 0.14,
+                "valued": 1,
+                "median_irr": 0.14,
             },
             "universes": {"us": {"key": "us", "title": "US", "index_name": "US", "currency": "USD", "as_of": "2026-11-10", "parameters": {}}},
             "companies": [
@@ -180,7 +179,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                     "result": C.RES_QPASS, "rejected_at": "", "review_at": "",
                     "gate_status": {"1": "pass", "2": "pass", "3b": "pass", "4": "pass", "5": "pass", "6": "pass"},
                     "failed_gates": [], "waived_gates": [], "waived_keys": [],
-                    "price": 90.0, "quote_currency": "USD", "val_status": C.V_BELOW_PAR,
+                    "price": 90.0, "quote_currency": "USD", "val_status": C.V_VALUED,
                     "par_val": 110.0, "vs_par": -0.18, "cur_mult": 18.0, "par_mult": 22.0, "irr_5y": 0.14,
                     "roic_used": 0.3, "roic_operating": 0.3, "roic_median": 0.25, "fcf_conv": 1.0,
                     "g_gap": 0.02, "cap_gap": 3.0, "fin_note": "",
@@ -196,7 +195,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                     "gate_status": {"1": "pass", "2": "pass", "3b": "pass", "4": "pass", "5": "pass", "6": "fail"},
                     "failed_gates": ["G6 Cash & Fortress Balance Sheet"],
                     "waived_gates": ["G6 Cash & Fortress Balance Sheet"], "waived_keys": ["6"],
-                    "price": 80.0, "quote_currency": "USD", "val_status": C.V_BELOW_PAR,
+                    "price": 80.0, "quote_currency": "USD", "val_status": C.V_VALUED,
                     "par_val": 100.0, "vs_par": -0.20, "cur_mult": 16.0, "par_mult": 20.0, "irr_5y": 0.16,
                     "roic_used": 0.28, "roic_operating": 0.28, "roic_median": 0.2, "fcf_conv": 0.72,
                     "g_imp": 0.08, "g_market": 0.05, "g_gap": 0.03, "cap_implied": 16.0, "cap_gap": 4.0, "fin_note": "",
@@ -206,7 +205,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
         }
         html = build_dashboard_html(payload)
         self.assertIn("Calamity Watchlist", html)
-        self.assertIn("Include Calamities", html)
+        self.assertNotIn("Below PAR Shortlist", html)
         self.assertIn("Temporary M&A bridge debt; 24m deleveraging catalyst.", html)
         for token in (
             "Growth Ceiling",

@@ -144,6 +144,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 # Quantitative Valuation (screener/gates.py par_valuation)
                 "val_status": val.get("status", C.V_NODATA),
                 "peak_eps": val.get("peak_eps"),
+                "peak_weight": val.get("peak_weight"),
+                "cur_oe_year": fin.get("cur_oe_year"),
                 "cur_mult": val.get("cur_mult"),
                 "par_mult": val.get("par_mult"),
                 "par_val": val.get("par_val"),
@@ -184,22 +186,19 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     # Global KPI Aggregates
     qpass_count = sum(1 for c in all_companies if c["result"] == C.RES_QPASS)
     calamity_list = [c for c in all_companies if c["result"] == C.RES_CALAMITY]
-    calamity_below_par = sum(1 for c in calamity_list if c["val_status"] == C.V_BELOW_PAR)
-    below_par_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_BELOW_PAR]
-    below_par_count = len(below_par_list)
-    irrs = [c["irr_5y"] for c in below_par_list if c["irr_5y"] is not None]
+    valued_list = [c for c in all_companies if c["result"] == C.RES_QPASS and c["val_status"] == C.V_VALUED]
+    irrs = [c["irr_5y"] for c in valued_list if c["irr_5y"] is not None]
     median_irr = statistics.median(irrs) if irrs else None
 
     return {
-        "version": "7.1",
+        "version": "7.2",
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
             "calamity_pass": len(calamity_list),
-            "calamity_below_par": calamity_below_par,
-            "below_par": below_par_count,
-            "median_irr_below_par": median_irr,
+            "valued": len(valued_list),
+            "median_irr": median_irr,
         },
         "universes": universes_meta,
         "companies": all_companies,
@@ -1768,24 +1767,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Below PAR</span>
-        <span class="kpi-value green" id="kpi-below-par">{data['summary']['below_par']}</span>
-      </div>
-      <div class="kpi-chip">
-        <span class="kpi-label" title="Median 5Y IRR of the Below PAR shortlist (hurdle r = 8.50% operating / 10.25% balance-sheet financials)">Median 5Y IRR</span>
-        <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_irr_below_par']*100:.1f}%" if data['summary']['median_irr_below_par'] is not None else "—"}</span>
+        <span class="kpi-label" title="Median 5Y IRR of valued Quality Pass stocks (hurdle r = 8.50% operating / 10.25% balance-sheet financials)">Median 5Y IRR</span>
+        <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_irr']*100:.1f}%" if data['summary']['median_irr'] is not None else "—"}</span>
       </div>
     </div>
   </header>
 
   <!-- View Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" data-tab="shortlist" onclick="setTab('shortlist')">
-      <span class="tab-label-full">★ Below PAR Shortlist</span>
-      <span class="tab-label-short">★ Shortlist</span>
-      <span class="pill-count" id="count-shortlist">0</span>
-    </button>
-    <button class="tab-btn" data-tab="qpass" onclick="setTab('qpass')">
+    <button class="tab-btn active" data-tab="qpass" onclick="setTab('qpass')">
       <span class="tab-label-full">🛡️ Quality Pass Funnel</span>
       <span class="tab-label-short">🛡️ Quality</span>
       <span class="pill-count" id="count-qpass">0</span>
@@ -1884,20 +1874,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="Gate 6">Rejected at Gate 6 (Cash / Balance Sheet)</option>
       </select>
 
-      <!-- Valuation Status Filter (Visible in Moat Universe & Full Universe tabs) -->
+      <!-- Valuation Status Filter (Visible in Quality Pass, Moat Universe & Full Universe tabs) -->
       <select id="filter-val" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Valuations</option>
-        <option value="Below PAR">Below PAR Only</option>
-        <option value="Above PAR">Above PAR Only</option>
+        <option value="Valued">Valued</option>
         <option value="No value">No value (Fair value ≤ 0)</option>
         <option value="No data">No data</option>
       </select>
-
-      <!-- Shortlist Calamity Toggle (Visible in Shortlist tab; off by default) -->
-      <label id="toggle-calamities-wrap" class="toggle-pill" style="display:none;" title="Overlay temporary fixable calamities (Gates 3b, 5, 6) trading Below PAR">
-        <input type="checkbox" id="toggle-calamities" onchange="applyFilters()">
-        <span>Include Calamities</span>
-      </label>
     </div>
 
     <!-- Controls Right: Filter Count, Density, View Toggle & Export Button -->
@@ -1995,7 +1978,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             <b>Year-1 convention:</b> E<sub>1</sub> = the active (trailing, normalized) Owner EPS — conservative by one year of growth versus a forward E<sub>1</sub> = EPS &times; (1 + g₀).<br>
             <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> g<sub>t</sub> fades linearly from g₀ to min(g₀, 3.0%) and RONIC<sub>t</sub> from RONIC₀ to min(RONIC₀, 20%, r + 0.5 &times; (RONIC₀ &minus; r)); FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/RONIC<sub>t</sub>), E<sub>t+1</sub> = E<sub>t</sub>(1 + g<sub>t</sub>).<br>
             <b>Stage 2 &amp; Standalone Terminal Price:</b> TV<sub>N</sub> = E<sub>N+1</sub>(1 &minus; g<sub>tv</sub>/RONIC<sub>term</sub>) / (r &minus; g<sub>tv</sub>) with g<sub>tv</sub> = max(0, min(g₀, 3.0%)) &mdash; 3.0% historical inflation pass-through (or g₀ when g₀ &lt; 3.0%). Standalone <b>Terminal Price</b> values the business today at 3.0% perpetual inflation growth and "keeping the lights on" reinvestment (3.0% / RONIC<sub>term</sub>), topping out at <b>15.5x</b> Owner EPS for elite compounders (&sim;10.9x for financials). When RONIC = r, Fair P/E = Terminal P/E = 1/r for every g₀ and N.<br>
-            <b>No value:</b> when growth is funded at a RONIC far below g the DCF value is &le; 0 &mdash; such stocks are labelled <code style="color: var(--accent);">No value</code>, never Below PAR. A &#9888; flags RONIC₀ &le; r (growth adds no value; review the capital base against the moat gates).<br>
+            <b>No value:</b> when growth is funded at a RONIC far below g the DCF value is &le; 0 &mdash; such stocks are labelled <code style="color: var(--accent);">No value</code> (no discount or IRR is shown). A &#9888; flags RONIC₀ &le; r (growth adds no value; review the capital base against the moat gates).<br>
             <b>Market-Implied Growth (g<sub>market</sub>):</b> root-safe DCF inversion (grid &minus;20%..+50% + bisection) at the company's r &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub>, shown only for a unique root (saturated results are shown as &le; / &ge; without a margin).<br>
             <b>Balance-Sheet Financials &amp; HoldCos:</b> Insurance, Reinsurance, Banks, deposit-funded Brokers &amp; Multi-Sector Holdings use 5Y median ROE at r<sub>fin</sub> = 10.25%; Mark-to-Market HoldCos / Insurers (5Y FCF Conv or 2Y OCF/NI &lt; 0.25) are valued at 1.0x Book Value / Share. Construction &amp; Engineering and Highways use GAAP ROIC (incl. concession intangibles); a zero terminal value applies only to concessions explicitly listed as expiring.
           </span>
@@ -2005,7 +1988,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <strong style="color: var(--text-main);">2. 10Y WLS Structural Revenue Growth Ceiling (g₀) &amp; M&amp;A-Matched RONIC₀:</strong>
         <p class="formula-code">
           g₀ = clamp(Sales_WLS + min(0, Buyback_Yield), 0.0%, 18.0%) &nbsp;|&nbsp; g_exp = g₀ + max(0, Buyback_Yield)<br>
-          1 / RONIC₀ = (1 − w) / Tangible ROIC + w / GAAP ROIC (capped at 50%), w = bought share of g₀ = min(1, M&amp;A spend &times; GAAP ROIC / g₀), M&amp;A spend = median yearly &Delta;Goodwill&amp;Intangibles &divide; NOPAT<br>
+          1 / RONIC₀ = (1 − w) / Tangible ROIC + w / GAAP ROIC (capped at 50%), w = bought share of g₀ = min(1, M&amp;A spend &times; GAAP ROIC / g₀), M&amp;A spend = &Sigma; cash-funded &Delta;Goodwill&amp;Intangibles &divide; &Sigma; NOPAT over the 10Y g₀ window (stock-funded years with shares +3% skipped)<br>
           <span style="font-size: 11px; color: var(--text-dim);">
             10-year exponentially-weighted log-linear OLS (&tau; = 5y half-life) on Sales (with OpCost WLS, cycle Owner EPS CAGR net of buybacks, and 1Y Sales as fallbacks; Gate 5 already filters out poor management and cost bloat). Tangible ROIC adds back acquired-intangible amortisation (D&amp;A above capex), exactly as Owner EPS does; invested capital includes minority interests and short-term debt.
           </span>
@@ -2420,8 +2403,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
 
             <div id="sb-status-box" style="padding: 10px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35);">
-              <span id="sb-status-verdict">Scenario Verdict: BELOW PAR</span>
-              <span id="sb-irr-badge" class="badge badge-green" style="font-size: 12px;">5Y IRR: 12.4%</span>
+              <span id="sb-status-verdict">Scenario: price vs fair value</span>
+              <span id="sb-irr-badge" class="badge badge-slate" style="font-size: 12px;">5Y IRR: -</span>
             </div>
           </div>
         </div>
@@ -2497,9 +2480,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <!-- Client-Side Reactive Controller -->
   <script>
     const SCREENER_DATA = JSON.parse(document.getElementById('screener-raw-data').textContent);
-    let currentTab = 'shortlist';
+    let currentTab = 'qpass';
     let currentMarket = 'all';
-    let sortColumn = 'irr_5y';
+    let sortColumn = 'roic_used';
     let sortAsc = false;
     let selectedCompanyId = null;
     let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
@@ -2507,7 +2490,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let compactColumns = true;
 
     const TAB_DEFAULT_SORTS = {{
-      shortlist: {{ col: 'irr_5y', asc: false }},
       qpass: {{ col: 'roic_used', asc: false }},
       calamity: {{ col: 'irr_5y', asc: false }},
       moat_universe: {{ col: 'irr_5y', asc: false }},
@@ -2530,7 +2512,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       g_market: {{ key: 'g_market', label: 'Mkt Implied g', num: true }},
       g_gap: {{ key: 'g_gap', label: 'g Margin', num: true }},
       par_val: {{ key: 'par_val', label: 'Fair Value', num: true }},
-      vs_par: {{ key: 'vs_par', label: 'Discount', num: true }},
+      vs_par: {{ key: 'vs_par', label: 'vs Fair Value', num: true }},
       term_val: {{ key: 'term_val', label: 'Term Price', num: true }},
       vs_term: {{ key: 'vs_term', label: 'vs Term', num: true }},
       cur_mult: {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
@@ -2576,7 +2558,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('view-table-btn').classList.toggle('active', viewMode === 'table');
       document.getElementById('view-cards-btn').classList.toggle('active', viewMode === 'cards');
       updateDensityButton();
-      setTab('shortlist');
+      setTab('qpass');
 
       // Keyboard Esc to close drawer
       window.addEventListener('keydown', (e) => {{
@@ -2619,22 +2601,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function updateTabCounts() {{
-      const incCal = document.getElementById('toggle-calamities') && document.getElementById('toggle-calamities').checked;
       const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
       const qpass = base.filter(c => c.result === 'Quality pass');
       const calamity = base.filter(c => c.result === 'Calamity pass');
       const moatUni = base.filter(c => passesG123a(c));
-      const shortlist = base.filter(c => (c.result === 'Quality pass' || (incCal && c.result === 'Calamity pass')) && c.val_status === 'Below PAR');
-      // Header KPIs follow the market filter and calamity toggle (computed client-side)
-      const irrs = shortlist.map(c => c.irr_5y).filter(v => v !== null && v !== undefined).sort((a, b) => a - b);
+      const valued = qpass.filter(c => c.val_status === 'Valued');
+      // Header KPIs follow the market filter (computed client-side)
+      const irrs = valued.map(c => c.irr_5y).filter(v => v !== null && v !== undefined).sort((a, b) => a - b);
       const medIrr = irrs.length ? (irrs.length % 2 ? irrs[(irrs.length - 1) / 2] : 0.5 * (irrs[irrs.length / 2 - 1] + irrs[irrs.length / 2])) : null;
       const setKpi = (id, v) => {{ const el = document.getElementById(id); if (el) el.textContent = v; }};
       setKpi('kpi-universe', base.length);
       setKpi('kpi-qpass', qpass.length);
       setKpi('kpi-calamity', calamity.length);
-      setKpi('kpi-below-par', shortlist.length);
       setKpi('kpi-median-irr', medIrr !== null ? `${{(medIrr * 100).toFixed(1)}}%` : '—');
-      document.getElementById('count-shortlist').textContent = shortlist.length;
       document.getElementById('count-qpass').textContent = qpass.length;
       document.getElementById('count-calamity').textContent = calamity.length;
       const moatCountEl = document.getElementById('count-moat-universe');
@@ -2664,12 +2643,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         return;
       }}
 
-      // Show/hide failing gate filter, valuation filter & shortlist calamity toggle
-      const showExtFilters = (tab === 'all' || tab === 'moat_universe');
-      document.getElementById('filter-gate').style.display = showExtFilters ? 'inline-block' : 'none';
+      // Show/hide failing gate filter & valuation filter
+      const showGateFilter = (tab === 'all' || tab === 'moat_universe');
+      document.getElementById('filter-gate').style.display = showGateFilter ? 'inline-block' : 'none';
+      const showValFilter = (tab === 'qpass' || tab === 'all' || tab === 'moat_universe');
       const valFilterEl = document.getElementById('filter-val');
-      if (valFilterEl) valFilterEl.style.display = showExtFilters ? 'inline-block' : 'none';
-      document.getElementById('toggle-calamities-wrap').style.display = (tab === 'shortlist') ? 'inline-flex' : 'none';
+      if (valFilterEl) valFilterEl.style.display = showValFilter ? 'inline-block' : 'none';
 
       // Restore per-tab sort state or fall back to tab default
       const saved = tabSortState[tab];
@@ -2722,8 +2701,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const el = document.getElementById(id);
         if (el) el.value = 'all';
       }});
-      const calEl = document.getElementById('toggle-calamities');
-      if (calEl && currentTab === 'shortlist') calEl.checked = false;
       currentMarket = 'all';
       document.querySelectorAll('.market-btn').forEach(btn => {{
         btn.classList.toggle('active', btn.dataset.market === 'all');
@@ -2757,14 +2734,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const gate = document.getElementById('filter-gate').value;
       const valFilter = document.getElementById('filter-val') ? document.getElementById('filter-val').value : 'all';
 
-      const incCal = document.getElementById('toggle-calamities') && document.getElementById('toggle-calamities').checked;
-
       return SCREENER_DATA.companies.filter(c => {{
         // Tab restriction
-        if (currentTab === 'shortlist') {{
-          const okRes = (c.result === 'Quality pass') || (incCal && c.result === 'Calamity pass');
-          if (!okRes || c.val_status !== 'Below PAR') return false;
-        }}
         if (currentTab === 'qpass' && c.result !== 'Quality pass') return false;
         if (currentTab === 'calamity' && c.result !== 'Calamity pass') return false;
         if (currentTab === 'moat_universe' && !passesG123a(c)) return false;
@@ -2778,8 +2749,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         // Moat
         if (moat !== 'all' && c.g3a_moat_archetype !== moat) return false;
 
-        // Valuation Status (in Moat Universe & Full Universe tabs)
-        if ((currentTab === 'all' || currentTab === 'moat_universe') && valFilter !== 'all') {{
+        // Valuation Status (in Quality Pass, Moat Universe & Full Universe tabs)
+        if ((currentTab === 'qpass' || currentTab === 'all' || currentTab === 'moat_universe') && valFilter !== 'all') {{
           if (c.val_status !== valFilter) return false;
         }}
 
@@ -2962,12 +2933,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       let cols = [];
       if (compactColumns) {{
         let colKeys = [];
-        if (currentTab === 'shortlist') {{
-          colKeys = [...compactKeys];
-        }} else if (currentTab === 'qpass') {{
-          colKeys = [...compactKeys, 'fcf_conv', 'val_status'];
+        if (currentTab === 'qpass') {{
+          colKeys = [...compactKeys, 'fcf_conv'];
         }} else if (currentTab === 'calamity') {{
-          colKeys = [...compactKeys, 'waived_gates', 'val_status'];
+          colKeys = [...compactKeys, 'waived_gates'];
         }} else if (currentTab === 'moat_universe') {{
           colKeys = [...compactKeys, 'result', 'rejected_at', 'val_status'];
         }} else {{
@@ -2975,12 +2944,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }}
         cols = colKeys.map(k => ALL_COLS[k]).filter(Boolean);
       }} else {{
-        if (currentTab === 'shortlist') {{
-          cols = [...coreValuationCols];
-        }} else if (currentTab === 'qpass') {{
-          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.val_status, ALL_COLS.sector];
+        if (currentTab === 'qpass') {{
+          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.sector];
         }} else if (currentTab === 'calamity') {{
-          cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.val_status];
+          cols = [...coreValuationCols, ALL_COLS.waived_gates];
         }} else if (currentTab === 'moat_universe') {{
           cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.fcf_conv, ALL_COLS.val_status, ALL_COLS.sector];
         }} else {{
@@ -3041,7 +3008,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               cellContent = `<strong style="color: ${{color}};">${{fmtPct(val)}}</strong>`;
             }}
           }} else if (col.key === 'val_status') {{
-            const bCls = val === 'Below PAR' ? 'badge-green' : (val === 'Above PAR' ? 'badge-amber' : 'badge-gray');
+            const bCls = val === 'Valued' ? 'badge-slate' : 'badge-gray';
             const ronicFlag = c.ronic_le_r ? ` <span title="RONIC₀ ≤ r: growth adds no value (Fair P/E ≤ 1/r) — review capital base" style="color: var(--amber);">⚠</span>` : '';
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>${{ronicFlag}}`;
           }} else if (col.key === 'result') {{
@@ -3055,6 +3022,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }}
           }} else if (col.key === 'price' || col.key === 'par_val' || col.key === 'term_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
+            if (col.key === 'par_val' && c.ronic_le_r) {{
+              cellContent += ` <span title="RONIC₀ ≤ r: growth adds no value (Fair P/E ≤ 1/r) — review capital base" style="color: var(--amber);">⚠</span>`;
+            }}
           }} else if (col.key === 'sales_1y') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -3161,22 +3131,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         const vsParText = c.vs_par !== null && c.vs_par !== undefined ? `${{fmtPct(c.vs_par, true)}} vs FV` : escHtml(c.val_status);
         const vsParCls = (c.vs_par !== null && c.vs_par !== undefined)
-          ? (c.vs_par <= 0 ? 'badge-green' : 'badge-amber')
-          : (c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray'));
+          ? 'badge-slate'
+          : 'badge-gray';
 
-        if (currentTab === 'shortlist' || currentTab === 'qpass' || currentTab === 'calamity') {{
+        if (currentTab === 'qpass' || currentTab === 'calamity') {{
           const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
           const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0.10)
             ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading near or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
           badgeHtml = `${{calBadge}}${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const roicExtra = currentTab === 'qpass'
             ? `FCF ${{fmtPct(c.fcf_conv)}}`
-            : (currentTab === 'calamity'
-              ? `Waived ${{escHtml((c.waived_keys || []).map(k => 'G' + k).join(', ') || '—')}}`
-              : `BB ${{fmtPct(c.buyback_yield, true)}}`);
+            : `Waived ${{escHtml((c.waived_keys || []).map(k => 'G' + k).join(', ') || '—')}}`;
           const roicExtraLabel = currentTab === 'qpass'
             ? 'Op ROIC • FCF Conv'
-            : (currentTab === 'calamity' ? 'Op ROIC • Waived' : 'Op ROIC • Buyback');
+            : 'Op ROIC • Waived';
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
@@ -3292,15 +3260,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       const valBadge = document.getElementById('dossier-val-badge');
       if (c.result === 'Quality pass') {{
-        valBadge.textContent = c.val_status + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '') + (c.ronic_le_r ? ' • ⚠ RONIC₀ ≤ r (review)' : '');
-        valBadge.className = `badge ${{c.val_status === 'Below PAR' ? 'badge-green' : (c.val_status === 'Above PAR' ? 'badge-amber' : 'badge-gray')}}`;
+        valBadge.textContent = (c.vs_par !== null ? `${{fmtPct(c.vs_par, true)}} vs fair value` : c.val_status) + (c.ronic_le_r ? ' • ⚠ RONIC₀ ≤ r (review)' : '');
+        valBadge.className = `badge ${{c.vs_par !== null ? 'badge-slate' : 'badge-gray'}}`;
       }} else if (c.result === 'Calamity pass') {{
-        valBadge.textContent = `${{calamityTag(c)}} • ${{c.val_status}}` + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '');
+        valBadge.textContent = `${{calamityTag(c)}} • ` + (c.vs_par !== null ? `${{fmtPct(c.vs_par, true)}} vs fair value` : c.val_status);
         valBadge.className = 'badge badge-amber';
       }} else {{
-        const vStr = (c.val_status && c.val_status !== 'No data')
-          ? ` • ${{c.val_status}}` + (c.vs_par !== null ? ` (${{fmtPct(c.vs_par, true)}})` : '')
-          : '';
+        const vStr = (c.vs_par !== null && c.vs_par !== undefined)
+          ? ` • ${{fmtPct(c.vs_par, true)}} vs fair value`
+          : ((c.val_status && c.val_status !== 'No data') ? ` • ${{c.val_status}}` : '');
         valBadge.textContent = c.result + vStr;
         valBadge.className = 'badge badge-red';
       }}
@@ -3595,7 +3563,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '-';
       const hasHistRange = (c.mult_low_5y !== null && c.mult_low_5y !== undefined && c.mult_high_5y !== null && c.mult_high_5y !== undefined);
       document.getElementById('audit-mh-val').textContent = hasHistRange ? `${{fmtNum(c.mult_low_5y)}}x–${{fmtNum(c.mult_high_5y)}}x` : 'N/A (<12m trading)';
-      document.getElementById('audit-peakeps-val').textContent = fmtPrice(c.peak_eps, c.quote_currency);
+      document.getElementById('audit-peakeps-val').textContent = fmtPrice(c.peak_eps, c.quote_currency)
+        + ((c.peak_weight !== null && c.peak_weight !== undefined)
+          ? ` (${{(c.peak_weight * 100).toFixed(0)}}% weight on the FY${{c.peak_oe_year ?? '?'}} peak)` : '');
     }}
 
     const SB_STEP_SNAP = (v) => Math.round(v * 2) / 2;      // sliders use step="0.5"
@@ -3893,7 +3863,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         document.getElementById('dcf-sum-disc').textContent = '-';
         document.getElementById('dcf-sum-fv').textContent = 'No Data';
         document.getElementById('dcf-sum-split').textContent = '-';
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (missing Peak Owner EPS / valuation inputs, or stale fundamentals awaiting a refetch).</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">Explicit DCF schedule unavailable (missing Peak Owner EPS / valuation inputs, or an [auto] data check — stale fundamentals, share count changed since FY, currency switch unresolved — awaiting a refetch / review).</td></tr>`;
         return;
       }}
 
@@ -3928,7 +3898,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           noteEl.innerHTML = `<strong>ℹ️ Mark-to-Market HoldCo / Insurer NAV Rule:</strong> Because reported GAAP EPS already includes unrealized mark-to-market portfolio gains (&Delta;NAV), intrinsic Fair Value is anchored at <b>1.0x NAV = Book Value / Share = ${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x Peak EPS)</b>. The table below displays the illustrative operating cash-flow fade schedule at r = ${{(k * 100).toFixed(2)}}%.`;
         }} else if (effFv <= 0) {{
           noteEl.style.display = 'block';
-          noteEl.innerHTML = `<strong>⚠ No positive DCF value:</strong> reinvestment g₀ / RONIC₀ = ${{fmtPct(re0)}} of earnings exceeds what the business earns on new capital, so the present value of owner cash flows is ${{fmtNum(effMult)}}x — status <b>No value</b> (never Below PAR).`;
+          noteEl.innerHTML = `<strong>⚠ No positive DCF value:</strong> reinvestment g₀ / RONIC₀ = ${{fmtPct(re0)}} of earnings exceeds what the business earns on new capital, so the present value of owner cash flows is ${{fmtNum(effMult)}}x — status <b>No value</b> (no discount or IRR).`;
         }} else if (isFiniteConc) {{
           noteEl.style.display = 'block';
           noteEl.innerHTML = `<strong>ℹ️ Expiring Concession (opt-in):</strong> Concession assets revert to the grantor at expiry, so Stage 2 Terminal Value is <b>0.00</b> and Fair Value is 100% Stage 1 CAP cash flows over N = ${{dcf.nSteps}} years.`;
@@ -4148,7 +4118,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const hasMoatArch = hasMoatArchetype(c);
       const hasPeakOverride = has(c.peak_eps_est) || tw.peak;
       const autoNote = String(c.fin_note || '').split('[auto]')[1] || '';
-      const staleData = autoNote.includes('stale fundamentals');
+      // Mirrors screener/gates.py BLOCKING_AUTO_NOTES: statements unusable until refetched / reviewed -> No data
+      const BLOCKING_AUTO_NOTES = ['stale fundamentals', 'share count changed since FY', 'currency switch unresolved'];
+      const blockingNote = BLOCKING_AUTO_NOTES.find(tok => autoNote.includes(tok)) || null;
+      const staleData = blockingNote !== null;
       const hasValuationInputs = Boolean(!staleData && price && peak_eps && peak_eps > 0 &&
         (hasHistMults || (fund_cap && fund_cap > 0) || hasPeakOverride || hasMoatArch));
       let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, term_mult = null, term_val = null, vs_term = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null, g_market_flag = null, nav_mult = null;
@@ -4182,7 +4155,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         term_val = (isMtmHoldco && bvps) ? bvps : term_mult * peak_eps;
         vs_term = (term_val && term_val > 0) ? (price / term_val - 1.0) : null;
         if (par_val <= 0) {{
-          noValue = true;          // growth funded at RONIC far below g: no positive DCF value (never "Below PAR")
+          noValue = true;          // growth funded at RONIC far below g: no positive DCF value (no discount / IRR)
         }} else {{
           vs_par = price / par_val - 1.0;
           if (isMtmHoldco) {{
@@ -4279,20 +4252,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }} else if (!hasValuationInputs || vs_par === null) {{
         sbBox.style.background = 'rgba(100, 116, 139, 0.12)';
         sbBox.style.borderColor = 'rgba(100, 116, 139, 0.3)';
-        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">— Scenario Verdict: Valuation Unavailable (${{staleData ? 'Stale Fundamentals — refetch required' : 'Missing Price, Peak EPS, or 5Y Multiples'}})</span>`;
+        sbVerdict.innerHTML = `<span style="color: var(--text-dim);">— Scenario Verdict: Valuation Unavailable (${{staleData ? 'Data check — ' + escHtml(blockingNote) + ': refetch or review required' : 'Missing Price, Peak EPS, or 5Y Multiples'}})</span>`;
         sbIrrBadge.className = 'badge badge-slate';
         sbIrrBadge.textContent = '5Y IRR: -';
-      }} else if (vs_par <= 0) {{
-        sbBox.style.background = 'rgba(16, 185, 129, 0.15)';
-        sbBox.style.borderColor = 'rgba(16, 185, 129, 0.35)';
-        sbVerdict.innerHTML = `<span style="color: var(--green);">✓ Scenario Verdict: BELOW FAIR VALUE (${{fmtPct(vs_par, true)}}) — Buyable Quality Funnel</span>`;
-        sbIrrBadge.className = 'badge badge-green';
-        sbIrrBadge.textContent = `5Y IRR: ${{fmtPct(irr_5y)}}`;
       }} else {{
-        sbBox.style.background = 'rgba(244, 63, 94, 0.15)';
-        sbBox.style.borderColor = 'rgba(244, 63, 94, 0.35)';
-        sbVerdict.innerHTML = `<span style="color: var(--red);">✕ Scenario Verdict: ABOVE FAIR VALUE (${{fmtPct(vs_par, true)}}) — Fully Valued / Overpriced</span>`;
-        sbIrrBadge.className = 'badge badge-red';
+        // v7.2: no cheap/expensive verdict — the scenario reports price vs fair value and the 5Y IRR only
+        sbBox.style.background = 'rgba(100, 116, 139, 0.12)';
+        sbBox.style.borderColor = 'rgba(100, 116, 139, 0.3)';
+        sbVerdict.innerHTML = `<span style="color: var(--text-main);">Scenario: price ${{fmtPct(vs_par, true)}} vs fair value</span>`;
+        sbIrrBadge.className = 'badge badge-slate';
         sbIrrBadge.textContent = `5Y IRR: ${{fmtPct(irr_5y)}}`;
       }}
 
@@ -4310,7 +4278,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const irrDrift = (irr_5y !== null && has(c.irr_5y)) ? Math.abs(irr_5y - c.irr_5y) : ((irr_5y === null) === !has(c.irr_5y) ? 0.0 : 1.0);
         const gMktDrift = (g_market !== null && has(c.g_market)) ? Math.abs(g_market - c.g_market) : 0.0;
         const flagDrift = (g_market_flag || null) !== (c.g_market_flag || null);
-        const statusDrift = (noValue ? 'No value' : (vs_par <= 0 ? 'Below PAR' : 'Above PAR')) !== c.val_status;
+        const statusDrift = (noValue ? 'No value' : 'Valued') !== c.val_status;
         const gapDrift = (g_gap === null) !== !has(c.g_gap) || (g_gap !== null && Math.abs(g_gap - c.g_gap) > 0.002);
         if (multDrift > 0.005 || valDrift > 0.005 || irrDrift > 0.005 || gMktDrift > 0.002 || flagDrift || statusDrift || gapDrift) {{
           console.warn(`[parity] ${{c.id}}: JS sandbox vs Python baseline drift (Fair P/E ${{fmtNum(par_mult)}}x vs ${{fmtNum(c.par_mult)}}x, FV ${{par_val}} vs ${{c.par_val}}, IRR ${{fmtPct(irr_5y)}} vs ${{fmtPct(c.irr_5y)}}, g_mkt ${{g_market}} (${{g_market_flag}}) vs ${{c.g_market}} (${{c.g_market_flag}}), status ${{c.val_status}})`);

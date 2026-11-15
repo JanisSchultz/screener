@@ -97,6 +97,20 @@ CONCESSION_KEYWORDS = ("Construction & Engineering", "Highways & Railtracks")
 # v7.1: opt-in list of ids whose concession assets revert to the grantor at expiry (no terminal value). Empty by
 # default: contractors and concession groups (Vinci, Eiffage, WSP, SPIE …) renew or replace concessions.
 FINITE_CONCESSION_IDS: frozenset[str] = frozenset()
+# '[auto]' fin_note markers written by fetch_market_data.py that make the statements unusable for a per-share
+# valuation until refetched or reviewed (status 'No data'). Mirrored by the dashboard sandbox (BLOCKING_AUTO_NOTES).
+BLOCKING_AUTO_NOTES = ("stale fundamentals", "share count changed since FY", "currency switch unresolved")
+
+
+def peak_weight(cur_year, peak_year) -> float:
+    """v7.2 weight of the 5Y peak in the active Owner EPS when the latest year is below it: 50% while the peak is at
+    most 1 year old, fading linearly to 0% at 4 years (a peak that old is no longer mid-cycle evidence)."""
+    if not isinstance(cur_year, (int, float)) or not isinstance(peak_year, (int, float)):
+        return 0.5
+    age = cur_year - peak_year
+    if age <= 1:
+        return 0.5
+    return max(0.0, 0.5 * (4.0 - age) / 3.0)
 
 
 def _r4(x: float) -> float:
@@ -393,8 +407,8 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
 
 def ronic0(roic_est, roic_active, r_tang, r_gaap, ma_reinvest, g0, gaap_basis) -> tuple[float, float]:
     """Raw marginal return on new capital (before the 5% floor / par_roic_cap) and the bought-growth share w.
-    When goodwill-heavy (r_tang > 1.25 × r_gaap) a serial acquirer keeps spending ma_reinvest of earnings on
-    acquisitions earning GAAP ROIC, i.e. bought growth g_m = ma_reinvest × r_gaap and w = clip(g_m / g0, 0, 1); the
+    When goodwill-heavy (r_tang > 1.25 × r_gaap) the business keeps spending ma_reinvest (v7.2: Σ cash-funded
+    Δ goodwill+intangibles ÷ Σ NOPAT over the g0 window) of earnings on acquisitions earning GAAP ROIC, i.e. bought growth g_m = ma_reinvest × r_gaap and w = clip(g_m / g0, 0, 1); the
     reinvestment rate g0 / RONIC₀ = (1 − w)·g0 / r_tang + w·g0 / r_gaap gives the growth-weighted harmonic blend.
     Mirrored by the dashboard sandbox (screener/dashboard.py ronic0)."""
     if (roic_est is None and not gaap_basis and r_tang is not None and r_gaap is not None and r_gaap > 0
@@ -432,9 +446,10 @@ def par_valuation(
     price, mc, ni = f("price"), f("market_cap_m"), f("ni_ttm_m")
     note_auto = auto_note(fin)
 
-    # Step 1 — Active Peak Owner EPS: override > 50/50 mid-cycle reversion toward the 5Y peak.
+    # Step 1 — Active Peak Owner EPS: override > age-weighted mid-cycle reversion toward the 5Y peak.
     peak_eps_override = f("peak_eps_est")
     oe_peak = f("peak_oe_eps")
+    w_peak = None
     if peak_eps_override is not None:
         peak_eps = peak_eps_override
     else:
@@ -453,7 +468,9 @@ def par_valuation(
             elif "non-cash earnings spike left out of peak" in note_auto or cur_eps > 1.5 * oe_peak:
                 cur_eps = min(cur_eps, oe_peak)
         if oe_peak is not None and cur_eps is not None and cur_eps < oe_peak:
-            peak_eps = 0.5 * (oe_peak + max(0.0, cur_eps))
+            w_peak = peak_weight(f("cur_oe_year"), f("peak_oe_year"))
+            cur_pos = max(0.0, cur_eps)
+            peak_eps = cur_pos + w_peak * (oe_peak - cur_pos)
         else:
             peak_eps = oe_peak
 
@@ -514,7 +531,7 @@ def par_valuation(
     nav_anchor = bool(mtm_holdco and bvps)
 
     out = {
-        "status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None, "par_val": None,
+        "status": C.V_NODATA, "peak_eps": peak_eps, "peak_weight": w_peak, "cur_mult": None, "par_mult": None, "par_val": None,
         "vs_par": None, "term_mult": None, "term_val": None, "vs_term": None,
         "irr_5y": None, "cap_implied": None, "cap_gap": None,
         "g_market": None, "g_market_flag": None, "g_gap": None,
@@ -531,7 +548,7 @@ def par_valuation(
     has_hist_mults = bool(ml and mh)
     has_moat_arch = bool(moat_arch and str(moat_arch).strip() not in ("", "None"))
     if (
-        "stale fundamentals" in note_auto
+        any(tok in note_auto for tok in BLOCKING_AUTO_NOTES)
         or not price or not peak_eps or peak_eps <= 0
         or (not has_hist_mults and not fund_cap and peak_eps_override is None and not has_moat_arch)
     ):
@@ -558,7 +575,7 @@ def par_valuation(
                 "term_mult": term_mult, "term_val": term_val, "vs_term": vs_term,
                 "pe_mm": pe_mm, "pe_mck": pe_mck, "pe_vd": pe_vd, "reinv_eff": fcf_share})
     if par_val <= 0:
-        # Growth funded at RONIC far below g: the DCF has no positive value, so the stock can never be "Below PAR".
+        # Growth funded at RONIC far below g: the DCF has no positive value (no discount / IRR is meaningful).
         out["status"] = C.V_NOVALUE
         return out
 
@@ -578,7 +595,7 @@ def par_valuation(
     g_market, g_market_flag = solve_market_growth(cur_mult, g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco)
     g_gap = _r4(g_org_exp - g_market) if (g_market is not None and g_market_flag in G_GAP_FLAGS) else None
     out.update({
-        "status": C.V_BELOW_PAR if vs_par <= 0 else C.V_ABOVE_PAR,
+        "status": C.V_VALUED,
         "vs_par": vs_par, "irr_5y": irr_5y, "cap_implied": cap_implied, "cap_gap": cap_gap,
         "g_market": g_market, "g_market_flag": g_market_flag, "g_gap": g_gap,
     })

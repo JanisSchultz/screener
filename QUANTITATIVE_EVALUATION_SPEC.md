@@ -1,11 +1,11 @@
-# Quantitative Evaluation Framework Specification (v7.1)
+# Quantitative Evaluation Framework Specification (v7.2)
 ## Quality & Moat Screener — Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v7.1). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
+This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v7.2). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
 
 ### The Slump-Cannibal Compounder & Explicit DCF Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, **Michael Mauboussin**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are valued via a **Sure & Simple Explicit $N$-Year Mauboussin-Fade Discounted Cash Flow (DCF) model** at a discount rate of $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials):
@@ -43,7 +43,8 @@ When an evaluation is triggered, the coordinator agent provides:
 - `peak_oe_eps`: Last peak Owner EPS in quote currency.
 - `mult_low_5y` / `mult_high_5y`: 5-year cycle low / high multiple = MIN / MAX of the calendar-year medians of monthly close ÷ the peak Owner EPS known at that month (a fiscal year counts from its period end + 3 months; informational, not used in Fair Value).
 - `cagr_oe_eps`: Peak-to-peak Owner EPS growth ($g$): latest 5Y peak vs the prior-cycle peak, annualised over the actual gap between the two peak years.
-- `ma_reinvest`: M&A reinvestment rate = median of the latest 5 yearly $\max(0, \Delta(\text{goodwill} + \text{intangibles})) \div \text{NOPAT}$.
+- `ma_reinvest`: M&A reinvestment rate = $\sum \max(0, \Delta(\text{goodwill} + \text{intangibles})) \div \sum \text{NOPAT}$ over the same 10-year window as $g_0$, skipping stock-funded years (share count up $\ge 3\%$).
+- `cur_oe_year`: Fiscal year of the latest Owner EPS (`cur_oe_eps`).
 - `p2p_ok`: Peak-to-peak test (`"Y"` = new peak vs prior cycle, `"N"` = not above prior cycle).
 - `roic_median`: 5-year median GAAP ROIC (including accounting goodwill).
 - `roic_operating`: 5-year median Operating ROIC (tangible capital return).
@@ -52,11 +53,11 @@ When an evaluation is triggered, the coordinator agent provides:
 
 ---
 
-## 3. Step-by-Step Valuation Methodology (v7.1)
+## 3. Step-by-Step Valuation Methodology (v7.2)
 
 ---
 
-### Step 1: Owner EPS Calculation, Lease/Impairment Normalization & Peak Selection (v7.1)
+### Step 1: Owner EPS Calculation, Lease/Impairment Normalization & Peak Selection (v7.2)
 
 1. **Owner EPS Definition, Deterministic D&A & IFRS-16 Lease Normalization (Per Fiscal Year)**:
    $$\text{Owner Add-Back}_y = \max\!\left(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y\right), \qquad \text{Owner EPS}_y = \frac{\text{Net Income}_y + \text{Owner Add-Back}_y}{\text{Shares Outstanding}_y}$$
@@ -64,7 +65,10 @@ When an evaluation is triggered, the coordinator agent provides:
    - **Deterministic D&A Priority**: Extracted in strict priority order: cash-flow statement `depreciation` $\to$ income-statement `depreciationAndAmortization` $\to$ `reconciledDepreciation` (replacing `max(...)` across tags).
    - **Impairment Guard (`clean_da`)**: A year's D&A above $1.5\times$ the median of the prior 3 fiscal years (`DA_IMPAIRMENT_CAP = 1.5`) is capped only when the spike is transient, so one-off write-downs folded into D&A are not added back as recurring earnings, while genuine step-ups are kept: capex rising $\ge 1.5\times$ alongside (capacity build-out) or the following year staying $\ge 1.25\times$ the prior median (merger amortisation).
    - **IFRS-16 Right-of-Use Lease Depreciation Deduction (`LEASE_DEP_RATE = 0.20`)**: For IFRS filers in `eu` and `ca`, IFRS-16 capitalizes operating store/facility leases onto the balance sheet (`capitalLeaseObligations`), routing rent payments through D&A and financing cash flows while excluding lease additions from cash CapEx. Deducting $20\%$ of average `capitalLeaseObligations` ($\overline{\text{Lease}}_y$) from both `owner_addback` and `true_fcf` (`fcf_conv`) prevents lease amortization from inflating Owner EPS or FCF conversion. US GAAP filers (`us`, plus `US_GAAP_IDS` in `fetch_market_data.py`: `ABBN.CH`, `ALC.CH`, `LOGN.CH`, `QIA.DE`, `STMMI.FR`, `ENB.CA`, `TRP.CA`, `IMO.CA`, `CNR.CA`, `FTS.CA`, `EMA.CA`, `H.CA`, `WCN.CA`, `CP.CA`, `QSR.CA`) already expense operating lease cost inside operating cash flow and are excluded (`lease` series cleared).
-   - **Statement integrity**: reporting-currency switches are converted at FX when that removes the year-on-year discontinuity (value-based test); listings whose revenue / balance sheet end $\ge 2$ fiscal years before cash flow (or $\ge 3$ years ago) get `[auto] stale fundamentals` and are valued as **No data** until refetched.
+   - **Statement integrity** (any of these `[auto]` notes values the company as **No data** until refetched or reviewed — `gates.BLOCKING_AUTO_NOTES`):
+     - `stale fundamentals`: revenue / balance sheet end $\ge 2$ fiscal years before cash flow (or $\ge 3$ years ago).
+     - `currency switch unresolved`: reporting-currency switches are converted section by section (income, balance sheet, cash flow, each on its own label) at the FX rate of each fiscal period end (spot rate when no FX history is cached). For close pairs ($|\ln \text{fx}| < 0.4$, e.g. GBP/USD, CHF/USD) the old-currency block before the switch is decided as one unit on 3-year medians; far pairs (DKK/NOK/SEK → EUR) use a per-year value test. The note is written (for switches inside the 10-year valuation window) when the block decision is ambiguous (margin $< 0.05$ log points), the revenue jump at the switch lies outside $0.75$–$1.33\times$, or the latest year (within 2 years of the switch) deviates more than 25% from TTM revenue. Verified cases are settled in `fetch_market_data.CCY_SWITCH_OVERRIDES`.
+     - `share count changed since FY`: the current share count (SharesStats, agreeing with the market cap) is outside $0.75$–$1.33\times$ the latest statement count without a multi-class explanation — a merger, issuance, consolidation or buyback after the fiscal year, or a statement glitch. Splits / consolidations of any ratio dated after the fiscal year are first applied to all statement share counts when SharesStats confirms the factor. Reviewed ids go in `fetch_market_data.SHARE_BASIS_REVIEWED_IDS`.
    - *Scaled to reported diluted EPS when net income includes minority interests. Latest fiscal-year add-back is stored in `owner_add_m`.*
 
 2. **Spike Stripping (One-Off Earnings Spikes)**:
@@ -74,24 +78,24 @@ When an evaluation is triggered, the coordinator agent provides:
      - $\text{Net Income} > 1.30 \times \text{prior year Net Income}$, **AND**
      - $\text{Net Income} > 1.30 \times \text{following year Net Income}$ (or for latest year: $+50\%$ vs prior and $> 1.30 \times \text{OCF}$).
 
-3. **Peak Owner EPS Selection, Override (`peak_eps_est`) & 50/50 Mid-Cycle Reversion Standard**:
-   - `peak_oe_eps`: The highest valid Owner EPS in the last 5 fiscal years.
+3. **Peak Owner EPS Selection, Override (`peak_eps_est`) & Age-Weighted Mid-Cycle Reversion Standard**:
+   - `peak_oe_eps`: The highest valid Owner EPS in the last 5 fiscal years. Fiscal years ending before the first trading day of the primary listing (pre-IPO, spin-off carve-out years) are left out of the Owner EPS series.
    - `cur_oe_eps`: Latest fiscal-year Owner EPS (falling back to implied $\text{Price} \times \frac{\text{Net Income} + \text{owner\_add\_m}}{\text{Market Cap}}$ only if `cur_oe_eps` is absent).
    - **Analyst Override (`peak_eps_est`)**: Required when:
      - The reported peak contains an unrepeatable operational windfall (e.g. pandemic freight rates, cyclical commodity peak).
      - Recent strategic spin-offs or restructurings distorted historical share counts or continuing operations.
-   - **The 50/50 Mid-Cycle Reversion Standard**:
+   - **The Age-Weighted Mid-Cycle Reversion Standard** (v7.2):
      When `peak_eps_est` is not explicitly populated, active earning power is protected against stale or bubble peaks:
      - If `fin_note` flags a multi-class share-basis mismatch (`"check share basis"`), $\text{cur\_eps}$ defaults to `peak_oe_eps`; if `fin_note` flags `"non-cash earnings spike left out of peak"` or $\text{cur\_eps} > 1.5 \times \text{peak\_oe\_eps}$, $\text{cur\_eps}$ is capped at `peak_oe_eps`.
-     - If $\text{cur\_eps} < \text{peak\_oe\_eps}$:
-       $$\text{Active Peak EPS} = 0.5 \times \left(\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})\right)$$
+     - If $\text{cur\_eps} < \text{peak\_oe\_eps}$, with $\text{age} = \text{cur\_oe\_year} - \text{peak\_oe\_year}$ and $w = 0.5$ for age $\le 1$, $w = 0.5\,(4 - \text{age})/3$ for ages 2–3, $w = 0$ from age 4 (`gates.peak_weight`; $w = 0.5$ when `cur_oe_year` is missing):
+       $$\text{Active Peak EPS} = \max(0, \text{cur\_eps}) + w \times \left(\text{peak\_oe\_eps} - \max(0.0, \text{cur\_eps})\right)$$
      - If $\text{cur\_eps} \ge \text{peak\_oe\_eps}$: $\text{Active Peak EPS} = \text{peak\_oe\_eps}$.
    - **Active Peak EPS Summary**:
-     $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ 0.5 \times (\text{peak\_oe\_eps} + \max(0.0, \text{cur\_eps})) & \text{if } \text{cur\_eps} < \text{peak\_oe\_eps} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
+     $$\text{Active Peak EPS} = \begin{cases} \text{peak\_eps\_est} & \text{if populated} \\ \text{cur}^{+} + w\,(\text{peak\_oe\_eps} - \text{cur}^{+}) & \text{if } \text{cur\_eps} < \text{peak\_oe\_eps} \\ \text{peak\_oe\_eps} & \text{otherwise} \end{cases}$$
 
 ---
 
-### Step 2: Operating ROIC Normalization, M&A Capital Matching & Single Initial Cap (`par_roic_cap = 50%`) (v7.1)
+### Step 2: Operating ROIC Normalization, M&A Capital Matching & Single Initial Cap (`par_roic_cap = 50%`) (v7.2)
 
 To prevent accounting distortions from penalizing capital-light compounders while ensuring M&A goodwill is matched to M&A-driven growth:
 1. **Short-Term Investments Netting, M&A Goodwill Neutralization & Denominator Floor**:
@@ -102,9 +106,9 @@ To prevent accounting distortions from penalizing capital-light compounders whil
      $$\text{Operating ROIC} = \frac{\text{NOPAT} + \text{Owner Add-Back}}{\max\!\left(\text{IC}_{\text{GAAP}} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
 2. **M&A-Matched RONIC & Single Initial Cap (`par_roic_cap = 0.50`)**:
    - Replaces the legacy two-step log compression + Galton pre-fade ($\text{ROIC}_{\text{log}} \to \text{ROIC}_{\text{exp}}$) with a single initial cap $\text{RONIC}_0 \le 50.0\%$ (`par_roic_cap = 0.50`, unless overridden by `roic_est`), leaving all mean-reversion to the explicit Stage-1 linear fade ($\text{RONIC}_0 \to \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r))$ over $N$ years).
-   - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), a serial acquirer is assumed to keep spending `ma_reinvest` of earnings on acquisitions that earn GAAP ROIC. Bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$ is the share $w = \text{clip}_{[0,1]}(g_m / g_0)$ of the growth ceiling, and the reinvestment rate $g_0/\text{RONIC}_0 = (1-w)\,g_0/r_{\text{tang}} + w\,g_0/r_{\text{GAAP}}$ gives:
+   - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), the business is assumed to keep spending `ma_reinvest` of earnings on acquisitions that earn GAAP ROIC. Bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$ is the share $w = \text{clip}_{[0,1]}(g_m / g_0)$ of the growth ceiling, and the reinvestment rate $g_0/\text{RONIC}_0 = (1-w)\,g_0/r_{\text{tang}} + w\,g_0/r_{\text{GAAP}}$ gives:
      $$\text{RONIC}_{\text{raw}} = \left(\frac{1 - w}{r_{\text{tang}}} + \frac{w}{r_{\text{GAAP}}}\right)^{-1}, \qquad \text{RONIC}_0 = \text{roic\_exp} = \min(0.50,\; \max(0.05,\; \text{RONIC}_{\text{raw}}))$$
-     The median makes the blend capture serial acquirers (CSU, BNZL) while one transformational merger (SPGI/IHS, ICE/Black Knight) moves it little; organic capital growth never counts as M&A (`gates.ronic0`).
+     `ma_reinvest` sums cash-funded goodwill + intangibles additions over the 10-year $g_0$ window, so serial acquirers (CSU, BNZL) and one-off cash deals (LVMH/Tiffany) both carry their acquisition cost, while stock-funded deals (SPGI/IHS, ADI/Maxim) are skipped because the dilution index $S_t$ already strips their acquired growth from $g_0$ (`gates.ronic0`).
    - **RONIC₀ ≤ r review flag (`ronic_le_r`)**: growth then adds no value (Fair P/E ≤ 1/r) — review the capital base (goodwill, minorities) against the moat gates.
 3. **Active ROIC Selection (`active_roic`) & Up-C Consolidated ROE**:
    - Priority:
@@ -115,7 +119,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 3: 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.1)
+### Step 3: 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.2)
 
 1. **Core Growth Parameters**:
    - `par_g_base = 0.030` (`3.0%` long-term historical inflation pass-through terminal growth rate $g_{\text{term}}$).
@@ -140,7 +144,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 4: Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v7.1)
+### Step 4: Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v7.2)
 
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade Over Gate 4 CAP ($t = 1 \dots N$)**:
    Starting from Year-1 normalized run-rate Owner Earnings $E_1 = 1.0$ on existing capital $\text{IC}_0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial marginal return $\text{RONIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and marginal RONIC fade linearly across $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = \min(g_0, 3.0\%)$, $\text{RONIC}_{\text{term}} = \max(0.05,\; \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r)))$):
@@ -161,7 +165,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 5: The 3-Price Valuation Framework & Bellman-Consistent 5Y Expected IRR (v7.1)
+### Step 5: The 3-Price Valuation Framework & Bellman-Consistent 5Y Expected IRR (v7.2)
 
 1. **Fair Value Price (`par_val`)**: $\text{Fair Value Price} = \text{Fair P/E} \times \text{Active Peak Owner EPS}$.
 2. **Standalone Terminal P/E (`term_mult`), Terminal Price (`term_val`) & `% vs Terminal` (`vs_term`)**:
@@ -169,7 +173,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
      $$\text{term\_mult} = \frac{1 - g_{\text{term}} / \text{RONIC}_{\text{term}}}{\max(0.01,\; r - g_{\text{term}})} \quad (\text{when } \text{RONIC}_{\text{term}} > r,\text{ else } 1/r;\text{ or } \text{BVPS}/\text{Peak EPS}\text{ for MTM HoldCos; } 0\text{ for finite concessions})$$
      $$\text{term\_val} = \text{term\_mult} \times \text{Active Peak Owner EPS}, \qquad \text{vs\_term} = \frac{\text{Current Share Price}}{\text{term\_val}} - 1.0$$
 3. **Current Multiple (`cur_mult`)**: $\text{Current Multiple} = \frac{\text{Current Share Price}}{\text{Active Peak Owner EPS}}$.
-4. **Discount / Premium vs Fair Value (`vs_par`)**: $\text{Discount vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (`Below PAR` when $\le 0$, `Above PAR` when $> 0$). When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** — never Below PAR — and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank.
+4. **Price vs Fair Value (`vs_par`)**: $\text{vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (negative = discount, positive = premium). There is no Below / Above PAR classification (v7.2): a valued company has status **`Valued`** and is read from price, fair price and terminal price. When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank; failed statement-integrity checks give **`No data`**.
 4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
    - Uses the exact Year 1–5 DCF free cash flows $\text{FCF}_1 \dots \text{FCF}_5$ and the exact Year-5 DCF continuation value $V_5$:
      $$V_5 = \left(\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \frac{\text{FCF}_t}{(1 + r)^t}\right)(1 + r)^{\min(5, N)}$$
@@ -202,7 +206,7 @@ These checks generate flags on the Quantitative sheet to alert the investor to p
 2. **Interest Coverage Check**: $\text{EBIT} \div \text{Interest Expense} > 5.0\text{x}$ (`g6_intcov = 5.0`).
 3. **Cash Conversion Check**: $\text{Owner FCF} \div \text{Net Income} \ge 80\%$ (`a_fcfconv = 0.80`).
 4. **Peak-to-Peak Compounding Check**: `p2p_ok == "Y"`.
-5. **Value-Creation Check**: $\text{RONIC}_0 > r$ (`ronic_le_r` false) — otherwise growth adds no value and the stock can never screen Below PAR on growth.
+5. **Value-Creation Check**: $\text{RONIC}_0 > r$ (`ronic_le_r` false) — otherwise growth adds no value (Fair P/E $\le 1/r$).
 
 ---
 
@@ -231,7 +235,7 @@ An independent agent evaluating a company quantitatively must return a strictly 
     "par_multiple": 27.60,
     "par_value": 533.78,
     "percent_vs_par": -0.0535,
-    "status": "Below PAR",
+    "status": "Valued",
     "g_implied": 0.105,
     "dividend_yield": 0.0075,
     "expected_irr_5y": 0.1162,

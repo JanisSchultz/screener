@@ -139,7 +139,7 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         data = {
             "version": "6.33",
             "generated_at": "2026-11-11T00:00:00Z",
-            "summary": {"total_companies": 0, "quality_pass": 0, "calamity_pass": 0, "calamity_below_par": 0, "below_par": 0, "median_irr_below_par": 0.0},
+            "summary": {"total_companies": 0, "quality_pass": 0, "calamity_pass": 0, "valued": 0, "median_irr": 0.0},
             "sectors": [],
             "moats": [],
             "universes": {},
@@ -191,16 +191,19 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
             self.assertIn(live, self.html)
         self.assertNotIn("r=8.5%", self.html)
 
-    def test_dynamic_tab_counts_respect_market_and_calamity_toggle(self):
-        """Verify updateTabCounts filters by currentMarket and shortlist Include Calamities toggle."""
+    def test_dynamic_tab_counts_respect_market(self):
+        """Verify updateTabCounts filters by currentMarket and computes the IRR KPI from valued Quality Pass names."""
         self.assertIn("const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);", self.html)
-        self.assertIn("(c.result === 'Quality pass' || (incCal && c.result === 'Calamity pass')) && c.val_status === 'Below PAR'", self.html)
+        self.assertIn("const valued = qpass.filter(c => c.val_status === 'Valued');", self.html)
+        self.assertNotIn("Below PAR", self.html)
+        self.assertNotIn("Above PAR", self.html)
         self.assertIn("setKpi('kpi-median-irr'", self.html)
 
-    def test_consistent_column_order_across_shortlist_qpass_and_calamity(self):
-        """Verify Shortlist, Quality Pass Funnel, and Calamity Watchlist share the exact same 18 core columns."""
+    def test_consistent_column_order_across_qpass_and_calamity(self):
+        """Verify Quality Pass Funnel and Calamity Watchlist share coreValuationCols."""
         self.assertIn("const coreValuationCols = [", self.html)
-        self.assertIn("cols = [...coreValuationCols];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.sector];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.waived_gates];", self.html)
 
     def test_zero_diff_thresholds(self):
         """Verify diff thresholds prevent epsilon jitter from showing spurious +0.0% colors."""
@@ -322,7 +325,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
                            if (not is_mtm and par_mult > pe_base + 0.5) else r1(eff_cap * (price / par_val)))
             cap_gap = r1(eff_cap - cap_implied)
         out.update({"vs_par": vs_par, "irr_5y": solve_irr_5y(cur_mult, fcfs_5, v_5), "cap_implied": cap_implied,
-                    "cap_gap": cap_gap, "status": "Below PAR" if vs_par <= 0 else "Above PAR"})
+                    "cap_gap": cap_gap, "status": "Valued"})
         return out
 
     def test_growth_slider_responsive_without_opcost_muting(self):
@@ -341,7 +344,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         for u in ("us", "eu", "ca"):
             meta = load_universe(u)
             for c in self.companies:
-                if c["universe"] != u or c.get("val_status") not in ("Below PAR", "Above PAR") or c.get("sales_cagr") is None:
+                if c["universe"] != u or c.get("val_status") != "Valued" or c.get("sales_cagr") is None:
                     continue
                 if c.get("g_est") is not None or c.get("mtm_holdco"):
                     continue
@@ -366,7 +369,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         moved slider equals Python with roic_est = slider value."""
         moved, mismatched = [], []
         for c in self.companies:
-            if c.get("par_mult") is None or c.get("val_status") not in ("Below PAR", "Above PAR") or c.get("mtm_holdco"):
+            if c.get("par_mult") is None or c.get("val_status") != "Valued" or c.get("mtm_holdco"):
                 continue
             base = self._simulate_js_sandbox(c)
             if not base["has_inputs"]:

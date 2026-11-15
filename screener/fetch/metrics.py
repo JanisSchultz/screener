@@ -11,6 +11,7 @@ DEFAULT_TAX = 0.21
 ROIC_YEARS = 5                  # median ROIC over the latest 5 fiscal years (one cycle; matches the PAR window)
 LEASE_DEP_RATE = 0.20           # IFRS-16 right-of-use depreciation ≈ 20% of average lease liabilities (~5y avg term)
 DA_IMPAIRMENT_CAP = 1.5         # D&A above 1.5× the prior-3y median is treated as a one-off impairment / write-down
+MA_STOCK_FUNDED = 1.03          # share count up ≥ 3% in a year = stock-funded deal (already netted out of g0 by S_t)
 
 
 def clean_da(da: dict, capex: dict | None = None) -> dict:
@@ -620,19 +621,26 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         out["cap_growth"] = round(g_oa, 4)
     elif g_ic is not None:
         out["cap_growth"] = round(g_ic, 4)
-    # M&A reinvestment rate = median over the latest 5 yearly transitions of max(0, Δ(goodwill + intangibles)) ÷ NOPAT:
-    # the share of earnings spent buying growth (serial acquirers CSU / BNZL high; one transformational merger such as
-    # SPGI/IHS moves the median little). Feeds the M&A-matched RONIC blend in screener/gates.py.
+    # M&A reinvestment rate (v7.2) = Σ max(0, Δ(goodwill + intangibles)) ÷ Σ NOPAT over the same 10-year window as g0:
+    # the share of earnings spent buying growth that g0 still contains. Cash-funded deals count whether serial (CSU,
+    # BNZL) or one-off (LVMH/Tiffany); stock-funded years (shares +3% or more) are skipped because the dilution index
+    # S_t already strips that acquired growth from g0 (SPGI/IHS, ADI/Maxim). Feeds the RONIC blend in screener/gates.py.
     gwi = {y: (g("goodwill").get(y) or 0.0) + (g("intang").get(y) or 0.0) for y in nopat_ser
            if g("goodwill").get(y) is not None or g("intang").get(y) is not None}
     gw_yrs = sorted(y for y in gwi if last is None or y <= last)
-    spend = [
-        max(0.0, (gwi[y1] - gwi[y0]) - 0.035 * max(0.0, gwi[y0] - 3.0 * nopat_ser[y1])) / nopat_ser[y1]
-        for y0, y1 in zip(gw_yrs, gw_yrs[1:])
-        if y1 - y0 == 1 and nopat_ser.get(y1) and nopat_ser[y1] > 0
-    ]
-    if len(spend) >= 3:
-        out["ma_reinvest"] = round(min(3.0, median(spend[-5:])), 4)
+    spend_sum = nopat_sum = 0.0
+    n_trans = 0
+    for y0, y1 in zip(gw_yrs, gw_yrs[1:]):
+        if y1 - y0 != 1 or not nopat_ser.get(y1) or nopat_ser[y1] <= 0 or (last is not None and y1 <= last - 10):
+            continue
+        n_trans += 1
+        nopat_sum += nopat_ser[y1]
+        s0, s1 = shares.get(y0), shares.get(y1)
+        if s0 and s1 and s0 > 0 and s1 > MA_STOCK_FUNDED * s0:
+            continue
+        spend_sum += max(0.0, (gwi[y1] - gwi[y0]) - 0.035 * max(0.0, gwi[y0] - 3.0 * nopat_ser[y1]))
+    if n_trans >= 3 and nopat_sum > 0:
+        out["ma_reinvest"] = round(min(3.0, spend_sum / nopat_sum), 4)
 
     common_ic = sorted(y for y in set(ic_ser) & set(nopat_ser) if last is None or y <= last)
     if len(common_ic) >= 3:
