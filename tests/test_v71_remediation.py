@@ -85,14 +85,13 @@ class ValuationCoreTests(unittest.TestCase):
 
 
 class PipelineTests(unittest.TestCase):
-    def test_tangible_nopat_adds_back_owner_addback(self):
+    def test_tangible_roic_has_no_addback(self):
         ebit, tax = {2024: 100.0}, {2024: 0.0}
         eq, debt, cash = {2023: 1000.0, 2024: 1000.0}, {}, {}
         gw, ig = {2023: 600.0, 2024: 600.0}, {}
         g0, t0 = metrics.roic_series(ebit, tax, eq, debt, cash, gw, ig)
-        g1, t1 = metrics.roic_series(ebit, tax, eq, debt, cash, gw, ig, addback={2024: 40.0})
-        self.assertAlmostEqual(g0[2024], g1[2024])                 # GAAP ROIC unchanged
-        self.assertAlmostEqual(t1[2024], (100.0 + 40.0) / 400.0)   # tangible NOPAT incl. amortisation add-back
+        self.assertAlmostEqual(g0[2024], 100.0 / 1000.0)
+        self.assertAlmostEqual(t0[2024], 100.0 / 400.0)            # v7.3: same NOPAT on tangible capital
 
     def test_invested_capital_includes_minorities_and_short_term_debt(self):
         eq_ic, debt_ic = metrics.ic_inputs({"equity": {2024: 100.0}, "nci": {2024: 50.0},

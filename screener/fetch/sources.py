@@ -1184,7 +1184,6 @@ class EODHD:
         roic_g, roic_t = metrics.roic_series(
             s.get("ebit", {}), tax_rate, eq_ic, debt_ic,
             {**s.get("cash", {}), **s.get("cash_sti", {})}, s.get("goodwill", {}), s.get("intang", {}), s.get("assets", {}),
-            metrics.addback_series(s),
         )
         fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}), s.get("lease", {}))
         oe_ser = par.owner_eps_series(s)

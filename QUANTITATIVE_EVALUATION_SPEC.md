@@ -1,11 +1,11 @@
-# Quantitative Evaluation Framework Specification (v7.2)
+# Quantitative Evaluation Framework Specification (v7.3)
 ## Quality & Moat Screener — Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v7.2). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
+This specification governs the **independent quantitative valuation** of individual public companies within the Quality & Moat Screener (v7.3). It can be executed entirely standalone by an AI agent or analyst to model fair value, margin of safety, and expected internal rate of return (IRR) across a 5-year business cycle.
 
 ### The Slump-Cannibal Compounder & Explicit DCF Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, **Michael Mauboussin**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are valued via a **Sure & Simple Explicit $N$-Year Mauboussin-Fade Discounted Cash Flow (DCF) model** at a discount rate of $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials):
@@ -53,11 +53,11 @@ When an evaluation is triggered, the coordinator agent provides:
 
 ---
 
-## 3. Step-by-Step Valuation Methodology (v7.2)
+## 3. Step-by-Step Valuation Methodology (v7.3)
 
 ---
 
-### Step 1: Owner EPS Calculation, Lease/Impairment Normalization & Peak Selection (v7.2)
+### Step 1: Owner EPS Calculation, Lease/Impairment Normalization & Peak Selection (v7.3)
 
 1. **Owner EPS Definition, Deterministic D&A & IFRS-16 Lease Normalization (Per Fiscal Year)**:
    $$\text{Owner Add-Back}_y = \max\!\left(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y\right), \qquad \text{Owner EPS}_y = \frac{\text{Net Income}_y + \text{Owner Add-Back}_y}{\text{Shares Outstanding}_y}$$
@@ -84,7 +84,7 @@ When an evaluation is triggered, the coordinator agent provides:
    - **Analyst Override (`peak_eps_est`)**: Required when:
      - The reported peak contains an unrepeatable operational windfall (e.g. pandemic freight rates, cyclical commodity peak).
      - Recent strategic spin-offs or restructurings distorted historical share counts or continuing operations.
-   - **The Age-Weighted Mid-Cycle Reversion Standard** (v7.2):
+   - **The Age-Weighted Mid-Cycle Reversion Standard** (v7.3):
      When `peak_eps_est` is not explicitly populated, active earning power is protected against stale or bubble peaks:
      - If `fin_note` flags a multi-class share-basis mismatch (`"check share basis"`), $\text{cur\_eps}$ defaults to `peak_oe_eps`; if `fin_note` flags `"non-cash earnings spike left out of peak"` or $\text{cur\_eps} > 1.5 \times \text{peak\_oe\_eps}$, $\text{cur\_eps}$ is capped at `peak_oe_eps`.
      - If $\text{cur\_eps} < \text{peak\_oe\_eps}$, with $\text{age} = \text{cur\_oe\_year} - \text{peak\_oe\_year}$ and $w = 0.5$ for age $\le 1$, $w = 0.5\,(4 - \text{age})/3$ for ages 2–3, $w = 0$ from age 4 (`gates.peak_weight`; $w = 0.5$ when `cur_oe_year` is missing):
@@ -95,15 +95,15 @@ When an evaluation is triggered, the coordinator agent provides:
 
 ---
 
-### Step 2: Operating ROIC Normalization, M&A Capital Matching & Single Initial Cap (`par_roic_cap = 50%`) (v7.2)
+### Step 2: Operating ROIC Normalization, M&A Capital Matching & Single Initial Cap (`par_roic_cap = 50%`) (v7.3)
 
 To prevent accounting distortions from penalizing capital-light compounders while ensuring M&A goodwill is matched to M&A-driven growth:
 1. **Short-Term Investments Netting, M&A Goodwill Neutralization & Denominator Floor**:
    - Operating cash $\text{Cash}_{\text{op}}$ nets both cash & equivalents and marketable short-term treasury investments (`cashAndShortTermInvestments`, stored in `cash_sti` and exported in `cash_m`) from Invested Capital:
      $$\text{IC}_{\text{GAAP}} = \text{Equity} + \text{NCI} + \text{Debt}_{\text{LT}} + \text{Debt}_{\text{ST}} - \text{Cash}_{\text{op}} \qquad \left(\text{floored at } 0.25 \times \text{Tangible Operating Assets when } \text{IC}_{\text{GAAP}} \le 0\right)$$
      Non-controlling interests (NCI) are included so the capital base matches consolidated EBIT (e.g. Heineken Holding).
-   - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3} \times \text{IC}_{\text{GAAP}}$, and adds the owner-earnings add-back to NOPAT so acquired-intangible amortisation is treated exactly as in Owner EPS:
-     $$\text{Operating ROIC} = \frac{\text{NOPAT} + \text{Owner Add-Back}}{\max\!\left(\text{IC}_{\text{GAAP}} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
+   - **Operating ROIC (Tangible Capital Return, v7.3)** earns the same NOPAT on Invested Capital less Goodwill and Intangibles, floored at $\frac{1}{3} \times \text{IC}_{\text{GAAP}}$. There is no D&A add-back: taking acquired assets out of capital and also adding their amortisation back to NOPAT counted the same thing twice. When $\text{IC}_{\text{GAAP}} \le 0$ (customer cash, buyback-driven negative equity) the tangible figure is not defined and `roic_operating` falls back to GAAP ROIC:
+     $$\text{Operating ROIC} = \frac{\text{NOPAT}}{\max\!\left(\text{IC}_{\text{GAAP}} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)} \quad (\text{IC}_{\text{GAAP}} > 0)$$
 2. **M&A-Matched RONIC & Single Initial Cap (`par_roic_cap = 0.50`)**:
    - Replaces the legacy two-step log compression + Galton pre-fade ($\text{ROIC}_{\text{log}} \to \text{ROIC}_{\text{exp}}$) with a single initial cap $\text{RONIC}_0 \le 50.0\%$ (`par_roic_cap = 0.50`, unless overridden by `roic_est`), leaving all mean-reversion to the explicit Stage-1 linear fade ($\text{RONIC}_0 \to \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r))$ over $N$ years).
    - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), the business is assumed to keep spending `ma_reinvest` of earnings on acquisitions that earn GAAP ROIC. Bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$ is the share $w = \text{clip}_{[0,1]}(g_m / g_0)$ of the growth ceiling, and the reinvestment rate $g_0/\text{RONIC}_0 = (1-w)\,g_0/r_{\text{tang}} + w\,g_0/r_{\text{GAAP}}$ gives:
@@ -119,7 +119,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 3: 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.2)
+### Step 3: 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.3)
 
 1. **Core Growth Parameters**:
    - `par_g_base = 0.030` (`3.0%` long-term historical inflation pass-through terminal growth rate $g_{\text{term}}$).
@@ -144,7 +144,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 4: Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v7.2)
+### Step 4: Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v7.3)
 
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade Over Gate 4 CAP ($t = 1 \dots N$)**:
    Starting from Year-1 normalized run-rate Owner Earnings $E_1 = 1.0$ on existing capital $\text{IC}_0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial marginal return $\text{RONIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and marginal RONIC fade linearly across $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = \min(g_0, 3.0\%)$, $\text{RONIC}_{\text{term}} = \max(0.05,\; \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r)))$):
@@ -165,7 +165,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 5: The 3-Price Valuation Framework & Bellman-Consistent 5Y Expected IRR (v7.2)
+### Step 5: The 3-Price Valuation Framework & Bellman-Consistent 5Y Expected IRR (v7.3)
 
 1. **Fair Value Price (`par_val`)**: $\text{Fair Value Price} = \text{Fair P/E} \times \text{Active Peak Owner EPS}$.
 2. **Standalone Terminal P/E (`term_mult`), Terminal Price (`term_val`) & `% vs Terminal` (`vs_term`)**:
@@ -173,7 +173,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
      $$\text{term\_mult} = \frac{1 - g_{\text{term}} / \text{RONIC}_{\text{term}}}{\max(0.01,\; r - g_{\text{term}})} \quad (\text{when } \text{RONIC}_{\text{term}} > r,\text{ else } 1/r;\text{ or } \text{BVPS}/\text{Peak EPS}\text{ for MTM HoldCos; } 0\text{ for finite concessions})$$
      $$\text{term\_val} = \text{term\_mult} \times \text{Active Peak Owner EPS}, \qquad \text{vs\_term} = \frac{\text{Current Share Price}}{\text{term\_val}} - 1.0$$
 3. **Current Multiple (`cur_mult`)**: $\text{Current Multiple} = \frac{\text{Current Share Price}}{\text{Active Peak Owner EPS}}$.
-4. **Price vs Fair Value (`vs_par`)**: $\text{vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (negative = discount, positive = premium). There is no Below / Above PAR classification (v7.2): a valued company has status **`Valued`** and is read from price, fair price and terminal price. When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank; failed statement-integrity checks give **`No data`**.
+4. **Price vs Fair Value (`vs_par`)**: $\text{vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (negative = discount, positive = premium). There is no Below / Above PAR classification (v7.3): a valued company has status **`Valued`** and is read from price, fair price and terminal price. When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank; failed statement-integrity checks give **`No data`**.
 4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
    - Uses the exact Year 1–5 DCF free cash flows $\text{FCF}_1 \dots \text{FCF}_5$ and the exact Year-5 DCF continuation value $V_5$:
      $$V_5 = \left(\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \frac{\text{FCF}_t}{(1 + r)^t}\right)(1 + r)^{\min(5, N)}$$

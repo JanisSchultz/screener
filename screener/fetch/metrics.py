@@ -345,14 +345,15 @@ def true_fcf(ocf: dict, capex: dict, sbc: dict, da: dict | None = None, lease: d
 
 
 def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict, goodwill: dict, intang: dict,
-                assets: dict | None = None, addback: dict | None = None):
+                assets: dict | None = None):
     """Per-year ROIC = EBIT × (1 − t) / average invested capital (equity + debt − cash). Pass consolidated equity
     (incl. non-controlling interests) and total debt so the capital base matches consolidated EBIT.
-    Tangible ROIC deducts goodwill and other intangibles from invested capital, floored at 1/3 of GAAP invested
-    capital (so goodwill deduction can reduce the capital denominator by at most 2/3, eliminating artificial
-    200% division-by-zero spikes when goodwill/buybacks exceed book equity). Its NOPAT adds back the owner-earnings
-    add-back (D&A above capex, i.e. acquired-intangible amortisation), exactly as Owner EPS does."""
-    assets, addback = assets or {}, addback or {}
+    Tangible ROIC (v7.3) = the same NOPAT on invested capital less goodwill and other intangibles, floored at 1/3 of
+    GAAP invested capital (so goodwill deduction can reduce the denominator by at most 2/3). No D&A add-back: removing
+    the acquired assets from capital AND adding their amortisation back to NOPAT counted the same thing twice.
+    Only defined while GAAP invested capital is positive — customer cash or buyback-driven negative capital (ADYEN, COR)
+    leaves the tangible figure blank and roic_operating falls back to GAAP ROIC."""
+    assets = assets or {}
 
     def ic(y, tangible):
         if y not in equity or equity[y] is None:
@@ -363,9 +364,9 @@ def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict
         ic_g = raw_g if raw_g > 0 else (0.25 * tang_oa if tang_oa > 0 else raw_g)
         if not tangible:
             return ic_g
-        if ic_g <= 0:
+        if raw_g <= 0:
             return None
-        return max(raw_g - gw_ig, (1.0 / 3.0) * ic_g)
+        return max(raw_g - gw_ig, (1.0 / 3.0) * raw_g)
 
     gaap, tang = {}, {}
     for y, e in ebit.items():
@@ -379,7 +380,7 @@ def roic_series(ebit: dict, tax_rate: dict, equity: dict, debt: dict, cash: dict
             base = (cur + prev) / 2 if (cur is not None and prev is not None and cur > 0 and prev > 0) else cur
             if base is None or base <= 0:
                 continue
-            out[y] = max(-1.0, (nopat + ((addback.get(y) or 0.0) if tangible else 0.0)) / base)
+            out[y] = max(-1.0, nopat / base)
     return gaap, tang
 
 
@@ -390,10 +391,6 @@ def ic_inputs(s: dict) -> tuple[dict, dict]:
     eq_ic = {y: v + (nci.get(y) or 0.0) for y, v in eq.items() if v is not None}
     debt_ic = {y: (debt.get(y) or 0.0) + (st.get(y) or 0.0) for y in set(debt) | set(st)}
     return eq_ic, debt_ic
-
-
-def addback_series(s: dict) -> dict:
-    return {y: owner_addback(s, y) for y, v in (s.get("da") or {}).items() if v is not None}
 
 
 def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
@@ -416,8 +413,7 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     # falls back to cash & equivalents where the combined figure is not reported.
     cash_op = {**g("cash"), **g("cash_sti")}
     eq_ic, debt_ic = ic_inputs(s)
-    roic, roic_t = roic_series(ebit, tax_rate, eq_ic, debt_ic, cash_op, g("goodwill"), g("intang"), g("assets"),
-                               addback_series(s))
+    roic, roic_t = roic_series(ebit, tax_rate, eq_ic, debt_ic, cash_op, g("goodwill"), g("intang"), g("assets"))
     out = {}
 
     all_years = set(ni) | set(g("sales")) | set(g("ocf")) | set(g("equity"))
@@ -453,7 +449,13 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     if yrs:
         out["roic_median"] = median(roic[y] for y in yrs)
         out["roic_years"] = len(yrs)
-    yt = _last_years(roic_t, ROIC_YEARS, last)
+    # Tangible ROIC only when it exists in all but at most one year of the GAAP window: repeated years with GAAP
+    # invested capital <= 0 (clearing / customer cash DB1, ADYEN; working-capital swings MCK) mean the capital base is
+    # unstable and a median over the few remaining years (DB1: one tiny positive year -> 5,596%) is meaningless ->
+    # GAAP ROIC. A single net-cash year (SPGI FY2021 before IHS) is tolerated.
+    yt = [y for y in yrs if y in roic_t] if yrs else []
+    if len(yt) < max(1, len(yrs) - 1):
+        yt = []
     if yt:
         out["roic_tangible_median"] = median(roic_t[y] for y in yt)
         if (out.get("roic_median") or 0) > 0 and out["roic_tangible_median"] < out["roic_median"]:

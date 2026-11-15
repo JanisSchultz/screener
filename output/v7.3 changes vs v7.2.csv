@@ -1,0 +1,237 @@
+id,universe,result,sub,roic_source,v72_roic_operating,v73_roic_operating,v72_ronic0,v73_ronic0,v72_fair_pe,v73_fair_pe,v72_vs_fair,v73_vs_fair,v73_status,v73_ronic_le_r
+IFC.CA,ca,Quality pass,Property & Casualty Insurance,roe_median,0.8508,1.3569,0.15,0.15,12.4978,12.4978,0.1363,0.1363,Valued,False
+FFH.CA,ca,Quality pass,Property & Casualty Insurance,roe_median,0.2942,0.251,0.1889,0.1889,6.2131,6.2131,0.4069,0.4069,Valued,False
+BAM.CA,ca,Quality pass,Asset Management & Custody Banks,roic_operating,0.0874,0.0861,0.0874,0.0861,12.0185,11.8824,1.8704,1.9033,Valued,False
+X.CA,ca,Quality pass,Financial Exchanges & Data,roic_operating,0.2862,0.2657,0.0923,0.0922,12.4502,12.4413,1.8688,1.8708,Valued,False
+CCL.B.CA,ca,Quality pass,"Metal, Glass & Plastic Containers",roic_operating,0.2914,0.2914,0.1429,0.1429,14.8072,14.8072,0.4673,0.4673,Valued,False
+CNR.CA,ca,Quality pass,Rail Transportation,roic_operating,0.1303,0.1303,0.1303,0.1303,12.9105,12.9105,0.7545,0.7545,Valued,False
+CP.CA,ca,Quality pass,Rail Transportation,roic_est,0.0721,0.0721,0.145,0.145,14.0096,14.0096,1.0779,1.0779,Valued,False
+WCN.CA,ca,Quality pass,Environmental & Facilities Services,roic_operating,0.2053,0.198,0.1162,0.1148,14.5522,14.4533,2.0608,2.0817,Valued,False
+ATD.CA,ca,Quality pass,Food Retail,roic_operating,0.2952,0.2952,0.1543,0.1543,15.7728,15.7728,0.1012,0.1012,Valued,False
+DOL.CA,ca,Quality pass,Broadline Retail,roic_operating,0.8219,0.8219,0.5,0.5,24.2719,24.2719,0.9125,0.9125,Valued,False
+CSU.CA,ca,Quality pass,Application Software,roic_operating,1.2086,0.3782,0.1261,0.1261,16.6333,16.6333,0.8445,0.8445,Valued,False
+AUTO.GB,eu,Quality pass,Interactive Media & Services (mapped),roic_operating,1.5844,1.5204,0.5,0.5,18.3724,18.3724,-0.0633,-0.0633,Valued,False
+G24.DE,eu,Quality pass,Interactive Media & Services (mapped),roic_operating,0.3611,0.3397,0.245,0.237,19.365,19.1964,0.2106,0.2213,Valued,False
+RMV.GB,eu,Quality pass,Interactive Media & Services (mapped),roic_operating,13.9857,13.9857,0.5,0.5,17.1417,17.1417,0.2063,0.2063,Valued,False
+ITX.ES,eu,Quality pass,Apparel Retail (mapped),roic_operating,0.8806,0.8806,0.5,0.5,18.2674,18.2674,0.6358,0.6358,Valued,False
+CFR.CH,eu,Quality pass,"Apparel, Accessories & Luxury Goods (mapped)",roic_operating,0.3185,0.3185,0.3185,0.3185,19.4624,19.4624,0.5935,0.5935,Valued,False
+MC.FR,eu,Quality pass,"Apparel, Accessories & Luxury Goods (mapped)",roic_operating,0.7117,0.7117,0.2947,0.2947,21.6599,21.6599,-0.2454,-0.2454,Valued,False
+RMS.FR,eu,Quality pass,"Apparel, Accessories & Luxury Goods (mapped)",roic_operating,1.0614,1.0614,0.5,0.5,33.2863,33.2863,-0.0727,-0.0727,Valued,False
+CPG.GB,eu,Quality pass,Restaurants (mapped),roic_operating,0.5546,0.5367,0.5,0.5,,,,,No data,False
+CARL B.DK,eu,Quality pass,Brewers (mapped),roic_operating,0.4758,0.4758,0.1586,0.1586,12.6736,12.6736,0.416,0.416,Valued,False
+HEIA.NL,eu,Quality pass,Brewers (mapped),roic_operating,0.2274,0.2274,0.0858,0.0858,11.7773,11.7773,1.1392,1.1392,Valued,False
+HEIO.NL,eu,Quality pass,Brewers (mapped),roic_operating,0.2247,0.2189,0.0863,0.0863,11.783,11.783,1.0261,1.0261,Valued,False
+DGE.GB,eu,Calamity pass,Distillers & Vintners (mapped),roic_operating,0.2886,0.2886,0.1444,0.1444,11.8906,11.8906,1.7594,1.7594,Valued,False
+RI.FR,eu,Quality pass,Distillers & Vintners (mapped),roic_operating,0.2449,0.2449,0.0816,0.0816,11.7255,11.7255,0.1392,0.1392,Valued,True
+LISP.CH,eu,Quality pass,Packaged Foods & Meats (mapped),roic_operating,0.1901,0.1901,0.166,0.166,15.2028,15.2028,0.7737,0.7737,Valued,False
+LOTB.BE,eu,Quality pass,Packaged Foods & Meats (mapped),roic_operating,0.4011,0.4011,0.2059,0.2059,19.0842,19.0842,2.4623,2.4623,Valued,False
+NESN.CH,eu,Calamity pass,Packaged Foods & Meats (mapped),roic_operating,0.2999,0.2999,0.1301,0.1301,11.8887,11.8887,0.9664,0.9664,Valued,False
+BEI.DE,eu,Quality pass,Personal Care Products (mapped),roic_operating,0.1738,0.1738,0.1738,0.1738,12.4739,12.4739,0.5709,0.5709,Valued,False
+OR.FR,eu,Quality pass,Personal Care Products (mapped),roic_operating,0.459,0.4566,0.2706,0.2702,19.1233,19.1171,1.0166,1.0172,Valued,False
+ULVR.GB,eu,Quality pass,Personal Care Products (mapped),roic_operating,0.5147,0.5147,0.5,0.5,11.7647,11.7647,0.8304,0.8304,Valued,False
+GTT.FR,eu,Quality pass,Oil & Gas Equipment & Services (mapped),roic_operating,5.6199,5.6199,0.5,0.5,17.7697,17.7697,-0.0578,-0.0578,Valued,False
+VPK.NL,eu,Quality pass,Oil & Gas Storage & Transportation (mapped),roic_operating,0.064,0.064,0.064,0.064,11.7647,11.7647,-0.115,-0.115,Valued,True
+CVC.NL,eu,Quality pass,Asset Management & Custody Banks (mapped),roic_operating,0.7309,0.7008,0.3333,0.3333,21.0297,21.0297,1.5196,1.5196,Valued,False
+EQT.SE,eu,Quality pass,Asset Management & Custody Banks (mapped),roic_operating,0.5874,0.3905,0.2193,0.1997,21.7346,20.9945,0.3871,0.436,Valued,False
+PGHN.CH,eu,Quality pass,Asset Management & Custody Banks (mapped),roic_operating,0.3644,0.3644,0.3644,0.3644,17.4982,17.4982,-0.2386,-0.2386,Valued,False
+VZN.CH,eu,Quality pass,Asset Management & Custody Banks (mapped),roic_operating,0.6082,0.2027,0.5,0.2027,21.6513,18.601,0.4152,0.6473,Valued,False
+DB1.DE,eu,Quality pass,Financial Exchanges & Data (mapped),roic_operating,0.2198,0.0733,0.1141,0.0733,14.9378,9.2146,0.74,1.8207,Valued,True
+ENX.FR,eu,Quality pass,Financial Exchanges & Data (mapped),roic_operating,1.5013,0.4522,0.4522,0.4522,21.3496,21.3496,0.1729,0.1729,Valued,False
+AZA.SE,eu,Quality pass,Investment Banking & Brokerage (mapped),roe_median,0.0361,0.035,0.3693,0.3693,17.4479,17.4479,0.354,0.354,Valued,False
+FBK.IT,eu,Quality pass,Investment Banking & Brokerage (mapped),roe_median,0.5082,4.8785,0.2618,0.2618,15.2616,15.2616,0.3768,0.3768,Valued,False
+SAVE.SE,eu,Quality pass,Investment Banking & Brokerage (mapped),roe_median,1.2332,1.2332,0.375,0.375,15.0239,15.0239,0.9803,0.9803,Valued,False
+III.GB,eu,Quality pass,Multi-Sector Holdings (mapped),roe_median,0.2147,0.2147,0.225,0.225,5.5685,5.5685,-0.1324,-0.1324,Valued,False
+INDU C.SE,eu,Quality pass,Multi-Sector Holdings (mapped),roe_median,0.1911,0.1911,0.1945,0.1945,9.6692,9.6692,0.2223,0.2223,Valued,False
+INVE B.SE,eu,Quality pass,Multi-Sector Holdings (mapped),roe_median,0.1839,0.1839,0.1777,0.1777,6.0595,6.0595,0.4014,0.4014,Valued,False
+LATO B.SE,eu,Quality pass,Multi-Sector Holdings (mapped),roe_median,0.0856,0.0856,0.1444,0.1444,12.1894,12.1894,1.2079,1.2079,Valued,False
+LUND B.SE,eu,Quality pass,Multi-Sector Holdings (mapped),roe_median,0.0491,0.0491,0.0884,0.0884,9.7561,9.7561,1.276,1.276,Valued,True
+ADM.GB,eu,Quality pass,Property & Casualty Insurance (mapped),roe_median,0.4583,0.3756,0.5,0.5,12.8942,12.8942,0.2774,0.2774,Valued,False
+GJF.NO,eu,Quality pass,Property & Casualty Insurance (mapped),roe_median,0.2991,0.2991,0.2047,0.2047,9.8371,9.8371,1.1893,1.1893,Valued,False
+SAMPO.FI,eu,Quality pass,Property & Casualty Insurance (mapped),roe_median,0.3623,0.2188,0.163,0.163,9.7561,9.7561,0.3898,0.3898,Valued,False
+HNR1.DE,eu,Quality pass,Reinsurance (mapped),roe_median,0.3083,0.1975,0.1902,0.1902,11.3316,11.3316,0.1155,0.1155,Valued,False
+MUV2.DE,eu,Quality pass,Reinsurance (mapped),roe_median,0.3358,0.2058,0.1816,0.1816,10.7691,10.7691,0.1128,0.1128,Valued,False
+ADYEN.NL,eu,Quality pass,Transaction & Payment Processing Services (mapped),roic_operating,7.125,2.375,0.5,0.5,25.8306,25.8306,-0.0013,-0.0013,Valued,False
+WISE.GB,eu,Quality pass,Transaction & Payment Processing Services (mapped),roic_operating,0.8422,0.2807,0.5,0.2807,,,,,No data,False
+ALC.CH,eu,Quality pass,Health Care Equipment (mapped),roic_operating,0.1501,0.1035,0.1165,0.0883,13.7892,12.0268,0.4563,0.6697,Valued,False
+BIM.FR,eu,Quality pass,Health Care Equipment (mapped),roic_operating,0.1691,0.1667,0.1272,0.1266,15.0575,15.0233,0.6931,0.697,Valued,False
+EL.FR,eu,Quality pass,Health Care Equipment (mapped),roic_operating,0.2184,0.1682,0.0561,0.0561,7.5443,7.5443,2.564,2.564,Valued,True
+SECT B.SE,eu,Quality pass,Health Care Equipment (mapped),roic_operating,1.7988,1.7988,0.5,0.5,23.0714,23.0714,3.7666,3.7666,Valued,False
+SHL.DE,eu,Quality pass,Health Care Equipment (mapped),roic_operating,0.3101,0.2686,0.2071,0.1913,15.4585,15.1991,0.2368,0.2579,Valued,False
+COLO B.DK,eu,Quality pass,Health Care Supplies (mapped),roic_operating,0.5259,0.4948,0.1649,0.1649,15.2464,15.2464,0.8868,0.8868,Valued,False
+STMN.CH,eu,Quality pass,Health Care Supplies (mapped),roic_operating,0.5895,0.5895,0.2832,0.2832,17.9022,17.9022,1.5726,1.5726,Valued,False
+QIA.DE,eu,Quality pass,Life Sciences Tools & Services (mapped),roic_operating,0.3301,0.3301,0.11,0.11,11.8897,11.8897,1.0534,1.0534,Valued,False
+ALK B.DK,eu,Quality pass,Pharmaceuticals (mapped),roic_operating,0.1367,0.1367,0.1367,0.1367,11.7647,11.7647,2.9082,2.9082,Valued,False
+ROP.CH,eu,Quality pass,Pharmaceuticals (mapped),roic_operating,0.614,0.614,0.5,0.5,11.7647,11.7647,1.1446,1.1446,Valued,False
+KOG.NO,eu,Quality pass,Aerospace & Defense (mapped),roic_operating,0.6424,0.6424,0.4879,0.4879,18.1409,18.1409,1.0704,1.0704,Valued,False
+MTX.DE,eu,Quality pass,Aerospace & Defense (mapped),roic_operating,0.198,0.198,0.1836,0.1836,15.3733,15.3733,0.2189,0.2189,Valued,False
+RR..GB,eu,Quality pass,Aerospace & Defense (mapped),roic_operating,0.9394,0.3131,0.5,0.3131,11.7647,11.7647,2.8429,2.8429,Valued,False
+SAF.FR,eu,Quality pass,Aerospace & Defense (mapped),roic_operating,0.7004,0.7004,0.2335,0.2335,17.085,17.085,1.0209,1.0209,Valued,False
+AENA.ES,eu,Quality pass,Airport Services (mapped),roic_operating,0.1479,0.1479,0.1479,0.1479,14.2015,14.2015,0.3812,0.3812,Valued,False
+ASSA B.SE,eu,Quality pass,Building Products (mapped),roic_operating,0.396,0.3532,0.1177,0.1177,14.7733,14.7733,0.7057,0.7057,Valued,False
+BEAN.CH,eu,Quality pass,Building Products (mapped),roic_operating,0.3579,0.3579,0.3579,0.3579,20.2349,20.2349,1.5639,1.5639,Valued,False
+GEBN.CH,eu,Quality pass,Building Products (mapped),roic_operating,0.8196,0.8196,0.5,0.5,12.7086,12.7086,1.605,1.605,Valued,False
+KRX.IE,eu,Quality pass,Building Products (mapped),roic_operating,0.3187,0.3187,0.1616,0.1616,17.6278,17.6278,0.4818,0.4818,Valued,False
+DG.FR,eu,Quality pass,Construction & Engineering (mapped),roic_median,0.3508,0.3508,0.1169,0.1169,14.1351,14.1351,-0.0556,-0.0556,Valued,False
+FGR.FR,eu,Quality pass,Construction & Engineering (mapped),roic_median,0.3053,0.2935,0.0978,0.0978,12.606,12.606,-0.3178,-0.3178,Valued,False
+EPI A.SE,eu,Quality pass,Construction Machinery & Heavy Transportation Equipment (mapped),roic_operating,0.4466,0.4282,0.2664,0.2664,18.5336,18.5336,0.709,0.709,Valued,False
+AMS.ES,eu,Quality pass,Data Processing & Outsourced Services (mapped),roic_operating,0.5235,0.5235,0.1745,0.1745,11.9973,11.9973,0.6844,0.6844,Valued,False
+ABBN.CH,eu,Quality pass,Electrical Components & Equipment (mapped),roic_operating,0.6638,0.6638,0.4176,0.4176,18.5763,18.5763,0.7284,0.7284,Valued,False
+LAGR B.SE,eu,Quality pass,Electrical Components & Equipment (mapped),roic_operating,0.6505,0.5318,0.1773,0.1773,19.3621,19.3621,0.7258,0.7258,Valued,False
+LR.FR,eu,Quality pass,Electrical Components & Equipment (mapped),roic_operating,0.4355,0.3906,0.1386,0.1381,15.3579,15.335,0.7066,0.7091,Valued,False
+PRY.IT,eu,Quality pass,Electrical Components & Equipment (mapped),roic_operating,0.2346,0.2346,0.1516,0.1516,16.0978,16.0978,0.536,0.536,Valued,False
+SU.FR,eu,Quality pass,Electrical Components & Equipment (mapped),roic_operating,0.4392,0.3986,0.1329,0.1329,14.9715,14.9715,0.9414,0.9414,Valued,False
+RTO.GB,eu,Calamity pass,Environmental & Facilities Services (mapped),roic_operating,0.2694,0.1811,0.0857,0.0809,,,,,No data,True
+LIFCO B.SE,eu,Quality pass,Industrial Conglomerates (mapped),roic_operating,0.6099,0.505,0.1683,0.1683,18.8048,18.8048,0.4784,0.4784,Valued,False
+ACLN.CH,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.4155,0.4155,0.4155,0.4155,16.1688,16.1688,1.0176,1.0176,Valued,False
+ATCO A.SE,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.8182,0.7838,0.2729,0.2729,18.1034,18.1034,0.6854,0.6854,Valued,False
+KBX.DE,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.3074,0.3074,0.3074,0.3074,11.7647,11.7647,1.1781,1.1781,Valued,False
+KNEBV.FI,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,2.4404,2.3071,0.5,0.5,11.7647,11.7647,1.4235,1.4235,Valued,False
+RAA.DE,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.5245,0.5245,0.5,0.5,18.6381,18.6381,0.4996,0.4996,Valued,False
+SAND.SE,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.3127,0.2715,0.1265,0.1265,13.433,13.433,0.9785,0.9785,Valued,False
+SCHP.CH,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,2.5262,2.2581,0.5,0.5,12.3576,12.3576,1.3624,1.3624,Valued,False
+SPX.GB,eu,Quality pass,Industrial Machinery & Supplies & Components (mapped),roic_operating,0.3461,0.3415,0.1241,0.1241,13.3982,13.3982,1.1148,1.1148,Valued,False
+BVI.FR,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.6538,0.5783,0.1928,0.1928,14.4418,14.4418,0.453,0.453,Valued,False
+EXPN.GB,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.5012,0.469,0.1563,0.1563,15.4328,15.4328,0.4512,0.4512,Valued,False
+ITRK.GB,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.6153,0.6153,0.2051,0.2051,12.6237,12.6237,1.1497,1.1497,Valued,False
+REL.GB,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.7259,0.6394,0.2131,0.2131,14.3503,14.3503,0.7267,0.7267,Valued,False
+SGSN.CH,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.8449,0.7609,0.5,0.5,11.7647,11.7647,1.2468,1.2468,Valued,False
+WKL.NL,eu,Quality pass,Research & Consulting Services (mapped),roic_operating,0.7905,0.7392,0.2464,0.2464,16.8737,16.8737,-0.1278,-0.1278,Valued,False
+ADDT B.SE,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.718,0.582,0.194,0.194,19.9974,19.9974,0.9324,0.9324,Valued,False
+BEIJ B.SE,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.2603,0.2546,0.1849,0.1834,18.9723,18.9132,0.8039,0.8096,Valued,False
+BNZL.GB,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.5787,0.4478,0.1493,0.1493,15.0917,15.0917,-0.0465,-0.0465,Valued,False
+DPLM.GB,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.5066,0.3973,0.1545,0.152,17.8722,17.7326,1.7489,1.7706,Valued,False
+HWDN.GB,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.2101,0.2101,0.2101,0.2101,15.6069,15.6069,0.0424,0.0424,Valued,False
+INDT.SE,eu,Quality pass,Trading Companies & Distributors (mapped),roic_operating,0.4789,0.3967,0.1813,0.1781,18.5277,18.4018,0.4816,0.4918,Valued,False
+DSY.FR,eu,Quality pass,Application Software (mapped),roic_operating,0.5476,0.4243,0.1414,0.1414,16.1084,16.1084,0.4555,0.4555,Valued,False
+NEM.DE,eu,Quality pass,Application Software (mapped),roic_operating,1.0557,0.8875,0.2958,0.2958,22.8576,22.8576,0.2159,0.2159,Valued,False
+SAP.DE,eu,Quality pass,Application Software (mapped),roic_operating,0.304,0.2728,0.304,0.2728,11.7647,11.7647,1.8149,1.8149,Valued,False
+SGE.GB,eu,Quality pass,Application Software (mapped),roic_operating,0.5584,0.5389,0.1796,0.1796,12.4979,12.4979,1.3165,1.3165,Valued,False
+HLMA.GB,eu,Quality pass,Electronic Equipment & Instruments (mapped),roic_operating,0.4817,0.4176,0.1392,0.1392,16.6834,16.6834,0.8535,0.8535,Valued,False
+ASM.NL,eu,Quality pass,Semiconductor Materials & Equipment (mapped),roic_operating,0.3794,0.3794,0.2634,0.2634,23.6774,23.6774,0.9699,0.9699,Valued,False
+ASML.NL,eu,Quality pass,Semiconductor Materials & Equipment (mapped),roic_operating,1.7358,1.7358,0.5,0.5,36.1657,36.1657,0.4908,0.4908,Valued,False
+MYCR.SE,eu,Quality pass,Semiconductor Materials & Equipment (mapped),roic_operating,0.8896,0.8688,0.2898,0.2898,19.6939,19.6939,0.7155,0.7155,Valued,False
+VACN.CH,eu,Quality pass,Semiconductor Materials & Equipment (mapped),roic_operating,0.4993,0.4993,0.3519,0.3519,19.095,19.095,2.6449,2.6449,Valued,False
+AI.FR,eu,Quality pass,Industrial Gases (mapped),roic_operating,0.1923,0.1923,0.1709,0.1709,15.479,15.479,1.0485,1.0485,Valued,False
+FPE3.DE,eu,Quality pass,Specialty Chemicals (mapped),roic_operating,0.2232,0.2185,0.1696,0.1696,12.6449,12.6449,0.465,0.465,Valued,False
+GIVN.CH,eu,Quality pass,Specialty Chemicals (mapped),roic_operating,0.3492,0.3492,0.1237,0.1237,13.8992,13.8992,1.5254,1.5254,Valued,False
+NSIS B.DK,eu,Quality pass,Specialty Chemicals (mapped),roic_operating,0.2339,0.2339,0.2339,0.2339,11.7647,11.7647,2.9378,2.9378,Valued,False
+SIKA.CH,eu,Quality pass,Specialty Chemicals (mapped),roic_operating,0.4789,0.4253,0.1521,0.1516,15.833,15.8136,0.5504,0.5523,Valued,False
+GOOGL,us,Calamity pass,Interactive Media & Services,roic_operating,0.51,0.51,0.5,0.5,25.0173,25.0173,0.0938,0.0938,Valued,False
+ROST,us,Quality pass,Apparel Retail,roic_operating,0.6695,0.6695,0.5,0.5,17.3864,17.3864,1.0193,1.0193,Valued,False
+TJX,us,Quality pass,Apparel Retail,roic_operating,0.8611,0.8611,0.5,0.5,20.704,20.704,0.3301,0.3301,Valued,False
+ORLY,us,Quality pass,Automotive Retail,roic_operating,0.792,0.792,0.5,0.5,18.2413,18.2413,0.6893,0.6893,Valued,False
+HD,us,Quality pass,Home Improvement Retail,roic_operating,0.5638,0.5545,0.3953,0.3953,18.6666,18.6666,0.2432,0.2432,Valued,False
+MCD,us,Quality pass,Restaurants,roic_operating,0.3525,0.3525,0.3525,0.3525,18.0145,18.0145,0.2631,0.2631,Valued,False
+COST,us,Quality pass,Consumer Staples Merchandise Retail,roic_operating,0.4312,0.4312,0.4312,0.4312,24.4754,24.4754,1.1769,1.1769,Valued,False
+WMT,us,Quality pass,Consumer Staples Merchandise Retail,roic_operating,0.2185,0.2185,0.2051,0.2051,14.0101,14.0101,2.3454,2.3454,Valued,False
+BF.B,us,Quality pass,Distillers & Vintners,roic_operating,0.2618,0.2618,0.2618,0.2618,11.7647,11.7647,0.5151,0.5151,Valued,False
+CASY,us,Quality pass,Food Retail,roic_operating,0.1529,0.1529,0.1529,0.1529,16.606,16.606,1.2378,1.2378,Valued,False
+CHD,us,Quality pass,Household Products,roic_operating,0.4205,0.4196,0.1399,0.1399,12.1232,12.1232,1.5915,1.5915,Valued,False
+CL,us,Quality pass,Household Products,roic_operating,0.953,0.9293,0.5,0.5,11.7647,11.7647,1.6938,1.6938,Valued,False
+HSY,us,Quality pass,Packaged Foods & Meats,roic_operating,0.6623,0.6623,0.2572,0.2572,16.6159,16.6159,0.3745,0.3745,Valued,False
+MKC,us,Quality pass,Packaged Foods & Meats,roic_operating,0.2666,0.2637,0.1333,0.1329,13.4367,13.4268,0.1785,0.1794,Valued,False
+EL,us,Calamity pass,Personal Care Products,roic_operating,0.3772,0.373,0.1243,0.1243,11.9949,11.9949,5.5232,5.5232,Valued,False
+PG,us,Quality pass,Personal Care Products,roic_operating,0.6044,0.6044,0.5,0.5,16.4539,16.4539,0.559,0.559,Valued,False
+KO,us,Quality pass,Soft Drinks & Non-alcoholic Beverages,roic_operating,0.3653,0.3615,0.1649,0.1649,13.9322,13.9322,1.3441,1.3441,Valued,False
+MNST,us,Quality pass,Soft Drinks & Non-alcoholic Beverages,roic_operating,0.778,0.778,0.5,0.5,22.3684,22.3684,1.1513,1.1513,Valued,False
+PEP,us,Quality pass,Soft Drinks & Non-alcoholic Beverages,roic_operating,0.5138,0.5138,0.2162,0.2162,14.9908,14.9908,0.4971,0.4971,Valued,False
+BLK,us,Quality pass,Asset Management & Custody Banks,roic_operating,0.4182,0.4113,0.3211,0.3176,15.6306,15.622,1.023,1.0242,Valued,False
+BX,us,Quality pass,Asset Management & Custody Banks,roic_operating,0.2121,0.2121,0.2121,0.2121,15.3301,15.3301,1.0279,1.0279,Valued,False
+CBOE,us,Quality pass,Financial Exchanges & Data,roic_operating,0.5321,0.4842,0.3723,0.3525,17.0646,17.0157,1.0062,1.012,Valued,False
+CME,us,Quality pass,Financial Exchanges & Data,roic_operating,0.323,0.2927,0.323,0.2927,19.4201,19.1069,0.3743,0.3968,Valued,False
+ICE,us,Quality pass,Financial Exchanges & Data,roic_operating,0.2856,0.2328,0.0808,0.0805,11.0371,10.9822,1.2688,1.2802,Valued,True
+MCO,us,Quality pass,Financial Exchanges & Data,roic_operating,0.8329,0.793,0.2643,0.2643,20.3976,20.3976,0.704,0.704,Valued,False
+NDAQ,us,Calamity pass,Financial Exchanges & Data,roic_operating,0.3439,0.2895,0.1514,0.1453,15.283,15.0679,0.8989,0.926,Valued,False
+SPGI,us,Quality pass,Financial Exchanges & Data,roic_operating,0.3753,0.2578,0.3408,0.2439,21.7914,20.3332,0.2195,0.307,Valued,False
+AON,us,Quality pass,Insurance Brokers,roic_operating,0.9671,0.8398,0.5,0.5,19.8859,19.8859,-0.0373,-0.0373,Valued,False
+BRO,us,Quality pass,Insurance Brokers,roic_operating,0.3994,0.3455,0.1324,0.1312,16.1311,16.052,0.155,0.1607,Valued,False
+ERIE,us,Quality pass,Insurance Brokers,roic_operating,0.3148,0.3148,0.3148,0.3148,19.5434,19.5434,0.2727,0.2727,Valued,False
+MRSH,us,Quality pass,Insurance Brokers,roic_operating,0.5279,0.4783,0.1594,0.1594,17.6691,17.6691,0.2085,0.2085,Valued,False
+IBKR,us,Quality pass,Investment Banking & Brokerage,roe_median,0.1058,0.1052,0.219,0.219,13.3755,13.3755,1.7649,1.7649,Valued,False
+SCHW,us,Quality pass,Investment Banking & Brokerage,roe_median,0.3318,0.1013,0.133,0.133,11.621,11.621,0.4709,0.4709,Valued,False
+BRK.B,us,Quality pass,Multi-Sector Holdings,roe_median,0.1287,0.1287,0.1459,0.1459,11.3808,11.3808,0.6651,0.6651,Valued,False
+CB,us,Quality pass,Property & Casualty Insurance,roe_median,0.3448,0.4891,0.1497,0.1497,11.445,11.445,0.2278,0.2278,Valued,False
+PGR,us,Quality pass,Property & Casualty Insurance,roe_median,1.7618,0.625,0.2137,0.2137,14.7972,14.7972,-0.1712,-0.1712,Valued,False
+WRB,us,Quality pass,Property & Casualty Insurance,roe_median,1.3395,0.4455,0.1967,0.1967,13.001,13.001,0.3236,0.3236,Valued,False
+JKHY,us,Quality pass,Transaction & Payment Processing Services,roic_operating,0.6231,0.6231,0.2077,0.2077,16.0525,16.0525,0.5941,0.5941,Valued,False
+MA,us,Quality pass,Transaction & Payment Processing Services,roic_operating,2.7221,2.7221,0.5,0.5,26.2675,26.2675,0.5101,0.5101,Valued,False
+V,us,Quality pass,Transaction & Payment Processing Services,roic_operating,1.3896,1.3896,0.5,0.5,23.2825,23.2825,0.4642,0.4642,Valued,False
+VRTX,us,Quality pass,Biotechnology,roic_operating,0.835,0.835,0.5,0.5,23.8619,23.8619,0.4622,0.4622,Valued,False
+COR,us,Quality pass,Health Care Distributors,roic_operating,2.5264,2.184,0.5,0.5,19.7414,19.7414,-0.0367,-0.0367,Valued,False
+MCK,us,Quality pass,Health Care Distributors,roic_operating,1.7592,0.5783,0.5,0.5,16.492,16.492,0.737,0.737,Valued,False
+ABT,us,Quality pass,Health Care Equipment,roic_operating,0.4391,0.3695,0.4391,0.3695,18.7163,18.5169,0.3562,0.3708,Valued,False
+BSX,us,Quality pass,Health Care Equipment,roic_operating,0.261,0.2133,0.0789,0.0782,10.9962,10.9004,0.7797,0.7954,Valued,True
+EW,us,Quality pass,Health Care Equipment,roic_operating,0.3576,0.3576,0.2638,0.2638,17.663,17.663,2.1122,2.1122,Valued,False
+IDXX,us,Quality pass,Health Care Equipment,roic_operating,0.5998,0.5998,0.5,0.5,24.8957,24.8957,1.1131,1.1131,Valued,False
+ISRG,us,Quality pass,Health Care Equipment,roic_operating,0.2225,0.2113,0.2225,0.2113,21.1402,20.7745,1.5273,1.5717,Valued,False
+RMD,us,Quality pass,Health Care Equipment,roic_operating,0.6383,0.6099,0.2866,0.2847,21.7682,21.7326,0.0042,0.0059,Valued,False
+STE,us,Quality pass,Health Care Equipment,roic_operating,0.2756,0.2153,0.1771,0.1547,17.0694,16.2556,0.6958,0.7807,Valued,False
+SYK,us,Quality pass,Health Care Equipment,roic_operating,0.4254,0.3781,0.126,0.126,14.5825,14.5825,1.2313,1.2313,Valued,False
+WST,us,Quality pass,Health Care Supplies,roic_operating,0.2959,0.2959,0.2959,0.2959,22.0768,22.0768,1.7776,1.7776,Valued,False
+VEEV,us,Quality pass,Health Care Technology,roic_operating,2.201,2.0865,0.5,0.5,25.0048,25.0048,1.1772,1.1772,Valued,False
+A,us,Quality pass,Life Sciences Tools & Services,roic_operating,0.506,0.506,0.1779,0.1779,16.3503,16.3503,1.319,1.319,Valued,False
+DHR,us,Quality pass,Life Sciences Tools & Services,roic_operating,0.2624,0.2261,0.0754,0.0754,10.5856,10.5856,1.9058,1.9058,Valued,True
+MTD,us,Quality pass,Life Sciences Tools & Services,roic_operating,1.024,1.0234,0.5,0.5,20.2528,20.2528,0.9775,0.9775,Valued,False
+TMO,us,Quality pass,Life Sciences Tools & Services,roic_operating,0.3482,0.2844,0.1245,0.1213,14.9942,14.7949,1.2129,1.2427,Valued,False
+WAT,us,Quality pass,Life Sciences Tools & Services,roic_operating,0.6636,0.6588,0.2998,0.2998,,,,,No data,False
+JNJ,us,Quality pass,Pharmaceuticals,roic_operating,0.7892,0.685,0.2283,0.2283,13.1563,13.1563,0.7973,0.7973,Valued,False
+LLY,us,Quality pass,Pharmaceuticals,roic_operating,0.5434,0.5434,0.4151,0.4151,19.8415,19.8415,2.1653,2.1653,Valued,False
+ZTS,us,Quality pass,Pharmaceuticals,roic_operating,0.4947,0.4947,0.4021,0.4021,22.377,22.377,-0.3854,-0.3854,Valued,False
+GD,us,Quality pass,Aerospace & Defense,roic_operating,0.3939,0.3936,0.1312,0.1312,12.7326,12.7326,0.8572,0.8572,Valued,False
+GE,us,Quality pass,Aerospace & Defense,roic_operating,0.2316,0.2081,0.2316,0.2081,11.7647,11.7647,2.3701,2.3701,Valued,False
+HONA,us,Calamity pass,Aerospace & Defense,roic_operating,0.7637,0.7637,0.5,0.5,25.0386,25.0386,-0.0379,-0.0379,Valued,False
+HWM,us,Quality pass,Aerospace & Defense,roic_operating,0.4068,0.3859,0.4068,0.3859,12.7565,12.746,3.6437,3.6475,Valued,False
+NOC,us,Calamity pass,Aerospace & Defense,roic_operating,0.3793,0.3793,0.1599,0.1599,14.8584,14.8584,0.2432,0.2432,Valued,False
+RTX,us,Calamity pass,Aerospace & Defense,roic_operating,0.1968,0.1451,0.1968,0.1451,11.7647,11.7647,1.8981,1.8981,Valued,False
+EXPD,us,Quality pass,Air Freight & Logistics,roic_operating,0.522,0.5084,0.5,0.5,16.5711,16.5711,0.9675,0.9675,Valued,False
+ALLE,us,Quality pass,Building Products,roic_operating,0.7108,0.6833,0.2278,0.2278,18.2427,18.2427,0.3408,0.3408,Valued,False
+TT,us,Quality pass,Building Products,roic_operating,0.6984,0.6846,0.3321,0.3306,17.3493,17.3446,0.8458,0.8463,Valued,False
+ODFL,us,Quality pass,Cargo Ground Transportation,roic_operating,0.3135,0.3135,0.3135,0.3135,21.0511,21.0511,0.6265,0.6265,Valued,False
+CAT,us,Quality pass,Construction Machinery & Heavy Transportation Equipment,roic_operating,0.1803,0.1803,0.1803,0.1803,16.0917,16.0917,0.8143,0.8143,Valued,False
+BR,us,Quality pass,Data Processing & Outsourced Services,roic_operating,0.661,0.4556,0.1519,0.1519,17.012,17.012,-0.0159,-0.0159,Valued,False
+CPRT,us,Quality pass,Diversified Support Services,roic_operating,0.3648,0.3648,0.3648,0.3648,25.5571,25.5571,-0.2067,-0.2067,Valued,False
+CTAS,us,Quality pass,Diversified Support Services,roic_operating,0.6122,0.6002,0.3368,0.3353,21.7004,21.6904,1.0009,1.0018,Valued,False
+AME,us,Quality pass,Electrical Components & Equipment,roic_operating,0.4531,0.3932,0.1311,0.1311,14.8717,14.8717,1.1155,1.1155,Valued,False
+ROL,us,Quality pass,Environmental & Facilities Services,roic_operating,1.0584,0.9046,0.3015,0.3015,22.4233,22.4233,0.3429,0.3429,Valued,False
+RSG,us,Quality pass,Environmental & Facilities Services,roic_operating,0.3025,0.3025,0.183,0.183,17.1838,17.1838,1.0915,1.0915,Valued,False
+VLTO,us,Quality pass,Environmental & Facilities Services,roic_operating,0.8021,0.7729,0.3476,0.3454,17.2636,17.2565,0.7967,0.7974,Valued,False
+WM,us,Quality pass,Environmental & Facilities Services,roic_operating,0.2417,0.2417,0.1233,0.1233,14.2014,14.2014,1.5439,1.5439,Valued,False
+ADP,us,Quality pass,Human Resource & Employment Services,roic_operating,2.13,2.13,0.5,0.5,21.0116,21.0116,0.3526,0.3526,Valued,False
+PAYX,us,Quality pass,Human Resource & Employment Services,roic_operating,1.6299,1.5639,0.5,0.5,20.399,20.399,0.1439,0.1439,Valued,False
+GWW,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.4241,0.4241,0.4241,0.4241,21.4393,21.4393,0.8515,0.8515,Valued,False
+HUBB,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.5762,0.5556,0.1852,0.1852,16.678,16.678,0.4965,0.4965,Valued,False
+ITW,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.7159,0.7159,0.4935,0.4935,15.777,15.777,0.6303,0.6303,Valued,False
+NDSN,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.5166,0.4512,0.1504,0.1504,15.0626,15.0626,1.1082,1.1082,Valued,False
+OTIS,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,3.3829,3.3374,0.5,0.5,13.6519,13.6519,0.4616,0.4616,Valued,False
+PH,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.5317,0.4684,0.1561,0.1561,16.5604,16.5604,0.7913,0.7913,Valued,False
+SNA,us,Quality pass,Industrial Machinery & Supplies & Components,roic_operating,0.2715,0.2704,0.2512,0.2505,17.6604,17.6498,0.0581,0.0588,Valued,False
+UNP,us,Quality pass,Rail Transportation,roic_operating,0.1625,0.1625,0.1625,0.1625,13.233,13.233,0.9003,0.9003,Valued,False
+EFX,us,Calamity pass,Research & Consulting Services,roic_operating,0.2855,0.2513,0.0838,0.0838,11.6728,11.6728,1.1795,1.1795,Valued,True
+VRSK,us,Quality pass,Research & Consulting Services,roic_operating,0.4304,0.4058,0.2043,0.2043,15.3472,15.3472,0.8724,0.8724,Valued,False
+FAST,us,Quality pass,Trading Companies & Distributors,roic_operating,0.3316,0.3316,0.3316,0.3316,21.121,21.121,1.3892,1.3892,Valued,False
+FERG,us,Quality pass,Trading Companies & Distributors,roic_operating,0.4035,0.4035,0.3206,0.3206,18.8324,18.8324,0.3802,0.3802,Valued,False
+ADSK,us,Quality pass,Application Software,roic_operating,1.483,1.3247,0.4416,0.4416,21.3017,21.3017,1.1471,1.1471,Valued,False
+CDNS,us,Quality pass,Application Software,roic_operating,0.8601,0.8181,0.3555,0.3555,25.0411,25.0411,1.9711,1.9711,Valued,False
+PTC,us,Quality pass,Application Software,roic_operating,0.4095,0.3221,0.1074,0.1074,13.9996,13.9996,0.385,0.385,Valued,False
+SNPS,us,Calamity pass,Application Software,roic_operating,0.8355,0.7673,0.4129,0.4032,25.0493,24.9869,0.9162,0.921,Valued,False
+TYL,us,Quality pass,Application Software,roic_operating,0.3238,0.2112,0.0704,0.0704,8.3637,8.3637,4.1262,4.1262,Valued,True
+MSI,us,Quality pass,Communications Equipment,roic_operating,1.176,1.1136,0.3712,0.3712,20.6885,20.6885,0.8656,0.8656,Valued,False
+APH,us,Quality pass,Electronic Components,roic_operating,0.6016,0.5989,0.1996,0.1996,20.4287,20.4287,1.3113,1.3113,Valued,False
+TEL,us,Quality pass,Electronic Manufacturing Services,roic_operating,0.313,0.313,0.1881,0.1881,14.7091,14.7091,0.3281,0.3281,Valued,False
+VRSN,us,Quality pass,Internet Services & Infrastructure,roic_operating,16.7204,5.5735,0.5,0.5,18.1458,18.1458,0.9151,0.9151,Valued,False
+AMAT,us,Quality pass,Semiconductor Materials & Equipment,roic_operating,0.6069,0.6069,0.5,0.5,21.4717,21.4717,0.365,0.365,Valued,False
+KLAC,us,Quality pass,Semiconductor Materials & Equipment,roic_operating,1.325,1.3089,0.5,0.5,28.0524,28.0524,0.4783,0.4783,Valued,False
+LRCX,us,Quality pass,Semiconductor Materials & Equipment,roic_operating,0.8826,0.8826,0.5,0.5,21.7151,21.7151,0.8122,0.8122,Valued,False
+ASML,us,Quality pass,Semiconductor Materials & Equipment (mapped),roic_operating,1.7358,1.7358,0.5,0.5,36.1657,36.1657,0.5106,0.5106,Valued,False
+ADI,us,Quality pass,Semiconductors,roic_operating,0.2969,0.1858,0.2962,0.1856,17.4453,15.8289,1.8846,2.1791,Valued,False
+AVGO,us,Quality pass,Semiconductors,roic_operating,0.7687,0.4717,0.3126,0.2695,23.154,22.2999,1.4441,1.5377,Valued,False
+TXN,us,Calamity pass,Semiconductors,roic_operating,0.5211,0.5211,0.5,0.5,14.5431,14.5431,2.3909,2.3909,Valued,False
+FTNT,us,Quality pass,Systems Software,roic_operating,3.2036,1.0679,0.5,0.5,25.535,25.535,1.0107,1.0107,Valued,False
+MSFT,us,Quality pass,Systems Software,roic_operating,1.0999,1.0999,0.5,0.5,27.3363,27.3363,0.0689,0.0689,Valued,False
+AAPL,us,Quality pass,"Technology Hardware, Storage & Peripherals",roic_operating,0.9094,0.8904,0.5,0.5,21.2313,21.2313,0.7978,0.7978,Valued,False
+CRH,us,Quality pass,Construction Materials,roic_operating,0.2005,0.1939,0.1394,0.1382,14.6149,14.5714,0.0346,0.0377,Valued,False
+VMC,us,Quality pass,Construction Materials,roic_operating,0.1797,0.1701,0.1447,0.14,16.5132,16.2612,0.9402,0.9703,Valued,False
+APD,us,Calamity pass,Industrial Gases,roic_operating,0.1017,0.1017,0.1017,0.1017,12.7663,12.7663,2.3889,2.3889,Valued,False
+LIN,us,Quality pass,Industrial Gases,roic_operating,0.3463,0.3448,0.2852,0.2842,19.1032,19.0895,0.8711,0.8725,Valued,False
+ECL,us,Quality pass,Specialty Chemicals,roic_operating,0.3652,0.3365,0.1122,0.1122,11.7835,11.7835,2.5716,2.5716,Valued,False
+SHW,us,Quality pass,Specialty Chemicals,roic_operating,0.6137,0.6059,0.202,0.202,16.7415,16.7415,1.0023,1.0023,Valued,False

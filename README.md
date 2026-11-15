@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.2 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.3 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,9 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.3: Operating ROIC without the D&A add-back (audit item A, option C2):
+- `metrics.roic_series`: tangible ROIC = NOPAT ÷ max(invested capital − goodwill − intangibles, ⅓ invested capital). The owner-earnings add-back is no longer added to NOPAT (it double-counted acquired assets already removed from capital), and the tangible figure is only computed while GAAP invested capital is positive — otherwise `roic_operating` = GAAP ROIC (ADYEN, COR). Balance-sheet insurers (ROE) and concessions (GAAP ROIC) are unchanged; brokers stay on operating ROIC. Fair values barely move (median Fair P/E 16.6× → 16.5× on the comparison); review file `output/v7.3 changes vs v7.2.csv`.
 
 v7.2: Audit items 1–5 — Cash-Funded M&A Matching, Age-Weighted Peak Blend, No PAR Labels, Share-Count & Currency-Switch Integrity:
 - M&A reinvestment (`metrics.summarize` → `ma_reinvest`): Σ cash-funded Δ goodwill+intangibles ÷ Σ NOPAT over the same 10-year window as g₀ (was: median of the last 5 years, 0 for one-off deals). Years with shares +3% or more are skipped — stock-funded deals (SPGI/IHS, ADI/Maxim) are already netted out of g₀ by the dilution index S_t. Cash acquirers now carry their acquisition cost in RONIC₀ (MC.FR 50% → 29%, ICE 31% → 8%, TYL 33% → 7%).
@@ -266,7 +269,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.2)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.3)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

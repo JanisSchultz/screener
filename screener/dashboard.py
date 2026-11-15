@@ -191,7 +191,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = statistics.median(irrs) if irrs else None
 
     return {
-        "version": "7.2",
+        "version": "7.3",
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
