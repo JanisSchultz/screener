@@ -5,6 +5,7 @@ zero-dependency standalone HTML application (output/screener.html).
 """
 from __future__ import annotations
 
+import csv
 import json
 import statistics
 from datetime import date
@@ -13,7 +14,30 @@ from typing import Any
 
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
+from .fetch.metrics import cagr
 from .gates import active_roic, g6_checks, params, par_valuation, results, uses_gaap_roic
+
+
+def _load_sales_cagrs(u_key: str) -> dict[str, tuple[float | None, float | None]]:
+    """Compute trailing 3y and 5y revenue CAGRs per company id from fundamentals_panel.csv."""
+    panel_path = DATA_DIR / u_key / "fundamentals_panel.csv"
+    if not panel_path.exists():
+        return {}
+    series: dict[str, dict[int, float]] = {}
+    with panel_path.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            cid, fy_s, rev_s = r.get("id"), r.get("fy"), r.get("revenue_m")
+            if cid and fy_s and rev_s:
+                try:
+                    series.setdefault(cid, {})[int(fy_s)] = float(rev_s)
+                except ValueError:
+                    pass
+    out: dict[str, tuple[float | None, float | None]] = {}
+    for cid, ser in series.items():
+        s3 = cagr(ser, 3)
+        s5 = cagr(ser, 5)
+        out[cid] = (round(s3, 4) if s3 is not None else None, round(s5, 4) if s5 is not None else None)
+    return out
 
 
 def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
@@ -43,10 +67,12 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             "g_base": p.get("par_g_base", 0.030),
         }
         res_map = results(meta)
+        sales_cagr_map = _load_sales_cagrs(u_key)
 
         for c in meta["companies"]:
             cid = c["id"]
             fin = meta["financials"].get(cid, {})
+            s3_panel, s5_panel = sales_cagr_map.get(cid, (None, None))
             pres = res_map.get(cid, {})
             cap_val = c.get("4")
             sub_ind = c.get("sub_industry", "")
@@ -145,6 +171,8 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "mult_high_5y": fin.get("mult_high_5y"),
                 "cagr_oe_eps": fin.get("cagr_oe_eps"),
                 "sales_1y": fin.get("sales_1y"),
+                "sales_3y": fin.get("sales_3y") if fin.get("sales_3y") is not None else s3_panel,
+                "sales_5y": fin.get("sales_5y") if fin.get("sales_5y") is not None else s5_panel,
                 "sales_cagr": fin.get("sales_cagr"),
                 "sales_cagr_yrs": fin.get("sales_cagr_yrs"),
                 "opcost_1y": fin.get("opcost_1y"),
@@ -1861,7 +1889,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="vs_term-desc">Sort: vs Terminal Price ↓</option>
         <option value="g_gap-desc">Sort: Growth Margin (g₀ - g_mkt) ↓</option>
         <option value="g_market-asc">Sort: Market-Implied g (at r) ↑</option>
-        <option value="g_org_exp-desc">Sort: Growth Ceiling (g₀) ↓</option>
+        <option value="g_org_exp-desc">Sort: Model g (g₀) ↓</option>
         <option value="opcost_cagr-desc">Sort: 10Y WLS OpCost Growth ↓</option>
         <option value="sales_1y-asc">Sort: 1Y Growth (Slump) ↑</option>
         <option value="sales_1y-desc">Sort: 1Y Growth ↓</option>
@@ -2552,7 +2580,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       price: {{ key: 'price', label: 'Price', num: true }},
       sales_1y: {{ key: 'sales_1y', label: '1Y Growth', num: true }},
       sales_cagr: {{ key: 'sales_cagr', label: '10Y Sales WLS', num: true }},
-      g_org_exp: {{ key: 'g_org_exp', label: 'Growth Ceiling (g₀)', num: true }},
+      sales_1_3_5y: {{ key: 'sales_1_3_5y', label: '1y/3y/5y g', num: true }},
+      g_org_exp: {{ key: 'g_org_exp', label: 'Model g', num: true }},
       buyback_yield: {{ key: 'buyback_yield', label: 'Buyback', num: true }},
       g_market: {{ key: 'g_market', label: 'Mkt Implied g', num: true }},
       g_gap: {{ key: 'g_gap', label: 'g Margin', num: true }},
@@ -2585,6 +2614,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       price: "Latest market share price in the stock's quote currency.",
       sales_1y: "Trailing 1-year revenue growth (slump check only; does not lower structural growth ceiling g₀).",
       sales_cagr: "10-year exponentially-weighted log-linear OLS revenue growth rate (τ = 5y half-life).",
+      sales_1_3_5y: "Trailing 1-year / 3-year / 5-year revenue CAGR.",
       g_org_exp: "Organic Growth Ceiling g₀ = clamp(Sales WLS + min(0, Buyback Yield), 0%, 18%), fading linearly to min(g₀, 3%) over CAP.",
       buyback_yield: "Net annual share buyback yield (positive = share count reduction; negative = net dilution, which reduces g₀).",
       g_market: "Market-implied initial growth rate g₀ that equates DCF Fair Value to the current share price at hurdle rate r.",
@@ -2887,6 +2917,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return list.sort((a, b) => {{
         let vA = a[sortColumn];
         let vB = b[sortColumn];
+        if (sortColumn === 'sales_1_3_5y') {{
+          const pick = x => x.sales_5y ?? x.sales_3y ?? x.sales_1y ?? null;
+          vA = pick(a);
+          vB = pick(b);
+        }}
         if (sortColumn === 'g_market') {{
           // rows shown as n/a (no_value_creation, multi_root, nav_anchored) sort as empty, not by hidden numbers
           const shown = (x) => ['ok', 'saturated_low', 'saturated_high'].includes(x.g_market_flag);
@@ -3025,12 +3060,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Canonical column keys per tab — all labels come from ALL_COLS for 100% consistency
       const compactKeys = [
         'ticker', 'company', 'price', 'par_val', 'vs_par', 'term_val', 'vs_term', 'irr_5y',
-        'cur_mult', 'par_mult', 'term_mult', 'roic_used', 'g_org_exp', 'g_market', 'g4_cap'
+        'cur_mult', 'par_mult', 'term_mult', 'sales_1_3_5y', 'g_org_exp', 'g_market', 'g4_cap', 'roic_used'
       ];
       const coreValuationCols = [
         'ticker', 'company', 'country', 'price', 'sales_1y', 'sales_cagr',
-        'g_org_exp', 'buyback_yield', 'g_market', 'g_gap', 'par_val', 'vs_par',
-        'term_val', 'vs_term', 'cur_mult', 'par_mult', 'term_mult', 'irr_5y', 'roic_used', 'g4_cap', 'cap_implied',
+        'sales_1_3_5y', 'g_org_exp', 'buyback_yield', 'g_market', 'g_gap', 'par_val', 'vs_par',
+        'term_val', 'vs_term', 'cur_mult', 'par_mult', 'term_mult', 'irr_5y', 'g4_cap', 'cap_implied',
         'cap_gap', 'g3a_moat_archetype'
       ].map(k => ALL_COLS[k]);
 
@@ -3049,16 +3084,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         cols = colKeys.map(k => ALL_COLS[k]).filter(Boolean);
       }} else {{
         if (currentTab === 'qpass') {{
-          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];
+          cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];
         }} else if (currentTab === 'calamity') {{
-          cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.g6_flags];
+          cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.waived_gates, ALL_COLS.g6_flags];
         }} else if (currentTab === 'moat_universe') {{
-          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
+          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
         }} else {{
           cols = [
             ALL_COLS.ticker, ALL_COLS.company, ALL_COLS.country, ALL_COLS.result, ALL_COLS.rejected_at,
             ...coreValuationCols.slice(3),
-            ALL_COLS.val_status, ALL_COLS.sector
+            ALL_COLS.roic_used, ALL_COLS.val_status, ALL_COLS.sector
           ];
         }}
       }}
@@ -3131,6 +3166,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             if (col.key === 'par_val' && c.ronic_le_r) {{
               cellContent += ` <span title="RONIC₀ ≤ r: growth adds no value (Fair P/E ≤ 1/r) — review capital base" style="color: var(--amber);">⚠</span>`;
             }}
+          }} else if (col.key === 'sales_1_3_5y') {{
+            const fInt = v => (v === null || v === undefined) ? '-' : Math.round(v * 100) + '%';
+            const tip = `1Y: ${{fmtPct(c.sales_1y, true)}} · 3Y: ${{fmtPct(c.sales_3y, true)}} · 5Y: ${{fmtPct(c.sales_5y, true)}}`;
+            cellContent = `<span style="white-space: nowrap;" title="${{escHtml(tip)}}">${{fInt(c.sales_1y)}} / ${{fInt(c.sales_3y)}} / ${{fInt(c.sales_5y)}}</span>`;
           }} else if (col.key === 'sales_1y') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -4408,7 +4447,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Growth Ceiling', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Terminal Price', 'vs Terminal', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Model g', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Terminal Price', 'vs Terminal', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{

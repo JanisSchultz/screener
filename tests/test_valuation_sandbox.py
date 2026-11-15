@@ -202,8 +202,8 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
     def test_consistent_column_order_across_qpass_and_calamity(self):
         """Verify Quality Pass Funnel and Calamity Watchlist share coreValuationCols."""
         self.assertIn("const coreValuationCols = [", self.html)
-        self.assertIn("cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];", self.html)
-        self.assertIn("cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.g6_flags];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.waived_gates, ALL_COLS.g6_flags];", self.html)
 
     def test_zero_diff_thresholds(self):
         """Verify diff thresholds prevent epsilon jitter from showing spurious +0.0% colors."""

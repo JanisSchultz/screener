@@ -571,6 +571,10 @@ def summarize(s: dict, price_at_year_end: dict | None = None, p: dict | None = N
         s1_val = cagr(sales, 1)
         if s1_val is not None:
             out["sales_1y"] = round(s1_val, 4)
+        for yrs, key in ((3, "sales_3y"), (5, "sales_5y")):
+            s_val = cagr(sales, yrs)
+            if s_val is not None:
+                out[key] = round(s_val, 4)
         s_stat, s_span = statistical_organic_g0(
             sales, nopat=nopat_ser, owner_earn=owner_earn_ser, shares=shares, max_years=10, last=last,
             g_base=g_base_p, g_max=g_max_p,

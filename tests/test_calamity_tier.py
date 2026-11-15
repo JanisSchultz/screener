@@ -208,7 +208,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
         self.assertNotIn("Below PAR Shortlist", html)
         self.assertIn("Temporary M&A bridge debt; 24m deleveraging catalyst.", html)
         for token in (
-            "Growth Ceiling",
+            "Model g",
             "Mkt Implied g",
             "g Margin",
             "Our CAP",
