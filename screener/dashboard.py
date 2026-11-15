@@ -672,8 +672,46 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       background: var(--bg-card-hover);
       border-color: var(--accent);
     }}
+    .btn-export:disabled {{
+      opacity: 0.45;
+      cursor: not-allowed;
+    }}
+    .filter-count-pill {{
+      font-size: 11px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      padding: 0 4px;
+    }}
+    .btn-reset-filters {{
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      height: 36px;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }}
+    .btn-reset-filters:hover {{
+      color: var(--text-main);
+      border-color: var(--accent);
+      background: var(--bg-card);
+    }}
 
     @media (max-width: 768px) {{
+      html, body {{
+        height: auto;
+        min-height: 100dvh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }}
       .controls-bar {{
         padding: 8px 12px;
         gap: 8px;
@@ -691,6 +729,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         min-width: 0;
         max-width: 100%;
         display: flex;
+        flex-wrap: wrap;
         gap: 8px;
       }}
       .search-box {{
@@ -708,6 +747,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         max-width: calc(50% - 4px);
         width: 0;
         text-overflow: ellipsis;
+      }}
+      .toggle-pill {{
+        flex: 1 1 100%;
+        justify-content: flex-start;
       }}
       .market-pills {{
         width: 100%;
@@ -734,6 +777,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         flex: 1;
         justify-content: center;
       }}
+      .table-container {{
+        overflow-y: visible;
+        flex: none;
+      }}
+      .cards-container {{
+        overflow-y: visible;
+        flex: none;
+      }}
     }}
 
     /* Table Container & Sticky Elements */
@@ -756,7 +807,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       text-align: center;
     }}
     @media (max-width: 768px) {{
-      .mobile-swipe-hint {{
+      .mobile-swipe-hint.visible {{
         display: block;
       }}
     }}
@@ -820,8 +871,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       background-color: rgba(56, 189, 248, 0.12);
     }}
     tbody tr.selected td:first-child {{
-      background-color: rgba(56, 189, 248, 0.18);
-      border-left: 3px solid var(--accent);
+      background-color: #10283d;
+      box-shadow: inset 3px 0 0 var(--accent), 2px 0 6px -1px rgba(0, 0, 0, 0.45);
     }}
     tbody td {{
       padding: 8px 12px;
@@ -1636,6 +1687,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       white-space: pre-wrap;
       word-break: break-word;
     }}
+    .methodology-container {{
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 20px;
+    }}
+    .methodology-inner {{
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }}
     .formula-code {{
       font-size: 12px;
       color: #cbd5e1;
@@ -1643,7 +1707,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       overflow-x: auto;
       white-space: pre-wrap;
-      word-break: break-all;
+      word-break: normal;
+      overflow-wrap: anywhere;
       background: rgba(0, 0, 0, 0.25);
       padding: 8px;
       border-radius: 4px;
@@ -1829,8 +1894,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       </label>
     </div>
 
-    <!-- Controls Right: View Toggle & Export Button -->
+    <!-- Controls Right: Filter Count, Density, View Toggle & Export Button -->
     <div class="filters-right">
+      <span class="filter-count-pill" id="filter-count-pill"></span>
+      <button class="btn-reset-filters" id="btn-reset-filters" onclick="resetAllFilters()" title="Reset search and filters">✕ Reset</button>
+      <button class="btn-export" id="btn-col-density" onclick="toggleColumnDensity()" title="Switch between Essential columns and All 20+ columns" style="padding: 0 10px;">
+        <span id="col-density-label">All Cols</span>
+      </button>
       <div class="view-toggle">
         <button class="view-btn" id="view-cards-btn" onclick="setViewMode('cards')" title="Card View">
           <span>⊞</span> Cards
@@ -1840,15 +1910,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </button>
       </div>
 
-      <button class="btn-export" onclick="exportCurrentView()">
+      <button class="btn-export" id="btn-export" onclick="exportCurrentView()">
         <span>📥</span> Export
       </button>
     </div>
   </section>
 
+  <!-- Mobile Horizontal Swipe Hint (outside scroll container so it stays centered) -->
+  <div class="mobile-swipe-hint" id="mobile-swipe-hint">👉 Swipe horizontally to view all metrics • Tap any row to open dossier</div>
+
   <!-- Main Table View -->
   <main class="table-container" id="table-view">
-    <div class="mobile-swipe-hint">👉 Swipe horizontally to view all metrics • Tap any row to open dossier</div>
     <table id="screener-table">
       <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
@@ -1863,11 +1935,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <!-- Shared Empty State -->
   <div id="empty-state" class="empty-state" style="display: none;">
     <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
-    No companies match the selected search and filter criteria.
+    <div>No companies match the selected search and filter criteria.</div>
+    <button class="btn-export" style="margin: 14px auto 0;" onclick="resetAllFilters()">✕ Reset All Filters</button>
   </div>
 
   <!-- Methodology Tab Content (Hidden by default) -->
-  <main class="table-container" id="methodology-view" style="display:none; padding: 24px 20px; max-width: 1000px; margin: 0 auto; width: 100%;">
+  <main class="methodology-container" id="methodology-view" style="display:none;">
+    <div class="methodology-inner">
     <div class="dossier-section" style="margin-bottom: 24px;">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">The 6 Munger Reject Gates (v{data['version']})</h2>
       <p style="color: var(--text-muted); margin-bottom: 16px;">
@@ -1945,6 +2019,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <span style="font-size: 11px; color: var(--text-dim);">Solves the exact 5-year cash-flow internal rate of return across growing annual dividends and Year-5 DCF Fair Value while bounding buyback accretion at current P/E so Dividends + Buybacks + Organic Reinvestment never exceed 100% of Owner Earnings.</span>
         </p>
       </div>
+    </div>
     </div>
   </main>
 
@@ -2406,6 +2481,46 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let sortAsc = false;
     let selectedCompanyId = null;
     let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
+    let userSetViewMode = false;
+    let compactColumns = true;
+
+    const TAB_DEFAULT_SORTS = {{
+      shortlist: {{ col: 'irr_5y', asc: false }},
+      qpass: {{ col: 'roic_used', asc: false }},
+      calamity: {{ col: 'irr_5y', asc: false }},
+      moat_universe: {{ col: 'irr_5y', asc: false }},
+      all: {{ col: 'ticker', asc: true }}
+    }};
+    let tabSortState = {{}};
+
+    const ALL_COLS = {{
+      ticker: {{ key: 'ticker', label: 'Ticker' }},
+      company: {{ key: 'company', label: 'Company' }},
+      country: {{ key: 'country', label: 'Country' }},
+      result: {{ key: 'result', label: 'Gate Status' }},
+      rejected_at: {{ key: 'rejected_at', label: 'Failing / Waived Gate' }},
+      waived_gates: {{ key: 'waived_gates', label: 'Waived Gate(s)' }},
+      price: {{ key: 'price', label: 'Price', num: true }},
+      sales_1y: {{ key: 'sales_1y', label: '1Y Growth', num: true }},
+      sales_cagr: {{ key: 'sales_cagr', label: '10Y Sales WLS', num: true }},
+      g_org_exp: {{ key: 'g_org_exp', label: 'Growth Ceiling (g₀)', num: true }},
+      buyback_yield: {{ key: 'buyback_yield', label: 'Buyback', num: true }},
+      g_market: {{ key: 'g_market', label: 'Mkt Implied g', num: true }},
+      g_gap: {{ key: 'g_gap', label: 'g Margin', num: true }},
+      par_val: {{ key: 'par_val', label: 'Fair Value', num: true }},
+      vs_par: {{ key: 'vs_par', label: 'Discount', num: true }},
+      cur_mult: {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
+      par_mult: {{ key: 'par_mult', label: 'Fair P/E', num: true }},
+      irr_5y: {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
+      roic_used: {{ key: 'roic_used', label: 'Op ROIC', num: true }},
+      g4_cap: {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+      cap_implied: {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
+      cap_gap: {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
+      g3a_moat_archetype: {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
+      fcf_conv: {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
+      val_status: {{ key: 'val_status', label: 'Valuation' }},
+      sector: {{ key: 'sector', label: 'Sector' }}
+    }};
 
     // Initialize Dropdowns & Counts
     function init() {{
@@ -2435,11 +2550,24 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       updateTabCounts();
       document.getElementById('view-table-btn').classList.toggle('active', viewMode === 'table');
       document.getElementById('view-cards-btn').classList.toggle('active', viewMode === 'cards');
+      updateDensityButton();
       setTab('shortlist');
 
       // Keyboard Esc to close drawer
       window.addEventListener('keydown', (e) => {{
         if (e.key === 'Escape') closeDrawer();
+      }});
+
+      // Adapt viewMode on resize unless user manually chose one
+      window.addEventListener('resize', () => {{
+        if (userSetViewMode) return;
+        const nextMode = (window.innerWidth <= 768) ? 'cards' : 'table';
+        if (nextMode !== viewMode) {{
+          viewMode = nextMode;
+          document.getElementById('view-table-btn').classList.toggle('active', viewMode === 'table');
+          document.getElementById('view-cards-btn').classList.toggle('active', viewMode === 'cards');
+          renderCurrentView();
+        }}
       }});
     }}
 
@@ -2490,6 +2618,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function setTab(tab) {{
+      if (currentTab && currentTab !== 'methodology') {{
+        tabSortState[currentTab] = {{ col: sortColumn, asc: sortAsc }};
+      }}
       currentTab = tab;
       document.querySelectorAll('.tab-btn').forEach(btn => {{
         btn.classList.toggle('active', btn.dataset.tab === tab);
@@ -2503,6 +2634,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         document.getElementById('table-view').style.display = 'none';
         document.getElementById('cards-view').style.display = 'none';
         document.getElementById('empty-state').style.display = 'none';
+        const hint = document.getElementById('mobile-swipe-hint');
+        if (hint) hint.classList.remove('visible');
         return;
       }}
 
@@ -2513,17 +2646,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (valFilterEl) valFilterEl.style.display = showExtFilters ? 'inline-block' : 'none';
       document.getElementById('toggle-calamities-wrap').style.display = (tab === 'shortlist') ? 'inline-flex' : 'none';
 
-      // Default sort columns per tab
-      if (tab === 'shortlist' || tab === 'calamity' || tab === 'moat_universe') {{
-        sortColumn = 'irr_5y';
-        sortAsc = false;
-      }} else if (tab === 'qpass') {{
-        sortColumn = 'roic_used';
-        sortAsc = false;
-      }} else if (tab === 'all') {{
-        sortColumn = 'ticker';
-        sortAsc = true;
-      }}
+      // Restore per-tab sort state or fall back to tab default
+      const saved = tabSortState[tab];
+      const def = TAB_DEFAULT_SORTS[tab] || {{ col: 'irr_5y', asc: false }};
+      sortColumn = saved ? saved.col : def.col;
+      sortAsc = saved ? saved.asc : def.asc;
 
       syncSortSelect();
       renderCurrentView();
@@ -2538,9 +2665,44 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function setViewMode(mode) {{
+      userSetViewMode = true;
       viewMode = mode;
       document.getElementById('view-table-btn').classList.toggle('active', mode === 'table');
       document.getElementById('view-cards-btn').classList.toggle('active', mode === 'cards');
+      updateDensityButton();
+      renderCurrentView();
+    }}
+
+    function toggleColumnDensity() {{
+      compactColumns = !compactColumns;
+      updateDensityButton();
+      renderCurrentView();
+    }}
+
+    function updateDensityButton() {{
+      const btn = document.getElementById('btn-col-density');
+      const lbl = document.getElementById('col-density-label');
+      if (!btn || !lbl) return;
+      btn.style.display = (viewMode === 'table') ? 'flex' : 'none';
+      lbl.textContent = compactColumns ? 'Compact Cols' : 'All Cols';
+      btn.title = compactColumns ? 'Showing essential columns — click to show all 20+ columns' : 'Showing all columns — click for compact view';
+    }}
+
+    function resetAllFilters() {{
+      const searchEl = document.getElementById('filter-search');
+      if (searchEl) searchEl.value = '';
+      const clearBtn = document.getElementById('search-clear');
+      if (clearBtn) clearBtn.style.display = 'none';
+      ['filter-sector', 'filter-moat', 'filter-gate', 'filter-val'].forEach(id => {{
+        const el = document.getElementById(id);
+        if (el) el.value = 'all';
+      }});
+      const calEl = document.getElementById('toggle-calamities');
+      if (calEl && currentTab === 'shortlist') calEl.checked = false;
+      currentMarket = 'all';
+      document.querySelectorAll('.market-btn').forEach(btn => {{
+        btn.classList.toggle('active', btn.dataset.market === 'all');
+      }});
       renderCurrentView();
     }}
 
@@ -2632,12 +2794,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         let vA = a[sortColumn];
         let vB = b[sortColumn];
 
-        if ((vA === null || vA === undefined) && (vB === null || vB === undefined)) return 0;
-        if (vA === null || vA === undefined) return 1;
-        if (vB === null || vB === undefined) return -1;
+        if (Array.isArray(vA)) vA = vA.join(', ');
+        if (Array.isArray(vB)) vB = vB.join(', ');
 
-        if (typeof vA === 'string') {{
-          return sortAsc ? vA.localeCompare(vB) : vB.localeCompare(vA);
+        if ((vA === null || vA === undefined || vA === '') && (vB === null || vB === undefined || vB === '')) return 0;
+        if (vA === null || vA === undefined || vA === '') return 1;
+        if (vB === null || vB === undefined || vB === '') return -1;
+
+        if (typeof vA === 'string' || typeof vB === 'string') {{
+          return sortAsc ? String(vA).localeCompare(String(vB)) : String(vB).localeCompare(String(vA));
         }}
         return sortAsc ? (vA - vB) : (vB - vA);
       }});
@@ -2682,8 +2847,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           customOpt.id = 'sort-custom-opt';
           sortSelect.appendChild(customOpt);
         }}
+        const colLabel = (ALL_COLS[sortColumn] && ALL_COLS[sortColumn].label) ? ALL_COLS[sortColumn].label : sortColumn;
         customOpt.value = targetVal;
-        customOpt.textContent = `Sort: ${{sortColumn}} (${{sortAsc ? '▲ Asc' : '▼ Desc'}})`;
+        customOpt.textContent = `Sort: ${{colLabel}} (${{sortAsc ? '▲ Asc' : '▼ Desc'}})`;
         sortSelect.value = targetVal;
       }}
     }}
@@ -2712,6 +2878,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         .replace(/'/g, '&#39;');
     }}
 
+    function hasActiveFilters() {{
+      const q = (document.getElementById('filter-search').value || '').trim();
+      const sector = document.getElementById('filter-sector').value;
+      const moat = document.getElementById('filter-moat').value;
+      const gate = document.getElementById('filter-gate').value;
+      const valFilter = document.getElementById('filter-val') ? document.getElementById('filter-val').value : 'all';
+      const showExt = (currentTab === 'all' || currentTab === 'moat_universe');
+      return Boolean(q) || currentMarket !== 'all' || sector !== 'all' || moat !== 'all' ||
+        (showExt && (gate !== 'all' || valFilter !== 'all'));
+    }}
+
     function renderCurrentView() {{
       updateTabCounts();
       if (currentTab === 'methodology') return;
@@ -2720,9 +2897,23 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const isEmpty = (data.length === 0);
       empty.style.display = isEmpty ? 'block' : 'none';
 
-      document.getElementById('table-view').style.display = (viewMode === 'table' && !isEmpty) ? 'block' : 'none';
+      const showTable = (viewMode === 'table' && !isEmpty);
+      document.getElementById('table-view').style.display = showTable ? 'block' : 'none';
       document.getElementById('cards-view').style.display = (viewMode === 'cards' && !isEmpty) ? 'block' : 'none';
 
+      const hint = document.getElementById('mobile-swipe-hint');
+      if (hint) hint.classList.toggle('visible', showTable);
+
+      const countPill = document.getElementById('filter-count-pill');
+      if (countPill) countPill.textContent = `${{data.length}} shown`;
+
+      const resetBtn = document.getElementById('btn-reset-filters');
+      if (resetBtn) resetBtn.style.display = hasActiveFilters() ? 'inline-flex' : 'none';
+
+      const exportBtn = document.getElementById('btn-export');
+      if (exportBtn) exportBtn.disabled = isEmpty;
+
+      updateDensityButton();
       renderTable(data);
       renderCards(data);
     }}
@@ -2731,81 +2922,49 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const thead = document.getElementById('table-head');
       const tbody = document.getElementById('table-body');
 
-      // Define columns per tab (Shortlist, Quality Pass, and Calamity share the exact same core columns in order)
-      const coreValuationCols = [
-        {{ key: 'ticker', label: 'Ticker' }},
-        {{ key: 'company', label: 'Company' }},
-        {{ key: 'country', label: 'Country' }},
-        {{ key: 'price', label: 'Price', num: true }},
-        {{ key: 'sales_1y', label: '1Y Growth', num: true }},
-        {{ key: 'sales_cagr', label: '10Y Sales WLS', num: true }},
-        {{ key: 'g_org_exp', label: 'Growth Ceiling (g₀)', num: true }},
-        {{ key: 'buyback_yield', label: 'Buyback', num: true }},
-        {{ key: 'g_market', label: 'Mkt Implied g', num: true }},
-        {{ key: 'g_gap', label: 'g Margin', num: true }},
-        {{ key: 'par_val', label: 'Fair Value', num: true }},
-        {{ key: 'vs_par', label: 'Discount', num: true }},
-        {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
-        {{ key: 'par_mult', label: 'Fair P/E', num: true }},
-        {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
-        {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-        {{ key: 'g4_cap', label: 'Our CAP', num: true }},
-        {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
-        {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
-        {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }}
+      // Canonical column keys per tab — all labels come from ALL_COLS for 100% consistency
+      const compactKeys = [
+        'ticker', 'company', 'price', 'par_val', 'vs_par', 'irr_5y',
+        'cur_mult', 'par_mult', 'roic_used', 'g_org_exp', 'g_market', 'g4_cap'
       ];
+      const coreValuationCols = [
+        'ticker', 'company', 'country', 'price', 'sales_1y', 'sales_cagr',
+        'g_org_exp', 'buyback_yield', 'g_market', 'g_gap', 'par_val', 'vs_par',
+        'cur_mult', 'par_mult', 'irr_5y', 'roic_used', 'g4_cap', 'cap_implied',
+        'cap_gap', 'g3a_moat_archetype'
+      ].map(k => ALL_COLS[k]);
+
       let cols = [];
-      if (currentTab === 'shortlist') {{
-        cols = [...coreValuationCols];
-      }} else if (currentTab === 'qpass') {{
-        cols = [
-          ...coreValuationCols,
-          {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
-          {{ key: 'val_status', label: 'Valuation' }},
-          {{ key: 'sector', label: 'Sector' }}
-        ];
-      }} else if (currentTab === 'calamity') {{
-        cols = [
-          ...coreValuationCols,
-          {{ key: 'waived_gates', label: 'Waived Gate(s)' }},
-          {{ key: 'val_status', label: 'Valuation' }}
-        ];
-      }} else if (currentTab === 'moat_universe') {{
-        cols = [
-          ...coreValuationCols,
-          {{ key: 'result', label: 'Gate Status' }},
-          {{ key: 'rejected_at', label: 'Failing / Waived Gate' }},
-          {{ key: 'fcf_conv', label: 'FCF Conv', num: true }},
-          {{ key: 'val_status', label: 'Valuation' }},
-          {{ key: 'sector', label: 'Sector' }}
-        ];
+      if (compactColumns) {{
+        let colKeys = [];
+        if (currentTab === 'shortlist') {{
+          colKeys = [...compactKeys];
+        }} else if (currentTab === 'qpass') {{
+          colKeys = [...compactKeys, 'fcf_conv', 'val_status'];
+        }} else if (currentTab === 'calamity') {{
+          colKeys = [...compactKeys, 'waived_gates', 'val_status'];
+        }} else if (currentTab === 'moat_universe') {{
+          colKeys = [...compactKeys, 'result', 'rejected_at', 'val_status'];
+        }} else {{
+          colKeys = ['ticker', 'company', 'result', 'rejected_at', ...compactKeys.slice(2), 'val_status'];
+        }}
+        cols = colKeys.map(k => ALL_COLS[k]).filter(Boolean);
       }} else {{
-        cols = [
-          {{ key: 'ticker', label: 'Ticker' }},
-          {{ key: 'company', label: 'Company' }},
-          {{ key: 'country', label: 'Country' }},
-          {{ key: 'result', label: 'Gate Status' }},
-          {{ key: 'rejected_at', label: 'Failing Gate / Stage' }},
-          {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
-          {{ key: 'price', label: 'Price', num: true }},
-          {{ key: 'sales_1y', label: '1Y Growth', num: true }},
-          {{ key: 'sales_cagr', label: '3–5Y Growth', num: true }},
-          {{ key: 'g_org_exp', label: 'Growth Ceiling (OpCost)', num: true }},
-          {{ key: 'buyback_yield', label: 'Buyback', num: true }},
-          {{ key: 'g_market', label: 'Mkt Implied g', num: true }},
-          {{ key: 'g_gap', label: 'g Margin', num: true }},
-          {{ key: 'par_val', label: 'Fair Value', num: true }},
-          {{ key: 'vs_par', label: 'Discount', num: true }},
-          {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
-          {{ key: 'par_mult', label: 'Fair P/E', num: true }},
-          {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
-          {{ key: 'roic_used', label: 'Op ROIC', num: true }},
-          {{ key: 'g4_cap', label: 'Our CAP', num: true }},
-          {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
-          {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
-          {{ key: 'val_status', label: 'Valuation' }},
-          {{ key: 'sector', label: 'Sector' }}
-        ];
+        if (currentTab === 'shortlist') {{
+          cols = [...coreValuationCols];
+        }} else if (currentTab === 'qpass') {{
+          cols = [...coreValuationCols, ALL_COLS.fcf_conv, ALL_COLS.val_status, ALL_COLS.sector];
+        }} else if (currentTab === 'calamity') {{
+          cols = [...coreValuationCols, ALL_COLS.waived_gates, ALL_COLS.val_status];
+        }} else if (currentTab === 'moat_universe') {{
+          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.fcf_conv, ALL_COLS.val_status, ALL_COLS.sector];
+        }} else {{
+          cols = [
+            ALL_COLS.ticker, ALL_COLS.company, ALL_COLS.country, ALL_COLS.result, ALL_COLS.rejected_at,
+            ...coreValuationCols.slice(3),
+            ALL_COLS.val_status, ALL_COLS.sector
+          ];
+        }}
       }}
 
       // Build THEAD
@@ -2831,7 +2990,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
           if (col.key === 'ticker') {{
             const cTag = (c.result === 'Calamity pass')
-              ? ` <span class="badge badge-amber" style="font-size: 9px; padding: 1px 5px; margin-left: 4px;">${{escHtml(calamityTag(c))}}</span>`
+              ? ` <span class="badge badge-amber" title="${{escHtml(calamityTag(c))}}" style="font-size: 9px; padding: 1px 4px; margin-left: 3px;">⚠</span>`
               : '';
             cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>${{cTag}}`;
           }} else if (col.key === 'company') {{
@@ -2977,6 +3136,14 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (currentTab === 'shortlist' || currentTab === 'qpass' || currentTab === 'calamity') {{
           const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
           badgeHtml = `${{calBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
+          const roicExtra = currentTab === 'qpass'
+            ? `FCF ${{fmtPct(c.fcf_conv)}}`
+            : (currentTab === 'calamity'
+              ? `Waived ${{escHtml((c.waived_keys || []).map(k => 'G' + k).join(', ') || '—')}}`
+              : `BB ${{fmtPct(c.buyback_yield, true)}}`);
+          const roicExtraLabel = currentTab === 'qpass'
+            ? 'Op ROIC • FCF Conv'
+            : (currentTab === 'calamity' ? 'Op ROIC • Waived' : 'Op ROIC • Buyback');
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label">5Y Exp IRR</div>
@@ -2984,16 +3151,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Price / Fair Value</div>
-              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val)}}</div>
+              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}}</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Cur P/E / Fair P/E</div>
               <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Op ROIC • Buyback</div>
+              <div class="card-metric-label">${{roicExtraLabel}}</div>
               <div class="card-metric-val" style="font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                ${{fmtPct(c.roic_used)}} • BB ${{fmtPct(c.buyback_yield, true)}}
+                ${{fmtPct(c.roic_used)}} • ${{roicExtra}}
               </div>
             </div>
           ` + triadCardsHtml(c);
@@ -3002,7 +3169,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           badgeHtml = `<span class="badge ${{bCls}}" style="margin-right:4px;">${{escHtml(c.result)}}</span><span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const stageColor = c.result === 'Quality pass' ? 'var(--green)' : (c.result === 'Calamity pass' ? 'var(--amber)' : 'var(--red)');
           const stageText = c.result === 'Calamity pass'
-            ? `⚠ Waived: ${{(c.waived_gates || []).join(', ')}}`
+            ? `⚠ Waived: ${{escHtml((c.waived_gates || []).join(', '))}}`
             : (escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result)));
           metricsHtml = `
             <div class="card-metric-cell" style="grid-column: span 2;">
@@ -3017,7 +3184,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Price / Fair Value</div>
-              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val)}}</div>
+              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}}</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Cur P/E / Fair P/E</div>
@@ -3155,7 +3322,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const wList = (c.waived_gates || []).join(', ');
         verdictEl.innerHTML = `<span style="color: var(--amber);">⚠ Conditional Calamity Pass (Waived: ${{escHtml(wList)}}) — Enters Quantitative PAR Funnel</span>`;
       }} else {{
-        verdictEl.innerHTML = `<span style="color: var(--red);">✕ ${{c.rejected_at || c.result}}</span>`;
+        verdictEl.innerHTML = `<span style="color: var(--red);">✕ ${{escHtml(c.rejected_at || c.result)}}</span>`;
       }}
 
       // Qualitative Dossier
@@ -3234,7 +3401,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           parts.push(`Override ${{fmtPct(c.g_est)}}`);
         }} else {{
           if (c.sales_1y !== null && c.sales_1y !== undefined) parts.push(`1Y ${{fmtPct(c.sales_1y, true)}}`);
-          if (c.sales_cagr !== null && c.sales_cagr !== undefined) parts.push(`5Y ${{fmtPct(c.sales_cagr)}}`);
+          if (c.sales_cagr !== null && c.sales_cagr !== undefined) parts.push(`${{c.sales_cagr_yrs ? c.sales_cagr_yrs + 'Y' : '10Y'}} ${{fmtPct(c.sales_cagr)}}`);
           if (c.opcost_cagr !== null && c.opcost_cagr !== undefined) parts.push(`OpCost ${{fmtPct(c.opcost_cagr)}}`);
         }}
         if (c.buyback_yield !== null && c.buyback_yield !== undefined) parts.push(`BB ${{fmtPct(c.buyback_yield, true)}}`);
@@ -3264,6 +3431,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       populateValuationAudit(c);
       initValuationSandbox(c);
       setDossierTab(currentDossierTab);
+      const drawerBody = document.getElementById('dossier-content');
+      if (drawerBody) drawerBody.scrollTop = 0;
       document.getElementById('drawer-overlay').classList.add('open');
       document.getElementById('dossier-drawer').classList.add('open');
     }}
@@ -4084,7 +4253,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '3-5Y Growth', 'OpCost CAGR', 'Growth Ceiling', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Cur P/E', 'Fair P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Growth Ceiling', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Cur P/E', 'Fair P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
