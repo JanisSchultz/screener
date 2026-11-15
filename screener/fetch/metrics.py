@@ -40,13 +40,23 @@ def clean_da(da: dict, capex: dict | None = None) -> dict:
 def owner_addback(s: dict, y: int) -> float:
     """Owner-earnings add-back for fiscal year y: MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy).
     D&A above maintenance capex is added back to net income; lease depreciation (rent paid through financing cash
-    flow under IFRS 16) is deducted first so it is not treated as free cash. s['lease'] is empty for US GAAP filers."""
+    flow under IFRS 16) is deducted first so it is not treated as free cash. s['lease'] is empty for US GAAP filers.
+    When consolidated D&A/CapEx includes partially-owned subsidiaries (minority_interest / nci), scale the add-back
+    to the common shareholders' share of consolidated profit/equity."""
     da, cx, lease = s.get("da") or {}, s.get("capex") or {}, s.get("lease") or {}
     if da.get(y) is None or cx.get(y) is None:
         return 0.0
     l_cur, l_prev = lease.get(y), lease.get(y - 1)
     l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
-    return max(0.0, abs(da[y]) - abs(cx[y]) - LEASE_DEP_RATE * l_avg)
+    raw_add = max(0.0, abs(da[y]) - abs(cx[y]) - LEASE_DEP_RATE * l_avg)
+    if raw_add <= 0.0:
+        return 0.0
+    ni_y = (s.get("ni") or {}).get(y)
+    mi_y = (s.get("minority_interest") or {}).get(y)
+    if ni_y and ni_y > 0 and mi_y and abs(mi_y) > 0:
+        common_share = ni_y / (ni_y + abs(mi_y))
+        return raw_add * max(0.25, min(1.0, common_share))
+    return raw_add
 
 
 def _last_years(series: dict, n: int, last: int | None = None) -> list[int]:
@@ -86,16 +96,16 @@ def exp_weighted_ols_cagr(
     if len(yrs) < 2:
         return None, None
 
-    # 1. Detect permanent corporate breakup / spinoff perimeter resets (e.g. GE 2023, HWM 2019):
-    # where revenue/cost drops >35% in one year AND the post-reset maximum remains <82% of the pre-reset minimum.
+    # 1. Detect permanent corporate breakup / spinoff perimeter resets (e.g. GE 2023, HWM 2019, G24.DE 2019):
+    # where revenue/cost drops >32% in one year AND the 3-year post-reset window remains <78% of the pre-drop level.
     reset_idx = 0
     for i in range(1, len(yrs)):
         y0, y1 = yrs[i - 1], yrs[i]
-        if series[y1] / series[y0] < 0.65 and len(yrs[i:]) >= 3:
-            pre_min = min(series[y] for y in yrs[:i])
-            post_max = max(series[y] for y in yrs[i:])
-            if post_max < 0.82 * pre_min:
-                reset_idx = i
+        if series[y1] / series[y0] < 0.68 and len(yrs[i:]) >= 3:
+            if i < 2 or series[y0] <= 1.35 * series[yrs[i - 2]]:
+                post3_max = max(series[y] for y in yrs[i : i + 3])
+                if post3_max < 0.78 * series[y0]:
+                    reset_idx = i
     if reset_idx > 0:
         yrs = yrs[reset_idx:]
 
@@ -188,15 +198,15 @@ def theil_sen_organic_cagr(
     if len(yrs) < 2:
         return None, None, None, None
 
-    # 1. Permanent corporate breakup / spinoff perimeter reset (e.g. GE 2023, HWM 2019)
+    # 1. Permanent corporate breakup / spinoff perimeter reset (e.g. GE 2023, HWM 2019, G24.DE 2019)
     reset_idx = 0
     for i in range(1, len(yrs)):
         y0, y1 = yrs[i - 1], yrs[i]
-        if series[y1] / series[y0] < 0.65 and len(yrs[i:]) >= 3:
-            pre_min = min(series[y] for y in yrs[:i])
-            post_max = max(series[y] for y in yrs[i:])
-            if post_max < 0.82 * pre_min:
-                reset_idx = i
+        if series[y1] / series[y0] < 0.68 and len(yrs[i:]) >= 3:
+            if i < 2 or series[y0] <= 1.35 * series[yrs[i - 2]]:
+                post3_max = max(series[y] for y in yrs[i : i + 3])
+                if post3_max < 0.78 * series[y0]:
+                    reset_idx = i
     if reset_idx > 0:
         yrs = yrs[reset_idx:]
 
@@ -271,12 +281,16 @@ def statistical_organic_g0(
     )
 
     cands_med = [rev_med]
-    if nop_med is not None and (nop_span or 0) >= 3:
+    cands_p25 = [rev_p25]
+    if nop_med is not None and nop_p25 is not None and (nop_span or 0) >= 3:
         cands_med.append(nop_med)
-    if oe_med is not None and (oe_span or 0) >= 3:
+        cands_p25.append(nop_p25)
+    if oe_med is not None and oe_p25 is not None and (oe_span or 0) >= 3:
         cands_med.append(oe_med)
+        cands_p25.append(oe_p25)
     tri_med = median(cands_med)
-    g_tri = min(rev_p25, tri_med)
+    tri_p25 = median(cands_p25)
+    g_tri = min(tri_p25, tri_med, rev_med + 0.015)
 
     # Refranchising guard (e.g. MCD, KO): if top-line revenue stagnated (<3.0%) due to gross-to-net royalty
     # transition while BOTH operating profit (NOPAT) and Owner Earnings P25 grew faster than revenue:
@@ -612,8 +626,11 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
     gwi = {y: (g("goodwill").get(y) or 0.0) + (g("intang").get(y) or 0.0) for y in nopat_ser
            if g("goodwill").get(y) is not None or g("intang").get(y) is not None}
     gw_yrs = sorted(y for y in gwi if last is None or y <= last)
-    spend = [max(0.0, gwi[y1] - gwi[y0]) / nopat_ser[y1]
-             for y0, y1 in zip(gw_yrs, gw_yrs[1:]) if y1 - y0 == 1 and nopat_ser.get(y1) and nopat_ser[y1] > 0]
+    spend = [
+        max(0.0, (gwi[y1] - gwi[y0]) - 0.035 * max(0.0, gwi[y0] - 3.0 * nopat_ser[y1])) / nopat_ser[y1]
+        for y0, y1 in zip(gw_yrs, gw_yrs[1:])
+        if y1 - y0 == 1 and nopat_ser.get(y1) and nopat_ser[y1] > 0
+    ]
     if len(spend) >= 3:
         out["ma_reinvest"] = round(min(3.0, median(spend[-5:])), 4)
 

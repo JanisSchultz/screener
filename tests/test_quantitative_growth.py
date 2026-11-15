@@ -247,8 +247,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertEqual(m["sales_cagr_yrs"], 5)
         self.assertAlmostEqual(m["sales_1y"], 186.0 / 169.0 - 1.0, places=3)
         # 2022 had a +22.4% share issuance (98M -> 120M) funding the 110M -> 140M M&A jump;
-        # Pillar 1 dilution-adjusted per-share index S_t strips the stock-merger jump automatically (~8.17% organic)
-        self.assertAlmostEqual(m["sales_cagr"], 0.0817, places=3)
+        # Pillar 1 dilution-adjusted per-share index S_t strips the stock-merger jump automatically (~8.38% organic)
+        self.assertAlmostEqual(m["sales_cagr"], 0.0838, places=3)
         self.assertAlmostEqual(m["opcost_1y"], (186.0 - 49.0) / (169.0 - 44.0) - 1.0, places=3)
         self.assertAlmostEqual(m["opcost_cagr"], 0.0862, places=3)
         self.assertIsNotNone(m["cap_growth"])

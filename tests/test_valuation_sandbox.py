@@ -327,7 +327,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
 
     def test_growth_slider_responsive_without_opcost_muting(self):
         """Raising the sales-growth slider shifts g₀ full-strength (sales, OpCost and OE growth move together)."""
-        sample = next(c for c in self.companies if c.get("ticker") == "MSFT")
+        sample = next(c for c in self.companies if c.get("ticker") == "MCO")
         base = self._simulate_js_sandbox(sample)
         tweaked = self._simulate_js_sandbox(sample, {"salescagr": math.floor(sample["sales_cagr"] * 200 + 0.5) / 2 + 4.0})
         self.assertGreater(tweaked["g_org_exp"], base["g_org_exp"] + 0.02)

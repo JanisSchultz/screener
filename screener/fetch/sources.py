@@ -741,7 +741,12 @@ class EODHD:
             else:
                 sales = rev_raw
 
-            ni = _fval(i_r, "netIncomeApplicableToCommonShares", "netIncome", "netIncomeFromContinuingOps")
+            ni_common = _fval(i_r, "netIncomeApplicableToCommonShares")
+            ni_base = _fval(i_r, "netIncome", "netIncomeFromContinuingOps")
+            if ni_common is not None and ni_base is not None and ni_base > 0 and ni_common > 2.5 * ni_base:
+                ni = ni_base
+            else:
+                ni = ni_common if ni_common is not None else ni_base
             if ni is None:
                 ni = _fval(c_r, "netIncome")
             # Require at least revenue or net income to count as a reported fiscal year
@@ -890,14 +895,21 @@ class EODHD:
             bs_keys = ("equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
+            def _sec_val(ref_k: str, yr: int) -> float:
+                v = abs(out[ref_k].get(yr) or 0.0)
+                if ref_k == "assets" and v > 0:
+                    gwi_yr = abs(out["goodwill"].get(yr) or 0.0) + abs(out["intang"].get(yr) or 0.0)
+                    return max(0.25 * v, v - gwi_yr)
+                return v
+
             for sec_ref_key, sec_keys in (("sales", inc_keys), ("assets", bs_keys), ("ocf", cf_keys)):
                 if not out[sec_ref_key]:
                     continue
-                ref_val = abs(out[sec_ref_key].get(yrs_sorted[-1]) or 0.0)
+                ref_val = _sec_val(sec_ref_key, yrs_sorted[-1])
                 for idx in range(len(yrs_sorted) - 2, -1, -1):
                     y = yrs_sorted[idx]
                     y_ccy = inc_ccys.get(y)
-                    cur_val = abs(out[sec_ref_key].get(y) or 0.0)
+                    cur_val = _sec_val(sec_ref_key, y)
                     if not (cur_val > 0 and ref_val > 0):
                         continue
                     if y_ccy and y_ccy != target_ccy:
@@ -913,7 +925,7 @@ class EODHD:
                                         out[mk][y] = out[mk][y] * fx_rate
                                 if sec_ref_key == "sales":
                                     out["ccy"][y] = target_ccy
-                                cur_val = abs(out[sec_ref_key].get(y) or 0.0)
+                                cur_val = _sec_val(sec_ref_key, y)
                     ref_val = cur_val
 
         # 2. Historical Share Count Split / Glitch Reconciliation:
@@ -978,14 +990,20 @@ class EODHD:
             mcap = _f(hl.get("MarketCapitalization"))
             gen_ccy = (fund_data.get("General") or {}).get("CurrencyCode")
             px_main = (latest_price * 0.01) if (latest_price and gen_ccy in ("GBX", "GBp", "ZAc")) else latest_price
-            imp_mcap_sh = (mcap / px_main) if (mcap and px_main and px_main > 0) else _f(ss.get("SharesOutstanding"))
+            sh_out_ref = _f(ss.get("SharesOutstanding"))
+            imp_mcap_sh = (mcap / px_main) if (mcap and px_main and px_main > 0) else sh_out_ref
             eps_hl = _f(hl.get("DilutedEpsTTM")) or _f(hl.get("EarningsShare"))
             last_ni = out["ni"].get(last_fy)
-            if imp_mcap_sh and last_sh > 0 and not (0.40 <= last_sh / imp_mcap_sh <= 2.50):
+            if (
+                imp_mcap_sh
+                and last_sh > 0
+                and not (0.40 <= last_sh / imp_mcap_sh <= 2.50)
+                and not (sh_out_ref and 0.40 <= last_sh / sh_out_ref <= 2.50)
+            ):
                 # Verify via Highlights EPS whether traded price is on `imp_mcap_sh` per-share basis
                 if eps_hl and eps_hl > 0 and last_ni and last_ni > 0:
                     imp_eps_sh = last_ni / eps_hl
-                    if 0.50 <= imp_eps_sh / imp_mcap_sh <= 2.0:
+                    if 0.50 <= imp_eps_sh / imp_mcap_sh <= 2.0 and not (0.40 <= last_sh / imp_eps_sh <= 2.50):
                         scale_sh = imp_mcap_sh / last_sh
                         out["shares"] = {y: v * scale_sh for y, v in out["shares"].items()}
 

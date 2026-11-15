@@ -148,8 +148,13 @@ def is_mtm_holdco(
         return False
     if ocf_ni_2y is not None and ocf_ni_2y < 0.25:
         return True
+    if fcf_conv is not None and fcf_conv < 0.25:
+        return True
+    if mult_high_5y is not None and mult_high_5y < 10.0:
+        if (fcf_conv is not None and fcf_conv < 0.35) or (ocf_ni_2y is not None and ocf_ni_2y < 0.35):
+            return True
     if fcf_conv is not None:
-        return fcf_conv < 0.25
+        return False
     return "Multi-Sector Holdings" in s and (mult_high_5y is None or mult_high_5y < 12.0)
 
 
