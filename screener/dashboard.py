@@ -2555,7 +2555,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     const SCREENER_DATA = JSON.parse(document.getElementById('screener-raw-data').textContent);
     let currentTab = 'qpass';
     let currentMarket = 'all';
-    let sortColumn = 'roic_exp';
+    let sortColumn = 'irr_5y';
     let sortAsc = false;
     let selectedCompanyId = null;
     let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
@@ -2563,7 +2563,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let compactColumns = true;
 
     const TAB_DEFAULT_SORTS = {{
-      qpass: {{ col: 'roic_exp', asc: false }},
+      qpass: {{ col: 'irr_5y', asc: false }},
       calamity: {{ col: 'irr_5y', asc: false }},
       moat_universe: {{ col: 'irr_5y', asc: false }},
       all: {{ col: 'ticker', asc: true }}
