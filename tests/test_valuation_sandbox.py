@@ -14,7 +14,15 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from screener.dashboard import build_dashboard_html, collect_screener_data
-from screener.fetch.metrics import clean_da, exp_weighted_ols_cagr, owner_addback, summarize
+from screener.fetch.metrics import (
+    clean_da,
+    compress_g0,
+    exp_weighted_ols_cagr,
+    owner_addback,
+    statistical_organic_g0,
+    summarize,
+    theil_sen_organic_cagr,
+)
 from screener.gates import (
     active_roic,
     dcf_schedule_and_continuation,
@@ -64,10 +72,65 @@ class GrowthCeilingEngineTests(unittest.TestCase):
         self.assertLess(g, 0.105)
 
     def test_sub_gdp_fade_does_not_fade_upward(self):
-        """When g0 < 3.5% (e.g. 1.5%), explicit_dcf_multiple holds 1.5% instead of fading upward to 3.5%."""
-        pe_low, _, _, _ = explicit_dcf_multiple(0.015, 0.18, 25, r=0.085, g_term=0.035)
-        pe_gdp, _, _, _ = explicit_dcf_multiple(0.035, 0.18, 25, r=0.085, g_term=0.035)
+        """When g0 < 3.0% (e.g. 1.5%), explicit_dcf_multiple holds 1.5% instead of fading upward to 3.0%."""
+        pe_low, _, _, _ = explicit_dcf_multiple(0.015, 0.18, 25, r=0.085, g_term=0.030)
+        pe_gdp, _, _, _ = explicit_dcf_multiple(0.030, 0.18, 25, r=0.085, g_term=0.030)
         self.assertLess(pe_low, pe_gdp)
+
+    def test_theil_sen_organic_cagr_stock_merger_dilution_vs_buyback(self):
+        """Stock-financed M&A step-up (+35% shares and +35% revenue in 2022) is neutralized on a per-share basis, while buybacks are not double-counted."""
+        sales = {}
+        shares = {}
+        val = 100.0
+        sh = 100.0
+        for y in range(2015, 2026):
+            if y > 2015:
+                if y == 2022:
+                    # Stock merger: +35% shares and +35% inorganic scale on top of 7% organic
+                    val *= 1.07 * 1.35
+                    sh *= 1.35
+                else:
+                    val *= 1.07
+                    sh *= 0.98  # 2% buyback (should not boost organic index)
+            sales[y] = val
+            shares[y] = sh
+        g50, g25, mad, span = theil_sen_organic_cagr(sales, shares=shares, max_years=10)
+        self.assertEqual(span, 10)
+        self.assertAlmostEqual(g50, 0.07, places=3)
+        self.assertAlmostEqual(g25, 0.07, places=3)
+        self.assertLess(mad, 0.002)
+
+    def test_theil_sen_organic_cagr_v_shaped_trough_immunity(self):
+        """Cycle-spanning Theil-Sen (delta_t >= 5y) bridges a mid-window V-shaped COVID trough without post-trough rebound inflation."""
+        # 6% structural trend from 2015 to 2025, with a deep -65% trough in 2020-2021
+        sales = {y: 100.0 * (1.06 ** (y - 2015)) for y in range(2015, 2026)}
+        sales[2020] *= 0.35
+        sales[2021] *= 0.50
+        g50, g25, _, span = theil_sen_organic_cagr(sales, max_years=10)
+        self.assertEqual(span, 10)
+        # Endpoint/cycle-spanning median bridges 2020-2021 cleanly instead of 20%+ post-trough WLS rebound
+        self.assertLessEqual(g50, 0.061)
+        self.assertLessEqual(g25, 0.061)
+
+    def test_statistical_organic_g0_refranchising_and_compression(self):
+        """statistical_organic_g0 applies refranchising guard when revenue is flat (<3%) due to refranchising while NOPAT/OE compound, and compresses high tails below 13%."""
+        # Case 1: Refranchising (Sales +1.5%/yr, NOPAT +7%/yr, OE +7.5%/yr)
+        sales_ref = {y: 100.0 * (1.015 ** (y - 2015)) for y in range(2015, 2026)}
+        nopat_ref = {y: 25.0 * (1.070 ** (y - 2015)) for y in range(2015, 2026)}
+        oe_ref = {y: 22.0 * (1.075 ** (y - 2015)) for y in range(2015, 2026)}
+        g_ref, span_ref = statistical_organic_g0(sales_ref, nopat_ref, oe_ref, max_years=10)
+        self.assertEqual(span_ref, 10)
+        self.assertGreater(g_ref, 0.055)
+        self.assertLess(g_ref, 0.075)
+
+        # Case 2: Hyper-growth (+25%/yr across all 3 drivers) -> compressed smoothly below 13.0% asymptote
+        sales_hi = {y: 100.0 * (1.25 ** (y - 2015)) for y in range(2015, 2026)}
+        nopat_hi = {y: 25.0 * (1.25 ** (y - 2015)) for y in range(2015, 2026)}
+        oe_hi = {y: 22.0 * (1.25 ** (y - 2015)) for y in range(2015, 2026)}
+        g_hi, _ = statistical_organic_g0(sales_hi, nopat_hi, oe_hi, max_years=10)
+        self.assertGreater(g_hi, 0.120)
+        self.assertLess(g_hi, 0.130)
+        self.assertLess(compress_g0(0.30), 0.130)
 
 
 class ValuationSandboxHtmlTests(unittest.TestCase):
@@ -180,7 +243,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         tw_roic = abs(cur["roic"] - snap(base_roic)) > 0.01
         tw_gest = cur["gest"] != base_gest
         tw_peak = cur["peakeps"] is not None and (base_peakeps is None or abs(cur["peakeps"] - base_peakeps) > 1e-4)
-        g_base, g_max = 0.035, 0.18
+        g_base, g_max = 0.030, 0.130
         bb_eff = c.get("bb_eff") or 0.0
         bb_pos, bb_org = max(0.0, bb_eff), min(0.0, bb_eff)
         g_org_exp, g_exp = c.get("g_org_exp"), c.get("g_exp")
@@ -192,24 +255,24 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
             g_oe = c["cagr_oe_eps"] + d if c.get("cagr_oe_eps") is not None else None
             has_stmt = oc is not None or has_sales or c.get("sales_1y") is not None or g_oe is not None
             if has_stmt:
-                if oc is not None and has_sales:
-                    base_org = min(s5, 0.70 * oc + 0.30 * s5)
+                if has_sales:
+                    raw_org = s5
                 elif oc is not None:
-                    base_org = oc
-                elif has_sales:
-                    base_org = s5
+                    raw_org = oc
+                elif g_oe is not None:
+                    raw_org = g_oe - bb_pos
                 else:
-                    base_org = (g_oe - bb_pos) if g_oe is not None else c.get("sales_1y")
+                    raw_org = c.get("sales_1y") + bb_org
             elif c.get("g_implied") is not None:
-                base_org = c["g_implied"] - bb_pos
+                raw_org = c["g_implied"] - bb_pos + bb_org
             else:
-                base_org = g_base
+                raw_org = g_base + bb_org
             if cur["gest"] is not None:
                 g_est_val = cur["gest"] / 100.0
                 g_org_exp = r4(max(0.0, min(g_max, g_est_val - bb_pos)))
                 g_exp = r4(max(0.0, min(g_max + bb_pos, g_est_val)))
             else:
-                g_org_exp = r4(max(0.0, min(g_max, base_org + bb_org)))
+                g_org_exp = r4(max(0.0, min(g_max, raw_org)))
                 g_exp = r4(g_org_exp + bb_pos)
         roic_exp = c.get("roic_exp") if c.get("roic_exp") is not None else 0.18
         if tw_roic:
@@ -329,7 +392,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
                 and c.get("peak_eps_est") is None
                 and c.get("mtm_holdco")
                 and (c.get("roic_exp") or 0) > 0.12
-                and (c.get("g_org_exp") or 0) > 0.035
+                and (c.get("g_org_exp") or 0) > 0.030
             ),
             None,
         )
@@ -446,25 +509,25 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         # 1. Exact round-trip when cur_mult == Fair P/E
         g0 = 0.095
         roic0 = 0.24
-        pe_fair, _, _, _ = explicit_dcf_multiple(g0, roic0, 20, r=0.085, g_term=0.035)
-        g_mkt, flag = solve_market_growth(pe_fair, g0, roic0, 20, r=0.085, g_term=0.035)
+        pe_fair, _, _, _ = explicit_dcf_multiple(g0, roic0, 20, r=0.085, g_term=0.030)
+        g_mkt, flag = solve_market_growth(pe_fair, g0, roic0, 20, r=0.085, g_term=0.030)
         self.assertEqual(flag, "ok")
         self.assertAlmostEqual(g_mkt, g0, places=4)
 
         # 2. When ROIC_0 < r, growth destroys value -> no_value_creation
-        g_mkt_flat, flag_flat = solve_market_growth(14.0, 0.05, 0.06, 20, r=0.085, g_term=0.035)
+        g_mkt_flat, flag_flat = solve_market_growth(14.0, 0.05, 0.06, 20, r=0.085, g_term=0.030)
         self.assertEqual(flag_flat, "no_value_creation")
 
         # 3. Finite-horizon (opt-in) concession where reinvestment destroys finite annuity value
-        g_mkt_conc, flag_conc = solve_market_growth(9.5, 0.06, 0.13, 20, r=0.085, g_term=0.035, finite_conc=True)
+        g_mkt_conc, flag_conc = solve_market_growth(9.5, 0.06, 0.13, 20, r=0.085, g_term=0.030, finite_conc=True)
         self.assertEqual(flag_conc, "no_value_creation")
 
         # 4. Saturated high and low bounds
-        g_low, flag_low = solve_market_growth(2.0, 0.08, 0.25, 20, r=0.085, g_term=0.035)
+        g_low, flag_low = solve_market_growth(2.0, 0.08, 0.25, 20, r=0.085, g_term=0.030)
         self.assertEqual(flag_low, "saturated_low")
         self.assertAlmostEqual(g_low, -0.20, places=4)
 
-        g_high, flag_high = solve_market_growth(500.0, 0.08, 0.25, 20, r=0.085, g_term=0.035)
+        g_high, flag_high = solve_market_growth(500.0, 0.08, 0.25, 20, r=0.085, g_term=0.030)
         self.assertEqual(flag_high, "saturated_high")
         self.assertAlmostEqual(g_high, 0.50, places=4)
 
@@ -479,9 +542,9 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         """Verify Fair P/E == 1/r when RONIC == r across all g0 and N, and Bellman 5Y IRR == r at Fair Value."""
         # 1. Exact Miller-Modigliani zero-spread theorem: when RONIC_t == r, Fair P/E == 1 / r to < 1e-12
         for r in (0.085, 0.1025):
-            for g0 in (0.0, 0.035, 0.08, 0.14, 0.18):
+            for g0 in (0.0, 0.030, 0.08, 0.14, 0.18):
                 for n_cap in (5, 10, 15, 20, 30):
-                    pe, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(g0, r, n_cap, r=r, g_term=0.035, roic_end=r)
+                    pe, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(g0, r, n_cap, r=r, g_term=0.030)
                     self.assertAlmostEqual(pe, 1.0 / r, places=12)
                     irr = solve_irr_5y(pe, fcfs_5, v_5)
                     self.assertAlmostEqual(irr, r, places=7)

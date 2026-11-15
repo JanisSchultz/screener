@@ -142,7 +142,158 @@ def exp_weighted_ols_cagr(
     if den <= 1e-9:
         return None, None
     beta = num / den
-    return math.exp(beta) - 1.0, (yrs[-1] - yrs[0])
+    wls_cagr = math.exp(beta) - 1.0
+    span_tot = yrs[-1] - yrs[0]
+    # Guard against asymmetric V-shaped slump/rebound inflation (e.g. 2020 COVID crash clipped on the way down
+    # while multi-year recovery is accumulated on the way up): if any year dropped >15% and later recovered
+    # above the pre-drop level, bound WLS by the actual post-reset full-span CAGR.
+    if span_tot > 0 and any(
+        series[yrs[i]] < 0.85 * series[yrs[i - 1]] and series[yrs[-1]] >= series[yrs[i - 1]]
+        for i in range(1, len(yrs))
+    ):
+        span_cagr = (series[yrs[-1]] / series[yrs[0]]) ** (1.0 / span_tot) - 1.0
+        wls_cagr = min(wls_cagr, span_cagr)
+    return wls_cagr, span_tot
+
+
+G_BASE_STAT = 0.030
+G_MAX_STAT = 0.130
+TAU_PRIOR_STAT = 0.060
+
+
+def compress_g0(raw_g: float, g_base: float = G_BASE_STAT, g_max: float = G_MAX_STAT) -> float:
+    """Pillar 4b: Smooth Bayesian hyperbolic-tangent tail compression above g_base with asymptote g_max."""
+    if raw_g <= g_base:
+        return max(0.0, raw_g)
+    span = max(1e-6, g_max - g_base)
+    return g_base + span * math.tanh((raw_g - g_base) / span)
+
+
+def theil_sen_organic_cagr(
+    series: dict,
+    shares: dict | None = None,
+    max_years: int = 10,
+    min_span: int = 5,
+    last: int | None = None,
+) -> tuple[float | None, float | None, float | None, int | None]:
+    """Pillar 1 & 2: Dilution-adjusted per-share series + Cycle-Spanning Theil-Sen non-parametric estimator.
+    Returns (med_cagr, p25_cagr, mad_se, span_years)."""
+    if not series:
+        return None, None, None, None
+    yrs_all = sorted(y for y, v in series.items() if v is not None and v > 0 and (last is None or y <= last))
+    if len(yrs_all) < 2:
+        return None, None, None, None
+    end_y = yrs_all[-1]
+    yrs = [y for y in yrs_all if end_y - max_years <= y <= end_y]
+    if len(yrs) < 2:
+        return None, None, None, None
+
+    # 1. Permanent corporate breakup / spinoff perimeter reset (e.g. GE 2023, HWM 2019)
+    reset_idx = 0
+    for i in range(1, len(yrs)):
+        y0, y1 = yrs[i - 1], yrs[i]
+        if series[y1] / series[y0] < 0.65 and len(yrs[i:]) >= 3:
+            pre_min = min(series[y] for y in yrs[:i])
+            post_max = max(series[y] for y in yrs[i:])
+            if post_max < 0.82 * pre_min:
+                reset_idx = i
+    if reset_idx > 0:
+        yrs = yrs[reset_idx:]
+
+    span_tot = yrs[-1] - yrs[0]
+    if span_tot <= 0:
+        return None, None, None, None
+
+    # 2. Dilution-Only Share Index S_t: penalizes SBC & stock-merger share issuance (up to +65%/yr)
+    # in the exact year it occurs, without double-counting share buybacks (Shares_t < Shares_{t-1}).
+    sh_idx = {yrs[0]: 1.0}
+    cur_idx = 1.0
+    if shares:
+        for i in range(1, len(yrs)):
+            y0, y1 = yrs[i - 1], yrs[i]
+            s0, s1 = shares.get(y0), shares.get(y1)
+            dt_y = y1 - y0
+            if s0 and s1 and s0 > 0 and s1 > s0 and dt_y > 0:
+                ann_ratio = (s1 / s0) ** (1.0 / dt_y)
+                if ann_ratio <= 1.65:
+                    cur_idx *= (s1 / s0)
+            sh_idx[y1] = cur_idx
+    else:
+        for y in yrs:
+            sh_idx[y] = 1.0
+
+    log_vals = {y: math.log(series[y] / sh_idx[y]) for y in yrs}
+
+    # 3. Cycle-Spanning Theil-Sen pairwise annualized log-slopes (span >= min_span, fallback >= 3, >= 1)
+    slopes = []
+    for req_span in (min_span, 3, 1):
+        slopes = [
+            (log_vals[yrs[j]] - log_vals[yrs[i]]) / (yrs[j] - yrs[i])
+            for i in range(len(yrs))
+            for j in range(i + 1, len(yrs))
+            if yrs[j] - yrs[i] >= req_span
+        ]
+        if slopes:
+            break
+    if not slopes:
+        return None, None, None, None
+
+    slopes.sort()
+    n = len(slopes)
+    med_b = median(slopes)
+    p25_b = slopes[max(0, int(0.25 * (n - 1)))]
+    mad = median([abs(s - med_b) for s in slopes])
+    return math.exp(med_b) - 1.0, math.exp(p25_b) - 1.0, 1.4826 * mad, span_tot
+
+
+def statistical_organic_g0(
+    sales: dict,
+    nopat: dict | None = None,
+    owner_earn: dict | None = None,
+    shares: dict | None = None,
+    max_years: int = 10,
+    last: int | None = None,
+) -> tuple[float | None, int | None]:
+    """Pillar 3 & 4a: 3-driver triangulation (Revenue, NOPAT, Owner Earnings) on dilution-adjusted
+    per-share series via Cycle-Spanning Theil-Sen, followed by Empirical Bayes precision shrinkage
+    of excess growth above G_BASE_STAT (3.0%)."""
+    rev_med, rev_p25, rev_se, span = theil_sen_organic_cagr(sales, shares=shares, max_years=max_years, min_span=5, last=last)
+    if rev_p25 is None or span is None:
+        return None, None
+
+    nop_med, nop_p25, _, nop_span = (
+        theil_sen_organic_cagr(nopat, shares=shares, max_years=max_years, min_span=5, last=last)
+        if nopat else (None, None, None, None)
+    )
+    oe_med, oe_p25, _, oe_span = (
+        theil_sen_organic_cagr(owner_earn, shares=shares, max_years=max_years, min_span=5, last=last)
+        if owner_earn else (None, None, None, None)
+    )
+
+    cands_med = [rev_med]
+    if nop_med is not None and (nop_span or 0) >= 3:
+        cands_med.append(nop_med)
+    if oe_med is not None and (oe_span or 0) >= 3:
+        cands_med.append(oe_med)
+    tri_med = median(cands_med)
+    g_tri = min(rev_p25, tri_med)
+
+    # Refranchising guard (e.g. MCD, KO): if top-line revenue stagnated (<3.0%) due to gross-to-net royalty
+    # transition while BOTH operating profit (NOPAT) and Owner Earnings P25 grew faster than revenue:
+    if (
+        rev_med is not None and rev_med < G_BASE_STAT
+        and nop_p25 is not None and (nop_span or 0) >= 5
+        and oe_p25 is not None and (oe_span or 0) >= 5
+        and min(nop_p25, oe_p25) > rev_med
+    ):
+        g_tri = min(0.060, nop_p25, oe_p25)
+
+    # Pillar 4a & 4b: Empirical Bayes precision shrinkage toward G_BASE_STAT = 3.0%
+    # followed by smooth hyperbolic-tangent tail compression with asymptote G_MAX_STAT = 13.0%.
+    se = rev_se if rev_se is not None else 0.030
+    w = (TAU_PRIOR_STAT ** 2) / (TAU_PRIOR_STAT ** 2 + se ** 2)
+    g_eb = G_BASE_STAT + w * (g_tri - G_BASE_STAT) if g_tri > G_BASE_STAT else g_tri
+    return compress_g0(g_eb, G_BASE_STAT, G_MAX_STAT), span
 
 
 def implied_shares(ni: dict, eps: dict, shares: dict) -> dict:
@@ -362,14 +513,29 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         for n in (10, 5, 3):
             out[f"cagr_{name}_{n}"] = cagr(ser, n)
 
-    # 10-Year Exponentially-Weighted Log-Linear OLS Growth Engine (Sales & Operating Costs)
+    shares = implied_shares(ni, g("eps"), g("shares"))
+    nopat_ser = {}
+    for y, e_val in ebit.items():
+        if e_val is not None:
+            tr = tax_rate.get(y)
+            tr = DEFAULT_TAX if tr is None or not (0 <= tr <= 0.40) else tr
+            nopat_ser[y] = e_val * (1.0 - tr)
+    owner_earn_ser = {
+        y: ni[y] + owner_addback(s, y)
+        for y in ni
+        if ni.get(y) is not None and (ni[y] + owner_addback(s, y)) > 0
+    }
+
+    # 4-Pillar Statistical Organic Growth Estimator (Dilution-Adjusted Cycle-Spanning Theil-Sen + Empirical Bayes)
     if sales:
         s1_val = cagr(sales, 1)
         if s1_val is not None:
             out["sales_1y"] = round(s1_val, 4)
-        s_wls, s_span = exp_weighted_ols_cagr(sales, max_years=10, half_life=5.0, last=last)
-        if s_wls is not None and s_span is not None:
-            out["sales_cagr"] = round(s_wls, 4)
+        s_stat, s_span = statistical_organic_g0(
+            sales, nopat=nopat_ser, owner_earn=owner_earn_ser, shares=shares, max_years=10, last=last
+        )
+        if s_stat is not None and s_span is not None:
+            out["sales_cagr"] = round(s_stat, 4)
             out["sales_cagr_yrs"] = s_span
 
     opcost_ser = {
@@ -384,11 +550,10 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         oc1_val = cagr(opcost_ser, 1)
         if oc1_val is not None:
             out["opcost_1y"] = round(max(-0.40, min(0.60, oc1_val)), 4)
-        oc_wls, _ = exp_weighted_ols_cagr(opcost_ser, max_years=10, half_life=5.0, last=last)
-        if oc_wls is not None:
-            out["opcost_cagr"] = round(max(-0.25, min(0.45, oc_wls)), 4)
+        oc_med, _, _, _ = theil_sen_organic_cagr(opcost_ser, shares=shares, max_years=10, min_span=5, last=last)
+        if oc_med is not None:
+            out["opcost_cagr"] = round(max(-0.25, min(0.45, oc_med)), 4)
 
-    shares = implied_shares(ni, g("eps"), g("shares"))
     sh_yrs = sorted(y for y, v in shares.items() if v and v > 0 and (last is None or y <= last))
     if len(sh_yrs) >= 2:
         # Use median annual YoY share reduction over latest 5 transitions so a single-year
@@ -441,12 +606,6 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         out["cap_growth"] = round(g_oa, 4)
     elif g_ic is not None:
         out["cap_growth"] = round(g_ic, 4)
-    nopat_ser = {}
-    for y, e_val in ebit.items():
-        if e_val is not None:
-            tr = tax_rate.get(y)
-            tr = DEFAULT_TAX if tr is None or not (0 <= tr <= 0.40) else tr
-            nopat_ser[y] = e_val * (1.0 - tr)
     # M&A reinvestment rate = median over the latest 5 yearly transitions of max(0, Δ(goodwill + intangibles)) ÷ NOPAT:
     # the share of earnings spent buying growth (serial acquirers CSU / BNZL high; one transformational merger such as
     # SPGI/IHS moves the median little). Feeds the M&A-matched RONIC blend in screener/gates.py.

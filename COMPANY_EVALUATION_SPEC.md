@@ -281,34 +281,41 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
 
 ---
 
-### 5.3 Cost-Bloat Guarded Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.1)
+### 5.3 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.1)
 
 1. **Share Buyback / Dilution Split**:
    $$\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.035]}(\text{buyback\_yield}), \qquad \text{bb\_pos} = \max(0.0, \text{bb\_eff}), \qquad \text{bb\_org} = \min(0.0, \text{bb\_eff})$$
-2. **Cost-Bloat Guarded Organic Growth Base (`base_org`)**:
-   - When both `opcost_cagr` and `sales_cagr` are present: $\text{base\_org} = \min(\text{sales\_cagr},\; 0.70 \times \text{opcost\_cagr} + 0.30 \times \text{sales\_cagr})$.
-   - Fallbacks: `opcost_cagr` $\rightarrow$ `sales_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ `sales_1y` $\rightarrow$ $\text{g\_implied} - \text{bb\_pos}$ $\rightarrow$ `0.035` (dilution `bb_org` applies on every path).
+2. **4-Pillar Statistical Organic Growth Base (`sales_cagr` via `statistical_organic_g0`)**:
+   - **Primary**: `sales_cagr`, computed via:
+     1. **Pillar 1 (Dilution-Adjusted Share Index)**: $S_t = S_{t-1} \times \max(1.0, \text{Shares}_t / \text{Shares}_{t-1})$ (up to $+65\%/\text{yr}$), deducting stock-merger and SBC dilution in the exact year it occurs without double-counting share buybacks.
+     2. **Pillar 2 (Cycle-Spanning Theil–Sen)**: All pairwise annualized log-slopes spanning $\Delta t \ge 5\text{y}$, extracting median ($P_{50}$), Lower Confidence Bound ($P_{25}$), and MAD dispersion ($\hat{\sigma}_b$).
+     3. **Pillar 3 (3-Driver Triangulation)**: $\hat{g}_{\text{tri}} = \min(\hat{g}_{\text{Rev}, P25},\; \text{median}(\hat{g}_{\text{Rev}, P50}, \hat{g}_{\text{NOPAT}, P50}, \hat{g}_{\text{OE}, P50}))$ (plus refranchising guard).
+     4. **Pillar 4 (Empirical Bayes Shrinkage & $\tanh$ Tail Compression)**: Precision shrinkage $w_i = \tau_0^2 / (\tau_0^2 + \hat{\sigma}_{b,i}^2)$ ($\tau_0 = 0.060$) toward $g_{\text{base}} = 3.0\%$, compressed via $\text{compress\_g0}$ with asymptote `par_g_anchor_max = 0.130` (`13.0%`).
+   - **Fallbacks**: `opcost_cagr` $\rightarrow$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\rightarrow$ $\text{sales\_1y} + \text{bb\_org}$ $\rightarrow$ $\text{g\_implied} - \text{bb\_pos} + \text{bb\_org}$ $\rightarrow$ `0.030`.
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Ceiling (`g_exp`)**:
-   $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.18]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
-   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.18]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.18 + \text{bb\_pos}]}(g_{\text{est}})$.
+   $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.13]}(\text{raw\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
+   - If `g_est` is populated, $g_0 = \text{clamp}_{[0.0,\, 0.13]}(g_{\text{est}} - \text{bb\_pos})$ and $g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.13 + \text{bb\_pos}]}(g_{\text{est}})$.
 
 ---
 
 ### 5.4 Explicit $N$-Year Mauboussin-Fade DCF Valuation ($r = 8.50\% / 10.25\%$) (v7.1)
 
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade ($t = 1 \dots N$)**:
-   Starting at $E_1 = 1.0$ — the active (trailing, normalized) Owner EPS treated as Year-1 earnings, deliberately conservative by one year of growth versus a forward $E_1 = \text{EPS}(1 + g_0)$ — $\text{frac}_t = \frac{t - 1}{\max(1, N - 1)}$, $g_t = g_0 - \text{frac}_t(g_0 - \min(g_0, 0.035))$, $\text{RONIC}_t = \text{RONIC}_0 - \text{frac}_t(\text{RONIC}_0 - \min(\text{RONIC}_0, 0.20))$, $\text{FCF}_t = E_t\left(1 - \frac{\max(0, g_t)}{\max(0.05, \text{RONIC}_t)}\right)$, $E_{t+1} = E_t(1 + g_t)$, and $\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \text{FCF}_t (1 + r)^{-t}$.
+   Starting at $E_1 = 1.0$ — the active (trailing, normalized) Owner EPS treated as Year-1 earnings, deliberately conservative by one year of growth versus a forward $E_1 = \text{EPS}(1 + g_0)$ — $\text{frac}_t = \frac{t - 1}{\max(1, N - 1)}$, $g_t = g_0 - \text{frac}_t(g_0 - \min(g_0, 0.030))$, $\text{RONIC}_t = \text{RONIC}_0 - \text{frac}_t(\text{RONIC}_0 - \text{RONIC}_{\text{term}})$ with $\text{RONIC}_{\text{term}} = \max(0.05,\; \min(\text{RONIC}_0, 0.20, r + 0.5(\text{RONIC}_0 - r)))$, $\text{FCF}_t = E_t\left(1 - \frac{\max(0, g_t)}{\max(0.05, \text{RONIC}_t)}\right)$, $E_{t+1} = E_t(1 + g_t)$, and $\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \text{FCF}_t (1 + r)^{-t}$.
 2. **Stage 2 — Post-CAP Terminal Perpetuity Value ($t > N$)**:
-   $$\text{PV}_{\text{Stage 2}} = \frac{E_{N+1}}{r(1 + r)^N}, \qquad \text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
+   With $g_{\text{tv}} = \max(0.0, \min(g_0, 0.030))$ and $\text{Reinv}_{\text{tv}} = \frac{g_{\text{tv}}}{\max(0.05, \text{RONIC}_{\text{term}})}$:
+   $$\text{TV}_N = \frac{E_{N+1}(1 - \text{Reinv}_{\text{tv}})}{\max(0.01, r - g_{\text{tv}})}, \qquad \text{PV}_{\text{Stage 2}} = \frac{\text{TV}_N}{(1 + r)^N}, \qquad \text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
    *Guarantees exact Miller–Modigliani zero-spread invariance ($\text{Fair P/E} \equiv 1/r$ when $\text{RONIC}_t = r$). A zero terminal value applies only to concessions explicitly listed in `FINITE_CONCESSION_IDS` (empty by default).*
 
 ---
 
-### 5.5 Valuation Metrics & Bellman-Consistent 5-Year Expected IRR (v7.1)
+### 5.5 The 3-Price Valuation Framework & Bellman-Consistent 5-Year Expected IRR (v7.1)
 
 1. **Fair Value Price (`par_val`)**: $\text{Fair P/E} \times \text{Active Peak Owner EPS}$.
-2. **Current Multiple (`cur_mult`)**: $\text{Current Share Price} \div \text{Active Peak Owner EPS}$.
-3. **Discount vs Fair Value (`vs_par`)**: $\text{Current Share Price} \div \text{Fair Value Price} - 1.0$ (`Below PAR` when $\le 0$). When the DCF fair value is $\le 0$ the status is **`No value`** and `vs_par`, IRR and runway metrics are left blank.
+2. **Standalone Terminal P/E (`term_mult`), Terminal Price (`term_val`) & `% vs Terminal` (`vs_term`)**:
+   $$\text{term\_mult} = \frac{1 - 0.030 / \text{RONIC}_{\text{term}}}{\max(0.01,\; r - 0.030)} \quad (\text{when } \text{RONIC}_{\text{term}} > r,\text{ else } 1/r), \qquad \text{term\_val} = \text{term\_mult} \times \text{Active Peak Owner EPS}, \qquad \text{vs\_term} = \frac{\text{Current Share Price}}{\text{term\_val}} - 1.0$$
+3. **Current Multiple (`cur_mult`)**: $\text{Current Share Price} \div \text{Active Peak Owner EPS}$.
+4. **Discount vs Fair Value (`vs_par`)**: $\text{Current Share Price} \div \text{Fair Value Price} - 1.0$ (`Below PAR` when $\le 0$). When the DCF fair value is $\le 0$ the status is **`No value`** and `vs_par`, IRR and runway metrics are left blank.
 4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
    Solves $\text{Current Multiple} = \sum_{t=1}^{5} \text{FCF}_t (1 + \text{IRR})^{-t} + V_5 (1 + \text{IRR})^{-5}$ directly on the Year 1–5 DCF cash flows and Year-5 DCF continuation value $V_5 = (\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \text{FCF}_t(1+r)^{-t})(1+r)^{\min(5, N)}$, guaranteeing $\text{IRR}_{5\text{y}} \equiv r$ at $\text{Price} = \text{Fair Value}$.
 5. **Root-Safe DCF-Inverted Market-Implied Growth ($g_{\text{market}}$) & Growth Margin (`g_gap`)**:

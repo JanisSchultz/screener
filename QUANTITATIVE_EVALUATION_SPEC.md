@@ -9,8 +9,8 @@ This specification governs the **independent quantitative valuation** of individ
 
 ### The Slump-Cannibal Compounder & Explicit DCF Doctrine
 Grounded in the investment philosophies of **Charlie Munger**, **Warren Buffett**, **Michael Mauboussin**, and **Chris Hohn**, high-quality compounders that pass the 6 Munger Quality Gates are valued via a **Sure & Simple Explicit $N$-Year Mauboussin-Fade Discounted Cash Flow (DCF) model** at a discount rate of $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials):
-1. **Cost-Bloat Guarded Growth Ceiling ($g_0$ / `g_org_exp`)**: Anchored on $\min(\text{Sales WLS CAGR},\; 0.70 \times \text{OpCost WLS CAGR} + 0.30 \times \text{Sales WLS CAGR})$, capped at `par_g_anchor_max = 18.0%`. Crucially, a temporary 1-year revenue slump (`sales_1y`) does not depress the company's structural organic growth ceiling, while operating cost bloat ($\text{OpCost CAGR} > \text{Sales CAGR}$) can never award growth faster than top-line revenue compounding.
-2. **Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / 10.25\%$, $100\%$ Weight)**: Year 1 starts at the active (trailing, normalized) Owner EPS treated as Year-1 earnings, $E_1 = 1.0$ — deliberately conservative by one year of growth versus a forward $E_1 = \text{EPS}(1+g_0)$. At the end of each year $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$ years), reinvestment $\text{Reinv}_t = E_t \cdot \max(0, g_t) / \text{RONIC}_t$ is deducted from $E_t$ to fund Year-$(t+1)$ growth $E_{t+1} = E_t(1 + g_t)$, with $(g_t, \text{RONIC}_t)$ fading linearly from $(g_0, \text{RONIC}_0)$ at $t=1$ to $(\min(g_0, 3.5\%), \min(\text{RONIC}_0, 20.0\%))$ at $t=N$, and terminal value $\text{TV}_N = E_{N+1} / r$. When $\text{RONIC}_t = r$, $\text{Fair P/E} \equiv 1/r$ identically for all $g_0$ and $N$.
+1. **4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`)**: Anchored on the **4-Pillar Statistical Organic Growth Estimator (`statistical_organic_g0`)** — combining a Dilution-Adjusted Per-Share Index $S_t$, Cycle-Spanning Theil–Sen non-parametric estimator ($\Delta t \ge 5\text{y}$, $P_{25}$ Lower Confidence Bound), 3-Driver Triangulation (`Revenue`, `NOPAT`, `Owner Earnings`), and Empirical Bayes precision shrinkage with smooth hyperbolic-tangent tail compression (`par_g_anchor_max = 13.0%`). Crucially, a temporary 1-year revenue slump (`sales_1y`) does not depress the company's structural organic growth ceiling, while V-shaped COVID rebounds (`AMS.ES`, `BKNG`) and stock-funded M&A dilution (`SPGI`, `ENX.FR`) are neutralized automatically.
+2. **Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / 10.25\%$, $100\%$ Weight)**: Year 1 starts at the active (trailing, normalized) Owner EPS treated as Year-1 earnings, $E_1 = 1.0$ — deliberately conservative by one year of growth versus a forward $E_1 = \text{EPS}(1+g_0)$. At the end of each year $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$ years), reinvestment $\text{Reinv}_t = E_t \cdot \max(0, g_t) / \text{RONIC}_t$ is deducted from $E_t$ to fund Year-$(t+1)$ growth $E_{t+1} = E_t(1 + g_t)$, with $(g_t, \text{RONIC}_t)$ fading linearly from $(g_0, \text{RONIC}_0)$ at $t=1$ to $(\min(g_0, 3.0\%),\; \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r)))$ at $t=N$, and McKinsey Value-Driver terminal value $\text{TV}_N = E_{N+1}(1 - g_{\text{tv}}/\text{RONIC}_{\text{term}}) / (r - g_{\text{tv}})$ with $g_{\text{tv}} = \max(0, \min(g_0, 3.0\%))$. When $\text{RONIC}_t = r$, $\text{Fair P/E} \equiv 1/r$ identically for all $g_0 \ge 0$ and $N$.
 3. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**: Solves directly on the Year 1–5 DCF cash flows $\text{FCF}_1 \dots \text{FCF}_5$ plus the exact Year-5 DCF continuation value $V_5 = (\text{Fair P/E} - \sum_{t=1}^{5} \text{FCF}_t(1+r)^{-t})(1+r)^5$, guaranteeing $\text{IRR}_{5\text{y}} \equiv r$ whenever $\text{Price} = \text{Fair Value}$ with zero sign contradictions against `vs_par`.
 4. **Prerequisite**: In standard screening workflow, quantitative valuation is performed on companies that achieve **`Quality pass`** across the 6 qualitative gates or **`Calamity pass`** (conditional override on Gates 3b, 5, and/or 6). For **`Calamity pass`** businesses, explicitly check whether normalized earning power (`peak_eps_est`) or forward growth (`g_est`) needs a haircut rather than extrapolating pre-calamity peaks unadjusted.
 
@@ -101,7 +101,7 @@ To prevent accounting distortions from penalizing capital-light compounders whil
    - **Operating ROIC (Tangible Capital Return)** deducts Goodwill and Intangibles from Invested Capital, floored at $\frac{1}{3} \times \text{IC}_{\text{GAAP}}$, and adds the owner-earnings add-back to NOPAT so acquired-intangible amortisation is treated exactly as in Owner EPS:
      $$\text{Operating ROIC} = \frac{\text{NOPAT} + \text{Owner Add-Back}}{\max\!\left(\text{IC}_{\text{GAAP}} - \text{Goodwill} - \text{Intangibles},\; \frac{1}{3}\text{IC}_{\text{GAAP}}\right)}$$
 2. **M&A-Matched RONIC & Single Initial Cap (`par_roic_cap = 0.50`)**:
-   - Replaces the legacy two-step log compression + Galton pre-fade ($\text{ROIC}_{\text{log}} \to \text{ROIC}_{\text{exp}}$) with a single initial cap $\text{RONIC}_0 \le 50.0\%$ (`par_roic_cap = 0.50`, unless overridden by `roic_est`), leaving all mean-reversion to the explicit Stage-1 linear fade ($\text{RONIC}_0 \to \min(\text{RONIC}_0, 20.0\%)$ over $N$ years).
+   - Replaces the legacy two-step log compression + Galton pre-fade ($\text{ROIC}_{\text{log}} \to \text{ROIC}_{\text{exp}}$) with a single initial cap $\text{RONIC}_0 \le 50.0\%$ (`par_roic_cap = 0.50`, unless overridden by `roic_est`), leaving all mean-reversion to the explicit Stage-1 linear fade ($\text{RONIC}_0 \to \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r))$ over $N$ years).
    - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), a serial acquirer is assumed to keep spending `ma_reinvest` of earnings on acquisitions that earn GAAP ROIC. Bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$ is the share $w = \text{clip}_{[0,1]}(g_m / g_0)$ of the growth ceiling, and the reinvestment rate $g_0/\text{RONIC}_0 = (1-w)\,g_0/r_{\text{tang}} + w\,g_0/r_{\text{GAAP}}$ gives:
      $$\text{RONIC}_{\text{raw}} = \left(\frac{1 - w}{r_{\text{tang}}} + \frac{w}{r_{\text{GAAP}}}\right)^{-1}, \qquad \text{RONIC}_0 = \text{roic\_exp} = \min(0.50,\; \max(0.05,\; \text{RONIC}_{\text{raw}}))$$
      The median makes the blend capture serial acquirers (CSU, BNZL) while one transformational merger (SPGI/IHS, ICE/Black Knight) moves it little; organic capital growth never counts as M&A (`gates.ronic0`).
@@ -115,36 +115,41 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 3: Cost-Bloat Guarded Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.1)
+### Step 3: 4-Pillar Statistical Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Buyback Accretion (`g_exp`) (v7.1)
 
 1. **Core Growth Parameters**:
-   - `par_g_base = 0.035` (`3.5%` long-term nominal GDP terminal growth rate $g_{\text{term}}$).
-   - `par_g_anchor_max = 0.180` (`18.0%` maximum organic starting growth ceiling $g_0$).
+   - `par_g_base = 0.030` (`3.0%` long-term historical inflation pass-through terminal growth rate $g_{\text{term}}$).
+   - `par_g_anchor_max = 0.130` (`13.0%` maximum organic starting growth asymptote $g_0$).
    - Share Buyback / Dilution Split:
      $$\text{bb\_eff} = \text{clamp}_{[-0.03,\, 0.035]}(\text{buyback\_yield}), \qquad \text{bb\_pos} = \max(0.0, \text{bb\_eff}), \qquad \text{bb\_org} = \min(0.0, \text{bb\_eff})$$
-2. **Cost-Bloat Guarded Organic Growth Base (`base_org`) & Fallback Hierarchy**:
-   - **Primary (both `opcost_cagr` and `sales_cagr` present)**:
-     $$\text{base\_org} = \min\!\left(\text{sales\_cagr},\; 0.70 \times \text{opcost\_cagr} + 0.30 \times \text{sales\_cagr}\right)$$
-     *Strips one-off margin expansion when $\text{OpCost CAGR} < \text{Sales CAGR}$, while ensuring cost bloat ($\text{OpCost CAGR} > \text{Sales CAGR}$) never awards growth above revenue compounding.*
-   - **Fallbacks**: `opcost_cagr` $\to$ `sales_cagr` $\to$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\to$ `sales_1y` $\to$ $\text{g\_implied} - \text{bb\_pos}$ $\to$ `0.035`.
+2. **The 4-Pillar Statistical Organic Growth Estimator (`sales_cagr` via `statistical_organic_g0`)**:
+   - **Pillar 1 — Dilution-Adjusted Per-Share Index ($S_t$)**: Over the post-reset 10-year window, $S_t = S_{t-1} \times \max(1.0, \text{Shares}_t / \text{Shares}_{t-1})$ (for $1.0 < \text{ratio} \le 1.65$) penalizes SBC and stock-merger equity issuance (`SPGI`, `ENX.FR`) in the exact year it occurs without double-counting share buybacks.
+   - **Pillar 2 — Cycle-Spanning Theil–Sen Estimator ($\Delta t \ge 5\text{y}$)**: Computes all pairwise annualized log-slopes $b_{ij} = (\ln \tilde{Y}_{t_j} - \ln \tilde{Y}_{t_i}) / (t_j - t_i)$ spanning $\ge 5$ years (falling back to $\ge 3\text{y}$, $\ge 1\text{y}$), extracting the median ($P_{50}$), 25th-percentile Lower Confidence Bound ($P_{25}$), and MAD dispersion $\hat{\sigma}_b = 1.4826 \times \text{MAD}(b_{ij})$.
+   - **Pillar 3 — 3-Driver Triangulation**: Evaluates Pillar 1 & 2 on dilution-adjusted Revenue, NOPAT, and Owner Earnings:
+     $$\hat{g}_{\text{tri}} = \min\!\Big(\hat{g}_{\text{Rev}, P25},\; \text{median}\big(\hat{g}_{\text{Rev}, P50},\, \hat{g}_{\text{NOPAT}, P50},\, \hat{g}_{\text{OE}, P50}\big)\Big)$$
+     *(with a refranchising guard when $\hat{g}_{\text{Rev}, P50} < 3.0\%$ and both $\hat{g}_{\text{NOPAT}, P25}$ and $\hat{g}_{\text{OE}, P25}$ exceed $\hat{g}_{\text{Rev}, P50}$).*
+   - **Pillar 4 — Empirical Bayes Precision Shrinkage & Smooth $\tanh$ Tail Compression**:
+     $$w_i = \frac{\tau_0^2}{\tau_0^2 + \hat{\sigma}_{b,i}^2} \quad (\tau_0 = 0.060), \qquad \hat{g}_{\text{EB}} = g_{\text{base}} + w_i(\hat{g}_{\text{tri}} - g_{\text{base}}) \quad (\text{for } \hat{g}_{\text{tri}} > g_{\text{base}})$$
+     $$\text{sales\_cagr} = \text{compress\_g0}(\hat{g}_{\text{EB}}) = g_{\text{base}} + (g_{\max} - g_{\text{base}})\tanh\!\left(\frac{\hat{g}_{\text{EB}} - g_{\text{base}}}{g_{\max} - g_{\text{base}}}\right) \quad (\text{for } \hat{g}_{\text{EB}} > g_{\text{base}}, \text{ else } \max(0, \hat{g}_{\text{EB}}))$$
+   - **Fallbacks**: `opcost_cagr` (Theil–Sen $P_{50}$) $\to$ $\text{cagr\_oe\_eps} - \text{bb\_pos}$ $\to$ $\text{sales\_1y} + \text{bb\_org}$ $\to$ $\text{g\_implied} - \text{bb\_pos} + \text{bb\_org}$ $\to$ `0.030`.
 3. **Organic Growth Ceiling ($g_0$ / `g_org_exp`) & Per-Share Growth Ceiling (`g_exp`)**:
    - If explicit analyst override `g_est` is populated:
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.18]}(g_{\text{est}} - \text{bb\_pos}), \qquad g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.18 + \text{bb\_pos}]}(g_{\text{est}})$$
+     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.13]}(g_{\text{est}} - \text{bb\_pos}), \qquad g_{\text{exp}} = \text{clamp}_{[0.0,\, 0.13 + \text{bb\_pos}]}(g_{\text{est}})$$
    - Otherwise:
-     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.18]}(\text{base\_org} + \text{bb\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
+     $$g_0 = g_{\text{org,exp}} = \text{clamp}_{[0.0,\, 0.13]}(\text{raw\_org}), \qquad g_{\text{exp}} = g_{\text{org,exp}} + \text{bb\_pos}$$
 
 ---
 
 ### Step 4: Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year DCF ($r = 8.50\% / r_{\text{fin}} = 10.25\%$) (v7.1)
 
 1. **Stage 1 — Explicit Year-by-Year Mauboussin Fade Over Gate 4 CAP ($t = 1 \dots N$)**:
-   Starting from Year-1 normalized run-rate Owner Earnings $E_1 = 1.0$ on existing capital $\text{IC}_0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial marginal return $\text{RONIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and marginal RONIC fade linearly across $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = \min(g_0, 3.5\%)$, $\text{RONIC}_{\text{term}} = \min(\text{RONIC}_0, 20.0\%)$):
+   Starting from Year-1 normalized run-rate Owner Earnings $E_1 = 1.0$ on existing capital $\text{IC}_0$, initial organic growth $g_0 = g_{\text{org,exp}}$, and initial marginal return $\text{RONIC}_0 = \text{ROIC}_{\text{exp}}$, both growth and marginal RONIC fade linearly across $t = 1 \dots N$ ($N = \text{Gate 4 CAP}$, default `20` years) toward terminal steady state ($g_{\text{term}} = \min(g_0, 3.0\%)$, $\text{RONIC}_{\text{term}} = \max(0.05,\; \min(\text{RONIC}_0, 20.0\%, r + 0.5(\text{RONIC}_0 - r)))$):
    $$\text{frac}_t = \frac{t - 1}{\max(1, N - 1)}, \qquad g_t = g_0 - \text{frac}_t \cdot (g_0 - g_{\text{term}}), \qquad \text{RONIC}_t = \text{RONIC}_0 - \text{frac}_t \cdot (\text{RONIC}_0 - \text{RONIC}_{\text{term}})$$
    $$\text{Reinv}_t = \frac{\max(0.0, g_t)}{\max(0.05, \text{RONIC}_t)}, \qquad \text{FCF}_t = E_t \cdot (1 - \text{Reinv}_t), \qquad E_{t+1} = E_t \cdot (1 + g_t)$$
    $$\text{PV}_{\text{Stage 1}} = \sum_{t=1}^{N} \frac{\text{FCF}_t}{(1 + r)^t} \qquad (\text{stored in } \text{pe\_mm},\; r = 8.50\% \text{ or } 10.25\%)$$
 2. **Stage 2 — Post-CAP Terminal Perpetuity Value ($t > N$)**:
-   At the end of the Competitive Advantage Period ($t = N$), Year-$(N+1)$ earnings are $E_{N+1} = E_N(1 + g_N)$, and any post-CAP growth beyond Year $N$ earns $\text{RONIC} = r$ (zero NPV):
-   $$\text{TV}_N = \frac{E_{N+1}}{r}, \qquad \text{PV}_{\text{Stage 2}} = \frac{\text{TV}_N}{(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck},\; r = 8.50\% \text{ or } 10.25\%)$$
+   At the end of the Competitive Advantage Period ($t = N$), Year-$(N+1)$ earnings are $E_{N+1} = E_N(1 + g_N)$, and terminal inflation pass-through $g_{\text{tv}} = \max(0.0, g_{\text{term}})$ is reinvested at $\text{RONIC}_{\text{term}}$ via the McKinsey Value Driver formula:
+   $$\text{Reinv}_{\text{tv}} = \frac{g_{\text{tv}}}{\max(0.05, \text{RONIC}_{\text{term}})}, \qquad \text{TV}_N = \frac{E_{N+1}(1 - \text{Reinv}_{\text{tv}})}{\max(0.01, r - g_{\text{tv}})}, \qquad \text{PV}_{\text{Stage 2}} = \frac{\text{TV}_N}{(1 + r)^N} \qquad (\text{stored in } \text{pe\_mck})$$
 3. **100% Explicit DCF Fair Value Multiple (`par_mult` / `pe_vd`) & Zero-Spread Invariance**:
    $$\text{Fair P/E} = \text{par\_mult} = \text{pe\_vd} = \text{PV}_{\text{Stage 1}} + \text{PV}_{\text{Stage 2}}$$
    *Exact Miller–Modigliani Theorem: When $\text{RONIC}_t = r$ for all $t$, $\text{Fair P/E} \equiv \frac{1}{r}$ for every $g_0$ and $N$.*
@@ -156,11 +161,15 @@ To prevent accounting distortions from penalizing capital-light compounders whil
 
 ---
 
-### Step 5: Valuation Metrics & Bellman-Consistent 5Y Expected IRR (v7.1)
+### Step 5: The 3-Price Valuation Framework & Bellman-Consistent 5Y Expected IRR (v7.1)
 
 1. **Fair Value Price (`par_val`)**: $\text{Fair Value Price} = \text{Fair P/E} \times \text{Active Peak Owner EPS}$.
-2. **Current Multiple (`cur_mult`)**: $\text{Current Multiple} = \frac{\text{Current Share Price}}{\text{Active Peak Owner EPS}}$.
-3. **Discount / Premium vs Fair Value (`vs_par`)**: $\text{Discount vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (`Below PAR` when $\le 0$, `Above PAR` when $> 0$). When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** — never Below PAR — and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank.
+2. **Standalone Terminal P/E (`term_mult`), Terminal Price (`term_val`) & `% vs Terminal` (`vs_term`)**:
+   - Values the business today as if its high-growth CAP runway ended immediately and it merely grew at $3.0\%$ historical inflation forever with "keeping-the-lights-on" reinvestment ($3.0\% / \text{RONIC}_{\text{term}}$):
+     $$\text{term\_mult} = \frac{1 - g_{\text{term}} / \text{RONIC}_{\text{term}}}{\max(0.01,\; r - g_{\text{term}})} \quad (\text{when } \text{RONIC}_{\text{term}} > r,\text{ else } 1/r;\text{ or } \text{BVPS}/\text{Peak EPS}\text{ for MTM HoldCos; } 0\text{ for finite concessions})$$
+     $$\text{term\_val} = \text{term\_mult} \times \text{Active Peak Owner EPS}, \qquad \text{vs\_term} = \frac{\text{Current Share Price}}{\text{term\_val}} - 1.0$$
+3. **Current Multiple (`cur_mult`)**: $\text{Current Multiple} = \frac{\text{Current Share Price}}{\text{Active Peak Owner EPS}}$.
+4. **Discount / Premium vs Fair Value (`vs_par`)**: $\text{Discount vs Fair Value} = \frac{\text{Current Share Price}}{\text{Fair Value Price}} - 1.0$ (`Below PAR` when $\le 0$, `Above PAR` when $> 0$). When the DCF fair value is $\le 0$ (growth funded at a RONIC far below $g$) the status is **`No value`** — never Below PAR — and `vs_par`, `irr_5y`, `g_market`, `g_gap` and the runway metrics are blank.
 4. **Bellman-Consistent 5-Year Expected IRR (`irr_5y`)**:
    - Uses the exact Year 1–5 DCF free cash flows $\text{FCF}_1 \dots \text{FCF}_5$ and the exact Year-5 DCF continuation value $V_5$:
      $$V_5 = \left(\text{Fair P/E} - \sum_{t=1}^{\min(5, N)} \frac{\text{FCF}_t}{(1 + r)^t}\right)(1 + r)^{\min(5, N)}$$

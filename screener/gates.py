@@ -163,7 +163,7 @@ def dcf_schedule_and_continuation(
     roic0: float,
     n_cap: float | int | None,
     r: float = 0.085,
-    g_term: float = 0.035,
+    g_term: float = 0.030,
     finite_conc: bool = False,
     mtm_holdco: bool = False,
     roic_end: float | None = None,
@@ -174,15 +174,20 @@ def dcf_schedule_and_continuation(
       of growth versus a forward E_1 = EPS × (1 + g0).
     - At the end of each year t = 1..N (N = Gate 4 CAP), Reinv_t = E_t * max(0, g_t) / RONIC_t is deducted from E_t
       to fund Year-(t+1) growth E_{t+1} = E_t * (1 + g_t), with g_t and RONIC_t fading linearly from (g0, roic0) at t=1
-      to (min(g0, g_term), min(roic0, 20%)) at t=N.
-    - Terminal value at t=N is TV_N = E_{N+1} / r (post-CAP growth earns RONIC = r and adds zero NPV).
-    - Exact Miller-Modigliani zero-spread invariance: when RONIC_t == r, total_dcf_pe == 1 / r for all g0, N."""
+      to (min(g0, g_term), min(roic0, 20%, r + 0.5 * (roic0 - r))) at t=N.
+    - Terminal value at t=N is McKinsey Value Driver TV_N = E_{N+1} * (1 - g_tv / RONIC_term) / (r - g_tv) with
+      g_tv = max(0, min(g0, g_term)) (3.0% historical inflation pass-through, or g0 when g0 < 3.0%).
+    - Exact Miller-Modigliani zero-spread invariance: when RONIC_t == r, total_dcf_pe == 1 / r for all g0 >= 0, N."""
     roic_start = max(0.05, float(roic0))
     if mtm_holdco:
         nav_pe = 1.0 / roic_start
         return nav_pe, nav_pe, 0.0, 1.0, [0.0] * 5, nav_pe * ((1.0 + r) ** 5)
     n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_fin = min(roic_start, 0.20) if roic_end is None else max(0.05, float(roic_end))
+    roic_fin = (
+        max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r)))
+        if roic_end is None
+        else max(0.05, float(roic_end))
+    )
     g_term_eff = min(g0, g_term)
     reinv_1 = max(0.0, g0) / roic_start
     pv_stage1 = 0.0
@@ -197,10 +202,13 @@ def dcf_schedule_and_continuation(
         fcfs.append(fcf_t)
         pv_stage1 += fcf_t / ((1.0 + r) ** t)
         e_t = e_t * (1.0 + g_t)
-    tv_n = 0.0 if finite_conc else (e_t / max(0.01, r))
+    g_tv = max(0.0, g_term_eff)
+    reinv_tv = g_tv / max(0.05, roic_fin)
+    fcf_tv = e_t * (1.0 - reinv_tv)
+    tv_n = 0.0 if finite_conc else (fcf_tv / max(0.01, r - g_tv))
     pv_stage2 = tv_n / ((1.0 + r) ** n)
     total_pe = pv_stage1 + pv_stage2
-    fcfs_5 = (fcfs + [e_t] * 5)[:5]
+    fcfs_5 = (fcfs + [fcf_tv] * 5)[:5]
     pv_first5 = sum(fcfs[t] / ((1.0 + r) ** (t + 1)) for t in range(min(5, n)))
     v_5 = max(0.0, (total_pe - pv_first5) * ((1.0 + r) ** min(5, n)))
     return total_pe, pv_stage1, pv_stage2, 1.0 - reinv_1, fcfs_5, v_5
@@ -211,13 +219,48 @@ def explicit_dcf_multiple(
     roic0: float,
     n_cap: float | int | None,
     r: float = 0.085,
-    g_term: float = 0.035,
+    g_term: float = 0.030,
     finite_conc: bool = False,
     mtm_holdco: bool = False,
     roic_end: float | None = None,
 ) -> tuple[float, float, float, float]:
     """Explicit N-Year Mauboussin-Fade DCF Fair P/E: (total_dcf_pe, pv_stage1, pv_stage2, stage1_fcf_share)."""
     return dcf_schedule_and_continuation(g0, roic0, n_cap, r, g_term, finite_conc, mtm_holdco, roic_end)[:4]
+
+
+def terminal_multiple(
+    roic0: float,
+    r: float = 0.085,
+    g_term: float = 0.030,
+    finite_conc: bool = False,
+    mtm_holdco: bool = False,
+    roic_end: float | None = None,
+) -> float:
+    """Standalone McKinsey Value-Driver Terminal P/E at 3.0% historical inflation pass-through and 'keeping the lights on'
+    reinvestment (g_term / RONIC_term), where RONIC_term = max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r))).
+    When RONIC_term <= r, growth adds no value so g_inf = 0.0 and Terminal P/E = 1 / r."""
+    if finite_conc:
+        return 0.0
+    roic_start = max(0.05, float(roic0))
+    if mtm_holdco:
+        return 1.0 / roic_start
+    roic_fin = (
+        max(0.05, min(roic_start, 0.20, r + 0.5 * (roic_start - r)))
+        if roic_end is None
+        else max(0.05, float(roic_end))
+    )
+    if roic_fin <= r:
+        return 1.0 / r
+    g_inf = max(0.0, g_term)
+    return (1.0 - g_inf / roic_fin) / max(0.01, r - g_inf)
+
+
+def compress_g0(raw_g: float, g_base: float = 0.030, g_max: float = 0.130) -> float:
+    """Smooth Bayesian hyperbolic-tangent tail compression above g_base with asymptote g_max."""
+    if raw_g <= g_base:
+        return max(0.0, raw_g)
+    span = max(1e-6, g_max - g_base)
+    return g_base + span * math.tanh((raw_g - g_base) / span)
 
 
 G_MARKET_LO, G_MARKET_HI, G_MARKET_STEP = -0.20, 0.50, 0.01
@@ -237,7 +280,7 @@ def solve_market_growth(
     roic0: float,
     n_cap: float | int | None,
     r: float = 0.085,
-    g_term: float = 0.035,
+    g_term: float = 0.030,
     finite_conc: bool = False,
     mtm_holdco: bool = False,
 ) -> tuple[float | None, str | None]:
@@ -377,9 +420,9 @@ def par_valuation(
     p = p or {}
     k_op = p.get("par_cost_of_equity", 0.085)
     k_fin = p.get("par_cost_of_equity_fin", 0.1025)
-    g_max = p.get("par_g_anchor_max", 0.180)
+    g_max = p.get("par_g_anchor_max", 0.130)
     roic_cap = p.get("par_roic_cap", 0.500)
-    g_base = p.get("par_g_base", 0.035)
+    g_base = p.get("par_g_base", 0.030)
 
     price, mc, ni = f("price"), f("market_cap_m"), f("ni_ttm_m")
     note_auto = auto_note(fin)
@@ -419,31 +462,31 @@ def par_valuation(
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18
 
-    # Step 3 — Cost-bloat guarded organic growth ceiling g0 (g_org_exp) and buyback accretion (g_exp).
+    # Step 3 — 4-Pillar Statistical Organic Growth Ceiling g0 (g_org_exp) and buyback accretion (g_exp).
     bb_raw = f("buyback_yield")
     bb_eff = max(-0.03, min(0.035, bb_raw)) if bb_raw is not None else 0.0
     bb_pos, bb_org = max(0.0, bb_eff), min(0.0, bb_eff)
     sales_1y_val, sales_cagr_val = f("sales_1y"), f("sales_cagr")
     opcost_1y_val, opcost_cagr_val = f("opcost_1y"), f("opcost_cagr")
     g_imp_in, g_est_in = f("g_implied"), f("g_est")
-    has_stmt_growth = any(x is not None for x in (opcost_cagr_val, sales_cagr_val, sales_1y_val, g))
+    has_stmt_growth = any(x is not None for x in (sales_cagr_val, opcost_cagr_val, sales_1y_val, g))
 
     if has_stmt_growth:
-        # 70/30 blend of OpCost & Sales WLS CAGR, bounded above by Sales WLS CAGR so margin contraction
-        # (OpCost > Sales) never awards growth faster than revenue growth.
-        if opcost_cagr_val is not None and sales_cagr_val is not None:
-            base_org = min(sales_cagr_val, 0.70 * opcost_cagr_val + 0.30 * sales_cagr_val)
+        # Anchor directly on 4-Pillar Statistical Organic Growth (sales_cagr, already dilution-adjusted via S_t),
+        # with OpCost Theil-Sen CAGR, cycle Owner EPS CAGR (net of buybacks), and 1Y Sales (+ bb_org) as fallbacks.
+        if sales_cagr_val is not None:
+            raw_org = sales_cagr_val
         elif opcost_cagr_val is not None:
-            base_org = opcost_cagr_val
-        elif sales_cagr_val is not None:
-            base_org = sales_cagr_val
+            raw_org = opcost_cagr_val
+        elif g is not None:
+            raw_org = g - bb_pos
         else:
-            base_org = (g - bb_pos) if g is not None else sales_1y_val
+            raw_org = sales_1y_val + bb_org
     elif g_imp_in is not None:
-        base_org = g_imp_in - bb_pos
+        raw_org = g_imp_in - bb_pos + bb_org
     else:
-        base_org = g_base
-    g_org_start = _r4(max(0.0, min(g_max, base_org + bb_org)))
+        raw_org = g_base
+    g_org_start = _r4(max(0.0, min(g_max, raw_org)))
     g_start = _r4(min(g_max + bb_pos, g_org_start + bb_pos))
     if g_est_in is not None:
         g_org_exp = _r4(max(0.0, min(g_max, g_est_in - bb_pos)))
@@ -467,7 +510,8 @@ def par_valuation(
 
     out = {
         "status": C.V_NODATA, "peak_eps": peak_eps, "cur_mult": None, "par_mult": None, "par_val": None,
-        "vs_par": None, "irr_5y": None, "cap_implied": None, "cap_gap": None,
+        "vs_par": None, "term_mult": None, "term_val": None, "vs_term": None,
+        "irr_5y": None, "cap_implied": None, "cap_gap": None,
         "g_market": None, "g_market_flag": None, "g_gap": None,
         "pe_mm": None, "pe_mck": None, "pe_vd": None, "reinv_eff": None,
         "bvps": bvps, "nav_anchor": nav_anchor, "mtm_holdco": mtm_holdco, "finite_conc": finite_conc,
@@ -488,21 +532,25 @@ def par_valuation(
     ):
         return out
 
-    # Step 4 — Explicit N-Year DCF at r = 8.50% (10.25% for Balance-Sheet Financials).
+    # Step 4 — Explicit N-Year DCF & Standalone Terminal Price at r = 8.50% (10.25% for Balance-Sheet Financials).
     cur_mult = price / peak_eps
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
     roic_eff = max(roic_exp, 0.05)
     pe_vd, pe_mm, pe_mck, fcf_share, fcfs_5, v_5 = dcf_schedule_and_continuation(
         g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco
     )
+    term_mult = terminal_multiple(roic_eff, k, g_base, finite_conc, mtm_holdco)
     if nav_anchor:
-        pe_vd = pe_mm = bvps / peak_eps
+        pe_vd = pe_mm = term_mult = bvps / peak_eps
         pe_mck = 0.0
         fcfs_5 = [0.0] * 5
         v_5 = pe_vd * ((1.0 + k) ** 5)
     par_mult = pe_vd
     par_val = bvps if nav_anchor else par_mult * peak_eps
+    term_val = bvps if nav_anchor else term_mult * peak_eps
+    vs_term = (price / term_val - 1.0) if (term_val and term_val > 0) else None
     out.update({"cur_mult": cur_mult, "par_mult": par_mult, "par_val": par_val,
+                "term_mult": term_mult, "term_val": term_val, "vs_term": vs_term,
                 "pe_mm": pe_mm, "pe_mck": pe_mck, "pe_vd": pe_vd, "reinv_eff": fcf_share})
     if par_val <= 0:
         # Growth funded at RONIC far below g: the DCF has no positive value, so the stock can never be "Below PAR".

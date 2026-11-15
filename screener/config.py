@@ -222,9 +222,9 @@ PARAMETER_GROUPS = [
     ("PAR Valuation parameters (Quantitative sheet)", [
         ("par_cost_of_equity", "Nominal equity discount rate / hurdle rate r for Operating Companies & Fee Financials (8.50%)", 0.085, "0.00%", NEW + " Nominal equity discount rate r (8.50%) used in the Explicit Mauboussin-Fade DCF and Market-Implied Growth inversion for operating companies and asset-light fee financials."),
         ("par_cost_of_equity_fin", "Nominal equity discount rate r_fin for Balance-Sheet Financials (10.25%)", 0.1025, "0.00%", NEW + " Nominal equity discount rate r_fin (10.25%) for Balance-Sheet Financials (Insurers, Reinsurers, Banks, deposit-funded Brokers, Multi-Sector HoldCos)."),
-        ("par_g_base", "Nominal GDP base-rate anchor for Mauboussin Fade & Terminal Stage 2 (3.5%)", 0.035, "0.0%", NEW + " Long-term nominal GDP gravity anchor (3.5%) for the Explicit Mauboussin-Fade DCF."),
-        ("par_g_anchor_max", "Max initial organic growth rate ceiling g_0 (18.0%)", 0.180, "0.0%", NEW + " Bounds initial Year-1 organic growth rate g_0 at 18.0% before Stage-1 fade."),
-        ("par_roic_cap", "Max initial marginal RONIC ceiling before Stage-1 fade (50.0%)", 0.500, "0.0%", NEW + " Bounds initial Year-1 marginal return on invested capital at 50.0% before linear fade toward min(RONIC_0, 20.0%) over CAP years."),
+        ("par_g_base", "Historical inflation pass-through anchor for Mauboussin Fade & Terminal Stage 2 (3.0%)", 0.030, "0.0%", NEW + " Long-term inflation pass-through anchor (3.0%) for the Explicit Mauboussin-Fade DCF and Terminal Value."),
+        ("par_g_anchor_max", "Max initial organic growth rate asymptote g_0 (13.0%)", 0.130, "0.0%", NEW + " Smooth Bayesian hyperbolic-tangent tail asymptote (13.0%) for initial Year-1 organic growth rate g_0 before Stage-1 fade."),
+        ("par_roic_cap", "Max initial marginal RONIC ceiling before Stage-1 fade (50.0%)", 0.500, "0.0%", NEW + " Bounds initial Year-1 marginal return on invested capital at 50.0% before linear fade toward min(RONIC_0, 20.0%, r + 0.5 * (RONIC_0 - r)) over CAP years."),
     ]),
 ]
 

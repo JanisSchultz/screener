@@ -40,8 +40,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.p = params({})
 
     def test_opcost_cagr_primary_growth_ceiling_and_fallback_chain(self):
-        # Cost-bloat guard: when opcost_cagr (8.5%) > sales_cagr (7.5%), base_org is bounded by sales_cagr (7.50%);
-        # when opcost_cagr (7.0%) < sales_cagr (8.5%), 70/30 blend yields 0.70*7.0% + 0.30*8.5% = 7.45%.
+        # 10Y WLS Sales CAGR is the primary organic growth anchor (Gate 5 filters out management cost bloat),
+        # with OpCost WLS CAGR, cycle Owner EPS CAGR (net of buybacks), and 1Y Sales as fallbacks.
         fin_bloat = sample_fin(
             sales_ttm_m=10000.0,
             sales_1y=-0.04,
@@ -57,17 +57,17 @@ class QuantitativeGrowthTests(unittest.TestCase):
 
         fin = dict(fin_bloat, sales_cagr=0.085, opcost_cagr=0.070)
         val = par_valuation(fin, self.p, cap=20)
-        self.assertAlmostEqual(val["g_org_exp"], 0.0745, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.0945, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0850, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.1050, places=4)
 
-        # Fallback to sales_cagr when opcost_cagr is None
-        fin_no_oc = dict(fin_bloat, opcost_cagr=None)
-        val_no_oc = par_valuation(fin_no_oc, self.p, cap=20)
-        self.assertAlmostEqual(val_no_oc["g_org_exp"], 0.0750, places=4)
-        self.assertAlmostEqual(val_no_oc["g_exp"], 0.0950, places=4)
+        # Fallback to opcost_cagr when sales_cagr is None
+        fin_no_s = dict(fin_bloat, sales_cagr=None)
+        val_no_s = par_valuation(fin_no_s, self.p, cap=20)
+        self.assertAlmostEqual(val_no_s["g_org_exp"], 0.0850, places=4)
+        self.assertAlmostEqual(val_no_s["g_exp"], 0.1050, places=4)
 
-        # Fallback to cagr_oe_eps - bb_pos when sales_cagr is also None
-        fin_oe_only = dict(fin_no_oc, sales_cagr=None)
+        # Fallback to cagr_oe_eps - bb_pos when both sales_cagr and opcost_cagr are None
+        fin_oe_only = dict(fin_no_s, opcost_cagr=None)
         val_oe = par_valuation(fin_oe_only, self.p, cap=20)
         self.assertAlmostEqual(val_oe["g_org_exp"], 0.0900, places=4)
         self.assertAlmostEqual(val_oe["g_exp"], 0.1100, places=4)
@@ -148,7 +148,7 @@ class QuantitativeGrowthTests(unittest.TestCase):
         self.assertAlmostEqual(val["g_exp"], 0.0800, places=4)
 
     def test_mastercard_archetype_operating_asset_growth_sustains_compounder(self):
-        # MA archetype: $32.8B revenue, 70/30 blend of 14.5% OpCost WLS + 16.42% Sales WLS = 15.08% (unclamped by legacy scale_cap), +2.05% buybacks
+        # MA archetype: $32.8B revenue, 10.0% 4-Pillar Statistical Organic Growth (or 16.42% raw bounded at 13.0% asymptote), +2.05% buybacks
         fin_ma = sample_fin(
             sales_ttm_m=32791.0,
             sales_1y=0.1602,
@@ -161,13 +161,16 @@ class QuantitativeGrowthTests(unittest.TestCase):
             roic_median=0.97,
         )
         val = par_valuation(fin_ma, self.p, cap=20, moat="Toll booth / Switching costs")
-        self.assertAlmostEqual(val["g_org_exp"], 0.1508, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.1713, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.1300, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.1505, places=4)
         self.assertAlmostEqual(val["roic_exp"], 0.50, places=4)
-        self.assertGreater(val["pe_vd"], 30.0)
+        self.assertGreater(val["pe_vd"], 28.0)
+        # Standalone Terminal P/E at 3.0% inflation pass-through and 20.0% RONIC_term = (1 - 0.03/0.20)/(0.085 - 0.03) = 15.4545x
+        self.assertAlmostEqual(val["term_mult"], (1.0 - 0.03 / 0.20) / (0.085 - 0.03), places=4)
+        self.assertAlmostEqual(val["term_val"], val["term_mult"] * val["peak_eps"], places=4)
 
     def test_mature_staple_pg_archetype_bounded_by_slow_opcost_growth(self):
-        # PG archetype: $84.3B revenue, 70/30 blend of 2.8% OpCost WLS + 3.5% Sales WLS = 3.01%, +0.9% buybacks
+        # PG archetype: $84.3B revenue, 3.5% Sales WLS + 0.9% buybacks
         fin_pg = sample_fin(
             sales_ttm_m=84284.0,
             sales_1y=0.003,
@@ -179,23 +182,23 @@ class QuantitativeGrowthTests(unittest.TestCase):
             roic_operating=0.30,
         )
         val = par_valuation(fin_pg, self.p, cap=20, moat="Scale economies shared")
-        self.assertAlmostEqual(val["g_org_exp"], 0.0301, places=4)
-        self.assertAlmostEqual(val["g_exp"], 0.0391, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.0350, places=4)
+        self.assertAlmostEqual(val["g_exp"], 0.0440, places=4)
 
     def test_hyper_scale_googl_uses_opcost_cagr_without_legacy_scale_cap(self):
-        # GOOGL archetype: $402.8B revenue, 70/30 blend of 14.5% OpCost WLS + 17.15% Sales WLS = 15.30% without legacy 9.5% pre-cap
+        # GOOGL archetype: $402.8B revenue, bounded at 13.0% par_g_anchor_max asymptote without legacy 9.5% scale cap
         fin_googl = sample_fin(
             sales_ttm_m=402836.0,
             sales_1y=0.151,
-            sales_cagr=0.1715,
-            opcost_cagr=0.145,
+            sales_cagr=0.1180,
+            opcost_cagr=0.115,
             cap_growth=0.141,
             buyback_yield=0.0177,
             cagr_oe_eps=0.3447,
             roic_operating=0.3166,
         )
         val = par_valuation(fin_googl, self.p, cap=15, moat="Toll booth / Switching costs")
-        self.assertAlmostEqual(val["g_org_exp"], 0.1530, places=4)
+        self.assertAlmostEqual(val["g_org_exp"], 0.1180, places=4)
 
     def test_g_implied_used_strictly_as_fallback_when_statement_growth_missing(self):
         fin_fallback = sample_fin(
@@ -225,8 +228,8 @@ class QuantitativeGrowthTests(unittest.TestCase):
 
     def test_growth_ceiling_independent_of_company_size_and_currency(self):
         for sales, ccy in ((50000.0, "EUR"), (15000.0, "CAD")):
-            val = par_valuation(sample_fin(sales_ttm_m=sales, fin_currency=ccy, opcost_cagr=0.15), self.p, cap=20)
-            self.assertAlmostEqual(val["g_org_exp"], 0.1500, places=4)
+            val = par_valuation(sample_fin(sales_ttm_m=sales, fin_currency=ccy, opcost_cagr=0.12), self.p, cap=20)
+            self.assertAlmostEqual(val["g_org_exp"], 0.1200, places=4)
 
     def test_metrics_summarize_computes_sales_1y_opcost_cap_growth_and_median_buyback(self):
         series = {
@@ -243,9 +246,11 @@ class QuantitativeGrowthTests(unittest.TestCase):
         m = metrics.summarize(series)
         self.assertEqual(m["sales_cagr_yrs"], 5)
         self.assertAlmostEqual(m["sales_1y"], 186.0 / 169.0 - 1.0, places=3)
-        self.assertAlmostEqual(m["sales_cagr"], 0.1331, places=3)
+        # 2022 had a +22.4% share issuance (98M -> 120M) funding the 110M -> 140M M&A jump;
+        # Pillar 1 dilution-adjusted per-share index S_t strips the stock-merger jump automatically (~8.17% organic)
+        self.assertAlmostEqual(m["sales_cagr"], 0.0817, places=3)
         self.assertAlmostEqual(m["opcost_1y"], (186.0 - 49.0) / (169.0 - 44.0) - 1.0, places=3)
-        self.assertAlmostEqual(m["opcost_cagr"], 0.1312, places=3)
+        self.assertAlmostEqual(m["opcost_cagr"], 0.0862, places=3)
         self.assertIsNotNone(m["cap_growth"])
         self.assertAlmostEqual(m["cap_growth"], 0.10, places=2)
         self.assertGreater(m["buyback_yield"], 0.019)
@@ -491,6 +496,38 @@ class QuantitativeGrowthTests(unittest.TestCase):
         )
         val_sp = par_valuation(fin_spike, self.p, cap=20)
         self.assertAlmostEqual(val_sp["peak_eps"], 8.0, places=4)
+
+    def test_three_price_framework_terminal_price_and_vs_term(self):
+        """Standalone Terminal P/E (term_mult), Terminal Price (term_val), and vs_term respect the 3.0% inflation floor and 50% spread decay."""
+        from screener.gates import terminal_multiple
+
+        # 1. Elite asset-light compounder (RONIC_0 >= 31.5% -> RONIC_term = 20.0%, r = 8.50%, g_term = 3.0%)
+        # term_mult = (1 - 0.03 / 0.20) / (0.085 - 0.03) = 0.85 / 0.055 = 15.4545x
+        v_elite = par_valuation(sample_fin(price=75.0, peak_oe_eps=5.0, roic_operating=0.40, sales_cagr=0.10), self.p, cap=20)
+        self.assertAlmostEqual(v_elite["term_mult"], 0.85 / 0.055, places=4)
+        self.assertAlmostEqual(v_elite["term_val"], 5.0 * (0.85 / 0.055), places=4)
+        self.assertAlmostEqual(v_elite["vs_term"], 75.0 / v_elite["term_val"] - 1.0, places=4)
+        self.assertLess(v_elite["vs_term"], 0.0)  # trading below Terminal Price floor
+
+        # 2. Moderate-ROIC compounder (RONIC_0 = 20.0% -> RONIC_term = 0.085 + 0.5*(0.20 - 0.085) = 14.25%)
+        v_mod = par_valuation(sample_fin(price=100.0, peak_oe_eps=5.0, roic_operating=0.20, sales_cagr=0.08), self.p, cap=20)
+        exp_mod_mult = (1.0 - 0.03 / 0.1425) / (0.085 - 0.03)
+        self.assertAlmostEqual(v_mod["term_mult"], exp_mod_mult, places=4)
+        self.assertAlmostEqual(v_mod["term_val"], 5.0 * exp_mod_mult, places=4)
+
+        # 3. Sub-hurdle or zero-spread company (RONIC_0 <= r -> term_mult = 1 / r = 11.7647x)
+        v_sub = par_valuation(sample_fin(price=60.0, peak_oe_eps=5.0, roic_operating=0.07, roic_median=0.07), self.p, cap=20)
+        self.assertAlmostEqual(v_sub["term_mult"], 1.0 / 0.085, places=4)
+        self.assertAlmostEqual(v_sub["term_val"], 5.0 / 0.085, places=4)
+
+        # 4. Balance-sheet financial at r_fin = 10.25% (ROE = 18.0% -> RONIC_term = 0.1025 + 0.5*(0.18 - 0.1025) = 14.125%)
+        v_fin = par_valuation(sample_fin(price=60.0, peak_oe_eps=5.0, roe_median=0.18, roic_median=0.18), self.p, cap=20,
+                              sub_industry="Property & Casualty Insurance")
+        exp_fin_mult = (1.0 - 0.03 / 0.14125) / (0.1025 - 0.03)
+        self.assertAlmostEqual(v_fin["term_mult"], exp_fin_mult, places=4)
+
+        # 5. Finite concession -> term_mult == 0.0, term_val == 0.0, vs_term is None
+        self.assertEqual(terminal_multiple(0.25, r=0.085, g_term=0.030, finite_conc=True), 0.0)
 
     def test_eodhd_foundation_and_sqlite_db_integrity(self):
         """EODHD cache, multi-year fundamentals_panel.csv, and fundamentals.sqlite are populated across all universes."""

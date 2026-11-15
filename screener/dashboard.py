@@ -37,9 +37,9 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
         universes_meta[u_key]["par_params"] = {
             "k": p.get("par_cost_of_equity", 0.085),
             "k_fin": p.get("par_cost_of_equity_fin", 0.1025),
-            "g_anchor_max": p.get("par_g_anchor_max", 0.18),
+            "g_anchor_max": p.get("par_g_anchor_max", 0.130),
             "roic_cap": p.get("par_roic_cap", 0.50),
-            "g_base": p.get("par_g_base", 0.035),
+            "g_base": p.get("par_g_base", 0.030),
         }
         res_map = results(meta)
 
@@ -148,6 +148,9 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "par_mult": val.get("par_mult"),
                 "par_val": val.get("par_val"),
                 "vs_par": val.get("vs_par"),
+                "term_mult": val.get("term_mult"),
+                "term_val": val.get("term_val"),
+                "vs_term": val.get("vs_term"),
                 "irr_5y": val.get("irr_5y"),
                 "dy": val.get("dy"),
                 "g_start": val.get("g_start"),
@@ -1832,6 +1835,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="irr_5y-asc">Sort: 5Y Exp IRR ↑</option>
         <option value="vs_par-asc">Sort: Discount vs Fair Value ↑</option>
         <option value="vs_par-desc">Sort: Premium vs Fair Value ↓</option>
+        <option value="vs_term-asc">Sort: vs Terminal Price (Floor) ↑</option>
+        <option value="vs_term-desc">Sort: vs Terminal Price ↓</option>
         <option value="g_gap-desc">Sort: Growth Margin (g₀ - g_mkt) ↓</option>
         <option value="g_market-asc">Sort: Market-Implied g (at r) ↑</option>
         <option value="g_org_exp-desc">Sort: Growth Ceiling (g₀) ↓</option>
@@ -1844,6 +1849,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="cur_mult-asc">Sort: Cur P/E ↑</option>
         <option value="cur_mult-desc">Sort: Cur P/E ↓</option>
         <option value="par_mult-desc">Sort: Fair P/E ↓</option>
+        <option value="term_mult-desc">Sort: Terminal P/E ↓</option>
         <option value="price-asc">Sort: Share Price ↑</option>
         <option value="price-desc">Sort: Share Price ↓</option>
         <option value="g4_cap-desc">Sort: Our CAP ↓</option>
@@ -1982,13 +1988,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     <div class="dossier-section">
       <h2 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">Quantitative Valuation: Explicit Mauboussin-Fade DCF &amp; Slump-Cannibal Compounders (v{data['version']})</h2>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">1. Explicit N-Year Mauboussin-Fade DCF Fair Value at r = 8.50% (r<sub>fin</sub> = 10.25% for Balance-Sheet Financials):</strong>
+        <strong style="color: var(--text-main);">1. The 3-Price Framework (Terminal Price · Intrinsic Fair Value · Current Share Price) at r = 8.50% (r<sub>fin</sub> = 10.25% for Balance-Sheet Financials):</strong>
         <p class="formula-code">
-          Fair P/E = PV<sub>Stage 1</sub> + PV<sub>Stage 2</sub> &nbsp;|&nbsp; Fair Value = Fair P/E &times; Active EPS &nbsp;|&nbsp; Discount = Price / Fair Value - 1<br>
+          Fair P/E = PV<sub>Stage 1</sub> + PV<sub>Stage 2</sub> &nbsp;|&nbsp; Fair Value = Fair P/E &times; Active EPS &nbsp;|&nbsp; Terminal P/E = (1 &minus; 3.0% / RONIC<sub>term</sub>) / (r &minus; 3.0%) &nbsp;|&nbsp; Terminal Price = Terminal P/E &times; Active EPS<br>
           <span style="font-size: 11px; color: var(--text-dim);">
             <b>Year-1 convention:</b> E<sub>1</sub> = the active (trailing, normalized) Owner EPS — conservative by one year of growth versus a forward E<sub>1</sub> = EPS &times; (1 + g₀).<br>
-            <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> g<sub>t</sub> fades linearly from g₀ to min(g₀, 3.5%) and RONIC<sub>t</sub> from RONIC₀ to min(RONIC₀, 20%); FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/RONIC<sub>t</sub>), E<sub>t+1</sub> = E<sub>t</sub>(1 + g<sub>t</sub>).<br>
-            <b>Stage 2:</b> TV<sub>N</sub> = E<sub>N+1</sub> / r &mdash; post-CAP growth earns exactly r and adds no value. When RONIC = r, Fair P/E = 1/r for every g₀ and N.<br>
+            <b>Stage 1 (Years t = 1..N, N = Gate 4 CAP):</b> g<sub>t</sub> fades linearly from g₀ to min(g₀, 3.0%) and RONIC<sub>t</sub> from RONIC₀ to min(RONIC₀, 20%, r + 0.5 &times; (RONIC₀ &minus; r)); FCF<sub>t</sub> = E<sub>t</sub>(1 - g<sub>t</sub>/RONIC<sub>t</sub>), E<sub>t+1</sub> = E<sub>t</sub>(1 + g<sub>t</sub>).<br>
+            <b>Stage 2 &amp; Standalone Terminal Price:</b> TV<sub>N</sub> = E<sub>N+1</sub>(1 &minus; g<sub>tv</sub>/RONIC<sub>term</sub>) / (r &minus; g<sub>tv</sub>) with g<sub>tv</sub> = max(0, min(g₀, 3.0%)) &mdash; 3.0% historical inflation pass-through (or g₀ when g₀ &lt; 3.0%). Standalone <b>Terminal Price</b> values the business today at 3.0% perpetual inflation growth and "keeping the lights on" reinvestment (3.0% / RONIC<sub>term</sub>), topping out at <b>15.5x</b> Owner EPS for elite compounders (&sim;10.9x for financials). When RONIC = r, Fair P/E = Terminal P/E = 1/r for every g₀ and N.<br>
             <b>No value:</b> when growth is funded at a RONIC far below g the DCF value is &le; 0 &mdash; such stocks are labelled <code style="color: var(--accent);">No value</code>, never Below PAR. A &#9888; flags RONIC₀ &le; r (growth adds no value; review the capital base against the moat gates).<br>
             <b>Market-Implied Growth (g<sub>market</sub>):</b> root-safe DCF inversion (grid &minus;20%..+50% + bisection) at the company's r &nbsp;|&nbsp; Growth Margin = g₀ - g<sub>market</sub>, shown only for a unique root (saturated results are shown as &le; / &ge; without a margin).<br>
             <b>Balance-Sheet Financials &amp; HoldCos:</b> Insurance, Reinsurance, Banks, deposit-funded Brokers &amp; Multi-Sector Holdings use 5Y median ROE at r<sub>fin</sub> = 10.25%; Mark-to-Market HoldCos / Insurers (5Y FCF Conv or 2Y OCF/NI &lt; 0.25) are valued at 1.0x Book Value / Share. Construction &amp; Engineering and Highways use GAAP ROIC (incl. concession intangibles); a zero terminal value applies only to concessions explicitly listed as expiring.
@@ -1996,12 +2002,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         </p>
       </div>
       <div class="metric-box" style="margin-bottom: 12px;">
-        <strong style="color: var(--text-main);">2. Cost-Bloat Guarded Growth Ceiling (g₀) &amp; M&amp;A-Matched RONIC₀:</strong>
+        <strong style="color: var(--text-main);">2. 10Y WLS Structural Revenue Growth Ceiling (g₀) &amp; M&amp;A-Matched RONIC₀:</strong>
         <p class="formula-code">
-          g₀ = clamp(min(Sales_WLS, 0.70 &times; OpCost_WLS + 0.30 &times; Sales_WLS) + min(0, Buyback_Yield), 0.0%, 18.0%) &nbsp;|&nbsp; g_exp = g₀ + max(0, Buyback_Yield)<br>
+          g₀ = clamp(Sales_WLS + min(0, Buyback_Yield), 0.0%, 18.0%) &nbsp;|&nbsp; g_exp = g₀ + max(0, Buyback_Yield)<br>
           1 / RONIC₀ = (1 − w) / Tangible ROIC + w / GAAP ROIC (capped at 50%), w = bought share of g₀ = min(1, M&amp;A spend &times; GAAP ROIC / g₀), M&amp;A spend = median yearly &Delta;Goodwill&amp;Intangibles &divide; NOPAT<br>
           <span style="font-size: 11px; color: var(--text-dim);">
-            10-year exponentially-weighted log-linear OLS (&tau; = 5y half-life) on Sales and Operating Cost (COGS + OpEx). Tangible ROIC adds back acquired-intangible amortisation (D&amp;A above capex), exactly as Owner EPS does; invested capital includes minority interests and short-term debt.
+            10-year exponentially-weighted log-linear OLS (&tau; = 5y half-life) on Sales (with OpCost WLS, cycle Owner EPS CAGR net of buybacks, and 1Y Sales as fallbacks; Gate 5 already filters out poor management and cost bloat). Tangible ROIC adds back acquired-intangible amortisation (D&amp;A above capex), exactly as Owner EPS does; invested capital includes minority interests and short-term debt.
           </span>
         </p>
       </div>
@@ -2117,6 +2123,21 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <div class="metric-box">
             <div class="label">Discount vs Fair Value</div>
             <div class="value" id="dossier-vs-par">-</div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 10px;">
+          <div class="metric-box">
+            <div class="label">Terminal Price (3% Inf. Floor)</div>
+            <div class="value" id="dossier-term-val">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label">vs Terminal Price</div>
+            <div class="value" id="dossier-vs-term">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label">Terminal P/E (Floor)</div>
+            <div class="value" id="dossier-term-mult">-</div>
           </div>
         </div>
 
@@ -2248,18 +2269,18 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Reference only: a 1Y slump never lowers the structural growth ceiling.</div>
             </div>
 
-            <!-- Anchor 2: 10Y WLS Operating Cost Base & Sales Growth -->
+            <!-- Anchor 2: 10Y WLS Structural Revenue Growth -->
             <div class="filter-step-box" id="box-filter-demand">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 11px; color: var(--text-main);">10Y WLS Cost-Bloat Guard: min(Sales, 0.70·OpCost + 0.30·Sales)</strong>
+                <strong style="font-size: 11px; color: var(--text-main);">10Y WLS Structural Revenue Growth (Sales WLS CAGR)</strong>
                 <span class="val" style="font-size: 12px;" id="audit-gdemand-val">-</span>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px;">
-                <span>Sales WLS (<span id="audit-salesyrs-val">10Y</span>): <b id="audit-salescagr-val" style="color: var(--text-muted);">-</b></span>
-                <span>OpCost WLS (COGS+OpEx): <b id="audit-opcostcagr-val" style="color: var(--accent);">-</b></span>
+                <span>Sales WLS (<span id="audit-salesyrs-val">10Y</span>): <b id="audit-salescagr-val" style="color: var(--accent);">-</b></span>
+                <span>OpCost WLS (COGS+OpEx): <b id="audit-opcostcagr-val" style="color: var(--text-muted);">-</b></span>
                 <span>Cycle OE EPS CAGR: <b id="audit-oecagr-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Weighted least-squares log-growth over up to 10Y (&tau;=5y half-life); cost bloat never awards growth above sales.</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;">Weighted least-squares log-growth over up to 10Y (&tau;=5y half-life); Gate 5 filters out management cost bloat.</div>
             </div>
 
             <!-- Anchor 3: Marginal RONIC -->
@@ -2274,7 +2295,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span>M&amp;A Spend: <b id="audit-mashare-val" style="color: var(--text-muted);">-</b></span>
                 <span>5Y Retention: <b id="audit-retention-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-roic-note">RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%).</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-roic-note">RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%, r + 0.5·(RONIC₀ − r)).</div>
             </div>
 
             <!-- Step B: Growth Ceiling (g₀) & Per-Share Ceiling (g_exp) -->
@@ -2287,7 +2308,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span>Per-Share Ceiling (g_exp): <b id="audit-glog-val" style="color: var(--text-muted);">-</b></span>
                 <span>Analyst Override: <b id="audit-gest-val" style="color: var(--text-muted);">-</b></span>
               </div>
-              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-gformula">Formula: g₀ = clamp(cost-bloat guarded WLS growth + min(0, BB), 0%, g_max) fades linearly to min(g₀, g_term) over CAP.</div>
+              <div style="font-size: 10px; color: var(--text-dim); margin-top: 2px;" id="audit-gformula">Formula: g₀ = clamp(Sales WLS growth + min(0, BB), 0%, g_max) fades linearly to min(g₀, g_term) over CAP.</div>
             </div>
           </div>
 
@@ -2306,7 +2327,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="audit-stat">
                 <span class="lbl">Stage 2 Terminal PV</span>
                 <span class="val" id="audit-troic-val">-</span>
-                <span class="sub">Post-CAP Perpetuity (E<sub>N+1</sub>/r)</span>
+                <span class="sub">Post-CAP Value Driver TV</span>
               </div>
               <div class="audit-stat">
                 <span class="lbl">Explicit DCF Fair P/E</span>
@@ -2316,6 +2337,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
             <div class="filter-step-box">
               <div style="display: flex; justify-content: space-between; font-size: 11px; flex-wrap: wrap; gap: 6px;">
+                <span>Terminal Floor (3% Inf.): <b id="audit-termmult-val" style="color: var(--accent);">-</b> (<span id="audit-termval-val">-</span>)</span>
                 <span>Year-1 FCF Payout (1 - g₀/RONIC₀): <b id="audit-reinv-val" style="color: var(--text-main);">-</b></span>
                 <span>5Y Low–High Range (reference): <b id="audit-mh-val" style="color: var(--text-main);">-</b></span>
                 <span>Normalized Peak EPS (= Year-1 E₁): <b id="audit-peakeps-val" style="color: var(--text-main);">-</b></span>
@@ -2509,8 +2531,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       g_gap: {{ key: 'g_gap', label: 'g Margin', num: true }},
       par_val: {{ key: 'par_val', label: 'Fair Value', num: true }},
       vs_par: {{ key: 'vs_par', label: 'Discount', num: true }},
+      term_val: {{ key: 'term_val', label: 'Term Price', num: true }},
+      vs_term: {{ key: 'vs_term', label: 'vs Term', num: true }},
       cur_mult: {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
       par_mult: {{ key: 'par_mult', label: 'Fair P/E', num: true }},
+      term_mult: {{ key: 'term_mult', label: 'Term P/E', num: true }},
       irr_5y: {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
       roic_used: {{ key: 'roic_used', label: 'Op ROIC', num: true }},
       g4_cap: {{ key: 'g4_cap', label: 'Our CAP', num: true }},
@@ -2589,7 +2614,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     }}
 
     function parParams(c) {{
-      return Object.assign({{ k: 0.085, k_fin: 0.1025, g_anchor_max: 0.18, roic_cap: 0.50, g_base: 0.035 }},
+      return Object.assign({{ k: 0.085, k_fin: 0.1025, g_anchor_max: 0.18, roic_cap: 0.50, g_base: 0.030 }},
         ((SCREENER_DATA.universes || {{}})[c.universe] || {{}}).par_params || {{}});
     }}
 
@@ -2813,7 +2838,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         sortAsc = !sortAsc;
       }} else {{
         sortColumn = col;
-        sortAsc = (col === 'ticker' || col === 'company' || col === 'vs_par' || col === 'cur_mult');
+        sortAsc = (col === 'ticker' || col === 'company' || col === 'vs_par' || col === 'vs_term' || col === 'cur_mult');
       }}
       syncSortSelect();
       renderCurrentView();
@@ -2924,13 +2949,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       // Canonical column keys per tab — all labels come from ALL_COLS for 100% consistency
       const compactKeys = [
-        'ticker', 'company', 'price', 'par_val', 'vs_par', 'irr_5y',
-        'cur_mult', 'par_mult', 'roic_used', 'g_org_exp', 'g_market', 'g4_cap'
+        'ticker', 'company', 'price', 'par_val', 'vs_par', 'term_val', 'vs_term', 'irr_5y',
+        'cur_mult', 'par_mult', 'term_mult', 'roic_used', 'g_org_exp', 'g_market', 'g4_cap'
       ];
       const coreValuationCols = [
         'ticker', 'company', 'country', 'price', 'sales_1y', 'sales_cagr',
         'g_org_exp', 'buyback_yield', 'g_market', 'g_gap', 'par_val', 'vs_par',
-        'cur_mult', 'par_mult', 'irr_5y', 'roic_used', 'g4_cap', 'cap_implied',
+        'term_val', 'vs_term', 'cur_mult', 'par_mult', 'term_mult', 'irr_5y', 'roic_used', 'g4_cap', 'cap_implied',
         'cap_gap', 'g3a_moat_archetype'
       ].map(k => ALL_COLS[k]);
 
@@ -3003,6 +3028,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               const badgeClass = val <= 0 ? 'badge-green' : 'badge-amber';
               cellContent = `<span class="badge ${{badgeClass}}">${{fmtPct(val, true)}}</span>`;
             }}
+          }} else if (col.key === 'vs_term') {{
+            if (val === null || val === undefined) cellContent = '-';
+            else {{
+              const badgeClass = val <= 0.10 ? 'badge-green' : 'badge-amber';
+              cellContent = `<span class="badge ${{badgeClass}}" title="${{val <= 0 ? 'At or below Terminal Price floor' : (val <= 0.10 ? 'Within 10% of Terminal Price floor' : 'Premium above Terminal Price floor')}}">${{fmtPct(val, true)}}</span>`;
+            }}
           }} else if (col.key === 'irr_5y') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -3022,7 +3053,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             }} else {{
               cellContent = escHtml(val) || '-';
             }}
-          }} else if (col.key === 'price' || col.key === 'par_val') {{
+          }} else if (col.key === 'price' || col.key === 'par_val' || col.key === 'term_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
           }} else if (col.key === 'sales_1y') {{
             if (val === null || val === undefined) cellContent = '-';
@@ -3135,7 +3166,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         if (currentTab === 'shortlist' || currentTab === 'qpass' || currentTab === 'calamity') {{
           const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
-          badgeHtml = `${{calBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
+          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0.10)
+            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading near or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
+          badgeHtml = `${{calBadge}}${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const roicExtra = currentTab === 'qpass'
             ? `FCF ${{fmtPct(c.fcf_conv)}}`
             : (currentTab === 'calamity'
@@ -3150,12 +3183,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Price / Fair Value</div>
-              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}}</div>
+              <div class="card-metric-label">Price / Fair / Term</div>
+              <div class="card-metric-val" style="font-size: 11.5px;">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}} / ${{fmtPrice(c.term_val, c.quote_currency)}}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Cur P/E / Fair P/E</div>
-              <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x</div>
+              <div class="card-metric-label">Cur / Fair / Term P/E</div>
+              <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x / ${{fmtNum(c.term_mult)}}x</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">${{roicExtraLabel}}</div>
@@ -3166,7 +3199,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           ` + triadCardsHtml(c);
         }} else {{
           const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result === 'Calamity pass' ? 'badge-amber' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
-          badgeHtml = `<span class="badge ${{bCls}}" style="margin-right:4px;">${{escHtml(c.result)}}</span><span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
+          const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0.10)
+            ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading near or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
+          badgeHtml = `<span class="badge ${{bCls}}" style="margin-right:4px;">${{escHtml(c.result)}}</span>${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
           const stageColor = c.result === 'Quality pass' ? 'var(--green)' : (c.result === 'Calamity pass' ? 'var(--amber)' : 'var(--red)');
           const stageText = c.result === 'Calamity pass'
             ? `⚠ Waived: ${{escHtml((c.waived_gates || []).join(', '))}}`
@@ -3183,12 +3218,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               <div class="card-metric-val" style="color: ${{c.irr_5y >= 0.12 ? 'var(--green)' : 'var(--accent)'}};">${{fmtPct(c.irr_5y)}}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Price / Fair Value</div>
-              <div class="card-metric-val">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}}</div>
+              <div class="card-metric-label">Price / Fair / Term</div>
+              <div class="card-metric-val" style="font-size: 11.5px;">${{fmtPrice(c.price, c.quote_currency)}} / ${{fmtPrice(c.par_val, c.quote_currency)}} / ${{fmtPrice(c.term_val, c.quote_currency)}}</div>
             </div>
             <div class="card-metric-cell">
-              <div class="card-metric-label">Cur P/E / Fair P/E</div>
-              <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x</div>
+              <div class="card-metric-label">Cur / Fair / Term P/E</div>
+              <div class="card-metric-val">${{fmtNum(c.cur_mult)}}x / ${{fmtNum(c.par_mult)}}x / ${{fmtNum(c.term_mult)}}x</div>
             </div>
             <div class="card-metric-cell">
               <div class="card-metric-label">Op ROIC • Buyback</div>
@@ -3378,6 +3413,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-price').textContent = fmtPrice(c.price, c.quote_currency);
       document.getElementById('dossier-par-val').textContent = fmtPrice(c.par_val, c.quote_currency);
       document.getElementById('dossier-vs-par').textContent = fmtPct(c.vs_par, true);
+      const dTermValEl = document.getElementById('dossier-term-val');
+      if (dTermValEl) dTermValEl.textContent = fmtPrice(c.term_val, c.quote_currency);
+      const dVsTermEl = document.getElementById('dossier-vs-term');
+      if (dVsTermEl) {{
+        dVsTermEl.textContent = fmtPct(c.vs_term, true);
+        dVsTermEl.style.color = (c.vs_term !== null && c.vs_term !== undefined)
+          ? (c.vs_term <= 0.10 ? 'var(--green)' : 'var(--text-main)')
+          : 'var(--text-main)';
+      }}
+      const dTermMultEl = document.getElementById('dossier-term-mult');
+      if (dTermMultEl) dTermMultEl.textContent = (c.term_mult !== null && c.term_mult !== undefined) ? fmtNum(c.term_mult) + 'x' : '-';
       document.getElementById('dossier-cur-mult').textContent = fmtNum(c.cur_mult) + 'x';
       document.getElementById('dossier-par-mult').textContent = fmtNum(c.par_mult) + 'x';
       document.getElementById('dossier-irr').textContent = fmtPct(c.irr_5y);
@@ -3490,8 +3536,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-bb-val').textContent = fmtPct(c.buyback_yield, true);
       const hasOc = c.opcost_cagr !== null && c.opcost_cagr !== undefined;
       const hasS = c.sales_cagr !== null && c.sales_cagr !== undefined;
-      const blend = (hasOc && hasS) ? Math.min(c.sales_cagr, 0.70 * c.opcost_cagr + 0.30 * c.sales_cagr) : (hasOc ? c.opcost_cagr : (hasS ? c.sales_cagr : null));
-      document.getElementById('audit-gdemand-val').textContent = blend !== null ? fmtPct(blend) : '-';
+      const wlsBase = hasS ? c.sales_cagr : (hasOc ? c.opcost_cagr : null);
+      document.getElementById('audit-gdemand-val').textContent = wlsBase !== null ? fmtPct(wlsBase) : '-';
       document.getElementById('audit-salescagr-val').textContent = fmtPct(c.sales_cagr);
       document.getElementById('audit-salesyrs-val').textContent = c.sales_cagr_yrs ? `${{c.sales_cagr_yrs}}Y` : '5Y';
       document.getElementById('audit-opcostcagr-val').textContent = fmtPct(c.opcost_cagr);
@@ -3504,11 +3550,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-retention-val').textContent = fmtPct(c.retention_rate);
       document.getElementById('audit-roic-note').innerHTML = c.ronic_le_r
         ? `<b style="color: var(--amber);">⚠ RONIC₀ ${{fmtPct(c.roic_exp)}} ≤ r ${{(k * 100).toFixed(2)}}%: growth adds no value, so Fair P/E ≤ 1/r. Review the capital base (goodwill, minorities) against the moat gates.</b>`
-        : 'RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%).';
+        : 'RONIC fades linearly across CAP from RONIC₀ to min(RONIC₀, 20%, r + 0.5·(RONIC₀ − r)).';
       document.getElementById('audit-fade-val').textContent = fmtPct(c.g_org_exp);
       document.getElementById('audit-glog-val').textContent = fmtPct(c.g_exp);
       document.getElementById('audit-gest-val').textContent = (c.g_est !== null && c.g_est !== undefined) ? fmtPct(c.g_est) : 'None';
-      document.getElementById('audit-gformula').textContent = `Formula: g₀ = clamp(cost-bloat guarded WLS growth + min(0, BB), 0%, ${{fmtPct(P.g_anchor_max)}}) fades linearly to min(g₀, ${{fmtPct(P.g_base)}}) over CAP.`;
+      document.getElementById('audit-gformula').textContent = `Formula: g₀ = 4-Pillar Statistical Organic Growth (Dilution-Adjusted Cycle-Spanning Theil-Sen P25 + 3-Driver Triangulation + Empirical Bayes Shrinkage, 0%–${{fmtPct(P.g_anchor_max)}}) fades linearly to min(g₀, ${{fmtPct(P.g_base)}}) over CAP.`;
 
       // Binding / Dominant Driver Badge: name the term that actually sets g₀
       ['box-filter-supply', 'box-filter-demand', 'box-filter-fade', 'box-filter-gravity'].forEach(id => {{
@@ -3522,12 +3568,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }} else if (c.g_org_exp !== null && c.g_org_exp >= P.g_anchor_max - 1e-6) {{
         bindTxt = `${{fmtPct(P.g_anchor_max)}} Ceiling binds`;
         document.getElementById('box-filter-gravity').classList.add('binding');
-      }} else if (hasOc && hasS) {{
-        const ocBinds = 0.70 * c.opcost_cagr + 0.30 * c.sales_cagr < c.sales_cagr;
-        bindTxt = ocBinds ? `OpCost 70/30 Blend g₀ ${{fmtPct(c.g_org_exp)}}` : `Sales WLS Cap g₀ ${{fmtPct(c.g_org_exp)}}`;
+      }} else if (hasS) {{
+        bindTxt = `Sales WLS g₀ ${{fmtPct(c.g_org_exp)}}`;
         document.getElementById('box-filter-demand').classList.add('binding');
-      }} else if (hasOc || hasS) {{
-        bindTxt = `${{hasOc ? 'OpCost' : 'Sales'}} WLS g₀ ${{fmtPct(c.g_org_exp)}}`;
+      }} else if (hasOc) {{
+        bindTxt = `OpCost WLS g₀ ${{fmtPct(c.g_org_exp)}}`;
         document.getElementById('box-filter-demand').classList.add('binding');
       }} else {{
         bindTxt = `Fallback g₀ ${{fmtPct(c.g_org_exp)}}`;
@@ -3543,6 +3588,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('audit-tgrowth-val').textContent = (c.pe_mm !== null && c.pe_mm !== undefined) ? `${{fmtNum(c.pe_mm)}}x` : '-';
       document.getElementById('audit-troic-val').textContent = (c.pe_mck !== null && c.pe_mck !== undefined) ? `${{fmtNum(c.pe_mck)}}x` : '-';
       document.getElementById('audit-rawpar-val').textContent = (c.pe_vd !== null && c.pe_vd !== undefined) ? `${{fmtNum(c.pe_vd)}}x` : '-';
+      const auditTermMultEl = document.getElementById('audit-termmult-val');
+      if (auditTermMultEl) auditTermMultEl.textContent = (c.term_mult !== null && c.term_mult !== undefined) ? `${{fmtNum(c.term_mult)}}x` : '-';
+      const auditTermValEl = document.getElementById('audit-termval-val');
+      if (auditTermValEl) auditTermValEl.textContent = fmtPrice(c.term_val, c.quote_currency);
       document.getElementById('audit-reinv-val').textContent = (c.reinv_eff !== null && c.reinv_eff !== undefined) ? `${{Math.round(c.reinv_eff * 100)}}%` : '-';
       const hasHistRange = (c.mult_low_5y !== null && c.mult_low_5y !== undefined && c.mult_high_5y !== null && c.mult_high_5y !== undefined);
       document.getElementById('audit-mh-val').textContent = hasHistRange ? `${{fmtNum(c.mult_low_5y)}}x–${{fmtNum(c.mult_high_5y)}}x` : 'N/A (<12m trading)';
@@ -3709,14 +3758,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
     }}
 
-    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.035, isFiniteConc=false, roicEndOverride=null) {{
-      // Mirrors screener/gates.py dcf_schedule_and_continuation (v7.1): Year-1 E_1 = 1.0 is the trailing normalized EPS;
-      // at each year t = 1..N, Reinv_t = E_t * max(0, g_t) / RONIC_t funds E_(t+1) = E_t * (1 + g_t); TV_N = E_(N+1) / r.
+    function explicitDcfMultiple(g0, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null) {{
+      // Mirrors screener/gates.py dcf_schedule_and_continuation: Year-1 E_1 = 1.0 is the trailing normalized EPS;
+      // at each year t = 1..N, Reinv_t = E_t * max(0, g_t) / RONIC_t funds E_(t+1) = E_t * (1 + g_t);
+      // TV_N = E_(N+1) * (1 - g_tv / RONIC_term) / (r - g_tv) with g_tv = max(0, min(g0, gTerm)).
       const nSteps = Math.max(1, Math.round(nCap));
       const roicStart = Math.max(0.05, roic0);
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
         ? Math.max(0.05, roicEndOverride)
-        : Math.min(roicStart, 0.20);
+        : Math.max(0.05, Math.min(roicStart, 0.20, k + 0.5 * (roicStart - k)));
       const gTermEff = Math.min(g0, gTerm);
       let pvStage1 = 0.0;
       let sumFcf1 = 0.0;
@@ -3748,18 +3798,18 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         earn = earn * (1.0 + gT);
       }}
       let pvStage2 = 0.0;
-      const gTv = 0.0;
+      const gTv = Math.max(0.0, gTermEff);
       const earnTerm = earn;
-      const reinvTerm = 0.0;
-      const fcfTerm = earnTerm;
+      const reinvTerm = gTv / Math.max(0.05, roicTerm);
+      const fcfTerm = earnTerm * (1.0 - reinvTerm);
       const dfTerm = 1.0 / Math.pow(1.0 + k, nSteps);
       let termVal = 0.0;
       if (!isFiniteConc) {{
-        termVal = fcfTerm / Math.max(0.01, k);
+        termVal = fcfTerm / Math.max(0.01, k - gTv);
         pvStage2 = termVal * dfTerm;
       }}
       const total = pvStage1 + pvStage2;
-      const fcfs5 = fcfs.concat([earn, earn, earn, earn, earn]).slice(0, 5);
+      const fcfs5 = fcfs.concat([fcfTerm, fcfTerm, fcfTerm, fcfTerm, fcfTerm]).slice(0, 5);
       const m5 = Math.min(5, nSteps);
       let pvFirst5 = 0.0;
       for (let t = 0; t < m5; t++) {{
@@ -3789,6 +3839,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           cumPv: total
         }}
       }};
+    }}
+
+    function terminalMultiple(roic0, k=0.085, gTerm=0.030, isFiniteConc=false, roicEndOverride=null) {{
+      // Mirrors screener/gates.py terminal_multiple: standalone McKinsey Value-Driver Terminal P/E at 3.0% historical
+      // inflation pass-through and 'keeping the lights on' reinvestment (gTerm / roicTerm).
+      if (isFiniteConc) return 0.0;
+      const roicStart = Math.max(0.05, roic0);
+      const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
+        ? Math.max(0.05, roicEndOverride)
+        : Math.max(0.05, Math.min(roicStart, 0.20, k + 0.5 * (roicStart - k)));
+      if (roicTerm <= k) return 1.0 / k;
+      const gInf = Math.max(0.0, gTerm);
+      return (1.0 - gInf / roicTerm) / Math.max(0.01, k - gInf);
     }}
 
     function renderDcfScheduleTable(c, opts) {{
@@ -3849,7 +3912,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const fcf0 = e0 * (1.0 - re0);
       document.getElementById('dcf-sum-e0').textContent = fmtPrice(e0, ccy);
       document.getElementById('dcf-sum-price').textContent = `Cur Price: ${{fmtPrice(price, ccy)}} (${{price && e0 ? fmtNum(price / e0) + 'x' : '-'}})`;
-      document.getElementById('dcf-sum-gfade').textContent = `${{fmtPct(g0)}} → ${{fmtPct(gTerm)}}`;
+      document.getElementById('dcf-sum-gfade').textContent = `${{fmtPct(g0)}} → ${{fmtPct(dcf.terminal.gTerm)}}`;
       document.getElementById('dcf-sum-cap').textContent = `Linear Fade Over N = ${{dcf.nSteps}} CAP Yrs`;
       document.getElementById('dcf-sum-rfade').textContent = `${{fmtPct(dcf.roicStart)}} → ${{fmtPct(dcf.roicTerm)}}`;
       document.getElementById('dcf-sum-disc').textContent = `Discount Rate r = ${{(k * 100).toFixed(2)}}%`;
@@ -3925,8 +3988,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const fcfTermDollar = tv.fcfTerm * e0;
       const tvUndiscDollar = tv.termVal * e0;
       htmlRows.push(`<tr class="dcf-row-terminal">
-        <td>Terminal Value (Yr ${{dcf.nSteps + 1}}+ Perpetuity)<span class="dcf-sub">${{isFiniteConc ? 'Concession Expiry (No TV)' : 'E_N / r (RONIC = r)'}}</span></td>
-        <td>${{fmtPct(tv.gTerm)}}<span class="dcf-sub">Post-CAP growth adds no value</span></td>
+        <td>Terminal Value (Yr ${{dcf.nSteps + 1}}+ Perpetuity)<span class="dcf-sub">${{isFiniteConc ? 'Concession Expiry (No TV)' : 'FCF / (r − g_tv) Value Driver'}}</span></td>
+        <td>${{fmtPct(tv.gTerm)}}<span class="dcf-sub">Inflation Pass-Through</span></td>
         <td>${{fmtPct(tv.roicTerm)}}<span class="dcf-sub">Reinv ${{(tv.reinvTerm * 100).toFixed(1)}}%</span></td>
         <td>${{fmtPrice(earnTermDollar, ccy)}}<span class="dcf-sub">Yr ${{dcf.nSteps + 1}} EPS</span></td>
         <td>${{isFiniteConc ? fmtPrice(0, ccy) : fmtPrice(tvUndiscDollar, ccy)}}<span class="dcf-sub">${{isFiniteConc ? 'Expiry' : 'Yr ' + (dcf.nSteps + 1) + ' FCF: ' + fmtPrice(fcfTermDollar, ccy)}}</span></td>
@@ -3951,7 +4014,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       tbody.innerHTML = htmlRows.join('');
     }}
 
-    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.035, isFiniteConc=false, g0Ref=0.0) {{
+    function solveImpliedDcfGrowth(targetPe, roic0, nCap, k=0.085, gTerm=0.030, isFiniteConc=false, g0Ref=0.0) {{
       // Mirrors screener/gates.py solve_market_growth: grid scan [-20%, +50%] in 1pp steps, bisection in
       // every sign-change bracket; returns {{ g, flag }} with flag in ok | saturated_low | saturated_high |
       // no_value_creation | multi_root.
@@ -4051,23 +4114,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         const oc = has(c.opcost_cagr) ? c.opcost_cagr + d : null;
         const g_oe = has(c.cagr_oe_eps) ? c.cagr_oe_eps + d : null;
         const hasStmt = oc !== null || hasSales || has(c.sales_1y) || g_oe !== null;
-        let base_org;
+        let raw_org;
         if (hasStmt) {{
-          if (oc !== null && hasSales) base_org = Math.min(s5, 0.70 * oc + 0.30 * s5);
-          else if (oc !== null) base_org = oc;
-          else if (hasSales) base_org = s5;
-          else base_org = (g_oe !== null) ? g_oe - bb_pos : c.sales_1y;
+          if (hasSales) raw_org = s5;
+          else if (oc !== null) raw_org = oc;
+          else raw_org = (g_oe !== null) ? g_oe - bb_pos : (c.sales_1y + bb_org);
         }} else if (has(c.g_implied)) {{
-          base_org = c.g_implied - bb_pos;
+          raw_org = c.g_implied - bb_pos + bb_org;
         }} else {{
-          base_org = g_base;
+          raw_org = g_base;
         }}
         if (sbCurrent.gest !== null && !isNaN(sbCurrent.gest)) {{
           const g_est_val = sbCurrent.gest / 100.0;
           g_org_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max, g_est_val - bb_pos)));
           g_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max + bb_pos, g_est_val)));
         }} else {{
-          g_org_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max, base_org + bb_org)));
+          g_org_exp = r4(Math.max(0.0, Math.min(P.g_anchor_max, raw_org)));
           g_exp = r4(g_org_exp + bb_pos);
         }}
       }}
@@ -4089,7 +4151,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const staleData = autoNote.includes('stale fundamentals');
       const hasValuationInputs = Boolean(!staleData && price && peak_eps && peak_eps > 0 &&
         (hasHistMults || (fund_cap && fund_cap > 0) || hasPeakOverride || hasMoatArch));
-      let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null, g_market_flag = null, nav_mult = null;
+      let cur_mult = null, pe_vd = null, par_mult = null, par_val = null, vs_par = null, term_mult = null, term_val = null, vs_term = null, irr_5y = null, cap_implied = null, cap_gap = null, g_market = null, g_gap = null, g_market_flag = null, nav_mult = null;
       const g_org_val = has(g_org_exp) ? g_org_exp : g_base;
       const k = has(c.disc_rate) ? c.disc_rate : (c.bs_fin ? P.k_fin : P.k);
       const n_cap = (fund_cap && fund_cap > 0) ? fund_cap : 20.0;
@@ -4105,16 +4167,20 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (isMtmHoldco) {{
           nav_mult = bvps ? (bvps / peak_eps) : (1.0 / roic_eff);
           pe_vd = nav_mult;
+          term_mult = nav_mult;
           fcfs5 = [0.0, 0.0, 0.0, 0.0, 0.0];
           v5 = pe_vd * Math.pow(1.0 + k, 5);
         }} else {{
           const dcf = explicitDcfMultiple(g_org_val, roic_eff, n_cap, k, g_base, isFiniteConc);
           pe_vd = dcf.total;
+          term_mult = terminalMultiple(roic_eff, k, g_base, isFiniteConc);
           fcfs5 = dcf.fcfs5;
           v5 = dcf.v5;
         }}
         par_mult = pe_vd;
         par_val = (isMtmHoldco && bvps) ? bvps : par_mult * peak_eps;
+        term_val = (isMtmHoldco && bvps) ? bvps : term_mult * peak_eps;
+        vs_term = (term_val && term_val > 0) ? (price / term_val - 1.0) : null;
         if (par_val <= 0) {{
           noValue = true;          // growth funded at RONIC far below g: no positive DCF value (never "Below PAR")
         }} else {{
@@ -4154,6 +4220,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const dMult = (par_mult !== null && has(c.par_mult)) ? (par_mult - c.par_mult) : null;
       const dVal = (par_val !== null && has(c.par_val)) ? (par_val - c.par_val) : null;
       const dVsPar = (vs_par !== null && has(c.vs_par)) ? (vs_par - c.vs_par) : null;
+      const dTermMult = (term_mult !== null && has(c.term_mult)) ? (term_mult - c.term_mult) : null;
+      const dTermVal = (term_val !== null && has(c.term_val)) ? (term_val - c.term_val) : null;
       const dIrr = (irr_5y !== null && has(c.irr_5y)) ? (irr_5y - c.irr_5y) : null;
       const dCap = (fund_cap !== null && has(c.g4_cap)) ? (fund_cap - c.g4_cap) : null;
       const dCapGap = (cap_gap !== null && has(c.cap_gap)) ? (cap_gap - c.cap_gap) : null;
@@ -4179,6 +4247,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         `<tr><td>Discount vs Fair Value (Price / FV - 1)</td><td>${{vsLbl(c.vs_par)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{vsLbl(vs_par)}}</td>
           <td class="${{diffClass(dVsPar, isPctZero(dVsPar), true)}}">${{!isPctZero(dVsPar) ? fmtPct(dVsPar, true) : '-'}}</td></tr>`,
+        `<tr><td>Terminal P/E (3% Inf. Floor)</td>
+          <td>${{has(c.term_mult) ? fmtNum(c.term_mult) + 'x' : '-'}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{term_mult !== null ? fmtNum(term_mult) + 'x' : '-'}}</td>
+          <td class="${{diffClass(dTermMult, isMultZero(dTermMult))}}">${{!isMultZero(dTermMult) ? (dTermMult > 0 ? '+' : '') + fmtNum(dTermMult) + 'x' : '-'}}</td></tr>`,
+        `<tr><td>Terminal Price (Floor)</td><td>${{fmtPrice(c.term_val, c.quote_currency)}}</td>
+          <td style="font-weight: 600; color: var(--accent);">${{fmtPrice(term_val, c.quote_currency)}}</td>
+          <td class="${{diffClass(dTermVal, isPriceZero(dTermVal))}}">${{!isPriceZero(dTermVal) ? (dTermVal > 0 ? '+' : '') + fmtPrice(dTermVal, c.quote_currency) : '-'}}</td></tr>`,
         `<tr><td>5-Year Expected IRR</td><td>${{fmtPct(c.irr_5y)}}</td>
           <td style="font-weight: 600; color: var(--accent);">${{fmtPct(irr_5y)}}</td>
           <td class="${{diffClass(dIrr, isPctZero(dIrr))}}">${{!isPctZero(dIrr) ? fmtPct(dIrr, true) : '-'}}</td></tr>`,
@@ -4253,7 +4328,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Growth Ceiling', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Cur P/E', 'Fair P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Growth Ceiling', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', 'Terminal Price', 'vs Terminal', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
@@ -4285,8 +4360,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           c.price !== null && c.price !== undefined ? c.price : '',
           c.par_val !== null && c.par_val !== undefined ? c.par_val : '',
           c.vs_par !== null && c.vs_par !== undefined ? c.vs_par : '',
+          c.term_val !== null && c.term_val !== undefined ? c.term_val : '',
+          c.vs_term !== null && c.vs_term !== undefined ? c.vs_term : '',
           c.cur_mult !== null && c.cur_mult !== undefined ? c.cur_mult : '',
           c.par_mult !== null && c.par_mult !== undefined ? c.par_mult : '',
+          c.term_mult !== null && c.term_mult !== undefined ? c.term_mult : '',
           c.irr_5y !== null && c.irr_5y !== undefined ? c.irr_5y : '',
           c.roic_used !== null && c.roic_used !== undefined ? c.roic_used : '',
           c.roic_operating !== null && c.roic_operating !== undefined ? c.roic_operating : '',
