@@ -30,6 +30,24 @@ class DashboardGateFilterTests(unittest.TestCase):
         # Check that the gate matching logic uses num extraction and checks G prefix
         self.assertIn("const gPrefix = 'G' + num;", html)
         self.assertIn("rejAt.startsWith(gPrefix)", html)
+        for label in ("Prime Grade", "Prime Grade Calamity", "Quality Grade", "Full Universe"):
+            self.assertIn(label, html)
+        for old_label in ("Quality Pass Funnel", "Calamity Watchlist", "Moat Universe", "Full Universe &amp; Waterfall", "Full Universe & Waterfall"):
+            self.assertNotIn(old_label, html)
+
+    def test_quality_grade_covers_g1_g2_g3a_g4_g6(self):
+        """Verify passes_quality_grade requires G1, G2, G3a, G4, and G6 while allowing G3b/G5 failures."""
+        screener_data = collect_screener_data(["us", "eu", "ca"])
+        companies = screener_data["companies"]
+        qg = [c for c in companies if c.get("passes_quality_grade")]
+        self.assertGreater(len(qg), 0)
+        for c in qg:
+            st = c["gate_status"]
+            self.assertEqual(st.get("1"), "pass")
+            self.assertEqual(st.get("2"), "pass")
+            self.assertNotIn(c.get("g3a_moat_archetype"), (None, "", "None"))
+            self.assertEqual(st.get("4"), "pass")
+            self.assertEqual(st.get("6"), "pass")
 
     def test_gate_filter_matches_rejected_companies(self):
         """Ensure each 'Rejected at Gate X' filter matches the actual companies in the screener data."""

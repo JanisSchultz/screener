@@ -204,7 +204,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
             "changelog": C.CHANGELOG,
         }
         html = build_dashboard_html(payload)
-        self.assertIn("Calamity Watchlist", html)
+        self.assertIn("Prime Grade Calamity", html)
         self.assertNotIn("Below PAR Shortlist", html)
         self.assertIn("Temporary M&A bridge debt; 24m deleveraging catalyst.", html)
         for token in (

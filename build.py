@@ -34,10 +34,10 @@ def main():
     print(f"  • Secondary File: {out_path.parent / 'index.html'}")
     print(f"  • GitHub Pages File: docs/index.html")
     print(f"  • Total Companies: {summary['total_companies']}")
-    print(f"  • Quality Pass Funnel: {summary['quality_pass']}")
-    print(f"  • Calamity Watchlist (Conditional): {summary['calamity_pass']}")
+    print(f"  • Prime Grade: {summary['quality_pass']}")
+    print(f"  • Prime Grade Calamity (Conditional): {summary['calamity_pass']}")
     med = summary['median_excess_irr']
-    print(f"  • Valued Quality Pass: {summary['valued']} (Median IRR vs hurdle: {f'{med * 100:+.1f}pp' if med is not None else '—'})")
+    print(f"  • Valued Prime Grade: {summary['valued']} (Median IRR vs hurdle: {f'{med * 100:+.1f}pp' if med is not None else '—'})")
     print(f"\nTo view, open in browser: open \"{out_path}\"")
 
 

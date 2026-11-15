@@ -65,6 +65,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 and st_map.get("2") == "pass"
                 and moat_arch_val not in (None, "", "None")
             )
+            passes_quality_grade = bool(
+                passes_g123a
+                and st_map.get("4") == "pass"
+                and st_map.get("6") == "pass"
+            )
 
             company_record = {
                 "id": cid,
@@ -89,6 +94,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "note": c.get("note"),
                 "evidence": c.get("evidence"),
                 "passes_g123a": passes_g123a,
+                "passes_quality_grade": passes_quality_grade,
                 # Gate Waterfall status
                 "result": pres.get("result", C.RES_REVIEW),
                 "rejected_at": pres.get("rejected_at", ""),
@@ -193,7 +199,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_excess_irr = statistics.median(excess) if excess else None
 
     return {
-        "version": "7.7",
+        "version": C.SCREENER_VERSION,
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
@@ -1761,15 +1767,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value" id="kpi-universe">{data['summary']['total_companies']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Quality Pass</span>
+        <span class="kpi-label">Prime Grade</span>
         <span class="kpi-value accent" id="kpi-qpass">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label">Calamity</span>
+        <span class="kpi-label">Prime Grade Calamity</span>
         <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label" title="Median of (5Y IRR − own hurdle r) over valued Quality Pass stocks; r = 8.50% operating / 10.25% balance-sheet financials. Negative = expected return below the hurdle.">Median IRR vs hurdle</span>
+        <span class="kpi-label" title="Median of (5Y IRR − own hurdle r) over valued Prime Grade stocks; r = 8.50% operating / 10.25% balance-sheet financials. Negative = expected return below the hurdle.">Median IRR vs hurdle</span>
         <span class="kpi-value green" id="kpi-median-irr">{f"{data['summary']['median_excess_irr']*100:+.1f}pp" if data['summary'].get('median_excess_irr') is not None else "—"}</span>
       </div>
     </div>
@@ -1778,22 +1784,22 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
   <!-- View Tabs -->
   <nav class="tab-bar">
     <button class="tab-btn active" data-tab="qpass" onclick="setTab('qpass')">
-      <span class="tab-label-full">🛡️ Quality Pass Funnel</span>
-      <span class="tab-label-short">🛡️ Quality</span>
+      <span class="tab-label-full">🛡️ Prime Grade</span>
+      <span class="tab-label-short">🛡️ Prime</span>
       <span class="pill-count" id="count-qpass">0</span>
     </button>
     <button class="tab-btn" data-tab="calamity" onclick="setTab('calamity')">
-      <span class="tab-label-full">⚠️ Calamity Watchlist</span>
+      <span class="tab-label-full">⚠️ Prime Grade Calamity</span>
       <span class="tab-label-short">⚠️ Calamity</span>
       <span class="pill-count" id="count-calamity">0</span>
     </button>
     <button class="tab-btn" data-tab="moat_universe" onclick="setTab('moat_universe')">
-      <span class="tab-label-full">🏰 Moat Universe (G1–G3a)</span>
-      <span class="tab-label-short">🏰 G1–G3a</span>
+      <span class="tab-label-full">🏰 Quality Grade</span>
+      <span class="tab-label-short">🏰 Quality</span>
       <span class="pill-count" id="count-moat-universe">0</span>
     </button>
     <button class="tab-btn" data-tab="all" onclick="setTab('all')">
-      <span class="tab-label-full">🔍 Full Universe & Waterfall</span>
+      <span class="tab-label-full">🔍 Full Universe</span>
       <span class="tab-label-short">🔍 All</span>
       <span class="pill-count" id="count-all">0</span>
     </button>
@@ -1862,12 +1868,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="all">All Moats</option>
       </select>
 
-      <!-- Failing Gate Filter (Visible in Moat Universe & Full Universe tabs) -->
+      <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
       <select id="filter-gate" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
-        <option value="g123a">Passes G1 + G2 + G3a (Moat Universe)</option>
-        <option value="Quality pass">Quality Pass Only</option>
-        <option value="Calamity pass">Calamity Pass (Conditional)</option>
+        <option value="quality_grade">Quality Grade (G1, G2, G3a, G4, G6)</option>
+        <option value="Quality pass">Prime Grade Only</option>
+        <option value="Calamity pass">Prime Grade Calamity (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
         <option value="Gate 2">Rejected at Gate 2 (Essential Need)</option>
         <option value="Gate 3">Rejected at Gate 3 (Moat & Pricing)</option>
@@ -1876,7 +1882,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="Gate 6">Rejected at Gate 6 (Cash / Balance Sheet)</option>
       </select>
 
-      <!-- Valuation Status Filter (Visible in Quality Pass, Moat Universe & Full Universe tabs) -->
+      <!-- Valuation Status Filter (Visible in Prime Grade, Quality Grade & Full Universe tabs) -->
       <select id="filter-val" class="select-filter" style="display:none;" onchange="applyFilters()">
         <option value="all">All Valuations</option>
         <option value="Valued">Valued</option>
@@ -2597,6 +2603,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return st['1'] === 'pass' && st['2'] === 'pass' && Boolean(c.g3a_moat_archetype && c.g3a_moat_archetype !== 'None');
     }}
 
+    function passesQualityGrade(c) {{
+      if (c.passes_quality_grade !== undefined) return Boolean(c.passes_quality_grade);
+      const st = c.gate_status || {{}};
+      return passesG123a(c) && st['4'] === 'pass' && st['6'] === 'pass';
+    }}
+
     function hasMoatArchetype(c) {{
       // Python par_valuation assumes a default 20y CAP whenever a moat archetype is set and Gate 4 is blank
       return Boolean(c.g3a_moat_archetype && String(c.g3a_moat_archetype).trim() !== '' && String(c.g3a_moat_archetype).trim() !== 'None');
@@ -2611,7 +2623,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
       const qpass = base.filter(c => c.result === 'Quality pass');
       const calamity = base.filter(c => c.result === 'Calamity pass');
-      const moatUni = base.filter(c => passesG123a(c));
+      const qualityGrade = base.filter(c => passesQualityGrade(c));
       const valued = qpass.filter(c => c.val_status === 'Valued');
       // Header KPIs follow the market filter (computed client-side)
       const irrs = valued.filter(c => c.irr_5y !== null && c.irr_5y !== undefined && c.disc_rate !== null && c.disc_rate !== undefined)
@@ -2625,7 +2637,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('count-qpass').textContent = qpass.length;
       document.getElementById('count-calamity').textContent = calamity.length;
       const moatCountEl = document.getElementById('count-moat-universe');
-      if (moatCountEl) moatCountEl.textContent = moatUni.length;
+      if (moatCountEl) moatCountEl.textContent = qualityGrade.length;
       document.getElementById('count-all').textContent = base.length;
     }}
 
@@ -2746,7 +2758,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         // Tab restriction
         if (currentTab === 'qpass' && c.result !== 'Quality pass') return false;
         if (currentTab === 'calamity' && c.result !== 'Calamity pass') return false;
-        if (currentTab === 'moat_universe' && !passesG123a(c)) return false;
+        if (currentTab === 'moat_universe' && !passesQualityGrade(c)) return false;
 
         // Market
         if (currentMarket !== 'all' && c.universe !== currentMarket) return false;
@@ -2757,7 +2769,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         // Moat
         if (moat !== 'all' && c.g3a_moat_archetype !== moat) return false;
 
-        // Valuation Status (in Quality Pass, Moat Universe & Full Universe tabs)
+        // Valuation Status (in Prime Grade, Quality Grade & Full Universe tabs)
         if ((currentTab === 'qpass' || currentTab === 'all' || currentTab === 'moat_universe') && valFilter !== 'all') {{
           if (valFilter === 'g6flag') {{
             if (!(c.g6_flags > 0 && c.g6_answer === 'Y')) return false;
@@ -2766,7 +2778,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
         // Gate
         if ((currentTab === 'all' || currentTab === 'moat_universe') && gate !== 'all') {{
-          if (gate === 'g123a' && !passesG123a(c)) return false;
+          if ((gate === 'quality_grade' || gate === 'g123a') && !passesQualityGrade(c)) return false;
           if (gate === 'Quality pass' && c.result !== 'Quality pass') return false;
           if (gate === 'Calamity pass' && c.result !== 'Calamity pass') return false;
           if (gate.startsWith('Gate') || gate.startsWith('G')) {{
