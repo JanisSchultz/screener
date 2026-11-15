@@ -22,6 +22,7 @@ from . import metrics, par, settings
 
 CACHE = DATA_DIR / "_cache"
 EODHD_CACHE = CACHE / "eodhd"
+YAHOO_CAPEX_SYSTEMATIC = 1.3     # median Yahoo ÷ EODHD capex above this = different definition -> replace all years
 CCY_CLOSE_PAIR_LOG = 0.4        # |ln fx| below this (GBP/USD, CHF/USD, CAD/USD …): currency switch decided per block
 CCY_AMBIGUOUS_MARGIN = 0.05     # block decision closer than this (in log points) = ambiguous -> flagged for review
 FX_HISTORY_START = "2010-01-01"
@@ -94,6 +95,31 @@ def _fval(row: dict | None, *keys: str) -> float | None:
         if v is not None:
             return v
     return None
+
+
+def _fy_of(d_str: str) -> int | None:
+    """Fiscal year of a statement date: the calendar year for year ends after June, else the prior year."""
+    try:
+        day = dt.date.fromisoformat(str(d_str)[:10])
+    except ValueError:
+        return None
+    return day.year if day.month > 6 else day.year - 1
+
+
+def _fy_primary_dates(inc: dict, bs: dict, cf: dict) -> dict[int, str]:
+    """{fiscal year: primary statement date}. Several dates can fall into one fiscal year (52/53-week year ends next to
+    calendar stubs: SBRY 2024-02-29 vs a 2024-03-31 stub with capex 0; HWDN 12-26 vs 12-31). The primary row is the
+    latest date carrying revenue (or net income), else the latest date."""
+    by_fy: dict[int, list[str]] = {}
+    for d in set(inc) | set(bs) | set(cf):
+        fy = _fy_of(d)
+        if fy is not None:
+            by_fy.setdefault(fy, []).append(d)
+    out = {}
+    for fy, ds in by_fy.items():
+        full = [d for d in ds if _fval(inc.get(d) or {}, "totalRevenue", "grossProfit", "netIncome") is not None]
+        out[fy] = max(full or ds)
+    return out
 
 
 def _norm_name(name: str | None) -> str:
@@ -754,7 +780,7 @@ class EODHD:
 
         keys = ("sales", "opcost", "ni", "minority_interest", "eps", "eps_street", "ebit", "pretax", "tax", "interest",
                 "ocf", "capex", "sbc", "da", "dividends",
-                "equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "shares")
+                "equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "liab", "shares")
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
         out["period_end"] = {}          # {fy: "YYYY-MM-DD"} (strings; used for point-in-time availability in par.py)
         inc_ccys: dict[int, str] = {}
@@ -762,7 +788,10 @@ class EODHD:
         cf_ccys: dict[int, str] = {}
         bs_shares: dict[int, float] = {}
 
-        all_dates = sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys()))
+        # v7.4: within a fiscal year the primary row is processed last, so stub rows only fill fields it lacks
+        primary = _fy_primary_dates(inc, bs, cf)
+        all_dates = sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys()),
+                           key=lambda d: (_fy_of(d) or 0, d == primary.get(_fy_of(d)), d))
         inc_dates = sorted(inc.keys())
         for d_str in all_dates:
             try:
@@ -883,6 +912,7 @@ class EODHD:
             gw = _fval(b_r, "goodWill")
             intang = _fval(b_r, "intangibleAssets")
             assets = _fval(b_r, "totalAssets")
+            liab = _fval(b_r, "totalLiab")
 
             bs_sh = _fval(b_r, "commonStockSharesOutstanding")
             if bs_sh and bs_sh > 0:
@@ -903,7 +933,7 @@ class EODHD:
                 ("sbc", sbc), ("da", da), ("dividends", div), ("equity", eq), ("nci", nci),
                 ("debt", debt), ("st_debt", st_debt), ("cash", cash), ("cash_sti", cash_sti), ("lease", lease),
                 ("goodwill", gw), ("intang", intang),
-                ("assets", assets), ("shares", sh), ("eps_street", e_st),
+                ("assets", assets), ("liab", liab), ("shares", sh), ("eps_street", e_st),
             ):
                 if val is not None:
                     out[k][fy] = val
@@ -926,13 +956,24 @@ class EODHD:
                     y_sbc = y_cf.get("Stock Based Compensation") or {}
                 except Exception:
                     y_cap, y_ocf, y_da, y_sbc = {}, {}, {}, {}
+                def _ocf_match(fy, d_str):
+                    yo, eo = _f(y_ocf.get(d_str)), out["ocf"].get(fy)
+                    return bool(eo and yo and 0.90 <= abs(yo / eo) <= 1.10)
+
+                # v7.4: a systematic definition gap (median Yahoo ÷ EODHD capex > 1.3 over the matched years, e.g. SAF
+                # 1.52 / 1.48 / 1.45 incl. capitalised R&D) replaces ALL matched years so the series stays on one basis;
+                # otherwise only broken EODHD years (> 1.5×, near-zero recent capex: LSEG, REL, EXPN) are replaced.
+                # Banks are skipped (capex immaterial, different concept).
+                ratios = [abs(_f(y_cap.get(d))) / abs(out["capex"][fy]) for fy, d in out["period_end"].items()
+                          if _ocf_match(fy, d) and _f(y_cap.get(d)) and out["capex"].get(fy)]
+                systematic = len(ratios) >= 2 and median(ratios) > YAHOO_CAPEX_SYSTEMATIC
                 for fy, d_str in out["period_end"].items():
-                    yv, yo = _f(y_cap.get(d_str)), _f(y_ocf.get(d_str))
-                    eo = out["ocf"].get(fy)
-                    if not (eo and yo and 0.90 <= abs(yo / eo) <= 1.10):
+                    yv = _f(y_cap.get(d_str))
+                    if not _ocf_match(fy, d_str):
                         continue
                     ec = out["capex"].get(fy)
-                    if yv is not None and abs(yv) > 0 and (ec is None or abs(yv) > 1.5 * abs(ec)):
+                    if (not is_bank and yv is not None and abs(yv) > 0
+                            and (ec is None or systematic or abs(yv) > 1.5 * abs(ec))):
                         out["capex"][fy] = abs(yv)
                     if out["da"].get(fy) is None:
                         yda = _f(y_da.get(d_str))
@@ -957,7 +998,7 @@ class EODHD:
         if inc_ccys and len(set(inc_ccys.values()) | set(bs_ccys.values()) | set(cf_ccys.values())) > 1 and out["sales"]:
             target_ccy = inc_ccys[max(inc_ccys)]
             inc_keys = ("sales", "opcost", "ni", "minority_interest", "ebit", "pretax", "tax", "interest")
-            bs_keys = ("equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets")
+            bs_keys = ("equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "liab")
             cf_keys = ("ocf", "capex", "sbc", "da", "dividends")
             yrs_sorted = sorted(out["sales"])
             spot_used = False
@@ -1188,14 +1229,7 @@ class EODHD:
         fcf_ser = metrics.true_fcf(s.get("ocf", {}), s.get("capex", {}), s.get("sbc", {}), s.get("da", {}), s.get("lease", {}))
         oe_ser = par.owner_eps_series(s)
 
-        by_fy_dates: dict[int, str] = {}
-        for d_str in sorted(set(inc.keys()) | set(bs.keys()) | set(cf.keys())):
-            try:
-                day = dt.date.fromisoformat(d_str)
-                fy = day.year if day.month > 6 else day.year - 1
-                by_fy_dates[fy] = d_str
-            except ValueError:
-                continue
+        by_fy_dates: dict[int, str] = _fy_primary_dates(inc, bs, cf)
 
         rows = []
         m = lambda v: round(v / 1e6, 3) if v is not None else None

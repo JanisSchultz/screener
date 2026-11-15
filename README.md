@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.3 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.4 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,14 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.4: M&A spend & statement data quality (audit items C and B):
+- `ma_reinvest` counts only acquisition years (goodwill up > 2%): capitalised development (WKL, JKHY), concession capex (AENA) and purchase-price reallocations (SIKA) are no longer treated as bought growth. TYL (NIC, cash) and CSU are unchanged.
+- Fiscal-year collisions: the statement row with revenue / net income is primary; stubs only fill missing fields (SBRY FY2022–24 capex no longer 0).
+- Yahoo capex cross-check: a systematic definition gap (median ratio > 1.3, e.g. SAF) replaces all matched years; otherwise only broken years (> 1.5×); banks skipped.
+- Dividends: DPS × shares whenever the cash-flow figure exceeds 1.3× the DPS-implied one (ORK.NO 10.1% → 3.8%, VOLV-B, MAP).
+- Consolidated ROE: consolidated profit over consolidated equity = total assets − total liabilities (bounded by parent equity and parent equity + NCI, since EODHD's equity field sometimes already includes NCI): BX 71.7% → 28.9%, LUND B 8.8% → 5.8%, Heineken Holding 24.7% → 10.8%; IBKR unchanged at 21.9%.
+- Review file `output/v7.4 changes vs v7.3.csv`; same 19 names at/below fair value.
 
 v7.3: Operating ROIC without the D&A add-back (audit item A, option C2):
 - `metrics.roic_series`: tangible ROIC = NOPAT ÷ max(invested capital − goodwill − intangibles, ⅓ invested capital). The owner-earnings add-back is no longer added to NOPAT (it double-counted acquired assets already removed from capital), and the tangible figure is only computed while GAAP invested capital is positive — otherwise `roic_operating` = GAAP ROIC (ADYEN, COR). Balance-sheet insurers (ROE) and concessions (GAAP ROIC) are unchanged; brokers stay on operating ROIC. Fair values barely move (median Fair P/E 16.6× → 16.5× on the comparison); review file `output/v7.3 changes vs v7.2.csv`.
@@ -269,7 +277,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.3)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.4)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

@@ -12,6 +12,7 @@ ROIC_YEARS = 5                  # median ROIC over the latest 5 fiscal years (on
 LEASE_DEP_RATE = 0.20           # IFRS-16 right-of-use depreciation ≈ 20% of average lease liabilities (~5y avg term)
 DA_IMPAIRMENT_CAP = 1.5         # D&A above 1.5× the prior-3y median is treated as a one-off impairment / write-down
 MA_STOCK_FUNDED = 1.03          # share count up ≥ 3% in a year = stock-funded deal (already netted out of g0 by S_t)
+MA_GOODWILL_GROWTH = 0.02       # an acquisition year needs goodwill up > 2%; other intangible growth is not M&A
 
 
 def clean_da(da: dict, capex: dict | None = None) -> dict:
@@ -503,12 +504,32 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             return None
         return e - ((g("goodwill").get(y) or 0) + (g("intang").get(y) or 0) if tangible else 0)
 
-    mi_ser = g("minority_interest")
+    mi_ser, nci_ser, liab_ser = g("minority_interest"), g("nci"), g("liab")
+
+    def cons_eq(y, tangible):
+        """Consolidated equity incl. non-controlling interests = total assets − total liabilities (robust to whether the
+        reported equity field already includes NCI: IBKR yes, BX no); parent equity + NCI when liabilities are missing."""
+        e = eq(y, tangible)
+        if e is None:
+            return None
+        with_nci = e + (nci_ser.get(y) or 0.0)
+        a, l_ = g("assets").get(y), liab_ser.get(y)
+        if a is not None and l_ is not None:
+            tot = (a - l_) - ((g("goodwill").get(y) or 0) + (g("intang").get(y) or 0) if tangible else 0)
+            # plausible only between parent equity and parent equity + NCI (bank liability totals can be partial: ACA)
+            if 0.95 * min(e, with_nci) <= tot <= 1.05 * max(e, with_nci):
+                return tot
+        return with_nci
+
+    def avg_base(y, tangible, consolidated):
+        f_ = cons_eq if consolidated else eq
+        cur, prev = f_(y, tangible), f_(y - 1, tangible)
+        return (cur + prev) / 2 if cur is not None and prev is not None else cur
+
     for key, tangible in (("roe_median", False), ("rote_median", True)):
         ser = {}
         for y, n in ni.items():
-            cur, prev = eq(y, tangible), eq(y - 1, tangible)
-            base = (cur + prev) / 2 if cur is not None and prev is not None else cur
+            base = avg_base(y, tangible, False)
             if n is not None and base and base > 0:
                 mi_y = mi_ser.get(y)
                 n_eff = n
@@ -516,7 +537,8 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
                     pt_y, tx_y = pretax.get(y), tax.get(y)
                     cons_ni = n + abs(mi_y)
                     if pt_y is None or tx_y is None or abs(cons_ni - (pt_y - tx_y)) < abs(n - (pt_y - tx_y)):
-                        n_eff = cons_ni
+                        # v7.4: consolidated profit over consolidated equity (assets − liabilities), not parent-only
+                        n_eff, base = cons_ni, (avg_base(y, tangible, True) or base)
                 ser[y] = n_eff / base
         yrs_e = _last_years(ser, ROIC_YEARS, last)
         if yrs_e:
@@ -639,6 +661,11 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
         nopat_sum += nopat_ser[y1]
         s0, s1 = shares.get(y0), shares.get(y1)
         if s0 and s1 and s0 > 0 and s1 > MA_STOCK_FUNDED * s0:
+            continue
+        # v7.4: only acquisition years (goodwill itself up > 2%) count — capitalised development (WKL, JKHY),
+        # concession capex (AENA) and purchase-price reallocations (SIKA) grow intangibles without any deal
+        gw0, gw1 = g("goodwill").get(y0) or 0.0, g("goodwill").get(y1) or 0.0
+        if gw1 - gw0 <= MA_GOODWILL_GROWTH * max(gw0, 0.0):
             continue
         spend_sum += max(0.0, (gwi[y1] - gwi[y0]) - 0.035 * max(0.0, gwi[y0] - 3.0 * nopat_ser[y1]))
     if n_trans >= 3 and nopat_sum > 0:

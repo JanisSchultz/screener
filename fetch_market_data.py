@@ -303,9 +303,9 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
             same_ccy = (row.get("fin_currency") or "").upper() == ("GBP" if q_ccy in ("GBp", "GBX") else (q_ccy or "")).upper()
             if q.get("dps") and px_now and dv and mc_new and same_ccy:
                 y_stmt, y_dps = dv / mc_new, q["dps"] / px_now
-                if 1.3 * y_dps < y_stmt < 2.5 * y_dps:
+                if y_stmt > 1.3 * y_dps:        # v7.4: no upper bound (ORK.NO cash-flow figure 2.66× incl. specials)
                     row["dividends_ttm_m"] = y_dps * mc_new
-                    notes.append("dividends = DPS × shares (cash-flow figure incl. minority dividends)")
+                    notes.append("dividends = DPS × shares (cash-flow figure incl. specials / minority dividends)")
             elif a.offline and dv and mc_new and dv / mc_new > 0.06:
                 notes.append(f"dividend yield {dv / mc_new:.1%} unverified (cash-flow figure may include minority dividends)")
             set_auto_note(row, notes)

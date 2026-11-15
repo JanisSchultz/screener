@@ -623,6 +623,13 @@ CHANGELOG = {
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
     ],
+    "7.4": [
+        "M&A spend & statement data quality (audit items C, B): ma_reinvest counts only acquisition years (goodwill up > 2%; "
+        "capitalised development / concession capex / PPA reallocations excluded: SIKA 15.8x -> 18.3x, WKL, JKHY, SU); fiscal-year "
+        "collisions keep the revenue-carrying row as primary (SBRY capex); Yahoo capex replaces all matched years on a systematic gap "
+        "(median ratio > 1.3, SAF), banks skipped; DPS dividend correction without upper bound (ORK.NO 10.1% -> 3.8%); consolidated ROE "
+        "over assets - liabilities, bounded by parent equity and parent equity + NCI (BX 71.7% -> 28.9%, LUND B; IBKR unchanged).",
+    ],
     "7.3": [
         "Operating ROIC without the D&A add-back (audit item A, option C2): tangible ROIC = NOPAT / max(IC - goodwill - intangibles, IC/3), "
         "only while GAAP IC > 0 (else roic_operating = GAAP ROIC); removes the double count of acquired assets taken out of capital and "
