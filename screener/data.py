@@ -58,6 +58,7 @@ FIN_COLUMNS = [
     ("retention_rate", "5y earnings retention (1 − div/NI)", "0.0%", 9),
     ("roiic", "Incremental ROIC (3–5y ΔNOPAT/ΔIC)", "0.0%", 9),
     ("roe_median", "Median ROE 5y (capital base for balance-sheet financials)", "0.0%", 9),
+    ("ic_neg_years", "Years with invested capital <= 0 (5y)", "0", 7),
     ("equity_m", "Shareholders' equity latest FY (m)", "#,##0", 11),
     ("ocf_ni_2y", "Operating cash flow ÷ NI (latest 2y)", "0%", 9),
     ("owner_add_m", "Owner-earnings add-back latest FY (m): D&A − CapEx − lease dep.", "#,##0", 10),

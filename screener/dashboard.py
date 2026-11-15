@@ -119,7 +119,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "equity_m": fin.get("equity_m"),
                 "ocf_ni_2y": fin.get("ocf_ni_2y"),
                 "owner_add_m": fin.get("owner_add_m"),
-                "uses_gaap_roic": uses_gaap_roic(sub_ind),
+                "uses_gaap_roic": val.get("roic_basis_gaap", uses_gaap_roic(sub_ind)),
                 "fcf_conv": fin.get("fcf_conv"),
                 "peak_oe_year": fin.get("peak_oe_year"),
                 "peak_oe_eps": fin.get("peak_oe_eps"),
@@ -191,7 +191,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     median_irr = statistics.median(irrs) if irrs else None
 
     return {
-        "version": "7.4",
+        "version": "7.5",
         "generated_at": date.today().isoformat(),
         "summary": {
             "total_companies": len(all_companies),
@@ -3624,7 +3624,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (lblRoicText) {{
         lblRoicText.textContent = (c.roic_est !== null && c.roic_est !== undefined)
           ? 'RONIC₀ (analyst roic_est)'
-          : `RONIC₀ (${{c.uses_gaap_roic ? (c.bs_fin ? 'ROE' : 'GAAP ROIC') : 'Tangible ROIC'}}, M&A-matched, capped)`;
+          : `RONIC₀ (${{c.uses_gaap_roic ? (c.bs_fin ? 'ROE' : (c.roic_source === 'roe_median' ? 'ROE — invested capital ≤ 0' : 'GAAP ROIC')) : 'Tangible ROIC'}}, M&A-matched, capped)`;
       }}
 
       const inPeak = document.getElementById('sb-input-peakeps');

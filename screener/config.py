@@ -623,6 +623,11 @@ CHANGELOG = {
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
     ],
+    "7.5": [
+        "ROE as the capital return for customer-cash balance sheets: operating / fee companies with invested capital <= 0 in >= 2 of 5 "
+        "years (ic_neg_years) and 0 < ROE <= 50% use roe_median (no M&A blend, r = 8.5%): DB1 7% -> 19% (Fair P/E 9.2x -> 19.2x), "
+        "ADYEN 50% -> 25%, ENX 45% -> 14%, VZN; FTNT / RR / MCK / VRSN (implausible ROE) unchanged.",
+    ],
     "7.4": [
         "M&A spend & statement data quality (audit items C, B): ma_reinvest counts only acquisition years (goodwill up > 2%; "
         "capitalised development / concession capex / PPA reallocations excluded: SIKA 15.8x -> 18.3x, WKL, JKHY, SU); fiscal-year "

@@ -277,7 +277,7 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
    - When goodwill-heavy ($r_{\text{tang}} > 1.25 \times r_{\text{GAAP}}$), a serial acquirer keeps spending `ma_reinvest` ($\Sigma$ cash-funded $\Delta$(goodwill + intangibles) ÷ $\Sigma$ NOPAT over the 10-year $g_0$ window; only acquisition years with goodwill up > 2%; stock-funded years skipped) on acquisitions earning GAAP ROIC: bought growth $g_m = \text{ma\_reinvest} \times r_{\text{GAAP}}$, bought share $w = \text{clip}_{[0,1]}(g_m / g_0)$ and $1/\text{RONIC}_0 = (1-w)/r_{\text{tang}} + w/r_{\text{GAAP}}$, capped at `par_roic_cap = 0.50` (unless `roic_est` is populated). One transformational merger moves the median little; organic capital growth never counts as M&A.
    - A $\text{RONIC}_0 \le r$ is flagged (`ronic_le_r`) for review: growth then adds no value and Fair P/E $\le 1/r$.
 3. **Active ROIC Priority**:
-   - `roic_est` (override) $\rightarrow$ Balance-Sheet Financials: `roe_median` (consolidated for Up-C structures like `IBKR`) $\rightarrow$ IFRIC-12 Concessions: `roic_median` $\rightarrow$ All others: `roic_operating` $\rightarrow$ `roic_median`.
+   - `roic_est` (override) $\rightarrow$ Balance-Sheet Financials: `roe_median` (consolidated for Up-C structures like `IBKR`) $\rightarrow$ IFRIC-12 Concessions: `roic_median` $\rightarrow$ All others: `roic_operating` $\rightarrow$ `roic_median` — except `roe_median` when invested capital is $\le 0$ in $\ge 2$ of 5 years and $0 < \text{ROE} \le 50\%$ (v7.5, clearing / customer cash: DB1, ADYEN).
 
 ---
 

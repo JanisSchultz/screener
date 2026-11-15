@@ -1,4 +1,4 @@
-# Quality & Moat Screener (v7.4 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.5 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
@@ -16,6 +16,9 @@ Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance S
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.5: ROE as the capital return for customer-cash balance sheets:
+- `gates.active_roic`: an operating / fee company with invested capital ≤ 0 in ≥ 2 of the 5 ROIC years (`ic_neg_years`, new in financials.csv) and a plausible ROE (0 < ROE ≤ 50%) is valued on `roe_median` — clearing or client cash makes "equity + debt − cash" meaningless. No M&A blend (ROE is goodwill-inclusive); discount rate stays 8.5%. Deutsche Börse 7% → 19% (Fair P/E 9.2× → 19.2×, +182% → +35% vs fair value), ADYEN 50% → 25% (23.1×, now +11%), Euronext 45% → 14% (16.2×), VZ 20% → 22%. Buyback-shrunk equity (FTNT, RR, MCK, VRSN) is unchanged. Outside the funnel the custody banks (BNY, NTRS, STT) and COF move to ROE too. Review file `output/v7.5 changes vs v7.4.csv`.
 
 v7.4: M&A spend & statement data quality (audit items C and B):
 - `ma_reinvest` counts only acquisition years (goodwill up > 2%): capitalised development (WKL, JKHY), concession capex (AENA) and purchase-price reallocations (SIKA) are no longer treated as bought growth. TYL (NIC, cash) and CSU are unchanged.
@@ -277,7 +280,7 @@ screener/config.py        framework: fields (gates, scores, rubrics), gate chain
 screener/gates.py         Python implementation of the 6 Munger gates and PAR maths (funnel selection, valuation)
 screener/apply_evaluation.py validate & apply an evaluator agent's JSON evaluation to data/
 QUALITATIVE_EVALUATION_SPEC.md standalone qualitative evaluation spec (6 Munger Reject Gates)
-QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.4)
+QUANTITATIVE_EVALUATION_SPEC.md standalone quantitative valuation spec (Explicit Mauboussin-Fade DCF v7.5)
 COMPANY_EVALUATION_SPEC.md unified full-lifecycle evaluation framework spec
 screener/v2/, v3/, v4_1/, v4_2/   archived earlier frameworks (not imported)
 screener/data.py          file schema and CSV/JSON loading/saving

@@ -463,6 +463,10 @@ def summarize(s: dict, price_at_year_end: dict | None = None) -> dict:
             out["roic_tangible_median"] = out["roic_median"]
     # Operating ROIC = 5Y median of Tangible ROIC; falls back to GAAP ROIC if tangible data is unavailable
     out["roic_operating"] = out.get("roic_tangible_median") if out.get("roic_tangible_median") is not None else out.get("roic_median")
+    # v7.5: years of the ROIC window with invested capital (equity + NCI + debt − cash) <= 0 — customer / clearing cash
+    # (DB1, ADYEN) or buyback-shrunk equity (FTNT, VRSN); gates.active_roic then prefers a plausible ROE
+    if yrs:
+        out["ic_neg_years"] = sum(1 for y in yrs if y in eq_ic and eq_ic[y] + (debt_ic.get(y) or 0) - (cash_op.get(y) or 0) <= 0)
 
     conv_years = [y for y in _last_years(fcf, 5, last) if ni.get(y) is not None]
     ni_sum = sum(ni[y] for y in conv_years)

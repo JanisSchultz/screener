@@ -97,6 +97,11 @@ CONCESSION_KEYWORDS = ("Construction & Engineering", "Highways & Railtracks")
 # v7.1: opt-in list of ids whose concession assets revert to the grantor at expiry (no terminal value). Empty by
 # default: contractors and concession groups (Vinci, Eiffage, WSP, SPIE …) renew or replace concessions.
 FINITE_CONCESSION_IDS: frozenset[str] = frozenset()
+# v7.5: an operating / fee company whose invested capital is <= 0 in at least 2 of the 5 ROIC years (clearing or customer
+# cash on balance sheet: DB1, ADYEN, ENX) has no usable capital base; a plausible ROE (0 < ROE <= 50%) is the capital
+# return instead. Buyback-shrunk or negative equity (FTNT 234%, RR 644%, MCK, VRSN) keeps GAAP ROIC.
+IC_NEG_YEARS_FOR_ROE = 2
+ROE_AS_CAPITAL_MAX = 0.50
 # '[auto]' fin_note markers written by fetch_market_data.py that make the statements unusable for a per-share
 # valuation until refetched or reviewed (status 'No data'). Mirrored by the dashboard sandbox (BLOCKING_AUTO_NOTES).
 BLOCKING_AUTO_NOTES = ("stale fundamentals", "share count changed since FY", "currency switch unresolved")
@@ -383,7 +388,8 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
     """Capital-return input to the DCF reinvestment rate, with its source label.
     Priority: roic_est override > Balance-Sheet Financials: roe_median (unless roe_median < 8.5% while roic_median >= 12%
     due to Up-C non-controlling interest mismatch) > IFRIC-12 concessions: roic_median (GAAP) > everyone else:
-    roic_operating (tangible) > roic_median."""
+    roic_operating (tangible) > roic_median; except that an operating company with invested capital <= 0 in >= 2 of 5
+    years and 0 < roe_median <= 50% uses roe_median (v7.5, customer / clearing cash balance sheets)."""
     def f(k):
         v = fin.get(k)
         return v if isinstance(v, (int, float)) and not (isinstance(v, float) and math.isnan(v)) else None
@@ -398,6 +404,10 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
             if f(k) is not None:
                 return f(k), k
         return None, None
+    if not is_concession_sector(sub_industry):
+        neg, roe_v = f("ic_neg_years"), f("roe_median")
+        if neg is not None and neg >= IC_NEG_YEARS_FOR_ROE and roe_v is not None and 0 < roe_v <= ROE_AS_CAPITAL_MAX:
+            return roe_v, "roe_median"
     order = ("roic_median", "roic_operating") if is_concession_sector(sub_industry) else ("roic_operating", "roic_median")
     for k in order:
         if f(k) is not None:
@@ -518,7 +528,9 @@ def par_valuation(
         g_exp = _r4(g_org_exp + bb_pos)
 
     # Step 2 — M&A-matched RONIC₀ (screener/gates.ronic0): bought growth earns GAAP ROIC, organic growth tangible ROIC.
-    ronic_raw, alpha = ronic0(f("roic_est"), roic_op, f("roic_operating"), roic_gaap, f("ma_reinvest"), g_org_exp, uses_gaap_roic(sub_ind))
+    # ROE sits on goodwill-inclusive equity, so (like GAAP-basis sectors) no tangible / GAAP M&A blend
+    gaap_basis = uses_gaap_roic(sub_ind) or roic_source == "roe_median"
+    ronic_raw, alpha = ronic0(f("roic_est"), roic_op, f("roic_operating"), roic_gaap, f("ma_reinvest"), g_org_exp, gaap_basis)
     roic_exp = _r4(max(0.05, min(roic_cap, ronic_raw)) if f("roic_est") is None else max(0.05, ronic_raw))
 
     # Industry physics: discount rate, NAV-anchored HoldCos, opt-in finite concessions.
@@ -537,7 +549,7 @@ def par_valuation(
         "g_market": None, "g_market_flag": None, "g_gap": None,
         "pe_mm": None, "pe_mck": None, "pe_vd": None, "reinv_eff": None,
         "bvps": bvps, "nav_anchor": nav_anchor, "mtm_holdco": mtm_holdco, "finite_conc": finite_conc,
-        "bs_fin": bs_fin, "k": k, "roic_source": roic_source, "roic_active": roic, "roic_exp": roic_exp,
+        "bs_fin": bs_fin, "k": k, "roic_source": roic_source, "roic_basis_gaap": gaap_basis, "roic_active": roic, "roic_exp": roic_exp,
         "ma_reinvest": f("ma_reinvest"), "ma_alpha": alpha, "ronic_le_r": (not mtm_holdco) and roic_exp <= k,
         "g": g, "dy": dy, "g_start": g_start, "g_org_start": g_org_start,
         "g_1y": sales_1y_val, "g_hist": sales_cagr_val if sales_cagr_val is not None else g, "g_cap": opcost_cagr_val,
