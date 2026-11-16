@@ -41,12 +41,38 @@ def TXT(code, phase, section, short, name, seed, definition):
 
 
 MOAT_TYPES = [
-    "Toll booth / Switching costs",
+    "Toll booth & switching costs",
+    "Irreplaceable infrastructure & intangibles",
     "Scale economies shared",
-    "Irreplaceable infrastructure",
-    "R&D super-thinkers / Intangibles",
+    "R&D & innovation leadership",
     "None",
 ]
+
+MOAT_SCORE_SPEC = [
+    ("3_tb", "Toll booth & switching costs", "Toll Booth"),
+    ("3_ia", "Irreplaceable infrastructure & intangibles", "Infra & Intangibles"),
+    ("3_se", "Scale economies shared", "Scale Shared"),
+    ("3_rd", "R&D & innovation leadership", "R&D Leadership"),
+]
+MOAT_SCORE_CODES = tuple(c for c, _, _ in MOAT_SCORE_SPEC)
+
+FORCE_SCORE_SPEC = [
+    ("4_ent", "Threat of New Entrants", "New Entrants"),
+    ("4_riv", "Competitive Rivalry", "Rivalry"),
+    ("4_buy", "Customer Bargaining Power", "Buyer Power"),
+    ("4_sup", "Supplier Bargaining Power", "Supplier Power"),
+    ("4_sub", "Threat of Substitution", "Substitution"),
+]
+FORCE_SCORE_CODES = tuple(c for c, _, _ in FORCE_SCORE_SPEC)
+
+CAP_VALUES = [0, 5, 10, 15, 20, 25, 30]
+
+LEGACY_MOAT_ALIASES = {
+    "Toll booth / Switching costs": "Toll booth & switching costs",
+    "Irreplaceable infrastructure": "Irreplaceable infrastructure & intangibles",
+    "R&D super-thinkers / Intangibles": "R&D & innovation leadership",
+    "R&D super-thinkers": "R&D & innovation leadership",
+}
 
 FX_TO_USD = {
     "USD": 1.0,
@@ -94,35 +120,77 @@ FIELDS = [
     TXT("2r", 2, S_G2, "Essential Need reason", "Gate 2 — reason (if N)", "",
         "Why the company fails Gate 2 (e.g. discretionary big-ticket, outside target markets, or societal/legislative tail risk)."),
     # ------------------------------------------------------------- GATE 3
+    S("3_tb", 3, S_G3, "Moat: Toll Booth (0/1/2)", "Gate 3 — Toll Booth & Switching Costs Score", "",
+      "Strength of network effects, embedded software/data workflow lock-in, and contractual or operational customer switching barriers.",
+      "Absent: low customer switching costs and no meaningful network effects.",
+      "Supporting: moderate switching friction or regional/segment lock-in.",
+      "Elite: mission-critical toll booth, global network effects, or extreme workflow lock-in.", moat=True),
+    S("3_ia", 3, S_G3, "Moat: Infra & Intangibles (0/1/2)", "Gate 3 — Irreplaceable Infrastructure & Intangibles Score", "",
+      "Strength of physically or legally unreplicable infrastructure, distribution/hub density networks, concessions/permits, regulatory licenses, proprietary datasets, and Lindy brands.",
+      "Absent: replicable physical footprint and no enduring intangible/licensing barrier.",
+      "Supporting: solid brand equity, regional distribution density, or secondary regulatory/data asset.",
+      "Elite: unreplicable physical infrastructure, sovereign-grade regulatory license/dataset, or multi-decade Lindy brand.", moat=True),
+    S("3_se", 3, S_G3, "Moat: Scale Shared (0/1/2)", "Gate 3 — Scale Economies Shared Score", "",
+      "Strictly the Nick Sleep model: deliberately passing operational unit-cost efficiencies back to customers via lower prices or superior consumer surplus to compound volume and widen unit-cost advantage.",
+      "Absent: standard margin-maximizing pricing; scale efficiencies are retained rather than shared in lower prices.",
+      "Supporting: selective reinvestment of scale efficiencies into customer value/fees in core lines.",
+      "Elite: institutionalized low-price / high-surplus flywheel where scale savings systematically lower customer prices.", moat=True),
+    S("3_rd", 3, S_G3, "Moat: R&D Leadership (0/1/2)", "Gate 3 — R&D & Innovation Leadership Score", "",
+      "Strength of proprietary engineering know-how, continuous R&D velocity, and active product/process frontier leadership.",
+      "Absent: mature/non-R&D model or follower technology.",
+      "Supporting: credible ongoing engineering differentiation and patent cadence.",
+      "Elite: generational R&D frontier leadership that continuously advances the technological state of the art.", moat=True),
     CAT("3a", 3, S_G3, "Moat Archetype", "Gate 3a — Primary Moat Archetype", "",
         MOAT_TYPES,
-        "Which structural moat protects the business: (1) Toll booth / Switching costs (incl. network effects & "
-        "mission-critical workflow lock-in), (2) Scale economies shared, (3) Irreplaceable infrastructure / physical "
-        "assets, (4) R&D super-thinkers / Intangibles (patents, licences, regulatory/engineering barriers), or None. "
+        "Primary structural moat derived from the highest-scoring Gate 3 archetype: (1) Toll booth & switching costs, "
+        "(2) Irreplaceable infrastructure & intangibles (incl. physical distribution networks, permits, licenses, proprietary data & Lindy brands), "
+        "(3) Scale economies shared (Nick Sleep customer-surplus model), (4) R&D & innovation leadership, or None (all moat scores = 0). "
         "Holding companies are evaluated on their look-through portfolio moats."),
     G("3b", 3, S_G3, "Pricing >= Inflation", "Gate 3b — Strong Moat, Proof of Moat & Ability to Raise Prices >= Inflation", "",
       "Protected by a strong moat (3a <> None) demonstrated by historical returns on capital (5Y median GAAP ROIC >= 12% "
       "and incremental ROIIC >= 12%) with the ability to raise prices at or above inflation over the cycle "
-      "— whether via direct toll-booth / switching-cost pricing power, irreplaceable infrastructure, R&D differentiation, "
+      "— whether via direct toll-booth / switching-cost pricing power, irreplaceable infrastructure & intangibles, R&D differentiation, "
       "or scale economies shared with customers. Holding companies are evaluated on look-through portfolio moats and pricing power.",
       "No structural moat (None), commodity price taker, sub-hurdle historical returns (ROIC < 12%), or state-capped / eroding real economics unable to keep pace with inflation."),
     TXT("3m", 3, S_G3, "Moat & erosion note", "Gate 3m — Moat barrier, proof of moat and main erosion threats", "",
         "What stops competitors arbitraging the returns away, empirical proof of moat, and what could erode it."),
     # ------------------------------------------------------------- GATE 4
+    S("4_ent", 4, S_G4, "Force: New Entrants (0/1/2)", "Gate 4 — Threat of New Entrants Risk Score", "",
+      "Secular 15–30Y risk of declining entry barriers (e.g. AI/cloud lowering build costs, regulatory opening, subsidized challengers).",
+      "Benign / insulated: high and durable entry barriers.",
+      "Moderate pressure: falling barriers in adjacent segments or emerging niche challengers.",
+      "Terminal threat: structural collapse of entry barriers enabling rapid commoditization."),
+    S("4_riv", 4, S_G4, "Force: Rivalry (0/1/2)", "Gate 4 — Competitive Rivalry Risk Score", "",
+      "Secular 15–30Y risk of intensifying price, promotional, or capex competition among incumbents (e.g. capex arms races, private-label share pressure).",
+      "Benign / insulated: rational oligopoly, monopoly niche, or stable competitive discipline.",
+      "Moderate pressure: rising capex intensity or manageable share/pricing skirmishes.",
+      "Terminal threat: destructive price war or permanently value-destroying capital arms race."),
+    S("4_buy", 4, S_G4, "Force: Buyer Power (0/1/2)", "Gate 4 — Customer Bargaining Power Risk Score", "",
+      "Secular 15–30Y risk of rising buyer leverage (e.g. customer consolidation, AI seat-count compression, multi-homing, sovereign healthcare price caps).",
+      "Benign / insulated: fragmented, inelastic, or locked-in customer base.",
+      "Moderate pressure: concentrated key accounts, retailer private-label leverage, or procurement scrutiny.",
+      "Terminal threat: severe buyer consolidation or seat/volume deflation breaking pricing power."),
+    S("4_sup", 4, S_G4, "Force: Supplier Power (0/1/2)", "Gate 4 — Supplier Bargaining Power Risk Score", "",
+      "Secular 15–30Y risk of rising supplier/input leverage across the 5 Macrotrends (single-source foundry/component concentration, demographic labor scarcity, geopolitical supply risk, energy/resource bottlenecks).",
+      "Benign / insulated: diversified inputs and low skilled-labor or geopolitical bottleneck exposure.",
+      "Moderate pressure: concentrated upstream supplier(s), unionized/scarce labor, or geopolitical supply friction.",
+      "Terminal threat: unhedged single-point supplier stranglehold or existential input/geopolitical cutoff."),
+    S("4_sub", 4, S_G4, "Force: Substitution (0/1/2)", "Gate 4 — Threat of Substitution & Clock-Speed Risk Score", "",
+      "Secular 15–30Y risk of product/paradigm substitution across the 5 Macrotrends (AI agents replacing seat SaaS/lookup/IT staffing, GLP-1s, energy transition) plus Mauboussin Outside-View industry clock speed (fast-clock-speed tech, semi, pharma/biotech, and hardware sub-industries carry presumptive 4_sub >= 1 unless structurally unbypassable).",
+      "Benign / insulated: slow-clock-speed essential need or structurally unbypassable standard with zero credible substitute.",
+      "Moderate pressure: fast-clock-speed technological product cycles requiring continuous execution, or partial adjacent substitution.",
+      "Terminal threat: active paradigm shift (e.g. agentic AI substitution, unhedged patent cliff, or stranded technology) impairing the core model."),
     NUM("4", 4, S_G4, "Runway — CAP (yrs)", "Gate 4 — Low Disruption Risk & Predictable Runway (CAP, yrs)", "",
-        [0, 5, 10, 15, 20, 30],
-        "Evaluates the structural longevity of the company's competitive advantage (Competitive Advantage Period, CAP) "
-        "over a 15–20+ year horizon using Michael Mauboussin & Dan Callahan's two-step base-rate and haircut engine: "
-        "(1) Outside View (Industry Base-Rate Persistence): Anchors on 54-year empirical persistence data (1970–2024): "
-        "Tier 1 (Staples, Food/Bev, Personal Care: p=0.90, f=0.10 -> baseline 20–30Y); "
-        "Tier 2 (MedTech Devices, Mission-Critical Hardware, Services: p=0.81–0.87, f=0.13–0.19 -> baseline 15–20Y); "
-        "Tier 3 (Software, Pharma/Biotech, Semis, Capital Goods, Rails: p=0.75–0.79, f=0.21–0.25 -> baseline 10–15Y); "
-        "Tier 4 (Energy, Telecom, Regulated Utilities: p=0.70–0.71, f=0.29–0.30 -> baseline 5–10Y, natural REJECT). "
-        "(2) Inside View (5-Macrotrend Deductive Haircut Filter): Deductively reduces the baseline by -5 to -10 years if the business "
-        "faces an active terminal headwind on: [1] Automation & Cognitive Tech (AI disruption of seat SaaS or IT consulting), "
-        "[2] Demographic Aging & Labor Scarcity (human labor cost squeeze), [3] Geopolitical Realignment & Reshoring (single-source supply fragility), "
-        "[4] Energy Transition & Resource Limits (carbon/grid bottlenecks), or [5] Structural Inflation & Cost of Capital (eroding real pricing power). "
+        CAP_VALUES,
+        "Deterministic two-step Competitive Advantage Period (CAP, in 5-year steps: 0, 5, 10, 15, 20, 25, 30): "
+        "(1) Step 1 — Initial CAP from Gate 3 Moat Profile (0/1/2 across the 4 archetypes): max=0 -> 0Y (Fail G3); "
+        "max=1 -> 15Y (sum=1) or 20Y (sum>=2, capped without an elite moat); max=2 -> 20Y (sum=2), 25Y (sum=3), 30Y (sum>=4). "
+        "(2) Step 2 — Porter's 5 Competitive Forces Adjustment (informed by the 5 Macrotrends & Mauboussin industry clock speed): "
+        "any Force=2 triggers the Fatal-Flaw Cap (CAP <= 10Y; 5Y if >=2 twos, 0Y if >=3 twos -> immediate REJECT); "
+        "otherwise moderate pressures (Force=1) deduct 0Y (0 ones), -5Y (1–2 ones), -10Y (3–4 ones), or -15Y (5 ones), floored at 5Y. "
         "Below thr_cap (15 years) = REJECT; blank = to review."),
+    TXT("4n", 4, S_G4, "Runway & forces note", "Gate 4n — Competitive forces & macrotrend adjustment note", "",
+        "Concise explanation of non-zero Gate 4 competitive force risks and macrotrend/clock-speed adjustments (mandatory when any Force >= 1)."),
     # ------------------------------------------------------------- GATE 5
     S("5", 5, S_G5, "Management (0/1/2)", "Gate 5 — Honest, Able, Customer-Focused Management & Capital Allocation", "",
       "Evaluates leadership across 5 vectors: (a) Integrity & Candor (Fisher/Buffett), (b) Rational Capital Allocation "
@@ -257,7 +325,7 @@ V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
 LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
 
-SCREENER_VERSION = "7.15"
+SCREENER_VERSION = "7.16"
 
 CHANGELOG = {
     "6.0": [
@@ -636,6 +704,18 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.16": [
+        "Auditable Two-Step CAP Engine (Gate 3 Moat Stacking -> Initial CAP & Gate 4 Porter's 5 Forces -> Final CAP): "
+        "(1) Gate 3 4-Archetype Moat Profile (3_tb, 3_ia, 3_se, 3_rd scored 0/1/2): Formalized clean boundaries across Toll booth & switching costs, "
+        "Irreplaceable infrastructure & intangibles (including physical distribution networks, permits, licenses, proprietary datasets & Lindy brands), "
+        "Scale economies shared (strictly Nick Sleep's customer-surplus model), and R&D & innovation leadership; auto-derives Primary Moat (3a) and "
+        "computes Initial CAP deterministically via Anchor + Stacking cap (15Y/20Y/25Y/30Y, capped at 20Y without an elite score of 2). "
+        "(2) Gate 4 Competitive Forces Adjustment (4_ent, 4_riv, 4_buy, 4_sup, 4_sub scored 0/1/2 + 4n note): Evaluates secular 15–30Y trajectory across "
+        "Porter's 5 Forces through the 5-Macrotrend checklist and Mauboussin industry clock speed (presumptive Substitution >= 1 for fast-clock-speed tech/pharma), "
+        "applying tiered moderate deductions (0/-5/-10/-15Y) and Fatal-Flaw cap (any Force=2 caps Final CAP <= 10Y, REJECT) on 5-year steps [0, 5, 10, 15, 20, 25, 30]. "
+        "(3) Strict CAP Determinism & Dossier Scorecard: Disallowed manual CAP overrides when sub-scores are present, surfaced the full Step 1 / Step 2 CAP "
+        "audit breakdown in the Dossier, and migrated all 989 existing Gate 3 rows to the 4 canonical moat labels while preserving backward compatibility for unscored legacy rows.",
     ],
     "7.15": [
         "Relaxed G6 Rule Check threshold across Prime Grade, Prime Grade Calamity, and Quality Grade to g6_flags < 3 (at most 2 of 4 G6 checks flagged).",

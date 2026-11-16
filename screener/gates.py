@@ -12,21 +12,176 @@ def params(meta: dict) -> dict:
     return p
 
 
+def _score_val(raw) -> int | None:
+    """Parse a 0/1/2 score value, returning None if blank or invalid."""
+    if raw is None or raw == "" or isinstance(raw, bool):
+        return None
+    if isinstance(raw, (int, float)):
+        iv = int(raw)
+        if iv == raw and iv in C.SCORE_VALUES:
+            return iv
+        return None
+    if isinstance(raw, str):
+        s = raw.strip()
+        if s in ("0", "1", "2"):
+            return int(s)
+    return None
+
+
+def normalize_moat_label(label: str | None) -> str | None:
+    """Normalize a Gate 3a moat string to canonical C.MOAT_TYPES when known (preserving non-empty legacy test strings)."""
+    if label is None:
+        return None
+    s = str(label).strip()
+    if not s:
+        return None
+    return C.LEGACY_MOAT_ALIASES.get(s, s)
+
+
+def compute_initial_cap_from_scores(scores: tuple[int, ...] | list[int]) -> int:
+    """Step 1 deterministic Initial CAP (years) from the 4 Gate 3 Moat Archetype scores (0/1/2 each):
+      - max == 0                  ->  0Y (no moat -> fails Gate 3)
+      - max == 1, sum == 1        -> 15Y
+      - max == 1, sum >= 2        -> 20Y (capped at 20Y without an elite score of 2)
+      - max == 2, sum == 2        -> 20Y
+      - max == 2, sum == 3        -> 25Y
+      - max == 2, sum >= 4        -> 30Y"""
+    m_max = max(scores) if scores else 0
+    m_sum = sum(scores)
+    if m_max <= 0:
+        return 0
+    if m_max == 1:
+        return 15 if m_sum == 1 else 20
+    if m_sum <= 2:
+        return 20
+    if m_sum == 3:
+        return 25
+    return 30
+
+
+def moderate_force_haircut(count_ones: int) -> int:
+    """Tiered Step 2 moderate haircut (years) from the count of Porter Forces scored 1:
+      0 -> 0Y, 1–2 -> 5Y, 3–4 -> 10Y, 5 -> 15Y."""
+    if count_ones <= 0:
+        return 0
+    if count_ones <= 2:
+        return 5
+    if count_ones <= 4:
+        return 10
+    return 15
+
+
+def compute_final_cap_from_scores(cap_init: int, force_scores: tuple[int, ...] | list[int]) -> tuple[int, int, bool]:
+    """Step 2 deterministic Final CAP (years) from Initial CAP and the 5 Gate 4 Competitive Force scores (0/1/2 each).
+    Returns (cap_final, mod_haircut, fatal_flaw):
+      - Any Force == 2 triggers the Fatal-Flaw Cap (<= 10Y; 5Y when >=2 twos or cap_init - 10 - h <= 5; 0Y when >=3 twos).
+      - Otherwise Final CAP = max(5, cap_init - h(c1)) on 5-year steps [0, 5, 10, 15, 20, 25, 30]."""
+    c2 = sum(1 for x in force_scores if x == 2)
+    c1 = sum(1 for x in force_scores if x == 1)
+    h = moderate_force_haircut(c1)
+    if cap_init <= 0 or c2 >= 3:
+        return 0, h, c2 >= 1
+    if c2 == 2:
+        return 5, h, True
+    if c2 == 1:
+        rem = cap_init - 10 - h
+        return (10 if rem >= 10 else 5), h, True
+    return max(5, cap_init - h), h, False
+
+
+def cap_audit(company: dict) -> dict:
+    """Inspect Gate 3 Moat sub-scores and Gate 4 Force sub-scores, computing deterministic Initial & Final CAP when
+    present while falling back cleanly to stored `3a` and `4` on unscored legacy rows."""
+    m_map = {code: _score_val(company.get(code)) for code in C.MOAT_SCORE_CODES}
+    f_map = {code: _score_val(company.get(code)) for code in C.FORCE_SCORE_CODES}
+    m_present = sum(1 for v in m_map.values() if v is not None)
+    f_present = sum(1 for v in f_map.values() if v is not None)
+    moat_complete = m_present == len(C.MOAT_SCORE_CODES)
+    moat_partial = 0 < m_present < len(C.MOAT_SCORE_CODES)
+    force_complete = f_present == len(C.FORCE_SCORE_CODES)
+    force_partial = 0 < f_present < len(C.FORCE_SCORE_CODES)
+
+    stored_3a = normalize_moat_label(company.get("3a"))
+    cap_init: int | None = None
+    primary_moat: str | None = None
+
+    if moat_complete:
+        m_tuple = tuple(m_map[c] for c in C.MOAT_SCORE_CODES)  # type: ignore[misc]
+        cap_init = compute_initial_cap_from_scores(m_tuple)
+        m_max = max(m_tuple)
+        if m_max == 0:
+            primary_moat = "None"
+        else:
+            top_archs = [arch for (code, arch, _) in C.MOAT_SCORE_SPEC if m_map[code] == m_max]
+            primary_moat = stored_3a if stored_3a in top_archs else top_archs[0]
+    elif not moat_partial:
+        primary_moat = stored_3a
+
+    audited = False
+    mod_haircut: int | None = None
+    fatal_flaw = False
+    raw_g4 = company.get("4")
+    stored_cap = raw_g4 if isinstance(raw_g4, (int, float)) and not isinstance(raw_g4, bool) else None
+    cap_final: int | float | None = None
+
+    if moat_partial or force_partial or (force_complete and not moat_complete):
+        cap_final = None
+    elif moat_complete and cap_init == 0:
+        cap_final = None
+    elif moat_complete and force_complete and cap_init is not None:
+        f_tuple = tuple(f_map[c] for c in C.FORCE_SCORE_CODES)  # type: ignore[misc]
+        cap_final, mod_haircut, fatal_flaw = compute_final_cap_from_scores(cap_init, f_tuple)
+        audited = True
+    else:
+        cap_final = stored_cap
+
+    return {
+        "moat_scores": m_map,
+        "force_scores": f_map,
+        "moat_complete": moat_complete,
+        "moat_partial": moat_partial,
+        "force_complete": force_complete,
+        "force_partial": force_partial,
+        "audited": audited,
+        "primary_moat": primary_moat,
+        "cap_init": cap_init,
+        "mod_haircut": mod_haircut,
+        "fatal_flaw": fatal_flaw,
+        "cap_final": cap_final,
+    }
+
+
+def compute_initial_cap(company: dict) -> int | None:
+    return cap_audit(company)["cap_init"]
+
+
+def derive_primary_moat(company: dict) -> str | None:
+    return cap_audit(company)["primary_moat"]
+
+
+def compute_final_cap(company: dict) -> int | float | None:
+    return cap_audit(company)["cap_final"]
+
+
 def gate_status(company: dict, p: dict, g6_default: str | None = None, in_market: str = "Y") -> dict:
     """'pass' / 'fail' / 'blank' (not yet reviewed) per gate key in C.GATES order."""
     v = lambda c: company.get(c) if company.get(c) not in (None, "") else None
+    audit = cap_audit(company)
     g2 = v("2") or ("N" if in_market == "N" else "Y")
     g6 = v("6") or (g6_default or None)
-    num = lambda c, thr: "blank" if not isinstance(v(c), (int, float)) else ("pass" if v(c) >= thr else "fail")
+    num_v = lambda val, thr: "blank" if not isinstance(val, (int, float)) else ("pass" if val >= thr else "fail")
     yn = lambda x: "blank" if x is None else ("fail" if x == "N" else "pass")
-    if v("3b") == "N" or v("3a") == "None":
+    eff_3a = audit["primary_moat"]
+    if audit["moat_partial"]:
+        g3 = "blank"
+    elif v("3b") == "N" or eff_3a == "None":
         g3 = "fail"
-    elif v("3b") is None or v("3a") is None:
+    elif v("3b") is None or eff_3a is None:
         g3 = "blank"
     else:
         g3 = "pass"
-    return {"1": yn(v("1")), "2": yn(g2), "3b": g3, "4": num("4", p["thr_cap"]),
-            "5": num("5", p["thr_culture"]), "6": yn(g6)}
+    return {"1": yn(v("1")), "2": yn(g2), "3b": g3, "4": num_v(audit["cap_final"], p["thr_cap"]),
+            "5": num_v(v("5"), p["thr_culture"]), "6": yn(g6)}
 
 
 def gate_results(company: dict, p: dict, g6_default: str | None = None, in_market: str = "Y") -> dict:
@@ -36,11 +191,13 @@ def gate_results(company: dict, p: dict, g6_default: str | None = None, in_marke
 
 def phase_results(company: dict, p: dict, g6_default: str | None = None, in_market: str = "Y") -> dict:
     """First non-waived failure or blank decides; calamity='Y' may waive Gates 3b, 5, and/or 6 only."""
+    audit = cap_audit(company)
     g = gate_results(company, p, g6_default, in_market)
     st = g["status"]
     calamity = company.get("calamity") == "Y"
-    has_3a = company.get("3a") not in (None, "")
-    no_moat = company.get("3a") == "None"
+    eff_3a = audit["primary_moat"]
+    has_3a = eff_3a not in (None, "") and not audit["moat_partial"]
+    no_moat = eff_3a == "None"
     failed = [(k, lbl, ph) for k, lbl, ph in C.GATES if st[k] == "fail"]
 
     for k, lbl, ph in C.GATES:

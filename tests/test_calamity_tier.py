@@ -27,7 +27,7 @@ def base_company(**overrides) -> dict:
         "1": "Y",
         "2": "Y",
         "2r": "",
-        "3a": "Toll booth / Switching costs",
+        "3a": "Toll booth & switching costs",
         "3b": "Y",
         "3m": "Strong switching costs.",
         "4": 20,
@@ -106,7 +106,7 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
             "qualitative": {
                 "gate_1": "Y",
                 "gate_2": "Y",
-                "gate_3a_moat_archetype": "Toll booth / Switching costs",
+                "gate_3a_moat_archetype": "Toll booth & switching costs",
                 "gate_3b_pricing_and_proof": "N",
                 "gate_4_runway_cap": 20,
                 "gate_5_management_score": 1,
@@ -128,7 +128,7 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
             "qualitative": {
                 "gate_1": "Y",
                 "gate_2": "Y",
-                "gate_3a_moat_archetype": "Toll booth / Switching costs",
+                "gate_3a_moat_archetype": "Toll booth & switching costs",
                 "gate_3b_pricing_and_proof": "N",
                 "gate_4_runway_cap": 10,
                 "gate_5_management_score": 1,
@@ -173,7 +173,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                 {
                     "id": "CLEAN", "ticker": "CLEAN", "company": "Clean Co", "country": "United States",
                     "sector": "Information Technology", "sub_industry": "Systems Software", "universe": "us",
-                    "g1": "Y", "g2": "Y", "g2_reason": None, "g3a_moat_archetype": "Toll booth / Switching costs",
+                    "g1": "Y", "g2": "Y", "g2_reason": None, "g3a_moat_archetype": "Toll booth & switching costs",
                     "g3b_pricing": "Y", "g3m_moat_note": "Moat", "g4_cap": 20, "g5_mgmt": 2, "g6_cash": "Y",
                     "calamity_flag": "", "calamity_note": "", "note": "Clean", "evidence": "Ev",
                     "result": C.RES_QPASS, "rejected_at": "", "review_at": "",
@@ -187,7 +187,7 @@ class DashboardAndDataIntegrityTests(unittest.TestCase):
                 {
                     "id": "CAL6", "ticker": "CAL6", "company": "Calamity Co", "country": "United States",
                     "sector": "Information Technology", "sub_industry": "Application Software", "universe": "us",
-                    "g1": "Y", "g2": "Y", "g2_reason": None, "g3a_moat_archetype": "Toll booth / Switching costs",
+                    "g1": "Y", "g2": "Y", "g2_reason": None, "g3a_moat_archetype": "Toll booth & switching costs",
                     "g3b_pricing": "Y", "g3m_moat_note": "Moat", "g4_cap": 20, "g5_mgmt": 1, "g6_cash": "N",
                     "calamity_flag": "Y", "calamity_note": "Temporary M&A bridge debt; 24m deleveraging catalyst.",
                     "note": "Calamity", "evidence": "Ev",

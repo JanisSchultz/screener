@@ -9,13 +9,18 @@ Pre-Screen (markets → Gate 2, sub-industry → Gate 6 default) → 6 Munger Re
 Every qualitative step is a REJECT gate; Qualitative → "Review Stage / Action" and "Rejected at" show live flow:
 Gate 1: Simple to Understand (verifiable, established model)
 Gate 2: Essential Western Need & Entrenched Everyday Habits ('Likely To' Standard)
-Gate 3: Strong Moat & Pricing Power >= Inflation (3a archetype + 3b pricing >= inflation & Proof of Moat ROIC/ROIIC >= 12%)
-Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 yrs via Mauboussin Base Rates & 5-Macrotrend Haircuts)
+Gate 3: Strong Moat Profile & Pricing Power >= Inflation (4 moat archetypes 0/1/2 -> Initial CAP & primary 3a + 3b pricing >= inflation & ROIC/ROIIC >= 12%)
+Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 yrs on 5y steps [0..30] via Porter's 5 Forces x 5 Macrotrends & Clock Speed)
 Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation (5 vectors >= 1)
 Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance Sheet (3 pillars: Peak-to-Peak, FCF >= 80% NI, Debt <= 4y & Interest Cover > 5x)
 
 -> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.16: Auditable Two-Step CAP Engine (Gate 3 Moat Profile -> Initial CAP & Gate 4 Competitive Forces -> Final CAP):
+- Step 1 (Gate 3 Moat Profile, `3_tb`, `3_ia`, `3_se`, `3_rd` scored 0/1/2): Formalized clean boundaries across `Toll booth & switching costs`, `Irreplaceable infrastructure & intangibles` (physical networks, permits, licenses, proprietary datasets, Lindy brands), `Scale economies shared` (strictly Nick Sleep's customer-surplus model), and `R&D & innovation leadership`. Auto-derives Primary Moat (`3a`) and deterministic Initial CAP (15Y/20Y/25Y/30Y, capped at 20Y without an elite score of 2).
+- Step 2 (Gate 4 Porter's 5 Forces, `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub` scored 0/1/2 + `4n` note): Evaluates 15–30Y secular trajectory across New Entrants, Rivalry, Buyer Power, Supplier Power, and Substitution through the 5-Macrotrend checklist and Mauboussin industry clock speed (presumptive Substitution >= 1 for fast-clock-speed tech/pharma unless unbypassable). Applies tiered moderate haircuts (0/-5/-10/-15Y) and Fatal-Flaw cap (any Force=2 caps Final CAP <= 10Y, REJECT) on 5-year steps `[0, 5, 10, 15, 20, 25, 30]` with strict no-override determinism.
+- Cockpit & Data Migration: Surfaced the full Step 1 / Step 2 CAP scorecard in the Dossier Overview and Valuation Audit Card, migrated all 989 legacy Gate 3 rows to the 4 canonical moat labels (preserving backward-compatible CAP on unscored legacy rows), and pilot-scored 10 reference franchises (`SPGI`, `COST`, `ASML`/`ASML.NL`, `MSFT`, `WM`, `RMS.FR`, `CNR.CA`, `HSY`, `CRM`, `NUE`).
 
 v7.7: Spec matches code, one source for model parameters, hurdle-aware dashboard (no valuation change — every value identical to v7.6):
 - Spec aligned to the tested code: Pillar 3 triangulation (median P25 / median P50 / revenue P50 + 1.5pp), refranchising guard 6% cap, single EB weight from the revenue spread, market-implied CAP fallback, `ma_reinvest` FX allowance, period-end share counts; new appendix "Model Constants" in the quantitative spec.

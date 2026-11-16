@@ -15,7 +15,7 @@ from typing import Any
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
 from .fetch.metrics import cagr
-from .gates import active_roic, g6_checks, params, par_valuation, results, uses_gaap_roic
+from .gates import active_roic, cap_audit, g6_checks, params, par_valuation, results, uses_gaap_roic
 
 
 def _load_sales_cagrs(u_key: str) -> dict[str, tuple[float | None, float | None]]:
@@ -74,9 +74,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             fin = meta["financials"].get(cid, {})
             s3_panel, s5_panel = sales_cagr_map.get(cid, (None, None))
             pres = res_map.get(cid, {})
-            cap_val = c.get("4")
+            audit = cap_audit(c)
+            cap_val = audit["cap_final"]
+            moat_arch_val = audit["primary_moat"]
             sub_ind = c.get("sub_industry", "")
-            val = par_valuation(fin, p, cap=cap_val, moat=c.get("3a"), sub_industry=sub_ind)
+            val = par_valuation(fin, p, cap=cap_val, moat=moat_arch_val, sub_industry=sub_ind)
 
             # Active capital-return input (same helper as par_valuation): ROE for Balance-Sheet Financials,
             # GAAP ROIC for IFRIC-12 Concessions, Tangible Operating ROIC otherwise (no analyst overrides since v7.6).
@@ -85,11 +87,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
             roic_used, roic_source = active_roic(fin, sub_ind)
 
             st_map = pres.get("status", {})
-            moat_arch_val = c.get("3a")
             passes_g123a = bool(
                 st_map.get("1") == "pass"
                 and st_map.get("2") == "pass"
                 and moat_arch_val not in (None, "", "None")
+                and not audit["moat_partial"]
             )
             g6_chk = g6_checks(fin, sub_ind, p)
             g6_flags = sum(1 for v_ in g6_chk.values() if v_ == "flag")
@@ -120,9 +122,17 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "g2": c.get("2"),
                 "g2_reason": c.get("2r"),
                 "g3a_moat_archetype": moat_arch_val,
+                "g3_moat_scores": audit["moat_scores"],
+                "moat_complete": audit["moat_complete"],
                 "g3b_pricing": c.get("3b"),
                 "g3m_moat_note": c.get("3m"),
                 "g4_cap": cap_val,
+                "g4_force_scores": audit["force_scores"],
+                "g4n_note": c.get("4n"),
+                "cap_init": audit["cap_init"],
+                "cap_haircut": audit["mod_haircut"],
+                "cap_fatal": audit["fatal_flaw"],
+                "cap_audited": audit["audited"],
                 "g5_mgmt": c.get("5"),
                 "g6_cash": c.get("6"),
                 "calamity_flag": c.get("calamity") or "",
@@ -2031,12 +2041,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Essential survival necessities or entrenched everyday rituals ('likely to' spend) in Western rule-of-law jurisdictions. Rejects big-ticket deferrable cyclicals, pariah regimes, and predatory harm.</p>
         </div>
         <div class="metric-box">
-          <strong style="color: var(--accent);">Gate 3: Strong Moat & Pricing Power >= Inflation</strong>
-          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Requires a proven economic moat archetype (Toll booth, Scale economies, Infrastructure, R&D super-thinkers) PLUS empirical proof of moat: 5Y median ROIC &ge; 12% and incremental ROIIC &ge; 12%.</p>
+          <strong style="color: var(--accent);">Gate 3: Strong Moat Profile &amp; Pricing Power &ge; Inflation</strong>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Scores all 4 Moat Archetypes 0/1/2 &mdash; (1) <em>Toll booth &amp; switching costs</em>, (2) <em>Irreplaceable infrastructure &amp; intangibles</em> (incl. physical distribution networks, permits, licenses, proprietary data &amp; Lindy brands), (3) <em>Scale economies shared</em> (strictly Nick Sleep's customer-surplus model), and (4) <em>R&amp;D &amp; innovation leadership</em> &mdash; auto-deriving Primary Moat (<code>3a</code>) and deterministic <strong>Initial CAP</strong> (15Y/20Y/25Y/30Y, capped at 20Y without an elite score of 2), PLUS empirical proof: 5Y median GAAP ROIC &ge; 12%, incremental ROIIC &ge; 12%, and pricing power &ge; inflation (<code>3b</code>).</p>
         </div>
         <div class="metric-box">
-          <strong style="color: var(--accent);">Gate 4: Low Disruption Risk & Predictable Runway (CAP &ge; 15 Years)</strong>
-          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Two-step longevity engine: Outside View anchors baseline CAP in Mauboussin & Callahan empirical persistence tiers (10–30Y). Inside View deductively haircuts CAP for 5 Macrotrends (AI cognitive disruption, demographic aging, supply chain reshoring, energy limits, structural inflation).</p>
+          <strong style="color: var(--accent);">Gate 4: Low Disruption Risk &amp; Predictable Runway (CAP &ge; 15 Years)</strong>
+          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Deterministic Step 2 adjustment of Initial CAP across <strong>Porter's 5 Competitive Forces</strong> (New Entrants, Rivalry, Buyer Power, Supplier Power, Substitution &mdash; each scored 0/1/2) evaluated through the 5 Macrotrends and Mauboussin industry clock speed (presumptive Substitution &ge; 1 for fast-clock-speed tech/pharma unless structurally unbypassable). Any Force = 2 triggers the Fatal-Flaw Cap (Final CAP &le; 10Y, immediate REJECT); moderate pressures (Force = 1) deduct 0Y (0 ones), &minus;5Y (1&ndash;2 ones), &minus;10Y (3&ndash;4 ones), or &minus;15Y (5 ones) on 5-year steps [0, 5, 10, 15, 20, 25, 30].</p>
         </div>
         <div class="metric-box">
           <strong style="color: var(--accent);">Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation</strong>
@@ -2159,14 +2169,24 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           </div>
         </div>
 
+        <div id="dossier-cap-scorecard" class="metric-box" style="margin-bottom: 12px; display: none;">
+          <div class="label" style="color: var(--accent);" title="Deterministic two-step CAP audit: Step 1 (4 Moat Archetype scores -> Initial CAP) adjusted by Step 2 (5 Porter Competitive Force risk scores -> Final CAP).">Two-Step CAP Audit (Gate 3 Moats &rarr; Gate 4 Forces)</div>
+          <div id="dossier-cap-scorecard-body" style="margin-top: 6px;"></div>
+        </div>
+
         <div id="dossier-calamity-box" class="metric-box" style="margin-bottom: 12px; display: none; border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
           <div class="label" style="color: var(--amber);" title="Explanation of the temporary, fixable calamity (on Gate 3b, 5, or 6) and the kill-switch condition that would permanently impair the thesis.">⚠️ Temporary Calamity Rationale &amp; Kill-Switch</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-calamity-note"></div>
         </div>
 
         <div id="dossier-moat-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
-          <div class="label" style="color: var(--accent);" title="Qualitative assessment of the company's competitive advantage and pricing power relative to inflation (Gate 3).">Moat & Pricing Power Note</div>
+          <div class="label" style="color: var(--accent);" title="Qualitative assessment of the company's competitive advantage and pricing power relative to inflation (Gate 3).">Moat & Pricing Power Note (G3m)</div>
           <div class="prose" style="margin-top: 4px;" id="dossier-moat-note"></div>
+        </div>
+
+        <div id="dossier-g4n-box" class="metric-box" style="margin-bottom: 12px; display: none;">
+          <div class="label" style="color: var(--accent);" title="Gate 4 competitive forces & macrotrend adjustment note (4n).">Competitive Forces &amp; Runway Note (G4n)</div>
+          <div class="prose" style="margin-top: 4px;" id="dossier-g4n-note"></div>
         </div>
 
         <div id="dossier-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
@@ -2328,6 +2348,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
                 <span style="color: var(--text-dim);" title="Primary economic moat archetype from Gate 3a.">Moat Archetype (G3a): <b style="color: var(--text-main);" id="audit-moat-arch">-</b></span>
                 <span style="color: var(--text-dim);" title="Pricing power score from Gate 3b (ability to raise prices ≥ inflation without losing volume).">Pricing Power (G3b): <b style="color: var(--text-main);" id="audit-moat-pricing">-</b></span>
               </div>
+              <div id="audit-cap-derivation" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(148, 163, 184, 0.14);"></div>
             </div>
           </div>
 
@@ -3232,7 +3253,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               cellContent = `<span class="badge ${{bCls}}">${{sign}}${{fmtNum(val, 1)}}y</span>`;
             }}
           }} else if (col.key === 'g4_cap') {{
-            cellContent = val ? `${{val}}y` : (hasMoatArchetype(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-');
+            if (val !== null && val !== undefined && val !== '') {{
+              const tip = fmtCapTooltip(c);
+              cellContent = tip ? `<span title="${{escHtml(tip)}}">${{val}}y</span>` : `${{val}}y`;
+            }} else {{
+              cellContent = hasMoatArchetype(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-';
+            }}
           }} else if (col.num) {{
             cellContent = fmtNum(val);
           }} else {{
@@ -3250,6 +3276,77 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function fmtSignedYears(val) {{
       if (val === null || val === undefined) return '-';
       return (val > 0 ? '+' : '') + fmtNum(val, 1) + 'y';
+    }}
+
+    const MOAT_SCORE_META = [
+      {{ key: '3_tb', short: 'Toll Booth', full: 'Toll booth & switching costs' }},
+      {{ key: '3_ia', short: 'Infra & Intangibles', full: 'Irreplaceable infrastructure & intangibles' }},
+      {{ key: '3_se', short: 'Scale Shared', full: 'Scale economies shared (Nick Sleep model)' }},
+      {{ key: '3_rd', short: 'R&D Leadership', full: 'R&D & innovation leadership' }}
+    ];
+    const FORCE_SCORE_META = [
+      {{ key: '4_ent', short: 'Entrants', full: 'Threat of New Entrants' }},
+      {{ key: '4_riv', short: 'Rivalry', full: 'Competitive Rivalry' }},
+      {{ key: '4_buy', short: 'Buyers', full: 'Customer Bargaining Power' }},
+      {{ key: '4_sup', short: 'Suppliers', full: 'Supplier Bargaining Power' }},
+      {{ key: '4_sub', short: 'Substitution', full: 'Threat of Substitution & Clock Speed' }}
+    ];
+
+    function fmtCapTooltip(c) {{
+      if (c.cap_audited && c.g3_moat_scores && c.g4_force_scores) {{
+        const mStr = MOAT_SCORE_META.map(m => `${{m.short}}:${{c.g3_moat_scores[m.key]}}`).join(' ');
+        const fStr = FORCE_SCORE_META.map(f => `${{f.short}}:${{c.g4_force_scores[f.key]}}`).join(' ');
+        const adj = c.cap_fatal ? `Fatal Cap ≤10y` : `−${{c.cap_haircut || 0}}y`;
+        return `Step 1 Initial CAP ${{c.cap_init}}y (${{mStr}}) | Step 2 Forces ${{adj}} (${{fStr}}) -> Final CAP ${{c.g4_cap}}y`;
+      }}
+      if (c.g4_cap) return `Legacy CAP ${{c.g4_cap}}y (sub-factor audit pending Phase 2)`;
+      return '';
+    }}
+
+    function renderCapBreakdownHtml(c) {{
+      const ms = c.g3_moat_scores || {{}};
+      const fs = c.g4_force_scores || {{}};
+      if (!c.moat_complete && !c.cap_audited) {{
+        if (c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '') {{
+          return `<div style="font-size: 11px; color: var(--text-dim);">Assigned Runway: <strong style="color: var(--text-main);">${{c.g4_cap}}y</strong> &bull; <em>Legacy CAP (Gate 3/4 sub-factor scores pending Phase 2 audit)</em></div>`;
+        }}
+        return '';
+      }}
+      const pillStyle = (bg, col, bdr) => `display:inline-flex; align-items:center; gap:4px; font-size:10.5px; padding:2px 6px; border-radius:4px; background:${{bg}}; color:${{col}}; border:1px solid ${{bdr}};`;
+      const moatPills = MOAT_SCORE_META.map(m => {{
+        const v = ms[m.key];
+        if (v === 2) return `<span style="${{pillStyle('rgba(16,185,129,0.16)', 'var(--green)', 'rgba(16,185,129,0.35)')}}" title="${{escHtml(m.full)}}: 2 (Elite)">${{m.short}} <b>2</b></span>`;
+        if (v === 1) return `<span style="${{pillStyle('rgba(56,189,248,0.14)', 'var(--accent)', 'rgba(56,189,248,0.32)')}}" title="${{escHtml(m.full)}}: 1 (Supporting)">${{m.short}} <b>1</b></span>`;
+        return `<span style="${{pillStyle('rgba(148,163,184,0.08)', 'var(--text-dim)', 'rgba(148,163,184,0.18)')}}" title="${{escHtml(m.full)}}: 0 (Absent)">${{m.short}} 0</span>`;
+      }}).join(' ');
+
+      let html = `
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; margin-bottom:4px; gap:6px; flex-wrap:wrap;">
+          <span style="color:var(--text-muted); font-weight:600;">Step 1 &mdash; Moat Profile (G3):</span>
+          <span style="color:var(--accent); font-weight:700;">Initial CAP: ${{c.cap_init !== null && c.cap_init !== undefined ? c.cap_init + 'y' : '-'}}</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom:${{c.cap_audited ? '8px' : '0'}};">${{moatPills}}</div>
+      `;
+
+      if (c.cap_audited) {{
+        const forcePills = FORCE_SCORE_META.map(f => {{
+          const v = fs[f.key];
+          if (v === 2) return `<span style="${{pillStyle('rgba(244,63,94,0.18)', 'var(--red)', 'rgba(244,63,94,0.4)')}}" title="${{escHtml(f.full)}}: 2 (Terminal Threat)">${{f.short}} <b>2</b></span>`;
+          if (v === 1) return `<span style="${{pillStyle('rgba(245,158,11,0.15)', 'var(--amber)', 'rgba(245,158,11,0.35)')}}" title="${{escHtml(f.full)}}: 1 (Moderate Pressure)">${{f.short}} <b>1</b></span>`;
+          return `<span style="${{pillStyle('rgba(16,185,129,0.10)', 'var(--green)', 'rgba(16,185,129,0.22)')}}" title="${{escHtml(f.full)}}: 0 (Benign / Insulated)">${{f.short}} 0</span>`;
+        }}).join(' ');
+        const adjText = c.cap_fatal
+          ? `<span style="color:var(--red); font-weight:700;">Fatal Cap &rarr; ${{c.g4_cap}}y (REJECT)</span>`
+          : `<span style="color:${{(c.cap_haircut || 0) > 0 ? 'var(--amber)' : 'var(--green)'}}; font-weight:700;">&minus;${{c.cap_haircut || 0}}y &rarr; Final ${{c.g4_cap}}y</span>`;
+        html += `
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; margin-bottom:4px; gap:6px; flex-wrap:wrap;">
+            <span style="color:var(--text-muted); font-weight:600;">Step 2 &mdash; Competitive Forces (G4):</span>
+            ${{adjText}}
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">${{forcePills}}</div>
+        `;
+      }}
+      return html;
     }}
 
     // Market-Implied Growth with its solver flag (screener/gates.py solve_market_growth); growth gap only when 'ok'
@@ -3521,7 +3618,18 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       // Qualitative Dossier
       document.getElementById('dossier-moat-type').textContent = c.g3a_moat_archetype || 'None';
-      document.getElementById('dossier-cap').textContent = c.g4_cap ? `${{c.g4_cap}} Years Runway` : (passesG123a(c) ? '20 Years (Default / Unscored G4)' : 'Unassigned');
+      document.getElementById('dossier-cap').textContent = (c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '')
+        ? `${{c.g4_cap}} Years Runway${{c.cap_audited ? '' : ' (Legacy)'}}`
+        : (passesG123a(c) ? '20 Years (Default / Unscored G4)' : 'Unassigned');
+
+      const capCardBox = document.getElementById('dossier-cap-scorecard');
+      const capCardHtml = renderCapBreakdownHtml(c);
+      if (capCardHtml) {{
+        document.getElementById('dossier-cap-scorecard-body').innerHTML = capCardHtml;
+        capCardBox.style.display = 'block';
+      }} else {{
+        capCardBox.style.display = 'none';
+      }}
 
       // Calamity Note
       const calBox = document.getElementById('dossier-calamity-box');
@@ -3539,6 +3647,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         mnBox.style.display = 'block';
       }} else {{
         mnBox.style.display = 'none';
+      }}
+
+      // Gate 4 Forces & Runway Note
+      const g4nBox = document.getElementById('dossier-g4n-box');
+      if (c.g4n_note) {{
+        document.getElementById('dossier-g4n-note').textContent = c.g4n_note;
+        g4nBox.style.display = 'block';
+      }} else {{
+        g4nBox.style.display = 'none';
       }}
 
       // General Note / Thesis
@@ -3675,10 +3792,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const P = parParams(c);
       const k = (c.disc_rate !== null && c.disc_rate !== undefined) ? c.disc_rate : (c.bs_fin ? P.k_fin : P.k);
       // 1. OUR CAP & discount rate
-      const hasDefCap = !c.g4_cap && hasMoatArchetype(c);
-      document.getElementById('audit-cap-summary').textContent = c.g4_cap ? `${{c.g4_cap}}y Runway` : (hasDefCap ? '20y Runway (Default)' : 'Unassigned');
-      document.getElementById('audit-cap-years').textContent = c.g4_cap ? `${{c.g4_cap}} Years` : (hasDefCap ? '20 Years (Unscored G4)' : 'None');
-      const capTierText = c.g4_cap >= 30 ? 'Fortress (30y+)' : (c.g4_cap >= 20 ? 'Compounder (20y+)' : (c.g4_cap ? 'Standard (<20y)' : (hasDefCap ? 'Default Moat (20y)' : 'Unassigned')));
+      const hasAssignedCap = c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '';
+      const hasDefCap = !hasAssignedCap && hasMoatArchetype(c);
+      document.getElementById('audit-cap-summary').textContent = hasAssignedCap ? `${{c.g4_cap}}y Runway${{c.cap_audited ? ' (Audited)' : ''}}` : (hasDefCap ? '20y Runway (Default)' : 'Unassigned');
+      document.getElementById('audit-cap-years').textContent = hasAssignedCap ? `${{c.g4_cap}} Years` : (hasDefCap ? '20 Years (Unscored G4)' : 'None');
+      const capTierText = c.g4_cap >= 30 ? 'Fortress (30y)' : (c.g4_cap >= 25 ? 'Elite Compounder (25y)' : (c.g4_cap >= 20 ? 'Compounder (20y)' : (c.g4_cap >= 15 ? 'Standard Pass (15y)' : (hasAssignedCap ? 'Rejected (<15y)' : (hasDefCap ? 'Default Moat (20y)' : 'Unassigned')))));
       document.getElementById('audit-cap-tier').textContent = capTierText;
       document.getElementById('audit-cap-rate').textContent = `${{(k * 100).toFixed(2)}}%`;
       document.getElementById('audit-cap-rate-sub').textContent = c.bs_fin ? 'Balance-Sheet Financial (r_fin)' : 'Operating Company / Fee Financial';
@@ -3693,6 +3811,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         '0': 'No Pricing Power (Score 0)'
       }};
       document.getElementById('audit-moat-pricing').textContent = pricingMap[c.g3b_pricing] || (c.g3b_pricing || 'Unassigned');
+      const capDerivEl = document.getElementById('audit-cap-derivation');
+      if (capDerivEl) {{
+        const derivHtml = renderCapBreakdownHtml(c);
+        capDerivEl.innerHTML = derivHtml || '<span style="font-size:11px; color:var(--text-dim);">Gate 3/4 CAP not yet assigned.</span>';
+      }}
 
       // 2. GROWTH CEILING (g₀), PER-SHARE CEILING (g_exp) & MARGINAL RONIC
       document.getElementById('audit-gexp-summary').textContent = `${{fmtPct(c.g_org_exp)}} → ${{fmtPct(c.g_exp)}}`;

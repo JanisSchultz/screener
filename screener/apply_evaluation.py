@@ -20,26 +20,43 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT / "data"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-MOAT_TYPES = [
-    "Toll booth / Switching costs",
-    "Scale economies shared",
-    "Irreplaceable infrastructure",
-    "R&D super-thinkers / Intangibles",
-    "None",
-]
-CAP_VALUES = [0, 5, 10, 15, 20, 30]
-SCORE_VALUES = [0, 1, 2]
+from screener.config import (  # noqa: E402
+    CAP_VALUES,
+    FORCE_SCORE_CODES,
+    LEGACY_MOAT_ALIASES,
+    MOAT_SCORE_CODES,
+    MOAT_SCORE_SPEC,
+    MOAT_TYPES,
+    SCORE_VALUES,
+)
+from screener.gates import (  # noqa: E402
+    compute_final_cap_from_scores,
+    compute_initial_cap_from_scores,
+)
+
+DATA_DIR = ROOT / "data"
 
 QUAL_KEY_MAP = {
     "gate_1": "1",
     "gate_2": "2",
     "gate_2_reason": "2r",
+    "gate_3_moat_toll_booth": "3_tb",
+    "gate_3_moat_infrastructure": "3_ia",
+    "gate_3_moat_scale_shared": "3_se",
+    "gate_3_moat_rd": "3_rd",
     "gate_3a_moat_archetype": "3a",
     "gate_3b_pricing_and_proof": "3b",
     "gate_3m_moat_note": "3m",
+    "gate_4_force_entrants": "4_ent",
+    "gate_4_force_rivalry": "4_riv",
+    "gate_4_force_buyers": "4_buy",
+    "gate_4_force_suppliers": "4_sup",
+    "gate_4_force_substitution": "4_sub",
     "gate_4_runway_cap": "4",
+    "gate_4n_runway_note": "4n",
     "gate_5_management_score": "5",
     "gate_6_cash_and_balance_sheet": "6",
     "calamity_flag": "calamity",
@@ -50,10 +67,20 @@ QUAL_KEY_MAP = {
     "1": "1",
     "2": "2",
     "2r": "2r",
+    "3_tb": "3_tb",
+    "3_ia": "3_ia",
+    "3_se": "3_se",
+    "3_rd": "3_rd",
     "3a": "3a",
     "3b": "3b",
     "3m": "3m",
+    "4_ent": "4_ent",
+    "4_riv": "4_riv",
+    "4_buy": "4_buy",
+    "4_sup": "4_sup",
+    "4_sub": "4_sub",
     "4": "4",
+    "4n": "4n",
     "5": "5",
     "6": "6",
 }
@@ -127,6 +154,83 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
             qual["calamity"] = ""
             qual["calamity_note"] = ""
 
+        def _parse_subscore(code: str) -> int | None:
+            raw = qual.get(code)
+            if raw is None or raw == "":
+                return None
+            if isinstance(raw, bool):
+                warnings.append(f"Invalid score '{raw}' for '{code}' (expected 0, 1, or 2); cleared.")
+                qual[code] = ""
+                return None
+            try:
+                iv = int(raw)
+                if iv == float(raw) and iv in SCORE_VALUES:
+                    qual[code] = iv
+                    return iv
+            except (ValueError, TypeError):
+                pass
+            warnings.append(f"Invalid score '{raw}' for '{code}' (expected 0, 1, or 2); cleared.")
+            qual[code] = ""
+            return None
+
+        # Normalize legacy 3a aliases if supplied
+        raw_3a = sanitize_val(qual.get("3a"))
+        if raw_3a in LEGACY_MOAT_ALIASES:
+            mapped_3a = LEGACY_MOAT_ALIASES[raw_3a]
+            warnings.append(f"Normalized legacy Gate 3a label '{raw_3a}' -> '{mapped_3a}'")
+            qual["3a"] = mapped_3a
+
+        # Parse Gate 3 Moat & Gate 4 Force sub-scores when present
+        m_vals = {c: _parse_subscore(c) for c in MOAT_SCORE_CODES}
+        f_vals = {c: _parse_subscore(c) for c in FORCE_SCORE_CODES}
+        m_count = sum(1 for v in m_vals.values() if v is not None)
+        f_count = sum(1 for v in f_vals.values() if v is not None)
+
+        if 0 < m_count < len(MOAT_SCORE_CODES):
+            warnings.append(f"Incomplete Gate 3 moat sub-scores ({m_count}/4 provided); all 4 (3_tb, 3_ia, 3_se, 3_rd) are required.")
+        if 0 < f_count < len(FORCE_SCORE_CODES):
+            warnings.append(f"Incomplete Gate 4 force sub-scores ({f_count}/5 provided); all 5 (4_ent..4_sub) are required.")
+
+        cap_init_det: int | None = None
+        if m_count == len(MOAT_SCORE_CODES):
+            m_tuple = tuple(m_vals[c] for c in MOAT_SCORE_CODES)  # type: ignore[misc]
+            cap_init_det = compute_initial_cap_from_scores(m_tuple)
+            m_max = max(m_tuple)
+            cur_3a = sanitize_val(qual.get("3a"))
+            if m_max == 0:
+                if cur_3a and cur_3a != "None":
+                    warnings.append(f"Deterministic Gate 3a: overwrote '{cur_3a}' with 'None' because all 4 moat scores are 0.")
+                qual["3a"] = "None"
+            else:
+                top_archs = [arch for (code, arch, _) in MOAT_SCORE_SPEC if m_vals[code] == m_max]
+                if cur_3a not in top_archs:
+                    chosen = top_archs[0]
+                    if cur_3a:
+                        warnings.append(f"Deterministic Gate 3a: aligned '{cur_3a}' -> '{chosen}' to match max moat score ({m_max}).")
+                    qual["3a"] = chosen
+
+        if m_count == len(MOAT_SCORE_CODES) and f_count == len(FORCE_SCORE_CODES) and cap_init_det and cap_init_det > 0:
+            f_tuple = tuple(f_vals[c] for c in FORCE_SCORE_CODES)  # type: ignore[misc]
+            cap_det, _, _ = compute_final_cap_from_scores(cap_init_det, f_tuple)
+            supplied_4 = sanitize_val(qual.get("4"))
+            if supplied_4 and supplied_4 != str(cap_det):
+                warnings.append(
+                    f"Deterministic Gate 4 CAP: overwrote manual CAP '{supplied_4}' with formula-computed {cap_det}Y "
+                    f"(Initial CAP {cap_init_det}Y adjusted by Gate 4 Force scores)."
+                )
+            qual["4"] = cap_det
+
+        # Validate standalone/legacy CAP value if present
+        if sanitize_val(qual.get("4")) != "":
+            try:
+                g4_chk = int(qual["4"])
+                if g4_chk not in CAP_VALUES:
+                    warnings.append(f"Invalid Gate 4 CAP '{qual['4']}' (allowed: {CAP_VALUES}); cleared.")
+                    qual["4"] = ""
+            except (ValueError, TypeError):
+                warnings.append(f"Invalid Gate 4 CAP '{qual['4']}' (allowed: {CAP_VALUES}); cleared.")
+                qual["4"] = ""
+
         # Enforce waterfall logic
         g1 = qual.get("1")
         g2 = qual.get("2")
@@ -135,18 +239,21 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
         g4 = qual.get("4")
         g5 = qual.get("5")
 
+        g3_all_keys = [*MOAT_SCORE_CODES, "3a", "3b", "3m"]
+        g4_all_keys = [*FORCE_SCORE_CODES, "4", "4n"]
+
         # Gate 1 check (never waivable)
         if g1 == "N":
-            for k in ["2", "2r", "3a", "3b", "3m", "4", "5", "6"]:
-                if qual.get(k):
+            for k in ["2", "2r", *g3_all_keys, *g4_all_keys, "5", "6"]:
+                if sanitize_val(qual.get(k)) != "":
                     warnings.append(f"Waterfall: scrubbed '{k}' because Gate 1 is 'N'")
                 qual[k] = ""
             clear_calamity("Gate 1 is 'N'")
         elif g1 == "Y":
             # Gate 2 check (never waivable)
             if g2 == "N":
-                for k in ["3a", "3b", "3m", "4", "5", "6"]:
-                    if qual.get(k):
+                for k in [*g3_all_keys, *g4_all_keys, "5", "6"]:
+                    if sanitize_val(qual.get(k)) != "":
                         warnings.append(f"Waterfall: scrubbed '{k}' because Gate 2 is 'N'")
                     qual[k] = ""
                 clear_calamity("Gate 2 is 'N'")
@@ -156,8 +263,8 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
                 # Gate 3 check: 3a=='None' is never waivable; 3b=='N' is waivable only if calamity=='Y'
                 if g3a == "None" or (g3b == "N" and not cal_active):
                     reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b failed without calamity override"
-                    for k in ["4", "5", "6"]:
-                        if qual.get(k):
+                    for k in [*g4_all_keys, "5", "6"]:
+                        if sanitize_val(qual.get(k)) != "":
                             warnings.append(f"Waterfall: scrubbed '{k}' because {reason}")
                         qual[k] = ""
                     clear_calamity(reason)
@@ -168,7 +275,7 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
                             g4_num = int(g4)
                             if g4_num < 15:
                                 for k in ["5", "6"]:
-                                    if qual.get(k):
+                                    if sanitize_val(qual.get(k)) != "":
                                         warnings.append(f"Waterfall: scrubbed '{k}' because Gate 4 (CAP={g4_num}) < 15")
                                     qual[k] = ""
                                 clear_calamity(f"Gate 4 (CAP={g4_num}) < 15")
@@ -243,6 +350,16 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
 
     if qual.get("calamity") == "Y" and not sanitize_val(qual.get("calamity_note")):
         print(f"Error: [{company_id}] calamity_flag='Y' requires a non-empty calamity_note.", file=sys.stderr)
+        return False
+
+    has_nonzero_force = any(
+        sanitize_val(qual.get(fc)) in ("1", "2") for fc in FORCE_SCORE_CODES
+    )
+    if has_nonzero_force and not sanitize_val(qual.get("4n")):
+        print(
+            f"Error: [{company_id}] non-zero Gate 4 competitive force score(s) require a non-empty gate_4n_runway_note ('4n').",
+            file=sys.stderr,
+        )
         return False
 
     # Build input diff

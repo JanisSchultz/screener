@@ -49,7 +49,7 @@ When an evaluation is triggered, the coordinator agent provides:
 - `roic_median`: 5-year median GAAP ROIC (including accounting goodwill).
 - `roic_operating`: 5-year median Operating ROIC (tangible capital return).
 - `fcf_conv`: Multi-year Owner FCF conversion ($\text{Owner FCF} \div \text{Net Income}$).
-- `fund_cap`: Fundamental Competitive Advantage Period from Gate 4 (e.g. 15, 20, 30 years).
+- `fund_cap`: Fundamental Competitive Advantage Period from Gate 4 (`15`, `20`, `25`, or `30` years; deterministically derived from Gate 3 Moat Profile & Gate 4 Competitive Forces).
 
 ---
 

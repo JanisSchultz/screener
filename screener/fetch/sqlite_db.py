@@ -7,7 +7,7 @@ from pathlib import Path
 import sqlite3
 
 from ..data import DATA_DIR, FIN_FIELDS, PANEL_FIELDS, TECH_FIELDS, load_universe, read_csv, universe_keys
-from ..gates import results as compute_gate_results
+from ..gates import cap_audit, results as compute_gate_results
 from .sources import EODHD, _f, _fval, symbol_cache
 
 DB_PATH = DATA_DIR / "fundamentals.sqlite"
@@ -125,9 +125,19 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
             exchange TEXT,
             g1 TEXT,
             g2 TEXT,
+            g3_tb INTEGER,
+            g3_ia INTEGER,
+            g3_se INTEGER,
+            g3_rd INTEGER,
             g3a TEXT,
             g3b TEXT,
+            g4_ent INTEGER,
+            g4_riv INTEGER,
+            g4_buy INTEGER,
+            g4_sup INTEGER,
+            g4_sub INTEGER,
             g4 REAL,
+            g4n TEXT,
             g5 REAL,
             g6 TEXT,
             calamity TEXT,
@@ -178,11 +188,18 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
         for c in meta["companies"]:
             cid = c["id"]
             esym = eod.resolve_symbol(c, meta)
+            aud = cap_audit(c)
             comp_rows.append((
                 k, cid, str(c.get("ticker") or ""), esym, c.get("company"),
                 c.get("country"), c.get("sector"), c.get("sub_industry"), c.get("exchange") or "US",
-                c.get("1"), c.get("2"), c.get("3a"), c.get("3b"),
-                c.get("4"), c.get("5"), c.get("6"), c.get("calamity"),
+                c.get("1"), c.get("2"),
+                aud["moat_scores"].get("3_tb"), aud["moat_scores"].get("3_ia"),
+                aud["moat_scores"].get("3_se"), aud["moat_scores"].get("3_rd"),
+                aud["primary_moat"], c.get("3b"),
+                aud["force_scores"].get("4_ent"), aud["force_scores"].get("4_riv"),
+                aud["force_scores"].get("4_buy"), aud["force_scores"].get("4_sup"),
+                aud["force_scores"].get("4_sub"),
+                aud["cap_final"], c.get("4n"), c.get("5"), c.get("6"), c.get("calamity"),
                 (res.get(cid) or {}).get("result"),
             ))
             f_row = meta["financials"].get(cid, {"id": cid})
@@ -204,7 +221,7 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
                 ann_rows.append((k, *[pr.get(col) for col in PANEL_FIELDS]))
 
     cur.executemany(
-        f"INSERT OR REPLACE INTO companies VALUES ({','.join(['?'] * 18)})",
+        f"INSERT OR REPLACE INTO companies VALUES ({','.join(['?'] * 28)})",
         comp_rows,
     )
     cur.executemany(

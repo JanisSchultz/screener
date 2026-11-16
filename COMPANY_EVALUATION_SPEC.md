@@ -1,11 +1,11 @@
-# Per-Company Evaluation Framework Specification (v7.1)
+# Per-Company Evaluation Framework Specification (v7.16)
 ## Quality & Moat Screener — 6 Munger Quality Gates & Explicit Mauboussin-Fade DCF
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v7.1)**.
+This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v7.16)**.
 
 ### The Evaluator Agent's Core Mindset
 As an independent evaluator agent, your role is that of an uncompromising, disciplined superinvestor operating strictly under the principles of **Charlie Munger** and **Warren Buffett**:
@@ -105,66 +105,61 @@ QUALITY PASS (Enters Quantitative PAR Valuation Funnel)
 
 ---
 
-### Gate 3: Strong Moat & Pricing Power >= Inflation
-Gate 3 establishes that a structural economic moat exists and produces demonstrable excess returns on capital before evaluating how long it will last (Gate 4).
+### Gate 3: Strong Moat Profile & Pricing Power >= Inflation
+Gate 3 establishes the company's **4-Archetype Moat Profile** (deriving Step 1 **Initial CAP** and primary label `3a`), Empirical Proof of Moat, and Pricing Power before evaluating competitive & disruptive longevity in Gate 4.
 
-#### Gate 3a: Primary Moat Archetype
-- **Code**: `3a`
-- **Output Type**: Categorical choice (exact string from the following 5 options):
-  1. `Toll booth / Switching costs`: Network effects, high customer switching barriers, mission-critical software/data workflow lock-in (e.g. Visa, Mastercard, Microsoft, S&P Global).
-  2. `Scale economies shared`: Nick Sleep / Costco / Amazon model; passing operational scale efficiencies back to customers to build an insurmountable cost advantage (e.g. Costco, Geico).
-  3. `Irreplaceable infrastructure`: Physically unreplicable assets with high barriers to entry (e.g. permitted solid waste landfills, transcontinental freight rails, deep-water port terminals).
-  4. `R&D super-thinkers / Intangibles`: Deep proprietary patent estates, regulatory licenses, mission-critical engineering know-how, or Lindy brand power (e.g. ASML, Danaher, Hermès).
-  5. `None`: Commodity business, fragmented competition, or lack of defensible barriers.
+#### Gate 3 Moat Archetype Scores (`3_tb`, `3_ia`, `3_se`, `3_rd`) & Primary Moat (`3a`)
+Score each of the 4 orthogonal moat archetypes on **`0 / 1 / 2`** (`0` = Absent, `1` = Supporting/Moderate, `2` = Primary/Elite):
+1. **`3_tb` — `Toll booth & switching costs`**: Network effects, high customer switching barriers, mission-critical software/data workflow lock-in (e.g. Visa, Mastercard, Microsoft, S&P Global).
+2. **`3_ia` — `Irreplaceable infrastructure & intangibles`**: Physically or legally unreplicable infrastructure, physical distribution/hub density networks, concessions/permits, regulatory licenses, proprietary datasets, and Lindy brands (e.g. Waste Management, CN Rail, Hermès, Hershey).
+3. **`3_se` — `Scale economies shared`**: **Strictly the Nick Sleep model** — passing operational unit-cost efficiencies back to customers via lower prices / superior consumer surplus to compound volume and widen unit-cost superiority (e.g. Costco, Walmart, Progressive).
+4. **`3_rd` — `R&D & innovation leadership`**: Deep proprietary engineering know-how, continuous R&D velocity, and active product/process frontier leadership (e.g. ASML, KLA, Intuitive Surgical).
+
+- **Primary Moat (`3a`)**: Must match one of the company's top-scoring archetypes ($m_{\max}$), or `None` when $m_{\max} = 0$.
+- **Step 1 Deterministic Initial CAP (`CAP_init`)**:
+  - $m_{\max} = 0 \implies 0\text{Y}$ (`3a = "None"`, Gate 3 **REJECT**)
+  - $m_{\max} = 1 \implies 15\text{Y}$ ($m_{\text{sum}}=1$) or $20\text{Y}$ ($m_{\text{sum}} \ge 2$, capped without an elite `2` moat)
+  - $m_{\max} = 2 \implies 20\text{Y}$ ($m_{\text{sum}}=2$), $25\text{Y}$ ($m_{\text{sum}}=3$), or $30\text{Y}$ ($m_{\text{sum}} \ge 4$).
 
 #### Gate 3b: Pricing Power & Proof of Moat
 - **Code**: `3b`
 - **Output Type**: Gate (`Y` / `N`)
 - **Pass Standard (`Y`)**:
-  - Must have a verified moat archetype (`3a != "None"`).
+  - Must have a verified moat archetype (`m_max >= 1`, `3a != "None"`).
   - **Proof of Moat**: Empirically verified by historical capital efficiency: **5-Year Median GAAP ROIC $\ge$ 12%** AND **Incremental ROIIC $\ge$ 12%** across the business cycle. (Operating companies failing both tangible ROIC $\ge$ 15% and GAAP ROIC $\ge$ 12% are automatically rejected).
   - **Pricing Power $\ge$ Inflation**: Demonstrated ability to raise prices at or above inflation across the cycle without losing customer volume or market share (e.g. basis-point ad valorem toll booths, CPI-indexed concession contracts, inelastic mission-critical workflows).
   - *Look-Through Holding Companies*: Evaluated on look-through portfolio operating moats and look-through pricing power.
 - **Reject Standard (`N`)**:
-  - Moat is `None`.
+  - Moat is `None` ($m_{\max} = 0$).
   - Commodity price-taker whose margins fluctuate with spot commodity prices.
   - Sub-hurdle historical returns on capital (ROIC < 12%).
   - Government price caps, utility rate freezes, or customer churn upon price hikes indicating zero pricing power.
 - **Moat & Erosion Note (`3m`)**:
-  - Required text summarizing: (1) what prevents competitors from arbitraging away returns, (2) empirical proof of moat (ROIC, gross margin stability), and (3) primary erosion threats.
-- **Waterfall Action**: If `3a == "None"` or `3b == "N"`, set `result = "Rejected – G3 Moat & Pricing"`. Leave Gates 4–6 completely blank/null.
+  - Required text summarizing: (1) the scored moat barriers preventing competitors from arbitraging away returns, (2) empirical proof of moat (ROIC, gross margin stability), and (3) primary erosion vectors.
+- **Waterfall Action**: If `3a == "None"` or (unwaived) `3b == "N"`, set `result = "Rejected – G3 Moat & Pricing"`. Leave Gates 4–6 completely blank/null.
 
 ---
 
 ### Gate 4: Low Disruption Risk & Predictable Runway (15+ Years)
-- **Code**: `4`
-- **Output Type**: Number: `0`, `5`, `10`, `15`, `20`, or `30` (Competitive Advantage Period — CAP, in years).
-- **Threshold**: `thr_cap = 15`. A CAP score $< 15$ is an immediate **REJECT**.
+- **Codes**: `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub` (`0`, `1`, `2` each), `4` (deterministic Final CAP: `0`, `5`, `10`, `15`, `20`, `25`, or `30` years), and `4n` (Runway & Forces Note).
+- **Threshold**: `thr_cap = 15`. A Final CAP $< 15$ is an immediate **REJECT**.
+- **Strict Determinism**: Whenever Gate 3 and Gate 4 sub-scores are present, `4` is computed deterministically without manual overrides.
 
-#### The Two-Step Mauboussin & Callahan Engine
-Evaluates structural longevity using Michael Mauboussin & Dan Callahan's empirical persistence research (1970–2024, Counterpoint Global):
+#### Step 2: Porter's 5 Competitive Forces Evaluated via the 5 Macrotrends & Industry Clock Speed
+Score the **secular 15–30 year trajectory ($\Delta$)** across Porter's Five Forces (`0` = Benign / Insulated, `1` = Moderate Secular Pressure, `2` = Severe / Terminal Structural Threat):
+1. **`4_ent` — Threat of New Entrants**: Falling entry barriers (AI/cloud build-cost collapse, deregulation, subsidized entrants).
+2. **`4_riv` — Competitive Rivalry**: Intensifying incumbent price, promotional, or capex rivalry (e.g. hyperscaler AI capex arms race, private-label competition).
+3. **`4_buy` — Customer Bargaining Power**: Rising buyer leverage (customer consolidation, AI seat-count compression, multi-homing, state healthcare price caps).
+4. **`4_sup` — Supplier Bargaining Power**: Rising upstream input/labor leverage (single-source foundry/optics bottlenecks, demographic labor scarcity, geopolitical supply risk, energy/resource constraints).
+5. **`4_sub` — Threat of Substitution & Clock Speed**: Paradigm substitution (AI agents replacing seat SaaS/lookup/IT staffing, GLP-1s, energy transition) plus **Mauboussin Outside-View Clock Speed** (fast-clock-speed tech, semi, pharma/biotech, and hardware sub-industries carry a presumptive `4_sub >= 1` unless structurally unbypassable).
 
-1. **Step 1: Outside View (Industry Base-Rate Persistence Anchor)**:
-   - **Tier 1 (Persistence $p=0.90$, Fade $f=0.10$) $\rightarrow$ Baseline CAP: 20–30 Years**:
-     - Consumer Staples, Food & Beverage, Household & Personal Care, Lindy Luxury.
-   - **Tier 2 (Persistence $p=0.81\text{–}0.87$, Fade $f=0.13\text{–}0.19$) $\rightarrow$ Baseline CAP: 15–20 Years**:
-     - Medical Devices / MedTech, Mission-Critical Tech Hardware, Testing/Inspection/Certification, Niche B2B Services.
-   - **Tier 3 (Persistence $p=0.75\text{–}0.79$, Fade $f=0.21\text{–}0.25$) $\rightarrow$ Baseline CAP: 10–15 Years**:
-     - Enterprise Software & IT Services, Pharmaceuticals / Biotechnology, Semiconductors, Capital Goods, Freight Rails.
-   - **Tier 4 (Persistence $p=0.70\text{–}0.71$, Fade $f=0.29\text{–}0.30$) $\rightarrow$ Baseline CAP: 5–10 Years (Natural REJECT)**:
-     - Upstream Energy, Telecom Carriers, Traditional Regulated Utilities.
+**5-Macrotrend Checklist** (applied across all 5 forces): `[1] Automation & Cognitive Tech (AI)`, `[2] Demographic Aging & Labor Scarcity`, `[3] Geopolitical Realignment & Supply Chain Reshoring`, `[4] Energy Transition & Resource Limits`, `[5] Structural Inflation & Cost of Capital`.
 
-2. **Step 2: Inside View (5-Macrotrend Deductive Haircut Filter)**:
-   Deduct **$-5$ to $-10$ years** from the industry baseline if the business faces an active, unhedged terminal headwind on any of the 5 Macrotrends:
-   - **[1] Automation & Cognitive Tech (AI Disruption)**:
-     - *Fatal Headwind*: Seat-based SaaS models vulnerable to agentic headcount reduction; billable-hour IT consulting/staffing; routine data aggregation/lookup services. Capped at $\text{CAP} \le 10$ (REJECT).
-     - *Beneficiary / Insulated*: Full-stack vertically integrated AI hegemons owning proprietary infrastructure, models, and distribution (e.g. Alphabet, Microsoft); businesses operating entirely in the physical world (landfills, railways, plumbing distribution).
-   - **[2] Demographic Aging & Labor Scarcity**: Heavy reliance on low-cost manual labor without automation potential.
-   - **[3] Geopolitical Realignment & Supply Chain Reshoring**: Vulnerability to single-source foreign manufacturing (e.g. Taiwan/China foundry concentration) or cross-border trade embargoes.
-   - **[4] Energy Transition & Resource Limits**: Carbon-heavy operating profiles, grid interconnect bottlenecks, or heavy stranded-asset risk.
-   - **[5] Structural Inflation & Cost of Capital**: Capital-intensive businesses requiring frequent refinancing at higher interest rates unable to pass through real cost increases.
-
-- **The Rule of Secular Resilience**: To achieve $\text{CAP} \ge 15$, the business must be an active beneficiary of, or structurally insulated from (indifferent to), all 5 macrotrends. An active terminal headwind on *any* single pillar caps $\text{CAP} \le 10$ (**REJECT**).
+#### Deterministic Final CAP Formula
+With $c_2 = \sum \mathbf{1}(f_i = 2)$, $c_1 = \sum \mathbf{1}(f_i = 1)$, and tiered moderate haircut $h(0)=0\text{Y}$, $h(1\text{–}2)=5\text{Y}$, $h(3\text{–}4)=10\text{Y}$, $h(5)=15\text{Y}$:
+- **Fatal-Flaw Cap ($c_2 \ge 1$)**: Caps $\text{CAP}_{\text{final}} \le 10\text{Y}$ (**REJECT**): $0\text{Y}$ if $c_2 \ge 3$; $5\text{Y}$ if $c_2 = 2$ or $(c_2=1 \text{ and } \text{CAP}_{\text{init}} - 10 - h(c_1) \le 5)$; else $10\text{Y}$.
+- **No Fatal Flaw ($c_2 = 0$)**: $\text{CAP}_{\text{final}} = \max(5,\; \text{CAP}_{\text{init}} - h(c_1))$.
+- **Runway & Forces Note (`4n`)**: Mandatory concise explanation whenever any Force $\ge 1$.
 - **Waterfall Action**: If `4 < 15`, set `result = "Rejected – G4 Runway (<15Y)"`. Leave Gates 5–6 completely blank/null.
 
 ---
@@ -340,10 +335,20 @@ When the independent agent completes an evaluation, it must return a strictly va
     "gate_1": "Y",
     "gate_2": "Y",
     "gate_2_reason": null,
-    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3_moat_toll_booth": 2,
+    "gate_3_moat_infrastructure": 2,
+    "gate_3_moat_scale_shared": 0,
+    "gate_3_moat_rd": 1,
+    "gate_3a_moat_archetype": "Toll booth & switching costs",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Extreme enterprise switching costs proved by repeated 9-15% M365 E3/E5 price hikes and Copilot tiering with near-zero churn.",
-    "gate_4_runway_cap": 20,
+    "gate_3m_moat_note": "Extreme enterprise switching costs across M365, Entra ID, and Azure plus global hyperscale cloud footprint proved by repeated 9-15% E3/E5 price hikes with near-zero churn.",
+    "gate_4_force_entrants": 0,
+    "gate_4_force_rivalry": 1,
+    "gate_4_force_buyers": 0,
+    "gate_4_force_suppliers": 0,
+    "gate_4_force_substitution": 1,
+    "gate_4_runway_cap": 25,
+    "gate_4n_runway_note": "Initial CAP 30Y reduced by -5Y for hyperscaler AI infrastructure Rivalry (4_riv=1) and fast software/AI technology clock speed (4_sub=1).",
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "Y",
     "calamity_flag": null,
@@ -367,10 +372,20 @@ When the independent agent completes an evaluation, it must return a strictly va
 | `1` | `gate_1` | `"Y"`, `"N"` | Never null |
 | `2` | `gate_2` | `"Y"`, `"N"` | Null if Gate 1 is `"N"` |
 | `2r` | `gate_2_reason` | String | Populated only if `gate_2 == "N"`, else null |
-| `3a` | `gate_3a_moat_archetype` | `"Toll booth / Switching costs"`, `"Scale economies shared"`, `"Irreplaceable infrastructure"`, `"R&D super-thinkers / Intangibles"`, `"None"` | Null if Gate 1 or 2 is `"N"` |
+| `3_tb` | `gate_3_moat_toll_booth` | `0`, `1`, `2` | Null if Gate 1 or 2 is `"N"` |
+| `3_ia` | `gate_3_moat_infrastructure` | `0`, `1`, `2` | Null if Gate 1 or 2 is `"N"` |
+| `3_se` | `gate_3_moat_scale_shared` | `0`, `1`, `2` | Null if Gate 1 or 2 is `"N"` |
+| `3_rd` | `gate_3_moat_rd` | `0`, `1`, `2` | Null if Gate 1 or 2 is `"N"` |
+| `3a` | `gate_3a_moat_archetype` | `"Toll booth & switching costs"`, `"Irreplaceable infrastructure & intangibles"`, `"Scale economies shared"`, `"R&D & innovation leadership"`, `"None"` | Null if Gate 1 or 2 is `"N"`; derived/validated from max Gate 3 moat score (`"None"` if all `0`) |
 | `3b` | `gate_3b_pricing_and_proof` | `"Y"`, `"N"` | Null if Gate 1 or 2 is `"N"` |
 | `3m` | `gate_3m_moat_note` | String | Null if Gate 1 or 2 is `"N"` |
-| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `30` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4_ent` | `gate_4_force_entrants` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4_riv` | `gate_4_force_rivalry` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4_buy` | `gate_4_force_buyers` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4_sup` | `gate_4_force_suppliers` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4_sub` | `gate_4_force_substitution` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
+| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `25`, `30` | Deterministically computed from `3_*` and `4_*` (no manual override); null if Gate 1, 2, or unwaived Gate 3 fails |
+| `4n` | `gate_4n_runway_note` | String | Mandatory when any `4_* >= 1`; null if Gate 1, 2, or unwaived Gate 3 fails |
 | `5` | `gate_5_management_score` | `0`, `1`, `2` | Null if Gate 1, 2, unwaived 3, or 4 fails |
 | `6` | `gate_6_cash_and_balance_sheet` | `"Y"`, `"N"` | Null if Gate 1, 2, unwaived 3, 4, or unwaived 5 fails |
 | `calamity` | `calamity_flag` | `"Y"`, null | Set `"Y"` only when Anchor Gates `1,2,3a,4` pass and failure is solely in `{3b, 5, 6}` |
@@ -399,10 +414,20 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
     "gate_1": "Y",
     "gate_2": "Y",
     "gate_2_reason": null,
-    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3_moat_toll_booth": 2,
+    "gate_3_moat_infrastructure": 2,
+    "gate_3_moat_scale_shared": 0,
+    "gate_3_moat_rd": 0,
+    "gate_3a_moat_archetype": "Toll booth & switching costs",
     "gate_3b_pricing_and_proof": "Y",
-    "gate_3m_moat_note": "Supreme pricing power: charges basis points on gross nominal dollar volume; price increases flow directly to operating profit with zero incremental capital required.",
-    "gate_4_runway_cap": 20,
+    "gate_3m_moat_note": "Supreme pricing power: charges basis points on gross nominal dollar volume across an unreplicable four-party global payment rail; price increases flow directly to operating profit with zero incremental capital required.",
+    "gate_4_force_entrants": 0,
+    "gate_4_force_rivalry": 0,
+    "gate_4_force_buyers": 1,
+    "gate_4_force_suppliers": 0,
+    "gate_4_force_substitution": 0,
+    "gate_4_runway_cap": 25,
+    "gate_4n_runway_note": "Initial CAP 30Y reduced by -5Y for moderate large-merchant/regulatory interchange scrutiny (4_buy=1); global two-sided payment network effects remain unbypassable.",
     "gate_5_management_score": 2,
     "gate_6_cash_and_balance_sheet": "Y",
     "note": "Passes all 6 gates. The ultimate electronic payment toll booth with 67% operating margins, zero credit risk, and perpetual owner earnings compounding. Balance sheet fortress with net cash/minimal debt. [5-10Y g: payments volume 6% + cross-border travel 2% + value-added services (cyber/fraud) 2% + buyback 1% - credit card competition act drag 1%]",
@@ -411,7 +436,7 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
   "evaluation_metadata": {
     "verdict": "Quality pass",
     "failing_gate": null,
-    "evaluated_at": "2026-11-09T19:50:00Z",
+    "evaluated_at": "2026-11-16T10:30:00Z",
     "evaluator": "independent-agent"
   }
 }
@@ -433,10 +458,20 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
     "gate_1": "Y",
     "gate_2": "N",
     "gate_2_reason": "Discretionary big-ticket vacation purchase easily deferred or cancelled during economic downturns.",
+    "gate_3_moat_toll_booth": null,
+    "gate_3_moat_infrastructure": null,
+    "gate_3_moat_scale_shared": null,
+    "gate_3_moat_rd": null,
     "gate_3a_moat_archetype": null,
     "gate_3b_pricing_and_proof": null,
     "gate_3m_moat_note": null,
+    "gate_4_force_entrants": null,
+    "gate_4_force_rivalry": null,
+    "gate_4_force_buyers": null,
+    "gate_4_force_suppliers": null,
+    "gate_4_force_substitution": null,
     "gate_4_runway_cap": null,
+    "gate_4n_runway_note": null,
     "gate_5_management_score": null,
     "gate_6_cash_and_balance_sheet": null,
     "note": "Fails Gate 2 (REJECT). Discretionary big-ticket leisure purchase with high cyclicality, immense fixed vessel capital costs, and fuel exposure. Downstream gates bypassed per waterfall.",
@@ -445,7 +480,7 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
   "evaluation_metadata": {
     "verdict": "Rejected – G2 Essential Need",
     "failing_gate": "Gate 2",
-    "evaluated_at": "2026-11-09T19:50:00Z",
+    "evaluated_at": "2026-11-16T10:30:00Z",
     "evaluator": "independent-agent"
   }
 }
@@ -467,10 +502,20 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
     "gate_1": "Y",
     "gate_2": "Y",
     "gate_2_reason": null,
+    "gate_3_moat_toll_booth": 0,
+    "gate_3_moat_infrastructure": 0,
+    "gate_3_moat_scale_shared": 0,
+    "gate_3_moat_rd": 0,
     "gate_3a_moat_archetype": "None",
     "gate_3b_pricing_and_proof": "N",
     "gate_3m_moat_note": "Commodity price taker. Although Nucor is the low-cost EAF mini-mill operator, hot-rolled coil prices are set by global marginal production costs.",
+    "gate_4_force_entrants": null,
+    "gate_4_force_rivalry": null,
+    "gate_4_force_buyers": null,
+    "gate_4_force_suppliers": null,
+    "gate_4_force_substitution": null,
     "gate_4_runway_cap": null,
+    "gate_4n_runway_note": null,
     "gate_5_management_score": null,
     "gate_6_cash_and_balance_sheet": null,
     "note": "Fails Gate 3 (REJECT). Commodity price-taker lacking pricing power above inflation over the complete cycle. Downstream gates bypassed per waterfall.",
@@ -479,7 +524,7 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
   "evaluation_metadata": {
     "verdict": "Rejected – G3 Moat & Pricing",
     "failing_gate": "Gate 3",
-    "evaluated_at": "2026-11-09T19:50:00Z",
+    "evaluated_at": "2026-11-16T10:30:00Z",
     "evaluator": "independent-agent"
   }
 }
@@ -501,19 +546,29 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
     "gate_1": "Y",
     "gate_2": "Y",
     "gate_2_reason": null,
-    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3_moat_toll_booth": 2,
+    "gate_3_moat_infrastructure": 0,
+    "gate_3_moat_scale_shared": 0,
+    "gate_3_moat_rd": 0,
+    "gate_3a_moat_archetype": "Toll booth & switching costs",
     "gate_3b_pricing_and_proof": "Y",
     "gate_3m_moat_note": "High enterprise switching costs in core Sales/Service Cloud, but seat monetization vulnerable.",
-    "gate_4_runway_cap": 10,
+    "gate_4_force_entrants": 1,
+    "gate_4_force_rivalry": 1,
+    "gate_4_force_buyers": 1,
+    "gate_4_force_suppliers": 0,
+    "gate_4_force_substitution": 2,
+    "gate_4_runway_cap": 5,
+    "gate_4n_runway_note": "Fatal-Flaw Cap triggered (Final CAP = 5Y, REJECT): agentic AI substitution threatens per-seat CRM licensing (4_sub=2) alongside enterprise Buyer seat scrutiny (4_buy=1), suite Rivalry (4_riv=1), and AI-native Entrants (4_ent=1).",
     "gate_5_management_score": null,
     "gate_6_cash_and_balance_sheet": null,
-    "note": "Fails Gate 4 (CAP = 10, REJECT). Capped at CAP 10 under Macrotrend #1 (Automation & Cognitive Tech): core seat-based pricing model faces structural deflation as AI agents reduce corporate sales/support headcounts.",
+    "note": "Fails Gate 4 (CAP = 5, REJECT). Fatal-Flaw Cap triggered under Macrotrend #1 (Automation & Cognitive Tech): core seat-based pricing model faces structural deflation as AI agents reduce corporate sales/support headcounts.",
     "evidence": "Organic growth slowed from 25%+ to high single digits. Customer IT budgets shifting to generative AI infrastructure. Agentforce is nascent while core seat growth stalls."
   },
   "evaluation_metadata": {
     "verdict": "Rejected – G4 Runway (<15Y)",
     "failing_gate": "Gate 4",
-    "evaluated_at": "2026-11-09T19:50:00Z",
+    "evaluated_at": "2026-11-16T10:30:00Z",
     "evaluator": "independent-agent"
   }
 }
@@ -535,10 +590,20 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
     "gate_1": "Y",
     "gate_2": "Y",
     "gate_2_reason": null,
-    "gate_3a_moat_archetype": "Toll booth / Switching costs",
+    "gate_3_moat_toll_booth": 2,
+    "gate_3_moat_infrastructure": 2,
+    "gate_3_moat_scale_shared": 0,
+    "gate_3_moat_rd": 0,
+    "gate_3a_moat_archetype": "Toll booth & switching costs",
     "gate_3b_pricing_and_proof": "Y",
     "gate_3m_moat_note": "AUM-linked global benchmark index toll booth with 95%+ client retention and supreme pricing power.",
-    "gate_4_runway_cap": 20,
+    "gate_4_force_entrants": 0,
+    "gate_4_force_rivalry": 0,
+    "gate_4_force_buyers": 1,
+    "gate_4_force_suppliers": 0,
+    "gate_4_force_substitution": 0,
+    "gate_4_runway_cap": 25,
+    "gate_4n_runway_note": "Initial CAP 30Y reduced by -5Y for moderate institutional asset-manager fee compression and self-indexing negotiations (4_buy=1).",
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "N",
     "note": "Fails Gate 6 (REJECT). While the index toll booth is world-class, the balance sheet has been compromised by financial engineering: $4.5B+ in long-term debt funded share repurchases at 40-50x earnings, resulting in negative stockholders' equity (-$800M) and Net Debt > 4.5x Owner Earnings.",
@@ -547,7 +612,7 @@ The quantitative valuation uses statement data only; a `quantitative_overrides` 
   "evaluation_metadata": {
     "verdict": "Rejected – G6 Cash & Fortress Balance Sheet",
     "failing_gate": "Gate 6",
-    "evaluated_at": "2026-11-09T19:50:00Z",
+    "evaluated_at": "2026-11-16T10:30:00Z",
     "evaluator": "independent-agent"
   }
 }
@@ -573,7 +638,7 @@ The script verifies:
 
 ### Step 2: Apply Updates to Datasets
 `screener/apply_evaluation.py` automatically updates:
-- `data/<universe>/inputs.csv`: updates columns `1`, `2`, `2r`, `3a`, `3b`, `3m`, `4`, `5`, `6`, `calamity`, `calamity_note`, `note`, `evidence`.
+- `data/<universe>/inputs.csv`: updates columns `1`, `2`, `2r`, `3_tb`, `3_ia`, `3_se`, `3_rd`, `3a`, `3b`, `3m`, `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, `4`, `4n`, `5`, `6`, `calamity`, `calamity_note`, `note`, `evidence`.
 
 ### Step 3: Rebuild HTML Cockpit
 After updating, compile the standalone HTML cockpit (`output/screener.html`, `output/index.html`, `docs/index.html`):
