@@ -3084,11 +3084,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Canonical column keys per tab — all labels come from ALL_COLS for 100% consistency
       const compactKeys = [
         'ticker', 'company', 'price', 'par_val', 'vs_par', 'term_val', 'vs_term', 'irr_5y',
-        'cur_mult', 'par_mult', 'term_mult', 'sales_1_3_5y', 'g_org_exp', 'g_market', 'g4_cap', 'roic_used'
+        'cur_mult', 'par_mult', 'term_mult', 'g_market', 'sales_1_3_5y', 'g_org_exp', 'g4_cap', 'roic_used'
       ];
       const coreValuationCols = [
         'ticker', 'company', 'country', 'price', 'sales_1y', 'sales_cagr',
-        'sales_1_3_5y', 'g_org_exp', 'buyback_yield', 'g_market', 'g_gap', 'par_val', 'vs_par',
+        'g_market', 'sales_1_3_5y', 'g_org_exp', 'buyback_yield', 'g_gap', 'par_val', 'vs_par',
         'term_val', 'vs_term', 'cur_mult', 'par_mult', 'term_mult', 'irr_5y', 'g4_cap', 'cap_implied',
         'cap_gap', 'g3a_moat_archetype'
       ].map(k => ALL_COLS[k]);
