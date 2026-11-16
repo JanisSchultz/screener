@@ -174,6 +174,10 @@ Let $c_2 = \sum \mathbf{1}(f_i = 2)$ and $c_1 = \sum \mathbf{1}(f_i = 1)$, with 
 - **No Fatal Flaw ($c_2 = 0$)**:
   $$\text{CAP}_{\text{final}} = \max\!\big(5,\; \text{CAP}_{\text{init}} - h(c_1)\big)$$
 - **Runway & Forces Note (`4n`)**: Mandatory concise text whenever any Force $\ge 1$, explaining the specific competitive force adjustments (recommended briefly even when all Forces $= 0$).
+- **Three Anti-Drift Calibration Rules**:
+  1. **Sub-Industry Peer Benchmarking**: Always cross-check `CAP_init` and Force scores against same-sub-industry peers so global oligopoly twins (e.g. `SU.FR` vs `ETN`, `DHR` vs `TMO`, `CME` vs `ICE` / `DB1.DE`, `WM` vs `RSG` / `WCN.CA`) are evaluated on an identical yardstick.
+  2. **`4_sub / 4_riv = 1 vs. 2` Boundary (UI Seat Layer vs. Proprietary Data/Statutory Engine)**: Reserve `2` (Terminal Threat $\implies \text{CAP} \le 10\text{Y}$) for seat-licensed application/UI workflows or discretionary research workstations (`CRM`, `ADBE`, `NOW`, `FDS`, `TRI`). Score proprietary non-seat risk/compliance datasets & statutory calculation standards (`REL.GB`, `WKL.NL`, `FICO`) at `1` (Moderate Pressure).
+  3. **Gate 4 vs. Gate 5/6 Orthogonality (No Gate-Bleed)**: Gate 4 measures *business-model and moat longevity only*. Value-dilutive PE M&A rollups (`ROP`), predatory price gouging, or debt-funded buybacks creating negative equity (`FICO`, `MSCI`) must be rejected at **Gate 5 (`5 = 0`)** and/or **Gate 6 (`6 = "N"`)**, never by artificially compressing Gate 4 CAP.
 - **Waterfall Action**: If `4 < 15`, set `result = "Rejected – G4 Runway (<15Y)"` (keeping `4_*`, `4`, and `4n` populated for auditability) and leave Gates 5–6 completely blank/null.
 
 ---

@@ -160,6 +160,10 @@ With $c_2 = \sum \mathbf{1}(f_i = 2)$, $c_1 = \sum \mathbf{1}(f_i = 1)$, and tie
 - **Fatal-Flaw Cap ($c_2 \ge 1$)**: Caps $\text{CAP}_{\text{final}} \le 10\text{Y}$ (**REJECT**): $0\text{Y}$ if $c_2 \ge 3$; $5\text{Y}$ if $c_2 = 2$ or $(c_2=1 \text{ and } \text{CAP}_{\text{init}} - 10 - h(c_1) \le 5)$; else $10\text{Y}$.
 - **No Fatal Flaw ($c_2 = 0$)**: $\text{CAP}_{\text{final}} = \max(5,\; \text{CAP}_{\text{init}} - h(c_1))$.
 - **Runway & Forces Note (`4n`)**: Mandatory concise explanation whenever any Force $\ge 1$.
+- **Three Anti-Drift Calibration Rules**:
+  1. **Sub-Industry Peer Benchmarking**: Cross-check `CAP_init` and Force scores against same-sub-industry peers so global oligopoly twins (`SU.FR` vs `ETN`, `DHR` vs `TMO`, `CME` vs `ICE` / `DB1.DE`, `WM` vs `RSG` / `WCN.CA`) are evaluated on the same yardstick.
+  2. **`4_sub / 4_riv = 1 vs. 2` Boundary (UI Seat Layer vs. Proprietary Data/Statutory Engine)**: Reserve `2` (Terminal Threat $\implies \text{CAP} \le 10\text{Y}$) for seat-licensed UI/application workflows or discretionary research workstations (`CRM`, `ADBE`, `NOW`, `FDS`, `TRI`). Score proprietary non-seat risk/compliance datasets & statutory calculation standards (`REL.GB`, `WKL.NL`, `FICO`) at `1` (Moderate Pressure).
+  3. **Gate 4 vs. Gate 5/6 Orthogonality (No Gate-Bleed)**: Gate 4 measures *business-model and moat longevity only*. Value-dilutive PE M&A rollups (`ROP`), predatory price gouging, or debt-funded buybacks creating negative equity (`FICO`, `MSCI`) must be rejected at **Gate 5 (`5 = 0`)** and/or **Gate 6 (`6 = "N"`)**, never by artificially compressing Gate 4 CAP.
 - **Waterfall Action**: If `4 < 15`, set `result = "Rejected – G4 Runway (<15Y)"`. Leave Gates 5–6 completely blank/null.
 
 ---

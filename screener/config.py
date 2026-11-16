@@ -325,7 +325,7 @@ V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
 LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
 
-SCREENER_VERSION = "7.16"
+SCREENER_VERSION = "7.17"
 
 CHANGELOG = {
     "6.0": [
@@ -704,6 +704,16 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.17": [
+        "Peer-Cohort Harmonization & Three Anti-Drift Rubric Rules: "
+        "(1) Codified 3 anti-drift calibration rules in QUALITATIVE_EVALUATION_SPEC.md and COMPANY_EVALUATION_SPEC.md: "
+        "Sub-Industry Peer Benchmarking (score global oligopoly twins on the same yardstick), UI Seat Layer vs. Proprietary Data/Statutory Engine "
+        "boundary (4_sub/4_riv = 2 vs. 1), and Gate 4 vs. Gate 5/6 Orthogonality (reject rollups/buyback-driven negative equity at G5/G6, not G4). "
+        "(2) Harmonized 8 cross-batch peer outliers: WKL.NL (25Y -> 20Y), TRI (3_ia 1->2, CAP 10Y Reject), ETN (15Y -> 20Y, aligned with SU.FR/ABBN.CH), "
+        "ROP (10Y G4 Reject -> 20Y CAP, rejected at Gate 5=0 on 6.1% GAAP ROIC from serial PE rollups), TMO (20Y -> 25Y, aligned with DHR), "
+        "FICO (10Y G4 Reject -> 20Y CAP, rejected at Gate 6=N on -$3.87B negative equity & 4.48x net debt/OE), CME (30Y -> 25Y, aligned with ICE/DB1.DE/X.CA), "
+        "and MC.FR (15Y -> 20Y, aligned with CFR.CH).",
     ],
     "7.16": [
         "Auditable Two-Step CAP Engine (Gate 3 Moat Stacking -> Initial CAP & Gate 4 Porter's 5 Forces -> Final CAP): "
