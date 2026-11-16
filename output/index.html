@@ -2954,7 +2954,7 @@
           } else if (col.key === 'roic_used' || col.key === 'fcf_conv' || col.key === 'sales_cagr' || col.key === 'opcost_cagr' || col.key === 'g_org_exp' || col.key === 'g_start' || col.key === 'g_exp') {
             cellContent = fmtPct(val);
           } else if (col.key === 'g_market') {
-            cellContent = fmtGMarket(c);
+            cellContent = fmtGMarketCell(c);
           } else if (col.key === 'g_gap') {
             if (val === null || val === undefined) cellContent = '-';
             else {
@@ -3008,10 +3008,23 @@
       return fmtPct(c.g_market, true);
     }
 
+    function fmtGMarketCell(c) {
+      const flag = c.g_market_flag;
+      if (flag === 'nav_anchored' || flag === 'no_value_creation') {
+        return `<span title="${escHtml(G_MARKET_FLAG_LABELS[flag])}" style="cursor: help; color: var(--text-muted);">*</span>`;
+      }
+      if (c.g_market === null || c.g_market === undefined) return '-';
+      if (flag === 'saturated_low' || flag === 'saturated_high') return `${G_MARKET_FLAG_LABELS[flag]} ${fmtPct(c.g_market, true)}`;
+      if (flag === 'multi_root') {
+        return `<span title="${escHtml(fmtPct(c.g_market, true) + ' ' + G_MARKET_FLAG_LABELS[flag])}" style="cursor: help;">${fmtPct(c.g_market, true)}*</span>`;
+      }
+      return fmtPct(c.g_market, true);
+    }
+
     function triadCardsHtml(c) {
       const g1y = fmtPct(c.sales_1y, true);
       const gCeil = fmtPct(c.g_org_exp);
-      const gMkt = fmtGMarket(c);
+      const gMkt = fmtGMarketCell(c);
       const gGap = c.g_gap !== null && c.g_gap !== undefined ? fmtPct(c.g_gap, true) : '-';
       const gColor = (c.g_gap !== null && c.g_gap !== undefined) ? (c.g_gap >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)';
       const cOur = c.g4_cap ? `${c.g4_cap}y` : (hasMoatArchetype(c) ? '20y*' : '-');
