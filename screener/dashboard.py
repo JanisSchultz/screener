@@ -2612,7 +2612,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       par_val: {{ key: 'par_val', label: 'Fair Value', num: true }},
       vs_par: {{ key: 'vs_par', label: 'vs Fair Value', num: true }},
       term_val: {{ key: 'term_val', label: '0 g price', num: true }},
-      vs_term: {{ key: 'vs_term', label: 'vs Term', num: true }},
+      vs_term: {{ key: 'vs_term', label: 'VS 0 G', num: true }},
       cur_mult: {{ key: 'cur_mult', label: 'Cur P/E', num: true }},
       par_mult: {{ key: 'par_mult', label: 'Fair P/E', num: true }},
       term_mult: {{ key: 'term_mult', label: 'Term P/E', num: true }},
@@ -4471,7 +4471,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Model g', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', '0 g price', 'vs Terminal', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Model g', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', '0 g price', 'VS 0 G', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
