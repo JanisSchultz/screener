@@ -1,0 +1,965 @@
+# Evaluation definitions for batch 08 (65 companies)
+# Evaluator: evaluator_b08
+
+EVALUATIONS = {}
+
+# Group 1: Life Sciences Tools & Services
+# 01. SRT3.DE (Sartorius)
+EVALUATIONS["SRT3.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Validated bioprocess consumables (single-use bioreactor bags, sterile filters, chromatography media) embedded into regulatory biologic drug filings create insurmountable customer switching barriers and high cycle-average ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 1,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for bioprocess tools rivalry during post-COVID destocking (4_riv=1), biopharma customer procurement consolidation (4_buy=1), and fast life sciences technology clock speed (4_sub=1) yielding Final CAP 15Y.",
+    "5": 0, "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 5 (Management = 0, REJECT). World-class bioprocess consumable franchise with deep regulatory switching costs, but management committed severe capital allocation errors: debt-financing the €2.4B Polyplus acquisition at top-of-cycle multiples, blowing leverage past 4.5x EBITDA, and diluting shareholders with a €1B emergency equity raise.",
+    "evidence": "Gross margins exceed 50% with high recurring single-use consumable mix. However, management overleveraged the company into the bioprocess downturn via €2.4B Polyplus deal (€3B bond issuance at 4.4-4.9%), driving net debt/EBITDA >4.5x in 2023 and triggering a dilutive €1B equity capital increase in Q1 2024."
+}
+
+# 02. TECN.CH (Tecan)
+EVALUATIONS["TECN.CH"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 0, "3_se": 0, "3_rd": 1,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "Lab automation software and OEM diagnostics components have switching costs, but low pricing power in OEM contract manufacturing (Paramit) and cyclical lab instrument capex depress multi-year ROIC to ~7-8% (and negative with 2025 impairment), failing the 12% hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Respected Swiss lab-automation engineer, but high exposure to cyclical lab instrument capex and lower-margin contract manufacturing (Paramit) compressed adjusted margins to 16% and triggered a CHF 140M goodwill impairment, leaving multi-year ROIC well below the 12% hurdle.",
+    "evidence": "Adjusted EBITDA margins compressed from 20.5% (2023) to 16.1% (2025). The $1.0B acquisition of Paramit diluted returns and caused a CHF 139.5M goodwill impairment in FY2025, driving GAAP ROIC below the 12% hurdle."
+}
+
+# Group 2: Managed Health Care
+# 03. CNC (Centene Corporation)
+EVALUATIONS["CNC"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 1, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Massive scale in Medicaid and ACA marketplace administration (~28M members, ~$195B revenue) provides provider network contracting advantages, but returns are structurally bounded by government-mandated reimbursement rates, statutory minimum medical loss ratio floors (85%), and acute exposure to medical cost trend shocks.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12% & zero autonomous pricing power, REJECT). Centene operates as a massive scale government-sponsored managed care contractor, but structural returns on capital hover at 3-8% (10Y median 8.5%), failing the 12% hurdle. Premiums are set administratively by state Medicaid agencies and CMS, leaving margins vulnerable to medical inflation, utilization spikes, and post-redetermination acuity mismatches.",
+    "evidence": "Centene generates ~$195B in top-line revenue but operates at razor-thin margins (~1.9% operating margin in 2023-2024, swinging into operating losses in Medicaid segments post-redeterminations). Structural 10-year GAAP ROIC averages 8.5%, falling short of the 12% threshold."
+}
+
+# 04. ELV (Elevance Health)
+EVALUATIONS["ELV"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 2, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Possesses significant regional scale advantages as the largest Blue Cross Blue Shield licensee (operating across 14 states with ~46M members) and vertical capabilities via Carelon. However, it lacks genuine unconstrained pricing power: statutory ACA minimum Medical Loss Ratios (80/85%) act as a regulatory cap on underwriting profitability, over 50% of revenue is tied to government reimbursement (Medicaid capitation and CMS Medicare Advantage benchmark rates), and medical cost surges (GLP-1 specialty pharmacy, elevated surgical utilization) cannot be dynamically passed through without rate approval delays and commercial membership attrition.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). Major US managed care organization operating Blue Cross Blue Shield plans across 14 states alongside Carelon health services. While network scale and local provider density provide meaningful cost advantages, the business lacks true pricing power >= inflation due to statutory ACA 80/85% medical loss ratio caps, state Medicaid reimbursement rate lags following redeterminations, and CMS Medicare Advantage rate determinations. Medical utilization and pharmacy cost spikes surge MLR (benefit expense ratio reached 90.0% in FY2025 and 93.5% in Q4 2025) and cannot be passed through immediately without driving customer churn.",
+    "evidence": "Elevance generates over $170B in revenue serving ~46M medical members. Benefit expense ratio escalated from 87.0% in 2023 to 88.5% in 2024 and 90.0% in FY2025, peaking at 93.5% in Q4 2025. Inability to dynamically adjust commercial and Medicaid rates to offset surgical utilization and GLP-1 specialty pharmacy spikes led to significant earnings compression, demonstrating the structural absence of pricing power above inflation."
+}
+
+# 05. HUM (Humana)
+EVALUATIONS["HUM"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Scale economies shared in Medicare Advantage membership and CenterWell senior clinics provide operational efficiency, but fail to produce economic moats. 10-year median GAAP ROIC of 11.2% falls short of the 12% hurdle, while acute exposure to CMS regulatory payment benchmarks and Star Ratings cuts completely disproves pricing power.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Humana lacks autonomous pricing power as Medicare Advantage benchmark rates are determined administratively by CMS. CMS Star Ratings downgrades and higher medical utilization (benefit ratio surged to ~90%) crushed operating earnings, while multi-cycle GAAP ROIC of 11.2% fails the 12% hurdle.",
+    "evidence": "Over 80% of revenue is tied to Medicare Advantage. Operating margins dropped to <2% in 2024-2025 as CMS risk-adjustment cuts (v28 phase-in) and elevated inpatient utilization coincided with a sharp reduction in Star Ratings bonus payments."
+}
+
+# 06. UNH (UnitedHealth Group)
+EVALUATIONS["UNH"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "UnitedHealth Group commands unmatched operational scale across health benefits (UnitedHealthcare) and integrated care/PBM services (Optum), negotiating deep provider discounts and prescription rebates. However, it fails the empirical moat test on pricing power and returns on capital. Crucially, pricing power is constrained by CMS statutory payment rates in Medicare Advantage (effective net rate cuts in 2024-2026 under the v28 risk adjustment model) amidst elevated medical cost inflation and utilization surges, pushing the medical care ratio (MCR) to 88.9% in 2025. When management re-architected plan benefits and raised premiums to recover margins, it suffered severe customer churn, shedding over 1.0 million Medicare Advantage members. Furthermore, strict NOPAT ROIC collapsed to 9.5% in 2024 and 7.9% in 2025 (failing the >=12.0% hurdle), while OptumRx faces bipartisan legislative and FTC scrutiny threatening historical PBM spread pricing.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). UnitedHealth Group lacks pricing power above inflation due to statutory CMS Medicare Advantage payment caps, elevated post-pandemic healthcare utilization (medical care ratio expanded to 88.9% in 2025), and customer churn (>1M MA members shed upon benefit adjustments). Strict GAAP NOPAT ROIC collapsed to 7.9% in 2025, falling well below the 12% hurdle. Expanding DOJ antitrust scrutiny targeting UnitedHealthcare/Optum vertical ties, forced Amedisys divestitures, and legislative PBM spread-pricing reform compound terminal headwinds.",
+    "evidence": "Multi-cycle Financial Performance: Revenues expanded from $257.1B in FY2020 to $400.3B in FY2024 and $447.6B in FY2025. GAAP Net Income was $14.41B in 2024 and $12.06B in 2025, down from a peak of $22.38B in 2023. Strict GAAP NOPAT ROIC dropped to 9.54% in 2024 and 7.90% in 2025, falling below the mandatory >=12.0% capital efficiency threshold as invested capital expanded ($197.6B in 2025) following acquisitions while operating earnings compressed. In 2024-2025, MCR escalated to 88.9% in 2025. When management attempted to restore margins by curtailing supplemental benefits and raising premiums, the company suffered substantial member churn, forfeiting over 1.0 million MA enrollees."
+}
+
+print("Batch 08 definitions part 1 loaded.")
+
+# Group 3: US Pharmaceuticals
+# 07. BMY (Bristol Myers Squibb)
+EVALUATIONS["BMY"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Proprietary oncology and cardiovascular patent estate, but flagship blockbusters face imminent patent cliffs (Revlimid, Eliquis, Opdivo), while IRA Medicare price negotiation and heavy Celgene debt load depress multi-cycle ROIC below the 12% hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12% & Pricing Power, REJECT). Multi-cycle GAAP ROIC is depressed (~4-7%) by the debt-funded $74B Celgene acquisition. Blockbusters Revlimid, Eliquis, and Opdivo face severe generic/biosimilar cliffs and IRA Medicare drug price negotiation by 2026-2028 without sufficient high-margin pipeline replacement.",
+    "evidence": "GAAP ROIC averaged ~4.5% over the past 5 years due to $80B+ in debt/goodwill from Celgene. Revlimid revenue declined >60% from peak due to generic entry. Eliquis was selected for the first round of Medicare IRA price negotiations, capping long-term pricing power."
+}
+
+# 08. JNJ (Johnson & Johnson)
+EVALUATIONS["JNJ"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Diversified healthcare titan anchored by Innovative Medicine (oncology/immunology) and MedTech (electrophysiology/orthopaedics). High switching costs and patent protection generate 5-year median GAAP ROIC of 19.5% (reaching 30.8% in FY2025) and stable ~68% gross margins. Primary erosion threats are patent expirations / biosimilar competition on key biologics (e.g. Stelara) and Medicare drug price negotiations.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 1,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for biopharma rivalry across oncology and immunology (4_riv=1), hospital GPO and Medicare IRA pricing pressure (4_buy=1), and fast pharmaceutical clock speed with biosimilar substitution on aging biologics (4_sub=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Elite AAA-rated healthcare titan with dual moats across Innovative Medicine (oncology/immunology) and MedTech (cardiovascular/electrophysiology/orthopaedics). High switching costs and patent estates protect gross margins of ~68% and GAAP ROIC of ~20%. Pristine balance sheet with <0.8x net debt/earnings and 34x interest coverage. [5-10Y g: MedTech volume 3.0% + oncology volume 3.0% + price/mix 1.0% - Stelara biosimilar/IRA drag 1.5% + share repurchases 1.5%]",
+    "evidence": "10-year median GAAP ROIC of 19.5% (FY2025 ROIC >22%). MedTech electrophysiology (Biosense Webster) and shockwave intravascular lithotripsy deliver high-margin growth. Pristine AAA-rated balance sheet with net debt/NI at 0.71x and interest coverage >26x."
+}
+
+# 09. LLY (Lilly (Eli))
+EVALUATIONS["LLY"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Proprietary R&D patent thicket on dual GIP/GLP-1 receptor agonist tirzepatide (core US composition-of-matter patents to 2036, secondary delivery and formulation patents into late 2030s) and next-generation candidates (orforglipron oral small molecule to 2037+, retatrutide triple agonist to 2038+). Insurmountable high-barrier sterile fill-finish and peptide synthesis manufacturing infrastructure backed by >$20B in capital outlays. Pricing power demonstrated by sustained gross margins >80% and strong cash-pay adoption for Zepbound with near-zero demand elasticity despite out-of-pocket costs. Primary erosion threats: generic entry post-2036, compounding pharmacy regulatory enforcement, and Medicare drug price negotiations under the IRA.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 1,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for incretin duopoly rivalry with Novo Nordisk (4_riv=1), US PBM rebate concession pressure (4_buy=1), and fast pharmaceutical technology clock speed (4_sub=1) yielding Final CAP 15Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Global biopharmaceutical leader in metabolic disease, diabetes, and oncology. Deep patent protection on tirzepatide (Mounjaro/Zepbound) through 2036+ and next-gen pipeline (retatrutide, orforglipron) anchored by massive capital investment in proprietary sterile injectable and peptide synthesis manufacturing. Structurally insulated from AI disruption, benefiting from demographic aging, with high pricing power across commercial insurance and cash-pay markets. Fortress balance sheet with 29.8x interest coverage and net debt <1.7x earnings. [5-10Y g: incretin volume expansion 11.0% + oncology/neuroscience volume 2.0% - price realization/IRA headwind -3.5% + pipeline mix reinvestment 1.0% + net buybacks 0.5%]",
+    "evidence": "GAAP ROIC reached 35.2% in FY2025, operating ROIC >50%. Tirzepatide surpassed $16B in annual run-rate with exceptional commercial demand. Over $20B invested in state-of-the-art sterile manufacturing across Indiana, North Carolina, and Germany creates massive physical supply moats."
+}
+
+# 10. MRK (Merck & Co.)
+EVALUATIONS["MRK"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Merck's economic moat is grounded in proprietary patent estates, regulatory exclusivity, and biologic manufacturing know-how, centered on its blockbuster oncology PD-1 therapy Keytruda (pembrolizumab, $31.64B revenue in FY25), HPV vaccine Gardasil, and newer launches Winrevair and Capvaxive. While these high-margin assets deliver 74-76% gross margins and high historical returns on capital (5-year median GAAP ROIC of ~18-21%), Merck structurally lacks demonstrated pricing power >= inflation across the full drug cycle. Branded prescription drugs face pervasive state price caps and statutory payor restrictions: under the US Inflation Reduction Act (IRA), price increases exceeding CPI-U trigger mandatory 100% inflation rebate penalties, and Keytruda is scheduled for direct Medicare price negotiation starting in 2028. European and global single-payer systems mandate regular price cuts, while Gardasil demonstrated severe volume vulnerability in China (-39% sales drop in FY25 to $5.23B). Furthermore, the primary US composition-of-matter patent protecting IV Keytruda expires in December 2028, leading to inevitable 80-90% biosimilar price erosion rather than enduring pricing power.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Rejected – G3 Moat & Pricing). While Merck maintains high current returns on capital via patent-protected blockbuster Keytruda ($31.64B in FY25, ~48% of total revenue) and Gardasil, the business model lacks demonstrated pricing power >= inflation across the cycle. Branded prescription drugs operate under statutory price caps and regulatory constraints: the US Inflation Reduction Act legally penalizes price hikes above CPI via mandatory rebates and mandates direct Medicare price negotiations starting in 2028 for Keytruda. International markets impose statutory price cuts, and Gardasil sales in China dropped 39% in FY25 under competitive/procurement pressure. With Keytruda's primary US patent expiring in December 2028, pricing power is strictly temporary rather than enduring, leading to unavoidable biosimilar price deflation.",
+    "evidence": "Keytruda generates ~$31.6B (~48% of Merck's total revenue). Primary US patent expires in late 2028. Under IRA rules, Keytruda will enter direct price negotiations in 2028, capping lifetime returns. Gardasil sales dropped 39% in China due to domestic competition, proving vulnerability to international tender dynamics."
+}
+
+# 11. PFE (Pfizer)
+EVALUATIONS["PFE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Pfizer possesses a formidable proprietary patent estate, extensive global clinical trial infrastructure, and commercial distribution scale. However, it fails empirically on proof of moat and pricing power across the cycle: 5-year median GAAP ROIC is ~10.2% (and ~6.5-8.5% outside temporary pandemic Comirnaty/Paxlovid windfalls), while upcoming patent expirations on Eliquis and Vyndaqel along with heavy debt from the $43B Seagen buyout severely constrain economic returns.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Multi-cycle median GAAP ROIC of 6.5%-8.5% falls far short of the 12% hurdle outside the temporary 2021-2022 pandemic windfall. Capital allocation was value-destructive via $43B debt-financed Seagen acquisition, while major franchises face patent expirations and IRA price negotiations.",
+    "evidence": "GAAP ROIC collapsed to negative in 2023 following multi-billion dollar inventory write-downs on Paxlovid/Comirnaty. Long-term debt exceeds $60B following the Seagen deal, while revenue faces a multi-billion dollar cliff from Eliquis and Vyndaqel patent losses by 2027-2028."
+}
+
+# 12. VTRS (Viatris)
+EVALUATIONS["VTRS"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Putative distribution scale and broad ANDA regulatory approval portfolio fail to confer pricing power or excess economic returns. Generics face intense structural price erosion and hospital GPO purchasing pressure, keeping multi-year ROIC near 0%.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC 6.5% < 12% hurdle, negative pricing power, REJECT). Generic and off-patent pharmaceutical manufacturing is a structural commodity price-taker business characterized by continuous annual price deflation (low-to-mid single digits) in the US and Europe.",
+    "evidence": "5-year median GAAP ROIC is 0.02% (essentially 0%). Operating margins are thin and heavily burdened by goodwill impairments from the Mylan/Upjohn combination."
+}
+
+# 13. ZTS (Zoetis)
+EVALUATIONS["ZTS"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 0, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Massive proprietary R&D scale, global veterinary direct sales distribution network, deep patent estates for novel biologics (monoclonal antibodies like Librela/Solensia for OA pain, Cytopoint for atopic dermatitis, Apoquel, Simparica Trio), and passionate consumer willingness-to-pay for companion animal care without single-payer government price controls. 5-year median GAAP ROIC of 28.6% and operating ROIC ~49.5% empirically prove pricing power and moat durability.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 0, "4_sup": 0, "4_sub": 1,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for animal health competitive rivalry among top global veterinary pharma incumbents (4_riv=1) and fast biopharma innovation clock speed (4_sub=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Global leader in animal health medicines and vaccines. Moat anchored by deep veterinary distribution, high-margin proprietary biologics, and cash-pay companion animal spending unconstrained by government Medicare/Medicaid price caps. 28%+ GAAP ROIC and pristine balance sheet with net debt/NI at ~1.3x. [5-10Y g: companion animal volume 4.5% + cash-pay price realization 2.5% + livestock volume 1.0% - generic erosion 0.5% + net share buybacks 1.0%]",
+    "evidence": "5-year median GAAP ROIC is 28.6% with operating ROIC >49%. Cash conversion is consistently >85%. Companion animal products (Librela, Solensia, Simparica Trio, Apoquel) generate over 65% of revenue with gross margins >70% and demonstrated annual price hikes of 2-4%."
+}
+
+# Group 4: European Pharmaceuticals
+# 14. ALK B.DK (ALK-Abelló)
+EVALUATIONS["ALK B.DK"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 0, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Global monopoly in sublingual allergy immunotherapy tablets (SLIT). Proprietary biological extract standardization, multi-year clinical trial registries, and EMA/FDA approvals create high barriers to entry and strong pricing power.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 0, "4_sub": 1,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for European national healthcare reimbursement scrutiny (4_buy=1) and fast biopharma technology clock speed including symptomatic allergy biologics (4_sub=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Global monopoly in allergy immunotherapy tablets (SLIT) with biological extraction know-how, deep regulatory moats, expanding EBIT margins (>20%), net cash balance sheet, and foundation ownership. [5-10Y g: SLIT tablet volume 7.0% + pediatric market penetration 2.5% + pricing 0.5% - European pricing pressure 0.5% + operating leverage 1.5%]",
+    "evidence": "Operating ROIC is 13.7% and expanding toward 20% as tablet sales scale globally. Holds a virtual global monopoly in SLIT tablets (ACARIZAX, GRAZAX, ITULAZAX). Pristine net cash balance sheet with net debt/NI < 0 and interest coverage >40x."
+}
+
+# 15. AZN.GB (AstraZeneca)
+EVALUATIONS["AZN.GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Leading oncology and rare disease patent estate, but 5-year median GAAP ROIC is sub-hurdle (~9-10%), and pricing power is severely curtailed by US IRA Medicare drug price negotiation and European single-payer price caps.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12% & Pricing Power, REJECT). Premier oncology innovator, but multi-year GAAP ROIC averages ~9-10% (diluted by the $39B Alexion buyout) and fails the 12% hurdle. Farxiga faces generic loss of exclusivity and IRA price cuts, while European single-payer healthcare systems impose statutory price caps.",
+    "evidence": "Reported 5-year median GAAP ROIC is ~9.5%. Alexion acquisition added >$30B in intangible assets/goodwill, depressing returns on capital. Farxiga was selected for the initial round of US IRA Medicare price negotiations."
+}
+
+# 16. BAYN.DE (Bayer)
+EVALUATIONS["BAYN.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Patents in crop traits and pharmaceuticals exist, but commodity generic competition collapsed glyphosate pricing, while multi-billion litigation expenses and asset write-downs depress multi-cycle ROIC well below hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12% & Negative Returns, REJECT). Crop science and pharma conglomerate crippled by the disastrous $63B Monsanto acquisition: ongoing multi-billion dollar glyphosate litigation liabilities, massive goodwill impairments, and high leverage depress multi-cycle returns well below 12%.",
+    "evidence": "GAAP ROIC has been deeply depressed or negative across the past 5 years due to tens of billions in glyphosate litigation settlements and agricultural asset impairments. Net debt exceeds €30B."
+}
+
+# 17. GSK.GB (GSK)
+EVALUATIONS["GSK.GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Vaccine pricing power is constrained by public health tender procurement and advisory recommendations (e.g. CDC ACIP), while the flagship dolutegravir HIV franchise faces patent expirations by 2028-2029.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Multi-cycle GAAP ROIC averages 9-11%, failing the 12% hurdle across the cycle. Vaccine pricing is heavily constrained by public health tenders (Arexvy adoption slowed by ACIP guidance), and core HIV blockbusters face loss of exclusivity by 2028-2029.",
+    "evidence": "Multi-year GAAP ROIC averages ~10.5%. Arexvy sales dropped significantly following narrowed CDC ACIP recommendations, highlighting public health advisory vulnerability. HIV franchise dolutegravir (~25% of operating profit) faces patent loss in 2028-2029."
+}
+
+# 18. HIK.GB (Hikma)
+EVALUATIONS["HIK.GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "None", "3b": "N",
+    "3m": "Generic injectable and oral solid markets are characterized by multi-source commodity competition and chronic price deflation imposed by consolidated hospital GPOs and wholesalers.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3a (Moat Archetype: None) and Gate 3b (Pricing & Proof of Moat, REJECT). Generic hospital injectables and oral formulations face chronic price deflation. Lacks durable competitive advantage or pricing power.",
+    "evidence": "Generic injectable segment subject to annual price deflation of 3-6%. Customer concentration in top 3 US drug wholesalers and hospital GPOs leaves Hikma as a price-taker on off-patent pharmaceuticals."
+}
+
+# 19. IPN.FR (Ipsen)
+EVALUATIONS["IPN.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Orphan drug exclusivities in oncology and neuroscience provide niche defensibility, but flagship blockbuster Somatuline faces ongoing generic lanreotide erosion in the US and Europe.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Specialty pharmaceutical model is heavily reliant on Somatuline, which faces accelerating generic competition in Europe and the US. European national healthcare price controls strictly bound pricing power.",
+    "evidence": "Somatuline represents >30% of sales and has suffered mid-single-digit price and volume declines in European markets following generic lanreotide launches."
+}
+
+# 20. MRK.DE (Merck KGaA)
+EVALUATIONS["MRK.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "None", "3b": "N",
+    "3m": "Conglomerate structure across cyclical electronic chemicals, life science tools, and mid-tier pharma lacks an overarching moat; 5-year median GAAP ROIC of 9.0% falls well below the 12% hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3a (Moat Archetype: None) and Gate 3b (Pricing & Proof of Moat, REJECT). 5-year median GAAP ROIC of 9.0% falls well below the 12% hurdle, burdened by heavy goodwill from historical M&A (Sigma-Aldrich, Versum) and cyclicality in semiconductor materials.",
+    "evidence": "5-year median GAAP ROIC is 8.9%. Electronic Materials division experienced sharp cyclical earnings declines in 2023-2024. Healthcare division lacks blockbuster scale, while Life Sciences tools suffered customer destocking."
+}
+
+# 21. NOVN.CH (Novartis)
+EVALUATIONS["NOVN.CH"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Innovative patent estate in radioligands and biologics, but core revenue generator Entresto lost US patent exclusivity in mid-2025 triggering immediate multi-generic competition, while European single-payer healthcare systems impose mandatory annual price cuts.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Blockbuster Entresto lost US patent exclusivity in mid-2025 leading to immediate multi-source generic launches, and Promacta faced genericization. Pricing power across European and global single-payer markets is legally capped.",
+    "evidence": "Entresto generated >$6B in annual revenue (~13% of group sales) and suffered severe generic erosion post-patent invalidation in 2025. European sales face statutory annual price deflation across major markets."
+}
+
+# 22. NOVO B.DK (Novo Nordisk)
+EVALUATIONS["NOVO B.DK"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "World-class protein engineering and sterile manufacturing scale, but US net realized prices are eroding under heavy PBM rebate escalation with Eli Lilly, compounding pharmacy volume leakage, and mandatory Medicare IRA price negotiations on Ozempic starting in 2027.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). Despite elite ROIC, net realized GLP-1 pricing is under structural erosion from fierce PBM rebate concessions and duopoly price competition with Eli Lilly in the US. Furthermore, Ozempic is subject to mandatory US Medicare Inflation Reduction Act price cuts starting in 2027, while compounding pharmacies and generic liraglutide entry erode low-end pricing power.",
+    "evidence": "While volume demand for Ozempic and Wegovy remains extraordinary, net realized prices per patient in the US have compressed by 10-15%+ annually due to PBM gross-to-net rebate concessions and direct competition from Lilly's Zepbound/Mounjaro. Ozempic was selected for Medicare IRA price negotiation taking effect in 2027."
+}
+
+# 23. ORNBV.FI (Orion)
+EVALUATIONS["ORNBV.FI"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "While Orion captures high-margin tiered royalties from Bayer for Nubeqa (darolutamide), its broader business comprises Nordic generics, mature pharmaceuticals, and contract manufacturing where pricing power is absent.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (N, REJECT). Orion's operating profits are heavily concentrated in Nubeqa royalties licensed to Bayer, while its core base in Nordic generics and mature branded pharmaceuticals faces continuous price erosion; lacks independent commercial pricing power.",
+    "evidence": "Nubeqa royalties from Bayer account for the vast majority of operating profit growth. Core proprietary pharma and generic portfolio in Scandinavia generates low operating margins subject to mandatory reference price tenders."
+}
+
+# 24. REC.IT (Recordati)
+EVALUATIONS["REC.IT"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Price controls across Southern European national health systems restrict pricing power on mature primary care portfolio. Despite expanding into rare diseases (Endo), core volume remains subject to statutory reference pricing.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (N, REJECT). Specialty pharmaceutical group operating under European national healthcare price controls. Statutory price cuts across its primary care portfolio in Italy, France, and Germany prevent pricing power above inflation.",
+    "evidence": "Over 50% of revenue is derived from mature prescription medicines in Europe subject to government price setting. Rare disease acquisitions have added debt and goodwill without conferring pricing autonomy on core primary care lines."
+}
+
+# 25. ROP.CH (Roche)
+EVALUATIONS["ROP.CH"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 0, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Global leader in in-vitro diagnostics and proprietary oncology/neurology biologics. Installed instrument base creates high switching costs and recurring reagent sales. Proven capacity to replace mature biologics (MabThera/Herceptin) with new blockbusters (Vabysmo, Ocrevus) while maintaining ~30% GAAP ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 1,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for biopharma and in-vitro diagnostics incumbent rivalry (4_riv=1), European hospital procurement and payor pricing pressure (4_buy=1), and fast pharmaceutical innovation clock speed (4_sub=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Global diagnostics and biologic medicine powerhouse with high switching costs in closed-reagent instruments, founder family stewardship, and ~30% GAAP ROIC. [5-10Y g: diagnostics reagent volume 4.0% + pharma innovative medicine volume 3.0% + price/mix 0.5% - European reimbursement drag 1.0% + share repurchases 0.5%]",
+    "evidence": "5-year median GAAP ROIC is 29.1%, operating ROIC >60%. Diagnostics division provides high-margin, recurring closed-system cash flow that buffers pharmaceutical patent transitions. Balance sheet is conservative with net debt/NI at ~1.6x and interest coverage >16x."
+}
+
+# 26. SAN.FR (Sanofi)
+EVALUATIONS["SAN.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Sub-hurdle capital efficiency with 5-year median GAAP ROIC of only 7.45%, well below the 12% hurdle. While Dupixent is a commercial success in immunology, historical M&A write-offs and European statutory price cuts constrain returns.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (N, REJECT). Sanofi fails the empirical proof-of-moat test with a 5-year median GAAP ROIC of only 7.45% (hurdle >= 12%), burdened by €67.6B in capital and historical M&A write-offs. Massive concentration in Dupixent cannot offset structural price erosion across its mature general medicine and diabetes portfolios.",
+    "evidence": "5-year median GAAP ROIC of 7.45% consistently misses the 12% threshold. General Medicines and legacy diabetes (Lantus) continue to face intense price erosion under US formulary rebating and European single-payer price caps."
+}
+
+# 27. SDZ.CH (Sandoz)
+EVALUATIONS["SDZ.CH"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Commodity off-patent generics and biosimilars manufacturer facing continuous annual low-to-mid single digit price deflation, tender bidding, and government reference price caps.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (N, REJECT). Pure-play generic and biosimilar drug manufacturer subject to structural price deflation and competitive tender bidding. Lacks pricing power; 5-year median GAAP ROIC of 4.4% is far below the 12% hurdle.",
+    "evidence": "Spun off from Novartis in 2023. GAAP ROIC is 4.4%. Generic small molecules experience annual net price deflation of 3-5%, while biosimilars face accelerating multi-competitor tender discounting in Europe and the US."
+}
+
+# 28. UCB.BE (UCB)
+EVALUATIONS["UCB.BE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "R&D & innovation leadership", "3b": "N",
+    "3m": "Sub-hurdle multi-cycle capital efficiency with a 5-year median GAAP ROIC of only 7.67% (failing the 12% hurdle). Although the recent launch of Bimzelx provides immunology growth, legacy loss of exclusivity on Vimpat and Keppra eroded earnings.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (N, REJECT). Multi-cycle capital efficiency fails the Munger bar with a 5-year median GAAP ROIC of only 7.67% (hurdle >= 12%). While Bimzelx provides near-term growth, historical patent expirations on key blockbusters (Vimpat) and heavy commercialization expenses depress cycle returns.",
+    "evidence": "5-year median GAAP ROIC is 7.67%. Vimpat patent expiration in 2022 cut high-margin revenues by >50%. Bimzelx faces fierce head-to-head competition from Skyrizi and Tremfya in psoriasis/psoriatic arthritis."
+}
+
+print("Batch 08 definitions parts 1-4 loaded.")
+
+# Group 5: Aerospace & Defense (Part 1, 29 to 45)
+# 29. AXON (Axon Enterprise)
+EVALUATIONS["AXON"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "High customer switching costs via integrated public-safety ecosystem (TASER conducted energy devices + Axon body-worn and fleet cameras + Axon Evidence / Evidence.com cloud software). However, multi-cycle economic return on invested capital fails the Munger bar: 5-year median GAAP ROIC is only 3.15% (tangible operating ROIC ~4.3%), heavily suppressed by immense stock-based compensation (SBC regularly exceeds 15-20% of revenue) and continuous sales/R&D reinvestment.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Proof of Moat & ROIC < 12%, REJECT). While Axon possesses an entrenched switching-cost ecosystem across law enforcement body cameras and TASER weapons, its multi-year capital efficiency fails the Munger bar: 5-year median GAAP ROIC is only 3.1% (operating ROIC ~4.3%), heavily suppressed by immense stock-based compensation (SBC regularly exceeds 15-20% of revenue) and continuous sales/R&D reinvestment. Despite revenue growth, economic profit on GAAP capital remains deeply sub-hurdle.",
+    "evidence": "5-year median GAAP ROIC is 3.15%. Massive stock-based compensation expense (exceeding $150M-$200M+ annually) dilutes real per-share owner earnings. Sub-hurdle return on invested capital fails the empirical proof-of-moat test."
+}
+
+# 30. BA (Boeing)
+EVALUATIONS["BA"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Global commercial aerospace duopoly with Airbus creates insurmountable physical assembly, certification, and tooling entry barriers. Pricing power is embedded via contractual inflation escalation on multi-thousand aircraft backlogs. Primary erosion risks stem from internal manufacturing execution failures and program cost overruns.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for commercial duopoly rivalry with Airbus (4_riv=1), airline customer purchase bargaining (4_buy=1), and tier-1 supplier bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 0, "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 5 (Management Score = 0, REJECT). Decades of McDonnell Douglas financial engineering prioritized short-term EPS and $43B of debt-funded buybacks at peak multiples over engineering integrity, resulting in 737 MAX crashes, chronic quality escapes (door-plug blowout), defense fixed-price losses, FAA production caps, and an emergency $21B dilutive equity raise in 2024.",
+    "evidence": "Management compromised engineering safety culture, resulting in FAA capping 737 MAX production at 38/month. Debt escalated past $50B, forcing an emergency $21B common and preferred stock offering in late 2024. Multi-year GAAP ROIC has been deeply negative with tens of billions in cumulative cash burn."
+}
+
+# 31. CAE.CA (CAE)
+EVALUATIONS["CAE.CA"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "Civil aviation simulator installed base and pilot training network provide customer switching costs, but commercial airline procurement bargaining power limits returns, and defense simulation contracts suffered severe fixed-price cost overruns.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (REJECT). Capital-intensive flight simulation and training model generates sub-hurdle multi-cycle ROIC (5-7.5% vs 12% hurdle). Airline customer bargaining power compresses civil margins, while defense simulation suffered severe fixed-price contract write-downs.",
+    "evidence": "5-year median GAAP ROIC is 5.26%. Impairments on legacy defense contracts ($568M write-down in 2024) crushed operating earnings. High capital expenditure required for full-flight simulators limits free cash flow conversion."
+}
+
+# 32. GD (General Dynamics)
+EVALUATIONS["GD"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 2, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Sovereign monopoly/duopoly in nuclear-powered submarines (Electric Boat) and Tier-1 surface combatants (Bath Iron Works) anchored by physically unreplicable nuclear shipyard infrastructure and decades-long Columbia/Virginia class backlogs. Gulfstream commands premier pricing power in large-cabin business jets.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for US Department of Defense monopsony procurement oversight (4_buy=1) and skilled naval nuclear shipyard labor scarcity (4_sup=1) yielding Final CAP 20Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Sovereign defense infrastructure prime with a legal and physical monopoly in US Navy nuclear ballistic missile submarines (Columbia-class) and premier large-cabin business jet franchise (Gulfstream G700). Disciplined Outsider capital allocator Phebe Novakovic drives ~13% GAAP ROIC, >39% operating ROIC, and consistent share repurchases. [5-10Y g: Columbia/Virginia submarine production ramp 4.0% + Gulfstream G700 deliveries 2.0% + inflation escalation 1.5% - shipyard labor wage friction 0.5% + net share repurchases 1.0%]",
+    "evidence": "5-year median GAAP ROIC is 13.12%, operating ROIC on tangible capital is ~39.4%. Total backlog exceeds $90B with multi-decade submarine contracts funded by the US Navy. Net debt/NI is 1.76x and interest coverage is ~16.5x."
+}
+
+# 33. GE (GE Aerospace)
+EVALUATIONS["GE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Certified installed base of over 44,000 commercial engines powering 3 out of every 4 global flight departures (CFM56, LEAP, GE90, GEnx, GE9X). Aircraft engine designs and FAA certification create a 25-30 year captive aftermarket spare parts and maintenance toll booth with formidable pricing power.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for commercial aero-engine duopoly rivalry with Pratt & Whitney (4_riv=1) and commercial airline fleet procurement negotiations (4_buy=1) yielding Final CAP 20Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Premier commercial jet propulsion duopolist with an installed base of 44,000+ commercial engines generating an indispensable, high-margin aftermarket toll booth. Transformed by Outsider CEO Larry Culp with lean operating focus and fortress balance sheet. [5-10Y g: commercial flight hour volume 4.5% + proprietary aftermarket pricing 3.5% + LEAP engine deliveries 2.0% - supply chain ramp drag 0.5% + net share buybacks 1.5%]",
+    "evidence": "Following the spin-offs of GE HealthCare and GE Vernova, standalone GE Aerospace generates >$6B in annual FCF with operating margins >19%. Operating ROIC exceeds 20% and continues to expand rapidly as LEAP enters high-margin shop visit cycles."
+}
+
+# 34. HII (Huntington Ingalls Industries)
+EVALUATIONS["HII"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 2, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Sole-source builder of US Navy nuclear aircraft carriers (Newport News) and major surface combatants (Ingalls) possesses unreplicable dry docks. However, structural capital efficiency fails the 12% hurdle (5-year median GAAP ROIC is 6.3%), severely suppressed by fixed-price shipbuilding cost overruns, skilled labor shortages, and low navy procurement margins.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Unreplicable sovereign nuclear shipyard infrastructure building 100% of US Navy aircraft carriers, but fails empirical proof-of-moat test: multi-cycle GAAP ROIC is only 6.3% due to shipbuilding labor shortages, fixed-price contract adjustments, and thin naval margins.",
+    "evidence": "5-year median GAAP ROIC is 6.29%. Operating margins in shipbuilding are constrained to 5-7%. Recent quarters incurred hundreds of millions in cumulative cost adjustments across Virginia-class submarine and surface combatant programs."
+}
+
+# 35. HONA (Honeywell Aerospace)
+EVALUATIONS["HONA"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Insurmountable FAA-certified OEM line-fit positions across tens of thousands of active commercial, business aviation, and defense airframes (APUs, avionics, flight control systems) create a captive 30-40 year aftermarket toll booth with high pricing power and 31.4% median GAAP ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for tier-1 aerospace component rivalry with Collins Aerospace (4_riv=1) and commercial airframer line-fit procurement pressure (4_buy=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "Y",
+    "calamity_note": "1. Broken metric: Interest coverage is 3.88x ($3,174M EBIT / $818M interest, below 5.0x threshold), Net Debt / FCF is ~4.9x, and Owner EPS fell to $5.62 (vs $9.11 peak) due to Honeywell saddling Aerospace with a $16B debt-funded cash dividend ahead of the June 29, 2026 spin-off. 2. Intact moat proof: World-class aerospace franchise with $17.4B revenue, 31.35% median GAAP ROIC, 72.4% tangible ROIC, and $3.21B Owner FCF in FY2025 (106% conversion). Insurmountable FAA-certified OEM line-fit positions across tens of thousands of active airframes with captive 30-40 year aftermarket toll booth. 3. Fix catalyst & kill-switch: Rapid organic deleveraging funded by $3.2B+ annual Owner FCF under Fitch 'A-' investment grade mandate targeting <2.5x EBITDA leverage and >6x interest coverage within 24-36 months. Kill-switch: Net debt reduction under $2.0B per year or failure to achieve interest coverage >5.0x by FY2028.",
+    "note": "Calamity pass (Gate 6 temporary balance sheet waiver). Premier global tier-1 aerospace supplier with unassailable installed base lock-in across commercial and defense platforms. Captive aftermarket parts and service toll booth delivers 31.4% median GAAP ROIC, >70% tangible ROIC, and $3.21B Owner FCF. Gate 6 failure is temporary, caused by parent Honeywell extracting a $16B senior notes dividend at the June 2026 spin-off (3.88x interest coverage), which will be rapidly repaired via organic cash flow and Fitch 'A-' deleveraging mandate. [5-10Y g: commercial flight hour & defense volume 3.5% + aftermarket pricing 3.0% + technology mix 1.0% - standalone corporate/R&D drag 0.5% + net buybacks 0.5%]",
+    "evidence": "FY2025 revenue reached $17.4B with 31.35% median GAAP ROIC and $3.21B in Owner FCF (106% conversion). Installed base on commercial aircraft (Boeing, Airbus) and business jets (Gulfstream, Bombardier) guarantees decades of aftermarket parts demand."
+}
+
+# 36. HWM (Howmet Aerospace)
+EVALUATIONS["HWM"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Sole-source precision-cast rotating turbine blades, structural castings, and fasteners for CFM LEAP, Pratt GTF, and military aero-engines. Metallurgical engineering know-how and vacuum investment casting infrastructure create high switching barriers and pricing power.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for superalloy casting duopoly rivalry with Precision Castparts (4_riv=1) and aero-engine OEM customer concentration (4_buy=1) yielding Final CAP 20Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Essential aerospace superalloy casting and fastener monopoly/duopoly powering the narrowbody commercial aircraft ramp. Outsider CEO John Plant delivered stellar margin expansion (EBITDA margin >26%), rapid debt paydown, and high per-share compounding. [5-10Y g: commercial aero-engine build volume 6.0% + proprietary casting pricing 2.5% + defense engine volume 1.5% - raw material friction 0.5% + net share repurchases 1.5%]",
+    "evidence": "Operating ROIC on tangible capital is ~25%, GAAP ROIC is >18%. Operating margins expanded from 15% to ~26% under John Plant. Commercial aerospace build rates provide multi-year visibility, while net debt/EBITDA dropped below 1.8x."
+}
+
+# 37. LHX (L3Harris Technologies)
+EVALUATIONS["LHX"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Tactical communications waveforms (NSA Type-1 encrypted Falcon software-defined radios), electronic warfare systems, space payloads, and Aerojet Rocketdyne solid rocket motors create insurmountable switching costs and sole-source defense positions. Operating ROIC on tangible capital is ~18.9%.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for defense electronics rivalry (4_riv=1), US DoD monopsony procurement pressure (4_buy=1), and energetic chemical supplier bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Balance Sheet). Long-term debt of ~$11.1B against net income of ~$1.5B results in LT Debt / NI of ~7.2x (substantially exceeding the <=4.0x ceiling) and interest coverage is depressed (~3.8x) following the debt-financed $4.7B acquisition of Aerojet Rocketdyne.",
+    "evidence": "Long-term debt stands at $11.1B against cash of $480M. Interest coverage is ~3.8x and LT debt / Net Income is 7.2x, failing Gate 6 balance sheet constraints. Operating ROIC is ~18.9% on tangible assets, but GAAP ROIC is ~6.3% due to acquisition goodwill."
+}
+
+# 38. LMT (Lockheed Martin)
+EVALUATIONS["LMT"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Irreplaceable sovereign defense industrial infrastructure. Sole-source provider of the 5th-generation stealth fighter (F-35) with 3,000+ planned lifetime airframes, PAC-3 missile interceptors, and classified Skunk Works programs. Backlog exceeds $160B with high multi-cycle returns on capital.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for US DoD monopsony budget oversight (4_buy=1) and tier-1 defense supply chain bottlenecks (4_sup=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (REJECT). World's premier defense prime contractor passes Gates 1–5 on sovereign defense necessity and an unassailable $160B+ backlog, but fails Gate 6 peace-of-mind fortress balance sheet standard: aggressive debt-funded share repurchases created negative tangible equity (-$12.5B), while long-term debt and pension liabilities fail the uncompromised solvency test.",
+    "evidence": "GAAP ROIC is 29.8% with operating ROIC >70%. Total debt is ~$19.5B against net income of ~$4.9B (debt/NI ~4.0x). Stockholders' equity is only $6.8B against $54B in assets, with tangible equity at negative -$12.5B resulting from aggressive debt-fueled buybacks."
+}
+
+# 39. NOC (Northrop Grumman)
+EVALUATIONS["NOC"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Irreplaceable classified defense infrastructure (Air Force Plant 42, solid rocket motor test ranges) and sole-source stealth/nuclear triad franchises (B-21 Raider, Sentinel ICBM, space systems). $95.7B backlog and sovereign integration provide enduring multi-decade economic moats.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for US Air Force monopsony procurement oversight (4_buy=1) and classified aerospace subcontractor bottlenecks (4_sup=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "Y",
+    "calamity_note": "Broken metric: Gate 6 fails on multi-year Owner FCF conversion (~56-65% 5-year average vs >=80% hurdle) and peak-to-peak earnings power due to a $1.56B pre-tax charge on B-21 Raider Low-Rate Initial Production (LRIP) fixed-price lots and Section 174 mandatory R&D tax amortization drag. Moat proof: Indispensable, sole-source prime contractor anchoring the US nuclear triad (B-21 stealth bomber, Sentinel ICBM) with record $95.7B backlog (1.10 book-to-bill); 2025 FCF rebounded +26% to $3.3B as cash conversion recovered toward 80%. Fix catalyst: B-21 transition from loss-making LRIP to profitable full-rate production, DoD policy pivot away from fixed-price development bids, and Section 174 tax normalization; Kill-switch: Additional multi-billion-dollar fixed-price overrun charges on B-21 production lots or Sentinel program cancellation / re-competition following Nunn-McCurdy restructuring.",
+    "note": "Strategic aerospace and defense prime contractor anchoring the US nuclear triad with irreplaceable classified manufacturing infrastructure and sovereign sole-source franchises. Temporary fixed-price B-21 contract losses and Section 174 tax drag depressed 5-year FCF conversion to ~60%, but 2025 FCF rebounded to $3.3B with record $95.7B backlog. Balance sheet is secure with net debt/NI at ~2.5x and 7.3x interest coverage. [5-10Y g: B-21 stealth bomber ramp 3.0% + space/missile defense volume 2.5% + pricing/escalation 1.5% - fixed-price drag/overruns 1.0% + share repurchases 1.0%]",
+    "evidence": "GAAP ROIC is 12.65%, operating ROIC on tangible capital is 37.9%. Total backlog is $95.7B. Free cash flow rebounded to $3.3B in 2025, recovering from the 2023 fixed-price charges on B-21 LRIP lots."
+}
+
+# 40. RTX (RTX Corporation)
+EVALUATIONS["RTX"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Dual commercial and defense moat: Collins Aerospace and Pratt & Whitney hold irreplaceable sole-source positions across commercial airframes (Airbus A320neo, Boeing 787, A220) and military platforms (F-35 F135, F-15/F-16 engines), generating high-margin aftermarket spares and MRO cash flows across 30+ year fleet lifespans where FAA regulatory certification and extreme switching costs eliminate substitution risk. Raytheon holds entrenched technological franchises in missile defense (Patriot, NASAMS), precision strike (Tomahawk, AMRAAM), and naval radar (SPY-6) backed by classified IP and sovereign procurement integration. Gross margins remain stable at 18-20% through cycles. Primary erosion risks stem from fixed-price defense contract cost overruns and engine performance issues, but high switching barriers and multi-year order backlogs protect economics.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 30Y reduced by -10Y for commercial aero-engine duopoly rivalry with CFM (4_riv=1), commercial airframer and DoD monopsony buyer pressure (4_buy=1), and specialized aerospace casting supplier bottlenecks (4_sup=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "Y",
+    "calamity_note": "Broken metric: Gate 6 fails due to balance sheet leverage (gross long-term debt of $37.7B vs 2025 net income of $7.11B yields ~5.3x leverage, exceeding the <=4.0x threshold; net debt ~$31.7B is ~4.5x) and multi-billion-dollar cumulative cash compensation drain to airline customers resulting from the Pratt & Whitney GTF powder metal recall (~$1B cash outflow in 2024 and ~$1B in 2025). Intact moat proof: Structural competitive position is completely unimpaired; Pratt & Whitney retains its ~50% duopoly share on the Airbus A320neo family with an 8-year backlog, Collins Aerospace maintains sole-source content across major civil and military programs, and Raytheon's defense backlog sits at an all-time high ($200B+ total company backlog). Fix catalyst & kill-switch: Peak inspection shop visits and aircraft-on-ground disruptions passed in 2024-2025; shop turnaround times are compressing and cash compensation outflows step down in 2026-2027 as free cash flow expands toward $8.5B+, enabling rapid debt paydown ($3.4B retired in 2025). Kill-switch triggers if powder metal cracking recurs in post-2021 engine builds, if airlines cancel A320neo GTF orders for CFM LEAP in volume, or if the FAA mandates an uncontained fleet-wide redesign.",
+    "note": "Aerospace and defense titan qualifying under Calamity pass. Collins Aerospace and Pratt & Whitney possess irreplaceable commercial aerospace infrastructure with 30-year aftermarket spare parts pricing power, while Raytheon is a core beneficiary of multi-decade Western geopolitical rearmament across NATO. Passes Gates 1-5; fails Gate 6 due to post-merger debt leverage (debt/NI ~5.3x) and temporary GTF powder metal recall compensation cash drains. Underlying moats and $200B+ backlog remain fully intact as FCF rebounds toward $8.5B+ in 2026. [5-10Y g: commercial aero aftermarket volume 4.0% + defense procurement volume 2.5% + pricing power 1.5% - GTF inspection compensation drag 0.5% + net share repurchases 1.0%]",
+    "evidence": "Revenues rose from $67.1B (2022) to $68.9B (2023), $74.5B (2024), and ~$80.5B (2025), driven by commercial aerospace recovery and surging defense demand. Operating margins recovered to 10-12% post the 2023 GTF operating charge ($3.0B pre-tax). FCF conversion is robust: FY2024 FCF was $4.5B on $4.8B net income (94%), FY2025 FCF reached $7.9B on $7.1B net income (111%), and FY2026 FCF guidance is $8.25B-$8.75B. Operating ROIC on tangible capital exceeds 15%, though GAAP ROIC (~6-8%) remains accounting-depressed by $53.3B in merger goodwill from the 2020 UTC/Raytheon combination. Total debt stood at $37.7B at year-end 2025 (down from $41.1B in 2024) against $6.0B+ cash, yielding interest coverage of ~6.0x. Order backlog reached record levels exceeding $200B ($130B+ commercial, $70B+ defense), demonstrating enduring customer lock-in across commercial and government clients."
+}
+
+# 41. TDG (TransDigm Group)
+EVALUATIONS["TDG"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Extreme regulatory switching costs and sole-source toll booth moat. Approximately 90% of revenue is derived from proprietary products, with ~80% from sole-source positions on commercial and military aircraft. Gross margins exceed 58% and operating margins exceed 50%.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for airline procurement scrutiny and Pentagon spare parts price audits (4_buy=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (REJECT – G6 Cash & Fortress Balance Sheet). Outstanding proprietary aerospace aftermarket toll-booth monopoly with ~90% proprietary parts and >80% sole-source content, but structurally fails Gate 6 peace-of-mind balance sheet standard: operates as a leveraged recapitalization vehicle with >$26B in long-term debt against ~$1.5B net income (debt/NI >17x), negative book equity, and complete reliance on debt refinancing.",
+    "evidence": "GAAP ROIC is 18.3%, operating ROIC on tangible capital exceeds 50%. However, gross debt exceeds $26B, debt/net income is ~17x, and stockholders' equity is negative -$5.5B, leaving zero margin of safety against an economic downturn or credit market freeze."
+}
+
+# 42. AIR.FR (Airbus)
+EVALUATIONS["AIR.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Unmatched commercial narrowbody backlog (A320neo family) with over 8,500 aircraft on order provides commanding commercial aircraft pricing power.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for commercial duopoly rivalry with Boeing (4_riv=1), commercial airline bulk procurement bargaining (4_buy=1), and aero-engine supplier bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Global commercial aircraft duopolist with decade-long backlog, but fails peak-to-peak business cycle EPS compounding and clean cash generation due to recurring multi-billion-dollar space division impairments (€1.3B charge in 2024) and volatile defense cash conversion.",
+    "evidence": "GAAP ROIC is ~39.7% on reported capital. However, Space Systems incurred recurring operating losses and €1.3B in write-downs in 2024. Multi-year FCF conversion has been highly cyclical due to working capital swings and supply chain delivery delays."
+}
+
+# 43. AM.FR (Dassault Aviation)
+EVALUATIONS["AM.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Sovereign defense aircraft design know-how (Rafale fighter architecture) and long-term fleet maintenance create monopolistic pricing power on French defense contracts and international export sales.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for international combat aircraft export rivalry against the F-35 (4_riv=1) and sovereign defense procurement negotiation (4_buy=1) yielding Final CAP 20Y.",
+    "5": 2, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Premier French combat aircraft manufacturer with world-class engineering, but rejected at Gate 6 due to structural failure of the 12% GAAP ROIC multi-cycle test (5-year median GAAP ROIC is ~9.6% due to massive cash holdings and lumpy advance payments) and extreme working capital swings on military delivery milestones.",
+    "evidence": "5-year median GAAP ROIC is 9.64% (failing 12% hurdle). Free cash flow is highly erratic depending on large lumpy customer down payments on export Rafale contracts, resulting in multi-year FCF conversion falling below 80%."
+}
+
+# 44. BA..GB (BAE Systems)
+EVALUATIONS["BA..GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Sole-source UK nuclear submarine shipyard (Barrow-in-Furness) and sovereign defense contracts with inflation escalation and cost-recovery mechanisms provide durable moats and 16.9% GAAP ROIC.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for UK Ministry of Defence and US DoD monopsony budget oversight (4_buy=1) and specialized defense subcontractor supply bottlenecks (4_sup=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Indispensable UK defense prime with sovereign submarine monopoly, but rejected at Gate 6 as net debt + pension liabilities / Net Income exceeds 4.0x following the debt-funded $5.55B Ball Aerospace acquisition (gross debt >£6.5B).",
+    "evidence": "5-year median GAAP ROIC is 16.86%. Long-term debt increased to ~£6.5B following the debt-funded acquisition of Ball Aerospace. Defined benefit pension deficit and elevated debt/NI ratio exceed the conservative Gate 6 balance sheet threshold."
+}
+
+# 45. BAB.GB (Babcock International)
+EVALUATIONS["BAB.GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Sole-source UK naval dockyard operator (Devonport) with long-term Partnering Agreements supporting continuous nuclear submarine maintenance and refits.",
+    "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 20Y reduced by -5Y for UK Ministry of Defence monopsony pricing leverage (4_buy=1) and skilled marine engineering labor scarcity (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Strategic UK naval dockyard operator, but rejected at Gate 6 due to razor-thin operating margins (4-5%), chronic multi-year restructuring charges, and volatile cash generation failing the fortress balance sheet and earnings compounding bar.",
+    "evidence": "Operating margins average only 4-5% on defense naval support contracts. Multi-year restructuring programs, pension funding obligations, and contract adjustments have resulted in erratic statutory net income and volatile cash conversion."
+}
+
+print("Batch 08 definitions parts 1-5 loaded.")
+
+# Group 6: Aerospace & Defense (Part 2, 46 to 58)
+# 46. HAG.DE (Hensoldt)
+EVALUATIONS["HAG.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "High pricing power on sole-source radar and sensor components (Eurofighter, TRML-4D, airborne electronic warfare) for Western defense platforms. Operating ROIC on tangible capital is ~40%, GAAP ROIC is 13.3%.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for European defense sensor competition (4_riv=1), Bundeswehr sovereign monopsony procurement (4_buy=1), and specialized GaN semiconductor component supply bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Premier German defense sensor, radar, and optronics specialist, but fails Gate 6 due to debt-funded acquisition of ESG (€675M deal) elevating net debt to >3.0x EBITDA (~5x Net Income), and lumpy defense project working capital swings causing multi-year FCF conversion to fall short of 80%.",
+    "evidence": "5-year median GAAP ROIC is 13.33%, operating ROIC on tangible capital is ~40.0%. Long-term debt increased significantly to fund the ESG acquisition, pushing net debt/EBITDA above 3x. Multi-year FCF conversion is ~65-75%, missing the 80% hurdle."
+}
+
+# 47. HO.FR (Thales)
+EVALUATIONS["HO.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Sovereign defense electronics (AESA radars, sonar arrays, C4ISR) and certified civil avionics/ATM protected by national security clearances and high switching costs. GAAP ROIC is 14.9%, operating ROIC on tangible capital is ~44.6%.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for European defense electronics rivalry (4_riv=1), sovereign defense agency monopsony procurement (4_buy=1), and specialized electronic component supply bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Cash conversion and structural space division drag). While defense electronics and avionics possess defensible moats, chronic restructuring losses in commercial space telecommunications (Thales Alenia Space) depress group free cash flow conversion to ~65-75%, failing the 80% compounding standard.",
+    "evidence": "5-year median GAAP ROIC is 14.88%. Thales Alenia Space joint venture incurred continuous restructuring and asset impairment charges due to structural market shifts in geostationary commercial telecom satellites, depressing group FCF conversion below the 80% hurdle."
+}
+
+# 48. IDR.ES (Indra)
+EVALUATIONS["IDR.ES"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "None", "3b": "N",
+    "3m": "Roughly half of Indra's revenue stems from Minsait, a commoditized IT consulting and software development business facing intense competition, low pricing power, and high labor turnover, diluting the economic moat of its defense electronics division.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3 (Moat Archetype 'None', ROIC < 12%). Roughly 50% of revenue stems from Minsait, a commoditized IT services and consulting business lacking durable competitive advantages. The consolidated company lacks pricing power above inflation.",
+    "evidence": "Minsait generates roughly half of group revenue at modest 6-7% EBIT margins with continuous wage inflation pressure. Corporate governance has been characterized by Spanish state shareholder friction (SEPI holding), undermining capital allocation consistency."
+}
+
+# 49. KOG.NO (Kongsberg)
+EVALUATIONS["KOG.NO"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 0, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Dominant technological monopolies including JSM (sole internal cruise missile for F-35), NSM anti-ship missile adopted across NATO, and NASAMS air defense. Unsurpassed proprietary engineering generates ~30% GAAP ROIC and >64% operating ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for cyclical commercial maritime automation rivalry (4_riv=1), NATO sovereign defense procurement oversight (4_buy=1), and specialized missile component supply bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Norway's premier defense and maritime technology champion with dominant missile monopolies, 32% ROIC, and massive net cash fortress. [5-10Y g: JSM/NSM missile production ramp 8.0% + NASAMS air defense expansion 4.0% + maritime technology volume 1.5% - defense component supply drag 1.0% + net buybacks 0.5%]",
+    "evidence": "5-year median GAAP ROIC is 29.60%, operating ROIC on tangible capital exceeds 64%. Order backlog is at all-time highs exceeding NOK 90B. Balance sheet is a fortress with substantial net cash, interest coverage >45x, and multi-year FCF conversion >100%."
+}
+
+# 50. LDO.IT (Leonardo)
+EVALUATIONS["LDO.IT"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "Pricing power in military helicopters (AgustaWestland AW139, AW101) and defense electronics, though dragged down by commercial aerostructures subcontracts. Operating ROIC on tangible capital is ~28.1%.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for military helicopter rivalry with Airbus and Sikorsky (4_riv=1), sovereign defense agency monopsony procurement (4_buy=1), and tier-1 aerospace supply chain friction (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Aerostructures cash burn and volatile defense working capital). While military helicopters and defense electronics hold strong market positions, chronic operating losses in commercial aerostructures (Boeing 787 subcontractor) and high financial debt fail the peace-of-mind fortress balance sheet standard.",
+    "evidence": "5-year median GAAP ROIC is 9.36% (failing 12% hurdle). Aerostructures division has generated cumulative operating losses exceeding €1.5B over the past 5 years. Net debt stands at ~€2.5B-€3.0B."
+}
+
+# 51. MRO.GB (Melrose)
+EVALUATIONS["MRO.GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Contractually locked aftermarket Risk and Revenue Sharing Partnerships (RRSPs) on commercial aircraft engines (GTF, GEnx, Trent) provide long-term high-margin aftermarket toll-booth cash flows.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for aero-engine prime contractor customer concentration (4_buy=1), aerospace raw material supply bottlenecks (4_sup=1), and macro aerospace cycle friction (4_riv=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (FCF conversion < 80% and negative multi-year statutory earnings). GKN Aerospace engine RRSP toll booth has strong sole-source positions, but negative cumulative statutory earnings from historical restructuring and spin-offs fail Gate 6 compounding standards.",
+    "evidence": "Reported 5-year GAAP ROIC is slightly negative (-0.08%) due to historical acquisition amortization and restructuring provisions following the Dowlais demerger. Statutory net income has been erratic, failing the peak-to-peak earnings power standard."
+}
+
+# 52. MTX.DE (MTU Aero Engines)
+EVALUATIONS["MTX.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Toll booth on commercial aviation fleet through long-term Risk and Revenue Sharing Partnerships (RRSPs) and independent MRO network. High switching costs and certified low-pressure turbine modules create durable pricing power and ~13% GAAP ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for commercial aero-engine consortium rivalry and GTF inspection program management (4_riv=1) alongside airline customer MRO contract negotiations (4_buy=1) yielding Final CAP 20Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Premier German aircraft engine innovator and commercial MRO toll booth with high switching costs, low leverage, and 17% ROIC. [5-10Y g: commercial MRO shop visit volume 5.0% + GTF spare parts pricing 3.0% + military engine volume 1.5% - inspection compensation friction 0.5% + net share repurchases 1.0%]",
+    "evidence": "5-year median GAAP ROIC is 12.58%, operating ROIC on tangible capital is ~19.8%. Proactively managed the GTF powder metal inspection program while expanding commercial MRO revenues. Net debt/EBITDA is under 1.5x and interest coverage is ~14.8x."
+}
+
+# 53. QQ..GB (QinetiQ)
+EVALUATIONS["QQ..GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "None", "3b": "N",
+    "3m": "Government defense testing and evaluation contractor facing sovereign monopsony clients (UK MoD, US DoD). Contracts are subject to single-source regulatory margin caps (SSCR), precluding autonomous pricing power above inflation.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3 (3a=None, 3b=N, REJECT). Defense testing and technical engineering contractor constrained by sovereign monopsony procurement frameworks and regulated margin caps (UK SSCR), preventing autonomous pricing power.",
+    "evidence": "Operating margins are tightly bounded around 8-10% under statutory single-source defense procurement rules. Lacks proprietary defense equipment franchises, operating primarily as a technical service provider."
+}
+
+# 54. R3NK.DE (RENK)
+EVALUATIONS["R3NK.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 1,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "Customized mission-critical tank transmissions (e.g. Leopard 2, Puma) create high engineering switching costs, but bargaining power rests with prime system integrators (KNDS, Rheinmetall); 5-year median GAAP ROIC of 7.5% fails the 12% hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). Leading vehicle transmission specialist for heavy armored vehicles, but multi-year GAAP ROIC averages only 7.5%, heavily burdened by private equity carve-out debt and amortized intangible assets.",
+    "evidence": "5-year median GAAP ROIC is 7.51%. While demand for Leopard 2 transmissions is strong, high balance sheet leverage and supplier price pressures compress net returns below the 12% Munger threshold."
+}
+
+# 55. RHM.DE (Rheinmetall)
+EVALUATIONS["RHM.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 2, "3_se": 0, "3_rd": 1,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "Y",
+    "3m": "Unmatched European munitions manufacturing infrastructure (155mm artillery shells) and armored combat vehicle platforms (Puma, Lynx, Leopard 2 chassis integration). Dominant NATO capacity and full order books provide pricing power and 21.8% GAAP ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for European land systems vehicle rivalry with KNDS (4_riv=1), sovereign defense agency monopsony procurement oversight (4_buy=1), and energetic propellant/nitrocellulose supply chain bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (FCF conversion and Balance Sheet). Exceptional land defense and munitions moat, but fails Gate 6 as rapid manufacturing expansion and heavy working capital investment in raw materials/work-in-progress depress multi-year Owner FCF conversion to ~50-65% (below 80% hurdle), while debt from the Expal Systems acquisition elevates balance sheet leverage.",
+    "evidence": "GAAP ROIC is 21.79%, operating ROIC on tangible capital is ~42.8%. However, working capital outflows to expand 155mm shell output to 700k/year have consumed billions in operating cash, keeping multi-year FCF conversion between 50% and 65%."
+}
+
+# 56. RR..GB (Rolls-Royce)
+EVALUATIONS["RR..GB"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Captive aftermarket flight-hour toll booth under TotalCare long-term service agreements across thousands of widebody commercial engines (Trent XWB, Trent 1000, Trent 7000). Flight certification and sole-source positions on the Airbus A350 create high pricing power and >31% ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for widebody turbofan rivalry with GE Aerospace (4_riv=1) and international airline fleet procurement negotiations (4_buy=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Widebody commercial aerospace propulsion oligopolist with thousands of engines enrolled in captive TotalCare flight-hour toll-booth contracts. Spectacular operational turnaround under CEO Tufan Erginbilgic eliminated net debt, restored investment-grade status, and compounded FCF past £2B+. [5-10Y g: widebody flight hour volume 5.0% + TotalCare contract pricing 2.5% + defense engine volume 1.5% - airline fleet deferral friction 0.5% + net share buybacks 1.0%]",
+    "evidence": "Operating ROIC exceeds 31%. Transformation program under Tufan Erginbilgic eliminated net debt, generating >£2.5B in free cash flow in 2024-2025. TotalCare flying-hour contracts provide contracted inflation escalation with high customer renewal rates."
+}
+
+# 57. SAAB B.SE (Saab)
+EVALUATIONS["SAAB B.SE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 2,
+    "3a": "R&D & innovation leadership", "3b": "Y",
+    "3m": "World-class tactical defense systems including Carl-Gustaf shoulder-fired weapon, NLAW anti-tank missile, and Gripen multi-role fighter. High proprietary engineering know-how delivers 13.7% GAAP ROIC and >28% operating ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for international combat fighter export rivalry against F-35 (4_riv=1), sovereign defense agency monopsony procurement (4_buy=1), and specialized energetic component supply bottlenecks (4_sup=1) yielding Final CAP 15Y.",
+    "5": 1, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (6=N, REJECT). Leading Nordic defense and tactical weapons champion, but multi-year FCF conversion structurally fails the 80% hurdle (~40-60%) due to heavy working capital consumption in weapon inventories and ongoing Gripen E/F development capex.",
+    "evidence": "GAAP ROIC is 13.66%, operating ROIC on tangible capital is 28.39%. Free cash flow conversion over the past 5 years has averaged ~50%, failing the 80% compounding hurdle due to inventory buildup for ground combat systems."
+}
+
+# 58. SAF.FR (Safran)
+EVALUATIONS["SAF.FR"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "50/50 CFM International JV with GE Aerospace commands ~75% narrowbody engine market share (100% sole-source on Boeing 737 MAX, ~60% on Airbus A320neo). 25-30 year captive aftermarket spare parts and maintenance toll booth provides exceptional pricing power, 23.3% GAAP ROIC, and >70% operating ROIC.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 20,
+    "4n": "Initial CAP 25Y reduced by -5Y for narrowbody aero-engine rivalry with Pratt & Whitney on the A320neo (4_riv=1) and commercial airline line-fit procurement negotiations (4_buy=1) yielding Final CAP 20Y.",
+    "5": 1, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Commercial aviation narrowbody engine duopoly with an unassailable 25-30 year aftermarket spare parts toll booth, net cash balance sheet, and ~23% GAAP ROIC. [5-10Y g: commercial flight hour volume 4.5% + CFM aftermarket spare parts pricing 3.5% + LEAP delivery volume 2.0% - supply chain ramp friction 0.5% + net share repurchases 1.5%]",
+    "evidence": "5-year median GAAP ROIC is 23.35%, operating ROIC on tangible capital exceeds 70%. CFM56 and LEAP engine flight hours generate predictable, high-margin aftermarket spare parts sales. Net cash balance sheet with net debt/NI < 0 and interest coverage >20x."
+}
+
+# Group 7: Agricultural & Farm Machinery
+# 59. DE (Deere & Company)
+EVALUATIONS["DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Dominant dealer network density (over 2,000 North American locations providing mission-critical 2-hour parts and maintenance dispatch during narrow harvest windows) and Operations Center telematics lock-in create immense switching costs. Demonstrated pricing power through agricultural cycles.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 1, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 25Y reduced by -10Y for agricultural equipment rivalry with CNH Industrial and AGCO (4_riv=1), farmer customer purchasing power during crop price downcycles (4_buy=1), and steel/component supply friction (4_sup=1) yielding Final CAP 15Y.",
+    "5": 2, "6": "N",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 6 (Rejected – G6 Cash & Fortress Balance Sheet). Despite Deere's unrivaled agricultural moat, mission-critical precision ag technology, and strong operating ROIC, it fails Gate 6 peace-of-mind fortress balance sheet standard due to John Deere Financial captive finance company: total debt exceeds $62B against ~$7B net income (debt/NI ~8.8x), relying on continuous short-term commercial paper issuance and wholesale credit markets to fund customer retail financing.",
+    "evidence": "5-year median GAAP ROIC is 11.27% (exceeding 20% at cycle peaks). However, consolidated debt exceeds $62B with LT debt of $42B+ against net income of $7.1B. John Deere Financial relies heavily on commercial paper and wholesale debt markets to finance equipment installment loans, violating the peace-of-mind balance sheet requirement."
+}
+
+# Group 8: Air Freight & Logistics
+# 60. CHRW (C.H. Robinson)
+EVALUATIONS["CHRW"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "None", "3b": "N",
+    "3m": "Freight brokerage is a highly fragmented commodity intermediary business with over 15,000 active brokers. Shippers utilize multi-broker routing guides with near-zero switching costs, leaving C.H. Robinson as a spread price-taker lacking pricing power above inflation.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3 (Moat & Pricing, REJECT). Asset-light third-party freight brokerage operating in a fragmented, highly competitive market with no customer switching costs or pricing power. Gross margins fluctuate with spot truckload freight rates.",
+    "evidence": "Reported ROIC is optically elevated (~22%) due to zero tangible asset base, but gross profits swing violently with spot truckload cycle. Shippers switch brokers electronically with zero friction."
+}
+
+# 61. EXPD (Expeditors International)
+EVALUATIONS["EXPD"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 2, "3_ia": 0, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "Y",
+    "3m": "Global toll booth and high switching costs in cross-border air/ocean freight forwarding and customs brokerage. Intermediates cargo capacity between shippers and carriers with proprietary IT systems and customized regulatory customs compliance where failure halts shipments. 5-year median GAAP ROIC of 50.6% and operating ROIC >50% prove pricing power.",
+    "4_ent": 0, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 0,
+    "4": 15,
+    "4n": "Initial CAP 20Y reduced by -5Y for freight forwarding rivalry with Kuehne+Nagel and DSV (4_riv=1) and enterprise shipper freight tender negotiations (4_buy=1) yielding Final CAP 15Y.",
+    "5": 2, "6": "Y",
+    "calamity": "", "calamity_note": "",
+    "note": "Passes all 6 gates. Premier non-asset-based global freight forwarder and customs broker with an entrenched toll-booth moat, zero debt, >70% operating ROIC, and unique branch-incentive Outsider management culture. [5-10Y g: global trade volume 2.5% + customs brokerage mix 1.5% + net pricing/spread stability 0.5% - freight market normalization drag 0.5% + net share repurchases 2.0%]",
+    "evidence": "5-year median GAAP ROIC is 50.58%, operating ROIC on tangible capital is ~50.8%. Operates with zero long-term debt ($0 debt) and holds >$1.5B in pure net cash. Free cash flow conversion consistently exceeds 100% of net income."
+}
+
+# 62. FDX (FedEx)
+EVALUATIONS["FDX"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "Global express hub-and-spoke air network (Memphis World Hub, 680+ aircraft) and sorting infrastructure are virtually impossible to replicate from scratch, but fail to deliver excess economic returns. Heavy capital intensity, chronic capacity overexpansion, and aggressive pricing competition from UPS and Amazon Logistics suppress multi-cycle GAAP ROIC to ~7-8%, well below the 12% hurdle.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (ROIC < 12%, REJECT). While FedEx operates an irreplaceable global air express and ground logistics network, heavy capital intensity ($4B-$6B+ annual capex for aircraft, hubs, and vehicle fleet) and competitive pressure from UPS and Amazon keep operating margins at 5.5-7.0% and multi-cycle ROIC at 7-8%, well below the 12% threshold.",
+    "evidence": "5-year median GAAP ROIC is 7.5% (consistently failing 12% hurdle). Capital expenditures consume 6-8% of revenue annually. Lost the USPS primary air cargo contract to UPS in 2024, demonstrating price competition in parcel transport."
+}
+
+# 63. UPS (United Parcel Service)
+EVALUATIONS["UPS"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 1, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Toll booth & switching costs", "3b": "N",
+    "3m": "UPS operates massive physical route density and integrated hub-and-spoke sortation networks with enterprise B2B pickup lock-in. However, the moat suffers severe structural erosion: it lacks pricing power above inflation without shedding customer volume and market share. The 2023 Teamsters labor contract created a structural cost disadvantage against non-union rivals, while Amazon Logistics successfully insourced and disintermediated delivery, stripping away high-density volume. Shippers actively divert volume to FedEx, USPS, and regional carriers upon aggressive price hikes.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Fails Gate 3b (Pricing & Proof of Moat, REJECT). UPS operates an indispensable physical parcel network, but it lacks genuine pricing power above inflation without shedding customer volume and market share. The landmark 2023 Teamsters labor agreement significantly escalated union wage and benefit costs, causing margin compression that could not be passed through to price-sensitive customers. Furthermore, Amazon Logistics has permanently disintermediated UPS's former largest customer (shedding over 50% of Amazon volume), while commercial shippers diverted volume to FedEx and regional carriers, depressing operating margins (~8%) and dropping normalized ROIC toward ~11-13% with sub-hurdle incremental ROIIC.",
+    "evidence": "Historical ROIC was elevated during the 2020-2022 pandemic e-commerce boom, but normalized post-pandemic operating margins compressed to ~7-8%. Teamsters labor contract added billions in wage/benefit inflation, while package volume declined as commercial shippers diverted freight to non-union carriers."
+}
+
+# 64. DHL.DE (DHL Group)
+EVALUATIONS["DHL.DE"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "DHL Express possesses an elite global air hub-and-spoke network with significant scale economies shared and high TDI margins. However, consolidated group pricing power is severely impaired by Post & Parcel Germany, which is subject to statutory price caps by the German Federal Network Agency (BNetzA) and inflexible unionized labor costs, alongside the commoditized price-taker nature of Global Forwarding.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Rejected at Gate 3b (Pricing & Proof of Moat). While DHL Express is a world-class global air express oligopolist with FedEx and UPS, the consolidated group remains burdened by Post & Parcel Germany, where statutory postal price caps from BNetzA and heavy collective bargaining wage settlements prevent inflation pass-through, while Global Forwarding operates as a cyclical freight rate price-taker.",
+    "evidence": "Group multi-year ROIC averages ~11.9% (failing 12% hurdle). Post & Parcel Germany is legally restricted by BNetzA from raising regulated postage rates to match double-digit domestic wage inflation, while freight forwarding spreads normalized downwards."
+}
+
+# 65. DSV.DK (DSV)
+EVALUATIONS["DSV.DK"] = {
+    "1": "Y", "2": "Y", "2r": "",
+    "3_tb": 0, "3_ia": 1, "3_se": 0, "3_rd": 0,
+    "3a": "Irreplaceable infrastructure & intangibles", "3b": "N",
+    "3m": "DSV is a best-in-class logistics consolidator with an unmatched M&A integration engine and asset-light scale economies shared. However, air and ocean forwarding remains an intermediary brokerage business where enterprise shippers multi-source and tender volume regularly with low switching costs, leaving DSV unable to exert autonomous pricing power >= inflation across the cycle without losing volume.",
+    "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
+    "4": "", "4n": "",
+    "5": "", "6": "",
+    "calamity": "", "calamity_note": "",
+    "note": "Rejected at Gate 3b (Pricing & Proof of Moat). Although DSV possesses an exceptional acquisition integration playbook (crowned by the €14.3B DB Schenker transaction) and attractive asset-light capital efficiency, freight forwarding lacks structural switching costs. Shippers regularly tender routes on price, making DSV a price-taker on freight spreads without autonomous pricing power >= inflation.",
+    "evidence": "Reported pre-tax ROIC including goodwill ranges from 15% to 25%, but EBIT declined ~36% between 2022 and 2024 as pandemic-era freight premiums evaporated. Freight forwarding contracts are tendered annually or bi-annually, proving shippers treat forwarding as a competitive service."
+}
+
+print(f"Total evaluations defined: {len(EVALUATIONS)}")

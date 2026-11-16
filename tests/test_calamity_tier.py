@@ -155,7 +155,7 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
 class DashboardAndDataIntegrityTests(unittest.TestCase):
     def test_universe_baseline_counts_preserved(self):
         counts = {k: len(funnel_ids(load_universe(k), include_calamity=False)) for k in ("us", "eu", "ca")}
-        self.assertEqual(counts, {"us": 109, "eu": 103, "ca": 11})
+        self.assertEqual(counts, {"us": 110, "eu": 104, "ca": 11})
 
     def test_dashboard_html_renders_calamity_tier(self):
         payload = {
