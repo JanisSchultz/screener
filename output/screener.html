@@ -3011,12 +3011,12 @@
     function fmtGMarketCell(c) {
       const flag = c.g_market_flag;
       if (flag === 'nav_anchored' || flag === 'no_value_creation') {
-        return `<span title="${escHtml(G_MARKET_FLAG_LABELS[flag])}" style="cursor: help; color: var(--text-muted);">*</span>`;
+        return `<span title="${escHtml(G_MARKET_FLAG_LABELS[flag])}" style="cursor: help; color: var(--amber);">⚠</span>`;
       }
       if (c.g_market === null || c.g_market === undefined) return '-';
       if (flag === 'saturated_low' || flag === 'saturated_high') return `${G_MARKET_FLAG_LABELS[flag]} ${fmtPct(c.g_market, true)}`;
       if (flag === 'multi_root') {
-        return `<span title="${escHtml(fmtPct(c.g_market, true) + ' ' + G_MARKET_FLAG_LABELS[flag])}" style="cursor: help;">${fmtPct(c.g_market, true)}*</span>`;
+        return `${fmtPct(c.g_market, true)} <span title="${escHtml(fmtPct(c.g_market, true) + ' ' + G_MARKET_FLAG_LABELS[flag])}" style="cursor: help; color: var(--amber);">⚠</span>`;
       }
       return fmtPct(c.g_market, true);
     }
