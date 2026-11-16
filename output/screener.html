@@ -1969,7 +1969,7 @@
 
         <div class="grid-3" style="margin-bottom: 10px;">
           <div class="metric-box">
-            <div class="label" title="Current price-to-active-Owner-EPS multiple: Share Price ÷ Active Owner EPS.">Current Multiple</div>
+            <div class="label" title="Current Trailing P/E (Share Price ÷ Active Owner EPS) / 1Y Model-Implied Forward P/E (Cur P/E ÷ (1 + Model g)).">Current P/E (T / F)</div>
             <div class="value" id="dossier-cur-mult">-</div>
           </div>
           <div class="metric-box">
@@ -2363,7 +2363,7 @@
       vs_par: { key: 'vs_par', label: 'vs Fair Value', num: true },
       term_val: { key: 'term_val', label: '0 g price', num: true },
       vs_term: { key: 'vs_term', label: 'VS 0 G', num: true },
-      cur_mult: { key: 'cur_mult', label: 'Cur P/E', num: true },
+      cur_mult: { key: 'cur_mult', label: 'Cur P/E (T / F)', num: true },
       par_mult: { key: 'par_mult', label: 'Fair P/E', num: true },
       term_mult: { key: 'term_mult', label: 'Term P/E', num: true },
       irr_5y: { key: 'irr_5y', label: '5Y Exp IRR', num: true },
@@ -2397,7 +2397,7 @@
       vs_par: "Current share price premium (+) or discount (−) relative to DCF Fair Value.",
       term_val: "Standalone Terminal Price floor = Terminal P/E × Active Owner EPS, assuming 3.0% perpetual inflation growth.",
       vs_term: "Current share price premium (+) or discount (−) relative to the standalone Terminal Price floor.",
-      cur_mult: "Current multiple = Share Price ÷ Active Owner EPS.",
+      cur_mult: "Current Trailing P/E (Share Price ÷ Active Owner EPS) / 1Y Model-Implied Forward P/E (Cur P/E ÷ (1 + Model g)).",
       par_mult: "Explicit Mauboussin-Fade DCF Fair P/E = PV(Stage 1 FCFs) + PV(Stage 2 Terminal Value) at hurdle rate r.",
       term_mult: "Standalone Terminal P/E floor = (1 − 3.0% / RONIC_term) / (r − 3.0%), capped at ~15.5x operating / ~10.9x financials.",
       irr_5y: "5-Year Expected IRR across growing annual dividends (with FCF payout conservation) and Year-5 rolled-forward DCF Fair Value.",
@@ -2988,6 +2988,16 @@
             } else {
               cellContent = hasMoatArchetype(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-';
             }
+          } else if (col.key === 'cur_mult') {
+            if (val === null || val === undefined) cellContent = '-';
+            else {
+              const gVal = c.g_org_exp;
+              const fwd = (gVal !== null && gVal !== undefined && (1 + gVal) > 0) ? val / (1 + gVal) : null;
+              const tip = `Trailing: ${fmtNum(val, 2)}x · 1Y Forward (at Model g ${fmtPct(gVal)}): ${fwd !== null ? fmtNum(fwd, 2) + 'x' : '-'}`;
+              cellContent = fwd !== null
+                ? `<span style="white-space: nowrap;" title="${escHtml(tip)}">${fmtNum(val, 1)} / ${fmtNum(fwd, 1)}x</span>`
+                : `<span title="${escHtml(tip)}">${fmtNum(val, 1)}x</span>`;
+            }
           } else if (col.num) {
             cellContent = fmtNum(val);
           } else {
@@ -3429,7 +3439,11 @@
       }
       const dTermMultEl = document.getElementById('dossier-term-mult');
       if (dTermMultEl) dTermMultEl.textContent = (c.term_mult !== null && c.term_mult !== undefined) ? fmtNum(c.term_mult) + 'x' : '-';
-      document.getElementById('dossier-cur-mult').textContent = fmtNum(c.cur_mult) + 'x';
+      const curG = c.g_org_exp;
+      const curFwd = (c.cur_mult !== null && c.cur_mult !== undefined && curG !== null && curG !== undefined && (1 + curG) > 0) ? c.cur_mult / (1 + curG) : null;
+      document.getElementById('dossier-cur-mult').textContent = (c.cur_mult !== null && c.cur_mult !== undefined)
+        ? (curFwd !== null ? `${fmtNum(c.cur_mult, 1)} / ${fmtNum(curFwd, 1)}x` : `${fmtNum(c.cur_mult, 1)}x`)
+        : '-';
       document.getElementById('dossier-par-mult').textContent = fmtNum(c.par_mult) + 'x';
       document.getElementById('dossier-irr').textContent = fmtPct(c.irr_5y);
       const rTxt = (c.disc_rate !== null && c.disc_rate !== undefined) ? `r = ${(c.disc_rate * 100).toFixed(2)}%` : 'r';
