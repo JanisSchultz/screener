@@ -254,9 +254,9 @@ The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-cla
 
 ### 5.1 Core Valuation Inputs
 
-1. **Owner EPS & IFRS-16 Lease Deduction**:
-   $$\text{Owner EPS}_y = \frac{\text{Net Income}_y + \max(0,\; \text{D\&A}_{y,\text{clean}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y)}{\text{Shares Outstanding}_y}$$
-   *Shares are period-end outstanding and EPS = NI ÷ shares. One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out. For IFRS filers $20\%$ of average right-of-use lease obligations is deducted from both `owner_addback` and `true_fcf` (`fcf_conv`); US-GAAP filers (`us`, plus `US_GAAP_IDS` in `fetch_market_data.py`: ABB, Alcon, Logitech, Qiagen, STMicro and the Canadian ENB, TRP, IMO, CNR, FTS, EMA, H, WCN, CP, QSR) are exempt. Rows whose statements are stale (`[auto] stale fundamentals`) are valued as No data until refetched.*
+1. **Owner EPS, Cash-Flow Backing & IFRS-16 Lease Deduction**:
+   $$\text{D\&A}_{y,\text{eff}} = \min\!\left(\text{D\&A}_{y,\text{clean}},\; \max(0,\; \text{OCF}_y - \text{Net Income}_y)\right), \qquad \text{Owner EPS}_y = \frac{\text{Net Income}_y + \max(0,\; \text{D\&A}_{y,\text{eff}} - \text{CapEx}_y - 0.20 \times \overline{\text{Lease}}_y)}{\text{Shares Outstanding}_y}$$
+   *Shares are period-end outstanding and EPS = NI ÷ shares ($\text{Owner Add-Back}_y = 0$ for Balance-Sheet Financials or when $\text{CapEx}_y \le 0$, and D&A is bounded by $\max(0, \text{OCF}_y - \text{NI}_y)$ so OCF-deducted content/fleet additions are never added back as phantom free cash). One-off non-cash earnings spikes (disposal gains, hedge marks, tax allowances) are stripped out. For IFRS filers $20\%$ of average right-of-use lease obligations is deducted from both `owner_addback` and `true_fcf` (`fcf_conv`); US-GAAP filers (`us`, plus `US_GAAP_IDS` in `fetch_market_data.py`: ABB, Alcon, Logitech, Qiagen, STMicro and the Canadian ENB, TRP, IMO, CNR, FTS, EMA, H, WCN, CP, QSR) are exempt. Rows whose statements are stale (`[auto] stale fundamentals`) are valued as No data until refetched.*
 2. **Peak Owner EPS, Direct `cur_oe_eps` & Age-Weighted Mid-Cycle Reversion Standard**:
    - `peak_oe_eps`: The highest Owner EPS achieved over the last 5 fiscal years (converted to quote currency).
    - `cur_oe_eps`: Latest fiscal-year Owner EPS (converted to quote currency).

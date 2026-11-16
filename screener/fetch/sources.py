@@ -768,6 +768,12 @@ class EODHD:
             or gen.get("GicGroup") == "Banks"
             or gen.get("GicIndustry") in ("Banks", "Consumer Finance")
         )
+        ind_str = f"{gen.get('Industry') or ''} | {gen.get('GicSubIndustry') or ''} | {gen.get('GicIndustry') or ''}"
+        is_fee_fin = any(kw in ind_str for kw in ("Insurance Brokers", "Asset Management & Custody Banks"))
+        is_bs_fin = not is_fee_fin and (
+            is_bank
+            or any(kw in ind_str for kw in ("Insurance", "Reinsurance", "Multi-Sector Holdings", "Investment Banking & Brokerage"))
+        )
 
         osh_raw = (fund_data.get("outstandingShares") or {}).get("annual") or {}
         osh_by_yr: dict[int, float] = {}
@@ -783,6 +789,7 @@ class EODHD:
                 "equity", "nci", "debt", "st_debt", "cash", "cash_sti", "lease", "goodwill", "intang", "assets", "liab", "shares")
         out: dict[str, dict[int, float]] = {k: {} for k in keys}
         out["period_end"] = {}          # {fy: "YYYY-MM-DD"} (strings; used for point-in-time availability in par.py)
+        out["_is_bs_financial"] = is_bs_fin
         inc_ccys: dict[int, str] = {}
         bs_ccys: dict[int, str] = {}
         cf_ccys: dict[int, str] = {}

@@ -42,20 +42,27 @@ def clean_da(da: dict, capex: dict | None = None) -> dict:
 
 
 def owner_addback(s: dict, y: int) -> float:
-    """Owner-earnings add-back for fiscal year y: MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy).
-    D&A above maintenance capex is added back to net income; lease depreciation (rent paid through financing cash
-    flow under IFRS 16) is deducted first so it is not treated as free cash. s['lease'] is empty for US GAAP filers.
-    When consolidated D&A/CapEx includes partially-owned subsidiaries (minority_interest / nci), scale the add-back
-    to the common shareholders' share of consolidated profit/equity."""
-    da, cx, lease = s.get("da") or {}, s.get("capex") or {}, s.get("lease") or {}
-    if da.get(y) is None or cx.get(y) is None:
+    """Owner-earnings add-back for fiscal year y: MAX(0, min(D&A, max(0, OCF − NI)) − CapEx − IFRS-16 lease dep proxy).
+    D&A above maintenance capex is added back to net income only to the extent backed by operating cash flow above
+    net income (so OCF-deducted content/fleet additions like NFLX or AYV are never added back as phantom free cash);
+    lease depreciation (rent paid through financing cash flow under IFRS 16) is deducted first. Zero for balance-sheet
+    financials (`_is_bs_financial`) or when CapEx is missing / zero. When consolidated D&A/CapEx includes partially-owned
+    subsidiaries (minority_interest / nci), scale the add-back to the common shareholders' share of consolidated profit."""
+    if s.get("_is_bs_financial"):
         return 0.0
-    l_cur, l_prev = lease.get(y), lease.get(y - 1)
-    l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
-    raw_add = max(0.0, abs(da[y]) - abs(cx[y]) - LEASE_DEP_RATE * l_avg)
-    if raw_add <= 0.0:
+    da, cx, lease = s.get("da") or {}, s.get("capex") or {}, s.get("lease") or {}
+    if da.get(y) is None or cx.get(y) is None or abs(cx[y]) <= 0.0:
         return 0.0
     ni_y = (s.get("ni") or {}).get(y)
+    ocf_y = (s.get("ocf") or {}).get(y)
+    da_eff = abs(da[y])
+    if ocf_y is not None and ni_y is not None:
+        da_eff = min(da_eff, max(0.0, ocf_y - ni_y))
+    l_cur, l_prev = lease.get(y), lease.get(y - 1)
+    l_avg = (abs(l_cur) + abs(l_prev)) / 2 if (l_cur is not None and l_prev is not None) else abs(l_cur or 0.0)
+    raw_add = max(0.0, da_eff - abs(cx[y]) - LEASE_DEP_RATE * l_avg)
+    if raw_add <= 0.0:
+        return 0.0
     mi_y = (s.get("minority_interest") or {}).get(y)
     if ni_y and ni_y > 0 and mi_y and abs(mi_y) > 0:
         common_share = ni_y / (ni_y + abs(mi_y))

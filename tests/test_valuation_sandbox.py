@@ -618,6 +618,32 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         s_us = {"da": {2024: 600.0}, "capex": {2024: 400.0}, "lease": {}}
         self.assertEqual(owner_addback(s_us, 2024), 200.0)
 
+        # 3. Cash-flow backing guard (NFLX pattern: content amortization in D&A, content cash spend in OCF -> OCF <= NI)
+        s_nflx = {
+            "ni": {2025: 10981.0},
+            "ocf": {2025: 10149.0},
+            "da": {2025: 16756.0},
+            "capex": {2025: 688.0},
+            "lease": {},
+        }
+        self.assertEqual(owner_addback(s_nflx, 2025), 0.0)
+
+        # 4. Serial acquirer with cash-backed M&A amortization (CSU.CA / DHR pattern: OCF >= NI + D&A)
+        s_csu = {
+            "ni": {2025: 512.0},
+            "ocf": {2025: 2637.0},
+            "da": {2025: 1407.0},
+            "capex": {2025: 69.0},
+            "lease": {},
+        }
+        self.assertEqual(owner_addback(s_csu, 2025), 1407.0 - 69.0)
+
+        # 5. Zero CapEx (unreported in EODHD) or Balance-Sheet Financial -> 0.0 add-back
+        s_zero_cx = {"ni": {2025: 20000.0}, "ocf": {2025: 30000.0}, "da": {2025: 7700.0}, "capex": {2025: 0.0}}
+        self.assertEqual(owner_addback(s_zero_cx, 2025), 0.0)
+        s_bs_fin = {"_is_bs_financial": True, "ni": {2025: 12000.0}, "ocf": {2025: 40000.0}, "da": {2025: 8000.0}, "capex": {2025: 2000.0}}
+        self.assertEqual(owner_addback(s_bs_fin, 2025), 0.0)
+
     def test_short_term_investments_netted_in_roic(self):
         """Verify summarize() nets cash_sti (cash + short-term marketable securities) in ROIC."""
         s = {

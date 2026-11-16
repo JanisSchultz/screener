@@ -47,7 +47,7 @@ from screener.data import (
 from screener.fetch import metrics, par, settings, sources
 from screener.fetch.sources import EODHD, stale_fundamentals, symbol_cache, technicals
 from screener.fetch.sqlite_db import build_sqlite_db
-from screener.gates import funnel_ids, params, par_valuation
+from screener.gates import funnel_ids, is_balance_sheet_financial, params, par_valuation
 
 PAR_FIELDS = ("peak_oe_year", "peak_oe_eps", "cur_oe_eps", "cur_oe_year", "mult_low_5y", "mult_high_5y", "cagr_oe_eps", "p2p_ok")
 AUTO = "[auto] "
@@ -77,11 +77,16 @@ def listing_date(fund: dict | None, esym: str, bars: list | None) -> str | None:
     return str(bars[0]["date"]) if (not primary or primary == esym) else None
 
 
-def apply_lease_basis(series: dict, key: str, cid: str | None = None) -> dict:
+def apply_lease_basis(series: dict, key: str, cid: str | None = None, sub_industry: str | None = None) -> dict:
     """IFRS-16 lessees carry right-of-use depreciation inside D&A; US GAAP filers do not. Drop the lease series for
-    US GAAP universes and US-GAAP Canadian filers so owner_addback / true_fcf only deduct lease depreciation for IFRS reporters."""
-    if series and (key in US_GAAP_UNIVERSES or (cid and cid in US_GAAP_IDS)):
+    US GAAP universes and US-GAAP Canadian filers so owner_addback / true_fcf only deduct lease depreciation for IFRS reporters.
+    Also tags balance-sheet financials (`_is_bs_financial`) from the universe `sub_industry`."""
+    if not series:
+        return series
+    if key in US_GAAP_UNIVERSES or (cid and cid in US_GAAP_IDS):
         series["lease"] = {}
+    if sub_industry:
+        series["_is_bs_financial"] = is_balance_sheet_financial(sub_industry) or ("Consumer Finance" in str(sub_industry))
     return series
 
 
@@ -230,7 +235,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         last_bar = str(bars[-1].get("date")) if bars else None
         series = apply_lease_basis(
             eod.annual_series(fund, latest_price=latest_px, splits=sp, ccy_override=CCY_SWITCH_OVERRIDES.get(i),
-                              last_bar_date=last_bar) if fund else {}, key, i)
+                              last_bar_date=last_bar) if fund else {}, key, i, c.get("sub_industry"))
         q = eod.quote(esym, fund_data=fund, eod_bars=bars, series=series) if (fund or bars) else {}
         if q.get("share_basis_flag") and i in SHARE_BASIS_REVIEWED_IDS and q.get("statement_shares"):
             q["shares"] = q["statement_shares"]          # reviewed: value on the statement share basis
@@ -350,7 +355,7 @@ def fetch_universe(key: str, a, eod: EODHD, state: dict) -> None:
         sp = eod.splits(esym, fund) if bars else {}
         ye_px = eod.year_end_prices(esym, bars, sp) if bars else None
         latest_px = float(bars[-1]["close"]) if (bars and bars[-1].get("close") is not None) else num((fins.get(cid) or {}).get("price"))
-        ser = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px), key, cid)
+        ser = apply_lease_basis(eod.annual_series(fund, latest_price=latest_px), key, cid, c.get("sub_industry"))
         panel_all.extend(eod.panel_rows(cid, str(c["ticker"]), esym, fund, series=ser, ye_prices=ye_px))
     if panel_all:
         write_csv(DATA_DIR / key / "fundamentals_panel.csv", PANEL_FIELDS, panel_all)

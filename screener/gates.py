@@ -639,6 +639,8 @@ def par_valuation(
     price, mc, ni = f("price"), f("market_cap_m"), f("ni_ttm_m")
     note_auto = auto_note(fin)
 
+    sub_ind = sub_industry if isinstance(sub_industry, str) and sub_industry else fin.get("sub_industry")
+
     # Step 1 — Active Peak Owner EPS: age-weighted mid-cycle reversion toward the 5Y peak (scenario: sandbox what-if).
     peak_eps_override = scenario.get("peak_eps")
     oe_peak = f("peak_oe_eps")
@@ -652,8 +654,13 @@ def par_valuation(
             if add_stored is not None:
                 oe_add = max(0.0, add_stored)
             else:
-                da_l, cx_l = f("da_ttm_m"), f("capex_ttm_m")
-                oe_add = max(0.0, abs(da_l) - abs(cx_l or 0.0)) if da_l is not None else 0.0
+                da_l, cx_l, ocf_l = f("da_ttm_m"), f("capex_ttm_m"), f("ocf_ttm_m")
+                is_bs_fin = is_balance_sheet_financial(sub_ind) or ("Consumer Finance" in str(sub_ind or ""))
+                if is_bs_fin or da_l is None or cx_l is None or abs(cx_l) <= 0.0:
+                    oe_add = 0.0
+                else:
+                    da_eff = min(abs(da_l), max(0.0, ocf_l - ni)) if (ocf_l is not None and ni is not None) else abs(da_l)
+                    oe_add = max(0.0, da_eff - abs(cx_l))
             cur_eps = (price * ((ni + oe_add) / mc)) if (mc and mc > 0 and ni is not None and price and price > 0) else oe_peak
         if oe_peak is not None and cur_eps is not None:
             if "check share basis" in note_auto:
@@ -672,7 +679,6 @@ def par_valuation(
     dy = (f("dividends_ttm_m") or 0.0) / mc if (mc and mc > 0 and f("dividends_ttm_m") is not None) else 0.0
     fund_cap = cap if isinstance(cap, (int, float)) else f("cap")
     moat_arch = moat if isinstance(moat, str) and moat else fin.get("moat")
-    sub_ind = sub_industry if isinstance(sub_industry, str) and sub_industry else fin.get("sub_industry")
     roic, roic_source = active_roic(fin, sub_ind)
     roic_gaap = f("roic_median")
     roic_op = roic if roic is not None else 0.18

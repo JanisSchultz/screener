@@ -1,9 +1,9 @@
 """Quantitative PAR inputs computed from annual series and monthly prices (no network).
 
-Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, D&A − CapEx − IFRS-16 lease depreciation)) ÷
-period-end shares outstanding. D&A is taken
-deterministically (cash-flow depreciation → income-statement D&A → reconciled depreciation) and capped at 1.5× its
-prior-3y median (impairment guard); lease depreciation ≈ 20% of average lease liabilities for IFRS reporters only.
+Owner EPS (per fiscal year, reporting currency) = (Net income + MAX(0, min(D&A, max(0, OCF − NI)) − CapEx − IFRS-16 lease depreciation)) ÷
+period-end shares outstanding (0 add-back for balance-sheet financials or when CapEx is missing/zero). D&A is taken
+deterministically (cash-flow depreciation → income-statement D&A → reconciled depreciation), capped at 1.5× its
+prior-3y median (impairment guard), and bounded by max(0, OCF − NI) so OCF-deducted content/fleet additions (e.g. NFLX) are not added back as phantom free cash; lease depreciation ≈ 20% of average lease liabilities for IFRS reporters only.
 - Last peak Owner EPS = highest Owner EPS of the latest 5 fiscal years (converted to the quote currency).
 - Cycle low / high multiple: for each of the last 60 monthly closes, price ÷ the peak Owner EPS known at that
   month (a fiscal year counts from its period end + 3 months filing lag; peak over the 5 fiscal years up to
@@ -57,7 +57,7 @@ def spike_years(s: dict) -> list[int]:
 
 def owner_eps_series(s: dict) -> dict:
     """{fiscal year: Owner EPS in reporting currency} for years with net income and shares (spike years left out).
-    Add-back = MAX(0, D&A − CapEx − IFRS-16 lease depreciation proxy), see metrics.owner_addback."""
+    Add-back = MAX(0, min(D&A, max(0, OCF − NI)) − CapEx − IFRS-16 lease depreciation proxy), see metrics.owner_addback."""
     g = lambda k: s.get(k) or {}
     ni, shares = g("ni"), g("shares")
     skip = set(spike_years(s))
