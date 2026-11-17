@@ -3679,13 +3679,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           const g5El = document.getElementById('dossier-g5-mgmt');
           const g5Num = hasG5 ? Number(c.g5_mgmt) : null;
           if (g5Num === 2) {{
-            g5El.textContent = '2/2 — Elite Compounder';
+            g5El.textContent = 'Elite Compounder';
             g5El.style.color = 'var(--green)';
           }} else if (g5Num === 1) {{
-            g5El.textContent = '1/2 — Standard Pass';
+            g5El.textContent = 'Standard Pass';
             g5El.style.color = 'var(--text-main)';
           }} else if (g5Num === 0) {{
-            g5El.textContent = '0/2 — Red Flag';
+            g5El.textContent = 'Red Flag';
             g5El.style.color = 'var(--red)';
           }} else {{
             g5El.textContent = '-';
@@ -3694,10 +3694,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
           const g6El = document.getElementById('dossier-g6-cash');
           if (c.g6_cash === 'Y') {{
-            g6El.textContent = 'Y — Pass';
+            g6El.textContent = 'Pass';
             g6El.style.color = 'var(--green)';
           }} else if (c.g6_cash === 'N') {{
-            g6El.textContent = 'N — Fail';
+            g6El.textContent = 'Fail';
             g6El.style.color = 'var(--red)';
           }} else {{
             g6El.textContent = '-';
