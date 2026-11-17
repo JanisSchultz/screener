@@ -129,7 +129,7 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
                 "gate_1": "Y",
                 "gate_2": "Y",
                 "gate_3a_moat_archetype": "Toll booth & switching costs",
-                "gate_3b_pricing_and_proof": "N",
+                "gate_3b_pricing_and_proof": "Y",
                 "gate_4_runway_cap": 10,
                 "gate_5_management_score": 1,
                 "gate_6_cash_and_balance_sheet": "N",
@@ -138,11 +138,34 @@ class ApplyEvaluationWaterfallTests(unittest.TestCase):
             }
         }
         qual, _, warnings = validate_and_waterfall(payload)
-        self.assertEqual(qual["5"], "")
-        self.assertEqual(qual["6"], "")
+        self.assertEqual(qual["4"], 10)
+        self.assertEqual(qual["5"], 1)
+        self.assertEqual(qual["6"], "N")
         self.assertEqual(qual["calamity"], "")
         self.assertEqual(qual["calamity_note"], "")
         self.assertTrue(any("calamity" in w.lower() for w in warnings))
+        self.assertEqual(phase_results(qual, params({}))["result"], C.RES_REJ[4])
+
+    def test_gate5_failure_without_calamity_preserves_gate6(self):
+        for g6_val in ("Y", "N"):
+            with self.subTest(g6=g6_val):
+                payload = {
+                    "qualitative": {
+                        "gate_1": "Y",
+                        "gate_2": "Y",
+                        "gate_3a_moat_archetype": "Toll booth & switching costs",
+                        "gate_3b_pricing_and_proof": "Y",
+                        "gate_4_runway_cap": 20,
+                        "gate_5_management_score": 0,
+                        "gate_6_cash_and_balance_sheet": g6_val,
+                        "calamity_flag": "",
+                    }
+                }
+                qual, _, warnings = validate_and_waterfall(payload)
+                self.assertEqual(warnings, [])
+                self.assertEqual(qual["5"], 0)
+                self.assertEqual(qual["6"], g6_val)
+                self.assertEqual(phase_results(qual, params({}))["result"], C.RES_REJ[5])
 
     def test_quantitative_only_payload_leaves_qual_empty(self):
         payload = {"id": "RTO.GB", "quantitative_overrides": {"g_implied": 0.055, "roic_est": 0.35}}

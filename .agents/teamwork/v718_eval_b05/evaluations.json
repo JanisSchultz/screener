@@ -1,0 +1,112 @@
+[
+  {
+    "universe": "us",
+    "id": "ADBE",
+    "ticker": "ADBE",
+    "sub_industry": "Application Software",
+    "is_g5_reject": false,
+    "5": 0,
+    "6": "Y",
+    "diagnostic_rationale": "G5=0 due to March 2026 $150M FTC/DOJ settlement over deceptive subscription dark patterns and hidden early termination fees (violating Vector c Consumer Surplus), alongside the aborted $20B Figma deal that burned a $1B cash breakup fee and $20.8B of peak-cycle FY24-25 buybacks (though SBC is moderate at 8.2% of rev / 27.2% of FY25 NI and diluted shares fell 13.1% over 5Y). G6=Y on 111.8% 5Y Owner FCF conversion ($7.91B FY25 Owner FCF vs $7.13B NI), peak-to-peak Owner EPS compounding ($18.63 in FY25, +11.2% 10Y CAGR), -0.36y 3Y median net debt ($6.60B cash vs $6.21B LT debt), 41.1x interest coverage, and +$11.62B book equity.",
+    "peer_calibration_notes": "Benchmarked against US:INTU[0,Y] ($141M TurboTax dark-pattern settlement -> 5=0), US:ADSK[1,Y] (resolved accounting probe with zero restatements/consumer harm -> 5=1), US:CDNS[2,Y], and EU:DSY.FR[1,Y]. Adobe's $150M FTC/DOJ dark-pattern settlement directly triggers the same Vector (c) red flag as INTU, while its balance sheet and FCF conversion comfortably clear Gate 6."
+  },
+  {
+    "universe": "us",
+    "id": "CRM",
+    "ticker": "CRM",
+    "sub_industry": "Application Software",
+    "is_g5_reject": false,
+    "5": 0,
+    "6": "Y",
+    "diagnostic_rationale": "G5=0 as Benioff's multi-decade mega-M&A empire (Slack $27.7B, Tableau $15.7B, MuleSoft $6.5B, and FY25 Informatica expansion pushing goodwill/intangibles +$9.0B to $64.76B, 110% of equity) suppressed GAAP ROIC below 12% for 13 consecutive years (7.5% 5Y median; -$5.61B tangible equity), compounded by $15.54B 5Y SBC (79.9% of 5Y GAAP NI; $3.51B or 47.1% of FY25 NI) and bureaucratic bloat that required activist intervention to lift EBIT margins from 7.0% (FY21) to 21.5% (FY25, 21.3% ROIIC, -3.9% 5Y shares). G6=Y on 166.6% 5Y Owner FCF conversion ($10.89B FY25 Owner FCF vs $7.46B NI), peak-to-peak Owner EPS ($10.91 in FY25, +20.2% 10Y CAGR), -0.56y 3Y median net debt ($9.85B FY25 year-end net debt < 1.0x Owner FCF), 27.5x interest coverage, and +$59.14B equity.",
+    "peer_calibration_notes": "Reference Company & Example 4 calibrated against US:ROP[0] ($31.1B GW+Int, 6.1% 5Y GAAP ROIC), US:INTU[0,Y] ($18.6B GW+Int, 45% SBC/NI), US:PANW[0,Y] ($29.0B GW+Int, high SBC), US:TYL[1,Y] (single NIC deal with debt paid to zero, 6.5% SBC/Rev), and EU:SAP.DE[1,Y] (9.1% 5Y GAAP ROIC, 4.6% SBC/Rev). CRM's $64.8B M&A goodwill overhang, 13 years of <12% GAAP ROIC, 80% 5Y SBC/NI, and return to debt-funded M&A post-activism fail Gate 5 while its $10.89B post-SBC Owner FCF and <1x net debt clearly pass Gate 6."
+  },
+  {
+    "universe": "us",
+    "id": "INTU",
+    "ticker": "INTU",
+    "sub_industry": "Application Software",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "Y",
+    "diagnostic_rationale": "Preserved G5=0 (Gate-5 reject: $141M 50-state TurboTax dark-patterns settlement, $12B peak-bubble Mailchimp M&A leaving $18.62B goodwill/intangibles, and $2.06B FY26 SBC equal to 45.0% of GAAP NI masked by non-GAAP reporting). G6=Y on 118.6% 5Y Owner FCF conversion ($6.56B FY26 Owner FCF vs $4.57B NI), uninterrupted peak-to-peak Owner EPS compounding ($19.08 in FY26, +18.1% 10Y CAGR), 0.33y 3Y median net debt ($7.20B cash vs $6.42B LT debt / $8.42B total debt), 19.9x interest coverage, and +$18.99B equity (+$369M tangible equity).",
+    "peer_calibration_notes": "Preserved existing 5=0 per R2 mandate; Gate 6 calibrated against US:ADSK[1,Y], US:TYL[1,Y], and EU:SGE.GB[1,Y] (comparable SMB ledger peer with 106% FCF conversion, 1.82y ND/OE, and 9.8x coverage -> Y). INTU's cash conversion and fortress balance sheet comfortably pass Gate 6."
+  },
+  {
+    "universe": "us",
+    "id": "PLTR",
+    "ticker": "PLTR",
+    "sub_industry": "Application Software",
+    "is_g5_reject": false,
+    "5": 0,
+    "6": "Y",
+    "diagnostic_rationale": "G5=0 due to disenfranchising Class F variable-voting governance locking ~50% voting control with co-founders regardless of insider share sales, paired with extreme SBC dilution ($3.19B 5Y cumulative SBC = 24.5% of rev and 227.7% of 5Y GAAP NI; $684M or 15.3% of rev / 42.1% of NI in FY25) that inflated diluted shares +27.9% from 2,012M (FY21) to 2,573M (FY25). G6=Y on 90.8% 5Y post-SBC Owner FCF conversion ($1.42B FY25 Owner FCF vs $1.63B NI, 0.8% capex/rev), rising profitability ($0.63 FY25 Owner EPS peak), and a virtually debt-free net cash fortress ($7.18B cash & Treasuries vs $229M debt, -10.38y ND/OE, 99.0x coverage, +$7.39B tangible equity with zero goodwill).",
+    "peer_calibration_notes": "Calibrated against US:GOOGL[1,N] (dual-class structure but 6% SBC/Rev and net share shrink via buybacks -> 5=1) vs US:PANW[0,Y] (high SBC +12.9% share dilution -> 5=0) and US:MSFT[1,Y] / US:FTNT[2,Y]. Palantir's combination of permanent ~50% Class F voting entrenchment regardless of share sales and +27.9% 4Y dilution fails Gate 5 Vector (a)/(b), while its $7.18B debt-free net cash fortress and 90.8% post-SBC FCF conversion pass Gate 6."
+  },
+  {
+    "universe": "us",
+    "id": "TRMB",
+    "ticker": "TRMB",
+    "sub_industry": "Application Software",
+    "is_g5_reject": false,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "G5=0 due to value-destructive serial M&A (notably the $2.1B debt-funded Transporeon deal at >3.5x leverage followed by a $562M goodwill impairment; $6.16B goodwill/intangibles exceeding $5.84B equity) that kept GAAP ROIC below 10% for 10 consecutive years (7.55% 5Y median; 4.38% incremental ROIIC vs 12% hurdle; 106% M&A reinvestment) plus $863M of FY25 buybacks while Owner FCF collapsed to $40M. G6=N as Pillar 2 fails with 50.2% 5Y Owner FCF conversion (2Y OCF/NI 47.6%; FY25 Owner FCF fell to $39.8M or 9.4% of NI as capex surged to $253M), Owner EPS of $1.77 trails its FY21 peak of $2.47 by 28%, 3Y interest coverage is borderline at 5.08x (2.69y ND/OE), and tangible equity is -$328M.",
+    "peer_calibration_notes": "Benchmarked against EU:HEXA B.SE[1,N] (geospatial/metrology twin that failed Gate 6 on serial M&A goodwill bloat and weak EPS compounding), US:ROP[0] (5=0 on sub-hurdle M&A rollups), and US:PTC[1,Y] / US:ADSK[1,Y]. Unlike PTC (17.4% FY25 GAAP ROIC, 88.2% FCF conv), TRMB fails both the 12% M&A reinvestment bar (5=0) and the 80% FCF conversion / peak-to-peak pillars (6=N)."
+  },
+  {
+    "universe": "us",
+    "id": "NOW",
+    "ticker": "NOW",
+    "sub_industry": "Systems Software",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1 reflecting strong organic product-led execution (20.9% FY25 revenue growth to $13.28B, 98%+ renewal rate), expanding GAAP EBIT margin (13.7% in FY25 vs 4.4% in FY20), above-hurdle 18.1% 5Y GAAP ROIC (18.3% ROIIC), and +$8.27B positive tangible equity; heavy SBC (14.7% of FY25 rev / 111.8% of NI, trending down from 19.2% in FY21) precludes 2 but is offset by $1.84B FY25 buybacks holding 4Y share growth to +2.6%. G6=Y on 137.2% 5Y post-SBC Owner FCF conversion ($2.75B FY25 Owner FCF vs $1.75B NI), peak-to-peak Owner EPS compounding ($1.67 in FY25, +27.5% CAGR), -2.68y net cash fortress ($6.28B cash vs $2.40B total debt), and 59.3x interest coverage.",
+    "peer_calibration_notes": "Benchmarked against Systems Software peers US:MSFT[1,Y] and US:FTNT[2,Y] (4.1% SBC/Rev, 16% founder stake -> 5=2) plus Application Software peers US:ADSK[1,Y] (10.9% SBC/Rev) and US:SNPS[1,N] (12.7% SBC/Rev) vs US:PANW[0,Y]. Unlike PANW's $28B dilutive mega-M&A, NOW compounded organically at 18%+ GAAP ROIC with steadily declining SBC/Rev and near-flat shares (+0.6%/yr), meriting 5=1 and a clear G6=Y."
+  },
+  {
+    "universe": "us",
+    "id": "PANW",
+    "ticker": "PANW",
+    "sub_industry": "Systems Software",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "Y",
+    "diagnostic_rationale": "Preserved G5=0 (Gate-5 reject: dilutive $25B CyberArk and $3B Chronosphere mega-M&A inflating goodwill/intangibles to $29.03B and compressing FY26 GAAP ROIC to 3.5% / 3.1% ROIIC, alongside $1.77B FY26 SBC equal to 15.5% of rev / 577.9% of GAAP NI and +12.9% 4Y share dilution). G6=Y as equity-funded deal structure preserved a net cash fortress ($3.07B cash vs $2.50B total debt / $1.77B LT debt; -1.94y ND/OE; 99.0x interest coverage; +$27.49B equity), while post-SBC Owner FCF grew every year to $2.34B in FY26 (211.8% 5Y FCF conversion, p2p_ok=Y).",
+    "peer_calibration_notes": "Preserved existing 5=0 per R2 mandate; Gate 6 benchmarked against US:FTNT[2,Y] (net cash cybersecurity twin -> Y) and US:SNPS[1,N] (failed G6 due to $13.5B Ansys debt and 63.8% FCF conv). Because PANW avoided heavy net debt and delivers 211.8% post-SBC FCF conversion with $2.34B rising Owner FCF, M&A equity dilution is penalized at Gate 5 while Gate 6 passes (Anti-Drift Rule #3)."
+  },
+  {
+    "universe": "us",
+    "id": "ACN",
+    "ticker": "ACN",
+    "sub_industry": "IT Consulting & Other Services",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1 for disciplined, shareholder-aligned stewardship: low SBC (2.8% of FY26 rev / 25.1% of GAAP NI), steady -5.2% 4Y share count reduction (-39% since FY02), 34.3% 5Y median GAAP ROIC (14.4% incremental ROIIC > 12% hurdle), consistent 14-15.4% GAAP EBIT margins, and self-funded tuck-in M&A (41.5% reinvestment), though global partnership scale precludes 2. G6=Y on 105.8% 5Y Owner FCF conversion ($9.52B FY26 Owner FCF vs $8.37B NI, 1.0% capex/rev), uninterrupted peak-to-peak Owner EPS ($16.44 in FY26), -0.51y 3Y median net debt ($12.84B cash vs $13.40B total debt; FY26 net debt $566M = 0.06x FCF), 44.7x interest coverage, and +$31.57B equity (+$1.84B tangible equity).",
+    "peer_calibration_notes": "No completed IT Consulting peers exist in the universe; calibrated cross-sector against US:MSFT[1,Y] and EU:SAP.DE[1,Y] on capital allocation discipline and SBC restraint. Accenture's 2.8% SBC/Rev, -5.2% share shrink, 34.3% GAAP ROIC, and near-zero net debt easily earn 5=1 and 6=Y."
+  },
+  {
+    "universe": "us",
+    "id": "IT",
+    "ticker": "IT",
+    "sub_industry": "IT Consulting & Other Services",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1 driven by ultra-low SBC (2.4% of FY25 rev / 21.4% of NI), -14.0% 4Y share reduction (83.8M to 72.1M), 43.3% 5Y median GAAP ROIC, and zero M&A rollups since CEB, though aggressive $1.99B FY25 buybacks (partly funded with +$718M debt as Contract Value slowed from 8% to 1%) preclude 2. G6=Y on 117.0% 5Y Owner FCF conversion ($1.02B FY25 Owner FCF vs $729M NI), p2p_ok=Y, 1.17y 3Y median net debt (FY25 year-end net debt $1.90B = 1.86x Owner FCF, well under 4.0y), 9.15x interest coverage (4.97% fixed notes due 2028-2030), and positive +$320M book equity (though tangible equity fell to -$2.76B, requiring monitoring).",
+    "peer_calibration_notes": "Specifically cross-checked against negative-equity debt-buyback rejects US:FICO[1,N] (-$3.87B equity, 4.48y ND/OE, 6.92x intcov) and US:MSCI[1,N] (-$2.65B equity, $4.5B+ debt), plus passing negative-equity peer US:VRSN[2,Y] (1.45y ND/OE, 14.05x intcov) and US:OTIS[1,Y] (3.86y ND/OE). Unlike FICO/MSCI, IT retains positive book equity (+$320M), low 1.17y median ND/OE (1.86x FY25 FCF), and 9.15x coverage, passing Gate 6 with a watch-note on FY25 leverage."
+  },
+  {
+    "universe": "us",
+    "id": "SHOP",
+    "ticker": "SHOP",
+    "sub_industry": "Internet Services & Infrastructure (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1 as founder-CEO Tobi Lutke demonstrated candid Drucker-style Planned Abandonment by divesting Deliverr logistics in 2023 (restoring GAAP EBIT margin to 12.7%, GAAP ROIC to 16.1%, and ROIIC to 15.8%), halved SBC from 9.8% (FY22) to 3.9% of FY25 revenue (36.5% of NI; +3.8% 4Y dilution), and drove +30% FY25 revenue growth with strong merchant surplus (prior Deliverr M&A misstep and dual-class voting preclude 2). G6=Y on 85.8% 5Y post-SBC Owner FCF conversion (126.6% in FY25 at $1.56B Owner FCF vs $1.23B NI, 0.2% capex/rev), peak-to-peak Owner EPS ($0.95 FY25), and a fortress net cash balance sheet ($5.77B cash & securities vs $188M debt, -4.51y ND/OE, 99.0x coverage, +$13.47B equity).",
+    "peer_calibration_notes": "Benchmarked against Internet Services & Infrastructure peer US:VRSN[2,Y] (pure digital toll booth with 67.7% EBIT margin and -16.6% share shrink -> 5=2) and Application Software peers. Shopify's Deliverr divestiture discipline, 3.9% SBC/Rev, 15.8% ROIIC, and $5.58B net cash position cleanly earn 5=1 and 6=Y."
+  }
+]

@@ -1,61 +1,47 @@
 # Original User Request
 
-## Approved Task Prompt — 2026-11-16 10:32:12 UTC
+## Initial Request — 2026-11-17T15:31:16Z
 
-Execute Phase 2 bulk re-scoring for the Quality & Moat Screener across all 989 companies reaching Gate 3 in the US, European, and Canadian universes according to the qualitative evaluation framework and deterministic CAP engine.
+Implement the Two-Stage Munger Waterfall and diagnostic Gate 5–6 scorecard (v7.18) in the Quality & Moat Screener so every company advancing past Gate 3 (485 companies across US, EU, and CA: 483 clean `3b = "Y"` passers plus `EL` and `APD` on Calamity pass) receives a complete 6-gate scorecard (`G4`, `G5`, and `G6`), even when rejected at Gate 4 (`CAP < 15Y`) or Gate 5 (`5 = 0`), with zero impact on `thr_cap = 15`, `phase_results`, or Prime Grade (225) and Prime Grade Calamity (13 total / 11 < 3 G6 flags) counts.
 
 Working directory: /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener
 Integrity mode: development
 
 ## Requirements
 
-### R1. Bulk Re-Scoring Across All Gate 3 Companies
-Evaluate and score Gate 3 Moat Profiles (`3_tb`, `3_ia`, `3_se`, `3_rd`, and derived primary moat `3a`) and Gate 4 Competitive Forces (`4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, deterministic final CAP `4`, and mandatory `4n` Runway & Forces note whenever any force >= 1) for all 989 companies reaching Gate 3 across `data/us/inputs.csv`, `data/eu/inputs.csv`, and `data/ca/inputs.csv`, adhering strictly to `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`. The team may structure batching and execution order as appropriate.
+### R1. Waterfall Validation, Ingestion & Audit Engine
+- In `screener/apply_evaluation.py` (`validate_and_waterfall`), keep strict downstream scrubbing when Gate 1 = `"N"`, Gate 2 = `"N"`, or unwaived Gate 3 fails (`3a = "None"` or `3b = "N"` without `calamity = "Y"`). Remove downstream scrubbing of `5` and `6` when Gate 4 `CAP < 15` and of `6` when Gate 5 = `0` without calamity, keep `clear_calamity(...)` when Gate 4 `CAP < 15` (non-waivable Anchor Gate), and validate `5` in `{0, 1, 2}` and `6` in `{"Y", "N"}` whenever supplied.
+- In `screener/bulk_scorer.py`, update `validate_company_evaluation` to preserve `5` and `6` on `CAP < 15` and `6` on `5 = 0`, validate `5` (`0/1/2`) and `6` (`Y/N`), and warn if any company advancing past Gate 3 leaves `5` or `6` blank. Update `audit_gate_3_universe` so Gate-3 failures still require blank `G4–G6`, while all 485 Gate-3-advancing companies are audited for non-empty, valid `5` and `6` (zero blank G5/G6 allowed across moat franchises). Update `REFERENCE_SNAPSHOT` for `CRM` once its verified `5` and `6` scores are recorded (keeping the other 10 reference companies, `NUE` blank `G4–G6`, and mirrors `ASML`/`ASML.NL` and `FER`/`FER.ES` consistent).
 
-### R2. Waterfall Integrity, Mirror Synchronization, and Calamity Handling
-Enforce the sequential Munger reject waterfall using `screener/apply_evaluation.py` (clearing downstream gate fields on gate rejection unless qualifying under Calamity pass rules for Gates 3b, 5, or 6). Synchronize dual-listed mirror tickers defined in `data/*/universe.json` (such as `ASML` and `ASML.NL`) so that scores, notes, and evidence match identically across universes.
+### R2. Bottom-Up Qualitative Evaluation of the 121 Incomplete Moat Franchises
+- Evaluate all 121 incomplete moat franchises (108 Gate-4 rejects at `CAP = 5Y / 10Y` across 57 US, 51 EU, 0 CA + 13 Gate-5 rejects at `5 = 0` across 9 US, 4 EU, 0 CA) against the Gate 5 and Gate 6 rubrics in `QUALITATIVE_EVALUATION_SPEC.md` using only the existing local datasets and dossiers in the repository (`financials.csv`, `fundamentals_panel.csv`, `prescreen.csv` `g6_default`/`g6_checks`, and existing `note` dossiers).
+- When batching and dispatching the 121 companies for bottom-up Gate 5 & Gate 6 evaluation, split evaluation agents strictly by GICS Sector / Sub-Industry across US and EU combined (never split US vs. EU into separate evaluator agents), preserving Sub-Industry Peer Benchmarking (Anti-Drift Rule #1 in `QUALITATIVE_EVALUATION_SPEC.md` / `COMPANY_EVALUATION_SPEC.md`) so cross-Atlantic sector peers are scored side-by-side on the same Gate 5 & Gate 6 yardstick and cross-checked against already-scored same-sub-industry peers in the 364 completed moat franchises.
+- Score Gate 5 (`0 / 1 / 2`) for the 108 Gate-4 rejects while preserving existing `5 = 0` on the 13 Gate-5 rejects, and score Gate 6 (`Y / N`) for all 121 companies across Pillars 1–3 (`p2p_ok`, `fcf_conv >= 80%`, `g6_netdebt_yrs <= 4.0y`, `g6_intcov > 5.0x`, Solvency II > 200% for insurers, automatic `N` for commercial fractional-reserve banks, regulated utilities with `g6_default = "N"`, and debt-funded buyback negative equity).
+- Strip stale `"Downstream gates bypassed per waterfall."` sentences from `note` on these 121 rows, fix `CRM`'s stale `CAP = 10` text in `note` to match its deterministic `CAP = 5Y`, and append `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`. Keep all Gate 1–4 scores (`1`, `2`, `3_*`, `3a`, `3b`, `3m`, `4_*`, `4`, `4n`) untouched.
 
-### R3. Output Regeneration and Test Suite Alignment
-Run `python3 build.py` to regenerate the screener outputs (`output/screener.html`, `output/index.html`, and `docs/index.html`). Run the full test suite (`python3 -m unittest discover tests`), updating the baseline universe count assertions in `tests/test_calamity_tier.py` to match the newly verified counts when scoring shifts companies between quality/calamity pass and rejected states.
+### R3. Dashboard UI, Version Bump & Documentation
+- In `screener/dashboard.py`: update the 6-Gate Waterfall Stepper (`openDrawer`) to display concrete gate values in stepper sub-labels when scored (e.g. `PASS · 25Y` / `FAIL · 10Y` on G4, `PASS · 2/2` / `PASS · 1/2` / `FAIL · 0/2` on G5, `PASS · Y` / `FAIL · N` on G6, preserving `WAIVED` styling on calamity waivers); add a 2-card row below Moat Archetype / Moat Runway (CAP) in the Qualitative Investment Thesis & Moat Analysis card grid showing `Management & Allocation (G5)` (`2/2 — Elite Compounder`, `1/2 — Standard Pass`, `0/2 — Red Flag`) and `Cash & Fortress B/S (G6)` (`Y — Pass`, `N — Fail`) whenever scored (populating `#dossier-g6-answer` with `Y` or `N`); add `g5_mgmt` (`G5 Mgmt`) and `g6_cash` (`G6 B/S`) to `ALL_COLS` in expanded table mode on Quality Grade and Full Universe while keeping default Compact Cols unchanged.
+- In `screener/config.py`, bump `SCREENER_VERSION` from `"7.17"` to `"7.18"` and add the `"7.18"` `CHANGELOG` entry.
+- Update waterfall rules and field nullable tables in `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md` to reflect the Two-Stage Waterfall (Stage 1 early stop at Gates 1–3; Stage 2 full diagnostic scorecard across Gates 4–6).
+
+### R4. Test Suite Alignment
+- Update Gate 4 / Gate 5 waterfall scrubbing assertions and add Two-Stage Waterfall coverage in `tests/test_calamity_tier.py` (`test_gate4_failure_clears_calamity_and_downstream` verifying calamity is cleared while diagnostic `5` and `6` are preserved and `phase_results` still rejects at Gate 4) and `tests/test_bulk_scoring_e2e.py` (`test_t1_f7_04`, `test_t1_f7_05`, and `test_all_989_gate3_companies_completed` asserting all 485 Gate-3-advancing companies have valid non-empty `5` and `6` while all 504 Gate-3 rejects keep `4_*`, `4`, `4n`, `5`, `6` blank).
 
 ## Verification Resources
 - `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`
-- 11 Phase 1 reference scored companies in `data/{us,eu,ca}/inputs.csv` (`SPGI`, `COST`, `ASML.NL`, `ASML`, `MSFT`, `WM`, `RMS.FR`, `CNR.CA`, `HSY`, `CRM`, `NUE`)
-- Evaluation application engine: `python3 screener/apply_evaluation.py`
-- Test suite: `python3 -m unittest discover tests`
+- Local statement context: `financials.csv`, `fundamentals_panel.csv`, `prescreen.csv` (`g6_default`, `g6_checks`), and existing `note` dossiers
+- Audit script: `python3 screener/bulk_scorer.py --audit`
 - Build script: `python3 build.py`
+- Test suite: `python3 -m unittest discover -s tests`
 
 ## Acceptance Criteria
 
-### Scoring and Data Completeness
-- [ ] All 989 companies reaching Gate 3 have deterministic Gate 3 moat scores (`3_tb`, `3_ia`, `3_se`, `3_rd`, `3a`) and Gate 4 force scores (`4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, `4`) populated in `data/{us,eu,ca}/inputs.csv`.
-- [ ] A non-empty `4n` Runway & Forces note is present for every scored company where at least one competitive force is >= 1.
-- [ ] Dual-listed mirror companies have identical gate scores, notes, and evidence across universes.
-- [ ] No manual overrides are applied to deterministic CAP calculations.
+### Engine, Audit & Funnel Invariance
+- [ ] `python3 screener/bulk_scorer.py --audit` passes with 0 discrepancies, 0 waterfall violations, and 100% dual-listed mirror parity.
+- [ ] All 485 Gate-3-advancing companies have valid `5` in `{0, 1, 2}` and `6` in `{"Y", "N"}` (with existing `5 = 0` preserved on the 13 Gate-5 rejects), all 504 Gate-3 rejects keep `4_*`, `4`, `4n`, `5`, `6` blank, and all Gate 1–4 scores (`1`, `2`, `3_*`, `3a`, `3b`, `3m`, `4_*`, `4`, `4n`) remain unchanged.
+- [ ] Each of the 121 newly completed rows has `"Downstream gates bypassed per waterfall."` removed from `note`, appends `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`, and `CRM`'s `note` reflects `CAP = 5Y`.
 
-### System and Regression Verification
-- [ ] All unit tests pass cleanly via `python3 -m unittest discover tests` with updated baseline counts in `tests/test_calamity_tier.py` reflecting legitimate score movements.
-- [ ] `python3 build.py` runs cleanly with exit code 0, successfully compiling updated HTML reports in `output/` and `docs/`.
-
-
-## Follow-up — 2026-11-16 10:49:42 UTC
-
-Important architectural & specification guidance for M1, M2, and M3 (please forward immediately to the active orchestrator, `test_writer_m1`, and `worker_m2`):
-
-1. **No Heuristic / Regex / Sector-Rule Scoring in `bulk_scorer.py`**:
-   - Per `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`, the 4 Gate 3 Moat scores (`3_tb`, `3_ia`, `3_se`, `3_rd`), the 5 Gate 4 Competitive Force scores (`4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`), and the `4n` Runway & Forces notes are **qualitative investment evaluations**, NOT mechanical keyword/regex/sub-industry heuristics.
-   - Do **NOT** have `screener/bulk_scorer.py` invent scores or templated `4n` strings via Python regexes or sector lookup tables. Instead, `bulk_scorer.py` (M2) should be a **batch context-exporter, deterministic CAP/waterfall batch-ingester, validator, and mirror-sync tool**, while **M3 dispatches parallel AI evaluator subagents in batches** to genuinely evaluate each company individually (using its business model, existing `3m`/`note`/`evidence`, financials in `data/*/financials.csv`, and competitive/macrotrend context) and write authentic, company-specific scores and `4n` notes.
-   - Note also: if a company that previously failed Gate 4 (`CAP < 15`, leaving Gates `5` and `6` blank) shifts to `CAP >= 15` under honest re-scoring, the evaluator agent must also score Gates `5` and `6` so no company is left in `"To review (blank gate)"`.
-
-2. **Waterfall Rule on the 989 Gate 3 Companies (R1 + R2 Alignment for `test_bulk_scoring_e2e.py`)**:
-   - All **989** companies reaching Gate 3 (`1 == "Y"` and `2 == "Y"`) must have Gate 3 moat scores (`3_tb`, `3_ia`, `3_se`, `3_rd`, and derived `3a`) populated.
-   - Per R2 (`screener/apply_evaluation.py` Munger sequential waterfall, illustrated by Phase 1 reference company `NUE`), the ~504 companies that **fail Gate 3** (`3a == "None"` or `3b == "N"` without `calamity == "Y"`) **must have Gate 4 (`4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, `4`, `4n`) and Gates 5–6 left blank (`""`)**.
-   - Only companies that **pass Gate 3** (`3a != "None"` and `(3b == "Y"` or `calamity == "Y")`, ~485 companies) advance to Gate 4 and receive `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, deterministic `4`, and `4n` (mandatory whenever any Force >= 1). Make sure `tests/test_bulk_scoring_e2e.py` asserts this exact waterfall rule!
-
-
-## Follow-up — 2026-11-16 11:04:01 UTC
-
-Orchestration & quality note for M3 (978 remaining companies):
-Assigning all 978 companies to a single `worker_m3_evaluator` risks context exhaustion or pressuring that single worker into writing a Python heuristic/keyword generator script to produce the 978 evaluations.
-
-Please ensure the Orchestrator partitions M3 across **parallel batch evaluator subagents** (e.g., via sub-orchestrators managing ~15–20 batch evaluator workers of ~50–65 companies each writing separate batch JSON files, followed by a single merge/ingest step into `data/{us,eu,ca}/inputs.csv`) so every company receives genuine, individual AI qualitative judgment rather than rule-based script generation, and have the forensic auditor explicitly check that batch JSONs were authored by AI company evaluation rather than a heuristic Python generator script.
+### Build, Dashboard, Docs & Tests
+- [ ] `python3 build.py` exits cleanly and regenerates `output/screener.html`, `output/index.html`, and `docs/index.html` with Prime Grade (225) and Prime Grade Calamity (11 / 13) counts unchanged, `SCREENER_VERSION = "7.18"` and `"7.18"` `CHANGELOG` entry in `screener/config.py`, and Two-Stage Waterfall updates in `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`.
+- [ ] `screener/dashboard.py` includes the scored sub-labels in `openDrawer`, the 2-card G5/G6 row below Moat Archetype / Moat Runway (CAP) (and `#dossier-g6-answer` population), and `g5_mgmt` / `g6_cash` in `ALL_COLS` with Compact Cols unchanged.
+- [ ] `python3 -m unittest discover -s tests` passes 100% across all unit, parity, dashboard, and E2E tests.

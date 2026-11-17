@@ -1,0 +1,51 @@
+# Handoff Report — `v718_eval_b10` (Batch 10: Real Estate & Utilities, US+EU Combined)
+
+## 1. Observation
+- Inspected all 13 assigned companies (`10` US + `3` EU) across `data/us/{inputs,financials,fundamentals_panel,prescreen}.csv` and `data/eu/{inputs,financials,fundamentals_panel,prescreen}.csv`, plus all `49` completed sector peers (`5` Real Estate across US+EU; `44` Utilities across US+EU+CA) in read-only mode.
+- **Completed Peer Calibration Baseline**:
+  - Real Estate completed peers (`5`): `US:AMT[1,N]`, `US:SBAC[1,N]`, `EU:SAGA B.SE[2,N]`, `EU:SGRO.GB[1,N]`, `EU:WDP.BE[2,N]`. All 5 REITs score `6="N"` due to 8.3x–12.4x net debt/OE, sub-5x interest coverage (except `WDP.BE` 5.29x), and >100% NI payout / equity issuance reliance. `US:SBAC` carries `-$4,853.5M` negative equity and scores `5=1, 6=N` per Anti-Drift Rule #3.
+  - Utilities completed peers (`44`): 100% (`44/44`) carry `prescreen.csv` `g6_default="N"` and score `6="N"`; `7` score `5=2` (`US:WEC`, `US:ATO`, `EU:IBE.ES`, `EU:HER.IT`, `EU:SVT.GB`, `CA:FTS.CA`, `CA:H.CA`) and `37` score `5=1` (e.g., `US:FE`, `US:AEP`, `US:DUK`, `US:NEE`, `EU:ENEL.IT`, `EU:NG..GB`, `EU:IG.IT`, `EU:SRG.IT`, `EU:UU..GB`).
+  - Zero completed companies across the entire repository score `6="Y"` while failing both `p2p_ok="N"` and `g6_intcov < 5.0`.
+- **Direct Financial & Panel Observations on Batch 10 (13 Companies)**:
+  1. `US:DLR` (`4=5`, `5=""`): `roic_med=1.51%`, `fcf_conv=17.7%` (5Y Capex `$14,702.4M` vs OCF `$9,670.0M`), `g6_netdebt_yrs=17.40y` (`lt_debt $18,402.1M`, `cash $3,451.6M`), `g6_intcov=1.20x`, `dividends=$1,728.5M > NI=$1,267.9M`, `diluted_shares` up +142% (`145.6M` FY15 to `351.6M` FY25), `sbc_m=$70.2M`.
+  2. `US:WELL` (`4=10`, `5=""`): `p2p_ok=N` (`cagr_oe_eps=-1.35%`, FY25 Owner EPS `$3.94` < FY16 `$4.45`), `g6_netdebt_yrs=5.52y` (`lt_debt $19,197.3M`, `cash $5,033.7M`), `g6_intcov=1.55x` (TTM EBIT `$355.2M` / interest `$652.0M`), `dividends=$1,878.0M > NI=$936.8M`, `diluted_shares` up +70% (`418.8M` FY20 to `710.2M` FY25), and FY25 `sbc_m=$1,556.7M` (20x FY24's `$75.8M`, 166% of FY25 NI) alongside strong SHO operational recovery (>20% NOI growth) and deleveraging via premium P/NAV equity.
+  3. `EU:UTG.GB` (`4=5`, `5=""`): `roic_med=3.00%`, `p2p_ok=N` (`cagr_oe_eps=-0.82%`, FY25 Owner EPS `£0.199` vs FY22 `£0.885`), `fcf_conv=56.6%` (5Y rep FCF `-£230.2M`), `g6_netdebt_yrs=10.19y` (`lt_debt £1,256.2M`, `cash £35.8M`), `g6_intcov=5.20x`, `dividends=£153.7M > NI=£97.6M`, `sbc_m=£1.5M`, shares up +103% (`241.2M` FY15 to `489.5M` FY25).
+  4. `US:IRM` (`4=5`, `5=""`): `roic_op=14.41%` (`roic_med=6.56%`), `p2p_ok=Y`, `fcf_conv=48.8%` (5Y rep FCF `-$1,641.8M`, FY25 capex `$2,271.6M` vs OCF `$1,340.0M`), `g6_netdebt_yrs=75.29y` (`lt_debt $16,215.9M`, `cash $158.5M`), `g6_intcov=1.54x`, `equity_m=-$644.9M` (negative book equity), `sbc_m=$140.3M`.
+  5. `US:CSGP` (`4=25`, `5="0"`): `p2p_ok=N` (`cagr_oe_eps=-0.22%`, Owner EPS collapsed `$0.954` FY19 / `$0.948` FY22 -> `$0.340` FY24 -> `$0.017` FY25), `g6_intcov=0.17x` (`ebit=-$72.0M`, `ni=$7.0M`, `interest=$19.0M`), FY25 `owner_fcf_m=-$27.0M` (FY24 rep FCF `-$245.4M`), cash fell from `$4,681.0M` (FY24) to `$1,733.0M` (FY25) and `$500M` (Q3 2026 in `inputs.csv` dossier) against `$993.0M` LT debt amid `$575.0M` FY25 buybacks.
+  6. `US:CCI` (`4=20`, `5="0"`): `g6_netdebt_yrs=25.28y` (`lt_debt $21,554.0M`, `total_debt $29,566.0M`, `cash $269.0M`), `g6_intcov=2.17x`, `equity_m=-$1,635.0M`, 5Y dividends `$12,507M` vs 5Y NI `$814M` (incl. FY24 `-$3,903M` fiber loss).
+  7. `US:EIX` (`4=10`, `5=""`, `g6_default="N"`): `roic_med=4.88%`, `g6_netdebt_yrs=28.19y` (`lt_debt $36,070M`), `g6_intcov=1.63x`, `fcf_conv=41.7%` (5Y rep FCF `-$11,511M`), continuous dividend growth (`$707M` FY17 -> `$1,378M` FY25), shares `326M` FY18 -> `385M` FY25 (+18%).
+  8. `US:ES` (`4=15`, `5="0"`, `g6_default="N"`, `fin_note` blocking flag): Direct `fundamentals_panel.csv` check confirms FY23 NI `-$442.2M` (offshore wind impairment), FY24 NI `$811.7M`, and FY25 NI `$1,692.4M` = `1.44x` OCF `$1,175.7M`; `roic_med=4.74%`, `g6_netdebt_yrs=35.84y` (`lt_debt $27,153.3M`), `g6_intcov=2.43x`, `fcf_conv=44.4%` (5Y rep FCF `-$6,089M`).
+  9. `US:SO` (`4=20`, `5="0"`, `g6_default="N"`): `roic_med=5.42%`, `g6_netdebt_yrs=15.41y` (`lt_debt $64,897M`), `g6_intcov=2.38x`, `fcf_conv=78.4%` (5Y rep FCF `-$6,336M`), `p2p_ok=N` (`cagr_oe_eps=-2.55%`).
+  10. `EU:ENG.ES` (`4=5`, `5=""`, `g6_default="N"`, `fin_note` blocking flag): Direct `fundamentals_panel.csv` check confirms FY24 NI `-€299.3M` (Tallgrass loss) and FY25 NI `€339.1M` = `1.60x` OCF `€212.5M` while EBIT fell `€428.7M -> €225.0M`; however, total debt was cut 51% (`€5,736.1M` FY21 -> `€2,822.9M` FY25) with near-zero share dilution (`261.5M -> 262.3M`) and tiny SBC (`€0–1.4M`). `roic_med=6.06%`, `g6_netdebt_yrs=7.16y`, `g6_intcov=3.58x`, `p2p_ok=N` (`cagr_oe_eps=-4.84%`).
+  11. `US:D` (`4=20`, `5="0"`, `g6_default="N"`): `roic_med=3.74%`, `g6_netdebt_yrs=20.15y` (`lt_debt $43,639M`), `g6_intcov=2.04x`, `fcf_conv=39.8%` (5Y rep FCF `-$24,166M`), `p2p_ok=N` (`cagr_oe_eps=-3.37%`).
+  12. `US:PCG` (`4=10`, `5=""`, `g6_default="N"`): Safety/wildfire negligence caused FY18 `-$6,837M` & FY19 `-$7,642M` losses, 2019 Ch.11 bankruptcy, 5Y dividend wipeout, +325% share dilution (`518.2M` FY17 -> `2,202.0M` FY25; `-$2,707M` equity issued FY24), and `-11.67%` Owner EPS CAGR (`p2p_ok=N`); `roic_med=4.07%`, `g6_netdebt_yrs=23.20y` (`lt_debt $57,387M`), `g6_intcov=1.46x`, `fcf_conv=56.6%` (5Y rep FCF `-$21,662M`).
+  13. `EU:PNN.GB` (`4=5`, `5=""`, `g6_default="N"`, `fin_note` blocking flag): Direct `fundamentals_panel.csv` check confirms FY25 shares surged +65% (`285.9M -> 473.1M`) on emergency £490M rights issue after distributing `£1,590.3M` dividends in FY21 and incurring FY23 (`-£9.5M`) & FY24 (`-£57.9M`) losses alongside Brixham drinking-water parasite contamination and criminal sewage fines; `roic_med=3.81%`, `g6_netdebt_yrs=99.0y`, `g6_intcov=0.89x`, `fcf_conv=-331.7%`, `p2p_ok=N` (`cagr_oe_eps=-21.1%`).
+- Confirmed zero occurrences of `"Downstream gates bypassed..."` (or variants) in `note` across all 13 Batch 10 rows.
+
+## 2. Logic Chain
+1. **Preserving Gate-5 Rejects (`5=0`)**: Per `DISPATCH.md` and `ORIGINAL_REQUEST.md` R2, `US:CSGP`, `US:CCI`, `US:ES`, `US:SO`, and `US:D` keep `5=0` (`is_g5_reject: true`).
+2. **Utilities Gate 6 (`6="N"`)**: All 7 Utilities carry `prescreen.csv` `g6_default="N"`, match 44/44 completed Utilities peers at `6="N"`, and independently fail Pillar 3 (`g6_netdebt_yrs` 7.16y–99.0y > 4.0y; `g6_intcov` 0.89x–3.58x < 5.0x) and capped regulated ROIC (3.7%–6.1%).
+3. **Utilities Gate 5 Calibration (`0/1/2`)**:
+   - `US:EIX` earns `5=1` (like `US:FE[1,N]`): avoided bankruptcy and non-core M&A blowups while growing dividends continuously, though wildfire exposure and +18% dilution bar `5=2`.
+   - `EU:ENG.ES` earns `5=1` (like `EU:ENEL.IT[1,N]`, `EU:IG.IT[1,N]`, `EU:SRG.IT[1,N]`): proactive 51% debt reduction (`€5.74B -> €2.82B`) with zero share dilution offsets the Tallgrass exit loss, dividend reset, and FY25 non-op mark.
+   - `US:PCG` and `EU:PNN.GB` trigger `5=0` (calibrated to `US:BA[0]`): multi-year safety/operational failures (wildfire Ch.11 bankruptcy; Brixham water parasite crisis & criminal sewage fines) paired with severe value-destroying emergency equity dilution (+325% shares / `-11.67%` OE EPS CAGR; +65% FY25 shares / `-21.1%` OE EPS CAGR).
+4. **Real Estate Gate 5 & Gate 6 Calibration**:
+   - `US:DLR`, `US:WELL`, `EU:UTG.GB`, and `US:IRM` score `5=1` (matching `US:AMT[1,N]`, `US:SBAC[1,N]`, `EU:SGRO.GB[1,N]`): capable core property operations without M&A write-off collapses or customer fraud, while sub-hurdle GAAP ROIC / share dilution (and FY25 `$1.56B` SBC spike at `WELL`) preclude `5=2`. Per Anti-Drift Rule #3, `IRM`'s negative book equity (`-$644.9M`) is penalized at Gate 6 (same as `SBAC`).
+   - All 6 Real Estate rows fail Gate 6 (`6="N"`): the 5 REITs (`DLR`, `WELL`, `UTG.GB`, `IRM`, `CCI`) breach Pillar 3 (`g6_netdebt_yrs` 5.52y–75.29y, `g6_intcov` 1.20x–2.17x on the 4 US REITs, uncovered dividends / continuous debt & equity reliance), and `US:CSGP` fails Pillar 1 (`p2p=N`, Owner EPS `$0.95 -> $0.017`) and Pillar 3 (`g6_intcov=0.17x`, FY25 Owner FCF `-$27M`, `$3B+` cash burn).
+
+## 3. Caveats
+- `US:WELL` (`5=1` vs `5=0`): FY25 `sbc_m=$1,556.7M` (166% of NI) is a borderline executive-compensation red flag; scored `5=1` because operational turnaround (+20% SHO NOI) and P/NAV deleveraging succeeded without M&A write-offs, matching `DASH`/`ARM`/`INF.GB` at `5=1`, while explicitly flagging the SBC spike in `diagnostic_tag`.
+- `EU:ENG.ES` (`5=1` vs `5=0`): Tallgrass `-€299.3M` impairment and 42% dividend cut sit near the `5=0` boundary; scored `5=1` due to 51% debt reduction with zero share dilution (`EU:ENEL.IT`-style turnaround).
+- Both `US:PCG` and `EU:PNN.GB` are Gate-4 rejects (`4=10`, `4=5`), so their `phase_results` verdict (`Rejected – G4 Runway (<15Y)`) is invariant to `5=0` vs `5=1`.
+
+## 4. Conclusion
+Delivered complete, read-only qualitative Gate 5 and Gate 6 evaluations for all 13 Batch 10 companies in `/Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/v718_eval_b10/evaluations.json`:
+- **Gate 5 distribution (`0/1/2`)**: `7` at `5=0` (5 preserved: `US:CSGP`, `US:CCI`, `US:ES`, `US:SO`, `US:D`; 2 newly scored: `US:PCG`, `EU:PNN.GB`), `6` at `5=1` (`US:DLR`, `US:WELL`, `EU:UTG.GB`, `US:IRM`, `US:EIX`, `EU:ENG.ES`), `0` at `5=2`.
+- **Gate 6 distribution (`Y/N`)**: `13/13` at `6="N"` (all 7 `g6_default="N"` Utilities + all 5 REITs + `US:CSGP`).
+- Zero repository files were modified.
+
+## 5. Verification Method
+1. Inspect `/Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/v718_eval_b10/evaluations.json`.
+2. Re-run the read-only validation check comparing `evaluations.json` against `data/{us,eu}/{inputs,prescreen}.csv` (exit code 0, `"ALL 13 EVALUATIONS VERIFIED SUCCESSFULLY!"`).
+3. Run `git status --short` to confirm `data/` and all repo source/doc files were not modified by this agent.
+   - **Invalidation condition**: Any mismatch in the 13 IDs, failure to preserve `5=0` on `{CSGP, CCI, ES, SO, D}`, blank/non-`"N"` `6` on the 7 Utilities, or any unauthorized modification to `data/`.

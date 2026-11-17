@@ -384,19 +384,33 @@ class Tier1FeatureCoverageTests(unittest.TestCase):
             self.assertEqual(qual[k], "")
 
     def test_t1_f7_04_gate4_cap_under_15_clears_gates_5_and_6(self):
-        """Verifies Gate 4 CAP < 15 clears Gates 5 and 6."""
-        payload = make_test_payload(gate_4_force_substitution=2)  # fatal flaw -> rem=20-10=10 >= 10 -> CAP=10
+        """Verifies Stage 2 Gate 4 CAP < 15 clears calamity while preserving diagnostic Gates 5 and 6, and Stage 1 G3b='N' scrubs downstream."""
+        payload = make_test_payload(
+            gate_4_force_substitution=2,
+            calamity_flag="Y",
+            calamity_note="Cannot waive Gate 4 anchor.",
+        )  # fatal flaw -> rem=20-10=10 >= 10 -> CAP=10
         qual, _, _ = validate_and_waterfall(payload)
         self.assertEqual(qual["4"], 10)
-        self.assertEqual(qual["5"], "")
-        self.assertEqual(qual["6"], "")
+        self.assertEqual(qual["5"], 1)
+        self.assertEqual(qual["6"], "Y")
+        self.assertEqual(qual["calamity"], "")
+        self.assertEqual(qual["calamity_note"], "")
+        self.assertEqual(phase_results(qual, self.p)["result"], C.RES_REJ[4])
+
+        # Stage 1 (G3b='N' without calamity) still strictly scrubs G4-G6
+        s1_payload = make_test_payload(gate_3b_pricing_and_proof="N", calamity_flag="")
+        s1_qual, _, _ = validate_and_waterfall(s1_payload)
+        for k in (*C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
+            self.assertEqual(s1_qual[k], "")
 
     def test_t1_f7_05_gate5_failure_clears_gate_6_without_calamity(self):
-        """Verifies Gate 5 failure (0) without calamity scrubs Gate 6."""
-        payload = make_test_payload(gate_5_management_score=0, calamity_flag="")
+        """Verifies Stage 2 Gate 5 failure (0) without calamity preserves diagnostic Gate 6 while rejecting at Gate 5."""
+        payload = make_test_payload(gate_5_management_score=0, gate_6_cash_and_balance_sheet="Y", calamity_flag="")
         qual, _, _ = validate_and_waterfall(payload)
         self.assertEqual(qual["5"], 0)
-        self.assertEqual(qual["6"], "")
+        self.assertEqual(qual["6"], "Y")
+        self.assertEqual(phase_results(qual, self.p)["result"], C.RES_REJ[5])
 
     # --------------------------------------------------------------------------
     # Feature 8: Dual Mirror Synchronization
@@ -1300,7 +1314,9 @@ class HelperAndRegressionTests(unittest.TestCase):
         # 1. Candidate count invariant
         self.assertEqual(len(gate3_candidates), 989, f"Expected exactly 989 Gate 3 candidates, found {len(gate3_candidates)}")
 
-        # 2. Audit all scored companies under Munger Sequential Waterfall
+        # 2. Audit all scored companies under Two-Stage Munger Waterfall (v7.18)
+        g3_advancing = []
+        g3_rejected = []
         for u, row in scored_companies:
             cid = row.get("id")
             # All scored Gate 3 companies must have 3_tb, 3_ia, 3_se, 3_rd, 3a populated
@@ -1317,11 +1333,13 @@ class HelperAndRegressionTests(unittest.TestCase):
             fails_g3 = (row.get("3a") == "None" or row.get("3b") == "N") and row.get("calamity") != "Y"
 
             if fails_g3:
-                # Rule 2: Companies failing Gate 3 must have Gate 4 (4_ent..4_sub, 4, 4n) and Gates 5-6 strictly blank ("")
+                g3_rejected.append((u, cid))
+                # Rule 2 (Stage 1): Companies failing Gate 3 must have Gate 4 (4_ent..4_sub, 4, 4n) and Gates 5-6 strictly blank ("")
                 for k in (*C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
                     self.assertEqual(row.get(k, ""), "", f"{cid} fails Gate 3 but has non-empty downstream {k}={row.get(k)!r}")
             else:
-                # Rule 3: Companies passing Gate 3 (or calamity='Y') advance to Gate 4 and receive full force scores
+                g3_advancing.append((u, cid))
+                # Rule 3 (Stage 2): Companies passing Gate 3 (or calamity='Y') advance to Gate 4 and receive full force scores
                 for k in (*C.FORCE_SCORE_CODES, "4"):
                     self.assertTrue(row.get(k) != "" and row.get(k) is not None, f"{cid} passed Gate 3 but missing Gate 4 field {k}")
                     if k in C.FORCE_SCORE_CODES:
@@ -1336,23 +1354,24 @@ class HelperAndRegressionTests(unittest.TestCase):
                 if any(f_val >= 1 for f_val in f_scores):
                     self.assertTrue(len(row.get("4n", "").strip()) > 0, f"{cid} missing mandatory 4n note with forces {f_scores}")
 
-                # Rule 4: If company fails Gate 4 (CAP < 15 and not calamity), Gates 5 and 6 must be blank ("")
-                if int(row["4"]) < 15 and row.get("calamity") != "Y":
-                    for k in ("5", "6"):
-                        self.assertEqual(row.get(k, ""), "", f"{cid} fails Gate 4 (CAP={row['4']}) but has non-empty downstream {k}={row.get(k)!r}")
-                elif int(row["4"]) >= 15:
-                    # Passes Gate 4: Gate 5 must be evaluated
-                    self.assertTrue(row.get("5") != "" and row.get("5") is not None, f"{cid} passed Gate 4 but missing Gate 5")
-                    if str(row.get("5")) == "0" and row.get("calamity") != "Y":
-                        self.assertEqual(row.get("6", ""), "", f"{cid} fails Gate 5 (score=0) but has non-empty Gate 6")
-                    else:
-                        self.assertTrue(row.get("6") != "" and row.get("6") is not None, f"{cid} passed Gate 4 but missing Gate 6")
+                # Rule 4 (Stage 2 Full Diagnostic Scorecard):
+                # Every Gate-3-advancing company must have valid non-empty Gate 5 (0/1/2) and Gate 6 (Y/N),
+                # even when rejected at Gate 4 (CAP < 15) or Gate 5 (5 = 0). Gate 4 CAP < 15 remains non-waivable.
+                if int(row["4"]) < 15:
+                    self.assertNotEqual(row.get("calamity"), "Y", f"{cid} fails Gate 4 (CAP={row['4']}) but has calamity='Y'")
+                g5_raw = row.get("5", "")
+                self.assertTrue(g5_raw != "" and g5_raw is not None, f"{cid} advanced past Gate 3 but missing Gate 5")
+                self.assertIn(int(g5_raw), (0, 1, 2), f"{cid} invalid Gate 5 score {g5_raw!r}")
+                g6_raw = row.get("6", "")
+                self.assertIn(g6_raw, ("Y", "N"), f"{cid} advanced past Gate 3 but invalid/missing Gate 6 {g6_raw!r}")
 
         # 3. Population completeness evaluation
         require_all = os.environ.get("REQUIRE_ALL_SCORED") == "1"
         if require_all or len(unscored_companies) == 0:
             self.assertEqual(len(unscored_companies), 0, f"Expected 0 unscored companies, found {len(unscored_companies)}")
             self.assertEqual(len(scored_companies), 989, f"Expected 989 scored companies, found {len(scored_companies)}")
+            self.assertEqual(len(g3_advancing), 485, f"Expected 485 Gate-3-advancing companies, found {len(g3_advancing)}")
+            self.assertEqual(len(g3_rejected), 504, f"Expected 504 Gate-3-rejected companies, found {len(g3_rejected)}")
         else:
             # Baseline pre-bulk scoring (Milestone M1):
             # Exactly 11 reference companies scored, exactly 978 unscored legacy rows

@@ -1,0 +1,123 @@
+[
+  {
+    "universe": "us",
+    "id": "BA",
+    "ticker": "BA",
+    "sub_industry": "Aerospace & Defense",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "Preserved Gate 5 = 0 (prioritized McDonnell Douglas financial engineering and $43B debt-funded buybacks over safety/engineering integrity, triggering 737 MAX crashes, FAA production caps, and emergency $21B 2024 equity dilution). Fails Gate 6 (N) across all three pillars: p2p_ok=N (FY18 Owner EPS $18.67 collapsed to -$20.9B cumulative 2021-2025 GAAP net losses), 5Y Owner FCF -$18.0B (FY25 -$1.31B), $54.4B total debt ($43.5B net debt; g6_netdebt_yrs=99.0), negative interest coverage (g6_intcov=-1.95x on -$5.42B FY25 EBIT vs $2.77B interest), and -$13.4B tangible equity.",
+    "peer_calibration_notes": "Benchmarked against 23 completed US+EU Aerospace & Defense peers. Preserved G5=0 aligns with Boeing's unique engineering/capital-allocation failure vs G5=1/2 peers. G6=N matches leveraged/cash-impaired A&D peers (US:TDG[1,N], US:LMT[1,N] negative tangible equity, US:LHX[1,N] 3.3x intcov, US:RTX[1,N], EU:AIR.FR[1,N] FCF/impairment drag, EU:MRO.GB[1,N] 0.95x intcov) and contrasts cleanly with fortress-balance-sheet compounders (US:GD[2,Y], US:GE[2,Y], US:HWM[2,Y], EU:SAF.FR[1,Y], EU:MTX.DE[2,Y], EU:KOG.NO[2,Y])."
+  },
+  {
+    "universe": "eu",
+    "id": "ADP.FR",
+    "ticker": "ADP",
+    "sub_industry": "Airport Services (mapped)",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "Preserved Gate 5 = 0 (50.6% French State ownership, ART regulatory friction, and value-destructive overseas M&A in GMR India and TAV Turkey causing a €330M FY24 merger charge and 6.2% median GAAP ROIC). Fails Gate 6 (N): although 5Y fcf_conv is 166% (FY25 Owner FCF €540M vs €381M NI) and p2p_ok=Y, it fails the Essential Infrastructure & Concessions >5.0x interest-coverage threshold at g6_intcov=2.92x (FY25 €1,319M EBIT / €663M interest = 1.99x) and carries €8.10B net debt (€9.99B total debt) yielding g6_netdebt_yrs=20.6y (>>4.0y ceiling).",
+    "peer_calibration_notes": "Benchmarked against EU:AENA.ES[1,Y] and EU:FHZN.CH[1,N]. AENA.ES passes Gate 6 with 9.39x interest coverage, 2.65y net debt/earnings, and 13.3% ROIC, whereas ADP.FR fails both the <=4.0y net-debt baseline (20.6y) and the Essential Infrastructure >5.0x interest-coverage floor (2.92x 3Y median / 1.99x FY25)."
+  },
+  {
+    "universe": "us",
+    "id": "AOS",
+    "ticker": "AOS",
+    "sub_industry": "Building Products",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): honest, conservative stewardship with negligible SBC ($13.8M in FY25, 0.36% of sales), 34.6% 10Y median GAAP ROIC (38.2% ROIIC), and disciplined buybacks ($1.78B 5Y retiring 14.1% of diluted shares), tempered by flat 2023-2025 revenue ($3.83B) amid prolonged China contraction and dual-class family voting control. Gate 6 = Y: passes all pillars cleanly with p2p_ok=Y (+6.0% 10Y Owner EPS CAGR to $3.90), fcf_conv=104.7% (5Y Owner FCF $2.47B vs $2.36B NI), net cash balance sheet ($193.2M cash vs $192.1M total debt, g6_netdebt_yrs=-0.16y), 63.1x interest coverage, and +$785M tangible equity.",
+    "peer_calibration_notes": "Calibrated against 7 completed US+EU Building Products peers: US:TT[1,Y] (22.8% ROIC, 1.23y net debt), US:ALLE[1,Y] (22.8% ROIC, 2.50y net debt), US:JCI[1,N] (8.6% ROIC, >4x LT debt), EU:KRX.IE[1,Y], EU:ASSA B.SE[2,Y], EU:BEAN.CH[2,Y], and EU:GEBN.CH[2,Y] (32.5% ROIC, 30%+ EBITDA margins through EU downturn). AOS matches TT and ALLE at G5=1 (solid capital allocation without GEBN/BEAN global top-line resilience) and passes G6=Y with a net-cash fortress."
+  },
+  {
+    "universe": "us",
+    "id": "LII",
+    "ticker": "LII",
+    "sub_industry": "Building Products",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): strong operational execution and planned abandonment of underperforming European units driving EBIT margin expansion from 11.8% (2016) to 20.0% (2025), 48.3% median GAAP ROIC (27.5% ROIIC), modest SBC ($29.1M in FY25, 0.56% of sales), and -9.1% 5Y share reduction, tempered by FY25 releveraging ($2.03B net debt) for bolt-on M&A and buybacks at ~35x peak multiples. Gate 6 = Y: p2p_ok=Y (+13.9% 10Y Owner EPS CAGR to $22.96), fcf_conv=84.7% (5Y Owner FCF $2.68B vs $3.16B NI; 2Y OCF/NI 1.06x), g6_netdebt_yrs=1.66y (<=4.0y; $1.14B LT debt / $806M NI = 1.42x), g6_intcov=23.5x, and positive equity ($1.16B book, +$393M tangible).",
+    "peer_calibration_notes": "Calibrated alongside US:AOS[1,Y], US:TT[1,Y] (commercial HVAC peer with 22.8% ROIC, 1.23y net debt, 14.7x intcov), US:ALLE[1,Y], and EU:GEBN.CH[2,Y]. LII matches TT and ALLE at G5=1 (disciplined professional execution without multi-decade Outsider/founder edge, plus 2025 buyback/M&A debt step-up) and comfortably clears all four G6 checks (ok/ok/ok/ok)."
+  },
+  {
+    "universe": "us",
+    "id": "FDXF",
+    "ticker": "FDXF",
+    "sub_industry": "Cargo Ground Transportation",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): clean standalone accounting with minimal SBC ($13M in FY25, 0.15% of sales), zero empire-building M&A, and disciplined 4.9-5.9% annual GRI pricing, though post-separation standalone cost structure and freight recession compressed FY25 EBIT margin to 6.1% (pre-spin dividend recapitalization was executed by parent FedEx Corp.). Gate 6 = N: fails Pillar 2 and Pillar 3 decisively—5Y fcf_conv is 65.1% (<80%) with FY25 Owner FCF swinging negative (-$225M), while the pre-spin recapitalization left $6.37B total debt ($4.48B LT debt, $6.11B net debt = 9.3x FY25 NI of $655M) and negative equity (-$497M book, -$1.10B tangible) alongside declining 2022-2025 Owner EPS ($12.35 to $5.39).",
+    "peer_calibration_notes": "Benchmarked against sole completed sub-industry peer US:ODFL[2,Y] (31.4% ROIC, 99.8% FCF conversion, net cash, $4.31B positive equity, 75.2% operating ratio). FDXF retains G5=1 (avoiding Gate 5 vs Gate 6 bleed for parent-executed pre-spin recapitalization) and fails G6=N on negative book/tangible equity, 9.3x FY25 net debt/NI, and 65.1% FCF conversion."
+  },
+  {
+    "universe": "eu",
+    "id": "FGR.FR",
+    "ticker": "FGR",
+    "sub_industry": "Construction & Engineering (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): disciplined French concession and contracting stewardship with minimal SBC, steady bolt-on reinvestment (45.3% ROIIC) in energy transition services, -6.1% 5Y diluted share reduction (€1.66B buybacks), and consistent net debt paydown (€11.18B in 2022 to €9.91B in 2025). Gate 6 = Y under the Essential Infrastructure & Concessions Rule: p2p_ok=Y (Owner EPS €12.30 in FY25 vs €7.94 in FY19), exceptional 210.4% FCF conversion (5Y Owner FCF €9.99B vs €4.73B NI; FY25 €2.04B), €5.95B cash buffer against ring-fenced non-recourse APRR/AREA motorway debt, and g6_intcov=5.77x (FY25 6.05x, comfortably exceeding the >5.0x concession threshold).",
+    "peer_calibration_notes": "Calibrated directly against French motorway/contracting twin EU:DG.FR[1,Y] (Vinci: 11.7% ROIC, 150.7% FCF conversion, p2p_ok=Y, 3.33y net debt, 6.23x intcov). FGR.FR mirrors DG.FR at G5=1 (professional French infrastructure stewardship, steady buybacks) and passes G6=Y under QUALITATIVE_EVALUATION_SPEC.md:230 (CPI-indexed toll concessions with >5.0x interest coverage [5.77x 3Y / 6.05x FY25] and 210% FCF conversion)."
+  },
+  {
+    "universe": "eu",
+    "id": "SCYR.ES",
+    "ticker": "SCYR",
+    "sub_industry": "Construction & Engineering (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): management pruned non-core service units (Valoriza) to focus on P3 concessions (>90% EBITDA) with zero SBC bloat or M&A rollups, though repeated scrip dividends and a 2024 equity placement diluted diluted shares +33.0% over 5 years (600M to 798M) and kept 10Y median GAAP ROIC at 9.4%. Gate 6 = N: fails Essential Infrastructure >5.0x interest-coverage rule and general Pillar 1/3 tests—g6_intcov is 1.56x (FY25 €1,089M EBIT vs €708M interest = 1.54x), net debt is €6.55B (€8.58B total debt; g6_netdebt_yrs=61.14y against €85.8M FY25 NI), and p2p_ok=N (-3.34% Owner EPS CAGR, falling from €0.23 in FY23 to €0.11 in FY25).",
+    "peer_calibration_notes": "Benchmarked against EU:DG.FR[1,Y] (6.23x intcov, 3.33y net debt, -6% shares) and EU:FGR.FR[1,Y] (5.77x intcov, 210% FCF conv, -6.1% shares). SCYR.ES scores G5=1 (no Gate-bleed from P3 capital intensity) and fails G6=N decisively on 1.56x interest coverage (<5.0x threshold), 61.14y net debt/earnings, and negative peak-to-peak Owner EPS compounding."
+  },
+  {
+    "universe": "us",
+    "id": "UBER",
+    "ticker": "UBER",
+    "sub_industry": "Passenger Ground Transportation",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): CEO Dara Khosrowshahi executed disciplined planned abandonment (exited cash-burning ATG/autonomous R&D and loss-making markets), pivoted to $5.57B FY25 EBIT (10.7% margin, 24.1% tangible ROIC), and initiated $6.52B FY25 buybacks reducing net diluted shares, though substantial SBC ($1.83B in FY25, 32.8% of EBIT; +17.5% cumulative 5Y share growth since FY20) prevents an Elite 2 rating. Gate 6 = Y: p2p_ok=Y (Owner EPS ramped to $4.77 in FY25), fcf_conv=91.7% (5Y Owner FCF $11.15B vs $12.16B NI; FY25 $7.94B after SBC), g6_netdebt_yrs=0.30y ($4.98B net debt; $7.63B cash vs $12.08B debt), g6_intcov=5.35x (rising to 12.65x in FY25), and +$17.06B tangible equity.",
+    "peer_calibration_notes": "No completed peers in Passenger Ground Transportation; calibrated across US tech-enabled marketplace/software peers (US:MSFT[1,Y], US:ADSK[1,Y], vs G5=0 red-flag cases US:INTU, US:PANW, US:CSGP). Unlike INTU/PANW/CSGP, UBER pruned cash-burning bets, avoided destructive mega-M&A, and offset SBC >3.5x with FY25 buybacks (G5=1); all four G6 checks are 'ok' with $17.1B tangible equity (G6=Y)."
+  },
+  {
+    "universe": "us",
+    "id": "TRI",
+    "ticker": "TRI",
+    "sub_industry": "Research & Consulting Services (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): disciplined portfolio pruning (carved out Refinitiv/LSEG stake), clean reporting with low recurring SBC (~1.2% of sales in FY22-23), and $7.49B 5Y share repurchases (-7.3% share count) alongside $4.48B dividends, though 11.7% median GAAP ROIC, 0.0% ROIIC, and 1.1% 8Y sales CAGR fall short of elite 20-36% ROIC peers. Gate 6 = Y: p2p_ok=Y (Owner EPS $4.01 in FY25 vs $2.58 in FY20), g6_netdebt_yrs=0.75y ($1.61B net debt vs $1.50B NI), g6_intcov=10.87x ($1.99B EBIT / $183M interest), and $11.91B equity; the 13.1% 5Y fcf_conv indicator is an artifact of FY21's non-cash LSEG disposal spike (FY22-25 underlying Owner FCF conversion averaged 90-137%, 2Y OCF/NI 1.36x).",
+    "peer_calibration_notes": "Calibrated against 8 completed Research & Consulting peers: EU:REL.GB[2,Y] (21.3% ROIC, 7% organic growth), EU:WKL.NL[2,Y] (24.6% ROIC), US:VRSK[2,Y] (20.4-35.9% ROIC), EU:BVI.FR[1,Y], EU:EXPN.GB[1,Y] (15.6% ROIC), EU:ITRK.GB[1,Y], EU:SGSN.CH[1,Y], and US:EFX[1,N] (6.27y net debt, 4.55x intcov). TRI aligns with EXPN/BVI/ITRK/SGSN at G5=1 (below REL/WKL/VRSK compounding velocity) and passes G6=Y cleanly with 0.75y net debt and 10.87x coverage."
+  },
+  {
+    "universe": "eu",
+    "id": "VSURE.SE",
+    "ticker": "VSURE",
+    "sub_industry": "Security & Alarm Services (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): strong operational execution compounding monitored alarm revenues ~10% annually (€2.83B in 2022 to €3.75B in 2025) with ~7% low churn, zero serial M&A rollups (ma_reinvest=0.0) or SBC bloat, and €2.62B debt reduction in FY25 (€7.94B to €5.32B), though inherited PE buyout goodwill (€13.17B intangibles/goodwill) depresses GAAP ROIC to 1.5%. Gate 6 = N: fails all three pillars due to legacy LBO leverage and subscriber capex intensity—four consecutive GAAP net losses totaling -€956M (-€255.9M in FY25; Owner EPS -€0.20), heavy €981.9M FY25 capex (26.2% of sales) leaving only €295M Owner FCF, g6_netdebt_yrs=33.93y (€5.29B net debt), g6_intcov=0.59x (0.77x FY25: €298.7M EBIT < €386.6M interest), and -€4.40B tangible equity.",
+    "peer_calibration_notes": "No completed peers in Security & Alarm Services; calibrated across Industrials services and leveraged PE-backed structures. Avoiding Gate-bleed, VSURE.SE retains G5=1 (clean organic growth and FY25 deleveraging without value-destructive M&A or SBC dilution) and fails G6=N decisively on sub-1.0x interest coverage (0.59x), 33.93y net debt/earnings, and four consecutive years of GAAP losses."
+  },
+  {
+    "universe": "eu",
+    "id": "RS1.GB",
+    "ticker": "RS1",
+    "sub_industry": "Trading Companies & Distributors (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1 (Standard Pass): transparent UK stewardship with minimal SBC (£10.4M in FY25, 0.36% of sales), consistent dividends (£479.5M 5Y) and selective buybacks (£80.2M across FY24-25), though operating margins compressed from 13.4% (FY22) to 8.3% (FY25) and recent M&A (ma_reinvest=51.4%) yielded 4.4% ROIIC through the industrial destocking cycle. Gate 6 = Y: passes all four quantitative checks—p2p_ok=Y (+20.3% 10Y Owner EPS CAGR), fcf_conv=86.5% (5Y Owner FCF £877M vs £1,013M NI; FY25 116.9%, 2Y OCF/NI 1.66x), g6_netdebt_yrs=1.75y (£328.9M net debt, down from £418.2M in FY23), g6_intcov=7.91x (FY25 10.65x), and positive equity (£1.41B book, +£500.5M tangible).",
+    "peer_calibration_notes": "Benchmarked against 8 completed US+EU Trading Companies & Distributors peers: US:FAST[2,Y] (33.2% ROIC, net cash), EU:DPLM.GB[2,Y] (21-22.5% EBIT margin), EU:ADDT B.SE[2,Y], EU:BEIJ B.SE[2,Y], EU:HWDN.GB[2,Y], EU:INDT.SE[2,Y], US:FERG[1,Y] (25.5% ROIC, 8.5% EBIT margin, 82% FCF conv, 1.87y net debt), and EU:BNZL.GB[1,Y] (14.9% ROIC, 141% FCF conv, 2.23y net debt). RS1.GB calibrates cleanly alongside FERG and BNZL at [1,Y]."
+  }
+]

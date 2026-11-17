@@ -325,7 +325,7 @@ V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
 LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
 
-SCREENER_VERSION = "7.17"
+SCREENER_VERSION = "7.18"
 
 CHANGELOG = {
     "6.0": [
@@ -704,6 +704,17 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.18": [
+        "Two-Stage Munger Waterfall & Diagnostic Gate 5-6 Scorecard: "
+        "(1) Split the waterfall into Stage 1 (early stop at Gates 1-3, keeping downstream G4-G6 fields blank on Gate 1/2/unwaived-3 failure) "
+        "and Stage 2 (full diagnostic scorecard across Gates 4-6 for all 485 Gate-3-advancing companies, even when rejected at Gate 4 CAP < 15 or Gate 5 = 0). "
+        "(2) Gate 4 (CAP >= 15) remains a non-waivable Anchor Gate: CAP < 15 clears calamity flags and rejects at Gate 4 in phase_results while preserving diagnostic Gate 5 & 6 scores, "
+        "with zero impact on thr_cap = 15, Prime Grade (225), or Prime Grade Calamity (11 / 13) counts. "
+        "(3) Completed Gate 5 and Gate 6 evaluations across all 121 previously incomplete moat franchises (108 Gate-4 rejects + 13 Gate-5 rejects), "
+        "stripped stale 'Downstream gates bypassed per waterfall.' notes, and added diagnostic G5/G6 rationales. "
+        "(4) Surfaced concrete G4/G5/G6 scores in the Dossier Waterfall Stepper, added the Management & Allocation (G5) and Cash & Fortress B/S (G6) card row, "
+        "and exposed G5 Mgmt and G6 B/S columns in expanded table mode on Quality Grade and Full Universe.",
     ],
     "7.17": [
         "Peer-Cohort Harmonization & Three Anti-Drift Rubric Rules: "

@@ -1,28 +1,36 @@
-# BRIEFING — 2026-11-16 10:35:00 UTC
+# BRIEFING — 2026-11-17T16:23:30Z
 
 ## Mission
-Coordinate and monitor Phase 2 bulk re-scoring for Quality & Moat Screener across all 989 Gate 3 companies.
+Monitor teamwork_orchestrator execution of Two-Stage Munger Waterfall & Diagnostic Gate 5-6 Scorecard (v7.18) and run mandatory Victory Audit upon completion.
 
 ## 🔒 My Identity
 - Archetype: sentinel
-- Working directory: /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/sentinel/
-- Orchestrator: 52860145-8fc7-4969-8b2b-b7788e50408a
-- Victory Auditor: 6cb53402-f8b0-41e4-ab01-2fcbc1642f79
+- Working directory: /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/sentinel
+- Orchestrator: [TBD]
+- Victory Auditor: [to be spawned on victory claim]
+- Active Orchestrator: d510ad6d-e687-40ee-9300-d03ba5fff497 (teamwork_orchestrator)
+- Spawned Victory Auditor: ff30fb5d-e5a9-4394-ac76-67661a8f4af4 (teamwork_victory_auditor)
 
 ## 🔒 Key Constraints
 - No technical decisions — relay only
 - Victory Audit is MANDATORY before reporting completion
-- Must not write code, analyze problems, or make technical decisions
-- Monitor orchestrator via 2 crons (progress reporting and liveness check)
-- Sequential Munger reject waterfall, mirror sync, build & test suite alignment
+- Zero funnel impact: thr_cap = 15, phase_results, Prime Grade (225), and Prime Grade Calamity (13 total / 11 < 3 G6 flags) remain unchanged; Gate 1-4 scores untouched
+- Complete 6-gate scorecard across all 485 Gate-3-advancing companies; Gate-3 rejects (504) keep G4-G6 blank
+- Split R2 qualitative evaluation agents strictly by GICS Sector / Sub-Industry across US and EU combined (never split US vs. EU into separate evaluator agents)
+- Local datasets only (financials.csv, fundamentals_panel.csv, prescreen.csv, existing note dossiers)
+
+## Routing Decision
+- **Path**: General (`teamwork_orchestrator`) — pre-flight audit: none
+- **Rationale**: Multi-part project spanning engine validation/audit, 121-company qualitative evaluation across sectors, dashboard UI, docs, version bump, and test suite updates.
 
 ## User Context
-- **Last user request**: Approved task prompt for Phase 2 bulk re-scoring of 989 Gate 3 companies
+- **Last user request**: Approved task prompt for Two-Stage Munger Waterfall & diagnostic Gate 5-6 scorecard (v7.18)
 - **Pending clarifications**: none
-- **Delivered results**: none
+- **Delivered results**: v7.18 Two-Stage Waterfall & diagnostic Gate 5-6 scorecard verified (`VICTORY CONFIRMED`)
 
 ## Project Status
 - **Phase**: complete
+- **Crons**: Killed on completion (`task-22`, `task-23`)
 
 ## Victory Audit Status
 - **Triggered**: yes
@@ -30,11 +38,8 @@ Coordinate and monitor Phase 2 bulk re-scoring for Quality & Moat Screener acros
 - **Retry count**: 0
 
 ## Artifact Index
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/ORIGINAL_REQUEST.md — Authoritative user intent and approved task prompt
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/PROJECT.md — Architecture, cohort breakdown, and milestone decomposition
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/TEST_INFRA.md — Testing harness and E2E verification plan
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/orchestrator_1/handoff.md — Orchestrator final handoff report
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/.agents/teamwork/victory_auditor/handoff.md — Independent Victory Audit report (VICTORY CONFIRMED)
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/screener/bulk_scorer.py — Bulk scoring batch ingester, validator, and mirror synchronizer
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/tests/test_bulk_scoring_e2e.py — Comprehensive 134-test E2E verification harness
-- /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener/output/screener.html — Recompiled production screener cockpit report
+- `.agents/teamwork/ORIGINAL_REQUEST.md` — Verbatim approved task prompt
+- `.agents/teamwork/sentinel/BRIEFING.md` — Sentinel persistent working memory
+- `.agents/teamwork/sentinel/handoff.md` — Sentinel completion handoff
+- `.agents/teamwork/orchestrator/handoff.md` — Orchestrator handoff
+- `.agents/teamwork/victory_auditor/audit_report.md` — Independent post-victory audit report

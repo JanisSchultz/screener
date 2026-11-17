@@ -1,0 +1,90 @@
+[
+  {
+    "universe": "eu",
+    "id": "ARGX.BE",
+    "ticker": "ARGX",
+    "sub_industry": "Biotechnology (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1: Able scientific and product-led execution scaled Vyvgart organically to $4.15B revenue and $1.03B EBIT in FY25 with $4.44B cash and minimal debt ($47M), avoiding dilutive M&A; pre-commercial equity dilution (20.3M to 66.2M shares FY16-FY25, $248M FY25 SBC) and single-molecule concentration preclude 2. Gate 6 = N: Although balance sheet holds $4.39B net cash (g6_netdebt_yrs = -3.27y, FY25 EBIT/interest 243x), fails Pillar 2 real cash conversion (5Y fcf_conv = -3.05; 3Y FY23-FY25 Owner FCF -$416.5M on $1,882.7M NI; FY25 Owner FCF $619.3M / $1,344.7M NI = 46.1% < 80% hurdle with $248.1M SBC) and Pillar 1 multi-cycle durability (first operating profit only in FY25 after continuous FY11-FY24 EBIT losses; 5Y median GAAP ROIC -52.4%).",
+    "peer_calibration_notes": "Benchmarked in Biotechnology against US:VRTX[2,Y] (multi-decade CF monopoly, >35% 10Y ROIC, 76.2% fcf_conv, $11B+ net cash) and fellow early-inflection/high-SBC net-cash peers US:ALNY[1,N], US:DASH[1,N], and US:GEV[1,N]. Unlike VRTX's multi-cycle compounding, ARGX.BE only reached positive EBIT in FY25 with 46.1% FY25 Owner FCF conversion (-305% 5Y)."
+  },
+  {
+    "universe": "us",
+    "id": "ALNY",
+    "ticker": "ALNY",
+    "sub_industry": "Biotechnology (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1: Disciplined 20-year organic GalNAc-siRNA R&D execution brought Amvuttra/HELIOS-B to $3.71B FY25 revenue (+65% YoY) and $501.6M EBIT without empire M&A; heavy SBC ($348.2M, 9.4% of sales) and share growth (85.8M to 136.3M FY16-FY25) preclude 2. Gate 6 = N: Fails Pillar 1 (first profitable year in FY25 after 23 consecutive GAAP loss years FY02-FY24, 5Y cumulative NI -$2,388.6M, roic_median = -1.0), Pillar 2 (panel 5Y Owner FCF -$2,037.4M; FY25 Owner FCF $120.2M / $313.7M NI = 38.3% < 80% hurdle as $348.2M SBC exceeds GAAP NI), and Pillar 3 interest coverage (g6_intcov = -1.25x, FY25 EBIT/interest = 1.99x [$501.6M / $252.6M] < 5.0x despite $2.91B cash vs $1.01B LT debt).",
+    "peer_calibration_notes": "Benchmarked against US:VRTX[2,Y], EU:ARGX.BE[1,N], and US:ARM[1,N]/US:DASH[1,N] where chronic SBC exceeding/consuming GAAP NI depresses Owner FCF conversion well below 80% alongside lack of multi-cycle P2P compounding."
+  },
+  {
+    "universe": "us",
+    "id": "INCY",
+    "ticker": "INCY",
+    "sub_industry": "Biotechnology",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1: Solid operational stewardship building Jakafi and Opzelura to $5.14B FY25 revenue (34.2% 5Y median GAAP ROIC) and executing a cash-funded $2.0B FY24 buyback (cutting shares from 226.1M in FY23 to 204.8M in FY25); $1.6B-$2.6B annual R&D spend with mixed pipeline replacements ahead of Jakafi's late-2027/28 LOE precludes 2. Gate 6 = Y: Passes all three pillars — Pillar 1 (p2p_ok = Y, Owner EPS compounded from $0.51 in FY18 to record $6.45 in FY25), Pillar 2 (5Y fcf_conv = 79.8% [$2,558.7M / $3,206.1M NI], 10Y FY16-FY25 = 82.8%, FY25 Owner FCF $1,105.3M / $1,286.7M NI = 85.9%, CapEx 1.1% of sales, ocf_ni_2y = 1.33), and Pillar 3 ($3.58B cash vs $40.4M LT debt, g6_netdebt_yrs = -6.05y, g6_intcov = 256.9x).",
+    "peer_calibration_notes": "Calibrated against US:VRTX[2,Y] (fcf_conv = 0.762, net cash fortress) and US:JNJ[1,Y] (fcf_conv = 0.773). Per Anti-Drift Rule #3, Jakafi's 2027/28 patent cliff is penalized at Gate 4 (CAP = 5Y), while Gate 6 evaluates INCY's clean multi-cycle P2P compounding, ~80-86% Owner FCF conversion, and $3.54B net cash fortress."
+  },
+  {
+    "universe": "us",
+    "id": "PODD",
+    "ticker": "PODD",
+    "sub_industry": "Health Care Equipment",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "Gate 5 = 1: Capable commercial execution scaling Omnipod 5 from $904M (FY20) to $2.71B (FY25) while lifting GAAP ROIC from <3% to 20.3% (15.8% 5Y median), keeping M&A minimal (ma_reinvest = 0.05) and paying down $708M debt in FY25; short post-inflection profit history (since FY23) and 2026 CEO transition preclude 2. Gate 6 = Y: Passes Pillar 1 (p2p_ok = Y, EBIT expanded from $50M in FY19 to $473.8M in FY25), Pillar 2 (post-Omnipod-5 launch 3Y FY23-FY25 Owner FCF conversion = 82.7% [$721.0M / $871.7M NI] and Reported FCF/NI = 86.4%, with FY25 Owner FCF $416.2M / $247.1M NI = 168.4% and ocf_ni_2y = 1.50 as CapEx fell from 18-29% of sales in FY18-20 to 4.5-7.1% in FY23-25; 5Y fcf_conv = 0.645 reflects FY21 launch buildout), and Pillar 3 (g6_netdebt_yrs = 1.05y <= 4.0y, g6_intcov = 6.08x > 5.0x, $716.1M cash vs $930.8M LT debt).",
+    "peer_calibration_notes": "Benchmarked against 13 Health Care Equipment peers: US:ISRG[2,Y] (fcf_conv = 0.568 during DV5 plant capex cycle), EU:BIM.FR[2,Y] (fcf_conv = 0.739, FY25 114%), US:EW[2,Y] (fcf_conv = 0.471, FY25 119%), and US:STE[1,Y]/US:RMD[1,Y]/US:ABT[1,Y]. Contrasts sharply with Health Care Supplies reject US:COO[1,N] (nd_yrs = 6.3y, p2p = N, roic_m = 4.5%, chronic 38.2% FCF conversion)."
+  },
+  {
+    "universe": "us",
+    "id": "DGX",
+    "ticker": "DGX",
+    "sub_industry": "Health Care Services",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1: Competent national duopoly stewardship with disciplined Invigorate cost execution and consistent buybacks retiring 20.6% of diluted shares since FY16 (141.0M to 112.0M) alongside $353M dividend; debt-funded hospital-lab M&A ($8.95B goodwill depressing 5Y median GAAP ROIC to 9.9%) precludes 2. Gate 6 = N: Although cash conversion is strong (5Y fcf_conv = 104.1%, FY25 Owner FCF $1,271M) and p2p_ok = Y (ex-COVID FY25 Owner EPS $9.19 vs $6.31 in FY19), fails Pillar 3 Peace-of-Mind Balance Sheet: g6_netdebt_yrs = 5.30y (> 4.0y ceiling) with $5,167M LT debt ($6,919M total debt / $6,499M net debt vs $988M TTM NI = 5.23x LT debt / 6.58x total net debt), thin g6_intcov = 5.96x (FY25 5.79x, near 5.0x floor), and sub-10% GAAP ROIC from serial M&A.",
+    "peer_calibration_notes": "Benchmarked side-by-side with duopoly twin US:LH[1,N] and leverage-rejected peers US:AJG[1,N] (nd_yrs = 4.76y, intcov = 5.99x, roic_m = 9.9%), EU:INF.GB[1,N] (nd_yrs = 5.42y, intcov = 5.86x), EU:SY1.DE[1,N] (nd_yrs = 4.63y), and US:COO[1,N] (nd_yrs = 6.30y)."
+  },
+  {
+    "universe": "us",
+    "id": "LH",
+    "ticker": "LH",
+    "sub_industry": "Health Care Services",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 1: Capable operational stewardship evidenced by the value-unlocking Fortrea (FTRE) CRO spin-off in 2023 (planned abandonment) and steady buybacks cutting diluted shares by 20.8% since FY16 (105.1M to 83.2M); serial debt-funded hospital outreach acquisitions ($6.79B goodwill + $3.60B intangibles, 8.0% 5Y median GAAP ROIC) preclude 2. Gate 6 = N: Despite strong FCF conversion (5Y fcf_conv = 116.4%, FY25 Owner FCF $1,080.2M) and p2p_ok = Y (ex-COVID FY25 Owner EPS $13.49 vs $10.21 in FY19), fails Pillar 3 Peace-of-Mind Balance Sheet: g6_netdebt_yrs = 5.35y (> 4.0y ceiling) with $5,084.6M LT debt ($7,204.0M total debt / $6,671.7M total net debt vs $876.5M TTM NI = 5.80x LT debt / 7.61x total net debt), thin 3Y median g6_intcov = 5.22x (dipped to 3.64x in FY23, 6.77x FY25), and 8.0% GAAP ROIC burdened by acquisition leverage.",
+    "peer_calibration_notes": "Benchmarked identically with duopoly twin US:DGX[1,N] (5.30y net debt, 5.96x intcov) and M&A-levered rejects US:AJG[1,N], EU:INF.GB[1,N], and US:LHX[1,N]."
+  },
+  {
+    "universe": "eu",
+    "id": "DIM.FR",
+    "ticker": "DIM",
+    "sub_industry": "Life Sciences Tools & Services (mapped)",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 0 (preserved Gate-5 reject): Top-of-cycle debt-funded €2.4B Polyplus M&A (~4.5x EBITDA) followed by a dilutive €1.2B emergency equity raise in Feb 2024 violated capital allocation discipline. Gate 6 = N: Although multi-year fcf_conv = 109.1% (Pillar 2), fails Pillar 3 decisively on leverage and capital-market dependence — g6_netdebt_yrs = 11.11y (> 4.0y ceiling) with €1,867.4M LT debt (€2,599.3M total debt / €2,173.2M net debt vs €265.6M TTM NI = 7.03x LT debt / 8.18x net debt), g6_intcov = 3.60x (< 5.0x minimum; 2.33x in FY24), €1.2B forced equity dilution (92.2M to 97.3M shares), and Pillar 1 Owner EPS still 39% below FY21 peak (€2.73 vs €4.49) with 7.9% 5Y median GAAP ROIC.",
+    "peer_calibration_notes": "Benchmarked against EU/US Life Sciences Tools peers US:MTD[2,Y], US:DHR[1,Y] (nd_yrs = 2.81y, intcov = 18.65x), US:TMO[1,Y] (nd_yrs = 3.88y), US:WAT[1,Y], US:A[1,Y], EU:QIA.DE[1,Y] (nd_yrs = 1.44y, intcov = 7.68x), and parent EU:SRT3.DE[0,N] — both Sartorius entities fail Gate 6 on >11x-23x net debt years and <3.6x interest coverage."
+  },
+  {
+    "universe": "eu",
+    "id": "SRT3.DE",
+    "ticker": "SRT3",
+    "sub_industry": "Life Sciences Tools & Services (mapped)",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "Gate 5 = 0 (preserved Gate-5 reject): Parent-level capital allocation failure via debt-financed €2.4B Polyplus deal at peak bubble multiples (€3B bonds at 4.4-4.9%, >4.5x EBITDA) and subsequent dilutive €1.0B emergency equity raise in Q1 2024. Gate 6 = N: Although 5Y fcf_conv = 165.4% (boosted by depressed GAAP NI), fails Pillar 3 decisively — g6_netdebt_yrs = 23.20y (> 4.0y ceiling) with €3,184.3M LT debt (€4,454.3M total debt / €3,912.9M net debt vs €154.9M TTM NI = 20.56x LT debt / 25.26x net debt), g6_intcov = 3.29x (< 5.0x minimum; 2.13x in FY24), emergency equity dependence, and Pillar 1 Owner EPS 77% below FY22 peak (€2.24 vs €9.91) with 6.6% 5Y median GAAP ROIC (€5.30B goodwill + intangibles vs €2.71B equity).",
+    "peer_calibration_notes": "Evaluated consistently alongside subsidiary EU:DIM.FR[0,N] and Life Sciences Tools peers (DHR, TMO, MTD, WAT, A, QIA.DE[1,Y], TECH[1,N]). Parent-level debt service burden (3.29x intcov, 23.2y net debt) is even more severe than DIM.FR (3.60x intcov, 11.1y net debt)."
+  }
+]

@@ -2169,6 +2169,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           </div>
         </div>
 
+        <div class="grid-2" id="dossier-g56-row" style="margin-bottom: 12px; display: none;">
+          <div class="metric-box">
+            <div class="label" title="Gate 5: Honest, able, customer-focused management and rational capital allocation (0 = Red Flag, 1 = Standard Pass, 2 = Elite Compounder).">Management &amp; Allocation (G5)</div>
+            <div class="value" style="font-size: 13px;" id="dossier-g5-mgmt">-</div>
+          </div>
+          <div class="metric-box">
+            <div class="label" title="Gate 6: Real FCF conversion, peak-to-peak Owner EPS compounding, and peace-of-mind fortress balance sheet (Y / N).">Cash &amp; Fortress B/S (G6)</div>
+            <div class="value" style="font-size: 13px;" id="dossier-g6-cash">-</div>
+          </div>
+        </div>
+
         <div id="dossier-cap-scorecard" class="metric-box" style="margin-bottom: 12px; display: none;">
           <div class="label" style="color: var(--accent);" title="Deterministic two-step CAP audit: Step 1 (4 Moat Archetype scores -> Initial CAP) adjusted by Step 2 (5 Porter Competitive Force risk scores -> Final CAP).">Two-Step CAP Audit (Gate 3 Moats &rarr; Gate 4 Forces)</div>
           <div id="dossier-cap-scorecard-body" style="margin-top: 6px;"></div>
@@ -2640,6 +2651,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       irr_5y: {{ key: 'irr_5y', label: '5Y Exp IRR', num: true }},
       roic_used: {{ key: 'roic_exp', label: 'RONIC₀', num: true }},
       g4_cap: {{ key: 'g4_cap', label: 'Our CAP', num: true }},
+      g5_mgmt: {{ key: 'g5_mgmt', label: 'G5 Mgmt', num: true }},
+      g6_cash: {{ key: 'g6_cash', label: 'G6 B/S' }},
       cap_implied: {{ key: 'cap_implied', label: 'Mkt CAP', num: true }},
       cap_gap: {{ key: 'cap_gap', label: 'CAP Gap', num: true }},
       g3a_moat_archetype: {{ key: 'g3a_moat_archetype', label: 'Moat Archetype' }},
@@ -2674,6 +2687,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       irr_5y: "5-Year Expected IRR across growing annual dividends (with FCF payout conservation) and Year-5 rolled-forward DCF Fair Value.",
       roic_exp: "Marginal RONIC₀ used by the DCF (Tangible ROIC blended with GAAP ROIC by cash-funded M&A share, capped at 50%; or 5Y median ROE for financials).",
       g4_cap: "Gate 4 Competitive Advantage Period (CAP) in years over which g₀ and RONIC₀ fade (15–30y for Prime Grade).",
+      g5_mgmt: "Gate 5 Management & Capital Allocation score (0 = Red Flag, 1 = Standard Pass, 2 = Elite Compounder).",
+      g6_cash: "Gate 6 Real Cash Conversion, Peak-to-Peak EPS & Fortress Balance Sheet verdict (Y / N).",
       cap_implied: "Market-implied Competitive Advantage Period (years) needed for the DCF to match the current share price given g₀ and RONIC₀.",
       cap_gap: "Runway Margin = Our CAP − Market-Implied CAP (positive = our moat runway exceeds what the market prices in).",
       g3a_moat_archetype: "Primary economic moat archetype assigned at Gate 3a.",
@@ -3133,11 +3148,12 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }} else if (currentTab === 'calamity') {{
           cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.waived_gates, ALL_COLS.g6_flags];
         }} else if (currentTab === 'moat_universe') {{
-          cols = [...coreValuationCols, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
+          cols = [...coreValuationCols, ALL_COLS.g5_mgmt, ALL_COLS.g6_cash, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
         }} else {{
           cols = [
             ALL_COLS.ticker, ALL_COLS.company, ALL_COLS.country, ALL_COLS.result, ALL_COLS.rejected_at,
             ...coreValuationCols.slice(3),
+            ALL_COLS.g5_mgmt, ALL_COLS.g6_cash,
             ALL_COLS.roic_used, ALL_COLS.val_status, ALL_COLS.sector
           ];
         }}
@@ -3258,6 +3274,21 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
               cellContent = tip ? `<span title="${{escHtml(tip)}}">${{val}}y</span>` : `${{val}}y`;
             }} else {{
               cellContent = hasMoatArchetype(c) ? `<span style="color: var(--text-dim);" title="Default 20y CAP assumed (Gate 4 unscored)">20y*</span>` : '-';
+            }}
+          }} else if (col.key === 'g5_mgmt') {{
+            if (val === null || val === undefined || val === '') {{
+              cellContent = '-';
+            }} else {{
+              const n = Number(val);
+              const bCls = n === 2 ? 'badge-green' : (n === 0 ? 'badge-red' : 'badge-slate');
+              cellContent = `<span class="badge ${{bCls}}">${{n}}/2</span>`;
+            }}
+          }} else if (col.key === 'g6_cash') {{
+            if (val === null || val === undefined || val === '') {{
+              cellContent = '-';
+            }} else {{
+              const bCls = val === 'Y' ? 'badge-green' : (val === 'N' ? 'badge-red' : 'badge-gray');
+              cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
             }}
           }} else if (col.key === 'cur_mult') {{
             if (val === null || val === undefined) cellContent = '-';
@@ -3606,6 +3637,16 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           icon = '✕';
         }}
 
+        if (label !== 'WAIVED' && st !== 'blank') {{
+          if (g.key === '4' && c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '') {{
+            label = `${{label}} · ${{c.g4_cap}}Y`;
+          }} else if (g.key === '5' && c.g5_mgmt !== null && c.g5_mgmt !== undefined && c.g5_mgmt !== '') {{
+            label = `${{label}} · ${{c.g5_mgmt}}/2`;
+          }} else if (g.key === '6' && c.g6_cash !== null && c.g6_cash !== undefined && c.g6_cash !== '') {{
+            label = `${{label}} · ${{c.g6_cash}}`;
+          }}
+        }}
+
         stepperHtml += `
           <div class="waterfall-step">
             <div class="step-badge" style="background:${{bg}}; color:${{color}};">${{icon}}</div>
@@ -3631,6 +3672,44 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-cap').textContent = (c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '')
         ? `${{c.g4_cap}} Years Runway${{c.cap_audited ? '' : ' (Legacy)'}}`
         : (passesG123a(c) ? '20 Years (Default / Unscored G4)' : 'Unassigned');
+
+      const hasG5 = c.g5_mgmt !== null && c.g5_mgmt !== undefined && c.g5_mgmt !== '';
+      const hasG6 = c.g6_cash !== null && c.g6_cash !== undefined && c.g6_cash !== '';
+      const g56Row = document.getElementById('dossier-g56-row');
+      if (g56Row) {{
+        if (hasG5 || hasG6) {{
+          const g5El = document.getElementById('dossier-g5-mgmt');
+          const g5Num = hasG5 ? Number(c.g5_mgmt) : null;
+          if (g5Num === 2) {{
+            g5El.textContent = '2/2 — Elite Compounder';
+            g5El.style.color = 'var(--green)';
+          }} else if (g5Num === 1) {{
+            g5El.textContent = '1/2 — Standard Pass';
+            g5El.style.color = 'var(--text-main)';
+          }} else if (g5Num === 0) {{
+            g5El.textContent = '0/2 — Red Flag';
+            g5El.style.color = 'var(--red)';
+          }} else {{
+            g5El.textContent = '-';
+            g5El.style.color = 'var(--text-main)';
+          }}
+
+          const g6El = document.getElementById('dossier-g6-cash');
+          if (c.g6_cash === 'Y') {{
+            g6El.textContent = 'Y — Pass';
+            g6El.style.color = 'var(--green)';
+          }} else if (c.g6_cash === 'N') {{
+            g6El.textContent = 'N — Fail';
+            g6El.style.color = 'var(--red)';
+          }} else {{
+            g6El.textContent = '-';
+            g6El.style.color = 'var(--text-main)';
+          }}
+          g56Row.style.display = 'grid';
+        }} else {{
+          g56Row.style.display = 'none';
+        }}
+      }}
 
       const capCardBox = document.getElementById('dossier-cap-scorecard');
       const capCardHtml = renderCapBreakdownHtml(c);
@@ -3725,7 +3804,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dossier-roic-gaap').textContent = fmtPct(c.roic_median);
       document.getElementById('dossier-fcf-conv').textContent = fmtPct(c.fcf_conv);
       const g6Ans = document.getElementById('dossier-g6-answer');
-      if (g6Ans) g6Ans.textContent = c.g6_answer || 'blank';
+      if (g6Ans) g6Ans.textContent = c.g6_answer || c.g6_cash || 'blank';
       const g6Box = document.getElementById('dossier-g6-checks');
       if (g6Box) {{
         const chk = c.g6_checks || {{}};

@@ -1,0 +1,90 @@
+[
+  {
+    "universe": "eu",
+    "id": "IFCN.CH",
+    "ticker": "IFCN",
+    "sub_industry": "Electronic Equipment & Instruments (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1: Clean Swiss engineering stewardship with virtually zero M&A bloat (ma_reinvest=0.0, GW+intangibles $4.7M on $426.1M equity), minimal SBC (1.7% of 5Y NI; diluted shares 23.9M->24.4M over 10Y), 38.9% 5Y median GAAP ROIC (26.7% ROIIC), and steady ~50-68% dividend payout ($60.9M FY25), though >30% China exposure caps execution at Standard Pass. G6=Y: Peak-to-peak Owner EPS compounding intact ($2.64 FY18 -> $4.62 FY24 peak, 9.8% 10Y CAGR; $3.51 FY25 intra-cycle dip) on a Swiss net-cash fortress ($131.8M cash vs $50.6M total debt / $0 LT debt, g6_netdebt_yrs=-0.66y, g6_intcov=69.5x, $421.5M tangible equity); 5Y fcf_conv of 0.776 reflects a single FY22 inventory/capex build (0.329), whereas FY23-25 Owner FCF conversion averaged 87.6% (ocf_ni_2y=1.06x).",
+    "peer_calibration_notes": "Calibrated against Electronic Equipment & Instruments peers EU:HLMA.GB[2,Y] (decentralized bolt-on compounder 14.2% OE EPS CAGR -> G5=2) and EU:HEXA B.SE[1,N] (goodwill-heavy M&A -> G5=1, G6=N), plus Swiss/Nordic precision peers EU:VACN.CH[1,Y] and EU:MYCR.SE[1,Y] (both G5=1, G6=Y). Slight 5Y fcf_conv dip below 0.80 from one WC year matches completed G6=Y benchmarks EU:ABBN.CH (0.768, Y), US:WAT (0.749, Y), and EU:EPI A.SE (0.746, Y), unlike US:NVDA (0.768, N) which combined 61% hyperscaler concentration with 65% earnings collapse."
+  },
+  {
+    "universe": "us",
+    "id": "KEYS",
+    "ticker": "KEYS",
+    "sub_industry": "Electronic Equipment & Instruments",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1: Capable HP/Agilent metrology stewardship maintaining 25.6% 5Y median GAAP ROIC (48.5% operating ROIC) and retiring ~7% of diluted shares over 5Y ($3.04B buybacks vs $662M SBC = 14.6% of 5Y NI), tempered by recent M&A integration (ma_reinvest=0.515; goodwill+intangibles rose $1.80B FY23 -> $4.72B FY25) compressing FY24-25 GAAP ROIC to 13.0% and 5Y ROIIC to 4.1%. G6=Y: Passes all three pillars and all 4 g6_checks—p2p_ok=Y (18.8% 10Y OE EPS CAGR; $6.24 FY22 peak, recovering to $4.91 in FY25 from $3.55 FY24), 107.3% 5Y Owner FCF conversion ($4,864M Owner FCF vs $4,535M NI; 132.3% in FY25), and conservative balance sheet ($1,873M cash vs $2,971M total debt, $1,098M net debt = 1.30x FY25 NI, g6_netdebt_yrs=0.06y, g6_intcov=9.92x, +$1,157M positive tangible equity).",
+    "peer_calibration_notes": "Calibrated against US:TDY[1,Y], EU:HEXA B.SE[1,N], and EU:HLMA.GB[2,Y]. Unlike HEXA B.SE (8.5% ROIC, 3.87y net debt, negative tangible equity -> G6=N) and US:ROP (5.86x ND/NI, -$11.2B tangible equity -> G6=N), KEYS retains positive tangible equity (+$1.16B), 1.30x FY25 ND/NI (0.06y 3Y median), 9.92x interest coverage, and 107.3% FCF conversion."
+  },
+  {
+    "universe": "us",
+    "id": "ROP",
+    "ticker": "ROP",
+    "sub_industry": "Electronic Equipment & Instruments",
+    "is_g5_reject": true,
+    "5": 0,
+    "6": "N",
+    "diagnostic_rationale": "G5=0 (preserved Gate-5 reject): Serial high-multiple PE-style software M&A rollup (ma_reinvest=1.614) has accumulated $31.11B goodwill+intangibles ($21.34B GW + $9.76B intangibles) against $19.88B equity, depressing 5Y median GAAP ROIC to 6.1% (FY25 6.4%) and 5Y ROIIC to 8.5%. G6=N: Fails Pillar 3 under the serial debt-funded M&A rollup disqualifying red flag despite strong 125.8% 5Y Owner FCF conversion ($8.57B vs $6.75B NI) and 2025 OE EPS peak ($21.61); total debt climbed to $9,301M ($8,596M LT + $705M ST) after +$2.99B net borrowings across FY24-25 (+$1,265M FY24, +$1,725M FY25) against a razor-thin $297.4M cash buffer (<0.5x ST debt), leaving Net Debt of $9,003.6M = 5.86x FY25 GAAP NI (LT Debt/NI = 5.60x > 4.0x limit, g6_netdebt_yrs=3.3y only via $898M intangible amortization add-back), 6.9x FY25 EBIT/interest (g6_intcov=7.7x), and -$11.22B negative tangible equity.",
+    "peer_calibration_notes": "Preserves mandatory 5=0 per Anti-Drift Rule #3 (ROP canonical G5=0 benchmark). Gate 6=N directly mirrors same-sub-industry peer EU:HEXA B.SE[1,N], which passed all 4 g6_checks (3.87y, 7.8x, 1.001, Y) yet failed Gate 6 due to debt-funded M&A goodwill bloat and negative tangible equity. Contrasts sharply with US:TDY[1,Y] (deleveraging debt -36% post-FLIR to 2.56x ND/NI, 19.3x intcov) and EU:HLMA.GB[2,Y] (1.76y ND/NI, self-funded bolt-ons)."
+  },
+  {
+    "universe": "us",
+    "id": "TDY",
+    "ticker": "TDY",
+    "sub_industry": "Electronic Equipment & Instruments",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "Y",
+    "diagnostic_rationale": "G5=1: Disciplined stewardship with restrained SBC (4.6% of 5Y NI; $39.6M in FY25), steady post-FLIR deleveraging (cutting total debt -36% from $4,128M FY21 to $2,642M FY25 via -$1.58B cumulative net debt paydown in FY22-25), and opportunistic buybacks ($757M in FY24-25 shrinking shares 47.9M->47.2M), though the $8.2B FLIR acquisition permanently compressed 5Y median GAAP ROIC to 7.4% (5.7% ROIIC; 22.3% operating ROIC). G6=Y: Passes all three pillars and all 4 g6_checks—p2p_ok=Y (Owner EPS compounded at 14.1% 10Y CAGR from $5.32 FY16 to an all-time peak of $22.75 in FY25), 100.3% 5Y Owner FCF conversion ($3,846M Owner FCF vs $3,834M NI; capex just 1.9% of sales), and fortress deleveraging trajectory ($2,290M net debt = 2.56x FY25 NI and g6_netdebt_yrs=1.98y <= 4.0y; LT debt/NI=2.26x; g6_intcov=17.08x and FY25 EBIT/interest=19.3x; tangible equity near breakeven at -$274M on $10.51B equity).",
+    "peer_calibration_notes": "Calibrated against Electronic Equipment peers US:KEYS[1,Y], US:ROP[0,N], and EU:HEXA B.SE[1,N], as well as M&A-compounder benchmarks US:DHR[1,Y] (7.5% GAAP ROIC, 2.81y ND, 18.7x intcov) and US:TMO[1,Y] (9.4% GAAP ROIC, 3.88y ND, 5.0x intcov). Unlike ROP and HEXA B.SE (which keep borrowing to fund rollups at >5.6x ND/NI), TDY actively retired $1.5B of FLIR debt down to 1.98y net debt and 17.1x interest cover."
+  },
+  {
+    "universe": "eu",
+    "id": "NOD.NO",
+    "ticker": "NOD",
+    "sub_industry": "Semiconductors (mapped)",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "G5=1: Honest engineering-led Nordic management (nRF Connect SDK) that preserved a net-cash liquidity buffer ($304.8M cash vs $149.2M total debt / $98.4M LT debt) through the 2023-24 IoT destocking downturn without accounting gimmicks or predatory pricing, though capital efficiency slumped (4.3% 5Y median GAAP ROIC, 0.0% ROIIC) and SBC climbed to 27.7% of 5Y NI ($16.6M FY25 SBC = 101% of $16.4M FY25 NI) alongside equity issuance and Memfault goodwill expansion ($10.9M->$101.3M). G6=N: Fails across all three pillars—(1) violent cyclical earnings collapse from $122.3M NI in FY22 to -$38.5M net loss (-$45.8M EBIT) in FY24 and weak $16.4M NI in FY25 (OE EPS $0.639 -> -$0.201 -> $0.083); (2) 5Y Owner FCF conversion of 56.6% ($101.3M vs $179.0M NI; 10Y 62.1%), well below the 80% hurdle; and (3) weak 3Y median interest coverage of 2.04x (< 5.0x threshold, flagged in g6_checks) despite net cash.",
+    "peer_calibration_notes": "Calibrated against Semiconductor peers US:ARM[1,N] (high SBC/NI -> G5=1, G6=N), US:NVDA[2,N] (low fcf_conv + cyclical volatility -> G6=N), and US:ADI[1,Y] / US:AVGO[1,Y]. Like ARM and NVDA, net cash does not rescue Gate 6 when multi-year FCF conversion (56.6%), interest coverage (2.04x), and cycle-trough profitability (-$38.5M loss) fail Pillars 1-3."
+  },
+  {
+    "universe": "us",
+    "id": "MPWR",
+    "ticker": "MPWR",
+    "sub_industry": "Semiconductors",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "G5=1: Founder-led organic engineering compounder (43.3% 5Y median GAAP ROIC, 22.4% ROIIC, 29.4% 10Y OE EPS CAGR, minimal ma_reinvest=1.15%) with zero debt stress, held at Standard Pass rather than Elite (2) due to heavy structural SBC ($867.3M 5Y = 24.7% of 5Y NI; $227.5M FY25 = 36.9% of FY25 NI) causing 16.0% 10Y diluted share expansion (42.4M->49.2M, buyback_yield=-0.68%) and >50% Greater China concentration. G6=N: Despite a pristine net-cash balance sheet ($1,256.5M cash vs $24.1M LT debt, g6_netdebt_yrs=-2.0y, g6_intcov=99.0x) and peak-to-peak OE EPS ($12.53 FY25), MPWR decisively fails Pillar 2: 5Y Owner FCF conversion is 50.4% ($1,769M Owner FCF vs $3,510M NI; 10Y = 55.8%), and even excluding the FY24 non-cash tax/gain NI spike ($1,786.7M NI vs $539.4M EBIT), cumulative 4Y (FY21-23, FY25) Owner FCF/NI is only 71.0% (< 80% hurdle) due to chronic SBC deduction (25-37% of NI) and working-capital absorption during rapid AI/data growth.",
+    "peer_calibration_notes": "Gate 5=1 calibrated directly against Semiconductor peers US:AVGO[1,Y] (30.5% 5Y SBC/NI, +16.1% 10Y shares -> G5=1) and US:ARM[1,N], contrasting with G5=2 peers US:NVDA (8.2% SBC/NI, -6.3% shares) and US:TXN (5.1% SBC/NI, -10.3% shares). Gate 6=N matches US:NVDA[2,N] (fcf_conv 0.768, net cash) and US:ARM[1,N] (fcf_conv 0.147, net cash), enforcing Pillar 2 FCF conversion >=80% symmetrically across net-cash fabless semis."
+  },
+  {
+    "universe": "us",
+    "id": "NXPI",
+    "ticker": "NXPI",
+    "sub_industry": "Semiconductors",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "G5=1: Capable automotive/industrial semiconductor stewardship sustaining 16.8% 5Y median GAAP ROIC (47.2% operating ROIC, 45.6% ROIIC), low M&A reinvestment (5.1%), and -5.5% 5Y share count reduction ($8.77B buybacks), tempered by 17.1% 5Y SBC/NI ($462M FY25 = 22.9% of NI) and debt-supplemented capital returns. G6=N: Fails Pillars 1 and 3—p2p_ok=N (flagged in g6_checks; Owner EPS fell consecutively from $10.75 FY23 -> $9.73 FY24 -> $8.96 FY25, -2.15% OE EPS CAGR, while sales shrank FY23-25), 5Y Owner FCF conversion is borderline at 80.2% ($9,607M vs $11,986M NI, dipping to 74.9% FY23 and 63.5% FY24), and total debt expanded from $7.61B (FY20) to $12.22B (FY25, +$1.37B net borrowings in FY25 alone) to fund $13.21B of 5Y buybacks+dividends exceeding $9.61B Owner FCF. This leaves Net Debt of $8,955M = 4.43x FY25 GAAP NI (LT Debt/NI = 5.43x > 4.0x; g6_netdebt_yrs=3.12y rising to 3.93y in FY25) and -$1,790M negative tangible equity ($11.85B goodwill+intangibles vs $10.06B equity).",
+    "peer_calibration_notes": "Calibrated against Semiconductor peer US:ADI[1,Y] (p2p_ok=Y, 138% FCF conv, g6_netdebt_yrs=1.68y, 9.23x intcov, positive tangible equity) and US:AVGO[1,Y] (p2p_ok=Y, 123% FCF conv, LT debt/NI=2.68x, rapid deleveraging). Unlike ADI and AVGO, NXPI exhibits negative OE EPS compounding (p2p_ok=N), rising debt to fund payouts >100% of FCF, >4.4x FY25 ND/NI (>5.4x LT debt/NI), and negative tangible equity."
+  },
+  {
+    "universe": "us",
+    "id": "Q",
+    "ticker": "Q",
+    "sub_industry": "Semiconductor Materials & Equipment",
+    "is_g5_reject": false,
+    "5": 1,
+    "6": "N",
+    "diagnostic_rationale": "G5=1: Clean Nov 2025 DuPont electronics-materials spin-off with strong operational execution (21.3% FY25 EBIT margin, 21.7% tangible ROIC, 127.3% multi-year Owner FCF conversion) and low SBC (2.2% of 4Y NI); lacks a standalone multi-year capital allocation track record for 2 (inherited $8.63B DuPont/Laird goodwill and separation debt from parent). G6=N: Inspecting fundamentals_panel.csv reveals financials.csv g6_netdebt_yrs=-0.12y is a pre-spin carve-out artifact (FY23-24 net debt was $83M/$25M before the Nov 2025 $4.10B separation borrowing). On actual post-spin FY25 figures, Q carries $4,980M total debt ($4,003M LT) vs $915M cash = $4,065M Net Debt, equal to 5.87x FY25 GAAP NI (LT Debt/NI = 5.78x > 4.0x limit, Net Debt/Owner Earnings = 5.22x > 4.0x, Net Debt/Owner FCF = 4.20x > 4.0x) with -$1,538M negative tangible equity ($7,095M equity vs $8,633M GW+intangibles); moreover, $65M FY25 interest reflects only partial-year post-spin debt (full-year run-rate interest implies ~4.1-4.6x coverage < 5.0x) and 4Y carve-out OE EPS shows zero cycle growth ($4.51 FY22 -> $3.72 FY25; p2p_ok blank).",
+    "peer_calibration_notes": "Calibrated against Semiconductor Materials & Equipment peers US:ASML/EU:ASML.NL[2,Y], US:KLAC[2,Y], US:LRCX[2,Y], US:AMAT[1,Y], EU:ASM.NL[2,Y], EU:MYCR.SE[1,Y], EU:VACN.CH[1,Y] (all net cash or <=0.5y net debt with proven multi-cycle p2p_ok=Y), and EU:BESI.NL[2,N] (failed G6 despite high margins/FCF conversion). Q's 5.87x post-spin ND/NI, -$1.54B tangible equity, and unproven standalone cycle growth fail Gate 6 cleanly."
+  }
+]
