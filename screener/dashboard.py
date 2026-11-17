@@ -2600,7 +2600,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     const SCREENER_DATA = JSON.parse(document.getElementById('screener-raw-data').textContent);
     let currentTab = 'qpass';
     let currentMarket = 'all';
-    let sortColumn = 'irr_5y';
+    let sortColumn = 'g_org_exp';
     let sortAsc = false;
     let selectedCompanyId = null;
     let viewMode = (window.innerWidth <= 768) ? 'cards' : 'table';
@@ -2608,10 +2608,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     let compactColumns = true;
 
     const TAB_DEFAULT_SORTS = {{
-      qpass: {{ col: 'irr_5y', asc: false }},
-      calamity: {{ col: 'irr_5y', asc: false }},
-      moat_universe: {{ col: 'irr_5y', asc: false }},
-      all: {{ col: 'ticker', asc: true }}
+      qpass: {{ col: 'g_org_exp', asc: false }},
+      calamity: {{ col: 'g_org_exp', asc: false }},
+      moat_universe: {{ col: 'g_org_exp', asc: false }},
+      all: {{ col: 'g_org_exp', asc: false }}
     }};
     let tabSortState = {{}};
 
@@ -2823,7 +2823,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
       // Restore per-tab sort state or fall back to tab default
       const saved = tabSortState[tab];
-      const def = TAB_DEFAULT_SORTS[tab] || {{ col: 'irr_5y', asc: false }};
+      const def = TAB_DEFAULT_SORTS[tab] || {{ col: 'g_org_exp', asc: false }};
       sortColumn = saved ? saved.col : def.col;
       sortAsc = saved ? saved.asc : def.asc;
 
