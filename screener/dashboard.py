@@ -3640,10 +3640,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         if (label !== 'WAIVED' && st !== 'blank') {{
           if (g.key === '4' && c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '') {{
             label = `${{label}} · ${{c.g4_cap}}Y`;
-          }} else if (g.key === '5' && c.g5_mgmt !== null && c.g5_mgmt !== undefined && c.g5_mgmt !== '') {{
-            label = `${{label}} · ${{c.g5_mgmt}}/2`;
-          }} else if (g.key === '6' && c.g6_cash !== null && c.g6_cash !== undefined && c.g6_cash !== '') {{
-            label = `${{label}} · ${{c.g6_cash}}`;
+          }} else if (g.key === '5' && st === 'pass' && Number(c.g5_mgmt) === 2) {{
+            label = 'ELITE';
           }}
         }}
 
