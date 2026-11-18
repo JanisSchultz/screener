@@ -132,7 +132,7 @@ def estimate_calls_for_symbols(symbols: list[str], prices_only: bool) -> int:
             if settings.REFRESH_FUNDAMENTALS or not fp.exists() or (now - fp.stat().st_mtime) >= settings.FUND_CACHE_DAYS * 86400:
                 calls += 10
         ep = symbol_cache(s, "eod")
-        if not ep.exists() or (now - ep.stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400:
+        if not ep.exists() or ep.stat().st_mtime < settings.EOD_MIN_MTIME or (now - ep.stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400:
             calls += 1
     return calls
 
@@ -474,6 +474,8 @@ def main():
         sys.exit("--offline and --prices-only cannot be combined")
     settings.OFFLINE = a.offline
     settings.REFRESH_FUNDAMENTALS = a.refresh_fundamentals
+    if a.prices_only:
+        settings.EOD_MIN_MTIME = time.time()
 
     eod = EODHD()
     if a.check_quota:

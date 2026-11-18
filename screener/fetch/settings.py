@@ -6,6 +6,7 @@ EODHD_WORKERS = 8               # Concurrent workers for EODHD fetches
 EODHD_MIN_QUOTA_RESERVE = 1000  # Keep at least 1,000 daily API calls in reserve
 FUND_CACHE_DAYS = 30            # Reuse cached full EODHD fundamentals JSON for 30 days unless refreshed
 EOD_CACHE_DAYS = 1              # Reuse EOD price history within the same trading day
+EOD_MIN_MTIME = 0.0             # Set by fetch_market_data.py --prices-only: force-refresh EOD files older than this timestamp
 CACHE_DAYS = 7                  # Default cache TTL for auxiliary endpoints
 YAHOO_PAUSE_S = 0.25            # Legacy Yahoo pause
 OFFLINE = False                 # Set by fetch_market_data.py --offline: use cached responses only

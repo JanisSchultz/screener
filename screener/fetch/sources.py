@@ -441,10 +441,12 @@ class EODHD:
     def eod(self, symbol: str, start: str = "2014-01-01") -> list[dict]:
         """Fetch 12+ years of daily EOD bars (1 request = 1 API call) and cache in data/_cache/eodhd/eod/{symbol}.json."""
         path = symbol_cache(symbol, "eod")
+        force = path.exists() and path.stat().st_mtime < settings.EOD_MIN_MTIME
         data = _cached(
             path,
             lambda: self._get(f"eod/{symbol}", {"from": start, "period": "d"}),
             days=settings.EOD_CACHE_DAYS,
+            force_refresh=force,
         )
         return data if isinstance(data, list) else []
 
@@ -1372,6 +1374,7 @@ class EODHD:
             s for s in symbols
             if fetch_eod and (
                 not (symbol_cache(s, "eod")).exists()
+                or (symbol_cache(s, "eod")).stat().st_mtime < settings.EOD_MIN_MTIME
                 or (time.time() - (symbol_cache(s, "eod")).stat().st_mtime) >= settings.EOD_CACHE_DAYS * 86400
             )
         ]
