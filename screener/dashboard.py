@@ -8,9 +8,10 @@ from __future__ import annotations
 import csv
 import json
 import statistics
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
@@ -248,9 +249,11 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     excess = [c["irr_5y"] - c["disc_rate"] for c in valued_list if c["irr_5y"] is not None and c["disc_rate"] is not None]
     median_excess_irr = statistics.median(excess) if excess else None
 
+    stockholm_now = datetime.now(ZoneInfo("Europe/Stockholm"))
+
     return {
         "version": C.SCREENER_VERSION,
-        "generated_at": date.today().isoformat(),
+        "generated_at": stockholm_now.strftime("%Y-%m-%d %H:%M %Z"),
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
@@ -353,8 +356,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 8px;
-      flex-shrink: 0;
+      min-width: 0;
     }}
     .brand-subtitle {{
       color: var(--text-dim);
@@ -370,6 +374,17 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       border-radius: 9999px;
       font-size: 11px;
       font-weight: 600;
+    }}
+    .badge-updated {{
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }}
     .kpi-bar {{
       display: flex;
@@ -1845,6 +1860,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span>Quality & Moat Screener</span>
         <span class="badge-version">v{data['version']}</span>
       </div>
+      <span class="badge-updated" id="last-updated" title="Last dashboard update (Stockholm time, Europe/Stockholm)">Last update: {data.get('generated_at') or '—'}</span>
       <span class="brand-subtitle">Charlie Munger Reject Gates & Equity Bond Valuation</span>
     </div>
     <div class="kpi-bar">
