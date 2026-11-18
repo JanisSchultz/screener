@@ -46,9 +46,14 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     universe_list = keys or universe_keys()
     all_companies = []
     universes_meta = {}
+    latest_price_date: str | None = None
 
     for u_key in universe_list:
         meta = load_universe(u_key)
+        for tech in (meta.get("technicals") or {}).values():
+            as_of = tech.get("as_of")
+            if as_of and (latest_price_date is None or as_of > latest_price_date):
+                latest_price_date = as_of
         universes_meta[u_key] = {
             "key": u_key,
             "title": meta.get("title", u_key.upper()),
@@ -254,6 +259,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
     return {
         "version": C.SCREENER_VERSION,
         "generated_at": stockholm_now.strftime("%Y-%m-%d %H:%M %Z"),
+        "price_updated_at": latest_price_date,
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
@@ -1860,7 +1866,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span>Quality & Moat Screener</span>
         <span class="badge-version">v{data['version']}</span>
       </div>
-      <span class="badge-updated" id="last-updated" title="Last dashboard update (Stockholm time, Europe/Stockholm)">Last update: {data.get('generated_at') or '—'}</span>
+      <span class="badge-updated" id="price-update" title="Latest share price date in the screener dataset">Price update: {data.get('price_updated_at') or data.get('generated_at') or '—'}</span>
       <span class="brand-subtitle">Charlie Munger Reject Gates & Equity Bond Valuation</span>
     </div>
     <div class="kpi-bar">
