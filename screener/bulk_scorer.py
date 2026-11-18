@@ -1,4 +1,4 @@
-"""Bulk scoring automation engine, batch context exporter, validator, and mirror synchronizer (v7.18).
+"""Bulk scoring automation engine, batch context exporter, validator, and mirror synchronizer (v7.19).
 
 Operates on the 989 Gate 3 companies across data/{us,eu,ca}/inputs.csv adhering strictly to
 QUALITATIVE_EVALUATION_SPEC.md and COMPANY_EVALUATION_SPEC.md.
@@ -12,7 +12,7 @@ Key Capabilities:
 4. Deterministic CAP & Moat Engine: Deterministically computes Initial CAP, derived primary moat (3a),
    and Final CAP (4) with zero manual overrides.
 5. Two-Stage Munger Waterfall Ingestion: Enforces Stage 1 downstream clearing on Gates 1-3 rejections
-   (clearing Gate 4 and Gates 5-6 when Gate 1/2 fails or Gate 3 fails without calamity), while preserving
+   (clearing Gate 4 and Gates 5-6 whenever Gate 1, Gate 2, or Gate 3 fails), while preserving
    diagnostic Gate 5 and Gate 6 scores across all Gate-3-advancing moat franchises (Stage 2).
 6. Dual-Listed Mirror Synchronization: Synchronizes all qualitative scores, notes, and evidence
    identically between dual-listed pairs (ASML <-> ASML.NL, FER <-> FER.ES).
@@ -41,7 +41,6 @@ if str(ROOT) not in sys.path:
 
 from screener.apply_evaluation import QUAL_KEY_MAP, sanitize_val  # noqa: E402
 from screener.config import (  # noqa: E402
-    CALAMITY_GATES,
     CAP_VALUES,
     FORCE_SCORE_CODES,
     GATES,
@@ -49,7 +48,6 @@ from screener.config import (  # noqa: E402
     MOAT_SCORE_CODES,
     MOAT_SCORE_SPEC,
     MOAT_TYPES,
-    RES_CALAMITY,
     RES_QPASS,
     RES_REJ,
     RES_REVIEW,
@@ -82,7 +80,6 @@ QUAL_COLUMNS = [
     "3_tb", "3_ia", "3_se", "3_rd", "3a", "3b", "3m",
     "4_ent", "4_riv", "4_buy", "4_sup", "4_sub", "4", "4n",
     "5", "6",
-    "calamity", "calamity_note",
     "note", "evidence",
 ]
 
@@ -116,7 +113,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 0, "4_sup": 0, "4_sub": 0,
         "4": 30,
         "5": 1, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "COST": {
         "universe": "us",
@@ -126,7 +122,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 0, "4_sup": 0, "4_sub": 0,
         "4": 30,
         "5": 2, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "ASML": {
         "universe": "us",
@@ -136,7 +131,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
         "4": 25,
         "5": 2, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "ASML.NL": {
         "universe": "eu",
@@ -146,7 +140,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
         "4": 25,
         "5": 2, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "MSFT": {
         "universe": "us",
@@ -156,7 +149,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 1, "4_buy": 0, "4_sup": 0, "4_sub": 1,
         "4": 25,
         "5": 1, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "WM": {
         "universe": "us",
@@ -166,7 +158,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 0, "4_sup": 0, "4_sub": 0,
         "4": 25,
         "5": 1, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "RMS.FR": {
         "universe": "eu",
@@ -176,7 +167,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 0, "4_sup": 0, "4_sub": 0,
         "4": 25,
         "5": 2, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "CNR.CA": {
         "universe": "ca",
@@ -186,7 +176,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 0, "4_sup": 1, "4_sub": 0,
         "4": 20,
         "5": 1, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "HSY": {
         "universe": "us",
@@ -196,7 +185,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 0, "4_riv": 0, "4_buy": 1, "4_sup": 1, "4_sub": 0,
         "4": 15,
         "5": 1, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "CRM": {
         "universe": "us",
@@ -206,7 +194,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": 1, "4_riv": 1, "4_buy": 1, "4_sup": 0, "4_sub": 2,
         "4": 5,
         "5": 0, "6": "Y",
-        "calamity": "", "calamity_note": "",
     },
     "NUE": {
         "universe": "us",
@@ -216,7 +203,6 @@ REFERENCE_SNAPSHOT: dict[str, dict[str, Any]] = {
         "4_ent": "", "4_riv": "", "4_buy": "", "4_sup": "", "4_sub": "",
         "4": "", "4n": "",
         "5": "", "6": "",
-        "calamity": "", "calamity_note": "",
     },
 }
 REFERENCE_COMPANIES = set(REFERENCE_SNAPSHOT.keys())
@@ -562,7 +548,6 @@ def validate_company_evaluation(payload: dict[str, Any], existing_row: dict[str,
     g2 = sanitize_val(qual.get("2"))
     g3a = sanitize_val(qual.get("3a"))
     g3b = sanitize_val(qual.get("3b"))
-    calamity_active = sanitize_val(qual.get("calamity")) == "Y"
 
     # Waterfall clearing helper
     def clear_keys(keys: list[str], reason: str) -> None:
@@ -571,24 +556,22 @@ def validate_company_evaluation(payload: dict[str, Any], existing_row: dict[str,
                 warnings.append(f"[{cid}] Waterfall: cleared '{k}' because {reason}.")
             qual[k] = ""
 
-    # Gate 1 & 2 Waterfall (Anchor Gates)
+    # Gate 1 & 2 Waterfall (Stage 1)
     if g1 == "N":
-        clear_keys(["2", "2r", *MOAT_SCORE_CODES, "3a", "3b", "3m", *FORCE_SCORE_CODES, "4", "4n", "5", "6", "calamity", "calamity_note"], "Gate 1 is 'N'")
+        clear_keys(["2", "2r", *MOAT_SCORE_CODES, "3a", "3b", "3m", *FORCE_SCORE_CODES, "4", "4n", "5", "6"], "Gate 1 is 'N'")
         return qual, warnings, errors
 
     if g2 == "N":
-        clear_keys([*MOAT_SCORE_CODES, "3a", "3b", "3m", *FORCE_SCORE_CODES, "4", "4n", "5", "6", "calamity", "calamity_note"], "Gate 2 is 'N'")
+        clear_keys([*MOAT_SCORE_CODES, "3a", "3b", "3m", *FORCE_SCORE_CODES, "4", "4n", "5", "6"], "Gate 2 is 'N'")
         return qual, warnings, errors
     elif g2 == "Y":
         qual["2r"] = ""
 
-    # Gate 3 Waterfall: 3a == 'None' is never waivable; 3b == 'N' waivable only under calamity
-    g3_failed = (g3a == "None") or (g3b == "N" and not calamity_active)
+    # Gate 3 Waterfall (Stage 1): 3a == 'None' or 3b == 'N' unconditionally scrubs G4-G6
+    g3_failed = (g3a == "None") or (g3b == "N")
     if g3_failed:
-        reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b is 'N' without calamity override"
+        reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b is 'N'"
         clear_keys([*FORCE_SCORE_CODES, "4", "4n", "5", "6"], reason)
-        if g3a == "None" and calamity_active:
-            clear_keys(["calamity", "calamity_note"], "Gate 3a is 'None' (non-waivable anchor)")
         return qual, warnings, errors
 
     # Parse and validate Gate 4 Competitive Force scores for companies passing Gate 3
@@ -614,19 +597,11 @@ def validate_company_evaluation(payload: dict[str, Any], existing_row: dict[str,
         if has_nonzero_force and not sanitize_val(qual.get("4n")):
             errors.append(f"[{cid}] Gate 4 competitive force >= 1 requires a non-empty '4n' Runway & Forces note.")
 
-    # Stage 2: Gate 4 CAP < 15 clears calamity (non-waivable anchor) while preserving diagnostic G5/G6
+    # Validate Gate 4 CAP integer if present (Stage 2 preserves diagnostic G5/G6 even when CAP < 15)
     g4_str = sanitize_val(qual.get("4"))
     if g4_str != "":
         try:
-            g4_val = int(g4_str)
-            if g4_val < 15 and calamity_active:
-                clear_keys(["calamity", "calamity_note"], f"Gate 4 CAP ({g4_val}Y) < 15 (non-waivable anchor)")
-                if g3b == "N":
-                    clear_keys(
-                        [*FORCE_SCORE_CODES, "4", "4n", "5", "6"],
-                        "Gate 3b is 'N' without calamity override (calamity cleared by Gate 4 CAP < 15)",
-                    )
-                    return qual, warnings, errors
+            int(g4_str)
         except ValueError:
             errors.append(f"[{cid}] Gate 4 CAP value '{g4_str}' is not an integer.")
 
@@ -648,30 +623,17 @@ def validate_company_evaluation(payload: dict[str, Any], existing_row: dict[str,
             errors.append(f"[{cid}] Invalid Gate 6 value '{raw_6}' for '6' (expected 'Y' or 'N').")
 
     # Warn if any company advancing past Gate 3 leaves diagnostic Gate 5 or Gate 6 blank
-    calamity_now = sanitize_val(qual.get("calamity")) == "Y"
     advances_past_g3 = (
         g1 == "Y"
         and g2 == "Y"
         and g3a not in ("", "None")
-        and (g3b == "Y" or calamity_now)
+        and g3b == "Y"
     )
     if advances_past_g3:
         if sanitize_val(qual.get("5")) == "":
             warnings.append(f"[{cid}] Company advances past Gate 3 but Gate 5 is blank; required for complete 6-gate scorecard.")
         if sanitize_val(qual.get("6")) == "":
             warnings.append(f"[{cid}] Company advances past Gate 3 but Gate 6 is blank; required for complete 6-gate scorecard.")
-
-    # Calamity validation
-    if qual.get("calamity") == "Y":
-        if not sanitize_val(qual.get("calamity_note")):
-            errors.append(f"[{cid}] calamity_flag='Y' requires a non-empty calamity_note.")
-        has_eligible = (
-            qual.get("3b") == "N"
-            or sanitize_val(qual.get("5")) == "0"
-            or qual.get("6") == "N"
-        )
-        if not has_eligible:
-            warnings.append(f"[{cid}] Calamity flag 'Y' is set, but no eligible gate (3b, 5, or 6) failed.")
 
     return qual, warnings, errors
 
@@ -780,7 +742,7 @@ def sync_mirrors(dry_run: bool = True) -> dict[str, Any]:
       - ASML (US) <- eu:ASML.NL (EU)
       - FER (US)  <- eu:FER.ES (EU)
 
-    Synchronizes all 20 qualitative fields, notes, and evidence to achieve exact parity.
+    Synchronizes all 19 qualitative fields, notes, and evidence to achieve exact parity.
     """
     mirrors = load_universe_mirrors()
     report: dict[str, Any] = {
@@ -974,8 +936,7 @@ def audit_gate_3_universe(universes: tuple[str, ...] = UNIVERSES) -> dict[str, A
       5. 4n Note: 0 missing notes when any force >= 1.
       6. Stage 1 Waterfall integrity: 0 orphaned downstream fields on Gate 3 rejections.
       7. Stage 2 Diagnostic G5/G6: all Gate-3-advancing moat franchises have valid G5 (0/1/2) & G6 (Y/N).
-      8. Calamity rules: 0 invalid calamity waivers on anchor gates.
-      9. Mirror parity: ASML/ASML.NL and FER/FER.ES 100% synchronized.
+      8. Mirror parity: ASML/ASML.NL and FER/FER.ES 100% synchronized.
     """
     audit: dict[str, Any] = {
         "gate_3_counts": {},
@@ -991,7 +952,6 @@ def audit_gate_3_universe(universes: tuple[str, ...] = UNIVERSES) -> dict[str, A
         "waterfall_violations": [],
         "stage2_advancing_count": 0,
         "stage2_discrepancies": [],
-        "calamity_violations": [],
         "mirror_parity_ok": False,
         "mirror_discrepancies": {},
     }
@@ -1013,7 +973,7 @@ def audit_gate_3_universe(universes: tuple[str, ...] = UNIVERSES) -> dict[str, A
     audit["reference_companies_verified"] = ref_ok
     audit["reference_discrepancies"] = ref_discrepancies
 
-    # 3. Audit Gate 3 companies for deterministic CAP, waterfall, notes, calamity
+    # 3. Audit Gate 3 companies for deterministic CAP, waterfall, and notes
     all_g3 = get_gate_3_companies(universes=universes)
     p = params({})
 
@@ -1065,14 +1025,13 @@ def audit_gate_3_universe(universes: tuple[str, ...] = UNIVERSES) -> dict[str, A
         # Check Two-Stage Munger Waterfall Invariants
         g3a = normalize_moat_label(c.get("3a"))
         g3b = sanitize_val(c.get("3b"))
-        calamity_flag = sanitize_val(c.get("calamity")) == "Y"
 
-        if g3a == "None" or (g3b == "N" and not calamity_flag):
+        if g3a == "None" or g3b == "N":
             # Stage 1: Downstream Gate 4 and Gates 5-6 MUST be empty
             orphans = [k for k in (*FORCE_SCORE_CODES, "4", "4n", "5", "6") if sanitize_val(c.get(k)) != ""]
             if orphans:
                 audit["waterfall_violations"].append(f"[{cid}] Failed Gate 3 but downstream keys {orphans} are not blank")
-        elif g3a in MOAT_TYPES and g3a != "None" and (g3b == "Y" or (g3b == "N" and calamity_flag)):
+        elif g3a in MOAT_TYPES and g3a != "None" and g3b == "Y":
             # Stage 2: All Gate-3-advancing moat franchises must carry valid diagnostic G5 (0/1/2) & G6 (Y/N)
             audit["stage2_advancing_count"] += 1
             g5_raw = sanitize_val(c.get("5"))
@@ -1088,31 +1047,6 @@ def audit_gate_3_universe(universes: tuple[str, ...] = UNIVERSES) -> dict[str, A
                 s2_issues.append(f"6={g6_raw!r} invalid (expected Y/N)")
             if s2_issues:
                 audit["stage2_discrepancies"].append(f"[{cid}] {', '.join(s2_issues)}")
-
-        # Check Calamity Rules
-        if calamity_flag:
-            # Calamity flag cannot be set if any anchor gate fails
-            g1 = sanitize_val(c.get("1"))
-            g2 = sanitize_val(c.get("2"))
-            g4_raw = c.get("4")
-            try:
-                g4_num = int(g4_raw) if g4_raw not in (None, "") else None
-            except ValueError:
-                g4_num = None
-            g4_pass = (g4_num is not None) and (g4_num >= 15)
-            if g1 != "Y" or g2 != "Y" or g3a == "None" or not g4_pass:
-                audit["calamity_violations"].append(f"[{cid}] Calamity active on failed Anchor Gate (1={g1}, 2={g2}, 3a={g3a}, 4={g4_raw})")
-
-
-            # Must have at least one eligible gate failed
-            g5_val = sanitize_val(c.get("5"))
-            g6_val = sanitize_val(c.get("6"))
-            has_fail = (g3b == "N" or g5_val == "0" or g6_val == "N")
-            if not has_fail:
-                audit["calamity_violations"].append(f"[{cid}] Calamity active but no eligible gate (3b, 5, 6) failed")
-
-            if not sanitize_val(c.get("calamity_note")):
-                audit["calamity_violations"].append(f"[{cid}] Calamity active but calamity_note is empty")
 
     # 4. Check Mirror Parity
     mirror_report = sync_mirrors(dry_run=True)
@@ -1157,7 +1091,7 @@ def verify_reference_companies(universes: tuple[str, ...] = UNIVERSES) -> tuple[
 def print_audit_report(audit: dict[str, Any]) -> None:
     """Print human-readable audit results."""
     print("=" * 70)
-    print("QUALITY & MOAT SCREENER — GATE 3 COMPLIANCE AUDIT (v7.18)")
+    print("QUALITY & MOAT SCREENER — GATE 3 COMPLIANCE AUDIT (v7.19)")
     print("=" * 70)
 
     print(f"Gate 3 Populations: {audit['gate_3_counts']} | Total: {audit['total_gate_3']} / {TOTAL_GATE_3_TARGET}")
@@ -1198,11 +1132,6 @@ def print_audit_report(audit: dict[str, Any]) -> None:
         f"{len(audit['stage2_discrepancies'])} missing/invalid"
     )
     for d in audit["stage2_discrepancies"][:5]:
-        print(f"    • {d}")
-
-    status_icon = "✓" if not audit["calamity_violations"] else "✗"
-    print(f"[{status_icon}] Calamity Pass Rules: {len(audit['calamity_violations'])} violations")
-    for d in audit["calamity_violations"][:5]:
         print(f"    • {d}")
 
     status_icon = "✓" if audit["mirror_parity_ok"] else "✗"
@@ -1246,7 +1175,6 @@ def main() -> None:
             or bool(audit_res["missing_4n_notes"])
             or bool(audit_res["waterfall_violations"])
             or bool(audit_res["stage2_discrepancies"])
-            or bool(audit_res["calamity_violations"])
             or not audit_res["mirror_parity_ok"]
         )
         if has_audit_failures:

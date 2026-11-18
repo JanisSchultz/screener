@@ -1,10 +1,11 @@
-# Quality & Moat Screener (v7.7 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
+# Quality & Moat Screener (v7.19 — 6 Munger Quality Gates & Sure & Simple Explicit Mauboussin-Fade DCF)
 
 Interactive standalone HTML cockpit for global quality screening (US: Nasdaq-100 ∪ S&P 500, EU: STOXX Europe 600, CA: S&P/TSX 60).
 Source data and framework live as plain files; `build.py` compiles them instantly into `output/screener.html` (and `output/index.html`).
 
 ```
-Pre-Screen (markets → Gate 2, sub-industry → Gate 6 default) → 6 Munger Reject Gates (Qualitative) → Quantitative (Explicit Mauboussin-Fade DCF) → Shortlists
+Pre-Screen (markets → Gate 2, sub-industry → Gate 6 default) → 6 Munger Reject Gates (Qualitative) → Quantitative (Explicit Mauboussin-Fade DCF) → Dashboard Views
+```
 
 Every qualitative step is a REJECT gate; Qualitative → "Review Stage / Action" and "Rejected at" show live flow:
 Gate 1: Simple to Understand (verifiable, established model)
@@ -14,8 +15,14 @@ Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 yrs on 5y steps [0..
 Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation (5 vectors >= 1)
 Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance Sheet (3 pillars: Peak-to-Peak, FCF >= 80% NI, Debt <= 4y & Interest Cover > 5x)
 
--> "Quality pass" and conditional "Calamity pass" (temporary fixable calamities on Gates 3b, 5, or 6 only, while Gates 1, 2, 3a, and 4 pass) enter the Quantitative sheet (Explicit Mauboussin-Fade DCF at r = 8.5%: 1Y Growth, 3-5Y Growth, Operating Cost Growth Ceiling g_0, Market-Implied Growth at r = 8.5%, Fair Value Price, Discount to Fair Value, 5Y Expected IRR), separated into clean Shortlists vs. the Calamity Watchlist.
+-> Companies clearing all 6 gates (`Quality pass` with `< 3` Gate 6 numeric flags) form the **🛡️ Prime Grade** funnel and enter Quantitative valuation (Explicit Mauboussin-Fade DCF at r = 8.50% / 10.25%: 1Y Growth, 3-5Y Growth, organic Model g, Market-Implied Growth, Fair Value, Discount to Fair Value, 0g Terminal Price, 5Y Expected IRR).
+-> **💎 Growth at ~0g** surfaces **🏰 Quality Grade** companies (`G1`, `G2`, `G3`, `< 3` Gate 6 numeric flags) that are `Valued` and trading near their 0g price (`Mkt Implied g < 5.0%` with `ok` or `saturated_low` flag, while organic `Model g >= 5.0%`).
 A blank gate input never passes: the company stops as "To review (blank gate)".
+
+v7.19: Calamity Tier Retirement & `💎 Growth at ~0g` Discovery Tab:
+- Retired the Calamity tier end-to-end across gate evaluation, waterfall ingestion, CSV/SQLite schemas, dashboard UI, tests, and specs (removing `calamity`, `calamity_note`, `RES_CALAMITY`, and all waiver logic).
+- Applied Stage-1 waterfall scrubbing to `APD` and `EL` (`3b=N` -> standard Gate-3 rejects: `483` Stage-2 advancing + `506` Gate-3 rejects = `989` Gate 3), while retaining full Gate 4–6 scores and notes on the `11` former calamity companies with `3b=Y` (`10` remaining in `🏰 Quality Grade`, `RTX` excluded by 3 G6 numeric flags; `🛡️ Prime Grade` unchanged at `225`).
+- Added the `💎 Growth at ~0g` tab (slot #2 after `🛡️ Prime Grade`, mobile `💎 ~0g Growth`) and KPI chip surfacing `25` matching companies (`9` Prime Grade, `6` `CAP >= 15Y` failing G6, `10` `CAP = 5–10Y`), default-sorted by `Model g ↓` (`g_org_exp`) with Gate Status filtering enabled. (See `screener/config.py` `CHANGELOG` for `v7.17`–`v7.18` details.)
 
 v7.16: Auditable Two-Step CAP Engine (Gate 3 Moat Profile -> Initial CAP & Gate 4 Competitive Forces -> Final CAP):
 - Step 1 (Gate 3 Moat Profile, `3_tb`, `3_ia`, `3_se`, `3_rd` scored 0/1/2): Formalized clean boundaries across `Toll booth & switching costs`, `Irreplaceable infrastructure & intangibles` (physical networks, permits, licenses, proprietary datasets, Lindy brands), `Scale economies shared` (strictly Nick Sleep's customer-surplus model), and `R&D & innovation leadership`. Auto-derives Primary Moat (`3a`) and deterministic Initial CAP (15Y/20Y/25Y/30Y, capped at 20Y without an elite score of 2).
@@ -304,7 +311,7 @@ screener/fetch/           SEC EDGAR + Yahoo Finance sources, audit metrics, sett
 data/<universe>/
   universe.json           titles, universe text, extra columns, breakdowns, benchmark symbols,
                           optional "parameters" overriding config defaults for this universe
-  inputs.csv              Phase 1–3 inputs per company (Y/N gates, 0/1/2 scores, CAP years, calamity flag/note, notes, evidence)
+  inputs.csv              Phase 1–3 inputs per company (Y/N gates, 0/1/2 scores, CAP years, notes, evidence)
   prescreen.csv           Gate 6 default by sub-industry (N or blank; your inputs)
   markets.csv             your markets by listing country (Y/N; feeds Gate 2)
   v4_prescore.csv         Claude's pre-scores for the fields new in v4 (merged by migrate_v4.py)

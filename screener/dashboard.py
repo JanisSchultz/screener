@@ -16,7 +16,17 @@ from zoneinfo import ZoneInfo
 from . import config as C
 from .data import DATA_DIR, DOCS_DIR, OUTPUT_DIR, load_universe, universe_keys
 from .fetch.metrics import cagr
-from .gates import active_roic, cap_audit, g6_checks, params, par_valuation, results, uses_gaap_roic
+from .gates import (
+    G_FLAG_OK,
+    G_FLAG_SAT_LO,
+    active_roic,
+    cap_audit,
+    g6_checks,
+    params,
+    par_valuation,
+    results,
+    uses_gaap_roic,
+)
 
 
 def _load_sales_cagrs(u_key: str) -> dict[str, tuple[float | None, float | None]]:
@@ -110,9 +120,14 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 pres.get("result") == C.RES_QPASS
                 and g6_flags < 3
             )
-            passes_calamity_grade = bool(
-                pres.get("result") == C.RES_CALAMITY
-                and g6_flags < 3
+            passes_growth_0g = bool(
+                passes_quality_grade
+                and val.get("status") == C.V_VALUED
+                and val.get("g_market_flag") in (G_FLAG_OK, G_FLAG_SAT_LO)
+                and val.get("g_market") is not None
+                and val.get("g_market") < 0.05
+                and val.get("g_org_exp") is not None
+                and val.get("g_org_exp") >= 0.05
             )
 
             company_record = {
@@ -141,22 +156,18 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
                 "cap_audited": audit["audited"],
                 "g5_mgmt": c.get("5"),
                 "g6_cash": c.get("6"),
-                "calamity_flag": c.get("calamity") or "",
-                "calamity_note": c.get("calamity_note") or "",
                 "note": c.get("note"),
                 "evidence": c.get("evidence"),
                 "passes_g123a": passes_g123a,
                 "passes_quality_grade": passes_quality_grade,
                 "passes_prime_grade": passes_prime_grade,
-                "passes_calamity_grade": passes_calamity_grade,
+                "passes_growth_0g": passes_growth_0g,
                 # Gate Waterfall status
                 "result": pres.get("result", C.RES_REVIEW),
                 "rejected_at": pres.get("rejected_at", ""),
                 "review_at": pres.get("review_at", ""),
                 "gate_status": pres.get("status", {}),
                 "failed_gates": [lbl for _, lbl, _ in pres.get("failed", [])],
-                "waived_gates": [lbl for _, lbl, _ in pres.get("waived", [])],
-                "waived_keys": [k for k, _, _ in pres.get("waived", [])],
                 # Financial inputs
                 "price": fin.get("price"),
                 "quote_currency": fin.get("quote_currency") or universes_meta[u_key]["currency"],
@@ -248,7 +259,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
 
     # Global KPI Aggregates
     qpass_count = sum(1 for c in all_companies if c["passes_prime_grade"])
-    calamity_list = [c for c in all_companies if c["passes_calamity_grade"]]
+    growth_0g_count = sum(1 for c in all_companies if c["passes_growth_0g"])
     valued_list = [c for c in all_companies if c["passes_prime_grade"] and c["val_status"] == C.V_VALUED]
     # v7.7: IRR in excess of each company's own hurdle r, so 8.50% and 10.25% names are comparable
     excess = [c["irr_5y"] - c["disc_rate"] for c in valued_list if c["irr_5y"] is not None and c["disc_rate"] is not None]
@@ -263,7 +274,7 @@ def collect_screener_data(keys: list[str] | None = None) -> dict[str, Any]:
         "summary": {
             "total_companies": len(all_companies),
             "quality_pass": qpass_count,
-            "calamity_pass": len(calamity_list),
+            "growth_0g": growth_0g_count,
             "valued": len(valued_list),
             "median_excess_irr": median_excess_irr,
         },
@@ -1879,8 +1890,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <span class="kpi-value accent" id="kpi-qpass">{data['summary']['quality_pass']}</span>
       </div>
       <div class="kpi-chip">
-        <span class="kpi-label" title="Conditional pass for franchises with an intact moat and runway (G1–G4 pass) experiencing a temporary, fixable calamity on G3b, G5, or G6, with fewer than 3 Gate 6 numeric flags.">Prime Grade Calamity</span>
-        <span class="kpi-value amber" id="kpi-calamity">{data['summary']['calamity_pass']}</span>
+        <span class="kpi-label" title="Quality Grade companies trading near their 0g price: Valued, Mkt Implied g &lt; 5.0% (ok or saturated_low), and organic Model g &ge; 5.0%.">Growth at ~0g</span>
+        <span class="kpi-value accent" id="kpi-growth-0g">{data['summary'].get('growth_0g', 0)}</span>
       </div>
       <div class="kpi-chip">
         <span class="kpi-label" title="Median of (5Y IRR − own hurdle r) over valued Prime Grade stocks; r = 8.50% operating / 10.25% balance-sheet financials. Negative = expected return below the hurdle.">Median IRR vs hurdle</span>
@@ -1896,10 +1907,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       <span class="tab-label-short">🛡️ Prime</span>
       <span class="pill-count" id="count-qpass">0</span>
     </button>
-    <button class="tab-btn" data-tab="calamity" onclick="setTab('calamity')" title="Conditional pass for franchises with a temporary, fixable calamity on Gate 3b, 5, and/or 6.">
-      <span class="tab-label-full">⚠️ Prime Grade Calamity</span>
-      <span class="tab-label-short">⚠️ Calamity</span>
-      <span class="pill-count" id="count-calamity">0</span>
+    <button class="tab-btn" data-tab="growth_0g" onclick="setTab('growth_0g')" title="Quality Grade companies trading near their 0g price (Valued, Mkt Implied g &lt; 5.0%, organic Model g &ge; 5.0%).">
+      <span class="tab-label-full">💎 Growth at ~0g</span>
+      <span class="tab-label-short">💎 ~0g Growth</span>
+      <span class="pill-count" id="count-growth-0g">0</span>
     </button>
     <button class="tab-btn" data-tab="moat_universe" onclick="setTab('moat_universe')" title="Structural franchise cohort passing Gate 1 (Understandable), Gate 2 (Essential Need), and Gate 3 (Moat &amp; Pricing Power).">
       <span class="tab-label-full">🏰 Quality Grade</span>
@@ -1976,12 +1987,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <option value="all">All Moats</option>
       </select>
 
-      <!-- Failing Gate Filter (Visible in Quality Grade & Full Universe tabs) -->
+      <!-- Failing Gate Filter (Visible in Growth at ~0g, Quality Grade & Full Universe tabs) -->
       <select id="filter-gate" class="select-filter" style="display:none;" title="Filter companies by 6-Gate waterfall outcome or first failing gate." onchange="applyFilters()">
         <option value="all">All Gate Statuses</option>
         <option value="quality_grade">Quality Grade (G1, G2, G3, &lt;3 G6 Flags)</option>
         <option value="Quality pass">Prime Grade Only</option>
-        <option value="Calamity pass">Prime Grade Calamity (Conditional)</option>
         <option value="Gate 1">Rejected at Gate 1 (Understandability)</option>
         <option value="Gate 2">Rejected at Gate 2 (Essential Need)</option>
         <option value="Gate 3">Rejected at Gate 3 (Moat & Pricing)</option>
@@ -2078,15 +2088,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <strong style="color: var(--accent);">Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Fortress Balance Sheet</strong>
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Triad: (1) Secular Peak-to-Peak Owner EPS compounding across cycles, (2) Real cash conversion (multi-year FCF &ge; 80% GAAP NI), (3) Peace-of-mind fortress balance sheet (Net Debt &le; 4y Owner Earnings, Interest Coverage &gt; 5x). Your qualitative answer decides; the numeric checks (3-year medians; net debt and interest cover n/a for balance-sheet financials) are shown as review flags in the "G6 Checks" column and the dossier, never as a reject.</p>
         </div>
-        <div class="metric-box" style="border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
-          <strong style="color: var(--amber);">Prime Grade Calamity (Conditional Pass — Gates 3b, 5, 6 Only)</strong>
-          <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Great franchises with an intact moat and runway occasionally breach Gate 3b (trailing ROIC/pricing dip), Gate 5 (outgoing/remediating management), or Gate 6 (temporary M&amp;A bridge debt or capex surge). Flagging <code style="color: var(--amber);">calamity = Y</code> preserves raw failed scores, evaluates all remaining gates, and admits them into Quantitative PAR valuation under the <strong style="color: var(--amber);">Prime Grade Calamity</strong> tier (<code style="color: var(--amber);">Calamity pass</code>). Gates 1, 2, 3a (moat != None), and 4 (CAP &ge; 15Y) are never waivable.</p>
-        </div>
         <div class="metric-box" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(56, 189, 248, 0.06);">
           <strong style="color: var(--accent);">Dashboard Views &amp; Quality Tiers</strong>
           <p style="font-size: 12px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">
             <strong>&#128737;&#65039; Prime Grade:</strong> Passes all 6 Munger Reject Gates (G1&ndash;G6) cleanly (&lt; 3 Gate 6 numeric flags).<br>
-            <strong>&#9888;&#65039; Prime Grade Calamity:</strong> Conditional pass for franchises with a temporary, fixable calamity on G3b, G5, and/or G6 (&lt; 3 Gate 6 numeric flags).<br>
+            <strong>&#128142; Growth at ~0g:</strong> Quality Grade companies (G1, G2, G3, &lt; 3 Gate 6 numeric flags) that are <code>Valued</code> and trading near their 0g price (<code>Mkt Implied g &lt; 5.0%</code> with <code>ok</code> or <code>saturated_low</code> flag, while organic <code>Model g &ge; 5.0%</code>).<br>
             <strong>&#127984; Quality Grade:</strong> Structural franchise cohort covering G1 (Understandable), G2 (Essential Need), G3 (Moat &amp; Pricing Power), and G6 Rule Check (&lt; 3 numeric flags).<br>
             <strong>&#128269; Full Universe:</strong> Every screened company across US, EU, and CA with full gate-waterfall status.
           </p>
@@ -2205,11 +2211,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         <div id="dossier-cap-scorecard" class="metric-box" style="margin-bottom: 12px; display: none;">
           <div class="label" style="color: var(--accent);" title="Deterministic two-step CAP audit: Step 1 (4 Moat Archetype scores -> Initial CAP) adjusted by Step 2 (5 Porter Competitive Force risk scores -> Final CAP).">Two-Step CAP Audit (Gate 3 Moats &rarr; Gate 4 Forces)</div>
           <div id="dossier-cap-scorecard-body" style="margin-top: 6px;"></div>
-        </div>
-
-        <div id="dossier-calamity-box" class="metric-box" style="margin-bottom: 12px; display: none; border-color: var(--amber-border); background: rgba(245, 158, 11, 0.08);">
-          <div class="label" style="color: var(--amber);" title="Explanation of the temporary, fixable calamity (on Gate 3b, 5, or 6) and the kill-switch condition that would permanently impair the thesis.">⚠️ Temporary Calamity Rationale &amp; Kill-Switch</div>
-          <div class="prose" style="margin-top: 4px;" id="dossier-calamity-note"></div>
         </div>
 
         <div id="dossier-moat-note-box" class="metric-box" style="margin-bottom: 12px; display: none;">
@@ -2642,7 +2643,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
     const TAB_DEFAULT_SORTS = {{
       qpass: {{ col: 'g_org_exp', asc: false }},
-      calamity: {{ col: 'g_org_exp', asc: false }},
+      growth_0g: {{ col: 'g_org_exp', asc: false }},
       moat_universe: {{ col: 'g_org_exp', asc: false }},
       all: {{ col: 'g_org_exp', asc: false }}
     }};
@@ -2653,8 +2654,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       company: {{ key: 'company', label: 'Company' }},
       country: {{ key: 'country', label: 'Country' }},
       result: {{ key: 'result', label: 'Gate Status' }},
-      rejected_at: {{ key: 'rejected_at', label: 'Failing / Waived Gate' }},
-      waived_gates: {{ key: 'waived_gates', label: 'Waived Gate(s)' }},
+      rejected_at: {{ key: 'rejected_at', label: 'Failing Gate' }},
       price: {{ key: 'price', label: 'Price', num: true }},
       sales_1y: {{ key: 'sales_1y', label: '1Y Growth', num: true }},
       sales_cagr: {{ key: 'sales_cagr', label: '10Y Sales WLS', num: true }},
@@ -2686,11 +2686,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
 
     const COL_TIPS = {{
       ticker: "Primary exchange ticker symbol. Click any row to open the full company dossier.",
-      company: "Company name (with ⚠ badge if admitted as Prime Grade Calamity).",
+      company: "Company name.",
       country: "Primary listing or domicile country.",
-      result: "Overall 6-Gate verdict: Quality pass (Prime Grade), Calamity pass (conditional), or Rejected.",
-      rejected_at: "First Munger Reject Gate failed, or waived gate(s) for Prime Grade Calamity.",
-      waived_gates: "Gate(s) temporarily waived under Prime Grade Calamity (G3b, G5, and/or G6 only).",
+      result: "Overall 6-Gate verdict: Quality pass (Prime Grade), Rejected, or To review.",
+      rejected_at: "First Munger Reject Gate failed.",
       price: "Latest market share price in the stock's quote currency.",
       sales_1y: "Trailing 1-year revenue growth (slump check only; does not lower structural growth ceiling g₀).",
       sales_cagr: "10-year exponentially-weighted log-linear OLS revenue growth rate (τ = 5y half-life).",
@@ -2769,12 +2768,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }});
     }}
 
-    function calamityTag(c) {{
-      if (!c || c.result !== 'Calamity pass') return '';
-      const ks = (c.waived_keys && c.waived_keys.length) ? c.waived_keys.map(k => 'G' + k).join(', ') : 'G3b/5/6';
-      return `CALAMITY · ${{ks}}`;
-    }}
-
     function passesG123a(c) {{
       if (c.passes_g123a !== undefined) return Boolean(c.passes_g123a);
       const st = c.gate_status || {{}};
@@ -2786,15 +2779,19 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return c.result === 'Quality pass' && (c.g6_flags || 0) < 3;
     }}
 
-    function passesCalamityGrade(c) {{
-      if (c.passes_calamity_grade !== undefined) return Boolean(c.passes_calamity_grade);
-      return c.result === 'Calamity pass' && (c.g6_flags || 0) < 3;
-    }}
-
     function passesQualityGrade(c) {{
       if (c.passes_quality_grade !== undefined) return Boolean(c.passes_quality_grade);
       const st = c.gate_status || {{}};
       return passesG123a(c) && st['3b'] === 'pass' && (c.g6_flags || 0) < 3;
+    }}
+
+    function passesGrowth0g(c) {{
+      if (c.passes_growth_0g !== undefined) return Boolean(c.passes_growth_0g);
+      return passesQualityGrade(c)
+        && c.val_status === 'Valued'
+        && (c.g_market_flag === 'ok' || c.g_market_flag === 'saturated_low')
+        && c.g_market !== null && c.g_market !== undefined && c.g_market < 0.05
+        && c.g_org_exp !== null && c.g_org_exp !== undefined && c.g_org_exp >= 0.05;
     }}
 
     function hasMoatArchetype(c) {{
@@ -2810,7 +2807,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     function updateTabCounts() {{
       const base = SCREENER_DATA.companies.filter(c => currentMarket === 'all' || c.universe === currentMarket);
       const qpass = base.filter(c => passesPrimeGrade(c));
-      const calamity = base.filter(c => passesCalamityGrade(c));
+      const growth0g = base.filter(c => passesGrowth0g(c));
       const qualityGrade = base.filter(c => passesQualityGrade(c));
       const valued = qpass.filter(c => c.val_status === 'Valued');
       // Header KPIs follow the market filter (computed client-side)
@@ -2820,10 +2817,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const setKpi = (id, v) => {{ const el = document.getElementById(id); if (el) el.textContent = v; }};
       setKpi('kpi-universe', base.length);
       setKpi('kpi-qpass', qpass.length);
-      setKpi('kpi-calamity', calamity.length);
+      setKpi('kpi-growth-0g', growth0g.length);
       setKpi('kpi-median-irr', medIrr !== null ? `${{medIrr >= 0 ? '+' : ''}}${{(medIrr * 100).toFixed(1)}}pp` : '—');
       document.getElementById('count-qpass').textContent = qpass.length;
-      document.getElementById('count-calamity').textContent = calamity.length;
+      const g0El = document.getElementById('count-growth-0g');
+      if (g0El) g0El.textContent = growth0g.length;
       const moatCountEl = document.getElementById('count-moat-universe');
       if (moatCountEl) moatCountEl.textContent = qualityGrade.length;
       document.getElementById('count-all').textContent = base.length;
@@ -2852,7 +2850,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       // Show/hide failing gate filter & valuation filter
-      const showGateFilter = (tab === 'all' || tab === 'moat_universe');
+      const showGateFilter = (tab === 'all' || tab === 'moat_universe' || tab === 'growth_0g');
       document.getElementById('filter-gate').style.display = showGateFilter ? 'inline-block' : 'none';
       const showValFilter = (tab === 'qpass' || tab === 'all' || tab === 'moat_universe');
       const valFilterEl = document.getElementById('filter-val');
@@ -2945,7 +2943,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       return SCREENER_DATA.companies.filter(c => {{
         // Tab restriction
         if (currentTab === 'qpass' && !passesPrimeGrade(c)) return false;
-        if (currentTab === 'calamity' && !passesCalamityGrade(c)) return false;
+        if (currentTab === 'growth_0g' && !passesGrowth0g(c)) return false;
         if (currentTab === 'moat_universe' && !passesQualityGrade(c)) return false;
 
         // Market
@@ -2965,10 +2963,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }}
 
         // Gate
-        if ((currentTab === 'all' || currentTab === 'moat_universe') && gate !== 'all') {{
+        if ((currentTab === 'all' || currentTab === 'moat_universe' || currentTab === 'growth_0g') && gate !== 'all') {{
           if ((gate === 'quality_grade' || gate === 'g123a') && !passesQualityGrade(c)) return false;
           if (gate === 'Quality pass' && !passesPrimeGrade(c)) return false;
-          if (gate === 'Calamity pass' && !passesCalamityGrade(c)) return false;
           if (gate.startsWith('Gate') || gate.startsWith('G')) {{
             const num = gate.replace(/[^0-9]/g, '');
             if (num) {{
@@ -3101,9 +3098,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const moat = document.getElementById('filter-moat').value;
       const gate = document.getElementById('filter-gate').value;
       const valFilter = document.getElementById('filter-val') ? document.getElementById('filter-val').value : 'all';
-      const showExt = (currentTab === 'all' || currentTab === 'moat_universe');
+      const showExt = (currentTab === 'all' || currentTab === 'moat_universe' || currentTab === 'growth_0g');
+      const showVal = (currentTab === 'qpass' || currentTab === 'all' || currentTab === 'moat_universe');
       return Boolean(q) || currentMarket !== 'all' || sector !== 'all' || moat !== 'all' ||
-        (showExt && (gate !== 'all' || valFilter !== 'all'));
+        (showExt && gate !== 'all') || (showVal && valFilter !== 'all');
     }}
 
     function renderCurrentView() {{
@@ -3156,8 +3154,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         let colKeys = [];
         if (currentTab === 'qpass') {{
           colKeys = [...compactKeys, 'fcf_conv', 'g6_flags'];
-        }} else if (currentTab === 'calamity') {{
-          colKeys = [...compactKeys, 'waived_gates', 'g6_flags'];
+        }} else if (currentTab === 'growth_0g') {{
+          colKeys = [...compactKeys, 'g5_mgmt', 'g6_cash', 'result', 'rejected_at'];
         }} else if (currentTab === 'moat_universe') {{
           colKeys = [...compactKeys, 'result', 'rejected_at', 'val_status'];
         }} else {{
@@ -3167,8 +3165,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }} else {{
         if (currentTab === 'qpass') {{
           cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];
-        }} else if (currentTab === 'calamity') {{
-          cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.waived_gates, ALL_COLS.g6_flags];
+        }} else if (currentTab === 'growth_0g') {{
+          cols = [...coreValuationCols, ALL_COLS.g5_mgmt, ALL_COLS.g6_cash, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];
         }} else if (currentTab === 'moat_universe') {{
           cols = [...coreValuationCols, ALL_COLS.g5_mgmt, ALL_COLS.g6_cash, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.val_status, ALL_COLS.sector];
         }} else {{
@@ -3205,14 +3203,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           let cellContent = '';
 
           if (col.key === 'ticker') {{
-            const cTag = (c.result === 'Calamity pass')
-              ? ` <span class="badge badge-amber" title="${{escHtml(calamityTag(c))}}" style="font-size: 9px; padding: 1px 4px; margin-left: 3px;">⚠</span>`
-              : '';
-            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>${{cTag}}`;
+            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'company') {{
             cellContent = `<div class="cell-company" title="${{escHtml(val)}}">${{escHtml(val)}}</div>`;
-          }} else if (col.key === 'waived_gates') {{
-            cellContent = `<span class="badge badge-amber">${{escHtml(calamityTag(c))}}</span>`;
           }} else if (col.key === 'vs_par') {{
             if (val === null || val === undefined) cellContent = '-';
             else {{
@@ -3236,14 +3229,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             const ronicFlag = c.ronic_le_r ? ` <span title="RONIC₀ ≤ r: growth adds no value (Fair P/E ≤ 1/r) — review capital base" style="color: var(--amber);">⚠</span>` : '';
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>${{ronicFlag}}`;
           }} else if (col.key === 'result') {{
-            const bCls = val === 'Quality pass' ? 'badge-green' : (val === 'Calamity pass' ? 'badge-amber' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
+            const bCls = val === 'Quality pass' ? 'badge-green' : (val.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
             cellContent = `<span class="badge ${{bCls}}">${{escHtml(val)}}</span>`;
           }} else if (col.key === 'rejected_at') {{
-            if (c.result === 'Calamity pass') {{
-              cellContent = `<span style="color: var(--amber); font-size: 11px;">Waived: ${{escHtml((c.waived_gates || []).join(', '))}}</span>`;
-            }} else {{
-              cellContent = escHtml(val) || '-';
-            }}
+            cellContent = escHtml(val) || '-';
           }} else if (col.key === 'price' || col.key === 'par_val' || col.key === 'term_val') {{
             cellContent = fmtPrice(val, c.quote_currency);
             if (col.key === 'par_val' && c.ronic_le_r) {{
@@ -3482,20 +3471,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           ? 'badge-slate'
           : 'badge-gray';
 
-        if (currentTab === 'qpass' || currentTab === 'calamity') {{
-          const calBadge = c.result === 'Calamity pass' ? `<span class="badge badge-amber" style="margin-right:4px;">${{escHtml(calamityTag(c))}}</span>` : '';
+        if (currentTab === 'qpass') {{
           const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0)
             ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading at or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
-          badgeHtml = `${{calBadge}}${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
-          const roicExtra = currentTab === 'qpass'
-            ? `FCF ${{fmtPct(c.fcf_conv)}}`
-            : `Waived ${{escHtml((c.waived_keys || []).map(k => 'G' + k).join(', ') || '—')}}`;
-          const roicExtraLabel = currentTab === 'qpass'
-            ? 'Op ROIC • FCF Conv'
-            : 'Op ROIC • Waived';
-          const roicExtraTip = currentTab === 'qpass'
-            ? 'Marginal RONIC₀ used by the DCF • Multi-year Free Cash Flow conversion (FCF ÷ Net Income).'
-            : 'Marginal RONIC₀ used by the DCF • Gate(s) temporarily waived under Prime Grade Calamity.';
+          badgeHtml = `${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
+          const roicExtra = `FCF ${{fmtPct(c.fcf_conv)}}`;
+          const roicExtraLabel = 'Op ROIC • FCF Conv';
+          const roicExtraTip = 'Marginal RONIC₀ used by the DCF • Multi-year Free Cash Flow conversion (FCF ÷ Net Income).';
           metricsHtml = `
             <div class="card-metric-cell">
               <div class="card-metric-label" title="5-Year Expected IRR across growing annual dividends and Year-5 rolled-forward DCF Fair Value.">5Y Exp IRR</div>
@@ -3517,17 +3499,15 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
             </div>
           ` + triadCardsHtml(c);
         }} else {{
-          const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result === 'Calamity pass' ? 'badge-amber' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray'));
+          const bCls = c.result === 'Quality pass' ? 'badge-green' : (c.result.startsWith('Rejected') ? 'badge-red' : 'badge-gray');
           const termBadge = (c.vs_term !== null && c.vs_term !== undefined && c.vs_term <= 0)
             ? `<span class="badge badge-green" style="margin-right:4px;" title="Trading at or below Terminal Price floor">${{fmtPct(c.vs_term, true)}} vs Term</span>` : '';
           badgeHtml = `<span class="badge ${{bCls}}" style="margin-right:4px;">${{escHtml(c.result)}}</span>${{termBadge}}<span class="badge ${{vsParCls}}">${{vsParText}}</span>`;
-          const stageColor = c.result === 'Quality pass' ? 'var(--green)' : (c.result === 'Calamity pass' ? 'var(--amber)' : 'var(--red)');
-          const stageText = c.result === 'Calamity pass'
-            ? `⚠ Waived: ${{escHtml((c.waived_gates || []).join(', '))}}`
-            : (escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result)));
+          const stageColor = c.result === 'Quality pass' ? 'var(--green)' : 'var(--red)';
+          const stageText = escHtml(c.rejected_at) || (c.result === 'Quality pass' ? '✓ Passed All 6 Reject Gates' : escHtml(c.result));
           metricsHtml = `
             <div class="card-metric-cell" style="grid-column: span 2;">
-              <div class="card-metric-label" title="6-Gate waterfall outcome (first failed or waived gate) • Gate 3a primary economic moat archetype.">Gate Stage • Moat Archetype</div>
+              <div class="card-metric-label" title="6-Gate waterfall outcome (first failed gate) • Gate 3a primary economic moat archetype.">Gate Stage • Moat Archetype</div>
               <div class="card-metric-val" style="font-size: 11.5px; color: ${{stageColor}}; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 ${{stageText}} • <span style="color: var(--text-main);">${{escHtml(c.g3a_moat_archetype) || 'None'}}</span>
               </div>
@@ -3613,9 +3593,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       if (c.result === 'Quality pass') {{
         valBadge.textContent = (c.vs_par !== null ? `${{fmtPct(c.vs_par, true)}} vs fair value` : c.val_status) + (c.ronic_le_r ? ' • ⚠ RONIC₀ ≤ r (review)' : '');
         valBadge.className = `badge ${{c.vs_par !== null ? 'badge-slate' : 'badge-gray'}}`;
-      }} else if (c.result === 'Calamity pass') {{
-        valBadge.textContent = `${{calamityTag(c)}} • ` + (c.vs_par !== null ? `${{fmtPct(c.vs_par, true)}} vs fair value` : c.val_status);
-        valBadge.className = 'badge badge-amber';
       }} else {{
         const vStr = (c.vs_par !== null && c.vs_par !== undefined)
           ? ` • ${{fmtPct(c.vs_par, true)}} vs fair value`
@@ -3636,7 +3613,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       ];
 
       let stepperHtml = '';
-      const waivedKeys = c.waived_keys || [];
       gates.forEach(g => {{
         const st = (c.gate_status && c.gate_status[g.key]) || 'blank';
         let bg = 'rgba(148, 163, 184, 0.2)';
@@ -3648,18 +3624,13 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           bg = 'rgba(16, 185, 129, 0.25)';
           color = 'var(--green)';
           icon = '✓';
-        }} else if (st === 'fail' && c.result === 'Calamity pass' && waivedKeys.includes(g.key)) {{
-          bg = 'rgba(245, 158, 11, 0.25)';
-          color = 'var(--amber)';
-          icon = '⚠';
-          label = 'WAIVED';
         }} else if (st === 'fail') {{
           bg = 'rgba(244, 63, 94, 0.25)';
           color = 'var(--red)';
           icon = '✕';
         }}
 
-        if (label !== 'WAIVED' && st !== 'blank') {{
+        if (st !== 'blank') {{
           if (g.key === '4' && c.g4_cap !== null && c.g4_cap !== undefined && c.g4_cap !== '') {{
             label = `${{label}} · ${{c.g4_cap}}Y`;
           }} else if (g.key === '5' && st === 'pass' && Number(c.g5_mgmt) === 2) {{
@@ -3680,9 +3651,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const verdictEl = document.getElementById('dossier-verdict');
       if (c.result === 'Quality pass') {{
         verdictEl.innerHTML = `<span style="color: var(--green);">✓ Cleared All 6 Munger Reject Gates — Enters Quantitative Funnel</span>`;
-      }} else if (c.result === 'Calamity pass') {{
-        const wList = (c.waived_gates || []).join(', ');
-        verdictEl.innerHTML = `<span style="color: var(--amber);">⚠ Conditional Calamity Pass (Waived: ${{escHtml(wList)}}) — Enters Quantitative PAR Funnel</span>`;
       }} else {{
         verdictEl.innerHTML = `<span style="color: var(--red);">✕ ${{escHtml(c.rejected_at || c.result)}}</span>`;
       }}
@@ -3738,15 +3706,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         capCardBox.style.display = 'block';
       }} else {{
         capCardBox.style.display = 'none';
-      }}
-
-      // Calamity Note
-      const calBox = document.getElementById('dossier-calamity-box');
-      if (c.calamity_note) {{
-        document.getElementById('dossier-calamity-note').textContent = c.calamity_note;
-        calBox.style.display = 'block';
-      }} else {{
-        calBox.style.display = 'none';
       }}
 
       // Moat Note
@@ -4720,7 +4679,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const data = sortData(getFilteredData());
       if (!data.length) return;
 
-      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Calamity Flag', 'Waived Gates', 'Calamity Rationale', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Model g', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', '0 g price', 'VS 0 G', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
+      const headers = ['Ticker', 'Company', 'Universe', 'Country', 'Sector', 'Sub-Industry', 'Status', 'Failing Gate', 'Moat Archetype', 'Our CAP', 'Market-Implied CAP', 'Runway Margin', '1Y Growth', '10Y Sales WLS', 'OpCost CAGR', 'Model g', 'Buyback Yield', 'Per-Share Ceiling', 'Market-Implied g', 'Growth Margin', 'Price', 'Fair Value', 'Discount', '0 g price', 'VS 0 G', 'Cur P/E', 'Fair P/E', 'Terminal P/E', '5Y IRR', 'Active ROIC', 'Operating ROIC', 'GAAP ROIC', 'FCF Conv'];
       const csvRows = [headers.join(',')];
 
       data.forEach(c => {{
@@ -4734,9 +4693,6 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           `"${{(c.sub_industry || '').replace(/"/g, '""')}}"`,
           `"${{c.result || ''}}"`,
           `"${{(c.rejected_at || '').replace(/"/g, '""')}}"`,
-          `"${{c.calamity_flag || ''}}"`,
-          `"${{((c.waived_gates || []).join('; ')).replace(/"/g, '""')}}"`,
-          `"${{(c.calamity_note || '').replace(/"/g, '""')}}"`,
           `"${{(c.g3a_moat_archetype || '').replace(/"/g, '""')}}"`,
           c.g4_cap !== null && c.g4_cap !== undefined ? c.g4_cap : '',
           c.cap_implied !== null && c.cap_implied !== undefined ? c.cap_implied : '',

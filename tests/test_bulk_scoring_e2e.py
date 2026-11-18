@@ -76,8 +76,6 @@ def make_test_company(**overrides) -> dict:
         "4n": "Dominant workflow lock-in insulates against all five forces.",
         "5": 1,
         "6": "Y",
-        "calamity": "",
-        "calamity_note": "",
         "note": "A prime grade software compounder.",
         "evidence": "Multi-year median GAAP ROIC is 28.5%.",
     }
@@ -384,29 +382,25 @@ class Tier1FeatureCoverageTests(unittest.TestCase):
             self.assertEqual(qual[k], "")
 
     def test_t1_f7_04_gate4_cap_under_15_clears_gates_5_and_6(self):
-        """Verifies Stage 2 Gate 4 CAP < 15 clears calamity while preserving diagnostic Gates 5 and 6, and Stage 1 G3b='N' scrubs downstream."""
+        """Verifies Stage 2 Gate 4 CAP < 15 preserves diagnostic Gates 5 and 6, and Stage 1 G3b='N' scrubs downstream."""
         payload = make_test_payload(
             gate_4_force_substitution=2,
-            calamity_flag="Y",
-            calamity_note="Cannot waive Gate 4 anchor.",
         )  # fatal flaw -> rem=20-10=10 >= 10 -> CAP=10
         qual, _, _ = validate_and_waterfall(payload)
         self.assertEqual(qual["4"], 10)
         self.assertEqual(qual["5"], 1)
         self.assertEqual(qual["6"], "Y")
-        self.assertEqual(qual["calamity"], "")
-        self.assertEqual(qual["calamity_note"], "")
         self.assertEqual(phase_results(qual, self.p)["result"], C.RES_REJ[4])
 
-        # Stage 1 (G3b='N' without calamity) still strictly scrubs G4-G6
-        s1_payload = make_test_payload(gate_3b_pricing_and_proof="N", calamity_flag="")
+        # Stage 1 (G3b='N') strictly scrubs G4-G6
+        s1_payload = make_test_payload(gate_3b_pricing_and_proof="N")
         s1_qual, _, _ = validate_and_waterfall(s1_payload)
         for k in (*C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
             self.assertEqual(s1_qual[k], "")
 
-    def test_t1_f7_05_gate5_failure_clears_gate_6_without_calamity(self):
-        """Verifies Stage 2 Gate 5 failure (0) without calamity preserves diagnostic Gate 6 while rejecting at Gate 5."""
-        payload = make_test_payload(gate_5_management_score=0, gate_6_cash_and_balance_sheet="Y", calamity_flag="")
+    def test_t1_f7_05_gate5_failure_preserves_diagnostic_gate_6(self):
+        """Verifies Stage 2 Gate 5 failure (0) preserves diagnostic Gate 6 while rejecting at Gate 5."""
+        payload = make_test_payload(gate_5_management_score=0, gate_6_cash_and_balance_sheet="Y")
         qual, _, _ = validate_and_waterfall(payload)
         self.assertEqual(qual["5"], 0)
         self.assertEqual(qual["6"], "Y")
@@ -450,52 +444,46 @@ class Tier1FeatureCoverageTests(unittest.TestCase):
         self.assertEqual(u_meta.get("mirror"), {"ASML": "eu:ASML.NL", "FER": "eu:FER.ES"})
 
     # --------------------------------------------------------------------------
-    # Feature 9: Calamity Pass Rules Integrity
+    # Feature 9: Sequential Rejection & Funnel Integrity (v7.19)
     # --------------------------------------------------------------------------
-    def test_t1_f9_01_gate_3b_calamity_pass_eligible(self):
-        """Verifies Gate 3b failure with calamity='Y' qualifies for Calamity pass."""
-        c = make_test_company(**{"3b": "N", "calamity": "Y", "calamity_note": "Temp margin reset; intact moat."})
+    def test_t1_f9_01_gate_3b_failure_rejects_at_gate3(self):
+        """Verifies Gate 3b failure rejects directly at Gate 3 with no waiver."""
+        c = make_test_company(**{"3b": "N"})
         res = phase_results(c, self.p)
-        self.assertEqual(res["result"], C.RES_CALAMITY)
+        self.assertEqual(res["result"], C.RES_REJ[3])
 
-    def test_t1_f9_02_gate_5_calamity_pass_eligible(self):
-        """Verifies Gate 5 failure (0) with calamity='Y' qualifies for Calamity pass."""
-        c = make_test_company(**{"5": 0, "calamity": "Y", "calamity_note": "Former CEO error; new leadership installed."})
+    def test_t1_f9_02_gate_5_failure_rejects_at_gate5(self):
+        """Verifies Gate 5 failure (0) rejects directly at Gate 5."""
+        c = make_test_company(**{"5": 0})
         res = phase_results(c, self.p)
-        self.assertEqual(res["result"], C.RES_CALAMITY)
+        self.assertEqual(res["result"], C.RES_REJ[5])
 
-    def test_t1_f9_03_gate_6_calamity_pass_eligible(self):
-        """Verifies Gate 6 failure ('N') with calamity='Y' qualifies for Calamity pass."""
-        c = make_test_company(**{"6": "N", "calamity": "Y", "calamity_note": "Temporary bridge debt from M&A."})
+    def test_t1_f9_03_gate_6_failure_rejects_at_gate6(self):
+        """Verifies Gate 6 failure ('N') rejects directly at Gate 6."""
+        c = make_test_company(**{"6": "N"})
         res = phase_results(c, self.p)
-        self.assertEqual(res["result"], C.RES_CALAMITY)
+        self.assertEqual(res["result"], C.RES_REJ[6])
 
-    def test_t1_f9_04_calamity_note_required_for_calamity(self):
-        """Verifies calamity='Y' requires a non-empty calamity_note."""
-        payload = make_test_payload(gate_3b_pricing_and_proof="N", calamity_flag="Y", calamity_note="")
-        with tempfile.TemporaryDirectory() as tmp:
-            tmp_root = Path(tmp)
-            (tmp_root / "us").mkdir()
-            write_csv(tmp_root / "us" / "inputs.csv", input_fields({"extra_columns": []}), [{"id": "MOCK", "ticker": "MOCK", "company": "M", "country": "US", "sector": "IT", "sub_industry": "Software"}])
-            err = io.StringIO()
-            with patch("screener.apply_evaluation.DATA_DIR", tmp_root), redirect_stderr(err):
-                ok = apply_evaluation(payload, universe="us")
-            self.assertFalse(ok)
-            self.assertIn("calamity_note", err.getvalue())
+    def test_t1_f9_04_v719_funnel_and_schema_constants(self):
+        """Verifies v7.19 funnel results and schema tail constants."""
+        self.assertEqual(C.SCREENER_VERSION, "7.19")
+        self.assertEqual(C.FUNNEL_RESULTS, (C.RES_QPASS,))
+        self.assertEqual(len(C.Q_RESULTS), 8)
+        self.assertEqual(input_fields({"extra_columns": []})[-2:], ["note", "evidence"])
 
-    def test_t1_f9_05_calamity_pass_included_in_funnel(self):
-        """Verifies Calamity pass companies are included in funnel_ids(include_calamity=True)."""
+    def test_t1_f9_05_only_prime_grade_included_in_funnel(self):
+        """Verifies funnel_ids strictly returns Prime Grade companies only."""
         meta = {
             "parameters": {},
             "prescreen": [],
             "markets": [],
             "companies": [
                 make_test_company(id="QPASS"),
-                make_test_company(id="CPASS", **{"6": "N", "calamity": "Y", "calamity_note": "Bridge debt."}),
+                make_test_company(id="G6FAIL", **{"6": "N"}),
+                make_test_company(id="G3BFAIL", **{"3b": "N"}),
             ],
         }
-        self.assertEqual(funnel_ids(meta, include_calamity=True), ["QPASS", "CPASS"])
-        self.assertEqual(funnel_ids(meta, include_calamity=False), ["QPASS"])
+        self.assertEqual(funnel_ids(meta), ["QPASS"])
 
     # --------------------------------------------------------------------------
     # Feature 10: Unit Test Suite & Baseline Universe Counts
@@ -524,11 +512,13 @@ class Tier1FeatureCoverageTests(unittest.TestCase):
         self.assertEqual(total, 989)
 
     def test_t1_f10_05_universe_candidate_schema_fields(self):
-        """Verifies candidate rows contain the 26 common qualitative columns."""
+        """Verifies candidate rows contain the v7.19 common qualitative columns."""
+        expected_tail = input_fields({"extra_columns": []})[-2:]
+        self.assertEqual(expected_tail, ["note", "evidence"])
         for u in ("us", "eu", "ca"):
             cos = load_universe(u)["companies"]
             for c in cos[:5]:
-                for f in ("1", "2", "3a", "3b", "3m", "4", "4n", "5", "6", "calamity", "calamity_note", "note", "evidence"):
+                for f in ("1", "2", "3a", "3b", "3m", "4", "4n", "5", "6", "note", "evidence"):
                     self.assertIn(f, c)
 
     # --------------------------------------------------------------------------
@@ -809,43 +799,44 @@ class Tier2BoundaryCornerCaseTests(unittest.TestCase):
         qual, _, _ = validate_and_waterfall(payload)
         self.assertEqual(qual["2r"], "")
 
-    def test_t2_f7_02_calamity_cleared_on_gate1_failure(self):
-        """Corner Case: Calamity flag and note are cleared when Gate 1 is 'N'."""
-        payload = make_test_payload(gate_1="N", calamity_flag="Y", calamity_note="Attempted calamity on G1.")
-        qual, _, warnings = validate_and_waterfall(payload)
-        self.assertEqual(qual["calamity"], "")
-        self.assertEqual(qual["calamity_note"], "")
-        self.assertTrue(any("calamity" in w.lower() for w in warnings))
+    def test_t2_f7_02_stage1_waterfall_scrubs_on_gate1_failure(self):
+        """Corner Case: Downstream qualitative fields are scrubbed when Gate 1 is 'N'."""
+        payload = make_test_payload(gate_1="N")
+        qual, _, _ = validate_and_waterfall(payload)
+        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
+            self.assertEqual(qual[k], "")
 
-    def test_t2_f7_03_calamity_cleared_on_gate2_failure(self):
-        """Corner Case: Calamity flag and note are cleared when Gate 2 is 'N'."""
-        payload = make_test_payload(gate_2="N", gate_2_reason="Cyclical.", calamity_flag="Y", calamity_note="G2 calamity.")
-        qual, _, warnings = validate_and_waterfall(payload)
-        self.assertEqual(qual["calamity"], "")
-        self.assertEqual(qual["calamity_note"], "")
+    def test_t2_f7_03_stage1_waterfall_scrubs_on_gate2_failure(self):
+        """Corner Case: Gate 3-6 qualitative fields are scrubbed when Gate 2 is 'N'."""
+        payload = make_test_payload(gate_2="N", gate_2_reason="Cyclical.")
+        qual, _, _ = validate_and_waterfall(payload)
+        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
+            self.assertEqual(qual[k], "")
 
-    def test_t2_f7_04_calamity_cleared_on_gate3a_none(self):
-        """Corner Case: Calamity flag and note are cleared when Gate 3a is 'None'."""
-        payload = make_test_payload(gate_3_moat_toll_booth=0, gate_3a_moat_archetype="None", calamity_flag="Y", calamity_note="G3a calamity.")
-        qual, _, warnings = validate_and_waterfall(payload)
-        self.assertEqual(qual["calamity"], "")
-        self.assertEqual(qual["calamity_note"], "")
+    def test_t2_f7_04_stage1_waterfall_scrubs_forces_on_gate3a_none(self):
+        """Corner Case: Gate 4-6 qualitative fields are scrubbed when Gate 3a is 'None'."""
+        payload = make_test_payload(gate_3_moat_toll_booth=0, gate_3a_moat_archetype="None")
+        qual, _, _ = validate_and_waterfall(payload)
+        for k in (*C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
+            self.assertEqual(qual[k], "")
 
-    def test_t2_f7_05_calamity_cleared_on_gate4_under_15(self):
-        """Corner Case: Calamity flag and note are cleared when Gate 4 CAP < 15."""
-        payload = make_test_payload(gate_4_force_substitution=2, calamity_flag="Y", calamity_note="G4 calamity.")
-        qual, _, warnings = validate_and_waterfall(payload)
-        self.assertEqual(qual["calamity"], "")
-        self.assertEqual(qual["calamity_note"], "")
+    def test_t2_f7_05_stage2_preserves_diagnostic_g5_g6_on_gate4_under_15(self):
+        """Corner Case: Stage 2 Gate 4 CAP < 15 preserves diagnostic Gate 5 and Gate 6 scores."""
+        payload = make_test_payload(gate_4_force_substitution=2, gate_5_management_score=2, gate_6_cash_and_balance_sheet="N")
+        qual, _, _ = validate_and_waterfall(payload)
+        self.assertEqual(qual["4"], 10)
+        self.assertEqual(qual["5"], 2)
+        self.assertEqual(qual["6"], "N")
+        self.assertEqual(phase_results(qual, self.p)["result"], C.RES_REJ[4])
 
     # --------------------------------------------------------------------------
     # Feature 8 Corner Cases
     # --------------------------------------------------------------------------
     def test_t2_f8_01_asml_mirror_qualitative_codes_exact_match(self):
-        """Corner Case: ASML and ASML.NL match across all 17 qualitative codes."""
+        """Corner Case: ASML and ASML.NL match across all qualitative codes."""
         us = {c["id"]: c for c in load_universe("us")["companies"]}["ASML"]
         eu = {c["id"]: c for c in load_universe("eu")["companies"]}["ASML.NL"]
-        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6", "calamity", "calamity_note"):
+        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
             self.assertEqual(us.get(k), eu.get(k), msg=f"Mismatch on {k}")
 
     def test_t2_f8_02_fer_mirror_mapping_integrity(self):
@@ -875,37 +866,38 @@ class Tier2BoundaryCornerCaseTests(unittest.TestCase):
         self.assertEqual(us["3a"], eu["3a"])
 
     # --------------------------------------------------------------------------
-    # Feature 9 Corner Cases
+    # Feature 9 Corner Cases (Waterfall Priority & Retirement Invariants)
     # --------------------------------------------------------------------------
-    def test_t2_f9_01_calamity_on_gate1_rejected(self):
-        """Corner Case: Anchor Gate 1 is non-waivable; fails immediately as RES_REJ[1]."""
-        c = make_test_company(**{"1": "N", "calamity": "Y", "calamity_note": "Attempted anchor bypass."})
+    def test_t2_f9_01_gate1_reject_priority(self):
+        """Corner Case: Gate 1 failure takes precedence over downstream Gate 5/6 failures as RES_REJ[1]."""
+        c = make_test_company(**{"1": "N", "5": 0, "6": "N"})
         res = phase_results(c, self.p)
         self.assertEqual(res["result"], C.RES_REJ[1])
 
-    def test_t2_f9_02_calamity_on_gate2_rejected(self):
-        """Corner Case: Anchor Gate 2 is non-waivable; fails immediately as RES_REJ[2]."""
-        c = make_test_company(**{"2": "N", "calamity": "Y", "calamity_note": "Attempted anchor bypass."})
+    def test_t2_f9_02_gate2_reject_priority(self):
+        """Corner Case: Gate 2 failure takes precedence over downstream Gate 5/6 failures as RES_REJ[2]."""
+        c = make_test_company(**{"2": "N", "5": 0, "6": "N"})
         res = phase_results(c, self.p)
         self.assertEqual(res["result"], C.RES_REJ[2])
 
-    def test_t2_f9_03_calamity_on_gate3a_none_rejected(self):
-        """Corner Case: Anchor Gate 3a 'None' is non-waivable; fails immediately as RES_REJ[3]."""
-        c = make_test_company(**{"3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0, "3a": "None", "calamity": "Y", "calamity_note": "Attempted anchor bypass."})
+    def test_t2_f9_03_gate3a_none_reject_priority(self):
+        """Corner Case: Gate 3a 'None' takes precedence over downstream failures as RES_REJ[3]."""
+        c = make_test_company(**{"3_tb": 0, "3_ia": 0, "3_se": 0, "3_rd": 0, "3a": "None", "6": "N"})
         res = phase_results(c, self.p)
         self.assertEqual(res["result"], C.RES_REJ[3])
 
-    def test_t2_f9_04_calamity_on_gate4_cap_under_15_rejected(self):
-        """Corner Case: Anchor Gate 4 CAP < 15 is non-waivable; fails immediately as RES_REJ[4]."""
-        c = make_test_company(**{"4_sub": 2, "4": 10, "calamity": "Y", "calamity_note": "Attempted anchor bypass."})
+    def test_t2_f9_04_gate4_cap_under_15_reject_priority(self):
+        """Corner Case: Gate 4 CAP < 15 fails at Gate 4 even when G5/G6 diagnostic flags also fail."""
+        c = make_test_company(**{"4_sub": 2, "4": 10, "5": 0, "6": "N"})
         res = phase_results(c, self.p)
         self.assertEqual(res["result"], C.RES_REJ[4])
 
-    def test_t2_f9_05_calamity_with_zero_failed_gates_warns(self):
-        """Corner Case: Setting calamity='Y' when all gates pass triggers sanity warning."""
-        payload = make_test_payload(calamity_flag="Y", calamity_note="No gate failed.")
-        _, _, warnings = validate_and_waterfall(payload)
-        self.assertTrue(any("no eligible gate" in w.lower() for w in warnings))
+    def test_t2_f9_05_all_gates_pass_yields_prime_grade(self):
+        """Corner Case: Passing Gates 1-6 cleanly produces RES_QPASS with blank rejected_at."""
+        c = make_test_company()
+        res = phase_results(c, self.p)
+        self.assertEqual(res["result"], C.RES_QPASS)
+        self.assertEqual(res["rejected_at"], "")
 
     # --------------------------------------------------------------------------
     # Feature 10 Corner Cases
@@ -925,10 +917,12 @@ class Tier2BoundaryCornerCaseTests(unittest.TestCase):
         counts = {u: len(load_universe(u)["companies"]) for u in ("us", "eu", "ca")}
         self.assertEqual(counts, {"us": 515, "eu": 602, "ca": 58})
 
-    def test_t2_f10_04_calamity_flagged_count(self):
-        """Corner Case: Exactly 13 companies currently carry calamity='Y' in inputs.csv."""
-        counts = sum(len([c for c in load_universe(u)["companies"] if c.get("calamity") == "Y"]) for u in ("us", "eu", "ca"))
-        self.assertEqual(counts, 13)
+    def test_t2_f10_04_retired_tier_columns_absent_in_inputs(self):
+        """Corner Case: inputs.csv across all universes uses v7.19 2-column tail ['note', 'evidence']."""
+        for u in ("us", "eu", "ca"):
+            with open(ROOT / "data" / u / "inputs.csv", newline="", encoding="utf-8") as f:
+                header = next(csv.reader(f))
+            self.assertEqual(header[-2:], ["note", "evidence"])
 
     def test_t2_f10_05_unscored_legacy_exact_count(self):
         """Corner Case: Exactly 978 Gate 3 companies are unscored legacy rows in Phase 1 baseline."""
@@ -966,11 +960,12 @@ class Tier2BoundaryCornerCaseTests(unittest.TestCase):
         self.assertIn("renderDcfScheduleTable", html)
         self.assertIn("dcf-schedule-table", html)
 
-    def test_t2_f11_04_dashboard_renders_calamity_badge(self):
-        """Corner Case: Built HTML cockpit includes Prime Grade Calamity rendering token."""
+    def test_t2_f11_04_dashboard_renders_growth_0g_tab(self):
+        """Corner Case: Built HTML cockpit includes Growth at ~0g tab and KPI tokens."""
         with open(ROOT / "output" / "screener.html", encoding="utf-8") as f:
             html = f.read()
-        self.assertIn("Prime Grade Calamity", html)
+        self.assertIn("💎 Growth at ~0g", html)
+        self.assertIn("kpi-growth-0g", html)
 
     def test_t2_f11_05_dashboard_total_companies_kpi(self):
         """Corner Case: Dashboard data export records total universe companies equal to 1,175."""
@@ -1031,12 +1026,16 @@ class Tier3CrossFeatureInteractionTests(unittest.TestCase):
         c = make_test_company(**{"3_tb": 1, "3_ia": 0, "4_ent": 1, "4": cap_final})
         self.assertEqual(phase_results(c, self.p)["result"], C.RES_REJ[4])
 
-    def test_t3_07_calamity_pass_qualifies_for_valuation_funnel(self):
-        """Interaction: Calamity pass company evaluates downstream gates and enters valuation funnel."""
-        c = make_test_company(**{"3b": "N", "calamity": "Y", "calamity_note": "Turnaround with intact moat."})
-        res = phase_results(c, self.p)
-        self.assertEqual(res["result"], C.RES_CALAMITY)
-        self.assertIn("3b", [k for k, _, _ in res["waived"]])
+    def test_t3_07_quality_grade_preserves_diagnostic_g5_g6_scores(self):
+        """Interaction: 3b=Y companies failing Gate 5 or Gate 6 retain full CAP/G5/G6 scores and reject at their true failing gate."""
+        eu = {c["id"]: c for c in load_universe("eu")["companies"]}
+        us = {c["id"]: c for c in load_universe("us")["companies"]}
+        dge_res = phase_results(eu["DGE.GB"], self.p)
+        snps_res = phase_results(us["SNPS"], self.p)
+        self.assertEqual(dge_res["result"], C.RES_REJ[5])
+        self.assertEqual(snps_res["result"], C.RES_REJ[6])
+        self.assertGreaterEqual(int(eu["DGE.GB"]["4"]), 15)
+        self.assertGreaterEqual(int(us["SNPS"]["4"]), 15)
 
     def test_t3_08_asml_mirror_parity_across_universes(self):
         """Interaction: ASML (US) and ASML.NL (EU) share identical gate evaluation outcomes."""
@@ -1064,17 +1063,20 @@ class Tier3CrossFeatureInteractionTests(unittest.TestCase):
                     sectors.add(c.get("sector"))
         self.assertEqual(len(sectors), 11)
 
-    def test_t3_11_waterfall_scrub_interaction_with_calamity(self):
-        """Interaction: Upstream failure scrubs calamity flag while eligible failure preserves it."""
-        # Non-waivable Gate 4 failure clears calamity (4_sub=2 -> fatal flaw -> CAP=10 < 15)
-        payload_fail = make_test_payload(gate_4_force_substitution=2, gate_4n_runway_note="Fatal flaw threat.", calamity_flag="Y", calamity_note="Invalid.")
-        qual_fail, _, _ = validate_and_waterfall(payload_fail)
-        self.assertEqual(qual_fail["calamity"], "")
+    def test_t3_11_waterfall_stage1_vs_stage2_diagnostic_interaction(self):
+        """Interaction: Stage-1 G3b failure scrubs G4-G6 while Stage-2 failures preserve diagnostic G5 and G6."""
+        # Stage 1: Gate 3b failure scrubs G4-G6
+        payload_s1 = make_test_payload(gate_3b_pricing_and_proof="N")
+        qual_s1, _, _ = validate_and_waterfall(payload_s1)
+        for k in (*C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
+            self.assertEqual(qual_s1[k], "")
 
-        # Waivable Gate 6 failure preserves calamity
-        payload_pass = make_test_payload(gate_6_cash_and_balance_sheet="N", calamity_flag="Y", calamity_note="Valid bridge debt.")
-        qual_pass, _, _ = validate_and_waterfall(payload_pass)
-        self.assertEqual(qual_pass["calamity"], "Y")
+        # Stage 2: Gate 4 failure preserves diagnostic Gates 5 and 6
+        payload_s2 = make_test_payload(gate_4_force_substitution=2, gate_4n_runway_note="Fatal flaw threat.", gate_5_management_score=2, gate_6_cash_and_balance_sheet="N")
+        qual_s2, _, _ = validate_and_waterfall(payload_s2)
+        self.assertEqual(qual_s2["4"], 10)
+        self.assertEqual(qual_s2["5"], 2)
+        self.assertEqual(qual_s2["6"], "N")
 
     def test_t3_12_cap_audit_integration_with_phase_results(self):
         """Interaction: cap_audit accurately predicts phase_results outcome."""
@@ -1259,11 +1261,11 @@ class HelperAndRegressionTests(unittest.TestCase):
         eu = {c["id"]: c for c in load_universe("eu")["companies"]}
 
         # ASML <-> ASML.NL qualitative subscore and gate score parity
-        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6", "calamity", "calamity_note"):
+        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
             self.assertEqual(us["ASML"].get(k), eu["ASML.NL"].get(k), msg=f"ASML mirror mismatch on {k}")
 
         # FER <-> FER.ES qualitative gate score parity
-        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6", "calamity", "calamity_note"):
+        for k in (*C.MOAT_SCORE_CODES, "3a", "3b", "3m", *C.FORCE_SCORE_CODES, "4", "4n", "5", "6"):
             self.assertEqual(us["FER"].get(k), eu["FER.ES"].get(k), msg=f"FER mirror mismatch on {k}")
 
         # Verify mirror mappings exist in us/universe.json
@@ -1314,7 +1316,7 @@ class HelperAndRegressionTests(unittest.TestCase):
         # 1. Candidate count invariant
         self.assertEqual(len(gate3_candidates), 989, f"Expected exactly 989 Gate 3 candidates, found {len(gate3_candidates)}")
 
-        # 2. Audit all scored companies under Two-Stage Munger Waterfall (v7.18)
+        # 2. Audit all scored companies under Two-Stage Munger Waterfall (v7.19)
         g3_advancing = []
         g3_rejected = []
         for u, row in scored_companies:
@@ -1330,7 +1332,7 @@ class HelperAndRegressionTests(unittest.TestCase):
             m_scores = tuple(int(row[k]) for k in C.MOAT_SCORE_CODES)
 
             # Check Gate 3 waterfall status:
-            fails_g3 = (row.get("3a") == "None" or row.get("3b") == "N") and row.get("calamity") != "Y"
+            fails_g3 = row.get("3a") == "None" or row.get("3b") == "N"
 
             if fails_g3:
                 g3_rejected.append((u, cid))
@@ -1339,7 +1341,7 @@ class HelperAndRegressionTests(unittest.TestCase):
                     self.assertEqual(row.get(k, ""), "", f"{cid} fails Gate 3 but has non-empty downstream {k}={row.get(k)!r}")
             else:
                 g3_advancing.append((u, cid))
-                # Rule 3 (Stage 2): Companies passing Gate 3 (or calamity='Y') advance to Gate 4 and receive full force scores
+                # Rule 3 (Stage 2): Companies passing Gate 3 advance to Gate 4 and receive full force scores
                 for k in (*C.FORCE_SCORE_CODES, "4"):
                     self.assertTrue(row.get(k) != "" and row.get(k) is not None, f"{cid} passed Gate 3 but missing Gate 4 field {k}")
                     if k in C.FORCE_SCORE_CODES:
@@ -1356,9 +1358,7 @@ class HelperAndRegressionTests(unittest.TestCase):
 
                 # Rule 4 (Stage 2 Full Diagnostic Scorecard):
                 # Every Gate-3-advancing company must have valid non-empty Gate 5 (0/1/2) and Gate 6 (Y/N),
-                # even when rejected at Gate 4 (CAP < 15) or Gate 5 (5 = 0). Gate 4 CAP < 15 remains non-waivable.
-                if int(row["4"]) < 15:
-                    self.assertNotEqual(row.get("calamity"), "Y", f"{cid} fails Gate 4 (CAP={row['4']}) but has calamity='Y'")
+                # even when rejected at Gate 4 (CAP < 15) or Gate 5 (5 = 0).
                 g5_raw = row.get("5", "")
                 self.assertTrue(g5_raw != "" and g5_raw is not None, f"{cid} advanced past Gate 3 but missing Gate 5")
                 self.assertIn(int(g5_raw), (0, 1, 2), f"{cid} invalid Gate 5 score {g5_raw!r}")
@@ -1370,8 +1370,8 @@ class HelperAndRegressionTests(unittest.TestCase):
         if require_all or len(unscored_companies) == 0:
             self.assertEqual(len(unscored_companies), 0, f"Expected 0 unscored companies, found {len(unscored_companies)}")
             self.assertEqual(len(scored_companies), 989, f"Expected 989 scored companies, found {len(scored_companies)}")
-            self.assertEqual(len(g3_advancing), 485, f"Expected 485 Gate-3-advancing companies, found {len(g3_advancing)}")
-            self.assertEqual(len(g3_rejected), 504, f"Expected 504 Gate-3-rejected companies, found {len(g3_rejected)}")
+            self.assertEqual(len(g3_advancing), 483, f"Expected 483 Gate-3-advancing companies, found {len(g3_advancing)}")
+            self.assertEqual(len(g3_rejected), 506, f"Expected 506 Gate-3-rejected companies, found {len(g3_rejected)}")
         else:
             # Baseline pre-bulk scoring (Milestone M1):
             # Exactly 11 reference companies scored, exactly 978 unscored legacy rows

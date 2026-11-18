@@ -16,7 +16,7 @@ DOCS_DIR = ROOT / "docs"
 # ------------------------------------------------------------------ schema
 BASE_FIELDS = ["id", "ticker", "company", "country", "sector", "sub_industry"]
 QUAL_CODES = [f["code"] for f in FIELDS]
-TAIL_FIELDS = ["calamity", "calamity_note", "note", "evidence"]
+TAIL_FIELDS = ["note", "evidence"]
 PRESCREEN_FIELDS = ["sector", "sub_industry", "g6_default", "note"]
 MARKET_FIELDS = ["country", "in_market"]
 

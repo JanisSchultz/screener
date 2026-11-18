@@ -137,9 +137,9 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         data = {
-            "version": "6.33",
-            "generated_at": "2026-11-11T00:00:00Z",
-            "summary": {"total_companies": 0, "quality_pass": 0, "calamity_pass": 0, "valued": 0, "median_excess_irr": 0.0},
+            "version": "7.19",
+            "generated_at": "2026-11-18T00:00:00Z",
+            "summary": {"total_companies": 0, "quality_pass": 0, "growth_0g": 0, "valued": 0, "median_excess_irr": 0.0},
             "sectors": [],
             "moats": [],
             "universes": {},
@@ -199,11 +199,11 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
         self.assertNotIn("Above PAR", self.html)
         self.assertIn("setKpi('kpi-median-irr'", self.html)
 
-    def test_consistent_column_order_across_qpass_and_calamity(self):
-        """Verify Quality Pass Funnel and Calamity Watchlist share coreValuationCols."""
+    def test_consistent_column_order_across_qpass_and_growth_0g(self):
+        """Verify Prime Grade and Growth at ~0g share coreValuationCols."""
         self.assertIn("const coreValuationCols = [", self.html)
         self.assertIn("cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];", self.html)
-        self.assertIn("cols = [...coreValuationCols, ALL_COLS.roic_used, ALL_COLS.waived_gates, ALL_COLS.g6_flags];", self.html)
+        self.assertIn("cols = [...coreValuationCols, ALL_COLS.g5_mgmt, ALL_COLS.g6_cash, ALL_COLS.result, ALL_COLS.rejected_at, ALL_COLS.roic_used, ALL_COLS.fcf_conv, ALL_COLS.g6_flags, ALL_COLS.sector];", self.html)
 
     def test_zero_diff_thresholds(self):
         """Verify diff thresholds prevent epsilon jitter from showing spurious +0.0% colors."""
@@ -552,7 +552,7 @@ class ValuationV636AuditRemediationTests(unittest.TestCase):
         data = collect_screener_data(["us", "eu", "ca"])
         contradictions = []
         for c in data["companies"]:
-            if c.get("result") not in ("Quality pass", "Calamity pass"):
+            if c.get("result") != "Quality pass":
                 continue
             vs_par = c.get("vs_par")
             irr = c.get("irr_5y")

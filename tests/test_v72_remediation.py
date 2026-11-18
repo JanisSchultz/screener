@@ -133,7 +133,7 @@ class StatusTests(unittest.TestCase):
     def test_js_sandbox_mirrors_blocking_notes(self):
         html = build_dashboard_html({"version": "7.2", "generated_at": "x", "universes": {}, "companies": [],
                                      "changelog": [], "summary": {"total_companies": 0, "quality_pass": 0,
-                                                                  "calamity_pass": 0, "valued": 0, "median_excess_irr": None}})
+                                                                  "growth_0g": 0, "valued": 0, "median_excess_irr": None}})
         js = "const BLOCKING_AUTO_NOTES = [" + ", ".join(f"'{t}'" for t in G.BLOCKING_AUTO_NOTES) + "];"
         self.assertIn(js, html)
         self.assertNotIn("Below PAR", html)

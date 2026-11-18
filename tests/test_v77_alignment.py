@@ -61,7 +61,7 @@ class DashboardHurdleTests(unittest.TestCase):
     def setUpClass(cls):
         cls.html = build_dashboard_html({"version": "7.7", "generated_at": "x", "universes": {}, "companies": [],
                                          "changelog": [], "summary": {"total_companies": 0, "quality_pass": 0,
-                                                                      "calamity_pass": 0, "valued": 0,
+                                                                      "growth_0g": 0, "valued": 0,
                                                                       "median_excess_irr": None}})
 
     def test_irr_colours_relative_to_hurdle(self):

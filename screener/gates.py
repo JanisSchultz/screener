@@ -190,11 +190,10 @@ def gate_results(company: dict, p: dict, g6_default: str | None = None, in_marke
 
 
 def phase_results(company: dict, p: dict, g6_default: str | None = None, in_market: str = "Y") -> dict:
-    """First non-waived failure or blank decides; calamity='Y' may waive Gates 3b, 5, and/or 6 only."""
+    """First failing gate or blank decides; passing all 6 gates returns Quality pass."""
     audit = cap_audit(company)
     g = gate_results(company, p, g6_default, in_market)
     st = g["status"]
-    calamity = company.get("calamity") == "Y"
     eff_3a = audit["primary_moat"]
     has_3a = eff_3a not in (None, "") and not audit["moat_partial"]
     no_moat = eff_3a == "None"
@@ -202,24 +201,17 @@ def phase_results(company: dict, p: dict, g6_default: str | None = None, in_mark
 
     for k, lbl, ph in C.GATES:
         if k == "3b":
-            if no_moat or (st[k] == "fail" and not calamity):
-                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
+            if no_moat or st[k] == "fail":
+                return {**g, "failed": failed, "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
             if not has_3a or company.get("3b") in (None, ""):
-                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
-        elif k in C.CALAMITY_GATES:
-            if st[k] == "fail" and not calamity:
-                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
-            if st[k] == "blank":
-                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
+                return {**g, "failed": failed, "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
         else:
             if st[k] == "fail":
-                return {**g, "failed": failed, "waived": [], "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
+                return {**g, "failed": failed, "rejected_at": lbl, "review_at": "", "result": C.RES_REJ[ph]}
             if st[k] == "blank":
-                return {**g, "failed": failed, "waived": [], "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
+                return {**g, "failed": failed, "rejected_at": "", "review_at": lbl, "result": C.RES_REVIEW}
 
-    waived = [(k, lbl, ph) for k, lbl, ph in C.GATES if k in C.CALAMITY_GATES and st[k] == "fail"]
-    res = C.RES_CALAMITY if waived else C.RES_QPASS
-    return {**g, "failed": failed, "waived": waived, "rejected_at": "", "review_at": "", "result": res}
+    return {**g, "failed": failed, "rejected_at": "", "review_at": "", "result": C.RES_QPASS}
 
 
 def g6_default_lookup(meta: dict) -> dict:
@@ -238,10 +230,9 @@ def results(meta: dict) -> dict:
             for c in meta["companies"]}
 
 
-def funnel_ids(meta: dict, include_calamity: bool = True) -> list[str]:
+def funnel_ids(meta: dict) -> list[str]:
     res = results(meta)
-    allowed = C.FUNNEL_RESULTS if include_calamity else (C.RES_QPASS,)
-    return [c["id"] for c in meta["companies"] if res[c["id"]]["result"] in allowed]
+    return [c["id"] for c in meta["companies"] if res[c["id"]]["result"] == C.RES_QPASS]
 
 
 # ------------------------------------------------------------------ Quantitative PAR maths (reference)

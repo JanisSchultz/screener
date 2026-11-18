@@ -1,21 +1,20 @@
-# Per-Company Evaluation Framework Specification (v7.18)
+# Per-Company Evaluation Framework Specification (v7.19)
 ## Quality & Moat Screener — 6 Munger Quality Gates (Two-Stage Waterfall) & Explicit Mauboussin-Fade DCF
 
 ---
 
 ## 1. Overview & Evaluator Mandate
 
-This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v7.18)**.
+This specification defines the complete, rigorous end-to-end evaluation framework for analyzing individual public companies within the **Quality & Moat Screener (v7.19)**.
 
 ### The Evaluator Agent's Core Mindset
 As an independent evaluator agent, your role is that of an uncompromising, disciplined superinvestor operating strictly under the principles of **Charlie Munger** and **Warren Buffett**:
 > *"Tell me where I am going to die, that is, so I don't go there."* — Charlie Munger
 
 1. **Default Stance is Rejection**: The global investment universe contains tens of thousands of equities, but fewer than ~250 companies worldwide possess the enduring economic moats, capital allocation discipline, and balance sheet resilience required to qualify as true long-term compounders. You do not search for reasons to include a company; you actively search for the structural flaw that eliminates it.
-2. **Two-Stage Sequential Waterfall Invariant (with Conditional Calamity Tier on Gates 3b, 5 & 6 Only)**: The qualitative framework consists of **6 sequential reject gates** operating under a **Two-Stage Waterfall**:
-   - **Stage 1 (Early Stop — Gates 1–3)**: Failure at Gate 1 (`1="N"`), Gate 2 (`2="N"`), or unwaived Gate 3 (`3a="None"` or unwaived `3b="N"`) halts evaluation immediately and leaves all downstream fields blank/null.
-   - **Stage 2 (Full Diagnostic Scorecard — Gates 4–6)**: Every company advancing past Gate 3 (`1="Y"`, `2="Y"`, `3a!="None"`, and `3b="Y"` or `calamity_flag="Y"`) MUST receive a complete 6-gate scorecard (`4_*`, `4`, `4n`, `5`, and `6` all populated), **even when rejected at Gate 4 (`4 < 15`) or Gate 5 (`5 = 0` without calamity)**. The first unwaived failing gate still determines the rejection verdict; Gate 4 (`4 >= 15`) remains a non-waivable Anchor Gate (any `4 < 15` clears `calamity_flag` / `calamity_note` and rejects at Gate 4 while preserving diagnostic `5` and `6`).
-   - **Buffett Calamity Exception**: if Anchor Gates `1="Y"`, `2="Y"`, `3a!="None"`, and `4>=15` all pass and failure is strictly in Gates `3b`, `5`, and/or `6` due to a temporary, fixable calamity, keep the true failed gate value(s), set `calamity_flag: "Y"` with a structured `calamity_note` (broken metric + intact moat proof + fix catalyst & kill-switch), and evaluate all remaining downstream gates so the stock enters Quantitative valuation as **`Calamity pass`**.
+2. **Two-Stage Sequential Waterfall Invariant**: The qualitative framework consists of **6 sequential reject gates** operating under a **Two-Stage Waterfall**:
+   - **Stage 1 (Early Stop — Gates 1–3)**: Failure at Gate 1 (`1="N"`), Gate 2 (`2="N"`), or Gate 3 (`3a="None"` or `3b="N"`) halts evaluation immediately and leaves all downstream fields blank/null.
+   - **Stage 2 (Full Diagnostic Scorecard — Gates 4–6)**: Every company advancing past Gate 3 (`1="Y"`, `2="Y"`, `3a!="None"`, and `3b="Y"`) MUST receive a complete 6-gate scorecard (`4_*`, `4`, `4n`, `5`, and `6` all populated), **even when rejected at Gate 4 (`4 < 15`) or Gate 5 (`5 = 0`)**. The first failing gate still determines the rejection verdict; Gate 4 rejections (`4 < 15`) reject at Gate 4 while preserving diagnostic `5` and `6`.
 3. **Evidence Over Narrative**: Assertions must be anchored in empirical financial reality: multi-cycle ROIC, free cash flow conversion, pricing history, competitive dynamics, and balance sheet endurance through crises.
 
 ---
@@ -49,7 +48,7 @@ When the coordinator agent delegates a company for evaluation, it will provide t
 
 ## 3. The 6 Sequential Munger Reject Gates (Qualitative Rubric)
 
-Evaluation executes in sequence under the Two-Stage Waterfall: the first unwaived failing gate determines the rejection verdict, Stage 1 failures (Gates 1–3) stop immediately, and Stage 2 (Gates 4–6) completes diagnostic scoring (`4_*`, `4`, `4n`, `5`, `6`) for every company advancing past Gate 3.
+Evaluation executes in sequence under the Two-Stage Waterfall: the first failing gate determines the rejection verdict, Stage 1 failures (Gates 1–3) stop immediately, and Stage 2 (Gates 4–6) completes diagnostic scoring (`4_*`, `4`, `4n`, `5`, `6`) for every company advancing past Gate 3.
 
 ```
 STAGE 1 — EARLY STOP GATES (Fail => Immediate Reject & Blank Downstream)
@@ -60,14 +59,14 @@ Gate 2: Essential Western Need & Entrenched Habits ('Likely To' Standard)
   │ [Pass: Y]
   ▼
 Gate 3: Strong Moat & Pricing Power >= Inflation (3a Archetype + 3b ROIC >= 12% & Pricing)
-  │ [Pass: Y (or Calamity-waived 3b with 3a != None)]
+  │ [Pass: Y]
   ▼
 STAGE 2 — FULL DIAGNOSTIC SCORECARD (All Gates 4-6 Scored Even on G4/G5 Reject)
-Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 Yrs via Mauboussin Persistence; Non-Waivable Anchor)
+Gate 4: Low Disruption Risk & Predictable Runway (CAP >= 15 Yrs via Mauboussin Persistence)
   │ [Pass: CAP >= 15Y | Reject: CAP < 15Y -> score diagnostic G5 & G6]
   ▼
 Gate 5: Honest, Able, Customer-Focused Management & Capital Allocation (Score >= 1)
-  │ [Pass: Score >= 1 | Reject: Score = 0 (unwaived) -> score diagnostic G6]
+  │ [Pass: Score >= 1 | Reject: Score = 0 -> score diagnostic G6]
   ▼
 Gate 6: Real Cash Conversion, Peak-to-Peak Compounding & Peace-of-Mind Balance Sheet
   │ [Pass: Y]
@@ -141,7 +140,7 @@ Score each of the 4 orthogonal moat archetypes on **`0 / 1 / 2`** (`0` = Absent,
   - Government price caps, utility rate freezes, or customer churn upon price hikes indicating zero pricing power.
 - **Moat & Erosion Note (`3m`)**:
   - Required text summarizing: (1) the scored moat barriers preventing competitors from arbitraging away returns, (2) empirical proof of moat (ROIC, gross margin stability), and (3) primary erosion vectors.
-- **Waterfall Action**: If `3a == "None"` or (unwaived) `3b == "N"`, set `result = "Rejected – G3 Moat & Pricing"`. Leave Gates 4–6 completely blank/null.
+- **Waterfall Action**: If `3a == "None"` or `3b == "N"`, set `result = "Rejected – G3 Moat & Pricing"`. Leave Gates 4–6 completely blank/null.
 
 ---
 
@@ -169,7 +168,7 @@ With $c_2 = \sum \mathbf{1}(f_i = 2)$, $c_1 = \sum \mathbf{1}(f_i = 1)$, and tie
   1. **Sub-Industry Peer Benchmarking**: Cross-check `CAP_init` and Force scores against same-sub-industry peers so global oligopoly twins (`SU.FR` vs `ETN`, `DHR` vs `TMO`, `CME` vs `ICE` / `DB1.DE`, `WM` vs `RSG` / `WCN.CA`) are evaluated on the same yardstick.
   2. **`4_sub / 4_riv = 1 vs. 2` Boundary (UI Seat Layer vs. Proprietary Data/Statutory Engine)**: Reserve `2` (Terminal Threat $\implies \text{CAP} \le 10\text{Y}$) for seat-licensed UI/application workflows or discretionary research workstations (`CRM`, `ADBE`, `NOW`, `FDS`, `TRI`). Score proprietary non-seat risk/compliance datasets & statutory calculation standards (`REL.GB`, `WKL.NL`, `FICO`) at `1` (Moderate Pressure).
   3. **Gate 4 vs. Gate 5/6 Orthogonality (No Gate-Bleed)**: Gate 4 measures *business-model and moat longevity only*. Value-dilutive PE M&A rollups (`ROP`), predatory price gouging, or debt-funded buybacks creating negative equity (`FICO`, `MSCI`) must be rejected at **Gate 5 (`5 = 0`)** and/or **Gate 6 (`6 = "N"`)**, never by artificially compressing Gate 4 CAP.
-- **Waterfall Action**: If `4 < 15`, set `result = "Rejected – G4 Runway (<15Y)"` (keeping `4_*`, `4`, and `4n` populated for auditability), clear `calamity_flag` / `calamity_note` if set (Gate 4 is a non-waivable Anchor Gate), and **continue to evaluate Gate 5 (`5`) and Gate 6 (`6`) diagnostically** (do NOT leave blank/null).
+- **Waterfall Action**: If `4 < 15`, set `result = "Rejected – G4 Runway (<15Y)"` (keeping `4_*`, `4`, and `4n` populated for auditability), and **continue to evaluate Gate 5 (`5`) and Gate 6 (`6`) diagnostically** (do NOT leave blank/null).
 
 ---
 
@@ -190,7 +189,7 @@ Management is evaluated across five distinct superinvestor vectors:
 - **`0` (REJECT — Red Flag Triggered)**: Promotional executive ego; aggressive non-GAAP accounting or repeated "one-off" adjustments; value-destructive M&A rollups; predatory customer pricing; bureaucratic bloat; or management compensation decoupled from per-share compounding.
 - **`1` (Standard Pass)**: Honest, capable stewardship; sensible capital allocation; good alignment with shareholders; clean accounting without red flags.
 - **`2` (Elite Compounder)**: True owner-operator or exceptional "Outsider" CEO; multi-decade track record of exceptional per-share value creation; substantial insider skin in the game; high consumer surplus.
-- **Waterfall Action**: If unwaived `5 < 1` (i.e. `0`), set `result = "Rejected – G5 Management"`, and **continue to evaluate Gate 6 (`6`) diagnostically** (do NOT leave blank/null).
+- **Waterfall Action**: If `5 < 1` (i.e. `0`), set `result = "Rejected – G5 Management"`, and **continue to evaluate Gate 6 (`6`) diagnostically** (do NOT leave blank/null).
 
 ---
 
@@ -253,7 +252,7 @@ Provide a comprehensive synthesis including:
 
 ## 5. Quantitative Evaluation: Sure & Simple Explicit Mauboussin-Fade DCF & Bellman-Consistent 5Y IRR (v7.1)
 
-> **Important**: Quantitative valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates, as well as **`Calamity pass`** candidates (conditional waiver on Gates 3b, 5, and/or 6). Rejected companies are designated `"Not in funnel"` for quantitative valuation. Since v7.6 the quantitative valuation takes **no analyst overrides**: every input comes from the statements, and data that cannot support a per-share valuation is shown as **No data** with an `[auto]` reason. An evaluator supplies only the qualitative gates.
+> **Important**: Quantitative valuation is evaluated for companies achieving **`Quality pass`** across all 6 gates (and computed across Quality Grade cohorts for analytical views such as **`💎 Growth at ~0g`**). Rejected companies are designated `"Not in funnel"` for quantitative valuation. Since v7.6 the quantitative valuation takes **no analyst overrides**: every input comes from the statements, and data that cannot support a per-share valuation is shown as **No data** with an `[auto]` reason. An evaluator supplies only the qualitative gates.
 
 The v7.1 valuation model identifies **Slump-Cannibal Compounders** — world-class businesses experiencing a temporary 1-year growth slump (`sales_1y`) while their structural cost-bloat guarded growth ceiling (`g_org_exp`) remains intact — using a **Miller–Modigliani Zero-Spread Invariant Explicit $N$-Year Mauboussin-Fade DCF** at discount rate $r = 8.50\%$ ($r_{\text{fin}} = 10.25\%$ for Balance-Sheet Financials) and a **Bellman-Consistent 5-Year Expected IRR** (`irr_5y`).
 
@@ -362,8 +361,6 @@ When the independent agent completes an evaluation, it must return a strictly va
     "gate_4n_runway_note": "Initial CAP 30Y reduced by -5Y for hyperscaler AI infrastructure Rivalry (4_riv=1) and fast software/AI technology clock speed (4_sub=1).",
     "gate_5_management_score": 1,
     "gate_6_cash_and_balance_sheet": "Y",
-    "calamity_flag": null,
-    "calamity_note": null,
     "note": "Indispensable enterprise software and cloud oligopolist. Pricing power demonstrated by repeated price hikes with zero churn. $80B+ net cash balance sheet. [5-10Y g: cloud volume 6.5% + enterprise price 2.0% - AI GPU capex D&A drag 0.5% + net buyback 1.0%]",
     "evidence": "30%+ Operating ROIC over 10 years. FCF conversion >100%. Azure and Office 365 form an indispensable productivity layer for modern enterprise."
   },
@@ -390,18 +387,16 @@ When the independent agent completes an evaluation, it must return a strictly va
 | `3a` | `gate_3a_moat_archetype` | `"Toll booth & switching costs"`, `"Irreplaceable infrastructure & intangibles"`, `"Scale economies shared"`, `"R&D & innovation leadership"`, `"None"` | Null if Gate 1 or 2 is `"N"`; derived/validated from max Gate 3 moat score (`"None"` if all `0`) |
 | `3b` | `gate_3b_pricing_and_proof` | `"Y"`, `"N"` | Null if Gate 1 or 2 is `"N"` |
 | `3m` | `gate_3m_moat_note` | String | Null if Gate 1 or 2 is `"N"` |
-| `4_ent` | `gate_4_force_entrants` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
-| `4_riv` | `gate_4_force_rivalry` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
-| `4_buy` | `gate_4_force_buyers` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
-| `4_sup` | `gate_4_force_suppliers` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
-| `4_sub` | `gate_4_force_substitution` | `0`, `1`, `2` | Null if Gate 1, 2, or (3a=`"None"` / unwaived 3b=`"N"`) fails |
-| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `25`, `30` | Deterministically computed from `3_*` and `4_*` (no manual override); null if Gate 1, 2, or unwaived Gate 3 fails |
-| `4n` | `gate_4n_runway_note` | String | Mandatory when any `4_* >= 1`; null if Gate 1, 2, or unwaived Gate 3 fails |
-| `5` | `gate_5_management_score` | `0`, `1`, `2` | Null if Gate 1, 2, or unwaived Gate 3 fails; mandatory (`0`, `1`, or `2`) for all Gate-3-advancing companies (including Gate 4 rejects) |
-| `6` | `gate_6_cash_and_balance_sheet` | `"Y"`, `"N"` | Null if Gate 1, 2, or unwaived Gate 3 fails; mandatory (`"Y"` or `"N"`) for all Gate-3-advancing companies (including Gate 4 and Gate 5 rejects) |
-| `calamity` | `calamity_flag` | `"Y"`, null | Set `"Y"` only when Anchor Gates `1,2,3a,4` pass and failure is solely in `{3b, 5, 6}` |
-| `calamity_note` | `calamity_note` | String, null | Mandatory if `calamity_flag == "Y"` (broken metric, moat proof, fix catalyst + kill-switch); else null |
-| `note` | `note` | String | Mandatory summary text (include `[5-10Y g: ...]` for `Quality pass` and `Calamity pass`; for Stage 2 G4/G5 rejects omit `"Downstream gates bypassed per waterfall."` and append `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`) |
+| `4_ent` | `gate_4_force_entrants` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 (`3a="None"` / `3b="N"`) fails |
+| `4_riv` | `gate_4_force_rivalry` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 (`3a="None"` / `3b="N"`) fails |
+| `4_buy` | `gate_4_force_buyers` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 (`3a="None"` / `3b="N"`) fails |
+| `4_sup` | `gate_4_force_suppliers` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 (`3a="None"` / `3b="N"`) fails |
+| `4_sub` | `gate_4_force_substitution` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 (`3a="None"` / `3b="N"`) fails |
+| `4` | `gate_4_runway_cap` | `0`, `5`, `10`, `15`, `20`, `25`, `30` | Deterministically computed from `3_*` and `4_*` (no manual override); null if Gate 1, 2, or Gate 3 fails |
+| `4n` | `gate_4n_runway_note` | String | Mandatory when any `4_* >= 1`; null if Gate 1, 2, or Gate 3 fails |
+| `5` | `gate_5_management_score` | `0`, `1`, `2` | Null if Gate 1, 2, or Gate 3 fails; mandatory (`0`, `1`, or `2`) for all Gate-3-advancing companies (including Gate 4 rejects) |
+| `6` | `gate_6_cash_and_balance_sheet` | `"Y"`, `"N"` | Null if Gate 1, 2, or Gate 3 fails; mandatory (`"Y"` or `"N"`) for all Gate-3-advancing companies (including Gate 4 and Gate 5 rejects) |
+| `note` | `note` | String | Mandatory summary text (include `[5-10Y g: ...]` for `Quality pass`; for Stage 2 G4/G5 rejects omit `"Downstream gates bypassed per waterfall."` and append `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`) |
 | `evidence` | `evidence` | String | Mandatory empirical evidence |
 
 #### No `quantitative_overrides` (v7.6)
@@ -644,17 +639,17 @@ python3 screener/apply_evaluation.py --input path/to/result.json
 
 The script verifies:
 1. All required fields are present.
-2. The Two-Stage Waterfall invariant is respected: Stage 1 failures (`1="N"`, `2="N"`, or unwaived Gate 3 failure) require all downstream fields (`4_*`, `4`, `4n`, `5`, `6`) to be null, whereas Stage 2 (any company advancing past Gate 3) preserves diagnostic `5` and `6` even on Gate 4 (`4 < 15`) or Gate 5 (`5 = 0`) failure while clearing `calamity` if Gate 4 (`4 < 15`) fails.
+2. The Two-Stage Waterfall invariant is respected: Stage 1 failures (`1="N"`, `2="N"`, or Gate 3 failure `3a="None"` / `3b="N"`) require all downstream fields (`4_*`, `4`, `4n`, `5`, `6`) to be null, whereas Stage 2 (any company advancing past Gate 3) preserves diagnostic `5` and `6` even on Gate 4 (`4 < 15`) or Gate 5 (`5 = 0`) failure.
 3. If Quality Pass, Gate 4 $\ge 15$, Gate 5 $\ge 1$, and Gates 1, 2, 3b, 6 are `"Y"`.
 4. No `quantitative_overrides` are applied (ignored with a warning).
 
 ### Step 2: Apply Updates to Datasets
 `screener/apply_evaluation.py` automatically updates:
-- `data/<universe>/inputs.csv`: updates columns `1`, `2`, `2r`, `3_tb`, `3_ia`, `3_se`, `3_rd`, `3a`, `3b`, `3m`, `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, `4`, `4n`, `5`, `6`, `calamity`, `calamity_note`, `note`, `evidence`.
+- `data/<universe>/inputs.csv`: updates columns `1`, `2`, `2r`, `3_tb`, `3_ia`, `3_se`, `3_rd`, `3a`, `3b`, `3m`, `4_ent`, `4_riv`, `4_buy`, `4_sup`, `4_sub`, `4`, `4n`, `5`, `6`, `note`, `evidence`.
 
 ### Step 3: Rebuild HTML Cockpit
 After updating, compile the standalone HTML cockpit (`output/screener.html`, `output/index.html`, `docs/index.html`):
 ```bash
 python3 build.py
 ```
-The newly evaluated company will immediately reflect its updated status across `🛡️ Quality Pass Funnel`, `⚠️ Calamity Watchlist`, and `🔍 Full Universe & Waterfall`.
+The newly evaluated company will immediately reflect its updated status across `🛡️ Prime Grade`, `💎 Growth at ~0g` (Quality Grade companies with `Valued`, `Mkt Implied g < 5.0%` (`ok` or `saturated_low`), and organic `Model g >= 5.0%`), `🏰 Quality Grade`, `🔍 Full Universe`, and `📖 Framework`.

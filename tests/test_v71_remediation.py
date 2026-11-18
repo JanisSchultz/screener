@@ -172,11 +172,11 @@ class PipelineTests(unittest.TestCase):
 
 
 class IngestionTests(unittest.TestCase):
-    def test_sandbox_payload_does_not_touch_calamity(self):
+    def test_sandbox_payload_ignores_retired_keys(self):
         qual, fin_ov, _ = validate_and_waterfall({"qualitative": {"gate_4_runway_cap": 20},
                                                   "quantitative_overrides": {"g_est": 0.09}})
-        self.assertNotIn("calamity", qual)
-        self.assertNotIn("calamity_note", qual)
+        self.assertEqual(qual, {"4": 20})
+        self.assertEqual(fin_ov, {})
 
 
 if __name__ == "__main__":

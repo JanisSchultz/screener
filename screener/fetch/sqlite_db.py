@@ -140,7 +140,6 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
             g4n TEXT,
             g5 REAL,
             g6 TEXT,
-            calamity TEXT,
             result TEXT,
             PRIMARY KEY (universe, id)
         )
@@ -199,7 +198,7 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
                 aud["force_scores"].get("4_ent"), aud["force_scores"].get("4_riv"),
                 aud["force_scores"].get("4_buy"), aud["force_scores"].get("4_sup"),
                 aud["force_scores"].get("4_sub"),
-                aud["cap_final"], c.get("4n"), c.get("5"), c.get("6"), c.get("calamity"),
+                aud["cap_final"], c.get("4n"), c.get("5"), c.get("6"),
                 (res.get(cid) or {}).get("result"),
             ))
             f_row = meta["financials"].get(cid, {"id": cid})
@@ -221,7 +220,7 @@ def build_sqlite_db(keys: list[str] | None = None, db_path: Path = DB_PATH) -> P
                 ann_rows.append((k, *[pr.get(col) for col in PANEL_FIELDS]))
 
     cur.executemany(
-        f"INSERT OR REPLACE INTO companies VALUES ({','.join(['?'] * 28)})",
+        f"INSERT OR REPLACE INTO companies VALUES ({','.join(['?'] * 27)})",
         comp_rows,
     )
     cur.executemany(

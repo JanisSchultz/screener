@@ -59,9 +59,6 @@ QUAL_KEY_MAP = {
     "gate_4n_runway_note": "4n",
     "gate_5_management_score": "5",
     "gate_6_cash_and_balance_sheet": "6",
-    "calamity_flag": "calamity",
-    "calamity": "calamity",
-    "calamity_note": "calamity_note",
     "note": "note",
     "evidence": "evidence",
     "1": "1",
@@ -134,26 +131,7 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
             target_key = QUAL_KEY_MAP[k]
             qual[target_key] = v
 
-    # Normalize calamity fields only when the payload speaks about them (a full qualitative evaluation, or explicit
-    # calamity keys) — a sandbox payload carrying only gate_4_runway_cap must not wipe an existing calamity flag.
-    if qual and ("calamity" in qual or "calamity_note" in qual or "1" in qual):
-        calamity = sanitize_val(qual.get("calamity"))
-        if calamity not in ("", "Y"):
-            warnings.append(f"Invalid calamity_flag '{calamity}' (expected 'Y' or null); cleared.")
-            calamity = ""
-        qual["calamity"] = calamity
-        if calamity != "Y":
-            if sanitize_val(qual.get("calamity_note")):
-                warnings.append("Waterfall: cleared 'calamity_note' because calamity_flag is not 'Y'")
-            qual["calamity_note"] = ""
-
     if qual:
-        def clear_calamity(reason: str):
-            if qual.get("calamity") or sanitize_val(qual.get("calamity_note")):
-                warnings.append(f"Waterfall: cleared 'calamity'/'calamity_note' because {reason} (non-waivable)")
-            qual["calamity"] = ""
-            qual["calamity_note"] = ""
-
         def _parse_subscore(code: str) -> int | None:
             raw = qual.get(code)
             if raw is None or raw == "":
@@ -243,59 +221,38 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
         g2 = qual.get("2")
         g3a = qual.get("3a")
         g3b = qual.get("3b")
-        g4 = qual.get("4")
 
         g3_all_keys = [*MOAT_SCORE_CODES, "3a", "3b", "3m"]
         g4_all_keys = [*FORCE_SCORE_CODES, "4", "4n"]
         stage1_scrubbed = False
 
-        # Stage 1: Gate 1 check (never waivable)
+        # Stage 1: Gate 1 check
         if g1 == "N":
             for k in ["2", "2r", *g3_all_keys, *g4_all_keys, "5", "6"]:
                 if sanitize_val(qual.get(k)) != "":
                     warnings.append(f"Waterfall: scrubbed '{k}' because Gate 1 is 'N'")
                 qual[k] = ""
-            clear_calamity("Gate 1 is 'N'")
             stage1_scrubbed = True
         elif g1 == "Y":
-            # Stage 1: Gate 2 check (never waivable)
+            # Stage 1: Gate 2 check
             if g2 == "N":
                 for k in [*g3_all_keys, *g4_all_keys, "5", "6"]:
                     if sanitize_val(qual.get(k)) != "":
                         warnings.append(f"Waterfall: scrubbed '{k}' because Gate 2 is 'N'")
                     qual[k] = ""
-                clear_calamity("Gate 2 is 'N'")
                 stage1_scrubbed = True
             elif g2 == "Y":
                 qual["2r"] = ""
-                cal_active = qual.get("calamity") == "Y"
-                # Stage 1: Gate 3 check: 3a=='None' is never waivable; 3b=='N' is waivable only if calamity=='Y'
-                if g3a == "None" or (g3b == "N" and not cal_active):
-                    reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b failed without calamity override"
+                # Stage 1: Gate 3 check (3a=='None' or 3b=='N' unconditionally scrubs G4-G6)
+                if g3a == "None" or g3b == "N":
+                    reason = "Gate 3a is 'None'" if g3a == "None" else "Gate 3b is 'N'"
                     for k in [*g4_all_keys, "5", "6"]:
                         if sanitize_val(qual.get(k)) != "":
                             warnings.append(f"Waterfall: scrubbed '{k}' because {reason}")
                         qual[k] = ""
-                    clear_calamity(reason)
                     stage1_scrubbed = True
-                elif g3a in MOAT_TYPES and g3a != "None" and (g3b == "Y" or (g3b == "N" and cal_active)):
-                    # Stage 2: Gate 4 check (non-waivable Anchor Gate for calamity; diagnostic G5/G6 preserved when 3b=='Y')
-                    if g4 is not None and g4 != "":
-                        try:
-                            g4_num = int(g4)
-                            if g4_num < 15:
-                                clear_calamity(f"Gate 4 (CAP={g4_num}) < 15")
-                                if g3b == "N":
-                                    for k in [*g4_all_keys, "5", "6"]:
-                                        if sanitize_val(qual.get(k)) != "":
-                                            warnings.append(
-                                                f"Waterfall: scrubbed '{k}' because Gate 3b failed without calamity override (calamity cleared by Gate 4 CAP < 15)"
-                                            )
-                                        qual[k] = ""
-                                    stage1_scrubbed = True
-                        except ValueError:
-                            pass
 
+        # Stage 2: preserve diagnostic G5/G6 whenever Stage 1 did not scrub (including G4 CAP < 15)
         if not stage1_scrubbed:
             _parse_subscore("5")
             if "6" in qual and qual["6"] is not None and qual["6"] != "":
@@ -308,15 +265,6 @@ def validate_and_waterfall(eval_data: dict) -> tuple[dict, dict, list[str]]:
                 else:
                     warnings.append(f"Invalid Gate 6 value '{raw_6}' (expected 'Y' or 'N'); cleared.")
                     qual["6"] = ""
-
-        if qual.get("calamity") == "Y":
-            has_eligible_fail = (
-                qual.get("3b") == "N"
-                or sanitize_val(qual.get("5")) == "0"
-                or qual.get("6") == "N"
-            )
-            if not has_eligible_fail:
-                warnings.append("Calamity flag 'Y' is set, but no eligible gate (3b, 5, or 6) failed.")
 
     # v7.6: no analyst overrides — quantitative inputs come only from the statements
     if eval_data.get("quantitative_overrides"):
@@ -366,10 +314,6 @@ def apply_evaluation(payload: dict, universe: str | None = None, dry_run: bool =
     qual, _, warnings = validate_and_waterfall(payload)
     for w in warnings:
         print(f"[{company_id}] {w}")
-
-    if qual.get("calamity") == "Y" and not sanitize_val(qual.get("calamity_note")):
-        print(f"Error: [{company_id}] calamity_flag='Y' requires a non-empty calamity_note.", file=sys.stderr)
-        return False
 
     has_nonzero_force = any(
         sanitize_val(qual.get(fc)) in ("1", "2") for fc in FORCE_SCORE_CODES

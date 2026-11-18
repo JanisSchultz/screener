@@ -35,7 +35,7 @@ def main():
     print(f"  • GitHub Pages File: docs/index.html")
     print(f"  • Total Companies: {summary['total_companies']}")
     print(f"  • Prime Grade: {summary['quality_pass']}")
-    print(f"  • Prime Grade Calamity (Conditional): {summary['calamity_pass']}")
+    print(f"  • Growth at ~0g: {summary['growth_0g']}")
     med = summary['median_excess_irr']
     print(f"  • Valued Prime Grade: {summary['valued']} (Median IRR vs hurdle: {f'{med * 100:+.1f}pp' if med is not None else '—'})")
     print(f"\nTo view, open in browser: open \"{out_path}\"")

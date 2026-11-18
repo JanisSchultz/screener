@@ -1,7 +1,7 @@
 """Fetch Quantitative data from EODHD into data/<universe>/{financials,fundamentals_panel,technicals,benchmarks}.csv.
 
     python3 fetch_market_data.py us --ids SPGI BLK        # test on specific companies
-    python3 fetch_market_data.py us eu ca --funnel-only   # Quality-pass + Calamity-pass companies (default)
+    python3 fetch_market_data.py us eu ca --funnel-only   # Quality-pass companies (default)
     python3 fetch_market_data.py us eu ca --all           # every company (fetches funnel first, then rest)
     python3 fetch_market_data.py us --prices-only         # refresh EOD prices, weekly technicals & quotes only
     python3 fetch_market_data.py us eu ca --offline       # recompute from data/_cache/eodhd only (no network)
@@ -385,7 +385,7 @@ def apply_mirrors(keys: list[str], eod: EODHD, state: dict) -> None:
             s_co = next((c for c in s_meta["companies"] if c["id"] == sid), None)
             t_co = cmap.get(i)
             if s_co and t_co:
-                for qk in [*QUAL_CODES, "calamity", "calamity_note"]:
+                for qk in QUAL_CODES:
                     if t_co.get(qk) != s_co.get(qk):
                         t_co[qk] = s_co.get(qk)
                         inputs_changed = True

@@ -236,13 +236,6 @@ GATES = [
     ("5", "G5 Management & Allocation", 5),
     ("6", "G6 Cash & Fortress Balance Sheet", 6),
 ]
-# Gates eligible for a conditional temporary-fixable-calamity exception (Gates 1, 2, 3a, 4 are never waivable).
-CALAMITY_GATES = ("3b", "5", "6")
-CALAMITY_FLAG_DEF = (
-    "Set to 'Y' only if the business fails Gate 3b, Gate 5, and/or Gate 6 due to a temporary, fixable calamity "
-    "(Buffett principle) while Gates 1, 2, 3a (not None), and 4 (CAP >= 15) all pass and remaining downstream gates are evaluated. "
-    "Requires calamity_note with broken metric, moat-intact evidence, and fix catalyst/kill-switch."
-)
 PHASE_NAMES = {
     1: "G1 Understandability",
     2: "G2 Essential Need",
@@ -310,22 +303,20 @@ def param_default(name: str):
 
 # Results
 RES_QPASS = "Quality pass"
-RES_CALAMITY = "Calamity pass"
-FUNNEL_RESULTS = (RES_QPASS, RES_CALAMITY)
+FUNNEL_RESULTS = (RES_QPASS,)
 RES_REJ = {p: f"Rejected – {PHASE_NAMES[p]}" for p in (1, 2, 3, 4, 5, 6)}
 RES_REVIEW = "To review (blank gate)"
-Q_RESULTS = [RES_QPASS, RES_CALAMITY, RES_REVIEW] + [RES_REJ[p] for p in (6, 5, 4, 3, 2, 1)]
+Q_RESULTS = [RES_QPASS, RES_REVIEW] + [RES_REJ[p] for p in (6, 5, 4, 3, 2, 1)]
 
 V_NOTFUNNEL = "Not in funnel"
 V_NODATA = "No data"
 V_VALUED = "Valued"  # v7.2: no Below/Above PAR label — read the discount from price vs fair value / terminal price
 V_NOVALUE = "No value"  # DCF fair value <= 0 (growth funded at RONIC below g): never "cheap"
-V_CALAMITY = "Calamity Watchlist"
 V_RESULTS = [V_VALUED, V_NOVALUE, V_NODATA, V_NOTFUNNEL]
 
-LIST_CAPACITY = {V_VALUED: 350, V_CALAMITY: 100}
+LIST_CAPACITY = {V_VALUED: 350}
 
-SCREENER_VERSION = "7.18"
+SCREENER_VERSION = "7.19"
 
 CHANGELOG = {
     "6.0": [
@@ -704,6 +695,16 @@ CHANGELOG = {
         "(2) Bellman-Consistent 5-Year Expected IRR (solve_irr_5y): Solves the 5-year IRR directly from the DCF's own Years 1-5 Free Cash Flows and exact Year-5 continuation Fair Value V_5, guaranteeing IRR == r (8.50% / 10.25%) at Fair Value for 100% of companies, eliminating sign contradictions with vs PAR, and retiring year5_multiple_ratio. "
         "(3) M&A Capital Matching, Cost-Bloat Guard & Single Initial RONIC Cap: Bounds top-line structural growth at min(Sales CAGR, 0.70 * OpCost CAGR + 0.30 * Sales CAGR) so margin contraction never inflates g_0; blends Operating and GAAP ROIC harmonically by capital-growth intensity (alpha = clip(cap_growth / g_raw, 0, 1)) so serial acquirers pay for M&A goodwill while sunk-goodwill organic compounders remain unpenalized; and replaces quadruple ROIC compression with a single initial RONIC cap (50.0%) and g_0 cap (18.0%). "
         "(4) Accounting Hygiene & Radical Simplification: Fixed Up-C consolidated ROE (IBKR), IFRS-16 lease deduction in true_fcf, Canadian US-GAAP lease exemption, direct diluted cur_oe_eps, cross-universe mirror gate parity (ASML / FER), non-destructive Sandbox JSON copy, and pruned 15 dead PAR parameters and 5 redundant Sandbox controls.",
+    ],
+    "7.19": [
+        "Calamity Tier Retirement & Growth at ~0g Discovery Tab: "
+        "(1) Retired the Calamity tier end-to-end across gate evaluation, waterfall ingestion, CSV/SQLite schemas, dashboard UI, tests, and specs "
+        "(removing calamity, calamity_note, RES_CALAMITY, and all waiver logic). "
+        "(2) Applied Stage-1 waterfall scrubbing to APD and EL (3b=N -> standard Gate-3 rejects: 483 Stage-2 advancing + 506 Gate-3 rejects = 989 Gate 3), "
+        "while preserving full Gate 4-6 scores and notes for the 11 former calamity companies with 3b=Y (10 remaining in Quality Grade, RTX excluded by 3 G6 numeric flags; Prime Grade unchanged at 225). "
+        "(3) Added the Growth at ~0g tab (slot #2 after Prime Grade) and KPI chip surfacing 25 Quality Grade companies trading near their 0g price "
+        "(Valued, Mkt Implied g < 5.0% with ok/saturated_low flag, organic Model g >= 5.0%: 9 Prime Grade, 6 CAP >= 15Y failing G6, 10 CAP 5-10Y), "
+        "default-sorted by Model g descending with Gate Status filtering enabled.",
     ],
     "7.18": [
         "Two-Stage Munger Waterfall & Diagnostic Gate 5-6 Scorecard: "

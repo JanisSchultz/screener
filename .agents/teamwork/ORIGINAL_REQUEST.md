@@ -1,47 +1,46 @@
 # Original User Request
 
-## Initial Request — 2026-11-17T15:31:16Z
+## Initial Request — 2026-11-18T09:22:31Z
 
-Implement the Two-Stage Munger Waterfall and diagnostic Gate 5–6 scorecard (v7.18) in the Quality & Moat Screener so every company advancing past Gate 3 (485 companies across US, EU, and CA: 483 clean `3b = "Y"` passers plus `EL` and `APD` on Calamity pass) receives a complete 6-gate scorecard (`G4`, `G5`, and `G6`), even when rejected at Gate 4 (`CAP < 15Y`) or Gate 5 (`5 = 0`), with zero impact on `thr_cap = 15`, `phase_results`, or Prime Grade (225) and Prime Grade Calamity (13 total / 11 < 3 G6 flags) counts.
+Build an implementation plan first, then carry out the v7.19 changes to retire the `Calamity` tier end-to-end across the Quality & Moat Screener and add the `💎 Growth at ~0g` tab showing Quality Grade companies trading near their 0g price (`Mkt Implied g < 5.0%` and organic `Model g >= 5.0%`).
 
 Working directory: /Users/janis.schultz/Library/CloudStorage/OneDrive-Accenture/Private/Projects/Screener
 Integrity mode: development
 
 ## Requirements
 
-### R1. Waterfall Validation, Ingestion & Audit Engine
-- In `screener/apply_evaluation.py` (`validate_and_waterfall`), keep strict downstream scrubbing when Gate 1 = `"N"`, Gate 2 = `"N"`, or unwaived Gate 3 fails (`3a = "None"` or `3b = "N"` without `calamity = "Y"`). Remove downstream scrubbing of `5` and `6` when Gate 4 `CAP < 15` and of `6` when Gate 5 = `0` without calamity, keep `clear_calamity(...)` when Gate 4 `CAP < 15` (non-waivable Anchor Gate), and validate `5` in `{0, 1, 2}` and `6` in `{"Y", "N"}` whenever supplied.
-- In `screener/bulk_scorer.py`, update `validate_company_evaluation` to preserve `5` and `6` on `CAP < 15` and `6` on `5 = 0`, validate `5` (`0/1/2`) and `6` (`Y/N`), and warn if any company advancing past Gate 3 leaves `5` or `6` blank. Update `audit_gate_3_universe` so Gate-3 failures still require blank `G4–G6`, while all 485 Gate-3-advancing companies are audited for non-empty, valid `5` and `6` (zero blank G5/G6 allowed across moat franchises). Update `REFERENCE_SNAPSHOT` for `CRM` once its verified `5` and `6` scores are recorded (keeping the other 10 reference companies, `NUE` blank `G4–G6`, and mirrors `ASML`/`ASML.NL` and `FER`/`FER.ES` consistent).
+### R1. Implementation Plan
+- Produce a concrete implementation plan covering the `Calamity` retirement, `💎 Growth at ~0g` tab, data transitions, test updates, spec updates, and build/verification steps before making edits, then execute the plan end-to-end.
 
-### R2. Bottom-Up Qualitative Evaluation of the 121 Incomplete Moat Franchises
-- Evaluate all 121 incomplete moat franchises (108 Gate-4 rejects at `CAP = 5Y / 10Y` across 57 US, 51 EU, 0 CA + 13 Gate-5 rejects at `5 = 0` across 9 US, 4 EU, 0 CA) against the Gate 5 and Gate 6 rubrics in `QUALITATIVE_EVALUATION_SPEC.md` using only the existing local datasets and dossiers in the repository (`financials.csv`, `fundamentals_panel.csv`, `prescreen.csv` `g6_default`/`g6_checks`, and existing `note` dossiers).
-- When batching and dispatching the 121 companies for bottom-up Gate 5 & Gate 6 evaluation, split evaluation agents strictly by GICS Sector / Sub-Industry across US and EU combined (never split US vs. EU into separate evaluator agents), preserving Sub-Industry Peer Benchmarking (Anti-Drift Rule #1 in `QUALITATIVE_EVALUATION_SPEC.md` / `COMPANY_EVALUATION_SPEC.md`) so cross-Atlantic sector peers are scored side-by-side on the same Gate 5 & Gate 6 yardstick and cross-checked against already-scored same-sub-industry peers in the 364 completed moat franchises.
-- Score Gate 5 (`0 / 1 / 2`) for the 108 Gate-4 rejects while preserving existing `5 = 0` on the 13 Gate-5 rejects, and score Gate 6 (`Y / N`) for all 121 companies across Pillars 1–3 (`p2p_ok`, `fcf_conv >= 80%`, `g6_netdebt_yrs <= 4.0y`, `g6_intcov > 5.0x`, Solvency II > 200% for insurers, automatic `N` for commercial fractional-reserve banks, regulated utilities with `g6_default = "N"`, and debt-funded buyback negative equity).
-- Strip stale `"Downstream gates bypassed per waterfall."` sentences from `note` on these 121 rows, fix `CRM`'s stale `CAP = 10` text in `note` to match its deterministic `CAP = 5Y`, and append `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`. Keep all Gate 1–4 scores (`1`, `2`, `3_*`, `3a`, `3b`, `3m`, `4_*`, `4`, `4n`) untouched.
+### R2. Full Retirement of `Calamity` End-to-End
+- Remove `calamity`, `calamity_note`, `RES_CALAMITY` (`Calamity pass`), and calamity-waiver logic across `screener/gates.py`, `screener/apply_evaluation.py`, `screener/bulk_scorer.py`, `screener/config.py`, `screener/data.py`, `screener/fetch/sqlite_db.py`, `screener/dashboard.py`, `data/{us,eu,ca}/inputs.csv`, tests, and spec docs (`QUALITATIVE_EVALUATION_SPEC.md`, `COMPANY_EVALUATION_SPEC.md`, `README.md`).
+- Preserve `Prime Grade` at `225`, retain full Gate 4–6 scores and notes for the `11` former calamity companies with `3b = Y` (`DGE.GB`, `NESN.CH`, `RTO.GB`, `GOOGL`, `NDAQ`, `HONA`, `NOC`, `RTX`, `EFX`, `SNPS`, `TXN`; `10` remaining in `🏰 Quality Grade`), and apply Stage-1 waterfall scrubbing to `APD` and `EL` (`3b = N`) so they become standard Gate 3 rejects (`483` Stage-2 advancing + `506` Gate-3 rejects = `989` Gate-3 companies).
 
-### R3. Dashboard UI, Version Bump & Documentation
-- In `screener/dashboard.py`: update the 6-Gate Waterfall Stepper (`openDrawer`) to display concrete gate values in stepper sub-labels when scored (e.g. `PASS · 25Y` / `FAIL · 10Y` on G4, `PASS · 2/2` / `PASS · 1/2` / `FAIL · 0/2` on G5, `PASS · Y` / `FAIL · N` on G6, preserving `WAIVED` styling on calamity waivers); add a 2-card row below Moat Archetype / Moat Runway (CAP) in the Qualitative Investment Thesis & Moat Analysis card grid showing `Management & Allocation (G5)` (`2/2 — Elite Compounder`, `1/2 — Standard Pass`, `0/2 — Red Flag`) and `Cash & Fortress B/S (G6)` (`Y — Pass`, `N — Fail`) whenever scored (populating `#dossier-g6-answer` with `Y` or `N`); add `g5_mgmt` (`G5 Mgmt`) and `g6_cash` (`G6 B/S`) to `ALL_COLS` in expanded table mode on Quality Grade and Full Universe while keeping default Compact Cols unchanged.
-- In `screener/config.py`, bump `SCREENER_VERSION` from `"7.17"` to `"7.18"` and add the `"7.18"` `CHANGELOG` entry.
-- Update waterfall rules and field nullable tables in `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md` to reflect the Two-Stage Waterfall (Stage 1 early stop at Gates 1–3; Stage 2 full diagnostic scorecard across Gates 4–6).
+### R3. New Tab: `💎 Growth at ~0g` (Mobile: `💎 ~0g Growth`)
+- Add predicate `passes_growth_0g` matching companies that satisfy `passes_quality_grade` (`G1 = Y`, `G2 = Y`, `3a != None`, `3b = Y`, `< 3` Gate 6 numeric flags), `val_status == 'Valued'`, `g_market_flag in ('ok', 'saturated_low')` with `g_market < 0.05` (`Mkt Implied g < 5.0%`), and `g_org_exp >= 0.05` (organic `Model g >= 5.0%`), yielding `25` companies today (`9` Prime Grade, `6` `CAP >= 15Y` failing `G6 = N`, `10` `CAP = 5–10Y`).
+- Place `💎 Growth at ~0g` in slot #2 of the tab bar (`🛡️ Prime Grade` default landing tab → `💎 Growth at ~0g` → `🏰 Quality Grade` → `🔍 Full Universe` → `📖 Framework`), replace the top-bar `Prime Grade Calamity` KPI chip with `Growth at ~0g` (`25`), default-sort by `Model g ↓` (`g_org_exp` descending), enable `#filter-gate` on `💎 Growth at ~0g` (for 1-click filtering to `Prime Grade Only` or specific failing gates), and surface `G5 Mgmt`, `G6 B/S`, `Gate Status`, and `Failing Gate` alongside the core valuation columns.
 
-### R4. Test Suite Alignment
-- Update Gate 4 / Gate 5 waterfall scrubbing assertions and add Two-Stage Waterfall coverage in `tests/test_calamity_tier.py` (`test_gate4_failure_clears_calamity_and_downstream` verifying calamity is cleared while diagnostic `5` and `6` are preserved and `phase_results` still rejects at Gate 4) and `tests/test_bulk_scoring_e2e.py` (`test_t1_f7_04`, `test_t1_f7_05`, and `test_all_989_gate3_companies_completed` asserting all 485 Gate-3-advancing companies have valid non-empty `5` and `6` while all 504 Gate-3 rejects keep `4_*`, `4`, `4n`, `5`, `6` blank).
+### R4. Version Bump, Build & Verification
+- Bump version to `v7.19` and update `CHANGELOG`, run `screener/bulk_scorer.py --audit`, run the full `unittest` suite, and regenerate `output/screener.html`, `output/index.html`, and `docs/index.html` via `build.py`.
 
 ## Verification Resources
-- `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`
-- Local statement context: `financials.csv`, `fundamentals_panel.csv`, `prescreen.csv` (`g6_default`, `g6_checks`), and existing `note` dossiers
-- Audit script: `python3 screener/bulk_scorer.py --audit`
-- Build script: `python3 build.py`
-- Test suite: `python3 -m unittest discover -s tests`
+- `screener/bulk_scorer.py --audit`
+- Full `unittest` test suite (`python3 -m unittest discover -s tests`)
+- `build.py`
 
 ## Acceptance Criteria
 
-### Engine, Audit & Funnel Invariance
-- [ ] `python3 screener/bulk_scorer.py --audit` passes with 0 discrepancies, 0 waterfall violations, and 100% dual-listed mirror parity.
-- [ ] All 485 Gate-3-advancing companies have valid `5` in `{0, 1, 2}` and `6` in `{"Y", "N"}` (with existing `5 = 0` preserved on the 13 Gate-5 rejects), all 504 Gate-3 rejects keep `4_*`, `4`, `4n`, `5`, `6` blank, and all Gate 1–4 scores (`1`, `2`, `3_*`, `3a`, `3b`, `3m`, `4_*`, `4`, `4n`) remain unchanged.
-- [ ] Each of the 121 newly completed rows has `"Downstream gates bypassed per waterfall."` removed from `note`, appends `[Diagnostic G5=<0|1|2> | G6=<Y|N>: <rationale>]`, and `CRM`'s `note` reflects `CAP = 5Y`.
+### Implementation Plan & Calamity Retirement
+- [ ] An implementation plan covering the `Calamity` retirement, `💎 Growth at ~0g` tab, data transitions, test updates, spec updates, and build verification is produced before making implementation changes.
+- [ ] Zero references to `calamity`, `calamity_note`, `RES_CALAMITY`, or calamity-waiver logic remain across `screener/gates.py`, `screener/apply_evaluation.py`, `screener/bulk_scorer.py`, `screener/config.py`, `screener/data.py`, `screener/fetch/sqlite_db.py`, `screener/dashboard.py`, `data/{us,eu,ca}/inputs.csv`, tests, and spec docs (`QUALITATIVE_EVALUATION_SPEC.md`, `COMPANY_EVALUATION_SPEC.md`, `README.md`).
+- [ ] `Prime Grade` remains `225`; the `11` former calamity companies with `3b = Y` (`DGE.GB`, `NESN.CH`, `RTO.GB`, `GOOGL`, `NDAQ`, `HONA`, `NOC`, `RTX`, `EFX`, `SNPS`, `TXN`) retain their Gate 4–6 scores and notes (`10` in `🏰 Quality Grade`); `APD` and `EL` follow Stage-1 waterfall scrubbing and become standard Gate 3 rejects (`483` Stage-2 advancing + `506` Gate-3 rejects = `989` Gate-3 companies).
 
-### Build, Dashboard, Docs & Tests
-- [ ] `python3 build.py` exits cleanly and regenerates `output/screener.html`, `output/index.html`, and `docs/index.html` with Prime Grade (225) and Prime Grade Calamity (11 / 13) counts unchanged, `SCREENER_VERSION = "7.18"` and `"7.18"` `CHANGELOG` entry in `screener/config.py`, and Two-Stage Waterfall updates in `QUALITATIVE_EVALUATION_SPEC.md` and `COMPANY_EVALUATION_SPEC.md`.
-- [ ] `screener/dashboard.py` includes the scored sub-labels in `openDrawer`, the 2-card G5/G6 row below Moat Archetype / Moat Runway (CAP) (and `#dossier-g6-answer` population), and `g5_mgmt` / `g6_cash` in `ALL_COLS` with Compact Cols unchanged.
-- [ ] `python3 -m unittest discover -s tests` passes 100% across all unit, parity, dashboard, and E2E tests.
+### `💎 Growth at ~0g` Tab & Dashboard
+- [ ] `passes_growth_0g` selects the `25` matching companies (`9` Prime Grade, `6` `CAP >= 15Y` failing `G6 = N`, `10` `CAP = 5–10Y`) where `passes_quality_grade` is true, `val_status == 'Valued'`, `g_market_flag in ('ok', 'saturated_low')` and `g_market < 0.05`, and `g_org_exp >= 0.05`.
+- [ ] The dashboard orders tabs `🛡️ Prime Grade` (default landing tab) → `💎 Growth at ~0g` (mobile `💎 ~0g Growth`) → `🏰 Quality Grade` → `🔍 Full Universe` → `📖 Framework`, replaces the `Prime Grade Calamity` KPI chip with `Growth at ~0g` (`25`), default-sorts the new tab by `g_org_exp` descending, enables `#filter-gate`, and displays `G5 Mgmt`, `G6 B/S`, `Gate Status`, and `Failing Gate` alongside the core valuation columns.
+
+### Version, Audit, Tests & Build
+- [ ] Version is bumped to `v7.19` with `CHANGELOG` updated.
+- [ ] `python3 screener/bulk_scorer.py --audit` passes with zero errors or discrepancies.
+- [ ] `python3 -m unittest discover -s tests` passes 100%.
+- [ ] `python3 build.py` completes cleanly and regenerates `output/screener.html`, `output/index.html`, and `docs/index.html`.
