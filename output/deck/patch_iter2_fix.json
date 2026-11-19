@@ -1,0 +1,188 @@
+[
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931947000_237",
+    "x": 379,
+    "y": 148,
+    "width": 1.2573,
+    "height": 0.22436667
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931949000_239",
+    "x": 389,
+    "y": 171,
+    "width": 1.17263333,
+    "height": 0.11853333
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931950000_240",
+    "x": 379,
+    "y": 207,
+    "width": 1.2573,
+    "height": 0.22436667
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931951000_241",
+    "x": 389,
+    "y": 211,
+    "width": 1.17263333,
+    "height": 0.0762
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931953000_242",
+    "x": 389,
+    "y": 230,
+    "width": 1.17263333,
+    "height": 0.11853333
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931954000_243",
+    "x": 379,
+    "y": 266,
+    "width": 1.2573,
+    "height": 0.29633333
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931955000_244",
+    "x": 389,
+    "y": 270,
+    "width": 1.17263333,
+    "height": 0.0762
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931956000_245",
+    "x": 389,
+    "y": 289,
+    "width": 1.17263333,
+    "height": 0.1905
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932236000_359",
+    "x": 410,
+    "y": 92,
+    "width": 1.18533333,
+    "height": 0.3683
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932238000_360",
+    "x": 411,
+    "y": 93,
+    "width": 1.17686667,
+    "height": 0.35983333
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932239000_361",
+    "x": 422,
+    "y": 95,
+    "width": 1.08373333,
+    "height": 0.08466667
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932241000_362",
+    "x": 422,
+    "y": 115,
+    "width": 1.08373333,
+    "height": 0.23706667
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932242000_363",
+    "x": 410,
+    "y": 184,
+    "width": 1.18533333,
+    "height": 0.3683
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932244000_364",
+    "x": 411,
+    "y": 185,
+    "width": 1.17686667,
+    "height": 0.35983333
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932246000_365",
+    "x": 422,
+    "y": 187,
+    "width": 1.08373333,
+    "height": 0.08466667
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932248000_366",
+    "x": 422,
+    "y": 207,
+    "width": 1.08373333,
+    "height": 0.23706667
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932250000_367",
+    "x": 410,
+    "y": 276,
+    "width": 1.18533333,
+    "height": 0.3048
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932251000_368",
+    "x": 411,
+    "y": 277,
+    "width": 1.17686667,
+    "height": 0.29633333
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932252000_369",
+    "x": 422,
+    "y": 279,
+    "width": 1.08373333,
+    "height": 0.08466667
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932256000_370",
+    "x": 422,
+    "y": 299,
+    "width": 1.08373333,
+    "height": 0.18626667
+  },
+  {
+    "op": "update-text",
+    "element": "textbox_1795014495932275000_383",
+    "text": "Current Price vs Fair Value vs 0g Floor (3% inflation, max 15.45× op / 11.72× BS fin; zero-spread 11.76× / 9.76×)."
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932275000_383",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "update-text",
+    "element": "textbox_1795014495932299000_398",
+    "text": "• 1.0× BVPS: MTM HoldCo anchor.\n• No value: Fair Value ≤ 0.\n• No data: BLOCKING_AUTO_NOTES."
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932299000_398",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  }
+]

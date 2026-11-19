@@ -1,0 +1,309 @@
+[
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495931827000_131",
+    "color": "#9A3412",
+    "bold": true,
+    "font_size": 12,
+    "font_family": "Montserrat"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495931840000_141",
+    "color": "#9A3412",
+    "bold": true,
+    "font_size": 12,
+    "font_family": "Montserrat"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495931910000_205",
+    "color": "#CADCFC",
+    "bold": true,
+    "font_size": 13,
+    "font_family": "Montserrat"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495931902000_198",
+    "color": "#FBBF24",
+    "bold": true,
+    "font_size": 14,
+    "font_family": "Montserrat"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932139000_311",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932275000_383",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932282000_388",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932292000_393",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-text",
+    "element": "textbox_1795014495932299000_398",
+    "color": "#1F2937",
+    "bold": false,
+    "font_size": 14,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 3,
+    "col": 3,
+    "color": "#9A3412",
+    "bold": false,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 4,
+    "col": 3,
+    "color": "#9A3412",
+    "bold": false,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 5,
+    "col": 3,
+    "color": "#9A3412",
+    "bold": false,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 6,
+    "col": 0,
+    "color": "#92400E",
+    "bold": true,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 6,
+    "col": 3,
+    "color": "#92400E",
+    "bold": true,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "style-table-cell",
+    "table": "table_1795014495932445000_433",
+    "row": 6,
+    "col": 4,
+    "color": "#92400E",
+    "bold": true,
+    "font_size": 11.5,
+    "font_family": "Roboto"
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931947000_237",
+    "x": 379,
+    "y": 148,
+    "width": 297,
+    "height": 53
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931949000_239",
+    "x": 389,
+    "y": 171,
+    "width": 277,
+    "height": 28
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931950000_240",
+    "x": 379,
+    "y": 207,
+    "width": 297,
+    "height": 53
+  },
+  {
+    "op": "move-element",
+    "element": "textbox_1795014495931951000_241",
+    "x": 389,
+    "y": 211
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931953000_242",
+    "x": 389,
+    "y": 230,
+    "width": 277,
+    "height": 28
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495931954000_243",
+    "x": 379,
+    "y": 266,
+    "width": 297,
+    "height": 70
+  },
+  {
+    "op": "move-element",
+    "element": "textbox_1795014495931955000_244",
+    "x": 389,
+    "y": 270
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495931956000_245",
+    "x": 389,
+    "y": 289,
+    "width": 277,
+    "height": 45
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932236000_359",
+    "x": 410,
+    "y": 92,
+    "width": 280,
+    "height": 87
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932238000_360",
+    "x": 411,
+    "y": 93,
+    "width": 278,
+    "height": 85
+  },
+  {
+    "op": "move-element",
+    "element": "textbox_1795014495932239000_361",
+    "x": 422,
+    "y": 95
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932241000_362",
+    "x": 422,
+    "y": 115,
+    "width": 256,
+    "height": 56
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932242000_363",
+    "x": 410,
+    "y": 184,
+    "width": 280,
+    "height": 87
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932244000_364",
+    "x": 411,
+    "y": 185,
+    "width": 278,
+    "height": 85
+  },
+  {
+    "op": "move-element",
+    "element": "textbox_1795014495932246000_365",
+    "x": 422,
+    "y": 187
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932248000_366",
+    "x": 422,
+    "y": 207,
+    "width": 256,
+    "height": 56
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932250000_367",
+    "x": 410,
+    "y": 276,
+    "width": 280,
+    "height": 72
+  },
+  {
+    "op": "resize-element",
+    "element": "shape_1795014495932251000_368",
+    "x": 411,
+    "y": 277,
+    "width": 278,
+    "height": 70
+  },
+  {
+    "op": "move-element",
+    "element": "textbox_1795014495932252000_369",
+    "x": 422,
+    "y": 279
+  },
+  {
+    "op": "resize-element",
+    "element": "textbox_1795014495932256000_370",
+    "x": 422,
+    "y": 299,
+    "width": 256,
+    "height": 44
+  },
+  {
+    "op": "update-text",
+    "element": "textbox_1795014495932194000_339",
+    "text": "Balances Rev, NOPAT & Owner EPS (6% refranchising cap)."
+  },
+  {
+    "op": "update-text",
+    "element": "textbox_1795014495932265000_377",
+    "text": "Exact formula 0g / 3% max terminal P/E: 15.45× operating  |  11.72× BS financials"
+  },
+  {
+    "op": "set-notes",
+    "slide": "slide_1795014495932258000_372",
+    "text": "Step 5 turns Fair Value into three practical decision anchors. Notice the 0g floor ceiling: at 3 percent inflation and a 20 percent terminal RONIC cap, operating companies cap at (1 - 3%/20%)/(8.5% - 3%) = 15.45x, while Balance-Sheet Financials at a 10.25% hurdle cap at the exact formula ceiling (1 - 3%/20%)/(10.25% - 3%) = 11.72x (superseding the earlier 10.89x draft ref)—individual insurers like MUV2.DE at 18.2% RONIC0 sit at 10.88x and HNR1.DE at 19.0% RONIC0 sit at 10.97x. Reverse-DCF flips the model to ask what growth today's price already assumes."
+  },
+  {
+    "op": "set-notes",
+    "slide": "slide_1795014495931957000_247",
+    "text": "Accounting Net Income can be distorted by non-cash charges or stale boom years, so Owner EPS measures true cash earnings. Part II computes intrinsic value purely from audited statements with zero analyst overrides: Owner EPS caps depreciation add-backs by operating cash flow minus net income, strips 1.5x impairment spikes and pre-IPO noise, deducts 20 percent of IFRS-16 leases, and decays stale earnings peaks to zero over four years."
+  },
+  {
+    "op": "set-notes",
+    "slide": "slide_1795014495932144000_313",
+    "text": "Rather than trusting noisy short-term surges, the model extracts durable organic growth and gently pulls extreme outliers back toward normal. Growth g0 comes from a four-pillar statistical pipeline over 10 years of statements: a dilution-only share index, cycle-spanning Theil-Sen slopes over 5-plus-year spans to ignore 1-year COVID flukes, three-driver triangulation across revenue, NOPAT, and Owner EPS, and Empirical Bayes shrinkage toward 3 percent inflation capped smoothly at 13 percent."
+  }
+]

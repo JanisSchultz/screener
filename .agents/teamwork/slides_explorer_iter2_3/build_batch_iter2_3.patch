@@ -1,0 +1,47 @@
+--- a/output/deck/build_batch.py
++++ b/output/deck/build_batch.py
+@@ -401,7 +401,7 @@
+ add_tb(S9, "Slump-Cannibal & Age-Weighted Mid-Cycle Reversion", 48, 284, 630, 20, 14, TEAL_DARK, font_family="Montserrat", bold=True)
+ add_tb(S9, "Looks through 1Y sales_1y slumps using multi-cycle growth. When cur_eps < peak, blend weight decays linearly: w = 50% (peak ≤ 1y old) → 33% (2y) → 17% (3y) → 0% (≥ 4y).", 48, 306, 630, 42, 13, TXT_DARK_BODY, font_family="Roboto", line_spacing=112)
+ 
+-set_notes(S9, "Part II computes intrinsic value purely from financial statements with zero analyst overrides. Owner EPS caps depreciation add-backs by operating cash flow minus net income, strips 1.5x impairment spikes and pre-IPO noise, deducts 20 percent of IFRS-16 leases, and decays stale earnings peaks to zero over four years.")
++set_notes(S9, "Accounting Net Income can be distorted by non-cash charges or stale boom years, so Owner EPS measures true cash earnings. Part II computes intrinsic value purely from audited statements with zero analyst overrides: Owner EPS caps depreciation add-backs by operating cash flow minus net income, strips 1.5x impairment spikes and pre-IPO noise, deducts 20 percent of IFRS-16 leases, and decays stale earnings peaks to zero over four years.")
+ 
+ # =========================================================================
+ # SLIDE 10: Capital Base & M&A-Matched RONIC₀ (Light)
+@@ -466,7 +466,7 @@
+ pillars_11 = [
+     ("①", "Dilution Index S_t", "Penalizes SBC & stock M&A share growth in exact year (10Y).", TEAL_LIGHT),
+     ("②", "Cycle Theil–Sen", "Log-slopes Δt ≥ 5y; outputs P50 median & conservative P25.", TXT_LIGHT_TITLE),
+-    ("③", "3-Driver Triang.", "Balances Rev, NOPAT & Owner EPS (+6% refranchising guard).", AMBER_LIGHT),
++    ("③", "3-Driver Triang.", "Balances Rev, NOPAT & Owner EPS (6% refranchising cap).", AMBER_LIGHT),
+     ("④", "EB & tanh Cap", "Shrinks (τ₀=6%) toward 3.0%; smooth tanh cap at 13.0%.", TEAL_LIGHT),
+ ]
+ for i, (num, p_title, p_desc, col) in enumerate(pillars_11):
+@@ -483,7 +483,7 @@
+ add_tb(S11, "Buyback Discipline (Kept Strictly Outside Firm-Level DCF)", 44, 284, 632, 20, 14, TXT_LIGHT_TITLE, font_family="Montserrat", bold=True)
+ add_tb(S11, "Net buyback yield (bb_eff) is clamped to [−3.0%, +3.5%] and excluded from DCF growth g₀, preventing leverage-driven financial engineering from inflating fair value.", 44, 306, 632, 42, 13, TXT_LIGHT_BODY, font_family="Roboto", line_spacing=112)
+ 
+-set_notes(S11, "Growth g0 comes from a four-pillar statistical pipeline over 10 years of statements: a dilution-only share index, cycle-spanning Theil-Sen slopes over 5-plus-year spans to ignore 1-year COVID flukes, three-driver triangulation across revenue, NOPAT, and Owner EPS, and Empirical Bayes shrinkage toward 3 percent inflation capped smoothly at 13 percent.")
++set_notes(S11, "Rather than trusting noisy short-term surges, the model extracts durable organic growth and gently pulls extreme outliers back toward normal. Growth g0 comes from a four-pillar statistical pipeline over 10 years of statements: a dilution-only share index, cycle-spanning Theil-Sen slopes over 5-plus-year spans to ignore 1-year COVID flukes, three-driver triangulation across revenue, NOPAT, and Owner EPS, and Empirical Bayes shrinkage toward 3 percent inflation capped smoothly at 13 percent.")
+ 
+ # =========================================================================
+ # SLIDE 12: Explicit N-Year Mauboussin-Fade DCF (Dark + PNG Chart Slot)
+@@ -511,7 +511,7 @@
+ # =========================================================================
+ S13 = "SLIDE_13"
+ ops.append({"op": "add-slide", "layout": "BLANK", "id": S13})
+-add_chrome(S13, 13, False, "PART II · QUANTITATIVE VALUATION (STEP 5)", "3-Price Anchor, 5Y IRR & Reverse-DCF", "Verified 0g / 3% max terminal P/E: 15.45× operating  |  11.72× BS financials")
++add_chrome(S13, 13, False, "PART II · QUANTITATIVE VALUATION (STEP 5)", "3-Price Anchor, 5Y IRR & Reverse-DCF", "Exact formula 0g / 3% max terminal P/E: 15.45× operating  |  11.72× BS financials")
+ 
+ quads = [
+     ("① 3-Price Anchor", "Current Price vs DCF Fair Value vs Standalone 0g Floor (3% inflation, max 15.45× op / 11.72× BS fin; zero-spread 11.76× / 9.76×).", TEAL_LIGHT),
+@@ -529,7 +529,7 @@
+     add_tb(S13, qt, qx + 14, qy + 10, 292, 22, 15, col, font_family="Montserrat", bold=True)
+     add_tb(S13, qb, qx + 14, qy + 36, 292, 76, 13.5, TXT_LIGHT_BODY, font_family="Roboto", line_spacing=116)
+ 
+-set_notes(S13, "Step 5 turns Fair Value into three practical decision anchors. Notice the 0g floor ceiling: at 3 percent inflation and a 20 percent terminal RONIC cap, operating companies cap at (1 - 3%/20%)/(8.5% - 3%) = 15.45x, while Balance-Sheet Financials at a 10.25% hurdle cap at (1 - 3%/20%)/(10.25% - 3%) = 11.72x—individual insurers like HNR1.DE at 14.3% RONIC0 sit at 10.89x. Reverse-DCF flips the model to ask what growth today's price already assumes.")
++set_notes(S13, "Step 5 turns Fair Value into three practical decision anchors. Notice the 0g floor ceiling: at 3 percent inflation and a 20 percent terminal RONIC cap, operating companies cap at (1 - 3%/20%)/(8.5% - 3%) = 15.45x, while Balance-Sheet Financials at a 10.25% hurdle cap at the exact formula ceiling (1 - 3%/20%)/(10.25% - 3%) = 11.72x (superseding the earlier 10.89x draft ref)—individual insurers like MUV2.DE at 18.2% RONIC0 sit at 10.88x and HNR1.DE at 19.0% RONIC0 sit at 10.97x. Reverse-DCF flips the model to ask what growth today's price already assumes.")
+ 
+ # =========================================================================
+ # SLIDE 14: Part III: Actionable Decision Cohorts (Dark)
