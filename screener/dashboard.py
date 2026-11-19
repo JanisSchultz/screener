@@ -998,6 +998,47 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       color: var(--text-main);
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     }}
+    .ticker-wrap {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }}
+    .grade-pill {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }}
+    .grade-pill.grade-prime {{
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid var(--green-border);
+    }}
+    .grade-pill.grade-quality {{
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+    }}
+    .grade-pill.grade-fail {{
+      background: var(--red-bg);
+      color: var(--red);
+      border: 1px solid var(--red-border);
+    }}
+    .grade-pill.grade-review {{
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }}
     .cell-company {{
       max-width: 220px;
       overflow: hidden;
@@ -2794,6 +2835,67 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         && c.g_org_exp !== null && c.g_org_exp !== undefined && c.g_org_exp >= 0.05;
     }}
 
+    function gradeBadgeInfo(c) {{
+      if (passesPrimeGrade(c)) {{
+        return {{
+          label: 'P',
+          cls: 'grade-prime',
+          tip: 'Prime Grade — passed all 6 Munger Reject Gates cleanly (<3 G6 numeric flags).'
+        }};
+      }}
+      if (passesQualityGrade(c)) {{
+        const reason = c.rejected_at
+          ? `rejected at ${{c.rejected_at}}`
+          : (c.review_at ? `under review at ${{c.review_at}}` : (c.result || 'did not pass G4–G6'));
+        return {{
+          label: 'Q',
+          cls: 'grade-quality',
+          tip: `Quality Grade — passed G1–G3 (<3 G6 flags); ${{reason}}.`
+        }};
+      }}
+      const st = c.gate_status || {{}};
+      if (st['1'] === 'fail') {{
+        return {{
+          label: 'G1',
+          cls: 'grade-fail',
+          tip: 'Failed Gate 1 — Understandable Business.'
+        }};
+      }}
+      if (st['2'] === 'fail') {{
+        return {{
+          label: 'G2',
+          cls: 'grade-fail',
+          tip: 'Failed Gate 2 — Essential Need & Market.'
+        }};
+      }}
+      if (st['3b'] === 'fail' || c.g3a_moat_archetype === 'None') {{
+        return {{
+          label: 'G3',
+          cls: 'grade-fail',
+          tip: 'Failed Gate 3 — Economic Moat & Pricing Power.'
+        }};
+      }}
+      if ((c.g6_flags || 0) >= 3) {{
+        const extra = c.rejected_at ? ` (${{c.rejected_at}})` : '';
+        return {{
+          label: 'G6',
+          cls: 'grade-fail',
+          tip: `Excluded from Quality Grade — ${{c.g6_flags}} Gate 6 numeric flags (≥3)${{extra}}.`
+        }};
+      }}
+      const rev = c.review_at ? ` at ${{c.review_at}}` : '';
+      return {{
+        label: '?',
+        cls: 'grade-review',
+        tip: `Under review${{rev}}.`
+      }};
+    }}
+
+    function gradeBadgeHtml(c) {{
+      const g = gradeBadgeInfo(c);
+      return `<span class="grade-pill ${{g.cls}}" title="${{escHtml(g.tip)}}">${{g.label}}</span>`;
+    }}
+
     function hasMoatArchetype(c) {{
       // Python par_valuation assumes a default 20y CAP whenever a moat archetype is set and Gate 4 is blank
       return Boolean(c.g3a_moat_archetype && String(c.g3a_moat_archetype).trim() !== '' && String(c.g3a_moat_archetype).trim() !== 'None');
@@ -3203,7 +3305,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           let cellContent = '';
 
           if (col.key === 'ticker') {{
-            cellContent = `<span class="cell-ticker">${{escHtml(val)}}</span>`;
+            cellContent = `<span class="ticker-wrap">${{gradeBadgeHtml(c)}}<span class="cell-ticker">${{escHtml(val)}}</span></span>`;
           }} else if (col.key === 'company') {{
             cellContent = `<div class="cell-company" title="${{escHtml(val)}}">${{escHtml(val)}}</div>`;
           }} else if (col.key === 'vs_par') {{
@@ -3537,6 +3639,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
           <div class="company-card ${{isSelected ? 'selected' : ''}}" data-id="${{c.id}}" onclick="openDrawer('${{c.id}}')">
             <div class="card-header">
               <div class="card-ticker-group">
+                ${{gradeBadgeHtml(c)}}
                 <span class="card-ticker">${{escHtml(c.ticker)}}</span>
                 <span class="badge badge-gray" style="font-size: 10px; padding: 1px 5px;">${{escHtml(c.universe.toUpperCase())}}</span>
               </div>
