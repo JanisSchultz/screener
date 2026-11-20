@@ -523,6 +523,63 @@ class QuantitativeGrowthTests(unittest.TestCase):
         # 5. Finite concession -> term_mult == 0.0, term_val == 0.0, vs_term is None
         self.assertEqual(terminal_multiple(0.25, r=0.085, g_term=0.030, finite_conc=True), 0.0)
 
+    def test_unfloored_ronic_below_5pct_and_nonpositive(self):
+        """Real RONIC₀ is preserved below 5% (no artificial 5% floor); non-positive RONIC with g₀ > 0 -> No value,
+        while g₀ == 0 values steady run-off earnings at 1/r."""
+        from screener import config as C
+        from screener.gates import G_FLAG_NO_VALUE, solve_market_growth
+        # 1. Low positive RONIC (3.5%) with modest growth (2.0%): unfloored roic_exp and lower Fair P/E than at 5%
+        v_low = par_valuation(
+            sample_fin(price=50.0, peak_oe_eps=5.0, roic_operating=0.035, roic_median=0.035, sales_cagr=0.020),
+            self.p, cap=20,
+        )
+        v_five = par_valuation(
+            sample_fin(price=50.0, peak_oe_eps=5.0, roic_operating=0.050, roic_median=0.050, sales_cagr=0.020),
+            self.p, cap=20,
+        )
+        self.assertAlmostEqual(v_low["roic_exp"], 0.035, places=4)
+        self.assertEqual(v_low["status"], C.V_VALUED)
+        self.assertLess(v_low["par_mult"], v_five["par_mult"])
+        self.assertAlmostEqual(v_low["term_mult"], 1.0 / 0.085, places=4)
+
+        # 2. Low positive RONIC (3.0%) with high growth (7.6%): reinvestment > 100% -> DCF <= 0 -> No value
+        v_burn = par_valuation(
+            sample_fin(price=50.0, peak_oe_eps=5.0, roic_operating=0.030, roic_median=0.030, sales_cagr=0.076),
+            self.p, cap=20,
+        )
+        self.assertAlmostEqual(v_burn["roic_exp"], 0.030, places=4)
+        self.assertEqual(v_burn["status"], C.V_NOVALUE)
+        self.assertLessEqual(v_burn["par_val"], 0.0)
+
+        # 3. Negative RONIC (-25%) with positive growth (5%): real negative roic_exp preserved, DCF = 0 -> No value
+        v_neg_g = par_valuation(
+            sample_fin(price=50.0, peak_oe_eps=5.0, roic_operating=-0.25, roic_median=-0.25, sales_cagr=0.050),
+            self.p, cap=20,
+        )
+        self.assertAlmostEqual(v_neg_g["roic_exp"], -0.25, places=4)
+        self.assertEqual(v_neg_g["status"], C.V_NOVALUE)
+        self.assertEqual(v_neg_g["par_mult"], 0.0)
+        self.assertIsNone(v_neg_g["irr_5y"])
+        self.assertAlmostEqual(v_neg_g["term_mult"], 1.0 / 0.085, places=4)
+
+        # 4. Negative RONIC (-36%) with zero growth (0%): no new capital deployed -> run-off 1/r, g_market no_value_creation
+        v_neg_0 = par_valuation(
+            sample_fin(price=50.0, peak_oe_eps=5.0, roic_operating=-0.36, roic_median=-0.36, sales_cagr=0.0),
+            self.p, cap=20,
+        )
+        self.assertAlmostEqual(v_neg_0["roic_exp"], -0.36, places=4)
+        self.assertEqual(v_neg_0["status"], C.V_VALUED)
+        self.assertAlmostEqual(v_neg_0["par_mult"], 1.0 / 0.085, places=4)
+        self.assertAlmostEqual(v_neg_0["term_mult"], 1.0 / 0.085, places=4)
+        _, flag = solve_market_growth(10.0, 0.0, -0.36, 20, r=0.085, g_term=0.030)
+        self.assertEqual(flag, G_FLAG_NO_VALUE)
+
+        # 5. Zero RONIC with positive growth -> No value; zero RONIC with zero growth -> 1/r
+        pe_z_pos, _, _, _, _, _ = explicit_dcf_multiple(0.05, 0.0, 20, r=0.085) + (None, None)
+        self.assertEqual(pe_z_pos, 0.0)
+        pe_z_0, _, _, _ = explicit_dcf_multiple(0.0, 0.0, 20, r=0.085)
+        self.assertAlmostEqual(pe_z_0, 1.0 / 0.085, places=4)
+
     def test_eodhd_foundation_and_sqlite_db_integrity(self):
         """EODHD cache, multi-year fundamentals_panel.csv, and fundamentals.sqlite are populated across all universes."""
         import sqlite3

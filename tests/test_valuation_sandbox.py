@@ -161,7 +161,7 @@ class ValuationSandboxHtmlTests(unittest.TestCase):
     def test_dynamic_slider_bounds(self):
         """Verify dynamic slider min/max assignment in syncSandboxInputs (only controls that exist in the HTML)."""
         self.assertIn("sCagr.min = Math.min(-20, Math.floor(sbCurrent.salescagr - 5));", self.html)
-        self.assertIn("sRoic.min = Math.min(5, Math.floor(sbCurrent.roic - 5));", self.html)
+        self.assertIn("sRoic.min = Math.min(0, Math.floor(sbCurrent.roic - 5));", self.html)
         for dead in ("sb-slider-sales1y", "sb-slider-capgrowth", "sb-slider-bb", "sb-input-ml", "sb-input-mh"):
             self.assertNotIn(dead, self.html)
 
@@ -276,11 +276,11 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
                 g_exp = r4(g_org_exp + bb_pos)
         roic_exp = c.get("roic_exp") if c.get("roic_exp") is not None else 0.18
         if tw_roic:
-            roic_exp = r4(max(0.05, cur["roic"] / 100.0))
+            roic_exp = r4(cur["roic"] / 100.0)
         elif (tw_growth or tw_gest) and c.get("roic_used") is not None:
             raw = ronic0(c["roic_used"], c.get("roic_operating"), c.get("roic_median"),
                          c.get("ma_reinvest"), g_org_exp, bool(c.get("uses_gaap_roic")))[0]
-            roic_exp = r4(max(0.05, min(0.50, raw)))
+            roic_exp = r4(min(0.50, raw))
 
         price, peak_eps, fund_cap = c.get("price"), cur["peakeps"], cur["cap"]
         moat_arch = c.get("g3a_moat_archetype")
@@ -297,11 +297,11 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
         g_org_val = g_org_exp if g_org_exp is not None else g_base
         k = c.get("disc_rate") if c.get("disc_rate") is not None else (0.1025 if c.get("bs_fin") else 0.085)
         n_cap = fund_cap if (fund_cap and fund_cap > 0) else 20.0
-        roic_eff = max(roic_exp, 0.05)
+        roic_eff = roic_exp
         is_mtm = bool(c.get("mtm_holdco")) and not tw_peak
         bvps = c.get("bvps") if (c.get("bvps") or 0) > 0 else None
         if is_mtm:
-            pe_vd = (bvps / peak_eps) if bvps else (1.0 / roic_eff)
+            pe_vd = (bvps / peak_eps) if bvps else ((1.0 / roic_eff) if roic_eff > 0 else 0.0)
             fcfs_5, v_5 = [0.0] * 5, pe_vd * ((1.0 + k) ** 5)
         else:
             pe_vd, _, _, _, fcfs_5, v_5 = dcf_schedule_and_continuation(
@@ -356,7 +356,8 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
                 ref = par_valuation(fin, p, cap=c.get("g4_cap"), moat=c.get("g3a_moat_archetype"), sub_industry=c.get("sub_industry"))
                 if ref.get("par_mult") is None or sim.get("par_mult") is None:
                     continue
-                if abs(ref["roic_exp"] - sim["roic_exp"]) > 1e-4 or abs(ref["par_mult"] / sim["par_mult"] - 1) > 1e-6:
+                mult_mismatch = (abs(ref["par_mult"] - sim["par_mult"]) > 1e-6) if sim["par_mult"] == 0 else (abs(ref["par_mult"] / sim["par_mult"] - 1) > 1e-6)
+                if abs(ref["roic_exp"] - sim["roic_exp"]) > 1e-4 or mult_mismatch:
                     bad.append((c["id"], ref["roic_exp"], sim["roic_exp"], ref["par_mult"], sim["par_mult"]))
         self.assertEqual(bad[:5], [])
 
@@ -377,7 +378,7 @@ class ValuationSandboxSimulationTests(unittest.TestCase):
             step = self._simulate_js_sandbox(c, {"roic": slider})
             if c["roic_exp"] >= 0.15 and abs(step["par_mult"] / base["par_mult"] - 1.0) > 0.10:
                 moved.append(c["id"])
-            exp_roic = max(0.05, slider / 100.0)
+            exp_roic = slider / 100.0
             if abs(step["roic_exp"] - exp_roic) > 1e-4:
                 mismatched.append(c["id"])
         self.assertEqual(moved, [])

@@ -267,14 +267,13 @@ def peak_weight(cur_year, peak_year) -> float:
     return max(0.0, 0.5 * (4.0 - age) / 3.0)
 
 
-RONIC_FLOOR = 0.05                # floor on any RONIC used for reinvestment (avoids division blow-ups)
 ROIC_TERM_MAX = 0.20              # default of config par_roic_term_max (terminal RONIC ceiling)
 BUYBACK_CLAMP = (-0.03, 0.035)    # buyback_yield clamp before splitting into accretion (+) / dilution (−)
 
 
 def roic_terminal(roic_start: float, r: float, roic_term_max: float = ROIC_TERM_MAX) -> float:
-    """Terminal RONIC at the end of the CAP fade: min(RONIC_0, roic_term_max, r + 0.5 · (RONIC_0 − r)), floored."""
-    return max(RONIC_FLOOR, min(roic_start, roic_term_max, r + 0.5 * (roic_start - r)))
+    """Terminal RONIC at the end of the CAP fade: min(RONIC_0, roic_term_max, r + 0.5 · (RONIC_0 − r))."""
+    return min(roic_start, roic_term_max, r + 0.5 * (roic_start - r))
 
 
 def _r4(x: float) -> float:
@@ -385,14 +384,17 @@ def dcf_schedule_and_continuation(
     - Terminal value at t=N is McKinsey Value Driver TV_N = E_{N+1} * (1 - g_tv / RONIC_term) / (r - g_tv) with
       g_tv = max(0, min(g0, g_term)) (3.0% historical inflation pass-through, or g0 when g0 < 3.0%).
     - Exact Miller-Modigliani zero-spread invariance: when RONIC_t == r, total_dcf_pe == 1 / r for all g0 >= 0, N."""
-    roic_start = max(RONIC_FLOOR, float(roic0))
+    roic_start = float(roic0)
     if mtm_holdco:
-        nav_pe = 1.0 / roic_start
+        nav_pe = (1.0 / roic_start) if roic_start > 0.0 else 0.0
         return nav_pe, nav_pe, 0.0, 1.0, [0.0] * 5, nav_pe * ((1.0 + r) ** 5)
     n = max(1, int(round(float(n_cap) if (n_cap is not None and n_cap > 0) else 20.0)))
-    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else max(RONIC_FLOOR, float(roic_end))
+    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else float(roic_end)
+    if g0 > 0.0 and (roic_start <= 0.0 or roic_fin <= 0.0):
+        # Growing while earning <= 0% on incremental capital destroys value (g / RONIC undefined / sign-flipped) -> No value.
+        return 0.0, 0.0, 0.0, 0.0, [0.0] * 5, 0.0
     g_term_eff = min(g0, g_term)
-    reinv_1 = max(0.0, g0) / roic_start
+    reinv_1 = (g0 / roic_start) if g0 > 0.0 else 0.0
     pv_stage1 = 0.0
     e_t = 1.0
     fcfs: list[float] = []
@@ -400,13 +402,13 @@ def dcf_schedule_and_continuation(
         frac = (t - 1.0) / float(max(1, n - 1)) if n > 1 else 1.0
         g_t = g0 - frac * (g0 - g_term_eff)
         roic_t = roic_start - frac * (roic_start - roic_fin)
-        reinv_t = max(0.0, g_t) / max(RONIC_FLOOR, roic_t)
+        reinv_t = (g_t / roic_t) if g_t > 0.0 else 0.0
         fcf_t = e_t * (1.0 - reinv_t)
         fcfs.append(fcf_t)
         pv_stage1 += fcf_t / ((1.0 + r) ** t)
         e_t = e_t * (1.0 + g_t)
     g_tv = max(0.0, g_term_eff)
-    reinv_tv = g_tv / max(RONIC_FLOOR, roic_fin)
+    reinv_tv = (g_tv / roic_fin) if g_tv > 0.0 else 0.0
     fcf_tv = e_t * (1.0 - reinv_tv)
     tv_n = 0.0 if finite_conc else (fcf_tv / max(0.01, r - g_tv))
     pv_stage2 = tv_n / ((1.0 + r) ** n)
@@ -446,10 +448,10 @@ def terminal_multiple(
     When RONIC_term <= r, growth adds no value so g_inf = 0.0 and Terminal P/E = 1 / r."""
     if finite_conc:
         return 0.0
-    roic_start = max(RONIC_FLOOR, float(roic0))
+    roic_start = float(roic0)
     if mtm_holdco:
-        return 1.0 / roic_start
-    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else max(RONIC_FLOOR, float(roic_end))
+        return (1.0 / roic_start) if roic_start > 0.0 else 0.0
+    roic_fin = roic_terminal(roic_start, r, roic_term_max) if roic_end is None else float(roic_end)
     if roic_fin <= r:
         return 1.0 / r
     g_inf = max(0.0, g_term)
@@ -584,7 +586,7 @@ def active_roic(fin: dict, sub_industry: str | None) -> tuple[float | None, str 
 
 
 def ronic0(roic_active, r_tang, r_gaap, ma_reinvest, g0, gaap_basis) -> tuple[float, float]:
-    """Raw marginal return on new capital (before the 5% floor / par_roic_cap) and the bought-growth share w.
+    """Raw marginal return on new capital (before par_roic_cap) and the bought-growth share w.
     When goodwill-heavy (r_tang > 1.25 × r_gaap) the business keeps spending ma_reinvest (v7.2: Σ cash-funded
     Δ goodwill+intangibles ÷ Σ NOPAT over the g0 window) of earnings on acquisitions earning GAAP ROIC, i.e. bought growth g_m = ma_reinvest × r_gaap and w = clip(g_m / g0, 0, 1); the
     reinvestment rate g0 / RONIC₀ = (1 − w)·g0 / r_tang + w·g0 / r_gaap gives the growth-weighted harmonic blend.
@@ -709,9 +711,9 @@ def par_valuation(
     # ROE sits on goodwill-inclusive equity, so (like GAAP-basis sectors) no tangible / GAAP M&A blend
     gaap_basis = uses_gaap_roic(sub_ind) or roic_source == "roe_median"
     ronic_raw, alpha = ronic0(roic_op, f("roic_operating"), roic_gaap, f("ma_reinvest"), g_org_exp, gaap_basis)
-    roic_exp = _r4(max(0.05, min(roic_cap, ronic_raw)))
+    roic_exp = _r4(min(roic_cap, ronic_raw))
     if scenario.get("ronic0") is not None:
-        roic_exp, alpha = _r4(max(0.05, scenario["ronic0"])), 0.0
+        roic_exp, alpha = _r4(scenario["ronic0"]), 0.0
 
     # Industry physics: discount rate, NAV-anchored HoldCos, opt-in finite concessions.
     bs_fin = is_balance_sheet_financial(sub_ind)
@@ -749,7 +751,7 @@ def par_valuation(
     # Step 4 — Explicit N-Year DCF & Standalone Terminal Price at r = 8.50% (10.25% for Balance-Sheet Financials).
     cur_mult = price / peak_eps
     n_cap = float(fund_cap) if (fund_cap is not None and fund_cap > 0) else 20.0
-    roic_eff = max(roic_exp, 0.05)
+    roic_eff = roic_exp
     pe_vd, pe_mm, pe_mck, fcf_share, fcfs_5, v_5 = dcf_schedule_and_continuation(
         g_org_exp, roic_eff, n_cap, k, g_base, finite_conc, mtm_holdco, None, roic_term_max
     )

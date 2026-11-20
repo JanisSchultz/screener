@@ -4107,7 +4107,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
       const sRoic = document.getElementById('sb-slider-roic');
       if (sRoic) {{
-        sRoic.min = Math.min(5, Math.floor(sbCurrent.roic - 5));
+        sRoic.min = Math.min(0, Math.floor(sbCurrent.roic - 5));
         sRoic.max = Math.max(150, Math.ceil(sbCurrent.roic + 10));
         sRoic.value = sbCurrent.roic;
         document.getElementById('sb-val-roic').textContent = `${{sbCurrent.roic.toFixed(1)}}%`;
@@ -4195,11 +4195,38 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // at each year t = 1..N, Reinv_t = E_t * max(0, g_t) / RONIC_t funds E_(t+1) = E_t * (1 + g_t);
       // TV_N = E_(N+1) * (1 - g_tv / RONIC_term) / (r - g_tv) with g_tv = max(0, min(g0, gTerm)).
       const nSteps = Math.max(1, Math.round(nCap));
-      const roicStart = Math.max(0.05, roic0);
+      const roicStart = roic0;
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
-        ? Math.max(0.05, roicEndOverride)
-        : Math.max(0.05, Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k)));
+        ? roicEndOverride
+        : Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k));
       const gTermEff = Math.min(g0, gTerm);
+      const gTv = Math.max(0.0, gTermEff);
+      const dfTermZero = 1.0 / Math.pow(1.0 + k, nSteps);
+      if (g0 > 0.0 && (roicStart <= 0.0 || roicTerm <= 0.0)) {{
+        return {{
+          pvStage1: 0.0,
+          pvStage2: 0.0,
+          total: 0.0,
+          sumFcf1: 0.0,
+          roicStart,
+          roicTerm,
+          nSteps,
+          rows: [],
+          fcfs5: [0.0, 0.0, 0.0, 0.0, 0.0],
+          v5: 0.0,
+          terminal: {{
+            gTerm: gTv,
+            roicTerm,
+            reinvTerm: 0.0,
+            earnTerm: 1.0,
+            fcfTerm: 0.0,
+            termVal: 0.0,
+            dfTerm: dfTermZero,
+            pvStage2: 0.0,
+            cumPv: 0.0
+          }}
+        }};
+      }}
       let pvStage1 = 0.0;
       let sumFcf1 = 0.0;
       let earn = 1.0;
@@ -4208,8 +4235,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       for (let t = 1; t <= nSteps; t++) {{
         const frac = nSteps > 1 ? (t - 1.0) / Math.max(1, nSteps - 1) : 1.0;
         const gT = g0 - frac * (g0 - gTermEff);
-        const roicT = Math.max(0.05, roicStart - frac * (roicStart - roicTerm));
-        const reinvT = Math.max(0.0, gT) / roicT;
+        const roicT = roicStart - frac * (roicStart - roicTerm);
+        const reinvT = gT > 0.0 ? (gT / roicT) : 0.0;
         const fcfT = earn * (1.0 - reinvT);
         fcfs.push(fcfT);
         const dfT = 1.0 / Math.pow(1.0 + k, t);
@@ -4230,9 +4257,8 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         earn = earn * (1.0 + gT);
       }}
       let pvStage2 = 0.0;
-      const gTv = Math.max(0.0, gTermEff);
       const earnTerm = earn;
-      const reinvTerm = gTv / Math.max(0.05, roicTerm);
+      const reinvTerm = gTv > 0.0 ? (gTv / roicTerm) : 0.0;
       const fcfTerm = earnTerm * (1.0 - reinvTerm);
       const dfTerm = 1.0 / Math.pow(1.0 + k, nSteps);
       let termVal = 0.0;
@@ -4277,10 +4303,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Mirrors screener/gates.py terminal_multiple: standalone McKinsey Value-Driver Terminal P/E at 3.0% historical
       // inflation pass-through and 'keeping the lights on' reinvestment (gTerm / roicTerm).
       if (isFiniteConc) return 0.0;
-      const roicStart = Math.max(0.05, roic0);
+      const roicStart = roic0;
       const roicTerm = (roicEndOverride !== null && roicEndOverride !== undefined)
-        ? Math.max(0.05, roicEndOverride)
-        : Math.max(0.05, Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k)));
+        ? roicEndOverride
+        : Math.min(roicStart, roicTermMax, k + 0.5 * (roicStart - k));
       if (roicTerm <= k) return 1.0 / k;
       const gInf = Math.max(0.0, gTerm);
       return (1.0 - gInf / roicTerm) / Math.max(0.01, k - gInf);
@@ -4330,7 +4356,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       }}
 
       const dcf = explicitDcfMultiple(g0, roic0, nCap, k, gTerm, isFiniteConc, null, opts.roic_term_max);
-      const navMult = (opts.navMult !== null && opts.navMult !== undefined) ? opts.navMult : (1.0 / roic0);
+      const navMult = (opts.navMult !== null && opts.navMult !== undefined) ? opts.navMult : (roic0 > 0 ? 1.0 / roic0 : 0.0);
       const effMult = isMtmHoldco ? navMult : dcf.total;
       const effFv = effMult * e0;
       const pv1Dollar = dcf.pvStage1 * e0;
@@ -4340,8 +4366,9 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const s2Share = dcf.total > 0 ? (dcf.pvStage2 / dcf.total) : 0.0;
 
       // Populate Top Summary Strip
-      const re0 = Math.max(0.0, g0) / dcf.roicStart;
-      const fcf0 = e0 * (1.0 - re0);
+      const nonPosRonicGrowth = !isMtmHoldco && g0 > 0.0 && (dcf.roicStart <= 0.0 || dcf.roicTerm <= 0.0);
+      const re0 = nonPosRonicGrowth ? null : (g0 > 0.0 ? g0 / dcf.roicStart : 0.0);
+      const fcf0 = re0 !== null ? e0 * (1.0 - re0) : null;
       document.getElementById('dcf-sum-e0').textContent = fmtPrice(e0, ccy);
       document.getElementById('dcf-sum-price').textContent = `Cur Price: ${{fmtPrice(price, ccy)}} (${{price && e0 ? fmtNum(price / e0) + 'x' : '-'}})`;
       document.getElementById('dcf-sum-gfade').textContent = `${{fmtPct(g0)}} → ${{fmtPct(dcf.terminal.gTerm)}}`;
@@ -4351,13 +4378,18 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.getElementById('dcf-sum-fv').textContent = `${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x)`;
       document.getElementById('dcf-sum-split').textContent = isMtmHoldco
         ? `MTM HoldCo NAV Anchor: 1.0x Book Value / Share = ${{fmtNum(effMult)}}x Peak EPS`
-        : `Stage 1: ${{Math.round(s1Share * 100)}}% (${{fmtNum(dcf.pvStage1)}}x) · TV: ${{Math.round(s2Share * 100)}}% (${{fmtNum(dcf.pvStage2)}}x)`;
+        : (nonPosRonicGrowth
+          ? `RONIC₀ ≤ 0% with g₀ > 0% → No value`
+          : `Stage 1: ${{Math.round(s1Share * 100)}}% (${{fmtNum(dcf.pvStage1)}}x) · TV: ${{Math.round(s2Share * 100)}}% (${{fmtNum(dcf.pvStage2)}}x)`);
 
       const noteEl = document.getElementById('dcf-special-note');
       if (noteEl) {{
         if (isMtmHoldco) {{
           noteEl.style.display = 'block';
           noteEl.innerHTML = `<strong>ℹ️ Mark-to-Market HoldCo / Insurer NAV Rule:</strong> Because reported GAAP EPS already includes unrealized mark-to-market portfolio gains (&Delta;NAV), intrinsic Fair Value is anchored at <b>1.0x NAV = Book Value / Share = ${{fmtPrice(effFv, ccy)}} (${{fmtNum(effMult)}}x Peak EPS)</b>. The table below displays the illustrative operating cash-flow fade schedule at r = ${{(k * 100).toFixed(2)}}%.`;
+        }} else if (nonPosRonicGrowth) {{
+          noteEl.style.display = 'block';
+          noteEl.innerHTML = `<strong>⚠ No positive DCF value:</strong> RONIC₀ (${{fmtPct(dcf.roicStart)}}) &le; 0% while organic growth g₀ = ${{fmtPct(g0)}} &gt; 0% — growing at a non-positive return on new capital destroys value, so status is <b>No value</b> (no discount or IRR).`;
         }} else if (effFv <= 0) {{
           noteEl.style.display = 'block';
           noteEl.innerHTML = `<strong>⚠ No positive DCF value:</strong> reinvestment g₀ / RONIC₀ = ${{fmtPct(re0)}} of earnings exceeds what the business earns on new capital, so the present value of owner cash flows is ${{fmtNum(effMult)}}x — status <b>No value</b> (no discount or IRR).`;
@@ -4367,6 +4399,11 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         }} else {{
           noteEl.style.display = 'none';
         }}
+      }}
+
+      if (dcf.rows.length === 0) {{
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: var(--text-dim);">No DCF cash-flow schedule: RONIC₀ (${{fmtPct(dcf.roicStart)}}) &le; 0% with positive growth g₀ (${{fmtPct(g0)}}) implies capital-destroying reinvestment (status: <b>No value</b>).</td></tr>`;
+        return;
       }}
 
       const htmlRows = [];
@@ -4593,10 +4630,10 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       // Step 2 — RONIC₀: the slider sets it directly (scenario ronic0 in Python); a growth change re-weights the M&A blend
       let roic_exp = has(c.roic_exp) ? c.roic_exp : 0.18;
       if (tw.roic) {{
-        roic_exp = r4(Math.max(0.05, sbCurrent.roic / 100.0));
+        roic_exp = r4(sbCurrent.roic / 100.0);
       }} else if ((tw.growth || tw.gest) && has(c.roic_used)) {{
         const raw = ronic0(c.roic_used, c.roic_operating, c.roic_median, c.ma_reinvest, g_org_exp, c.uses_gaap_roic)[0];
-        roic_exp = r4(Math.max(0.05, Math.min(P.roic_cap, raw)));
+        roic_exp = r4(Math.min(P.roic_cap, raw));
       }}
 
       // Valuation
@@ -4614,7 +4651,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       const g_org_val = has(g_org_exp) ? g_org_exp : g_base;
       const k = has(c.disc_rate) ? c.disc_rate : (c.bs_fin ? P.k_fin : P.k);
       const n_cap = (fund_cap && fund_cap > 0) ? fund_cap : 20.0;
-      const roic_eff = Math.max(roic_exp, 0.05);
+      const roic_eff = roic_exp;
       const isMtmHoldco = Boolean(c.mtm_holdco) && !tw.peak;
       const isFiniteConc = Boolean(c.finite_conc);
       const bvps = (has(c.bvps) && c.bvps > 0) ? c.bvps : null;
@@ -4624,7 +4661,7 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
         cur_mult = price / peak_eps;
         let fcfs5, v5;
         if (isMtmHoldco) {{
-          nav_mult = bvps ? (bvps / peak_eps) : (1.0 / roic_eff);
+          nav_mult = bvps ? (bvps / peak_eps) : (roic_eff > 0 ? (1.0 / roic_eff) : 0.0);
           pe_vd = nav_mult;
           term_mult = nav_mult;
           fcfs5 = [0.0, 0.0, 0.0, 0.0, 0.0];
