@@ -1907,9 +1907,213 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
     ::-webkit-scrollbar-thumb:hover {{
       background: var(--text-dim);
     }}
+
+    /* Passcode Lock Gate */
+    body.passcode-locked > :not(#passcode-gate) {{
+      display: none !important;
+    }}
+    #passcode-gate {{
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 55%), var(--bg-base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      padding-top: max(20px, env(safe-area-inset-top));
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+      transition: opacity 0.22s ease;
+    }}
+    #passcode-gate.passcode-gate-hidden {{
+      opacity: 0;
+      pointer-events: none;
+    }}
+    .passcode-card {{
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px 28px;
+      width: 100%;
+      max-width: 340px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }}
+    .passcode-icon {{
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }}
+    .passcode-title {{
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }}
+    .passcode-subtitle {{
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }}
+    .passcode-dots {{
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }}
+    .passcode-dots.shake {{
+      animation: passcode-shake 0.36s ease-in-out;
+    }}
+    @keyframes passcode-shake {{
+      0%, 100% {{ transform: translateX(0); }}
+      20%, 60% {{ transform: translateX(-8px); }}
+      40%, 80% {{ transform: translateX(8px); }}
+    }}
+    .passcode-dot {{
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: transparent;
+      transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+    }}
+    .passcode-dot.filled {{
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }}
+    .passcode-dot.error {{
+      background: var(--red);
+      border-color: var(--red);
+    }}
+    .passcode-dot.success {{
+      background: var(--green);
+      border-color: var(--green);
+      transform: scale(1.12);
+    }}
+    .passcode-status {{
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      width: 100%;
+    }}
+    .passcode-status.error {{
+      color: var(--red);
+    }}
+    .passcode-status.success {{
+      color: var(--green);
+    }}
+    .passcode-status.lockout {{
+      color: var(--amber);
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-border);
+      border-radius: 8px;
+      padding: 6px 12px;
+    }}
+    .passcode-keypad {{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 264px;
+    }}
+    .passcode-key {{
+      height: 54px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 20px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.08s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }}
+    .passcode-key:hover:not(:disabled) {{
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }}
+    .passcode-key:active:not(:disabled) {{
+      transform: scale(0.95);
+    }}
+    .passcode-key.action-key {{
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border-color: var(--border-subtle);
+    }}
+    .passcode-key:disabled {{
+      opacity: 0.4;
+      cursor: not-allowed;
+    }}
+    @media (max-width: 400px) {{
+      .passcode-card {{
+        padding: 24px 20px 22px;
+      }}
+      .passcode-key {{
+        height: 48px;
+        font-size: 18px;
+      }}
+    }}
   </style>
 </head>
-<body>
+<body class="passcode-locked">
+
+  <!-- Passcode Lock Gate -->
+  <div id="passcode-gate" role="dialog" aria-modal="true" aria-labelledby="passcode-title">
+    <div class="passcode-card">
+      <div class="passcode-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      <h1 class="passcode-title" id="passcode-title">Quality &amp; Moat Screener</h1>
+      <p class="passcode-subtitle">Enter 4-digit passcode to unlock</p>
+      <div class="passcode-dots" id="passcode-dots" aria-label="Passcode digits entered">
+        <span class="passcode-dot" data-dot="0"></span>
+        <span class="passcode-dot" data-dot="1"></span>
+        <span class="passcode-dot" data-dot="2"></span>
+        <span class="passcode-dot" data-dot="3"></span>
+      </div>
+      <div class="passcode-status" id="passcode-status" role="status" aria-live="polite"></div>
+      <div class="passcode-keypad" id="passcode-keypad">
+        <button type="button" class="passcode-key" data-digit="1">1</button>
+        <button type="button" class="passcode-key" data-digit="2">2</button>
+        <button type="button" class="passcode-key" data-digit="3">3</button>
+        <button type="button" class="passcode-key" data-digit="4">4</button>
+        <button type="button" class="passcode-key" data-digit="5">5</button>
+        <button type="button" class="passcode-key" data-digit="6">6</button>
+        <button type="button" class="passcode-key" data-digit="7">7</button>
+        <button type="button" class="passcode-key" data-digit="8">8</button>
+        <button type="button" class="passcode-key" data-digit="9">9</button>
+        <button type="button" class="passcode-key action-key" data-action="clear" aria-label="Clear passcode">Clear</button>
+        <button type="button" class="passcode-key" data-digit="0">0</button>
+        <button type="button" class="passcode-key action-key" data-action="backspace" aria-label="Delete last digit">&#x232B;</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Top Global Header -->
   <header class="app-header">
@@ -4872,12 +5076,292 @@ def build_dashboard_html(data: dict[str, Any]) -> str:
       document.body.removeChild(link);
     }}
 
-    // Boot
-    if (document.readyState === 'loading') {{
-      document.addEventListener('DOMContentLoaded', init);
-    }} else {{
-      init();
-    }}
+    // Passcode Lock Gate Controller
+    (function setupPasscodeGate() {{
+      const PASSCODE = '6767';
+      const MAX_ATTEMPTS = 3;
+      const BASE_LOCKOUT_SECONDS = 30;
+      const MAX_LOCKOUT_SECONDS = 900;
+      const SESSION_KEY = 'screener_passcode_unlocked';
+      const STATE_KEY = 'screener_passcode_state';
+
+      let dashboardInitialized = false;
+      let memorySessionUnlocked = false;
+      let memoryLockState = {{ failedAttempts: 0, lockoutCount: 0, lockedUntil: 0 }};
+
+      function bootDashboard() {{
+        if (dashboardInitialized) return;
+        dashboardInitialized = true;
+        init();
+      }}
+
+      function isSessionUnlocked() {{
+        try {{
+          return window.sessionStorage.getItem(SESSION_KEY) === '1';
+        }} catch (_) {{
+          return memorySessionUnlocked;
+        }}
+      }}
+
+      function markSessionUnlocked() {{
+        memorySessionUnlocked = true;
+        try {{
+          window.sessionStorage.setItem(SESSION_KEY, '1');
+        }} catch (_) {{}}
+      }}
+
+      function loadLockState() {{
+        try {{
+          const raw = window.localStorage.getItem(STATE_KEY);
+          if (!raw) return {{ failedAttempts: 0, lockoutCount: 0, lockedUntil: 0 }};
+          const parsed = JSON.parse(raw);
+          return {{
+            failedAttempts: Number(parsed.failedAttempts) || 0,
+            lockoutCount: Number(parsed.lockoutCount) || 0,
+            lockedUntil: Number(parsed.lockedUntil) || 0,
+          }};
+        }} catch (_) {{
+          return Object.assign({{}}, memoryLockState);
+        }}
+      }}
+
+      function saveLockState(st) {{
+        memoryLockState = Object.assign({{}}, st);
+        try {{
+          window.localStorage.setItem(STATE_KEY, JSON.stringify(st));
+        }} catch (_) {{}}
+      }}
+
+      function clearLockState() {{
+        memoryLockState = {{ failedAttempts: 0, lockoutCount: 0, lockedUntil: 0 }};
+        try {{
+          window.localStorage.removeItem(STATE_KEY);
+        }} catch (_) {{}}
+      }}
+
+      function formatCountdown(seconds) {{
+        const s = Math.max(0, Math.ceil(seconds));
+        const mins = Math.floor(s / 60);
+        const rem = s % 60;
+        return `${{mins}}:${{String(rem).padStart(2, '0')}}`;
+      }}
+
+      function startPasscodeGate() {{
+        const gate = document.getElementById('passcode-gate');
+        if (!gate) {{
+          document.body.classList.remove('passcode-locked');
+          bootDashboard();
+          return;
+        }}
+
+        if (isSessionUnlocked()) {{
+          gate.remove();
+          document.body.classList.remove('passcode-locked');
+          bootDashboard();
+          return;
+        }}
+
+        const dotsContainer = document.getElementById('passcode-dots');
+        const dots = Array.from(document.querySelectorAll('#passcode-dots .passcode-dot'));
+        const statusEl = document.getElementById('passcode-status');
+        const keypad = document.getElementById('passcode-keypad');
+        const keys = Array.from(keypad.querySelectorAll('.passcode-key'));
+
+        let entered = '';
+        let isTransitioning = false;
+        let lockoutTimerId = null;
+        let state = loadLockState();
+
+        function setStatus(text, tone) {{
+          statusEl.textContent = text || '';
+          statusEl.className = 'passcode-status' + (tone ? ' ' + tone : '');
+        }}
+
+        function setKeysDisabled(disabled) {{
+          keys.forEach(btn => {{ btn.disabled = disabled; }});
+        }}
+
+        function renderDots(mode) {{
+          dots.forEach((dot, idx) => {{
+            dot.classList.remove('filled', 'error', 'success');
+            if (mode === 'error') {{
+              dot.classList.add('error');
+            }} else if (mode === 'success') {{
+              dot.classList.add('success');
+            }} else if (idx < entered.length) {{
+              dot.classList.add('filled');
+            }}
+          }});
+        }}
+
+        function isLockedOut() {{
+          return state.lockedUntil > Date.now();
+        }}
+
+        function stopLockoutTimer() {{
+          if (lockoutTimerId !== null) {{
+            clearInterval(lockoutTimerId);
+            lockoutTimerId = null;
+          }}
+        }}
+
+        function startLockoutCountdown() {{
+          stopLockoutTimer();
+          setKeysDisabled(true);
+
+          function tick() {{
+            const remainingMs = state.lockedUntil - Date.now();
+            if (remainingMs <= 0) {{
+              stopLockoutTimer();
+              state.lockedUntil = 0;
+              saveLockState(state);
+              setKeysDisabled(false);
+              setStatus('Lockout ended. You may try again.', '');
+              return;
+            }}
+            const label = formatCountdown(remainingMs / 1000);
+            setStatus(`Too many failed attempts. Try again in ${{label}}`, 'lockout');
+          }}
+
+          tick();
+          lockoutTimerId = setInterval(tick, 250);
+        }}
+
+        function unlockSuccess() {{
+          isTransitioning = true;
+          stopLockoutTimer();
+          clearLockState();
+          markSessionUnlocked();
+          renderDots('success');
+          setStatus('Unlocked', 'success');
+          window.removeEventListener('keydown', onKeyDown);
+
+          setTimeout(() => {{
+            document.body.classList.remove('passcode-locked');
+            gate.classList.add('passcode-gate-hidden');
+            bootDashboard();
+            setTimeout(() => {{
+              if (gate.parentNode) gate.parentNode.removeChild(gate);
+            }}, 240);
+          }}, 180);
+        }}
+
+        function handleWrongPasscode() {{
+          isTransitioning = true;
+          state.failedAttempts = (state.failedAttempts || 0) + 1;
+
+          renderDots('error');
+          dotsContainer.classList.remove('shake');
+          void dotsContainer.offsetWidth;
+          dotsContainer.classList.add('shake');
+
+          if (state.failedAttempts >= MAX_ATTEMPTS) {{
+            state.lockoutCount = (state.lockoutCount || 0) + 1;
+            const durationSec = Math.min(
+              BASE_LOCKOUT_SECONDS * Math.pow(2, state.lockoutCount - 1),
+              MAX_LOCKOUT_SECONDS
+            );
+            state.lockedUntil = Date.now() + durationSec * 1000;
+            state.failedAttempts = 0;
+            saveLockState(state);
+
+            setTimeout(() => {{
+              entered = '';
+              dotsContainer.classList.remove('shake');
+              renderDots();
+              isTransitioning = false;
+              startLockoutCountdown();
+            }}, 380);
+          }} else {{
+            const remaining = MAX_ATTEMPTS - state.failedAttempts;
+            saveLockState(state);
+            setStatus(
+              `Incorrect passcode — ${{remaining}} attempt${{remaining === 1 ? '' : 's'}} remaining`,
+              'error'
+            );
+            setTimeout(() => {{
+              entered = '';
+              dotsContainer.classList.remove('shake');
+              renderDots();
+              isTransitioning = false;
+            }}, 380);
+          }}
+        }}
+
+        function pushDigit(digit) {{
+          if (isTransitioning || isLockedOut() || entered.length >= PASSCODE.length) return;
+          entered += digit;
+          renderDots();
+          if (entered.length === PASSCODE.length) {{
+            if (entered === PASSCODE) {{
+              unlockSuccess();
+            }} else {{
+              handleWrongPasscode();
+            }}
+          }}
+        }}
+
+        function popDigit() {{
+          if (isTransitioning || isLockedOut() || !entered.length) return;
+          entered = entered.slice(0, -1);
+          renderDots();
+        }}
+
+        function clearDigits() {{
+          if (isTransitioning || isLockedOut() || !entered.length) return;
+          entered = '';
+          renderDots();
+        }}
+
+        keypad.addEventListener('click', (e) => {{
+          const btn = e.target.closest('.passcode-key');
+          if (!btn || btn.disabled) return;
+          if (btn.dataset.digit !== undefined) {{
+            pushDigit(btn.dataset.digit);
+          }} else if (btn.dataset.action === 'backspace') {{
+            popDigit();
+          }} else if (btn.dataset.action === 'clear') {{
+            clearDigits();
+          }}
+        }});
+
+        function onKeyDown(e) {{
+          if (e.metaKey || e.ctrlKey || e.altKey) return;
+          if (/^[0-9]$/.test(e.key)) {{
+            e.preventDefault();
+            pushDigit(e.key);
+          }} else if (e.key === 'Backspace') {{
+            e.preventDefault();
+            popDigit();
+          }} else if (e.key === 'Escape' || e.key === 'Delete') {{
+            e.preventDefault();
+            clearDigits();
+          }}
+        }}
+
+        window.addEventListener('keydown', onKeyDown);
+
+        // Restore persisted lockout / attempt state on load
+        if (isLockedOut()) {{
+          startLockoutCountdown();
+        }} else {{
+          if (state.lockedUntil > 0) {{
+            state.lockedUntil = 0;
+            saveLockState(state);
+          }}
+          if (state.failedAttempts > 0 && state.failedAttempts < MAX_ATTEMPTS) {{
+            const remaining = MAX_ATTEMPTS - state.failedAttempts;
+            setStatus(`${{remaining}} attempt${{remaining === 1 ? '' : 's'}} remaining`, 'error');
+          }}
+        }}
+      }}
+
+      if (document.readyState === 'loading') {{
+        document.addEventListener('DOMContentLoaded', startPasscodeGate);
+      }} else {{
+        startPasscodeGate();
+      }}
+    }})();
   </script>
 </body>
 </html>
